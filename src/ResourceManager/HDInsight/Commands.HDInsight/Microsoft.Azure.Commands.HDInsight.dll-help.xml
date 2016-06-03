@@ -54,12 +54,57 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
-		    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Add-AzureRmHDInsightClusterIdentity</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
+				<maml:name>Config</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDInsight cluster configuration object that this cmdlet modifies. This object is created by the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
+				<maml:name>ObjectId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD object ID (a GUID) of the Azure AD Service Principal that represents the cluster. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
 				<maml:name>CertificateFileContents</maml:name>
 				<maml:description>
-					<maml:para>Specifies the file contents of the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+					<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
 				</maml:description>
-				<command:parameterValue required="false" variableLength="false">byte[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>CertificatePassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies the password for the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>AadTenantId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD Tenant ID that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -138,18 +183,6 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
-			<maml:name>CertificateFileContents</maml:name>
-			<maml:description>
-				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
-			<dev:type>
-				<maml:name>byte[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -170,6 +203,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="2">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Byte[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -2236,7 +2281,7 @@
             -ClusterCredential $clusterCreds `
         | Get-AzureRmHDInsightJobOutput 
             -ClusterName $clusterName `
-            -ClusterCredential $clusterCreds </dev:code>
+            -ClusterCredential $clusterCreds</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets the log output from the cluster named &#39;your-hadoop-001&#39;.</maml:para>
 				<maml:para />
@@ -3160,7 +3205,7 @@
         Grant-AzureRmHDInsightRdpServicesAccess 
             -ClusterName $clusterName `
             -RdpCredential $newRdpCreds `
-            -RdpAccessExpiry $newRdpExpiry </dev:code>
+            -RdpAccessExpiry $newRdpExpiry</dev:code>
 			<dev:remarks>
 				<maml:para>This command grants RDP access to the cluster named &#39;your-hadoop-001&#39;.</maml:para>
 				<maml:para />
@@ -3520,7 +3565,7 @@
             -Query $query `
             -DefaultContainer $storageAccountContainer `
             -DefaultStorageAccountName &quot;$storageAccountName.blob.core.windows.net&quot; `
-            -DefaultStorageAccountKey $storageAccountKey </dev:code>
+            -DefaultStorageAccountKey $storageAccountKey</dev:code>
 			<dev:remarks>
 				<maml:para>This command submits the query SHOW TABLES to the cluster named &#39;your-hadoop-001&#39;.</maml:para>
 				<maml:para />
@@ -3760,6 +3805,233 @@
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificatePassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies the password for the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AadTenantId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD Tenant ID that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmHDInsightCluster</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>ClusterSizeInNodes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the number of Worker nodes for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>HttpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+				<maml:name>DefaultStorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default Azure Storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+				<maml:name>DefaultStorageAccountKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the account key for the default Azure Storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Config</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster object to be used to create the cluster. This object can be created by using the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OozieMetastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SQL Database to store Oozie metadata. You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightMetastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>HiveMetastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SQL Database to store Hive metadata. You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightMetastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AdditionalStorageAccounts</maml:name>
+				<maml:description>
+					<maml:para>Specifies the additional Azure Storage accounts for the cluster. You can alternatively use the Add-AzureRmHDInsightStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Configurations</maml:name>
+				<maml:description>
+					<maml:para>Specifies the configurations of this HDInsight cluster. You can alternatively use the Add-AzureRmHDInsightConfigValues cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[Dictionary`2]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ScriptActions</maml:name>
+				<maml:description>
+					<maml:para>Specifies the script actions to run on the cluster at the end of cluster creation. You can alternatively use Add-AzureRmHDInsightScriptAction.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[List`1]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultStorageContainer</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default container in the default Azure storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Version</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDI version of the HDInsight cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>HeadNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Head node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WorkerNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Worker node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ZookeeperNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Zookeeper node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for HBase or Storm clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClusterType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualNetworkId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the virtual network into which to provision the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SubnetName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of a subnet within the chosen virtual network for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OSType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the operating system for the cluster. Options are: Windows, Linux</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">OSType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClusterTier</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SshCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SSH credential to be used for SSH connections. This is only for Linux clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SshPublicKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the public key to be used for SSH connections. This is only for Linux clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RdpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Remote Desktop (RDP) credentials for the cluster. This is only for Windows clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RdpAccessExpiry</maml:name>
+				<maml:description>
+					<maml:para>Specifies the expiration, as a DateTime object, for Remote Desktop Protocol (RDP) access to a cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ObjectId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD object ID (a GUID) of the Azure AD Service Principal that represents the cluster. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateFilePath</maml:name>
 				<maml:description>
 					<maml:para>Specifies the file path to the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
@@ -3781,9 +4053,236 @@
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureRmHDInsightCluster</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>Location</maml:name>
+				<maml:description>
+					<maml:para>Specifies the location for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the resource group.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>ClusterName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="3">
+				<maml:name>ClusterSizeInNodes</maml:name>
+				<maml:description>
+					<maml:para>Specifies the number of Worker nodes for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
+				<maml:name>HttpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster login (HTTP) credentials for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+				<maml:name>DefaultStorageAccountName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default Azure Storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
+				<maml:name>DefaultStorageAccountKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the account key for the default Azure Storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Config</maml:name>
+				<maml:description>
+					<maml:para>Specifies the cluster object to be used to create the cluster. This object can be created by using the New-AzureRmHDInsightClusterConfig cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightConfig</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OozieMetastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SQL Database to store Oozie metadata. You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightMetastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>HiveMetastore</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SQL Database to store Hive metadata. You can alternatively use the Add-AzureRmHDInsightMetastore cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">AzureHDInsightMetastore</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AdditionalStorageAccounts</maml:name>
+				<maml:description>
+					<maml:para>Specifies the additional Azure Storage accounts for the cluster. You can alternatively use the Add-AzureRmHDInsightStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Configurations</maml:name>
+				<maml:description>
+					<maml:para>Specifies the configurations of this HDInsight cluster. You can alternatively use the Add-AzureRmHDInsightConfigValues cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[Dictionary`2]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ScriptActions</maml:name>
+				<maml:description>
+					<maml:para>Specifies the script actions to run on the cluster at the end of cluster creation. You can alternatively use Add-AzureRmHDInsightScriptAction.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Dictionary`2[List`1]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DefaultStorageContainer</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the default container in the default Azure storage account that the HDInsight cluster will use. You can alternatively use the Set-AzureRmHDInsightDefaultStorage cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Version</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDI version of the HDInsight cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>HeadNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Head node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WorkerNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Worker node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ZookeeperNodeSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machine for the Zookeeper node. Use Get-AzureRmVMSize for acceptable VM sizes, and see HDInsight&#39;s pricing page. This parameter is valid only for HBase or Storm clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClusterType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the type of cluster to create. Options are: Hadoop, HBase, Storm, Spark</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualNetworkId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the virtual network into which to provision the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SubnetName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of a subnet within the chosen virtual network for the cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OSType</maml:name>
+				<maml:description>
+					<maml:para>Specifies the operating system for the cluster. Options are: Windows, Linux</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">OSType</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ClusterTier</maml:name>
+				<maml:description>
+					<maml:para>Specifies the HDInsight cluster tier. By default, this is Standard. The Premium tier can only be used with Linux clusters, and it enables the use of some new features.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Tier</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SshCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the SSH credential to be used for SSH connections. This is only for Linux clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SshPublicKey</maml:name>
+				<maml:description>
+					<maml:para>Specifies the public key to be used for SSH connections. This is only for Linux clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RdpCredential</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Remote Desktop (RDP) credentials for the cluster. This is only for Windows clusters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>RdpAccessExpiry</maml:name>
+				<maml:description>
+					<maml:para>Specifies the expiration, as a DateTime object, for Remote Desktop Protocol (RDP) access to a cluster.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ObjectId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD object ID (a GUID) of the Azure AD Service Principal that represents the cluster. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateFileContents</maml:name>
 				<maml:description>
-					<maml:para>Specifies the file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+					<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificatePassword</maml:name>
+				<maml:description>
+					<maml:para>Specifies the password for the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AadTenantId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the Azure AD Tenant ID that will be used when accessing Azure Data Lake Store.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
@@ -4141,18 +4640,6 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>CertificateFilePath</maml:name>
-			<maml:description>
-				<maml:para>Specifies the file path to the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>CertificatePassword</maml:name>
 			<maml:description>
 				<maml:para>Specifies the password for the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
@@ -4177,18 +4664,6 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>CertificateFileContents</maml:name>
-			<maml:description>
-				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
-			<dev:type>
-				<maml:name>byte[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
@@ -4208,6 +4683,30 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateFilePath</maml:name>
+			<maml:description>
+				<maml:para>Specifies the file path to the certificate that will be used to authenticate as the Service Principal. The cluster will use this when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Byte[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4293,7 +4792,7 @@
             -Location $location `
             -DefaultStorageAccountName &quot;$storageAccountName.blob.core.contoso.net&quot; `
             -DefaultStorageAccountKey $storageAccountKey `
-            -DefaultStorageContainer $storageContainer </dev:code>
+            -DefaultStorageContainer $storageContainer</dev:code>
 			<dev:remarks>
 				<maml:para>This command creates a cluster in the current subscription.</maml:para>
 				<maml:para />
@@ -4406,6 +4905,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateFileContents</maml:name>
+				<maml:description>
+					<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CertificateFilePath</maml:name>
 				<maml:description>
@@ -4426,13 +4932,6 @@
 					<maml:para>Specifies the Azure AD Tenant ID that will be used when accessing Azure Data Lake Store.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>CertificateFileContents</maml:name>
-				<maml:description>
-					<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -4571,6 +5070,18 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>CertificateFileContents</maml:name>
+			<maml:description>
+				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Byte[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Byte[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>CertificateFilePath</maml:name>
 			<maml:description>
@@ -4603,18 +5114,6 @@
 			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			<dev:type>
 				<maml:name>Guid</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>CertificateFileContents</maml:name>
-			<maml:description>
-				<maml:para>Specifies file contents of the certificate that will be used when accessing Azure Data Lake Store.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">byte[]</command:parameterValue>
-			<dev:type>
-				<maml:name>byte[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -4728,7 +5227,7 @@
                 -Location $location `
                 -DefaultStorageAccountName &quot;$storageAccountName.blob.core.contoso.net&quot; `
                 -DefaultStorageAccountKey $storageAccountKey `
-                -DefaultStorageContainer $storageContainer </dev:code>
+                -DefaultStorageContainer $storageContainer</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -7961,10 +8460,10 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
 				<maml:name>ApplicationName</maml:name>
 				<maml:description>
-					<maml:para>Specifies the application name for the script action.</maml:para>
+					<maml:para>Specifies the application name for the script action. When application name is specified, persist on success should be set to &#39;False&#39;, nodes must contain only &#39;edgenode&#39; and script action count should equal 1.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -8040,9 +8539,9 @@
 			<maml:description>
 				<maml:para>Specifies the node types on which to run the script action.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">ClusterNodeType[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">RuntimeScriptActionClusterNodeType[]</command:parameterValue>
 			<dev:type>
-				<maml:name>ClusterNodeType[]</maml:name>
+				<maml:name>RuntimeScriptActionClusterNodeType[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -8059,7 +8558,19 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="5">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>ApplicationName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the application name for the script action. When application name is specified, persist on success should be set to &#39;False&#39;, nodes must contain only &#39;edgenode&#39; and script action count should equal 1.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="6">
 			<maml:name>PersistOnSuccess</maml:name>
 			<maml:description>
 				<maml:para>Indicates that the script action should run each time the cluster is scaled up. This switch parameter is ignored if the script action initially fails.</maml:para>
@@ -8153,6 +8664,31 @@
             -Name &quot;scriptaction&quot; `
             -Uri &quot;&lt;script action URI&gt;&quot; `
             -NodeTypes Worker -PersistOnSuccess</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Submit a new script action on a running HDInsight cluster with app installed  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Submit-AzureRmHDInsightScriptAction `
+            -ClusterName &quot;your-hadoop-001&quot; `
+            -Name &quot;scriptaction&quot; `
+            -Uri &quot;&lt;script action URI&gt;&quot; `
+            -ApplicationName &quot;&lt;app name&gt;&quot;`
+            -NodeTypes edgenode</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
