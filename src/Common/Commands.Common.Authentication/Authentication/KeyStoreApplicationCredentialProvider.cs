@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             this._tenantId = tenant;
         }
-        
+
         /// <summary>
         /// Authenticate using the secret for the specified client from the key store
         /// </summary>

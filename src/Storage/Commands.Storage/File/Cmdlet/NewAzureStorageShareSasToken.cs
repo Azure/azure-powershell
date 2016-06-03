@@ -14,15 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.ShareSas), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
@@ -81,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             Mandatory = false,
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName=true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure Storage Context Object")]
         [ValidateNotNull]
         public override AzureStorageContext Context { get; set; }
@@ -90,7 +89,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public override int? ServerTimeoutPerRequest { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
         public override int? ConcurrentTaskCount { get; set; }
-        
+
         /// <summary>
         /// Execute command
         /// </summary>
@@ -102,9 +101,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             SharedAccessFilePolicy accessPolicy = new SharedAccessFilePolicy();
 
             bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(
-                Channel, 
-                this.ShareName, 
-                accessPolicyIdentifier, 
+                Channel,
+                this.ShareName,
+                accessPolicyIdentifier,
                 !string.IsNullOrEmpty(this.Permission),
                 this.StartTime.HasValue,
                 this.ExpiryTime.HasValue);
@@ -147,19 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            permission = permission.ToLower(CultureInfo.CurrentCulture);
-            policy.Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

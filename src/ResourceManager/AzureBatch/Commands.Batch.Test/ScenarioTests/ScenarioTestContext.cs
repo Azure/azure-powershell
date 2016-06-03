@@ -14,35 +14,28 @@
 
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Test.HttpRecorder;
-using System;
 using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class ScenarioTestContext : BatchAccountContext
     {
-        public ScenarioTestContext(BatchAccountContext context) : base()
+        public ScenarioTestContext() : base()
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException("context");
-            }
-
             // Only set the properties needed for interacting with the Batch service.
-            this.AccountName = context.AccountName;
-            this.PrimaryAccountKey = context.PrimaryAccountKey;
-            this.SecondaryAccountKey = context.SecondaryAccountKey;
-            this.TaskTenantUrl = context.TaskTenantUrl;
+            this.AccountName = BatchController.BatchAccount;
+            this.PrimaryAccountKey = BatchController.BatchAccountKey;
+            this.TaskTenantUrl = BatchController.BatchAccountUrl;
+            this.ResourceGroupName = BatchController.BatchResourceGroup;
         }
 
-        protected override BatchRestClient CreateBatchRestClient(string url, string accountName, string key)
+        protected override BatchServiceClient CreateBatchRestClient(string url, string accountName, string key, DelegatingHandler handler = default(DelegatingHandler))
         {
-            BatchRestClient restClient = base.CreateBatchRestClient(url, accountName, key);
-
             // Add HTTP recorder to the BatchRestClient
             HttpMockServer mockServer = HttpMockServer.CreateInstance();
             mockServer.InnerHandler = new HttpClientHandler();
-            restClient.AddHandlerToPipeline(mockServer);
+
+            BatchServiceClient restClient = base.CreateBatchRestClient(url, accountName, key, mockServer);
 
             return restClient;
         }

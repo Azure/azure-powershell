@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.IO;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Sdk = Microsoft.Azure.Management.Dns.Models;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
-using System.IO;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {

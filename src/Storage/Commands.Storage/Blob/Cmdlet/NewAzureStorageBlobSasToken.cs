@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
@@ -69,11 +69,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ParameterSetName = BlobPipelineParameterSetWithPolicy)]
         [ValidateNotNullOrEmpty]
         public string Policy
@@ -191,42 +191,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
         private void SetupAccessPolicy(SharedAccessBlobPolicy accessPolicy, bool shouldSetExpiryTime)
         {
-            SetupAccessPolicyPermission(accessPolicy, Permission);
+            AccessPolicyHelper.SetupAccessPolicyPermission(accessPolicy, Permission);
             DateTimeOffset? accessStartTime;
             DateTimeOffset? accessEndTime;
             SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             accessPolicy.SharedAccessStartTime = accessStartTime;
             accessPolicy.SharedAccessExpiryTime = accessEndTime;
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permisson</param>
-        internal void SetupAccessPolicyPermission(SharedAccessBlobPolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessBlobPermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessBlobPermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Write:
-                        policy.Permissions |= SharedAccessBlobPermissions.Write;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessBlobPermissions.Delete;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
         }
 
         /// <summary>

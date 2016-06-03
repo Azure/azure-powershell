@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
 using System;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
-        public IBatchManagementClient BatchManagementClient{ get; private set; }
+        public IBatchManagementClient BatchManagementClient { get; private set; }
 
         public IResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="context">Context with subscription containing a batch account to manipulate</param>
         public BatchClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+            : this(AzureSession.ClientFactory.CreateArmClient<BatchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
             AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }

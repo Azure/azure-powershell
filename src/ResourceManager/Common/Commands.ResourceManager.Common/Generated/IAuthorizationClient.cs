@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </summary>
         string ApiVersion
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
         Uri BaseUri
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft
         /// Azure subscription. The subscription ID forms part of the URI for
@@ -48,31 +48,31 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </summary>
         SubscriptionCloudCredentials Credentials
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationInitialTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationRetryTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Operations for managing locks.
         /// </summary>
         IManagementLockOperations ManagementLocks
         {
-            get; 
+            get;
         }
     }
 }

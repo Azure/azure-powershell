@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="resourceId">Optional, the AD resource id</param>
         /// <returns></returns>
         IAccessToken Authenticate(
-            AzureAccount account, 
-            AzureEnvironment environment, 
-            string tenant, 
-            SecureString password, 
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenant,
+            SecureString password,
             ShowDialog promptBehavior,
             TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
@@ -61,10 +61,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context);
         SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint);
-       
+
         ServiceClientCredentials GetServiceClientCredentials(AzureContext context);
 
-        ServiceClientCredentials GetServiceClientCredentials(AzureContext context,
-            AzureEnvironment.Endpoint targetEndpoint);
+        ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint);
     }
 }

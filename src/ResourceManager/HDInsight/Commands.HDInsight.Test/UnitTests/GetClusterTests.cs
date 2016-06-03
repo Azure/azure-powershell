@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -26,8 +26,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private GetAzureHDInsightCommand cmdlet;
 
-        public GetClusterTests()
+        public GetClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             cmdlet = new GetAzureHDInsightCommand
@@ -67,12 +68,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var getresponse = new ClusterGetResponse { Cluster = cluster };
             hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
                 .Returns(getresponse)
-                .Verifiable(); 
-            
+                .Verifiable();
+
             hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
                 .CallBase()
                 .Verifiable();
-            
+
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 }
             };
 
-            var listresponse = new ClusterListResponse {Clusters = new[] {cluster1, cluster2}};
+            var listresponse = new ClusterListResponse { Clusters = new[] { cluster1, cluster2 } };
             hdinsightManagementMock.Setup(c => c.ListClusters(ResourceGroupName))
                 .Returns(listresponse)
                 .Verifiable();

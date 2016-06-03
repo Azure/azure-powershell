@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -28,11 +27,11 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
 
         private static readonly string filterParameterConditionEqual = " eq ";
 
-        public static TSettings ToSettingsObject<TCmdlet, TSettings>(TCmdlet cmd, out string confirmString) where TSettings: new()
+        public static TSettings ToSettingsObject<TCmdlet, TSettings>(TCmdlet cmd, out string confirmString) where TSettings : new()
         {
             List<string> updatedSettingStrings = new List<string>();
             TSettings ret = new TSettings();
-            foreach (PropertyInfo propertyInfo in typeof (TCmdlet).GetProperties().Where(_=>_.GetCustomAttributes(typeof(SettingFieldAttribute)).Any()))
+            foreach (PropertyInfo propertyInfo in typeof(TCmdlet).GetProperties().Where(_ => _.GetCustomAttributes(typeof(SettingFieldAttribute)).Any()))
             {
                 var settingValue = propertyInfo.GetValue(cmd);
                 if (settingValue != null)

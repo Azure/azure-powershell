@@ -14,9 +14,8 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System.Collections.Generic;
-using System.Management.Automation;
 using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
             HelpMessage = "The collection of key credentials associated with the application.")]
         public PSADKeyCredential[] KeyCredentials { get; set; }
-        
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
             HelpMessage = "The type of the key credentials associated with the application. Acceptable values are 'AsymmetricX509Cert', 'Password' and 'Symmetric'. Default is 'AsymmetricX509Cert'")]
-        public string KeyType  { get; set; }
+        public string KeyType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
            HelpMessage = "The usage of the key credentials associated with the application. Acceptable values are 'Sign' and 'Verify'. Default is 'Verify'")]
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 case ParameterSet.ApplicationWithPasswordPlain:
                     createParameters.PasswordCredentials = new PSADPasswordCredential[]
                     {
-                        new PSADPasswordCredential 
+                        new PSADPasswordCredential
                         {
                             StartDate = StartDate,
                             EndDate = EndDate,

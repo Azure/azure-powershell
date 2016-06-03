@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServer", 
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServer",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlServer : AzureSqlServerCmdletBase
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             HelpMessage = "The new SQL administrator password for the server.")]
         [ValidateNotNull]
         public SecureString SqlAdministratorPassword { get; set; }
-        
+
         /// <summary>
         /// The tags to associate with the server.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Gets or sets the server version
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
             HelpMessage = "Which server version to change to.")]
         [ValidateNotNullOrEmpty]
         public string ServerVersion { get; set; }
@@ -66,6 +66,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
+
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Get the server to update
@@ -86,14 +96,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             // Construct a new entity so we only send the relevant data to the server
             List<Model.AzureSqlServerModel> updateData = new List<Model.AzureSqlServerModel>();
             updateData.Add(new Model.AzureSqlServerModel()
-                {
-                    ResourceGroupName = this.ResourceGroupName,
-                    ServerName = this.ServerName,
-                    SqlAdministratorPassword = this.SqlAdministratorPassword,
-                    Tags = this.Tags,
-                    ServerVersion = this.ServerVersion,
-                    Location = model.FirstOrDefault().Location,
-                });
+            {
+                ResourceGroupName = this.ResourceGroupName,
+                ServerName = this.ServerName,
+                SqlAdministratorPassword = this.SqlAdministratorPassword,
+                Tags = this.Tags,
+                ServerVersion = this.ServerVersion,
+                Location = model.FirstOrDefault().Location,
+            });
             return updateData;
         }
 

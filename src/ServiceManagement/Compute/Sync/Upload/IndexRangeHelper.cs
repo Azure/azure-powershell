@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {

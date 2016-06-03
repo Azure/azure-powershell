@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Gets the deployment operation.
@@ -62,11 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.SubscriptionId = DefaultContext.Subscription.Id;
             }
 
-            if(!string.IsNullOrEmpty(this.ApiVersion))
-            {
-                this.WriteWarning("The parameter ApiVersion in Get-AzureRmResourceGroupDeploymentOperation cmdlet is being deprecated and will be removed in a future release.");
-            }
-
             this.RunCmdlet();
         }
 
@@ -89,9 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceId = this.GetResourceId();
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.DeploymentOperationApiVersion : this.ApiVersion;
 
             return await this
                 .GetResourcesClient()

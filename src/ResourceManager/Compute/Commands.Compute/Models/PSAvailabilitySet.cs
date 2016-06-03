@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string Location { get; set; }
 
         // Gets or sets the property of 'Tags'
-        public IDictionary<string,string> Tags { get; set; }
+        public IDictionary<string, string> Tags { get; set; }
 
         [JsonIgnore]
         public string TagsText

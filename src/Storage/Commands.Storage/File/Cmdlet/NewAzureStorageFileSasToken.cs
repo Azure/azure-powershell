@@ -12,19 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage.File;
 using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.File;
+using System;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -101,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         private string accessPolicyIdentifier;
 
         [Parameter(
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Permissions for a file. Permissions can be any subset of \"rwd\".",
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(
@@ -166,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
             else
             {
-                string[] path = NamingUtil.ValidatePath(this.Path, true); 
+                string[] path = NamingUtil.ValidatePath(this.Path, true);
                 fileShare = Channel.GetShareReference(this.ShareName);
                 file = fileShare.GetRootDirectoryReference().GetFileReferenceByPath(path);
             }
@@ -220,19 +215,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            permission = permission.ToLower(CultureInfo.CurrentCulture);
-            policy.Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

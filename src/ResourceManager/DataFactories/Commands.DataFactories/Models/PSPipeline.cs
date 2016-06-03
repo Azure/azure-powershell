@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.DataFactories.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {

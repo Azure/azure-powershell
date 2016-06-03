@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
-{    
+{
     /// <summary>
     ///     get faults
     ///    
@@ -102,7 +102,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             get;
             set;
         }
-        
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -110,33 +110,33 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             switch (ParameterSetName)
             {
                 case GetFaultSet:
-                {
-                    func = () =>
                     {
-                        FaultGetResponse fault = Client.Faults.Get(ResourceGroupName, FarmName, FaultId);
-                        WriteObject(new FaultResponse(fault.Fault));
-                    };
-                }
+                        func = () =>
+                        {
+                            FaultGetResponse fault = Client.Faults.Get(ResourceGroupName, FarmName, FaultId);
+                            WriteObject(new FaultResponse(fault.Fault));
+                        };
+                    }
                     break;
                 case GetHistoryFaultSet:
-                {
-                    func = () =>
                     {
-                        FaultListResponse faults = Client.Faults.ListHistoryFaults(ResourceGroupName, FarmName,
-                            StartTime.ToString("O", CultureInfo.InvariantCulture),
-                            EndTime.ToString("O", CultureInfo.InvariantCulture));
-                        WriteObject(faults.Select(_ => new FaultResponse(_)), true);
-                    };
-                }
+                        func = () =>
+                        {
+                            FaultListResponse faults = Client.Faults.ListHistoryFaults(ResourceGroupName, FarmName,
+                                StartTime.ToString("O", CultureInfo.InvariantCulture),
+                                EndTime.ToString("O", CultureInfo.InvariantCulture));
+                            WriteObject(faults.Select(_ => new FaultResponse(_)), true);
+                        };
+                    }
                     break;
                 case GetCurrentFaultSet:
-                {
-                    func = () =>
                     {
-                        FaultListResponse faults = Client.Faults.ListCurrentFaults(ResourceGroupName, FarmName, ResourceUri);
-                        WriteObject(faults.Faults.Select(_=>new FaultResponse(_)), true);
-                    };
-                }
+                        func = () =>
+                        {
+                            FaultListResponse faults = Client.Faults.ListCurrentFaults(ResourceGroupName, FarmName, ResourceUri);
+                            WriteObject(faults.Faults.Select(_ => new FaultResponse(_)), true);
+                        };
+                    }
                     break;
                 default:
                     throw new ArgumentException("Bad GetFault parameter set");

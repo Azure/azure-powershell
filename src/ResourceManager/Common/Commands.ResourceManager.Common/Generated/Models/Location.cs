@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class Location
     {
         private string _displayName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the display name of the location
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._displayName; }
             set { this._displayName = value; }
         }
-        
+
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ID of the resource
         /// (/subscriptions/SubscriptionId).
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _latitude;
-        
+
         /// <summary>
         /// Optional. Gets or sets the latitude of the location
         /// </summary>
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._latitude; }
             set { this._latitude = value; }
         }
-        
+
         private string _longitude;
-        
+
         /// <summary>
         /// Optional. Gets or sets the longitude of the location
         /// </summary>
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._longitude; }
             set { this._longitude = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the location name
         /// </summary>
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private string _subscriptionId;
-        
+
         /// <summary>
         /// Optional. Gets or sets the subscription Id.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._subscriptionId; }
             set { this._subscriptionId = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Location class.
         /// </summary>

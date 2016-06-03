@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage.File;
+using System.Globalization;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -72,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 default:
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
-            
+
             this.Channel.FetchShareAttributes(fileShare, null, this.RequestOptions, this.OperationContext);
 
             if (fileShare.Properties.Quota != this.Quota)

@@ -20,10 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -54,13 +51,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public string [] LoadBalancerBackendAddressPoolsId { get; set; }
+        public string[] ApplicationGatewayBackendAddressPoolsId { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string [] LoadBalancerInboundNatPoolsId { get; set; }
+        public string[] LoadBalancerBackendAddressPoolsId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true)]
+        public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -68,6 +71,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // Subnet
             vIpConfigurations.Subnet = new Microsoft.Azure.Management.Compute.Models.ApiEntityReference();
+
+            // ApplicationGatewayBackendAddressPools
+            vIpConfigurations.ApplicationGatewayBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
 
             // LoadBalancerBackendAddressPools
             vIpConfigurations.LoadBalancerBackendAddressPools = new List<Microsoft.Azure.Management.Compute.Models.SubResource>();
@@ -78,6 +84,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vIpConfigurations.Name = this.Name;
             vIpConfigurations.Id = this.Id;
             vIpConfigurations.Subnet.Id = this.SubnetId;
+            if (this.ApplicationGatewayBackendAddressPoolsId != null)
+            {
+                foreach (var element in this.ApplicationGatewayBackendAddressPoolsId)
+                {
+                    var vApplicationGatewayBackendAddressPools = new Microsoft.Azure.Management.Compute.Models.SubResource();
+                    vApplicationGatewayBackendAddressPools.Id = element;
+                    vIpConfigurations.ApplicationGatewayBackendAddressPools.Add(vApplicationGatewayBackendAddressPools);
+                }
+            }
+
             if (this.LoadBalancerBackendAddressPoolsId != null)
             {
                 foreach (var element in this.LoadBalancerBackendAddressPoolsId)

@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
+    using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
 
     /// <summary>
     /// Gets the preview features of a certain azure resource provider.
@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var parameterSetName = this.DetermineParameterSetName();
 
             switch (parameterSetName)
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
                 case GetAzureProviderFeatureCmdlet.GetFeatureParameterSet:
                     this.WriteObject(this.ProviderFeatureClient.ListPSProviderFeatures(this.ProviderNamespace, this.FeatureName), enumerateCollection: true);
                     break;
-                    
+
                 default:
                     throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
             }

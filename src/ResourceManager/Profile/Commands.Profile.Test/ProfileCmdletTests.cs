@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Linq;
-using Xunit;
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Linq;
+using System.Management.Automation;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -31,8 +34,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public ProfileCmdletTests()
+        public ProfileCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
@@ -71,6 +75,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeBeginProcessing();
             Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
             cmdlt.InvokeEndProcessing();
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SelectAzureProfileBadPath()
+        {
+            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+            cmdlt.Path = "z:\non-existent-path\non-existent-file.ext";
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            Assert.Throws<PSArgumentException>(() => cmdlt.ExecuteCmdlet());
         }
 
         [Fact]
