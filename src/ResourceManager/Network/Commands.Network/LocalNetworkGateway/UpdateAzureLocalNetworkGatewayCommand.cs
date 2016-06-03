@@ -74,25 +74,25 @@ namespace Microsoft.Azure.Commands.Network
             if ((this.Asn > 0 || !string.IsNullOrEmpty(this.BgpPeeringAddress) || this.PeerWeight > 0) && this.LocalNetworkGateway.BgpSettings == null)
             {
                 this.LocalNetworkGateway.BgpSettings = new PSBgpSettings();
+            }
 
-                if (this.Asn > 0)
-                {
-                    this.LocalNetworkGateway.BgpSettings.Asn = this.Asn;
-                }
+            if (this.Asn > 0)
+            {
+                this.LocalNetworkGateway.BgpSettings.Asn = this.Asn;
+            }
 
-                if (!string.IsNullOrEmpty(this.BgpPeeringAddress))
-                {
-                    this.LocalNetworkGateway.BgpSettings.BgpPeeringAddress = this.BgpPeeringAddress;
-                }
+            if (!string.IsNullOrEmpty(this.BgpPeeringAddress))
+            {
+                this.LocalNetworkGateway.BgpSettings.BgpPeeringAddress = this.BgpPeeringAddress;
+            }
 
-                if (this.PeerWeight > 0)
-                {
-                    this.LocalNetworkGateway.BgpSettings.PeerWeight = this.PeerWeight;
-                }
-                else if (this.PeerWeight < 0)
-                {
-                    throw new PSArgumentException("PeerWeight cannot be negative");
-                }
+            if (this.PeerWeight > 0)
+            {
+                this.LocalNetworkGateway.BgpSettings.PeerWeight = this.PeerWeight;
+            }
+            else if (this.PeerWeight < 0)
+            {
+                throw new PSArgumentException("PeerWeight cannot be negative");
             }
 
             // Map to the sdk object
