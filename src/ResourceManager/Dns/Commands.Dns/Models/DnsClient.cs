@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             bool overwrite,
             DnsRecordBase[] resourceRecords)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, DnsResourceLocation, recordType, ttl, tags, resourceRecords);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -183,13 +183,12 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response);
         }
 
-        private RecordSet ConstructRecordSetPropeties(string recordSetName, string location, RecordType recordType, uint ttl, Hashtable[] tags, DnsRecordBase[] resourceRecords)
+        private RecordSet ConstructRecordSetPropeties(string recordSetName, RecordType recordType, uint ttl, Hashtable[] tags, DnsRecordBase[] resourceRecords)
         {
 
             var properties = new RecordSet
             {
                 Name = recordSetName,
-                Location = location,
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
                 TTL = ttl,
             };
@@ -274,7 +273,6 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 new RecordSet
                 {
                     Name = recordSet.Name,
-                    Location = DnsResourceLocation,
                     TTL = recordSet.Ttl,
                     Metadata = TagsConversionHelper.CreateTagDictionary(recordSet.Metadata, validate: true),
                     AaaaRecords =
