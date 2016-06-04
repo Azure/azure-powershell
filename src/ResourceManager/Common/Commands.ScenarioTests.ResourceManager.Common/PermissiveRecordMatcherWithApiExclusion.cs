@@ -52,7 +52,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 path = path.Replace("?&", "?");
             }
-
+            if (path.Contains("%3A"))
+            {
+                path = path.Replace("%3A", ":");
+            }
             string version;
             if (ContainsIgnoredProvider(path, out version))
             {
@@ -86,6 +89,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (path.Contains("?&"))
             {
                 path = recordEntry.RequestUri.Replace("?&", "?");
+                changed = true;
+            }
+
+            if (path.Contains("%3A"))
+            {
+                path = path.Replace("%3A", ":");
                 changed = true;
             }
 

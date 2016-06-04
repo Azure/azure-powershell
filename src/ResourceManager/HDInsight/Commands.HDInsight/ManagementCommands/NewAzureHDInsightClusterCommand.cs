@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 var metastore = HiveMetastore;
                 parameters.HiveMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
-            if (CertificateFilePath != null && CertificatePassword != null)
+            if (!string.IsNullOrWhiteSpace(CertificateFilePath) && CertificatePassword != null)
             {
                 var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
                     GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath),

@@ -1290,7 +1290,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/testJobSchedule:job-1?terminate&api-version=2015-11-01.2.1&timeout=30",
+      "RequestUri": "/jobs/testJobSchedule%3Ajob-1?terminate&api-version=2015-11-01.2.1&timeout=30",
       "EncodedRequestUri": "L2pvYnMvdGVzdEpvYlNjaGVkdWxlJTNBam9iLTE/dGVybWluYXRlJmFwaS12ZXJzaW9uPTIwMTUtMTEtMDEuMi4xJnRpbWVvdXQ9MzA=",
       "RequestMethod": "POST",
       "RequestBody": "{}",
@@ -1498,8 +1498,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testJobSchedule/jobs?$filter=id%20eq%20'testJobSchedule:job-1'&api-version=2015-11-01.2.1&timeout=30",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0Sm9iU2NoZWR1bGUvam9icz8kZmlsdGVyPWlkJTIwZXElMjAlMjd0ZXN0Sm9iU2NoZWR1bGUlM0Fqb2ItMSUyNyZhcGktdmVyc2lvbj0yMDE1LTExLTAxLjIuMSZ0aW1lb3V0PTMw",
+      "RequestUri": "/jobschedules/testJobSchedule/jobs?$filter=id%20eq%20%27testJobSchedule:job-1%27&api-version=2015-11-01.2.1&timeout=30",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0Sm9iU2NoZWR1bGUvam9icz8kZmlsdGVyPWlkJTIwZXElMjAlMjd0ZXN0Sm9iU2NoZWR1bGU6am9iLTElMjcmYXBpLXZlcnNpb249MjAxNS0xMS0wMS4yLjEmdGltZW91dD0zMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1594,7 +1594,7 @@
     },
     {
       "RequestUri": "/jobs/testJobSchedule:job-1?api-version=2015-11-01.2.1&timeout=30",
-      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYlNjaGVkdWxlJTNBam9iLTE/YXBpLXZlcnNpb249MjAxNS0xMS0wMS4yLjEmdGltZW91dD0zMA==",
+      "EncodedRequestUri": "L2pvYnMvdGVzdEpvYlNjaGVkdWxlOmpvYi0xP2FwaS12ZXJzaW9uPTIwMTUtMTEtMDEuMi4xJnRpbWVvdXQ9MzA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1639,7 +1639,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobs/testJobSchedule:job-2?api-version=2015-11-01.2.1&timeout=30",
+      "RequestUri": "/jobs/testJobSchedule%3Ajob-2?api-version=2015-11-01.2.1&timeout=30",
       "EncodedRequestUri": "L2pvYnMvdGVzdEpvYlNjaGVkdWxlJTNBam9iLTI/YXBpLXZlcnNpb249MjAxNS0xMS0wMS4yLjEmdGltZW91dD0zMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",

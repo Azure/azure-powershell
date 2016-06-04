@@ -80,10 +80,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Account = account.Id,
             };
             subscription.SetProperty(AzureSubscription.Property.Tenants, tenantId.ToString());
-            subscription.SetProperty(AzureSubscription.Property.StorageAccount, storageAccount);
             client.AddOrSetAccount(account);
             client.AddOrSetSubscription(subscription);
             client.SetSubscriptionAsDefault(subscriptionId, account.Id);
+            var sub = client.GetSubscription(subscription.Id);
+            sub.SetProperty(AzureSubscription.Property.StorageAccount, storageAccount);
             return profile;
         }
 
