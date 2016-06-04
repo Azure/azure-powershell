@@ -17,9 +17,11 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Authentication;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -296,7 +298,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             public string UserId { get { return AuthResult.UserInfo.DisplayableId; } }
 
-            public string TenantId { get { return AuthResult.TenantId; } }
+            public string TenantId
+            {
+                get
+                {
+                    var tenant = AuthResult.TenantId;
+                    if (string.IsNullOrWhiteSpace(tenant))
+                    {
+                        var tenantRegex = new Regex("https://[^/]+/([^/]+)/?");
+                        var match = tenantRegex.Match(Configuration.AdEndpoint);
+                        if (match.Success)
+                        {
+                            tenant = match.Groups[1].Value;
+                        }
+                    }
+
+                    return tenant;
+                }
+            }
 
             public LoginType LoginType
             {
