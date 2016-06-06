@@ -49,9 +49,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private MockCommandRuntime mockRuntime;
 
         /// <summary>
-        /// A mock of the client
+        /// A mock of the IProvidersOperations
         /// </summary>
         private readonly Mock<IProvidersOperations> providerOperationsMock;
+
+        /// <summary>
+        /// A mock of the ISubscriptionsOperations
+        /// </summary>
+        private readonly Mock<ISubscriptionsOperations> subscriptionsOperationsMock;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAzureProviderCmdletTests"/> class.
@@ -59,21 +64,25 @@ namespace Microsoft.Azure.Commands.Resources.Test
         public GetAzureProviderCmdletTests(ITestOutputHelper output)
         {
             this.providerOperationsMock = new Mock<IProvidersOperations>();
+            this.subscriptionsOperationsMock = new Mock<ISubscriptionsOperations>();
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             var resourceManagementClient = new Mock<Microsoft.Azure.Management.ResourceManager.IResourceManagementClient>();
+            var subscriptionClient = new Mock<Microsoft.Azure.Management.ResourceManager.ISubscriptionClient>();
 
             resourceManagementClient
                 .SetupGet(client => client.Providers)
                 .Returns(() => this.providerOperationsMock.Object);
 
+            subscriptionClient
+                .SetupGet(client => client.Subscriptions)
+                .Returns(() => this.subscriptionsOperationsMock.Object);
+
             this.commandRuntimeMock = new Mock<ICommandRuntime>();
             this.cmdlet = new GetAzureProviderCmdletTest
             {
                 //CommandRuntime = commandRuntimeMock.Object,
-                ResourceManagerSdkClient = new ResourceManagerSdkClient
-                {
-                    ResourceManagementClient = resourceManagementClient.Object,
-                }
+                ResourceManagerSdkClient = new ResourceManagerSdkClient(resourceManagementClient.Object),
+                SubscriptionSdkClient = new SubscriptionSdkClient(subscriptionClient.Object)
             };
             PSCmdletExtensions.SetCommandRuntimeMock(cmdlet, commandRuntimeMock.Object);
             mockRuntime = new MockCommandRuntime();
@@ -133,6 +142,25 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.providerOperationsMock
                 .Setup(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()))
                 .Returns(() => Task.FromResult(result));
+
+            var locationList = new List<Location>
+            {
+                new Location
+                {
+                    Name = "southus",
+                    DisplayName = "South US",
+                }
+            };
+            var pagableLocations = new Page<Location>();
+            pagableLocations.SetItemValue<Location>(locationList);
+            var locationsResult = new AzureOperationResponse<IPage<Location>>()
+            {
+                Body = pagableLocations
+            };
+            this.subscriptionsOperationsMock
+                .Setup(f => f.ListLocationsWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+                .Returns(() => Task.FromResult(locationsResult));
+
 
             // 1. List only registered providers
             this.commandRuntimeMock
