@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the backup archival state
         /// </summary>
-        public bool State { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// Gets or sets the backup archival policy resource ID

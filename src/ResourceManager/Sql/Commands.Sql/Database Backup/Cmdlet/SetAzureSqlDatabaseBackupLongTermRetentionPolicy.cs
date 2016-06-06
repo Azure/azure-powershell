@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the backup long term retention state
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "Whether the backup long term retention policy is enabled.")]
+            HelpMessage = "The state of the long term retention backup policy, 'Enabled' or 'Disabled'")]
         [ValidateNotNullOrEmpty]
-        public bool State { get; set; }
+        public string State { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the backup long term retention policy
