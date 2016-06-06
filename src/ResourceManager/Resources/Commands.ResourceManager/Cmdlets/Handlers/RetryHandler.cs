@@ -14,15 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    
     /// <summary>
     /// A basic retry handler.
     /// </summary>
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             HttpResponseMessage response = null;
+
             for (int attempt = 0; attempt < RetryHandler.MaxAttempts; ++attempt)
             {
                 try
                 {
-                    response = await base
-                        .SendAsync(request: request, cancellationToken: cancellationToken)
+                    response = await base.SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
-
-                    if (attempt == RetryHandler.MaxAttempts ||
+                    
+                    if (attempt == RetryHandler.MaxAttempts - 1 ||
                         (!response.StatusCode.IsServerFailureRequest() &&
                          response.StatusCode != HttpStatusCode.RequestTimeout &&
                          response.StatusCode != HttpStatusCodeExt.TooManyRequests))
@@ -74,17 +74,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                 }
                 catch (Exception ex)
                 {
-                    if (ex.IsFatal() || attempt == RetryHandler.MaxAttempts)
+                    if (ex.IsFatal() || attempt == RetryHandler.MaxAttempts - 1)
                     {
                         throw;
                     }
+                }
+
+                if (response != null)
+                {
+                    response.Dispose();
                 }
 
                 await Task.Delay(delay: RetryHandler.GetDelay(attempt), cancellationToken: cancellationToken)
                     .ConfigureAwait(continueOnCapturedContext: false);
             }
 
-            return response;
+            return null;
         }
 
         /// <summary>
