@@ -63,7 +63,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5799.28345, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5799.28345-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6000.38596-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -95,7 +95,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.1\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks">
