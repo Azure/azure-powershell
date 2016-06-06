@@ -197,7 +197,6 @@
     <None Include="Microsoft.Azure.Commands.Management.PowerBIEmbedded.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.psd1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -225,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
