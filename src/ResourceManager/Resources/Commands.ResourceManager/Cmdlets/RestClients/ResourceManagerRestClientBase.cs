@@ -219,27 +219,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         {
             using (var httpClient = this.httpClientHelper.CreateHttpClient())
             {
-                var response = await httpClient
-                    .SendAsync(request: request, cancellationToken: cancellationToken)
-                    .ConfigureAwait(continueOnCapturedContext: false);
-
-                if (!response.StatusCode.IsSuccessfulRequest())
+                try
                 {
-                    var errorResponse = await ResourceManagerRestClientBase
-                        .TryReadErrorResponseMessage(response, rewindContentStream: true)
+                    var response = await httpClient
+                        .SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
 
-                    var message = await ResourceManagerRestClientBase
-                        .GetErrorMessage(request: request, response: response, errorResponse: errorResponse)
-                        .ConfigureAwait(continueOnCapturedContext: false);
+                    if (!response.StatusCode.IsSuccessfulRequest())
+                    {
+                        var errorResponse = await ResourceManagerRestClientBase
+                            .TryReadErrorResponseMessage(response, rewindContentStream: true)
+                            .ConfigureAwait(continueOnCapturedContext: false);
 
-                    throw new ErrorResponseMessageException(
-                        httpStatus: response.StatusCode,
-                        errorResponseMessage: errorResponse,
-                        errorMessage: message);
+                        var message = await ResourceManagerRestClientBase
+                            .GetErrorMessage(request: request, response: response, errorResponse: errorResponse)
+                            .ConfigureAwait(continueOnCapturedContext: false);
+
+                        throw new ErrorResponseMessageException(
+                            httpStatus: response.StatusCode,
+                            errorResponseMessage: errorResponse,
+                            errorMessage: message);
+                    }
+
+                    return response;
                 }
+                catch (Exception exception)
+                {
+                    if (exception is OperationCanceledException && !cancellationToken.IsCancellationRequested)
+                    {
+                        throw new TimeoutException("A request times out.");
+                    }
 
-                return response;
+                    throw;
+                }
             }
         }
 
