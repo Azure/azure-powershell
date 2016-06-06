@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                State = baPolicy.Properties.State.Equals("Enabled", StringComparison.InvariantCultureIgnoreCase),
+                State = baPolicy.Properties.State,
                 RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
             };
         }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Location = model.Location,
                 Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
                 {
-                    State = model.State == true ? "Enabled" : "Disabled",
+                    State = model.State,
                     RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
                 }
             });
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                State = baPolicy.Properties.State.Equals("Enabled", StringComparison.InvariantCultureIgnoreCase),
+                State = baPolicy.Properties.State,
                 RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
             };
         }
