@@ -15,8 +15,9 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Profile

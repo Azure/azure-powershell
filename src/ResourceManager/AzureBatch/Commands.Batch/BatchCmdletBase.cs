@@ -15,7 +15,7 @@
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;

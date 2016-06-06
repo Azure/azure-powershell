@@ -12,8 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System;
@@ -24,6 +25,7 @@ using System.Security.Cryptography.X509Certificates;
 using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
 using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Common.Authentication.Test
 {
@@ -192,6 +194,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesAccountsAndDefaultSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -201,7 +204,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(5, client.Profile.Environments.Count);
+            Assert.Equal(6, client.Profile.Environments.Count);
             Assert.Equal("Current", client.Profile.Environments["Current"].Name);
             Assert.Equal("Dogfood", client.Profile.Environments["Dogfood"].Name);
             Assert.Equal("https://login.windows-ppe.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
@@ -260,7 +263,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
             Assert.Equal(3, client.Profile.Subscriptions.Count);
@@ -308,7 +311,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
             Assert.Equal(0, client.Profile.Subscriptions.Count);
@@ -722,12 +725,12 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
             var env = client.AddOrSetEnvironment(azureEnvironment);
 
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.Environments.Count);
             Assert.Equal(env, azureEnvironment);
         }
 
@@ -741,7 +744,7 @@ namespace Common.Authentication.Test
 
             var env1 = client.ListEnvironments(null);
 
-            Assert.Equal(3, env1.Count);
+            Assert.Equal(4, env1.Count);
 
             var env2 = client.ListEnvironments("bad");
 
@@ -766,7 +769,7 @@ namespace Common.Authentication.Test
             client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
 
             Assert.Equal(2, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.RemoveEnvironment(null));
@@ -776,7 +779,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(azureEnvironment.Name, env.Name);
             Assert.Equal(0, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
         }
 
@@ -796,7 +799,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
 
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment(EnvironmentName.AzureCloud));
@@ -804,7 +807,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
         }
 
@@ -816,7 +819,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
 

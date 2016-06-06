@@ -15,8 +15,8 @@
 using System;
 using System.Management.Automation;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -192,7 +192,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 ServiceEndpoint = "ServiceEndpoint",
                 StorageEndpoint = "StorageEndpoint",
                 SqlDatabaseDnsSuffix = "SqlDatabaseDnsSuffix",
-                TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix"
+                TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
+                GraphAudience = "GaraphAudience"
             };
             
             cmdlet.InvokeBeginProcessing();
@@ -215,6 +216,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.StorageEndpoint, actual.StorageEndpointSuffix);
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
             Assert.Equal( cmdlet.TrafficManagerDnsSuffix , actual.TrafficManagerDnsSuffix);
+            Assert.Equal( cmdlet.GraphAudience , actual.GraphEndpointResourceId);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
@@ -239,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(3, environments.Count);
+            Assert.Equal(4, environments.Count);
         }
 
         [Fact]

@@ -26,8 +26,8 @@ using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
 using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             else
             {
                 throw new ArgumentException(string.Format(
-                    Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
+                    Microsoft.Azure.Commands.Common.Authentication.Properties.Resources.CertificateNotFoundInStore, 
                     thumbprint));
             }
         }

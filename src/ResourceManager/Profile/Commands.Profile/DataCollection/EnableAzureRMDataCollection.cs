@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Security.Permissions;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {

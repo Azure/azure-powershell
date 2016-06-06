@@ -18,7 +18,8 @@ using System.Linq;
 using Microsoft.Hadoop.Client;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities;
 using Microsoft.WindowsAzure.Management.HDInsight;
@@ -26,7 +27,7 @@ using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImpleme
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters;
 using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.ServiceLocation;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CommandTests

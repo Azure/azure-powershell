@@ -14,7 +14,7 @@
 
 using System;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {

@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 namespace Microsoft.Azure.Commands.Intune.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Management.Intune;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;

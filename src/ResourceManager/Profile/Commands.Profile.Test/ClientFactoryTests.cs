@@ -18,10 +18,10 @@ using System;
 using System.Net.Http.Headers;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest.TransientFaultHandling;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 

@@ -14,8 +14,8 @@
 
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

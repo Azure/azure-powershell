@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Management.NotificationHubs.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;

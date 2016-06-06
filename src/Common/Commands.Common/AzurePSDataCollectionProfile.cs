@@ -15,7 +15,7 @@
 using System;
 using System.IO;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {

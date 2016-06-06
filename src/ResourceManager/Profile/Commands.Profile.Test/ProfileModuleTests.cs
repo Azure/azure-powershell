@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class ProfileModuleTests
     {
-        [Fact]
+        [Fact(Skip="This functionality is removed from the module")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WarningOnIncompatibleVersions()
         {

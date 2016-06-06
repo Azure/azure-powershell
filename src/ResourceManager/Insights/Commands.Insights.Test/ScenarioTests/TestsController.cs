@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

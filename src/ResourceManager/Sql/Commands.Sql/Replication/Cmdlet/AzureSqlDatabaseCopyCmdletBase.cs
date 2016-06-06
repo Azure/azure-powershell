@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         /// <param name="subscription">The Azure Subscription</param>
         /// <returns>A replication Adapter object</returns>
-        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(Azure.Commands.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlDatabaseReplicationAdapter(DefaultProfile.Context);
         }

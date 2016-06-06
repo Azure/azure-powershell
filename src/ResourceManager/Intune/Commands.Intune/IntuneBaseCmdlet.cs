@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.Intune
     using Management.Intune;
     using Microsoft.Azure.Commands.Intune.Properties;
     using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Intune.Models;
 
     /// <summary>

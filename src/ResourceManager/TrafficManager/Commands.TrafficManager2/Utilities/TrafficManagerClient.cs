@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
     using System.Net;
     using Microsoft.Azure.Commands.Tags.Model;
     using Microsoft.Azure.Commands.TrafficManager.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.TrafficManager;
     using Microsoft.Azure.Management.TrafficManager.Models;
 

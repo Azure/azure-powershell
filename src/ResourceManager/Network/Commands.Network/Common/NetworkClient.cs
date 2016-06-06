@@ -14,8 +14,8 @@
 
 using System;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Network.Models;
 using System.Threading.Tasks;
 using System.Threading;

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -54,6 +54,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] =
                 environment.StorageEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Graph] = environment.GraphUrl;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId] =
+                environment.GraphEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] =
                 environment.TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix] =
@@ -146,6 +148,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
             {
                 GraphUrl =
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph];
+            }
+            if (environment.IsEndpointSet(AzureEnvironment.Endpoint.GraphEndpointResourceId))
+            {
+                GraphEndpointResourceId =
+                    environment.Endpoints[AzureEnvironment.Endpoint.GraphEndpointResourceId];
             }
             if (environment.IsEndpointSet(AzureEnvironment.Endpoint.TrafficManagerDnsSuffix))
             {
@@ -241,6 +248,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         public string GraphUrl { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource Id to use for contacting the Graph endpoint
+        /// </summary>
+        public string GraphEndpointResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the domain name suffix for traffig manager services.
         /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
@@ -283,6 +295,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && AzureKeyVaultServiceEndpointResourceId == other.AzureKeyVaultServiceEndpointResourceId
                        && GalleryUrl == other.GalleryUrl
                        && GraphUrl == other.GraphUrl
+                       && GraphEndpointResourceId == other.GraphEndpointResourceId
                        && ManagementPortalUrl == other.ManagementPortalUrl
                        && PublishSettingsFileUrl == other.PublishSettingsFileUrl
                        && ResourceManagerUrl == other.ResourceManagerUrl

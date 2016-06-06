@@ -23,10 +23,10 @@ using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.Diagnostics;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 var metastore = HiveMetastore;
                 parameters.HiveMetastore = new Metastore(metastore.SqlAzureServerName, metastore.DatabaseName, metastore.Credential.UserName, metastore.Credential.Password.ConvertToString());
             }
-            if (CertificateFilePath != null && CertificatePassword != null)
+            if (!string.IsNullOrWhiteSpace(CertificateFilePath) && CertificatePassword != null)
             {
                 var servicePrincipal = new Management.HDInsight.Models.ServicePrincipal(
                     GetApplicationId(), GetTenantId(AadTenantId), File.ReadAllBytes(CertificateFilePath),

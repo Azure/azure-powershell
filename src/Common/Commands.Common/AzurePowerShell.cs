@@ -15,7 +15,7 @@
 using System;
 using System.IO;
 using System.Net.Http.Headers;
-using Microsoft.Azure.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
