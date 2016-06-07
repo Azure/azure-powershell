@@ -34,9 +34,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.Backup.0.1.0-preview\lib\net40\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.RecoveryServices.Backup">
+      <HintPath>..\Commands.RecoveryServices.Backup.HydraAdapter\Resources\Microsoft.Azure.Management.RecoveryServices.Backup.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureSqlModels\AzureSqlContainer.cs" />
+    <Compile Include="AzureSqlModels\AzureSqlItem.cs" />
+    <Compile Include="AzureSqlModels\AzureSqlPolicy.cs" />
+    <Compile Include="AzureSqlModels\AzureSqlRecoveryPoint.cs" />
     <Compile Include="AzureVmModels\AzureVmJob.cs" />
     <Compile Include="AzureVmModels\AzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />

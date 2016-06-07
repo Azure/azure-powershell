@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    /// <summary>
-    /// Constants used by Job Cmdlets
-    /// </summary>
-    public class JobConstants
+    public class AzureSqlRecoveryPoint : RecoveryPointBase
     {
-        public const int MaximumJobsToFetch = 1000;
-    }
+        public string RecoveryPointAdditionalInfo { get; set; }
 
-    /// <summary>
-    /// Constants used by Policy Cmdlets
-    /// </summary>
-    public class PolicyConstants
-    {
-        public const int MinPolicyNameLength = 3;
-        public const int MaxPolicyNameLength = 150;                
-    }
-
-    public class ContainerConstansts
-    {
-        public const string SqlContainerNamePrefix = "AzureSqlContainer;";
+        public string FriendlyName { get; set; }
     }
 }

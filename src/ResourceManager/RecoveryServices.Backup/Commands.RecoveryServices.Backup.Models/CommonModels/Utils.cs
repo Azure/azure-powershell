@@ -48,6 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         // month constants
         public const int NumOfMonthsInYear = 12;
+
+        public const int MaxAllowedRetentionDurationCountWeeklySql = 520;
+        public const int MaxAllowedRetentionDurationCountMonthlySql = 120;
+        public const int MaxAllowedRetentionDurationCountYearlySql = 10;
     }
 
     /// <summary>
@@ -195,6 +199,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     return BackupManagementType.SCDPM;
                 case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureBackupServer:
                     return BackupManagementType.AzureBackupServer;
+                case Microsoft.Azure.Management.RecoveryServices.Backup.Models.BackupManagementType.AzureSql:
+                    return BackupManagementType.AzureSQL;
                 default:
                     throw new Exception("Unsupported BackupManagmentType: " + backupManagementType);
             }
@@ -216,6 +222,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.Windows;
             }
+            else if (containerType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.ContainerType.AzureSqlContainer.ToString())
+            {
+                return ContainerType.AzureSQL;
+            }
             else
             {
                 throw new Exception("Unsupported ContainerType: " + containerType);
@@ -232,6 +242,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.VM)
             {
                 return WorkloadType.AzureVM;
+            }
+            if (workloadType == Microsoft.Azure.Management.RecoveryServices.Backup.Models.WorkloadType.AzureSqlDb)
+            {
+                return WorkloadType.AzureSQLDatabase;
             }
             else
             {

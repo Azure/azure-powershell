@@ -75,13 +75,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ltrPolicy;            
         }
 
-        // <summary>
-        /// Helper function to convert ps simple retention policy from service response.
-        /// </summary>
-        public static LongTermRetentionPolicy GetPSSimpleRetentionPolicy(
-           ServiceClientModel.SimpleRetentionPolicy serviceClientRetPolicy)
+        public static SimpleRetentionPolicy GetPSSimpleRetentionPolicy(
+           ServiceClientModel.SimpleRetentionPolicy hydraRetPolicy)
         {
-            throw new NotSupportedException();
+            if(hydraRetPolicy == null)
+            {
+                return null;
+        }
+
+            SimpleRetentionPolicy simplePolicy = new SimpleRetentionPolicy();
+
+            if (hydraRetPolicy.RetentionDuration != null)
+            {
+                simplePolicy.RetentionDurationType = EnumUtils.GetEnum<RetentionDurationType>(hydraRetPolicy.RetentionDuration.DurationType);
+                simplePolicy.RetentionCount = hydraRetPolicy.RetentionDuration.Count;
+            }
+            
+            simplePolicy.Validate();
+            return simplePolicy;
         }
 
         #endregion
@@ -333,6 +344,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         #endregion
 
         #region PStoServiceClientObject conversions
+
+        public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(
+            SimpleRetentionPolicy psRetPolicy)
+        {
+            if (psRetPolicy == null)
+            {
+                return null;
+            }
+            else
+            {
+
+                ServiceClientModel.SimpleRetentionPolicy simpleRetPolicy = new ServiceClientModel.SimpleRetentionPolicy();
+
+                simpleRetPolicy.RetentionDuration = new ServiceClientModel.RetentionDuration();
+                simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDurationType.ToString();
+                simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionCount;
+
+                return simpleRetPolicy;
+            }            
+        }     
+       
         // <summary>
         /// Helper function to convert service long term retention policy from ps retention policy.
         /// </summary>

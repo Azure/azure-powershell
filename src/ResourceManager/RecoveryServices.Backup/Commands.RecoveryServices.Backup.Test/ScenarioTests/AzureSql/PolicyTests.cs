@@ -12,27 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xunit;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    /// <summary>
-    /// Constants used by Job Cmdlets
-    /// </summary>
-    public class JobConstants
+    public partial class PolicyTests : TestsBase
     {
-        public const int MaximumJobsToFetch = 1000;
-    }
-
-    /// <summary>
-    /// Constants used by Policy Cmdlets
-    /// </summary>
-    public class PolicyConstants
-    {
-        public const int MinPolicyNameLength = 3;
-        public const int MaxPolicyNameLength = 150;                
-    }
-
-    public class ContainerConstansts
-    {
-        public const string SqlContainerNamePrefix = "AzureSqlContainer;";
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureSqlPolicyScenario()
+        {
+            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-AzureSqlPolicyScenario");
+        }
     }
 }
