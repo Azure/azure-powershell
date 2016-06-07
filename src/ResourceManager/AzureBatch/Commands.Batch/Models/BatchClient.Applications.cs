@@ -176,6 +176,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
+
             if (activateOnly)
             {
                 // If the package has already been uploaded but wasn't activated.
