@@ -1922,7 +1922,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Import-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd") -Force
+          PS C:\&gt;Import-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Files @("https://mystorageaccount.blob.core.windows.net/mycontainername/blobname?sv=2015-04-05&#38;sr&#61;b&#38;sig&#61;caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&#38;st&#61;2016-05-27T00%3A00%3A00Z&#38;se&#61;2016-05-28T00%3A00%3A00Z&#38;sp&#61;rwd") -Force
         </dev:code>
         <dev:remarks>
           <maml:para>
@@ -2129,7 +2129,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+          PS C:\&gt;Export-AzureRmRedisCache -ResourceGroupName "resourceGroupName" -Name "cacheName" -Prefix "blobprefix" -Container "https://mystorageaccount.blob.core.windows.net/mycontainer?sv=2015-04-05&#38;sr&#61;c&#38;sig&#61;HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&#38;st&#61;2016-05-27T00%3A00%3A00Z&#38;se&#61;2016-05-28T00%3A00%3A00Z&#38;sp&#61;rwdl"
         </dev:code>
         <dev:remarks>
           <maml:para>
