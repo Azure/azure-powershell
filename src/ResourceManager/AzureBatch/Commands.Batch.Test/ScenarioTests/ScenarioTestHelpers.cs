@@ -92,48 +92,44 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Generate a test certificate for use with scenario tests. The certs are dynamically generated
+        /// for recording tests, but to ensure that the correct HTTP requests are generated in playback mode,
+        /// the cert data is stored to the HttpMockServer.Variables collection.
+        /// </summary>
+        /// <returns>The certificate.</returns>
+        public static X509Certificate2 GenerateTestCertificateForScenarioTests()
+        {
+            const string TestCertDataVariable = "AZURE_BATCH_TEST_CERT_DATA_STRING";
+
+            X509Certificate2 cert = null;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                // Generate the test cert
+                cert = BatchTestHelpers.GenerateTestCertificate();
+
+                // Store the cert info for test playback
+                HttpMockServer.Variables[TestCertDataVariable] = Convert.ToBase64String(cert.RawData);
+            }
+            else
+            {
+                byte[] rawData = Convert.FromBase64String(HttpMockServer.Variables[TestCertDataVariable]);
+                cert = new X509Certificate2(rawData);
+            }
+
+            return cert;
+        }
+
+        /// <summary>
         /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
         /// </summary>
-        public static string AddTestCertificate(BatchController controller, BatchAccountContext context, string filePath)
+        public static string AddTestCertificate(BatchController controller, BatchAccountContext context)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            X509Certificate2 cert = new X509Certificate2(filePath);
-            ListCertificateOptions getParameters = new ListCertificateOptions(context)
-            {
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
-                Thumbprint = cert.Thumbprint,
-                Select = "thumbprint,state"
-            };
-
-            try
-            {
-                PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
-                DateTime start = DateTime.Now;
-                DateTime end = start.AddMinutes(5);
-
-                // Cert might still be deleting from other tests, so we wait for the delete to finish.
-                while (existingCert != null && existingCert.State == CertificateState.Deleting)
-                {
-                    if (DateTime.Now > end)
-                    {
-                        throw new TimeoutException("Timed out waiting for existing cert to be deleted.");
-                    }
-                    Sleep(5000);
-                    existingCert = client.ListCertificates(getParameters).FirstOrDefault();
-                }
-            }
-            catch (BatchException ex)
-            {
-                // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
-                if (ex == null || !ex.Message.Contains("NotFound"))
-                {
-                    throw;
-                }
-            }
+            X509Certificate2 cert = GenerateTestCertificateForScenarioTests();
 
             NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData);
-
             client.AddCertificate(parameters);
 
             return cert.Thumbprint;
