@@ -25,11 +25,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
