@@ -38,15 +38,15 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the file to be uploaded as the application package binary file.")]
-        [ValidateNotNullOrEmpty]
-        public string FilePath { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
         [ValidateNotNullOrEmpty]
         public string Format { get; set; }
 
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string FilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ActivateOnly { get; set; }
 
