@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
+            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
         [Parameter(
