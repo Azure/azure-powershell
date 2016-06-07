@@ -1,3 +1,8 @@
+﻿* Azure Redis Cache
+  - New cmdlet added for Reset-AzureRmRedisCache 
+  - New cmdlet added for Export-AzureRmRedisCache 
+  - New cmdlet added for Import-AzureRmRedisCache 
+  - Modified cmdlet New-AzureRmRedisCache to include parameter change for vNet 
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
