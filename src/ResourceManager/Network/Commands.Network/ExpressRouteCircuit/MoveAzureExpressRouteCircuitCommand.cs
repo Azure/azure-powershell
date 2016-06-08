@@ -66,10 +66,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdletInternal()
         {
-            base.ExecuteCmdlet();
-
             if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(
