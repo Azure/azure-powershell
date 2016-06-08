@@ -40,6 +40,7 @@ function Test-AdditionalVipLifecycle
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
         
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
 
@@ -95,6 +96,7 @@ function CreateMultivipDeployment($vmname, $vipName, $serviceName, $storageAccou
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
         
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
 
@@ -249,6 +251,7 @@ function Test-SetLBEndpoint
     $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
         
     New-AzureVMConfig -ImageName $image -Name $secondvmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
 
