@@ -27,8 +27,6 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
     [Cmdlet(VerbsCommon.Add, Nouns.AdminFarm, SupportsShouldProcess = true)]
     public sealed class AddAdminFarm : AdminCmdlet
     {
-        const string ShouldProcessTargetFormat = "farm {0} ";
-
         /// <summary>
         /// Resource group name
         /// </summary>
@@ -57,9 +55,16 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [ValidateNotNull]
         public string Location{ get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         protected override void Execute()
-        { 
-            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, FarmName))){
+        {
+            if (ShouldProcess(
+                 Resources.AddFarmDescription.FormatInvariantCulture(FarmName),
+                 Resources.AddFarmWarning.FormatInvariantCulture(FarmName),
+                 Resources.ShouldProcessCaption))
+            {
                 FarmCreateParameters request = new FarmCreateParameters
                 {
                     Location = Location,
