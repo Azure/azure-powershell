@@ -25,6 +25,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
@@ -37,8 +38,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
-        internal static readonly string TestCertificateFileName1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert01.cer");
-        internal static readonly string TestCertificateFileName2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert02.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
         internal static readonly int DefaultQuotaCount = 20;
@@ -118,6 +117,48 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
             Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
+        }
+
+        /// <summary>
+        /// Dynamically create a certificate for testing purposes, using the approach recommended by the Azure SDK team
+        /// </summary>
+        public static X509Certificate2 GenerateTestCertificate()
+        {
+            X509Certificate2 cert = null;
+
+            using (var powershell = System.Management.Automation.PowerShell.Create(System.Management.Automation.RunspaceMode.NewRunspace))
+            {
+                powershell.AddCommand("New-SelfSignedCertificate")
+                    .AddParameter("DnsName", "Unittest")
+                    .AddParameter("CertStoreLocation", "Cert:\\CurrentUser\\My")
+                    .AddParameter("HashAlgorithm", "sha1");
+                var results = powershell.Invoke();
+                string thumbprint = results[0].Properties["Thumbprint"].Value.ToString();
+
+                // X509Store isn't disposable, so we implement the logic ourselves
+                X509Store certStore = null;
+                try
+                {
+                    certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+                    certStore.Open(OpenFlags.ReadWrite);
+                    X509Certificate2Collection certs = certStore.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false);
+                    cert = certs[0];
+                }
+                finally
+                {
+                    if (certStore != null)
+                    {
+                        if (cert != null)
+                        {
+                            // Remove the cert from the local store. We only need the data for our tests.
+                            certStore.Remove(cert);
+                        }
+                        certStore.Close();
+                    }
+                }
+            }
+
+            return cert;
         }
 
         /// <summary>
