@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
-    public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
+    public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NFVBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -33,10 +33,8 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdletInternal()
         {
-            base.ExecuteCmdlet();
-
             var auth = this.ExpressRouteCircuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (auth != null)

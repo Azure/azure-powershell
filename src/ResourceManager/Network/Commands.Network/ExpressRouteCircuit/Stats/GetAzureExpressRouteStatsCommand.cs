@@ -20,8 +20,8 @@
 		
 namespace Microsoft.Azure.Commands.Network		
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]		
-    public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
+    [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
+    public class GetAzureExpressRouteCircuitStatsCommand : NFVBaseCmdlet		
     {		
         [Alias("ResourceName")]		
         [Parameter(		
@@ -55,10 +55,8 @@ namespace Microsoft.Azure.Commands.Network
            IgnoreCase = true)]		
         public string PeeringType { get; set; }		
 		
-        public override void ExecuteCmdlet()		
+        public override void ExecuteCmdletInternal()		
         {		
-            base.ExecuteCmdlet();		
-		
             if (string.IsNullOrEmpty(PeeringType))		
             {		
                 var stats = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.GetStats(		

@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.Network.Common
                 {
                     return sb.ToString();
                 }
-
-                sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                
                 sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
                 
             }
