@@ -1,0 +1,10 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.pdb
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Commands.ManagedCache.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Commands.ManagedCache.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Microsoft.Azure.Commands.ManagedCache.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Commands.ManagedCache.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Microsoft.Azure.Commands.ManagedCache.dll
+C:\Repository\azure-powershell\src\ServiceManagement\ManagedCache\Commands.ManagedCache\obj\Debug\Microsoft.Azure.Commands.ManagedCache.pdb

@@ -1,0 +1,209 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="Microsoft.DataMarket.CatalogService.Model" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityType Name="Offer">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        <Property Name="ShortDescription" Type="Edm.String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        <Property Name="Description" Type="Edm.String" MaxLength="3000" FixedLength="false" Unicode="true" />
+        <Property Name="PublishDate" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="IconUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="MarketplaceDetailUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="OfferType" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ProviderName" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ProviderDescription" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ProviderId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Country" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="WebsiteUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="EulaUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="PrivacyPolicyUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="ProviderIdentifier" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="OfferIdentifier" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="IsAvailableInAzureStores" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Links" Relationship="Microsoft.DataMarket.CatalogService.Model.OfferLink_Offer" ToRole="OfferLink_Offer_Source" FromRole="OfferLink_Offer_Target" />
+        <NavigationProperty Name="VisualizationImages" Relationship="Microsoft.DataMarket.CatalogService.Model.VisualizationImage_Offer" ToRole="VisualizationImage_Offer_Source" FromRole="VisualizationImage_Offer_Target" />
+        <NavigationProperty Name="Categories" Relationship="Microsoft.DataMarket.CatalogService.Model.Category_Offers" ToRole="Category_Offers_Source" FromRole="Category_Offers_Target" />
+        <NavigationProperty Name="Plans" Relationship="Microsoft.DataMarket.CatalogService.Model.Plan_Offer" ToRole="Plan_Offer_Source" FromRole="Plan_Offer_Target" />
+        <NavigationProperty Name="Markets" Relationship="Microsoft.DataMarket.CatalogService.Model.Market_Offers" ToRole="Market_Offers_Source" FromRole="Market_Offers_Target" />
+      </EntityType>
+      <EntityType Name="CommercialAppOffer" BaseType="Microsoft.DataMarket.CatalogService.Model.Offer" />
+      <EntityType Name="AzureDevServiceOffer" BaseType="Microsoft.DataMarket.CatalogService.Model.Offer" />
+      <EntityType Name="AzureVMOffer" BaseType="Microsoft.DataMarket.CatalogService.Model.Offer" />
+      <EntityType Name="ListingOnlyAppOffer" BaseType="Microsoft.DataMarket.CatalogService.Model.Offer" />
+      <EntityType Name="DataOffer" BaseType="Microsoft.DataMarket.CatalogService.Model.Offer">
+        <Property Name="ServiceEntryPointUrl" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="IsAnonymousAccessAllowed" Type="Edm.Boolean" Nullable="false" />
+      </EntityType>
+      <EntityType Name="OfferLink">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" Nullable="false" MaxLength="65" FixedLength="false" Unicode="true" />
+        <Property Name="Url" Type="Edm.String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="LinkType" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Description" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Offer" Relationship="Microsoft.DataMarket.CatalogService.Model.OfferLink_Offer" ToRole="OfferLink_Offer_Target" FromRole="OfferLink_Offer_Source" />
+      </EntityType>
+      <EntityType Name="VisualizationImage">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Title" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Url" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Width" Type="Edm.Int16" Nullable="false" />
+        <Property Name="Height" Type="Edm.Int16" Nullable="false" />
+        <Property Name="Type" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Offer" Relationship="Microsoft.DataMarket.CatalogService.Model.VisualizationImage_Offer" ToRole="VisualizationImage_Offer_Target" FromRole="VisualizationImage_Offer_Source" />
+      </EntityType>
+      <EntityType Name="Category">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        <Property Name="ReferenceName" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="ParentCategory" Relationship="Microsoft.DataMarket.CatalogService.Model.Category_ParentCategory" ToRole="Category_ParentCategory_Target" FromRole="Category_ParentCategory_Source" />
+        <NavigationProperty Name="Subcategories" Relationship="Microsoft.DataMarket.CatalogService.Model.Category_ParentCategory" ToRole="Category_ParentCategory_Source" FromRole="Category_ParentCategory_Target" />
+        <NavigationProperty Name="Offers" Relationship="Microsoft.DataMarket.CatalogService.Model.Category_Offers" ToRole="Category_Offers_Target" FromRole="Category_Offers_Source" />
+      </EntityType>
+      <EntityType Name="Plan">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="PlanName" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="PlanType" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="TransactionLimit" Type="Edm.Int64" Nullable="false" />
+        <Property Name="TransactionUnit" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Price" Type="Edm.Decimal" Nullable="false" Precision="18" Scale="2" />
+        <Property Name="MarketName" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="CountryCode" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="CurrencyCode" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="Description" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="PlanIdentifier" Type="Edm.String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        <Property Name="TrialDurationCycles" Type="Edm.Int32" />
+        <Property Name="IsPromoCodeRequired" Type="Edm.Boolean" Nullable="false" />
+        <NavigationProperty Name="Offer" Relationship="Microsoft.DataMarket.CatalogService.Model.Plan_Offer" ToRole="Plan_Offer_Target" FromRole="Plan_Offer_Source" />
+      </EntityType>
+      <EntityType Name="Market">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false" />
+        <Property Name="MarketName" Type="Edm.String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        <Property Name="CountryCode" Type="Edm.String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+        <Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+        <NavigationProperty Name="Languages" Relationship="Microsoft.DataMarket.CatalogService.Model.MarketLanguage_Market" ToRole="MarketLanguage_Market_Source" FromRole="MarketLanguage_Market_Target" />
+        <NavigationProperty Name="Offers" Relationship="Microsoft.DataMarket.CatalogService.Model.Market_Offers" ToRole="Market_Offers_Target" FromRole="Market_Offers_Source" />
+      </EntityType>
+      <EntityType Name="MarketLanguage">
+        <Key>
+          <PropertyRef Name="MarketId" />
+          <PropertyRef Name="CultureCode" />
+        </Key>
+        <Property Name="MarketId" Type="Edm.Guid" Nullable="false" />
+        <Property Name="CultureCode" Type="Edm.String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        <NavigationProperty Name="Market" Relationship="Microsoft.DataMarket.CatalogService.Model.MarketLanguage_Market" ToRole="MarketLanguage_Market_Target" FromRole="MarketLanguage_Market_Source" />
+      </EntityType>
+      <Association Name="OfferLink_Offer">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.OfferLink" Role="OfferLink_Offer_Source" Multiplicity="*" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Offer" Role="OfferLink_Offer_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+      </Association>
+      <Association Name="VisualizationImage_Offer">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.VisualizationImage" Role="VisualizationImage_Offer_Source" Multiplicity="*" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Offer" Role="VisualizationImage_Offer_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+      </Association>
+      <Association Name="Category_Offers">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Category" Role="Category_Offers_Source" Multiplicity="*" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Offer" Role="Category_Offers_Target" Multiplicity="*" />
+      </Association>
+      <Association Name="Plan_Offer">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Plan" Role="Plan_Offer_Source" Multiplicity="*" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Offer" Role="Plan_Offer_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+      </Association>
+      <Association Name="Market_Offers">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Market" Role="Market_Offers_Source" Multiplicity="*" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Offer" Role="Market_Offers_Target" Multiplicity="*" />
+      </Association>
+      <Association Name="Category_ParentCategory">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Category" Role="Category_ParentCategory_Target" Multiplicity="0..1" />
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Category" Role="Category_ParentCategory_Source" Multiplicity="*" />
+      </Association>
+      <Association Name="MarketLanguage_Market">
+        <End Type="Microsoft.DataMarket.CatalogService.Model.Market" Role="MarketLanguage_Market_Target" Multiplicity="1">
+          <OnDelete Action="Cascade" />
+        </End>
+        <End Type="Microsoft.DataMarket.CatalogService.Model.MarketLanguage" Role="MarketLanguage_Market_Source" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="MarketLanguage_Market_Target">
+            <PropertyRef Name="Id" />
+          </Principal>
+          <Dependent Role="MarketLanguage_Market_Source">
+            <PropertyRef Name="MarketId" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+      <EntityContainer Name="CatalogServiceReadOnlyDbContext" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Offers" EntityType="Microsoft.DataMarket.CatalogService.Model.Offer" />
+        <EntitySet Name="OfferLinks" EntityType="Microsoft.DataMarket.CatalogService.Model.OfferLink" />
+        <EntitySet Name="VisualizationImages" EntityType="Microsoft.DataMarket.CatalogService.Model.VisualizationImage" />
+        <EntitySet Name="Categories" EntityType="Microsoft.DataMarket.CatalogService.Model.Category" />
+        <EntitySet Name="Plans" EntityType="Microsoft.DataMarket.CatalogService.Model.Plan" />
+        <EntitySet Name="Markets" EntityType="Microsoft.DataMarket.CatalogService.Model.Market" />
+        <EntitySet Name="MarketLanguages" EntityType="Microsoft.DataMarket.CatalogService.Model.MarketLanguage" />
+        <FunctionImport Name="GetOffer" ReturnType="Microsoft.DataMarket.CatalogService.Model.Offer" EntitySet="Offers" m:HttpMethod="GET">
+          <Parameter Name="id" Type="Edm.Guid" />
+        </FunctionImport>
+        <FunctionImport Name="GetAllAvailableOfferPlansForUser" ReturnType="Collection(Microsoft.DataMarket.CatalogService.Model.Plan)" EntitySet="Plans" m:HttpMethod="GET">
+          <Parameter Name="offerId" Type="Edm.Guid" />
+          <Parameter Name="puid" Type="Edm.String" />
+          <Parameter Name="identityProvider" Type="Edm.String" />
+          <Parameter Name="countryCode" Type="Edm.String" />
+          <Parameter Name="promo" Type="Edm.String" />
+        </FunctionImport>
+        <FunctionImport Name="LocalizedCategories" ReturnType="Collection(Microsoft.DataMarket.CatalogService.Model.Category)" EntitySet="Categories" m:HttpMethod="GET">
+          <Parameter Name="culture" Type="Edm.String" />
+        </FunctionImport>
+        <AssociationSet Name="OfferLink_Offer" Association="Microsoft.DataMarket.CatalogService.Model.OfferLink_Offer">
+          <End Role="OfferLink_Offer_Target" EntitySet="Offers" />
+          <End Role="OfferLink_Offer_Source" EntitySet="OfferLinks" />
+        </AssociationSet>
+        <AssociationSet Name="VisualizationImage_Offer" Association="Microsoft.DataMarket.CatalogService.Model.VisualizationImage_Offer">
+          <End Role="VisualizationImage_Offer_Target" EntitySet="Offers" />
+          <End Role="VisualizationImage_Offer_Source" EntitySet="VisualizationImages" />
+        </AssociationSet>
+        <AssociationSet Name="Category_Offers" Association="Microsoft.DataMarket.CatalogService.Model.Category_Offers">
+          <End Role="Category_Offers_Target" EntitySet="Offers" />
+          <End Role="Category_Offers_Source" EntitySet="Categories" />
+        </AssociationSet>
+        <AssociationSet Name="Plan_Offer" Association="Microsoft.DataMarket.CatalogService.Model.Plan_Offer">
+          <End Role="Plan_Offer_Target" EntitySet="Offers" />
+          <End Role="Plan_Offer_Source" EntitySet="Plans" />
+        </AssociationSet>
+        <AssociationSet Name="Market_Offers" Association="Microsoft.DataMarket.CatalogService.Model.Market_Offers">
+          <End Role="Market_Offers_Target" EntitySet="Offers" />
+          <End Role="Market_Offers_Source" EntitySet="Markets" />
+        </AssociationSet>
+        <AssociationSet Name="Category_ParentCategory" Association="Microsoft.DataMarket.CatalogService.Model.Category_ParentCategory">
+          <End Role="Category_ParentCategory_Source" EntitySet="Categories" />
+          <End Role="Category_ParentCategory_Target" EntitySet="Categories" />
+        </AssociationSet>
+        <AssociationSet Name="MarketLanguage_Market" Association="Microsoft.DataMarket.CatalogService.Model.MarketLanguage_Market">
+          <End Role="MarketLanguage_Market_Target" EntitySet="Markets" />
+          <End Role="MarketLanguage_Market_Source" EntitySet="MarketLanguages" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,36 @@
+{
+    name: "foo",
+    properties:
+    {
+        description : "Sample Data Pipeline",
+        activities:
+        [
+            {
+                name: "CustomActivity",
+                inputs: [ {name: "inputTable"} ],
+                outputs: [ {name: "outputTable"} ],
+                linkedServiceName: "foo2",
+                type: "DotNetActivity",
+                typeProperties:
+                {
+			        assemblyName: "mycode.dll",
+                    entryPoint: "myclassname",
+                    packageLinkedService: "imagestoreLinkedService",
+                    packageFile: "images/assembly.zip",
+                    extendedProperties:
+                    {
+                        PropertyBagPropertyName1: "PropertyBagValue1",
+                        propertyBagPropertyName2: "PropertyBagValue2"
+                    }
+                },
+                policy:
+                {
+                    concurrency: 1,
+                    executionPriorityOrder: "NewestFirst",
+                    retry: 2,
+                    timeout: "01:00:00"
+                }
+            }
+        ]
+    }
+}

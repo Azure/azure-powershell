@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Rest.ClientRuntime.Azure.TestFramework</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields">
+            <summary>
+            Contains constant definitions for the fields that
+            are allowed in the test connection strings.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.ManagementCertificate">
+            <summary>
+            The key inside the connection string for the management certificate
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.SubscriptionId">
+            <summary>
+            The key inside the connection string for the subscription identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.AADTokenAudienceUri">
+            <summary>
+            AAD token Audience Uri 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.BaseUri">
+            <summary>
+            The key inside the connection string for the base management URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.GraphUri">
+            <summary>
+            The key inside the connection string for AD Graph URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.GalleryUri">
+            <summary>
+            The key inside the connection string for AD Gallery URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.IbizaPortalUri">
+            <summary>
+            The key inside the connection string for the Ibiza Portal URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.RdfePortalUri">
+            <summary>
+            The key inside the connection string for the RDFE Portal URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.DataLakeStoreServiceUri">
+            <summary>
+            The key inside the connection string for the DataLake FileSystem URI suffix
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.DataLakeAnalyticsJobAndCatalogServiceUri">
+            <summary>
+            The key inside the connection string for the Kona Catalog URI
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.UserId">
+            <summary>
+            The key inside the connection string for a Microsoft ID (OrgId or LiveId)
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.ServicePrincipal">
+            <summary>
+            Service principal key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.Password">
+            <summary>
+            The key inside the connection string for a user password matching the Microsoft ID
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.RawToken">
+            <summary>
+            A raw JWT token for AAD authentication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.AADClientId">
+            <summary>
+            The client ID to use when authenticating with AAD
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.AADAuthenticationEndpoint">
+            <summary>
+            Endpoint to use for AAD authentication
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.AADTenant">
+            <summary>
+            If a tenant other than common is to be used with the subscription, specifies the tenant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringFields.Environment">
+            <summary>
+            Environment name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext">
+            <summary>
+            A coordinator for tracking and undoing WAML operations.  Usage pattern is
+            using(MockContext.Create())
+            {
+              maml stuff
+            }
+            You can also manually call the Dispose() or UndoAll() methods to undo all 'undoable' operations since the
+            UndoContext was created.
+            Call: MockContext.Commit() to remove all undo information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.Start(System.String,System.String)">
+            <summary>
+            Return a new UndoContext
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.GetServiceClient``1(System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Get a test environment using default options
+            </summary>
+            <typeparam name="T">The type of the service client to return</typeparam>
+            <returns>A Service client using credentials and base uri from the current environment</returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.GetServiceClient``1(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment,System.Net.Http.DelegatingHandler[])">
+            <summary>
+            Get a test environment, allowing the test to customize the creation options
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="handlers">Delegating existingHandlers</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.Stop">
+            <summary>
+            Stop recording and Discard all undo information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.Dispose(System.Boolean)">
+            <summary>
+            Dispose only if we have not previously been disposed
+            </summary>
+            <param name="disposing">true if we should dispose, otherwise false</param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.MockContext.Dispose">
+            <summary>
+            Dispose the object
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.ManagementCertificateKey">
+            <summary>
+            The key inside the connection string for the management certificate
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.SubscriptionIdKey">
+            <summary>
+            The key inside the connection string for the subscription identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.BaseUriKey">
+            <summary>
+            The key inside the connection string for the base uri
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.ServiceManagementUri">
+            <summary>
+            The service management endpoint name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.ResourceManagementUri">
+            <summary>
+            The resource management endpoint name
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.ServicePrincipalKey">
+            <summary>
+            Service principal key
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.UserIdKey">
+            <summary>
+            The key inside the connection string for the userId identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.AADPasswordKey">
+            <summary>
+            The key inside the connection string for the AADPassword identifier
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.ClientIdKey">
+            <summary>
+            The key inside the connection string for the AAD client ID"
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.AADTenantKey">
+            <summary>
+            The key inside the connection string for the AAD Tenant
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironment.RawToken">
+            <summary>
+            A raw token to be used for authentication with the give subscription ID
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.TestCSMOrgIdConnectionStringKey">
+            <summary>
+            The environment variable name for CSM OrgId authentication
+            
+            Sample Value 1 - Get token from user and password:
+            TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={subscription-id};BaseUri=https://api-next.resources.windows-int.net/;UserId={user-id};Password={password}       
+            
+            Sample Value 2 - Prompt for login credentials:
+            TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={subscription-id};AADAuthEndpoint=https://login.windows-ppe.net/;BaseUri=https://api-next.resources.windows-int.net/
+            </summary>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.CustomEnvValues">
+            <summary>
+            Custom values that should override environment variables during runtime 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment">
+            <summary>
+            Return test credentials and URI using AAD auth for an OrgID account.  Use this method with caution, it may take a dependency on ADAL
+            </summary>
+            <returns>The test credentials, or null if the appropriate environment variable is not set.</returns>
+        </member>
+        <member name="F:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.RetryOnHttp500">
+            <summary>
+            Simply function determining retry policy - retry on any internal server error
+            </summary>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.GenerateName(System.String,System.String)">
+            <summary>
+            Generate a name to be used in azure
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.GenerateGuid(System.String)">
+            <summary>
+            Generate a name to be used in azure
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.AsFormattedString(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Used for mthod traces - format method arguments as a string for output or tracing
+            </summary>
+            <param name="parameters">A dictionary representing the parameters of a method call</param>
+            <returns>A string representation of the parameters</returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.Wait(System.Int32)">
+            <summary>
+            Wait for the specified number of milliseconds unless we are in mock playback mode
+            </summary>
+            <param name="milliseconds">The number of milliseconds to wait</param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.Wait(System.TimeSpan)">
+            <summary>
+            Wait for the specified span unless we are in mock playback mode
+            </summary>
+            <param name="timeout">The span of time to wait for</param>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.GetCurrentMethodName(System.String)">
+            <summary>
+            Get the method name of the calling method
+            </summary>
+            <returns>The name of the declaring method</returns>
+        </member>
+        <member name="M:Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities.ParseConnectionString(System.String)">
+            <summary>
+            Break up the connection string into key-value pairs
+            </summary>
+            <param name="connectionString">The connection string to parse</param>
+            <returns>A dictionary of keys and values from the connection string</returns>
+        </member>
+    </members>
+</doc>

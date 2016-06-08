@@ -1,0 +1,748 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.MediaServices</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.CreateAsync(Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Media Services Account operation creates a new media
+            services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194267.aspx
+            for more information)
+            </summary>
+            <param name='parameters'>
+            Parameters supplied to the Create Media Services Account operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Create Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Media Services Account operation deletes an existing
+            media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194273.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            The name of the media services account.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Get Media Services Account operation gets detailed information
+            about a media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166974.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            The name of the Media Services account.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            The List Media Services Account operation gets information about
+            all existing media services accounts associated with the current
+            subscription in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166989.aspx
+            for more information)
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Media Accounts operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.RegenerateKeyAsync(System.String,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesKeyType,System.Threading.CancellationToken)">
+            <summary>
+            The Regenerate Media Services Account Key operation regenerates an
+            account key for the given Media Services account in Windows Azure.
+            (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn167010.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            The name of the Media Services Account.
+            </param>
+            <param name='keyType'>
+            The type of key to regenerate (primary or secondary)
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.#ctor(Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient)">
+            <summary>
+            Initializes a new instance of the AccountOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.CreateAsync(Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Media Services Account operation creates a new media
+            services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194267.aspx
+            for more information)
+            </summary>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Media Services Account
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Create Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Media Services Account operation deletes an existing
+            media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194273.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            Required. The name of the media services account.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Get Media Services Account operation gets detailed information
+            about a media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166974.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            Required. The name of the Media Services account.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            The List Media Services Account operation gets information about
+            all existing media services accounts associated with the current
+            subscription in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166989.aspx
+            for more information)
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Media Accounts operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.RegenerateKeyAsync(System.String,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesKeyType,System.Threading.CancellationToken)">
+            <summary>
+            The Regenerate Media Services Account Key operation regenerates an
+            account key for the given Media Services account in Windows Azure.
+            (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn167010.aspx
+            for more information)
+            </summary>
+            <param name='accountName'>
+            Required. The name of the Media Services Account.
+            </param>
+            <param name='keyType'>
+            Required. The type of key to regenerate (primary or secondary)
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.AccountOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.Create(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters)">
+            <summary>
+            The Create Media Services Account operation creates a new media
+            services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194267.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Media Services Account
+            operation.
+            </param>
+            <returns>
+            The Create Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.CreateAsync(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters)">
+            <summary>
+            The Create Media Services Account operation creates a new media
+            services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194267.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Media Services Account
+            operation.
+            </param>
+            <returns>
+            The Create Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.Delete(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String)">
+            <summary>
+            The Delete Media Services Account operation deletes an existing
+            media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194273.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the media services account.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.DeleteAsync(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String)">
+            <summary>
+            The Delete Media Services Account operation deletes an existing
+            media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn194273.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the media services account.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.Get(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String)">
+            <summary>
+            The Get Media Services Account operation gets detailed information
+            about a media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166974.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the Media Services account.
+            </param>
+            <returns>
+            The Get Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.GetAsync(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String)">
+            <summary>
+            The Get Media Services Account operation gets detailed information
+            about a media services account in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166974.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the Media Services account.
+            </param>
+            <returns>
+            The Get Media Services Account operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.List(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations)">
+            <summary>
+            The List Media Services Account operation gets information about
+            all existing media services accounts associated with the current
+            subscription in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166989.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <returns>
+            The List Media Accounts operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.ListAsync(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations)">
+            <summary>
+            The List Media Services Account operation gets information about
+            all existing media services accounts associated with the current
+            subscription in Windows Azure.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166989.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <returns>
+            The List Media Accounts operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.RegenerateKey(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesKeyType)">
+            <summary>
+            The Regenerate Media Services Account Key operation regenerates an
+            account key for the given Media Services account in Windows Azure.
+            (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn167010.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the Media Services Account.
+            </param>
+            <param name='keyType'>
+            Required. The type of key to regenerate (primary or secondary)
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.AccountOperationsExtensions.RegenerateKeyAsync(Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations,System.String,Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesKeyType)">
+            <summary>
+            The Regenerate Media Services Account Key operation regenerates an
+            account key for the given Media Services account in Windows Azure.
+            (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn167010.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.MediaServices.IAccountOperations.
+            </param>
+            <param name='accountName'>
+            Required. The name of the Media Services Account.
+            </param>
+            <param name='keyType'>
+            Required. The type of key to regenerate (primary or secondary)
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.IMediaServicesManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.IMediaServicesManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.IMediaServicesManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.IMediaServicesManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.IMediaServicesManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the MediaServicesManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            MediaServicesManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of MediaServicesManagementClient to clone to
+            </param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.MediaServicesManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount">
+            <summary>
+            The Get Media Services Account operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServicesAccount class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountKey">
+            <summary>
+            Optional. The Key of the Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountName">
+            <summary>
+            Optional. The Name of the Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountRegion">
+            <summary>
+            Optional. The Region of the  Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.StorageAccountKeys">
+            <summary>
+            Optional. The Storage Account keys of the Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.StorageAccountName">
+            <summary>
+            Optional. The Storage Account Name of the Media Services account.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountKeys">
+            <summary>
+            The key information associated with a Media Services Account.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountKeys.#ctor">
+            <summary>
+            Initializes a new instance of the AccountKeys class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountKeys.Primary">
+            <summary>
+            Optional. The Primary key of the storage account associated
+            with the Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccount.AccountKeys.Secondary">
+            <summary>
+            Optional. The Secondary key of the sotrage account associated
+            with the Media Services account.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters">
+            <summary>
+            Parameters supplied to the Create Media Services Account operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the
+            MediaServicesAccountCreateParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.AccountName">
+            <summary>
+            Required. The name of the Media Services account to create.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.BlobStorageEndpointUri">
+            <summary>
+            Required. The url of the blob storage endpoint associated with the
+            created Media Services account
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.Region">
+            <summary>
+            Required. The region associated with the created Media Services
+            account
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.StorageAccountKey">
+            <summary>
+            Required. The access key of the storage account associated with the
+            created Media Services account
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateParameters.StorageAccountName">
+            <summary>
+            Required. The name of the storage account associated with the
+            created Media Services account
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateResponse">
+            <summary>
+            The Create Media Services Account operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateResponse.#ctor">
+            <summary>
+            Initializes a new instance of the
+            MediaServicesAccountCreateResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountCreateResponse.Account">
+            <summary>
+            Optional. The created account
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountGetResponse">
+            <summary>
+            The Get Media Services Account operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountGetResponse.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServicesAccountGetResponse
+            class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountGetResponse.Account">
+            <summary>
+            Optional. The retrieved account information
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse">
+            <summary>
+            The List Media Accounts operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServicesAccountListResponse
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of Accounts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of Accounts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.Accounts">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount">
+            <summary>
+            A Media Services account associated with your subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServiceAccount class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.AccountId">
+            <summary>
+            Optional. The Id of the Media Services Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.Name">
+            <summary>
+            Optional. The Name of the Media Services Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.ParentUri">
+            <summary>
+            Optional. The ParentLink of the Media Services Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.State">
+            <summary>
+            Optional. The current state of the Media Services Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.Type">
+            <summary>
+            Optional. The type of the Media Services Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesAccountListResponse.MediaServiceAccount.Uri">
+            <summary>
+            Optional. The SelfLink of the Media Services Account.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesCreatedAccount">
+            <summary>
+            The Create Media Services Account operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesCreatedAccount.#ctor">
+            <summary>
+            Initializes a new instance of the MediaServicesCreatedAccount class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesCreatedAccount.AccountId">
+            <summary>
+            Optional. The Id of the created Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesCreatedAccount.AccountName">
+            <summary>
+            Optional. The Name of the created Media Services account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.MediaServices.Models.MediaServicesCreatedAccount.SubscriptionId">
+            <summary>
+            Optional. The subscription Id associated with the created Media
+            Services account.
+            </summary>
+        </member>
+    </members>
+</doc>

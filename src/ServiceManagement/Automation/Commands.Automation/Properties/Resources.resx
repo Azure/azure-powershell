@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AutomationAccountNotFound" xml:space="preserve">
+    <value>The Automation account was not found.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationRunbookDescription" xml:space="preserve">
+    <value>Removing the Azure Automation runbook.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationRunbookWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation runbook?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyExists" xml:space="preserve">
+    <value>The Runbook already exists. Runbook name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookAlreadyHasDraft" xml:space="preserve">
+    <value>Runbook already has a draft. Specify the parameter to force an overwrite of this draft. Runbook name: {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AutomationOperationFailed" xml:space="preserve">
+    <value>{0} {1} operation failed for object name: {2) under AutomationAccount: {3}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CredentialNotFound" xml:space="preserve">
+    <value>The credential was not found. Credential name: {0}.</value>
+  </data>
+  <data name="JobNotFound" xml:space="preserve">
+    <value>The Job having Id: {0} was not found.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ModuleNotFound" xml:space="preserve">
+    <value>The module was not found. Module name: {0}.</value>
+  </data>
+  <data name="ParameterEmpty" xml:space="preserve">
+    <value>{0} is empty.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationResourceDescription" xml:space="preserve">
+    <value>Removing the Azure Automation {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationScheduleDescription" xml:space="preserve">
+    <value>Removing the Azure Automation schedule.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationScheduleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation schedule?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemovingAzureAutomationResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Automation {0} ?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ResourceExists" xml:space="preserve">
+    <value>Resource exist.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookNotFound" xml:space="preserve">
+    <value>The Runbook was not found. Runbook name: {0}.</value>
+    <comment>Autmation</comment>
+  </data>
+  <data name="ScheduleNameExists" xml:space="preserve">
+    <value>The Automation schedule name is in use. Schedule name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ScheduleNotFound" xml:space="preserve">
+    <value>The schedule was not found. Schedule name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="VariableAlreadyExists" xml:space="preserve">
+    <value>The variable already exists. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="VariableNotFound" xml:space="preserve">
+    <value>The variable was not found. Variable name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoPublishedVersion" xml:space="preserve">
+    <value>The runbook has no published version. Runbook name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="InvalidRunbookParameters" xml:space="preserve">
+    <value>Invalid runbook parameters.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Runbook name {0}. Schedule name {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="JobScheduleWithIdNotFound" xml:space="preserve">
+    <value>The job schedule was not found. Job schedule id: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterCannotBeSerializedToJson" xml:space="preserve">
+    <value>Runbook parameter cannot be serialized to json. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookParameterValueRequired" xml:space="preserve">
+    <value>Runbook mandatory parameter not specified. Parameter name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleDescription" xml:space="preserve">
+    <value>Disassociating the Azure Automation runbook and schedule.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveAzureAutomationJobScheduleWarning" xml:space="preserve">
+    <value>Are you sure you want to disassociate the Azure Automation runbook and schedule?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="VariableEncryptionCannotBeChanged" xml:space="preserve">
+    <value>Cannot change encryption property of the variable. Variable name {0}. Encryption - {1}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AutomationAccountAlreadyExists" xml:space="preserve">
+    <value>The Automation account already exists</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateNotFound" xml:space="preserve">
+    <value>The certificate was not found. Certificate name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CertificateAlreadyExists" xml:space="preserve">
+    <value>The certificate already exists. Certificate name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="PowershellJsonDecrypterFailed" xml:space="preserve">
+    <value>Failed to decrypt. Error Details {0}</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ResourceNotFound" xml:space="preserve">
+    <value>Resource does not exist.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionAlreadyExists" xml:space="preserve">
+    <value>The Connection already exists. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionFieldNameNotFound" xml:space="preserve">
+    <value>The connection field name was not found for connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionNotFound" xml:space="preserve">
+    <value>The connection was not found. Connection name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="SetCertificateInvalidArgs" xml:space="preserve">
+    <value>Password and Exportable parameters cannot be updated for an existing certificate. They can only be specified when overwriting this certificate with a new one, via the Path parameter</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RunbookHasNoDraftVersion" xml:space="preserve">
+    <value>The runbook has no draft version. Runbook name {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="AccountCreateInvalidArgs" xml:space="preserve">
+    <value>Create account arguments are invalid. Provide valid account name and location. Account Name: {0}, Location: {1} </value>
+    <comment>Automation</comment>
+  </data>
+  <data name="CompilationJobNotFound" xml:space="preserve">
+    <value>The Compilation Job having Id: {0} was not found.</value>
+  </data>
+  <data name="ConnectionTypeNotFound" xml:space="preserve">
+    <value>The connection type was not found. ConnectionType name: {0}.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="RemoveConnectionTypeThatHasConnectionWarning" xml:space="preserve">
+    <value>This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?</value>
+    <comment>Automation</comment>
+  </data>
+</root>

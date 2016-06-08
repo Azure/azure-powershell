@@ -1,0 +1,376 @@
+{
+    "Entries": [
+    {
+        "RequestUri": "/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches?api-version=2015-03-20",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmVlYTk0MzEtOWNiYy00ZWM2LWE0YzYtMDU5NmU0MzRhYWEyL3Jlc291cmNlZ3JvdXBzL21tcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvMTg4MDg3ZTQtNTg1MC00ZDhiLTlkMDgtM2U1YjQ0OGVhZWNkL3NhdmVkU2VhcmNoZXM/YXBpLXZlcnNpb249MjAxNS0wMy0yMA==",
+        "RequestMethod": "GET",
+        "RequestBody": "",
+        "RequestHeaders":
+        {
+            "x-ms-client-request-id": [
+            "6c485165-7e3c-4206-8b1f-1c7047e63572"
+            ],
+            "User-Agent": [
+            "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.9.0.0"
+            ]
+        }
+        ,
+        "ResponseBody": "
+        {
+            \r\n  \"__metadata\":
+            {
+            }
+            ,\r\n  \"value\": [\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups|all computers\",\r\n      \"etag\": \"W/\\\"datetime'2016-03-08T19%3A07%3A36.9130817Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"ComputerGroups\",\r\n        \"DisplayName\": \"all computers\",\r\n        \"Query\": \"* | measure count() by Computer\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups|allcomputers\",\r\n      \"etag\": \"W/\\\"datetime'2015-11-18T22%3A43%3A46.0427228Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"ComputerGroups\",\r\n        \"DisplayName\": \"allcomputers\",\r\n        \"Query\": \"* | measure count() by Computer\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups|group1\",\r\n      \"etag\": \"W/\\\"datetime'2015-10-16T22%3A48%3A25.8364145Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"ComputerGroups\",\r\n        \"DisplayName\": \"Group1\",\r\n        \"Query\": \"* | measure count() by Computer\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups|lei1\",\r\n      \"etag\": \"W/\\\"datetime'2015-12-10T21%3A46%3A39.0244837Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"ComputerGroups\",\r\n        \"DisplayName\": \"lei1\",\r\n        \"Query\": \"Type:UpdateSummary \\\"lewang-hp.redmond.corp.microsoft.com\\\" | measure count() by Computer\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/leitest|invalid group\",\r\n      \"etag\": \"W/\\\"datetime'2016-03-31T20%3A00%3A54.9501146Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"invalid group\",\r\n        \"Query\": \"Computer=\\\"lewang-hp.redmond.corp.microsoft.com\\\"\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/leitest|not a group\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-01T07%3A28%3A37.9542387Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"not a group\",\r\n        \"Query\": \"Computer=\\\"lewang-hp.redmond.corp.microsoft.com\\\"\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/leitest|test group\",\r\n      \"etag\": \"W/\\\"datetime'2016-03-31T20%3A01%3A56.0984387Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"test group\",\r\n        \"Query\": \"Computer=\\\"lewang-hp.redmond.corp.microsoft.com\\\" | distinct Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"Group\",\r\n            \"Value\": \"Computer\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/leitest|test1\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-25T21%3A22%3A00.8244106Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"test1\",\r\n        \"Query\": \"* | distinct Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"Group\",\r\n            \"Value\": \"Computer\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/my ss|type count\",\r\n      \"etag\": \"W/\\\"datetime'2015-09-29T23%3A49%3A23.3712209Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"my ss\",\r\n        \"DisplayName\": \"Type Count\",\r\n        \"Query\": \"* | DISTINCT Type\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/pscreatedsearch1\",\r\n      \"etag\": \"W/\\\"datetime'2016-03-30T21%3A51%3A56.8097726Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"PS Created\",\r\n        \"DisplayName\": \"PSCreatedSearch1\",\r\n        \"Query\": \"* | measure count() by Computer\",\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/pstest4\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-25T23%3A44%3A49.2618837Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"PSTest10\",\r\n        \"Query\": \"*|distinct Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"Group\",\r\n            \"Value\": \"Computer\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/pstest7\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-18T23%3A44%3A01.0819593Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"PSTest7\",\r\n        \"Query\": \"*|distinct Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"Group\",\r\n            \"Value\": \"Computer\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/pstest8\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-19T07%3A08%3A37.4528427Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"TestingSavedSearch\",\r\n        \"Query\": \"* | measure Count() by Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"source\",\r\n            \"Value\": \"arm test\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/pstest9\",\r\n      \"etag\": \"W/\\\"datetime'2016-04-19T07%3A15%3A47.8050946Z'\\\"\",\r\n      \"properties\":
+                {
+                    \r\n        \"Category\": \"LeiTest\",\r\n        \"DisplayName\": \"TestingSavedSearch\",\r\n        \"Query\": \"* | measure Count() by Computer\",\r\n        \"Tags\": [\r\n
+                    {
+                        \r\n            \"Name\": \"source\",\r\n            \"Value\": \"arm test\"\r\n
+                    }
+                    \r\n        ],\r\n        \"Version\": 1\r\n
+                }
+                \r\n
+            }
+            \r\n  ]\r\n
+        }
+        ",
+        "ResponseHeaders":
+        {
+            "Content-Length": [
+            "5703"
+            ],
+            "Content-Type": [
+            "application/json; charset=utf-8"
+            ],
+            "Expires": [
+            "-1"
+            ],
+            "Pragma": [
+            "no-cache"
+            ],
+            "Strict-Transport-Security": [
+            "max-age=31536000; includeSubDomains"
+            ],
+            "X-Content-Type-Options": [
+            "nosniff"
+            ],
+            "x-ms-ratelimit-remaining-subscription-reads": [
+            "14992"
+            ],
+            "x-ms-request-id": [
+            "4594f98c-c573-473e-b2fc-adbb9bc2401c"
+            ],
+            "x-ms-correlation-request-id": [
+            "4594f98c-c573-473e-b2fc-adbb9bc2401c"
+            ],
+            "x-ms-routing-request-id": [
+            "WESTUS:20160427T071751Z:4594f98c-c573-473e-b2fc-adbb9bc2401c"
+            ],
+            "Cache-Control": [
+            "no-cache"
+            ],
+            "Date": [
+            "Wed, 27 Apr 2016 07:17:50 GMT"
+            ],
+            "Server": [
+            "Microsoft-IIS/8.0"
+            ],
+            "X-Powered-By": [
+            "ASP.NET"
+            ]
+        }
+        ,
+        "StatusCode": 200
+    }
+    ,
+    {
+        "RequestUri": "/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups%7Call%20computers?api-version=2015-03-20",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmVlYTk0MzEtOWNiYy00ZWM2LWE0YzYtMDU5NmU0MzRhYWEyL3Jlc291cmNlZ3JvdXBzL21tcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvMTg4MDg3ZTQtNTg1MC00ZDhiLTlkMDgtM2U1YjQ0OGVhZWNkL3NhdmVkU2VhcmNoZXMvY29tcHV0ZXJncm91cHMlN0NhbGwlMjBjb21wdXRlcnM/YXBpLXZlcnNpb249MjAxNS0wMy0yMA==",
+        "RequestMethod": "GET",
+        "RequestBody": "",
+        "RequestHeaders":
+        {
+            "x-ms-client-request-id": [
+            "630c4b02-2768-4346-b9b6-c2c628cd1b5f"
+            ],
+            "User-Agent": [
+            "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.9.0.0"
+            ]
+        }
+        ,
+        "ResponseBody": "
+        {
+            \r\n  \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups|all computers\",\r\n  \"etag\": \"W/\\\"datetime'2016-03-08T19%3A07%3A36.9130817Z'\\\"\",\r\n  \"properties\":
+            {
+                \r\n    \"Category\": \"ComputerGroups\",\r\n    \"DisplayName\": \"all computers\",\r\n    \"Query\": \"* | measure count() by Computer\",\r\n    \"Version\": 1\r\n
+            }
+            \r\n
+        }
+        ",
+        "ResponseHeaders":
+        {
+            "Content-Length": [
+            "398"
+            ],
+            "Content-Type": [
+            "application/json; charset=utf-8"
+            ],
+            "Expires": [
+            "-1"
+            ],
+            "Pragma": [
+            "no-cache"
+            ],
+            "Strict-Transport-Security": [
+            "max-age=31536000; includeSubDomains"
+            ],
+            "X-Content-Type-Options": [
+            "nosniff"
+            ],
+            "x-ms-ratelimit-remaining-subscription-reads": [
+            "14991"
+            ],
+            "x-ms-request-id": [
+            "f0a6659e-5670-46e6-ae7c-b9671ca339bd"
+            ],
+            "x-ms-correlation-request-id": [
+            "f0a6659e-5670-46e6-ae7c-b9671ca339bd"
+            ],
+            "x-ms-routing-request-id": [
+            "WESTUS:20160427T071751Z:f0a6659e-5670-46e6-ae7c-b9671ca339bd"
+            ],
+            "Cache-Control": [
+            "no-cache"
+            ],
+            "Date": [
+            "Wed, 27 Apr 2016 07:17:50 GMT"
+            ],
+            "Server": [
+            "Microsoft-IIS/8.0"
+            ],
+            "X-Powered-By": [
+            "ASP.NET"
+            ]
+        }
+        ,
+        "StatusCode": 200
+    }
+    ,
+    {
+        "RequestUri": "/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups%7Call%20computers/results?api-version=2015-03-20",
+        "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMmVlYTk0MzEtOWNiYy00ZWM2LWE0YzYtMDU5NmU0MzRhYWEyL3Jlc291cmNlZ3JvdXBzL21tcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvMTg4MDg3ZTQtNTg1MC00ZDhiLTlkMDgtM2U1YjQ0OGVhZWNkL3NhdmVkU2VhcmNoZXMvY29tcHV0ZXJncm91cHMlN0NhbGwlMjBjb21wdXRlcnMvcmVzdWx0cz9hcGktdmVyc2lvbj0yMDE1LTAzLTIw",
+        "RequestMethod": "GET",
+        "RequestBody": "",
+        "RequestHeaders":
+        {
+            "x-ms-client-request-id": [
+            "2113c7be-3f76-48f1-98ea-b552ab3cb6a8"
+            ],
+            "User-Agent": [
+            "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.9.0.0"
+            ]
+        }
+        ,
+        "ResponseBody": "
+        {
+            \r\n  \"id\": \"subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/ff89e340-4c5a-4b76-962e-9809884091cd\",\r\n  \"__metadata\":
+            {
+                \r\n    \"RequestId\": \"ff89e340-4c5a-4b76-962e-9809884091cd\",\r\n    \"Status\": \"Pending\",\r\n    \"NumberOfDocuments\": 0,\r\n    \"StartTime\": \"2016-04-27T07:17:52.2668917Z\",\r\n    \"LastUpdated\": \"2016-04-27T07:17:55.9701423Z\",\r\n    \"ETag\": \"635973382759701423\",\r\n    \"resultType\": \"aggregated\",\r\n    \"aggregatedValueField\": \"AggregatedValue\",\r\n    \"aggregatedValueFields\": [\r\n      \"AggregatedValue\"\r\n    ],\r\n    \"aggregateGroupingFields\": [\r\n      \"Computer\"\r\n    ],\r\n    \"sum\": 33006852.0,\r\n    \"max\": 26842645.0,\r\n    \"total\": 2\r\n
+            }
+            ,\r\n  \"value\": [\r\n
+            {
+                \r\n      \"Computer\": \"lewang-hp.redmond.corp.microsoft.com\",\r\n      \"AggregatedValue\": 26842645.0\r\n
+            }
+            ,\r\n
+            {
+                \r\n      \"Computer\": \"lewang-hp2.redmond.corp.microsoft.com\",\r\n      \"AggregatedValue\": 6164207.0\r\n
+            }
+            \r\n  ]\r\n
+        }
+        ",
+        "ResponseHeaders":
+        {
+            "Content-Length": [
+            "803"
+            ],
+            "Content-Type": [
+            "application/json; charset=utf-8"
+            ],
+            "Expires": [
+            "-1"
+            ],
+            "Pragma": [
+            "no-cache"
+            ],
+            "Strict-Transport-Security": [
+            "max-age=31536000; includeSubDomains"
+            ],
+            "X-Content-Type-Options": [
+            "nosniff"
+            ],
+            "x-ms-ratelimit-remaining-subscription-reads": [
+            "14990"
+            ],
+            "x-ms-request-id": [
+            "b6808f10-5e31-4d5d-b950-30fb8ede3170"
+            ],
+            "x-ms-correlation-request-id": [
+            "b6808f10-5e31-4d5d-b950-30fb8ede3170"
+            ],
+            "x-ms-routing-request-id": [
+            "WESTUS:20160427T071755Z:b6808f10-5e31-4d5d-b950-30fb8ede3170"
+            ],
+            "Cache-Control": [
+            "no-cache"
+            ],
+            "Date": [
+            "Wed, 27 Apr 2016 07:17:54 GMT"
+            ],
+            "Location": [
+            "https://https//management.azure.com/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourcegroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/savedSearches/computergroups%7Call%20computers/results?api-version=2015-03-20/subscriptions/2eea9431-9cbc-4ec6-a4c6-0596e434aaa2/resourceGroups/mms-eus/providers/Microsoft.OperationalInsights/workspaces/188087e4-5850-4d8b-9d08-3e5b448eaecd/search/ff89e340-4c5a-4b76-962e-9809884091cd&api-version=2015-03-20"
+            ],
+            "Server": [
+            "Microsoft-IIS/8.0"
+            ],
+            "X-Powered-By": [
+            "ASP.NET"
+            ]
+        }
+        ,
+        "StatusCode": 200
+    }
+    ],
+    "Names":
+    {
+    }
+    ,
+    "Variables":
+    {
+        "SubscriptionId": "2eea9431-9cbc-4ec6-a4c6-0596e434aaa2"
+    }
+}

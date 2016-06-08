@@ -1,0 +1,1586 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.HDInsight.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.ErrorDetails">
+            <summary>
+            Class to represent an error that has been returned as part of a response to a passthrough request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.HttpUserChangeRequest">
+            <summary>
+            Strongly typed class to represent the payload of a passthrough request to change the HTTP user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.UserChangeRequest">
+            <summary>
+            Base class for Http or RDP User change requests
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityCredential">
+            <summary>
+            A base class representing credential for a HdInsight Connectivity endpoint
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityCredential.Type">
+            <summary>
+            Type of connectivity credentials
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHConnectivityCredential">
+            <summary>
+            Represents a SSH public key credential. Represents the public key certs configured by user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHConnectivityCredential.PublicKey">
+            <summary>
+            Public key part for a SSH credential
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHFullConnectivityCredential">
+            <summary>
+            Class representing a SSH credential containing both private and public keys
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHFullConnectivityCredential.PrivateKey">
+            <summary>
+            Private key of the SSH credential
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.WebConnectivityCredential">
+            <summary>
+            Web endpoint credentials
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.WebConnectivityCredential.Username">
+            <summary>
+            Username 
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.WebConnectivityCredential.Password">
+            <summary>
+            Password 
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityEndpoint">
+            <summary>
+            A HdInsight stack connectivity endpoint
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityEndpoint.Protocol">
+            <summary>
+            Connectivity protocol for the endpoint. Example is Https, SSH, TCP etc
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityEndpoint.Location">
+            <summary>
+            Location for the endpoint
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityEndpoint.Name">
+            <summary>
+            Name for this connectivity endpoint as specified in document
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.ConnectivityEndpoint.Port">
+            <summary>
+            Port for endpoint.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHConnectivityEndpoint">
+            <summary>
+            Class representing SSH connectivity endpoint
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.SSHConnectivityEndpoint.Credentials">
+            <summary>
+            List of all avaialble connectivity credentials
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.WebConnectivityEndpoint">
+            <summary>
+            Class representing Web(Https) connectivity endpoint
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.WebConnectivityEndpoint.Credentials">
+            <summary>
+            List of all avaialble connectivity credentials
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster">
+            <summary>
+            Class representing information about a provisioned IaaS deployment in HdInsight
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.UserSubscriptionId">
+            <summary>
+            Azure subscriptionId owning this instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.Location">
+            <summary>
+            Azure location where this cluster is provisioned
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.Id">
+            <summary>
+            Unique client specified id for the stack instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.TenantId">
+            <summary>
+            Remote HdInsight id for the stack instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.State">
+            <summary>
+            State of the stack instance
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.ApiVersion">
+            <summary>
+            API Schema version with which this deployment was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.HdiVersion">
+            <summary>
+            Version of the stack
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.CreatedDate">
+            <summary>
+            Date this deployment was created
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.DeploymentDocuments">
+            <summary>
+            A list of the user specified stack configuration documents
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.Errors">
+            <summary>
+            A list of errors object indicating failure if State is error
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.UserTags">
+            <summary>
+            A generic key value properties bag for passing additional adhoc information.
+            Examples of adhoc information can be following
+            - User specified tags
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasCluster.ConnectivityEndpoints">
+            <summary>
+            A collection of Connectivity endpoints that is available for this cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasClusterDocumentTypes">
+            <summary>
+            A convenient helper class listing available document type strings
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasClusterError">
+            <summary>
+            Complext type holding Error information about Stack configurations
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasClusterError.ErrorCode">
+            <summary>
+            A simple code for the failure
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.Iaas.Jan2015.IaasClusterError.ErrorDescription">
+            <summary>
+            User friendly message about the failure.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Accepted">
+            <summary>
+            A create container was received but a HostService DNS name has not been created yet
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.ReadyForDeployment">
+            <summary>
+            The DNS name has been successfully validated and a Azure HostedService has been created
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.ClusterConfigured">
+            <summary>
+            A valid azure cloud service deployment/Cluster is running in the container
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.DeleteQueued">
+            <summary>
+            Deployment and or Container Delete request queued
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Deleting">
+            <summary>
+            Deployment or Container is being deleted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Deleted">
+            <summary>
+            The cluster was deleted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Aborted">
+            <summary>
+            The cluster was queued for delete before reaching operational or running state
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Timedout">
+            <summary>
+            The cluster did not move to operational or running within a specified time
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterContainerState.Error">
+            <summary>
+            Container is in error state
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Accepted">
+            <summary>
+            The request has been accepted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.ClusterStorageProvisioned">
+            <summary>
+            The cluster storage is provisioned
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.AzureVMConfiguration">
+            <summary>
+            The azure VM is in configuration
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.HdInsightConfiguration">
+            <summary>
+            HDInsight is installing
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.PatchQueued">
+            <summary>
+            A patch has been initiated.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Deleting">
+            <summary>
+            The clusters is deleting
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.DeleteQueued">
+            <summary>
+            The cluster is queued for delete
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Deleted">
+            <summary>
+            The cluster was deleted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Aborted">
+            <summary>
+            The cluster was queued for delete before reaching operational or running state
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Timedout">
+            <summary>
+            The cluster did not move to operational or running within a specified time
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Operational">
+            <summary>
+            The greater than 90% of the nodes are operational
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Running">
+            <summary>
+            %100 of the cluster nodes are running
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.Error">
+            <summary>
+            Cluster is in the  error state
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.ClusterDeploymentState.CertRolloverQueued">
+            <summary>
+            A cluster cert rollover has been queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.NodeVMSize.ExtraSmall">
+            <summary>
+            An extra small virtual machine, shared core
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.NodeVMSize.Small">
+            <summary>
+            A small virtual machine, 1 core
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.NodeVMSize.Medium">
+            <summary>
+            Medium virtual machine, 2 cores
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.NodeVMSize.Large">
+            <summary>
+            Large virtual machine, 4 cores
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.March2013.NodeVMSize.ExtraLarge">
+            <summary>
+            Extra large virtual machine, 8 cores
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.ReadyForDeployment">
+            <summary>
+            The DNS name has been successfully validated and a Azure HostedService has been created
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Accepted">
+            <summary>
+            A create container was received but a HostService DNS name has not been created yet
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.ClusterStorageProvisioned">
+            <summary>
+            The cluster storage is provisioned
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.AzureVMConfiguration">
+            <summary>
+            The Azure compute fabric is provisioning VM's prior to HDInsight installation
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.HdInsightConfiguration">
+            <summary>
+            VM provisioning is complete and the HDInsight components are installing
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Operational">
+            <summary>
+            Greater than 90% of the nodes are operational
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Running">
+            <summary>
+            100% of the nodes are running
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.PatchQueued">
+            <summary>
+            A patch has been initiated.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.DeletePending">
+            <summary>
+            Deployment and or Container Delete request queued
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Deleting">
+            <summary>
+            Deployment or Container is being deleted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Error">
+            <summary>
+            Container is in error state
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.ClusterState.Unknown">
+            <summary>
+            Unable to read state. Check Error for details
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize">
+            <summary>
+            The possible node sizes for a virtual machine 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize.ExtraSmall">
+            <summary>
+            An extra small virtual machine, shared core
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize.Small">
+            <summary>
+            A small virtual machine, 1 core
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize.Medium">
+            <summary>
+            Medium virtual machine, 2 cores
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize.Large">
+            <summary>
+            Large virtual machine, 4 cores
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2013.NodeVMSize.ExtraLarge">
+            <summary>
+            Extra large virtual machine, 8 cores
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster">
+            <summary>
+            Represents a cluster on the server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase">
+            <summary>
+            This is the main class that describes a cluster.
+            This shares the data that is common to cluster create and get cluster calls.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract">
+            <summary>
+            This is class that all windows azure REST API request/response classes must inherit from. It provides
+            common functionality to serialize, deserialize data.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract.MaxDeserializationStringLength">
+            <summary>
+            Default Serialization length is 1024, which is small for windows azure REST calls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract.Deserialize``1(System.IO.Stream)">
+            <summary>
+            Deserializes and creates a new instance of <typeparamref name="T"/> from the specified stream.
+            </summary>
+            <typeparam name="T">Type of the object to create. This must inherit from <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract"/>.</typeparam>
+            <param name="stream">The stream.</param>
+            <returns>An instance of.<typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract.Deserialize``1(System.String)">
+            <summary>
+            Deserializes and creates a new instance of <typeparamref name="T"/> from the specified UTF8 XML string.
+            </summary>
+            <typeparam name="T">Type of the object to create. This must inherit from RestDataContract.</typeparam>
+            <param name="utf8XmlString">The UTF8 XML string.</param>
+            <returns>An instance of.<typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract.SerializeAndOptionallyWriteToStream(System.IO.Stream)">
+            <summary>
+            Serializes the and writes this object to the stream <paramref name="stream"/>.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>Return serialized string.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract.ExtensionData">
+            <summary>
+            Gets or sets the structure that contains extra data. Required for versioning.
+            </summary>
+            <returns>An <see cref="T:System.Runtime.Serialization.ExtensionDataObject"/> that contains data that is not recognized as belonging to the data contract.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.DnsName">
+            <summary>
+            Gets or sets Dns Name prefix of the cluster.
+            </summary>
+            <value>
+            The dns name.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.Version">
+            <summary>
+            Gets or sets the version of the cluster.
+            </summary>
+            <value>
+            The version.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.DeploymentId">
+            <summary>
+            Gets or sets the HDInsight deployment ID for the cluster.
+            </summary>
+            <value>
+            The deployment ID.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.ClusterRoleCollection">
+            <summary>
+            Gets or sets the roles associated with this cluster.
+            </summary>
+            <value>
+            The roles.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.Components">
+            <summary>
+            Gets or sets the components.
+            </summary>
+            <value>
+            The components.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase.VirtualNetworkConfiguration">
+            <summary>
+            Gets or sets the virtual network configuration.
+            </summary>
+            <value>
+            The virtual network configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.FullyQualifiedDnsName">
+            <summary>
+            Gets or sets the name of the fully qualified DNS name of the cluster.
+            </summary>
+            <value>
+            The name of the fully qualified DNS.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.CreatedTime">
+            <summary>
+            Gets or sets the created time.
+            </summary>
+            <value>
+            The created time.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.UpdatedTime">
+            <summary>
+            Gets or sets the updated time.
+            </summary>
+            <value>
+            The updated time.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+            <value>
+            The state.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.Error">
+            <summary>
+            Gets or sets the error.
+            </summary>
+            <value>
+            The error.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Cluster.ClusterCapabilities">
+            <summary>
+            List of cluster capabilities to allow.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Unknown">
+            <summary>
+            Unable to read state. Check Error for details
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.ReadyForDeployment">
+            <summary>
+            The DNS name has been successfully validated and a Azure HostedService has been created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Accepted">
+            <summary>
+            A create container was received but a HostService DNS name has not been created yet.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.ClusterStorageProvisioned">
+            <summary>
+            The cluster storage is provisioned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.AzureVMConfiguration">
+            <summary>
+            The Azure compute fabric is provisioning VM's prior to HDInsight installation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.HdInsightConfiguration">
+            <summary>
+            VM provisioning is complete and the HDInsight components are installing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Operational">
+            <summary>
+            Greater than 90% of the nodes are operational.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Running">
+            <summary>
+            100% of the nodes are running.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.DeletePending">
+            <summary>
+            Deployment and or Container Delete request queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Deleting">
+            <summary>
+            Deployment or Container is being deleted.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Error">
+            <summary>
+            Container is in error state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.DeleteQueued">
+            <summary>
+            Deployment and or Container Delete request queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Deleted">
+            <summary>
+            Cluster is deleted
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Aborted">
+            <summary>
+            The deployment has been aborted by the user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Timedout">
+            <summary>
+            The cluster creation has timed out.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Suspending">
+            <summary>
+            The cluster is being put into a suspended state. All nodes will be inaccessible.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.SuspendQueued">
+            <summary>
+            A suspend operation has been requested on the cluster.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Suspended">
+            <summary>
+            The cluster is in a suspended state. All nodes will be inaccessible.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.ResumedQueued">
+            <summary>
+            A resume operation has been queued toward the cluster. The nodes will be coming back online in a few minutes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Stopping">
+            <summary>
+            The cluster is in process of deleting all the nodes associated with it.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.StoppedQueued">
+            <summary>
+            A stop operation has been requested.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.Stopped">
+            <summary>
+            The cluster is in a stopped state. There are no nodes associated with the cluster.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.StartQueued">
+            <summary>
+            A start operation has been queued on the cluster.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.PatchQueued">
+            <summary>
+            A patch operation for the cluster has been queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.CertRolloverQueued">
+            <summary>
+            A cert rollover for the cluster has been queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.ResizeQueued">
+            <summary>
+            A resizing operation for the cluster has been queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterState.ClusterCustomization">
+            <summary>
+            Cluster is customizing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestCollectionDataContract`1.MaxDeserializationStringLength">
+            <summary>
+            Default Serialization length is 1024, which is small for windows azure REST calls.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestCollectionDataContract`1.Deserialize``2(System.IO.Stream)">
+            <summary>
+            Deserializes and creates a new instance of <typeparamref name="T"/> from the specified stream.
+            </summary>
+            <typeparam name="T">Type of the object to create. This must inherit from <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestDataContract"/>.</typeparam>
+            <typeparam name="U">Type of the object to create.</typeparam>
+            <param name="stream">The stream.</param>
+            <returns>
+            An instance of.<typeparamref name="T"/>
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The stream.</exception>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestCollectionDataContract`1.Deserialize``2(System.String)">
+            <summary>
+            Deserializes and creates a new instance of <typeparamref name="T"/> from the specified UTF8 XML string.
+            </summary>
+            <typeparam name="T">Type of the object to create. This must inherit from RestDataContract.</typeparam>
+            <typeparam name="U">Type of the object to create.</typeparam>
+            <param name="utf8XmlString">The UTF8 XML string.</param>
+            <returns>
+            An instance of.<typeparamref name="T"/>
+            </returns>
+            <exception cref="T:System.ArgumentException">Cannot be null or empty;utf8XmlString.</exception>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestCollectionDataContract`1.SerializeAndOptionallyWriteToStream(System.IO.Stream)">
+            <summary>
+            Serializes the and writes this object to the stream <paramref name="stream"/>.
+            </summary>
+            <param name="stream">The stream.</param>
+            <returns>Return serialized string.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RestCollectionDataContract`1.ExtensionData">
+            <summary>
+            Gets or sets the structure that contains extra data. Required for versioning.
+            </summary>
+            <returns>An <see cref="T:System.Runtime.Serialization.ExtensionDataObject"/> that contains data that is not recognized as belonging to the data contract.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActionComponent">
+            <summary>
+            A component associated with custom actions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.ClusterComponent">
+            <summary>
+            All components that are installed on a cluster derive from this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActionComponent.HeadNodeRole">
+            <summary>
+            Gets or sets the role on which actions marked for head node will run
+            </summary>
+            <value>
+            The head node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActionComponent.WorkerNodeRole">
+            <summary>
+            Gets or sets the role on which actions marked for worker node will run
+            </summary>
+            <value>
+            The worker node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActionComponent.CustomActions">
+            <summary>
+            Gets or sets the list of user-provided custom actions
+            </summary>
+            <value>
+            The list of custom components
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.CustomAction">
+            <summary>
+            Represents a customer-provided custom action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.CustomAction.Name">
+            <summary>
+            Gets or sets the name of the custom action.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.CustomAction.ClusterRoleCollection">
+            <summary>
+            Gets or sets the roles associated with this action.
+            </summary>
+            <value>
+            The roles.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.CustomActionList">
+            <summary>
+            A collection of <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.CustomAction"/> objects
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.ScriptCustomAction">
+            <summary>
+            Describes a custom action that runs a powershell or cmd script.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.ScriptCustomAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.ScriptCustomAction"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.ScriptCustomAction.Uri">
+            <summary>
+            Gets or sets the URI from which the script should be run.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.CustomActions.ScriptCustomAction.Parameters">
+            <summary>
+            Gets or sets the parameters for the script.
+            </summary>
+            <value>
+            Command-line parameters to the script
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.GatewayComponent">
+            <summary>
+            Represents the gateway components.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.GatewayComponent.IsEnabled">
+            <summary>
+            Gets or sets a value indicating whether this instance is enabled.
+            </summary>
+            <value>
+            <c>true</c> if this instance is enabled; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.GatewayComponent.RestAuthCredential">
+            <summary>
+            Gets or sets the Rest authentication credential.
+            </summary>
+            <value>
+            The authentication credential.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.GatewayComponent.RestUri">
+            <summary>
+            Gets or sets the rest URI.
+            </summary>
+            <value>
+            The rest URI.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HadoopCoreComponent">
+            <summary>
+            Describes the core component associated with hadoop.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.SparkComponent">
+            <summary>
+            Component represents Spark
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.SparkComponent.MasterRole">
+            <summary>
+            Gets or sets the master role.
+            </summary>
+            <value>
+            The master role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.SparkComponent.WorkerRole">
+            <summary>
+            Gets or sets the worker role.
+            </summary>
+            <value>
+            The worker role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.SparkComponent.SparkConfiguration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.StormComponent">
+            <summary>
+            Component represents Storm
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.StormComponent.MasterRole">
+            <summary>
+            Gets or sets the master role.
+            </summary>
+            <value>
+            The master role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.StormComponent.WorkerRole">
+            <summary>
+            Gets or sets the worker role.
+            </summary>
+            <value>
+            The worker role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.StormComponent.StormConfiguration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.ZookeeperComponent">
+            <summary>
+            A cluster component that describes Oozie.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.AddressAssignment">
+            <summary>
+            This assigns a role to a virtual network and a collection of subnets.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.AddressAssignment.Role">
+            <summary>
+            Gets or sets the role.
+            </summary>
+            <value>
+            The role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.AddressAssignment.Subnets">
+            <summary>
+            Gets or sets the subnets.
+            </summary>
+            <value>
+            The subnets.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.AddressAssignments">
+            <summary>
+            Defines a collection of <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.AddressAssignment"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.Subnet">
+            <summary>
+            Describes a virtual network subnet.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.Subnets">
+            <summary>
+            Represents a collection of subnets.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Operation.OperationId">
+            <summary>
+            Gets or sets the operation id.
+            </summary>
+            <value>
+            The operation id.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Operation.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Operation.ErrorDetails">
+            <summary>
+            Gets or sets the error details.
+            </summary>
+            <value>
+            The error details.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.AbstractResource">
+            <summary>
+            All Resources inherit from this class.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.BlobContainerResourceSet">
+            <summary>
+            A collection of blobl containers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HBaseComponent">
+            <summary>
+            Component that describes HBase.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HBaseComponent.RegionServerRole">
+            <summary>
+            Gets or sets the region server role.
+            </summary>
+            <value>
+            The region server role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HBaseComponent.MasterServerRole">
+            <summary>
+            Gets or sets the master server role.
+            </summary>
+            <value>
+            The master server role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HBaseComponent.HBaseConfXmlProperties">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HBaseComponent.AdditionalLibraries">
+            <summary>
+            Gets or sets the additional libraries container.
+            </summary>
+            <value>
+            The additional libraries container.
+            </value>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HdfsComponent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HdfsComponent"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HdfsComponent.HeadNodeRole">
+            <summary>
+            Gets or sets the head node role.
+            </summary>
+            <value>
+            The head node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HdfsComponent.WorkerNodeRole">
+            <summary>
+            Gets or sets the worker node role.
+            </summary>
+            <value>
+            The worker node role.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent">
+            <summary>
+            A component associated with Hive.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent"/> class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent.HiveSiteXmlProperties">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent.AdditionalLibraries">
+            <summary>
+            Gets or sets the additional libraries container.
+            </summary>
+            <value>
+            The additional libraries container.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.HiveComponent.Metastore">
+            <summary>
+            Gets or sets the catalog.
+            </summary>
+            <value>
+            The catalog.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent">
+            <summary>
+            A cluster component that describes Oozie.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent.HeadNodeRole">
+            <summary>
+            Gets or sets the head node role.
+            </summary>
+            <value>
+            The head node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent.AdditionalSharedLibraries">
+            <summary>
+            Gets or sets the additional shared libraries.
+            </summary>
+            <value>
+            The additional shared libraries.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent.AdditionalActionExecutorLibraries">
+            <summary>
+            Gets or sets the additional action executor libraries.
+            </summary>
+            <value>
+            The additional action executor libraries.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.OozieComponent.Metastore">
+            <summary>
+            Gets or sets the catalog.
+            </summary>
+            <value>
+            The catalog.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnApplications.YarnApplication">
+            <summary>
+            An abstract base class for defining base classes for all yarn applications.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnApplications.MapReduceApplication.DefaultStorageAccountAndContainer">
+            <summary>
+            Gets or sets the default storage container.
+            </summary>
+            <value>
+            The default storage container.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnApplications.MapReduceApplication.AdditionalStorageContainers">
+            <summary>
+            Gets or sets the additional storage containers.
+            </summary>
+            <value>
+            The additional storage containers.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnApplications.MapReduceApplication.MapRedSiteXmlProperties">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnApplications.MapReduceApplication.CapacitySchedulerConfiguration">
+            <summary>
+            Gets or sets the capacity scheduler configuration.
+            </summary>
+            <value>
+            The capacity scheduler configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnComponent.ResourceManagerRole">
+            <summary>
+            Gets or sets the resource manager role.
+            </summary>
+            <value>
+            The resource manager role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnComponent.NodeManagerRole">
+            <summary>
+            Gets or sets the node manager role.
+            </summary>
+            <value>
+            The node manager role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnComponent.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnComponent.CapacitySchedulerConfiguration">
+            <summary>
+            Gets or sets the capacity scheduler configuration.
+            </summary>
+            <value>
+            The capacity scheduler configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.YarnComponent.Applications">
+            <summary>
+            Gets or sets the set of applications that run on yarn.
+            </summary>
+            <value>
+            The applications.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ErrorDetails">
+            <summary>
+            Class to represent an error that is returned from windows azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.HeadNodeRole">
+            <summary>
+            Gets or sets the role on which the job tracker and the namenode will run.
+            </summary>
+            <value>
+            The head node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.WorkerNodeRole">
+            <summary>
+            Gets or sets the role on which the tasktracker and the datanode will run.
+            </summary>
+            <value>
+            The worker node role.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.DefaultStorageAccountAndContainer">
+            <summary>
+            Gets or sets the default storage account used for map reduce.
+            </summary>
+            <value>
+            The default storage account.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.AdditionalStorageAccounts">
+            <summary>
+            Gets or sets the additional storage accounts.
+            </summary>
+            <value>
+            The additional storage accounts.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.MapRedConfXmlProperties">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>
+            The configuration.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.MapReduceComponent.CapacitySchedulerConfXmlProperties">
+            <summary>
+            Gets or sets the capacity scheduler configuration.
+            </summary>
+            <value>
+            The capacity scheduler configuration.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.BlobContainerResource">
+            <summary>
+            A Resource describing a blob container.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.BlobContainerCredentialBackedResource">
+            <summary>
+            A blob container described by credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.BlobContainerCredentialBackedResource.AccountDnsName">
+            <summary>
+            Gets or sets FQDN of the storage account.
+            </summary>
+            <value>
+            The FQDN of the storage account.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.BlobContainerCredentialBackedResource.BlobContainerName">
+            <summary>
+            Gets or sets the name of the BLOB container.
+            </summary>
+            <value>
+            The name of the BLOB container.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.BlobContainerCredentialBackedResource.Key">
+            <summary>
+            Gets or sets the key.
+            </summary>
+            <value>
+            The key.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.SqlAzureDatabaseCredentialBackedResource">
+            <summary>
+            A sqlazure database described by its credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.SqlAzureDatabaseCredentialBackedResource.SqlServerName">
+            <summary>
+            Gets or sets the name of the SQL server.
+            </summary>
+            <value>
+            The name of the SQL server.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.SqlAzureDatabaseCredentialBackedResource.DatabaseName">
+            <summary>
+            Gets or sets the name of the database.
+            </summary>
+            <value>
+            The name of the database.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.SqlAzureDatabaseCredentialBackedResource.Credentials">
+            <summary>
+            Gets or sets the credentials.
+            </summary>
+            <value>
+            The credentials.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.VirtualNetworkResource">
+            <summary>
+            A virtual network resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.UsernamePasswordCredential">
+            <summary>
+            Describes a username and password.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.UsernamePasswordCredential.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>
+            The username.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.UsernamePasswordCredential.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.VirtualNetworkCredentialBackedResource">
+            <summary>
+            A virtual network described by its credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Resources.CredentialBackedResources.VirtualNetworkCredentialBackedResource.VirtualNetworkId">
+            <summary>
+            Gets or sets the Virtual network id.
+            </summary>
+            <value>
+            The Virtual network id.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Property">
+            <summary>
+            Represents a key value pair.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Property.Name">
+            <summary>
+            Gets or sets the name of the property.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Property.Value">
+            <summary>
+            Gets or sets the value of the property.
+            </summary>
+            <value>
+            The value.
+            </value>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.RemoteDesktopSettings">
+            <summary>
+            A class representing remote desktop settings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ValidationExtensions.TryValidate(Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterBase,System.Collections.Generic.IList{System.ComponentModel.DataAnnotations.ValidationResult}@)">
+            <summary>
+            Tries to validate the cluster object.
+            </summary>
+            <param name="clusterBase">The cluster.</param>
+            <param name="validationResults">The validation results.</param>
+            <returns>Return validation result.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Validation.CompositeValidationResult">
+            <summary>
+            This is an abstraction that can hold multiple validation results.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Validation.ValidateRoleExistsInClusterAttribute">
+            <summary>
+            This is an attribute when applied to <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.ClusterRole"/> properties that would validate whether.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Validation.ValidateObjectAttribute">
+            <summary>
+            This is a custom validator for complex types that in turn have validatation attributes attached to it.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Validation.ValidateObjectAttribute.IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Validates the specified value with respect to the current validation attribute.
+            </summary>
+            <param name="value">The value to validate.</param>
+            <param name="validationContext">The context information about the validation operation.</param>
+            <returns>
+            An instance of the <see cref="T:System.ComponentModel.DataAnnotations.ValidationResult" /> class.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.VirtualNetworkConfiguration">
+            <summary>
+            Represents a virtual network configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.VirtualNetworkConfiguration.VirtualNetwork">
+            <summary>
+            Gets or sets the virtual network.
+            </summary>
+            <value>
+            The virtual network.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.VirtualNetworkConfiguration.VirtualNetworkSite">
+            <summary>
+            Gets or sets the virtual network site.
+            </summary>
+            <value>
+            The virtual network site.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Networking.VirtualNetworkConfiguration.AddressAssignments">
+            <summary>
+            Gets or sets the address assignments.
+            </summary>
+            <value>
+            The address assignments.
+            </value>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.ExtraSmall">
+            <summary>
+            An extra small virtual machine, shared core.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.Small">
+            <summary>
+            A small virtual machine, 1 core.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.Medium">
+            <summary>
+            Medium virtual machine, 2 cores.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.Large">
+            <summary>
+            Large virtual machine, 4 cores.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.ExtraLarge">
+            <summary>
+            Extra large virtual machine, 8 cores.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.A5">
+            <summary>
+            A5 Virtual Machine, 2 Cores and 14GB of RAM.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.A6">
+            <summary>
+            A6 Virtual Machine, 4 cores and 28GB of RAM.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.A7">
+            <summary>
+            A7 Virtual Machine, 8 cores and 56GB of RAM.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.A8">
+            <summary>
+            A8 Virutal Machine, 8 cores and 56GB of RAM.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.VmSize.A9">
+            <summary>
+            A9 Virtual Machine, 16 cores and 112GB of RAM.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.PassthroughResponse">
+            <summary>
+            Class that represents a response to a passthrough request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.RdpUserChangeRequest">
+            <summary>
+            Strongly typed class to represent the payload of a passthrough request to change the RDP user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.UserChangeOperationState">
+            <summary>
+            Represents the current state of an change operation that has been requested for a user.
+            </summary>
+            <remarks>
+            *******************************************************************************************
+            DO NOT change any existing values, we are using string representations of these in tables
+            where operation tracking is done, so need to be able to correctly parse values that were
+            logged at any point.
+            Adding new values is okay since it will not break Enum.Parse of the old values.
+            *******************************************************************************************
+            </remarks>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.UserChangeOperationStatusResponse">
+            <summary>
+            Class to represent the response to a request for the status of a user change operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.UserChangeOperationType">
+            <summary>
+            Represents the operation being requested for the user.
+            </summary>
+            <remarks>
+            *******************************************************************************************
+            DO NOT change any existing values, we are using string representations of these in tables
+            where operation tracking is done, so need to be able to correctly parse values that were
+            logged at any point.
+            Adding new values is okay since it will not break Enum.Parse of the old values.
+            *******************************************************************************************
+            </remarks>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.UserType">
+            <summary>
+            The type of user being changed.
+            </summary>
+            <remarks>
+            *******************************************************************************************
+            DO NOT change any existing values, we are using string representations of these in tables
+            where operation tracking is done, so need to be able to correctly parse values that were
+            logged at any point.
+            Adding new values is okay since it will not break Enum.Parse of the old values.
+            *******************************************************************************************
+            </remarks>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.DashboardComponent">
+            <summary>
+            A component that describes the dashboard.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.DashboardComponent.AuthenticationCredential">
+            <summary>
+            Gets or sets the authentication credential.
+            </summary>
+            <value>
+            The authentication credential.
+            </value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Contracts.May2014.Components.DashboardComponent.Uri">
+            <summary>
+            Gets or sets the URI.
+            </summary>
+            <value>
+            The URI.
+            </value>
+        </member>
+    </members>
+</doc>

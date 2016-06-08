@@ -1,0 +1,31 @@
+﻿Running Azure Batch Scenario Tests:
+
+In order to run the scenario tests, run these commands with your batch account credentials in your powershell environment.
+
+$env:AZURE_BATCH_ACCOUNT = "YOUR_BATCH_ACCOUNT_NAME"
+$env:AZURE_BATCH_ACCESS_KEY = "YOUR_BATCH_ACCOUNT_ACCESS_KEY"
+$env:AZURE_BATCH_ENDPOINT = "YOUR_BATCH_ACCOUNT_ENDPOINT"
+$env:AZURE_BATCH_RESOURCE_GROUP = "YOUR_BATCH_ACCOUNT_RESOURCE_GROUP"
+
+==================================================================================================================================
+This project is divided into Unit Tests and Scenario Tests.
+All the Scenario Tests can be found under the ScenarioTests folder.  All other test classes are Unit Tests.
+
+The Unit Tests run in the xUnit test framework.
+xUnit Documentation: http://xunit.github.io/
+
+The Unit Tests make use of the Moq framework to create mock objects of the PowerShell runtime and the
+Hyak management libraries.
+Moq Documentation: https://github.com/Moq/moq4/blob/master/README.md
+
+Unit Tests for cmdlets that use the Batch OM make use of BatchClientBehaviors.
+Using this feature, we insert custom behaviors into the OM service requests that allow
+us to modify the Batch request objects, the actions performed on them, and their responses.
+BatchClientBehaviors Documentation: https://msdn.microsoft.com/en-us/library/azure/microsoft.azure.batch.batchclientbehavior.aspx
+
+The Scenario Tests make use of the HTTP recorder/playback functionality in the Hyak
+management libraries.  See the Azure PowerShell Developer Guide for more information:
+https://github.com/Azure/azure-powershell/wiki/Microsoft-Azure-PowerShell-Developer-Guide#running-scenario-tests
+
+To save time on recording, the scenario tests assume some basic setup.  See the top of
+ScenarioTests\ScenarioTestHelpers.cs for details.

@@ -1,0 +1,16 @@
+﻿<Scaffold>
+  <ScaffoldFile Path="download.ps1" />
+  <ScaffoldFile Path="index.php" />
+  <ScaffoldFile Path="php_entry.cmd" />
+  <ScaffoldFile Path="setup.cmd" />
+  <ScaffoldFile Path="setup.ps1" />
+  <ScaffoldFile Path="setup_worker.cmd" />
+  <ScaffoldFile Path="RoleSettings.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PHPRules.AddRoleToConfig />
+  </ScaffoldFile>
+  <ScaffoldFile Path="WorkerRole.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PHPRules.AddWorkerRoleToDef />
+  </ScaffoldFile>
+</Scaffold>

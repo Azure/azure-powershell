@@ -1,0 +1,16 @@
+<Playlist Version="1.0">
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.BVTTest.AzureIaaSBVT" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTestCommonVhd.AzureDiskTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTestCommonVhd.AzureVMImageTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ScenarioTest.GetAzureWinRMUri" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ScenarioTest.NewWindowsAzureQuickVM" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ScenarioTest.ProvisionLinuxVM" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureVNetConfigTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureSubnetTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureStorageKeyTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureOSVersionTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureServiceRemoteDesktopExtensionConfigTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureLocationTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureDeploymentTest" />
+  <Add Test="Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.FunctionalTest.AzureAffinityGroupTest" />
+</Playlist>

@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApiExportDescription" xml:space="preserve">
+    <value>Exporting API "{0}" to file "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiExportWarning" xml:space="preserve">
+    <value>File "{0}" already exists. Override?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiRemoveDescription" xml:space="preserve">
+    <value>Removing API "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove API "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="AuthorizationServerRemoveDescription" xml:space="preserve">
+    <value>Removing Authorization Server "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="AuthorizationServerRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Authorization Server "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CertificateRemoveDescription" xml:space="preserve">
+    <value>Removing Certificate "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="CertificateRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Certificate "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GroupRemoveDescription" xml:space="preserve">
+    <value>Removing Group "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="GroupRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Group "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="LoggerRemoveDescription" xml:space="preserve">
+    <value>Removing Logger "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="LoggerRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Logger "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OpenIdConnectProviderRemoveDescription" xml:space="preserve">
+    <value>Removing OpenID Connect Provider "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OpenIdConnectProviderRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove OpenID Connect Provider "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OperationRemoveDescription" xml:space="preserve">
+    <value>Removing Operation "{0}" of API "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="OperationRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Operation "{0}" of API "{1}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PolicyRemoveDescription" xml:space="preserve">
+    <value>Removing "{0}" policy.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PolicyRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove "{0}" policy?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ProductRemoveDescription" xml:space="preserve">
+    <value>Removing Product "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ProductRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Product "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PropertyRemoveDescription" xml:space="preserve">
+    <value>Removing Property "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PropertyRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Property "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PublishTenantConfigurationDescription" xml:space="preserve">
+    <value>Subscriptions to products which are deleted will be also be deleted.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="PublishTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to enforce deleting subscriptions to products that are deleted in this update?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SavePolicyDescription" xml:space="preserve">
+    <value>Saving "{0}" policy to file "{1}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SavePolicyWarning" xml:space="preserve">
+    <value>File "{0}" already exists. Override?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationDescription" xml:space="preserve">
+    <value>Overwriting changes in Git repository "{0}" with Configuration Database.</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SaveTenantConfigurationWarning" xml:space="preserve">
+    <value>Are you sure  you want to overwrite your changes in Git repository "{0}" with Configuration Database?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ShouldProcessCaption" xml:space="preserve">
+    <value>Confirm</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SubscriptionRemoveDescription" xml:space="preserve">
+    <value>Removing Subscription "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="SubscriptionRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Subscription "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UserRemoveDescription" xml:space="preserve">
+    <value>Removing User "{0}".</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UserRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove User "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="VerboseGetOperationStateTimeoutMessage" xml:space="preserve">
+    <value>Get operation state in '{0}'</value>
+    <comment>Process workflow</comment>
+  </data>
+</root>

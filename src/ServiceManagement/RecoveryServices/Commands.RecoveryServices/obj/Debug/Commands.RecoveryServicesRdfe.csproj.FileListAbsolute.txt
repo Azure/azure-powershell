@@ -1,0 +1,13 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\lib\Security.Cryptography.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RecoveryServices\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Commands.RecoveryServicesRdfe.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Commands.RecoveryServicesRdfe.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Microsoft.Azure.Commands.RecoveryServices.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Commands.RecoveryServicesRdfe.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Microsoft.Azure.Commands.RecoveryServicesRdfe.dll
+C:\Repository\azure-powershell\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices\obj\Debug\Microsoft.Azure.Commands.RecoveryServicesRdfe.pdb

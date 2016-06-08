@@ -1,0 +1,3 @@
+﻿Run storage test steps.
+1. Update the TestData.xml with your account data.
+2. Run the storagetest.cmd in bin\debug or bin\release directory.

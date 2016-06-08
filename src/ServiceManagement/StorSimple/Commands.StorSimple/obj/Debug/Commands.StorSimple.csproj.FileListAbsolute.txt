@@ -1,0 +1,14 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.types.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Commands.StorSimple.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Commands.StorSimple.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Commands.StorSimple.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Microsoft.WindowsAzure.Commands.StorSimple.dll
+C:\Repository\azure-powershell\src\ServiceManagement\StorSimple\Commands.StorSimple\obj\Debug\Microsoft.WindowsAzure.Commands.StorSimple.pdb

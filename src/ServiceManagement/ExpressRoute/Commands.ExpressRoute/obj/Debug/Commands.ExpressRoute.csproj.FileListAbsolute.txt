@@ -1,0 +1,14 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll-Help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Commands.ExpressRoute.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Commands.ExpressRoute.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Microsoft.WindowsAzure.Commands.ExpressRoute.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Commands.ExpressRoute.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Microsoft.WindowsAzure.Commands.ExpressRoute.dll
+C:\Repository\azure-powershell\src\ServiceManagement\ExpressRoute\Commands.ExpressRoute\obj\Debug\Microsoft.WindowsAzure.Commands.ExpressRoute.pdb

@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="InvalidGuid" xml:space="preserve">
+    <value>The value {0} is an invalid GUID.</value>
+  </data>
+  <data name="CacheServiceMissing" xml:space="preserve">
+    <value>Not able to find the cache service just now created</value>
+  </data>
+  <data name="CacheServiceNameUnavailable" xml:space="preserve">
+    <value>The cache service name either has been taken or invalid</value>
+  </data>
+  <data name="CacheServiceNotExisting" xml:space="preserve">
+    <value>The cache service '{0}' doesn't exist in current subscription</value>
+  </data>
+  <data name="CacheServiceNotFound" xml:space="preserve">
+    <value>Cache Service '{0}' was not found</value>
+  </data>
+  <data name="CacheServiceRemoved" xml:space="preserve">
+    <value>The cache service '{0}' has been removed</value>
+  </data>
+  <data name="CacheServiceRemoveStarted" xml:space="preserve">
+    <value>Removing cache service...</value>
+  </data>
+  <data name="CreatingCacheService" xml:space="preserve">
+    <value>Creating cache service...</value>
+  </data>
+  <data name="CreatingPrerequisites" xml:space="preserve">
+    <value>Creating prerequisites...</value>
+  </data>
+  <data name="InitializingCacheParameters" xml:space="preserve">
+    <value>Intializing parameters...</value>
+  </data>
+  <data name="InvalidCacheMemorySize" xml:space="preserve">
+    <value>Invalid cache memory size. Please specify value between {0} and {1}{2}</value>
+  </data>
+  <data name="InvalidCacheServiceName" xml:space="preserve">
+    <value>The cache service name must contain between 6 and 20 characters. It can contain only lowercase letters and numbers, and must start with a letter.</value>
+  </data>
+  <data name="InvalidCacheSku" xml:space="preserve">
+    <value>Invalid Sku. Please specify one from 'Basic', 'Standard', or "Premium".</value>
+  </data>
+  <data name="TimeoutWaitForCacheServiceReady" xml:space="preserve">
+    <value>Time out to wait for cache service ready</value>
+  </data>
+  <data name="VerifyingCacheServiceName" xml:space="preserve">
+    <value>Verify cache service name...</value>
+  </data>
+  <data name="WaitForCacheServiceReady" xml:space="preserve">
+    <value>Waiting for cache service to be in ready state...</value>
+  </data>
+  <data name="RemoveServiceMessage" xml:space="preserve">
+    <value>Removing cache service</value>
+  </data>
+  <data name="RemoveServiceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the cache service "{0}"?</value>
+  </data>
+  <data name="UpdatingCacheService" xml:space="preserve">
+    <value>Updating cache service...</value>
+  </data>
+  <data name="PromptOnCacheMemoryReduce" xml:space="preserve">
+    <value>Are you sure you want to reduce the cache memory? Cache data will be lost.</value>
+  </data>
+  <data name="PromptOnCachePlanChange" xml:space="preserve">
+    <value>Are you sure you want to reduce the cache offering? All cache data will be lost.</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromSubnetSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}" from Subnet "{1}" in Virtual Network "{2}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromSubnetWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}" from Subnet "{1}" in Virtual Network "{2}"?</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}"?</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInSubnetWarning" xml:space="preserve">
+    <value>There is already a Network Security Group associated with Subnet "{0}" in Virtual Network "{1}". Are you sure you want to replace it with Network Security Group "{2}"?</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInSubnetWarningSucceeded" xml:space="preserve">
+    <value>Successfully set NetworkSecurityGroup "{0}" in Subnet "{1}" in Virtual Network "{1}"</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInSubnet" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in Subnet "{1}" in Virtual Network "{2}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Rule "{0}" from Network Security Group "{1}"?</value>
+  </data>
+  <data name="AddAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Add-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="AddAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Add-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGateway</value>
+  </data>
+  <data name="GetAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="GetAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGateway</value>
+  </data>
+  <data name="GetAzureApplicationGatewayConfigBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Get-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="GetAzureApplicationGatewayConfigCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Get-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="NewAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: New-AzureApplicationGateway</value>
+  </data>
+  <data name="NewAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: New-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Remove-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewaySslCertificateBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Remove-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewaySslCertificateCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Remove-AzureApplicationGatewaySslCertificate</value>
+  </data>
+  <data name="RemoveAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Remove-AzureApplicationGateway</value>
+  </data>
+  <data name="SetAzureApplicationGatewayConfigBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Set-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="SetAzureApplicationGatewayConfigCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Set-AzureApplicationGatewayConfig</value>
+  </data>
+  <data name="StartAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Start-AzureApplicationGateway</value>
+  </data>
+  <data name="StartAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Start-AzureApplicationGateway</value>
+  </data>
+  <data name="StopAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Stop-AzureApplicationGateway</value>
+  </data>
+  <data name="StopAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Stop-AzureApplicationGateway</value>
+  </data>
+  <data name="UpdateAzureApplicationGatewayBeginOperation" xml:space="preserve">
+    <value>Begin Operation: Update-AzureApplicationGateway</value>
+  </data>
+  <data name="UpdateAzureApplicationGatewayCompletedOperation" xml:space="preserve">
+    <value>Completed Operation: Update-AzureApplicationGateway</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromNicSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromNicWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}" from Network Interface "{1}" in VM "{2}" in Cloud Service "{3}"?</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromRoleSucceeded" xml:space="preserve">
+    <value>Successfully removed Network Security Group with name "{0}" from VM "{1}" in Cloud Service "{2}".</value>
+  </data>
+  <data name="RemoveNetworkSecurityGroupFromRoleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Network Security Group "{0}" from VM "{1}" in Cloud Service "{2}"?</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInNicWarningSucceeded" xml:space="preserve">
+    <value>Successfully set NetworkSecurityGroup "{0}" in Network Interface "{1}", Role "{2}", Deployment "{3}", Cloud Service: "{4}"</value>
+  </data>
+  <data name="ReplaceNetworkSecurityGroupInRoleWarningSucceeded" xml:space="preserve">
+    <value>Successfully set NetworkSecurityGroup "{0}" in Role "{1}", Deployment "{2}", Cloud Service: "{3}"</value>
+  </data>
+  <data name="SetNSGNicAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Network Interface "{1}", Role "{2}", Deployment "{3}", Cloud Service: "{4}"</value>
+  </data>
+  <data name="SetNSGRoleAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Role "{1}", Deployment "{2}", Cloud Service: "{3}"</value>
+  </data>
+  <data name="SetNSGSubnetAssociationTarget" xml:space="preserve">
+    <value>Network Security Group "{0}", Virtual Network: "{1}", Subnet "{2}"</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInNIC" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}", network interface "{4}".</value>
+  </data>
+  <data name="NetworkSecurityGroupNotActiveInRole" xml:space="preserve">
+    <value>Network SecurityGroup "{0}" is not active in cloud service "{1}", deployment "{2}", role "{3}".</value>
+  </data>
+  <data name="RemoveRouteTableFromSubnetSucceeded" xml:space="preserve">
+    <value />
+  </data>
+  <data name="RemoveRouteTableFromSubnetWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the currently associated Route Table from Subnet "{0}" in Virtual Network "{1}"?</value>
+  </data>
+  <data name="RemoveRouteTableSucceeded" xml:space="preserve">
+    <value>Successfully removed Route Table with name "{0}".</value>
+  </data>
+  <data name="RemoveRouteTableWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route Table "{0}"?</value>
+  </data>
+  <data name="RemoveRouteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Route "{0}" from Route Table "{1}"?</value>
+  </data>
+</root>

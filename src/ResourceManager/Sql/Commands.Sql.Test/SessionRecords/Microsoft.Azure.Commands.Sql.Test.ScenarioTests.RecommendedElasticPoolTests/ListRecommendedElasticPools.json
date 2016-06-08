@@ -1,0 +1,62 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/69d3b60e-9ed0-414d-abc2-02a54d09b7a8/resourceGroups/TestRg/providers/Microsoft.Sql/servers/test-srv-v1/recommendedElasticPools?api-version=2014-04-01&$expand=databases",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNjlkM2I2MGUtOWVkMC00MTRkLWFiYzItMDJhNTRkMDliN2E4L3Jlc291cmNlR3JvdXBzL1Rlc3RSZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL3Rlc3Qtc3J2LXYxL3JlY29tbWVuZGVkRWxhc3RpY1Bvb2xzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEmJGV4cGFuZD1kYXRhYmFzZXM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "9d751181-ac4e-4427-a1cc-a97a98a48e01"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"\/subscriptions\/d3bbdcc6-c566-461d-adb1-f8963b79b30e\/resourceGroups\/csm-sql-rg-1741\/providers\/Microsoft.Sql\/servers\/csm-sql-server-2182\/recommendedElasticPools\/ElasticPool1\",\r\n      \"name\": \"ElasticPool1\",\r\n      \"type\": \"Microsoft.Sql\/servers\/recommendedElasticPools\",\r\n      \"properties\": {\r\n        \"databaseEdition\": \"Standard\",\r\n        \"dtu\": 1000.0,\r\n        \"databaseDtuMin\": 100.6,\r\n        \"databaseDtuMax\": 200.5,\r\n        \"storageMB\": 1000.3,\r\n        \"observationPeriodStart\": \"2014-11-01T00:00:00Z\",\r\n        \"observationPeriodEnd\": \"2014-11-15T00:00:00Z\",\r\n        \"maxObservedDtu\": 900.2,\r\n        \"maxObservedStorageMB\": 350.0,\r\n        \"databases\": [],\r\n        \"metrics\": [\r\n          {\r\n            \"dateTime\": \"2015-04-01T00:00:00Z\",\r\n            \"dtu\": 100.5,\r\n            \"sizeGB\": 15.4\r\n          },\r\n          {\r\n            \"dateTime\": \"2015-04-02T00:00:00Z\",\r\n            \"dtu\": 135.0,\r\n            \"sizeGB\": 12.754\r\n          },\r\n          {\r\n            \"dateTime\": \"2015-04-03T00:00:00Z\",\r\n            \"dtu\": 135.0,\r\n            \"sizeGB\": 12.754\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"\/subscriptions\/d3bbdcc6-c566-461d-adb1-f8963b79b30e\/resourceGroups\/csm-sql-rg-1741\/providers\/Microsoft.Sql\/servers\/csm-sql-server-2182\/recommendedElasticPools\/ElasticPool2\",\r\n      \"name\": \"ElasticPool2\",\r\n      \"type\": \"Microsoft.Sql\/servers\/recommendedElasticPools\",\r\n      \"properties\": {\r\n        \"databaseEdition\": \"Standard\",\r\n        \"dtu\": 1000.0,\r\n        \"databaseDtuMin\": 100.0,\r\n        \"databaseDtuMax\": 200.0,\r\n        \"storageMB\": 1000.0,\r\n        \"observationPeriodStart\": \"2014-11-01T00:00:00Z\",\r\n        \"observationPeriodEnd\": \"2014-11-15T00:00:00Z\",\r\n        \"maxObservedDtu\": 450.0,\r\n        \"maxObservedStorageMB\": 900.0,\r\n        \"databases\": [\r\n          {\r\n            \"id\": \"\/subscriptions\/d3bbdcc6-c566-461d-adb1-f8963b79b30e\/resourceGroups\/csm-sql-rg-1741\/providers\/Microsoft.Sql\/servers\/csm-sql-server-2182\/databases\/master\",\r\n            \"name\": \"master\",\r\n            \"type\": \"Microsoft.Sql\/servers\/databases\",\r\n            \"location\": \"Southeast Asia\",\r\n            \"properties\": {\r\n              \"databaseId\": \"28acaef5-d228-4660-bb67-546ec8482496\",\r\n              \"edition\": \"System\",\r\n              \"status\": \"Online\",\r\n              \"serviceLevelObjective\": \"System2\",\r\n              \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n              \"maxSizeBytes\": \"5368709120\",\r\n              \"creationDate\": \"2015-04-17T08:36:48.237Z\",\r\n              \"currentServiceObjectiveId\": \"620323bf-2879-4807-b30d-c2e6d7b3b3aa\",\r\n              \"requestedServiceObjectiveId\": \"620323bf-2879-4807-b30d-c2e6d7b3b3aa\",\r\n              \"requestedServiceObjectiveName\": null,\r\n              \"createMode\": null,\r\n              \"sourceDatabaseId\": null,\r\n              \"defaultSecondaryLocation\": \"Japan East\",\r\n              \"earliestRestoreDate\": null,\r\n              \"restorePointInTime\": null,\r\n              \"sourceDatabaseDeletionDate\": null,\r\n              \"blobUriAndSasKey\": null,\r\n              \"resourcePoolName\": null,\r\n              \"kind\": \"v12.0,system\"\r\n            }\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "9ed6ecd5-5716-4472-9b2a-f1f0c3d60010"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "f1483aeb-91f7-4c21-9660-3d6d25637839"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20150526T104641Z:f1483aeb-91f7-4c21-9660-3d6d25637839"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Tue, 26 May 2015 10:46:41 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "69d3b60e-9ed0-414d-abc2-02a54d09b7a8"
+  }
+}

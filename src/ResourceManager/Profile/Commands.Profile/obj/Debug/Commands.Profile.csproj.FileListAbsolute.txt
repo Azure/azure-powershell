@@ -1,0 +1,13 @@
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll-Help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRmProfileStartup.ps1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ResourceManager\Profile\Commands.Profile\obj\Debug\Commands.Profile.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ResourceManager\Profile\Commands.Profile\obj\Debug\Microsoft.Azure.Commands.Profile.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ResourceManager\Profile\Commands.Profile\obj\Debug\Commands.Profile.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ResourceManager\Profile\Commands.Profile\obj\Debug\Microsoft.Azure.Commands.Profile.dll
+C:\Repository\azure-powershell\src\ResourceManager\Profile\Commands.Profile\obj\Debug\Microsoft.Azure.Commands.Profile.pdb

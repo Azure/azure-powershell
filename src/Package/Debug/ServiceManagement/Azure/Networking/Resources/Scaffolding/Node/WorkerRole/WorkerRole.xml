@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="DummyName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WorkerRole name="$RoleName$" vmsize="Small">
+    <Endpoints>
+      <InputEndpoint name="HttpIn" protocol="tcp" port="$Port$" />
+    </Endpoints>
+    <Startup>
+      <Task executionContext="elevated" commandLine="setup_worker.cmd &gt; log.txt">
+        <Environment>
+          <Variable name="EMULATED">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+          <!-- 
+                Use this value to provide your own url for a role runtime self-extracting package 
+                <Variable name="RUNTIMEURLOVERRIDE" value=""/> 
+          -->
+          <Variable name="RUNTIMEID" value="node" />
+          <Variable name="RUNTIMEURL" value=""/>
+        </Environment>
+      </Task>
+      <Task executionContext="elevated" commandLine="node.cmd .\startup.js" />
+    </Startup>
+    <Runtime>
+      <Environment>
+        <Variable name="PORT">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='HttpIn']/@port" />
+        </Variable>
+        <Variable name="EMULATED">
+          <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+        </Variable>
+      </Environment>
+      <EntryPoint>
+        <ProgramEntryPoint commandLine="node.cmd .\server.js" setReadyOnProcessStart="true"/>
+      </EntryPoint>
+    </Runtime>
+  </WorkerRole>
+</ServiceDefinition>

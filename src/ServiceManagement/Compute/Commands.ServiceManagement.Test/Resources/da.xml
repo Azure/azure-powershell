@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
+    <WadCfg>
+        <DiagnosticMonitorConfiguration overallQuotaInMB="25000">
+        <PerformanceCounters scheduledTransferPeriod="PT1M">
+            <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />
+            <PerformanceCounterConfiguration counterSpecifier="\Memory\Committed Bytes" sampleRate="PT1M" unit="bytes"/>
+            </PerformanceCounters>
+            <EtwProviders>
+                <EtwEventSourceProviderConfiguration provider="SampleEventSourceWriter" scheduledTransferPeriod="PT5M">
+                    <Event id="1" eventDestination="EnumsTable"/>
+                    <Event id="2" eventDestination="MessageTable"/>
+                    <Event id="3" eventDestination="SetOtherTable"/>
+                    <Event id="4" eventDestination="HighFreqTable"/>
+                    <DefaultEvents eventDestination="DefaultTable" />
+                </EtwEventSourceProviderConfiguration>
+            </EtwProviders>
+        </DiagnosticMonitorConfiguration>
+    </WadCfg>
+</PublicConfig>

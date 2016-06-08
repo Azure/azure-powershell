@@ -1,0 +1,23 @@
+﻿{
+    "siteName": {
+        "value": "testericeric"
+    },
+    "hostingPlanName": {
+        "value": "test"
+    },
+    "siteLocation": {
+        "value": "West US"
+    },
+    "sku": {
+        "value": "Free"
+    },
+    "workerSize": {
+        "value": "0"
+    },
+    "numberOfWorker": {
+        "value": 1
+    },
+    "isWorker": {
+        "value": true
+    }
+}

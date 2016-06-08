@@ -1,0 +1,14 @@
+﻿<Scaffold>
+  <ScaffoldFile PathExpression="bin\\.*" />
+  <ScaffoldFile Path="index.php" />
+  <ScaffoldFile Path="Web.config" />
+  <ScaffoldFile Path="Web.cloud.config" />
+  <ScaffoldFile Path="RoleSettings.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PHPRules.AddRoleToConfig />
+  </ScaffoldFile>
+  <ScaffoldFile Path="WebRole.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <PHPRules.AddWebRoleToDef />
+  </ScaffoldFile>
+</Scaffold>

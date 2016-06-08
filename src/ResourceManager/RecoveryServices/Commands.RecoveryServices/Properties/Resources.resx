@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CloudExceptionDetails" xml:space="preserve">
+    <value>Operation Failed.
+</value>
+  </data>
+  <data name="CloudServiceNameNullOrEmpty" xml:space="preserve">
+    <value>Cloud Service name mentioned is either null or empty</value>
+  </data>
+  <data name="InvalidCloudExceptionErrorMessage" xml:space="preserve">
+    <value>Operation failed.
+{0}</value>
+  </data>
+  <data name="InvalidResourceGroup" xml:space="preserve">
+    <value>Resource Group is not associated with the selected Subscription</value>
+  </data>
+  <data name="InvalidResource" xml:space="preserve">
+    <value>Resource is not associted with the selected Resource group</value>
+  </data>
+  <data name="InvalidXml" xml:space="preserve">
+    <value>XML is malformed or file is empty, exception details: {0}</value>
+  </data>
+  <data name="MissingVaultSettings" xml:space="preserve">
+    <value>Vault Settings are missing. Please import Vault Settings and verify the same</value>
+  </data>
+  <data name="NullRecoveryServicesClient" xml:space="preserve">
+    <value>RecoveryServices client is null, please check Resource, Cloud Service information in Vault Settings</value>
+  </data>
+  <data name="ProtectionContainerNotFound" xml:space="preserve">
+    <value>Protection Container {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="RecoveryPlanNotFound" xml:space="preserve">
+    <value>RecoveryPlan  {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="ResourceNameNullOrEmpty" xml:space="preserve">
+    <value>Resource name mentioned is either null or empty</value>
+  </data>
+  <data name="ServerNotFound" xml:space="preserve">
+    <value>Server {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="VaultSettingFileNotFound" xml:space="preserve">
+    <value>Vault settings file not found, please pass the file downloaded from portal</value>
+  </data>
+  <data name="VirtualMachineNotFound" xml:space="preserve">
+    <value>Virtual Machine {0} is not associated with Protection Container {1}</value>
+  </data>
+  <data name="VirtualMachineGroupNotFound" xml:space="preserve">
+    <value>Virtual Machine Group {0} is not associated with Protection Container {1}</value>
+  </data>
+  <data name="ProtectionEntityNotFound" xml:space="preserve">
+    <value>Protection Entity {0} is not associated with Protection Container {1}</value>
+  </data>
+  <data name="ProtectionEntityNotProtected" xml:space="preserve">
+    <value>Protection Entity {0} is not protected.</value>
+  </data>
+  <data name="MissingChannelIntergrityKey" xml:space="preserve">
+    <value>Vault Key value is missing. Please import Vault Settings and verify the same</value>
+  </data>
+  <data name="WaitingForCompletion" xml:space="preserve">
+    <value>Waiting for completion</value>
+  </data>
+  <data name="DisableProtectionWarning" xml:space="preserve">
+    <value>Are you sure want to disable protection on {0}</value>
+  </data>
+  <data name="DisableProtectionWhatIfMessage" xml:space="preserve">
+    <value>{0}s protection</value>
+  </data>
+  <data name="RemoveRPWarning" xml:space="preserve">
+    <value>Are you sure want to remove Recovery Plan {0}</value>
+  </data>
+  <data name="RemoveRPWhatIfMessage" xml:space="preserve">
+    <value>Removing Recovery Plan</value>
+  </data>
+  <data name="SubscriptionIsNotAssociatedWithTheAccount" xml:space="preserve">
+    <value>Subscription {0} is not associated with the account</value>
+  </data>
+  <data name="ProtectionEntityAlreadyDisabled" xml:space="preserve">
+    <value>Protection entity {0} is already disabled</value>
+  </data>
+  <data name="ProtectionEntityAlreadyEnabled" xml:space="preserve">
+    <value>Protection entity {0} is already enabled</value>
+  </data>
+  <data name="AzureVMNetworkIsNotAssociatedWithTheSubscription" xml:space="preserve">
+    <value>AzureVMNetwork {0} is not associated with the Subscription {1}</value>
+  </data>
+  <data name="VaultSettingsGenerationUnSupported" xml:space="preserve">
+    <value>Cannot generate vault settings file for this vault. Download it from the Azure Portal.</value>
+  </data>
+  <data name="VaultCreationSuccessMessage" xml:space="preserve">
+    <value>Vault has been created</value>
+  </data>
+  <data name="ReplicationStartTimeInvalid" xml:space="preserve">
+    <value>Replication Start Time span value cannot be greater then 24 hours.</value>
+  </data>
+  <data name="StorageAccountNameIsNotValid" xml:space="preserve">
+    <value>Please enter the storage account name details in the Policy.</value>
+  </data>
+  <data name="SubscriptionIdIsNotValid" xml:space="preserve">
+    <value>Please enter the subscription ID details.</value>
+  </data>
+  <data name="IncorrectReplicationProvider" xml:space="preserve">
+    <value>Replication Provider {0} entered invalid for the current set of parameters.</value>
+  </data>
+  <data name="NetworkArgumentsMissingForUpdateVmProperties" xml:space="preserve">
+    <value>Please provide both Source Nic and Recovery Target to update</value>
+  </data>
+  <data name="MandatoryParamFromNextRelease" xml:space="preserve">
+    <value>{0} will be a mandatory paramter from next release.</value>
+  </data>
+  <data name="IDBasedParamUsageNotSupportedFromNextRelease" xml:space="preserve">
+    <value>Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead.</value>
+  </data>
+  <data name="InvalidReplicationFrequency" xml:space="preserve">
+    <value>Replication Frequency {0} is invalid</value>
+  </data>
+  <data name="VaultNotFound" xml:space="preserve">
+    <value>Vault {0} is not associated with the given subscription.</value>
+  </data>
+  <data name="InCorrectVaultInformation" xml:space="preserve">
+    <value>Vault information (Name: {0}, Location: {1}) is not correct</value>
+  </data>
+  <data name="NewPolicyObjectWhatIfMessage" xml:space="preserve">
+    <value>Creates a new in-memory Policy association object.</value>
+  </data>
+  <data name="ValidationUnsuccessfulWarning" xml:space="preserve">
+    <value>Could not validate the storage account and subscription given.
+Are you sure you want to continue {0}?</value>
+  </data>
+  <data name="StorageIsNotInTheSameLocationAsVault" xml:space="preserve">
+    <value>Storage account given is in a different location as compared to the current vault.
+Please provide a storage account with the same location as that of the vault.</value>
+  </data>
+  <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
+    <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
+  </data>
+  <data name="RemoveSiteWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Site {0}</value>
+  </data>
+  <data name="RemoveSiteWhatIfMessage" xml:space="preserve">
+    <value>Removes Site</value>
+  </data>
+  <data name="RemoveVaultWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Vault {0}</value>
+  </data>
+  <data name="RemoveVaultWhatIfMessage" xml:space="preserve">
+    <value>Removes Vault</value>
+  </data>
+  <data name="SiteDetailsNotValid" xml:space="preserve">
+    <value>Site name {0} is not valid. Please try again with the correct site details.</value>
+  </data>
+  <data name="VaultDeletionSuccessMessage" xml:space="preserve">
+    <value>Vault has been deleted</value>
+  </data>
+  <data name="VaultCannotBeDeleted" xml:space="preserve">
+    <value>Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation.</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Policy {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="SiteNotFound" xml:space="preserve">
+    <value>Site {0} is not associated with the Vault {1}</value>
+  </data>
+  <data name="BackupVaultSerialized" xml:space="preserve">
+    <value>RecoveryService - Backup Vault - Successfully serialized the file content</value>
+  </data>
+  <data name="ExecutingGetVaultCredCmdlet" xml:space="preserve">
+    <value>Executing cmdlet with SubscriptionId = {0}, ResourceGroupName = {1}, ResourceName = {2}, TargetLocation = {3}</value>
+  </data>
+  <data name="SavingVaultCred" xml:space="preserve">
+    <value>Saving Vault Credentials to file : {0}</value>
+  </data>
+  <data name="UploadedCertToIdmgmt" xml:space="preserve">
+    <value>RecoveryService - Successfully uploaded the certificate</value>
+  </data>
+  <data name="UploadingCertToIdmgmt" xml:space="preserve">
+    <value>RecoveryService - Going to upload the certificate</value>
+  </data>
+  <data name="VaultCredPathException" xml:space="preserve">
+    <value>The target location provided is not a directory. Please provide a directory.</value>
+  </data>
+  <data name="ResourceGroupNameNullOrEmpty" xml:space="preserve">
+    <value>Resource Group name mentioned is either null or empty</value>
+  </data>
+  <data name="NoBackupPropertiesProvided" xml:space="preserve">
+    <value>BackupStorageRedundancy is either null or empty.</value>
+  </data>
+</root>

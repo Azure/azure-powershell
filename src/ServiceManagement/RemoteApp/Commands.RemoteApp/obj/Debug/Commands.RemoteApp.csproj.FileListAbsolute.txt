@@ -1,0 +1,10 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\RemoteApp\Microsoft.WindowsAzure.Commands.RemoteApp.pdb
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Commands.RemoteApp.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Commands.RemoteApp.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Microsoft.WindowsAzure.Commands.RemoteApp.Commands.RemoteApp.resources
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Commands.RemoteApp.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Microsoft.WindowsAzure.Commands.RemoteApp.dll
+C:\Repository\azure-powershell\src\ServiceManagement\RemoteApp\Commands.RemoteApp\obj\Debug\Microsoft.WindowsAzure.Commands.RemoteApp.pdb

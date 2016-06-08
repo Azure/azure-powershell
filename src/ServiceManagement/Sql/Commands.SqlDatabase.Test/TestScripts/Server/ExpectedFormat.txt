@@ -1,0 +1,47 @@
+<server_location>#<server_name>
+SqlDatabaseServerContext
+
+ServerName Location         AdministratorLogin
+---------- --------         ------------------
+<server_name> <server_location> mylogin1          
+
+
+
+
+ServerName         : <server_name>
+Location           : <server_location>
+AdministratorLogin : mylogin1
+
+
+
+SqlDatabaseServerContext
+
+ServerName Location         AdministratorLogin
+---------- --------         ------------------
+<server_name> <server_location> mylogin1          
+
+
+
+
+ServerName         : <server_name>
+Location           : <server_location>
+AdministratorLogin : mylogin1
+
+
+
+SqlDatabaseServerFirewallRuleContext
+
+RuleName StartIpAddress EndIpAddress ServerName
+-------- -------------- ------------ ----------
+test     1.0.0.0        2.0.0.0      <server_name>
+
+
+
+
+RuleName       : test
+StartIpAddress : 1.0.0.0
+EndIpAddress   : 2.0.0.0
+ServerName     : <server_name>
+
+
+

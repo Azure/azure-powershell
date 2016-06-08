@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80496B7B-068A-4A1E-B0BB-4B1FFF3FA616}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Tools.Vhd</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Tools.Vhd</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ServiceManagement\Azure\Compute</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>..\..\..\Package\Release\ServiceManagement\Azure\Compute</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.WindowsAzure.Tools.Vhd.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Async\AsyncMachine.cs" />
+    <Compile Include="Async\ExceptionExtension.cs" />
+    <Compile Include="Model\AttributeHelper.cs" />
+    <Compile Include="Model\BitMap.cs" />
+    <Compile Include="Model\Block.cs" />
+    <Compile Include="Model\BlockAllocationTable.cs" />
+    <Compile Include="Model\DiskGeometry.cs" />
+    <Compile Include="Model\DiskType.cs" />
+    <Compile Include="Model\HostOsType.cs" />
+    <Compile Include="Model\IndexRange.cs" />
+    <Compile Include="Model\IndexRangeComparer.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\ParentLocator.cs" />
+    <Compile Include="Model\Persistence\AbstractDiskBlockFactory.cs" />
+    <Compile Include="Model\Persistence\BitMapFactory.cs" />
+    <Compile Include="Model\Persistence\BlockAllocationTableFactory.cs" />
+    <Compile Include="Model\Persistence\CloudVhdFileCreator.cs" />
+    <Compile Include="Model\Persistence\DifferencingDiskBlockFactory.cs" />
+    <Compile Include="Model\Persistence\DiskTypeFactory.cs" />
+    <Compile Include="Model\Persistence\DynamicDiskBlockFactory.cs" />
+    <Compile Include="Model\Persistence\FixedDiskBlockFactory.cs" />
+    <Compile Include="Model\Persistence\IBlockFactory.cs" />
+    <Compile Include="Model\Persistence\SectorFactory.cs" />
+    <Compile Include="Model\Persistence\StreamHelper.cs" />
+    <Compile Include="Model\Persistence\VhdConstants.cs" />
+    <Compile Include="Model\Persistence\VhdDataReader.cs" />
+    <Compile Include="Model\Persistence\VhdDataWriter.cs" />
+    <Compile Include="Model\Persistence\VhdFileFactory.cs" />
+    <Compile Include="Model\Persistence\VhdFooterFactory.cs" />
+    <Compile Include="Model\Persistence\VhdFooterSerializer.cs" />
+    <Compile Include="Model\Persistence\VhdHeaderFactory.cs" />
+    <Compile Include="Model\Persistence\VhdParentLocatorFactory.cs" />
+    <Compile Include="Model\PlatformCode.cs" />
+    <Compile Include="Model\Sector.cs" />
+    <Compile Include="Model\VhdCookie.cs" />
+    <Compile Include="Model\VhdCookieType.cs" />
+    <Compile Include="Model\VhdCreatorVersion.cs" />
+    <Compile Include="Model\VhdEntityAttribute.cs" />
+    <Compile Include="Model\VhdEntityDescriptor.cs" />
+    <Compile Include="Model\VhdFeature.cs" />
+    <Compile Include="Model\VhdFile.cs" />
+    <Compile Include="Model\VhdFileFormatVersion.cs" />
+    <Compile Include="Model\VhdFooter.cs" />
+    <Compile Include="Model\VhdHeader.cs" />
+    <Compile Include="Model\VhdHeaderVersion.cs" />
+    <Compile Include="Model\VhdPropertyAttribute.cs" />
+    <Compile Include="Model\VhdPropertyDescriptor.cs" />
+    <Compile Include="Model\VhdTimeStamp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SparseStream.cs" />
+    <Compile Include="VirtualDiskStream.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

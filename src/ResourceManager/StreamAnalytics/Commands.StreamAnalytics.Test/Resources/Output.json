@@ -1,0 +1,16 @@
+{
+
+        "name": "Output",
+        "properties": {
+          "datasource": {
+            "type": "Microsoft.Sql/Server/Database",
+            "properties": {
+              "server": "$EncryptedStringForTesting.database.windows.net",
+              "database": "azurenrtsql",
+			  "user": "azurenrt@$EncryptedStringForTesting",
+			  "password": "$EncryptedStringForTesting",
+              "table": "Samples"
+            }
+          }
+        }
+}

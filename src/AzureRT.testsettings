@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestSettings
+  id="bbc9ef85-493f-459f-bc76-434f1966c32c"
+  name="AzureRT"
+  enableDefaultDataCollectors="false"
+  xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Description>These are test settings for AzureRT test run.</Description>
+  <Deployment>
+    <DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\Resources\" />
+	<DeploymentItem filename="ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\" />
+  </Deployment>
+  <Execution parallelTestCount="0">
+    <Timeouts testTimeout="3000000" />
+  </Execution>
+</TestSettings>

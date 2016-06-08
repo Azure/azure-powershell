@@ -1,0 +1,12 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Automation\Microsoft.Azure.Commands.Automation.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Commands.Automation.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Commands.Automation.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Microsoft.Azure.Commands.Automation.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Commands.Automation.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Microsoft.Azure.Commands.Automation.dll
+C:\Repository\azure-powershell\src\ServiceManagement\Automation\Commands.Automation\obj\Debug\Microsoft.Azure.Commands.Automation.pdb

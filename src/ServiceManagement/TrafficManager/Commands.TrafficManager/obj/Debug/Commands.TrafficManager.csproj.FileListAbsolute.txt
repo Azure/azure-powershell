@@ -1,0 +1,10 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\TrafficManager\Commands.TrafficManager\obj\Debug\Commands.TrafficManager.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\TrafficManager\Commands.TrafficManager\obj\Debug\Commands.TrafficManager.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\TrafficManager\Commands.TrafficManager\obj\Debug\Microsoft.WindowsAzure.Commands.TrafficManager.dll
+C:\Repository\azure-powershell\src\ServiceManagement\TrafficManager\Commands.TrafficManager\obj\Debug\Microsoft.WindowsAzure.Commands.TrafficManager.pdb

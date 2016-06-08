@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="DummyName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WorkerRole name="$RoleName$" vmsize="Small">
+    <Endpoints>
+      <InputEndpoint name="HttpIn" protocol="tcp" port="$Port$" />
+    </Endpoints>
+    <Startup>
+      <Task executionContext="elevated" commandLine="setup_worker.cmd &gt; log.txt">
+        <Environment>
+          <Variable name="EMULATED">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+          <Variable name="RUNTIMEID" value="" />
+          <Variable name="RUNTIMEURL" value=""/>
+        </Environment>
+      </Task>
+    </Startup>
+    <Runtime>
+      <Environment>
+        <Variable name="PORT">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='HttpIn']/@port" />
+        </Variable>
+        <Variable name="EMULATED">
+          <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+        </Variable>
+      </Environment>
+      <EntryPoint>
+        <ProgramEntryPoint commandLine="startup.cmd" setReadyOnProcessStart="true"/>
+      </EntryPoint>
+    </Runtime>
+  </WorkerRole>
+</ServiceDefinition>

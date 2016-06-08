@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DataFactoryArgumentInvalid" xml:space="preserve">
+    <value>The data factory object provided is invalid. Use Get-AzureRmDataFactory to retrieve a specific data factory object, or use New-AzureRmDataFactory to create a new data factory object.</value>
+  </data>
+  <data name="DataFactoryGatewayConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove the gateway '{0}' in the data factory '{1}'?</value>
+  </data>
+  <data name="DataFactoryGatewayExists" xml:space="preserve">
+    <value>A gateway with the name {0} already exsits in the data factory {1}.</value>
+  </data>
+  <data name="DataFactoryGatewayRemoving" xml:space="preserve">
+    <value>Removing the gateway '{0}' in the data factory '{1}'.</value>
+  </data>
+  <data name="DataFactoryConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove data factory '{0}' in resource group '{1}'?</value>
+  </data>
+  <data name="DataFactoryCreating" xml:space="preserve">
+    <value>Creating data factory '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="DataFactoryExists" xml:space="preserve">
+    <value>A data factory with the name {0} in the resource group {1} exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="DataFactoryNotFound" xml:space="preserve">
+    <value>Data factory '{0}' does not exist in the resource group '{1}'.</value>
+  </data>
+  <data name="DataFactoryRemoving" xml:space="preserve">
+    <value>Removing data factory '{0}' in resource group '{1}'.</value>
+  </data>
+  <data name="InvalidJson" xml:space="preserve">
+    <value>Failed to parse input JSON file. {0}. Please correct the error in the JSON file and re-deploy {1} again.</value>
+  </data>
+  <data name="DownloadCredentialsNull" xml:space="preserve">
+    <value>The argument set for download method is incomplete.</value>
+  </data>
+  <data name="DownloadFailed" xml:space="preserve">
+    <value>Download failed. Please check if you have write permission to the path {0} or the sas url is valid. </value>
+  </data>
+  <data name="DownloadLogCompleted" xml:space="preserve">
+    <value>Download of the log is completed. Please find it in the directory {0}.</value>
+  </data>
+  <data name="ExtractedNameFromJsonMismatchWarning" xml:space="preserve">
+    <value>{0} name provided using -Name switch: '{1}' in cmdlet doesn't match with {0} name: '{2}' in JSON file. {0} will be created with name: '{1}'</value>
+  </data>
+  <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
+    <value>HTTP Status Code: {0}
+Error Code: {1}
+Error Message: {2}
+Request Id: {3}
+Timestamp (Utc):{4}</value>
+  </data>
+  <data name="HubConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove hub '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="HubCreating" xml:space="preserve">
+    <value>Creating hub '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="HubExists" xml:space="preserve">
+    <value>A hub with the name {0} in the data factory {1} exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="HubNotFound" xml:space="preserve">
+    <value>Hub '{0}' does not exist in the data factory '{1}'.</value>
+  </data>
+  <data name="HubRemoving" xml:space="preserve">
+    <value>Removing hub '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="LinkedServiceConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove linked service '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="LinkedServiceCreating" xml:space="preserve">
+    <value>Creating linked service '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="LinkedServiceExists" xml:space="preserve">
+    <value>A linked service with the name {0} in the data factory {1} exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="LinkedServiceNotFound" xml:space="preserve">
+    <value>Linked service '{0}' does not exist in the data factory '{1}'.</value>
+  </data>
+  <data name="LinkedServiceRemoving" xml:space="preserve">
+    <value>Removing linked service '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="NoWriteAccessToDirectory" xml:space="preserve">
+    <value>No access to write for the specified directory {0} or the directory does not exist.</value>
+  </data>
+  <data name="PipelineConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove pipeline '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="PipelineCreating" xml:space="preserve">
+    <value>Creating pipeline '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="PipelineExists" xml:space="preserve">
+    <value>A pipeline with the name {0} in the data factory {1} exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="PipelineNotFound" xml:space="preserve">
+    <value>Pipeline '{0}' does not exist in the data factory '{1}'.</value>
+  </data>
+  <data name="PipelineRemoving" xml:space="preserve">
+    <value>Removing pipeline '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
+    <value>Resource group name cannot be null.</value>
+  </data>
+  <data name="DatasetConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove dataset '{0}' in data factory '{1}'?</value>
+  </data>
+  <data name="DatasetCreating" xml:space="preserve">
+    <value>Creating dataset '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="DatasetExists" xml:space="preserve">
+    <value>A dataset with the name {0} in the data factory {1} already exists. 
+Continuing execution will overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="DatasetNotFound" xml:space="preserve">
+    <value>Dataset '{0}' does not exist in data factory '{1}'.</value>
+  </data>
+  <data name="DatasetRemoving" xml:space="preserve">
+    <value>Removing dataset '{0}' in data factory '{1}'.</value>
+  </data>
+  <data name="NoDataSliceFound" xml:space="preserve">
+    <value>No Slices were found in the time range specified. </value>
+  </data>
+  <data name="GatewayProvisioningFailed" xml:space="preserve">
+    <value>Failed to provision the gateway.  Please check if there is any error in the gateway properties before re-create it again.</value>
+  </data>
+  <data name="HubProvisioningFailed" xml:space="preserve">
+    <value>Failed to provision the hub.  Please check if there is any error in the hub properties before re-create it again.</value>
+  </data>
+  <data name="FormattedArgumentOutOfRangeExceptionMessageTemplate" xml:space="preserve">
+    <value>{0}
+For data factory naming restrictions, please see http://msdn.microsoft.com/en-us/library/dn835027.aspx</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForGetSlice" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRmDataFactorySlice command if you want to specify EndDateTime.</value>
+  </data>
+  <data name="EndDateTimeNotSpecifiedForSetSliceStatus" xml:space="preserve">
+    <value>EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRmDataFactorySliceStatus command if you want to specify EndDateTime.</value>
+  </data>
+</root>

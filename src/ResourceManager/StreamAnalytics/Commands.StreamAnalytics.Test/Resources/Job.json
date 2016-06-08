@@ -1,0 +1,104 @@
+﻿{
+    "location": "West US",
+    "tags": { "key": "value" },
+
+    "properties": {
+        "sku": {
+            "name": "standard"
+        },
+        "inputs": [
+            {
+                "name": "Input",
+                "properties": {
+                    "type": "stream",
+                    "serialization": {
+                        "type": "JSON",
+                        "properties": {
+                            "encoding": "UTF8"
+                        }
+                    },
+                    "datasource": {
+                        "type": "Microsoft.Storage/Blob",
+                        "properties": {
+                            "storageAccounts": [
+                                {
+                                    "accountName": "azurenrtdogfood",
+                                    "accountKey": "$EncryptedStringForTesting"
+                                }
+                            ],
+                            "container": "samples",
+                            "pathPattern": ""
+                        }
+                    }
+                }
+            }
+        ],
+        "transformation": {
+            "name": "transform1",
+            "properties": {
+                "streamingUnits": 1,
+                "query": "select Id, Name from Input"
+            }
+        },
+        "outputs": [
+            {
+                "name": "Output",
+                "properties": {
+                    "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                            "server": "$EncryptedStringForTesting.database.windows.net",
+                            "database": "azurenrtsql",
+                            "user": "azurenrt@$EncryptedStringForTesting",
+                            "password": "$EncryptedStringForTesting",
+                            "table": "Samples"
+                        }
+                    }
+                }
+            }
+        ],
+        "functions": [
+            {
+                "name": "scoreTweet",
+                "properties": {
+                    "type": "Scalar",
+                    "properties": {
+                        "inputs": [
+                            {
+                                "dataType": "nvarchar(max)",
+                                "isConfigurationParameter": false
+                            }
+                        ],
+                        "output": {
+                            "dataType": "nvarchar(max)"
+                        },
+                        "binding": {
+                            "type": "Microsoft.MachineLearning/WebService",
+                            "properties": {
+                                "endpoint": "https://ussouthcentral.services.azureml.net/workspaces/f80d5d7a77fa4a46bf2a30c63c078dca/services/b7be5e40fd194258896fb602c1858eaf/execute?api-version=2.0&details=true",
+                                "apiKey": "$EncryptedStringForTesting",
+                                "inputs": {
+                                    "name": "input1",
+                                    "columnNames": [
+                                        {
+                                            "name": "tweet",
+                                            "dataType": "String",
+                                            "mapTo": 0
+                                        }
+                                    ]
+                                },
+                                "outputs": [
+                                    {
+                                        "name": "Sentiment",
+                                        "dataType": "String"
+                                    }
+                                ],
+                                "batchSize": 10
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

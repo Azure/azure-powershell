@@ -1,0 +1,5 @@
+C:\Repository\azure-powershell\src\Storage\Commands.Storage.MsTestLib\bin\Debug\MsTestLib.dll
+C:\Repository\azure-powershell\src\Storage\Commands.Storage.MsTestLib\bin\Debug\MsTestLib.pdb
+C:\Repository\azure-powershell\src\Storage\Commands.Storage.MsTestLib\obj\Debug\Commands.Storage.MsTestLib.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\Storage\Commands.Storage.MsTestLib\obj\Debug\MsTestLib.dll
+C:\Repository\azure-powershell\src\Storage\Commands.Storage.MsTestLib\obj\Debug\MsTestLib.pdb

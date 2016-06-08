@@ -1,0 +1,188 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/7bc8d82a-e704-45b1-8049-5a971ce10ce2/resourceGroups/test-group/providers/Microsoft.Sql/servers/groupserver1/elasticPools/testpool2?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2JjOGQ4MmEtZTcwNC00NWIxLTgwNDktNWE5NzFjZTEwY2UyL3Jlc291cmNlR3JvdXBzL3Rlc3QtZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9ncm91cHNlcnZlcjEvZWxhc3RpY1Bvb2xzL3Rlc3Rwb29sMj9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "9a369779-b9ed-4bc8-8bad-3d3d445c9ef4"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/7bc8d82a-e704-45b1-8049-5a971ce10ce2/resourceGroups/test-group/providers/Microsoft.Sql/servers/groupserver1/elasticPools/testpool2\",\r\n  \"name\": \"testpool2\",\r\n  \"type\": \"Microsoft.Sql/servers/elasticPools\",\r\n  \"location\": \"Japan East\",\r\n  \"kind\": null,\r\n  \"properties\": {\r\n    \"creationDate\": \"2015-04-21T22:41:37.77\",\r\n    \"edition\": \"Standard\",\r\n    \"state\": \"Ready\",\r\n    \"dtu\": 200,\r\n    \"databaseDtuMin\": 0,\r\n    \"databaseDtuMax\": 100,\r\n    \"storageMB\": 204800\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "426"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "27b29ab9-53ab-4afd-b4b3-f8b4a87d88d1"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31997"
+        ],
+        "x-ms-correlation-request-id": [
+          "e7763038-0740-48cf-819e-6ae015473398"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150422T182240Z:e7763038-0740-48cf-819e-6ae015473398"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Apr 2015 18:22:39 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7bc8d82a-e704-45b1-8049-5a971ce10ce2/resourceGroups/test-group/providers/Microsoft.Sql/servers/groupserver1/elasticPools/testpool2/metricDefinitions?api-version=2014-04-01&$filter=",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2JjOGQ4MmEtZTcwNC00NWIxLTgwNDktNWE5NzFjZTEwY2UyL3Jlc291cmNlR3JvdXBzL3Rlc3QtZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9ncm91cHNlcnZlcjEvZWxhc3RpY1Bvb2xzL3Rlc3Rwb29sMi9tZXRyaWNEZWZpbml0aW9ucz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxJiRmaWx0ZXI9",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "x-ms-version": [
+          "2014-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Insights.InsightsClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"cpu_percent\",\r\n        \"localizedValue\": \"CPU percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"primaryAggregationType\": \"Average\",\r\n      \"resourceUri\": null,\r\n      \"metricAvailabilities\": [\r\n        {\r\n          \"timeGrain\": \"PT5M\",\r\n          \"retention\": \"PT1H\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"PT1H\",\r\n          \"retention\": \"P1D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P7D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P14D\"\r\n        }\r\n      ],\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"physical_data_read_percent\",\r\n        \"localizedValue\": \"Data IO percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"primaryAggregationType\": \"Average\",\r\n      \"resourceUri\": null,\r\n      \"metricAvailabilities\": [\r\n        {\r\n          \"timeGrain\": \"PT5M\",\r\n          \"retention\": \"PT1H\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"PT1H\",\r\n          \"retention\": \"P1D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P7D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P14D\"\r\n        }\r\n      ],\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"log_write_percent\",\r\n        \"localizedValue\": \"Log IO percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"primaryAggregationType\": \"Average\",\r\n      \"resourceUri\": null,\r\n      \"metricAvailabilities\": [\r\n        {\r\n          \"timeGrain\": \"PT5M\",\r\n          \"retention\": \"PT1H\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"PT1H\",\r\n          \"retention\": \"P1D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P7D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P14D\"\r\n        }\r\n      ],\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"dtu_consumption_percent\",\r\n        \"localizedValue\": \"DTU percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"primaryAggregationType\": \"Average\",\r\n      \"resourceUri\": null,\r\n      \"metricAvailabilities\": [\r\n        {\r\n          \"timeGrain\": \"PT5M\",\r\n          \"retention\": \"PT1H\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"PT1H\",\r\n          \"retention\": \"P1D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P7D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P14D\"\r\n        }\r\n      ],\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"storage_percent\",\r\n        \"localizedValue\": \"Storage percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"primaryAggregationType\": \"Average\",\r\n      \"resourceUri\": null,\r\n      \"metricAvailabilities\": [\r\n        {\r\n          \"timeGrain\": \"PT5M\",\r\n          \"retention\": \"PT1H\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"PT1H\",\r\n          \"retention\": \"P1D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P7D\"\r\n        },\r\n        {\r\n          \"timeGrain\": \"P1D\",\r\n          \"retention\": \"P14D\"\r\n        }\r\n      ],\r\n      \"properties\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1734"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "01428b2f-a365-4434-bfac-c882f7a97d50"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31998"
+        ],
+        "x-ms-correlation-request-id": [
+          "fc6c3110-91c5-410c-8d72-3dfdf7d04193"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150422T182244Z:fc6c3110-91c5-410c-8d72-3dfdf7d04193"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Apr 2015 18:22:43 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/7bc8d82a-e704-45b1-8049-5a971ce10ce2/resourceGroups/test-group/providers/Microsoft.Sql/servers/groupserver1/elasticPools/testpool2/metrics?api-version=2014-04-01&$filter=%28name.value%20eq%20%27cpu_percent%27%20or%20name.value%20eq%20%27physical_data_read_percent%27%20or%20name.value%20eq%20%27log_write_percent%27%20or%20name.value%20eq%20%27dtu_consumption_percent%27%20or%20name.value%20eq%20%27storage_percent%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202015-04-22T16%3A00%3A00.0000000Z%20and%20endTime%20eq%202015-04-22T17%3A00%3A00.0000000Z",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvN2JjOGQ4MmEtZTcwNC00NWIxLTgwNDktNWE5NzFjZTEwY2UyL3Jlc291cmNlR3JvdXBzL3Rlc3QtZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9ncm91cHNlcnZlcjEvZWxhc3RpY1Bvb2xzL3Rlc3Rwb29sMi9tZXRyaWNzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEmJGZpbHRlcj0lMjhuYW1lLnZhbHVlJTIwZXElMjAlMjdjcHVfcGVyY2VudCUyNyUyMG9yJTIwbmFtZS52YWx1ZSUyMGVxJTIwJTI3cGh5c2ljYWxfZGF0YV9yZWFkX3BlcmNlbnQlMjclMjBvciUyMG5hbWUudmFsdWUlMjBlcSUyMCUyN2xvZ193cml0ZV9wZXJjZW50JTI3JTIwb3IlMjBuYW1lLnZhbHVlJTIwZXElMjAlMjdkdHVfY29uc3VtcHRpb25fcGVyY2VudCUyNyUyMG9yJTIwbmFtZS52YWx1ZSUyMGVxJTIwJTI3c3RvcmFnZV9wZXJjZW50JTI3JTI5JTIwYW5kJTIwdGltZUdyYWluJTIwZXElMjBkdXJhdGlvbiUyN1BUNU0lMjclMjBhbmQlMjBzdGFydFRpbWUlMjBlcSUyMDIwMTUtMDQtMjJUMTYlM0EwMCUzQTAwLjAwMDAwMDBaJTIwYW5kJTIwZW5kVGltZSUyMGVxJTIwMjAxNS0wNC0yMlQxNyUzQTAwJTNBMDAuMDAwMDAwMFo=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "x-ms-version": [
+          "2014-04-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Insights.InsightsClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": {\r\n        \"value\": \"cpu_percent\",\r\n        \"localizedValue\": \"CPU percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"timeGrain\": \"PT5M\",\r\n      \"startTime\": \"2015-04-22T16:00:00Z\",\r\n      \"endTime\": \"2015-04-22T17:00:00Z\",\r\n      \"metricValues\": [\r\n        {\r\n          \"timestamp\": \"2015-04-22T17:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:55:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:50:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:45:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:40:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:35:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:30:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:25:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:20:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:15:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:10:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:05:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        }\r\n      ],\r\n      \"resourceId\": null,\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"physical_data_read_percent\",\r\n        \"localizedValue\": \"Data IO percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"timeGrain\": \"PT5M\",\r\n      \"startTime\": \"2015-04-22T16:00:00Z\",\r\n      \"endTime\": \"2015-04-22T17:00:00Z\",\r\n      \"metricValues\": [\r\n        {\r\n          \"timestamp\": \"2015-04-22T17:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:55:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:50:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:45:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:40:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:35:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:30:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:25:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:20:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:15:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:10:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:05:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        }\r\n      ],\r\n      \"resourceId\": null,\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"log_write_percent\",\r\n        \"localizedValue\": \"Log IO percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"timeGrain\": \"PT5M\",\r\n      \"startTime\": \"2015-04-22T16:00:00Z\",\r\n      \"endTime\": \"2015-04-22T17:00:00Z\",\r\n      \"metricValues\": [\r\n        {\r\n          \"timestamp\": \"2015-04-22T17:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:55:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:50:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:45:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:40:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:35:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:30:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:25:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:20:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:15:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:10:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:05:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        }\r\n      ],\r\n      \"resourceId\": null,\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"dtu_consumption_percent\",\r\n        \"localizedValue\": \"DTU percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"timeGrain\": \"PT5M\",\r\n      \"startTime\": \"2015-04-22T16:00:00Z\",\r\n      \"endTime\": \"2015-04-22T17:00:00Z\",\r\n      \"metricValues\": [\r\n        {\r\n          \"timestamp\": \"2015-04-22T17:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:55:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:50:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:45:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:40:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:35:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:30:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:25:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:20:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:15:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:10:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:05:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:00:01Z\",\r\n          \"average\": 0.0,\r\n          \"minimum\": 0.0,\r\n          \"maximum\": 0.0,\r\n          \"total\": 0.0,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        }\r\n      ],\r\n      \"resourceId\": null,\r\n      \"properties\": []\r\n    },\r\n    {\r\n      \"name\": {\r\n        \"value\": \"storage_percent\",\r\n        \"localizedValue\": \"Storage percentage\"\r\n      },\r\n      \"unit\": \"Percent\",\r\n      \"timeGrain\": \"PT5M\",\r\n      \"startTime\": \"2015-04-22T16:00:00Z\",\r\n      \"endTime\": \"2015-04-22T17:00:00Z\",\r\n      \"metricValues\": [\r\n        {\r\n          \"timestamp\": \"2015-04-22T17:00:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:55:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:50:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:45:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:40:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:35:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:30:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:25:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:20:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:15:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:10:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:05:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        },\r\n        {\r\n          \"timestamp\": \"2015-04-22T16:00:01Z\",\r\n          \"average\": 0.00131226,\r\n          \"minimum\": 0.00131226,\r\n          \"maximum\": 0.00131226,\r\n          \"total\": 0.00131226,\r\n          \"count\": 1,\r\n          \"properties\": []\r\n        }\r\n      ],\r\n      \"resourceId\": null,\r\n      \"properties\": []\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "9138"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "42cb45fe-8274-4e0c-a01b-447b9c77474b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31997"
+        ],
+        "x-ms-correlation-request-id": [
+          "cbdaaff9-431c-4e91-9b71-41898c442f2b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20150422T182249Z:cbdaaff9-431c-4e91-9b71-41898c442f2b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Apr 2015 18:22:48 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "7bc8d82a-e704-45b1-8049-5a971ce10ce2"
+  }
+}

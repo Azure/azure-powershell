@@ -1,0 +1,10 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll-Help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\HDInsight\Commands.HDInsight\obj\Debug\HDInsight.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\HDInsight\Commands.HDInsight\obj\Debug\HDInsight.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\HDInsight\Commands.HDInsight\obj\Debug\Microsoft.WindowsAzure.Commands.HDInsight.dll
+C:\Repository\azure-powershell\src\ServiceManagement\HDInsight\Commands.HDInsight\obj\Debug\Microsoft.WindowsAzure.Commands.HDInsight.pdb

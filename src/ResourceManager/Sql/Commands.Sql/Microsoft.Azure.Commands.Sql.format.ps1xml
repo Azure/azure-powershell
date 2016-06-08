@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.Sql.Location_Capabilities.Model.LocationCapabilityModel</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Sql.Location_Capabilities.Model.LocationCapabilityModel</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>LocationName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExpandedDetails</Label>
+                <PropertyName>ExpandedDetails</PropertyName>
+                <ItemSelectionCondition>
+                  <PropertyName>ExpandedDetails</PropertyName>
+                </ItemSelectionCondition>
+              </ListItem>
+              <ListItem>
+                <Label>SupportedServerVersions</Label>
+                <PropertyName>SupportedServerVersions</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ExpandedDetails -eq $null</ScriptBlock>
+                </ItemSelectionCondition>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>

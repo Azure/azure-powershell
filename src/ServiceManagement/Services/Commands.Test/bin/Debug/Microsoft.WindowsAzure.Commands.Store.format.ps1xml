@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Store.WindowsAzureOffer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Store.WindowsAzureOffer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>AddOn</Label>
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provider</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Locations</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Plans</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.AddOn</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Provider</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $locations = @()
+                  foreach ($location in $_.Locations)
+                  {
+                    $locations += $location.Trim()
+                  }
+                  $string = $locations -join ', '
+                  $string
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $plans = @()
+                  foreach ($plan in $_.Plans)
+                  {
+                  $plans += $plan.PlanIdentifier.Trim()
+                  }
+                  $string = $plans -join ', '
+                  $string
+                </ScriptBlock>
+            </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Utilities.Store.WindowsAzureAddOn</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Utilities.Store.WindowsAzureAddOn</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AddOn</Label>
+                <PropertyName>AddOn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Plan</Label>
+                <PropertyName>Plan</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SchemaVersion</Label>
+                <PropertyName>SchemaVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>State</Label>
+                <PropertyName>State</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastOperationStatus</Label>
+                <ScriptBlock>
+                  $format = "{0}{2, -7}: {3}{0}{4, -7}: {5}"
+                  $objects = @("`r`n", "`t", "Type", $_.LastOperationStatus.Type, "Result", $_.LastOperationStatus.Result)
+                  if ($_.LastOperationStatus.Error -ne $null)
+                  {
+                    $format += "{0}{6, -7}:{0}{1}{7, -9}: {8}{0}{1}{9, -9}: {10}"
+                    $objects += @("Error", "HttpCode", $_.LastOperationStatus.Error.HttpCode, "Message", $_.LastOperationStatus.Error.Message)
+                  }
+                  [string]::Format($format, $objects)
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>OutputItems</Label>
+                <ScriptBlock>
+                  $format = ""
+                  $objects = @("`r`n")
+                  $max = 0
+                  foreach ($outputItem in $_.OutputItems)
+                  {
+                    if ($outputItem.Key.Length -gt $max)
+                    {
+                      $max = $outputItem.Key.Length
+                  }
+                  }
+
+                  $max++
+
+                  foreach ($outputItem in $_.OutputItems)
+                  {
+                    # Add key
+                    $format += "{0}{" + $objects.Count + ",-" + $max + "}"
+                    $objects += $outputItem.Key
+
+                    # Add value
+                    $format += ": {" + $objects.Count + "}"
+                    $value = $outputItem.Value
+                    if ($value.Length -gt 80)
+                  {
+                  $value = $value.Substring(0, 80)
+                  $value += "..."
+                  }
+                  $objects += $value
+                  }
+                  [string]::Format($format, $objects)
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
