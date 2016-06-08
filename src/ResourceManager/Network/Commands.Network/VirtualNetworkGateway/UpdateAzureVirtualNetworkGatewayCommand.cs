@@ -30,13 +30,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway")]
+            HelpMessage = "The VirtualNetworkGateway to be modified")]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual network gateway's SKU")]
+            HelpMessage = "The type of the Vpn:PolicyBased/RouteBased")]
         [ValidateSet(
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
@@ -47,32 +47,33 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The default site to use for force tunneling. If a default site is specified, all internet traffic from the gateway's vnet is routed to that site.")]
+             ParameterSetName = "SetByResource",
+            HelpMessage = "GatewayDefaultSite")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The address space to allocate VPN client IP addresses from. This should not overlap with virtual network or on-premise ranges.")]
+            HelpMessage = "P2S VpnClient AddressPool")]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A list of VPN client root certificates to use for VPN client authentication. Connecting VPN clients must present certificates generated from one of these root certificates.")]
+            HelpMessage = "The list of VpnClientRootCertificates to be added.")]
         public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A list of revoked VPN client certificates. A VPN client presenting a certificate that matches one of these will be told to go away.")]
+            HelpMessage = "The list of VpnClientCertificates to be revoked.")]
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual network gateway's ASN, used to set up BGP sessions inside IPsec tunnels")]
+            HelpMessage = "The virtual network gateway's ASN for BGP over VPN")]
         public uint Asn { get; set; }
 
         [Parameter(
@@ -102,6 +103,10 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.GatewayDefaultSite = new PSResourceId();
                 this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
             }
+            else
+            {
+                this.VirtualNetworkGateway.GatewayDefaultSite = null;
+            }
 
             if ((this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null) && this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
@@ -127,21 +132,21 @@ namespace Microsoft.Azure.Commands.Network
             if ((this.Asn > 0 || this.PeerWeight > 0) && this.VirtualNetworkGateway.BgpSettings == null)
             {
                 this.VirtualNetworkGateway.BgpSettings = new PSBgpSettings();
-                this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddress = null; // The gateway's BGP peering address (private IP address assigned within the vnet) can't be changed
-            }
+                this.VirtualNetworkGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
 
-            if (this.Asn > 0)
-            {
-                this.VirtualNetworkGateway.BgpSettings.Asn = this.Asn;
-            }
+                if (this.Asn > 0)
+                {
+                    this.VirtualNetworkGateway.BgpSettings.Asn = this.Asn;
+                }
 
-            if (this.PeerWeight > 0)
-            {
-                this.VirtualNetworkGateway.BgpSettings.PeerWeight = this.PeerWeight;
-            }
-            else if (this.PeerWeight < 0)
-            {
-                throw new ArgumentException("PeerWeight must be a positive integer");
+                if (this.PeerWeight > 0)
+                {
+                    this.VirtualNetworkGateway.BgpSettings.PeerWeight = this.PeerWeight;
+                }
+                else if (this.PeerWeight < 0)
+                {
+                    throw new ArgumentException("PeerWeight must be a positive integer");
+                }
             }
 
             // Map to the sdk object
