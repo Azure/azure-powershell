@@ -65,6 +65,7 @@
     <Compile Include="BMSAPIs\ItemAPIs.cs" />
     <Compile Include="BMSAPIs\ContainerAPIs.cs" />
     <Compile Include="BMSAPIs\ProtectableItemAPI.cs" />
+    <Compile Include="BMSAPIs\ILRAPIs.cs" />
     <Compile Include="BMSAPIs\RecoveryPointsAPIs.cs" />
     <Compile Include="BMSAPIs\RestoreDiskAPIs.cs" />
     <Compile Include="ClientProxy.cs" />

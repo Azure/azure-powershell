@@ -42,11 +42,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
         /// <summary>
-        /// Defines the time (in seconds) to sleep in between calls while tracking operations
-        /// </summary>
-        private int _defaultSleepForOperationTracking = 5;
-
-        /// <summary>
         /// Service client adapter is used to make calls to the backend service
         /// </summary>
         protected ServiceClientAdapter ServiceClientAdapter { get; set; }
@@ -179,35 +174,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
-        /// Block to track the operation to completion.
-        /// Waits till the status of the operation becomes something other than InProgress.
-        /// </summary>
-        /// <param name="statusUrlLink"></param>
-        /// <param name="serviceClientMethod"></param>
-        /// <returns></returns>
-        public BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
-                                              string statusUrlLink,
-                                              Func<string, BackUpOperationStatusResponse> serviceClientMethod)
-        {
-            // using this directly because it doesn't matter which function we use.
-            // return type is same and currently we are using it in only two places.
-            // protected item and policy.
-            BackUpOperationStatusResponse response = serviceClientMethod(statusUrlLink);
-
-            while (
-                response != null &&
-                response.OperationStatus != null &&
-                response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
-            {
-                WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                response = serviceClientMethod(statusUrlLink);
-            }
-
-            return response;
-        }
-
-        /// <summary>
         /// Based on the response from the service, handles the job created in the service appropriately.
         /// </summary>
         /// <param name="itemResponse">Response from service</param>
@@ -217,7 +183,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             itemResponse.AzureAsyncOperation);
 
-            var response = WaitForOperationCompletionUsingStatusLink(
+            var response = TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
                                             itemResponse.AzureAsyncOperation,
                                             ServiceClientAdapter.GetProtectedItemOperationStatusByURL);
 

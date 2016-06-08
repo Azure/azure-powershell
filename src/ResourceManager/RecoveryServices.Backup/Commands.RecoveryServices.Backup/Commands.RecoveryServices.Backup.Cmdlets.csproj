@@ -103,6 +103,7 @@
     <Compile Include="Cmdlets\ProtectionPolicy\PolicyCmdletHelpers.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureRmRecoveryServicesBackupProtectionPolicy.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\ExploreAzureRmRecoveryServicesBackupRecoveryPoint.cs" />
     <Compile Include="Cmdlets\RecoveryPoint\GetAzureRmRecoveryServicesBackupRecoveryPoint.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Cmdlets\Restore\RestoreAzureRMRecoveryServicesBackupItem.cs" />

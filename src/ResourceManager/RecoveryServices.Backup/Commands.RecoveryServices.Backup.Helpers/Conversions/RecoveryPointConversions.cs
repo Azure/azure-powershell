@@ -60,7 +60,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                     SourceVMStorageType = recPoint.SourceVMStorageType,
+                    EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? recPoint.IsSourceVMEncrypted.Value : false,
+                    IlrSessionActive = recPoint.IsInstantILRSessionActive,
                 };
+
+                if (rpBase.EncryptionEnabled)
+                {
+                    rpBase.KeyAndSecretDetails = new KeyAndSecretDetails()
+                    {
+                        SecretUrl = recPoint.KeyAndSecret.BekDetails.SecretUrl,
+                        KeyUrl = recPoint.KeyAndSecret.KekDetails.KeyUrl,
+                        SecretData = recPoint.KeyAndSecret.BekDetails.SecretData,
+                        KeyBackupData = recPoint.KeyAndSecret.KekDetails.KeyBackupData,
+                        KeyVaultId = recPoint.KeyAndSecret.KekDetails.KeyVaultId,
+                        SecretVaultId = recPoint.KeyAndSecret.BekDetails.SecretVaultId,
+                    };
+                }
+
                 result.Add(rpBase);
             }
 
@@ -99,6 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 WorkloadType = item.WorkloadType,
                 RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                 EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? recPoint.IsSourceVMEncrypted.Value : false,
+                IlrSessionActive = recPoint.IsInstantILRSessionActive,
             };
 
             if (result.EncryptionEnabled)

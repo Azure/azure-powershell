@@ -245,10 +245,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>Recovery point detail as returned by the service</returns>
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
-            AzureVmItem item = ProviderData[GetRecoveryPointParams.Item]
+            AzureVmItem item = ProviderData[RecoveryPointParams.Item]
                 as AzureVmItem;
 
-            string recoveryPointId = ProviderData[GetRecoveryPointParams.RecoveryPointId].ToString();
+            string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
@@ -264,9 +264,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of recovery point PowerShell model objects</returns>
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
-            DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData[GetRecoveryPointParams.EndDate]);
-            AzureVmItem item = ProviderData[GetRecoveryPointParams.Item]
+            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
+            AzureVmItem item = ProviderData[RecoveryPointParams.Item]
                 as AzureVmItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
@@ -673,6 +673,121 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             defaultRetention.YearlySchedule.RetentionScheduleWeekly = GetWeeklyRetentionFormat();
             return defaultRetention;
 
+        }
+
+        public void ExploreRecoveryPoint()
+        {
+            AzureVmRecoveryPoint recoveryPoint = (AzureVmRecoveryPoint)this.ProviderData[RecoveryPointParams.RecoveryPoint];
+            ILRAction ilrAction = (ILRAction)this.ProviderData[RecoveryPointParams.ILRAction];
+            string targetLocation = (string)this.ProviderData[RecoveryPointParams.TargetLocation];
+
+            string iqn = GetIqn();
+
+            BaseRecoveryServicesJobResponse apiResponse = null;
+
+            switch (ilrAction)
+            {
+                case ILRAction.Connect:
+                    if (!recoveryPoint.IlrSessionActive)
+                    {
+                        apiResponse = ServiceClientAdapter.ProvisionOrExtendIlrSession(recoveryPoint, iqn);
+                    }
+                    else
+                    {
+                        // throw error
+                    }
+                    break;
+                case ILRAction.Extend:
+                    if (recoveryPoint.IlrSessionActive)
+                    {
+                        apiResponse = ServiceClientAdapter.ProvisionOrExtendIlrSession(recoveryPoint, iqn, true);
+                    }
+                    else
+                    {
+                        // throw error
+                    }
+                    break;
+                case ILRAction.Terminate:
+                    if (recoveryPoint.IlrSessionActive)
+                    {
+                        ServiceClientAdapter.RevokeIlrSession(recoveryPoint);
+                    }
+                    else
+                    {
+                        // throw error
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(recoveryPoint.RecoveryPointId);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, recoveryPoint.RecoveryPointId);
+            string vmName = IdUtils.GetVmNameFromContainerUri(containerUri, 4);
+            
+            ClientScriptForConnection clientScriptForConnection = ExtractConnectionScript(apiResponse);
+            string underscore = "_";
+            string osName = clientScriptForConnection.OSType;
+            string rpDateTime = recoveryPoint.RecoveryPointTime.ToString("yyyy-dd-MM_HH-mm-ss");
+            string fileName = string.Join(underscore, osName, vmName, rpDateTime);
+            string filePath = System.IO.Path.Combine(targetLocation, fileName + "." + clientScriptForConnection.ScriptExtension);
+            
+            System.IO.File.WriteAllBytes(filePath, Convert.FromBase64String(clientScriptForConnection.ScriptContent));
+        }
+
+        private ClientScriptForConnection ExtractConnectionScript(BaseRecoveryServicesJobResponse apiResponse)
+        {
+            var response = TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
+                apiResponse.AzureAsyncOperation, ServiceClientAdapter.GetProtectedItemOperationStatusByURL);
+
+            ClientScriptForConnection clientScriptForConnection = null;
+
+            if (response != null && response.OperationStatus != null)
+            {
+                if (response.OperationStatus.Properties != null &&
+                ((OperationStatusProvisionILRExtendedInfo)response.OperationStatus.Properties).RecoveryTarget != null)
+                {
+                    InstanceItemRecoveryTarget recoveryTarget =
+                        ((OperationStatusProvisionILRExtendedInfo)response.OperationStatus.Properties).RecoveryTarget;
+
+                    if (recoveryTarget.ClientScripts.Count != 0)
+                    {
+                        clientScriptForConnection = recoveryTarget.ClientScripts.First();
+                    }
+                }
+            }
+
+            if (clientScriptForConnection == null)
+            {
+                // throw ex.
+            }
+
+            return clientScriptForConnection;
+        }
+
+        private string GetIqn()
+        {
+            string iqn = null;
+
+            System.ServiceProcess.ServiceController serviceController = new System.ServiceProcess.ServiceController("msiscsi");
+            if (serviceController.Status != System.ServiceProcess.ServiceControllerStatus.Running)
+            {
+                serviceController.Start();
+                serviceController.WaitForStatus(System.ServiceProcess.ServiceControllerStatus.Running, TimeSpan.FromSeconds(5));
+            }
+
+            using (System.Management.Automation.PowerShell PowerShellInstance = System.Management.Automation.PowerShell.Create())
+            {
+                PowerShellInstance.AddScript("(Get-InitiatorPort).NodeAddress");
+                System.Collections.ObjectModel.Collection<PSObject> psOutput = PowerShellInstance.Invoke();
+
+                if (psOutput.Count != 0 && psOutput.First() != null)
+                {
+                    iqn = (string)psOutput.First().BaseObject;
+                }
+            }
+
+            return iqn;
         }
 
         private static Models.DailyRetentionFormat GetDailyRetentionFormat()

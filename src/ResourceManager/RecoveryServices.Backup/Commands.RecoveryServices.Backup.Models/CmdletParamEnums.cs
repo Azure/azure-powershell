@@ -32,12 +32,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         Container
     }
 
-    public enum GetRecoveryPointParams
+    public enum RecoveryPointParams
     {
         StartDate,
         EndDate,
         Item,
         RecoveryPointId,
+        RecoveryPoint,
+        ILRAction,
+        TargetLocation,
     }
 
     public enum RestoreBackupItemParams
