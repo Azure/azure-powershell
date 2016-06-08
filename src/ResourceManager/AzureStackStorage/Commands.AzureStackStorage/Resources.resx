@@ -274,4 +274,18 @@
   <data name="SetQuotaWarning" xml:space="preserve">
     <value>Are you sure you want to perform the operation "set ACS quota '{0}'"?</value>
   </data>
+  <data name="AddFarmDescription" xml:space="preserve">
+    <value>Performing the operation Add ACS Farm '{0}'.</value>
+    <comment>{0} is the farm name</comment>
+  </data>
+  <data name="AddFarmWarning" xml:space="preserve">
+   <value>Are you sure you want to perform the operation "add ACS Farm '{0}'"?</value>
+  </data>
+  <data name="OnDemandGcDescription" xml:space="preserve">
+    <value>Performing the operation clear ACS storage accounts on Farm '{0}'.</value>
+    <comment>{0} is the farm name</comment>
+  </data>
+  <data name="OnDemandGcWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "clear ACS storage accounts on Farm '{0}'"?</value>
+  </data>
 </root>
