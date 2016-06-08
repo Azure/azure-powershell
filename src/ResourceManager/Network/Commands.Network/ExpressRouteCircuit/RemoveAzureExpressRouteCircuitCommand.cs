@@ -43,10 +43,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdletInternal()
         {
-            base.ExecuteCmdlet();
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
