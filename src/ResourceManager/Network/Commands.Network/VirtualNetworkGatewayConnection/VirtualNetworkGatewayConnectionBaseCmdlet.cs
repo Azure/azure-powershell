@@ -22,7 +22,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class VirtualNetworkGatewayConnectionBaseCmdlet : NetworkBaseCmdlet
+    public abstract class VirtualNetworkGatewayConnectionBaseCmdlet : NFVBaseCmdlet
     {
         public IVirtualNetworkGatewayConnectionsOperations VirtualNetworkGatewayConnectionClient
         {

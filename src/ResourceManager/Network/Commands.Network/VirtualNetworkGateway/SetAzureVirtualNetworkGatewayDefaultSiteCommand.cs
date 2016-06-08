@@ -40,10 +40,8 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdletInternal()
         {
-            base.ExecuteCmdlet();
-
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

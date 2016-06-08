@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
 
-    public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
+    public class AzureExpressRouteCircuitPeeringConfigBase : NFVBaseCmdlet
     {
         [Parameter(
             Mandatory = false,

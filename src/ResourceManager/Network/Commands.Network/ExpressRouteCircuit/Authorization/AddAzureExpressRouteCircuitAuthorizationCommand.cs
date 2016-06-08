@@ -35,9 +35,8 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdletInternal()
         {
-            base.ProcessRecord();
             var authorization = this.ExpressRouteCircuit.Authorizations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (authorization != null)

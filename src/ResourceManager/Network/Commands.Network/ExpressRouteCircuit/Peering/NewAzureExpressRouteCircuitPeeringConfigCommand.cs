@@ -28,11 +28,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void ExecuteCmdletInternal()
         {
-            base.ExecuteCmdlet();
-
-            var peering = new PSPeering();
+           var peering = new PSPeering();
 
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;

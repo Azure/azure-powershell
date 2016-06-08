@@ -31,8 +31,8 @@
         Secondary		
      }		
  		
-     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]		
-     public class GetAzureExpressRouteCircuitARPTableCommand : NetworkBaseCmdlet		
+     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
+     public class GetAzureExpressRouteCircuitARPTableCommand : NFVBaseCmdlet		
      {		
          [Alias("ResourceName")]		
          [Parameter(		
@@ -72,9 +72,8 @@
          [ValidateNotNullOrEmpty]
          public DevicePathEnum DevicePath { get; set; }		
  		
-         public override void ExecuteCmdlet()		
+         public override void ExecuteCmdletInternal()		
          {		
-             base.ExecuteCmdlet();		
              var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListArpTable
                      (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
              var psARPs = new List<PSExpressRouteCircuitArpTable>();

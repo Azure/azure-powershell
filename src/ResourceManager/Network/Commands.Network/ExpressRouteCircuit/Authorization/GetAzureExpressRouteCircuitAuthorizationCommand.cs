@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
-    public class GetAzureExpressRouteCircuitAuthorizationCommand : NetworkBaseCmdlet
+    public class GetAzureExpressRouteCircuitAuthorizationCommand : NFVBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -33,9 +33,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdletInternal()
         {
-            base.ProcessRecord();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var authorization =

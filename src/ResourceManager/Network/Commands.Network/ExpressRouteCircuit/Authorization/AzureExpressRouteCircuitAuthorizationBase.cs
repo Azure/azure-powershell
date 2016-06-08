@@ -16,7 +16,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureExpressRouteCircuitAuthorizationBase : NetworkBaseCmdlet
+    public class AzureExpressRouteCircuitAuthorizationBase : NFVBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
