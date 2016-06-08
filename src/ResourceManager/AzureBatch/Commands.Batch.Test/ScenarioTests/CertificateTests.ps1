@@ -21,7 +21,7 @@ function Test-CertificateCrudOperations
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $thumbprintAlgorithm = "sha1"
 
-    # Generate a 
+    # Generate a cert for testing
     $x509cert = [Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestHelpers]::GenerateTestCertificateForScenarioTests()
 
     # Add the cert
