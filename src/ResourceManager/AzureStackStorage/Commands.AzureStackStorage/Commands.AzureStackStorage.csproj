@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AzureStack.AzureConsistentStorage">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.9.3-preview\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.AzureConsistentStorage.0.10.1-preview\lib\net45\Microsoft.AzureStack.AzureConsistentStorage.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -133,6 +133,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Farm\AddFarm.cs" />
+    <Compile Include="Farm\ClearDeletedAccounts.cs" />
     <Compile Include="Farm\GetEvent.cs" />
     <Compile Include="Farm\GetEventQuery.cs" />
     <Compile Include="Farm\GetFarm.cs" />
@@ -234,7 +235,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.AzureStack.Commands.StorageAdmin.dll-Help.xml">
+    <Content Include="Microsoft.AzureStack.AzureConsistentStorage.Commands.dll-Help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

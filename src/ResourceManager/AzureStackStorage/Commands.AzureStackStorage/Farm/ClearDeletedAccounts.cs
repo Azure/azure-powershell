@@ -44,7 +44,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// </summary>
         protected override void Execute()
         {
-            if (ShouldProcess(Resources.ShouldProcessCaption))
+            if (ShouldProcess(
+                Resources.OnDemandGcDescription.FormatInvariantCulture(FarmName),
+                Resources.OnDemandGcWarning.FormatInvariantCulture(FarmName),
+                Resources.ShouldProcessCaption))
             {
                 Client.Farms.OnDemandGc(ResourceGroupName, FarmName);
             }

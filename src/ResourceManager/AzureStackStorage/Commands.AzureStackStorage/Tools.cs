@@ -159,13 +159,34 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             {
                 if (i != 0)
                     ret += filterParameterSeperator;
-                ret += filters[i].Key.ToString();
+                ret += GetStorageAccountOdataFilterString(filters[i].Key);
                 ret += filterParameterConditionEqual;
                 ret += "'";
                 ret += filters[i].Value;
                 ret += "'";
             }
             return ret;
+        }
+
+        public static string GetStorageAccountOdataFilterString(StorageAccountSearchFilterParameter filter)
+        {
+            string filterKey = "";
+            switch (filter)
+            {
+                case StorageAccountSearchFilterParameter.TenantSubscriptionId:
+                    filterKey = "properties/tenantsubscriptionid";
+                    break;
+                case StorageAccountSearchFilterParameter.PartialAccountName:
+                    filterKey = "properties/tenantStorageAccountName";
+                    break;
+                case StorageAccountSearchFilterParameter.StorageAccountStatus:
+                    filterKey = "properties/accountStatus";
+                    break;
+                default:
+                    filterKey = filter.ToString();
+                    break;
+            }
+            return filterKey;
         }
     }
 }

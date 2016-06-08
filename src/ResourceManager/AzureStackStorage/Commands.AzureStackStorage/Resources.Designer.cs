@@ -61,6 +61,24 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performing the operation Add ACS Farm &apos;{0}&apos;..
+        /// </summary>
+        internal static string AddFarmDescription {
+            get {
+                return ResourceManager.GetString("AddFarmDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to perform the operation &quot;add ACS Farm &apos;{0}&apos;&quot;?.
+        /// </summary>
+        internal static string AddFarmWarning {
+            get {
+                return ResourceManager.GetString("AddFarmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bad parameter set.
         /// </summary>
         internal static string BadParameterSet {
@@ -192,6 +210,24 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands {
         internal static string ManagementService {
             get {
                 return ResourceManager.GetString("ManagementService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performing the operation clear ACS storage accounts on Farm &apos;{0}&apos;..
+        /// </summary>
+        internal static string OnDemandGcDescription {
+            get {
+                return ResourceManager.GetString("OnDemandGcDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to perform the operation &quot;clear ACS storage accounts on Farm &apos;{0}&apos;&quot;?.
+        /// </summary>
+        internal static string OnDemandGcWarning {
+            get {
+                return ResourceManager.GetString("OnDemandGcWarning", resourceCulture);
             }
         }
         
