@@ -26,10 +26,35 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
     /// </summary>
     public class AdlDataSource
     {
+        /// <summary>
+        /// Gets the type of the data source
+        /// </summary>
+        /// <value>
+        /// The type.
+        /// </value>
         public DataLakeAnalyticsEnums.DataSourceType Type { get; private set; }
+        
+        /// <summary>
+        /// Gets the name of the data source
+        /// </summary>
+        /// <value>
+        /// The name.
+        /// </value>
         public string Name { get; private set; }
+        
+        /// <summary>
+        /// Gets a value indicating whether this data source is the default.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this data source is the default; otherwise, <c>false</c>.
+        /// </value>
         public bool IsDefault { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdlDataSource"/> class.
+        /// </summary>
+        /// <param name="dataSourceInfo">The data source information.</param>
+        /// <param name="isDefault">if set to <c>true</c> [is default].</param>
         public AdlDataSource(DataLakeStoreAccountInfo dataSourceInfo, bool isDefault = false)
         {
             Name = dataSourceInfo.Name;
@@ -37,6 +62,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             IsDefault = isDefault;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdlDataSource"/> class.
+        /// </summary>
+        /// <param name="dataSourceInfo">The data source information.</param>
         public AdlDataSource(StorageAccountInfo dataSourceInfo)
         {
             Name = dataSourceInfo.Name;
