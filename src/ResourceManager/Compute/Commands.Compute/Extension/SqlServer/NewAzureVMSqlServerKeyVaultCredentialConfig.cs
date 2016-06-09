@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// Helper cmdlet to construct instance of SQL Credential Azure Key Vault based settings class  Test taoli11
+    /// Helper cmdlet to construct instance of SQL Credential Azure Key Vault based settings class Tao 22
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
