@@ -14,17 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
 {
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System;
-    using System.Net.Http;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// A base class for Azure clients.
@@ -247,7 +248,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
                 {
                     if (exception is OperationCanceledException && !cancellationToken.IsCancellationRequested)
                     {
-                        throw new TimeoutException("A request times out.");
+                        throw new Exception(ProjectResources.OperationFailedWithTimeOut);
                     }
 
                     throw;
