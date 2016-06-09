@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<StorageAccountInfo>), typeof(IEnumerable<DataLakeStoreAccountInfo>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(StorageAccountInfo), typeof(DataLakeStoreAccountInfo), typeof(IEnumerable<AdlDataSource>))]
     [Alias("Get-AdlAnalyticsDataSource")]
     public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
@@ -51,17 +51,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Alias("AzureBlob")]
         public string Blob { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = ListStorageParameterSetName, HelpMessage = "The type of data sources to list.")]
-        [ValidateNotNullOrEmpty]
-        public DataLakeAnalyticsEnums.DataSourceType DataSource { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             ParameterSetName = DataLakeParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             ParameterSetName = BlobParameterSetName,
+            HelpMessage =
+                "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            ParameterSetName = ListStorageParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [ValidateNotNullOrEmpty]
@@ -79,14 +78,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             }
             else
             {
-                if (DataSource == DataLakeAnalyticsEnums.DataSourceType.DataLakeStore)
-                {
-                    WriteObject(DataLakeAnalyticsClient.ListDataLakeStoreAccounts(ResourceGroupName, Account), true);
-                }
-                else
-                {
-                    WriteObject(DataLakeAnalyticsClient.ListStorageAccounts(ResourceGroupName, Account), true);
-                }
+                WriteObject(DataLakeAnalyticsClient.GetAllDataSources(ResourceGroupName, Account), true);
             }
         }
     }
