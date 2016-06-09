@@ -25,7 +25,11 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
     /// <summary>
-    /// Gets recovery points created for the provided item protected by the recovery services vault
+    /// Provides a capability to explore a selected recovery point for the items that can be recovered.
+    /// In the IaaS VM case, a connection has to be made to the iSCSI server in Azure to be able to browse the items.
+    /// On successful connection, a script will be downloaded at the specified target location.
+    /// When the user runs the script, it will pop up a file explorer window which can be used to explore and restore the items
+    /// backed up as part of this recovery point.
     /// </summary>
     [Cmdlet("Explore", "AzureRmRecoveryServicesBackupRecoveryPoint", DefaultParameterSetName = ConnectParamSet),
         OutputType(typeof(RecoveryPointBase), typeof(IList<RecoveryPointBase>))]
@@ -35,27 +39,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         const string ExtendParamSet = "Extend";
         const string TerminateParamSet = "Terminate";
 
+        /// <summary>
+        /// Recovery point whose items are to be explored.
+        /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = false,
             Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRRecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
 
+        /// <summary>
+        /// Switch parameter to specify if we want to initiate a new iSCSI connection.
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ConnectParamSet, ValueFromPipeline = false,
             Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRConnect)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Connect { get; set; }
 
+        /// <summary>
+        /// Switch parameter to specify if we want to extend an existing iSCSI connection.
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ExtendParamSet, ValueFromPipeline = false,
             Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRExtend)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Extend { get; set; }
 
+        /// <summary>
+        /// Switch parameter to specify if we want to terminate an existing iSCSI connection.
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = TerminateParamSet, ValueFromPipeline = false,
             Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRTerminate)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Terminate { get; set; }
 
+        /// <summary>
+        /// Location where to download the script.
+        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = ConnectParamSet, ValueFromPipeline = false,
+            Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRConnect)]
+        [Parameter(Mandatory = true, ParameterSetName = ExtendParamSet, ValueFromPipeline = false,
             Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.ILRConnect)]
         [ValidateNotNullOrEmpty]
         public string TargetLocation { get; set; }

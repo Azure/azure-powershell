@@ -152,7 +152,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             return uri.Substring(uri.IndexOf(NameDelimiter) + 1);
         }
 
-        public static string GetVmNameFromContainerUri(string uri, int partIndex)
+        /// <summary>
+        /// Extracts the VM name from the container uri.
+        /// Format of container uri: WorkloadType;ContainerType;ResourceGroupName;VMName
+        /// </summary>
+        /// <param name="uri">Container uri from which to extract the name</param>
+        /// <returns></returns>
+        public static string GetVmNameFromContainerUri(string uri)
         {
             return uri.Split(NameDelimiter.ToCharArray())[4];
         }

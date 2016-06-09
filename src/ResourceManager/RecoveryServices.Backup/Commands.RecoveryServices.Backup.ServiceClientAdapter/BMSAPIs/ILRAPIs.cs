@@ -25,14 +25,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     public partial class ServiceClientAdapter
     {
         /// <summary>
-        /// 
+        /// Provisions a new iSCSI connection or extends one if its already provisioned.
         /// </summary>
-        /// <param name="containerName"></param>
-        /// <param name="protectedItemName"></param>
-        /// <param name="recoveryPointId"></param>
-        /// <param name="iqn"></param>
-        /// <param name="shouldExtend"></param>
-        /// <returns></returns>
+        /// <param name="recoveryPoint">Recovery point whose backed up items are to be explored.</param>
+        /// <param name="iqn">iSCSI Qualified Name (IQN) of the machine where the script needs to be run.</param>
+        /// <param name="shouldExtend">Specifies whether the intent is to provision a new connection or extend an existing one.</param>
+        /// <returns>Returns a job object whose extended properties contain the required client script(s) for connection.</returns>
         public BaseRecoveryServicesJobResponse ProvisionOrExtendIlrSession(
             AzureVmRecoveryPoint recoveryPoint,
             string iqn,
@@ -67,11 +65,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         }
 
         /// <summary>
-        /// 
+        /// Revokes an existing iSCSI connection
         /// </summary>
-        /// <param name="containerName"></param>
-        /// <param name="protectedItemName"></param>
-        /// <param name="recoveryPointId"></param>
+        /// <param name="recoveryPoint">Recovery point with which this iSCSI connection was previously associated.</param>
         public void RevokeIlrSession(AzureVmRecoveryPoint recoveryPoint)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
