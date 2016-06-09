@@ -44,10 +44,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// </summary>
         DataWarehouse = 6,
 
+		/// <summary>
+		/// Azure SQL Stretch database edition
+		/// </summary>
+		Stretch = 7,
+
         /// <summary>
         /// Free database edition.  Reserved for special use cases/scenarios.
         /// </summary>
-        Free = 7,
+        Free = 8,
     }
 }
 
