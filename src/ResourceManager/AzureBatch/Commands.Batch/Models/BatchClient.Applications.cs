@@ -184,7 +184,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
-                // Checks File path and resourceGroupName is valid
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    throw new ArgumentNullException(Resources.NewAppPackageNoPathSpecified);
+                }
+
                 if (!File.Exists(filePath))
                 {
                     throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
