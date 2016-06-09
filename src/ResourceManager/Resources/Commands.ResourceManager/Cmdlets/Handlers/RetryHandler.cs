@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
         {
             HttpResponseMessage response = null;
 
-            for (int attempt = 0; attempt < RetryHandler.MaxAttempts; ++attempt)
+            for (int attempt = 1; attempt <= RetryHandler.MaxAttempts; ++attempt)
             {
                 try
                 {
                     response = await base.SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
                     
-                    if (attempt == RetryHandler.MaxAttempts - 1 ||
+                    if (attempt == RetryHandler.MaxAttempts ||
                         (!response.StatusCode.IsServerFailureRequest() &&
                          response.StatusCode != HttpStatusCode.RequestTimeout &&
                          response.StatusCode != HttpStatusCodeExt.TooManyRequests))
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                 }
                 catch (Exception ex)
                 {
-                    if (ex.IsFatal() || attempt == RetryHandler.MaxAttempts - 1)
+                    if (ex.IsFatal() || attempt == RetryHandler.MaxAttempts)
                     {
                         throw;
                     }
@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                     .ConfigureAwait(continueOnCapturedContext: false);
             }
 
+            /// should never reach here. 
             return null;
         }
 
