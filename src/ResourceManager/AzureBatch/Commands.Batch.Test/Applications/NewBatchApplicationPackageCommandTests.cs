@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -64,6 +65,31 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
             cmdlet.ExecuteCmdlet();
 
             batchClientMock.Verify(b => b.UploadAndActivateApplicationPackage(resourceGroup, accountName, applicationId, version, filePath, format, false), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UploadBatchApplicationPackageNoFilePathProvidedTest()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string applicationId = "applicationId";
+            string version = "version";
+            string format = "zip";
+            string filePath = "";
+
+            cmdlet.BatchClient = new BatchClient();
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.ApplicationId = applicationId;
+            cmdlet.ApplicationVersion = version;
+            cmdlet.FilePath = filePath;
+            cmdlet.Format = format;
+            cmdlet.ActivateOnly = false;
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
         }
 
         [Fact]
