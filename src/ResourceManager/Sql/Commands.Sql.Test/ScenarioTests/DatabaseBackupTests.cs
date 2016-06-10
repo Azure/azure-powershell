@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -22,6 +23,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseBackupTests : SqlTestsBase
     {
+        //Follow the way how AuditingTests setup their manangement clients
+        //Only overide SetupManagementClients() here because stretch database 
+        //tests in this test suite now use V2 version of storage client
+        protected override void SetupManagementClients()
+        {
+            var sqlCSMClient = GetSqlClient();
+            var storageClient = GetStorageV2Client();
+            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient,
+                authorizationClient);
+        }
+
         public DatabaseBackupTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
