@@ -47,14 +47,14 @@ namespace Microsoft.Azure.Commands.Network
             NetworkResourceManagerProfile.Initialize();
             try
             {
-                ExecuteCmdletInternal();
+                Execute();
             }
             catch (Rest.Azure.CloudException ex)
             {
                 throw new NetworkCloudException(ex);
             }
         }
-        public virtual void ExecuteCmdletInternal()
+        public virtual void Execute()
         {
             return;
         }

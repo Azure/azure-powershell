@@ -26,7 +26,7 @@
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
-    public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NFVBaseCmdlet
+    public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public DevicePathEnum DevicePath { get; set; }		
 
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             var arpTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTableSummary
                     (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();

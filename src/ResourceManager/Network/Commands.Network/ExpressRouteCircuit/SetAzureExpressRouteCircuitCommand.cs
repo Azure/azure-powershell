@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             if (!this.IsExpressRouteCircuitPresent(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name))
             {

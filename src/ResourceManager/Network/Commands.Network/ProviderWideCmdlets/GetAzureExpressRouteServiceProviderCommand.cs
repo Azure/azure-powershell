@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Network
     using AutoMapper;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
-    public class GetAzureExpressRouteServiceProviderCommand : NFVBaseCmdlet
+    public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             var serviceProviderList = this.NetworkClient.NetworkManagementClient.ExpressRouteServiceProviders.List();
 

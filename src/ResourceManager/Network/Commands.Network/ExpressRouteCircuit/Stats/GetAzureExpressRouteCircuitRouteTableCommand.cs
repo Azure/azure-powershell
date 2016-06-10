@@ -26,7 +26,7 @@
  namespace Microsoft.Azure.Commands.Network		
  {			
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitRouteTable"),OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
-     public class GetAzureRmExpressRouteCircuitRouteTable : NFVBaseCmdlet		
+     public class GetAzureRmExpressRouteCircuitRouteTable : NetworkBaseCmdlet		
      {		
          [Alias("ResourceName")]		
          [Parameter(		
@@ -66,7 +66,7 @@
          [ValidateNotNullOrEmpty]
          public DevicePathEnum DevicePath { get; set; }			
  		
-         public override void ExecuteCmdletInternal()		
+         public override void Execute()		
          {		
              var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable
                  (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();

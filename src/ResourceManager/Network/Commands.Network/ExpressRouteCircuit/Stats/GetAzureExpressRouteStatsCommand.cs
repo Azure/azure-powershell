@@ -21,7 +21,7 @@
 namespace Microsoft.Azure.Commands.Network		
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
-    public class GetAzureExpressRouteCircuitStatsCommand : NFVBaseCmdlet		
+    public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
     {		
         [Alias("ResourceName")]		
         [Parameter(		
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
            IgnoreCase = true)]		
         public string PeeringType { get; set; }		
 		
-        public override void ExecuteCmdletInternal()		
+        public override void Execute()		
         {		
             if (string.IsNullOrEmpty(PeeringType))		
             {		
