@@ -17,13 +17,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Authentication;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -305,11 +309,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var tenant = AuthResult.TenantId;
                     if (string.IsNullOrWhiteSpace(tenant))
                     {
-                        var tenantRegex = new Regex("https://[^/]+/([^/]+)/?");
-                        var match = tenantRegex.Match(Configuration.AdEndpoint);
-                        if (match.Success)
+                        tenant = "Common";
+                        var issuer = GetIssuer(AuthResult);
+                        if (!string.IsNullOrWhiteSpace(issuer) && issuer.Contains("/"))
                         {
-                            tenant = match.Groups[1].Value;
+                            var paths = issuer.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
+                            if (paths.Length > 2)
+                            {
+                                tenant = paths.Last();
+                            }
                         }
                     }
 
@@ -328,6 +336,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return LoginType.OrgId;
                 }
             }
+        }
+
+        private static string GetIssuer(AuthenticationResult auth)
+        {
+            string result = null;
+            try
+            {
+                var token = auth.IdToken;
+                token += new string('=', 4 - (token.Length % 4));
+                var tokenJson = Encoding.UTF8.GetString(Convert.FromBase64String(token));
+                var parsedToken = JToken.Parse(tokenJson);
+                result = parsedToken.Value<string>("iss");
+                TracingAdapter.Information(string.Format(Resources.TokenIssuerTrace, token, tokenJson, result));
+            }
+            catch (JsonException)
+            {
+                // ignore Json exceptions
+            }
+
+            return result;
         }
 
         private void ClearCookies()
