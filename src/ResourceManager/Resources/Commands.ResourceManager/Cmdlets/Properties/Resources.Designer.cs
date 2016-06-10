@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Operation failed because a request time out..
+        ///   Looks up a localized string similar to Operation failed because a request timed out..
         /// </summary>
         internal static string OperationFailedWithTimeOut {
             get {
