@@ -32,7 +32,7 @@
      }		
  		
      [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitARPTable"),OutputType(typeof(PSExpressRouteCircuitArpTable))]
-     public class GetAzureExpressRouteCircuitARPTableCommand : NFVBaseCmdlet		
+     public class GetAzureExpressRouteCircuitARPTableCommand : NetworkBaseCmdlet		
      {		
          [Alias("ResourceName")]		
          [Parameter(		

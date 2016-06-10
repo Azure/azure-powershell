@@ -19,11 +19,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Network.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
+    
 
     public class PSNetworkLongRunningOperation
     {
