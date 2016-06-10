@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
             {
                 try
                 {
-                    response = await base.SendAsync(request: request, cancellationToken: cancellationToken)
+                    response = await base
+                        .SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
                     
                     if (attempt == RetryHandler.MaxAttempts ||
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                          response.StatusCode != HttpStatusCode.RequestTimeout &&
                          response.StatusCode != HttpStatusCodeExt.TooManyRequests))
                     {
-                        return response;
+                        break;
                     }
                 }
                 catch (Exception ex)
@@ -89,8 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                     .ConfigureAwait(continueOnCapturedContext: false);
             }
 
-            /// should never reach here. 
-            return null;
+            return response;
         }
 
         /// <summary>
