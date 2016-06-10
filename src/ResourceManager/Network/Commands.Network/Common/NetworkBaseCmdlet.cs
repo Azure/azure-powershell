@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using Microsoft.Azure.Commands.Network.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -44,6 +45,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
             NetworkResourceManagerProfile.Initialize();
+            try
+            {
+                ExecuteCmdletInternal();
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                throw new NetworkCloudException(ex);
+            }
+        }
+        public virtual void ExecuteCmdletInternal()
+        {
+            return;
         }
 
         public static string GetResourceGroup(string resourceId)
