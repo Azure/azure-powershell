@@ -344,11 +344,29 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             try
             {
                 var token = auth.IdToken;
-                token += new string('=', 4 - (token.Length % 4));
+                TracingAdapter.Information("IDToken: {0}", token);
+                var tokenParts = token.Split('.');
+                if (tokenParts.Length > 1)
+                {
+                    token = tokenParts[1];
+                }
+
+               TracingAdapter.Information("Split IDToken: {0}", token);
+               switch (token.Length % 4)
+                {
+                    case 2:
+                        token += "==";
+                        break;
+                    case 3:
+                        token += "=";
+                        break;
+                }
+
+                TracingAdapter.Information("Padded IDToken: {0}", token);
                 var tokenJson = Encoding.UTF8.GetString(Convert.FromBase64String(token));
                 var parsedToken = JToken.Parse(tokenJson);
                 result = parsedToken.Value<string>("iss");
-                TracingAdapter.Information(string.Format(Resources.TokenIssuerTrace, token, tokenJson, result));
+                TracingAdapter.Information(Resources.TokenIssuerTrace, token, tokenJson, result);
             }
             catch (JsonException)
             {
