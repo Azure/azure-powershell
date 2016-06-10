@@ -479,4 +479,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="AzureSqlRetainDataException" xml:space="preserve">
     <value>Azure Sql does not support disable protection with retain data</value>
   </data>
+  <data name="GetContainerNameParamDeprecated" xml:space="preserve">
+    <value>Name parameter will be deprecated. Please use FriendlyName instead for filtering by name.</value>
+  </data>
 </root>
