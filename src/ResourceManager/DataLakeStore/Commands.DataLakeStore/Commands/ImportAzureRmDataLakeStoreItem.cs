@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter ForceBinary { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum per file thread count. Default is 10")]
+            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10")]
         public int PerFileThreadCount
         {
             get { return numThreadsPerFile; }
