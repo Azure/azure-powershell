@@ -47,9 +47,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected virtual void SetupManagementClients()
         {
             var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
-			// Changed from GetStorageClient() to GetStorageV2Client() because V2 version is
-			// the most up-to-date function using CSM not RDFE test environment
-            var storageClient = GetStorageV2Client(); 
+            var storageClient = GetStorageClient();
+           
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
             var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();

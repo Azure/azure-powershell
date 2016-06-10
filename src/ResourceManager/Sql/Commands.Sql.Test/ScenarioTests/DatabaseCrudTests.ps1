@@ -85,9 +85,6 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual Stretch $strechdb.Edition 
 			Assert-AreEqual DS100 $strechdb.CurrentServiceObjectiveName
 			Assert-AreEqual $collationName $strechdb.CollationName 
-
-			# Here We should test negative outcome for create stretch databse
-
 		}
 		
 		# Create with all parameters
@@ -199,7 +196,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			-MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS200
 			Assert-AreEqual $strechdb.DatabaseName $strechdb2.DatabaseName
 			Assert-AreEqual $maxSizeBytes $strechdb2.MaxSizeBytes
-			Assert-AreEqual Stretch $strechdb2.Edition 
+			Assert-AreEqual Stretch $strechdb2.Edition
 			Assert-AreEqual DS200 $strechdb2.CurrentServiceObjectiveName
 			Assert-AreEqual $collationName $strechdb2.CollationName
 		}
@@ -208,19 +205,19 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			# Alter all properties
 			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
-			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
-			Assert-AreEqual $db1.MaxSizeBytes 250GB
-			Assert-AreEqual $db1.Edition Standard
-			Assert-AreEqual $db1.CurrentServiceObjectiveName S0
-			Assert-AreEqual $db1.CollationName $db.CollationName
+			Assert-AreEqual $db.DatabaseName $db1.DatabaseName 
+			Assert-AreEqual 1GB $db1.MaxSizeBytes 
+			Assert-AreEqual Basic $db1.Edition 
+			Assert-AreEqual Basic $db1.CurrentServiceObjectiveName 
+			Assert-AreEqual $db.CollationName $db1.CollationName 
 
 			# Alter all properties using piping
 			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
-			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
-			Assert-AreEqual $db2.MaxSizeBytes 1GB
-			Assert-AreEqual $db2.Edition Basic
-			Assert-AreEqual $db2.CurrentServiceObjectiveName Basic
-			Assert-AreEqual $db2.CollationName $db.CollationName
+			Assert-AreEqual $db.DatabaseName $db2.DatabaseName 
+			Assert-AreEqual 100GB $db2.MaxSizeBytes 
+			Assert-AreEqual Standard $db2.Edition 
+			Assert-AreEqual S1 $db2.CurrentServiceObjectiveName 
+			Assert-AreEqual $db.CollationName $db2.CollationName 
 		}
 	}
 	finally
