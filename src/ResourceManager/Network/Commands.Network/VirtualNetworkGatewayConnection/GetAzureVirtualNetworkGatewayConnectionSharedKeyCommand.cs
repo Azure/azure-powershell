@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {

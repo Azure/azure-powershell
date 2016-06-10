@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSVirtualNetworkGateway VirtualNetworkGateway { get; set; }
 
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {

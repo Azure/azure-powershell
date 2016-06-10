@@ -21,7 +21,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class ExpressRouteCircuitBaseCmdlet : NFVBaseCmdlet
+    public abstract class ExpressRouteCircuitBaseCmdlet : NetworkBaseCmdlet
     {
         public IExpressRouteCircuitsOperations ExpressRouteCircuitClient
         {

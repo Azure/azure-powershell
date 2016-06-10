@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSPeering))]
-    public class GetAzureExpressRouteCircuitPeeringConfigCommand : NFVBaseCmdlet
+    public class GetAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The circuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdletInternal()
+        public override void Execute()
         {
             if (!string.IsNullOrEmpty(this.Name))
             {
