@@ -36,15 +36,6 @@ function Test-ListDatabaseRestorePoints
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-Null $restorePoints # Since the data warehouse database has just been created, it should not have any discrete restore points.
 
-		# Create stretch database with all parameters.
-		$databaseName = Get-DatabaseName
-		$stretchdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-Edition Stretch -RequestedServiceObjectiveName DS100
-
-		# Get restore points from stretch database.
-		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName
-		Assert-Null $restorePoints # Since the stretch database has just been created, it should not have any discrete restore points.
-
 		$databaseName = Get-DatabaseName
 		$standarddb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-Edition Standard -RequestedServiceObjectiveName S0
