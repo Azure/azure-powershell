@@ -4,6 +4,8 @@
     {
         Onetime,
         Day,
-        Hour
+        Hour,
+        Week,
+        Month,
     }
 }

@@ -23,8 +23,18 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
+    /// <summary>
+    /// Utilities used by the helpers.
+    /// </summary>
     public class HelperUtils
     {
+        /// <summary>
+        /// Gets list of enums of type T given the corresponding list of string equivalents. 
+        /// This method parses each of the strings and converts them into enums.
+        /// </summary>
+        /// <typeparam name="T">Type of the enum into which each string in the input list is to be type casted</typeparam>
+        /// <param name="strList">List of strings</param>
+        /// <returns></returns>
         public static List<T> GetEnumListFromStringList<T>(IList<string> strList)
         {
             if (strList == null || strList.Count == 0)
@@ -41,6 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return ret;
         }
 
+        /// <summary>
+        /// Gets list of string equivalents given the corresponding list of enums of type T. 
+        /// </summary>
+        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings</typeparam>
+        /// <param name="enumList">List of enums</param>
+        /// <returns></returns>
         public static List<string> GetStringListFromEnumList<T>(IList<T> enumList)
         {
             if (enumList == null || enumList.Count == 0)
@@ -97,6 +113,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return keyValuePairDict;
         }
 
+        /// <summary>
+        /// Gets container URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetContainerUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -116,6 +138,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return containerUri;
         }
 
+        /// <summary>
+        /// Gets protected item URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetProtectedItemUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -135,6 +163,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return itemUri;
         }
 
+        /// <summary>
+        /// Gets protectable item URI from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetProtectableItemUri(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id
@@ -154,6 +188,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return protectableItemUri;
         }
 
+        /// <summary>
+        /// Gets polcy name from the provided dictionary of key value pairs.
+        /// </summary>
+        /// <param name="keyValuePairDict">Dictionary of UriEnum as key and value as value of corresponding URI enum</param>
+        /// <param name="id">ID of the resource</param>
+        /// <returns></returns>
         public static string GetPolicyNameFromPolicyId(
             Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
             string id

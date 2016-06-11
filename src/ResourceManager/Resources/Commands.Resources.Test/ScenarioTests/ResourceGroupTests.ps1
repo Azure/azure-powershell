@@ -52,7 +52,7 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Resource group '$rgname' could not be found."
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
@@ -337,6 +337,7 @@ function Test-ExportResourceGroup
 	{
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
