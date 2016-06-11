@@ -21,36 +21,57 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseBackupTests : SqlTestsBase
+    public class DatabaseCrudStretchTests : SqlTestsBase
     {
-        public DatabaseBackupTests(ITestOutputHelper output)
+        /// <summary>
+        /// Follow the way how AuditingTests setup their manangement clients
+        /// Only overide SetupManagementClients() here because stretch database 
+        /// tests in this test suite now use V2 version of storage client
+        /// </summary>
+        protected override void SetupManagementClients()
+        {
+            var sqlCSMClient = GetSqlClient();
+            var storageClient = GetStorageV2Client();
+
+            // TODO, Remove the MockDeploymentFactory call when the test is re-recorded
+            //
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient,
+                authorizationClient);
+        }
+
+        public DatabaseCrudStretchTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListDatabaseRestorePoints()
+        public void TestStretchDatabaseCreate()
         {
-            RunPowerShellTest("Test-ListDatabaseRestorePoints");
+            RunPowerShellTest("Test-CreateStretchDatabase");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreGeoBackup()
+        public void TestStretchDatabaseUpdate()
         {
-            RunPowerShellTest("Test-RestoreGeoBackup");
+            RunPowerShellTest("Test-UpdateStretchDatabase");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestoreDeletedDatabaseBackup()
+        public void TestStretchDatabaseGet()
         {
-            RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+            RunPowerShellTest("Test-GetStretchDatabase");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRestorePointInTimeBackup()
+        public void TestStretchDatabaseRemove()
         {
-            RunPowerShellTest("Test-RestorePointInTimeBackup");
+            RunPowerShellTest("Test-RemoveStretchDatabase");
         }
     }
 }

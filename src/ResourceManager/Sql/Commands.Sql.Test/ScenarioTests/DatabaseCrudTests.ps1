@@ -73,18 +73,6 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $dwdb.Edition DataWarehouse
 			Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
 			Assert-AreEqual $dwdb.CollationName $collationName
-
-			# Create stretch database with all parameters
-			$databaseName = Get-DatabaseName
-			$collationName = "SQL_Latin1_General_CP1_CI_AS"
-			$maxSizeBytes = 250GB
-			$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-					-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100
-			Assert-AreEqual $databaseName $strechdb.DatabaseName 
-			Assert-AreEqual $maxSizeBytes $strechdb.MaxSizeBytes 
-			Assert-AreEqual Stretch $strechdb.Edition 
-			Assert-AreEqual DS100 $strechdb.CurrentServiceObjectiveName
-			Assert-AreEqual $collationName $strechdb.CollationName 
 		}
 		
 		# Create with all parameters
@@ -183,22 +171,6 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $dwdb2.Edition DataWarehouse
 			Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200
 			Assert-AreEqual $dwdb2.CollationName $collationName
-
-			# Create and alter stretch database
-			$databaseName = Get-DatabaseName
-			$collationName = "SQL_Latin1_General_CP1_CI_AS"
-			$maxSizeBytes = 250GB
-			$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS100
-
-			$maxSizeBytes = 250GB
-			$strechdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName `
-			-MaxSizeBytes $maxSizeBytes -Edition Stretch -RequestedServiceObjectiveName DS200
-			Assert-AreEqual $strechdb.DatabaseName $strechdb2.DatabaseName
-			Assert-AreEqual $maxSizeBytes $strechdb2.MaxSizeBytes
-			Assert-AreEqual Stretch $strechdb2.Edition
-			Assert-AreEqual DS200 $strechdb2.CurrentServiceObjectiveName
-			Assert-AreEqual $collationName $strechdb2.CollationName
 		}
 		else 
 		{
@@ -283,21 +255,6 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 
 			$all = $server | Get-AzureRmSqlDatabase
 			Assert-AreEqual $all.Count 4 # 4 because master database is included
-
-			
-			# Create stretch database and get-database to compare
-			$databaseName = Get-DatabaseName
-			$strechdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-					-CollationName SQL_Latin1_General_CP1_CI_AS -MaxSizeBytes 250GB -Edition Stretch -RequestedServiceObjectiveName DS100
-			$strechdb2 = Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupname -ServerName $server.ServerName -DatabaseName $strechdb.DatabaseName
-			Assert-AreEqual $strechdb.DatabaseName $strechdb2.DatabaseName
-			Assert-AreEqual $strechdb.MaxSizeBytes $strechdb2.MaxSizeBytes
-			Assert-AreEqual $strechdb.Edition $strechdb2.Edition
-			Assert-AreEqual $strechdb.CurrentServiceObjectiveName $strechdb2.CurrentServiceObjectiveName
-			Assert-AreEqual $strechdb.CollationName $strechdb2.CollationName
-
-			$all = $server | Get-AzureRmSqlDatabase
-			Assert-AreEqual $all.Count 5 # 5 because master database is included
 		}
 		else
 		{
@@ -378,14 +335,6 @@ function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
 			Assert-AreEqual $dwdb.DatabaseName $databaseName
 
 			Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
-
-			# Create stretch database and remove
-			$databaseName = Get-DatabaseName
-			$stretchdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-				-CollationName "SQL_Latin1_General_CP1_CI_AS" -MaxSizeBytes 250GB -Edition Stretch -RequestedServiceObjectiveName DS100
-			Assert-AreEqual $databaseName $stretchdb.DatabaseName
-
-			Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $stretchdb.DatabaseName -Force
 		}
 		
 		$all = $server | Get-AzureRmSqlDatabase
