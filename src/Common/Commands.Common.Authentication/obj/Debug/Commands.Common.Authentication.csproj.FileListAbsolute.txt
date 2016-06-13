@@ -29,7 +29,6 @@ C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\bin\Deb
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\bin\Debug\Newtonsoft.Json.xml
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\bin\Debug\System.Net.Http.Extensions.xml
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\bin\Debug\System.Net.Http.Primitives.xml
-C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\obj\Debug\Commands.Common.Authentication.csprojResolveAssemblyReference.cache
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\obj\Debug\Microsoft.Azure.Commands.Common.Authentication.Properties.Resources.resources
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\obj\Debug\Commands.Common.Authentication.csproj.GenerateResource.Cache
 C:\Repository\azure-powershell\src\Common\Commands.Common.Authentication\obj\Debug\Microsoft.Azure.Commands.Common.Authentication.dll

@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#.ctor(Microsoft.WindowsAzure.Storage.CloudStorageAccount)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-06-07 21:44:44Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-06-11 00:08:32Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\Repository\azure-powershell\src\Common\Commands.Common.Storage" File="AzureStorageContext.cs" Line="110">'AzureStorageContext.AzureStorageContext(CloudStorageAccount)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;AzureStorageContext..ctor(CloudStorageAccount)&#xD;&#xA;AzureStorageContext.set_BlobEndPoint(String):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\Repository\azure-powershell\src\Common\Commands.Common.Storage" File="AzureStorageContext.cs" Line="110">'AzureStorageContext.AzureStorageContext(CloudStorageAccount)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;AzureStorageContext..ctor(CloudStorageAccount)&#xD;&#xA;AzureStorageContext.set_FileEndPoint(String):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\Repository\azure-powershell\src\Common\Commands.Common.Storage" File="AzureStorageContext.cs" Line="110">'AzureStorageContext.AzureStorageContext(CloudStorageAccount)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;AzureStorageContext..ctor(CloudStorageAccount)&#xD;&#xA;AzureStorageContext.set_Name(String):Void</Issue>
@@ -28,7 +28,7 @@
          <Members>
           <Member Name="#.ctor(System.Func`2&lt;System.String,Microsoft.WindowsAzure.Storage.CloudStorageAccount&gt;,System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-06-07 21:44:44Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-06-11 00:08:32Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\Repository\azure-powershell\src\Common\Commands.Common.Storage" File="LazyAzureStorageContext.cs" Line="23">'LazyAzureStorageContext.LazyAzureStorageContext(Func&lt;string, CloudStorageAccount&gt;, string)' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;LazyAzureStorageContext..ctor(Func&lt;String,CloudStorageAccount&gt;, String)&#xD;&#xA;AzureStorageContext.set_Name(String):Void</Issue>
             </Message>
            </Messages>

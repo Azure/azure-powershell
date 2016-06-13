@@ -10,7 +10,7 @@
        <Types>
         <Type Name="AzureVMBackupException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-06-06 23:29:07Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2016-06-11 00:09:12Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Add [Serializable] to 'AzureVMBackupException' as this type implements ISerializable.</Issue>
           </Message>
          </Messages>

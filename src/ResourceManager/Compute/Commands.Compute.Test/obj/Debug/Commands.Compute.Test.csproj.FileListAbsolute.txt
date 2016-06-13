@@ -17,6 +17,7 @@ C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\AzureRmProfileStartup.ps1
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\AzureRM.Network.psd1
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\AzureRM.Compute.psd1
+C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSExtension.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml
@@ -67,7 +68,6 @@ C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionSepcifyStorageAccountName.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DiagnosticsExtensionTests\TestDiagnosticsExtensionSupportJsonConfig.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json
-C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.SqlIaaSExtensionTests\TestSqlIaaSExtension.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\TestLinuxVirtualMachineBootDiagnostics.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\TestVirtualMachineBootDiagnostics.json
 C:\Repository\azure-powershell\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineBootDiagnosticsTests\TestVirtualMachineBootDiagnosticsPremium.json
