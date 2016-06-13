@@ -17,13 +17,18 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Authentication;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -305,11 +310,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     var tenant = AuthResult.TenantId;
                     if (string.IsNullOrWhiteSpace(tenant))
                     {
-                        var tenantRegex = new Regex("https://[^/]+/([^/]+)/?");
-                        var match = tenantRegex.Match(Configuration.AdEndpoint);
-                        if (match.Success)
+                        tenant = "Common";
+                        string issuer;
+                        if (IdentityTokenHelpers.TryGetIssuer(AuthResult.IdToken, out issuer))
                         {
-                            tenant = match.Groups[1].Value;
+                            string issuerTenant;
+                            if (IdentityTokenHelpers.TryGetTenantFromIssuer(issuer, out issuerTenant))
+                            {
+                                tenant = issuerTenant;
+                            }
                         }
                     }
 
