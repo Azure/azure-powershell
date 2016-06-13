@@ -20,7 +20,7 @@ using System.Linq;
 using System.Reflection;
 using System.Xml;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     internal static class Tools
     {
@@ -69,6 +69,35 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             }
 
             return filter;
+        }
+
+        public static string GenerateAcquisitionQueryFilterString(string subscriptionId, string storageAccountName, string container)
+        {
+            List<string> filters = new List<string>();
+            if (subscriptionId != null)
+            {
+                filters.Add("subscriptionId eq '{0}'".FormatInvariantCulture(subscriptionId));
+            }
+            if (storageAccountName != null)
+            {
+                filters.Add("storageAccountName eq '{0}'".FormatInvariantCulture(storageAccountName));
+            }
+            if (container != null)
+            {
+                filters.Add("container eq '{0}'".FormatInvariantCulture(container));
+            }
+            if (filters.Count == 0)
+            {
+                return string.Empty;
+            }
+            else if (filters.Count == 1)
+            {
+                return filters[0];
+            }
+            else
+            {
+                return filters.Aggregate((a, b) => a + " and " + b);
+            }
         }
 
         public static string GenerateFilter(string[] metricNames, DateTime startTime, DateTime endTime,
@@ -130,13 +159,34 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             {
                 if (i != 0)
                     ret += filterParameterSeperator;
-                ret += filters[i].Key.ToString();
+                ret += GetStorageAccountOdataFilterString(filters[i].Key);
                 ret += filterParameterConditionEqual;
                 ret += "'";
                 ret += filters[i].Value;
                 ret += "'";
             }
             return ret;
+        }
+
+        public static string GetStorageAccountOdataFilterString(StorageAccountSearchFilterParameter filter)
+        {
+            string filterKey = "";
+            switch (filter)
+            {
+                case StorageAccountSearchFilterParameter.TenantSubscriptionId:
+                    filterKey = "properties/tenantsubscriptionid";
+                    break;
+                case StorageAccountSearchFilterParameter.PartialAccountName:
+                    filterKey = "properties/tenantStorageAccountName";
+                    break;
+                case StorageAccountSearchFilterParameter.StorageAccountStatus:
+                    filterKey = "properties/accountStatus";
+                    break;
+                default:
+                    filterKey = filter.ToString();
+                    break;
+            }
+            return filterKey;
         }
     }
 }

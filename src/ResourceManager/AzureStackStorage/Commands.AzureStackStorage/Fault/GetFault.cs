@@ -16,36 +16,28 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {    
     /// <summary>
-    ///     get faults
+    ///     list current faults
     ///    
     ///     SYNTAX
-    ///         Parameter Set: GetFault
-    ///         Get-Fault [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} -FaultId {string} [ {CommonParameters}] 
     /// 
-    ///         Parameter Set: GetCurrentFault
     ///         Get-Fault [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
     ///             [-SkipCertificateValidation] [-FarmName] {string} [-ResourceUri {string}] [ {CommonParameters}] 
-    ///     
-    ///         Parameter Set: GetHistoryFault
-    ///         Get-Fault [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} -StartTime {DateTime} -EndTime {DateTime} [ {CommonParameters}]  
-    /// 
+    ///   
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, Nouns.AdminFault, DefaultParameterSetName = GetCurrentFaultSet)]
+    [Cmdlet(VerbsCommon.Get, Nouns.AdminFault)]
     public sealed class GetFault : AdminCmdlet
     {
-
-        const string GetCurrentFaultSet = "GetCurrentFault";
-        const string GetHistoryFaultSet = "GetHistoryFault";
-        const string GetFaultSet = "GetFault";
-        Action func;
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         ///     Farm Identifier
@@ -59,21 +51,10 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         }
 
         /// <summary>
-        ///     Fault Identifier
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = GetFaultSet)]
-        [ValidateNotNull]
-        public string FaultId
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         ///     Resource Uri
         /// </summary>
         [Alias("Id")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = GetCurrentFaultSet)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ResourceUri
         {
@@ -81,71 +62,10 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             set;
         }
 
-        /// <summary>
-        ///     Query Fault StartTime 
-        /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetHistoryFaultSet)]
-        [ValidateNotNull]
-        public DateTime StartTime
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        ///     Query Fault EndTime 
-        /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = GetHistoryFaultSet)]
-        [ValidateNotNull]
-        public DateTime EndTime
-        {
-            get;
-            set;
-        }
-        
-        protected override void BeginProcessing()
-        {
-            base.BeginProcessing();
-
-            switch (ParameterSetName)
-            {
-                case GetFaultSet:
-                {
-                    func = () =>
-                    {
-                        FaultGetResponse fault = Client.Faults.Get(ResourceGroupName, FarmName, FaultId);
-                        WriteObject(new FaultResponse(fault.Fault));
-                    };
-                }
-                    break;
-                case GetHistoryFaultSet:
-                {
-                    func = () =>
-                    {
-                        FaultListResponse faults = Client.Faults.ListHistoryFaults(ResourceGroupName, FarmName,
-                            StartTime.ToString("O", CultureInfo.InvariantCulture),
-                            EndTime.ToString("O", CultureInfo.InvariantCulture));
-                        WriteObject(faults.Select(_ => new FaultResponse(_)), true);
-                    };
-                }
-                    break;
-                case GetCurrentFaultSet:
-                {
-                    func = () =>
-                    {
-                        FaultListResponse faults = Client.Faults.ListCurrentFaults(ResourceGroupName, FarmName, ResourceUri);
-                        WriteObject(faults.Faults.Select(_=>new FaultResponse(_)), true);
-                    };
-                }
-                    break;
-                default:
-                    throw new ArgumentException("Bad GetFault parameter set");
-            }
-        }
-
         protected override void Execute()
         {
-            func();
+            FaultListResponse faults = Client.Faults.ListCurrentFaults(ResourceGroupName, FarmName, ResourceUri);
+            WriteObject(faults.Faults.Select(_ => new FaultResponse(_)), true);
         }
     }
 }

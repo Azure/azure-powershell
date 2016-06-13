@@ -20,10 +20,9 @@ using Microsoft.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     Admin cmdlet base
@@ -62,14 +61,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         [ValidateNotNull]
         [ValidateAbsoluteUri]
         public Uri AdminUri { get; set; }
-
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNull]
-        public string ResourceGroupName { get; set; }
-
+                
         /// <summary>
         ///     Disable certification validation
         /// </summary>

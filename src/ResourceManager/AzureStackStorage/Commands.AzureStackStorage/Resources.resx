@@ -243,4 +243,49 @@
   <data name="BadParameterSet" xml:space="preserve">
     <value>Bad parameter set</value>
   </data>
+  <data name="QueueService" xml:space="preserve">
+    <value>ACS Queue Service</value>
+  </data>
+  <data name="ShouldContinueCaption" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ShouldResolveFaultProcessTargetFormat" xml:space="preserve">
+    <value>fault {0}</value>
+    <comment>{0} is fault id.</comment>
+  </data>
+  <data name="ShouldResoveFaultContinueQuery" xml:space="preserve">
+    <value>Continue with resolve fault?</value>
+  </data>
+  <data name="DeleteAcquisitionVerboseDescription" xml:space="preserve">
+    <value>Delete the acquisition '{0}'.</value>
+  </data>
+  <data name="DeleteAcquisitionVerboseWarning" xml:space="preserve">
+    <value>Are you sure you want to delete the acquisition '{0}'?</value>
+  </data>
+  <data name="DeleteQuotaDescription" xml:space="preserve">
+    <value>Delete the ACS quota '{0}'.</value>
+  </data>
+  <data name="DeleteQuotaWarning" xml:space="preserve">
+    <value>Are you sure you want to delete the ACS quota '{0}'?</value>
+  </data>
+  <data name="SetQuotaDescription" xml:space="preserve">
+    <value>Performing the operation set ACS quota '{0}'.</value>
+  </data>
+  <data name="SetQuotaWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "set ACS quota '{0}'"?</value>
+  </data>
+  <data name="AddFarmDescription" xml:space="preserve">
+    <value>Performing the operation Add ACS Farm '{0}'.</value>
+    <comment>{0} is the farm name</comment>
+  </data>
+  <data name="AddFarmWarning" xml:space="preserve">
+   <value>Are you sure you want to perform the operation "add ACS Farm '{0}'"?</value>
+  </data>
+  <data name="OnDemandGcDescription" xml:space="preserve">
+    <value>Performing the operation clear ACS storage accounts on Farm '{0}'.</value>
+    <comment>{0} is the farm name</comment>
+  </data>
+  <data name="OnDemandGcWarning" xml:space="preserve">
+    <value>Are you sure you want to perform the operation "clear ACS storage accounts on Farm '{0}'"?</value>
+  </data>
 </root>
