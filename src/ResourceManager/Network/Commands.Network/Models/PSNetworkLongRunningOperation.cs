@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Network.Models;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -30,6 +29,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Status { get; set; }
 
-        public ApiError Error { get; set; }
+        public Error Error { get; set; }
+    }
+    public class Error
+    {
+        
+        public string Code { get; set; }
+        
+        public string Message { get; set; }
+        
+        public string Target { get; set; }
     }
 }
