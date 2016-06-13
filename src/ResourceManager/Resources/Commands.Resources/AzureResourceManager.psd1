@@ -90,7 +90,7 @@ NestedModules = @(
     '.\AzureRM.Profile',
     '.\AzureRM.Automation',
     '.\AzureRM.Resources\AzureRM.Resources.psd1',
-    '.\AzureRM.Resources\AzureRM.Tags.psd1'
+    '.\AzureRM.Resources\AzureRM.Tags.psd1',
     '.\AzureRM.Tags',
     '.\AzureRM.Sql',
     '.\AzureRM.DataFactories',
