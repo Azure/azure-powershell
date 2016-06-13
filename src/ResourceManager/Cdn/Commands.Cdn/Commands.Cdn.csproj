@@ -78,8 +78,8 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.3.0.3-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.1.1.0\lib\portable-net45+win+wpa81\Microsoft.Azure.Management.Cdn.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Cdn"> 
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.1.1.1\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
