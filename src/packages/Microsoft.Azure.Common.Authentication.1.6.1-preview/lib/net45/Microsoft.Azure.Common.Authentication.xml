@@ -1,0 +1,1052 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Common.Authentication</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Common.Authentication.AadAuthenticationException">
+            <summary>
+            Base class representing an exception that occurs when
+            authenticating against Azure Active Directory
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AadAuthenticationCanceledException">
+            <summary>
+            Exception that gets thrown when the user explicitly
+            cancels an authentication operation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AadAuthenticationFailedWithoutPopupException">
+            <summary>
+            Exception that gets thrown when the ADAL library
+            is unable to authenticate without a popup dialog.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AadAuthenticationFailedException">
+            <summary>
+            Exception that gets thrown if an authentication operation
+            fails on the server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AadAuthenticationCantRenewException">
+            <summary>
+            Exception thrown if a refresh token has expired.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AdalConfiguration">
+            <summary>
+            Class storing the configuration information needed
+            for ADAL to request token from the right AD tenant
+            depending on environment.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AdalTokenProvider">
+            <summary>
+            A token provider that uses ADAL to retrieve
+            tokens from Azure Active Directory
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.ITokenProvider">
+            <summary>
+            This interface represents objects that can be used
+            to obtain and manage access tokens.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.ITokenProvider.GetAccessToken(Microsoft.Azure.Common.Authentication.AdalConfiguration,Microsoft.Azure.Common.Authentication.ShowDialog,System.String,System.Security.SecureString,Microsoft.Azure.Common.Authentication.Models.AzureAccount.AccountType)">
+            <summary>
+            Get a new login token for the given environment, user credential,
+            and credential type.
+            </summary>
+            <param name="config">Configuration.</param>
+            <param name="promptBehavior">Prompt behavior.</param>
+            <param name="userId">User ID/Service principal to get the token for.</param>
+            <param name="password">Secure strings with password/service principal key.</param>
+            <param name="credentialType">Credential type.</param>
+            <returns>An access token.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.ITokenProvider.GetAccessTokenWithCertificate(Microsoft.Azure.Common.Authentication.AdalConfiguration,System.String,System.String,Microsoft.Azure.Common.Authentication.Models.AzureAccount.AccountType)">
+            <summary>
+            Get a new authentication token for the given environment
+            </summary>
+            <param name="config">The ADAL Configuration</param>
+            <param name="principalId">The id for the given principal</param>
+            <param name="certificateThumbprint">The certificate thumbprint for this user</param>
+            <param name="credentialType">The account type</param>
+            <returns>An access token, which can be renewed</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.ConsoleParentWindow">
+            <summary>
+            An implementation of <see cref="T:System.Windows.Forms.IWin32Window"/> that gives the
+            windows handle for the current console window.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.CredStore">
+            <summary>
+            Class wrapping PInvoke signatures for Windows Credential store
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.CertificateApplicationCredentialProvider">
+            <summary>
+            Interface to the certificate store for authentication
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.CertificateApplicationCredentialProvider.#ctor(System.String)">
+            <summary>
+            Create a certificate provider
+            </summary>
+            <param name="certificateThumbprint"></param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.CertificateApplicationCredentialProvider.AuthenticateAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext)">
+            <summary>
+            Authenticate using certificate thumbprint from the datastore 
+            </summary>
+            <param name="clientId">The active directory client id for the application.</param>
+            <param name="audience">The intended audience for authentication</param>
+            <param name="context">The AD AuthenticationContext to use</param>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.KeyStoreApplicationCredentialProvider">
+            <summary>
+            Interface to the keystore for authentication
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.KeyStoreApplicationCredentialProvider.#ctor(System.String)">
+            <summary>
+            Create a credential provider
+            </summary>
+            <param name="tenant"></param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.KeyStoreApplicationCredentialProvider.AuthenticateAsync(System.String,System.String,Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext)">
+            <summary>
+            Authenticate using the secret for the specified client from the key store
+            </summary>
+            <param name="clientId">The active directory client id for the application.</param>
+            <param name="audience">The intended audience for authentication</param>
+            <param name="context">The AD AuthenticationContext to use</param>
+            <returns></returns>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.LoginType.OrgId">
+            <summary>
+            User is logging in with orgid credentials
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.LoginType.LiveId">
+            <summary>
+            User is logging in with liveid credentials
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.ProtectedFileTokenCache">
+            <summary>
+            An implementation of the Adal token cache that stores the cache items
+            in the DPAPI-protected file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.ServicePrincipalKeyStore">
+            <summary>
+            Helper class to store service principal keys and retrieve them
+            from the Windows Credential Store.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.UserTokenProvider">
+            <summary>
+            A token provider that uses ADAL to retrieve
+            tokens from Azure Active Directory for user
+            credentials.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.UserTokenProvider.AdalAccessToken">
+            <summary>
+            Implementation of <see cref="T:Microsoft.Azure.Common.Authentication.IAccessToken"/> using data from ADAL
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AzureSession">
+            <summary>
+            Represents current Azure session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.ClientFactory">
+            <summary>
+            Gets or sets Azure client factory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.AuthenticationFactory">
+            <summary>
+            Gets or sets Azure authentication factory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.DataStore">
+            <summary>
+            Gets or sets data persistence store.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.TokenCache">
+            <summary>
+            Gets or sets the token cache store.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.ProfileDirectory">
+            <summary>
+            Gets or sets profile directory.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.TokenCacheFile">
+            <summary>
+            Gets or sets token cache file path.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.ProfileFile">
+            <summary>
+            Gets or sets profile file name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.OldProfileFileBackup">
+            <summary>
+            Gets or sets file name for the migration backup.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.AzureSession.OldProfileFile">
+            <summary>
+            Gets or sets old profile file name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.ProfileData">
+            <summary>
+            This class provides the representation of
+            data loaded and saved into data files
+            for AzureSMProfile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AzureEnvironmentData">
+            <summary>
+            This class provides the representation of
+            data loaded and saved into data files for
+            an individual Azure environment
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.AzureSubscriptionData">
+            <summary>
+            This class provides the representation of data loaded
+            and saved into data file for an individual Azure subscription.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.AzureSubscriptionData.#ctor">
+            <summary>
+            Constructor used by DataContractSerializer
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Validate.ValidateStringIsNullOrEmpty(System.String,System.String,System.Boolean)">
+            <summary>
+            Validates against given string if null or empty.
+            </summary>
+            <param name="data">string variable to validate</param>
+            <param name="messageData">This parameter is used when the validation fails. It can contain actual message to display
+            or parameter name to display with default message</param>
+            <param name="useDefaultMessage">Indicates either to use messageData as actual message or parameter name</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Validate.ValidatePath(System.String,System.String)">
+            <summary>
+            Make validation for given path.
+            </summary>
+            <param name="path">Path to validate</param>
+            <param name="exceptionMessage">message to display if this validation failed</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Validate.ValidateDirectoryFull(System.String,System.String)">
+            <summary>
+            Validates against given directory
+            </summary>
+            <param name="directoryNameOnDisk">Directory name</param>
+            <param name="directoryName">Name which you use to identify that directory to user (i.e. AzureSdkDirectory)</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Validate.ValidateFileFull(System.String,System.String)">
+            <summary>
+            Validates against given file
+            </summary>
+            <param name="fileNameOnDisk">File name</param>
+            <param name="fileName">Name which you use to identify that directory to user (i.e. Service Settings)</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.IAuthenticationFactory.Authenticate(Microsoft.Azure.Common.Authentication.Models.AzureAccount,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment,System.String,System.Security.SecureString,Microsoft.Azure.Common.Authentication.ShowDialog,Microsoft.IdentityModel.Clients.ActiveDirectory.TokenCache,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.Endpoint)">
+            <summary>
+            Returns IAccessToken if authentication succeeds or throws an exception if authentication fails.
+            </summary>
+            <param name="account">The azure account object</param>
+            <param name="environment">The azure environment object</param>
+            <param name="tenant">The AD tenant in most cases should be 'common'</param>
+            <param name="password">The AD account password</param>
+            <param name="promptBehavior">The prompt behavior</param>
+            <param name="tokenCache">Token Cache</param>
+            <param name="resourceId">Optional, the AD resource id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.IAuthenticationFactory.Authenticate(Microsoft.Azure.Common.Authentication.Models.AzureAccount,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment,System.String,System.Security.SecureString,Microsoft.Azure.Common.Authentication.ShowDialog,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.Endpoint)">
+            <summary>
+            Returns IAccessToken if authentication succeeds or throws an exception if authentication fails.
+            </summary>
+            <param name="account">The azure account object</param>
+            <param name="environment">The azure environment object</param>
+            <param name="tenant">The AD tenant in most cases should be 'common'</param>
+            <param name="password">The AD account password</param>
+            <param name="promptBehavior">The prompt behavior</param>
+            <param name="resourceId">Optional, the AD resource id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.IClientFactory.AddUserAgent(System.String)">
+            <summary>
+            Adds user agent to UserAgents collection with empty version.
+            </summary>
+            <param name="productName">Product name.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.IClientFactory.AddUserAgent(System.String,System.String)">
+            <summary>
+            Adds user agent to UserAgents collection.
+            </summary>
+            <param name="productName">Product name.</param>
+            <param name="productVersion">Product version.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Factories.ClientFactory.CreateClient``1(Microsoft.Azure.Common.Authentication.Models.AzureSMProfile,Microsoft.Azure.Common.Authentication.Models.AzureSubscription,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.Endpoint)">
+            <summary>
+            </summary>
+            <typeparam name="TClient"></typeparam>
+            <param name="subscription"></param>
+            <param name="endpoint"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Factories.ClientFactory.AddUserAgent(System.String,System.String)">
+            <summary>
+            Adds user agent to UserAgents collection.
+            </summary>
+            <param name="productName">Product name.</param>
+            <param name="productVersion">Product version.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Factories.ClientFactory.AddUserAgent(System.String)">
+            <summary>
+            Adds user agent to UserAgents collection with empty version.
+            </summary>
+            <param name="productName">Product name.</param>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureAccount.Property.Subscriptions">
+            <summary>
+            Comma separated list of subscription ids on this account.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureAccount.Property.Tenants">
+            <summary>
+            Comma separated list of tenants on this account.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureAccount.Property.AccessToken">
+            <summary>
+            Access token.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureAccount.Property.CertificateThumbprint">
+            <summary>
+            Thumbprint for associated certificate
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Models.AzureContext">
+            <summary>
+            Represents current Azure session context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureContext.#ctor(Microsoft.Azure.Common.Authentication.Models.AzureSubscription,Microsoft.Azure.Common.Authentication.Models.AzureAccount,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment)">
+            <summary>
+            Creates new instance of AzureContext.
+            </summary>
+            <param name="subscription">The azure subscription object</param>
+            <param name="account">The azure account object</param>
+            <param name="environment">The azure environment object</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureContext.#ctor(Microsoft.Azure.Common.Authentication.Models.AzureAccount,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment,Microsoft.Azure.Common.Authentication.Models.AzureTenant)">
+            <summary>
+            Creates new instance of AzureContext.
+            </summary>
+            <param name="account">The azure account object</param>
+            <param name="environment">The azure environment object</param>
+            <param name="tenant">The azure tenant object</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureContext.#ctor(Microsoft.Azure.Common.Authentication.Models.AzureSubscription,Microsoft.Azure.Common.Authentication.Models.AzureAccount,Microsoft.Azure.Common.Authentication.Models.AzureEnvironment,Microsoft.Azure.Common.Authentication.Models.AzureTenant)">
+            <summary>
+            Creates new instance of AzureContext.
+            </summary>
+            <param name="subscription">The azure subscription object</param>
+            <param name="account">The azure account object</param>
+            <param name="environment">The azure environment object</param>
+            <param name="tenant">The azure tenant object</param>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureContext.Account">
+            <summary>
+            Gets the azure account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureContext.Subscription">
+            <summary>
+            Gets the azure subscription.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureContext.Environment">
+            <summary>
+            Gets the azure environment.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureContext.Tenant">
+            <summary>
+            Gets the azure tenant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureContext.TokenCache">
+            <summary>
+            Gets or sets the token cache contents.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.StorageBlobEndpointFormat">
+            <summary>
+            The storage service blob endpoint format.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.StorageQueueEndpointFormat">
+            <summary>
+            The storage service queue endpoint format.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.StorageTableEndpointFormat">
+            <summary>
+            The storage service table endpoint format.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.StorageFileEndpointFormat">
+            <summary>
+            The storage service file endpoint format.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetStorageBlobEndpoint(System.String,System.Boolean)">
+            <summary>
+            Gets the endpoint for storage blob.
+            </summary>
+            <param name="accountName">The account name</param>
+            <param name="useHttps">Use Https when creating the URI. Defaults to true.</param>
+            <returns>The fully qualified uri to the blob service</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetStorageQueueEndpoint(System.String,System.Boolean)">
+            <summary>
+            Gets the endpoint for storage queue.
+            </summary>
+            <param name="accountName">The account name</param>
+            <param name="useHttps">Use Https when creating the URI. Defaults to true.</param>
+            <returns>The fully qualified uri to the queue service</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetStorageTableEndpoint(System.String,System.Boolean)">
+            <summary>
+            Gets the endpoint for storage table.
+            </summary>
+            <param name="accountName">The account name</param>
+            <param name="useHttps">Use Https when creating the URI. Defaults to true.</param>
+            <returns>The fully qualified uri to the table service</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetStorageFileEndpoint(System.String,System.Boolean)">
+            <summary>
+            Gets the endpoint for storage file.
+            </summary>
+            <param name="accountName">The account name</param>
+            <param name="useHttps">Use Https when creating the URI. Defaults to true.</param>
+            <returns>The fully qualified uri to the file service</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetManagementPortalUrlWithRealm(System.String)">
+            <summary>
+            Gets the management portal URI with a particular realm suffix if supplied
+            </summary>
+            <param name="realm">Realm for user's account</param>
+            <returns>Url to management portal.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.GetPublishSettingsFileUrlWithRealm(System.String)">
+            <summary>
+            Get the publish settings file download url with a realm suffix if needed.
+            </summary>
+            <param name="realm">Realm for user's account</param>
+            <returns>Url to publish settings file</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureEnvironment.PublicEnvironments">
+            <summary>
+            Predefined Microsoft Azure environments
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile">
+            <summary>
+            Represents Azure profile structure with multiple environments, subscriptions, and accounts.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Models.IAzureProfile">
+            <summary>
+            Interface for Azure supported profiles.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.IAzureProfile.Context">
+            <summary>
+            Gets the default azure context object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.#ctor">
+            <summary>
+            Initializes a new instance of AzureSMProfile
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of AzureSMProfile and loads its content from specified path.
+            Any errors generated in the process are stored in ProfileLoadErrors collection.
+            </summary>
+            <param name="path">Location of profile file on disk.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Save">
+            <summary>
+            Writes profile to a ProfilePath
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Save(System.String)">
+            <summary>
+            Writes profile to a specified path.
+            </summary>
+            <param name="path">File path on disk to save profile to</param>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Accounts">
+            <summary>
+            Gets Azure Accounts
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Subscriptions">
+            <summary>
+            Gets Azure Subscriptions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.DefaultSubscription">
+            <summary>
+            Gets or sets current Azure Subscription
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Environments">
+            <summary>
+            Gets Azure Environments
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.Context">
+            <summary>
+            Gets the default azure context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.ProfileLoadErrors">
+            <summary>
+            Gets errors from loading the profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureSMProfile.ProfilePath">
+            <summary>
+            Location of the profile file. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile">
+            <summary>
+            Represents Azure Resource Manager profile structure with default context, environments and token cache.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.#ctor">
+            <summary>
+            Creates new instance of AzureRMProfile.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of AzureRMProfile and loads its content from specified path.
+            </summary>
+            <param name="path">The location of profile file on disk.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.Save">
+            <summary>
+            Writes profile to the disk it was opened from disk.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.Save(System.String)">
+            <summary>
+            Writes profile to a specified path.
+            </summary>
+            <param name="path">File path on disk to save profile to</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.ToString">
+            <summary>
+            Serializes the current profile and return its contents.
+            </summary>
+            <returns>The current string.</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.Environments">
+            <summary>
+            Gets or sets Azure environments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.Context">
+            <summary>
+            Gets or sets the default azure context object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureRMProfile.ProfilePath">
+            <summary>
+            Gets the path of the profile file. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureSubscription.Property.RegisteredResourceProviders">
+            <summary>
+            Comma separated registered resource providers, i.e.: websites,compute,hdinsight
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureSubscription.Property.Tenants">
+            <summary>
+            Associated tenants
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Common.Authentication.Models.AzureSubscription.Property.Default">
+            <summary>
+            If this property existed on the subscription indicates that it's default one.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Models.AzureTenant">
+            <summary>
+            Represents an AD tenant.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureTenant.Id">
+            <summary>
+            Gets or sets the tenant id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Models.AzureTenant.Domain">
+            <summary>
+            Gets or sets the tenant domain.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.Models.MemoryDataStore.WildcardToRegex(System.String)">
+            <summary>
+            Converts unix asterisk based file pattern to regex
+            </summary>
+            <param name="wildcard">Asterisk based pattern</param>
+            <returns>Regeular expression of null is empty</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AccountNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to Account needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AccountNotFound">
+            <summary>
+              Looks up a localized string similar to No account was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AdalAuthConfigurationTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Authenticating using configuration values: Domain: &apos;{0}&apos;, Endpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirect: &apos;{3}&apos;, ResourceClientUri: &apos;{4}&apos;, ValidateAuthrity: &apos;{5}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AdalAuthException">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Received exception {0}, while authenticating..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AdalMultipleTokens">
+            <summary>
+              Looks up a localized string similar to Multiple tokens were found for this user. Please clear your token cache using, Clear-AzureProfile and try this command again..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AdalUserInteractionRequired">
+            <summary>
+              Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ArmAccountNotFound">
+            <summary>
+              Looks up a localized string similar to No account found in the context. Please login using Login-AzureRMAccount..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ArmUserInteractionRequired">
+            <summary>
+              Looks up a localized string similar to User Interaction is required to authenticate this user. Please execute Login-AzureRMAccount without parameters and enter your credentials..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AuthenticatingForSingleTenant">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Authenticating for account {0} with single tenant {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.AzureDirectoryName">
+            <summary>
+              Looks up a localized string similar to Windows Azure Powershell.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.CertificateNotFoundInStore">
+            <summary>
+              Looks up a localized string similar to No certificate was found in the certificate store with thumbprint {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ChangingDefaultEnvironmentNotSupported">
+            <summary>
+              Looks up a localized string similar to Changing public environment is not supported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.CredentialOrganizationIdMessage">
+            <summary>
+              Looks up a localized string similar to -Credential parameter can only be used with Organization ID credentials. For more information, please refer to http://go.microsoft.com/fwlink/?linkid=331007&amp;clcid=0x409 for more information about the difference between an organizational account and a Microsoft account..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.EnvironmentNameNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to Environment name needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.EnvironmentNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to Environment needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.EnvironmentNotFound">
+            <summary>
+              Looks up a localized string similar to The environment name &apos;{0}&apos; is not found..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ExpiredRefreshToken">
+            <summary>
+              Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.FilePathIsNotValid">
+            <summary>
+              Looks up a localized string similar to File path is not valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.IllegalPath">
+            <summary>
+              Looks up a localized string similar to Illegal characters in path..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidArmContext">
+            <summary>
+              Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Login-AzureRMAccount to set up your Azure credentials..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidCertificate">
+            <summary>
+              Looks up a localized string similar to Invalid certificate format. Publish settings may be corrupted. Use Get-AzurePublishSettingsFile to download updated settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidCredentialType">
+            <summary>
+              Looks up a localized string similar to Credential type invalid, only handles &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidDefaultSubscription">
+            <summary>
+              Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidDnsName">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; is an invalid DNS name for {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidFileExtension">
+            <summary>
+              Looks up a localized string similar to The provided file in {0} must be have {1} extension.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidManagementClientType">
+            <summary>
+              Looks up a localized string similar to Cannot create instance of management client type {0}. It does not have the expected constructor..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidOrEmptyArgumentMessage">
+            <summary>
+              Looks up a localized string similar to {0} is invalid or empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidSubscriptionName">
+            <summary>
+              Looks up a localized string similar to Must specify a non-null subscription name..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.InvalidSubscriptionState">
+            <summary>
+              Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Add-AzureAccount to set up your Azure credentials..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.NoAccountInContext">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: No matching account record for account {0} in subscription {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.NoEnvironmentInContext">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: No matching environment record for environment {0} in subscription {1}, using AzureCloud environment instead.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.NoInternetConnection">
+            <summary>
+              Looks up a localized string similar to Please connect to internet before executing this cmdlet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.NoSubscriptionInContext">
+            <summary>
+              Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.NoTenantInContext">
+            <summary>
+              Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.PathDoesNotExist">
+            <summary>
+              Looks up a localized string similar to Path {0} doesn&apos;t exist..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.PathDoesNotExistForElement">
+            <summary>
+              Looks up a localized string similar to Path for {0} doesn&apos;t exist in {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.PublishSettingsFileRealmFormat">
+            <summary>
+              Looks up a localized string similar to &amp;whr={0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.RemovingDefaultEnvironmentsNotSupported">
+            <summary>
+              Looks up a localized string similar to Removing public environment is not supported..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ServiceKeyNotFound">
+            <summary>
+              Looks up a localized string similar to Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.ServiceNameExists">
+            <summary>
+              Looks up a localized string similar to The provided service name {0} already exists, please pick another name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SPNRenewTokenTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Renewing token using AppId: &apos;{0}&apos;, AdalConfiguration with ADDomain: &apos;{1}&apos;, AdEndpoint: &apos;{2}&apos;, ClientId: &apos;{3}&apos;, RedirectUri: &apos;{4}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SPNTokenExpirationCheckTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Checking token expiration, token expires &apos;{0}&apos; Comparing to &apos;{1}&apos; With threshold &apos;{2}&apos;, calculated time until token expiry: &apos;{3}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SubscriptionIdNotFoundMessage">
+            <summary>
+              Looks up a localized string similar to The subscription id {0} doesn&apos;t exist..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SubscriptionNameNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to Subscription name needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SubscriptionNameNotFoundMessage">
+            <summary>
+              Looks up a localized string similar to The subscription name {0} doesn&apos;t exist..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.SubscriptionNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to Subscription needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.TenantNotFound">
+            <summary>
+              Looks up a localized string similar to No tenant was found for this subscription. Please execute Clear-AzureProfile and then execute Add-AzureAccount..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UnableToPatchJson">
+            <summary>
+              Looks up a localized string similar to Unable to update mismatching Json structured: {0} {1}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UnknownCredentialType">
+            <summary>
+              Looks up a localized string similar to Illegal credential type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UnsupportedCredentialType">
+            <summary>
+              Looks up a localized string similar to Certificate authentication is not supported for account type {0}..
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNAcquireTokenConfigTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Acquiring token using AdalConfiguration with Domain: &apos;{0}&apos;, AdEndpoint: &apos;{1}&apos;, ClientId: &apos;{2}&apos;, ClientRedirectUri: {3}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNAcquireTokenContextTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Acquiring token using context with Authority &apos;{0}&apos;, CorrelationId: &apos;{1}&apos;, ValidateAuthority: &apos;{2}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNAuthenticationTokenTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Received token with LoginType &apos;{0}&apos;, Tenant: &apos;{1}&apos;, UserId: &apos;{2}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNAuthenticationTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Authenticating using Account: &apos;{0}&apos;, environment: &apos;{1}&apos;, tenant: &apos;{2}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNExpiredTokenTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Token is expired.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNRenewTokenTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Renewing Token with Type: &apos;{0}&apos;, Expiry: &apos;{1}&apos;, MultipleResource? &apos;{2}&apos;, Tenant: &apos;{3}&apos;, UserId: &apos;{4}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNRenewTokenUserInfoTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: User info for token DisplayId: &apos;{0}&apos;, Name: {2} {1}, IdProvider: &apos;{3}&apos;, Uid: &apos;{4}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UPNTokenExpirationCheckTrace">
+            <summary>
+              Looks up a localized string similar to [Common.Authentication]: Checking token expiration, token expires &apos;{0}&apos; Comparing to &apos;{1}&apos; With threshold &apos;{2}&apos;, calculated time until token expiry: &apos;{3}&apos;.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UserNameIsNotValid">
+            <summary>
+              Looks up a localized string similar to User name is not valid.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.UserNameNeedsToBeSpecified">
+            <summary>
+              Looks up a localized string similar to User name needs to be specified.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.Properties.Resources.x86InProgramFiles">
+            <summary>
+              Looks up a localized string similar to  (x86).
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.DirectoryCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies a directory.
+            </summary>
+            <param name="sourceDirName">The source directory name</param>
+            <param name="destDirName">The destination directory name</param>
+            <param name="copySubDirs">Should the copy be recursive</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.EnsureDirectoryExists(System.String)">
+            <summary>
+            Ensures that a directory exists beofre attempting to write a file
+            </summary>
+            <param name="pathName">The path to the file that will be created</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.CreateTempDirectory">
+            <summary>
+            Create a unique temp directory.
+            </summary>
+            <returns>Path to the temp directory.</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.CopyDirectory(System.String,System.String)">
+            <summary>
+            Copy a directory from one path to another.
+            </summary>
+            <param name="sourceDirectory">Source directory.</param>
+            <param name="destinationDirectory">Destination directory.</param>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.IsValidDirectoryPath(System.String)">
+            <summary>
+            Returns true if path is a valid directory.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.GetPSModulePathForModule(Microsoft.Azure.Common.Authentication.AzureModule)">
+            <summary>
+            Gets the root installation path for the given Azure module.
+            </summary>
+            <param name="module" >The module name</param>
+            <returns>The module full path</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.FileUtilities.GetInstallPath">
+            <summary>
+            Gets the root directory for all modules installation.
+            </summary>
+            <returns>The install path</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.XmlUtilities.TryFormatXml(System.String)">
+            <summary>
+            Formats the given XML into indented way.
+            </summary>
+            <param name="content">The input xml string</param>
+            <returns>The formatted xml string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Common.Authentication.XmlUtilities.Beautify(System.String)">
+            <summary>
+            Formats given string into well formatted XML.
+            </summary>
+            <param name="unformattedXml">The unformatted xml string</param>
+            <returns>The formatted XML string</returns>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.XmlSchema.PublishData">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishData.Items">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile.Subscription">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile.PublishMethod">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile.Url">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile.ManagementCertificate">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfile.SchemaVersion">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfileSubscription">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfileSubscription.Id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfileSubscription.Name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfileSubscription.ServiceManagementUrl">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.Azure.Common.Authentication.XmlSchema.PublishDataPublishProfileSubscription.ManagementCertificate">
+            <remarks/>
+        </member>
+    </members>
+</doc>

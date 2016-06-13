@@ -1,0 +1,1502 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.TrafficManager</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations">
+            <summary>
+            The Traffic Manager API includes operations for managing definitions
+            for a specified profile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations">
+            <summary>
+            The Traffic Manager API includes operations for managing definitions
+            for a specified profile.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.CreateAsync(System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new definition for a specified profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758257.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile to create a new definition for.
+            </param>
+            <param name='parameters'>
+            Parameters supplied to the Create Definition operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns an existing profile definition.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile to get definition from.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Definition operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.ListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns all definitions of a profile  (see
+            http://msdn.microsoft.com/en-us/library/hh758252.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile to return all definitions
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations.#ctor(Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient)">
+            <summary>
+            Initializes a new instance of the DefinitionOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations.CreateAsync(System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new definition for a specified profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758257.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile to create a new definition for.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Definition operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns an existing profile definition.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile to get definition from.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Definition operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations.ListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns all definitions of a profile  (see
+            http://msdn.microsoft.com/en-us/library/hh758252.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile to return all definitions
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions">
+            <summary>
+            The Windows Azure Traffic Manager management API provides a RESTful set
+            of web services that interact with Windows Azure Traffic Manager
+            service for creating, updating, listing, and deleting Traffic Manager
+            profiles and definitions.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166981.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.Create(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters)">
+            <summary>
+            Creates a new definition for a specified profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758257.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to create a new definition for.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Definition operation.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.CreateAsync(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters)">
+            <summary>
+            Creates a new definition for a specified profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758257.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to create a new definition for.
+            </param>
+            <param name='parameters'>
+            Required. Parameters supplied to the Create Definition operation.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.Get(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String)">
+            <summary>
+            Returns an existing profile definition.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to get definition from.
+            </param>
+            <returns>
+            The Get Definition operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.GetAsync(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String)">
+            <summary>
+            Returns an existing profile definition.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to get definition from.
+            </param>
+            <returns>
+            The Get Definition operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.List(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String)">
+            <summary>
+            Returns all definitions of a profile  (see
+            http://msdn.microsoft.com/en-us/library/hh758252.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to return all definitions
+            </param>
+            <returns>
+            The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.DefinitionOperationsExtensions.ListAsync(Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations,System.String)">
+            <summary>
+            Returns all definitions of a profile  (see
+            http://msdn.microsoft.com/en-us/library/hh758252.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IDefinitionOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile to return all definitions
+            </param>
+            <returns>
+            The List Definitions operation response.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations">
+            <summary>
+            The Traffic Manager API includes operations for managing Traffic
+            Manager profiles.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.CheckDnsPrefixAvailabilityAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The DNS name that you want to use. You must include
+            .trafficmanager.net in the name.  (see
+            http://msdn.microsoft.com/en-us/library/dn510368.aspx for more
+            information)
+            </summary>
+            <param name='dnsName'>
+            DNS name that you want to use
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response to the request for a listing of namespaces.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.CreateAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new profile for a domain name, owned by the specified
+            subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758254.aspx for more
+            information)
+            </summary>
+            <param name='name'>
+            The name of the profile.
+            </param>
+            <param name='domainName'>
+            The name of the domain that the profile is being created for.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a profile and all of its definitions. This operation cannot
+            be reverted.  (see
+            http://msdn.microsoft.com/en-us/library/hh758256.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns profile details, including all definition versions and
+            their statuses.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Profile Details operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            Returns all profiles owned by a subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758249.aspx for more
+            information)
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Profiles operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.UpdateAsync(System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Enables or disables a profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758250.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            The name of the profile.
+            </param>
+            <param name='profileStatus'>
+            Specifies whether the profile should be enabled or disabled.
+            </param>
+            <param name='definitionVersionNumber'>
+            Version of the definition associated with the profile
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient">
+            <summary>
+            The Windows Azure Traffic Manager management API provides a RESTful set
+            of web services that interact with Windows Azure Traffic Manager
+            service for creating, updating, listing, and deleting Traffic Manager
+            profiles and definitions.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166981.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.Definitions">
+            <summary>
+            The Traffic Manager API includes operations for managing
+            definitions for a specified profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ITrafficManagerManagementClient.Profiles">
+            <summary>
+            The Traffic Manager API includes operations for managing Traffic
+            Manager profiles.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition">
+            <summary>
+            Describes a definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.#ctor">
+            <summary>
+            Initializes a new instance of the Definition class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.DnsOptions">
+            <summary>
+            Optional. The DNS related option.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.Monitors">
+            <summary>
+            Optional. The list of Endpoint monitoring configurations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.Policy">
+            <summary>
+            Optional. The Endpoint monitoring policy.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.Status">
+            <summary>
+            Optional. Indicates whether this definition is enabled or disabled
+            for the profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Definition.Version">
+            <summary>
+            Optional. Indicates the version of the definition returned. This
+            value is always 1.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters">
+            <summary>
+            Parameters supplied to create a definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionCreateParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters.#ctor(Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionDnsOptions,System.Collections.Generic.IList{Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor},Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters)">
+            <summary>
+            Initializes a new instance of the DefinitionCreateParameters class
+            with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters.DnsOptions">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters.Monitors">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionCreateParameters.Policy">
+            <summary>
+            Required.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionDnsOptions">
+            <summary>
+            DNS related option.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionDnsOptions.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionDnsOptions class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionDnsOptions.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the DefinitionDnsOptions class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionDnsOptions.TimeToLiveInSeconds">
+            <summary>
+            Required. Specifies the DNS Time-to-Live (TTL) that informs the
+            Local DNS resolvers how long to cache DNS entries. The value is an
+            integer from 30 through 999,999.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters">
+            <summary>
+            Specifies an Endpoint configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the
+            DefinitionEndpointCreateParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.#ctor(System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointStatus)">
+            <summary>
+            Initializes a new instance of the
+            DefinitionEndpointCreateParameters class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.DomainName">
+            <summary>
+            Required. Specifies the endpoint domain name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.Location">
+            <summary>
+            Optional. Specifies the location of an endpoint of type "Any". This
+            is required for Performance policies. A list of possible values
+            can be found under "Name" by calling List Locations:
+            http://msdn.microsoft.com/en-us/library/gg441293.aspx
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.MinChildEndpoints">
+            <summary>
+            Optional. Specifies the minimum amount of child endpoints in a
+            nested profile that has to be online for the endpoint to be
+            considered online. The default is 1.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.Status">
+            <summary>
+            Required. Specifies the status of the monitoring endpoint. If set
+            to Enabled, the endpoint is considered by the load balancing
+            method and is monitored.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.Type">
+            <summary>
+            Optional. The type of endpoint being added to the definition. If
+            there is more than one AzureWebsite endpoint, they must be in
+            different datacenters. This limitation doesn’t apply to cloud
+            services. The default value is "CloudService".
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters.Weight">
+            <summary>
+            Optional. Specifies the weight of an endpoint in a weighted round
+            robin policy. The valid range is for this value is [1, 1000]. The
+            default is 1.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse">
+            <summary>
+            The Endpoint status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionEndpointResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.DomainName">
+            <summary>
+            Optional. The endpoint domain name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.Location">
+            <summary>
+            Optional. Specifies the location of an endpoint of type Any. This
+            is required for Performance policies
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.MinChildEndpoints">
+            <summary>
+            Optional. Specifies the minimum amount of child endpoints in a
+            nested profile that has to be online for the endpoint to be
+            considered online.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.MonitorStatus">
+            <summary>
+            Optional. Indicates health status for the endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.Status">
+            <summary>
+            Optional. The status of monitoring for the endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.Type">
+            <summary>
+            Optional. Specifies the type of the endpoint.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointResponse.Weight">
+            <summary>
+            Optional. Specifies the weight of an endpoint in a weighted round
+            robin policy.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionGetResponse">
+            <summary>
+            The Get Definition operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionGetResponse.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionGetResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionGetResponse.Definition">
+            <summary>
+            Optional. Describes a definition for a specified profile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor">
+            <summary>
+            Describes a monitoring configuration
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionMonitor class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.HttpOptions">
+            <summary>
+            Required. The option to use when making an HTTP request to monitor
+            endpoint health.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.IntervalInSeconds">
+            <summary>
+            Required. The number of seconds between consecutive attempts to
+            check the status of a monitoring endpoint. The value must be set
+            to 30.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.Port">
+            <summary>
+            Required. The port used to monitor endpoint health. Accepted values
+            are integer values greater than 0 and less or equal to 65,535.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.Protocol">
+            <summary>
+            Required. The protocol to use to monitor endpoint health.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.TimeoutInSeconds">
+            <summary>
+            Required. The time to wait for a response from the monitoring
+            endpoint. The value must be set to 10.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitor.ToleratedNumberOfFailures">
+            <summary>
+            Required. The number of consecutive failures to allow on an
+            endpoint before taking the endpoint out of the rotation in the
+            load balancer. The value must be set to 3.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorHTTPOptions">
+            <summary>
+            Describes the option to use when making an HTTP request to monitor
+            endpoint health.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorHTTPOptions.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionMonitorHTTPOptions
+            class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorHTTPOptions.ExpectedStatusCode">
+            <summary>
+            Optional. Specifies the HTTP status code expected from a healthy
+            endpoint. Endpoint is considered unhealthy otherwise.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorHTTPOptions.RelativePath">
+            <summary>
+            Optional. Specifies the path relative to the endpoint domain name
+            to probe for health state. For restrictions, see
+            http://msdn.microsoft.com/en-us/library/hh758254.aspx.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorHTTPOptions.Verb">
+            <summary>
+            Optional. Specifies the verb to use when making an HTTP request to
+            monitor endpoint health.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters">
+            <summary>
+            Specifies a monitoring policy.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionPolicyCreateParameters
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters.#ctor(Microsoft.WindowsAzure.Management.TrafficManager.Models.LoadBalancingMethod,System.Collections.Generic.IList{Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointCreateParameters})">
+            <summary>
+            Initializes a new instance of the DefinitionPolicyCreateParameters
+            class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters.Endpoints">
+            <summary>
+            Required. Encapsulates the list of Windows Azure Traffic Manager
+            endpoints. You can define up to 100 endpoints in the list. If the
+            load balancing method is set to Failover, traffic to the endpoints
+            is load balanced in the sequential order in which the endpoints
+            are defined.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyCreateParameters.LoadBalancingMethod">
+            <summary>
+            Required. Specifies the load balancing method to use to distribute
+            connections.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse">
+            <summary>
+            Describes the monitoring policy status
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionPolicyResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of Endpoints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of Endpoints.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.Endpoints">
+            <summary>
+            Optional. The list of Endpoints being monitored
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.LoadBalancingMethod">
+            <summary>
+            Optional. Specifies the load balancing method to use to distribute
+            connections.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyResponse.MonitorStatus">
+            <summary>
+            Optional. Indicates health status for the overall load balancing
+            policy.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionsListResponse">
+            <summary>
+            The List Definitions operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionsListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionsListResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionsListResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of Definitions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionsListResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of Definitions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionsListResponse.Definitions">
+            <summary>
+            Optional. All definitions of a profile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionStatusAndVersion">
+            <summary>
+            Describes the status and version of a definition.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionStatusAndVersion.#ctor">
+            <summary>
+            Initializes a new instance of the DefinitionStatusAndVersion class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionStatusAndVersion.Status">
+            <summary>
+            Optional. Indicates whether a definition of the specified profile
+            is enabled or disabled in Windows Azure Traffic Manager.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionStatusAndVersion.Version">
+            <summary>
+            Optional. The version of the policy definition. This value is
+            always 1.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.DnsPrefixAvailabilityCheckResponse">
+            <summary>
+            The response to the request for a listing of namespaces.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.DnsPrefixAvailabilityCheckResponse.#ctor">
+            <summary>
+            Initializes a new instance of the
+            DnsPrefixAvailabilityCheckResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.DnsPrefixAvailabilityCheckResponse.Result">
+            <summary>
+            Optional. The DNS name is available for you to use.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType.CloudService">
+            <summary>
+            The type of Azure Cloud Services from the current subscription.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType.AzureWebsite">
+            <summary>
+            The type of Azure Websites from the current subscription.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType.Any">
+            <summary>
+            The type of endpoints that can have any domain name (not
+            necessarily an Azure domain). Note that Azure Websites cannot be
+            entered as endpoints of type "Any".
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType.TrafficManager">
+            <summary>
+            The type of endpoint that points to a Traffic Manager profile from
+            the current subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile">
+            <summary>
+            Describes a profile.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.#ctor">
+            <summary>
+            Initializes a new instance of the Profile class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.Definitions">
+            <summary>
+            Optional. Specifies the definition for the specified profile, along
+            with the status. Only one definition version exists for a profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.DomainName">
+            <summary>
+            Optional. The domain name, as specified during the creation of the
+            profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.Name">
+            <summary>
+            Optional. The profile name, as specified during the creation of the
+            profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.Status">
+            <summary>
+            Optional. Indicates whether a definition of the specified profile
+            is enabled or disabled in Windows Azure Traffic Manager.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.Profile.StatusDetails">
+            <summary>
+            Optional.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileGetResponse">
+            <summary>
+            The Get Profile Details operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileGetResponse.#ctor">
+            <summary>
+            Initializes a new instance of the ProfileGetResponse class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileGetResponse.Profile">
+            <summary>
+            Optional. Details for the requested profile.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfilesListResponse">
+            <summary>
+            The List Profiles operation response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfilesListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the ProfilesListResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfilesListResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of Profiles.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfilesListResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of Profiles.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfilesListResponse.Profiles">
+            <summary>
+            Optional. The profiles associated with the specified subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileStatusDetails">
+            <summary>
+            The detail status of the profile
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileStatusDetails.#ctor">
+            <summary>
+            Initializes a new instance of the ProfileStatusDetails class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileStatusDetails.EnabledDefinitionVersion">
+            <summary>
+            Optional. Specifies the version of the policy definition. This
+            value is always 1.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations">
+            <summary>
+            The Traffic Manager API includes operations for managing Traffic
+            Manager profiles.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.#ctor(Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient)">
+            <summary>
+            Initializes a new instance of the ProfileOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.CheckDnsPrefixAvailabilityAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The DNS name that you want to use. You must include
+            .trafficmanager.net in the name.  (see
+            http://msdn.microsoft.com/en-us/library/dn510368.aspx for more
+            information)
+            </summary>
+            <param name='dnsName'>
+            Required. DNS name that you want to use
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response to the request for a listing of namespaces.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.CreateAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Creates a new profile for a domain name, owned by the specified
+            subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758254.aspx for more
+            information)
+            </summary>
+            <param name='name'>
+            Required. The name of the profile.
+            </param>
+            <param name='domainName'>
+            Required. The name of the domain that the profile is being created
+            for.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a profile and all of its definitions. This operation cannot
+            be reverted.  (see
+            http://msdn.microsoft.com/en-us/library/hh758256.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Returns profile details, including all definition versions and
+            their statuses.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The Get Profile Details operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            Returns all profiles owned by a subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758249.aspx for more
+            information)
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The List Profiles operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.UpdateAsync(System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Enables or disables a profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758250.aspx for more
+            information)
+            </summary>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <param name='profileStatus'>
+            Required. Specifies whether the profile should be enabled or
+            disabled.
+            </param>
+            <param name='definitionVersionNumber'>
+            Required. Version of the definition associated with the profile
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions">
+            <summary>
+            The Windows Azure Traffic Manager management API provides a RESTful set
+            of web services that interact with Windows Azure Traffic Manager
+            service for creating, updating, listing, and deleting Traffic Manager
+            profiles and definitions.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166981.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.CheckDnsPrefixAvailability(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            The DNS name that you want to use. You must include
+            .trafficmanager.net in the name.  (see
+            http://msdn.microsoft.com/en-us/library/dn510368.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='dnsName'>
+            Required. DNS name that you want to use
+            </param>
+            <returns>
+            The response to the request for a listing of namespaces.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.CheckDnsPrefixAvailabilityAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            The DNS name that you want to use. You must include
+            .trafficmanager.net in the name.  (see
+            http://msdn.microsoft.com/en-us/library/dn510368.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='dnsName'>
+            Required. DNS name that you want to use
+            </param>
+            <returns>
+            The response to the request for a listing of namespaces.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.Create(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String,System.String)">
+            <summary>
+            Creates a new profile for a domain name, owned by the specified
+            subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758254.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='name'>
+            Required. The name of the profile.
+            </param>
+            <param name='domainName'>
+            Required. The name of the domain that the profile is being created
+            for.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.CreateAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String,System.String)">
+            <summary>
+            Creates a new profile for a domain name, owned by the specified
+            subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758254.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='name'>
+            Required. The name of the profile.
+            </param>
+            <param name='domainName'>
+            Required. The name of the domain that the profile is being created
+            for.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.Delete(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            Deletes a profile and all of its definitions. This operation cannot
+            be reverted.  (see
+            http://msdn.microsoft.com/en-us/library/hh758256.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.DeleteAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            Deletes a profile and all of its definitions. This operation cannot
+            be reverted.  (see
+            http://msdn.microsoft.com/en-us/library/hh758256.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.Get(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            Returns profile details, including all definition versions and
+            their statuses.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <returns>
+            The Get Profile Details operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.GetAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String)">
+            <summary>
+            Returns profile details, including all definition versions and
+            their statuses.  (see
+            http://msdn.microsoft.com/en-us/library/hh758248.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <returns>
+            The Get Profile Details operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.List(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations)">
+            <summary>
+            Returns all profiles owned by a subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758249.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <returns>
+            The List Profiles operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.ListAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations)">
+            <summary>
+            Returns all profiles owned by a subscription.  (see
+            http://msdn.microsoft.com/en-us/library/hh758249.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <returns>
+            The List Profiles operation response.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.Update(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus,System.Int32)">
+            <summary>
+            Enables or disables a profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758250.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <param name='profileStatus'>
+            Required. Specifies whether the profile should be enabled or
+            disabled.
+            </param>
+            <param name='definitionVersionNumber'>
+            Required. Version of the definition associated with the profile
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.ProfileOperationsExtensions.UpdateAsync(Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations,System.String,Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus,System.Int32)">
+            <summary>
+            Enables or disables a profile.  (see
+            http://msdn.microsoft.com/en-us/library/hh758250.aspx for more
+            information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.TrafficManager.IProfileOperations.
+            </param>
+            <param name='profileName'>
+            Required. The name of the profile.
+            </param>
+            <param name='profileStatus'>
+            Required. Specifies whether the profile should be enabled or
+            disabled.
+            </param>
+            <param name='definitionVersionNumber'>
+            Required. Version of the definition associated with the profile
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient">
+            <summary>
+            The Windows Azure Traffic Manager management API provides a RESTful set
+            of web services that interact with Windows Azure Traffic Manager
+            service for creating, updating, listing, and deleting Traffic Manager
+            profiles and definitions.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166981.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the TrafficManagerManagementClient
+            class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            TrafficManagerManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of TrafficManagerManagementClient to clone to
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.ParseDefinitionMonitorProtocol(System.String)">
+            <summary>
+            Parse enum values for type DefinitionMonitorProtocol.
+            </summary>
+            <param name='value'>
+            The value to parse.
+            </param>
+            <returns>
+            The enum value.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.DefinitionMonitorProtocolToString(Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorProtocol)">
+            <summary>
+            Convert an enum of type DefinitionMonitorProtocol to a string.
+            </summary>
+            <param name='value'>
+            The value to convert to a string.
+            </param>
+            <returns>
+            The enum value as a string.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.Definitions">
+            <summary>
+            The Traffic Manager API includes operations for managing
+            definitions for a specified profile.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClient.Profiles">
+            <summary>
+            The Traffic Manager API includes operations for managing Traffic
+            Manager profiles.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.TrafficManager.TrafficManagerManagementClientExtensions">
+            <summary>
+            The Windows Azure Traffic Manager management API provides a RESTful set
+            of web services that interact with Windows Azure Traffic Manager
+            service for creating, updating, listing, and deleting Traffic Manager
+            profiles and definitions.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/dn166981.aspx for
+            more information)
+            </summary>
+        </member>
+    </members>
+</doc>

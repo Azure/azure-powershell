@@ -1,0 +1,3080 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Graph.RBAC</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Graph.RBAC.ApplicationOperations">
+            <summary>
+            Operations for working with applications in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.IApplicationOperations">
+            <summary>
+            Operations for working with applications in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IApplicationOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a new application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Parameters to create an application.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IApplicationOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete an application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Application object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IApplicationOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get an application by object Id.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Application object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IApplicationOperations.ListAsync(Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Get applications by filters.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Application filter parameters
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for List application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IApplicationOperations.UpdateAsync(System.String,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Update existing application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Application object id
+            </param>
+            <param name='parameters'>
+            Parameters to create an application.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.#ctor(Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient)">
+            <summary>
+            Initializes a new instance of the ApplicationOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a new application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete an application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Get an application by object Id.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.ListAsync(Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters,System.Threading.CancellationToken)">
+            <summary>
+            Get applications by filters.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Required. Application filter parameters
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for List application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperations.UpdateAsync(System.String,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Update existing application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.ApplicationOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.Create(Microsoft.Azure.Graph.RBAC.IApplicationOperations,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters)">
+            <summary>
+            Create a new application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.CreateAsync(Microsoft.Azure.Graph.RBAC.IApplicationOperations,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters)">
+            <summary>
+            Create a new application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.Delete(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String)">
+            <summary>
+            Delete an application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.DeleteAsync(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String)">
+            <summary>
+            Delete an application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.Get(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String)">
+            <summary>
+            Get an application by object Id.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.GetAsync(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String)">
+            <summary>
+            Get an application by object Id.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <returns>
+            Server response for Get application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.List(Microsoft.Azure.Graph.RBAC.IApplicationOperations,Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters)">
+            <summary>
+            Get applications by filters.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='parameters'>
+            Required. Application filter parameters
+            </param>
+            <returns>
+            Server response for List application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.ListAsync(Microsoft.Azure.Graph.RBAC.IApplicationOperations,Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters)">
+            <summary>
+            Get applications by filters.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='parameters'>
+            Required. Application filter parameters
+            </param>
+            <returns>
+            Server response for List application information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.Update(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters)">
+            <summary>
+            Update existing application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ApplicationOperationsExtensions.UpdateAsync(Microsoft.Azure.Graph.RBAC.IApplicationOperations,System.String,Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters)">
+            <summary>
+            Update existing application.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IApplicationOperations.
+            </param>
+            <param name='applicationObjectId'>
+            Required. Application object id
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create an application.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.TenantID">
+            <summary>
+            Gets or sets the tenant Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.Application">
+            <summary>
+            Operations for working with applications in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.Group">
+            <summary>
+            Operations for working with Groups in Azure Active Directory Graph
+            API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.Objects">
+            <summary>
+            Operations for working with Objects in Azure AD Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.ServicePrincipal">
+            <summary>
+            Operations for working with service principal in Azure Active
+            Directory Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.IGraphRbacManagementClient.User">
+            <summary>
+            Operations for working with Users in Azure Active Directory Graph
+            API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor(System.String,Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+            <param name='tenantID'>
+            Required. Gets or sets the tenant Id.
+            </param>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor(System.String,Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+            <param name='tenantID'>
+            Required. Gets or sets the tenant Id.
+            </param>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor(System.String,Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+            <param name='tenantID'>
+            Required. Gets or sets the tenant Id.
+            </param>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.#ctor(System.String,Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the GraphRbacManagementClient class.
+            </summary>
+            <param name='tenantID'>
+            Required. Gets or sets the tenant Id.
+            </param>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            GraphRbacManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of GraphRbacManagementClient to clone to
+            </param>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.TenantID">
+            <summary>
+            Gets or sets the tenant Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.Application">
+            <summary>
+            Operations for working with applications in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.Group">
+            <summary>
+            Operations for working with Groups in Azure Active Directory Graph
+            API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.Objects">
+            <summary>
+            Operations for working with Objects in Azure AD Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.ServicePrincipal">
+            <summary>
+            Operations for working with service principal in Azure Active
+            Directory Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.User">
+            <summary>
+            Operations for working with Users in Azure Active Directory Graph
+            API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters">
+            <summary>
+            Request parameters for adding members to a groups
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters.#ctor">
+            <summary>
+            Initializes a new instance of the GroupAddMemberParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the GroupAddMemberParameters class
+            with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters.MemberUrl">
+            <summary>
+            Required. Group display name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.GroupOperations">
+            <summary>
+            Operations for working with Groups in Azure Active Directory Graph API.
+            (see http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.IGroupOperations">
+            <summary>
+            Operations for working with Groups in Azure Active Directory Graph API.
+            (see http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.AddMemberAsync(System.String,Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters,System.Threading.CancellationToken)">
+            <summary>
+            Add a memeber to a group.   (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151600.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Group object id
+            </param>
+            <param name='parameters'>
+            Member Object Url as
+            https://graph.windows.net/contoso.onmicrosoft.com/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151614.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Parameters to create a group
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151608.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets group information from the directory.
+            </summary>
+            <param name='objectId'>
+            User objectId to get group information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.GetGroupMembersAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the members of a group.
+            </summary>
+            <param name='objectId'>
+            Group object Id who's members should be retrieved.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.GetGroupMembersNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets next set of members of a group.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to GetGroupMembers or
+            GetGroupMembersNext.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the group is a member.
+            </summary>
+            <param name='parameters'>
+            Group filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.ListAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='mail'>
+            Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IGroupOperations.RemoveMemberAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Remove a memeber from a group  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151607.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Group object id
+            </param>
+            <param name='memberObjectId'>
+            Member Object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.#ctor(Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient)">
+            <summary>
+            Initializes a new instance of the GroupOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.AddMemberAsync(System.String,Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters,System.Threading.CancellationToken)">
+            <summary>
+            Add a memeber to a group.   (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151600.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='parameters'>
+            Required. Member Object Url as
+            https://graph.windows.net/contoso.onmicrosoft.com/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151614.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Required. Parameters to create a group
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151608.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Required. Object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets group information from the directory.
+            </summary>
+            <param name='objectId'>
+            Required. User objectId to get group information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.GetGroupMembersAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets the members of a group.
+            </summary>
+            <param name='objectId'>
+            Required. Group object Id who's members should be retrieved.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.GetGroupMembersNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets next set of members of a group.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to
+            GetGroupMembers or GetGroupMembersNext.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the group is a member.
+            </summary>
+            <param name='parameters'>
+            Required. Group filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.ListAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperations.RemoveMemberAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Remove a memeber from a group  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151607.aspx for
+            more information)
+            </summary>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='memberObjectId'>
+            Required. Member Object id
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.GroupOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.AddMember(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters)">
+            <summary>
+            Add a memeber to a group.   (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151600.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='parameters'>
+            Required. Member Object Url as
+            https://graph.windows.net/contoso.onmicrosoft.com/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.AddMemberAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,Microsoft.Azure.Graph.RBAC.GroupAddMemberParameters)">
+            <summary>
+            Add a memeber to a group.   (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151600.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='parameters'>
+            Required. Member Object Url as
+            https://graph.windows.net/contoso.onmicrosoft.com/directoryObjects/f260bbc4-c254-447b-94cf-293b5ec434dd
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.Create(Microsoft.Azure.Graph.RBAC.IGroupOperations,Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters)">
+            <summary>
+            Create a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151614.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a group
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.CreateAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters)">
+            <summary>
+            Create a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151614.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a group
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.Delete(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Delete a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151608.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.DeleteAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Delete a group in the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151608.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.Get(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets group information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='objectId'>
+            Required. User objectId to get group information.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets group information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='objectId'>
+            Required. User objectId to get group information.
+            </param>
+            <returns>
+            Server response for Get group information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetGroupMembers(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets the members of a group.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='objectId'>
+            Required. Group object Id who's members should be retrieved.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetGroupMembersAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets the members of a group.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='objectId'>
+            Required. Group object Id who's members should be retrieved.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetGroupMembersNext(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets next set of members of a group.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to
+            GetGroupMembers or GetGroupMembersNext.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetGroupMembersNextAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets next set of members of a group.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to
+            GetGroupMembers or GetGroupMembersNext.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetMemberGroups(Microsoft.Azure.Graph.RBAC.IGroupOperations,Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the group is a member.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='parameters'>
+            Required. Group filtering parameters.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the group is a member.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='parameters'>
+            Required. Group filtering parameters.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.List(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,System.String)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.ListAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,System.String)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.ListNext(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.ListNextAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String)">
+            <summary>
+            Gets list of groups for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for Get tenant groups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.RemoveMember(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,System.String)">
+            <summary>
+            Remove a memeber from a group  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151607.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='memberObjectId'>
+            Required. Member Object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.GroupOperationsExtensions.RemoveMemberAsync(Microsoft.Azure.Graph.RBAC.IGroupOperations,System.String,System.String)">
+            <summary>
+            Remove a memeber from a group  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151607.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IGroupOperations.
+            </param>
+            <param name='groupObjectId'>
+            Required. Group object id
+            </param>
+            <param name='memberObjectId'>
+            Required. Member Object id
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.IObjectOperations">
+            <summary>
+            Operations for working with Objects in Azure AD Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IObjectOperations.GetCurrentUserAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the details for current logged in user
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IObjectOperations.GetObjectsByObjectIdsAsync(Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets AD group membership by provided AD object Ids
+            </summary>
+            <param name='parameters'>
+            Objects filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations">
+            <summary>
+            Operations for working with service principal in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a service principal in the  directory.
+            </summary>
+            <param name='parameters'>
+            Parameters to create a service principal.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes service principal from the directory.
+            </summary>
+            <param name='objectId'>
+            Object id to delete service principal information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='objectId'>
+            Object id to get service principal information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.GetByServicePrincipalNameAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='servicePrincipalName'>
+            filter based on service principal name
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.ListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of service principals from the current tenant.
+            </summary>
+            <param name='displayNameStartsWith'>
+            Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of service principals for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.IUserOperations">
+            <summary>
+            Operations for working with Users in Azure Active Directory Graph API.
+            (see http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a new user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn130117.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Parameters to create a user.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx for
+            more information)
+            </summary>
+            <param name='user'>
+            user object id or user principal name
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets user information from the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151678.aspx for
+            more information)
+            </summary>
+            <param name='upnOrObjectId'>
+            User object Id or user principal name to get user information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.GetByUserPrincipalNameAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets user information from the directory.
+            </summary>
+            <param name='userPrincipalName'>
+            Filter based on userPrincipalName. This works well with guest users
+            upn.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the user is a member.
+            </summary>
+            <param name='parameters'>
+            User filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.ListAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='mail'>
+            Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.IUserOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            NextLink from the previous successful call to List operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.AADObject">
+            <summary>
+            Active Directory object information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.AADObject.#ctor">
+            <summary>
+            Initializes a new instance of the AADObject class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.DisplayName">
+            <summary>
+            Optional. Gets or sets object display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.Mail">
+            <summary>
+            Optional. Gets or sets mail
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.MailEnabled">
+            <summary>
+            Optional. Gets or sets MailEnabled field
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.ObjectId">
+            <summary>
+            Optional. Gets or sets object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.ObjectType">
+            <summary>
+            Optional. Gets or sets object type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.SecurityEnabled">
+            <summary>
+            Optional. Gets or sets SecurityEnabled field
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.ServicePrincipalNames">
+            <summary>
+            Optional. Gets or sets the list of service principal names.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.SignInName">
+            <summary>
+            Optional. Gets or sets signIn name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.UserPrincipalName">
+            <summary>
+            Optional. Gets or sets principal name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.AADObject.UserType">
+            <summary>
+            Optional. Gets or sets the user type
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.Application">
+            <summary>
+            Active Directory user information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.Application.#ctor">
+            <summary>
+            Initializes a new instance of the Application class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.AppId">
+            <summary>
+            Optional. Gets or sets application Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.AppPermissions">
+            <summary>
+            Optional. Gets or sets application permissions
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.AvailableToOtherTenants">
+            <summary>
+            Optional. Indicates if the application will be available to other
+            tenants
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.DisplayName">
+            <summary>
+            Optional. Gets or sets the displayName
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.IdentifierUris">
+            <summary>
+            Optional. Gets or sets application identifierUris
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.ObjectId">
+            <summary>
+            Optional. Gets or sets object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.ObjectType">
+            <summary>
+            Optional. Gets or sets object type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Application.ReplyUrls">
+            <summary>
+            Optional. Gets or sets application replyUrls
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters">
+            <summary>
+            Request parameters for create a new application
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ApplicationCreateParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.AvailableToOtherTenants">
+            <summary>
+            Required. Indicates if the application will be available to other
+            tenants
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.DisplayName">
+            <summary>
+            Required. Application display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.Homepage">
+            <summary>
+            Required. Application homepage
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.IdentifierUris">
+            <summary>
+            Required. Application Uris
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.KeyCredentials">
+            <summary>
+            Optional. Gets or sets the list of KeyCredential objects
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.PasswordCredentials">
+            <summary>
+            Optional. Gets or sets the list of PasswordCredential objects
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationCreateParameters.ReplyUrls">
+            <summary>
+            Optional. Application reply Urls
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters">
+            <summary>
+            List role assignments filter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ApplicationFilterParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters.AppId">
+            <summary>
+            Optional. Returns an application with a specific appId.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters.DisplayNameStartsWith">
+            <summary>
+            Optional. Returns all applications starting with this displayName.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationFilterParameters.IdentifierUri">
+            <summary>
+            Optional. Returns an application which contains the mentioned
+            identifierUri.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ApplicationGetResult">
+            <summary>
+            Server response for Get application information API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ApplicationGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the ApplicationGetResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationGetResult.Application">
+            <summary>
+            Optional. Active Directory application information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ApplicationListResult">
+            <summary>
+            Server response for List application information API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ApplicationListResult.#ctor">
+            <summary>
+            Initializes a new instance of the ApplicationListResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ApplicationListResult.Applications">
+            <summary>
+            Optional. Active Directory application list
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GetCurrentUserResult">
+            <summary>
+            Server response for Active Directory objects inquiry API calls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GetCurrentUserResult.#ctor">
+            <summary>
+            Initializes a new instance of the GetCurrentUserResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetCurrentUserResult.AADObject">
+            <summary>
+            Optional. Gets or sets the AADObject
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters">
+            <summary>
+            Request parameters for GetObjectsByObjectIds API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters.#ctor">
+            <summary>
+            Initializes a new instance of the GetObjectsParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the GetObjectsParameters class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters.Ids">
+            <summary>
+            Optional. Requested object Ids
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters.IncludeDirectoryObjectReferences">
+            <summary>
+            Required. If true, also searches for object ids in the partner
+            tenant
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters.Types">
+            <summary>
+            Optional. Requested object types
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GetObjectsResult">
+            <summary>
+            Server response for Active Directory objects inquiry API calls
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GetObjectsResult.#ctor">
+            <summary>
+            Initializes a new instance of the GetObjectsResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetObjectsResult.AADObject">
+            <summary>
+            Optional. Collection of Active Directory object
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GetObjectsResult.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of results.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.Group">
+            <summary>
+            Active Directory group information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.Group.#ctor">
+            <summary>
+            Initializes a new instance of the Group class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Group.DisplayName">
+            <summary>
+            Optional. Gets or sets group display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Group.Mail">
+            <summary>
+            Optional. Gets or sets mail field
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Group.ObjectId">
+            <summary>
+            Optional. Gets or sets object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Group.ObjectType">
+            <summary>
+            Optional. Gets or sets object type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.Group.SecurityEnabled">
+            <summary>
+            Optional. Gets or sets security enabled field
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters">
+            <summary>
+            Request parameters for create a new group
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the GroupCreateParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters.DisplayName">
+            <summary>
+            Required. Group display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters.MailEnabled">
+            <summary>
+            Required. Mail
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters.MailNickname">
+            <summary>
+            Required. Mail nick name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupCreateParameters.SecurityEnabled">
+            <summary>
+            Required. Is security enabled
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters">
+            <summary>
+            Request parameters for GetMemberGroups API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters.#ctor">
+            <summary>
+            Initializes a new instance of the GroupGetMemberGroupsParameters
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the GroupGetMemberGroupsParameters
+            class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters.ObjectId">
+            <summary>
+            Required. Group object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsParameters.SecurityEnabledOnly">
+            <summary>
+            Required. If true only membership in security enabled groups should
+            be checked. Otherwise membership in all groups should be checked
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsResult">
+            <summary>
+            Server response for GetMemberGroups API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsResult.#ctor">
+            <summary>
+            Initializes a new instance of the GroupGetMemberGroupsResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupGetMemberGroupsResult.ObjectIds">
+            <summary>
+            Optional. Group Ids of which the group is a member
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GroupGetResult">
+            <summary>
+            Server response for Get group information API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the GroupGetResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupGetResult.Group">
+            <summary>
+            Optional. Active Directory group information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.GroupListResult">
+            <summary>
+            Server response for Get tenant groups API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.GroupListResult.#ctor">
+            <summary>
+            Initializes a new instance of the GroupListResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupListResult.Groups">
+            <summary>
+            Optional. Gets or sets the list of groups.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.GroupListResult.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of results.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.KeyCredential">
+            <summary>
+            Active Directory service principal Key Credential information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.#ctor">
+            <summary>
+            Initializes a new instance of the KeyCredential class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.EndDate">
+            <summary>
+            Optional. Gets or sets end date
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.KeyId">
+            <summary>
+            Optional. Gets or sets key Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.StartDate">
+            <summary>
+            Optional. Gets or sets start date
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.Type">
+            <summary>
+            Optional. Gets or sets type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.Usage">
+            <summary>
+            Optional. Gets or sets usage
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.KeyCredential.Value">
+            <summary>
+            Optional. Gets or sets value
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential">
+            <summary>
+            Active Directory service principal Password Credential information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential.#ctor">
+            <summary>
+            Initializes a new instance of the PasswordCredential class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential.EndDate">
+            <summary>
+            Optional. Gets or sets end date
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential.KeyId">
+            <summary>
+            Optional. Gets or sets key Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential.StartDate">
+            <summary>
+            Optional. Gets or sets start date
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.PasswordCredential.Value">
+            <summary>
+            Optional. Gets or sets value
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal">
+            <summary>
+            Active Directory service principal information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.#ctor">
+            <summary>
+            Initializes a new instance of the ServicePrincipal class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.AppId">
+            <summary>
+            Optional. Gets or sets app id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.DisplayName">
+            <summary>
+            Optional. Gets or sets service principal display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.ObjectId">
+            <summary>
+            Optional. Gets or sets object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.ObjectType">
+            <summary>
+            Optional. Gets or sets object type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal.ServicePrincipalNames">
+            <summary>
+            Optional. Gets or sets the list of names.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters">
+            <summary>
+            Request parameters for create a new service principal
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ServicePrincipalCreateParameters
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ServicePrincipalCreateParameters
+            class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters.AccountEnabled">
+            <summary>
+            Required. Specifies if the account is enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters.AppId">
+            <summary>
+            Required. Gets or sets application Id
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalGetResult">
+            <summary>
+            Server response for service principal information API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the ServicePrincipalGetResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalGetResult.ServicePrincipal">
+            <summary>
+            Optional. Active Directory service principal information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalListResult">
+            <summary>
+            Server response for get tenant service principals API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalListResult.#ctor">
+            <summary>
+            Initializes a new instance of the ServicePrincipalListResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalListResult.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of results.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalListResult.ServicePrincipals">
+            <summary>
+            Optional. Gets or sets the list of service principals.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.User">
+            <summary>
+            Active Directory user information
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.User.#ctor">
+            <summary>
+            Initializes a new instance of the User class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.User.DisplayName">
+            <summary>
+            Optional. Gets or sets user display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.User.Mail">
+            <summary>
+            Optional. Gets or sets user mail
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.User.ObjectId">
+            <summary>
+            Optional. Gets or sets object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.User.ObjectType">
+            <summary>
+            Optional. Gets or sets object type
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.User.UserPrincipalName">
+            <summary>
+            Optional. Gets or sets user principal name
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters">
+            <summary>
+            Request parameters for create a new user
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the UserCreateParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.AccountEnabled">
+            <summary>
+            Required. Enable the account
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.DisplayName">
+            <summary>
+            Required. User display name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.MailNickname">
+            <summary>
+            Required. Mail nick name
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.PasswordProfileSettings">
+            <summary>
+            Required. Password Profile
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.UserPrincipalName">
+            <summary>
+            Required. User Principal Name
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.PasswordProfile.#ctor">
+            <summary>
+            Initializes a new instance of the PasswordProfile class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.PasswordProfile.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the PasswordProfile class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.PasswordProfile.ForceChangePasswordNextLogin">
+            <summary>
+            Optional. Force change password on next login
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters.PasswordProfile.Password">
+            <summary>
+            Required. Password
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters">
+            <summary>
+            Request parameters for GetMemberGroups API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters.#ctor">
+            <summary>
+            Initializes a new instance of the UserGetMemberGroupsParameters
+            class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the UserGetMemberGroupsParameters
+            class with required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters.ObjectId">
+            <summary>
+            Required. User object Id
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters.SecurityEnabledOnly">
+            <summary>
+            Required. If true only membership in security enabled groups should
+            be checked. Otherwise membership in all groups should be checked
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsResult">
+            <summary>
+            Server response for GetMemberGroups API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsResult.#ctor">
+            <summary>
+            Initializes a new instance of the UserGetMemberGroupsResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsResult.ObjectIds">
+            <summary>
+            Optional. Group Ids of which the user is a member
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.UserGetResult">
+            <summary>
+            Server response for Get user information API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserGetResult.#ctor">
+            <summary>
+            Initializes a new instance of the UserGetResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserGetResult.User">
+            <summary>
+            Optional. Active Directory user information
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.Models.UserListResult">
+            <summary>
+            Server response for Get tenant users API call
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.Models.UserListResult.#ctor">
+            <summary>
+            Initializes a new instance of the UserListResult class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserListResult.NextLink">
+            <summary>
+            Optional. Gets or sets the URL to get the next set of results.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.Models.UserListResult.Users">
+            <summary>
+            Optional. Gets or sets the list of users.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.ObjectOperations">
+            <summary>
+            Operations for working with Objects in Azure AD Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperations.#ctor(Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient)">
+            <summary>
+            Initializes a new instance of the ObjectOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperations.GetCurrentUserAsync(System.Threading.CancellationToken)">
+            <summary>
+            Gets the details for current logged in user
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperations.GetObjectsByObjectIdsAsync(Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets AD group membership by provided AD object Ids
+            </summary>
+            <param name='parameters'>
+            Required. Objects filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.ObjectOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperationsExtensions.GetCurrentUser(Microsoft.Azure.Graph.RBAC.IObjectOperations)">
+            <summary>
+            Gets the details for current logged in user
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IObjectOperations.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperationsExtensions.GetCurrentUserAsync(Microsoft.Azure.Graph.RBAC.IObjectOperations)">
+            <summary>
+            Gets the details for current logged in user
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IObjectOperations.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperationsExtensions.GetObjectsByObjectIds(Microsoft.Azure.Graph.RBAC.IObjectOperations,Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters)">
+            <summary>
+            Gets AD group membership by provided AD object Ids
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IObjectOperations.
+            </param>
+            <param name='parameters'>
+            Required. Objects filtering parameters.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ObjectOperationsExtensions.GetObjectsByObjectIdsAsync(Microsoft.Azure.Graph.RBAC.IObjectOperations,Microsoft.Azure.Graph.RBAC.Models.GetObjectsParameters)">
+            <summary>
+            Gets AD group membership by provided AD object Ids
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IObjectOperations.
+            </param>
+            <param name='parameters'>
+            Required. Objects filtering parameters.
+            </param>
+            <returns>
+            Server response for Active Directory objects inquiry API calls
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations">
+            <summary>
+            Operations for working with service principal in Azure Active Directory
+            Graph API.  (see
+            http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for more
+            information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.#ctor(Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient)">
+            <summary>
+            Initializes a new instance of the ServicePrincipalOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Creates a service principal in the  directory.
+            </summary>
+            <param name='parameters'>
+            Required. Parameters to create a service principal.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Deletes service principal from the directory.
+            </summary>
+            <param name='objectId'>
+            Required. Object id to delete service principal information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='objectId'>
+            Required. Object id to get service principal information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.GetByServicePrincipalNameAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='servicePrincipalName'>
+            Required. filter based on service principal name
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.ListAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of service principals from the current tenant.
+            </summary>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of service principals for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.Create(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters)">
+            <summary>
+            Creates a service principal in the  directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a service principal.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.CreateAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,Microsoft.Azure.Graph.RBAC.Models.ServicePrincipalCreateParameters)">
+            <summary>
+            Creates a service principal in the  directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a service principal.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.Delete(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Deletes service principal from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='objectId'>
+            Required. Object id to delete service principal information.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.DeleteAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Deletes service principal from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='objectId'>
+            Required. Object id to delete service principal information.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.Get(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='objectId'>
+            Required. Object id to get service principal information.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.GetAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='objectId'>
+            Required. Object id to get service principal information.
+            </param>
+            <returns>
+            Server response for service principal information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.GetByServicePrincipalName(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='servicePrincipalName'>
+            Required. filter based on service principal name
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.GetByServicePrincipalNameAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets service principal information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='servicePrincipalName'>
+            Required. filter based on service principal name
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.List(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets list of service principals from the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.ListAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets list of service principals from the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.ListNext(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets list of service principals for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.ServicePrincipalOperationsExtensions.ListNextAsync(Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations,System.String)">
+            <summary>
+            Gets list of service principals for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.Azure.Graph.RBAC.IServicePrincipalOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for get tenant service principals API call
+            </returns>
+        </member>
+        <member name="T:Microsoft.Azure.Graph.RBAC.UserOperations">
+            <summary>
+            Operations for working with Users in Azure Active Directory Graph API.
+            (see http://msdn.microsoft.com/en-us/library/azure/hh974476.aspx for
+            more information)
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.#ctor(Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient)">
+            <summary>
+            Initializes a new instance of the UserOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.CreateAsync(Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            Create a new user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn130117.aspx for
+            more information)
+            </summary>
+            <param name='parameters'>
+            Required. Parameters to create a user.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.DeleteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Delete a user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx for
+            more information)
+            </summary>
+            <param name='user'>
+            Required. user object id or user principal name
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.GetAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets user information from the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151678.aspx for
+            more information)
+            </summary>
+            <param name='upnOrObjectId'>
+            Required. User object Id or user principal name to get user
+            information.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.GetByUserPrincipalNameAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets user information from the directory.
+            </summary>
+            <param name='userPrincipalName'>
+            Required. Filter based on userPrincipalName. This works well with
+            guest users upn.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters,System.Threading.CancellationToken)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the user is a member.
+            </summary>
+            <param name='parameters'>
+            Required. User filtering parameters.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.ListAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperations.ListNextAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.UserOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.Create(Microsoft.Azure.Graph.RBAC.IUserOperations,Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters)">
+            <summary>
+            Create a new user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn130117.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a user.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.CreateAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,Microsoft.Azure.Graph.RBAC.Models.UserCreateParameters)">
+            <summary>
+            Create a new user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn130117.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters to create a user.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.Delete(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Delete a user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='user'>
+            Required. user object id or user principal name
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.DeleteAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Delete a user.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151676.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='user'>
+            Required. user object id or user principal name
+            </param>
+            <returns>
+            A standard service response including an HTTP status code and
+            request ID.
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.Get(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets user information from the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151678.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='upnOrObjectId'>
+            Required. User object Id or user principal name to get user
+            information.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.GetAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets user information from the directory.  (see
+            http://msdn.microsoft.com/en-us/library/azure/dn151678.aspx for
+            more information)
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='upnOrObjectId'>
+            Required. User object Id or user principal name to get user
+            information.
+            </param>
+            <returns>
+            Server response for Get user information API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.GetByUserPrincipalName(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets user information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='userPrincipalName'>
+            Required. Filter based on userPrincipalName. This works well with
+            guest users upn.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.GetByUserPrincipalNameAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets user information from the directory.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='userPrincipalName'>
+            Required. Filter based on userPrincipalName. This works well with
+            guest users upn.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.GetMemberGroups(Microsoft.Azure.Graph.RBAC.IUserOperations,Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the user is a member.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='parameters'>
+            Required. User filtering parameters.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.GetMemberGroupsAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,Microsoft.Azure.Graph.RBAC.Models.UserGetMemberGroupsParameters)">
+            <summary>
+            Gets a collection that contains the Object IDs of the groups of
+            which the user is a member.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='parameters'>
+            Required. User filtering parameters.
+            </param>
+            <returns>
+            Server response for GetMemberGroups API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.List(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String,System.String)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.ListAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String,System.String)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='mail'>
+            Optional. Email to filter results.
+            </param>
+            <param name='displayNameStartsWith'>
+            Optional. Display name to filter results.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.ListNext(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.UserOperationsExtensions.ListNextAsync(Microsoft.Azure.Graph.RBAC.IUserOperations,System.String)">
+            <summary>
+            Gets list of users for the current tenant.
+            </summary>
+            <param name='operations'>
+            Reference to the Microsoft.Azure.Graph.RBAC.IUserOperations.
+            </param>
+            <param name='nextLink'>
+            Required. NextLink from the previous successful call to List
+            operation.
+            </param>
+            <returns>
+            Server response for Get tenant users API call
+            </returns>
+        </member>
+        <member name="M:Microsoft.Azure.Graph.RBAC.TenantCloudCredentials.ProcessHttpRequestAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            Apply the credentials to the HTTP request.
+            </summary>
+            <param name="request">The HTTP request.</param>
+            <param name="cancellationToken">Cancellation token.</param>
+            <returns>
+            Task that will complete when processing has completed.
+            </returns>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.TenantCloudCredentials.SubscriptionId">
+            <summary>
+            Gets an empty subscription Id.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.TenantCloudCredentials.TenantID">
+            <summary>
+            Gets or sets tenant ID for AAD. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Azure.Graph.RBAC.TenantCloudCredentials.Token">
+            <summary>
+            Gets or sets secure token used to authenticate against Azure API. 
+            No anonymous requests are allowed.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,40 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/81d469b7-5467-4107-bb5a-d11907112633/CloudServices",
+      "EncodedRequestUri": "LzgxZDQ2OWI3LTU0NjctNDEwNy1iYjVhLWQxMTkwNzExMjYzMy9DbG91ZFNlcnZpY2Vz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2012-08-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.ManagedCache.ManagedCacheClient/0.8.8.1"
+        ]
+      },
+      "ResponseBody": "<CloudServices xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-East-US</Description>\r\n    <GeoRegion>East US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n  <CloudService>\r\n    <Name>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Name>\r\n    <Label>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Label>\r\n    <Description>CachingHYN2S65IWI5KBKCZWNC6LXBBIQ2ZQ6EU5BLHDXSMRZ5IJLDD77UQ-West-US</Description>\r\n    <GeoRegion>West US</GeoRegion>\r\n    <Resources />\r\n  </CloudService>\r\n</CloudServices>",
+      "ResponseHeaders": {
+        "x-ms-request-id": [
+          "38198fd7fbecbad0947e453b541340ec"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 01 Oct 2014 17:39:14 GMT"
+        ],
+        "Server": [
+          "1.0.6198.125",
+          "(rd_rdfe_stable.140911-0949)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "81d469b7-5467-4107-bb5a-d11907112633"
+  }
+}

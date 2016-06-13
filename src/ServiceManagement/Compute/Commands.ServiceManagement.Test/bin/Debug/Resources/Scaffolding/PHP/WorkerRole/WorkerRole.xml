@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="DummyName" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WorkerRole name="$RoleName$" vmsize="Small">
+    <Endpoints>
+      <InputEndpoint name="HttpIn" protocol="tcp" port="$Port$" />
+    </Endpoints>
+    <Startup>
+      <Task executionContext="elevated" commandLine="setup_worker.cmd &gt; log.txt">
+        <Environment>
+          <Variable name="EMULATED">
+            <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+          </Variable>
+          <!-- 
+                Use this value to provide your own url for a role runtime self-extracting package 
+                <Variable name="RUNTIMEURLOVERRIDE" value=""/> 
+                
+                Use this value to specify a particular php version to install on the role
+                Not all php versions are available in the cloud
+                <Variable name="RUNTIMEVERSIONPRIMARYKEY" value="" />
+          -->
+          <Variable name="RUNTIMEVERSIONPRIMARYKEY" value="5.3.17" />
+          <Variable name="RUNTIMEID" value="PHP" />
+          <Variable name="RUNTIMEURL" value=""/>
+
+          <Variable name="WORKER" value="true"/>
+        </Environment>
+      </Task>
+    </Startup>
+    <Runtime>
+      <Environment>
+        <Variable name="PORT">
+          <RoleInstanceValue xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='HttpIn']/@port" />
+        </Variable>
+        <Variable name="EMULATED">
+          <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
+        </Variable>
+      </Environment>
+      <EntryPoint>
+        <ProgramEntryPoint commandLine="php_entry.cmd .\index.php" setReadyOnProcessStart="true"/>
+      </EntryPoint>
+    </Runtime>
+  </WorkerRole>
+</ServiceDefinition>

@@ -1,0 +1,12 @@
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ResourceManager\Tags\Commands.Tags\obj\Debug\Commands.Tags.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ResourceManager\Tags\Commands.Tags\obj\Debug\Microsoft.Azure.Commands.Tags.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ResourceManager\Tags\Commands.Tags\obj\Debug\Commands.Tags.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ResourceManager\Tags\Commands.Tags\obj\Debug\Microsoft.Azure.Commands.Tags.dll
+C:\Repository\azure-powershell\src\ResourceManager\Tags\Commands.Tags\obj\Debug\Microsoft.Azure.Commands.Tags.pdb

@@ -1,0 +1,14 @@
+﻿<Scaffold>
+  <ScaffoldFile PathExpression="bin\\.*" />
+  <ScaffoldFile Path="startup.cmd" />
+  <ScaffoldFile Path="Web.config" />
+  <ScaffoldFile Path="Web.cloud.config" />
+  <ScaffoldFile Path="RoleSettings.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <NodeRules.AddRoleToConfig />
+  </ScaffoldFile>
+  <ScaffoldFile Path="WebRole.xml" Copy="false">
+    <Scaffold.ReplaceParameterRule />
+    <NodeRules.AddWebRoleToDef />
+  </ScaffoldFile>
+</Scaffold>

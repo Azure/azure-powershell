@@ -1,0 +1,13 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll-Help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll.config
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Commands.SqlDatabase.csproj.App.config
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Commands.SqlDatabase.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Commands.SqlDatabase.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.dll
+C:\Repository\azure-powershell\src\ServiceManagement\Sql\Commands.SqlDatabase\obj\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.pdb

@@ -1,0 +1,15 @@
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.Tags.dll-help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.Tags.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\ResourceManagerStartup.ps1
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll
+C:\Repository\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.pdb
+C:\Repository\azure-powershell\src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\obj\Debug\Commands.Resources.Rest.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\obj\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources.resources
+C:\Repository\azure-powershell\src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\obj\Debug\Commands.Resources.Rest.csproj.GenerateResource.Cache
+C:\Repository\azure-powershell\src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\obj\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll
+C:\Repository\azure-powershell\src\ResourceManager\Resources\Commands.ResourceManager\Cmdlets\obj\Debug\Microsoft.Azure.Commands.ResourceManager.Cmdlets.pdb

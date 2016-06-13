@@ -1,0 +1,1558 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.Store</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.AddOnOperations">
+            <summary>
+            Provides REST operations for working with Store add-ins from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.IAddOnOperations">
+            <summary>
+            Provides REST operations for working with Store add-ins from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IAddOnOperations.BeginCreatingAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            The name of the cloud service to which this store item will be
+            assigned.
+            </param>
+            <param name='resourceName'>
+            The name of this resource.
+            </param>
+            <param name='addOnName'>
+            The add on name.
+            </param>
+            <param name='parameters'>
+            Parameters used to specify how the Create procedure will function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IAddOnOperations.BeginDeletingAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Store entries
+            that re provisioned for a subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            The name of the cloud service to which this store item will be
+            assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            The name of this resource provider.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IAddOnOperations.CreateAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            The name of the cloud service to which this store item will be
+            assigned.
+            </param>
+            <param name='resourceName'>
+            The name of this resource.
+            </param>
+            <param name='addOnName'>
+            The add on name.
+            </param>
+            <param name='parameters'>
+            Parameters used to specify how the Create procedure will function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IAddOnOperations.DeleteAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Storeentries
+            that are provisioned for a subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            The name of the cloud service to which this store item will be
+            assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            The name of this resource provider.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IAddOnOperations.UpdateAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Update Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            The name of the cloud service to which this store item will be
+            assigned.
+            </param>
+            <param name='resourceName'>
+            The name of this resource.
+            </param>
+            <param name='addOnName'>
+            The addon name.
+            </param>
+            <param name='parameters'>
+            Parameters used to specify how the Create procedure will function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.#ctor(Microsoft.WindowsAzure.Management.Store.StoreManagementClient)">
+            <summary>
+            Initializes a new instance of the AddOnOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.BeginCreatingAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.BeginDeletingAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Store entries
+            that re provisioned for a subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.CreateAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.DeleteAsync(System.String,System.String,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Storeentries
+            that are provisioned for a subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperations.UpdateAsync(System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Update Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The addon name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.AddOnOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.Store.StoreManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions">
+            <summary>
+            The Windows Azure Store API is a REST API for managing Windows Azure
+            Store add-ins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.BeginCreating(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.BeginCreatingAsync(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.BeginDeleting(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Store entries
+            that re provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.BeginDeletingAsync(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Store entries
+            that re provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.Create(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.CreateAsync(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters)">
+            <summary>
+            The Create Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The add on name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.Delete(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Storeentries
+            that are provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.DeleteAsync(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,System.String)">
+            <summary>
+            The Delete Store Item operation deletes Windows Azure Storeentries
+            that are provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceProviderNamespace'>
+            Required. The namespace in which this store item resides.
+            </param>
+            <param name='resourceProviderType'>
+            Required. The type of store item to be deleted.
+            </param>
+            <param name='resourceProviderName'>
+            Required. The name of this resource provider.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.Update(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters)">
+            <summary>
+            The Update Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The addon name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.AddOnOperationsExtensions.UpdateAsync(Microsoft.WindowsAzure.Management.Store.IAddOnOperations,System.String,System.String,System.String,Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters)">
+            <summary>
+            The Update Store Item operation creates Windows Azure Store entries
+            in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IAddOnOperations.
+            </param>
+            <param name='cloudServiceName'>
+            Required. The name of the cloud service to which this store item
+            will be assigned.
+            </param>
+            <param name='resourceName'>
+            Required. The name of this resource.
+            </param>
+            <param name='addOnName'>
+            Required. The addon name.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations">
+            <summary>
+            Provides REST operations for working with cloud services from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations">
+            <summary>
+            Provides REST operations for working with cloud services from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.BeginCreatingAsync(Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='parameters'>
+            Parameters used to specify how the Create procedure will function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.CreateAsync(Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='parameters'>
+            Parameters used to specify how the Create procedure will function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            The List Cloud Services operation enumerates Windows Azure Store
+            entries that are provisioned for a subscription.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response structure for the Cloud Service List operation.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations.#ctor(Microsoft.WindowsAzure.Management.Store.StoreManagementClient)">
+            <summary>
+            Initializes a new instance of the CloudServiceOperations class.
+            </summary>
+            <param name='client'>
+            Reference to the service client.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations.BeginCreatingAsync(Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations.CreateAsync(Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters,System.Threading.CancellationToken)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations.ListAsync(System.Threading.CancellationToken)">
+            <summary>
+            The List Cloud Services operation enumerates Windows Azure Store
+            entries that are provisioned for a subscription.
+            </summary>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response structure for the Cloud Service List operation.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.CloudServiceOperations.Client">
+            <summary>
+            Gets a reference to the
+            Microsoft.WindowsAzure.Management.Store.StoreManagementClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions">
+            <summary>
+            The Windows Azure Store API is a REST API for managing Windows Azure
+            Store add-ins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.BeginCreating(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations,Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.BeginCreatingAsync(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations,Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.Create(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations,Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.CreateAsync(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations,Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters)">
+            <summary>
+            The Create Cloud Service operation creates a Windows Azure cloud
+            service in a Windows Azure subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <param name='parameters'>
+            Required. Parameters used to specify how the Create procedure will
+            function.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.List(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations)">
+            <summary>
+            The List Cloud Services operation enumerates Windows Azure Store
+            entries that are provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <returns>
+            The response structure for the Cloud Service List operation.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.CloudServiceOperationsExtensions.ListAsync(Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations)">
+            <summary>
+            The List Cloud Services operation enumerates Windows Azure Store
+            entries that are provisioned for a subscription.
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.ICloudServiceOperations.
+            </param>
+            <returns>
+            The response structure for the Cloud Service List operation.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient">
+            <summary>
+            The Windows Azure Store API is a REST API for managing Windows Azure
+            Store add-ins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.GetOperationStatusAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Get Operation Status operation returns the status of
+            thespecified operation. After calling an asynchronous operation,
+            you can call Get Operation Status to determine whether the
+            operation has succeeded, failed, or is still in progress.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+            for more information)
+            </summary>
+            <param name='requestId'>
+            The request ID for the request you wish to track. The request ID is
+            returned in the x-ms-request-id response header for every request.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.AddOns">
+            <summary>
+            Provides REST operations for working with Store add-ins from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.CloudServices">
+            <summary>
+            Provides REST operations for working with cloud services from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters">
+            <summary>
+            Represents the data passed to the Create Store Resource API method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the AddOnCreateParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the AddOnCreateParameters class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters.Plan">
+            <summary>
+            Required. The selected plan for this store addon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters.PromotionCode">
+            <summary>
+            Optional. The promotion code for this store addon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnCreateParameters.Type">
+            <summary>
+            Required. The type of store item to be created.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters">
+            <summary>
+            Represents the data passed to the Update Store Resource API method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the AddOnUpdateParameters class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the AddOnUpdateParameters class with
+            required arguments.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters.Plan">
+            <summary>
+            Required. The selected plan for this store addon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters.PromotionCode">
+            <summary>
+            Optional. The promotion code for this store addon.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.AddOnUpdateParameters.Type">
+            <summary>
+            Required. The type of store item to be created.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters">
+            <summary>
+            Represents the data passed to the Create Cloud Service API method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the CloudServiceCreateParameters
+            class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters.Description">
+            <summary>
+            Required. The description for the cloud service to be created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters.GeoRegion">
+            <summary>
+            Required. The geographical region to create the cloud service in.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters.Label">
+            <summary>
+            Required. The label of the cloud service to be created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceCreateParameters.Name">
+            <summary>
+            Required. The name of the cloud service to be created.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse">
+            <summary>
+            The response structure for the Cloud Service List operation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.#ctor">
+            <summary>
+            Initializes a new instance of the CloudServiceListResponse class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.GetEnumerator">
+            <summary>
+            Gets the sequence of CloudServices.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the sequence of CloudServices.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudServices">
+            <summary>
+            Optional. The list of cloud service locations for this subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService">
+            <summary>
+            Defines a cloud service-supporting region in which a storm item is
+            located.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.#ctor">
+            <summary>
+            Initializes a new instance of the CloudService class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.Description">
+            <summary>
+            Optional. The description of the cloud service region.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.GeoRegion">
+            <summary>
+            Optional. The geographical region in which this cloud service
+            can run.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.Label">
+            <summary>
+            Optional. The label of the cloud service region.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.Name">
+            <summary>
+            Optional. The name of the cloud service region.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.Resources">
+            <summary>
+            Optional. A list of existing store resources installed into a
+            cloud service region.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource">
+            <summary>
+            A store add-on item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.#ctor">
+            <summary>
+            Initializes a new instance of the AddOnResource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.ETag">
+            <summary>
+            Optional. The ETag for this store resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.Name">
+            <summary>
+            Optional. The user-input name of this store item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.Namespace">
+            <summary>
+            Optional. The namespace in which this store item resides.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.OutputItems">
+            <summary>
+            Optional. Output items associated with an individual store
+            resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.Plan">
+            <summary>
+            Optional. The plan for this store item as selected by the
+            user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.SchemaVersion">
+            <summary>
+            Optional. The schema version for this resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.State">
+            <summary>
+            Optional. The state of this store resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.Status">
+            <summary>
+            Optional. Operation status items associated with an
+            individual store resource.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.Type">
+            <summary>
+            Optional. The type of store item.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimits">
+            <summary>
+            Optional. Usage meters associated with an individual store
+            resource.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.OperationStatus">
+            <summary>
+            The operation status of an individual store resource item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.OperationStatus.#ctor">
+            <summary>
+            Initializes a new instance of the OperationStatus class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.OperationStatus.Result">
+            <summary>
+            Optional. The result of this operation status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.OperationStatus.Type">
+            <summary>
+            Optional. The type of this operation status.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit">
+            <summary>
+            Describes the current utilization and metering of a store
+            resource item.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit.#ctor">
+            <summary>
+            Initializes a new instance of the UsageLimit class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit.AmountIncluded">
+            <summary>
+            Optional. Defines the limit of this usage included in
+            this store resource's plan.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit.AmountUsed">
+            <summary>
+            Optional. The amount of this store resource that has
+            already been used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit.Name">
+            <summary>
+            Optional. The name of this usage limit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.Models.CloudServiceListResponse.CloudService.AddOnResource.UsageLimit.Unit">
+            <summary>
+            Optional. The unit in which this usage limit is
+            measured.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.StoreManagementClient">
+            <summary>
+            The Windows Azure Store API is a REST API for managing Windows Azure
+            Store add-ins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri)">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials)">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Uri,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='baseUri'>
+            Optional. Gets the URI used as the base for all cloud service
+            requests.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.#ctor(Microsoft.Azure.SubscriptionCloudCredentials,System.Net.Http.HttpClient)">
+            <summary>
+            Initializes a new instance of the StoreManagementClient class.
+            </summary>
+            <param name='credentials'>
+            Required. Gets subscription credentials which uniquely identify
+            Microsoft Azure subscription. The subscription ID forms part of
+            the URI for every service call.
+            </param>
+            <param name='httpClient'>
+            The Http client
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.Clone(Hyak.Common.ServiceClient{Microsoft.WindowsAzure.Management.Store.StoreManagementClient})">
+            <summary>
+            Clones properties from current instance to another
+            StoreManagementClient instance
+            </summary>
+            <param name='client'>
+            Instance of StoreManagementClient to clone to
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.GetOperationStatusAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            The Get Operation Status operation returns the status of
+            thespecified operation. After calling an asynchronous operation,
+            you can call Get Operation Status to determine whether the
+            operation has succeeded, failed, or is still in progress.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+            for more information)
+            </summary>
+            <param name='requestId'>
+            Required. The request ID for the request you wish to track. The
+            request ID is returned in the x-ms-request-id response header for
+            every request.
+            </param>
+            <param name='cancellationToken'>
+            Cancellation token.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.ApiVersion">
+            <summary>
+            Gets the API version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.BaseUri">
+            <summary>
+            Gets the URI used as the base for all cloud service requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.Credentials">
+            <summary>
+            Gets subscription credentials which uniquely identify Microsoft
+            Azure subscription. The subscription ID forms part of the URI for
+            every service call.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.LongRunningOperationInitialTimeout">
+            <summary>
+            Gets or sets the initial timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.LongRunningOperationRetryTimeout">
+            <summary>
+            Gets or sets the retry timeout for Long Running Operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.AddOns">
+            <summary>
+            Provides REST operations for working with Store add-ins from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.Store.StoreManagementClient.CloudServices">
+            <summary>
+            Provides REST operations for working with cloud services from the
+            Windows Azure store service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.Store.StoreManagementClientExtensions">
+            <summary>
+            The Windows Azure Store API is a REST API for managing Windows Azure
+            Store add-ins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClientExtensions.GetOperationStatus(Microsoft.WindowsAzure.Management.Store.IStoreManagementClient,System.String)">
+            <summary>
+            The Get Operation Status operation returns the status of
+            thespecified operation. After calling an asynchronous operation,
+            you can call Get Operation Status to determine whether the
+            operation has succeeded, failed, or is still in progress.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.
+            </param>
+            <param name='requestId'>
+            Required. The request ID for the request you wish to track. The
+            request ID is returned in the x-ms-request-id response header for
+            every request.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.Store.StoreManagementClientExtensions.GetOperationStatusAsync(Microsoft.WindowsAzure.Management.Store.IStoreManagementClient,System.String)">
+            <summary>
+            The Get Operation Status operation returns the status of
+            thespecified operation. After calling an asynchronous operation,
+            you can call Get Operation Status to determine whether the
+            operation has succeeded, failed, or is still in progress.  (see
+            http://msdn.microsoft.com/en-us/library/windowsazure/ee460783.aspx
+            for more information)
+            </summary>
+            <param name='operations'>
+            Reference to the
+            Microsoft.WindowsAzure.Management.Store.IStoreManagementClient.
+            </param>
+            <param name='requestId'>
+            Required. The request ID for the request you wish to track. The
+            request ID is returned in the x-ms-request-id response header for
+            every request.
+            </param>
+            <returns>
+            The response body contains the status of the specified asynchronous
+            operation, indicating whether it has succeeded, is inprogress, or
+            has failed. Note that this status is distinct from the HTTP status
+            code returned for the Get Operation Status operation itself.  If
+            the asynchronous operation succeeded, the response body includes
+            the HTTP status code for the successful request.  If the
+            asynchronous operation failed, the response body includes the HTTP
+            status code for the failed request, and also includes error
+            information regarding the failure.
+            </returns>
+        </member>
+    </members>
+</doc>

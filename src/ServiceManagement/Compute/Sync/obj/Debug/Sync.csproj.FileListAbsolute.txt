@@ -1,0 +1,7 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Sync.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Sync.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Sync.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Sync.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\Compute\Sync\obj\Debug\Sync.csprojResolveAssemblyReference.cache
+C:\Repository\azure-powershell\src\ServiceManagement\Compute\Sync\obj\Debug\Microsoft.WindowsAzure.Commands.Sync.dll
+C:\Repository\azure-powershell\src\ServiceManagement\Compute\Sync\obj\Debug\Microsoft.WindowsAzure.Commands.Sync.pdb

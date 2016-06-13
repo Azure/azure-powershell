@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.Azure.Test.HttpRecorder</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.Azure.Test.HttpRecorder.AssetNames">
+            <summary>
+            This data structure is used to record the asset names (like website name, etc..) 
+            used when doing the record mode. Stored names will be used in the playback mode
+            to mock the exact behavior of the original test.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.AssetNames.#ctor(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Queue{System.String}})">
+            <summary>
+            Initialize collection
+            </summary>
+            <param name="assetNames"></param>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.HttpMockServer.GetAssetGuid(System.String)">
+            <summary>
+            Gets the asset unique identifier. This is used to store the GUID in the recording so it can be easily retrieved.
+            This behaves the same as name generation, but if useful if the client is required to generate Guids for the service.
+            </summary>
+            <param name="testName">Name of the test.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.HttpMockServer.GetVariable(System.String,System.String)">
+            <summary>
+            Returns stored variable or variableValue if variableName is not found.
+            </summary>
+            <param name="variableName">Variable name</param>
+            <param name="variableValue">Variable value to be preserved in recording mode.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.Azure.Test.HttpRecorder.HttpMockServer.Variables">
+            <summary>
+            Variables persistent across recording sessions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode">
+            <summary>
+            Enum that holds possible modes for the http recorder.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.Record">
+            <summary>
+            In this mode the mock server watches the out-going requests and records
+            their corresponding responses.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.Playback">
+            <summary>
+            The playback mode should always be after a successful record session.
+            The mock server matches the given requests and return their stored 
+            corresponding responses.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode.None">
+            <summary>
+            The mock server does not do anything.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Test.HttpRecorder.IRecordMatcher">
+            <summary>
+            Interface that used by the mock server for mapping a request with it's corresponding response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.IRecordMatcher.GetMatchingKey(Microsoft.Azure.Test.HttpRecorder.RecordEntry)">
+            <summary>
+            Gets the key used for mapping a given RecordEntry request's with its response.
+            </summary>
+            <param name="recordEntry">The record entry containing the request info</param>
+            <returns>The key used for the mapping</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.IRecordMatcher.GetMatchingKey(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Gets the key mapping for the given request.
+            </summary>
+            <param name="request">The request to be mapped</param>
+            <returns>The key corresponding to this request</returns>
+        </member>
+        <member name="P:Microsoft.Azure.Test.HttpRecorder.RecordEntry.EncodedRequestUri">
+            <summary>
+            The request URi as a base64 string - removes encoding issues in matching
+            </summary>
+        </member>
+        <member name="T:Microsoft.Azure.Test.HttpRecorder.SimpleRecordMatcher">
+            <summary>
+            This class does a simple mapping between given request and responses.
+            The hashing algorithm works by combining the HTTP method of the request
+            plus the request uri together. Optionally a key-value pair of headers
+            can be added to the key.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.Utilities.TryFormatXml(System.String)">
+            <summary>
+            Formats the given XML into indented way.
+            </summary>
+            <param name="content">The input xml string</param>
+            <returns>The formatted xml string</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.Utilities.IsXml(System.String)">
+            <summary>
+            Checks if the content is valid XML or not.
+            </summary>
+            <param name="content">The text to check</param>
+            <returns>True if XML, false otherwise</returns>
+        </member>
+        <member name="M:Microsoft.Azure.Test.HttpRecorder.Utilities.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Perform an action on each element of a sequence.
+            </summary>
+            <typeparam name="T">Type of elements in the sequence.</typeparam>
+            <param name="sequence">The sequence.</param>
+            <param name="action">The action to perform.</param>
+        </member>
+    </members>
+</doc>

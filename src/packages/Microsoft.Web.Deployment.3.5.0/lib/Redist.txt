@@ -1,0 +1,1 @@
+Microsoft.Web.Deployment Core Nuget package

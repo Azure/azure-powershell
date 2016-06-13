@@ -1,0 +1,6 @@
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Tools.Vhd.pdb
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll.CodeAnalysisLog.xml
+C:\Repository\azure-powershell\src\Package\Debug\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll.lastcodeanalysissucceeded
+C:\Repository\azure-powershell\src\ServiceManagement\Compute\VhdManagement\obj\Debug\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll
+C:\Repository\azure-powershell\src\ServiceManagement\Compute\VhdManagement\obj\Debug\Microsoft.WindowsAzure.Commands.Tools.Vhd.pdb
