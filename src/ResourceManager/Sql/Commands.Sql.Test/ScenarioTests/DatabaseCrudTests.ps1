@@ -178,17 +178,17 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
 			Assert-AreEqual $db.DatabaseName $db1.DatabaseName
-			Assert-AreEqual 1GB $db1.MaxSizeBytes
-			Assert-AreEqual Basic $db1.Edition
-			Assert-AreEqual Basic $db1.CurrentServiceObjectiveName
+			Assert-AreEqual 250GB $db1.MaxSizeBytes
+			Assert-AreEqual Standard $db1.Edition
+			Assert-AreEqual S0 $db1.CurrentServiceObjectiveName
 			Assert-AreEqual $db.CollationName $db1.CollationName
 
 			# Alter all properties using piping
 			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
 			Assert-AreEqual $db.DatabaseName $db2.DatabaseName
-			Assert-AreEqual 100GB $db2.MaxSizeBytes
-			Assert-AreEqual Standard $db2.Edition
-			Assert-AreEqual S1 $db2.CurrentServiceObjectiveName
+			Assert-AreEqual 1GB $db2.MaxSizeBytes
+			Assert-AreEqual Basic $db2.Edition
+			Assert-AreEqual Basic $db2.CurrentServiceObjectiveName
 			Assert-AreEqual $db.CollationName $db2.CollationName
 		}
 	}
