@@ -12,43 +12,51 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Models;
+using System.Security;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// SQL VM Extension's context object used by Get-AzureRmVMSqlServerExtension
+    /// AKV settings to configure on SQL VM
     /// </summary>
-    public class VirtualMachineSqlServerExtensionContext : PSVirtualMachineExtension
+    public class KeyVaultCredentialSettings
     {
         /// <summary>
-        /// SQLVM Extension's publisher name 
+        /// Defines if the Key Vault Credentails feature is enabled or disabled
         /// </summary>
-        public const string ExtensionPublishedNamespace = "Microsoft.SqlServer.Management";
+        public bool Enable { get; set; }
 
         /// <summary>
-        /// SQLVM Extension's name
+        /// Key Vault credentails name
         /// </summary>
-        public const string ExtensionPublishedName = "SqlIaaSAgent";
+        public string CredentialName { get; set; }
 
         /// <summary>
-        /// SQLVM Extension's default version 
+        /// Gets the azure key vault URL.
         /// </summary>
-        public const string ExtensionDefaultVersion = "1.*";
+        /// <value>
+        /// The azure key vault URL for Credential Management.
+        /// </value>
+        [JsonIgnoreAttribute()]
+        public string AzureKeyVaultUrl { get; set; }
 
         /// <summary>
-        /// Auto-patching settings
+        /// Gets the name of the principal.
         /// </summary>
-        public AutoPatchingSettings AutoPatchingSettings;
+        /// <value>
+        /// The name of the service principal to access the Azure Key Vault.
+        /// </value>
+        [JsonIgnoreAttribute()]
+        public string ServicePrincipalName { get; set; }
 
         /// <summary>
-        /// Auto-backup settings
+        /// Gets the principal secret.
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings;
-
-        /// <summary>
-        /// Key Vault Credential settings
-        /// </summary>
-        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+        /// <value>
+        /// The service principal secret to access the Azure Key Vault.
+        /// </value>
+        [JsonIgnoreAttribute()]
+        public string ServicePrincipalSecret { get; set; }
     }
 }
