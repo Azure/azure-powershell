@@ -25,6 +25,7 @@ using Moq;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -638,10 +639,135 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                         resourceName,
                         "Succeeded".ToLower())),
                 Times.Once());
-        }
+		}
+
+		[Fact]
+		[Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void NewResourceGroupWithDeploymentDelaySucceeds()
+		{
+			Uri templateUri = new Uri("http://templateuri.microsoft.com");
+			Deployment deploymentFromGet = new Deployment();
+			Deployment deploymentFromValidate = new Deployment();
+			PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters()
+			{
+				ResourceGroupName = resourceGroupName,
+				Location = resourceGroupLocation,
+				DeploymentName = deploymentName,
+				TemplateFile = templateFile,
+				ConfirmAction = ConfirmAction
+			};
+
+			//Thread-safe collection
+			ConcurrentBag<string> deploymentNames = new ConcurrentBag<string>();
+
+			resourceGroupMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(parameters.ResourceGroupName, null, new CancellationToken()))
+				.Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>() { Body = (bool?)false }));
+
+			resourceGroupMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+				parameters.ResourceGroupName,
+				It.IsAny<ResourceGroup>(),
+				null,
+				new CancellationToken()))
+					.Returns(Task.Factory.StartNew(() =>
+							new AzureOperationResponse<ResourceGroup>()
+							{
+								Body = new ResourceGroup() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+							}));
+
+			resourceGroupMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, null, new CancellationToken()))
+				.Returns(Task.Factory.StartNew(() =>
+				new AzureOperationResponse<ResourceGroup>()
+				{
+					Body = new ResourceGroup() { Location = resourceGroupLocation }
+				}));
+
+			deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
+				.Returns<string, string, Deployment, Dictionary<string, List<string>>, CancellationToken>(async (resourceGroupNameValue, deploymentNameValue, deployment, customerHeaders, cancellationToken) =>
+				{
+					//Simulate delay in creating deployment resource
+					await Task.Delay(10000, cancellationToken);
+					deploymentNames.Add(deploymentNameValue);
+					return new AzureOperationResponse<DeploymentExtended>()
+					{
+						Body = new DeploymentExtended
+						{
+							Id = requestId
+						}
+					};
+				})
+				.Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
+				{ deploymentFromGet = bDeploy; });
+
+			deploymentsMock.Setup(f => f.GetWithHttpMessagesAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
+				.Returns<string, string, Dictionary<string, List<string>>, CancellationToken>(async (resouceGroupNameValue, deploymentNameValue, customHeaders, cancellationToken) =>
+				{
+					//Simulate no delay in getting deployment status
+					await Task.Delay(1, cancellationToken);
+
+					if (deploymentNames.Contains(deploymentNameValue))
+					{
+						return new AzureOperationResponse<DeploymentExtended>()
+						{
+							Body = new DeploymentExtended()
+							{
+								Name = deploymentName,
+								Properties = new DeploymentPropertiesExtended()
+								{
+									Mode = DeploymentMode.Incremental,
+									CorrelationId = "123",
+									ProvisioningState = "Succeeded"
+								},
+							}
+						};
+					}
+
+					return new AzureOperationResponse<DeploymentExtended>
+					{
+						Response = new System.Net.Http.HttpResponseMessage { StatusCode = HttpStatusCode.NotFound },
+					};
+				});
+
+			deploymentsMock.Setup(f => f.ValidateWithHttpMessagesAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), null, new CancellationToken()))
+				.Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(new DeploymentValidateResult())))
+				.Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+
+			SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() { CreateGenericResource(null, null, "website") });
+			deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(resourceGroupName, deploymentName, null, null, new CancellationToken()))
+				.Returns(Task.Factory.StartNew(() => CreateAzureOperationResponse(GetPagableType(new List<DeploymentOperation>()
+					{
+						new DeploymentOperation()
+						{
+							OperationId = Guid.NewGuid().ToString(),
+							Properties = new DeploymentOperationProperties()
+							{
+								ProvisioningState = "Succeeded",
+								TargetResource = new TargetResource()
+								{
+									ResourceType = "Microsoft.Website",
+									ResourceName = resourceName
+								}
+							}
+						}
+					}))));
+
+			PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+			Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment deploymentResult = resourcesClient.ExecuteDeployment(parameters);
+			deploymentsMock.Verify((f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, deploymentFromGet, null, new CancellationToken())), Times.Once());
+			Assert.Equal(parameters.ResourceGroupName, deploymentResult.ResourceGroupName);
+
+			Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
+			Assert.NotNull(deploymentFromGet.Properties.Template);
+
+			progressLoggerMock.Verify(
+				f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
+						"Microsoft.Website",
+						resourceName,
+						"Succeeded".ToLower())),
+				Times.Once());
+		}
 
 
-        [Fact(Skip = "TODO: Fix the test to fit the new client post migration")]
+		[Fact(Skip = "TODO: Fix the test to fit the new client post migration")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShowsFailureErrorWhenResourceGroupWithDeploymentFails()
         {
