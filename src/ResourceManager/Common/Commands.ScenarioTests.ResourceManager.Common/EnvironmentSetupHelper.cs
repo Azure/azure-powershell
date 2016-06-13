@@ -74,6 +74,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
+
+            // Hack! 
+            AppDomain.CurrentDomain.AssemblyResolve += ResolveRuntimeAssemblyLoadExceptions;
+        }
+        private Assembly ResolveRuntimeAssemblyLoadExceptions(object sender, ResolveEventArgs args)
+        {
+            // Due to CoreCLR version of SDK libraries and ClientRuntumes we have Newtonsoft.Json version upgrade 
+            // to version 8.0.3. But old SDKs (Hydra/Hyak based) has version 6.0.4 requirement. We need to do a 
+            // runtime redirect. 
+            if (args.Name.Equals("Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed"))
+            {
+                var requestedAssembly = new AssemblyName(args.Name);
+                requestedAssembly.Version = new Version(8, 0);
+                requestedAssembly.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+                var assembly = Assembly.Load(requestedAssembly);
+                return assembly;
+            }
+            return null;
         }
 
         public string RMProfileModule

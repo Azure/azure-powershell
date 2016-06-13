@@ -87,6 +87,32 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090"
             });
+
+            // Hack! 
+            AppDomain.CurrentDomain.AssemblyResolve += ResolveRuntimeAssemblyLoadExceptions;
+        }
+
+        private Assembly ResolveRuntimeAssemblyLoadExceptions(object sender, ResolveEventArgs args)
+        {
+            // Due to CoreCLR version of SDK libraries and ClientRuntumes we have Newtonsoft.Json version upgrade 
+            // to version 8.0.3. But old SDKs (Hydra/Hyak based) has version 6.0.4 requirement. We need to do a 
+            // runtime redirect. 
+            if (args.Name.Equals("Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed"))
+            {
+                try
+                {
+                    var requestedAssembly = new AssemblyName(args.Name);
+                    requestedAssembly.Version = new Version(8, 0);
+                    requestedAssembly.CultureInfo = System.Globalization.CultureInfo.InvariantCulture;
+                    var assembly = Assembly.Load(requestedAssembly);
+                    return assembly;
+                }
+                catch(Exception ex)
+                {
+                    this.WriteExceptionError(ex);
+                }
+            }
+            return null;
         }
 
         /// <summary>
