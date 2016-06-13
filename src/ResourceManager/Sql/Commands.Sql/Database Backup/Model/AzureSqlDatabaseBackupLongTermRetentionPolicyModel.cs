@@ -20,14 +20,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// </summary>
         public string DatabaseName { get; set; }
 
-        /*
-         * Not supported for MVP
-        /// <summary>
-        /// Gets or sets a value indicating whether to use server default
-        /// </summary>
-        public bool UseServerDefault { get; set; }
-        */
-
         /// <summary>
         /// Gets or sets the backup archival state
         /// </summary>
