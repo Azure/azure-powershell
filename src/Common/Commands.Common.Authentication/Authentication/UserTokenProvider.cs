@@ -26,6 +26,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -310,13 +311,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     if (string.IsNullOrWhiteSpace(tenant))
                     {
                         tenant = "Common";
-                        var issuer = GetIssuer(AuthResult);
-                        if (!string.IsNullOrWhiteSpace(issuer) && issuer.Contains("/"))
+                        string issuer;
+                        if (IdentityTokenHelpers.TryGetIssuer(AuthResult.IdToken, out issuer))
                         {
-                            var paths = issuer.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
-                            if (paths.Length > 2)
+                            string issuerTenant;
+                            if (IdentityTokenHelpers.TryGetTenantFromIssuer(issuer, out issuerTenant))
                             {
-                                tenant = paths.Last();
+                                tenant = issuerTenant;
                             }
                         }
                     }
@@ -336,41 +337,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return LoginType.OrgId;
                 }
             }
-        }
-
-        private static string GetIssuer(AuthenticationResult auth)
-        {
-            string result = null;
-            try
-            {
-                var token = auth.IdToken;
-                var tokenParts = token.Split('.');
-                if (tokenParts.Length > 1)
-                {
-                    token = tokenParts[1];
-                }
-
-               switch (token.Length % 4)
-                {
-                    case 2:
-                        token += "==";
-                        break;
-                    case 3:
-                        token += "=";
-                        break;
-                }
-
-                var tokenJson = Encoding.UTF8.GetString(Convert.FromBase64String(token));
-                var parsedToken = JToken.Parse(tokenJson);
-                result = parsedToken.Value<string>("iss");
-                TracingAdapter.Information(Resources.TokenIssuerTrace, token, tokenJson, result);
-            }
-            catch (JsonException)
-            {
-                // ignore Json exceptions
-            }
-
-            return result;
         }
 
         private void ClearCookies()
