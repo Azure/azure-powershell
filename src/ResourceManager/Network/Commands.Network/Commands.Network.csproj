@@ -324,6 +324,7 @@
     <Compile Include="RouteTable\SetAzureRouteTableCommand.cs" />
     <Compile Include="VirtualNetworkGateway\AzureVirtualNetworkGatewayIpConfigBase.cs" />
     <Compile Include="VirtualNetworkGateway\ChildResourceHelp.cs" />
+    <Compile Include="VirtualNetworkGateway\UpdateAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\VirtualNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="VirtualNetworkGateway\GetAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayCommand.cs" />
