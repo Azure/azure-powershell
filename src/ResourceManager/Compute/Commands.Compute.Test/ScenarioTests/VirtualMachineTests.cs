@@ -24,35 +24,35 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineUpdateWithoutNic()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineUpdateWithoutNic");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithVMAgentAutoUpdate()
         {
@@ -73,56 +73,56 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineList");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSizeAndUsage()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCapture()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCapture");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
         }
-
-        [Fact]
+        
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDiskNegative()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDiskNegative");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePIRv2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePIRv2");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePlan2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePlan2");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineTags()
         {
@@ -150,35 +150,35 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithDifferentStorageResource()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithPremiumStorageAccount()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithPremiumStorageAccount");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithEmptyAuc()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithBYOL()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithBYOL");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineRedeploy()
         {

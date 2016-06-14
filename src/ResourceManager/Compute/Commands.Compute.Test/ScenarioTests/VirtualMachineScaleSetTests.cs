@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetReimageUpdate");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetLB()
         {
