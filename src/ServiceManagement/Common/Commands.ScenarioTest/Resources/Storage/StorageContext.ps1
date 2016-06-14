@@ -30,6 +30,7 @@ Tests using New-AzureStorageContext with storage account name and key
 function Test-NewStorageContextWithNameAndKey
 {
     $account = "test";
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     $key = "XM+4nFQ832Qfi4mH/ChQwdQUmTqrZqbQTJWpAQZ6klWjTVsIBVZy5xNdCDje4EWP0gdXK9vIFAY8LOmz85Wmcg==";
     $context = New-AzureStorageContext -StorageAccountName $account -StorageAccountKey $key -Protocol Https
     Assert-AreEqual $context.StorageAccountName $account
