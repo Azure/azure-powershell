@@ -111,6 +111,13 @@
   <ItemGroup>
     <Compile Include="AdminApiCmdlet.cs" />
     <Compile Include="ArgumentValidator.cs" />
+    <Compile Include="Common\AdjustToUniversalIsoDateTimeConverter.cs" />
+    <Compile Include="Common\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
+    <Compile Include="Common\JsonExtensions.cs" />
+    <Compile Include="Common\JsonLineInfo.cs" />
+    <Compile Include="Common\JsonPreserveCaseDictionaryAttribute.cs" />
+    <Compile Include="Common\LineInfoJsonConverter.cs" />
+    <Compile Include="Common\TimeSpanJsonConverter.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ValidateAbsoluteUriAttribute.cs" />
     <None Include="..\AzureRM.AzureStackAdmin.psd1">

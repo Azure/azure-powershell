@@ -178,7 +178,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting managed Subscription with SubscriptionId &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting managed subscription with SubscriptionId &quot;{0}&quot;..
         /// </summary>
         public static string GettingManagedSubscriptionByID {
             get {
@@ -214,7 +214,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting Subscription with SubscriptionId &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Getting Subscription with subscriptionId &quot;{0}&quot;..
         /// </summary>
         public static string GettingSubscriptionByID {
             get {
@@ -223,7 +223,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The provided string is not a valid json.
+        ///   Looks up a localized string similar to The provided string is not  valid json.
         /// </summary>
         public static string InvalidJson {
             get {
@@ -232,7 +232,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Azure profile is invalid, Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets..
+        ///   Looks up a localized string similar to The Azure profile is invalid. Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets..
         /// </summary>
         public static string InvalidProfile {
             get {
@@ -367,15 +367,6 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A resource provider registration with namespace &quot;{0}&quot; and region &quot;{1}&quot; already exists..
-        /// </summary>
-        public static string ProviderRegistrationAlreadyExists {
-            get {
-                return ResourceManager.GetString("ProviderRegistrationAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A resource provider registration with namespace &quot;{0}&quot; and region &quot;{1}&quot; does not exist..
         /// </summary>
         public static string ProviderRegistrationDoesNotExist {
@@ -448,7 +439,7 @@ namespace Microsoft.AzureStack.Commands {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A resource group with Name &quot;{0}&quot; does not exist..
+        ///   Looks up a localized string similar to A resource group with name &quot;{0}&quot; does not exist..
         /// </summary>
         public static string ResourceGroupDoesNotExist {
             get {

@@ -144,17 +144,14 @@
   <data name="RemovingResourceProviderRegistration" xml:space="preserve">
     <value>Removing resource provider registration with name "{0}".</value>
   </data>
-  <data name="ProviderRegistrationAlreadyExists" xml:space="preserve">
-    <value>A resource provider registration with namespace "{0}" and region "{1}" already exists.</value>
-  </data>
   <data name="ProviderRegistrationDoesNotExist" xml:space="preserve">
     <value>A resource provider registration with namespace "{0}" and region "{1}" does not exist.</value>
   </data>
   <data name="ResourceGroupDoesNotExist" xml:space="preserve">
-    <value>A resource group with Name "{0}" does not exist.</value>
+    <value>A resource group with name "{0}" does not exist.</value>
   </data>
   <data name="GettingSubscriptionByID" xml:space="preserve">
-    <value>Getting Subscription with SubscriptionId "{0}".</value>
+    <value>Getting Subscription with subscriptionId "{0}".</value>
   </data>
   <data name="ListingSubscriptions" xml:space="preserve">
     <value>Listing all subscriptions.</value>
@@ -220,7 +217,7 @@
     <value>Deleting subscription "{0}".</value>
   </data>
   <data name="GettingManagedSubscriptionByID" xml:space="preserve">
-    <value>Getting managed Subscription with SubscriptionId "{0}".</value>
+    <value>Getting managed subscription with SubscriptionId "{0}".</value>
   </data>
   <data name="UpdatingOffer" xml:space="preserve">
     <value>Updating offer with name "{0}" in resource group "{1}".</value>
@@ -253,7 +250,7 @@
     <value>Updating managed location "{0}".</value>
   </data>
   <data name="InvalidProfile" xml:space="preserve">
-    <value>The Azure profile is invalid, Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets.</value>
+    <value>The Azure profile is invalid. Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets.</value>
   </data>
   <data name="TokenAndAdminUriRequired" xml:space="preserve">
     <value>Both the parameters Token and AdminUri are required.</value>
@@ -279,7 +276,7 @@
     <comment>ValidationMetadataException</comment>
   </data>
   <data name="InvalidJson" xml:space="preserve">
-    <value>The provided string is not a valid json</value>
+    <value>The provided string is not  valid json</value>
   </data>
   <data name="QuotaIdOrSkuIdRequired" xml:space="preserve">
     <value>Either QuotaId or SkuId is required for creating the plan</value>
