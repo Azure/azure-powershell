@@ -130,6 +130,7 @@
     <Compile Include="Authentication\ConsoleParentWindow.cs" />
     <Compile Include="Authentication\CredStore.cs" />
     <Compile Include="Authentication\IAccessToken.cs" />
+    <Compile Include="Authentication\IdentityTokenHelpers.cs" />
     <Compile Include="Authentication\ITokenProvider.cs" />
     <Compile Include="Authentication\KeyStoreApplicationCredentialProvider.cs" />
     <Compile Include="Authentication\LoginType.cs" />
