@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.0-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.2-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,7 +117,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.2.0-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.1.2.3-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.26.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
