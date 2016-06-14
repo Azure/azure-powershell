@@ -1,0 +1,108 @@
+On branch dev
+Your branch is up-to-date with 'origin/dev'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   LoadBalancer/BackendAddressPool/AddAzureLoadBalancerBackendAddressPoolConfigCommand.cs
+	modified:   LoadBalancer/BackendAddressPool/GetAzureLoadBalancerBackendAddressPoolConfigCommand.cs
+	modified:   LoadBalancer/BackendAddressPool/NewAzureLoadBalancerBackendAddressPoolConfigCommand.cs
+	modified:   LoadBalancer/BackendAddressPool/RemoveAzureLoadBalancerBackendAddressPoolConfigCommand.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/AddAzureLoadBalancerFrontendIpConfigCommand.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/AzureLoadBalancerFrontendIpConfigBase.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/GetAzureLoadBalancerFrontendIpConfigCommand.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/NewAzureLoadBalancerFrontendIpConfigCommand.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/RemoveAzureLoadBalancerFrontendIpConfigCommand.cs
+	modified:   LoadBalancer/FrontendIpConfiguration/SetAzureLoadBalancerFrontendIpConfigCommand.cs
+	modified:   LoadBalancer/GetAzureLoadBalancerCommand.cs
+	modified:   LoadBalancer/InboundNatPool/AddAzureLoadBalancerInboundNatPoolConfigCommand.cs
+	modified:   LoadBalancer/InboundNatPool/AzureLoadBalancerInboundNatPoolConfigBase.cs
+	modified:   LoadBalancer/InboundNatPool/GetAzureLoadBalancerInboundNatPoolConfigCommand.cs
+	modified:   LoadBalancer/InboundNatPool/NewAzureLoadBalancerInboundNatPoolConfigCommand.cs
+	modified:   LoadBalancer/InboundNatPool/RemoveAzureLoadBalancerInboundNatPoolConfigCommand.cs
+	modified:   LoadBalancer/InboundNatPool/SetAzureLoadBalancerInboundNatPoolConfigCommand.cs
+	modified:   LoadBalancer/InboundNatRule/AddAzureLoadBalancerInboundNatRuleConfigCommand.cs
+	modified:   LoadBalancer/InboundNatRule/AzureLoadBalancerInboundNatRuleConfigBase.cs
+	modified:   LoadBalancer/InboundNatRule/GetAzureLoadBalancerInboundNatRuleConfigCommand.cs
+	modified:   LoadBalancer/InboundNatRule/NewAzureLoadBalancerInboundNatRuleConfigCommand.cs
+	modified:   LoadBalancer/InboundNatRule/RemoveAzureLoadBalancerInboundNatRuleConfigCommand.cs
+	modified:   LoadBalancer/InboundNatRule/SetAzureLoadBalancerInboundNatRuleConfigCommand.cs
+	modified:   LoadBalancer/LoadBalancerRule/AddAzureLoadBalancerRuleConfigCommand.cs
+	modified:   LoadBalancer/LoadBalancerRule/AzureLoadBalancerRuleConfigBase.cs
+	modified:   LoadBalancer/LoadBalancerRule/GetAzureLoadBalancerRuleConfigCommand.cs
+	modified:   LoadBalancer/LoadBalancerRule/NewAzureLoadBalancerRuleConfigCommand.cs
+	modified:   LoadBalancer/LoadBalancerRule/RemoveAzureLoadBalancerRuleCommand.cs
+	modified:   LoadBalancer/LoadBalancerRule/SetAzureLoadBalancerRuleConfigCommand.cs
+	modified:   LoadBalancer/NewAzureLoadBalancerCommand.cs
+	modified:   LoadBalancer/Probe/AddAzureLoadBalancerProbeConfigCommand.cs
+	modified:   LoadBalancer/Probe/GetAzureLoadBalancerProbeCommand.cs
+	modified:   LoadBalancer/Probe/NewAzureLoadBalancerProbeConfigCommand.cs
+	modified:   LoadBalancer/Probe/RemoveAzureLoadBalancerProbeCommand.cs
+	modified:   LoadBalancer/Probe/SetAzureLoadBalancerProbeConfigCommand.cs
+	modified:   LoadBalancer/RemoveAzureLoadBalancerCommand.cs
+	modified:   LoadBalancer/SetAzureLoadBalancerCommand.cs
+	modified:   LocalNetworkGateway/GetAzureLocalNetworkGatewayCommand.cs
+	modified:   LocalNetworkGateway/NewAzureLocalNetworkGatewayCommand.cs
+	modified:   LocalNetworkGateway/RemoveAzureLocalNetworkGatewayCommand.cs
+	modified:   LocalNetworkGateway/UpdateAzureLocalNetworkGatewayCommand.cs
+	modified:   NetworkInterface/GetAzureNetworkInterfaceCommand.cs
+	modified:   NetworkInterface/IpConfiguration/AddAzureNetworkInterfaceIpConfigCommand.cs
+	modified:   NetworkInterface/IpConfiguration/AzureNetworkInterfaceIpConfigBase.cs
+	modified:   NetworkInterface/IpConfiguration/GetAzureNetworkInterfaceIpConfigCommand.cs
+	modified:   NetworkInterface/IpConfiguration/NewAzureNetworkInterfaceIpConfigCommand.cs
+	modified:   NetworkInterface/IpConfiguration/RemoveAzureNetworkInterfaceIpConfigCommand.cs
+	modified:   NetworkInterface/IpConfiguration/SetAzureNetworkInterfaceIpConfigCommand.cs
+	modified:   NetworkInterface/NewAzureNetworkInterfaceCommand.cs
+	modified:   NetworkInterface/RemoveAzureNetworkInterfaceCommand.cs
+	modified:   NetworkInterface/SetAzureNetworkInterfaceCommand.cs
+	modified:   NetworkSecurityGroup/GetAzureNetworkSecurityGroupCommand.cs
+	modified:   NetworkSecurityGroup/NetworkSecurityRule/AddAzureNetworkSecurityRuleConfigCommand.cs
+	modified:   NetworkSecurityGroup/NetworkSecurityRule/GetAzureNetworkSecurityRuleConfigCommand.cs
+	modified:   NetworkSecurityGroup/NetworkSecurityRule/NewAzureNetworkSecurityRuleConfigCommand.cs
+	modified:   NetworkSecurityGroup/NetworkSecurityRule/RemoveAzureNetworkSecurityRuleConfigCommand.cs
+	modified:   NetworkSecurityGroup/NetworkSecurityRule/SetAzureNetworkSecurityRuleConfigCommand.cs
+	modified:   NetworkSecurityGroup/NewAzureNetworkSecurityGroupCommand.cs
+	modified:   NetworkSecurityGroup/RemoveAzureNetworkSecurityGroupCommand.cs
+	modified:   NetworkSecurityGroup/SetAzureNetworkSecurityGroupCommand.cs
+	modified:   ProviderWideCmdlets/TestAzureDnsAvailabilityCmdlet.cs
+	modified:   PublicIpAddress/GetAzurePublicIpAddressCommand.cs
+	modified:   PublicIpAddress/NewAzurePublicIpAddressCommand.cs
+	modified:   PublicIpAddress/RemoveAzurePublicIpAddressCommand.cs
+	modified:   PublicIpAddress/SetAzurePublicIpAddressCommand.cs
+	modified:   RouteTable/GetAzureRouteTableCommand.cs
+	modified:   RouteTable/NewAzureRouteTableCommand.cs
+	modified:   RouteTable/RemoveAzureRouteTableCommand.cs
+	modified:   RouteTable/Route/AddAzureRouteConfigCommand.cs
+	modified:   RouteTable/Route/GetAzureRouteConfigCommand.cs
+	modified:   RouteTable/Route/NewAzureRouteConfigCommand.cs
+	modified:   RouteTable/Route/RemoveAzureRouteConfigCommand.cs
+	modified:   RouteTable/Route/SetAzureRouteConfigCommand.cs
+	modified:   RouteTable/SetAzureRouteTableCommand.cs
+	modified:   VirtualNetwork/GetAzureVirtualNetworkCommand.cs
+	modified:   VirtualNetwork/NewAzureVirtualNetworkCommand.cs
+	modified:   VirtualNetwork/RemoveAzureVirtualNetworkCommand.cs
+	modified:   VirtualNetwork/SetAzureVirtualNetworkCommand.cs
+	modified:   VirtualNetwork/Subnet/AddAzureVirtualNetworkSubnetConfigCommand.cs
+	modified:   VirtualNetwork/Subnet/GetAzureVirtualNetworkSubnetConfigCommand.cs
+	modified:   VirtualNetwork/Subnet/NewAzureVirtualNetworkSubnetConfigCommand.cs
+	modified:   VirtualNetwork/Subnet/RemoveAzureVirtualNetworkSubnetConfigCommand.cs
+	modified:   VirtualNetwork/Subnet/SetAzureVirtualNetworkSubnetConfigCommand.cs
+	modified:   VirtualNetworkGateway/AddAzureVpnClientRevokedCertificateCommand.cs
+	modified:   VirtualNetworkGateway/AddAzureVpnClientRootCertificateCommand.cs
+	modified:   VirtualNetworkGateway/GenerateAzureVpnClientPackage.cs
+	modified:   VirtualNetworkGateway/GetAzureVpnClientRevokedCertificateCommand.cs
+	modified:   VirtualNetworkGateway/GetAzureVpnClientRootCertificateCommand.cs
+	modified:   VirtualNetworkGateway/NewAzureVirtualNetworkGatewayIpConfigCommand.cs
+	modified:   VirtualNetworkGateway/NewAzureVpnClientRevokedCertificateCommand.cs
+	modified:   VirtualNetworkGateway/NewAzureVpnClientRootCertificateCommand.cs
+	modified:   VirtualNetworkGateway/RemoveAzureVpnClientRevokedCertificateCommand.cs
+	modified:   VirtualNetworkGateway/RemoveAzureVpnClientRootCertificateCommand.cs
+	modified:   VirtualNetworkGateway/SetAzureVirtualNetworkGatewayVpnClientConfig.cs
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	a.txt
+	b.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")

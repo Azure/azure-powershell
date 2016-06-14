@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The loadBalancer")]
         public PSLoadBalancer LoadBalancer { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (!this.IsLoadBalancerPresent(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name))
             {
