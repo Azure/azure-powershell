@@ -32,6 +32,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         }
 
         public string Name { get; set; }
-        public int Version { get; set; }
+        public long Version { get; set; }
     }
 }
