@@ -28,7 +28,8 @@ function Test-CreatesNewSimpleResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
 	$expected = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 	
 	$list = Get-AzureRmResource -ResourceGroupName $rgname
@@ -60,6 +61,7 @@ function Test-CreatesNewComplexResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	$actualParent = New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
 	$expectedParent = Get-AzureRmResource -Name $rnameParent -ResourceGroupName $rgname -ResourceType $resourceTypeParent -ApiVersion $apiversion
 
@@ -108,6 +110,7 @@ function Test-GetResourcesViaPiping
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion		
 	New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 		
@@ -208,6 +211,7 @@ function Test-GetResourcesViaPipingFromAnotherResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion		
 	New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 		
