@@ -32,21 +32,21 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsPremium()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsPremium");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachineBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachineBootDiagnostics");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsSet()
         {

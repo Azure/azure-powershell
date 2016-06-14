@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithRunningEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-CustomDomainGetRemoveWithRunningEndpoint");
         }
 
-        [Fact]
+        [Fact(Skip = "NetCoreConversion: please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCustomDomainGetRemoveWithStoppedEndpoint()
         {
