@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 RecoveryType = RecoveryType.RestoreDisks,
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
+                SourceResourceId = rp.SourceResourceId,
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
