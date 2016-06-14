@@ -312,6 +312,10 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.DataFactories\Commands.DataFactories.csproj">
       <Project>{9577252e-0a6b-4d61-86e8-95f7f309a987}</Project>
       <Name>Commands.DataFactories</Name>

@@ -335,7 +335,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
-
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(

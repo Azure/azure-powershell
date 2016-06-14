@@ -33,11 +33,29 @@ namespace Microsoft.Azure.Commands.Network
         public PSLocalNetworkGateway LocalNetworkGateway { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the local network to be changed.")]
         [ValidateNotNullOrEmpty]
         public List<string> AddressPrefix { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The local network gateway's ASN")]
+        public uint Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The IP address of the local network gateway's BGP speaker")]
+        public string BgpPeeringAddress { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Weight added to BGP routes learned from this local network gateway")]
+        public int PeerWeight { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -48,7 +66,34 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            this.LocalNetworkGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
+            if (this.AddressPrefix != null && this.AddressPrefix.Count > 0)
+            {
+                this.LocalNetworkGateway.LocalNetworkAddressSpace.AddressPrefixes = this.AddressPrefix;
+            }
+
+            if ((this.Asn > 0 || !string.IsNullOrEmpty(this.BgpPeeringAddress) || this.PeerWeight > 0) && this.LocalNetworkGateway.BgpSettings == null)
+            {
+                this.LocalNetworkGateway.BgpSettings = new PSBgpSettings();
+            }
+
+            if (this.Asn > 0)
+            {
+                this.LocalNetworkGateway.BgpSettings.Asn = this.Asn;
+            }
+
+            if (!string.IsNullOrEmpty(this.BgpPeeringAddress))
+            {
+                this.LocalNetworkGateway.BgpSettings.BgpPeeringAddress = this.BgpPeeringAddress;
+            }
+
+            if (this.PeerWeight > 0)
+            {
+                this.LocalNetworkGateway.BgpSettings.PeerWeight = this.PeerWeight;
+            }
+            else if (this.PeerWeight < 0)
+            {
+                throw new PSArgumentException("PeerWeight cannot be negative");
+            }
 
             // Map to the sdk object
             var localnetGatewayModel = Mapper.Map<MNM.LocalNetworkGateway>(this.LocalNetworkGateway);
