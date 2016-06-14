@@ -82,21 +82,18 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource provider registration location (region).
         /// </summary>
         [Parameter(Mandatory = true)]
-        [Parameter(Mandatory = true)]
         [ValidateNotNull]
         public string ProviderLocation { get; set; }
 
         /// <summary>
         /// Optional. Gets or sets the name of the extension.
         /// </summary>
-        [Parameter(Mandatory = true)]
         [ValidateNotNull]
         public string ExtensionName { get; set; }
 
         /// <summary>
         /// Gets or sets the extension endpoint.
         /// </summary>
-        [Parameter(Mandatory = true)]
         [ValidateAbsoluteUri]
         [ValidateNotNull]
         public Uri ExtensionUri { get; set; }
@@ -115,7 +112,6 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                ArgumentValidator.ValidateJson("ResourceTypes", this.ResourceTypes);
                 var registrationParams = new ProviderRegistrationCreateOrUpdateParameters()
                 {
                     ProviderRegistration = new ProviderRegistrationModel()
