@@ -35,7 +35,7 @@ function Test-ListDatabaseRestorePoints
 		$databaseName = Get-DatabaseName
 		$standarddb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 			-Edition Standard -RequestedServiceObjectiveName S0
-		
+
 		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 		Assert-Null $restorePoints # Since the data warehouse database has just been created, it should not have any discrete restore points.
