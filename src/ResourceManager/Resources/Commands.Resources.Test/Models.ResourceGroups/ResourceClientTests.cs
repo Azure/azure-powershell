@@ -408,6 +408,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Callback((string name, string dName, Deployment bDeploy, Dictionary<string, List<string>> customHeaders, CancellationToken token) =>
                 { deploymentFromGet = bDeploy; deploymentName = dName; });
 
+            deploymentsMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                null,
+                new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+                {
+                    Body = true
+                }));
+
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>
             {
                 CreateGenericResource(null, null, "website")
@@ -604,6 +614,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 {
                 })))
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
+            deploymentsMock.Setup(f => f.CheckExistenceWithHttpMessagesAsync(
+                It.IsAny<string>(),
+                It.IsAny<string>(),
+                null,
+                new CancellationToken()))
+                .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<bool?>()
+                {
+                    Body = true
+                }));
 
             SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResource>() { CreateGenericResource(null, null, "website") });
             deploymentOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(resourceGroupName, deploymentName, null, null, new CancellationToken()))

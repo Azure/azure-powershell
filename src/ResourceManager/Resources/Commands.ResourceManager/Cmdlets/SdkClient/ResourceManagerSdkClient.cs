@@ -312,23 +312,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Action<string, string, Deployment> job,
             params ProvisioningState[] status)
         {
-            DeploymentExtended deployment;
+            DeploymentExtended deployment = null;
+            bool deploymentExists = false;
             int counter = 5000;
 
-            do
+            while (deployment == null ||
+                !status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)))
             {
                 WriteVerbose(string.Format(ProjectResources.CheckingDeploymentStatus, counter / 1000));
                 TestMockSupport.Delay(counter);
 
-                if (job != null)
+                if (deploymentExists == false)
                 {
-                    job(resourceGroup, deploymentName, basicDeployment);
+                    var checkResult = ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName);
+                    deploymentExists = checkResult.HasValue && checkResult.Value;
                 }
 
-                deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
-                counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
+                if (deploymentExists == true)
+                {
+                    if (job != null)
+                    {
+                        job(resourceGroup, deploymentName, basicDeployment);
+                    }
 
-            } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
+                    deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
+                    counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
+                }
+            }
 
             return deployment;
         }
@@ -351,21 +361,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
-                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
+                        var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
+                        var deploymentName = operation.Properties.TargetResource.ResourceName;
 
-                        var result = ResourceManagementClient.DeploymentOperations.List(
-                            resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
-                            deploymentName: operation.Properties.TargetResource.ResourceName);
-
-                        newNestedOperations = GetNewOperations(operations, result);
-
-                        foreach (DeploymentOperation op in newNestedOperations)
+                        if (ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName) == true)
                         {
-                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+                            List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
 
-                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            var result = ResourceManagementClient.DeploymentOperations.List(
+                                resourceGroupName: resourceGroupName,
+                                deploymentName: deploymentName);
+
+                            newNestedOperations = GetNewOperations(operations, result);
+
+                            foreach (DeploymentOperation op in newNestedOperations)
                             {
-                                newOperations.Add(op);
+                                DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                                if (nestedOperationWithSameIdAndProvisioningState == null)
+                                {
+                                    newOperations.Add(op);
+                                }
                             }
                         }
                     }
