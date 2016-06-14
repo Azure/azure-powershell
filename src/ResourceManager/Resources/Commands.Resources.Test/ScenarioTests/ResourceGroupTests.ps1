@@ -337,6 +337,7 @@ function Test-ExportResourceGroup
 	{
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
