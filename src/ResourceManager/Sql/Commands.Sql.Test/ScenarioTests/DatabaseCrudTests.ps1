@@ -165,7 +165,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			-CollationName $collationName -MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW100
 
 			$dwdb2 = Set-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName `
-					-MaxSizeBytes $maxSizeBytes -Edition DataWarehouse -RequestedServiceObjectiveName DW200 
+					-MaxSizeBytes $maxSizeBytes -RequestedServiceObjectiveName DW200 -Edition DataWarehouse
 			Assert-AreEqual $dwdb2.DatabaseName $dwdb.DatabaseName
 			Assert-AreEqual $dwdb2.MaxSizeBytes $maxSizeBytes
 			Assert-AreEqual $dwdb2.Edition DataWarehouse
@@ -177,19 +177,19 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 			# Alter all properties
 			$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
 				-MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
-			Assert-AreEqual $db.DatabaseName $db1.DatabaseName
-			Assert-AreEqual 250GB $db1.MaxSizeBytes
-			Assert-AreEqual Standard $db1.Edition
-			Assert-AreEqual S0 $db1.CurrentServiceObjectiveName
-			Assert-AreEqual $db.CollationName $db1.CollationName
+			Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db1.MaxSizeBytes 250GB
+			Assert-AreEqual $db1.Edition Standard
+			Assert-AreEqual $db1.CurrentServiceObjectiveName S0
+			Assert-AreEqual $db1.CollationName $db.CollationName
 
 			# Alter all properties using piping
 			$db2 = $db1 | Set-AzureRmSqlDatabase -MaxSizeBytes 100GB -Edition Standard -RequestedServiceObjectiveName S1
-			Assert-AreEqual $db.DatabaseName $db2.DatabaseName
-			Assert-AreEqual 1GB $db2.MaxSizeBytes
-			Assert-AreEqual Basic $db2.Edition
-			Assert-AreEqual Basic $db2.CurrentServiceObjectiveName
-			Assert-AreEqual $db.CollationName $db2.CollationName
+			Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+			Assert-AreEqual $db2.MaxSizeBytes 1GB
+			Assert-AreEqual $db2.Edition Basic
+			Assert-AreEqual $db2.CurrentServiceObjectiveName Basic
+			Assert-AreEqual $db2.CollationName $db.CollationName
 		}
 	}
 	finally
