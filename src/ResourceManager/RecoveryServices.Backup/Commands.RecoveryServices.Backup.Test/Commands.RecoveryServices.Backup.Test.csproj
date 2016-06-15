@@ -118,6 +118,7 @@
     <None Include="ScenarioTests\AzureSql\PolicyTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\AzureSql\ItemTests.ps1" />
     <None Include="ScenarioTests\IaasVm\JobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -138,6 +139,7 @@
     </None>
     <Compile Include="ScenarioTests\AzureSql\ContainerTests.cs" />
     <Compile Include="ScenarioTests\AzureSql\PolicyTests.cs" />
+    <Compile Include="ScenarioTests\AzureSql\ItemTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\JobTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\ItemTests.cs" />
     <Compile Include="ScenarioTests\IaasVm\PolicyTests.cs" />
