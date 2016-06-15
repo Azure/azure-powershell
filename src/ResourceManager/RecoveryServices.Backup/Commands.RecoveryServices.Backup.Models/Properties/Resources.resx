@@ -452,6 +452,24 @@ Please contact Microsoft for further assistant.</value>
   <data name="UnsupportedJobWarning" xml:space="preserve">
     <value>Got some unsupported jobs</value>
   </data>
+  <data name="ILRAnotherConnectionAlreadyAlive" xml:space="preserve">
+    <value>Another connection is already alive to this recovery point. You can either choose to terminate this or extend the deadline for access. Please run the appropriate command</value>
+  </data>
+  <data name="ILRConnectionNotAlive" xml:space="preserve">
+    <value>Please connect to the recovery point by running the connect command</value>
+  </data>
+  <data name="ILRConnectionExtensionSuccessful" xml:space="preserve">
+    <value>The connection has been extended for another 12 hours</value>
+  </data>
+  <data name="ILRConnectionDoesntExist" xml:space="preserve">
+    <value>No connection present to revoke</value>
+  </data>
+  <data name="ILRNoClientScriptsReturned" xml:space="preserve">
+    <value>Service didn't return any client scripts for this file / folder restore operation</value>
+  </data>
+  <data name="ILRTargetLocationInvalid" xml:space="preserve">
+    <value>Provided target location doesn't exist. Please provide a valid directory to download the script.</value>
+  </data>
   <data name="ProtectionStateInvalidForAzureSqlItem" xml:space="preserve">
     <value>Given Protection state is not valid for AzureSqlItem. Provided state : {0}</value>
   </data>

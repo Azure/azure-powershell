@@ -80,6 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 "also be deleted and restoring data will not be possible.";
             public const string ExpiryDate = "Retention period for the recovery points created by this backup operaiton";
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
+            public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which the recovery points created " +
+                "by this backup will no longer be available for restore";
         }
 
         internal static class RecoveryPoint
@@ -88,6 +90,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string EndDate = "End time of Time range for which recovery point need to be fetched";
             public const string Item = "Protected Item object for which recovery point need to be fetched";
             public const string RecoveryPointId = "Recovery point Id for which detail is needed";
+            public const string ILRRecoveryPoint = "Recovery point to be explored for file folder restore";
+            public const string ILRConnect = "Initiate an iCSCI connection for file folder restore";
+            public const string ILRExtend = "Extend the existing iCSCI connection for file folder restore";
+            public const string ILRTerminate = "Terminate the existing iCSCI connection for file folder restore";
         }
 
         internal static class RestoreDisk
