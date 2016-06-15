@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : TestsBase
     {
-        public ItemTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
