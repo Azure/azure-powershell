@@ -23,6 +23,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Lists protectable items according to the query filter and the pagination params
+        /// </summary>
+        /// <param name="queryFilter">Query filter</param>
+        /// <param name="paginationRequest">Pagination parameters</param>
+        /// <returns>List of protectable items</returns>
         public ProtectableObjectListResponse ListProtectableItem(
                 ProtectableObjectListQueryParameters queryFilter,
                 PaginationRequest paginationRequest = null)
@@ -39,8 +45,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
-        public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName)
+        /// <summary>
+        /// Triggers backup on the specified item
+        /// </summary>
+        /// <param name="containerName">Name of the container which this item belongs to</param>
+        /// <param name="itemName">Name of the item</param>
+        /// <returns>Job created by this operation</returns>
+        public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName, DateTime? expiryDateTimeUtc)
         {
+            TriggerBackupRequest triggerBackupRequest = new TriggerBackupRequest();
+            triggerBackupRequest.Item = new BackupRequestResource();
+            IaaSVMBackupRequest iaasVmBackupRequest = new IaaSVMBackupRequest();            
+            iaasVmBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTimeUtc;
+            triggerBackupRequest.Item.Properties = iaasVmBackupRequest;
+            
             return BmsAdapter.Client.Backups.TriggerBackupAsync(
                 BmsAdapter.GetResourceGroupName(),
                 BmsAdapter.GetResourceName(),
@@ -48,6 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 ServiceClientAdapter.AzureFabricName,
                 containerName,
                 itemName,
+                triggerBackupRequest,
                 BmsAdapter.CmdletCancellationToken).Result;
         }
     }

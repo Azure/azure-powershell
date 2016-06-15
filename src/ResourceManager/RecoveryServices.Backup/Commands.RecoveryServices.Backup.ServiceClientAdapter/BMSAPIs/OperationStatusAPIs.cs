@@ -23,6 +23,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public partial class ServiceClientAdapter
     {
+        /// <summary>
+        /// Gets result of the refresh container operation using the operation tracking URL
+        /// </summary>
+        /// <param name="operationResultLink">Operation tracking URL</param>
+        /// <returns>Job response returned by the service</returns>
         public BaseRecoveryServicesJobResponse GetRefreshContainerOperationResultByURL(
                 string operationResultLink)
         {
@@ -34,6 +39,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                                      BmsAdapter.CmdletCancellationToken).Result;
         }
 
+        /// <summary>
+        /// Gets result of a generic operation on the protected item using the operation tracking URL
+        /// </summary>
+        /// <param name="operationResultLink">Operation tracking URL</param>
+        /// <returns>Operation status response returned by the service</returns>
         public BackUpOperationStatusResponse GetProtectedItemOperationStatusByURL(
                 string operationResultLink)
         {

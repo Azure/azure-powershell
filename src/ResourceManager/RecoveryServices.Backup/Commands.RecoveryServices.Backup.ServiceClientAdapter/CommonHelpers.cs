@@ -19,11 +19,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 {
     public class CommonHelpers
     {
+        /// <summary>
+        /// Our service expects date time to be serialized in the following format
+        /// we have to use english culture because our user might be running 
+        /// PS in another culture and our service can't understand it.
+        /// </summary>
+        /// <param name="date">Input time</param>
+        /// <returns>Output time in UTC</returns>
         public static string GetDateTimeStringForService(DateTime date)
         {
-            // our service expects date time to be serialized in the following format
-            // we have to use english culture because our user might be running 
-            // PS in another culture and our service can't understand it.
             DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
             return date.ToUniversalTime().ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
         }

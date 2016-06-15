@@ -20,12 +20,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public partial class ServiceClientAdapter
     {
-        
+        /// <summary>
+        /// Restores the disk based on the recovery point and other input parameters
+        /// </summary>
+        /// <param name="rp">Recovery point to restore the disk to</param>
+        /// <param name="storageAccountId">ID of the storage account where to restore the disk</param>
+        /// <param name="storageAccountLocation">Location of the storage account where to restore the disk</param>
+        /// <param name="storageAccountType">Type of the storage account where to restore the disk</param>
+        /// <returns>Job created by this operation</returns>
         public BaseRecoveryServicesJobResponse RestoreDisk(AzureVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {
@@ -62,6 +70,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 VirtualMachineName = string.Empty,
                 VirtualNetworkId = string.Empty,
             };
+
+            if (rp.EncryptionEnabled)
+            {
+                restoreRequest.EncryptionDetails = new EncryptionDetails()
+                {
+                    EncryptionEnabled = rp.EncryptionEnabled,
+                    KekUrl = rp.KeyAndSecretDetails.KeyUrl,
+                    KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
+                    SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
+                    SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
+                };
+
+                // TODO: Handle file name
+                File.WriteAllBytes("key.blob", Convert.FromBase64String(rp.KeyAndSecretDetails.KeyBackupData));                
+            }
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
             triggerRestoreRequest.Item = new RestoreRequestResource();

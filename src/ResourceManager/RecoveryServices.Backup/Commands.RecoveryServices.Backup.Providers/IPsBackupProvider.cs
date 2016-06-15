@@ -59,5 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         List<CmdletModel.BackupEngineBase> ListBackupManagementServers();
 
         List<ItemBase> ListProtectedItems();
+
+        void ExploreRecoveryPoint();
     }
 }

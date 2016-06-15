@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string computeAzureVMVersion = "Microsoft.Compute";
         private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
         private const string extendedInfo = "extendedinfo";
+        private const int maxRestoreDiskTimeRange = 30;
+        private const CmdletModel.RetentionDurationType defaultSqlRetentionType = CmdletModel.RetentionDurationType.Months;
+        private const int defaultSqlRetentionCount = 10;
 
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
@@ -73,12 +76,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public void ExploreRecoveryPoint()
+        {
+            throw new NotImplementedException();
+        }
+
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
-            CmdletModel.AzureSqlItem item = ProviderData[GetRecoveryPointParams.Item]
+            CmdletModel.AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
                 as CmdletModel.AzureSqlItem;
 
-            string recoveryPointId = ProviderData[GetRecoveryPointParams.RecoveryPointId].ToString();
+            string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
@@ -90,9 +98,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
-            DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData[GetRecoveryPointParams.EndDate]);
-            AzureSqlItem item = ProviderData[GetRecoveryPointParams.Item]
+            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
+            AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
                 as AzureSqlItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
@@ -100,7 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
+            if (duration.TotalDays > maxRestoreDiskTimeRange)
             {
                 throw new Exception(Resources.RestoreDiskTimeRangeError); 
             }
@@ -225,8 +233,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             CmdletModel.SimpleRetentionPolicy defaultRetention = new CmdletModel.SimpleRetentionPolicy();
-            defaultRetention.RetentionDurationType = CmdletModel.RetentionDurationType.Months;
-            defaultRetention.RetentionCount = 10;
+            defaultRetention.RetentionDurationType = defaultSqlRetentionType;
+            defaultRetention.RetentionCount = defaultSqlRetentionCount;
             return defaultRetention;
         }
 

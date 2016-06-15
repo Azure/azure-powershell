@@ -23,8 +23,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     public class AzureSqlRecoveryPoint : RecoveryPointBase
     {
+        /// <summary>
+        /// Type of recovery point (appConsistent\CrashConsistent etc) 
+        /// </summary>
+        public String RecoveryPointType { get; set; }
+
+        /// <summary>
+        /// Time when this recovery point was created
+        /// </summary>
+        public DateTime RecoveryPointTime { get; set; }
+
+        /// <summary>
+        /// Additional info associated with this recovery point serialized into a string.
+        /// </summary>
         public string RecoveryPointAdditionalInfo { get; set; }
 
+        /// <summary>
+        /// FriendlyName of recovery point
+        /// </summary>
         public string FriendlyName { get; set; }
     }
 }
