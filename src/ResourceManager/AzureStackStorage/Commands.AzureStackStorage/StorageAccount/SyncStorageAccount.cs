@@ -69,7 +69,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [Parameter(Mandatory = false, Position = 8)]
         public string StorageAccountApiVersion { get; set; }
 
+        /// <summary>
+        /// Specifies the Microsoft.Resource.Admin apiVersion
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 9)]
+        public string ResourceAdminApiVersion { get; set; }
+
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";
+        internal static string DefaultResourceAdminApiVersion = "2015-11-01";
         internal static string SyncTargetOperation = "Create";
 
         internal static string BuildSyncTargetId(string tenantSubscriptionId, string resourceGroupName, string accountName)
@@ -82,6 +89,10 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
             StorageAccountSyncRequest req = new StorageAccountSyncRequest();
             if (StorageAccountApiVersion == null)
                 StorageAccountApiVersion = DefaultStorageAccountApiVersion;
+            if (string.IsNullOrEmpty(ResourceAdminApiVersion))
+            {
+                ResourceAdminApiVersion = DefaultResourceAdminApiVersion;
+            }
             req.ApiVersion = StorageAccountApiVersion;
             req.TargetOperaton = SyncTargetOperation;
             req.ResourceLocation = Location;
@@ -91,7 +102,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                     string.Format(CultureInfo.InvariantCulture, Resources.StorageAccount, req.Id),
                     string.Format(CultureInfo.InvariantCulture, Resources.SyncOperation)))
             {
-                StorageAccountSyncResponse syncResponse = Client.StorageAccounts.Sync(TenantSubscriptionId, TenantResourceGroup, req);
+                StorageAccountSyncResponse syncResponse = Client.StorageAccounts.Sync(TenantSubscriptionId, TenantResourceGroup, ResourceAdminApiVersion, req);
                 WriteObject(syncResponse, true);
 
                 WriteWarning(Resources.WaitAfterArmSync);
