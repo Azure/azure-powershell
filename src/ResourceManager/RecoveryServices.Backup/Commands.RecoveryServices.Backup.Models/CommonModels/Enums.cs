@@ -296,4 +296,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     #endregion
 
+    public enum ILRAction
+    {
+        Connect,
+        Extend,
+        Terminate,
+    }
 }
