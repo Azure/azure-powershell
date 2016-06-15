@@ -101,10 +101,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 protectedItemUri = HelperUtils.GetProtectableItemUri(
                     keyValueDict, protectableObjectResource.Id);
 
-                AzureIaaSVMProtectableItem iaasVmProteableItem = (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
-                if (iaasVmProteableItem != null)
+                AzureIaaSVMProtectableItem iaasVmProtectableItem = (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
+                if (iaasVmProtectableItem != null)
                 {
-                    sourceResourceId = iaasVmProteableItem.VirtualMachineId;
+                    sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
                 }
             }
             else
