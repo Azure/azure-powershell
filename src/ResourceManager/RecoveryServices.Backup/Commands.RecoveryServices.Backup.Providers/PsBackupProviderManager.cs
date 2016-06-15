@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             serviceClientAdapter = serviceClientAdapterIn;
         }
 
+        /// <summary>
+        /// Gets an instance of the provider based on the container type and backup management type (optional)
+        /// </summary>
+        /// <param name="containerType">Type of the container</param>
+        /// <param name="backupManagementType">Type of the backup management type (optional)</param>
+        /// <returns></returns>
         public IPsBackupProvider GetProviderInstance
             (
             ContainerType containerType, 
