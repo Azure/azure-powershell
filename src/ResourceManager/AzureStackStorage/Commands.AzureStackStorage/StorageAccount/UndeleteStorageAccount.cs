@@ -61,6 +61,12 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [Parameter(Mandatory = false, Position = 7)]
         public string StorageAccountApiVersion { get; set; }
 
+        /// <summary>
+        /// Specifies the Microsoft.Resource.Admin apiVersion
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 8)]
+        public string ResourceAdminApiVersion { get; set; }
+
         protected override void Execute()
         {
             StorageAccountUndeleteParameters undeleteParam = new StorageAccountUndeleteParameters
@@ -96,12 +102,16 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 StorageAccountSyncRequest req = new StorageAccountSyncRequest();
                 if (StorageAccountApiVersion == null)
                     StorageAccountApiVersion = SyncStorageAccount.DefaultStorageAccountApiVersion;
+                if (string.IsNullOrEmpty(ResourceAdminApiVersion))
+                {
+                    ResourceAdminApiVersion = SyncStorageAccount.DefaultResourceAdminApiVersion;
+                }
                 req.ApiVersion = StorageAccountApiVersion;
                 req.TargetOperaton = SyncStorageAccount.SyncTargetOperation;
                 req.ResourceLocation = accounts.StorageAccounts[0].Location;
                 req.Id = accounts.StorageAccounts[0].Properties.TenantViewId;
 
-                Client.StorageAccounts.Sync(accounts.StorageAccounts[0].Properties.TenantSubscriptionId.ToString(), accounts.StorageAccounts[0].Properties.TenantResourceGroupName, req);
+                Client.StorageAccounts.Sync(accounts.StorageAccounts[0].Properties.TenantSubscriptionId.ToString(), accounts.StorageAccounts[0].Properties.TenantResourceGroupName, ResourceAdminApiVersion, req);
 
                 WriteWarning(Resources.WaitAfterArmSync);
             }
