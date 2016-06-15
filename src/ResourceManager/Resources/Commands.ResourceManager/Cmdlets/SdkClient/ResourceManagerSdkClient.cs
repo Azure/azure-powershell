@@ -224,56 +224,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
-            var result = ResourceManagementClient.DeploymentOperations.List(resourceGroup, deploymentName, null);
-            newOperations = GetNewOperations(operations, result);
-            operations.AddRange(newOperations);
-
-            while (!string.IsNullOrEmpty(result.NextPageLink))
+            if (ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName) == true)
             {
-                result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
+                var result = ResourceManagementClient.DeploymentOperations.List(resourceGroup, deploymentName, null);
                 newOperations = GetNewOperations(operations, result);
                 operations.AddRange(newOperations);
-            }
 
-            foreach (DeploymentOperation operation in newOperations)
-            {
-                string statusMessage;
-
-                if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
+                while (!string.IsNullOrEmpty(result.NextPageLink))
                 {
-                    if (operation.Properties.TargetResource != null)
-                    {
-                        statusMessage = string.Format(normalStatusFormat,
-                        operation.Properties.TargetResource.ResourceType,
-                        operation.Properties.TargetResource.ResourceName,
-                        operation.Properties.ProvisioningState.ToLower());
-
-                        WriteVerbose(statusMessage);
-                    }
+                    result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
+                    newOperations = GetNewOperations(operations, result);
+                    operations.AddRange(newOperations);
                 }
-                else
+
+                foreach (DeploymentOperation operation in newOperations)
                 {
-                    string errorMessage = operation.Properties.StatusMessage.ToString();
+                    string statusMessage;
 
-                    if (operation.Properties.TargetResource != null)
+                    if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
                     {
-                        statusMessage = string.Format(failureStatusFormat,
-                        operation.Properties.TargetResource.ResourceType,
-                        operation.Properties.TargetResource.ResourceName,
-                        errorMessage);
+                        if (operation.Properties.TargetResource != null)
+                        {
+                            statusMessage = string.Format(normalStatusFormat,
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            operation.Properties.ProvisioningState.ToLower());
 
-                        WriteError(statusMessage);
+                            WriteVerbose(statusMessage);
+                        }
                     }
                     else
                     {
-                        WriteError(errorMessage);
-                    }
+                        string errorMessage = operation.Properties.StatusMessage.ToString();
 
-                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
+                        if (operation.Properties.TargetResource != null)
+                        {
+                            statusMessage = string.Format(failureStatusFormat,
+                            operation.Properties.TargetResource.ResourceType,
+                            operation.Properties.TargetResource.ResourceName,
+                            errorMessage);
 
-                    if (detailedMessage != null && detailedMessage.Count > 0)
-                    {
-                        detailedMessage.ForEach(s => WriteError(s));
+                            WriteError(statusMessage);
+                        }
+                        else
+                        {
+                            WriteError(errorMessage);
+                        }
+
+                        List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
+
+                        if (detailedMessage != null && detailedMessage.Count > 0)
+                        {
+                            detailedMessage.ForEach(s => WriteError(s));
+                        }
                     }
                 }
             }
@@ -312,33 +315,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Action<string, string, Deployment> job,
             params ProvisioningState[] status)
         {
-            DeploymentExtended deployment = null;
-            bool deploymentExists = false;
+            DeploymentExtended deployment;
             int counter = 5000;
 
-            while (deployment == null ||
-                !status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)))
+            do
             {
                 WriteVerbose(string.Format(ProjectResources.CheckingDeploymentStatus, counter / 1000));
                 TestMockSupport.Delay(counter);
 
-                if (deploymentExists == false)
+                if (job != null)
                 {
-                    var checkResult = ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName);
-                    deploymentExists = checkResult.HasValue && checkResult.Value;
+                    job(resourceGroup, deploymentName, basicDeployment);
                 }
 
-                if (deploymentExists == true)
-                {
-                    if (job != null)
-                    {
-                        job(resourceGroup, deploymentName, basicDeployment);
-                    }
+                deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
+                counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
 
-                    deployment = ResourceManagementClient.Deployments.Get(resourceGroup, deploymentName);
-                    counter = counter + 5000 > 60000 ? 60000 : counter + 5000;
-                }
-            }
+            } while (!status.Any(s => s.ToString().Equals(deployment.Properties.ProvisioningState, StringComparison.OrdinalIgnoreCase)));
 
             return deployment;
         }
@@ -723,7 +716,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
 
-            ResourceManagementClient.Deployments.CreateOrUpdateAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 

@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 }))
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
-            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(
+            deploymentsMock.Setup(f => f.BeginCreateOrUpdateWithHttpMessagesAsync(
                 It.IsAny<string>(),
                 It.IsAny<string>(),
                 It.IsAny<Deployment>(),
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     Body = new ResourceGroup() { Location = resourceGroupLocation }
                 }));
 
-            deploymentsMock.Setup(f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
+            deploymentsMock.Setup(f => f.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<DeploymentExtended>()
                 {
                     Body = new DeploymentExtended
@@ -645,7 +645,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
             Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment deploymentResult = resourcesClient.ExecuteDeployment(parameters);
-            deploymentsMock.Verify((f => f.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, deploymentFromGet, null, new CancellationToken())), Times.Once());
+            deploymentsMock.Verify((f => f.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, deploymentName, deploymentFromGet, null, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, deploymentResult.ResourceGroupName);
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
