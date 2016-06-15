@@ -396,4 +396,7 @@
   <data name="UpdatedResourceGroup" xml:space="preserve">
     <value>Updated resource group '{0}' in location '{1}'</value>
   </data>
+  <data name="OperationFailedWithTimeOut" xml:space="preserve">
+    <value>Operation failed because a request timed out.</value>
+  </data>
 </root>
