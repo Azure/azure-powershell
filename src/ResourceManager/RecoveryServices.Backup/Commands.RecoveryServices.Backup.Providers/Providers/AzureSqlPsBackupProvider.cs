@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string computeAzureVMVersion = "Microsoft.Compute";
         private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
         private const string extendedInfo = "extendedinfo";
+        private const int maxRestoreDiskTimeRange = 30;
 
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
@@ -105,7 +106,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             TimeSpan duration = endDate - startDate;
-            if (duration.TotalDays > 30)
+            if (duration.TotalDays > maxRestoreDiskTimeRange)
             {
                 throw new Exception(Resources.RestoreDiskTimeRangeError); 
             }
