@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         private const string classicComputeAzureVMVersion = "Microsoft.ClassicCompute";
         private const string extendedInfo = "extendedinfo";
         private const int maxRestoreDiskTimeRange = 30;
+        private const CmdletModel.RetentionDurationType defaultSqlRetentionType = CmdletModel.RetentionDurationType.Months;
+        private const int defaultSqlRetentionCount = 10;
 
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
@@ -231,8 +233,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             CmdletModel.SimpleRetentionPolicy defaultRetention = new CmdletModel.SimpleRetentionPolicy();
-            defaultRetention.RetentionDurationType = CmdletModel.RetentionDurationType.Months;
-            defaultRetention.RetentionCount = 10;
+            defaultRetention.RetentionDurationType = defaultSqlRetentionType;
+            defaultRetention.RetentionCount = defaultSqlRetentionCount;
             return defaultRetention;
         }
 
