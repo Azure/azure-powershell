@@ -73,12 +73,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
+        public void ExploreRecoveryPoint()
+        {
+            throw new NotImplementedException();
+        }
+
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
-            CmdletModel.AzureSqlItem item = ProviderData[GetRecoveryPointParams.Item]
+            CmdletModel.AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
                 as CmdletModel.AzureSqlItem;
 
-            string recoveryPointId = ProviderData[GetRecoveryPointParams.RecoveryPointId].ToString();
+            string recoveryPointId = ProviderData[RecoveryPointParams.RecoveryPointId].ToString();
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
@@ -90,9 +95,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
-            DateTime startDate = (DateTime)(ProviderData[GetRecoveryPointParams.StartDate]);
-            DateTime endDate = (DateTime)(ProviderData[GetRecoveryPointParams.EndDate]);
-            AzureSqlItem item = ProviderData[GetRecoveryPointParams.Item]
+            DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
+            DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
+            AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
                 as AzureSqlItem;
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
