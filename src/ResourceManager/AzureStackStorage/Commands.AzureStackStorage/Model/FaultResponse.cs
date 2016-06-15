@@ -17,9 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     internal class FaultResponse:ResponseBase
     {
@@ -32,7 +32,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         public EventQuery AssociatedEventQuery { get; set; }
         public string AssociatedMetricsName { get; set; }
         public string Description { get; set; }
-        public string FaultId { get; set; }
+        public Guid FaultId { get; set; }
         public string FaultRuleName { get; set; }
         public string ResolutionText { get; set; }
         public DateTime? ResolvedTime { get; set; }

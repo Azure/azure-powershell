@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.2.1' 
+ModuleVersion = '0.10.1' 
   
 # ID used to uniquely identify this module  
 GUID = 'DA5816B5-97A6-4301-9AA0-72CC68C79F20'  
@@ -61,7 +61,7 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.AzureStack.Commands.StorageAdmin.dll'
+    '.\Microsoft.AzureStack.AzureConsistentStorage.Commands.dll'
 )
   
 # Functions to export from this module  

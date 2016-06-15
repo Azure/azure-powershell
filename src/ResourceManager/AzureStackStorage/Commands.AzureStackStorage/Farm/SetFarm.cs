@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -28,6 +28,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsCommon.Set, Nouns.AdminFarm, SupportsShouldProcess = true)]
     public sealed class SetAdminFarm : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Farm Identifier
         /// </summary>
@@ -67,10 +74,265 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         [SettingField]
         public string CorsAllowedOriginsList { get; set; }
 
-        ///
+        /// <summary>
+        /// 
+        /// </summary>
         [Parameter]
         [SettingField]
         public string DataCenterUriHostSuffixes { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public bool? BandwidthThrottleIsEnabled { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? UsageCollectionIntervalInSeconds { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? RetentionPeriodForDeletedStorageAccountsInDays { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? FeedbackRefreshIntervalInSeconds { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? NumberOfAccountsToSync { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? DefaultThrottleProbabilityDecayIntervalInSeconds { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public int? GracePeriodForFullThrottlingInRefreshIntervals { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? GracePeriodMaxThrottleProbability { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallRequestThresholdInTps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultRequestThresholdInTps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumRequestThresholdInTps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForTps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForIngress { get; set; }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallIntranetIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultIntranetIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumIntranetIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForIntranetIngress { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForEgress { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallIntranetEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultIntranetEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumIntranetEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForIntranetEgress { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallTotalIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultTotalIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumTotalIngressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForTotalIngress { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? OverallTotalEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? DefaultTotalEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? MinimumTotalEgressThresholdInGbps { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Parameter]
+        [SettingField]
+        public double? ToleranceFactorForTotalEgress { get; set; }
 
         protected override void Execute()
         {

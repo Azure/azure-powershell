@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 using System.Globalization;
 using System;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -29,6 +29,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsCommon.Undo, Nouns.AdminStorageAccountDeletion, SupportsShouldProcess = true)]
     public sealed class UndeleteStorageAccount : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Farm Identifier
         /// </summary>
@@ -53,6 +60,12 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         [Parameter(Mandatory = false, Position = 7)]
         public string StorageAccountApiVersion { get; set; }
+
+        /// <summary>
+        /// Specifies the Microsoft.Resource.Admin apiVersion
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 8)]
+        public string ResourceAdminApiVersion { get; set; }
 
         protected override void Execute()
         {
@@ -89,12 +102,16 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                 StorageAccountSyncRequest req = new StorageAccountSyncRequest();
                 if (StorageAccountApiVersion == null)
                     StorageAccountApiVersion = SyncStorageAccount.DefaultStorageAccountApiVersion;
+                if (string.IsNullOrEmpty(ResourceAdminApiVersion))
+                {
+                    ResourceAdminApiVersion = SyncStorageAccount.DefaultResourceAdminApiVersion;
+                }
                 req.ApiVersion = StorageAccountApiVersion;
                 req.TargetOperaton = SyncStorageAccount.SyncTargetOperation;
                 req.ResourceLocation = accounts.StorageAccounts[0].Location;
                 req.Id = accounts.StorageAccounts[0].Properties.TenantViewId;
 
-                Client.StorageAccounts.Sync(accounts.StorageAccounts[0].Properties.TenantSubscriptionId.ToString(), accounts.StorageAccounts[0].Properties.TenantResourceGroupName, req);
+                Client.StorageAccounts.Sync(accounts.StorageAccounts[0].Properties.TenantSubscriptionId.ToString(), accounts.StorageAccounts[0].Properties.TenantResourceGroupName, ResourceAdminApiVersion, req);
 
                 WriteWarning(Resources.WaitAfterArmSync);
             }

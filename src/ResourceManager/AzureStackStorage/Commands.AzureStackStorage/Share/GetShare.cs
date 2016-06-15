@@ -14,9 +14,9 @@
 
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// get shares
@@ -29,6 +29,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsCommon.Get, Nouns.AdminShare)]
     public sealed class GetAdminShare : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Farm Identifier
         /// </summary>
