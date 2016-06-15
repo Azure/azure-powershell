@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     /// </summary>
     public class IdUtils
     {
-        static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" + 
-            @"/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)" + 
+        static readonly string UriFormat = @"/Subscriptions/(?<subscriptionsId>.+)/resourceGroups" +
+            @"/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/vaults/(?<BackupVaultName>.+)" +
             "/backupFabrics/(?<BackupFabricName>.+)/protectionContainers/(?<containersName>.+)";
         static readonly Regex ResourceGroupRegex = new Regex(UriFormat, RegexOptions.Compiled);
         const string NameDelimiter = ";";
@@ -151,6 +151,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             return uri.Substring(uri.IndexOf(NameDelimiter) + 1);
         }
+
+        /// <summary>
+        /// Extracts the VM name from the container uri.
+        /// Format of container uri: WorkloadType;ContainerType;ResourceGroupName;VMName
+        /// </summary>
+        /// <param name="uri">Container uri from which to extract the name</param>
+        /// <returns></returns>
+        public static string GetVmNameFromContainerUri(string uri)
+        {
+            return uri.Split(NameDelimiter.ToCharArray())[4];
+        }
     }
 
     /// <summary>
@@ -170,9 +181,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         }
     }
 
-   /// <summary>
-   /// Conversion utilities.
-   /// </summary>
+    /// <summary>
+    /// Conversion utilities.
+    /// </summary>
     public class ConversionUtils
     {
         /// <summary>

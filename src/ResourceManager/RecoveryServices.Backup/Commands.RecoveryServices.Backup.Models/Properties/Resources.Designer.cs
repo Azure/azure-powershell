@@ -345,6 +345,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Another connection is already alive to this recovery point. You can either choose to terminate this or extend the deadline for access. Please run the appropriate command.
+        /// </summary>
+        public static string ILRAnotherConnectionAlreadyAlive {
+            get {
+                return ResourceManager.GetString("ILRAnotherConnectionAlreadyAlive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No connection present to revoke.
+        /// </summary>
+        public static string ILRConnectionDoesntExist {
+            get {
+                return ResourceManager.GetString("ILRConnectionDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection has been extended for another 12 hours.
+        /// </summary>
+        public static string ILRConnectionExtensionSuccessful {
+            get {
+                return ResourceManager.GetString("ILRConnectionExtensionSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please connect to the recovery point by running the connect command.
+        /// </summary>
+        public static string ILRConnectionNotAlive {
+            get {
+                return ResourceManager.GetString("ILRConnectionNotAlive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service didn&apos;t return any client scripts for this file / folder restore operation.
+        /// </summary>
+        public static string ILRNoClientScriptsReturned {
+            get {
+                return ResourceManager.GetString("ILRNoClientScriptsReturned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided target location doesn&apos;t exist. Please provide a valid directory to download the script..
+        /// </summary>
+        public static string ILRTargetLocationInvalid {
+            get {
+                return ResourceManager.GetString("ILRTargetLocationInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure VM name can not be null or empty.
         /// </summary>
         public static string InvalidAzureVMName {
