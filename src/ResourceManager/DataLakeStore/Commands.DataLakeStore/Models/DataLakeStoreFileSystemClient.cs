@@ -441,8 +441,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string accountName,
             string sourceFolderPath,
             CancellationToken cmdletCancellationToken,
-            int folderThreadCount = -1,
-            int perFileThreadCount = -1,
+            int folderThreadCount = 5,
+            int perFileThreadCount = 10,
             bool recursive = false,
             bool overwrite = false,
             bool resume = false,
@@ -462,8 +462,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             UpdateProgress(progress, cmdletRunningRequest);
 
-            var internalFolderThreads = folderThreadCount <= 0 ? Environment.ProcessorCount : folderThreadCount;
-            var internalFileThreads = perFileThreadCount <= 0 ? Environment.ProcessorCount : perFileThreadCount;
+            var internalFolderThreads = folderThreadCount <= 0 ? 5 : folderThreadCount;
+            var internalFileThreads = perFileThreadCount <= 0 ? 10 : perFileThreadCount;
 
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
