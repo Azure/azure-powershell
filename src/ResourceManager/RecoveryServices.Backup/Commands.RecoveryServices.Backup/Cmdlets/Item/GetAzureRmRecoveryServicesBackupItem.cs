@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// When this option is specified, only those items which belong to this container will be returned.
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.Container,
-            ParameterSetName = GetItemsForContainerParamSet)]
+            ParameterSetName = GetItemsForContainerParamSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public ContainerBase Container { get; set; }
 

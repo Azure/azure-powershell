@@ -12,27 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    /// <summary>
-    /// Constants used by Job Cmdlets
-    /// </summary>
-    public class JobConstants
+    public class AzureSqlContainer : ContainerBase
     {
-        public const int MaximumJobsToFetch = 1000;
-    }
+        public ContainerRegistrationStatus Status { get; set; }
 
-    /// <summary>
-    /// Constants used by Policy Cmdlets
-    /// </summary>
-    public class PolicyConstants
-    {
-        public const int MinPolicyNameLength = 3;
-        public const int MaxPolicyNameLength = 150;                
-    }
-
-    public class ContainerConstansts
-    {
-        public const string SqlContainerNamePrefix = "AzureSqlContainer;";
+        public AzureSqlContainer(ProtectionContainerResource protectionContainer)
+            : base(protectionContainer)
+        {
+            AzureSqlProtectionContainer sqlProtectionContainer = (AzureSqlProtectionContainer)protectionContainer.Properties;
+            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(sqlProtectionContainer.RegistrationStatus);
+        }
     }
 }

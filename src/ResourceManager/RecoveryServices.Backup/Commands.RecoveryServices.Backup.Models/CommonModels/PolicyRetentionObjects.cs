@@ -22,7 +22,37 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
     /// <summary>
-    /// Backup long term retention policy class.
+    /// Backup simple retention policy class.
+    /// </summary>
+    public class SimpleRetentionPolicy : RetentionPolicyBase
+    {
+        public RetentionDurationType RetentionDurationType { get; set; }
+
+        public int RetentionCount { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("RetentionDurationType: {0}, Retention Count : {1}",
+                        RetentionDurationType.ToString(),
+                        RetentionCount);
+        }
+
+        public override void Validate()
+        {
+            base.Validate();
+
+            if ((RetentionDurationType == RetentionDurationType.Days) ||
+            (RetentionDurationType == RetentionDurationType.Weeks && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql)) ||
+            (RetentionDurationType == RetentionDurationType.Months && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql)) ||
+            (RetentionDurationType == RetentionDurationType.Years && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountYearlySql)))
+            {
+                throw new ArgumentException(Resources.AllowedSqlRetentionRange);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Backup long term retention policy class. 
     /// </summary>
     public class LongTermRetentionPolicy : RetentionPolicyBase
     {
@@ -507,6 +537,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public override string ToString()
         {
             return string.Format("Date:{0}, IsLast:{1}", Date, IsLast);
+        }
+    }
+
+    public class RetentionDuration
+    {
+        public RetentionDurationType RetentionDurationType { get; set; }
+
+        public int RetentionCount { get; set; }
+
+        public void Validate()
+        {
+            if (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCount)
+            {
+                throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
+            }
         }
     }
 }

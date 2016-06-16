@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 base.ExecuteCmdlet();            
 
                 Dictionary<System.Enum, object> parameter = new Dictionary<System.Enum, object>();
-                parameter.Add(GetRecoveryPointParams.Item, Item);
+                parameter.Add(RecoveryPointParams.Item, Item);
 
                 if(this.ParameterSetName == DateTimeFilterParameterSet)
                 {
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
                     }
 
-                    parameter.Add(GetRecoveryPointParams.StartDate, StartDate);
-                    parameter.Add(GetRecoveryPointParams.EndDate, EndDate);
+                    parameter.Add(RecoveryPointParams.StartDate, StartDate);
+                    parameter.Add(RecoveryPointParams.EndDate, EndDate);
                     PsBackupProviderManager providerManager = 
                         new PsBackupProviderManager(parameter, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider = 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         "StartDate = {0} EndDate = {1}, RPId = {2}",
                         StartDate, EndDate, RecoveryPointId));
 
-                    parameter.Add(GetRecoveryPointParams.RecoveryPointId, RecoveryPointId);
+                    parameter.Add(RecoveryPointParams.RecoveryPointId, RecoveryPointId);
                     PsBackupProviderManager providerManager = 
                         new PsBackupProviderManager(parameter, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider = 

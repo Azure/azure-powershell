@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     // Track OperationStatus URL for operation completion
                     BackUpOperationStatusResponse operationResponse =  
-                        WaitForOperationCompletionUsingStatusLink(
+                        TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
                                                 policyResponse.AzureAsyncOperation,
                                                 ServiceClientAdapter.GetProtectionPolicyOperationStatusByURL);
 

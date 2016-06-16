@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
-    /// <summary>
-    /// Azure VM specific recovery point class.
-    /// </summary>
-    public class AzureVmRecoveryPoint : RecoveryPointBase
+    public class AzureSqlRecoveryPoint : RecoveryPointBase
     {
         /// <summary>
         /// Type of recovery point (appConsistent\CrashConsistent etc) 
@@ -41,28 +39,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string RecoveryPointAdditionalInfo { get; set; }
 
         /// <summary>
-        /// Storage type of the VM whose backup operation has created this recovery point.
+        /// FriendlyName of recovery point
         /// </summary>
-        public string SourceVMStorageType { get; set; }
-
-        /// <summary>
-        /// Identifies whether this recovery point represents an encrypted VM at the time of backup.
-        /// </summary>
-        public bool EncryptionEnabled { get; set; }
-
-        /// <summary>
-        /// Identifies whether an ILR session is already active that is associated with this recovery point.
-        /// </summary>
-        public bool IlrSessionActive { get; set; }
-
-        /// <summary>
-        /// Required details for recovering an encrypted VM. Applicable only when IsSourceVMEncrypted is true.
-        /// </summary>
-        public KeyAndSecretDetails KeyAndSecretDetails { get; set; }
-
-        public AzureVmRecoveryPoint()
-        {
-
-        }
+        public string FriendlyName { get; set; }
     }
 }
