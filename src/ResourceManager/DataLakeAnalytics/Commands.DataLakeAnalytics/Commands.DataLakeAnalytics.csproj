@@ -135,6 +135,7 @@
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Models\AdlDataSource.cs" />
     <Compile Include="Models\CatalogPathInstance.cs" />
     <Compile Include="Models\DataLakeAnalyticsEnums.cs" />
     <Compile Include="Models\DataLakeAnalyticsClient.cs" />

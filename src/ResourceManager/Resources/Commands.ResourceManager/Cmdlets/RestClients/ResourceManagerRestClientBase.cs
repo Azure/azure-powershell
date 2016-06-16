@@ -14,17 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
 {
+    using System;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ErrorResponses;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System;
-    using System.Net.Http;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// A base class for Azure clients.
@@ -219,27 +220,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         {
             using (var httpClient = this.httpClientHelper.CreateHttpClient())
             {
-                var response = await httpClient
-                    .SendAsync(request: request, cancellationToken: cancellationToken)
-                    .ConfigureAwait(continueOnCapturedContext: false);
-
-                if (!response.StatusCode.IsSuccessfulRequest())
+                try
                 {
-                    var errorResponse = await ResourceManagerRestClientBase
-                        .TryReadErrorResponseMessage(response, rewindContentStream: true)
+                    var response = await httpClient
+                        .SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
 
-                    var message = await ResourceManagerRestClientBase
-                        .GetErrorMessage(request: request, response: response, errorResponse: errorResponse)
-                        .ConfigureAwait(continueOnCapturedContext: false);
+                    if (!response.StatusCode.IsSuccessfulRequest())
+                    {
+                        var errorResponse = await ResourceManagerRestClientBase
+                            .TryReadErrorResponseMessage(response, rewindContentStream: true)
+                            .ConfigureAwait(continueOnCapturedContext: false);
 
-                    throw new ErrorResponseMessageException(
-                        httpStatus: response.StatusCode,
-                        errorResponseMessage: errorResponse,
-                        errorMessage: message);
+                        var message = await ResourceManagerRestClientBase
+                            .GetErrorMessage(request: request, response: response, errorResponse: errorResponse)
+                            .ConfigureAwait(continueOnCapturedContext: false);
+
+                        throw new ErrorResponseMessageException(
+                            httpStatus: response.StatusCode,
+                            errorResponseMessage: errorResponse,
+                            errorMessage: message);
+                    }
+
+                    return response;
                 }
+                catch (Exception exception)
+                {
+                    if (exception is OperationCanceledException && !cancellationToken.IsCancellationRequested)
+                    {
+                        throw new Exception(ProjectResources.OperationFailedWithTimeOut);
+                    }
 
-                return response;
+                    throw;
+                }
             }
         }
 
