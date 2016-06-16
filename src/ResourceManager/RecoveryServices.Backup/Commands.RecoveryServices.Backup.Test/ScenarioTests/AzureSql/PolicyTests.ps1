@@ -14,29 +14,36 @@
 
 function Test-AzureSqlPolicyScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "swatiSqlRG" -Name "swatiSqlRG";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# get default objects
 	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
+	Assert-NotNull $retPolicy
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol1" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
 		
 	# now get policy and update it with new schedule/retention
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureSQL"
+	$policy1 = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol1"	
+	Assert-AreEqual $policy1.RetentionPolicy.RetentionCount 10;
+	Assert-AreEqual $policy1.RetentionPolicy.RetentionDurationType "Months"
 
-    $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321"	
-	Assert-AreEqual $temp.RetentionPolicy.RetentionDuration.RetentionCount 180;
-	Assert-AreEqual $temp.RetentionPolicy.RetentionDuration.RetentionDurationType "Days";
+	$retPolicy.RetentionDurationType = "Weeks"
+	$retPolicy.RetentionCount = 2
+	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -Policy $policy1
 
-	$retPolicy.RetentionDuration.RetentionDurationType = "Months"
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -Policy $temp
+	$policy1 = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol1"
+	Assert-AreEqual $policy1.RetentionPolicy.RetentionCount 2
+	Assert-AreEqual $policy1.RetentionPolicy.RetentionDurationType "Weeks"
 
-	$temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swati321"
-	Assert-AreEqual $temp.RetentionPolicy.RetentionDuration.RetentionCount 180;
-	Assert-AreEqual $temp.RetentionPolicy.RetentionDuration.RetentionDurationType "Months";
+	# create another policy
+	$policy2 = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol2" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
+
+	$listPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureSQLDatabase"
+	Assert-NotNull $listPolicy
 
 	#cleanup 
-	Remove-AzureRmRecoveryServicesProtectionPolicy -Policy $temp -Force
+	Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $policy1 -Force
+	Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $policy2 -Force
 }

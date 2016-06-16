@@ -15,62 +15,63 @@
 function Test-GetAzureSqlItemScenario
 {
 	# 1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.FriendlyName "Sql;testRG;ContosoServer";
+	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSqlDb";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase";
+	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
 	# VAR-2: Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSqlDb" -Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 }
 
 function Test-DisableAzureSqlProtectionScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	#1. Get the vault
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
+	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
-	# Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSqlDb" -Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	# 4. Get named item for container
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase";
+	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
-	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item;
+	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
 	Assert-AreEqual $job.Status "Completed";
 }
 
 function Test-GetAzureSqlRecoveryPointsScenario
 {
 	#Set vault context
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
+	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSqlDb" -Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
-	$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
+	$fixedStartDate = Get-Date -Date "2016-06-13 22:00:00"
 	$startDate = $fixedStartDate.ToUniversalTime()
-	$fixedEndDate = Get-Date -Date "2016-04-18 16:00:00"
+	$fixedEndDate = Get-Date -Date "2016-06-18 16:00:00"
 	$endDate = $fixedEndDate.ToUniversalTime()
 
 	
