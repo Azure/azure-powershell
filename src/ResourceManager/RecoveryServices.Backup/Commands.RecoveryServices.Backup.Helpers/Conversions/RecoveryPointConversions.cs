@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 Id = rpResponse.RecPoint.Id,
                 WorkloadType = item.WorkloadType,
                 RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                SourceResourceId = item.SourceResourceId,
             };
             return result;
         }
