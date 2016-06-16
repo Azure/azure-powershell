@@ -58,7 +58,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
         {
-            throw new NotImplementedException();
+            bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
+
+            ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
+            // do validations
+
+            ValidateAzureSQLDisableProtectionRequest(itemBase);
+
+            Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(itemBase.Id);
+            string containerUri = HelperUtils.GetContainerUri(keyValueDict, itemBase.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, itemBase.Id);
+
+            if (deleteBackupData)
+            {
+                return ServiceClientAdapter.DeleteProtectedItem(
+                                containerUri,
+                                protectedItemUri);
+            }
+            else
+            {
+                throw new Exception("Azure Sql does not support disable protection with retain data");
+            }
         }
 
         public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
@@ -390,6 +410,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // call validation
             policy.Validate();
+        }
+
+        private void ValidateAzureSQLDisableProtectionRequest(ItemBase itemBase)
+        {
+
+            if (itemBase == null || itemBase.GetType() != typeof(AzureSqlItem))
+            {
+                throw new ArgumentException(string.Format(Resources.InvalidProtectionItemException,
+                                            typeof(AzureSqlItem).ToString()));
+            }
+
+            ValidateAzureSqlWorkloadType(itemBase.WorkloadType);
+            ValidateAzureSqlContainerType(itemBase.ContainerType);
+        }
+
+        private void ValidateAzureSqlContainerType(CmdletModel.ContainerType type)
+        {
+            if (type != CmdletModel.ContainerType.AzureSQL)
+            {
+                throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
+                                            CmdletModel.ContainerType.AzureSQL.ToString(),
+                                            type.ToString()));
+            }
         }
         #endregion
     }
