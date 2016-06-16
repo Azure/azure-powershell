@@ -398,26 +398,6 @@ function Test-TerminateTask
 
 <#
 .SYNOPSIS
-Tests querying for Batch subtasks and supplying a max count
-#>
-function Test-ListSubtasksWithMaxCount
-{
-    param([string]$jobId, [string]$taskId, [string]$maxCount)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $subtasks = Get-AzureBatchSubtask $jobId $taskId -MaxCount $maxCount -BatchContext $context
-
-    Assert-AreEqual $maxCount $subtasks.Length
-
-    # Verify parent object parameter set also works
-    $task = Get-AzureBatchTask $jobId $taskId -BatchContext $context
-    $subtasks = $task | Get-AzureBatchSubtask -MaxCount $maxCount -BatchContext $context
-
-    Assert-AreEqual $maxCount $subtasks.Length
-}
-
-<#
-.SYNOPSIS
 Tests querying for all subtasks under a task
 #>
 function Test-ListAllSubtasks
