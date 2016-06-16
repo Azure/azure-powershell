@@ -81,25 +81,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (itemBase == null)
             {
                 isComputeAzureVM = string.IsNullOrEmpty(azureVMCloudServiceName) ? true : false;
-                string azureVMRGName = (isComputeAzureVM) ? 
+                string azureVMRGName = (isComputeAzureVM) ?
                     azureVMResourceGroupName : azureVMCloudServiceName;
 
                 ValidateAzureVMWorkloadType(policy.WorkloadType);
 
                 ValidateAzureVMEnableProtectionRequest(
-                    azureVMName, 
-                    azureVMCloudServiceName, 
-                    azureVMResourceGroupName, 
+                    azureVMName,
+                    azureVMCloudServiceName,
+                    azureVMResourceGroupName,
                     policy);
 
-                ProtectableObjectResource protectableObjectResource = 
+                ProtectableObjectResource protectableObjectResource =
                     GetAzureVMProtectableObject(azureVMName, azureVMRGName, isComputeAzureVM);
 
-                Dictionary<UriEnums, string> keyValueDict = 
+                Dictionary<UriEnums, string> keyValueDict =
                     HelperUtils.ParseUri(protectableObjectResource.Id);
                 containerUri = HelperUtils.GetContainerUri(keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableObjectResource.Id);
+                protectedItemUri = HelperUtils.GetProtectableItemUri(keyValueDict, protectableObjectResource.Id);
 
                 AzureIaaSVMProtectableItem iaasVmProtectableItem = (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
                 if (iaasVmProtectableItem != null)
