@@ -18,10 +18,10 @@ function Test-GetAzureSqlContainer
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL";
 	
-	Assert-AreEqual $containers[0].FriendlyName "Sql;testRG;ContosoServer";
+	Assert-AreEqual $containers[0].Name "Sql;testRG;ContosoServer";
 
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
-	Assert-AreEqual $namedContainer.FriendlyName "Sql;testRG;ContosoServer";
+	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 }
 
 function Test-UnregisterAzureSqlContainer
