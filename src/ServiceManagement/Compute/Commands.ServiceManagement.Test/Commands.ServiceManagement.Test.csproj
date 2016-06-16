@@ -471,6 +471,18 @@
     <None Include="AzureRTComplete_Full_Diff.playlist" />
     <None Include="AzureRTExtensions.playlist" />
     <None Include="AzureRTFull.playlist" />
+    <Content Include="Resources\Diagnostics\PurePublic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Diagnostics\PlainText.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Diagnostics\PlainText.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Diagnostics\PurePublic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\HelloWorld_SDK20.cspkg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
