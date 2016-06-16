@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
             else
             {
-                throw new Exception("Azure Sql does not support disable protection with retain data");
+                throw new Exception(Resources.AzureSqlRetainDataException);
             }
         }
 

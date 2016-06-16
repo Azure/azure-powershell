@@ -476,4 +476,7 @@ Please contact Microsoft for further assistant.</value>
   <data name="ProtectionStatusNotAllowedForAzureSqlItem" xml:space="preserve">
     <value>Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}</value>
   </data>
+  <data name="AzureSqlRetainDataException" xml:space="preserve">
+    <value>Azure Sql does not support disable protection with retain data</value>
+  </data>
 </root>
