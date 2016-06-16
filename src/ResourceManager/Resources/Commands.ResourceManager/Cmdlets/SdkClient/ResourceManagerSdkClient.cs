@@ -224,59 +224,56 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             const string failureStatusFormat = "Resource {0} '{1}' failed with message '{2}'";
             List<DeploymentOperation> newOperations;
 
-            if (ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName) == true)
+            var result = ResourceManagementClient.DeploymentOperations.List(resourceGroup, deploymentName, null);
+            newOperations = GetNewOperations(operations, result);
+            operations.AddRange(newOperations);
+
+            while (!string.IsNullOrEmpty(result.NextPageLink))
             {
-                var result = ResourceManagementClient.DeploymentOperations.List(resourceGroup, deploymentName, null);
+                result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
                 newOperations = GetNewOperations(operations, result);
                 operations.AddRange(newOperations);
+            }
 
-                while (!string.IsNullOrEmpty(result.NextPageLink))
+            foreach (DeploymentOperation operation in newOperations)
+            {
+                string statusMessage;
+
+                if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
                 {
-                    result = ResourceManagementClient.DeploymentOperations.ListNext(result.NextPageLink);
-                    newOperations = GetNewOperations(operations, result);
-                    operations.AddRange(newOperations);
-                }
-
-                foreach (DeploymentOperation operation in newOperations)
-                {
-                    string statusMessage;
-
-                    if (operation.Properties.ProvisioningState != ProvisioningState.Failed.ToString())
+                    if (operation.Properties.TargetResource != null)
                     {
-                        if (operation.Properties.TargetResource != null)
-                        {
-                            statusMessage = string.Format(normalStatusFormat,
-                            operation.Properties.TargetResource.ResourceType,
-                            operation.Properties.TargetResource.ResourceName,
-                            operation.Properties.ProvisioningState.ToLower());
+                        statusMessage = string.Format(normalStatusFormat,
+                        operation.Properties.TargetResource.ResourceType,
+                        operation.Properties.TargetResource.ResourceName,
+                        operation.Properties.ProvisioningState.ToLower());
 
-                            WriteVerbose(statusMessage);
-                        }
+                        WriteVerbose(statusMessage);
+                    }
+                }
+                else
+                {
+                    string errorMessage = operation.Properties.StatusMessage.ToString();
+
+                    if (operation.Properties.TargetResource != null)
+                    {
+                        statusMessage = string.Format(failureStatusFormat,
+                        operation.Properties.TargetResource.ResourceType,
+                        operation.Properties.TargetResource.ResourceName,
+                        errorMessage);
+
+                        WriteError(statusMessage);
                     }
                     else
                     {
-                        string errorMessage = operation.Properties.StatusMessage.ToString();
+                        WriteError(errorMessage);
+                    }
 
-                        if (operation.Properties.TargetResource != null)
-                        {
-                            statusMessage = string.Format(failureStatusFormat,
-                            operation.Properties.TargetResource.ResourceType,
-                            operation.Properties.TargetResource.ResourceName,
-                            errorMessage);
+                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
 
-                            WriteError(statusMessage);
-                        }
-                        else
-                        {
-                            WriteError(errorMessage);
-                        }
-
-                        List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage.ToString());
-
-                        if (detailedMessage != null && detailedMessage.Count > 0)
-                        {
-                            detailedMessage.ForEach(s => WriteError(s));
-                        }
+                    if (detailedMessage != null && detailedMessage.Count > 0)
+                    {
+                        detailedMessage.ForEach(s => WriteError(s));
                     }
                 }
             }
