@@ -3,10 +3,12 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using System.Collections.Generic;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
@@ -19,7 +21,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private GetAzureAutomationHybridWorkerGroup cmdlet;
 
-        [TestInitialize]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
@@ -31,7 +34,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationHybridWorkerGroupByNameSuccessfull()
         {
             //Setup
@@ -52,7 +56,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient.Verify(f => f.GetHybridRunbookWorkerGroup(resourceGroupName, accountName, hybridRunbookWorkerGroupName), Times.Once());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAutomationHybridWorkerGroupByAllSuccessfull()
         {
             // Setup
