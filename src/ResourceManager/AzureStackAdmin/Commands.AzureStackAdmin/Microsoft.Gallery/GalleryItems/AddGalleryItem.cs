@@ -35,7 +35,8 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
         [ValidateNotNull]
-        public string Name { get; set; }
+        [ValidatePattern(@"^([0-9a-z]+\.){2}[0-9a-z\.-]+$")]
+        public string GalleryItemIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group.
@@ -76,7 +77,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            this.WriteVerbose(Resources.AddingGalleryItem.FormatArgs(this.Name));
+            this.WriteVerbose(Resources.AddingGalleryItem.FormatArgs(this.GalleryItemIdentity));
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
                 var galleryItemModel = new GalleryItemModel()
