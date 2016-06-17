@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -51,9 +50,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="fabricId">Fabric ID</param>
         /// <param name="providerId">Provider ID</param>
         /// <returns>Provider response</returns>
-        public LongRunningOperationResponse RemoveAzureSiteRecoveryProvider(string fabricId, string providerId, RecoveryServicesProviderDeletionInput input)
+        public LongRunningOperationResponse RemoveAzureSiteRecoveryProvider(string fabricId, string providerId)
         {
-            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginDeleting(fabricId, providerId, input, this.GetRequestHeaders());
+            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginDeleting(fabricId, providerId, this.GetRequestHeaders());
         }
 
         /// <summary>
@@ -65,6 +64,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public LongRunningOperationResponse PurgeAzureSiteRecoveryProvider(string fabricId, string providerId)
         {
             return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginPurging(fabricId, providerId, this.GetRequestHeaders());
+        }
+
+        /// <summary>
+        /// Refresh Azure Site Recovery Provider.
+        /// </summary>
+        /// <param name="fabricId">Fabric ID</param>
+        /// <param name="providerId">Provider ID</param>
+        /// <returns>Operation response</returns>
+        public LongRunningOperationResponse RefreshAzureSiteRecoveryProvider(string fabricId, string providerId)
+        {
+            return this.GetSiteRecoveryClient().RecoveryServicesProvider.BeginRefreshing(fabricId, providerId, this.GetRequestHeaders());
         }
     }
 }

@@ -165,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 if (string.IsNullOrEmpty(this.privateConfiguration))
                 {
                     this.privateConfiguration = JsonConvert.SerializeObject(
-                        DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint));
+                        DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath, this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint));
                 }
 
                 return this.privateConfiguration;
@@ -241,7 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         private void GetResourceId()
         {
             var vmRoleContext = VM as PersistentVMRoleContext;
-            if (VM != null)
+            if (vmRoleContext != null)
             {
                 string resourceGroup = null;
                 string serviceName = vmRoleContext.ServiceName;

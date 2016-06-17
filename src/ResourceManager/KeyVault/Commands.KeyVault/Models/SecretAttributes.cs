@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// </summary>
     public class SecretAttributes
     {
-        public SecretAttributes() 
-        {}
+        public SecretAttributes()
+        { }
 
         internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
         {
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.Tags = tags;
         }
 
-        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
+        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore,
             DateTime? created, DateTime? updated, string contentType, Dictionary<string, string> tags)
         {
             this.Enabled = enabled;
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.ContentType = contentType;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
-     
+
         public bool? Enabled { get; set; }
 
         public DateTime? Expires { get; set; }
 
-        public DateTime? NotBefore { get; set; }       
-        
+        public DateTime? NotBefore { get; set; }
+
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
@@ -82,9 +82,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,
-                Expires = attr.Expires               
+                Expires = attr.Expires
             };
 
-        }       
+        }
     }
 }

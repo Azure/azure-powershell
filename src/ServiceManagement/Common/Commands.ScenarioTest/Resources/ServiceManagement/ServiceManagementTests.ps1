@@ -18,10 +18,6 @@ Tests Create-AzureVM with valid information.
 #>
 function Test-GetAzureVM
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
     $location = Get-DefaultLocation
     $imgName = Get-DefaultImage $location
@@ -37,6 +33,7 @@ function Test-GetAzureVM
 
     # Test
     New-AzureService -ServiceName $svcName -Location $location
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
 
     Get-AzureVM -ServiceName $svcName -Name $vmName
@@ -79,6 +76,7 @@ function Run-StartAndStopMultipleVirtualMachinesTest
 {
     # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
     # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $tempErrorActionPreference = $ErrorActionPreference;
     $ErrorActionPreference='SilentlyContinue';
 
     # Setup
@@ -135,6 +133,7 @@ function Run-StartAndStopMultipleVirtualMachinesTest
     {
         # Cleanup
         Cleanup-CloudService $svcName;
+        $ErrorActionPreference = $tempErrorActionPreference;
     }
 }
 
@@ -610,4 +609,242 @@ function Run-EnableAndDisableDataCollectionTests
     }
 
     $st = Disable-AzureDataCollection;
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureService
+#>
+function Test-MigrateAzureDeployment
+{
+    # Setup
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    Set-CurrentStorageAccountName $storageName;
+
+    $vmName = "vm1";
+    $svcName = Get-CloudServiceName;
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd";
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-AreEqual "Prepared" $vm.VM.MigrationState;
+
+    try
+    {
+        Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName -ErrorAction Stop;
+    }
+    catch
+    {}
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-AreEqual "CommitFailed" $vm.VM.MigrationState;
+
+    # Cleanup failed because the service is being migrated.
+    #Cleanup-CloudService $svcName
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureService with Abort
+#>
+function Test-MigrationAbortAzureDeployment
+{
+    # Setup
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    Set-CurrentStorageAccountName $storageName;
+
+    $vmName = "vm1";
+    $svcName = Get-CloudServiceName;
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd";
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-AreEqual "Prepared" $vm.VM.MigrationState;
+
+    Move-AzureService -Abort -ServiceName $svcName -DeploymentName $svcName;
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-Null $vm.VM.MigrationState;
+
+    # Cleanup
+    Cleanup-CloudService $svcName;
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureVirtualNetwork with Prepare and Commit
+#>
+function Test-MigrateAzureVNet
+{
+    # Setup
+    $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+    $location = Get-DefaultLocation
+    $affName = "WestUsAffinityGroup";
+    $vnetConfigPath = "$TestOutputRoot\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetName = "NewVNet1";
+
+    # Test
+
+    Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    # Cleanup
+    Remove-AzureVNetConfig
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureVirtualNetwork with Prepare and Abort
+#>
+function Test-MigrationAbortAzureVNet
+{
+    # Setup
+    $TestOutputRoot = [System.AppDomain]::CurrentDomain.BaseDirectory;
+    $location = Get-DefaultLocation
+    $affName = "WestUsAffinityGroup";
+    $vnetConfigPath = "$TestOutputRoot\Resources\ServiceManagement\Files\vnetconfig.netcfg";
+    $vnetName = "NewVNet1";
+
+    # Test
+
+    Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName;
+
+    Get-AzureVNetSite;
+
+    # Cleanup
+    Remove-AzureVNetConfig
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Commit
+#>
+function Test-MigrateAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Commit -StorageAccountName $storageName;
+	Assert-ThrowsContains { Get-AzureStorageAccount -StorageAccountName $storageName; } "ResourceNotFound";
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Abort
+#>
+function Test-MigrationAbortAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Abort -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Cleanup
+    Remove-AzureStorageAccount -StorageAccountName $storageName;
+}
+
+
+function Test-NewAzureVMWithBYOL
+{
+    # Setup
+    $location = "Central US";
+    $storageName = "mybyolosimagerdfe";
+
+    $vm1Name = "vm1";
+    $vm2Name = "vm2";
+    $svcName = Get-CloudServiceName;
+
+    $vmSize = "Small";
+    $licenseType = "Windows_Server";
+    $imgName = getAssetName;
+    $userName = "User" + $svcName;
+    $pass = "User@" + $svcName;
+
+    $media1 = "http://mybyolosimagerdfe.blob.core.windows.net/myvhd/" + $svcName + "0.vhd";
+    $media2 = "http://mybyolosimagerdfe.blob.core.windows.net/myvhd/" + $svcName + "1.vhd";
+
+    Set-CurrentStorageAccountName $storageName;
+
+    Add-AzureVMImage -ImageName $imgName `
+        -MediaLocation "https://mybyolosimagerdfe.blob.core.windows.net/vhdsrc/win2012-tag0.vhd" `
+        -OS "Windows" `
+        -Label "BYOL Image" `
+        -RecommendedVMSize $vmSize `
+        -IconUri "http://www.bing.com" `
+        -SmallIconUri "http://www.bing.com" `
+        -ShowInGui;
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+
+    $vm1 = New-AzureVMConfig -Name $vm1Name -ImageName $imgName -InstanceSize $vmSize `
+         -LicenseType $licenseType -HostCaching ReadWrite -MediaLocation $media1;
+
+    $vm1 = Add-AzureProvisioningConfig -VM $vm1 -Windows -Password $pass -AdminUsername $userName;
+
+    $vm2 = New-AzureVMConfig -Name $vm2Name -ImageName $imgName -InstanceSize $vmSize `
+         -LicenseType $licenseType -HostCaching ReadWrite -MediaLocation $media2;
+
+    $vm2 = Add-AzureProvisioningConfig -VM $vm2 -Windows -Password $pass -AdminUsername $userName;
+
+    New-AzureVM -ServiceName $svcName -VMs $vm1,$vm2
+
+    $vm1result = Get-AzureVM -ServiceName $svcName -Name $vm1Name;
+    $vm2result = Get-AzureVM -ServiceName $svcName -Name $vm2Name;
+
+    Update-AzureVM -ServiceName $svcName -Name $vm1Name -VM $vm1result.VM;
+
+    $vm1result = Get-AzureVM -ServiceName $svcName -Name $vm1Name;
+    $vm2result = Get-AzureVM -ServiceName $svcName -Name $vm2Name;
+
+    # Cleanup
+    Cleanup-CloudService $svcName
 }

@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
 {
@@ -87,27 +87,27 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
         {
             get
             {
-                for (uint index = 0; index < blockFactory.BlockCount; index++ )
+                for (uint index = 0; index < blockFactory.BlockCount; index++)
                 {
                     var block = blockFactory.Create(index);
-                    if(!block.Empty)
+                    if (!block.Empty)
                     {
                         yield return new StreamExtent
-                                         {
-                                             Owner = block.VhdUniqueId,
-                                             StartOffset = block.LogicalRange.StartIndex,
-                                             EndOffset = block.LogicalRange.EndIndex,
-                                             Range = block.LogicalRange
-                                         };
+                        {
+                            Owner = block.VhdUniqueId,
+                            StartOffset = block.LogicalRange.StartIndex,
+                            EndOffset = block.LogicalRange.EndIndex,
+                            Range = block.LogicalRange
+                        };
                     }
                 }
                 yield return new StreamExtent
-                                 {
-                                     Owner = vhdFile.Footer.UniqueId,
-                                     StartOffset = this.footerRange.StartIndex,
-                                     EndOffset = this.footerRange.EndIndex,
-                                     Range = this.footerRange
-                                 };
+                {
+                    Owner = vhdFile.Footer.UniqueId,
+                    StartOffset = this.footerRange.StartIndex,
+                    EndOffset = this.footerRange.EndIndex,
+                    Range = this.footerRange
+                };
             }
         }
 
@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
             get
             {
                 var diskType = this.vhdFile.DiskType;
-                for(var parent = this.vhdFile.Parent; parent != null; parent = parent.Parent)
+                for (var parent = this.vhdFile.Parent; parent != null; parent = parent.Parent)
                 {
                     diskType = parent.DiskType;
                 }
@@ -158,13 +158,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
                 var startingBlock = ByteToBlock(rangeToRead.StartIndex);
                 var endingBlock = ByteToBlock(rangeToRead.EndIndex);
 
-                for(var blockIndex = startingBlock; blockIndex <= endingBlock; blockIndex++)
+                for (var blockIndex = startingBlock; blockIndex <= endingBlock; blockIndex++)
                 {
                     var currentBlock = blockFactory.Create(blockIndex);
                     var rangeToReadInBlock = currentBlock.LogicalRange.Intersection(rangeToRead);
 
                     var copyStartIndex = rangeToReadInBlock.StartIndex % blockFactory.GetBlockSize();
-                    Buffer.BlockCopy(currentBlock.Data, (int) copyStartIndex, buffer, offset + writtenCount, (int) rangeToReadInBlock.Length);
+                    Buffer.BlockCopy(currentBlock.Data, (int)copyStartIndex, buffer, offset + writtenCount, (int)rangeToReadInBlock.Length);
 
                     writtenCount += (int)rangeToReadInBlock.Length;
                 }
@@ -196,14 +196,14 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
 
         private uint ByteToBlock(long position)
         {
-            uint sectorsPerBlock = (uint) (this.blockFactory.GetBlockSize() / VhdConstants.VHD_SECTOR_LENGTH);
+            uint sectorsPerBlock = (uint)(this.blockFactory.GetBlockSize() / VhdConstants.VHD_SECTOR_LENGTH);
             return (uint)Math.Floor((position / VhdConstants.VHD_SECTOR_LENGTH) * 1.0m / sectorsPerBlock);
         }
 
         private byte[] GenerateFooter()
         {
             var footer = vhdFile.Footer.CreateCopy();
-            if(vhdFile.Footer.DiskType != DiskType.Fixed)
+            if (vhdFile.Footer.DiskType != DiskType.Fixed)
             {
                 footer.HeaderOffset = VhdConstants.VHD_NO_DATA_LONG;
                 footer.DiskType = DiskType.Fixed;
@@ -244,9 +244,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
 
         protected override void Dispose(bool disposing)
         {
-            if(!isDisposed)
+            if (!isDisposed)
             {
-                if(disposing)
+                if (disposing)
                 {
                     this.vhdFile.Dispose();
                     isDisposed = true;

@@ -86,6 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string CopyDatabaseName { get; set; }
 
         /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            base.ExecuteCmdlet();
+        }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>

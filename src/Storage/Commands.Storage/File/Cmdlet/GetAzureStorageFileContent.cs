@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Storage.File;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -100,6 +100,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
 
+        [Parameter(HelpMessage = "check the md5sum")]
+        public SwitchParameter CheckMd5
+        {
+            get;
+            set;
+        }
+
         [Parameter(HelpMessage = "Returns an object representing the downloaded cloud file. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -164,13 +171,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         return this.TransferManager.DownloadAsync(
                             fileToBeDownloaded,
                             targetFile,
-                            null,
+                            new DownloadOptions
+                            {
+                                DisableContentMD5Validation = !this.CheckMd5
+                            },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
-                    }, 
+                    },
                     progressRecord,
                     this.OutputStream);
-                
+
                 if (this.PassThru)
                 {
                     this.OutputStream.WriteObject(taskId, fileToBeDownloaded);

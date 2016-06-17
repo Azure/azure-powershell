@@ -16,6 +16,53 @@
 .SYNOPSIS
 Tests ExpressRouteCircuitCRUD.
 #>
+function Test-ExpressRouteCircuitStageCRUD
+{
+    # Setup
+    $rgname = 'movecircuit'
+    $circuitName = Get-ResourceName
+    $rglocation = "westus"
+    $resourceTypeParent = "Microsoft.Network/expressRouteCircuits"
+    $location = "westus"
+    try 
+    {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+      
+      # Create the ExpressRouteCircuit
+	  $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix test" -PeeringLocation "Silicon Valley Test" -BandwidthInMbps 50 -AllowClassicOperations $true;
+      
+      $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
+      # set
+      $circuit.AllowClassicOperations = $false
+      $circuit = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
+	  
+	  		$actual = Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
+			Assert-AreEqual $actual.PrimaryBytesIn 0
+			
+
+	  #move
+	  Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force
+            
+      # Delete Circuit
+      $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+      Assert-AreEqual true $delete
+		      
+      $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
+      Assert-AreEqual 0 @($list).Count
+      
+    }
+    finally
+    {
+    # Cleanup
+      Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitCRUD.
+#>
 function Test-ExpressRouteCircuitCRUD
 {
     # Setup
@@ -75,6 +122,7 @@ function Test-ExpressRouteCircuitCRUD
       Assert-AreEqual "equinix" $getCircuit.ServiceProviderProperties.ServiceProviderName
       Assert-AreEqual "Silicon Valley" $getCircuit.ServiceProviderProperties.PeeringLocation
       Assert-AreEqual "1000" $getCircuit.ServiceProviderProperties.BandwidthInMbps
+      
 
       # Delete Circuit
       $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
@@ -132,6 +180,10 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Assert-AreEqual "192.168.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
 		Assert-AreEqual "192.168.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
 		Assert-AreEqual "22" $circuit.Peerings[0].VlanId
+		
+		Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
+		Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
+		Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 		
 		# get peering
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering

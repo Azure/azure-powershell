@@ -51,7 +51,8 @@ $script:aliases = @{
     "Remove-WAPackSBNamespace" = "Remove-AzureSBNamespace";
     
     # Compute aliases
-    "New-AzureDns" = "New-AzureDnsConfig";
+    "New-AzureDnsConfig" = "New-AzureDns";
+    "Set-AzureBootDiagnostics" = "Set-AzureVMBootDiagnostics";
     
     # HDInsight aliases
     "Invoke-Hive" = "Invoke-AzureHDInsightHiveJob";

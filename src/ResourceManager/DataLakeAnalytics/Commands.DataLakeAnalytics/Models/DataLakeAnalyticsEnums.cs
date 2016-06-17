@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             Schema,
             Assembly,
             Table,
+            TablePartition,
             TableValuedFunction,
             TableStatistics,
             ExternalDataSource,
@@ -36,6 +37,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public enum CreatableCatalogItemType
         {
             Secret
+        }
+
+        public enum DataSourceType
+        {
+            DataLakeStore,
+            Blob
         }
 
         public enum ExtendedJobData

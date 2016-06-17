@@ -14,18 +14,17 @@
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
 {
-    using System;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Test;
-    using Microsoft.Azure.Management.NotificationHubs;
-    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
-    using System.Collections.Generic;
-    using Microsoft.WindowsAzure.Management;
+    using Microsoft.Azure.Management.NotificationHubs;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using Microsoft.WindowsAzure.Management;
+    using System.Collections.Generic;
 
     public abstract class TestBaseClass : RMTestBase
     {
@@ -71,7 +70,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
                 modules.Add(helper.RMResourceModule);
                 //modules.Add(helper.RMStorageDataPlaneModule);
                 //modules.Add(helper.RMStorageModule);
-                modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));  
+                modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));
+                modules.Add("AzureRM.Resources.ps1");
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());

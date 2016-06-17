@@ -12,24 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Moq;
-using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.IO;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using Xunit;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
     public class TestAzureResourceGroupDeploymentCommandTests
     {
-        private TestAzureResourceGroupDeploymentCommand cmdlet;
+        private TestAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
@@ -37,25 +39,26 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        public TestAzureResourceGroupDeploymentCommandTests()
+        public TestAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new TestAzureResourceGroupDeploymentCommand()
+            cmdlet = new TestAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
         [Fact]
         public void ValidatesPSResourceGroupDeploymentWithUserTemplate()
         {
-            ValidatePSResourceGroupDeploymentParameters expectedParameters = new ValidatePSResourceGroupDeploymentParameters()
+            PSValidateResourceGroupDeploymentParameters expectedParameters = new PSValidateResourceGroupDeploymentParameters()
             {
                 TemplateFile = templateFile
             };
-            ValidatePSResourceGroupDeploymentParameters actualParameters = new ValidatePSResourceGroupDeploymentParameters();
+            PSValidateResourceGroupDeploymentParameters actualParameters = new PSValidateResourceGroupDeploymentParameters();
             List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
             {
                 new PSResourceManagerError()
@@ -75,9 +78,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 }
             };
             resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<ValidatePSResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
+                It.IsAny<PSValidateResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
                 .Returns(expected)
-                .Callback((ValidatePSResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
+                .Callback((PSValidateResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;

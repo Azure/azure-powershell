@@ -12,14 +12,14 @@
 //// limitations under the License.
 //// ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.SiteRecovery;
+using Microsoft.Azure.Management.SiteRecovery.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using System.Text;
-using Microsoft.Azure.Commands.SiteRecovery;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -158,8 +158,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets exception target.
         /// </summary>
-        [JsonProperty(PropertyName = "target", 
-            NullValueHandling = NullValueHandling.Ignore, 
+        [JsonProperty(PropertyName = "target",
+            NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Target { get; private set; }
 

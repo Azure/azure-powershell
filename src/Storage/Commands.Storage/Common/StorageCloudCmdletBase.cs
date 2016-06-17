@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.File;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.File;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,17 +31,6 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.File;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.File;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             Validate.ValidateInternetConnection();
             InitChannelCurrentSubscription();
             base.ProcessRecord();
-       }
+        }
 
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string storageAccount;
                 try
                 {
-                    if (TryGetStorageAccount(RMProfile, out storageAccount) 
+                    if (TryGetStorageAccount(RMProfile, out storageAccount)
                         || TryGetStorageAccount(SMProfile, out storageAccount)
                         || TryGetStorageAccountFromEnvironmentVariable(out storageAccount))
                     {

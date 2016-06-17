@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var osdisk = virtualMachine.StorageProfile.OsDisk;
                     if (String.IsNullOrEmpty(this.OSType))
                     {
-                        this.OSType = osdisk.OsType;
+                        this.OSType = osdisk.OsType.ToString();
                     }
                     if (String.IsNullOrEmpty(this.OSType))
                     {
@@ -122,7 +122,9 @@ namespace Microsoft.Azure.Commands.Compute
                         this.Name).GetAwaiter().GetResult();
                 }
 
-                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(
+                    this.ResourceGroupName, this.VMName);
+
                 WriteObject(returnedExtension);
             });
         }

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps
     {
         protected const string ParameterSet1Name = "S1";
         protected const string ParameterSet2Name = "S2";
-        
+
         protected string resourceGroupName;
         protected string webAppName;
         protected string slot;

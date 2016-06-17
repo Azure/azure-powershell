@@ -14,16 +14,18 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
@@ -33,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchJobCommandTests()
+        public GetBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchJobCommand()
@@ -55,8 +58,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Filter = null;
 
             // Build a CloudJob instead of querying the service on a Get CloudJob call
-            CloudJobGetResponse response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobGetParameters, CloudJobGetResponse>(response);
+            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.JobGetOptions,
+                AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -85,12 +91,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string requestExpand = null;
 
             // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            CloudJobGetResponse getResponse = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobGetParameters, CloudJobGetResponse>(getResponse);
+            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> getResponse = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.JobGetOptions,
+                AzureOperationResponse<ProxyModels.CloudJob,
+                ProxyModels.JobGetHeaders>>(getResponse);
+
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
-                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+                ProxyModels.JobGetOptions options = (ProxyModels.JobGetOptions)request.Options;
+
+                requestSelect = options.Select;
+                requestExpand = options.Expand;
 
                 return Task.FromResult(response);
             });
@@ -118,17 +130,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string requestSelect = null;
             string requestExpand = null;
 
-            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
-            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobListParameters, CloudJobListResponse>();
-            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
-            {
-                requestFilter = request.Parameters.DetailLevel.FilterClause;
-                requestSelect = request.Parameters.DetailLevel.SelectClause;
-                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = BatchTestHelpers.CreateGenericAzureOperationListResponse<ProxyModels.CloudJob, ProxyModels.JobListHeaders>();
+            Action<BatchRequest<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>> extractJobListAction =
+                (request) =>
+                {
+                    ProxyModels.JobListOptions options = request.Options;
+                    requestFilter = options.Filter;
+                    requestSelect = options.Select;
+                    requestExpand = options.Expand;
+                };
 
-                return Task.FromResult(response);
-            });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractJobListAction);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
@@ -144,15 +158,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Setup cmdlet to list jobs without filters. 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.JobScheduleId = "jobSchedule";
+            cmdlet.JobScheduleId = null;
             cmdlet.Id = null;
             cmdlet.Filter = null;
 
             string[] idsOfConstructedJobs = new[] { "job-1", "job-2", "job-3" };
 
             // Build some CloudJobs instead of querying the service on a List CloudJobs call
-            CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobListParameters, CloudJobListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -184,7 +198,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Setup cmdlet to list jobs without filters and a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.JobScheduleId = "jobSchedule";
+            cmdlet.JobScheduleId = null;
             cmdlet.Id = null;
             cmdlet.Filter = null;
             int maxCount = 2;
@@ -193,8 +207,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string[] idsOfConstructedJobs = new[] { "job-1", "job-2", "job-3" };
 
             // Build some CloudJobs instead of querying the service on a List CloudJobs call
-            CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobListParameters, CloudJobListResponse>(response);
+            AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobListOptions, AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders>>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

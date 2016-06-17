@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Table;
-    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.TableSas), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
@@ -43,7 +43,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -52,20 +53,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".",
             ParameterSetName = SasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
@@ -74,12 +82,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [Alias("startpk")]
         [Parameter(HelpMessage = "Start Partition Key")]
         public string StartPartitionKey { get; set; }
+
         [Alias("startrk")]
         [Parameter(HelpMessage = "Start Row Key")]
         public string StartRowKey { get; set; }
+
         [Alias("endpk")]
         [Parameter(HelpMessage = "End Partition Key")]
         public string EndPartitionKey { get; set; }
+
         [Alias("endrk")]
         [Parameter(HelpMessage = "End Row Key")]
         public string EndRowKey { get; set; }
@@ -166,40 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessTablePolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessTablePermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Add:
-                        policy.Permissions |= SharedAccessTablePermissions.Add;
-                        break;
-                    case StorageNouns.Permission.Update:
-                        policy.Permissions |= SharedAccessTablePermissions.Update;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessTablePermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.Read:
-                    case StorageNouns.Permission.Query:
-                        policy.Permissions |= SharedAccessTablePermissions.Query;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

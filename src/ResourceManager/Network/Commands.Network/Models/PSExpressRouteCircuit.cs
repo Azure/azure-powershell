@@ -14,12 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSExpressRouteCircuit : PSTopLevelResource
     {
+        public bool? AllowClassicOperations { get; set; }
+
         public string CircuitProvisioningState { get; set; }
 
         public string ServiceProviderProvisioningState { get; set; }

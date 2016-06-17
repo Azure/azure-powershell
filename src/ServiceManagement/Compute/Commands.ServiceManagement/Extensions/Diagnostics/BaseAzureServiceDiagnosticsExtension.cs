@@ -49,19 +49,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         {
             base.ValidateParameters();
 
-            XNamespace configNameSpace = "http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration";
+            XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
             ProviderNamespace = DiagnosticsExtensionNamespace;
             ExtensionName = DiagnosticsExtensionType;
-
-            PrivateConfigurationXmlTemplate = new XDocument(
-                new XDeclaration("1.0", "utf-8", null),
-                new XElement(configNameSpace + PrivateConfigStr,
-                    new XElement(configNameSpace + DiagnosticsHelper.StorageAccountElemStr,
-                    new XAttribute(DiagnosticsHelper.PrivConfNameAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfKeyAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfEndpointAttr, string.Empty)
-                ))
-            );
         }
 
         protected void ValidateStorageAccount()
@@ -158,17 +148,36 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             PublicConfiguration = publicConfigElement.ToString();
 
             // Make sure the storage account name in PrivateConfig matches.
-            var privateConfigStorageAccountName = DiagnosticsHelper.GetStorageAccountInfoFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.PrivConfNameAttr);
+            var privateConfigStorageAccountName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr);
             if (!string.IsNullOrEmpty(privateConfigStorageAccountName)
                 && !string.Equals(StorageAccountName, privateConfigStorageAccountName, StringComparison.OrdinalIgnoreCase))
             {
                 WriteWarning(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
             }
 
-            PrivateConfigurationXml = new XDocument(PrivateConfigurationXmlTemplate);
+            // Look for the PrivateConfig element in the user provided config file.
+            // If it doesn't exist (e.g., a pure PublicConfig.xml), we create the private config for the user.
+            var privateConfigElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == "PrivateConfig");
+            if (privateConfigElement == null)
+            {
+                XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
+                privateConfigElement = new XElement(configNameSpace + PrivateConfigStr,
+                    new XElement(configNameSpace + DiagnosticsHelper.StorageAccountElemStr,
+                    new XAttribute(DiagnosticsHelper.PrivConfNameAttr, string.Empty),
+                    new XAttribute(DiagnosticsHelper.PrivConfKeyAttr, string.Empty),
+                    new XAttribute(DiagnosticsHelper.PrivConfEndpointAttr, string.Empty)
+                ));
+            }
+
+            PrivateConfigurationXml = new XDocument(
+                new XDeclaration("1.0", "utf-8", null),
+                privateConfigElement
+                );
+
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr, StorageAccountName);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfKeyAttr, StorageAccountKey);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfEndpointAttr, StorageAccountEndpoint);
+
             PrivateConfiguration = PrivateConfigurationXml.ToString();
         }
 

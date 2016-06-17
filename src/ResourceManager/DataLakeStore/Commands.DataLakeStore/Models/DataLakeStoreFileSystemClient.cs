@@ -12,6 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Azure.Management.DataLake.StoreUploader;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -22,19 +29,12 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Management.DataLake.Store;
-using Microsoft.Azure.Management.DataLake.Store.Models;
-using Microsoft.Azure.Management.DataLake.StoreUploader;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreFileSystemClient
     {
-        private const decimal MaximumBytesPerDownloadRequest = 32*1024*1024; //32MB
+        private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
 
         /// <summary>
         /// The lock object
@@ -67,75 +67,85 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             try
             {
-                var status = _client.FileSystem.GetFileStatus(path, accountName);
-                itemType = status.FileStatus.Type ?? FileType.File;
+                var status = _client.FileSystem.GetFileStatus(accountName, path);
+                itemType = status.FileStatus.Type ?? FileType.FILE;
                 return true;
             }
-            catch (CloudException)
+            catch (AdlsErrorException ex)
             {
-                // TODO test for a specific code (such as 404 and only return false on those)
-                itemType = FileType.File;
-                return false;
+                if (ex.Body.RemoteException is AdlsFileNotFoundException || ex.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    itemType = FileType.FILE;
+                    return false;
+                }
+
+                throw;
             }
         }
 
         public void SetPermission(string path, string accountName, string permissionsToSet)
         {
-            _client.FileSystem.SetPermission(path, accountName, permissionsToSet);
+            _client.FileSystem.SetPermission(accountName, path, permissionsToSet);
         }
 
         public void SetOwner(string path, string accountName, string owner, string group)
         {
-            _client.FileSystem.SetOwner(path, accountName, owner, group);
+            _client.FileSystem.SetOwner(accountName, path, owner, group);
         }
 
         public void SetAcl(string path, string accountName, string aclToSet)
         {
-            _client.FileSystem.SetAcl(path, aclToSet, accountName);
+            _client.FileSystem.SetAcl(accountName, path, aclToSet);
         }
 
         public void ModifyAcl(string path, string accountName, string aclToModify)
         {
-            _client.FileSystem.ModifyAclEntries(path, aclToModify, accountName);
+            _client.FileSystem.ModifyAclEntries(accountName, path, aclToModify);
         }
 
         public void RemoveDefaultAcl(string path, string accountName)
         {
-            // _client.FileSystem.RemoveDefaultAcl(path, accountName);
+            // _client.FileSystem.RemoveDefaultAcl(accountName, path);
             throw new NotImplementedException();
         }
 
         public void RemoveAclEntries(string path, string accountName, string aclsToRemove)
         {
-            _client.FileSystem.RemoveAclEntries(path, aclsToRemove, accountName);
+            _client.FileSystem.RemoveAclEntries(accountName, path, aclsToRemove);
         }
 
         public void RemoveAcl(string path, string accountName)
         {
-            _client.FileSystem.RemoveAcl(path, accountName);
+            throw new NotImplementedException();
+            // _client.FileSystem.RemoveAcl(accountName, path);
         }
 
         public void UpdateAclEntries(string path, string accountName, string newAclSpec)
         {
-            _client.FileSystem.ModifyAclEntries(path, newAclSpec, accountName);
+            _client.FileSystem.ModifyAclEntries(accountName, path, newAclSpec);
         }
 
         public AclStatus GetAclStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetAclStatus(filePath, accountName).AclStatus;
+            return _client.FileSystem.GetAclStatus(accountName, filePath).AclStatus;
         }
 
         public bool CheckAccess(string path, string accountName, string permissionsToCheck)
         {
             try
             {
-                _client.FileSystem.CheckAccess(path, accountName, permissionsToCheck);
+                _client.FileSystem.CheckAccess(accountName, path, permissionsToCheck);
                 return true;
             }
-            catch (CloudException)
+            catch (AdlsErrorException ex)
             {
                 // TODO: ensure specific error code for "false", and throw for all others.
-                return false;
+                if (ex.Body.RemoteException is AdlsSecurityException || ex.Body.RemoteException is AdlsAccessControlException)
+                {
+                    return false;
+                }
+
+                throw;
             }
         }
 
@@ -145,20 +155,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void SetTimes(string path, string accountName, DateTimeOffset modificationTime, DateTimeOffset accessTime)
         {
-            //_client.FileSystem.SetTimes(path, accountName, modificationTime.ToFileTime(), accessTime.ToFileTime());
+            //_client.FileSystem.SetTimes(accountName, path, modificationTime.ToFileTime(), accessTime.ToFileTime());
             throw new NotImplementedException();
         }
 
         public bool SetReplication(string filePath, string accountName, short replicationValue)
         {
-            // var boolean = _client.FileSystem.SetReplication(filePath, accountName, replicationValue).Boolean;
+            // var boolean = _client.FileSystem.SetReplication(accountName, filePath, replicationValue).Boolean;
             // return boolean != null && boolean.Value;
             throw new NotImplementedException();
         }
 
         public bool RenameFileOrDirectory(string sourcePath, string accountName, string destinationPath)
         {
-            var boolean = _client.FileSystem.Rename(sourcePath, destinationPath, accountName).OperationResult;
+            var boolean = _client.FileSystem.Rename(accountName, sourcePath, destinationPath).OperationResult;
             return boolean != null && boolean.Value;
         }
 
@@ -181,7 +191,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             using (var fileStream = new FileStream(destinationFilePath, FileMode.CreateNew))
             {
@@ -191,13 +201,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     string.Format("Downloading File in DataLakeStore Store Location: {0} to destination path: {1}",
                         filePath, destinationFilePath));
                 long currentOffset = 0;
-                var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
-                
+                var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
+
                 //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
                 for (long i = 0; i < numRequests; i++)
                 {
                     cmdletCancellationToken.ThrowIfCancellationRequested();
-                    progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                    progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                     UpdateProgress(progress, cmdletRunningRequest);
                     var responseStream =
                         ReadFromFile(
@@ -205,7 +215,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                             accountName,
                             currentOffset,
                             bytesToRequest);
-                        
+
                     responseStream.CopyTo(fileStream);
                     currentOffset += bytesToRequest;
                 }
@@ -220,31 +230,41 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
         }
 
-        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview,
+        public Stream PreviewFile(string filePath, string accountName, long bytesToPreview, long offset,
             CancellationToken cmdletCancellationToken, Cmdlet cmdletRunningRequest = null)
         {
             var lengthToUse = GetFileStatus(filePath, accountName).Length.Value;
-            if (bytesToPreview <= lengthToUse && bytesToPreview > 0)
+            if(offset > lengthToUse || offset < 0)
+            {
+                throw new ArgumentOutOfRangeException(string.Format(Properties.Resources.OffsetOutOfRange, offset, lengthToUse));
+            }
+
+            if (bytesToPreview <= lengthToUse + offset && bytesToPreview > 0)
             {
                 lengthToUse = bytesToPreview;
             }
+            else
+            {
+                // make sure that we are only previewing bytes after the specified offset
+                lengthToUse -= offset;
+            }
 
-            var numRequests = Math.Ceiling(lengthToUse/MaximumBytesPerDownloadRequest);
+            var numRequests = Math.Ceiling(lengthToUse / MaximumBytesPerDownloadRequest);
 
             var byteStream = new MemoryStream();
             var progress = new ProgressRecord(
                 0,
                 "Previewing a file from DataLakeStore Store",
-                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}", filePath,
-                    bytesToPreview));
-            long currentOffset = 0;
-            var bytesToRequest = (long) MaximumBytesPerDownloadRequest;
+                string.Format("Previewing file in DataLakeStore Store Location: {0}. Bytes to preview: {1}, from Offset: {2}", filePath,
+                    bytesToPreview, offset));
+            long currentOffset = offset;
+            var bytesToRequest = (long)MaximumBytesPerDownloadRequest;
 
             //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
             for (long i = 0; i < numRequests; i++)
             {
                 cmdletCancellationToken.ThrowIfCancellationRequested();
-                progress.PercentComplete = (int) Math.Ceiling((i/numRequests)*100);
+                progress.PercentComplete = (int)Math.Ceiling((i / numRequests) * 100);
                 UpdateProgress(progress, cmdletRunningRequest);
 
                 if (lengthToUse < bytesToRequest)
@@ -280,7 +300,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public Stream ReadFromFile(string filePath, string accountName, long offset, long bytesToRead)
         {
-            return _client.FileSystem.Open(filePath, accountName, bytesToRead, offset);   
+            return _client.FileSystem.Open(accountName, filePath, bytesToRead, offset);
         }
 
         public string GetHomeDirectory(string accountName)
@@ -291,65 +311,64 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public FileStatuses GetFileStatuses(string folderPath, string accountName)
         {
-            return _client.FileSystem.ListFileStatus(folderPath, accountName).FileStatuses;
+            return _client.FileSystem.ListFileStatus(accountName, folderPath).FileStatuses;
         }
 
         public FileStatusProperties GetFileStatus(string filePath, string accountName)
         {
-            return _client.FileSystem.GetFileStatus(filePath, accountName).FileStatus;
+            return _client.FileSystem.GetFileStatus(accountName, filePath).FileStatus;
         }
 
         public ContentSummary GetContentSummary(string path, string accountName)
         {
-            return _client.FileSystem.GetContentSummary(path, accountName).ContentSummary;
+            return _client.FileSystem.GetContentSummary(accountName, path).ContentSummary;
         }
 
         public bool DeleteFileOrFolder(string path, string accountName, bool isRecursive)
         {
-            var boolean = _client.FileSystem.Delete(path, accountName, isRecursive).OperationResult;
+            var boolean = _client.FileSystem.Delete(accountName, path, isRecursive).OperationResult;
             return boolean != null && boolean.Value;
         }
 
         public void CreateSymLink(string sourcePath, string accountName, string destinationPath,
             bool createParent = false)
         {
-            // _client.FileSystem.CreateSymLink(sourcePath, accountName, destinationPath, createParent);
+            // _client.FileSystem.CreateSymLink(accountName, sourcePath, destinationPath, createParent);
             throw new NotImplementedException();
         }
 
         public void ConcatenateFiles(string destinationPath, string accountName, string[] filesToConcatenate,
             bool deleteDirectory = false)
         {
-            _client.FileSystem.MsConcat(destinationPath,
-                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))), 
-                accountName,
+            _client.FileSystem.MsConcat(accountName, destinationPath,
+                new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))),
                 deleteDirectory);
         }
 
         public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false)
         {
-            _client.FileSystem.Create(filePath, accountName, contents, overwrite: overwrite);
+            _client.FileSystem.Create(accountName, filePath, contents, overwrite: overwrite);
         }
 
         public bool CreateDirectory(string dirPath, string accountName)
         {
-            var boolean = _client.FileSystem.Mkdirs(dirPath, accountName).OperationResult;
+            var boolean = _client.FileSystem.Mkdirs(accountName, dirPath).OperationResult;
             return boolean != null && boolean.Value;
         }
 
         public void AppendToFile(string filePath, string accountName, Stream contents)
         {
-            _client.FileSystem.Append(filePath, contents, accountName);
+            _client.FileSystem.Append(accountName, filePath, contents);
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,
             CancellationToken cmdletCancellationToken, int threadCount = -1, bool overwrite = false, bool resume = false,
             bool isBinary = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
-            FileType ignoredType;   
+            FileType ignoredType;
             if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));    
+                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
             }
 
             //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
@@ -381,12 +400,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 lock (ConsoleOutputLock)
                 {
-                    progress.PercentComplete = (int) (1.0*e.UploadedByteCount/e.TotalFileLength*100);
+                    progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
                 }
             };
 
             var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                overwrite, resume, isBinary);
+                isOverwrite: overwrite, isResume: resume, isBinary: isBinary);
             var uploader = new DataLakeStoreUploader(uploadParameters,
                 new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
                 cmdletCancellationToken,
@@ -407,6 +426,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                 TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
             }
+            catch (Exception e)
+            {
+                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
+            }
             finally
             {
                 ServicePointManager.Expect100Continue = previousExpect100;
@@ -418,8 +441,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string accountName,
             string sourceFolderPath,
             CancellationToken cmdletCancellationToken,
-            int folderThreadCount = -1,
-            int perFileThreadCount = -1,
+            int folderThreadCount = 5,
+            int perFileThreadCount = 10,
             bool recursive = false,
             bool overwrite = false,
             bool resume = false,
@@ -427,34 +450,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             bool isBinary = false,
             Cmdlet cmdletRunningRequest = null)
         {
-            var allDirectories = new Stack<string>();
-            var allFailedFiles = new ConcurrentDictionary<string, string>();
-            var allFailedDirs = new List<string>();
-            var fileCount = 0;
-            var testFileCountChanged = 0;
             var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive);
             var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive);
-            var folderPathStartIndex = Path.GetDirectoryName(sourceFolderPath).Length;
-            if (folderPathStartIndex < 1)
-            {
-                // this is the scenario where the user is copying from the root of a drive
-                // such as C:\ or .\. In these cases, we simply indicate the "beginning" as the
-                // end of the root.
-                folderPathStartIndex = sourceFolderPath.Length;
-            }
-
-            allDirectories.Push(sourceFolderPath);
 
             var progress = new ProgressRecord(
                 uniqueActivityIdGenerator.Next(0, 10000000),
-                string.Format("Copying Folder: {0}{1}. Total bytes to be copied: {2}. Total files to be copied: {3}",
+                string.Format("Copying Folder: {0}{1}. Total bytes remaining: {2}. Total files remaining: {3}",
                     sourceFolderPath, recursive ? " recursively" : string.Empty, totalBytes, totalFiles),
-                "Copy in progress...") {PercentComplete = 0};
+                "Copy in progress...")
+            { PercentComplete = 0 };
 
             UpdateProgress(progress, cmdletRunningRequest);
 
-            var internalFolderThreads = folderThreadCount <= 0 ? Environment.ProcessorCount : folderThreadCount;
-            var internalFileThreads = perFileThreadCount <= 0 ? Environment.ProcessorCount : perFileThreadCount;
+            var internalFolderThreads = folderThreadCount <= 0 ? 5 : folderThreadCount;
+            var internalFileThreads = perFileThreadCount <= 0 ? 10 : perFileThreadCount;
 
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
@@ -462,205 +471,41 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             try
             {
                 ServicePointManager.DefaultConnectionLimit =
-                    Math.Max((internalFolderThreads*internalFileThreads) + internalFolderThreads,
+                    Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
                 ServicePointManager.Expect100Continue = false;
 
-                //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
-                while (allDirectories.Count > 0)
+                // On update from the Data Lake store uploader, capture the progress.
+                var progressTracker = new System.Progress<UploadFolderProgress>();
+                progressTracker.ProgressChanged += (s, e) =>
                 {
-                    var currentDir = allDirectories.Pop();
-                    string[] files;
-
-                    try
+                    lock (ConsoleOutputLock)
                     {
-                        files = Directory.GetFiles(currentDir);
-                        if (recursive)
-                        {
-                            // Push the subdirectories onto the stack for traversal. 
-                            // This could also be done before handing the files. 
-                            foreach (var str in Directory.GetDirectories(currentDir))
-                            {
-                                allDirectories.Push(str);
-                            }
-                        }
+                        progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        progress.Activity = string.Format("Copying Folder: {0}{1}. Total bytes remaining: {2}. Total files remaining: {3}",
+                    sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.UploadedByteCount, e.TotalFileCount - e.UploadedFileCount);
                     }
-                    catch
+                };
+
+                var uploadParameters = new UploadParameters(sourceFolderPath, destinationFolderPath, accountName, internalFileThreads, internalFolderThreads,
+                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive);
+                var uploader = new DataLakeStoreUploader(uploadParameters,
+                    new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
+                    cmdletCancellationToken,
+                    folderProgressTracker: progressTracker);
+
+
+                    // Execute the uploader.
+                    var uploadTask = Task.Run(() =>
                     {
-                        // update the list of folders that could not be accessed
-                        // for later reporting to the user.
-                        allFailedDirs.Add(currentDir);
-                        continue;
-                    }
-
-                    // Execute in parallel if there are enough files in the directory. 
-                    // Otherwise, execute sequentially.Files are opened and processed 
-                    // synchronously but this could be modified to perform async I/O. 
-                    // NOTE: in order to write progress in a meaningful way, we have
-                    // wrapped the parallel execution in a container task, which is
-                    // then monitored from the main thread. 
-                    // TODO: enable resumability in the event that copy fails somewhere in the middle
-                    var folderOptions = new ParallelOptions
-                    {
-                        CancellationToken = cmdletCancellationToken
-                    };
-
-                    if (folderThreadCount > 0)
-                    {
-                        folderOptions.MaxDegreeOfParallelism = folderThreadCount;
-                    }
-
-                    var task = Task.Run(
-                        () =>
-                        {
-                            Parallel.ForEach(
-                                files,
-                                folderOptions,
-                                () => 0,
-                                (file, loopState, localCount) =>
-                                {
-                                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                                    var dataLakeFilePath = string.Format(
-                                        "{0}/{1}",
-                                        destinationFolderPath,
-                                        file.Substring(folderPathStartIndex).TrimStart('\\').Replace('\\', '/'));
-
-                                    // for each file we will either honor a force conversion
-                                    // to either binary or text, or attempt to determine
-                                    // if the file is either binary or text, with a default
-                                    // behavior of text.
-                                    isBinary = forceBinaryOrText
-                                        ? isBinary
-                                        : GlobalMembers.BinaryFileExtension.Contains(
-                                            Path.GetExtension(file).ToLowerInvariant());
-
-                                    try
-                                    {
-                                        CopyFile(dataLakeFilePath, accountName, file, cmdletCancellationToken,
-                                            internalFileThreads, overwrite, resume, isBinary, null, progress);
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        allFailedFiles.GetOrAdd(file, e.Message);
-                                    }
-
-                                    // note: we will always increment the count, since the file was seen and attempted
-                                    // this does not necessarily mean the file was successfully uploaded, as indicated by
-                                    // the warning messages that can be written out.
-                                    return ++localCount;
-                                },
-                                c => Interlocked.Add(ref fileCount, c));
-                        }, cmdletCancellationToken);
-
-                    while (!task.IsCompleted && !task.IsCanceled)
-                    {
-                        // if we somehow made it in here prior to the cancel, I want to issue a throw
                         cmdletCancellationToken.ThrowIfCancellationRequested();
+                        uploader.Execute();
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                    }, cmdletCancellationToken);
 
-                        // only update progress if the percentage has changed.
-                        if ((int) Math.Ceiling((decimal) testFileCountChanged/totalFiles*100)
-                            < (int) Math.Ceiling((decimal) fileCount/totalFiles*100))
-                        {
-                            testFileCountChanged = fileCount;
-                            var percentComplete = (int) Math.Ceiling((decimal) fileCount/totalFiles*100);
-                            if (percentComplete > 100)
-                            {
-                                // in some cases we can get 101 percent complete using ceiling, however we want to be
-                                // able to round up to full percentage values, instead of down.
-                                percentComplete = 100;
-                            }
-
-                            progress.PercentComplete = percentComplete;
-                            UpdateProgress(progress, cmdletRunningRequest);
-                        }
-
-                        // sleep for a half of a second.
-                        TestMockSupport.Delay(500);
-                    }
-
-                    if (task.IsFaulted && !task.IsCanceled)
-                    {
-                        var ae = task.Exception;
-                        if (ae != null)
-                        {
-                            if (cmdletRunningRequest != null)
-                            {
-                                cmdletRunningRequest.WriteWarning(
-                                    "The following errors were encountered during the copy:");
-                            }
-                            else
-                            {
-                                Console.WriteLine(@"The following errors were encountered during the copy:");
-                            }
-
-                            ae.Handle(
-                                ex =>
-                                {
-                                    if (ex is AggregateException)
-                                    {
-                                        var secondLevel = ex as AggregateException;
-                                        secondLevel.Handle(
-                                            secondEx =>
-                                            {
-                                                if (cmdletRunningRequest != null)
-                                                {
-                                                    cmdletRunningRequest.WriteWarning(secondEx.ToString());
-                                                }
-                                                else
-                                                {
-                                                    Console.WriteLine(secondEx);
-                                                }
-
-                                                return true;
-                                            });
-                                    }
-                                    else
-                                    {
-                                        if (cmdletRunningRequest != null)
-                                        {
-                                            cmdletRunningRequest.WriteWarning(ex.ToString());
-                                        }
-                                        else
-                                        {
-                                            Console.WriteLine(ex);
-                                        }
-                                    }
-
-                                    return true;
-                                });
-                        }
-                    }
-                }
-
-                if (allFailedDirs.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
-                {
-                    var errString =
-                        "The following {0} directories could not be opened and their contents must be copied up with the single file copy command: {1}";
-                    if (cmdletRunningRequest != null)
-                    {
-                        cmdletRunningRequest.WriteWarning(
-                            string.Format(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs)));
-                    }
-                    else
-                    {
-                        Console.WriteLine(errString, allFailedDirs.Count, string.Join(",\r\n", allFailedDirs));
-                    }
-                }
-
-                if (allFailedFiles.Count > 0 && !cmdletCancellationToken.IsCancellationRequested)
-                {
-                    var errString =
-                        "The following {0} files could not be copied and must be copied up with the single file copy command: {1}";
-                    if (cmdletRunningRequest != null)
-                    {
-                        cmdletRunningRequest.WriteWarning(
-                            string.Format(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles)));
-                    }
-                    else
-                    {
-                        Console.WriteLine(errString, allFailedFiles.Count, string.Join(",\r\n", allFailedFiles));
-                    }
-                }
+                    TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+                
+                
 
                 if (!cmdletCancellationToken.IsCancellationRequested)
                 {
@@ -668,6 +513,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     progress.RecordType = ProgressRecordType.Completed;
                     UpdateProgress(progress, cmdletRunningRequest);
                 }
+            }
+            catch (Exception e)
+            {
+                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
             }
             finally
             {

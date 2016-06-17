@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.ContainerSas), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
@@ -43,7 +43,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = SasPolicyParmeterSet)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Policy Identifier",
+            ParameterSetName = SasPolicyParmeterSet)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -51,20 +55,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"rwdl\".",
-        ParameterSetName = SasPermissionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"rwdl\".",
+            ParameterSetName = SasPermissionParameterSet)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
@@ -131,39 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             policy.SharedAccessStartTime = accessStartTime;
             policy.SharedAccessExpiryTime = accessEndTime;
-            SetupAccessPolicyPermission(policy, Permission);
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal void SetupAccessPolicyPermission(SharedAccessBlobPolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessBlobPermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch(op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessBlobPermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Write:
-                        policy.Permissions |= SharedAccessBlobPermissions.Write;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessBlobPermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.List:
-                        policy.Permissions |= SharedAccessBlobPermissions.List;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
+            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

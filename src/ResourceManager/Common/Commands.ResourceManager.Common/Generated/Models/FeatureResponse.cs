@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class FeatureResponse : AzureOperationResponse
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the Id of the feature.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the name of the feature.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private FeatureProperties _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the properties of the previewed feature.
         /// </summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         private string _type;
-        
+
         /// <summary>
         /// Optional. Gets or sets the type of the feature.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._type; }
             set { this._type = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureResponse class.
         /// </summary>

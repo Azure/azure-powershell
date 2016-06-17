@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using Microsoft.Azure.Commands.Common.Authentication;
+using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
@@ -40,6 +41,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         internal const string resourceGroupLocation = "East US 2";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -146,7 +149,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             DataLakeStoreFileSystemManagementClient = GetDataLakeStoreFileSystemManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
+            NewResourceManagementClient = GetNewResourceManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
+                NewResourceManagementClient,
                 SubscriptionClient,
                 DataLakeStoreFileSystemManagementClient,
                 DataLakeStoreAccountManagementClient,
@@ -172,6 +177,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         }
 
         #region client creation helpers
+
+        private NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)
         {
             return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());

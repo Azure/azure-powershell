@@ -97,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Remove trailing slashes from a string
         /// </summary>
-        /// <param name="authority">The tring to remove slashes from.</param>
+        /// <param name="authority">The string to remove slashes from.</param>
         /// <returns>The input string with trailing slashes removed</returns>
         private static string EnsureNoTrailingSlash(string authority)
         {
@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <param name="path">The path to the command to execute.</param>
         /// <param name="arguments">The arguments to pass to the command.</param>
         /// <param name="IsSuccess">A predicate to tell whether command execution was successful or not.</param>
-        /// <returns>The value of standard output for the execution fo the command.</returns>
+        /// <returns>The value of standard output for the execution of the command.</returns>
         private static string GetProcessResult(string path, string arguments, Func<string, int, bool> IsSuccess)
         {
             Process executor = null;
@@ -287,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         }
 
         /// <summary>
-        /// Copy  abinary resource to a file
+        /// Copy binary resource to a file
         /// </summary>
         /// <param name="resourceName">The fully qualified name of the resource</param>
         /// <returns>The name of the file it was copied to</returns>
@@ -325,7 +325,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <summary>
         /// Determines if the token creation script exists in the directory
         /// </summary>
-        /// <returns>True if the environment has been created, othwerwise false</returns>
+        /// <returns>True if the environment has been created, otherwise false</returns>
         private static bool TokenCreationEnvironmentInitialized()
         {
             return Directory.Exists(Path.Combine(JsTokenCodeLocation, TokenScriptFolder));

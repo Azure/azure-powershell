@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
 {
@@ -30,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
     {
         private static SqlManagementClient SqlClient { get; set; }
 
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         public AzureContext Context { get; set; }
 

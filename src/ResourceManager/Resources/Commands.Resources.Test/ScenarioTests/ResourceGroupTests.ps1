@@ -52,7 +52,7 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Resource group '$rgname' could not be found."
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
@@ -237,12 +237,12 @@ function Test-RemoveDeployment
     # Setup
     $deploymentName = "Test"
     $templateUri = "https://gallery.azure.com/artifact/20140901/Microsoft.ResourceGroup.1.0.0/DeploymentTemplates/Template.json"
-    $rgName = "TestSDK"
+    $rgName = "TestSDK0123"
 
     try
     {
         # Test
-        New-AzureRmResourceGroup -Name $rgName -Location "west us"
+        New-AzureRmResourceGroup -Name $rgName -Location "East US"
         $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
         Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force }
     }
@@ -317,4 +317,68 @@ function Test-GetNonExistingResourceGroupWithDebugStream
     $output = $(Get-AzureRmResourceGroup -Name "InvalidNonExistRocks" -Debug) 2>&1 5>&1 | Out-String
     $ErrorActionPreference="Stop"
     Assert-True { $output -Like "*============================ HTTP RESPONSE ============================*" }
+}
+
+<#
+.SYNOPSIS
+Tests export resource group template file.
+#>
+function Test-ExportResourceGroup
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		Assert-AreEqual $r.ResourceGroupName $rgname
+
+		$exportOutput = Export-AzureRmResourceGroup -ResourceGroupName $rgname -Force
+		Assert-NotNull $exportOutput
+		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests resource group new, get and remove using positional parameters.
+#>
+function Test-ResourceGroupWithPositionalParams
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $location = "West US"
+
+    try
+    {
+        $ErrorActionPreference = "SilentlyContinue"
+        $Error.Clear()
+        # Test
+        $actual = New-AzureRmResourceGroup $rgname $location
+        $expected = Get-AzureRmResourceGroup $rgname
+
+        # Assert
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+
+        #Test
+        Remove-AzureRmResourceGroup $rgname -Force
+    }
+    catch
+    {
+        Assert-True { $Error[0].Contains("Provided resource group does not exist.") }
+    }
 }

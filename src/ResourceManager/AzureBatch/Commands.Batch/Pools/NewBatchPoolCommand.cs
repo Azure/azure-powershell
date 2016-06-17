@@ -35,18 +35,9 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string VirtualMachineSize { get; set; }
 
-        [Parameter(Mandatory = true, 
-            HelpMessage = "The Azure Guest OS family to be installed on the virtual machines in the pool.")]
-        [ValidateNotNullOrEmpty]
-        public string OSFamily { get; set; }
-
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
-
-        [Parameter]
-        [ValidateNotNullOrEmpty]
-        public string TargetOSVersion { get; set; }
 
         [Parameter(ParameterSetName = TargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -87,14 +78,24 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
                 VirtualMachineSize = this.VirtualMachineSize,
-                OSFamily = this.OSFamily,
                 DisplayName = this.DisplayName,
-                TargetOSVersion = this.TargetOSVersion,
                 ResizeTimeout = this.ResizeTimeout,
                 TargetDedicated = this.TargetDedicated,
                 AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval,
@@ -104,7 +105,10 @@ namespace Microsoft.Azure.Commands.Batch
                 Metadata = this.Metadata,
                 InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences
+                CertificateReferences = this.CertificateReferences,
+                ApplicationPackageReferences = this.ApplicationPackageReferences,
+                VirtualMachineConfiguration =  this.VirtualMachineConfiguration,
+                CloudServiceConfiguration = this.CloudServiceConfiguration
             };
 
             BatchClient.CreatePool(parameters);

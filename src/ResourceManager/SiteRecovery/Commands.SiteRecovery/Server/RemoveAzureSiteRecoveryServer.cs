@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -48,16 +46,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                RemoveServer();
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            base.ExecuteSiteRecoveryCmdlet();
+            RemoveServer();
         }
 
         /// <summary>
@@ -74,13 +66,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             if (!this.Force.IsPresent)
             {
-                RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
-                {
-                    Properties = new RecoveryServicesProviderDeletionInputProperties()
-                };
-
                 response =
-                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
+                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
             }
             else
             {
@@ -93,6 +80,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));
-        }      
+        }
     }
 }

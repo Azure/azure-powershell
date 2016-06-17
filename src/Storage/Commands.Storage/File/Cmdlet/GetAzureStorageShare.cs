@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,9 +15,10 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Storage.File;
 
     [Cmdlet(VerbsCommon.Get, Constants.ShareCmdletName, DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     public class GetAzureStorageShare : AzureStorageFileCmdletBase
@@ -35,6 +36,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ParameterSetName = Constants.MatchingPrefixParameterSetName,
             HelpMessage = "A prefix of the file shares to be listed.")]
         public string Prefix { get; set; }
+
+        [Parameter(
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.MatchingPrefixParameterSetName,
+            HelpMessage = "Azure Storage Context Object")]
+        [Parameter(
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.SpecificParameterSetName,
+            HelpMessage = "Azure Storage Context Object")]
+        public override AzureStorageContext Context { get; set; }
 
         public override void ExecuteCmdlet()
         {

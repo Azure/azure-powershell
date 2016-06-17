@@ -103,7 +103,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         RoleType = vm.RoleType,
                         DefaultWinRmCertificateThumbprint = vm.DefaultWinRmCertificateThumbprint,
                         ProvisionGuestAgent = vm.ProvisionGuestAgent,
-                        ResourceExtensionReferences = Mapper.Map<PVM.ResourceExtensionReferenceList>(vm.ResourceExtensionReferences)
+                        ResourceExtensionReferences = Mapper.Map<PVM.ResourceExtensionReferenceList>(vm.ResourceExtensionReferences),
+                        DebugSettings = Mapper.Map<PVM.DebugSettings>(vm.DebugSettings)
                     }
                 };
 

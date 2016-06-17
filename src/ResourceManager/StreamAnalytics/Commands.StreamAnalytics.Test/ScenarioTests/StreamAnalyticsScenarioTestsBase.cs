@@ -18,9 +18,8 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.StreamAnalytics;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
@@ -58,9 +57,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.StreamAnalytics.psd1"));
 
                 helper.RunPowerShellTest(scripts);
@@ -80,11 +79,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
         protected SubscriptionClient GetSubscriptionClient()
         {
             return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected StorageManagementClient GetStorageManagementClient()
-        {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         protected GalleryClient GetGalleryClient()
