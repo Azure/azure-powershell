@@ -19,10 +19,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.Resources;
@@ -40,9 +37,6 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
-        private const string SubscriptionIdKey = "SubscriptionId";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
