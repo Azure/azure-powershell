@@ -107,8 +107,8 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
+	$rg = New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
+	$rgdeployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
 	
 	$uid = $params.userName
@@ -250,4 +250,54 @@ function Remove-ThreatDetectionTestEnvironment ($testSuffix)
 	catch
 	{
 	}
+}
+
+<#
+.SYNOPSIS
+Gets the parameters for import/export tests
+#>
+function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
+{
+    $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
+    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
+    #Fake storage account data. Used for playback mode
+    $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
+    $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
+    $storageKey = "StorageKey"
+
+    $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
+    if($testMode -eq "Record"){
+        $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
+        $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
+        $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+
+       if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
+          throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
+       }
+       if ([System.string]::IsNullOrEmpty($importBacpacUri)){
+          throw "The  TEST_IMPORT_BACPAC environment variable should point to an Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs)"
+       }
+       if ([System.string]::IsNullOrEmpty($storageKey)){
+          throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
+       }
+    }
+    
+	return @{
+              rgname = "sql-ie-cmdlet-test-rg" +$testSuffix;
+              serverName = "sql-ie-cmdlet-server" +$testSuffix;
+              databaseName = $databaseName;
+              userName = "testuser";
+              firewallRuleName = "sql-ie-fwrule" +$testSuffix;
+              password = $password;
+              storageKeyType = "StorageAccessKey";
+              storageKey = $storageKey;
+              exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
+              importBacpacUri = $importBacpacUri;
+              location = "Australia East";
+              version = "12.0";
+              databaseEdition = "Standard";
+              serviceObjectiveName = "S0";
+              databaseMaxSizeBytes = "5000000";
+              authType = "Sql";
+             }
 }

@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase

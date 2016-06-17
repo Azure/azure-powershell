@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.2.1' 
+ModuleVersion = '1.2.4' 
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -55,68 +55,70 @@ ScriptsToProcess = @()
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
-    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml',
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+#    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
+#    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml',
+#    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(  
-    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
-    '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
-    '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',
-    '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
-    '.\AzureRM.RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
-    '.\AzureRM.Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
-    '.\AzureRM.KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',  
-    '.\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',  
-    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
-    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',  
-    '.\AzureRM.Network\Microsoft.Azure.Commands.Network.format.ps1xml',  
-    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
-    '.\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
-    '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
-    '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
-    '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml',
-	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml',
-	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',
+    '.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
+#    '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
+#    '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',
+#    '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
+#    '.\AzureRM.RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
+#    '.\AzureRM.Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
+#    '.\AzureRM.KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',  
+#    '.\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',  
+#    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
+#    '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',  
+#    '.\AzureRM.Network\Microsoft.Azure.Commands.Network.format.ps1xml',  
+#    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
+#    '.\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
+#    '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
+#    '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
+#    '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
+#    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml',
+#	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml',
+#	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
     '.\AzureRM.Profile',
-    '.\AzureRM.Automation',
+   # '.\AzureRM.Automation',
     '.\AzureRM.Resources\AzureRM.Resources.psd1',
-    '.\AzureRM.Resources\AzureRM.Tags.psd1',
-    '.\AzureRM.Tags',  
-    '.\AzureRM.Sql',  
-    '.\AzureRM.DataFactories',  
-    '.\AzureRM.RedisCache',  
-    '.\AzureRM.Batch',  
-    '.\AzureRM.Dns',  
-    '.\AzureRM.KeyVault',  
-    '.\AzureRM.TrafficManager',  
-    '.\AzureRM.StreamAnalytics',  
-    '.\AzureRM.Insights',  
-    '.\AzureRM.Websites',  
-    '.\AzureRM.Compute',  
-    '.\AzureRM.Network',  
-    '.\Azure.Storage',
-    '.\AzureRM.ApiManagement',  
-    '.\AzureRM.Storage',  
-    '.\AzureRM.OperationalInsights',  
-    '.\AzureRM.UsageAggregates', 
-    '.\AzureRM.HDInsight',
-    '.\AzureRM.ApiManagement',  
-    '.\AzureRM.Backup',
-    '.\AzureRM.SiteRecovery',
-    '.\AzureRM.DataLakeAnalytics',
-    '.\AzureRM.DataLakeStore',
-    '.\AzureRM.Intune',
-    '.\AzureRM.RecoveryServices',
-    '.\AzureRM.AzureStackAdmin',
-    '.\AzureRM.AzureStackStorage'
+    '.\AzureRM.Resources\AzureRM.Tags.psd1'
+    #'.\AzureRM.Tags',  
+    #'.\AzureRM.Sql',  
+    #'.\AzureRM.DataFactories',  
+    #'.\AzureRM.RedisCache',  
+    #'.\AzureRM.Batch',  
+    #'.\AzureRM.Dns',  
+    #'.\AzureRM.KeyVault',  
+    #'.\AzureRM.TrafficManager',  
+    #'.\AzureRM.StreamAnalytics',  
+    #'.\AzureRM.Insights',  
+    #'.\AzureRM.Websites',  
+    #'.\AzureRM.Compute',  
+    #'.\AzureRM.Network',  
+    #'.\Azure.Storage',
+    #'.\AzureRM.ApiManagement',  
+    #'.\AzureRM.Storage',  
+    #'.\AzureRM.OperationalInsights',  
+    #'.\AzureRM.UsageAggregates', 
+    #'.\AzureRM.HDInsight',
+    #'.\AzureRM.ApiManagement',  
+    #'.\AzureRM.Backup',
+    #'.\AzureRM.SiteRecovery',
+    #'.\AzureRM.DataLakeAnalytics',
+    #'.\AzureRM.DataLakeStore',
+    #'.\AzureRM.Intune',
+    #'.\AzureRM.RecoveryServices',
+    #'.\AzureRM.AzureStackAdmin',
+    #'.\AzureRM.AzureStackStorage'
 )  
   
 # Functions to export from this module  

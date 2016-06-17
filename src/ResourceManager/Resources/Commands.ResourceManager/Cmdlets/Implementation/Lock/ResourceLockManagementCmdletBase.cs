@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Base class for resource lock management cmdlets.
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary> 
         /// The Id parameter set. 
         /// </summary> 
-        internal const string LockIdParameterSet = "A lock, by Id."; 
+        internal const string LockIdParameterSet = "A lock, by Id.";
 
         /// <summary>
         /// The resource group level resource lock.
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the scope.
         /// </summary>
-        [Alias("Id", "ResourceId")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scope. e.g. to specify a database '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{serverName}/databases/{databaserName}', to specify a resoruce group: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'")]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
@@ -105,9 +103,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The Id of the lock.
         /// </summary>
+        [Alias("Id", "ResourceId")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.LockIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Id of the lock.")]
         [ValidateNotNullOrEmpty]
         public string LockId { get; set; }
+
+        /// <summary>
+        /// Determines the api version to be used
+        /// </summary>
+        public string LockApiVersion { get; set; }
+
+        public ResourceLockManagementCmdletBase()
+        {
+            this.LockApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.LockApiVersion : this.ApiVersion;
+        }
 
         /// <summary> 
         /// Gets the resource Id from the supplied PowerShell parameters. 
@@ -129,7 +138,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 throw new InvalidOperationException(string.Format("The Id '{0}' does not belong to a lock.", this.LockId));
             }
-            
+
             return !string.IsNullOrWhiteSpace(this.Scope)
                 ? ResourceIdUtility.GetResourceId(
                     resourceId: this.Scope,

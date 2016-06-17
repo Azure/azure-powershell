@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using System;
 using System.Collections;
-using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The job priority.
         /// </summary>
         public int Priority { get; set; }
+
+        /// <summary>
+        /// Whether tasks in the job can define dependencies on each other.
+        /// </summary>
+        public bool? UsesTaskDependencies { get; set; }
     }
 }

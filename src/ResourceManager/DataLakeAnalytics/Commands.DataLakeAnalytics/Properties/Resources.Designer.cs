@@ -8,14 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,27 +19,27 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
-        private static System.Resources.ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeAnalytics.Properties.Resources", typeof(Resources).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeAnalytics.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -54,8 +50,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -218,6 +214,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics Data Lake Store account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsDataLakeStore {
@@ -254,6 +259,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics Data Lake Store account &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsDataLakeStore {
@@ -286,6 +300,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string StoppingDataLakeAnalyticsJob {
             get {
                 return ResourceManager.GetString("StoppingDataLakeAnalyticsJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
+        /// </summary>
+        internal static string TagsWarning {
+            get {
+                return ResourceManager.GetString("TagsWarning", resourceCulture);
             }
         }
         

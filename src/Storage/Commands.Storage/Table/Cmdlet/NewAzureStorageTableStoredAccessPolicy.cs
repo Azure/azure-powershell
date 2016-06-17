@@ -14,14 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(String))]
     public class NewAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Policy Identifier. Need to be unique in the Table")]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set;}
+        public string Policy { get; set; }
 
         [Parameter(HelpMessage = "Permissions for a table. Permissions can be any not-empty subset of \"audqr\".")]
         public string Permission { get; set; }

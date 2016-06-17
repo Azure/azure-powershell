@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using System;
 using System.Collections.Generic;
 

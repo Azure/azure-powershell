@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSubscription", DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementSubscription>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementSubscription, DefaultParameterSetName = GetAll)]
+    [OutputType(typeof(IList<PsApiManagementSubscription>), ParameterSetName = new[] { GetAll, GetByProductId, GetByUserId })]
+    [OutputType(typeof(PsApiManagementSubscription), ParameterSetName = new[] { GetBySubscriptionId })]
     public class GetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
         private const string GetAll = "Get all subscriptions";
@@ -29,30 +30,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string GetByProductId = "Get by product ID";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = GetBySubscriptionId,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Subscription identifier. If specified will try to find subscription by the identifier. This parameter is optional.")]
         public String SubscriptionId { get; set; }
 
         [Parameter(
             ParameterSetName = GetByUserId,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "User identifier. If specified will try to find all subscriptions by the user identifier. This parameter is optional.")]
         public String UserId { get; set; }
 
         [Parameter(
             ParameterSetName = GetByProductId,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Product identifier. If specified will try to find all subscriptions by the product identifier. This parameter is optional.")]
         public String ProductId { get; set; }
 

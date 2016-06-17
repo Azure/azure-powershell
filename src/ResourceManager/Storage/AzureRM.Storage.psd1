@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.0.5' 
+ModuleVersion = '1.1.1' 
   
 # ID used to uniquely identify this module  
 GUID = 'da67eaa7-4cb1-4bfa-a194-8bf3faae8ac5'  
@@ -46,8 +46,8 @@ ProcessorArchitecture = 'None'
   
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(
-    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.5'},
-    @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.0.5'}
+    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.9'},
+    @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.1.3'}
 )
   
 # Assemblies that must be loaded prior to importing this module  

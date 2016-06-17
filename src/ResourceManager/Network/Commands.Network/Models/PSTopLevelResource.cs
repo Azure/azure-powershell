@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Commands.Resources.Models;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {

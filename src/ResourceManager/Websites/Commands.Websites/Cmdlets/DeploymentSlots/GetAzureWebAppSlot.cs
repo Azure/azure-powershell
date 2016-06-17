@@ -14,11 +14,10 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {

@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string[] ReplicaLocations { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShareParameterSetName, ValueFromPipelineByPropertyName = true, HelpMessage = "Specifies the sharing permission of replicated image.")]
-        [ValidateSet("Public", "Private", "MSDN")]
+        [ValidateSet("Public", "Private", "MSDN", "EA")]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = ReplicateParameterSetName), ValidateNotNullOrEmpty]

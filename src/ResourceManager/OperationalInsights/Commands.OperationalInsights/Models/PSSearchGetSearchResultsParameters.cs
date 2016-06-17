@@ -13,15 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
     public class PSSearchGetSearchResultsParameters : OperationalInsightsParametersBase
     {
-        public int Top { get; set; }
-        public int Skip { get; set; }
+        public long Top { get; set; }
+        public long Skip { get; set; }
         public PSHighlight Highlight { get; set; }
         public bool IncludeArchive { get; set; }
         public string Query { get; set; }

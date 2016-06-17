@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Microsoft.WindowsAzure.Storage;
 
     [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPolicy)]
         [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPermision)]
+        [ValidateNotNull]
         public CloudBlob CloudBlob { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
@@ -66,8 +67,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Blob { get; set; }
 
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
-        [Parameter(HelpMessage = "Policy Identifier", ParameterSetName = BlobPipelineParameterSetWithPolicy)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Policy Identifier",
+            ParameterSetName = BlobNamePipelineParmeterSetWithPolicy)]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Policy Identifier",
+            ParameterSetName = BlobPipelineParameterSetWithPolicy)]
+        [ValidateNotNullOrEmpty]
         public string Policy
         {
             get { return accessPolicyIdentifier; }
@@ -75,22 +83,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
         private string accessPolicyIdentifier;
 
-        [Parameter(HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
             ParameterSetName = BlobNamePipelineParmeterSetWithPermission)]
-        [Parameter(HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Permissions for a blob. Permissions can be any not-empty subset of \"rwd\".",
             ParameterSetName = BlobPipelineParameterSetWithPermision)]
+        [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        public SharedAccessProtocol Protocol { get; set; }
+        [ValidateNotNull]
+        public SharedAccessProtocol? Protocol { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]
+        [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted by Azure Storage.")]
+        [ValidateNotNullOrEmpty]
         public string IPAddressOrRange { get; set; }
 
-        [Parameter(HelpMessage = "Start Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Start Time")]
+        [ValidateNotNull]
         public DateTime? StartTime { get; set; }
 
-        [Parameter(HelpMessage = "Expiry Time")]
+        [Parameter(Mandatory = false, HelpMessage = "Expiry Time")]
+        [ValidateNotNull]
         public DateTime? ExpiryTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Display full uri with sas token")]
@@ -161,7 +178,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
         /// <returns></returns>
-        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol protocol, IPAddressOrRange iPAddressOrRange)
+        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier, SharedAccessProtocol? protocol, IPAddressOrRange iPAddressOrRange)
         {
             CloudBlobContainer container = blob.Container;
             return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
@@ -174,42 +191,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
         private void SetupAccessPolicy(SharedAccessBlobPolicy accessPolicy, bool shouldSetExpiryTime)
         {
-            SetupAccessPolicyPermission(accessPolicy, Permission);
+            AccessPolicyHelper.SetupAccessPolicyPermission(accessPolicy, Permission);
             DateTimeOffset? accessStartTime;
             DateTimeOffset? accessEndTime;
             SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
                 out accessStartTime, out accessEndTime, shouldSetExpiryTime);
             accessPolicy.SharedAccessStartTime = accessStartTime;
             accessPolicy.SharedAccessExpiryTime = accessEndTime;
-        }
-
-        /// <summary>
-        /// Set up access policy permission
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permisson</param>
-        internal void SetupAccessPolicyPermission(SharedAccessBlobPolicy policy, string permission)
-        {
-            if (string.IsNullOrEmpty(permission)) return;
-            policy.Permissions = SharedAccessBlobPermissions.None;
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessBlobPermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Write:
-                        policy.Permissions |= SharedAccessBlobPermissions.Write;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessBlobPermissions.Delete;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(Resources.InvalidAccessPermission, op));
-                }
-            }
         }
 
         /// <summary>

@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Previewed feature information.
         /// </returns>
         Task<FeatureResponse> GetAsync(string resourceProviderNamespace, string featureName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of previewed features.
         /// </returns>
         Task<FeatureOperationsListResult> ListAsync(string resourceProviderNamespace, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of previewed features for all the providers in the
         /// current subscription.
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of previewed features.
         /// </returns>
         Task<FeatureOperationsListResult> ListAllAsync(CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of previewed features of a subscription.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of previewed features.
         /// </returns>
         Task<FeatureOperationsListResult> ListAllNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of previewed features of a resource provider.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of previewed features.
         /// </returns>
         Task<FeatureOperationsListResult> ListNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Registers for a previewed feature of a resource provider.
         /// </summary>

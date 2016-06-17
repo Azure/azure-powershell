@@ -33,6 +33,6 @@ using Xunit;
 
 [assembly: Guid("d1c35c6d-1778-4d39-92c8-0bf709cc5b23")]
 
-[assembly: AssemblyVersion("1.2.3")]
-[assembly: AssemblyFileVersion("1.2.3")]
+[assembly: AssemblyVersion("1.4.1")]
+[assembly: AssemblyFileVersion("1.4.1")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

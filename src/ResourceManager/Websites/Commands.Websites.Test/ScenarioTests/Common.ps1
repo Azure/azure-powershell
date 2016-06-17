@@ -50,6 +50,15 @@ function Get-ResourceGroupName
 
 <#
 .SYNOPSIS
+Gets a backup name for testing.
+#>
+function Get-BackupName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets an aseName for testing.
 #>
 function Get-AseName
@@ -133,4 +142,22 @@ function PingWebApp($webApp)
 
 		return $statusCode
     }
+}
+
+# Create a SAS Uri
+function Get-SasUri
+{
+    param ([string] $storageAccount, [string] $storageKey, [string] $container, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+
+	$uri = "https://$storageAccount.blob.core.windows.net/$container"
+
+	$destUri = New-Object -TypeName System.Uri($uri);
+	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+	$policy.Permissions = $type;
+	$policy.SharedAccessExpiryTime = (Get-Date).Add($duration);
+	$uri += $destBlob.GetSharedAccessSignature($policy);
+
+	return $uri;
 }

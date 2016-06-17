@@ -12,25 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System.IO;
+using System.Linq;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -64,8 +63,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public string UserDomain { get; private set; }
 
-        public static ComputeTestController NewInstance 
-        { 
+        public static ComputeTestController NewInstance
+        {
             get
             {
                 return new ComputeTestController();
@@ -83,9 +82,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -93,8 +92,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             {
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
@@ -121,20 +120,22 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\ComputeTestCommon.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\ComputeTestCommon.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.RMStorageDataPlaneModule,
                     helper.RMStorageModule,
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
-                    helper.GetRMModulePath("AzureRM.Network.psd1"));
+                    helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -150,7 +151,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 NetworkManagementClient,
                 ComputeManagementClient,
                 AuthorizationManagementClient);
-                // GraphClient);
+            // GraphClient);
         }
 
         private GraphRbacManagementClient GetGraphClient()

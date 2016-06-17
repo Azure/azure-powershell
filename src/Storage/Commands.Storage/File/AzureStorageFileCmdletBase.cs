@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.File;
+    using System.Management.Automation;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
@@ -26,16 +26,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareNameParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.MatchingPrefixParameterSetName,
-            HelpMessage = "Azure Storage Context Object")]
-        [Parameter(
-            ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
         public override AzureStorageContext Context { get; set; }
 

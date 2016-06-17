@@ -369,6 +369,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionCaption {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionConfirmation {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {
@@ -401,6 +419,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string EnableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
+        /// </summary>
+        public static string ErrorDuringChoosingStandardStorageAccount {
+            get {
+                return ResourceManager.GetString("ErrorDuringChoosingStandardStorageAccount", resourceCulture);
             }
         }
         
@@ -946,6 +973,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The  usability of Tag parameter in this cmdlet will be modified in a future release.  This will impact creating, updating and appending tags for Azure resources.  For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
+        /// </summary>
+        public static string TagFixWarningMessage {
+            get {
+                return ResourceManager.GetString("TagFixWarningMessage", resourceCulture);
             }
         }
         

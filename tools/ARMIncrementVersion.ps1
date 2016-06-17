@@ -10,15 +10,10 @@ Param(
 [bool]$Patch
 )
 
-# Function to update nuspec file
-function IncrementVersion([string]$FilePath)
+function ReplaceVersion([string]$key, [string]$line)
 {
-    Write-Output "Updating File: $FilePath"   
-    (Get-Content $FilePath) | 
-    ForEach-Object {
-        $matches = ([regex]::matches($_, "ModuleVersion = '([\d\.]+)'"))
-
-        if($matches.Count -eq 1)
+	$matches = ([regex]::matches($line, "$key = '([\d\.]+)'"))
+	if($matches.Count -eq 1)
         {
             $packageVersion = $matches.Groups[1].Value
             $version = $packageVersion.Split(".")
@@ -46,11 +41,19 @@ function IncrementVersion([string]$FilePath)
             }
             
             $version = [String]::Join(".", $version)
-            $_.Replace("ModuleVersion = '$packageVersion'", "ModuleVersion = '$version'")
+            $line.Replace("$key = '$packageVersion'", "$key = '$version'")
         } else {
-            $_
+            $line
         }
-
+}
+# Function to update nuspec file
+function IncrementVersion([string]$FilePath)
+{
+    Write-Output "Updating File: $FilePath"   
+    (Get-Content $FilePath) | 
+    ForEach-Object {
+		$temp = ReplaceVersion "ModuleVersion" $_
+		ReplaceVersion "RequiredVersion" $temp
     } | Set-Content -Path $FilePath -Encoding UTF8
 }
 

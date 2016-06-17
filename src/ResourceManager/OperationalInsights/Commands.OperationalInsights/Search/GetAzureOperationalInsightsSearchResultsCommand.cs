@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The top search parameter.")]
         [ValidateNotNullOrEmpty]
-        public int Top { get; set; }
+        public long Top { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The pre highlight search parameter.")]

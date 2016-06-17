@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Commands.Storage.Table;
-    using Microsoft.WindowsAzure.Storage.Table;
 
     [Cmdlet(VerbsCommon.Get, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(SharedAccessTablePolicy))]
     public class GetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
@@ -35,10 +35,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Table { get; set; }
 
-        [Parameter(Position = 1, 
+        [Parameter(Position = 1,
             HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
-        public string Policy {get; set; }
+        public string Policy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageTableStoredAccessPolicyCommand class.

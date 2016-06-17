@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 this._logicAppClient = new LogicAppClient(DefaultProfile.Context)
                 {
                     VerboseLogger = WriteVerboseWithTimestamp,
-                    ErrorLogger = WriteErrorWithTimestamp                    
+                    ErrorLogger = WriteErrorWithTimestamp
                 };
 
                 return _logicAppClient;
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
 
             set
             {
-                this._logicAppClient = value;                 
+                this._logicAppClient = value;
             }
         }
 
