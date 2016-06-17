@@ -9768,7 +9768,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>FilePath</maml:name>
         <maml:description>
-          <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
+          <maml:para>Specifies the file to be uploaded as the application package binary file. If the -ActivateOnly switch is present, do not specify FilePath</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       </command:parameter>
@@ -9836,7 +9836,7 @@
     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
+        <maml:para>Specifies the file to be uploaded as the application package binary file. If the -ActivateOnly switch is present, do not specify FilePath</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
