@@ -133,7 +133,7 @@ namespace StaticAnalysis.SignatureVerifier
         /// </summary>
         public bool IsShouldProcessVerb
         {
-            get { return VerbName != null && ShouldProcessVerbs.Contains(VerbName); }
+            get { return VerbName != null && ShouldProcessVerbs.Contains(VerbName) || ShouldContinueVerbs.Contains(VerbName); }
         }
 
         /// <summary>

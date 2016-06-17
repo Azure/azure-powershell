@@ -16,12 +16,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Threading.Tasks;
 
 namespace StaticAnalysis.SignatureVerifier
 {
     public class SignatureVerifier : IStaticAnalyzer
     {
+        const int ForceWithoutShouldProcessAttribute = 8000;
+        const int ConfirmLeveleWithNoShouldProcess = 8010;
+        const int ActionIndicatesShouldProcess = 8100;
+        const int ConfirmLevelChange = 8200;
+        const int CmdletWithDestructiveVerbNoForce = 8210;
+        const int CmdletWithDestructiveVerb = 98300;
+        const int CmdletWithForceParameter = 98310;
         public SignatureVerifier()
         {
             Name = "Signature Verifier";
@@ -62,41 +70,99 @@ namespace StaticAnalysis.SignatureVerifier
                                 processedHelpFiles.Add(helpFileName);
                                 var proxy = EnvironmentHelpers.CreateProxy<CmdletSignatureLoader>(directory, out _appDomain);
                                 var cmdlets = proxy.GetCmdlets(cmdletFile);
-                                foreach (var cmdlet in cmdlets.Where(c => c.SupportsShouldProcess || c.HasForceSwitch || c.IsShouldProcessVerb))
+                                foreach (var cmdlet in cmdlets)
                                 {
-                                    int severity = 1;
-                                    string description= string.Format("Cmdlet {0} does not implement ShouldProcess or " +
-                                                        "Force but may perform a destructive action.", cmdlet.Name);
+                                    string description = null;
+                                    int problemId = 0;
                                     string remediation = "Determine if the cmdlet should implement ShouldProcess, and " +
-                                                         "if so, assign an appropriate ConfirmImpact and determine if " +
-                                                         "it should implement Force / ShouldContinue";
-                                    if (cmdlet.HasForceSwitch)
+                                                          "if so, determine if it should implement Force / ShouldContinue";
+                                    
+                                    int severity = int.MaxValue;
+
+                                    if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
                                     {
-                                        description = string.Format("Cmdlet {0} has a Force " +
-                                                                    "parameter", cmdlet.Name);
-                                        remediation =
-                                            "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
-                                            "and determine if cmdlet needs ShouldContinue / Force.";
-                                        severity = 0;
-                                    }
-                                    else if (cmdlet.SupportsShouldProcess)
-                                    {
-                                        description = string.Format("Cmdlet {0} supports ShouldProcess", cmdlet.Name);
-                                        remediation =
-                                            "Implement ShouldProcess correctly, set appropriate ConfirmImpact, " +
-                                            "and determine if cmdlet needs ShouldContinue / Force.";
-                                        severity = 0;
+                                        problemId = ForceWithoutShouldProcessAttribute;
+                                        description = string.Format("{0} Has  -Force parameter but does not set the SupportsShouldProcess " +
+                                                                    "property to true in the Cmdlet attribute.", cmdlet.Name);
                                     }
 
-                                    issueLogger.LogRecord(new SignatureIssue
+                                    if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium)
                                     {
-                                        ClassName = cmdlet.ClassName,
-                                        Target=cmdlet.Name,
-                                        Description = description,
-                                        Remediation = remediation,
-                                        Severity = severity
-                                    });
+                                        problemId = ConfirmLeveleWithNoShouldProcess;
+                                        description =
+                                            string.Format("{0} Changes the ConfirmImpact but does not set the " +
+                                                          "SupportsShouldProcess property to true in the cmdlet attribute.",
+                                                cmdlet.Name);
+
+                                    }
+
+                                    if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb)
+                                    {
+                                        problemId = ActionIndicatesShouldProcess;
+                                        description =
+                                            string.Format(
+                                                "{0} Does not support ShouldProcess, but the cmdlet verb {1} indicates that it should.",
+                                                cmdlet.Name, cmdlet.VerbName);
+
+                                    }
+
+                                    if (cmdlet.ConfirmImpact != ConfirmImpact.Medium)
+                                    {
+                                        problemId = ConfirmLevelChange;
+                                        description = string.Format("{0} changes the confirm impact.  Please ensure that the " +
+                                                                    "change in ConfirmImpact is justified", cmdlet.Name);
+                                        remediation =
+                                            "Verify that ConfirmImpact is changed appropriately by the cmdlet. " +
+                                            "It is very rare for a cmdlet to change the ConfirmImpact.";
+                                    }
+
+                                    if (cmdlet.IsShouldContinueVerb && !cmdlet.HasForceSwitch)
+                                    {
+                                        problemId = CmdletWithDestructiveVerbNoForce;
+                                        description =
+                                            string.Format(
+                                                "{0} does not have a Force parameter, but the cmdlet verb '{1}' " +
+                                                "indicates that it may perform destrucvie actions under certain " +
+                                                "circumstances. Consider wehtehr the cmdlet should have a Force " +
+                                                "parameter anduse ShouldContinue under some circumstances. ",
+                                                cmdlet.Name, cmdlet.VerbName);
+                                        remediation = "Consider wehtehr the cmdlet should have a Force " +
+                                                      "parameter and use ShouldContinue under some circumstances. ";
+
+                                    }
+
+                                    // Temporary detections, please remove these before checking in
+
+                                    if (cmdlet.IsShouldContinueVerb)
+                                    {
+                                        problemId = CmdletWithDestructiveVerb;
+                                        description = string.Format(
+                                            "[Temporary]: {0} uses a destructive verb.  Check to see if the cmdlet " +
+                                            "implements Confirmation correctly.", cmdlet.Name);
+                                    }
+
+                                    if (cmdlet.HasForceSwitch)
+                                    {
+                                        problemId = CmdletWithForceParameter;
+                                        description = string.Format(
+                                            "[Temporary]: {0} has a Force switch.  Check to see if the cmdlet " +
+                                            "implements Confirmation correctly.", cmdlet.Name);
+                                    }
+
+
+                                    if (problemId > 0)
+                                    {
+                                        issueLogger.LogRecord(new SignatureIssue
+                                        {
+                                            ClassName = cmdlet.ClassName,
+                                            Target = cmdlet.Name,
+                                            Description = description,
+                                            Remediation = remediation,
+                                            Severity = severity
+                                        });
+                                    }
                                 }
+
                                 AppDomain.Unload(_appDomain);
                                 issueLogger.Decorator.Remove("AssemblyFileName");
                             }
