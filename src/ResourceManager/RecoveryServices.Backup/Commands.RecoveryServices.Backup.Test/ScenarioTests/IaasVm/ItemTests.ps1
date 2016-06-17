@@ -123,25 +123,21 @@ function Test-GetAzureVMRecoveryPointsScenario
 function Test-RestoreAzureVMRItemScenario
 {
 	#Set vault context
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "restorerg1" -Name "restorern1";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "shankcanaryrg" -Name "shankcanary2";
 	
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "shswain-vm1";
-	Assert-AreEqual $namedContainer.FriendlyName "shswain-vm1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "pra-vm2";
+	Assert-AreEqual $namedContainer.FriendlyName "pra-vm2";
 
 	# VAR-1: Get all items for container
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
 
-	$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
-	$startDate = $fixedStartDate.ToUniversalTime()
-	$fixedEndDate = Get-Date -Date "2016-04-18 19:00:00"
-	$endDate = $fixedEndDate.ToUniversalTime()
-	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate
+	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -RecoveryPointId "28805629667760";
 	
-	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $recoveryPoints[0] -StorageAccountName mkheranirestorestrtest1 -StorageAccountResourceGroupName mkheranirestorestrtest
+	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $recoveryPoints[0] -StorageAccountName shraccanseastorv2 -StorageAccountResourceGroupName shraccanrg
 
 	Assert-NotNull $job;
 }
