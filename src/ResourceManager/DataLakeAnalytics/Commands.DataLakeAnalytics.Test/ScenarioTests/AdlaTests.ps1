@@ -117,8 +117,8 @@ function Test-DataLakeAnalyticsAccount
 		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
 		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
 
-		# get the list of data lakes
-		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource DataLakeStore
+		# get the list of all data sources
+		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
 		Assert-AreEqual 2 $adlsAccountInfos.Count
 
 		# remove the Data lake storage account
@@ -139,9 +139,9 @@ function Test-DataLakeAnalyticsAccount
 		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
 		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
 
-		# get the list of blobs
-		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource Blob
-		Assert-AreEqual 1 $blobAccountInfos.Count
+		# get the list of data sources (there should be two, one ADLS account and one blob storage account)
+		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
+		Assert-AreEqual 2 $blobAccountInfos.Count
 
 		# remove the blob storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
@@ -609,7 +609,7 @@ function Test-DataLakeAnalyticsCatalog
 		$itemToFind = $itemList[0]
 	
 		# retrieve the specific table partition
-		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.$($itemToFind.Name)"
+		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.[$($itemToFind.Name)]"
 		Assert-NotNull $specificItem "Could not retrieve the table partition by name"
 		Assert-AreEqual $itemToFind.Name $specificItem.Name
 

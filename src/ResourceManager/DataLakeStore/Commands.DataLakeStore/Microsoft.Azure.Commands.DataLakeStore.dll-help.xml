@@ -1748,13 +1748,20 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-				<maml:name>NumThreads</maml:name>
+				<maml:name>PerFileThreadCount</maml:name>
 				<maml:description>
-					<maml:para>Specifies the number of threads to use to upload the file or folder.</maml:para>
+					<maml:para>Indicates the maximum number of threads to use per file. Default is 10.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+        <maml:name>ConcurrentFileCount</maml:name>
+        <maml:description>
+          <maml:para>Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+      </command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
@@ -1851,9 +1858,9 @@
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-			<maml:name>NumThreads</maml:name>
+			<maml:name>PerFileThreadCount</maml:name>
 			<maml:description>
-				<maml:para>Specifies the number of threads to use to upload the file or folder.</maml:para>
+				<maml:para>Indicates the maximum number of threads to use per file. Default is 10.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
@@ -1862,7 +1869,19 @@
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+      <maml:name>ConcurrentFileCount</maml:name>
+      <maml:description>
+        <maml:para>Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5.</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+      <dev:type>
+        <maml:name>Int32</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>none</dev:defaultValue>
+    </command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
