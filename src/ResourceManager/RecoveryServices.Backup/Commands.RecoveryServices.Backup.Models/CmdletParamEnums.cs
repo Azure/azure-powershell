@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         RecoveryPoint,
         ILRAction,
         TargetLocation,
+        KeyFileDownloadLocation,
     }
 
     public enum RestoreBackupItemParams

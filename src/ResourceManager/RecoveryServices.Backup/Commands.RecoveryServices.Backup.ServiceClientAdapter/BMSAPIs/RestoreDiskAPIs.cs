@@ -76,10 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
                     SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
                     SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
-                };
-
-                // TODO: Handle file name
-                File.WriteAllBytes("key.blob", Convert.FromBase64String(rp.KeyAndSecretDetails.KeyBackupData));                
+                };              
             }
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
