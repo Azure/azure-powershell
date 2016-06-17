@@ -23,7 +23,6 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.Resources;
@@ -45,17 +44,11 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
 
-        public GraphRbacManagementClient GraphClient { get; private set; }
-
         public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public FeatureClient FeatureClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-
-        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -157,13 +150,11 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient();
             PowerBIClient = GetPowerBIClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GalleryClient = GetGalleryClient();
 
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 PowerBIClient,
-                AuthorizationManagementClient,
-                GalleryClient
+                AuthorizationManagementClient
                 );
         }
 
@@ -182,69 +173,9 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
         private PowerBIEmbeddedManagementClient GetPowerBIClient(MockContext context)
         {
             return context.GetServiceClient<PowerBIEmbeddedManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        /// <summary>
-        /// The test http client helper factory.
-        /// </summary>
-        private class TestHttpClientHelperFactory : HttpClientHelperFactory
-        {
-            /// <summary>
-            /// The subscription cloud credentials.
-            /// </summary>
-            private readonly SubscriptionCloudCredentials credential;
-
-            /// <summary>
-            /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
-            /// </summary>
-            /// <param name="credentials"></param>
-            public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
-            {
-                this.credential = credentials;
-            }
-
-            /// <summary>
-            /// Creates new instances of the <see cref="HttpClientHelper"/> class.
-            /// </summary>
-            /// <param name="credentials">The credentials.</param>
-            /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
-            {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
-            }
-
-            /// <summary>
-            /// An implementation of the <see cref="HttpClientHelper"/> abstract class.
-            /// </summary>
-            private class HttpClientHelperImpl : HttpClientHelper
-            {
-                /// <summary>
-                /// Initializes new instances of the <see cref="HttpClientHelperImpl"/> class.
-                /// </summary>
-                /// <param name="credentials">The credentials.</param>
-                /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
-                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
-                {
-                }
-
-                /// <summary>
-                /// Creates an <see cref="HttpClient"/>
-                /// </summary>
-                /// <param name="primaryHandlers">The handlers that will be added to the top of the chain.</param>
-                public override HttpClient CreateHttpClient(params DelegatingHandler[] primaryHandlers)
-                {
-                    return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
-                }
-            }
         }
     }
 }
