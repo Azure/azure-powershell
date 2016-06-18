@@ -14,27 +14,31 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Globalization;
+    using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Removes the integration account partner. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogicApp"), OutputType(typeof(object))]
-    public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountPartner"), OutputType(typeof(object))]
+    public class RemoveAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
 
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The integration account partner name.")]
+        [ValidateNotNullOrEmpty]
+        public string PartnerName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -42,18 +46,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the remove workflow command
+        /// Executes the command to remove integration account partner.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveLogicAppWarning, this.Name),
-                Properties.Resource.RemoveLogicAppMessage,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
                 Name,
-                () =>
-                {
-                    LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
+                () => {
+                    IntegrationAccountClient.RemoveIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
                 });
         }
     }

@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public LogicAppClient(AzureContext context)
         {
             this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.LogicManagementClient.InitializeWorkflowClient();
             this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public LogicAppClient(ILogicManagementClient client)
         {
             this.LogicManagementClient = client;
+            this.LogicManagementClient.InitializeWorkflowClient();
         }
 
         /// <summary>
