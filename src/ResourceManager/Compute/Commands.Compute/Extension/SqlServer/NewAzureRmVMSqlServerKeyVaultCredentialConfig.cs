@@ -25,15 +25,16 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerKeyVaultCredentialConfigNoun),
+         AzureRmVMSqlServerKeyVaultCredentialConfigNoun,
+         SupportsShouldProcess = true),
      OutputType(
          typeof(KeyVaultCredentialSettings))]
-    public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
+    public class NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
         /// <summary>
         /// Configuration object friendly name
         /// </summary>
-        protected const string AzureVMSqlServerKeyVaultCredentialConfigNoun = "AzureVMSqlServerKeyVaultCredentialConfig";
+        protected const string AzureRmVMSqlServerKeyVaultCredentialConfigNoun = "AzureRmVMSqlServerKeyVaultCredentialConfig";
 
         [Parameter(
             Mandatory = true,
@@ -45,7 +46,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Enable Key Vault Credential.")]
         [ValidateNotNullOrEmpty]
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "SQL Server credential name to create.")]
         [ValidateNotNullOrEmpty]
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           Position = 3,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Azure Key Vault service URL")]
         [ValidateNotNullOrEmpty]
@@ -69,7 +67,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           Position = 4,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Principal user client identifier.")]
         [ValidateNotNullOrEmpty]
@@ -77,16 +74,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            Mandatory = false,
-           Position = 5,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Principal user client secret.")]
         [ValidateNotNullOrEmpty]
         public SecureString ServicePrincipalSecret { get; set; }
 
         /// <summary>
-        /// Initialzies a new instance of the <see cref="NewAzureVMSqlServerKeyVaultCredentialConfigCommand"/> class.
+        /// Initialzies a new instance of the <see cref="NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand"/> class.
         /// </summary>
-        public NewAzureVMSqlServerKeyVaultCredentialConfigCommand()
+        public NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand()
         {
         }
 
@@ -95,20 +91,25 @@ namespace Microsoft.Azure.Commands.Compute
         /// </summary>
         protected override void ProcessRecord()
         {
-            KeyVaultCredentialSettings settings = new KeyVaultCredentialSettings();
+            string target = "Azure Key Vault";
+            string action = "Creation";
+            if (ShouldProcess(target, action))
+            {
+                KeyVaultCredentialSettings settings = new KeyVaultCredentialSettings();
 
-            settings.Enable = (this.Enable.IsPresent) ? this.Enable.ToBool() : false;
+                settings.Enable = (this.Enable.IsPresent) ? this.Enable.ToBool() : false;
 
-            settings.CredentialName = (this.CredentialName == null) ? null : this.CredentialName;
+                settings.CredentialName = (this.CredentialName == null) ? null : this.CredentialName;
 
-            settings.ServicePrincipalName = (this.ServicePrincipalName == null) ? null : this.ServicePrincipalName;
+                settings.ServicePrincipalName = (this.ServicePrincipalName == null) ? null : this.ServicePrincipalName;
 
-            settings.ServicePrincipalSecret = (this.ServicePrincipalSecret == null) ?
-                                              null : ConvertToUnsecureString(ServicePrincipalSecret);
+                settings.ServicePrincipalSecret = (this.ServicePrincipalSecret == null) ?
+                                                  null : ConvertToUnsecureString(ServicePrincipalSecret);
 
-            settings.AzureKeyVaultUrl = (this.AzureKeyVaultUrl == null) ? null : this.AzureKeyVaultUrl;
+                settings.AzureKeyVaultUrl = (this.AzureKeyVaultUrl == null) ? null : this.AzureKeyVaultUrl;
 
-            WriteObject(settings);
+                WriteObject(settings);
+            }
         }
 
         /// <summary>

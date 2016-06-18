@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class SqlIaaSExtensionTests
+    public class SqlIaaSExtensionAKVTests
     {
-        public SqlIaaSExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SqlIaaSExtensionAKVTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSqlIaaSExtension()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SetAzureRmVMSqlServerExtension");
+            ComputeTestController.NewInstance.RunPsTest("Test-SetAzureRmVMAKVSqlServerExtension");
         }
     }
 }
