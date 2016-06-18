@@ -351,13 +351,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
-                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
-
                         var result = ResourceManagementClient.DeploymentOperations.List(
                             resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
                             deploymentName: operation.Properties.TargetResource.ResourceName);
 
-                        newNestedOperations = GetNewOperations(operations, result);
+                        List<DeploymentOperation>  newNestedOperations = GetNewOperations(operations, result);
 
                         foreach (DeploymentOperation op in newNestedOperations)
                         {

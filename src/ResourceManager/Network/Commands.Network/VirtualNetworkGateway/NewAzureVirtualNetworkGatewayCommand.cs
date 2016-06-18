@@ -176,7 +176,6 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IpConfigurations != null)
             {
-                vnetGateway.IpConfigurations = new List<PSVirtualNetworkGatewayIpConfiguration>();
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
