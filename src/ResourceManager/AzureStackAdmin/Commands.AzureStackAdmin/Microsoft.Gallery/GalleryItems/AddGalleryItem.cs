@@ -90,7 +90,7 @@ namespace Microsoft.AzureStack.Commands
                 };
 
                 var uploadParameters = new GalleryItemCreateOrUpdateParameters() { GalleryItem = galleryItemModel };
-                return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.Name, uploadParameters);
+                return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.GalleryItemIdentity, uploadParameters);
             }
         }
     }
