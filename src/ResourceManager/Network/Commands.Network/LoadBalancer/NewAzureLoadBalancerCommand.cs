@@ -130,37 +130,31 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.FrontendIpConfiguration != null)
             {
-                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
                 loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
             }
 
             if (this.BackendAddressPool != null)
             {
-                loadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
                 loadBalancer.BackendAddressPools = this.BackendAddressPool;
             }
 
             if (this.Probe != null)
             {
-                loadBalancer.Probes = new List<PSProbe>();
                 loadBalancer.Probes = this.Probe;
             }
 
             if (this.InboundNatRule != null)
             {
-                loadBalancer.InboundNatRules = new List<PSInboundNatRule>();
                 loadBalancer.InboundNatRules = this.InboundNatRule;
             }
 
             if (this.LoadBalancingRule != null)
             {
-                loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
             }
 
             if (this.InboundNatPool != null)
             {
-                loadBalancer.InboundNatPools = new List<PSInboundNatPool>();
                 loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
