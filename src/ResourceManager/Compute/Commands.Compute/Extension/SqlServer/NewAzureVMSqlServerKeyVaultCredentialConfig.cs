@@ -96,18 +96,12 @@ namespace Microsoft.Azure.Commands.Compute
             if (ShouldProcess(target, action))
             {
                 KeyVaultCredentialSettings settings = new KeyVaultCredentialSettings();
-
                 settings.Enable = (this.Enable.IsPresent) ? this.Enable.ToBool() : false;
-
                 settings.CredentialName = (this.CredentialName == null) ? null : this.CredentialName;
-
                 settings.ServicePrincipalName = (this.ServicePrincipalName == null) ? null : this.ServicePrincipalName;
-
                 settings.ServicePrincipalSecret = (this.ServicePrincipalSecret == null) ?
                                                   null : ConvertToUnsecureString(ServicePrincipalSecret);
-
                 settings.AzureKeyVaultUrl = (this.AzureKeyVaultUrl == null) ? null : this.AzureKeyVaultUrl;
-
                 WriteObject(settings);
             }
         }

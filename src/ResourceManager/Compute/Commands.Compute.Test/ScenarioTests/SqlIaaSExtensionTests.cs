@@ -15,6 +15,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestSqlIaaSExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SetAzureRmVMSqlServerExtension");
+            ComputeTestController.NewInstance.RunPsTest("Test-SetAzureRmVMSqlServerAKVExtension");
         }
     }
 }
