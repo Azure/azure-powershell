@@ -7509,10 +7509,7 @@
     "Names": {
         "Test-SetAzureRmVMSqlServerExtension": [
             "crptestps8058"
-        ],
-            "Test-SetAzureRmVMAKVSqlServerExtension": [
-      "crptestps8058"
-    ]
+        ]
     },
   "Variables": {
     "SubscriptionId": "c93e71c8-27e9-4b9a-9b04-17e73af2fa87"

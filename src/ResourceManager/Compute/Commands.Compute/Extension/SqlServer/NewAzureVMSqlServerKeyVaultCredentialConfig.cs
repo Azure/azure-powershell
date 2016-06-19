@@ -25,16 +25,16 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureRmVMSqlServerKeyVaultCredentialConfigNoun,
+         AzureVMSqlServerKeyVaultCredentialConfigNoun,
          SupportsShouldProcess = true),
      OutputType(
          typeof(KeyVaultCredentialSettings))]
-    public class NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
+    public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
         /// <summary>
         /// Configuration object friendly name
         /// </summary>
-        protected const string AzureRmVMSqlServerKeyVaultCredentialConfigNoun = "AzureRmVMSqlServerKeyVaultCredentialConfig";
+        protected const string AzureVMSqlServerKeyVaultCredentialConfigNoun = "AzureVMSqlServerKeyVaultCredentialConfig";
 
         [Parameter(
             Mandatory = true,
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.Compute
         public SecureString ServicePrincipalSecret { get; set; }
 
         /// <summary>
-        /// Initialzies a new instance of the <see cref="NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand"/> class.
+        /// Initialzies a new instance of the <see cref="NewAzureVMSqlServerKeyVaultCredentialConfigCommand"/> class.
         /// </summary>
-        public NewAzureRmVMSqlServerKeyVaultCredentialConfigCommand()
+        public NewAzureVMSqlServerKeyVaultCredentialConfigCommand()
         {
         }
 

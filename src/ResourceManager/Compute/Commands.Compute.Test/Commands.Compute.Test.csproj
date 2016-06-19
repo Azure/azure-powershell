@@ -170,7 +170,6 @@
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
-    <Compile Include="ScenarioTests\SqlIaaSExtensionAKVTests.cs" />
     <Compile Include="ScenarioTests\SqlIaaSExtensionTests.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
@@ -254,7 +253,6 @@
     <None Include="ScenarioTests\RunnerTests.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\SqlIaaSExtensionAKVTests.ps1" />
     <None Include="ScenarioTests\SqlIaaSExtensionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

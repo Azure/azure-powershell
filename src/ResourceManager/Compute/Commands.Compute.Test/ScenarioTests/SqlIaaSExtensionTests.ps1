@@ -79,7 +79,7 @@ function Test-SetAzureRmVMSqlServerExtension
 		$extensionName = "Microsoft.SqlServer.Management.SqlIaaSAgent";
 
 		# 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM.
-		$aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+		$aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps  -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 		
 		# 2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
@@ -92,7 +92,7 @@ function Test-SetAzureRmVMSqlServerExtension
 		Assert-AreEqual $extension.AutoPatchingSettings.PatchCategory "Important"
 
 		# 4) Update extension values
-		$aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
+		$aps = New-AzureVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Monday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps  -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
 
 		# 5) Verify changes
@@ -105,6 +105,33 @@ function Test-SetAzureRmVMSqlServerExtension
 		# 7) Test with correct Name and incorrect Version
 		Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
 		
+		#testing for AKV
+
+		# 1) Installs the SqlIaaS extension by calling Set-AzureRmVMAKVSqlServerExtension cmdlet on a VM.
+		$securepfxpwd = ConvertTo-SecureString –String "4920022500" –AsPlainText –Force;
+		$aps = New-AzureVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTesting" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
+		Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
+
+		# 2) Calls Get-AzureRmVMSqlServerExtension cmdlet to check the status of the extension installation.
+		$extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+
+		# 3) Verifies settings are correct given input
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.CredentialName "testkeyvault:CredentialTesting";
+
+		# 4) Update extension values
+		$aps = New-AzureVMSqlServerKeyVaultCredentialConfig -ResourceGroupName $rgname -Enable -CredentialName "CredentialTest" -AzureKeyVaultUrl "https://Testkeyvault.vault.azure.net/" -ServicePrincipalName "0326921f-82af-4ab3-9d46-bf005595337c" -ServicePrincipalSecret $securepfxpwd;
+		Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose; 
+
+		$extension = Get-AzureRmVMSqlServerExtension -ResourceGroupName $rgname -VmName $vmName -Name $extensionName;
+
+		# 5) Verify changes
+		Assert-AreEqual $extension.KeyVaultCredentialSettings.CredentialName "testkeyvault:CredentialTest"
+
+		# 6) Test with correct Name and Version
+		Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.2"
+
+		# 7) Test with correct Name and incorrect Version
+		Set-AzureRmVMSqlServerExtension -KeyVaultCredentialSettings $aps  -ResourceGroupName $rgname -VMName $vmName -Name $extensionName -Version "1.*"
     }
     finally
     {

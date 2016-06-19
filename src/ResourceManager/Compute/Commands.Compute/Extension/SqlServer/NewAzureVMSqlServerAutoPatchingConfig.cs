@@ -21,13 +21,13 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureRmVMSqlServerAutoPatchingConfigNoun,
+         AzureVMSqlServerAutoPatchingConfigNoun,
          SupportsShouldProcess = true),
      OutputType(
          typeof(AutoPatchingSettings))]
-    public class NewAzureRmVMSqlServerAutoPatchingConfigCommand : PSCmdlet
+    public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
     {
-        protected const string AzureRmVMSqlServerAutoPatchingConfigNoun = "AzureRmVMSqlServerAutoPatchingConfig";
+        protected const string AzureVMSqlServerAutoPatchingConfigNoun = "AzureVMSqlServerAutoPatchingConfig";
 
         [Parameter]
         public SwitchParameter Enable { get; set; }
