@@ -20,8 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -33,7 +32,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ICollection<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> results;
 
             results = new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
-            results.Add(ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName));
+            results.Add(ModelAdapter.GetDatabaseBackupLongTermRetentionPolicy(
+                this.ResourceGroupName, 
+                this.ServerName, 
+                this.DatabaseName));
 
             return results;
         }
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> model)
+        protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> ApplyUserInputToModel(
+            IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> model)
         {
             return model;
         }
@@ -53,7 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> entity)
+        protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> PersistChanges(
+            IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> entity)
         {
             return entity;
         }

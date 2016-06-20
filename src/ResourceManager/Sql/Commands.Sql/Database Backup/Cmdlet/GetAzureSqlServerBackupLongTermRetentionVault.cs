@@ -20,8 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault",
-         ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault")]
     public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
@@ -43,7 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> model)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> ApplyUserInputToModel(
+            IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> model)
         {
             return model;
         }
@@ -53,7 +53,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(
+            IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
         {
             return entity;
         }

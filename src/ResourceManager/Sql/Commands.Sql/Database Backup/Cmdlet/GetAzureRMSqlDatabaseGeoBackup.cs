@@ -18,8 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup")]
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
     {
         /// <summary>
