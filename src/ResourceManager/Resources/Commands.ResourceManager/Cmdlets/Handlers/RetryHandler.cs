@@ -14,15 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using System;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+    
     /// <summary>
     /// A basic retry handler.
     /// </summary>
@@ -56,20 +56,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             HttpResponseMessage response = null;
-            for (int attempt = 0; attempt < RetryHandler.MaxAttempts; ++attempt)
+
+            for (int attempt = 1; attempt <= RetryHandler.MaxAttempts; ++attempt)
             {
                 try
                 {
                     response = await base
                         .SendAsync(request: request, cancellationToken: cancellationToken)
                         .ConfigureAwait(continueOnCapturedContext: false);
-
+                    
                     if (attempt == RetryHandler.MaxAttempts ||
                         (!response.StatusCode.IsServerFailureRequest() &&
                          response.StatusCode != HttpStatusCode.RequestTimeout &&
                          response.StatusCode != HttpStatusCodeExt.TooManyRequests))
                     {
-                        return response;
+                        break;
                     }
                 }
                 catch (Exception ex)
@@ -78,6 +79,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                     {
                         throw;
                     }
+                }
+
+                if (response != null)
+                {
+                    response.Dispose();
                 }
 
                 await Task.Delay(delay: RetryHandler.GetDelay(attempt), cancellationToken: cancellationToken)

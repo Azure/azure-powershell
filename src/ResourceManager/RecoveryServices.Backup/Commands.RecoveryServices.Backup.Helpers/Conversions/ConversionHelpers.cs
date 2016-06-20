@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new MabContainer(protectionContainer);
                 }
+                else if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectionContainer))
+                {
+                    containerModel = new AzureSqlContainer(protectionContainer);
+                }
             }
 
             return containerModel;
@@ -153,6 +157,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy);
             }
+            else if (serviceClientResponse.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectionPolicy))
+            {
+                if (((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
+                                                                           typeof(ServiceClientModel.SimpleRetentionPolicy))
+                {
+                    Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
+                               ((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
+                    Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
+                    return null;
+                }
+
+                policyModel = new AzureSqlPolicy();
+                AzureSqlPolicy sqlPolicyModel = policyModel as AzureSqlPolicy;
+                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSQLDatabase;
+                sqlPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureSQL;
+                sqlPolicyModel.RetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)
+                                                  ((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy);
+            }
             else
             {
                 // we will enter this case when service supports new workload and customer 
@@ -231,6 +253,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         protectedItem,
                         IdUtils.GetNameFromUri(containerUri),
                         Cmdlets.Models.ContainerType.AzureVM,
+                        policyName);
+                }
+
+                if (protectedItem.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectedItem))
+                {
+                    string policyName = null;
+                    string policyId = ((ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties).PolicyId;
+                    if (!String.IsNullOrEmpty(policyId))
+                    {
+                        Dictionary<UriEnums, string> keyVauleDict =
+                        HelperUtils.ParseUri(policyId);
+                        policyName = HelperUtils.GetPolicyNameFromPolicyId(keyVauleDict, policyId);
+                    }
+
+                    string containerUri = HelperUtils.GetContainerUri(
+                        HelperUtils.ParseUri(protectedItem.Id),
+                        protectedItem.Id);
+
+                    itemModel = new AzureSqlItem(
+                        protectedItem,
+                        IdUtils.GetNameFromUri(containerUri),
+                        Cmdlets.Models.ContainerType.AzureSQL,
                         policyName);
                 }
             }

@@ -68,6 +68,16 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
+            base.ExecuteCmdlet();
+        }
+
+        /// <summary>
         /// Get the server to update
         /// </summary>
         /// <returns>The server being updated</returns>

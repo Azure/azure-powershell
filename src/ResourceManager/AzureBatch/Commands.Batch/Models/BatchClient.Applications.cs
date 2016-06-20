@@ -179,6 +179,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             if (string.IsNullOrEmpty(resourceGroupName))
             {
+                // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
@@ -186,22 +187,44 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (activateOnly)
             {
                 ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.FailedToActivate);
-                return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+            }
+            else
+            {
+                // Else create Application Package and upload.
+                bool appPackageAlreadyExists;
+
+                var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
+
+                if (appPackageAlreadyExists)
+                {
+                    CheckApplicationAllowsUpdates(resourceGroupName, accountName, applicationId, version);
+                }
+
+                UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
+
+                ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.UploadedApplicationButFailedToActivate);
             }
 
-            // Else create Application Package and upload.
-            bool appPackageAlreadyExists;
-
-            // Get storageUrl to upload the application
-            var storageUrl = GetStorageUrl(resourceGroupName, accountName, applicationId, version, out appPackageAlreadyExists);
-
-            // Upload file to application packages
-            UploadFileToApplicationPackage(resourceGroupName, accountName, applicationId, version, filePath, storageUrl, appPackageAlreadyExists);
-
-            // If the application package has been uploaded we activate it.
-            ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.UploadedApplicationButFailedToActivate);
-
             return GetApplicationPackage(resourceGroupName, accountName, applicationId, version);
+        }
+
+        private void CheckApplicationAllowsUpdates(string resourceGroupName, string accountName, string applicationId, string version)
+        {
+            try
+            {
+                PSApplication psApplication = this.GetApplication(resourceGroupName, accountName, applicationId);
+
+                if (psApplication.AllowUpdates == false)
+                {
+                    var allowUpdateErrorMessage = string.Format(Resources.ApplicationDoesNotAllowUpdates, applicationId, version);
+                    throw new NewApplicationPackageException(allowUpdateErrorMessage);
+                }
+            }
+            catch (CloudException exception)
+            {
+                var errorMessage = string.Format(Resources.FailedToCheckApplication, applicationId, version, exception);
+                throw new CloudException(errorMessage, exception);
+            }
         }
 
         private void UploadFileToApplicationPackage(
@@ -232,13 +255,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     {
                         // Need to throw if we fail to delete the application while attempting to clean it up.
                         var deleteMessage = string.Format(Resources.FailedToUploadAndDelete, filePath, exception.Message);
-                        throw new UploadApplicationPackageException(deleteMessage, exception);
+                        throw new NewApplicationPackageException(deleteMessage, exception);
                     }
                 }
 
                 // Need to throw if we fail to upload the file's content.
                 var uploadMessage = string.Format(Resources.FailedToUpload, filePath, exception.Message);
-                throw new UploadApplicationPackageException(uploadMessage, exception);
+                throw new NewApplicationPackageException(uploadMessage, exception);
             }
         }
 
@@ -256,7 +279,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             catch (Exception exception)
             {
                 string message = string.Format(errorMessageFormat, applicationId, version, exception.Message);
-                throw new ActivateApplicationPackageException(message, exception);
+                throw new NewApplicationPackageException(message, exception);
             }
         }
 
@@ -299,7 +322,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             catch (Exception exception)
             {
                 var message = string.Format(Resources.FailedToAddApplicationPackage, applicationId, version, exception.Message);
-                throw new AddApplicationPackageException(message, exception);
+                throw new NewApplicationPackageException(message, exception);
             }
         }
 
