@@ -134,10 +134,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new NotImplementedException();
         }
-
-        public void ExploreRecoveryPoint()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

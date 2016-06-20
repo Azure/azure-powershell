@@ -96,11 +96,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public void ExploreRecoveryPoint()
-        {
-            throw new NotImplementedException();
-        }
-
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
             CmdletModel.AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
