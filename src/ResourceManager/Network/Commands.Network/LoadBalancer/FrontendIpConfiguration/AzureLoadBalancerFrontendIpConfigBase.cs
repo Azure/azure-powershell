@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             if (!ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
             {

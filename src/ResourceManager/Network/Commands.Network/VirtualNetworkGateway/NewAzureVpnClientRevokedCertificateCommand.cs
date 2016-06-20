@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Thumbprint { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             var vpnClientRevokedCertificate = new PSVpnClientRevokedCertificate();
 

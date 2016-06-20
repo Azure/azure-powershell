@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "EnableFloatingIP")]
         public SwitchParameter EnableFloatingIP { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {

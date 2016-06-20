@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Interface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             if (!string.IsNullOrEmpty(this.Name))
             {

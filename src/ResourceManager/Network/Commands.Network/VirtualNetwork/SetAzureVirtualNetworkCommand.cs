@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             if (!this.IsVirtualNetworkPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name))
             {

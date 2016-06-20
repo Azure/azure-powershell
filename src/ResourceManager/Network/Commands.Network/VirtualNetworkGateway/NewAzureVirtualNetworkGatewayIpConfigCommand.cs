@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             // Get the subnetId and publicIpAddressId from the objects if specified
             if (string.Equals(ParameterSetName, "object"))

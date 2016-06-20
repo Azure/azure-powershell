@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Network
         public string PublicCertData { get; set; }
 
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
-            
+            base.ExecuteCmdlet();
 
             if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
             {
