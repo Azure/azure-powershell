@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [Parameter(Position = 2, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
-
         public string ApplicationId { get; set; }
 
         [Parameter(Position = 3, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
