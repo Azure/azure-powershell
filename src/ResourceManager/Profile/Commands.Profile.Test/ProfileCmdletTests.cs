@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
+using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -74,6 +75,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeBeginProcessing();
             Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
             cmdlt.InvokeEndProcessing();
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SelectAzureProfileBadPath()
+        {
+            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
+            cmdlt.Path = "z:\non-existent-path\non-existent-file.ext";
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            Assert.Throws<PSArgumentException>(() => cmdlt.ExecuteCmdlet());
         }
 
         [Fact]

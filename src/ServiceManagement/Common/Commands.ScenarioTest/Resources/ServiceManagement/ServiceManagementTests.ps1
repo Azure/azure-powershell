@@ -18,11 +18,6 @@ Tests Create-AzureVM with valid information.
 #>
 function Test-GetAzureVM
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $tempErrorActionPreference = $ErrorActionPreference;
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
     $location = Get-DefaultLocation
     $imgName = Get-DefaultImage $location
@@ -38,6 +33,7 @@ function Test-GetAzureVM
 
     # Test
     New-AzureService -ServiceName $svcName -Location $location
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
 
     Get-AzureVM -ServiceName $svcName -Name $vmName
@@ -45,7 +41,6 @@ function Test-GetAzureVM
 
     # Cleanup
     Cleanup-CloudService $svcName
-    $ErrorActionPreference = $tempErrorActionPreference;
 }
 
 
@@ -622,48 +617,38 @@ Tests Move-AzureService
 #>
 function Test-MigrateAzureDeployment
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $tempErrorActionPreference = $ErrorActionPreference;
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
-    $location = Get-DefaultLocation
-    $imgName = Get-DefaultImage $location
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
 
-    $storageName = getAssetName
-    New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    Set-CurrentStorageAccountName $storageName;
 
-    Set-CurrentStorageAccountName $storageName
-
-    $vmName = "vm1"
-    $svcName = Get-CloudServiceName
+    $vmName = "vm1";
+    $svcName = Get-CloudServiceName;
 
     # Test
-    New-AzureService -ServiceName $svcName -Location $location
-    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
-
-    Get-AzureVM -ServiceName $svcName -Name $vmName
+    New-AzureService -ServiceName $svcName -Location $location;
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd";
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
-
     Assert-AreEqual "Prepared" $vm.VM.MigrationState;
 
-    Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName;
-
+    try
+    {
+        Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName -ErrorAction Stop;
+    }
+    catch
+    {}
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-AreEqual "CommitFailed" $vm.VM.MigrationState;
 
-    Assert-AreEqual "CommitFailed" $vm.VM.MigrationState
-
-    # Try again
-    #Move-AzureService -Commit -ServiceName $svcName -DeploymentName $svcName;
-    #Get-AzureVM -ServiceName $svcName -Name $vmName;
-
-    # Cleanup
-    Cleanup-CloudService $svcName
-    $ErrorActionPreference = $tempErrorActionPreference;
+    # Cleanup failed because the service is being migrated.
+    #Cleanup-CloudService $svcName
 }
 
 <#
@@ -672,42 +657,33 @@ Tests Move-AzureService with Abort
 #>
 function Test-MigrationAbortAzureDeployment
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $tempErrorActionPreference = $ErrorActionPreference;
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
-    $location = Get-DefaultLocation
-    $imgName = Get-DefaultImage $location
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
 
-    $storageName = getAssetName
-    New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    Set-CurrentStorageAccountName $storageName;
 
-    Set-CurrentStorageAccountName $storageName
-
-    $vmName = "vm1"
-    $svcName = Get-CloudServiceName
+    $vmName = "vm1";
+    $svcName = Get-CloudServiceName;
 
     # Test
-    New-AzureService -ServiceName $svcName -Location $location
-    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
-
-    Get-AzureVM -ServiceName $svcName -Name $vmName
-
-    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
-
+    New-AzureService -ServiceName $svcName -Location $location;
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd";
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
+    Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
     Assert-AreEqual "Prepared" $vm.VM.MigrationState;
 
     Move-AzureService -Abort -ServiceName $svcName -DeploymentName $svcName;
-
-    Get-AzureVM -ServiceName $svcName -Name $vmName;
+    $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
+    Assert-Null $vm.VM.MigrationState;
 
     # Cleanup
-    Cleanup-CloudService $svcName
-    $ErrorActionPreference = $tempErrorActionPreference;
+    Cleanup-CloudService $svcName;
 }
 
 <#
@@ -772,14 +748,52 @@ function Test-MigrationAbortAzureVNet
     Remove-AzureVNetConfig
 }
 
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Commit
+#>
+function Test-MigrateAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Commit -StorageAccountName $storageName;
+	Assert-ThrowsContains { Get-AzureStorageAccount -StorageAccountName $storageName; } "ResourceNotFound";
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureStorageAccount with Prepare and Abort
+#>
+function Test-MigrationAbortAzureStorageAccount
+{
+    # Setup
+	$location = "Central US";
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+	Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Test
+    Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    Move-AzureStorageAccount -Abort -StorageAccountName $storageName;
+    Get-AzureStorageAccount -StorageAccountName $storageName;
+
+    # Cleanup
+    Remove-AzureStorageAccount -StorageAccountName $storageName;
+}
+
 
 function Test-NewAzureVMWithBYOL
 {
-    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
-    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
-    $tempErrorActionPreference = $ErrorActionPreference;
-    $ErrorActionPreference='SilentlyContinue';
-
     # Setup
     $location = "Central US";
     $storageName = "mybyolosimagerdfe";
@@ -831,11 +845,6 @@ function Test-NewAzureVMWithBYOL
     $vm1result = Get-AzureVM -ServiceName $svcName -Name $vm1Name;
     $vm2result = Get-AzureVM -ServiceName $svcName -Name $vm2Name;
 
-    Remove-AzureService -ServiceName $svcName;
-
-    Remove-AzureVMImage -ImageName $imgName;
-
     # Cleanup
     Cleanup-CloudService $svcName
-    $ErrorActionPreference = $tempErrorActionPreference;
 }

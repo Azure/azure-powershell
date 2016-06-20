@@ -131,6 +131,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+
             if (this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(

@@ -16,8 +16,8 @@
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
+           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
         [Fact(Skip = "tenantID NullException")]
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RaUserPermissions()
         {
             User newUser = null;
-            ResourceGroupExtended resourceGroup = null;
+            ResourceGroup resourceGroup = null;
             string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
             string userName = null;
             string userPass = null;
@@ -132,8 +132,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(new ResourceGroupListParameters())
-                                        .ResourceGroups
+                                        .List()
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
