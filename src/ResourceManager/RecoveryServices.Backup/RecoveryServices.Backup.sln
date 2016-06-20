@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
