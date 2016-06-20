@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The model that was passed in</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> model)
         {
-            List<Model.AzureSqlDatabaseBackupLongTermRetentionPolicyModel> newEntity = new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
+            List<Model.AzureSqlDatabaseBackupLongTermRetentionPolicyModel> newEntity = 
+                new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>();
             newEntity.Add(new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
                 ResourceGroupName = ResourceGroupName,

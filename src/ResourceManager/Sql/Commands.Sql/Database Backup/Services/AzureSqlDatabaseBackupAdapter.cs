@@ -186,7 +186,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>A backup vault</returns>
-        internal AzureSqlServerBackupLongTermRetentionVaultModel GetBackupLongTermRetentionVault(string resourceGroup, string serverName)
+        internal AzureSqlServerBackupLongTermRetentionVaultModel GetBackupLongTermRetentionVault(
+            string resourceGroup, 
+            string serverName)
         {
             var baVault = Communicator.GetBackupLongTermRetentionVault(
                 resourceGroup,
