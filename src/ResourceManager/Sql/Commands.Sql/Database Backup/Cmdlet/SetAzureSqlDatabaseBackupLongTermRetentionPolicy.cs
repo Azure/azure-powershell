@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>

@@ -188,7 +188,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>A backup vault</returns>
         internal AzureSqlServerBackupLongTermRetentionVaultModel GetBackupLongTermRetentionVault(string resourceGroup, string serverName)
         {
-            var baVault = Communicator.GetBackupLongTermRetentionVault(resourceGroup, serverName, "RegisteredVault", Util.GenerateTracingId());
+            var baVault = Communicator.GetBackupLongTermRetentionVault(
+                resourceGroup,
+                serverName,
+                "RegisteredVault",
+                Util.GenerateTracingId());
             return new AzureSqlServerBackupLongTermRetentionVaultModel()
             {
                 Location = baVault.Location,
@@ -205,9 +209,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(string resourceGroup, string serverName, string databaseName)
+        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName)
         {
-            var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(resourceGroup, serverName, databaseName, "Default", Util.GenerateTracingId());
+            var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId());
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
                 Location = baPolicy.Location,
@@ -225,9 +237,17 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <returns>A backup vault</returns>
-        internal AzureSqlServerBackupLongTermRetentionVaultModel SetBackupLongTermRetentionVault(string resourceGroup, string serverName, AzureSqlServerBackupLongTermRetentionVaultModel model)
+        internal AzureSqlServerBackupLongTermRetentionVaultModel SetBackupLongTermRetentionVault(
+            string resourceGroup,
+            string serverName,
+            AzureSqlServerBackupLongTermRetentionVaultModel model)
         {
-            var baVault = Communicator.SetBackupLongTermRetentionVault(resourceGroup, serverName, "RegisteredVault", Util.GenerateTracingId(), new BackupLongTermRetentionVaultCreateOrUpdateParameters()
+            var baVault = Communicator.SetBackupLongTermRetentionVault(
+                resourceGroup,
+                serverName,
+                "RegisteredVault",
+                Util.GenerateTracingId(),
+                new BackupLongTermRetentionVaultCreateOrUpdateParameters()
             {
                 Location = model.Location,
                 Properties = new BackupLongTermRetentionVaultProperties()
@@ -251,17 +271,27 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel SetDatabaseBackupLongTermRetentionPolicy(string resourceGroup, string serverName, string databaseName, AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
+        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel SetDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
         {
-            var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(resourceGroup, serverName, databaseName, "Default", Util.GenerateTracingId(), new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
-            {
-                Location = model.Location,
-                Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
+            var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId(),
+                new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
                 {
-                    State = model.State,
-                    RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
-                }
-            });
+                    Location = model.Location,
+                    Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
+                    {
+                        State = model.State,
+                        RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
+                    }
+                });
             return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
             {
                 Location = baPolicy.Location,

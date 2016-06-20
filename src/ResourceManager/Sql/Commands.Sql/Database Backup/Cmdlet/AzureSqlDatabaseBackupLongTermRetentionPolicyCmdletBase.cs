@@ -23,7 +23,8 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase : 
+        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
