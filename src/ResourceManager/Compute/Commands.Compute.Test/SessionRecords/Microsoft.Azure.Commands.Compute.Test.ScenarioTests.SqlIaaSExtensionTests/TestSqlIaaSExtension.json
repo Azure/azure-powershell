@@ -7509,6 +7509,8 @@
     "Names": {
         "Test-SetAzureRmVMSqlServerExtension": [
             "crptestps8058"
+        ], "Test-SetAzureRmVMSqlServerAKVExtension": [
+            "crptestps8058"
         ]
     },
   "Variables": {
