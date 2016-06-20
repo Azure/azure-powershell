@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> ApplyUserInputToModel(
             IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> model)
         {
-            List<Model.AzureSqlServerBackupLongTermRetentionVaultModel> newEntity = new List<AzureSqlServerBackupLongTermRetentionVaultModel>();
+            List<Model.AzureSqlServerBackupLongTermRetentionVaultModel> newEntity = 
+                new List<AzureSqlServerBackupLongTermRetentionVaultModel>();
             newEntity.Add(new AzureSqlServerBackupLongTermRetentionVaultModel()
             {
                 ResourceGroupName = ResourceGroupName,
