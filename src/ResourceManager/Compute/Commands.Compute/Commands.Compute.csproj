@@ -265,7 +265,6 @@
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateKeyVaultCredentialSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateSettings.cs" />
     <Compile Include="Extension\SqlServer\AzureVMSqlServerPublicSettings.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerSettings.cs" />
     <Compile Include="Extension\SqlServer\GetAzureVMSqlServerExtensionCommand.cs" />
     <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoBackupConfig.cs" />
     <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoPatchingConfig.cs" />
