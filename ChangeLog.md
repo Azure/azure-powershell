@@ -1,12 +1,13 @@
 ##2016.07.04 version 1.6.0
 * Azure SQL DB Backup/Restore
   * Cmdlets for LTR (Long Term Retention) backup feature
-	* Get-AzureRmSqlServerBackupArchivalVault
-	* Get-AzureRmSqlDatabaseBackupArchivalPolicy
-	* Set-AzureRmSqlServerBackupArchivalVault
-	* Set-AzureRmSqlDatabaseBackupArchivalPolicy
+	* Get-AzureRmSqlServerBackupLongTermRetentionVault
+	* Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+	* Set-AzureRmSqlServerBackupLongTermRetentionVault
+	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
