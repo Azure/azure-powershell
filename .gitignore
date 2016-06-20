@@ -199,6 +199,5 @@ FakesAssemblies/
 
 .vs/
 /tools/*.dll
-/tools/LocalFeed
 *.GhostDoc.xml
 pingme.txt
