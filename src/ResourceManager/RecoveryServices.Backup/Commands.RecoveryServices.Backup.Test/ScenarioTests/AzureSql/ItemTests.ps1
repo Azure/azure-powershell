@@ -46,11 +46,10 @@ function Test-DisableAzureSqlProtectionScenario
 	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# 4. Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase";
-	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;5b11e11c29b54a038fec648667cf16cc";;
+	Assert-AreEqual $item.Name "dsName;5b11e11c29b54a038fec648667cf16cc";
 
 	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
-	Assert-AreEqual $job.Status "Completed";
 }
 
 function Test-GetAzureSqlRecoveryPointsScenario
