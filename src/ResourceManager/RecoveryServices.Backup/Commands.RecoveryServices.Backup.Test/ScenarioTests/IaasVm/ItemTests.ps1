@@ -145,20 +145,23 @@ function Test-RestoreAzureVMRItemScenario
 function Test-BackupItemScenario
 {
 	# 1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "labRG1" -Name "idcdlslbRSVault";
 
 	# 2. Set the vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "vkencryrestore";
+	Assert-AreEqual $namedContainer.FriendlyName "vkencryrestore";
 
 	# 4: Get the item
 	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	Assert-AreEqual $item.Name "iaasvmcontainerv2;arpittestresourcegroup;vkencryrestore";
+
+	$fixedExpiryDate = Get-Date -Date "2016-06-23 00:00:00"
+	$expiryDate = $fixedExpiryDate.ToUniversalTime()
 
 	# 5: Trigger backup
-	$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item;
+	$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item -ExpiryDateTimeUTC $expiryDate;
 	Assert-NotNull $job;
 }
