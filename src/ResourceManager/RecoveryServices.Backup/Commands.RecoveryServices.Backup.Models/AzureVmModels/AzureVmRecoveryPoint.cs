@@ -46,6 +46,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string SourceVMStorageType { get; set; }
 
         /// <summary>
+        /// ARM ID of the VM represented by the recovery point
+        /// </summary>
+        public string SourceResourceId { get; set; }
+
+        /// <summary>
         /// Identifies whether this recovery point represents an encrypted VM at the time of backup.
         /// </summary>
         public bool EncryptionEnabled { get; set; }

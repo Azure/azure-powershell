@@ -42,5 +42,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// FriendlyName of recovery point
         /// </summary>
         public string FriendlyName { get; set; }
+
+        /// <summary>
+        /// ARM ID of the Azure SQL server represented by the recovery point
+        /// </summary>
+        public string SourceResourceId { get; set; }
     }
 }

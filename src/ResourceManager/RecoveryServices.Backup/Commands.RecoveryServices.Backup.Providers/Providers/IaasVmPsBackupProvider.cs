@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = "";
             string protectedItemUri = "";
             bool isComputeAzureVM = false;
+            string sourceResourceId = null;
 
             if (itemBase == null)
             {
@@ -97,8 +98,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Dictionary<UriEnums, string> keyValueDict =
                     HelperUtils.ParseUri(protectableObjectResource.Id);
                 containerUri = HelperUtils.GetContainerUri(keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(
-                    keyValueDict, protectableObjectResource.Id);
+                protectedItemUri = HelperUtils.GetProtectableItemUri(keyValueDict, protectableObjectResource.Id);
+
+                AzureIaaSVMProtectableItem iaasVmProtectableItem = (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
+                if (iaasVmProtectableItem != null)
+                {
+                    sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
+                }
             }
             else
             {
@@ -109,6 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.Id);
                 containerUri = HelperUtils.GetContainerUri(keyValueDict, item.Id);
                 protectedItemUri = HelperUtils.GetProtectedItemUri(keyValueDict, item.Id);
+                sourceResourceId = item.SourceResourceId;
             }
 
             // construct Service Client protectedItem request
@@ -124,6 +131,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
 
             properties.PolicyId = policy.Id;
+            properties.SourceResourceId = sourceResourceId;
 
             ProtectedItemCreateOrUpdateRequest serviceClientRequest = new ProtectedItemCreateOrUpdateRequest()
             {
@@ -186,6 +194,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 properties.PolicyId = string.Empty;
                 properties.ProtectionState = ItemProtectionState.ProtectionStopped.ToString();
+                properties.SourceResourceId = item.SourceResourceId;
 
                 ProtectedItemCreateOrUpdateRequest serviceClientRequest = new ProtectedItemCreateOrUpdateRequest()
                 {
