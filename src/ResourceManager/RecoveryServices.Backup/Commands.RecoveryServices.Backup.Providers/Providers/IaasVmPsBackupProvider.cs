@@ -264,7 +264,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(containerUri, protectedItemName, recoveryPointId);
-            return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+
+            var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+
+            string keyFileDownloadLocation = (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
+            if (!string.IsNullOrEmpty(keyFileDownloadLocation))
+            {
+                string absoluteFilePath = System.IO.Path.Combine(keyFileDownloadLocation, "key.blob");
+                System.IO.File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(((AzureVmRecoveryPoint)rp).KeyAndSecretDetails.KeyBackupData));
+            }
+
+            return rp;
         }
 
         /// <summary>

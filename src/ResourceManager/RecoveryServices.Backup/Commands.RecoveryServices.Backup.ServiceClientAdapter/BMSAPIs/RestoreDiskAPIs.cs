@@ -13,13 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -76,10 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
                     SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
                     SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
-                };
-
-                // TODO: Handle file name
-                File.WriteAllBytes("key.blob", Convert.FromBase64String(rp.KeyAndSecretDetails.KeyBackupData));                
+                };              
             }
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();

@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ILRConnect = "Initiate an iCSCI connection for file folder restore";
             public const string ILRExtend = "Extend the existing iCSCI connection for file folder restore";
             public const string ILRTerminate = "Terminate the existing iCSCI connection for file folder restore";
+            public const string KeyFileDownloadLocation = "Location where the key file should be downloaded in the case of encrypted VMs.";
         }
 
         internal static class RestoreDisk
