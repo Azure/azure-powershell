@@ -82,34 +82,34 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateSet(Constants.ForDownTime, Constants.ForSynchronization)]
         public string Optimize { get; set; }
 
         /// <summary>
         /// Gets or sets the recovery vm creation value.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateSet(Constants.Yes, Constants.No)]
         public string CreateVmIfNotFound { get; set; }
 
         /// <summary>
         /// Gets or sets hyper-V server to create vm on.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         public ASRServer Server { get; set; }
 
         /// <summary>
         /// Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
         /// Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionSecondaryCertFile { get; set; }
 
