@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary> 
         /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB, long term retention backup, etc.)
         /// </summary>
+        [Alias("Id")]
         [Parameter(Mandatory = true,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The resource ID of the database to restore.")]
