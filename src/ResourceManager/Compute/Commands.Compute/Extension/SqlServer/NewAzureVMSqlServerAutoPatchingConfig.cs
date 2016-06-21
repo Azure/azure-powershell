@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet(
          VerbsCommon.New,
-         AzureVMSqlServerAutoPatchingConfigNoun),
+         AzureVMSqlServerAutoPatchingConfigNoun,
+         SupportsShouldProcess = true),
      OutputType(
          typeof(AutoPatchingSettings))]
     public class NewAzureVMSqlServerAutoPatchingConfigCommand : PSCmdlet
