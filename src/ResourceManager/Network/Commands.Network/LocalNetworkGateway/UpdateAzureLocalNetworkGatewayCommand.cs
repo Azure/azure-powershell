@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (!this.IsLocalNetworkGatewayPresent(this.LocalNetworkGateway.ResourceGroupName, this.LocalNetworkGateway.Name))
             {
