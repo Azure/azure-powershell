@@ -747,9 +747,9 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         /// <summary>
         ///   Looks up a localized string similar to When uploading a new application package, you must specify a value for the FilePath parameter..
         /// </summary>
-        internal static string NewAppPackageNoPathSpecified {
+        internal static string NewApplicationPackageNoPathSpecified {
             get {
-                return ResourceManager.GetString("NewAppPackageNoPathSpecified", resourceCulture);
+                return ResourceManager.GetString("NewApplicationPackageNoPathSpecified", resourceCulture);
             }
         }
         

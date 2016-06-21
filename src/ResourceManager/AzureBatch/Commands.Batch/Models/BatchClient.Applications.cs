@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 if (string.IsNullOrEmpty(filePath))
                 {
-                    throw new ArgumentNullException("filePath", Resources.NewAppPackageNoPathSpecified);
+                    throw new ArgumentNullException("filePath", Resources.NewApplicationPackageNoPathSpecified);
                 }
 
                 if (!File.Exists(filePath))
