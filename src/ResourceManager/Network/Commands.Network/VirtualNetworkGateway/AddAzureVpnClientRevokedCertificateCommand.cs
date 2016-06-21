@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Commands.Network
         public string Thumbprint { get; set; }
 
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
             {
