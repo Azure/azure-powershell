@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Database backup archival policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy",
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low)]
     public class SetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -84,9 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupLongTermRetentionPolicyModel> entity)
         {
-            return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>() {
-                ModelAdapter.SetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
-            };
+            if (ShouldProcess(DatabaseName))
+            {
+                return new List<AzureSqlDatabaseBackupLongTermRetentionPolicyModel>() {
+                    ModelAdapter.SetDatabaseBackupLongTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
