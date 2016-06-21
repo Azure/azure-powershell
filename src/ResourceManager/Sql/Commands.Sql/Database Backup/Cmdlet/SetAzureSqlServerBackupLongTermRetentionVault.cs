@@ -24,7 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// <summary>
     /// Cmdlet to create or update a new Azure Sql Server backup archival vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupLongTermRetentionVault")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupLongTermRetentionVault",
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.Low)]
     public class SetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
@@ -76,9 +78,16 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(
             IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
         {
-            return new List<AzureSqlServerBackupLongTermRetentionVaultModel>() {
-                ModelAdapter.SetBackupLongTermRetentionVault(this.ResourceGroupName, this.ServerName, entity.First())
-            };
+            if (ShouldProcess(ServerName))
+            {
+                return new List<AzureSqlServerBackupLongTermRetentionVaultModel>() {
+                    ModelAdapter.SetBackupLongTermRetentionVault(this.ResourceGroupName, this.ServerName, entity.First())
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
