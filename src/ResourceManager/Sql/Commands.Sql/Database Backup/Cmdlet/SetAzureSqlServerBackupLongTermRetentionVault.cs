@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Resource ID of the Backup Long Term Retention Vault.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id")]
         public string ResourceId { get; set; }
 
         /// <summary>
