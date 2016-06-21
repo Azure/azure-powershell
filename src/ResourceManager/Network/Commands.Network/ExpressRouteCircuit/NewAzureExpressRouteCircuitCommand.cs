@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.Network
 
         private PSExpressRouteCircuit CreateExpressRouteCircuit()
         {
+            base.Execute();
             var circuit = new PSExpressRouteCircuit();
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;

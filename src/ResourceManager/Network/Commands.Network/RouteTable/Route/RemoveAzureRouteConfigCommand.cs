@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
 
             // Verify if the route exists in the RouteTable
             var route = this.RouteTable.Routes.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));

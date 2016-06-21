@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var lbRule = this.LoadBalancer.LoadBalancingRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (lbRule != null)

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
 
             var routes = this.RouteTable.Routes;
 

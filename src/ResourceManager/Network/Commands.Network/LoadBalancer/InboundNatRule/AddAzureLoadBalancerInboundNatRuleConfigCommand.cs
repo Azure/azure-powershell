@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var existingInboundNatRule = this.LoadBalancer.InboundNatRules.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingInboundNatRule != null)

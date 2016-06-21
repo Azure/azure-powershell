@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            base.Execute();
             var authorization = new PSExpressRouteCircuitAuthorization();
 
             authorization.Name = this.Name;

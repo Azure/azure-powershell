@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            base.Execute();
             if (this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(

@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

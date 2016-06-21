@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var loadBalancingRule = new PSLoadBalancingRule();
             loadBalancingRule.Name = this.Name;
             loadBalancingRule.Protocol = this.Protocol;

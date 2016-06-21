@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            base.Execute();
             this.Location = this.Location.Replace(" ", string.Empty);
             var result = this.NetworkClient.NetworkManagementClient.CheckDnsNameAvailability(this.Location, this.DomainNameLabel);
             WriteObject(result.Available);

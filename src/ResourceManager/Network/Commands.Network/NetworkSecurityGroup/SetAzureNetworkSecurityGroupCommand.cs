@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
 
             if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
             {

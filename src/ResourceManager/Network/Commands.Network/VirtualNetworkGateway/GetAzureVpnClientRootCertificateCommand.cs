@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
             var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
 
             if (!string.IsNullOrEmpty(this.VpnClientRootCertificateName))

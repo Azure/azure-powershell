@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var vpnClientRevokedCertificate = new PSVpnClientRevokedCertificate();
 
             vpnClientRevokedCertificate.Name = this.Name;
