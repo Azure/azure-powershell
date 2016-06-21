@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest
 {
@@ -37,11 +36,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest
                 }
                 catch (Exception)
                 {
-                    if (++tries < maxTries)
-                    {
-                        TestMockSupport.Delay(TimeSpan.FromSeconds(1));
-                    }
-                    else
+                    if (++tries >= maxTries)
                     {
                         throw;
                     }
