@@ -21,9 +21,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private GetAzureAutomationHybridWorkerGroup cmdlet;
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetupTest()
+        
+        public GetAzureAutomationHybridWorkerGroupTest()
         {
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
