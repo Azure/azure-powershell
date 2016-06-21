@@ -72,62 +72,76 @@ namespace StaticAnalysis.SignatureVerifier
                                 var cmdlets = proxy.GetCmdlets(cmdletFile);
                                 foreach (var cmdlet in cmdlets)
                                 {
-                                    string description = null;
-                                    int problemId = 0;
-                                    string remediation = "Determine if the cmdlet should implement ShouldProcess, and " +
+                                    string defaultRemediation = "Determine if the cmdlet should implement ShouldProcess, and " +
                                                           "if so, determine if it should implement Force / ShouldContinue";
-                                    
-                                    int severity = int.MaxValue;
-
                                     if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
                                     {
-                                        problemId = ForceWithoutShouldProcessAttribute;
-                                        description = string.Format("{0} Has  -Force parameter but does not set the SupportsShouldProcess " +
-                                                                    "property to true in the Cmdlet attribute.", cmdlet.Name);
+                                        issueLogger.LogSignatureIssue(
+                                           cmdlet: cmdlet, 
+                                           severity: 0,
+                                        problemId: ForceWithoutShouldProcessAttribute,
+                                        description: string.Format("{0} Has  -Force parameter but does not set the SupportsShouldProcess " +
+                                                                    "property to true in the Cmdlet attribute.", cmdlet.Name),
+                                        remediation: defaultRemediation);
                                     }
 
                                     if (!cmdlet.SupportsShouldProcess && cmdlet.ConfirmImpact != ConfirmImpact.Medium)
                                     {
-                                        problemId = ConfirmLeveleWithNoShouldProcess;
-                                        description =
+                                        issueLogger.LogSignatureIssue(
+                                           cmdlet: cmdlet, 
+                                           severity:  0,
+                                        problemId: ConfirmLeveleWithNoShouldProcess,
+                                        description:
                                             string.Format("{0} Changes the ConfirmImpact but does not set the " +
-                                                          "SupportsShouldProcess property to true in the cmdlet attribute.",
-                                                cmdlet.Name);
+                                                "SupportsShouldProcess property to true in the cmdlet attribute.",
+                                                cmdlet.Name),
+                                        remediation: defaultRemediation);
 
                                     }
 
                                     if (!cmdlet.SupportsShouldProcess && cmdlet.IsShouldProcessVerb)
                                     {
-                                        problemId = ActionIndicatesShouldProcess;
-                                        description =
-                                            string.Format(
-                                                "{0} Does not support ShouldProcess, but the cmdlet verb {1} indicates that it should.",
-                                                cmdlet.Name, cmdlet.VerbName);
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                            problemId: ActionIndicatesShouldProcess,
+                                            description:
+                                                string.Format(
+                                                    "{0} Does not support ShouldProcess, but the cmdlet verb {1} indicates that it should.",
+                                                    cmdlet.Name, cmdlet.VerbName),
+                                            remediation: defaultRemediation);
 
                                     }
 
                                     if (cmdlet.ConfirmImpact != ConfirmImpact.Medium)
                                     {
-                                        problemId = ConfirmLevelChange;
-                                        description = string.Format("{0} changes the confirm impact.  Please ensure that the " +
-                                                                    "change in ConfirmImpact is justified", cmdlet.Name);
-                                        remediation =
+                                        issueLogger.LogSignatureIssue(
+                                           cmdlet: cmdlet, 
+                                           severity: 1,
+                                        problemId: ConfirmLevelChange,
+                                        description: 
+                                        string.Format("{0} changes the confirm impact.  Please ensure that the " +
+                                            "change in ConfirmImpact is justified", cmdlet.Name),
+                                        remediation:
                                             "Verify that ConfirmImpact is changed appropriately by the cmdlet. " +
-                                            "It is very rare for a cmdlet to change the ConfirmImpact.";
+                                            "It is very rare for a cmdlet to change the ConfirmImpact.");
                                     }
 
                                     if (cmdlet.IsShouldContinueVerb && !cmdlet.HasForceSwitch)
                                     {
-                                        problemId = CmdletWithDestructiveVerbNoForce;
-                                        description =
+                                        issueLogger.LogSignatureIssue(
+                                           cmdlet: cmdlet, 
+                                           severity: 1,
+                                        problemId: CmdletWithDestructiveVerbNoForce,
+                                        description:
                                             string.Format(
                                                 "{0} does not have a Force parameter, but the cmdlet verb '{1}' " +
                                                 "indicates that it may perform destrucvie actions under certain " +
                                                 "circumstances. Consider wehtehr the cmdlet should have a Force " +
                                                 "parameter anduse ShouldContinue under some circumstances. ",
-                                                cmdlet.Name, cmdlet.VerbName);
-                                        remediation = "Consider wehtehr the cmdlet should have a Force " +
-                                                      "parameter and use ShouldContinue under some circumstances. ";
+                                                cmdlet.Name, cmdlet.VerbName),
+                                        remediation: "Consider wehtehr the cmdlet should have a Force " +
+                                                      "parameter and use ShouldContinue under some circumstances. ");
 
                                     }
 
@@ -135,31 +149,26 @@ namespace StaticAnalysis.SignatureVerifier
 
                                     if (cmdlet.IsShouldContinueVerb)
                                     {
-                                        problemId = CmdletWithDestructiveVerb;
-                                        description = string.Format(
+                                        issueLogger.LogSignatureIssue(
+                                           cmdlet: cmdlet, 
+                                           problemId:  CmdletWithDestructiveVerb,
+                                           description:  string.Format(
                                             "[Temporary]: {0} uses a destructive verb.  Check to see if the cmdlet " +
-                                            "implements Confirmation correctly.", cmdlet.Name);
+                                            "implements Confirmation correctly.", cmdlet.Name),
+                                           remediation: defaultRemediation,
+                                            severity: 1);
                                     }
 
                                     if (cmdlet.HasForceSwitch)
                                     {
-                                        problemId = CmdletWithForceParameter;
-                                        description = string.Format(
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            description:  string.Format(
                                             "[Temporary]: {0} has a Force switch.  Check to see if the cmdlet " +
-                                            "implements Confirmation correctly.", cmdlet.Name);
-                                    }
-
-
-                                    if (problemId > 0)
-                                    {
-                                        issueLogger.LogRecord(new SignatureIssue
-                                        {
-                                            ClassName = cmdlet.ClassName,
-                                            Target = cmdlet.Name,
-                                            Description = description,
-                                            Remediation = remediation,
-                                            Severity = severity
-                                        });
+                                            "implements Confirmation correctly.", cmdlet.Name),
+                                            remediation: defaultRemediation,
+                                            severity: 1,
+                                            problemId: CmdletWithForceParameter);
                                     }
                                 }
 
@@ -174,5 +183,21 @@ namespace StaticAnalysis.SignatureVerifier
             }
         }
 
+    }
+    public static class LogExtensions
+    {
+        public static void LogSignatureIssue(this ReportLogger<SignatureIssue> issueLogger, CmdletSignatureMetadata cmdlet, 
+            string description, string remediation, int severity, int problemId)
+        {
+            issueLogger.LogRecord(new SignatureIssue
+            {
+                ClassName = cmdlet.ClassName,
+                Target = cmdlet.Name,
+                Description = description,
+                Remediation = remediation,
+                Severity = severity,
+                ProblemId = problemId
+            });
+        }
     }
 }
