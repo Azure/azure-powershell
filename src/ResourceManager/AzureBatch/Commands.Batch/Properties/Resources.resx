@@ -442,7 +442,7 @@
   <data name="FileNotFound" xml:space="preserve">
     <value>File not found {0}.</value>
   </data>
-  <data name="NewAppPackageNoPathSpecified" xml:space="preserve">
+  <data name="NewApplicationPackageNoPathSpecified" xml:space="preserve">
     <value>When uploading a new application package, you must specify a value for the FilePath parameter.</value>
   </data>
   <data name="FailedToUpload" xml:space="preserve">
