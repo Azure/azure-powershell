@@ -362,25 +362,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,
-            CancellationToken cmdletCancellationToken, int threadCount = -1, bool overwrite = false, bool resume = false,
-            bool isBinary = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
+            CancellationToken cmdletCancellationToken, int threadCount = 10, bool overwrite = false, bool resume = false,
+            bool isBinary = false, bool isDownload = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
             FileType ignoredType;
-            if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
+            if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
             {
                 throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
             }
 
-            //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
-            // default the number of threads to use to the processor count
             if (threadCount < 1)
             {
-                threadCount = Environment.ProcessorCount;
+                threadCount = 10; // 10 is the default per our documentation.
             }
 
             // Progress bar indicator.
-            var description = string.Format("Copying File: {0} to DataLakeStore Location: {1} for account: {2}",
-                sourcePath, destinationPath, accountName);
+            var description = string.Format("Copying {0} File: {1} {2} Location: {3} for account: {4}",
+                isDownload ? "Data Lake Store" : "Local",
+                sourcePath, 
+                isDownload ? "to local" : "to Data Lake Store",
+                destinationPath, accountName);
             var progress = new ProgressRecord(
                 uniqueActivityIdGenerator.Next(0, 10000000),
                 "Upload to DataLakeStore Store",
@@ -405,7 +406,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             };
 
             var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                isOverwrite: overwrite, isResume: resume, isBinary: isBinary);
+                isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isDownload: isDownload);
             var uploader = new DataLakeStoreUploader(uploadParameters,
                 new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
                 cmdletCancellationToken,
@@ -448,10 +449,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             bool resume = false,
             bool forceBinaryOrText = false,
             bool isBinary = false,
+            bool isDownload = false,
             Cmdlet cmdletRunningRequest = null)
         {
-            var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive);
-            var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive);
+            var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
+            var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
 
             var progress = new ProgressRecord(
                 uniqueActivityIdGenerator.Next(0, 10000000),
@@ -488,7 +490,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 };
 
                 var uploadParameters = new UploadParameters(sourceFolderPath, destinationFolderPath, accountName, internalFileThreads, internalFolderThreads,
-                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive);
+                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive, isDownload: isDownload);
                 var uploader = new DataLakeStoreUploader(uploadParameters,
                     new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
                     cmdletCancellationToken,
@@ -533,54 +535,101 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// Gets the file count in directory.
         /// </summary>
         /// <param name="directory">The directory.</param>
-        /// <param name="recursive">
-        /// if set to <c>true</c> gets the count of all files underneath a directory and all
-        /// subdirectories.
-        /// </param>
-        /// <param name="byteCount">The byte count.</param>
+        /// <param name="recursive">if set to <c>true</c> gets the count of all files underneath a directory and all
+        /// subdirectories.</param>
+        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
+        /// <param name="accountName">Name of the account.</param>
         /// <returns>
         /// the total number of files in a directory
         /// </returns>
-        private int GetFileCountInDirectory(string directory, bool recursive)
+        private int GetFileCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
         {
-            directory = directory.TrimEnd('\\');
-            directory += "\\";
             var count = 0;
-            foreach (var entry in Directory.GetFileSystemEntries(directory))
+            if (!isDownload)
             {
-                if (Directory.Exists(entry))
+                directory = directory.TrimEnd('\\');
+                directory += "\\";
+                foreach (var entry in Directory.GetFileSystemEntries(directory))
                 {
-                    if (recursive)
+                    if (Directory.Exists(entry))
                     {
-                        count += GetFileCountInDirectory(entry, true);
+                        if (recursive)
+                        {
+                            count += GetFileCountInDirectory(entry, true, false, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count++;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
                 {
-                    count++;
+                    if (entry.Type == FileType.DIRECTORY)
+                    {
+                        if (recursive)
+                        {
+                            count += GetFileCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count ++;
+                    }
                 }
             }
 
             return count;
         }
 
-        private long GetByteCountInDirectory(string directory, bool recursive)
+        /// <summary>
+        /// Gets the byte count in directory.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
+        /// <param name="recursive">if set to <c>true</c> [recursive].</param>
+        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
+        /// <param name="accountName">Name of the account.</param>
+        /// <returns>The total byte count of the directory</returns>
+        private long GetByteCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
         {
-            directory = directory.TrimEnd('\\');
-            directory += "\\";
             long count = 0;
-            foreach (var entry in Directory.GetFileSystemEntries(directory))
+            if (!isDownload)
             {
-                if (Directory.Exists(entry))
+                directory = directory.TrimEnd('\\');
+                directory += "\\";
+                foreach (var entry in Directory.GetFileSystemEntries(directory))
                 {
-                    if (recursive)
+                    if (Directory.Exists(entry))
                     {
-                        count += GetByteCountInDirectory(entry, true);
+                        if (recursive)
+                        {
+                            count += GetByteCountInDirectory(entry, true, false, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count += new FileInfo(entry).Length;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
                 {
-                    count += new FileInfo(entry).Length;
+                    if (entry.Type == FileType.DIRECTORY)
+                    {
+                        if (recursive)
+                        {
+                            count += GetByteCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count += entry.Length.GetValueOrDefault();
+                    }
                 }
             }
 

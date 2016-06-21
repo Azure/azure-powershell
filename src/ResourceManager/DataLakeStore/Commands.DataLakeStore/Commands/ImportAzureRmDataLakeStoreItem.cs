@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     ConcurrentFileCount,
                     Recurse,
                     Force,
-                    Resume, ForceBinary, ForceBinary, this);
+                    Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);
             }
             else if (File.Exists(powerShellSourcePath))
             {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Force,
                     Resume,
                     ForceBinary,
-                    this);
+                    cmdletRunningRequest: this);
             }
             else
             {

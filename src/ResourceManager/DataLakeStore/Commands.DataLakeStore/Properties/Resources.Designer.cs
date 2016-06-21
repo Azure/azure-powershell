@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not a file. This cmdlet can only export individual files that exist in ADL.
+        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not accessible. Please check the path and permission..
         /// </summary>
         internal static string InvalidExportPathType {
             get {
