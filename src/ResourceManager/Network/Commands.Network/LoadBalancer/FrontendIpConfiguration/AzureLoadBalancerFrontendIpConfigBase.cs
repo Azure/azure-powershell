@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
-
+            base.Execute();
             if (!ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
             {
                 if (this.Subnet != null)

@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
+            base.Execute();
             if (!this.IsExpressRouteCircuitPresent(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

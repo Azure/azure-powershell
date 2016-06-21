@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
 
             var frontendIpConfig = new PSFrontendIPConfiguration();
             frontendIpConfig.Name = this.Name;

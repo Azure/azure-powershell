@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var probe = new PSProbe();
             probe.Name = this.Name;
             probe.Port = this.Port;

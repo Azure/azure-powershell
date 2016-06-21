@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var rule = new PSSecurityRule();
 
             rule.Name = this.Name;

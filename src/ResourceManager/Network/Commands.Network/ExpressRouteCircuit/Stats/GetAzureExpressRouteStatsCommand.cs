@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.Network
         public string PeeringType { get; set; }		
 		
         public override void Execute()		
-        {		
+        {
+            base.Execute();
             if (string.IsNullOrEmpty(PeeringType))		
             {		
                 var stats = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.GetStats(		

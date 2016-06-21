@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var inboundNatPool = new PSInboundNatPool();
             inboundNatPool.Name = this.Name;
             inboundNatPool.Protocol = this.Protocol;

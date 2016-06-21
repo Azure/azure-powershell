@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.Network
         }
         public virtual void Execute()
         {
-            return;
         }
 
         public static string GetResourceGroup(string resourceId)

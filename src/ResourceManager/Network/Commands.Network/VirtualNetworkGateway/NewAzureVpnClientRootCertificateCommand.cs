@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             var vpnClientRootCertificate = new PSVpnClientRootCertificate();
             vpnClientRootCertificate.Name = this.Name;
             vpnClientRootCertificate.PublicCertData = this.PublicCertData;

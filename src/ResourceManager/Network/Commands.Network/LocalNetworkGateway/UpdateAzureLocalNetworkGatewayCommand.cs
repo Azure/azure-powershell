@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             if (!this.IsLocalNetworkGatewayPresent(this.LocalNetworkGateway.ResourceGroupName, this.LocalNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

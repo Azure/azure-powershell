@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name, this.ExpandResource);

@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
 
+            base.Execute();
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
