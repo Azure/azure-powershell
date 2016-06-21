@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
@@ -25,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -32,7 +38,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
-
+        const string guid1 = "a0cc8bd7-2c6a-47e9-a4c4-3f6ed136e240";
+        const string guid2 = "eab635c0-a35a-4f70-9e46-e5351c7b5c8b";
+        const string guid3 = "52f66548-2550-417b-941e-9d6e04f3ac8d";
+        const string guid4 = "40e67ee2-1a1a-4517-9253-ab6f93c5710f";
         public ContextCmdletTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
@@ -78,8 +87,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var existingTenants = account.GetProperty(AzureAccount.Property.Tenants);
             var allowedTenants = existingTenants == null ? tenantToSet : existingTenants + "," + tenantToSet;
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
+            account.SetProperty(AzureAccount.Property.Subscriptions, new string[0]);
 
-            ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters())["TenantId"].Value = tenantToSet;
+            var paramDictionary =
+                ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters());
+            var tenantParam = paramDictionary["TenantId"];
+            Assert.True(tenantParam.Attributes.Any(a => a is ValidateSetAttribute 
+              && ((ValidateSetAttribute)a).ValidValues.Any(v => string.Equals(v, tenantToSet, StringComparison.OrdinalIgnoreCase))));
+            Assert.False(paramDictionary["SubscriptionId"].Attributes.Any(a => a is ValidateSetAttribute));
+            tenantParam.Value = tenantToSet;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -92,6 +108,50 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // TenantId is not sufficient to change the context.
             Assert.NotEqual(tenantToSet, context.Tenant.TenantId);
+        }
+
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData(new string[0], new string[0])]
+        [InlineData(new string[] { guid1}, new string[] {guid2})]
+        [InlineData(new string[] { guid1, guid2 }, new string[] { guid3, guid4 })]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetsDynamicParametersForContext(string[] subscriptions, string[] tenants)
+        {
+            var cmdlt = new SetAzureRMContextCommand();
+
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Make sure that the tenant ID we are attempting to set is
+            // valid for the account
+            var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
+            account.SetProperty(AzureAccount.Property.Tenants, tenants);
+            account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions);
+
+            var paramDictionary =
+                ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters());
+            var subscriptionParams = paramDictionary["SubscriptionId"];
+            VerifyValidationAttribute(subscriptionParams, subscriptions);
+            var tenantParams = paramDictionary["TenantId"];
+            VerifyValidationAttribute(tenantParams, tenants);
+        }
+
+        private void VerifyValidationAttribute(RuntimeDefinedParameter parameter, string[] expectedValues)
+        {
+            if (expectedValues != null && expectedValues.Length > 0)
+            {
+                var validateAttribute = parameter.Attributes.First(a => a is ValidateSetAttribute) as ValidateSetAttribute;
+                Assert.NotNull(validateAttribute);
+                foreach (var expectedValue in expectedValues)
+                {
+                    Assert.Contains(expectedValue, validateAttribute.ValidValues, StringComparer.OrdinalIgnoreCase);
+                }
+            }
+            else
+            {
+                Assert.False(parameter.Attributes.Any(a => a is ValidateSetAttribute));
+            }
         }
 
         [Fact]
@@ -113,5 +173,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.NotNull(context);
         }
+
+
     }
 }
