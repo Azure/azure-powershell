@@ -88,6 +88,7 @@
       <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
       <XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
+	  <XUnitTests Include=".\src\ResourceManager\HDInsight\Commands.HDInsight.Test\bin\Debug\Commands.HDInsight.Test.dll"/>
       <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
