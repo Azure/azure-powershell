@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
         [ValidateNotNullOrEmpty]
-        public Guid GroupObjectId { get; set; }
+        public string GroupObjectId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {
-                Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
+                Id = GroupObjectId,
                 Paging = true
             };
 

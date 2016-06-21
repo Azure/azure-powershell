@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
                   HelpMessage = "The service principal object id.")]
         [Alias("PrincipalId")]
-        public Guid ObjectId { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
               string.Format(ProjectResources.RemovingServicePrincipal, ObjectId),
               ProjectResources.RemoveServicePrincipal,
               null,
-              () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
+              () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId));
 
             if (PassThru)
             {

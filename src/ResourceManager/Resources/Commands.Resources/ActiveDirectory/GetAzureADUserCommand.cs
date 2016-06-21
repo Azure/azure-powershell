@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The user UPN.")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 SearchString = SearchString,
                 UPN = UserPrincipalName,
-                Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                Id = ObjectId,
                 Paging = true,
                 Mail = Mail
             };
