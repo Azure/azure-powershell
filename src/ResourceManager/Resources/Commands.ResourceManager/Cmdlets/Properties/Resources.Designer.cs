@@ -493,6 +493,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Operation failed because a request timed out..
+        /// </summary>
+        internal static string OperationFailedWithTimeOut {
+            get {
+                return ResourceManager.GetString("OperationFailedWithTimeOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To get all operations under {0}, please specify the search string as {0}/*..
         /// </summary>
         internal static string OperationSearchStringInvalidProviderName {
