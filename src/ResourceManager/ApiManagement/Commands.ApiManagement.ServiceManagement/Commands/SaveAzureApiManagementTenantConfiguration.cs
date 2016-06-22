@@ -60,8 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SaveTenantConfigurationWarning, Branch);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))
