@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private readonly DataLakeStoreFileSystemManagementClient _client;
         private readonly Random uniqueActivityIdGenerator;
+        private const int MaxConnectionLimit = 1000;
 
         #region Constructors
 
@@ -57,6 +58,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, true);
 
             uniqueActivityIdGenerator = new Random();
+
+            // We need to override the default .NET value for max connections to a host to our number of threads, if necessary.
+            // Otherwise we won't achieve the parallelism we want.
+            // This is also required before the first call on the data lake store client.
+            ServicePointManager.DefaultConnectionLimit = Math.Max(MaxConnectionLimit,
+                ServicePointManager.DefaultConnectionLimit);
         }
 
         #endregion

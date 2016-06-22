@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
+using System;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
