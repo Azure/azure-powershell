@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateGuidNotEmpty]
+        [ValidateNotNullOrEmpty]
         [Alias("Id", "PrincipalId")]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
             HelpMessage = "The user SignInName.")]
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Resources
                 {
                     UPN = SignInName,
                     SPN = ServicePrincipalName,
-                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Id = ObjectId
                 },
                 ResourceIdentifier = new ResourceIdentifier()
                 {
