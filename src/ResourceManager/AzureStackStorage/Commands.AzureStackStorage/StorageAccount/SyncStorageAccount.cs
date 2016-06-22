@@ -72,7 +72,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false, Position = 9)]
+        [Parameter(Mandatory = false)]
         public string ResourceAdminApiVersion { get; set; }
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";

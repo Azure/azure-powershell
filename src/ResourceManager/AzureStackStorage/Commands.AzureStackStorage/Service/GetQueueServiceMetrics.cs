@@ -47,19 +47,19 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         ///     start time
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public DateTime StartTime { get; set; }
 
         /// <summary>
         ///     end time
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 6)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public DateTime EndTime { get; set; }
 
         /// <summary>
         ///     time grain
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 7)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public TimeGrain TimeGrain { get; set; }
 
         /// <summary>
