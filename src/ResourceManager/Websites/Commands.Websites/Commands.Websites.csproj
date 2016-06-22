@@ -163,6 +163,7 @@
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupList.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SwapAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
@@ -187,6 +188,7 @@
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
+    <Compile Include="Utilities\SwapWithPreviewAction.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
