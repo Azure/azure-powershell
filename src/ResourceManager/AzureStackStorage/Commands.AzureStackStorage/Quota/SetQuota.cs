@@ -48,14 +48,14 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         ///     Number of Storage Accounts for this quota
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int NumberOfStorageAccounts { get; set; }
 
         /// <summary>
         ///   Capacity for this quota  
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public int CapacityInGB { get; set; }
 

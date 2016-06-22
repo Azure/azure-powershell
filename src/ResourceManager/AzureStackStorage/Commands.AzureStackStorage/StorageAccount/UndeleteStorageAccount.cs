@@ -64,7 +64,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         /// <summary>
         /// Specifies the Microsoft.Resource.Admin apiVersion
         /// </summary>
-        [Parameter(Mandatory = false, Position = 8)]
+        [Parameter(Mandatory = false)]
         public string ResourceAdminApiVersion { get; set; }
 
         protected override void Execute()
