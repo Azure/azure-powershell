@@ -19,9 +19,9 @@
 function Test-ListStretchDatabaseRestorePoints
 {
 	# Setup
-	$location = "Japan East"
+	$location = Get-ProviderLocation "Microsoft.Sql/servers"
 	$serverVersion = "12.0";
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 
 	try
 	{

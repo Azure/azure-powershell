@@ -18,7 +18,8 @@
 #>
 function Test-CreateStretchDatabase
 {
-	Test-CreateDatabaseInternal "12.0" "Southeast Asia"
+	$rplocation = Get-ProviderLocation "Microsoft.Sql/servers"
+	Test-CreateDatabaseInternal "12.0" $rplocation
 }
 
 <#
@@ -28,7 +29,7 @@ function Test-CreateStretchDatabase
 function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 
 	try
@@ -57,7 +58,8 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 #>
 function Test-UpdateStretchDatabase
 {
-	Test-UpdateDatabaseInternal "12.0" "Southeast Asia"
+	$rplocation = Get-ProviderLocation "Microsoft.Sql/servers"
+	Test-UpdateDatabaseInternal "12.0" $rplocation
 }
 
 <#
@@ -67,7 +69,7 @@ function Test-UpdateStretchDatabase
 function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 {
 	# Setup
-		$rg = Create-ResourceGroupForTest
+		$rg = Create-ResourceGroupForTest $location
 		$server = Create-ServerForTest $rg $serverVersion $location
 	try {
 		# Create stretch database
@@ -99,7 +101,8 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 #>
 function Test-GetStretchDatabase
 {
-	Test-GetDatabaseInternal "12.0" "Southeast Asia"
+	$rplocation = Get-ProviderLocation "Microsoft.Sql/servers"
+	Test-GetDatabaseInternal "12.0" $rplocation
 }
 
 <#
@@ -109,7 +112,7 @@ function Test-GetStretchDatabase
 function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 
 	try
@@ -142,7 +145,8 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 #>
 function Test-RemoveStretchDatabase
 {
-	Test-RemoveDatabaseInternal "12.0" "Southeast Asia"
+	$rplocation = Get-ProviderLocation "Microsoft.Sql/servers"
+	Test-RemoveDatabaseInternal "12.0" $rplocation
 }
 
 <#
@@ -152,7 +156,7 @@ function Test-RemoveStretchDatabase
 function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 
 	try
