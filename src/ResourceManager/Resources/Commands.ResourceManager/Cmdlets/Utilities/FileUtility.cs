@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <param name="overwrite">Overrides existing file</param>
         /// <param name="confirmAction">The confirmation action</param>
         /// <returns>The file path</returns>
-        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Action<bool, string, string, string, Action> confirmAction)
+        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Action<bool, string, string, string, Action, Func<bool>> confirmAction)
         {
             StringBuilder finalOutputPath = new StringBuilder();
 
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                     string.Format(ProjectResources.FileAlreadyExists, finalOutputPath.ToString()),
                     ProjectResources.OverrdingFile,
                     finalOutputPath.ToString(),
-                    saveFile);
+                    saveFile, null);
             }
             else
             {

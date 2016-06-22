@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             this.ConfirmAction(
                 force: this.Force,
-                actionMessage: string.Format(ProjectResources.UnregisteringProvider, this.ProviderNamespace),
+                continueMessage: string.Format(ProjectResources.UnregisteringProvider, this.ProviderNamespace),
                 processMessage: ProjectResources.UnregisterProviderMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ResourceManagerSdkClient.UnregisterProvider(providerName: this.ProviderNamespace)));

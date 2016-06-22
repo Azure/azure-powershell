@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             this.ConfirmAction(
                 force: this.Force,
-                actionMessage: string.Format(ProjectResources.RegisteringProvider, this.ProviderNamespace),
+                continueMessage: string.Format(ProjectResources.RegisteringProvider, this.ProviderNamespace),
                 processMessage: ProjectResources.RegisterProviderMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ResourceManagerSdkClient.RegisterProvider(providerName: this.ProviderNamespace)));

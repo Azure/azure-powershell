@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             this.ConfirmAction(
                 force: this.Force,
-                actionMessage: string.Format(ProjectResources.RegisteringProviderFeature, this.FeatureName, this.ProviderNamespace),
+                continueMessage: string.Format(ProjectResources.RegisteringProviderFeature, this.FeatureName, this.ProviderNamespace),
                 processMessage: ProjectResources.RegisterProviderFeatureMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ProviderFeatureClient.RegisterProviderFeature(providerName: this.ProviderNamespace, featureName: this.FeatureName)));
