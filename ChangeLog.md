@@ -1,3 +1,32 @@
+﻿##2016.07.11 version 1.6.0
+* Azure LogicApp
+  * Added LogicApp Integration accounts cmdlets.
+    - Get-AzureRmIntegrationAccountAgreement
+    - Get-AzureRmIntegrationAccountCallbackUrl
+    - Get-AzureRmIntegrationAccountCertificate
+    - Get-AzureRmIntegrationAccount
+    - Get-AzureRmIntegrationAccountMap
+    - Get-AzureRmIntegrationAccountPartner
+    - Get-AzureRmIntegrationAccountSchema
+    - New-AzureRmIntegrationAccountAgreement
+    - New-AzureRmIntegrationAccountCertificate
+    - New-AzureRmIntegrationAccount
+    - New-AzureRmIntegrationAccountMap
+    - New-AzureRmIntegrationAccountPartner
+    - New-AzureRmIntegrationAccountSchema
+    - Remove-AzureRmIntegrationAccountAgreement
+    - Remove-AzureRmIntegrationAccountCertificate
+    - Remove-AzureRmIntegrationAccount
+    - Remove-AzureRmIntegrationAccountMap
+    - Remove-AzureRmIntegrationAccountPartner
+    - Remove-AzureRmIntegrationAccountSchema
+    - Set-AzureRmIntegrationAccountAgreement
+    - Set-AzureRmIntegrationAccountCertificate
+    - Set-AzureRmIntegrationAccount
+    - Set-AzureRmIntegrationAccountMap
+    - Set-AzureRmIntegrationAccountPartner
+    - Set-AzureRmIntegrationAccountSchema
+
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly

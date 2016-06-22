@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="context">The Azure context instance</param>
         public LogicAppClient(AzureContext context)
         {
-            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            this.LogicManagementClient.InitializeWorkflowClient();
+            this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
             this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
@@ -62,9 +61,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="client">client reference</param>
         public LogicAppClient(ILogicManagementClient client)
         {
-            this.LogicManagementClient = client;
-            this.LogicManagementClient.InitializeWorkflowClient();
-        }
+            this.LogicManagementClient = client;        }
 
         /// <summary>
         /// Gets or sets the Logic client instance

@@ -42,10 +42,6 @@ function Test-CreateAndGetIntegrationAccount
 	$integrationAccount = Get-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 
-	$integrationAccounts = Get-AzureRmIntegrationAccount -ResourceGroupName "IntegrationAccountPsCmdletTest"
-	$account = $integrationAccounts | Where-Object {$_.Name -eq $integrationAccountName}
-	Assert-NotNull $account 
-	
 	$integrationAccounts = Get-AzureRmIntegrationAccount
 	Assert-True { $integrationAccounts.Count -gt 0 }
 
