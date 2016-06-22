@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <returns>The integration account callback URL object</returns>
         public CallbackUrl GetIntegrationAccountCallbackUrl(string resourceGroupName, string integrationAccountName, ListCallbackUrlParameters callbackUrl)
         {
-            return this.LogicManagementClient.IntegrationAccounts.ListCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl);
+            return this.LogicManagementClient.IntegrationAccounts.ListCallbackUrl(resourceGroupName, integrationAccountName, callbackUrl.NotAfter);
         }
         
         /// <summary>
