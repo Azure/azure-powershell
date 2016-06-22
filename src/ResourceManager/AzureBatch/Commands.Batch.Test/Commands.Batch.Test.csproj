@@ -712,9 +712,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.txt" />
-    <Content Include="Resources\MSMpiSetup.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
