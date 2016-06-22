@@ -99,8 +99,8 @@
       <XUnitTests Include=".\src\ResourceManager\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\RecoveryServices.Backup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"/> -->
       <XUnitTests Include=".\src\ResourceManager\RedisCache\Commands.RedisCache.Test\bin\Debug\Microsoft.Azure.Commands.RedisCache.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/>
-      <!--<XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>-->
+      <!--<XUnitTests Include=".\src\ResourceManager\ServerManagement\Commands.ServerManagement.Test\bin\Debug\Microsoft.Azure.Commands.ServerManagement.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Storage\Commands.Management.Storage.Test\bin\Debug\Microsoft.Azure.Commands.Management.Storage.Test.dll"/>-->
       <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
