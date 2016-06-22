@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 containerModels = containerModels.Where(containerModel =>
-                    (containerModel as AzureVmContainer).ResourceGroupName == resourceGroupName).ToList();
+                    string.Compare((containerModel as AzureVmContainer).ResourceGroupName, resourceGroupName, true) == 0).ToList();
             }
 
             return containerModels;
