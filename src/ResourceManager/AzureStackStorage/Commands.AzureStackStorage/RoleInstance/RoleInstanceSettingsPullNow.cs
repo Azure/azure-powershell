@@ -16,10 +16,10 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Commands.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage.Commands;
+using Microsoft.AzureStack.AzureConsistentStorage;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -30,6 +30,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsData.Update, Nouns.AdminRoleInstance, SupportsShouldProcess = true)]
     public sealed class RoleInstanceSettingsPullNow : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// farm identifier
         /// </summary>
@@ -72,6 +79,10 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                         break;
                     case RoleType.TableFrontend:
                         resultObject = Client.TableFrontendInstances.SettingsPullNow(ResourceGroupName, FarmName,
+                            InstanceId);
+                        break;
+                    case RoleType.QueueFrontend:
+                        resultObject = Client.QueueFrontendInstances.SettingsPullNow(ResourceGroupName, FarmName,
                             InstanceId);
                         break;
                     case RoleType.BlobServer:
