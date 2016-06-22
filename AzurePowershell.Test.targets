@@ -88,7 +88,7 @@
       <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
       <XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
-      <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureStackAdmin\Commands.AzureStackAdmin.Test\bin\Debug\Microsoft.AzureStack.Commands.Admin.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureStackStorage\Commands.AzureStackStorage.Tests\bin\Debug\Microsoft.AzureStack.Commands.StorageAdmin.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
