@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         (vmExtension.Publisher != null) &&
                         (vmExtension.VirtualMachineExtensionType != null) &&
                         (vmExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase)) &&
-                        (vmExtension.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
+                        (vmExtension.VirtualMachineExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         return true;
                     }
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         (vmExtension.Publisher != null) &&
                         (vmExtension.VirtualMachineExtensionType != null) &&
                         (vmExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase)) &&
-                        (vmExtension.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
+                        (vmExtension.VirtualMachineExtensionType.Equals(this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         return true;
                     }
