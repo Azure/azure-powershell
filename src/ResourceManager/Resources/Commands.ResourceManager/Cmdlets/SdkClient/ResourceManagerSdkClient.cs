@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     ProjectResources.ResourceGroupAlreadyExists,
                     ProjectResources.NewResourceGroupMessage,
                     parameters.DeploymentName,
-                    createOrUpdateResourceGroup);
+                    createOrUpdateResourceGroup, null);
                 resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
             }
             else
