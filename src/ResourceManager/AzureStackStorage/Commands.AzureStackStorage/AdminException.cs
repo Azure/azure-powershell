@@ -15,11 +15,12 @@
 
 using System;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// Exception for admin operation errors
     /// </summary>
+    [Serializable]
     public sealed class AdminException : Exception
     {
         /// <summary>
