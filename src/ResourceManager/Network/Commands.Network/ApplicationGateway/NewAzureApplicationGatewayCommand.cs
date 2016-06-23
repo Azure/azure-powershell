@@ -162,61 +162,51 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.GatewayIPConfigurations != null)
             {
-                applicationGateway.GatewayIPConfigurations = new List<PSApplicationGatewayIPConfiguration>();
                 applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations;
             }
 
             if (this.SslCertificates != null)
             {
-                applicationGateway.SslCertificates = new List<PSApplicationGatewaySslCertificate>();
                 applicationGateway.SslCertificates = this.SslCertificates;
             }
 
             if (this.FrontendIPConfigurations != null)
             {
-                applicationGateway.FrontendIPConfigurations = new List<PSApplicationGatewayFrontendIPConfiguration>();
                 applicationGateway.FrontendIPConfigurations = this.FrontendIPConfigurations;
             }
 
             if (this.FrontendPorts != null)
             {
-                applicationGateway.FrontendPorts = new List<PSApplicationGatewayFrontendPort>();
                 applicationGateway.FrontendPorts = this.FrontendPorts;
             }
 
             if (this.Probes != null)
             {
-                applicationGateway.Probes = new List<PSApplicationGatewayProbe>();
                 applicationGateway.Probes = this.Probes;
             }
 
             if (this.BackendAddressPools != null)
             {
-                applicationGateway.BackendAddressPools = new List<PSApplicationGatewayBackendAddressPool>();
                 applicationGateway.BackendAddressPools = this.BackendAddressPools;
             }
 
             if (this.BackendHttpSettingsCollection != null)
             {
-                applicationGateway.BackendHttpSettingsCollection = new List<PSApplicationGatewayBackendHttpSettings>();
                 applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection;
             }
 
             if (this.HttpListeners != null)
             {
-                applicationGateway.HttpListeners = new List<PSApplicationGatewayHttpListener>();
                 applicationGateway.HttpListeners = this.HttpListeners;
             }
 
             if (this.UrlPathMaps != null)
             {
-                applicationGateway.UrlPathMaps = new List<PSApplicationGatewayUrlPathMap>();
                 applicationGateway.UrlPathMaps = this.UrlPathMaps;
             }
 
             if (this.RequestRoutingRules != null)
             {
-                applicationGateway.RequestRoutingRules = new List<PSApplicationGatewayRequestRoutingRule>();
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules;
             }
 

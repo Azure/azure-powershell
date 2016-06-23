@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DhcpOptions.DnsServers = this.DnsServer;
             }
 
-            vnet.Subnets = new List<PSSubnet>();
             vnet.Subnets = this.Subnet;
 
             // Map to the sdk object
