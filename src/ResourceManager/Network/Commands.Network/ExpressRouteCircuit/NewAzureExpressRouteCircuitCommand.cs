@@ -161,9 +161,7 @@ namespace Microsoft.Azure.Commands.Network
                 circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
             }
 
-            circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
-            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
             circuit.Authorizations = this.Authorization;
             circuit.AllowClassicOperations = this.AllowClassicOperations;
 
