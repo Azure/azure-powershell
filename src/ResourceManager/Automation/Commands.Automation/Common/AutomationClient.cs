@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (createdCredential == null || createdCredential.StatusCode != HttpStatusCode.Created)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
+                throw new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Create",
                     "credential", name, automationAccountName));
             }
             return new CredentialInfo(resourceGroupName, automationAccountName, createdCredential.Credential);
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (credential == null || credential.StatusCode != HttpStatusCode.OK)
             {
-                new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
+                throw new AzureAutomationOperationException(string.Format(Resources.AutomationOperationFailed, "Update",
                     "credential", name, automationAccountName));
             }
 
