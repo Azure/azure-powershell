@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ContainerType = "The type of the Azure Backup container (for example:  Windows Server or Azure IaaS VM).";
             public const string BackupManagementType = "The backup management type of the Azure Backup container";
             public const string RegisteredContainer = "The recovery services backup container.";
+            public const string FriendlyName = "The name of the resource being managed by the Azure Backup service (for example: resource name of the VM).";
         }
 
         internal static class Common

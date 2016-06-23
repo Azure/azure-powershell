@@ -452,6 +452,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Models.BackupManagementType? backupManagementTypeNullable =
                 (Models.BackupManagementType?)this.ProviderData[ContainerParams.BackupManagementType];
             string name = (string)this.ProviderData[ContainerParams.Name];
+            string friendlyName = (string)this.ProviderData[ContainerParams.FriendlyName];
             string resourceGroupName = (string)this.ProviderData[ContainerParams.ResourceGroupName];
             ContainerRegistrationStatus status =
                 (ContainerRegistrationStatus)this.ProviderData[ContainerParams.Status];
@@ -461,10 +462,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ValidateAzureVMBackupManagementType(backupManagementTypeNullable.Value);
             }
 
+            string nameQueryFilter = friendlyName;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                Logger.Instance.WriteWarning(Resources.GetContainerNameParamDeprecated);
+
+                if (string.IsNullOrEmpty(friendlyName))
+                {
+                    nameQueryFilter = name;
+                }
+            }
+
             ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
 
             // 1. Filter by Name
-            queryParams.FriendlyName = name;
+            queryParams.FriendlyName = nameQueryFilter;
 
             // 2. Filter by ContainerType
             queryParams.BackupManagementType =
@@ -484,7 +497,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (!string.IsNullOrEmpty(resourceGroupName))
             {
                 containerModels = containerModels.Where(containerModel =>
-                    (containerModel as AzureVmContainer).ResourceGroupName == resourceGroupName).ToList();
+                    string.Compare((containerModel as AzureVmContainer).ResourceGroupName, resourceGroupName, true) == 0).ToList();
             }
 
             return containerModels;

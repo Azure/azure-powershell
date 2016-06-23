@@ -354,6 +354,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name parameter will be deprecated. Please use FriendlyName instead for filtering by name..
+        /// </summary>
+        public static string GetContainerNameParamDeprecated {
+            get {
+                return ResourceManager.GetString("GetContainerNameParamDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please specify startdate and enddate in UTC format.
         /// </summary>
         public static string GetRPErrorInputDatesShouldBeInUTC {
