@@ -376,6 +376,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var previousTracing = ServiceClientTracing.IsEnabled;
             try
             {
+                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
                 ServiceClientTracing.IsEnabled = false;
                 FileType ignoredType;
                 if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
@@ -499,8 +500,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
             var previousExpect100 = ServicePointManager.Expect100Continue;
+            var previousTracing = ServiceClientTracing.IsEnabled;
             try
             {
+                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
+                ServiceClientTracing.IsEnabled = false;
                 ServicePointManager.DefaultConnectionLimit =
                     Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
@@ -551,6 +555,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             finally
             {
+                ServiceClientTracing.IsEnabled = previousTracing;
                 ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
                 ServicePointManager.Expect100Continue = previousExpect100;
             }
