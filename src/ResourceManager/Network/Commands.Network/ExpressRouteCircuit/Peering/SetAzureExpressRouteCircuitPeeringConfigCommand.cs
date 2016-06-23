@@ -34,10 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCircuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             // Verify if the subnet exists in the VirtualNetwork
             var peering = this.ExpressRouteCircuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 

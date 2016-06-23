@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 }
                 else
                 {
-                    new ArgumentException(Properties.Resources.UnsupportedDirectionForTFO);// Throw Unsupported Direction Exception
+                    throw new ArgumentException(Properties.Resources.UnsupportedDirectionForTFO);// Throw Unsupported Direction Exception
                 }
             }
 
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
                     else
                     {
-                        new ArgumentException(Properties.Resources.UnsupportedDirectionForTFO);// Throw Unsupported Direction Exception
+                        throw new ArgumentException(Properties.Resources.UnsupportedDirectionForTFO);// Throw Unsupported Direction Exception
                     }
                 }
             }

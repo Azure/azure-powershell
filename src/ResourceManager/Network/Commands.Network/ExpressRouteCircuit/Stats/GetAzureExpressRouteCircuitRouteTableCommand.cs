@@ -66,9 +66,9 @@
          [ValidateNotNullOrEmpty]
          public DevicePathEnum DevicePath { get; set; }			
  		
-         public override void ExecuteCmdlet()		
-         {		
-             base.ExecuteCmdlet();
+         public override void Execute()		
+         {
+             base.Execute();
              var routeTables = this.NetworkClient.NetworkManagementClient.ExpressRouteCircuits.ListRoutesTable
                  (ResourceGroupName, ExpressRouteCircuitName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
              var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
