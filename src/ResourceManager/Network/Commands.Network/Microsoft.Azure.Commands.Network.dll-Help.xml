@@ -6434,16 +6434,142 @@ PS C:\&gt; $LoadBalancer | Add-AzureRmLoadBalancerRuleConfig -Name &quot;LbRuleC
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description &quot;Allow RDP&quot; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | Set-AzureRmNetworkSecurityGroup</dev:code>
 			<dev:remarks>
+				<maml:para>Retrieves an Azure network security group named &quot;nsg1&quot; from resource group &quot;rg1&quot;. Adds a network security rule named &quot;rdp-rule&quot; that allows traffic from internet on port 3389 to the retrieved network security group object. Persists the modified Azure network security group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                 : nsg1
+ResourceGroupName    : rg1
+Location             : westus
+Id                   : /subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Microsoft.Netwo
+                       rk/networkSecurityGroups/nsg1
+Etag                 : W/&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b&quot;
+ResourceGuid         : 91e36ce0-8640-41db-a2b9-20e8a17e167c
+ProvisioningState    : Succeeded
+Tags                 :
+SecurityRules        : [
+                         {
+                           &quot;Name&quot;: &quot;rdp-rule&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/securityRules/rdp-rule&quot;,
+                           &quot;Description&quot;: &quot;Allow RDP&quot;,
+                           &quot;Protocol&quot;: &quot;Tcp&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;3389&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 100,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         }
+                       ]
+DefaultSecurityRules : [
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetInBound&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowAzureLoadBalancerInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowAzureLoadBalancerInBound&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from azure load balancer&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllInBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all inbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowInternetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowInternetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to Internet&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;d98c20b0-c764-45e8-98bd-f0afa1d9e73b\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllOutBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all outbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         }
+                       ]
+NetworkInterfaces    : []
+Subnets              : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -13451,16 +13577,125 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName &quot;rg1&quot;</dev:code>
 			<dev:remarks>
+				<maml:para>Returns contents of Azure network security group &quot;nsg1&quot; in resource group &quot;rg1&quot;</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                 : nsg1
+ResourceGroupName    : rg1
+Location             : westus
+Id                   : /subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Microsoft.Netwo
+                       rk/networkSecurityGroups/nsg1
+Etag                 : W/&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35&quot;
+ResourceGuid         : 91e36ce0-8640-41db-a2b9-20e8a17e167c
+ProvisioningState    : Succeeded
+Tags                 :
+SecurityRules        : []
+DefaultSecurityRules : [
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetInBound&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowAzureLoadBalancerInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowAzureLoadBalancerInBound&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from azure load balancer&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllInBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all inbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowVnetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowInternetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/AllowInternetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to Internet&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/nsg1/defaultSecurityRules/DenyAllOutBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all outbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         }
+                       ]
+NetworkInterfaces    : []
+Subnets              : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -13653,16 +13888,66 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | Get-AzureRmNetworkSecurityRuleConfig -Name AllowInternetOutBound -DefaultRules</dev:code>
 			<dev:remarks>
+				<maml:para>Retrieves the default rule named &quot;AllowInternetOutBound&quot; from Azure network security group named &quot;nsg1&quot; in resource group &quot;rg1&quot;</maml:para>
 				<maml:para />
 				<maml:para />
+				<maml:para>Name                     : AllowInternetOutBound
+Id                       : /subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Microsoft.N
+                           etwork/networkSecurityGroups/nsg1/defaultSecurityRules/AllowInternetOutBound
+Etag                     : W/&quot;b4833539-3f97-4c90-ab00-8521d7f5ca35&quot;
+ProvisioningState        : Succeeded
+Description              : Allow outbound traffic from all VMs to Internet
+Protocol                 : *
+SourcePortRange          : *
+DestinationPortRange     : *
+SourceAddressPrefix      : *
+DestinationAddressPrefix : Internet
+Access                   : Allow
+Priority                 : 65001
+Direction                : Outbound
+</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | Get-AzureRmNetworkSecurityRuleConfig -Name &quot;rdp-rule&quot;
+</dev:code>
+			<dev:remarks>
+				<maml:para>Retrieves user defined rule named &quot;rdp-rule&quot; from Azure network security group named &quot;nsg1&quot; in resource group &quot;rg1&quot;</maml:para>
 				<maml:para />
-				<maml:para></maml:para>
+				<maml:para />
+				<maml:para>Name                     : rdp-rule
+Id                       : /subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Microsoft.N
+                           etwork/networkSecurityGroups/nsg1/securityRules/rdp-rule
+Etag                     : W/&quot;16f2b77c-1094-4bc5-91b0-07b81de13588&quot;
+ProvisioningState        : Succeeded
+Description              : Allow RDP
+Protocol                 : Tcp
+SourcePortRange          : *
+DestinationPortRange     : 3389
+SourceAddressPrefix      : Internet
+DestinationAddressPrefix : *
+Access                   : Allow
+Priority                 : 100
+Direction                : Inbound
+
+</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -24690,7 +24975,151 @@ Step:2 Create a security rule allowing access from the Internet to port 80.
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                 : NSG-FrontEnd
+ResourceGroupName    : rg1
+Location             : westus
+Id                   : /subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Microsoft.Netwo
+                       rk/networkSecurityGroups/NSG-FrontEnd
+Etag                 : W/&quot;16f2b77c-1094-4bc5-91b0-07b81de13588&quot;
+ResourceGuid         : 407f5453-d8fb-4966-80fa-539215da52a2
+ProvisioningState    : Succeeded
+Tags                 :
+SecurityRules        : [
+                         {
+                           &quot;Name&quot;: &quot;rdp-rule&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/rdp-rule&quot;,
+                           &quot;Description&quot;: &quot;Allow RDP&quot;,
+                           &quot;Protocol&quot;: &quot;Tcp&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;3389&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 100,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;web-rule&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/securityRules/web-rule&quot;,
+                           &quot;Description&quot;: &quot;Allow HTTP&quot;,
+                           &quot;Protocol&quot;: &quot;Tcp&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;80&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 101,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         }
+                       ]
+DefaultSecurityRules : [
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/AllowVnetInBound&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowAzureLoadBalancerInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/AllowAzureLoadBalancerInBo
+                       und&quot;,
+                           &quot;Description&quot;: &quot;Allow inbound traffic from azure load balancer&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;AzureLoadBalancer&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllInBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/DenyAllInBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all inbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Inbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowVnetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/AllowVnetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to all VMs in VNET&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;VirtualNetwork&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65000,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;AllowInternetOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/AllowInternetOutBound&quot;,
+                           &quot;Description&quot;: &quot;Allow outbound traffic from all VMs to Internet&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;Internet&quot;,
+                           &quot;Access&quot;: &quot;Allow&quot;,
+                           &quot;Priority&quot;: 65001,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         },
+                         {
+                           &quot;Name&quot;: &quot;DenyAllOutBound&quot;,
+                           &quot;Etag&quot;: &quot;W/\&quot;16f2b77c-1094-4bc5-91b0-07b81de13588\&quot;&quot;,
+                           &quot;Id&quot;: &quot;/subscriptions/&lt;subscriptionId&gt;/resourceGroups/rg1/providers/Micr
+                       osoft.Network/networkSecurityGroups/NSG-FrontEnd/defaultSecurityRules/DenyAllOutBound&quot;,
+                           &quot;Description&quot;: &quot;Deny all outbound traffic&quot;,
+                           &quot;Protocol&quot;: &quot;*&quot;,
+                           &quot;SourcePortRange&quot;: &quot;*&quot;,
+                           &quot;DestinationPortRange&quot;: &quot;*&quot;,
+                           &quot;SourceAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;DestinationAddressPrefix&quot;: &quot;*&quot;,
+                           &quot;Access&quot;: &quot;Deny&quot;,
+                           &quot;Priority&quot;: 65500,
+                           &quot;Direction&quot;: &quot;Outbound&quot;,
+                           &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                         }
+                       ]
+NetworkInterfaces    : []
+Subnets              : []
+</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -42144,13 +42573,13 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>Get-AzureRmNetworkSecurityGroup -Name  nsg1 -ResourceGroupName rg1 | Add-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description &quot;Allow RDP&quot; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 | Set-AzureRmNetworkSecurityGroup</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>Retrieves an Azure network security group named &quot;nsg1&quot; from resource group &quot;rg1&quot; using &#39;Get-AzureRmNetworkSecurityGroup&#39;. Adds a network security rule named &quot;rdp-rule&quot; that allows traffic from internet on port 3389 to the retrieved network security group object using &#39;Add-AzureRmNetworkSecurityRuleConfig&#39;. Persists the modified Azure network security group using &#39;Set-AzureRmNetworkSecurityGroup&#39;.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
