@@ -1,3 +1,9 @@
+##2016.07.01 version 1.6.0
+* Azure Storage
+  * Change Tags Parameter to Tag, and add parameter alias Tags
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly

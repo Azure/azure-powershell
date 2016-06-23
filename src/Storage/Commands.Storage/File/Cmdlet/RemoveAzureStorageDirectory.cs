@@ -76,6 +76,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
+
             string[] path = NamingUtil.ValidatePath(this.Path);
             CloudFileDirectory baseDirectory;
             switch (this.ParameterSetName)

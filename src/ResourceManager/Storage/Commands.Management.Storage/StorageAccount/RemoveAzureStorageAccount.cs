@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("Will add confirmation of executing the cmdlet and Force parameter in a future release. ");
+
             this.StorageClient.StorageAccounts.Delete(
                 this.ResourceGroupName,
                 this.Name);
