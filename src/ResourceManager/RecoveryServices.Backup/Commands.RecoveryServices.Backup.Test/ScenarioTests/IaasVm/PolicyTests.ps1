@@ -12,9 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$resourceGroupName = "labRG1";
+$resourceName = "pstestrsvault";
+$vaultLocation = "westus";
+$policyName = "pwtest1";
+
 function Test-PolicyScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "RsvTestRN";
+	# 1. Create / update and get vault
+	$vault = New-AzureRmRecoveryServicesVault -Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
+	
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# get default objects
@@ -24,9 +32,9 @@ function Test-PolicyScenario
 	Assert-NotNull $retPolicy
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1" -WorkloadType "AzureVM" -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name $policyName -WorkloadType "AzureVM" -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy
 	Assert-NotNull $policy
-	Assert-AreEqual $policy.Name "pwtest1"
+	Assert-AreEqual $policy.Name $policyName
 		
 	# now get policy and update it with new schedule/retention
 	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -34,9 +42,9 @@ function Test-PolicyScenario
 	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 	Assert-NotNull $retPolicy
 
-    $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "pwtest1"	
+    $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $policyName	
 	Assert-NotNull $temp
-	Assert-AreEqual $temp.Name "pwtest1"
+	Assert-AreEqual $temp.Name $policyName
 
 	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp	
 
