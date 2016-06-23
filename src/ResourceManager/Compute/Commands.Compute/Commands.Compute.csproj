@@ -82,7 +82,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.4.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.5.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -222,6 +222,7 @@
     <Compile Include="Extension\AzureDiskEncryption\AzureDiskEncryptionExtensionPublicSettings.cs" />
     <Compile Include="Extension\AzureDiskEncryption\DisableAzureDiskEncryption.cs" />
     <Compile Include="Extension\AzureDiskEncryption\GetAzureDiskEncryptionStatus.cs" />
+    <Compile Include="Extension\AzureDiskEncryption\OSType.cs" />
     <Compile Include="Extension\AzureDiskEncryption\RemoveAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureDiskEncryption\SetAzureDiskEncryptionExtension.cs" />
     <Compile Include="Extension\AzureVMBackup\AzureVMBackupExtensionUtil.cs" />

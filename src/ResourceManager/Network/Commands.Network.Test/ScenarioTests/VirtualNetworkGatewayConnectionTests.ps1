@@ -44,7 +44,9 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual "ExpressRoute" $expected.ConnectionType
         Assert-AreEqual "3" $expected.RoutingWeight
 
-	
+		#get routes 
+		Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
+
         # Delete VirtualNetworkGatewayConnection
         $delete = Remove-AzureRmVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
         Assert-AreEqual true $delete
