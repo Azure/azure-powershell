@@ -12,32 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Backup.Model;
+using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Backup.Model;
+using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup")]
-    public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault")]
+    public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> GetEntity()
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> GetEntity()
         {
-            ICollection<AzureSqlDatabaseGeoBackupModel> results;
+            ICollection<AzureSqlServerBackupLongTermRetentionVaultModel> results;
 
-            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
-            {
-                results = new List<AzureSqlDatabaseGeoBackupModel>();
-                results.Add(ModelAdapter.GetGeoBackup(this.ResourceGroupName, this.ServerName, this.DatabaseName));
-            }
-            else
-            {
-                results = ModelAdapter.ListGeoBackups(this.ResourceGroupName, this.ServerName);
-            }
+            results = new List<AzureSqlServerBackupLongTermRetentionVaultModel>();
+            results.Add(ModelAdapter.GetBackupLongTermRetentionVault(this.ResourceGroupName, this.ServerName));
 
             return results;
         }
@@ -47,7 +42,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseGeoBackupModel> model)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> ApplyUserInputToModel(
+            IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> model)
         {
             return model;
         }
@@ -57,7 +53,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseGeoBackupModel> PersistChanges(IEnumerable<AzureSqlDatabaseGeoBackupModel> entity)
+        protected override IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> PersistChanges(
+            IEnumerable<AzureSqlServerBackupLongTermRetentionVaultModel> entity)
         {
             return entity;
         }
