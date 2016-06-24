@@ -28,7 +28,8 @@ function Test-CreatesNewSimpleResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
-    $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+        $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
 	$expected = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 	
 	$list = Get-AzureRmResource -ResourceGroupName $rgname
@@ -60,6 +61,7 @@ function Test-CreatesNewComplexResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	$actualParent = New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
 	$expectedParent = Get-AzureRmResource -Name $rnameParent -ResourceGroupName $rgname -ResourceType $resourceTypeParent -ApiVersion $apiversion
 
@@ -108,6 +110,7 @@ function Test-GetResourcesViaPiping
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion		
 	New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 		
@@ -208,6 +211,7 @@ function Test-GetResourcesViaPipingFromAnotherResource
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 	New-AzureRmResource -Name $rnameParent -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeParent -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion		
 	New-AzureRmResource -Name $rnameChild -Location $location -ResourceGroupName $rgname -ResourceType $resourceTypeChild -ParentResource servers/$rnameParent -PropertyObject @{"edition" = "Web"; "collation" = "SQL_Latin1_General_CP1_CI_AS"; "maxSizeBytes" = "1073741824"} -ApiVersion $apiversion
 		
@@ -243,6 +247,23 @@ function Test-MoveAResource
 	Assert-AreEqual $movedResource.Name $resource.Name
 	Assert-AreEqual $movedResource.ResourceGroupName $rgname2
 	Assert-AreEqual $movedResource.ResourceType $resource.ResourceType
+}
+
+<#
+.SYNOPSIS
+Tests moving a resource but failed.
+#>
+function Test-MoveResourceFailed
+{
+	#Move a resource through pipeline while no resource is sent
+	$exceptionMessage = "At least one valid resource Id must be provided.";
+	Assert-Throws { Get-AzureRmResource | Where-Object { $PSItem.Name -eq "NonExistingResource" } | Move-AzureRmResource -DestinationResourceGroupName "AnyResourceGroup" } $exceptionMessage
+
+	#Move two resources from two resource groups
+	$resourceId1 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg1/providers/Microsoft.Storage/storageAccounts/temp1"
+	$resourceId2 = "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourceGroups/tianorg2/providers/Microsoft.Storage/storageAccounts/temp1"
+	$exceptionMessage = "The resources being moved must all reside in the same resource group. The resources: *"
+	Assert-ThrowsLike { Move-AzureRmResource -DestinationResourceGroupName "AnyGroup" -ResourceId @($resourceId1, $resourceId2) } $exceptionMessage
 }
 
 <#
@@ -371,7 +392,6 @@ function Test-GetResourceWithCollection
 	$rname = Get-ResourceName
 	$rglocation = "East US"
 	$apiversion = "2015-08-01"
-	$resourceType = "Providers.Test/statefulResources"
 
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
