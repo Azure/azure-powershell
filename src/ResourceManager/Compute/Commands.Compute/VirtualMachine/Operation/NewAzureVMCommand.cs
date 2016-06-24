@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         private Uri GetOrCreateStorageAccountForBootDiagnostics()
-        {                        
+        {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
                     AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
@@ -242,11 +242,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch (Exception e)
                 {
-                    if (e.Message.Contains("Unable to find a matching HTTP request"))
-                    {
-                        throw;
-                    }
-
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
@@ -287,10 +282,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null)
+            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                return null;
+                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                if (storageAccountList == null || storageAccountList.Count() == 0)
+                {
+                    return null;
+                }
             }
 
             try
@@ -301,14 +300,12 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (InvalidOperationException e)
             {
-                if (e.Message.Contains("Sequence contains no matching element"))
-                {
-                    return null;
-                }
-                throw;
+                WriteWarning(string.Format(
+                            Properties.Resources.ErrorDuringChoosingStandardStorageAccount, e.Message));
+                return null;
             }
         }
-        
+
         private Uri CreateStandardStorageAccount(StorageManagementClient client)
         {
             string storageAccountName;

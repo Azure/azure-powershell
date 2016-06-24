@@ -497,4 +497,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="DiagnosticsExtensionXmlConfigWadCfgTagNotMatch" xml:space="preserve">
     <value>WadCfg start element in the config is not matching the end element.</value>
   </data>
+  <data name="ErrorDuringChoosingStandardStorageAccount" xml:space="preserve">
+    <value>Error occurred when choosing existing standard storage account for boot diagnostics: {0}</value>
+    <comment>{0} = an error message</comment>
+  </data>
 </root>
