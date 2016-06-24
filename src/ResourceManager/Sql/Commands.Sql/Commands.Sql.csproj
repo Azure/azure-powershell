@@ -51,6 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
     <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
@@ -64,9 +65,16 @@
     <Compile Include="ImportExport\Service\ImportExportDatabaseCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDeletedDatabaseBackupCmdletBase.cs" />
-    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDeletedDatabaseBackup.cs" />
-    <Compile Include="Database Backup\Cmdlet\GetAzureRMSqlDatabaseGeoBackup.cs" />
-    <Compile Include="Database Backup\Cmdlet\RestoreAzureRMSqlDatabase.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlServerBackupLongTermRetentionVaultCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDeletedDatabaseBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseGeoBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseBackupLongTermRetentionPolicy.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlServerBackupLongTermRetentionVault.cs" />
+    <Compile Include="Database Backup\Cmdlet\RestoreAzureRmSqlDatabase.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureSqlDatabaseBackupLongTermRetentionPolicy.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureSqlServerBackupLongTermRetentionVault.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseBackupLongTermRetentionPolicyModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
@@ -308,7 +316,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.46.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.47.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

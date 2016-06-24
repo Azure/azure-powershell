@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Weight added to BGP routes learned from this local network gateway")]
         public int PeerWeight { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             if (!this.IsLocalNetworkGatewayPresent(this.LocalNetworkGateway.ResourceGroupName, this.LocalNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
