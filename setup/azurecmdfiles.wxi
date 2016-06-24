@@ -2100,9 +2100,6 @@
                         <Component Id="cmpA7B72722B1AC91C0B6B117CEAB00E3C0" Guid="*">
                             <File Id="fil40386C22E607E953293F5632EAC6393E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.Management.PowerBIEmbedded.dll-Help.xml" />
                         </Component>
-                        <Component Id="cmpD51C7F5C1C3B09E20B2A880FFE01A538" Guid="*">
-                            <File Id="fil64E062A8BBD9B183690D729BB3EE56DD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.Management.PowerBIEmbedded.format.ps1xml" />
-                        </Component>
                         <Component Id="cmp2EADFCD6F716F27786217F2880D84173" Guid="*">
                             <File Id="fil0EA7DFE5D1B5B49590DA1A6E57CC0D95" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
                         </Component>
@@ -6173,7 +6170,6 @@
             <ComponentRef Id="cmpC80C33F266BD759B1373018B08EAB098" />
             <ComponentRef Id="cmp0F1E11B5C6A0C1527BB960FDCC4F4F34" />
             <ComponentRef Id="cmpA7B72722B1AC91C0B6B117CEAB00E3C0" />
-            <ComponentRef Id="cmpD51C7F5C1C3B09E20B2A880FFE01A538" />
             <ComponentRef Id="cmp2EADFCD6F716F27786217F2880D84173" />
             <ComponentRef Id="cmp4FEC00F10475E073AD74B36CEDE692D5" />
             <ComponentRef Id="cmp7A9ACF44DF74CCBEE65ACEF64A8D4BF7" />

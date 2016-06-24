@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = WorkspaceCollectionNameParameterSet,
             HelpMessage = "Workspace Collection Name.")]
+        [Alias("Name", "ResourceName")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceCollectionName { get; set; }
 

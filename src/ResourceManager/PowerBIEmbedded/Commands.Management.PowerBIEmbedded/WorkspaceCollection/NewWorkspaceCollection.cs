@@ -14,12 +14,13 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.PowerBIEmbedded.Models;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.New, Nouns.WorkspaceCollection), OutputType(typeof(PSWorkspaceCollection))]
+    [Cmdlet(VerbsCommon.New, Nouns.WorkspaceCollection, SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollection))]
     public class NewWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Workspace Collection Name.")]
+        [Alias("Name", "ResourceName")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceCollectionName { get; set; }
 
@@ -48,6 +50,14 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 
         public override void ExecuteCmdlet()
         {
+            var description = string.Format(Resources.NewWorkspaceCollectionDescription, this.WorkspaceCollectionName);
+            var warning = string.Format(Resources.NewWorkspaceCollectionWarning, this.WorkspaceCollectionName);
+
+            if (!ShouldProcess(description, warning, Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
             // TODO: This will need to be udpated to params once we support multiple locations / skus
             var createWorkspaceRequest = new CreateWorkspaceCollectionRequest
             {
