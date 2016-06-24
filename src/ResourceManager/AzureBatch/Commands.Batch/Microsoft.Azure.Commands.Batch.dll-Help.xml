@@ -9737,54 +9737,92 @@
   <command:syntax>
     <command:syntaxItem>
       <maml:name>New-AzureRmBatchApplicationPackage</maml:name>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
         <maml:name>AccountName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the Batch account.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ActivateOnly</maml:name>
-        <maml:description>
-          <maml:para>Activates an application package that has already been uploaded.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">string</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>ApplicationId</maml:name>
         <maml:description>
           <maml:para>Specifies the id of the application.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
         <maml:name>ApplicationVersion</maml:name>
         <maml:description>
           <maml:para>Specifies the version of the application.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>FilePath</maml:name>
         <maml:description>
           <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
         <maml:name>Format</maml:name>
         <maml:description>
           <maml:para>Specifies the format of the application package binary file.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+    </command:syntaxItem>
+    <command:syntaxItem>
+      <maml:name>New-AzureRmBatchApplicationPackage</maml:name>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <maml:name>AccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ActivateOnly</maml:name>
+        <maml:description>
+          <maml:para>Activates an application package that has already been uploaded.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+        <maml:name>ApplicationId</maml:name>
+        <maml:description>
+          <maml:para>Specifies the id of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>ApplicationVersion</maml:name>
+        <maml:description>
+          <maml:para>Specifies the version of the application.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+        <maml:name>Format</maml:name>
+        <maml:description>
+          <maml:para>Specifies the format of the application package binary file.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of the resource group that contains the Batch account.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
       </command:parameter>
     </command:syntaxItem>
   </command:syntax>
@@ -9833,10 +9871,10 @@
       </dev:type>
       <dev:defaultValue></dev:defaultValue>
     </command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
       <maml:name>FilePath</maml:name>
       <maml:description>
-        <maml:para>Specifies the file to be uploaded as the application package binary file.</maml:para>
+        <maml:para>Specifies the file to be uploaded as the application package binary file. If the -ActivateOnly switch is present, do not specify FilePath.</maml:para>
       </maml:description>
       <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
       <dev:type>
