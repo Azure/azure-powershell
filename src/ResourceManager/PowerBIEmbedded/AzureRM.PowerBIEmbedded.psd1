@@ -82,7 +82,10 @@ AliasesToExport = @()
 ModuleList = @()  
   
 # List of all files packaged with this module  
-FileList =  @()  
+FileList =  @()
+
+# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
+DefaultCommandPrefix = 'AzureRmPowerBI'
 
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = @{
