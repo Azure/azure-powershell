@@ -458,15 +458,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property..
-        /// </summary>
-        public static string DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet {
-            get {
-                return ResourceManager.GetString("DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter..
         /// </summary>
         public static string DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet {

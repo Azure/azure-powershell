@@ -49,7 +49,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            // TODO: Define what can be updated for DataLakeStore accounts
+            if (Tags != null && Tags.Length > 0)
+            {
+                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
+            }
+
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
             var location = currentAccount.Location;
 

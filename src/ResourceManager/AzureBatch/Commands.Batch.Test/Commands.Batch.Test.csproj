@@ -225,6 +225,7 @@
     <Compile Include="Jobs\DisableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\EnableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
+    <Compile Include="Jobs\GetBatchJobStatisticsCommandTests.cs" />
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Jobs\SetBatchJobCommandTests.cs" />
@@ -234,6 +235,8 @@
     <Compile Include="Pools\DisableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
+    <Compile Include="Pools\GetBatchPoolStatisticsCommandTests.cs" />
+    <Compile Include="Pools\GetBatchPoolUsageMetricsCommandTests.cs" />
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
     <Compile Include="Pools\SetBatchPoolCommandTests.cs" />
@@ -271,23 +274,14 @@
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
+      <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\BatchTestCert01.cer">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert02.cer">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert03.cer">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert04.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert05.pfx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Resources\TestApplicationPackage.zip">
@@ -365,29 +359,11 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestAddCertificate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCancelCertificateDelete.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestDeleteCertificate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestGetAndListCertificatesWithSelect.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestGetCertificateByThumbprint.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListAllCertificates.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesByFilter.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesWithMaxCount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCertificateCrudOperations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -668,6 +644,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTaskCollection.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestDeleteTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -684,9 +663,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllTasks.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListSubtasksWithMaxCount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTaskPipeline.json">
@@ -722,6 +698,10 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
+      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
+      <Name>Commands.Resources.Rest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
@@ -732,9 +712,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.txt" />
-    <Content Include="Resources\MSMpiSetup.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

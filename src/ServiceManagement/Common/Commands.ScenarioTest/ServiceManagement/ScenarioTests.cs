@@ -182,6 +182,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureStorageAccount()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureStorageAccount()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestNewAzureVMWithBYOL()
         {
             this.RunPowerShellTest("Test-NewAzureVMWithBYOL");

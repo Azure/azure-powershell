@@ -34,8 +34,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             _helper = new EnvironmentSetupHelper();
+            _helper.TracingInterceptor = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
         }
 
         protected void SetupManagementClients()
@@ -177,7 +178,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                     _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
 
             ICollection objAsCollection = obj as ICollection;
 
-            propName.Replace(':', ' ');
+            propName = propName.Replace(':', ' ');
             if (!string.IsNullOrWhiteSpace(propName))
             {
                 sb.AppendLine(propName);

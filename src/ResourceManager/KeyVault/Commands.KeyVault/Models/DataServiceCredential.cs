@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -85,8 +86,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Auto,
-                    resourceIdEndpoint);
+                var tokenCache = AzureSession.TokenCache;
+                if (context.TokenCache != null && context.TokenCache.Length > 0)
+                {
+                    tokenCache = new TokenCache(context.TokenCache);
+                }
+
+                var accesstoken = authFactory.Authenticate(context.Account, context.Environment, TenantId, null, ShowDialog.Never,
+                    tokenCache, resourceIdEndpoint);
+
+                if (context.TokenCache != null && context.TokenCache.Length > 0)
+                {
+                    context.TokenCache = tokenCache.Serialize();
+                }
 
                 return Tuple.Create(accesstoken, context.Environment.Endpoints[resourceIdEndpoint]);
             }
