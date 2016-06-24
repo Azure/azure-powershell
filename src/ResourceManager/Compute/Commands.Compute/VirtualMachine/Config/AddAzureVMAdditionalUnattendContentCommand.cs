@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Setting Name.")]
-        [ValidateNotNullOrEmpty]
         public SettingNames? SettingName { get; set; }
 
         public override void ExecuteCmdlet()
