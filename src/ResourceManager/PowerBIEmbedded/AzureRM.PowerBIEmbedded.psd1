@@ -36,7 +36,7 @@ PowerShellHostName = ''
 PowerShellHostVersion = ''  
   
 # Minimum version of the .NET Framework required by this module  
-DotNetFrameworkVersion = '4.0'  
+DotNetFrameworkVersion = '4.5'  
   
 # Minimum version of the common language runtime (CLR) required by this module  
 CLRVersion='4.0'  
@@ -46,7 +46,7 @@ ProcessorArchitecture = 'None'
   
 # Modules that must be imported into the global environment prior to importing this module  
 RequiredModules = @(
-    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.8'}
+    @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.9'}
 )
   
 # Assemblies that must be loaded prior to importing this module  
@@ -83,9 +83,6 @@ ModuleList = @()
   
 # List of all files packaged with this module  
 FileList =  @()  
-
-# Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-DefaultCommandPrefix = 'AzureRmPowerBI'
 
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = @{

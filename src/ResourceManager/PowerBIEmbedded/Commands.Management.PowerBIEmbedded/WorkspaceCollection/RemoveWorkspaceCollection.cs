@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.Remove, Nouns.WorkspaceCollection)]
+    [Cmdlet(VerbsCommon.Remove, Nouns.WorkspaceCollection, SupportsShouldProcess = true)]
     public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
@@ -33,11 +34,20 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Workspace Collection Name.")]
+        [Alias("Name", "ResourceName")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceCollectionName { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            var description = string.Format(Resources.RemoveWorkspaceCollectionDescription, this.WorkspaceCollectionName);
+            var warning = string.Format(Resources.RemoveWorkspaceCollectionWarning, this.WorkspaceCollectionName);
+
+            if (!ShouldProcess(description, warning, Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
             this.PowerBIClient.WorkspaceCollections.Delete(this.ResourceGroupName, this.WorkspaceCollectionName);
         }
     }

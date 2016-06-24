@@ -17,12 +17,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models;
+using Microsoft.Azure.Commands.Management.PowerBIEmbedded.Properties;
 using Microsoft.Azure.Management.PowerBIEmbedded;
 using Microsoft.Azure.Management.PowerBIEmbedded.Models;
 
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    [Cmdlet(VerbsCommon.Reset, Nouns.WorkspaceCollectionAccessKeys), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
+    [Cmdlet(VerbsCommon.Reset, Nouns.WorkspaceCollectionAccessKeys, SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Workspace Collection Name.")]
+        [Alias("Name", "ResourceName")]
         [ValidateNotNullOrEmpty]
         public string WorkspaceCollectionName { get; set; }
 
@@ -54,10 +56,28 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         public override void ExecuteCmdlet()
         {
             var keys = new List<string>();
-            if (Key1) keys.Add("Key1");
-            if (Key2) keys.Add("Key2");
+            if (Key1)
+            {
+                keys.Add("Key1");
+            }
 
-            if (keys.Count == 0) throw new ArgumentException("At least one of Key1 or Key2 switch required");
+            if (Key2)
+            {
+                keys.Add("Key2");
+            }
+
+            if (keys.Count == 0)
+            {
+                throw new ArgumentException("At least one of Key1 or Key2 switch required");
+            }
+
+            var description = string.Format(Resources.ResetWorkspaceCollectionAccessKeyDescription, keys[0], this.WorkspaceCollectionName);
+            var warning = string.Format(Resources.ResetWorkspaceCollectionAccessKeyWarning, keys[0], this.WorkspaceCollectionName);
+
+            if (!ShouldProcess(description, warning, Resources.ShouldProcessCaption))
+            {
+                return;
+            }
 
             foreach (var key in keys)
             {
