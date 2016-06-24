@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 {
                     var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content.ReadAsStringAsync().Result);
 
-                    if (ComputeOperationStatus.Failed.Equals(errorReturned.Status)
+                    if ("Failed".Equals(errorReturned.Status)
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
                         count++;

@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public static AzureOperationResponse<VirtualMachine> GetWithInstanceView(this IVirtualMachinesOperations iVmExtensionOperations,
             string rgName, string vmName)
         {
-            const string expand = "instanceView";
+            const InstanceViewTypes expand = InstanceViewTypes.InstanceView;
             var result = iVmExtensionOperations.GetWithHttpMessagesAsync(rgName, vmName, expand).GetAwaiter().GetResult();
             return result;
         }
