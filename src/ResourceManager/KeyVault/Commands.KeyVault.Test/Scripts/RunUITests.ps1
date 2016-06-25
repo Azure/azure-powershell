@@ -56,14 +56,14 @@ function Run-TestProtected
 
 # Initialize 
 Write-Host Delete log files
-Cleanup-Log $invocationPath
+Cleanup-LogFiles $invocationPath
 
 $testkeyVault = Get-KeyVault
 Write-Host Test key vault is $testKeyVault
 Write-Host Initializing Key Tests
-Initialize-KeyTest
+Cleanup-OldKeys
 Write-Host Initializing Secret Tests
-Initialize-SecretTest
+Cleanup-OldSecrets
 Write-Host Initialization Completed
 
 $global:startTime = Get-Date
