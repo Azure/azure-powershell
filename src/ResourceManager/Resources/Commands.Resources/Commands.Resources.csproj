@@ -236,7 +236,6 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="PostBuild.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -247,7 +246,4 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
-  </PropertyGroup>
 </Project>
