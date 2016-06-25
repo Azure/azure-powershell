@@ -13,51 +13,78 @@
 # ----------------------------------------------------------------------------------
 
 $excludedExtensions = @(".dll", ".zip", ".msi", ".exe")
-###################################
-#
-# Retrievce the contents of a powershrell transcript, stripping headers and footers
-#
-#    param [string] $path: The path to the transript file to read
-###################################
-function Get-Transcript 
+
+<#
+.SYNOPSIS
+Retrieve the contents of a PowerShell transcript, stripping headers and
+footers.
+
+.PARAMETER path
+The path to the transcript file to read.
+#>
+function Get-Transcript
 {
-   param([string] $path)
-   return Get-Content $path |
-   Select-String -InputObject {$_} -Pattern "^Start Time\s*:.*" -NotMatch |
-   Select-String -InputObject {$_} -Pattern "^End Time\s*:.*" -NotMatch |
-   Select-String -InputObject {$_} -Pattern "^Machine\s*:.*" -NotMatch |
-   Select-String -InputObject {$_} -Pattern "^Username\s*:.*" -NotMatch |
-   Select-String -InputObject {$_} -Pattern "^Transcript started, output file is.*" -NotMatch
+    param(
+        [string] $path
+    )
+
+    return Get-Content $path |
+    Select-String -InputObject {$_} -Pattern "^Start Time\s*:.*" -NotMatch |
+    Select-String -InputObject {$_} -Pattern "^End Time\s*:.*" -NotMatch |
+    Select-String -InputObject {$_} -Pattern "^Machine\s*:.*" -NotMatch |
+    Select-String -InputObject {$_} -Pattern "^Username\s*:.*" -NotMatch |
+    Select-String -InputObject {$_} -Pattern "^Transcript started, output file is.*" -NotMatch
 }
 
-########################
-#
-# Get a random file name in the current directory
-#
-#    param [string] $rootPath: The path of the directory to contain the random file (optional)
-########################
+
+<#
+.SYNOPSIS
+Get a random file name in the current directory.
+
+.PARAMETER rootPath
+The path of the directory to contain the random file (optional).
+#>
 function Get-LogFile
 {
-    param([string] $rootPath = ".")
+    param(
+        [string] $rootPath = "."
+    )
     return [System.IO.Path]::Combine($rootPath, ([System.IO.Path]::GetRandomFileName()))
 }
 
-#################
-#
-# Execute a test, no exception thrown means the test passes.  Can also be used to compare test 
-#  output to a baseline file, or to generate a baseline file
-#
-#    param [scriptblock] $test: The test code to run
-#    param [string] $testScript: The path to the baseline file (optional)
-#    param [switch] $generate: Set if the baseline file should be generated, otherwise
-#     the baseline file would be used for comparison with test output
-##################
-function Run-Test 
+<#
+.SYNOPSIS
+Execute the test. If no exception is thrown, then the test passes.
+
+.PARAMETER test
+The test code to run.
+
+.PARAMETER testName
+The name of the test (optional).
+
+.PARAMETER testScript
+The path to the baseline file (optional).
+
+.PARAMETER generate
+Set if the baseline file should be generated, otherwise the baseline
+file would be used for comparison with test output.
+
+.NOTES
+This function can also be used to compare test output to a baseline
+file, or to generate a baseline file.
+#>
+function Run-Test
 {
-    param([scriptblock]$test, [string] $testName = $null, [string] $testScript = $null, [switch] $generate = $false)
+    param(
+        [scriptblock] $test,
+        [string] $testName = $null,
+        [string] $testScript = $null,
+        [switch] $generate = $false
+    )
+
     Test-Setup
     $transFile = $testName + ".log"
-    if ($testName -eq $null) 
+    if ($testName -eq $null)
     {
       $transFile = Get-LogFile "."
     }
@@ -77,23 +104,21 @@ function Run-Test
     {
          Write-Log "[run-test]: Running test without file comparison"
     }
-        
-    $oldPref = $ErrorActionPreference	 
+
+    $oldPref = $ErrorActionPreference
     $ErrorActionPreference = "SilentlyContinue"
-    #Start-Transcript -Path $transFile	
-    $success = $false;
+    $success = $false
     $ErrorActionPreference = $oldPref
-    try 
+    try
     {
-      &$test
-      $success = $true;
+        &$test
+        $success = $true
     }
-    finally 
+    finally
     {
         Test-Cleanup
-        $oldPref = $ErrorActionPreference	 
+        $oldPref = $ErrorActionPreference
         $ErrorActionPreference = "SilentlyContinue"
-        #Stop-Transcript
         $ErrorActionPreference = $oldPref
         if ($testScript)
         {
@@ -104,68 +129,90 @@ function Run-Test
                 {
                     throw "[run-test]: Test Failed " + (Out-String -InputObject $result) + ", Transcript at $transFile"
                 }
-            
             }
         }
-        
+
         if ($success)
         {
             Write-Log "[run-test]: Test Passed"
         }
     }
-    
 }
 
-##################
-#
-# Format a string for proper output to host and transcript
-#
-#    param [string] $message: The text to write
-##################
+<#
+.SYNOPSIS
+Format the string for proper output to host and transcript.
+
+.PARAMETER message
+The text to write (optional).
+#>
 function Write-Log
 {
     [CmdletBinding()]
-    param( [Object] [Parameter(Position=0, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$false)] $obj = "")
+    param(
+        [Parameter(Position=0, ValueFromPipeline=$true, ValueFromPipelineByPropertyName=$false)]
+        [Object] $message = ""
+    )
+
     PROCESS
     {
-        $obj | Out-String | Write-Verbose
+        $message | Out-String | Write-Verbose
     }
 }
 
+<#
+.SYNOPSIS
+Check for a subscription match.
+
+.PARAMETER baseSubscriptionName
+The name of the base subscription.
+
+.PARAMETER checkedSubscription
+The subscription to be validated.
+#>
 function Check-SubscriptionMatch
 {
-    param([string] $baseSubscriptionName, [Microsoft.WindowsAzure.Commands.Utilities.Common.SubscriptionData] $checkedSubscription)
+    param(
+        [string] $baseSubscriptionName,
+        [Microsoft.WindowsAzure.Commands.Utilities.Common.SubscriptionData] $checkedSubscription
+    )
+
     Write-Log ("[CheckSubscriptionMatch]: base subscription: '$baseSubscriptionName', validating '" + ($checkedSubscription.SubscriptionName)+ "'")
     Format-Subscription $checkedSubscription | Write-Log
-    if ($baseSubscriptionName -ne $checkedSubscription.SubscriptionName) 
+    if ($baseSubscriptionName -ne $checkedSubscription.SubscriptionName)
     {
         throw ("[Check-SubscriptionMatch]: Subscription Match Failed '" + ($baseSubscriptionName) + "' != '" + ($checkedSubscription.SubscriptionName) + "'")
     }
-    
+
     Write-Log ("CheckSubscriptionMatch]: subscription check succeeded.")
 }
 
+<#
+.SYNOPSIS
+Retrieve the fully qualified filename of a given file.
 
-##########################
-#
-# Return the fully qualified filename of a given file
-#
-#    param [string] $path: The relative path to the file
-#
-##########################
+.PARAMETER path
+The relative path to the file.
+#>
 function Get-FullName
 {
-    param([string] $path)
+    param(
+        [string] $path
+    )
+
     $pathObj = Get-Item $path
     return ($pathObj.FullName)
 }
 
-#############################
-#
-# PowerShell environment setup for running a test, save previous snvironment settings and 
-# enable verbose, debug, and warning streams
-#
-#############################
+<#
+.SYNOPSIS
+Set up the PowerShell environment.
+
+.DESCRIPTION
+This function sets up the PowerShell environment for running a test,
+saving previous environment settings and enabling verbose, debug, and
+warning streams.
+#>
 function Test-Setup
 {
     $global:oldConfirmPreference = $global:ConfirmPreference
@@ -186,38 +233,48 @@ function Test-Setup
     $global:WhatIfPreference = 0
 }
 
-#############################
-#
-# PowerShell environment cleanup for running a test, restore previous snvironment settings
-#
-#############################
+<#
+.SYNOPSIS
+Clean up the PowerShell environment.
+
+.DESCRIPTION
+This function cleans up the PowerShell environment for running a test by
+restoring previous environment settings.
+#>
 function Test-Cleanup
 {
-     $global:ConfirmPreference = $global:oldConfirmPreference
-     $global:DebugPreference = $global:oldDebugPreference
-     $global:ErrorActionPreference = $global:oldErrorActionPreference
-     $global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
-     $global:ProgressPreference = $global:oldProgressPreference
-     $global:VerbosePreference = $global:oldVerbosePreference
-     $global:WarningPreference = $global:oldWarningPreference
-     $global:WhatIfPreference = $global:oldWhatIfPreference
+    $global:ConfirmPreference = $global:oldConfirmPreference
+    $global:DebugPreference = $global:oldDebugPreference
+    $global:ErrorActionPreference = $global:oldErrorActionPreference
+    $global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
+    $global:ProgressPreference = $global:oldProgressPreference
+    $global:VerbosePreference = $global:oldVerbosePreference
+    $global:WarningPreference = $global:oldWarningPreference
+    $global:WhatIfPreference = $global:oldWhatIfPreference
 }
 
-#######################
-#
-# Dump the contents of a directory to the output stream
-#
-#    param [string] $rootPath: The path to the directory
-#    param [switch] $resurse : True if we should recurse directories
-######################
+<#
+.SYNOPSIS
+Dump the contents of the directory to the output stream.
+
+.PARAMETER rootPath
+The path to the directory.
+
+.PARAMETER recurse
+True if we should recurse directories.
+#>
 function Dump-Contents
 {
-    param([string] $rootPath = ".", [switch] $recurse = $false)
+    param(
+        [string] $rootPath = ".",
+        [switch] $recurse = $false
+    )
+
     if (-not ((Test-Path $rootPath) -eq $true))
     {
         throw "[dump-contents]: $rootPath does not exist"
     }
-    
+
     foreach ($item in Get-ChildItem $rootPath)
     {
         Write-Log
@@ -243,16 +300,26 @@ function Dump-Contents
     }
 }
 
+<#
+.SYNOPSIS
+Test the binary file.
+
+.PARAMETER file
+The binary file to be tested.
+#>
 function Test-BinaryFile
 {
-    param ([System.IO.FileInfo] $file)
+    param(
+        [System.IO.FileInfo] $file
+    )
+
     ($excludedExtensions | Where-Object -FilterScript {$_ -eq $file.Extension}) -ne $null
 }
 
 
 <#
 .SYNOPSIS
-Waits on the specified job with the given timeout.
+Wait on the specified job with the given timeout.
 
 .PARAMETER scriptBlock
 The script block to execute.
@@ -262,7 +329,11 @@ The maximum timeout for the script.
 #>
 function Wait-Function
 {
-    param([ScriptBlock] $scriptBlock, [object] $breakCondition, [int] $timeout)
+    param(
+        [ScriptBlock] $scriptBlock,
+        [object] $breakCondition,
+        [int] $timeout
+    )
 
     if ($timeout -eq 0) { $timeout = 60 * 5 }
     $start = [DateTime]::Now
@@ -286,60 +357,90 @@ function Wait-Function
     }
 }
 
-
 <#
 .SYNOPSIS
-Waits for specified duration if not-mocked, otherwise skips wait.
+Wait for specified duration if not-mocked, otherwise skips wait.
 
 .PARAMETER timeout
 Timeout in seconds
 #>
 function Wait-Seconds
 {
-    param([int] $timeout)
-    
-    [Microsoft.WindowsAzure.Testing.TestUtilities]::Wait($timeout * 1000)
-}
+    param(
+        [int] $timeout
+    )
 
+    try
+    {
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            Write-Host "Skipping Start-Sleep since we're in playback mode..."
+            return
+        }
+
+        Write-Host "Calling Start-Sleep since we're not in playback mode..."
+    }
+    catch [System.Management.Automation.RuntimeException]
+    {
+        if (-not $_.Exception.Message.Contains("Unable to find type [Microsoft.Azure.Test.HttpRecorder."))
+        {
+            throw
+        }
+
+        Write-Host "Calling Start-Sleep since we're unable to find the HttpRecorder library..."
+    }
+
+    Start-Sleep -Seconds $timeout
+}
 
 <#
 .SYNOPSIS
-Retires the specified job the given numer of times, waiting the given interval between tries
+Retry the specified job the given numer of times, waiting the given
+interval between tries.
 
 .PARAMETER scriptBlock
-The script block to execute. Must be a predicate (return true or false)
+The script block to execute. Must be a predicate (return true or false).
 
 .PARAMETER argument
-Argument to pass to the script block
+The argument to pass to the script block.
 
 .PARAMETER maxTries
-The maximum number of times to retry
+The maximum number of times to retry.
 
 .PARAMETER interval
-The number of seconds to wait before retrying
+The number of seconds to wait before retrying.
 #>
 function Retry-Function
 {
-    param([ScriptBlock] $scriptBlock, [Object] $argument, [int] $maxTries, [int] $interval)
+    param(
+        [ScriptBlock] $scriptBlock,
+        [Object] $argument,
+        [int] $maxTries,
+        [int] $interval
+    )
 
-    if ($interval -eq 0) { $interval = 60  }
-    
-    $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
-    $tries = 1;
+    if ($interval -eq 0) { $interval = 60 }
+
+    $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument
+    $tries = 1
     while(( $result -ne $true) -and ($tries -le $maxTries))
     {
         Wait-Seconds $interval
-        $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument;
-        $tries++;
+        $result = Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $argument
+        $tries++
     }
-    
-    return $result;
+
+    return $result
 }
 
-function getAssetName
+<#
+.SYNOPSIS
+Retrieve the name of the asset.
+#>
+function GetAssetName
 {
     $stack = Get-PSCallStack
-    $testName = $null;
+    $testName = $null
     foreach ($frame in $stack)
     {
         if ($frame.Command.StartsWith("Test-", "CurrentCultureIgnoreCase"))
@@ -347,7 +448,7 @@ function getAssetName
             $testName = $frame.Command
         }
     }
-    
+
     $assetName = [Microsoft.Azure.Utilities.HttpRecorder.HttpMockServer]::GetAssetName($testName, "onesdk")
 
     return $assetName

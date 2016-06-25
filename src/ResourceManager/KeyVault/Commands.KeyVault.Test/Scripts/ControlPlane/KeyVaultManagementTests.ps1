@@ -37,6 +37,8 @@ Param($rgName, $location, $tagName, $tagValue)
     Assert-AreEqual "Standard" $actual.Sku	
     Assert-AreEqual $false $actual.EnabledForDeployment
 
+    if ($global:noADCmdLetMode) {return;}
+
     # Default Access Policy
     $upn = [Microsoft.WindowsAzure.Commands.Common.AzureRMProfileProvider]::Instance.Profile.Context.Account.Id
     $objectId = @(Get-AzureRmADUser -Mail $upn)[0].Id
@@ -49,8 +51,6 @@ Param($rgName, $location, $tagName, $tagValue)
             "backup",
             "restore")
     $expectedPermsToSecrets = @("all")
-
-    if ($global:noADCmdLetMode) {return;}
 
     Assert-AreEqual 1 @($actual.AccessPolicies).Count	
     Assert-AreEqual $objectId $actual.AccessPolicies[0].ObjectId
