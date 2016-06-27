@@ -18,7 +18,7 @@ Creates a unique name for a resource group
 #>
 function Get-ResourceGroupName
 {
-	return "pstest" + $(Get-Random) + "RG"
+    return getAssetName
 }
 
 <#
@@ -27,7 +27,7 @@ Creates a unique name for a workspace collection
 #>
 function Get-WorkspaceCollectionName 
 {
-	return "pstest" + $(Get-Random) + "WC"
+    return getAssetName
 }
 
 <#
