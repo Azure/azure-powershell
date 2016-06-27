@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddAzureRmDataLakeStoreItemContent.cs" />
-    <Compile Include="Commands\ExportAzureRmDataStoreLakeItem.cs" />
+    <Compile Include="Commands\ExportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreChildItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemAcl.cs" />

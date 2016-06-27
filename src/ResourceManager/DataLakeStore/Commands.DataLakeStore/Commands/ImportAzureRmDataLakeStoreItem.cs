@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -76,44 +76,50 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            ConfirmAction(
+                Resources.UploadFileMessage,
+                Destination.TransformedPath,
+                () =>
+                {
+                    if (Directory.Exists(powerShellSourcePath))
+                    {
+                        DataLakeStoreFileSystemClient.CopyDirectory(
+                            Destination.TransformedPath,
+                            Account,
+                            powerShellSourcePath,
+                            CmdletCancellationToken,
+                            NumThreads,
+                            -1,
+                            Recurse,
+                            Force,
+                            Resume, ForceBinary, ForceBinary, this);
+                    }
+                    else if (File.Exists(powerShellSourcePath))
+                    {
+                        DataLakeStoreFileSystemClient.CopyFile(
+                            Destination.TransformedPath,
+                            Account,
+                            powerShellSourcePath,
+                            CmdletCancellationToken,
+                            NumThreads,
+                            Force,
+                            Resume,
+                            ForceBinary,
+                            this);
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist,
+                            powerShellSourcePath));
+                    }
 
-            if (Directory.Exists(powerShellSourcePath))
-            {
-                DataLakeStoreFileSystemClient.CopyDirectory(
-                    Destination.TransformedPath,
-                    Account,
-                    powerShellSourcePath,
-                    CmdletCancellationToken,
-                    NumThreads,
-                    -1,
-                    Recurse,
-                    Force,
-                    Resume, ForceBinary, ForceBinary, this);
-            }
-            else if (File.Exists(powerShellSourcePath))
-            {
-                DataLakeStoreFileSystemClient.CopyFile(
-                    Destination.TransformedPath,
-                    Account,
-                    powerShellSourcePath,
-                    CmdletCancellationToken,
-                    NumThreads,
-                    Force,
-                    Resume,
-                    ForceBinary,
-                    this);
-            }
-            else
-            {
-                throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
-            }
 
-
-            // only attempt to write output if this cmdlet hasn't been cancelled.
-            if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
-            {
-                WriteObject(Destination.OriginalPath);
-            }
+                    // only attempt to write output if this cmdlet hasn't been cancelled.
+                    if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
+                    {
+                        WriteObject(Destination.OriginalPath);
+                    }
+                });
         }
     }
 }
