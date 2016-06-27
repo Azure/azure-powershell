@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
@@ -20,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -51,17 +52,28 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
 
             FileType type;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.OverwriteFileMessage, powerShellReadyPath),
+                VerbsData.Export,
+                Path.TransformedPath,
+                () =>
+                {
+                    if (
+                        !DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
+                        type != FileType.FILE)
+                    {
+                        throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
+                    }
 
-            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
-                type != FileType.FILE)
-            {
-                throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
-            }
 
-            DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, powerShellReadyPath, CmdletCancellationToken,
-                Force, this);
+                    DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, powerShellReadyPath,
+                        CmdletCancellationToken,
+                        true, this);
 
-            WriteObject(powerShellReadyPath);
+                    WriteObject(powerShellReadyPath);
+                },
+                () => File.Exists(powerShellReadyPath));
         }
     }
 }
