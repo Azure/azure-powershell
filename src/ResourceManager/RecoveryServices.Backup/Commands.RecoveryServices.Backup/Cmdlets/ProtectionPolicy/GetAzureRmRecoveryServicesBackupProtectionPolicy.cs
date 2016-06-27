@@ -110,6 +110,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                serviceClientProviderType = 
                                    ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
+                           else if (WorkloadType == Models.WorkloadType.AzureSQLDatabase)
+                           {
+                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureSQLDatabase);
+                           }
                            break;
 
                        case WorkloadBackupMangementTypeParamSet:
@@ -123,10 +127,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                serviceClientProviderType = ServiceClientHelpers.
                                    GetServiceClientProviderType(Models.WorkloadType.AzureVM);
                            }
+                           else if (WorkloadType == Models.WorkloadType.AzureSQLDatabase)
+                           {
+                               if (BackupManagementType != Models.BackupManagementType.AzureSQL)
+                               {
+                                   throw new ArgumentException(Resources.AzureSqlUnsupportedBackupManagementTypeException);
+                               }
+                               serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureSQLDatabase);
+                           }
                            else
                            {
                                throw new ArgumentException(string.Format(
-                                           Resources.UnsupportedWorkloadBackupManagementTypeException,       
+                                           Resources.UnsupportedWorkloadBackupManagementTypeException,
                                            WorkloadType.ToString(),
                                            BackupManagementType.ToString()));
                            }

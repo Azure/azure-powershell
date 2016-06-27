@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
-using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Storage;
+using ResourcesNS = Microsoft.Azure.Management.Resources;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -73,6 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceType = string.Empty;
 
                 ResourcesNS.Models.ResourceGetResult resource = null;
+                StorageModels.StorageAccount storageAccountDetails = null;
                 try
                 {
                     WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", 
@@ -82,15 +78,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 catch (Exception)
                 {
-                    identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
-                    identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
-                        identity, CancellationToken.None).Result;
+                    storageAccountDetails = this.StorageClient.StorageAccounts.GetProperties(
+                       StorageAccountResourceGroupName,
+                       StorageAccountName);
+                    if (storageAccountDetails.Kind == StorageModels.Kind.BlobStorage)
+                    {
+                        throw new ArgumentException(String.Format(Resources.UnsupportedStorageAccountException,
+                        storageAccountDetails.Kind.ToString(), StorageAccountName));
+                    }
                 }
-                
-                string storageAccountId = resource.Resource.Id;
-                string storageAccountlocation = resource.Resource.Location;
-                string storageAccountType = resource.Resource.Type;
+
+                string storageAccountId = (resource != null) ? resource.Resource.Id
+                                                : storageAccountDetails.Id;
+                string storageAccountlocation = (resource != null) ? resource.Resource.Location
+                                                : storageAccountDetails.Location;
+                string storageAccountType = (resource != null) ? resource.Resource.Type
+                                                : storageAccountDetails.Type;
 
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
 

@@ -12,26 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Management.Scheduler;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
-using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System.Threading;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -41,10 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     public abstract class RecoveryServicesBackupCmdletBase : AzureRMCmdlet
     {
-        /// <summary>
-        /// Defines the time (in seconds) to sleep in between calls while tracking operations
-        /// </summary>
-        private int _defaultSleepForOperationTracking = 5;
+        private IStorageManagementClient storageManagementClient;
 
         /// <summary>
         /// Service client adapter is used to make calls to the backend service
@@ -57,6 +49,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected ResourcesNS.ResourceManagementClient RmClient { get; set; }
 
         /// <summary>
+        /// Resource management client is used to make calls to the Compute service
+        /// </summary>
+        protected IStorageManagementClient StorageClient
+        {
+            get
+            {
+                if (storageManagementClient == null)
+                {
+                    storageManagementClient =
+                        AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                }
+                return storageManagementClient;
+                
+            }
+
+            set { storageManagementClient = value; }
+        }
+
+        /// <summary>
         /// Initializes the service clients and the logging utility
         /// </summary>
         protected void InitializeAzureBackupCmdlet()
@@ -66,6 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
             WriteDebug("InsideRestore. going to create ResourceManager Client");
             RmClient = AzureSession.ClientFactory.CreateClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+
             WriteDebug("Client Created successfully");
 
             Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
@@ -179,35 +191,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
 
         /// <summary>
-        /// Block to track the operation to completion.
-        /// Waits till the status of the operation becomes something other than InProgress.
-        /// </summary>
-        /// <param name="statusUrlLink"></param>
-        /// <param name="serviceClientMethod"></param>
-        /// <returns></returns>
-        public BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
-                                              string statusUrlLink,
-                                              Func<string, BackUpOperationStatusResponse> serviceClientMethod)
-        {
-            // using this directly because it doesn't matter which function we use.
-            // return type is same and currently we are using it in only two places.
-            // protected item and policy.
-            BackUpOperationStatusResponse response = serviceClientMethod(statusUrlLink);
-
-            while (
-                response != null &&
-                response.OperationStatus != null &&
-                response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
-            {
-                WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
-                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                response = serviceClientMethod(statusUrlLink);
-            }
-
-            return response;
-        }
-
-        /// <summary>
         /// Based on the response from the service, handles the job created in the service appropriately.
         /// </summary>
         /// <param name="itemResponse">Response from service</param>
@@ -217,32 +200,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             itemResponse.AzureAsyncOperation);
 
-            var response = WaitForOperationCompletionUsingStatusLink(
+            var response = TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
                                             itemResponse.AzureAsyncOperation,
                                             ServiceClientAdapter.GetProtectedItemOperationStatusByURL);
 
             if (response != null && response.OperationStatus != null)
             {
-            WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
+                WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
 
-            if (response.OperationStatus.Properties != null &&
-                   ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
-            {
-                var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                WriteObject(GetJobObject(jobStatusResponse.JobId));
-            }
+                if (response.OperationStatus.Properties != null &&
+                       ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+                {
+                    var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                    WriteObject(GetJobObject(jobStatusResponse.JobId));
+                }
 
                 if (response.OperationStatus.Status == OperationStatusValues.Failed &&
                     response.OperationStatus.OperationStatusError != null)
-            {
-                var errorMessage = string.Format(
-                    Resources.OperationFailed,
-                    operationName,
-                    response.OperationStatus.OperationStatusError.Code,
-                    response.OperationStatus.OperationStatusError.Message);
-                throw new Exception(errorMessage);
+                {
+                    var errorMessage = string.Format(
+                        Resources.OperationFailed,
+                        operationName,
+                        response.OperationStatus.OperationStatusError.Code,
+                        response.OperationStatus.OperationStatusError.Message);
+                    throw new Exception(errorMessage);
+                }
             }
         }
     }
-}
 }
