@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected ResourcesNS.ResourceManagementClient RmClient { get; set; }
 
         /// <summary>
-        /// Resource management client is used to make calls to the Compute service
+        /// Storage management client to make storage calls to the Compute service
         /// </summary>
         protected IStorageManagementClient StorageClient
         {

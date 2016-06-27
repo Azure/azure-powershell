@@ -171,7 +171,6 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
