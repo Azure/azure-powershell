@@ -1,12 +1,38 @@
-##2016.07.04 version 1.6.0
+﻿##2016.07.04 version 1.6.0
 * Azure SQL DB Backup/Restore
   * Cmdlets for LTR (Long Term Retention) backup feature
-	* Get-AzureRmSqlServerBackupLongTermRetentionVault
-	* Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
-	* Set-AzureRmSqlServerBackupLongTermRetentionVault
-	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+    - Get-AzureRmSqlServerBackupLongTermRetentionVault
+    - Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+    - Set-AzureRmSqlServerBackupLongTermRetentionVault
+    - Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+* Added LogicApp Integration accounts cmdlets
+    - Get-AzureRmIntegrationAccountAgreement
+    - Get-AzureRmIntegrationAccountCallbackUrl
+    - Get-AzureRmIntegrationAccountCertificate
+    - Get-AzureRmIntegrationAccount
+    - Get-AzureRmIntegrationAccountMap
+    - Get-AzureRmIntegrationAccountPartner
+    - Get-AzureRmIntegrationAccountSchema
+    - New-AzureRmIntegrationAccountAgreement
+    - New-AzureRmIntegrationAccountCertificate
+    - New-AzureRmIntegrationAccount
+    - New-AzureRmIntegrationAccountMap
+    - New-AzureRmIntegrationAccountPartner
+    - New-AzureRmIntegrationAccountSchema
+    - Remove-AzureRmIntegrationAccountAgreement
+    - Remove-AzureRmIntegrationAccountCertificate
+    - Remove-AzureRmIntegrationAccount
+    - Remove-AzureRmIntegrationAccountMap
+    - Remove-AzureRmIntegrationAccountPartner
+    - Remove-AzureRmIntegrationAccountSchema
+    - Set-AzureRmIntegrationAccountAgreement
+    - Set-AzureRmIntegrationAccountCertificate
+    - Set-AzureRmIntegrationAccount
+    - Set-AzureRmIntegrationAccountMap
+    - Set-AzureRmIntegrationAccountPartner
+    - Set-AzureRmIntegrationAccountSchema
 
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
