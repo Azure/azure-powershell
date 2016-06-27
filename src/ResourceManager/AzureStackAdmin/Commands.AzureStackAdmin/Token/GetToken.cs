@@ -98,6 +98,9 @@ namespace Microsoft.AzureStack.Commands.Security
         {
             AuthenticationResult result;
 
+            // note: this command should be deprecated
+            WriteWarning("Get-AzureStackToken cmdlet will be deprecated in a future release of AzureStackAdmin module.");
+
             this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
             // HACK - This ClientId parameter will be removed in a future release
             this.ClientId = SharedConstants.AzurePowerShell.ClientId;
