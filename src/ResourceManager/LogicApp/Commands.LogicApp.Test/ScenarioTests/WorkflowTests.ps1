@@ -86,7 +86,7 @@ function Test-CreateLogicAppWithDuplicateName
 	}
 	catch
 	{		
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' already exists."		
+		Assert-AreEqual $_.Exception.Message "The Resource '$WorkflowName' under resource group '$resourceGroupName' already exists."		
 	}
 	
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	

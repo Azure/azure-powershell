@@ -88,6 +88,24 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid metadata..
+        /// </summary>
+        internal static string InvalidMetadata {
+            get {
+                return ResourceManager.GetString("InvalidMetadata", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The qualifier &apos;{0}&apos; for partner &apos;{1}&apos; is invalid..
+        /// </summary>
+        internal static string InvalidQualifierSpecified {
+            get {
+                return ResourceManager.GetString("InvalidQualifierSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} needs to be specified..
         /// </summary>
         internal static string ParameterNeedsToBeSpecified {
@@ -97,25 +115,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing logic app..
+        ///   Looks up a localized string similar to Removing {0} {1}..
         /// </summary>
-        internal static string RemoveLogicAppMessage {
+        internal static string RemoveResourceMessage {
             get {
-                return ResourceManager.GetString("RemoveLogicAppMessage", resourceCulture);
+                return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the logic app &quot;{0}&quot;..
+        ///   Looks up a localized string similar to Are you sure you want to remove the {0} {1}..
         /// </summary>
-        internal static string RemoveLogicAppWarning {
+        internal static string RemoveResourceWarning {
             get {
-                return ResourceManager.GetString("RemoveLogicAppWarning", resourceCulture);
+                return ResourceManager.GetString("RemoveResourceWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Resource &apos;Microsoft.Logic/workflows/{0}&apos; under resource group &apos;{1}&apos; already exists..
+        ///   Looks up a localized string similar to The Resource &apos;{0}&apos; under resource group &apos;{1}&apos; already exists..
         /// </summary>
         internal static string ResourceAlreadyExists {
             get {
@@ -124,7 +142,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Resource &apos;Microsoft.Logic/workflows/{0}&apos; under resource group &apos;{1}&apos; was not found..
+        ///   Looks up a localized string similar to The Resource &apos;{0}&apos; under resource group &apos;{1}&apos; was not found..
         /// </summary>
         internal static string ResourceNotFound {
             get {
