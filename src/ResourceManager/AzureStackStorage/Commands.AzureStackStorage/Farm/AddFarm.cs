@@ -55,9 +55,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [ValidateNotNull]
         public string Location{ get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
+        
         protected override void Execute()
         {
             if (ShouldProcess(

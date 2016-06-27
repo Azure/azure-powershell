@@ -20,7 +20,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
 
     /// <summary>
-    /// 
+    /// Add a share
     /// </summary>
     [Cmdlet(VerbsCommon.Add, Nouns.AdminShare)]
     public sealed class AddShare : AdminCmdlet

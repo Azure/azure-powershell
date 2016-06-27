@@ -39,9 +39,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         [ValidateNotNull]
         public string FarmName { get; set; }
         
-        /// <summary>
-        /// 
-        /// </summary>
+        
         protected override void Execute()
         {
             if (ShouldProcess(

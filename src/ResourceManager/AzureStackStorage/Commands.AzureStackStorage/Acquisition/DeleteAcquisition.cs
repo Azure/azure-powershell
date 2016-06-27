@@ -22,7 +22,7 @@ using Microsoft.AzureStack.AzureConsistentStorage;
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
-    /// 
+    /// Delete an acquisition by its ID
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, Nouns.AdminAcquisition, SupportsShouldProcess = true)]
     public sealed class DeleteAcquisition : AdminCmdlet
