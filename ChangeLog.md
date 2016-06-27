@@ -1,4 +1,12 @@
-﻿##2016.07.11 version 1.6.0
+﻿##2016.07.04 version 1.6.0
+* Azure SQL DB Backup/Restore
+  * Cmdlets for LTR (Long Term Retention) backup feature
+	* Get-AzureRmSqlServerBackupLongTermRetentionVault
+	* Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+	* Set-AzureRmSqlServerBackupLongTermRetentionVault
+	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
+  * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
+  * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
 * Azure LogicApp
   * Added LogicApp Integration accounts cmdlets.
     - Get-AzureRmIntegrationAccountAgreement
