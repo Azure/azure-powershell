@@ -1,6 +1,8 @@
-##2016.06.17 version 1.5.1
+##2016.06.23 version 1.5.1
 * Azure Resource Manager
-  - Fix a bug in New-AzureRmResourceGroupDeployment. In some deployments the cmdlet throws an exception with "Deployment 'deploymentName' could not be found." and causes the cmdlet to fail. The fix makes sure the deployment is created before getting operations. 
+  - Fix a bug in New-AzureRmResourceGroupDeployment. In some deployments the cmdlet throws an exception with "Deployment 'deploymentName' could not be found." and causes the cmdlet to fail. The fix makes sure the deployment is created before getting operations.
+* AzureRM.Profile
+  - Fix issues #2387, #2388 with SubscriptionId and TenantId ValidationSet in Set-AzureRMContext cmdlet
 ##2016.06.01 version 1.5.0
 * Azure Resource Manager
   - (Get/Set/New/Remove)-AzureRmResourceGroup cmdlets will now use the new autorest generated ARM assembly
