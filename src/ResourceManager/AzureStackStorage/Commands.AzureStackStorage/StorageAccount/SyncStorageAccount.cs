@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 using System.Globalization;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -28,6 +28,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsData.Sync, Nouns.AdminStorageAccount, SupportsShouldProcess = true)]
     public sealed class SyncStorageAccount : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// Storage Account Name
         /// </summary>
@@ -61,9 +68,15 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         [Parameter(Mandatory = false, Position = 8)]
         public string StorageAccountApiVersion { get; set; }
-        
+
+        /// <summary>
+        /// Specifies the Microsoft.Resource.Admin apiVersion
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string ResourceAdminApiVersion { get; set; }
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";
+        internal static string DefaultResourceAdminApiVersion = "2015-11-01";
         internal static string SyncTargetOperation = "Create";
 
         internal static string BuildSyncTargetId(string tenantSubscriptionId, string resourceGroupName, string accountName)
@@ -74,21 +87,22 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         protected override void Execute()
         {
             StorageAccountSyncRequest req = new StorageAccountSyncRequest();
-
             if (StorageAccountApiVersion == null)
                 StorageAccountApiVersion = DefaultStorageAccountApiVersion;
+            if (string.IsNullOrEmpty(ResourceAdminApiVersion))
+            {
+                ResourceAdminApiVersion = DefaultResourceAdminApiVersion;
+            }
             req.ApiVersion = StorageAccountApiVersion;
             req.TargetOperaton = SyncTargetOperation;
             req.ResourceLocation = Location;
             req.Id = BuildSyncTargetId(TenantSubscriptionId, TenantResourceGroup, TenantAccountName);
-
             WriteObject(req, true);
-
             if (ShouldProcess(
                     string.Format(CultureInfo.InvariantCulture, Resources.StorageAccount, req.Id),
                     string.Format(CultureInfo.InvariantCulture, Resources.SyncOperation)))
             {
-                StorageAccountSyncResponse syncResponse = Client.StorageAccounts.Sync(TenantSubscriptionId, TenantResourceGroup, req);
+                StorageAccountSyncResponse syncResponse = Client.StorageAccounts.Sync(TenantSubscriptionId, TenantResourceGroup, ResourceAdminApiVersion, req);
                 WriteObject(syncResponse, true);
 
                 WriteWarning(Resources.WaitAfterArmSync);
