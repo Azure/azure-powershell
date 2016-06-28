@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections;
 
-    [Cmdlet(VerbsCommon.Move, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
+        OutputType(typeof(PSExpressRouteCircuit))]
     public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -70,23 +71,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateExpressRouteCircuit());
-
-                WriteObject(this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var ExpressRouteCircuit = CreateExpressRouteCircuit();
-
-                WriteObject(ExpressRouteCircuit);
-            }
+            var present = this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.MoveExpressRoutCircuitMessage,
+                Name,
+                () =>
+                {
+                    var expressRouteCircuit = CreateExpressRouteCircuit();
+                    WriteObject(expressRouteCircuit);
+                },
+                () => present);
         }
 
         private PSExpressRouteCircuit CreateExpressRouteCircuit()
