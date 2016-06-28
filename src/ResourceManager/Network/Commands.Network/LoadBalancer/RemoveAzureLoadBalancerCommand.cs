@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancer")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancer", SupportsShouldProcess = true)]
     public class RemoveAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,18 +49,19 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
-                Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
+                string.Format(Properties.Resources.RemovingResource, Name),
+                Properties.Resources.RemoveResourceMessage,
                 Name,
-                () => this.LoadBalancerClient.Delete(this.ResourceGroupName, this.Name));
-
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
+                () =>
+                {
+                    this.LoadBalancerClient.Delete(this.ResourceGroupName, this.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }
