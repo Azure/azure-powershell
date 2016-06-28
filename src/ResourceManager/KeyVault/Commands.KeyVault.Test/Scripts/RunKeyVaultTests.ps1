@@ -62,8 +62,8 @@ param(
     [Nullable[bool]] $NoADCmdLetMode = $null
 )
 
-. (Join-Path $PSScriptRoot "PSHCommon\Common.ps1")
-. (Join-Path $PSScriptRoot "PSHCommon\Assert.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1")
 . (Join-Path $PSScriptRoot "Common.ps1")
 . (Join-Path $PSScriptRoot "VaultKeyTests.ps1")
 . (Join-Path $PSScriptRoot "VaultSecretTests.ps1")
