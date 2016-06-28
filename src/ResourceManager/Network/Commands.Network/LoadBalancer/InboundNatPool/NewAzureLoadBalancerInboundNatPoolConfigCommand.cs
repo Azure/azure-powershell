@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var inboundNatPool = new PSInboundNatPool();
             inboundNatPool.Name = this.Name;
             inboundNatPool.Protocol = this.Protocol;

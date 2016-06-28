@@ -2047,7 +2047,7 @@ function Test-VirtualMachineWithPremiumStorageAccount
         $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         # VM Profile & Hardware
-        $vmsize = 'Standard_A4';
+        $vmsize = 'Standard_DS1';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
@@ -2079,7 +2079,6 @@ function Test-VirtualMachineWithPremiumStorageAccount
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
@@ -2141,7 +2140,7 @@ function Test-VirtualMachineWithPremiumStorageAccount
         Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
-        #Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
+        Assert-AreNotEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
     }
     finally
     {

@@ -1,0 +1,527 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourcegroups/hchung?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlZ3JvdXBzL2hjaHVuZz9hcGktdmVyc2lvbj0yMDE2LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung\",\r\n  \"name\": \"hchung\",\r\n  \"location\": \"northeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "170"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14981"
+        ],
+        "x-ms-request-id": [
+          "db412497-1f75-4af6-986c-c156214cd6ec"
+        ],
+        "x-ms-correlation-request-id": [
+          "db412497-1f75-4af6-986c-c156214cd6ec"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222806Z:db412497-1f75-4af6-986c-c156214cd6ec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:05 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "382fd13c-e3de-4307-8644-adcbc172dcd0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr\",\r\n  \"name\": \"hchung-testsvr\",\r\n  \"type\": \"Microsoft.Sql/servers\",\r\n  \"location\": \"North Europe\",\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"fullyQualifiedDomainName\": \"hchung-testsvr.sqltest-eg1.mscds.com\",\r\n    \"administratorLogin\": \"cloudSA\",\r\n    \"administratorLoginPassword\": null,\r\n    \"externalAdministratorLogin\": null,\r\n    \"externalAdministratorSid\": null,\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "470"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "4fe60250-eeca-4736-b171-71e120e85213"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14975"
+        ],
+        "x-ms-correlation-request-id": [
+          "082c1d3a-16a1-4431-a4f3-9c159ade72a7"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222807Z:082c1d3a-16a1-4431-a4f3-9c159ade72a7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:07 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "674cc28e-0a78-4f09-aa7f-f52708fc09ee"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"tags\": {},\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb\",\r\n  \"name\": \"hchung-testdb\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\",\r\n  \"location\": \"North Europe\",\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"databaseId\": \"d14d2a8a-9050-4657-97a1-5f478a99e419\",\r\n    \"edition\": \"Standard\",\r\n    \"status\": \"Online\",\r\n    \"serviceLevelObjective\": \"S0\",\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": \"268435456000\",\r\n    \"creationDate\": \"2016-05-20T18:04:46.79Z\",\r\n    \"currentServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveId\": \"f1173c43-91bd-4aaa-973c-54e79e15235b\",\r\n    \"requestedServiceObjectiveName\": null,\r\n    \"defaultSecondaryLocation\": \"SouthEast Asia\",\r\n    \"earliestRestoreDate\": \"2016-05-20T18:15:18.283Z\",\r\n    \"elasticPoolName\": null,\r\n    \"containmentState\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "832"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "20e4c656-6f2e-49ba-a38a-2cb1e23e9c3c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14974"
+        ],
+        "x-ms-correlation-request-id": [
+          "c26d6a7d-a884-4b57-a20b-87d9a36ddb0c"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222809Z:c26d6a7d-a884-4b57-a20b-87d9a36ddb0c"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:09 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdD9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "60c60292-9317-4ab5-8ad0-481c694d276f"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies\",\r\n  \"location\": \"North Europe\",\r\n  \"kind\": null,\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"recoveryServicesBackupPolicyResourceId\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "565"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "b78ef7fd-315b-4de3-bb1d-1418dd62652b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14973"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e7f3551-4b87-45dc-87ab-afcb4c6cb403"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222810Z:4e7f3551-4b87-45dc-87ab-afcb4c6cb403"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:10 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdD9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "4445041f-2bad-4dbd-a848-6464b552b8f1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies\",\r\n  \"location\": \"North Europe\",\r\n  \"kind\": null,\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"recoveryServicesBackupPolicyResourceId\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "565"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "0fc79f46-2505-4a37-b252-12a3c374c6b8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14966"
+        ],
+        "x-ms-correlation-request-id": [
+          "369b9de6-ef9d-4e7b-aa5c-22a179e6c131"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222859Z:369b9de6-ef9d-4e7b-aa5c-22a179e6c131"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default?api-version=2014-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdD9hcGktdmVyc2lvbj0yMDE0LTA0LTAx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"recoveryServicesBackupPolicyResourceId\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy\"\r\n  },\r\n  \"location\": \"North Europe\",\r\n  \"tags\": {}\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "316"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "8f67f912-e98c-4185-80b7-a796d0a91517"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"requestId\": \"bcd44dbf-23fc-4437-9c45-00c3bdd9c301\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "75"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "bcd44dbf-23fc-4437-9c45-00c3bdd9c301"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Preference-Applied": [
+          "return-content"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/azureAsyncOperation/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1196"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ecd35ae-1235-4f5d-9e9f-369aa82c18f1"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222811Z:5ecd35ae-1235-4f5d-9e9f-369aa82c18f1"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:11 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdC9vcGVyYXRpb25SZXN1bHRzL2JjZDQ0ZGJmLTIzZmMtNDQzNy05YzQ1LTAwYzNiZGQ5YzMwMT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "8f67f912-e98c-4185-80b7-a796d0a91517"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"requestId\": \"bcd44dbf-23fc-4437-9c45-00c3bdd9c301\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "75"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "ed875565-3b4c-4e86-9176-1fcb5be8b7bb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/azureAsyncOperation/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14972"
+        ],
+        "x-ms-correlation-request-id": [
+          "1eb96ca4-eb63-4027-8a52-f1f16fb15540"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222813Z:1eb96ca4-eb63-4027-8a52-f1f16fb15540"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:13 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdC9vcGVyYXRpb25SZXN1bHRzL2JjZDQ0ZGJmLTIzZmMtNDQzNy05YzQ1LTAwYzNiZGQ5YzMwMT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "8f67f912-e98c-4185-80b7-a796d0a91517"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"requestId\": \"bcd44dbf-23fc-4437-9c45-00c3bdd9c301\",\r\n  \"status\": \"IN_PROGRESS\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "75"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Retry-After": [
+          "30"
+        ],
+        "x-ms-request-id": [
+          "1e9646fb-78ad-42af-a1a2-6dfb6d71a998"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/azureAsyncOperation/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14969"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a85c464-b3c7-44e0-a39c-63ea4069ec09"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222844Z:7a85c464-b3c7-44e0-a39c-63ea4069ec09"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:43 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default/operationResults/bcd44dbf-23fc-4437-9c45-00c3bdd9c301?api-version=2014-04-01-Preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTVlOGFmODYtMmQ5My00ZWJkLThlYjUtM2IwMTg0ZGFhOWRlL3Jlc291cmNlR3JvdXBzL2hjaHVuZy9wcm92aWRlcnMvTWljcm9zb2Z0LlNxbC9zZXJ2ZXJzL2hjaHVuZy10ZXN0c3ZyL2RhdGFiYXNlcy9oY2h1bmctdGVzdGRiL2JhY2t1cExvbmdUZXJtUmV0ZW50aW9uUG9saWNpZXMvRGVmYXVsdC9vcGVyYXRpb25SZXN1bHRzL2JjZDQ0ZGJmLTIzZmMtNDQzNy05YzQ1LTAwYzNiZGQ5YzMwMT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLVByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/0.9.0.0"
+        ],
+        "x-ms-client-request-id": [
+          "8f67f912-e98c-4185-80b7-a796d0a91517"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.Sql/servers/hchung-testsvr/databases/hchung-testdb/backupLongTermRetentionPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies\",\r\n  \"location\": \"North Europe\",\r\n  \"kind\": null,\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"recoveryServicesBackupPolicyResourceId\": \"/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "565"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "x-ms-request-id": [
+          "ef368346-0c88-4d1e-8f21-9918447abce9"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14967"
+        ],
+        "x-ms-correlation-request-id": [
+          "727c8bce-c6d6-42fa-ba29-087e3165a42a"
+        ],
+        "x-ms-routing-request-id": [
+          "NORTHEUROPE:20160526T222859Z:727c8bce-c6d6-42fa-ba29-087e3165a42a"
+        ],
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 22:28:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e5e8af86-2d93-4ebd-8eb5-3b0184daa9de",
+    "TenantId": "0e6fa940-3740-42ed-adb9-6295a82addcd",
+    "Domain": "aad4.ccsctp.net",
+    "User": "admin@aad4.ccsctp.net"
+  }
+}
