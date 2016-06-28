@@ -351,6 +351,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             _accountClient.Account.Update(resourceGroupName, accountName, account);
         }
 
+        public IEnumerable<AdlDataSource> GetAllDataSources(string resourceGroupName, string accountName)
+        {
+            var toReturn = new List<AdlDataSource>();
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var defaultAdls = GetAccount(resourceGroupName, accountName).Properties.DefaultDataLakeStoreAccount;
+            foreach(var adlsAcct in ListDataLakeStoreAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(adlsAcct, adlsAcct.Name.Equals(defaultAdls, StringComparison.OrdinalIgnoreCase)));
+            }
+
+            foreach (var storageAcct in ListStorageAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(storageAcct));
+            }
+
+            return toReturn;
+        }
+
         private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)
         {
             return _accountClient.Account.ListNext(nextLink);
