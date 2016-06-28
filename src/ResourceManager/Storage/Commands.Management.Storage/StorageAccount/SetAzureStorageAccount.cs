@@ -94,7 +94,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        [Alias(TagsAlias)]
+        public Hashtable[] Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -108,9 +109,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
             }
 
-            if (this.Tags != null)
+            if (this.Tag != null)
             {
-                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tags, validate: true);
+                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                 updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
             }
 

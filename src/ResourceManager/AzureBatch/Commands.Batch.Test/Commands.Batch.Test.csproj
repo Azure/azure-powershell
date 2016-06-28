@@ -284,18 +284,6 @@
     <None Include="Resources\BatchTestCert01.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Resources\BatchTestCert02.cer">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert03.cer">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert04.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\BatchTestCert05.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="Resources\TestApplicationPackage.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -371,29 +359,11 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestAddCertificate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCancelCertificateDelete.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestDeleteCertificate.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestGetAndListCertificatesWithSelect.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestGetCertificateByThumbprint.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListAllCertificates.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesByFilter.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestListCertificatesWithMaxCount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCertificateCrudOperations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestDisableAndEnableComputeNodeSchedulingById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -695,9 +665,6 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListAllTasks.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListSubtasksWithMaxCount.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestListTaskPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -745,9 +712,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="about.txt" />
-    <Content Include="Resources\MSMpiSetup.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
