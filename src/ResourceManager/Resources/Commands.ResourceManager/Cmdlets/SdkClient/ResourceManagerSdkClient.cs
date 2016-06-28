@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
@@ -350,13 +351,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
-                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
-
                         var result = ResourceManagementClient.DeploymentOperations.List(
                             resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
                             deploymentName: operation.Properties.TargetResource.ResourceName);
 
-                        newNestedOperations = GetNewOperations(operations, result);
+                        List<DeploymentOperation>  newNestedOperations = GetNewOperations(operations, result);
 
                         foreach (DeploymentOperation op in newNestedOperations)
                         {
@@ -430,30 +429,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new TemplateValidationInfo(validationResult);
         }
 
-        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null, bool listAvailable = false, string location = null)
-        {
-            var providers = this.ListResourceProviders(providerName: providerName, listAvailable: listAvailable);
-
-            if (string.IsNullOrEmpty(location))
-            {
-                return providers
-                    .Select(provider => provider.ToPSResourceProvider())
-                    .ToArray();
-            }
-
-            foreach (var provider in providers)
-            {
-                provider.ResourceTypes = provider.ResourceTypes
-                    .Where(type => !type.Locations.Any() || this.ContainsNormalizedLocation(type.Locations.ToArray(), location))
-                    .ToList();
-            }
-
-            return providers
-                .Where(provider => provider.ResourceTypes.Any())
-                .Select(provider => provider.ToPSResourceProvider())
-                .ToArray();
-        }
-
         public virtual List<Provider> ListResourceProviders(string providerName = null, bool listAvailable = true)
         {
             if (!string.IsNullOrEmpty(providerName))
@@ -483,16 +458,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     ? returnList
                     : returnList.Where(this.IsProviderRegistered).ToList();
             }
-        }
-
-        private bool ContainsNormalizedLocation(string[] locations, string location)
-        {
-            return locations.Any(existingLocation => this.NormalizeLetterOrDigitToUpperInvariant(existingLocation).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location)));
-        }
-
-        private string NormalizeLetterOrDigitToUpperInvariant(string value)
-        {
-            return value != null ? new string(value.Where(c => char.IsLetterOrDigit(c)).ToArray()).ToUpperInvariant() : null;
         }
 
         private bool IsProviderRegistered(Provider provider)
@@ -538,64 +503,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 .Distinct(StringComparer.InvariantCultureIgnoreCase)
                 .Select(resourceId => new ResourceIdentifier(resourceId))
                 .ToArray();
-        }
-
-        /// <summary>
-        /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
-        /// (Current logic is to prefer the latest "non-test' api-version. If there are no such version, choose the latest one)
-        /// </summary>
-        public Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
-        {
-            PSResourceProvider[] allProviders = this.ListPSResourceProviders(listAvailable: true);
-
-            Dictionary<string, string> providersSupportingOperations = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            PSResourceProviderResourceType[] providerResourceTypes = null;
-
-            foreach (PSResourceProvider provider in allProviders)
-            {
-                providerResourceTypes = provider.ResourceTypes;
-                if (providerResourceTypes != null && providerResourceTypes.Any())
-                {
-                    PSResourceProviderResourceType operationsResourceType = providerResourceTypes.Where(r => r != null && r.ResourceTypeName == ResourceManagerSdkClient.Operations).FirstOrDefault();
-                    if (operationsResourceType != null &&
-                        operationsResourceType.ApiVersions != null &&
-                        operationsResourceType.ApiVersions.Any())
-                    {
-                        string[] allowedTestPrefixes = new[] { "-preview", "-alpha", "-beta", "-rc", "-privatepreview" };
-                        List<string> nonTestApiVersions = new List<string>();
-
-                        foreach (string apiVersion in operationsResourceType.ApiVersions)
-                        {
-                            bool isTestApiVersion = false;
-                            foreach (string testPrefix in allowedTestPrefixes)
-                            {
-                                if (apiVersion.EndsWith(testPrefix, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    isTestApiVersion = true;
-                                    break;
-                                }
-                            }
-
-                            if (isTestApiVersion == false && !nonTestApiVersions.Contains(apiVersion))
-                            {
-                                nonTestApiVersions.Add(apiVersion);
-                            }
-                        }
-
-                        if (nonTestApiVersions.Any())
-                        {
-                            string latestNonTestApiVersion = nonTestApiVersions.OrderBy(o => o).Last();
-                            providersSupportingOperations.Add(provider.ProviderNamespace, latestNonTestApiVersion);
-                        }
-                        else
-                        {
-                            providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
-                        }
-                    }
-                }
-            }
-
-            return providersSupportingOperations;
         }
 
         /// <summary>
@@ -667,7 +574,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
-                    ? resourceGroups.Where(resourceGroup => this.NormalizeLetterOrDigitToUpperInvariant(resourceGroup.Location).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location))).ToList()
+                    ? resourceGroups.Where(resourceGroup => resourceGroup.Location.EqualsAsLocation(location)).ToList()
                     : resourceGroups;
 
                 // TODO: Replace with server side filtering when available

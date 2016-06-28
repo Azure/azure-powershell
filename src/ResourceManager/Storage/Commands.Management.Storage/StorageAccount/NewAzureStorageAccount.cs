@@ -100,7 +100,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        [Alias(TagsAlias)]
+        public Hashtable[] Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -119,7 +120,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 Location = this.Location,
                 Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
             if (this.CustomDomainName != null)
