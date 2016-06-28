@@ -145,7 +145,7 @@
 				<maml:para>This command gets the integration account from a specified resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
+				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
 Name        : IntegrationAccount1
 Type        : Microsoft.Logic/integrationAccounts
 Location    : brazilsouth
@@ -171,7 +171,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</maml:para>
 				<maml:para>This command gets the integration account(s) from a specified resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
+				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
 Name        : IntegrationAccount1
 Type        : Microsoft.Logic/integrationAccounts
 Location    : brazilsouth
@@ -197,7 +197,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</maml:para>
 				<maml:para>This command gets all the integration account(s) in the subscription.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
+				<maml:para>Id          : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/IntegrationAccount1
 Name        : IntegrationAccount1
 Type        : Microsoft.Logic/integrationAccounts
 Location    : brazilsouth
@@ -398,7 +398,7 @@ ChangedTime : 3/26/2016 4:26:07 PM</maml:para>
 				<maml:para>This command gets the integration account agreement by name.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id                     : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount1
+				<maml:para>Id                     : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount1
 Name                   : IntegrationAccount1
 Type                   : Microsoft.Logic/integrationAccounts/agreements
 CreatedTime            : 3/24/2016 9:08:46 PM
@@ -459,7 +459,7 @@ Metadata               :</maml:para>
 				<maml:para>This command gets the integration account agreements by resource group name.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id                     : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount1
+				<maml:para>Id                     : /subscriptions/&lt;SubscriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/agreements/IntegrationAccount1
 Name                   : IntegrationAccount1
 Type                   : Microsoft.Logic/integrationAccounts/agreements
 CreatedTime            : 3/24/2016 9:08:46 PM
@@ -691,8 +691,8 @@ Metadata               :</maml:para>
 				<maml:para>This commands gets the integration account callback URL.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>CallBackUrl : https://prod-07.brazilus.logic.azure.com:443/integrationAccounts/8811f0155a364b5e9618ba28f7180601?api-version=2015-08-01-preview&amp;se=2016-03
-              -25T18%3A23%3A22.0000000Z&amp;sp=%2F%2Fread&amp;sv=1.0&amp;sig=0nnBHbaq1JcoxDpgiFu7Y8mBsqZLl-Jtqp8_KJCrHRE</maml:para>
+				<maml:para>CallBackUrl : https://&lt;baseurl&gt;/integrationAccounts/8811f0155a364b5e9618ba28f7180601?api-version=2015-08-01-preview&amp;se=2016-03
+              -25T18%3A23%3A22.0000000Z&amp;sp=%2F%2Fread&amp;sv=1.0&amp;sig=&lt;value&gt;</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -871,14 +871,14 @@ Metadata               :</maml:para>
 				<maml:para>This command gets the integration account certificate by name.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id                : /subscriptions/&lt;SusbcriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount1/certificates/IntegrationAccountCertificate1
+				<maml:para>Id                : /subscriptions/&lt;SusbcriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount1/certificates/IntegrationAccountCertificate1
 Name              : IntegrationAccountCertificate1
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
-KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/testkeyvault
+KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/&lt;name&gt;
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate :
@@ -902,14 +902,14 @@ MetaData          :</maml:para>
 				<maml:para>This command gets the integration account certificates by integration account name.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id                : /subscriptions/&lt;SusbcriptionId&gt;/resourceGroups/ResourceGroup1/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount1/certificates/IntegrationAccountCertificate1
+				<maml:para>Id                : /subscriptions/&lt;SusbcriptionId&gt;/resourceGroups/&lt;ResourceGroup1&gt;/providers/Microsoft.Logic/integrationAccounts/IntegartionAccount1/certificates/IntegrationAccountCertificate1
 Name              : IntegrationAccountCertificate1
 Type              : Microsoft.Logic/integrationAccounts/certificates
 CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
-KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/testkeyvault
+KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/&lt;name&gt;
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate :
@@ -1111,9 +1111,8 @@ CreatedTime          : 3/24/2016 10:34:26 PM
 ChangedTime          : 3/24/2016 10:34:26 PM
 MapType              : Xslt
 ContentType          : 
-ContentLink          : https://flowprodcu07cqsn01.blob.core.windows.net/integrationaccounts8811f0155a364b5e9618ba28f7180601/99D1E_XSLT_INTEGRATIONACCOUNT
-                       MAP1-9A960F9B71C844CDB09D4922B3BCFF61?sv=2014-02-14&amp;sr=b&amp;sig=msIGLF48snNiyY6BGXPxvF8qq%2BZ94Lr1zutO5yVZ08w%3D&amp;se=2016-03-25T02%3A3
-                       4%3A33Z&amp;sp=r
+ContentLink          : https://&lt;baseurl&gt;/integrationaccounts8811f0155a364b5e9618ba28f7180601/99D1E_XSLT_INTEGRATIONACCOUNT
+                       MAP1-9A960F9B71C844CDB09D4922B3BCFF61?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize          : 3056
 Metadata             :</maml:para>
 			</dev:remarks>
@@ -1142,9 +1141,8 @@ CreatedTime          : 3/24/2016 10:34:26 PM
 ChangedTime          : 3/24/2016 10:34:26 PM
 MapType              : Xslt
 ContentType          : 
-ContentLink          : https://flowprodcu07cqsn01.blob.core.windows.net/integrationaccounts8811f0155a364b5e9618ba28f7180601/99D1E_XSLT_INTEGRATIONACCOUNT
-                       MAP1-9A960F9B71C844CDB09D4922B3BCFF61?sv=2014-02-14&amp;sr=b&amp;sig=msIGLF48snNiyY6BGXPxvF8qq%2BZ94Lr1zutO5yVZ08w%3D&amp;se=2016-03-25T02%3A3
-                       4%3A33Z&amp;sp=r
+ContentLink          : https://&lt;baseurl&gt;/integrationaccounts8811f0155a364b5e9618ba28f7180601/99D1E_XSLT_INTEGRATIONACCOUNT
+                       MAP1-9A960F9B71C844CDB09D4922B3BCFF61?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize          : 3056
 Metadata             :</maml:para>
 			</dev:remarks>
@@ -1569,8 +1567,8 @@ CreatedTime          : 3/25/2016 5:42:58 PM
 ChangedTime          : 3/25/2016 5:42:58 PM
 SchemaType           : Xml
 ContentType          : 
-ContentLink          : https://flowprodcu04cqsn01.blob.core.windows.net/integrationaccounts469af4f3cf4047b7ac3a08c87948ec5f/3839E_XML_INTEGRATIONACCOUNTSCHEMA1-5A86631F61F
-                       14513AA1185A52C6B2874?sv=2014-02-14&amp;sr=b&amp;sig=jXKlp5ILxyqrMsPTyiRdvfcDkXfpUUiYWY%2FZ3x0%2BkA0%3D&amp;se=2016-03-25T21%3A43%3A12Z&amp;sp=r
+ContentLink          : https://&lt;baseurl&gt;/integrationaccounts469af4f3cf4047b7ac3a08c87948ec5f/3839E_XML_INTEGRATIONACCOUNTSCHEMA1-5A86631F61F
+                       14513AA1185A52C6B2874?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize          : 7901
 MetaData             :</maml:para>
 			</dev:remarks>
@@ -1599,8 +1597,8 @@ CreatedTime          : 3/25/2016 5:42:58 PM
 ChangedTime          : 3/25/2016 5:42:58 PM
 SchemaType           : Xml
 ContentType          : 
-ContentLink          : https://flowprodcu04cqsn01.blob.core.windows.net/integrationaccounts469af4f3cf4047b7ac3a08c87948ec5f/3839E_XML_INTEGRATIONACCOUNTSCHEMA1-5A86631F61F
-                       14513AA1185A52C6B2874?sv=2014-02-14&amp;sr=b&amp;sig=jXKlp5ILxyqrMsPTyiRdvfcDkXfpUUiYWY%2FZ3x0%2BkA0%3D&amp;se=2016-03-25T21%3A43%3A12Z&amp;sp=r
+ContentLink          : https://&lt;baseurl&gt;/integrationaccounts469af4f3cf4047b7ac3a08c87948ec5f/3839E_XML_INTEGRATIONACCOUNTSCHEMA1-5A86631F61F
+                       14513AA1185A52C6B2874?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize          : 7901
 MetaData             :</maml:para>
 			</dev:remarks>
@@ -1774,13 +1772,13 @@ MetaData             :</maml:para>
 				<maml:para>This command gets a Logic App from the specified Azure resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Id                           : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/LogicAppCmdletTest/providers/Microsoft.Logic/workflows/LogicApp1
+				<maml:para>Id                           : /subscriptions/&lt;subscriptionid&gt;/resourceGroups/&lt;ResourceGroup&gt;/providers/Microsoft.Logic/workflows/LogicApp1
 Name                         : LogicApp1
 Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/&lt;susbcriptionid&gt;/resourcegroups/&lt;ResourceGroup&gt;/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -1791,7 +1789,7 @@ Parameters                   : {[destinationUri, Microsoft.Azure.Management.Logi
 SkuName                      : Standard
 PlanName                     : StandardServicePlan
 PlanType                     : Microsoft.Web/ServerFarms
-PlanId                       : /subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourceGroups/ResourceGroup1/providers/Microsoft.Web/serverfarms/StandardServicePlan
+PlanId                       : /subscriptions/&lt;subscriptionid&gt;/resourceGroups/&lt;ResourceGroup&gt;/providers/Microsoft.Web/serverfarms/StandardServicePlan
 Version                      : 08587489107859952120</maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -1983,8 +1981,8 @@ Version                      : 08587489107859952120</maml:para>
 				<maml:para>This command gets an access key of a Logic App from the specified Azure resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>PrimarySecretKey   : lTmyIrecVCcpC2wF8M8HeUW7YUL6Y_Uod7jOlrpW-TU
-SecondarySecretKey : IS0G7m3lUfZtrrlSsu7d6IKqwLAwQ_TmKVjrW7yuzx4</maml:para>
+				<maml:para>PrimarySecretKey   : &lt;value&gt;
+SecondarySecretKey : &lt;value&gt;</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2004,8 +2002,8 @@ SecondarySecretKey : IS0G7m3lUfZtrrlSsu7d6IKqwLAwQ_TmKVjrW7yuzx4</maml:para>
 				<maml:para>This command gets all the access keys of a Logic App from the specified Azure resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>PrimarySecretKey   : lTmyIrecVCcpC2wF8M8HeUW7YUL6Y_Uod7jOlrpW-TU
-SecondarySecretKey : IS0G7m3lUfZtrrlSsu7d6IKqwLAwQ_TmKVjrW7yuzx4</maml:para>
+				<maml:para>PrimarySecretKey   : &lt;value&gt;
+SecondarySecretKey : &lt;value&gt;</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -2926,8 +2924,8 @@ LogicAppVersion     : 08587489107406290826</maml:para>
 EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
-InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=rASa1yg14P71ioIStAji5HJfTFCbSjD3LNt2Ypn%2Byg4%3D&amp;se=2016-01-14T16%3A15%3A16Z&amp;sp=r
+InputsLink  : https://&lt;baseurl&gt;/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -2958,8 +2956,8 @@ Type        : Microsoft.Logic/workflows/triggers/histories</maml:para>
 EndTime     : 1/13/2016 2:43:33 PM
 Error       : {code, message}
 Fired       : False
-InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/CAB46_60e2ad0f0e1947e8b5798716914c5d
-              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=aoyjajRfk5tQucYE%2BW6h9Is%2BAHSE7AcojY%2FOag6DWRA%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+InputsLink  : https://&lt;baseurl&gt;/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/CAB46_60e2ad0f0e1947e8b5798716914c5d
+              b6_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 Name        : 08587489106716457817
 OutputsLink : 
 Run         : 
@@ -2972,8 +2970,8 @@ Code        : BadRequest
 EndTime     : 1/13/2016 2:42:26 PM
 Error       : {code, message}
 Fired       : False
-InputsLink  : https://flowprodcu02by01.blob.core.windows.net/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
-              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=XNBbA0FkBQmGPDd%2Be03J0Vsdj4aFRG9YK5YBJwzBbO0%3D&amp;se=2016-01-14T16%3A18%3A27Z&amp;sp=r
+InputsLink  : https://&lt;baseurl&gt;/flow3ea9ffd11c684c9f9f258b1a6ea5cb6020160113t000000zcontent/A7392_d1e831de68ac4ef89d19a40f05e663
+              cb_httpTrigger:5Finputs:2Ejson?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 Name        : 08587489107387695768
 OutputsLink : 
 Run         : 
@@ -3848,7 +3846,7 @@ Content                : {&quot;AS2&quot;:null,&quot;X12&quot;:{&quot;ReceiveAgr
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>		
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -3902,7 +3900,7 @@ CreatedTime       : 3/26/2016 6:59:07 PM
 ChangedTime       : 3/26/2016 6:59:07 PM
 KeyName           : TestKey
 KeyVersion        : 1.0
-KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/testkeyvault
+KeyVaultId        : /subscriptions/&lt;SusbcriptionId/resourcegroups/ResourceGroup1/providers/microsoft.keyvault/vaults/&lt;name&gt;
 KeyVaultName      : testkeyvault
 KeyVaultName      : testkeyvault
 PublicCertificate :
@@ -4198,8 +4196,8 @@ Type        : Microsoft.Logic/integrationAccounts/maps
 CreatedTime : 3/26/2016 7:12:22 PM
 ChangedTime : 3/26/2016 7:12:22 PM
 MapType     : Xslt
-ContentLink : https://flowprodcu02cqsn01.blob.core.windows.net/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/99D1E_XSLT_INTEGRATIONACCOUNTMAP1-9C97D973088B4256A1893B
-              BCB1F85246?sv=2014-02-14&amp;sr=b&amp;sig=efkll3huogy9ByP7PgsGT0x61rR9bGZbg9oUhlBrVUY%3D&amp;se=2016-03-27T06%3A12%3A22Z&amp;sp=r
+ContentLink : https://&lt;baseurl&gt;/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/99D1E_XSLT_INTEGRATIONACCOUNTMAP1-9C97D973088B4256A1893B
+              BCB1F85246?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize : 3056
 Metadata    :</maml:para>
 			</dev:remarks>
@@ -4695,7 +4693,7 @@ Metadata           :</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>		
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -4748,8 +4746,8 @@ Type        : Microsoft.Logic/integrationAccounts/schemas
 CreatedTime : 3/26/2016 7:21:10 PM
 ChangedTime : 3/26/2016 7:21:10 PM
 SchemaType  : Xml
-ContentLink : https://flowprodcu02cqsn01.blob.core.windows.net/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/3839E_XML_INTEGRATIONACCOUNTSCHEMA2-5A6650B914454A2CAB16
-              B4A8D3F9840D?sv=2014-02-14&amp;sr=b&amp;sig=GL7ohXiVDs%2BwDvc1YdTnutSoHqfCeJCj1P0LWKHdIyQ%3D&amp;se=2016-03-27T06%3A21%3A10Z&amp;sp=r
+ContentLink : https://&lt;baseurl&gt;/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/3839E_XML_INTEGRATIONACCOUNTSCHEMA2-5A6650B914454A2CAB16
+              B4A8D3F9840D?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize : 7901</maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -5297,7 +5295,7 @@ Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -5335,7 +5333,7 @@ Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -5373,7 +5371,7 @@ Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -5411,7 +5409,7 @@ Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -7728,7 +7726,7 @@ Metadata               :</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>		
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -8078,8 +8076,8 @@ Type        : Microsoft.Logic/integrationAccounts/maps
 CreatedTime : 3/26/2016 7:12:22 PM
 ChangedTime : 3/26/2016 7:12:22 PM
 MapType     : Xslt
-ContentLink : https://flowprodcu02cqsn01.blob.core.windows.net/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/99D1E_XSLT_INTEGRATIONACCOUNTMAP1-9C97D973088B4256A1893B
-              BCB1F85246?sv=2014-02-14&amp;sr=b&amp;sig=efkll3huogy9ByP7PgsGT0x61rR9bGZbg9oUhlBrVUY%3D&amp;se=2016-03-27T06%3A12%3A22Z&amp;sp=r
+ContentLink : https://&lt;baseurl&gt;/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/99D1E_XSLT_INTEGRATIONACCOUNTMAP1-9C97D973088B4256A1893B
+              BCB1F85246?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize : 3056
 Metadata    :</maml:para>
 			</dev:remarks>
@@ -8575,7 +8573,7 @@ Metadata</maml:para>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>		
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -8628,8 +8626,8 @@ Type        : Microsoft.Logic/integrationAccounts/schemas
 CreatedTime : 3/26/2016 7:21:10 PM
 ChangedTime : 3/26/2016 7:21:10 PM
 SchemaType  : Xml
-ContentLink : https://flowprodcu02cqsn01.blob.core.windows.net/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/3839E_XML_INTEGRATIONACCOUNTSCHEMA2-5A6650B914454A2CAB16
-              B4A8D3F9840D?sv=2014-02-14&amp;sr=b&amp;sig=GL7ohXiVDs%2BwDvc1YdTnutSoHqfCeJCj1P0LWKHdIyQ%3D&amp;se=2016-03-27T06%3A21%3A10Z&amp;sp=r
+ContentLink : https://&lt;baseurl&gt;/integrationaccounts68a13b6b49f14995ba7c5f3aedcbd7ad/3839E_XML_INTEGRATIONACCOUNTSCHEMA2-5A6650B914454A2CAB16
+              B4A8D3F9840D?sv=2014-02-14&amp;sr=b&amp;sig=&lt;value&gt;
 ContentSize : 7901</maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -8998,7 +8996,7 @@ Type                         : Microsoft.Logic/workflows
 Location                     : westus
 ChangedTime                  : 1/13/2016 2:41:39 PM
 CreatedTime                  : 1/13/2016 2:41:39 PM
-AccessEndpoint               : https://westus.logic.azure.com:443/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
+AccessEndpoint               : https://&lt;baseurl&gt;/subscriptions/57b7034d-72d4-433d-ace2-a7460aed6a99/resourcegroups/ResourceGroup1/providers/Microsoft.Logic/workflows/LogicApp1
 State                        : Enabled
 DefinitionLinkUri            : 
 DefinitionLinkContentVersion : 
@@ -9220,8 +9218,8 @@ Version                      : 08587489107859952120</maml:para>
 				<maml:para>This command sets the access key of a Logic App in a specified Azure resource group.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>PrimarySecretKey   : lTmyIrecVCcpC2wF8M8HeUW7YUL6Y_Uod7jOlrpW-TU
-SecondarySecretKey : IS0G7m3lUfZtrrlSsu7d6IKqwLAwQ_TmKVjrW7yuzx4</maml:para>
+				<maml:para>PrimarySecretKey   : &lt;value&gt;
+SecondarySecretKey : &lt;value&gt;</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
