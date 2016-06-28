@@ -219,19 +219,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaCatalog.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestAdlaJob.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestNegativeAdlaAccount.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaAliasTests\TestNegativeAdlaJob.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests.AdlaTests\TestAdlaAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

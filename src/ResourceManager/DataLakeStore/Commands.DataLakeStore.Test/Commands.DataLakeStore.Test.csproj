@@ -213,6 +213,18 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsAliasTests\TestAdlsAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsAliasTests\TestAdlsFileSystem.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsAliasTests\TestAdlsFileSystemPermissions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsAliasTests\TestNegativeAdlsAccount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests.AdlsTests\TestAdlsAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
