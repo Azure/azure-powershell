@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationHybridWorkerGroup.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationJobOutputRecord.cs" />
     <Compile Include="Cmdlet\ImportAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
@@ -227,6 +228,8 @@
     <Compile Include="Model\DscNode.cs" />
     <Compile Include="Model\DscNodeReport.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
+    <Compile Include="Model\HybridRunbookWorker.cs" />
+    <Compile Include="Model\HybridRunbookWorkerGroup.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStreamRecord.cs" />
