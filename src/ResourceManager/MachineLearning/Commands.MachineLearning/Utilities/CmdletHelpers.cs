@@ -51,22 +51,17 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 
         internal static string GetWebServiceDefinitionFromFile(string currentPath, string definitionFilePath)
         {
-            string definitionFileFullPath;
-            if (Path.IsPathRooted(definitionFilePath))
+            var definitionFileFullPath = 
+                    Path.IsPathRooted(definitionFilePath) ? 
+                        definitionFilePath : 
+                        Path.Combine(currentPath, definitionFilePath);
+
+            if (!File.Exists(definitionFileFullPath))
             {
-                definitionFileFullPath = definitionFilePath;
-            }
-            else
-            {
-                definitionFileFullPath = Path.Combine(currentPath, definitionFilePath);
+                throw new FileNotFoundException(Resources.MissingDefinitionFile, definitionFileFullPath);
             }
 
-            if (!File.Exists(definitionFilePath))
-            {
-                throw new FileNotFoundException(Resources.MissingDefinitionFile, definitionFilePath);
-            }
-
-            return File.ReadAllText(definitionFilePath);
+            return File.ReadAllText(definitionFileFullPath);
         }
     }
 }
