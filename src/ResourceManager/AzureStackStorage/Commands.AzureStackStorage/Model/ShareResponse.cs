@@ -17,9 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     internal class ShareResponse:ResponseBase
     {

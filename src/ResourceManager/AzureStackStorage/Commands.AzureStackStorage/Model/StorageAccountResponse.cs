@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     internal class StorageAccountResponse : ResponseBase
     {
@@ -32,13 +32,11 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             this.AdminViewId = model.Id;
             this.Location = model.Location;
             this.WacAccountId = model.Properties.AccountId;
-            this.ResourceType = model.ResourceType;
             this.Type = model.Type;
             this.Tags = model.Tags;
             this.FarmName = farmName;
         }
 
-        public string ResourceType { get; set; }
         public long AccountId { get; set; }
         public string AdminViewId { get; set; }
         public string TenantViewId { get; set; }

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     public enum TimeGrain
     {
@@ -50,6 +50,11 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// 
         /// </summary>
         TableFrontend,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        QueueFrontend,
 
         /// <summary>
         /// 

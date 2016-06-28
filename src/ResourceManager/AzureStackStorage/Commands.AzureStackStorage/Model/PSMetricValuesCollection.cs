@@ -14,9 +14,9 @@
 
 
 using System.Collections.Generic;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// Wraps around a list of PSMetricValue objects to display them with indentation
