@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Commands.Compute
                     NetworkProfile = this.VM.NetworkProfile,
                     OsProfile = this.VM.OSProfile,
                     Plan = this.VM.Plan,
-                    LicenseType = this.LicenseType,
+                    LicenseType = this.LicenseType ?? this.VM.LicenseType,
                     AvailabilitySet = this.VM.AvailabilitySetReference,
-                    Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
+                    Location = this.Location ?? this.VM.Location,
                     Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 
