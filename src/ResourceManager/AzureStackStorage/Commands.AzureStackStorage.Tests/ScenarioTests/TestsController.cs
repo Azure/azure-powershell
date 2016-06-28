@@ -45,7 +45,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests

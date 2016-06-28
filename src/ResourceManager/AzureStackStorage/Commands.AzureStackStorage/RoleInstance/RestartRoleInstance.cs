@@ -17,10 +17,10 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using Microsoft.Azure;
-using Microsoft.AzureStack.Commands.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage.Commands;
+using Microsoft.AzureStack.AzureConsistentStorage;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -31,6 +31,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsLifecycle.Restart, Nouns.AdminRoleInstance, SupportsShouldProcess = true)]
     public sealed class RestartRoleInstance : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// farm identifier
         /// </summary>
@@ -55,7 +62,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// <summary>
         /// instance identifier
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 6)]
         [ValidateNotNullOrEmpty]
         public string InstanceId
         {
@@ -81,6 +88,9 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                         break;
                     case RoleType.TableFrontend:
                         response = Client.TableFrontendInstances.Restart(ResourceGroupName, FarmName, InstanceId);
+                        break;
+                    case RoleType.QueueFrontend:
+                        response = Client.QueueFrontendInstances.Restart(ResourceGroupName, FarmName, InstanceId);
                         break;
                     case RoleType.BlobServer:
                         response = Client.BlobServerInstances.Restart(ResourceGroupName, FarmName, InstanceId);

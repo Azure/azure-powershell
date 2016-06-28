@@ -17,9 +17,9 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.AzureConsistentStorage;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     ///     SYNTAX
@@ -30,6 +30,13 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
     [Cmdlet(VerbsLifecycle.Start, Nouns.AdminBlobServerRoleInstance, SupportsShouldProcess = true)]
     public sealed class StartBlobServerRoleInstance : AdminCmdlet
     {
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         /// farm identifier
         /// </summary>
