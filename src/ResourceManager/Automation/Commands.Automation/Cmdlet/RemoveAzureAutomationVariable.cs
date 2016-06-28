@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationVariable")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationVariable", SupportsShouldProcess = true)]
     [OutputType(typeof(Variable))]
     public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         [Parameter(Position = 3, HelpMessage = "Confirm the removal of the variable")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -43,8 +45,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Variable"),
                 string.Format(Resources.RemoveAzureAutomationResourceDescription, "Variable"),
                 Name,
                 () =>
