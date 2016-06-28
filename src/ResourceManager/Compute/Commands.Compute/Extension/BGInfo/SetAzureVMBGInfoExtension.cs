@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    this.Name,
+                    this.Name ?? VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                     parameters).GetAwaiter().GetResult();
 
                 var result = Mapper.Map<PSAzureOperationResponse>(op);
