@@ -31,21 +31,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public System.Object Vault { get; set; }
 
         /// <summary>
         /// Gets or sets ASR vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRVault ASRVault { get; set; }
 
         /// <summary>
         /// Gets or sets ARS vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault ARSVault { get; set; }
 
