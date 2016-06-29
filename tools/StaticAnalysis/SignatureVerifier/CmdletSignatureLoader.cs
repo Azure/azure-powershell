@@ -47,7 +47,8 @@ namespace StaticAnalysis.SignatureVerifier
                         VerbName = cmdlet.VerbName,
                         NounName = cmdlet.NounName,
                         ConfirmImpact = cmdlet.ConfirmImpact,
-                        SupportsShouldProcess = cmdlet.SupportsShouldProcess
+                        SupportsShouldProcess = cmdlet.SupportsShouldProcess,
+                        ClassName = type.FullName
                     };
                     foreach (var output in outputs)
                     {

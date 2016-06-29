@@ -89,7 +89,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     {
                                         issueLogger.LogSignatureIssue(
                                            cmdlet: cmdlet, 
-                                           severity:  0,
+                                           severity:  2,
                                         problemId: ConfirmLeveleWithNoShouldProcess,
                                         description:
                                             string.Format("{0} Changes the ConfirmImpact but does not set the " +
