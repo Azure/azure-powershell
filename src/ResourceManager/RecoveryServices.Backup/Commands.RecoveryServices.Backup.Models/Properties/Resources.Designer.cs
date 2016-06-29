@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unsupported {0} Kind for storage account: {1}.
+        ///   Looks up a localized string similar to Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account..
         /// </summary>
         public static string UnsupportedStorageAccountException {
             get {

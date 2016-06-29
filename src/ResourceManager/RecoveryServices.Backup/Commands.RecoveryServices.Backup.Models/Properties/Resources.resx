@@ -480,7 +480,7 @@ Please contact Microsoft for further assistant.</value>
     <value>Azure Sql does not support disable protection with retain data</value>
   </data>
   <data name="UnsupportedStorageAccountException" xml:space="preserve">
-    <value>Unsupported {0} Kind for storage account: {1}</value>
+    <value>Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account.</value>
   </data>
   <data name="GetContainerNameParamDeprecated" xml:space="preserve">
     <value>Name parameter will be deprecated. Please use FriendlyName instead for filtering by name.</value>

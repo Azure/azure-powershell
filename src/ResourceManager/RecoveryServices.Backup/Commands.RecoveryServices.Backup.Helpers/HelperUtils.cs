@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
-                string idPattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
-                string uriPattern = @"/";                    
+                string idPattern = @"/[^/]*/[^/]*";
+                string uriPattern = @"/";
                 Regex reg = new Regex(idPattern, RegexOptions.IgnoreCase);
 
                 // Match the regular expression pattern against a uri string.
