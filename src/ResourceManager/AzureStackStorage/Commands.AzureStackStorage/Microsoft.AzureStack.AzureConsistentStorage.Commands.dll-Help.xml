@@ -11631,7 +11631,7 @@ Undo-ACSStorageAccountDeletion -ResourceGroupName $resourceGroup -FarmName $farm
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>Get-ACSFarm -ResourceGroupName abc 
-$secpasswd = ConvertTo-SecureString &quot;User@123&quot; -AsPlainText -Force
+$secpasswd = ConvertTo-SecureString &quot;User@123&quot; -AsPlainText -Force <!--[SuppressMessage("Microsoft.Security", "CS001:SecretInline")]-->
 $credential = New-Object System.Management.Automation.PSCredential (&quot;AzureStack\administrator&quot;, $secpasswd) 
 Export-ACSLog -FarmName &quot;9bc623a4-57b8-4db9-9f58-2dd8fea5980f&quot; –StartTime $start –EndTime $end -Credential $credential –TargetShareFolder \\sofs\share\log </dev:code>
 			<dev:remarks>
