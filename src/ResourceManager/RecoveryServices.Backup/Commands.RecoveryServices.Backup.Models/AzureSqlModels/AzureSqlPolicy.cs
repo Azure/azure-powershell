@@ -21,8 +21,14 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Azure Sql specific backup policy class.
+    /// </summary>
     public class AzureSqlPolicy : PolicyBase
     {
+        /// <summary>
+        /// Object defining the retention behavior of this policy.
+        /// </summary>
         public RetentionPolicyBase RetentionPolicy { get; set; }
 
         public override void Validate()
