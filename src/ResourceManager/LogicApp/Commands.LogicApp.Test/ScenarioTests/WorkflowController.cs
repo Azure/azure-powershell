@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.RMResourceModule,                    
                     helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
-                    "AzureRM.Resources.ps1");
+                    "ScenarioTests\\AzureRM.Resources.ps1");
 
                 try
                 {
