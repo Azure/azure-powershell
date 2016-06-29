@@ -31,6 +31,9 @@ using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Mo
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
+    /// <summary>
+    /// This class implements methods for AzureSql backup provider
+    /// </summary>
     public class AzureSqlPsBackupProvider : IPsBackupProvider
     {
         private const int defaultOperationStatusRetryTimeInMilliSec = 5 * 1000; // 5 sec
@@ -45,18 +48,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         Dictionary<System.Enum, object> ProviderData { get; set; }
         ServiceClientAdapter ServiceClientAdapter { get; set; }
 
+        /// <summary>
+        /// Initializes the provider with the data recieved from the cmdlet layer
+        /// </summary>
+        /// <param name="providerData">Data from the cmdlet layer intended for the provider</param>
+        /// <param name="serviceClientAdapter">Service client adapter for communicating with the backend service</param>
         public void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter)
         {
             this.ProviderData = providerData;
             this.ServiceClientAdapter = serviceClientAdapter;
         }       
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
+        public BaseRecoveryServicesJobResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
+        /// <summary>
+        /// Triggers the disable protection operation for the given item
+        /// </summary>
+        /// <returns>The job response returned from the service</returns>
+        public BaseRecoveryServicesJobResponse DisableProtection()
         {
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
 
@@ -81,21 +93,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
+        public BaseRecoveryServicesJobResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerRestore()
+        public BaseRecoveryServicesJobResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectedItemResponse GetProtectedItem()
+        public ProtectedItemResponse GetProtectedItem()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Fetches the detail info for the given recovery point
+        /// </summary>
+        /// <returns>Recovery point detail as returned by the service</returns>
         public CmdletModel.RecoveryPointBase GetRecoveryPointDetails()
         {
             CmdletModel.AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
@@ -111,6 +127,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
+        /// <summary>
+        /// Lists recovery points generated for the given item
+        /// </summary>
+        /// <returns>List of recovery point PowerShell model objects</returns>
         public List<CmdletModel.RecoveryPointBase> ListRecoveryPoints()
         {
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
@@ -138,6 +158,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
+        /// <summary>
+        /// Creates policy given the provider data
+        /// </summary>
+        /// <returns>Created policy object as returned by the service</returns>
         public ProtectionPolicyResponse CreatePolicy()
         {
             string policyName = (string)ProviderData[PolicyParams.PolicyName];
@@ -172,6 +196,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                  hydraRequest);
         }
 
+        /// <summary>
+        /// Modifies policy using the provider data
+        /// </summary>
+        /// <returns>Modified policy object as returned by the service</returns>
         public ProtectionPolicyResponse ModifyPolicy()
         {
             RetentionPolicyBase retentionPolicy =
@@ -212,6 +240,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                                                hydraRequest);
         }
 
+        /// <summary>
+        /// Lists protection containers according to the provider data
+        /// </summary>
+        /// <returns>List of protection containers</returns>
         public List<Models.ContainerBase> ListProtectionContainers()
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
@@ -244,7 +276,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             throw new ArgumentException(string.Format(Resources.SchedulePolicyObjectNotRequiredForAzureSql));
         }
-       
+
+        /// <summary>
+        /// Constructs the retention policy object with default inits
+        /// </summary>
+        /// <returns>Default retention policy object</returns>
         public RetentionPolicyBase GetDefaultRetentionPolicyObject()
         {
             CmdletModel.SimpleRetentionPolicy defaultRetention = new CmdletModel.SimpleRetentionPolicy();
@@ -253,6 +289,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return defaultRetention;
         }
 
+        /// <summary>
+        /// Lists protected items protected by the recovery services vault according to the provider data
+        /// </summary>
+        /// <returns>List of protected items</returns>
         public List<ItemBase> ListProtectedItems()
         {
             ContainerBase container = (ContainerBase)this.ProviderData[ItemParams.Container];

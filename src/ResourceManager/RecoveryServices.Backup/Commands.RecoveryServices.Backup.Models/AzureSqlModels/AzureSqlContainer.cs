@@ -21,10 +21,21 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    /// <summary>
+    /// Azure Sql specific container class.
+    /// </summary>
     public class AzureSqlContainer : ContainerBase
     {
+        /// <summary>
+        /// Registration Status
+        /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
+        // <summary>
+        /// Constructor. Takes the service client object representing the container 
+        /// and converts it in to the PS container model
+        /// </summary>
+        /// <param name="protectionContainer">Service client object representing the container</param>
         public AzureSqlContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
