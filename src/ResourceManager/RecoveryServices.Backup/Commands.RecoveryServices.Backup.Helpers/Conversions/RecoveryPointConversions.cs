@@ -177,20 +177,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     CultureInfo.InvariantCulture);
 
                 AzureSqlRecoveryPoint sqlResult = new AzureSqlRecoveryPoint()
-            {
-                RecoveryPointId = rpResponse.RecPoint.Name,
-                BackupManagementType = item.BackupManagementType,
-                ItemName = protectedItemName,
-                ContainerName = containerUri,
-                ContainerType = item.ContainerType,
-                RecoveryPointTime = recPointTime,
-                RecoveryPointType = recPoint.RecoveryPointType,
-                Id = rpResponse.RecPoint.Id,
-                WorkloadType = item.WorkloadType,
-                RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                SourceResourceId = item.SourceResourceId,
-                FriendlyName = recPoint.FriendlyName,
-            };
+                {
+                    RecoveryPointId = rpResponse.RecPoint.Name,
+                    BackupManagementType = item.BackupManagementType,
+                    ItemName = protectedItemName,
+                    ContainerName = containerUri,
+                    ContainerType = item.ContainerType,
+                    RecoveryPointTime = recPointTime,
+                    RecoveryPointType = recPoint.RecoveryPointType,
+                    Id = rpResponse.RecPoint.Id,
+                    WorkloadType = item.WorkloadType,
+                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                    SourceResourceId = item.SourceResourceId,
+                    FriendlyName = recPoint.FriendlyName
+                };
 
                 result = sqlResult;
             }
