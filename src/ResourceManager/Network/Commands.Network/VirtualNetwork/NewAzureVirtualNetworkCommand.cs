@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
             var present = this.IsVirtualNetworkPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
@@ -112,7 +112,6 @@ namespace Microsoft.Azure.Commands.Network
                 vnet.DhcpOptions.DnsServers = this.DnsServer;
             }
 
-            vnet.Subnets = new List<PSSubnet>();
             vnet.Subnets = this.Subnet;
 
             // Map to the sdk object

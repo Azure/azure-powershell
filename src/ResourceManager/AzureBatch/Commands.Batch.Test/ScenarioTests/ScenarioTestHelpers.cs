@@ -54,14 +54,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
 
-        // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
-        // set so we can upload the MPI installer for use as a start task resource file.
+        // MPI requires a special pool configuration, so a dedicated pool is used.
         internal const string MpiPoolId = "mpiPool";
-        internal const string MpiSetupFileContainer = "mpi";
-        internal const string MpiSetupFileName = "MSMpiSetup.exe";
-        internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
-        internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
-        internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
 
         internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
         internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
@@ -229,27 +223,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 client.ListPools(listOptions);
                 return; // The call returned without throwing an exception, so the pool exists
             }
-            catch (AggregateException aex)
+            catch (BatchException ex)
             {
-                BatchException innerException = aex.InnerException as BatchException;
-                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.BatchError == null ||
-                    innerException.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
+                if (ex.RequestInformation == null || ex.RequestInformation.BatchError == null ||
+                    ex.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
                 {
                     throw;
                 }
                 // We got the pool not found error, so continue and create the pool
             }
 
-            string blobUrl = UploadBlobAndGetUrl(MpiSetupFileContainer, MpiSetupFileName, MpiSetupFileLocalPath);
-
-            StartTask startTask = new StartTask();
-            startTask.CommandLine = string.Format("cmd /c set & {0} -unattend -force", MpiSetupFileName);
-            startTask.ResourceFiles = new List<ResourceFile>();
-            startTask.ResourceFiles.Add(new ResourceFile(blobUrl, MpiSetupFileName));
-            startTask.RunElevated = true;
-            startTask.WaitForSuccess = true;
-
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated, startTask: startTask);
+            CreateTestPool(controller, context, MpiPoolId, targetDedicated);
         }
 
 
@@ -600,43 +584,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName);
 
             client.DeleteComputeNodeUser(parameters);
-        }
-
-        /// <summary>
-        /// Uploads a blob to Storage if it doesn't exist and gets the url
-        /// </summary>
-        private static string UploadBlobAndGetUrl(string containerName, string blobName, string localFilePath)
-        {
-            string blobUrl = "https://defaultUrl.blob.core.windows.net/blobName";
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                // Create container and upload blob if they don't exist
-                string storageAccountName = Environment.GetEnvironmentVariable(StorageAccountEnvVar);
-                string storageKey = Environment.GetEnvironmentVariable(StorageKeyEnvVar);
-                StorageCredentials creds = new StorageCredentials(storageAccountName, storageKey);
-                CloudStorageAccount storageAccount = new CloudStorageAccount(creds, true);
-
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-                container.CreateIfNotExists();
-
-                CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
-                if (!blob.Exists())
-                {
-                    blob.UploadFromFile(localFilePath, System.IO.FileMode.Open);
-                }
-
-                // Get blob url with SAS string
-                SharedAccessBlobPolicy sasPolicy = new SharedAccessBlobPolicy();
-                sasPolicy.Permissions = SharedAccessBlobPermissions.Read;
-                sasPolicy.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(10);
-                string sasString = container.GetSharedAccessSignature(sasPolicy);
-
-                blobUrl = string.Format("{0}/{1}{2}", container.Uri, blobName, sasString);
-            }
-
-            return blobUrl;
         }
 
         /// <summary>

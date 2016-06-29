@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkSecurityGroup")]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             if (!this.IsNetworkSecurityGroupPresent(this.NetworkSecurityGroup.ResourceGroupName, this.NetworkSecurityGroup.Name))
             {
