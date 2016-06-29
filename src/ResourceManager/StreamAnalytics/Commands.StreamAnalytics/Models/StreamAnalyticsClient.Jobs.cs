@@ -137,36 +137,25 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSJob job = null;
-            Action createJob = () =>
-            {
-                job = CreateOrUpdatePSJob(parameter.ResourceGroupName, parameter.JobName, parameter.RawJsonContent);
-            };
-
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createJob();
-            }
-            else
-            {
-                bool jobExists = CheckJobExists(parameter.ResourceGroupName, parameter.JobName);
-
-                parameter.ConfirmAction(
-                        !jobExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.JobExists,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.JobCreating,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
+            bool jobExists = CheckJobExists(parameter.ResourceGroupName, parameter.JobName);
+            parameter.ConfirmAction(
+                    !jobExists,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.JobExists,
                         parameter.JobName,
-                        createJob);
-            }
-
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.JobCreating,
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.JobName,
+                    () =>
+                    {
+                        job = CreateOrUpdatePSJob(parameter.ResourceGroupName, parameter.JobName, parameter.RawJsonContent);
+                    },
+                    () => jobExists);
             return job;
         }
 
