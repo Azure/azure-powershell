@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using System.Globalization;
 using System.Management.Automation;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
