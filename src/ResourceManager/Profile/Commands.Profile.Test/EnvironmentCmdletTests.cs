@@ -363,13 +363,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
         }
 
-        private static void SetupConfirmation(Mock<ICommandRuntime> mock)
-        {
-            mock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            mock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            mock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-        }
-
         public void Dispose()
         {
             Cleanup();
