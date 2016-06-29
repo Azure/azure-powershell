@@ -147,17 +147,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location) || AdditionalRegions.Any(r => location.Equals(r.Location)))
             {
                 throw new ArgumentException(string.Format(Resources.AddRegionExistsMessage, location), "location");
@@ -183,17 +172,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location))
             {
                 throw new ArgumentException(
@@ -211,17 +189,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             if (location == null)
             {
                 throw new ArgumentNullException("location");
-            }
-
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
             }
 
             var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Equals(r.Location));
