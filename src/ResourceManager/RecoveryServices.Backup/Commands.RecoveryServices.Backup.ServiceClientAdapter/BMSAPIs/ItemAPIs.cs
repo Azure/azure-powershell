@@ -123,7 +123,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="itemName">Name of the item</param>
         /// <returns>Job created by this operation</returns>
-        public BaseRecoveryServicesJobResponse TriggerBackup(string containerName, string itemName, DateTime? expiryDateTimeUtc)
+        public BaseRecoveryServicesJobResponse TriggerBackup(
+            string containerName, 
+            string itemName, 
+            DateTime? expiryDateTimeUtc)
         {
             TriggerBackupRequest triggerBackupRequest = new TriggerBackupRequest();
             triggerBackupRequest.Item = new BackupRequestResource();

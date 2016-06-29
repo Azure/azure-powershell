@@ -29,14 +29,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSqlContainer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-GetAzureSqlContainer");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), "Test-GetAzureSqlContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUnregisterAzureSqlContainer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-UnregisterAzureSqlContainer");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), "Test-UnregisterAzureSqlContainer");
         }
     }
 }

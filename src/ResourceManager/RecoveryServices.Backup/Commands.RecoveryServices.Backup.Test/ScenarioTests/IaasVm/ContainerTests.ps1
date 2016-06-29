@@ -26,13 +26,18 @@ $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 function Test-GetContainerScenario
 {
 	# 1. Create / update and get vault
-	$vault = New-AzureRmRecoveryServicesVault -Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
 	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
 	# 3. Get container
-	$global:container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Name $vmName -ResourceGroupName $vmResourceGroupName -Status Registered;
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
 
 	# 4. If not already protected, enable protection
 	if ($global:container -eq $null)
@@ -40,13 +45,19 @@ function Test-GetContainerScenario
 		# 4.1 Get default policy
 		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;	
 	
-		Enable-AzureRmRecoveryServicesBackupProtection -Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
 
-		$global:container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureVM -Name $vmName -ResourceGroupName $vmResourceGroupName -Status Registered;
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
 	}
 
 	# VAR-1: Get All Containers with only mandatory parameters
-	$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered";
+	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureVM" -Status "Registered";
 	
 	$global:containerExists = $false;
 	foreach ($container in $containers)
@@ -59,14 +70,20 @@ function Test-GetContainerScenario
 	Assert-AreEqual $global:containerExists $true;
 
 	# VAR-2: Get Containers with friendly name filter
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name $vmName;
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureVM" -Status "Registered" -Name $vmName;
 	Assert-AreEqual $namedContainer.Name $vmUniqueName;
 
 	# VAR-3: Get Containers with friendly name and resource group filters
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name $vmName -ResourceGroupName $vmResourceGroupName;
+	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureVM" `
+		-Status "Registered" `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName;
 	Assert-AreEqual $namedContainer.Name $vmUniqueName;
 
 	# VAR-4: Get Containers with resource group filter
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -ResourceGroupName $vmResourceGroupName;
+	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureVM" -Status "Registered" -ResourceGroupName $vmResourceGroupName;
 	Assert-AreEqual $namedContainer.Name $vmUniqueName;
 }

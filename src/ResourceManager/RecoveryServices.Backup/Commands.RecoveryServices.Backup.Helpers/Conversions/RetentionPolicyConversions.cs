@@ -87,7 +87,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             if (hydraRetPolicy.RetentionDuration != null)
             {
-                simplePolicy.RetentionDurationType = EnumUtils.GetEnum<RetentionDurationType>(hydraRetPolicy.RetentionDuration.DurationType);
+                simplePolicy.RetentionDurationType = EnumUtils.GetEnum<RetentionDurationType>(
+                    hydraRetPolicy.RetentionDuration.DurationType);
                 simplePolicy.RetentionCount = hydraRetPolicy.RetentionDuration.Count;
             }
 
@@ -345,8 +346,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
         #region PStoServiceClientObject conversions
 
-        public static ServiceClientModel.SimpleRetentionPolicy GetServiceClientSimpleRetentionPolicy(
-            SimpleRetentionPolicy psRetPolicy)
+        public static ServiceClientModel.SimpleRetentionPolicy
+            GetServiceClientSimpleRetentionPolicy(SimpleRetentionPolicy psRetPolicy)
         {
             if (psRetPolicy == null)
             {
@@ -354,11 +355,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             else
             {
+                ServiceClientModel.SimpleRetentionPolicy simpleRetPolicy = 
+                    new ServiceClientModel.SimpleRetentionPolicy();
 
-                ServiceClientModel.SimpleRetentionPolicy simpleRetPolicy = new ServiceClientModel.SimpleRetentionPolicy();
-
+                string durationType = psRetPolicy.RetentionDurationType.ToString();
                 simpleRetPolicy.RetentionDuration = new ServiceClientModel.RetentionDuration();
-                simpleRetPolicy.RetentionDuration.DurationType = psRetPolicy.RetentionDurationType.ToString();
+                simpleRetPolicy.RetentionDuration.DurationType = durationType;
                 simpleRetPolicy.RetentionDuration.Count = psRetPolicy.RetentionCount;
 
                 return simpleRetPolicy;

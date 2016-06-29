@@ -46,8 +46,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (!((Container.ContainerType == ContainerType.Windows && Container.BackupManagementType == BackupManagementType.MARS) ||
-                    (Container.ContainerType == ContainerType.AzureSQL && Container.BackupManagementType == BackupManagementType.AzureSQL)))
+                if (!((Container.ContainerType == ContainerType.Windows && 
+                       Container.BackupManagementType == BackupManagementType.MARS) ||
+                    (Container.ContainerType == ContainerType.AzureSQL && 
+                     Container.BackupManagementType == BackupManagementType.AzureSQL)))
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, 
                         Container.ContainerType, Container.BackupManagementType));

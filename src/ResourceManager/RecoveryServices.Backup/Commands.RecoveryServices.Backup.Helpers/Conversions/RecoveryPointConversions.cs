@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to convert ps recovery points list model from service response.
         /// </summary>
-        public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointListResponse rpList, ItemBase item)
+        public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(
+            ServiceClientModel.RecoveryPointListResponse rpList,
+            ItemBase item)
         {
             if (rpList == null || rpList.RecoveryPointList == null ||
                 rpList.RecoveryPointList.RecoveryPoints == null)
@@ -46,9 +48,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             {
                 if (rp.Properties.GetType() == typeof(ServiceClientModel.RecoveryPoint))
                 {
-                    ServiceClientModel.RecoveryPoint recPoint = rp.Properties as ServiceClientModel.RecoveryPoint;
+                    ServiceClientModel.RecoveryPoint recPoint =
+                        rp.Properties as ServiceClientModel.RecoveryPoint;
 
-                    DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    DateTime recPointTime = DateTime.ParseExact(
+                        recPoint.RecoveryPointTime,
+                        @"MM/dd/yyyy HH:mm:ss",
+                        CultureInfo.InvariantCulture);
+
                     AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
                     {
                         RecoveryPointId = rp.Name,
@@ -63,7 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                         SourceVMStorageType = recPoint.SourceVMStorageType,
                         SourceResourceId = item.SourceResourceId,
-                        EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? recPoint.IsSourceVMEncrypted.Value : false,
+                        EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
+                            recPoint.IsSourceVMEncrypted.Value : false,
                         IlrSessionActive = recPoint.IsInstantILRSessionActive,
                     };
 
@@ -85,9 +93,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
                 if (rp.Properties.GetType() == typeof(ServiceClientModel.GenericRecoveryPoint))
                 {
-                    ServiceClientModel.GenericRecoveryPoint recPoint = rp.Properties as ServiceClientModel.GenericRecoveryPoint;
+                    ServiceClientModel.GenericRecoveryPoint recPoint =
+                        rp.Properties as ServiceClientModel.GenericRecoveryPoint;
 
-                    DateTime recPointTime = DateTime.ParseExact(recPoint.RecoveryPointTime, @"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                    DateTime recPointTime = DateTime.ParseExact(
+                        recPoint.RecoveryPointTime,
+                        @"MM/dd/yyyy HH:mm:ss",
+                        CultureInfo.InvariantCulture);
+
                     AzureSqlRecoveryPoint rpBase = new AzureSqlRecoveryPoint()
                     {
                         RecoveryPointId = rp.Name,
@@ -113,7 +126,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to convert ps recovery point model from service response.
         /// </summary>
-        public static RecoveryPointBase GetPSAzureRecoveryPoints(ServiceClientModel.RecoveryPointResponse rpResponse, ItemBase item)
+        public static RecoveryPointBase GetPSAzureRecoveryPoints(
+            ServiceClientModel.RecoveryPointResponse rpResponse,
+            ItemBase item)
         {
             if (rpResponse == null || rpResponse.RecPoint == null)
             {
@@ -126,9 +141,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            if (rpResponse.RecPoint.Properties.GetType() == typeof(ServiceClientModel.RecoveryPoint))
+            if (rpResponse.RecPoint.Properties.GetType() ==
+                typeof(ServiceClientModel.RecoveryPoint))
             {
-                ServiceClientModel.RecoveryPoint recPoint = rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
+                ServiceClientModel.RecoveryPoint recPoint = 
+                    rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
 
                 DateTime recPointTime = DateTime.ParseExact(
                     recPoint.RecoveryPointTime,
@@ -147,7 +164,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     Id = rpResponse.RecPoint.Id,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                    EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? recPoint.IsSourceVMEncrypted.Value : false,
+                    EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? 
+                        recPoint.IsSourceVMEncrypted.Value : false,
                     IlrSessionActive = recPoint.IsInstantILRSessionActive,
                 };
 
@@ -167,9 +185,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 result = vmResult;
             }
 
-            if (rpResponse.RecPoint.Properties.GetType() == typeof(ServiceClientModel.GenericRecoveryPoint))
+            if (rpResponse.RecPoint.Properties.GetType() == 
+                typeof(ServiceClientModel.GenericRecoveryPoint))
             {
-                ServiceClientModel.GenericRecoveryPoint recPoint = rpResponse.RecPoint.Properties as ServiceClientModel.GenericRecoveryPoint;
+                ServiceClientModel.GenericRecoveryPoint recPoint = 
+                    rpResponse.RecPoint.Properties as ServiceClientModel.GenericRecoveryPoint;
 
                 DateTime recPointTime = DateTime.ParseExact(
                     recPoint.RecoveryPointTime,

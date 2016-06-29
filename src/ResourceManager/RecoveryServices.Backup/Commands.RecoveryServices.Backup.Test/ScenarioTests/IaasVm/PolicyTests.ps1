@@ -20,7 +20,8 @@ $policyName = "pwtest1";
 function Test-PolicyScenario
 {
 	# 1. Create / update and get vault
-	$vault = New-AzureRmRecoveryServicesVault -Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
 	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
@@ -32,7 +33,11 @@ function Test-PolicyScenario
 	Assert-NotNull $retPolicy
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name $policyName -WorkloadType "AzureVM" -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-Name $policyName `
+		-WorkloadType "AzureVM" `
+		-RetentionPolicy $retPolicy `
+		-SchedulePolicy $schedulePolicy
 	Assert-NotNull $policy
 	Assert-AreEqual $policy.Name $policyName
 		
@@ -46,7 +51,8 @@ function Test-PolicyScenario
 	Assert-NotNull $temp
 	Assert-AreEqual $temp.Name $policyName
 
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy -RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp	
+	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp	
 
 	#cleanup 
 	Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $temp -Force

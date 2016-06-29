@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns></returns>
         public IPsBackupProvider GetProviderInstance
             (
-            ContainerType containerType, 
+            ContainerType containerType,
             BackupManagementType? backupManagementType
             )
         {
@@ -97,7 +97,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     }
                     break;
                 case ContainerType.AzureSQL:
-                    if (backupManagementType == BackupManagementType.AzureSQL || backupManagementType == null)
+                    if (backupManagementType == BackupManagementType.AzureSQL ||
+                        backupManagementType == null)
                     {
                         providerType = PsBackupProviderTypes.AzureSql;
                     }
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
                 default:
                     throw new ArgumentException(
-                        String.Format(Resources.UnsupportedContainerType, 
+                        String.Format(Resources.UnsupportedContainerType,
                         containerType.ToString())
                         );
             }
@@ -168,19 +169,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 case WorkloadType.AzureVM:
                     // validate backupManagementType is valid
-                    if (backupManagementType.HasValue && backupManagementType 
+                    if (backupManagementType.HasValue && backupManagementType
                         != BackupManagementType.AzureVM)
                     {
                         // throw exception that it is not expected
                         throw new ArgumentException(
-                            String.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType, 
+                            String.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
                                                      workloadType.ToString()));
                     }
                     psProviderType = PsBackupProviderTypes.IaasVm;
                     break;
                 case WorkloadType.AzureSQLDatabase:
                     // validate backupManagementType is valid
-                    if (backupManagementType.HasValue && backupManagementType != BackupManagementType.AzureSQL)
+                    if (backupManagementType.HasValue &&
+                        backupManagementType != BackupManagementType.AzureSQL)
                     {
                         throw new ArgumentException(
                             String.Format(Resources.BackupManagementTypeNotExpectedForWorkloadType,
@@ -190,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     break;
                 default:
                     throw new ArgumentException(
-                        String.Format(Resources.UnsupportedWorkloadTypeException, 
+                        String.Format(Resources.UnsupportedWorkloadTypeException,
                         workloadType.ToString()));
             }
 

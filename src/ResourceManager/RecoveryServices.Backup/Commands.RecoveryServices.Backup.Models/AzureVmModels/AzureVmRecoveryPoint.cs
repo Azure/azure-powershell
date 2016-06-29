@@ -51,17 +51,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string SourceResourceId { get; set; }
 
         /// <summary>
-        /// Identifies whether this recovery point represents an encrypted VM at the time of backup.
+        /// Identifies whether this recovery point represents 
+        /// an encrypted VM at the time of backup.
         /// </summary>
         public bool EncryptionEnabled { get; set; }
 
         /// <summary>
-        /// Identifies whether an ILR session is already active that is associated with this recovery point.
+        /// Identifies whether an ILR session is already active 
+        /// that is associated with this recovery point.
         /// </summary>
         public bool IlrSessionActive { get; set; }
 
         /// <summary>
-        /// Required details for recovering an encrypted VM. Applicable only when IsSourceVMEncrypted is true.
+        /// Required details for recovering an encrypted VM. 
+        /// Applicable only when the EncryptionEnabled flag is true.
         /// </summary>
         public KeyAndSecretDetails KeyAndSecretDetails { get; set; }
 

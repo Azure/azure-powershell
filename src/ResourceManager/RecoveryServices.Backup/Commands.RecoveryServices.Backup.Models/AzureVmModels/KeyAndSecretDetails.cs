@@ -26,32 +26,34 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     public class KeyAndSecretDetails
     {
         /// <summary>
-        /// Secret is BEK.
+        /// URL of the disk encryption key provisioned in key vault.
+        /// Disk encryption key is used to encrypt the OS boot volume and data volumes.
         /// </summary>
         public string SecretUrl { get; set; }
 
         /// <summary>
-        /// Key is KEK.
+        /// URL of the Key Encryption Key that encrypts the disk encryption key.
         /// </summary>
         public string KeyUrl { get; set; }
 
         /// <summary>
-        /// ID of the Key Vault where this Key is stored
+        /// Resource ID of the key vault where Key Encryption Key is stored.
         /// </summary>
         public string KeyVaultId { get; set; }
 
         /// <summary>
-        /// ID of the Key Vault where this Secret is stored
+        /// Resource ID of the key vault where disk encryption key is stored.
         /// </summary>
         public string SecretVaultId { get; set; }
 
         /// <summary>
-        /// BEK data.
+        /// Value of the secret, an encryption key used to 
+        /// encrypt the OS boot volume and data volumes.
         /// </summary>
         public string SecretData { get; set; }
 
         /// <summary>
-        /// KEK data.
+        /// Value of key encryption key which is used to protect or wrap the secret.
         /// </summary>
         public string KeyBackupData { get; set; }
     }

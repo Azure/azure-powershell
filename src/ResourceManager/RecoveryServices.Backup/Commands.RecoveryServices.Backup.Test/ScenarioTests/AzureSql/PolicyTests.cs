@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureSqlPolicyScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-AzureSqlPolicyScenario");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), "Test-AzureSqlPolicyScenario");
         }
     }
 }

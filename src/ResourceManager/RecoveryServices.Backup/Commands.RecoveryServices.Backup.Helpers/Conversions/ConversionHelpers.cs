@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 {
                     containerModel = new MabContainer(protectionContainer);
                 }
-                else if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectionContainer))
+                else if (protectionContainer.Properties.GetType() ==
+                    typeof(ServiceClientModel.AzureSqlProtectionContainer))
                 {
                     containerModel = new AzureSqlContainer(protectionContainer);
                 }
@@ -157,23 +158,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 iaasPolicyModel.SchedulePolicy = PolicyHelpers.GetPSSimpleSchedulePolicy((ServiceClientModel.SimpleSchedulePolicy)
                                                  ((ServiceClientModel.AzureIaaSVMProtectionPolicy)serviceClientResponse.Properties).SchedulePolicy);
             }
-            else if (serviceClientResponse.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectionPolicy))
+            else if (serviceClientResponse.Properties.GetType() ==
+                typeof(ServiceClientModel.AzureSqlProtectionPolicy))
             {
-                if (((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType() !=
-                                                                           typeof(ServiceClientModel.SimpleRetentionPolicy))
+                ServiceClientModel.AzureSqlProtectionPolicy azureSqlPolicy =
+                    (ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties;
+
+                if (azureSqlPolicy.RetentionPolicy.GetType() !=
+                    typeof(ServiceClientModel.SimpleRetentionPolicy))
                 {
                     Logger.Instance.WriteDebug("Unknown RetentionPolicy object received: " +
-                               ((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy.GetType());
+                        azureSqlPolicy.RetentionPolicy.GetType());
                     Logger.Instance.WriteWarning(Resources.UpdateToNewAzurePowershellWarning);
                     return null;
                 }
 
                 policyModel = new AzureSqlPolicy();
                 AzureSqlPolicy sqlPolicyModel = policyModel as AzureSqlPolicy;
-                sqlPolicyModel.WorkloadType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType.AzureSQLDatabase;
-                sqlPolicyModel.BackupManagementType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType.AzureSQL;
-                sqlPolicyModel.RetentionPolicy = PolicyHelpers.GetPSSimpleRetentionPolicy((ServiceClientModel.SimpleRetentionPolicy)
-                                                  ((ServiceClientModel.AzureSqlProtectionPolicy)serviceClientResponse.Properties).RetentionPolicy);
+                sqlPolicyModel.WorkloadType = CmdletModels.WorkloadType.AzureSQLDatabase;
+                sqlPolicyModel.BackupManagementType = CmdletModels.BackupManagementType.AzureSQL;
+
+                ServiceClientModel.SimpleRetentionPolicy azureSqlRetentionPolicy =
+                    (ServiceClientModel.SimpleRetentionPolicy)azureSqlPolicy.RetentionPolicy;
+                sqlPolicyModel.RetentionPolicy =
+                    PolicyHelpers.GetPSSimpleRetentionPolicy(azureSqlRetentionPolicy);
             }
             else
             {
@@ -256,10 +264,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         policyName);
                 }
 
-                if (protectedItem.Properties.GetType() == typeof(ServiceClientModel.AzureSqlProtectedItem))
+                if (protectedItem.Properties.GetType() == 
+                    typeof(ServiceClientModel.AzureSqlProtectedItem))
                 {
+                    ServiceClientModel.AzureSqlProtectedItem azureSqlProtectedItem =
+                        (ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties;
                     string policyName = null;
-                    string policyId = ((ServiceClientModel.AzureSqlProtectedItem)protectedItem.Properties).PolicyId;
+                    string policyId = azureSqlProtectedItem.PolicyId;
                     if (!String.IsNullOrEmpty(policyId))
                     {
                         Dictionary<UriEnums, string> keyVauleDict =

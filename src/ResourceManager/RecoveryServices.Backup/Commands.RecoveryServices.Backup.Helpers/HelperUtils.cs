@@ -212,8 +212,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             return policyName;
         }
-    
-        public static string GetSubscriptionIdFromId(Dictionary<CmdletModel.UriEnums, string> keyValuePairs, string id)
+
+        public static string GetSubscriptionIdFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
+            string id)
         {
             string subscriptionId = string.Empty;
 
@@ -223,13 +225,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             else
             {
-                throw new ArgumentException(string.Format("", CmdletModel.UriEnums.Subscriptions.ToString(), id));
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Subscriptions.ToString(), id));
             }
 
             return subscriptionId;
         }
 
-        public static string GetResourceGroupNameFromId(Dictionary<CmdletModel.UriEnums, string> keyValuePairs, string id)
+        public static string GetResourceGroupNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
         {
             string resourceGroupName = string.Empty;
 
@@ -239,13 +244,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             else
             {
-                throw new ArgumentException(string.Format("", CmdletModel.UriEnums.ResourceGroups.ToString(), id));
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ResourceGroups.ToString(), id));
             }
 
             return resourceGroupName;
         }
 
-        public static string GetVaultNameFromId(Dictionary<CmdletModel.UriEnums, string> keyValuePairs, string id)
+        public static string GetVaultNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
         {
             string vaultName = string.Empty;
 
@@ -255,7 +263,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             else
             {
-                throw new ArgumentException(string.Format("", CmdletModel.UriEnums.Vaults.ToString(), id));
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Vaults.ToString(), id));
             }
 
             return vaultName;

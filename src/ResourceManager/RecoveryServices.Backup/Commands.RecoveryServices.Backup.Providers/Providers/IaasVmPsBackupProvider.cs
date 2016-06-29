@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
@@ -97,10 +98,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 Dictionary<UriEnums, string> keyValueDict =
                     HelperUtils.ParseUri(protectableObjectResource.Id);
-                containerUri = HelperUtils.GetContainerUri(keyValueDict, protectableObjectResource.Id);
-                protectedItemUri = HelperUtils.GetProtectableItemUri(keyValueDict, protectableObjectResource.Id);
+                containerUri = HelperUtils.GetContainerUri(
+                    keyValueDict, protectableObjectResource.Id);
+                protectedItemUri = HelperUtils.GetProtectableItemUri(
+                    keyValueDict, protectableObjectResource.Id);
 
-                AzureIaaSVMProtectableItem iaasVmProtectableItem = (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
+                AzureIaaSVMProtectableItem iaasVmProtectableItem =
+                    (AzureIaaSVMProtectableItem)protectableObjectResource.Properties;
                 if (iaasVmProtectableItem != null)
                 {
                     sourceResourceId = iaasVmProtectableItem.VirtualMachineId;
@@ -221,8 +225,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             DateTime? expiryDateTime = (DateTime?)ProviderData[ItemParams.ExpiryDateTimeUTC];
             AzureVmItem iaasVmItem = item as AzureVmItem;
 
-            return ServiceClientAdapter.TriggerBackup(IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
-                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName), expiryDateTime);
+            return ServiceClientAdapter.TriggerBackup(
+                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectionContainerName),
+                IdUtils.GetValueByName(iaasVmItem.Id, IdUtils.IdNames.ProtectedItemName),
+                expiryDateTime);
         }
 
         /// <summary>
@@ -263,15 +269,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
-            var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(containerUri, protectedItemName, recoveryPointId);
+            var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
+                containerUri, protectedItemName, recoveryPointId);
 
             var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
 
-            string keyFileDownloadLocation = (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
+            string keyFileDownloadLocation =
+                (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
+            string keyFileContent = ((AzureVmRecoveryPoint)rp).KeyAndSecretDetails.KeyBackupData;
             if (!string.IsNullOrEmpty(keyFileDownloadLocation))
             {
-                string absoluteFilePath = System.IO.Path.Combine(keyFileDownloadLocation, "key.blob");
-                System.IO.File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(((AzureVmRecoveryPoint)rp).KeyAndSecretDetails.KeyBackupData));
+                string absoluteFilePath = Path.Combine(keyFileDownloadLocation, "key.blob");
+                File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(keyFileContent));
             }
 
             return rp;
@@ -496,8 +505,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // 4. Filter by RG Name
             if (!string.IsNullOrEmpty(resourceGroupName))
             {
-                containerModels = containerModels.Where(containerModel =>
-                    string.Compare((containerModel as AzureVmContainer).ResourceGroupName, resourceGroupName, true) == 0).ToList();
+                containerModels = containerModels.Where(
+                    containerModel =>
+                    {
+                        return string.Compare(
+                            (containerModel as AzureVmContainer).ResourceGroupName, 
+                            resourceGroupName, 
+                            true) == 0;
+                    }).ToList();
             }
 
             return containerModels;

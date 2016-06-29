@@ -39,8 +39,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureSqlContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            AzureSqlProtectionContainer sqlProtectionContainer = (AzureSqlProtectionContainer)protectionContainer.Properties;
-            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(sqlProtectionContainer.RegistrationStatus);
+            AzureSqlProtectionContainer sqlProtectionContainer = 
+                (AzureSqlProtectionContainer)protectionContainer.Properties;
+            Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(
+                sqlProtectionContainer.RegistrationStatus);
         }
     }
 }

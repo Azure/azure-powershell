@@ -21,15 +21,22 @@ function Test-GetAzureSqlItemScenario
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureSQL" `
+		-BackupManagementType "AzureSQL" `
+		-Name "Sql;testRG;ContosoServer";
 	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $namedContainer -WorkloadType "AzureSQLDatabase";
 	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
 	# VAR-2: Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $namedContainer `
+		-WorkloadType "AzureSQLDatabase" `
+		-Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 }
 
@@ -42,14 +49,21 @@ function Test-DisableAzureSqlProtectionScenario
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureSQL" `
+		-BackupManagementType "AzureSQL" `
+		-Name "Sql;testRG;ContosoServer";
 	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# 4. Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;5b11e11c29b54a038fec648667cf16cc";;
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $namedContainer `
+		-WorkloadType "AzureSQLDatabase" `
+		-Name "dsName;5b11e11c29b54a038fec648667cf16cc";
 	Assert-AreEqual $item.Name "dsName;5b11e11c29b54a038fec648667cf16cc";
 
-	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
+	$job = Disable-AzureRmRecoveryServicesBackupProtection `
+		-Item $item -RemoveRecoveryPoints -Force;
 }
 
 function Test-GetAzureSqlRecoveryPointsScenario
@@ -61,20 +75,26 @@ function Test-GetAzureSqlRecoveryPointsScenario
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
 	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureSQL" -BackupManagementType "AzureSQL" -Name "Sql;testRG;ContosoServer";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType "AzureSQL" `
+		-BackupManagementType "AzureSQL" `
+		-Name "Sql;testRG;ContosoServer";
 	Assert-AreEqual $namedContainer.Name "Sql;testRG;ContosoServer";
 
 	# Get named item for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureSQLDatabase" -Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $namedContainer `
+		-WorkloadType "AzureSQLDatabase" `
+		-Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
 	$fixedStartDate = Get-Date -Date "2016-06-13 22:00:00"
 	$startDate = $fixedStartDate.ToUniversalTime()
 	$fixedEndDate = Get-Date -Date "2016-06-18 16:00:00"
 	$endDate = $fixedEndDate.ToUniversalTime()
-
 	
-	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate
+	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint `
+		-Item $item[0] -StartDate $startDate -EndDate $endDate
 	if (!($recoveryPoints -eq $null))
 	{
 		foreach($recoveryPoint in $recoveryPoints)

@@ -58,10 +58,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 if (storageManagementClient == null)
                 {
                     storageManagementClient =
-                        AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                        AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
+                            DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
                 }
                 return storageManagementClient;
-                
+
             }
 
             set { storageManagementClient = value; }
@@ -201,18 +202,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             itemResponse.AzureAsyncOperation);
 
             var response = TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
-                                            itemResponse.AzureAsyncOperation,
-                                            ServiceClientAdapter.GetProtectedItemOperationStatusByURL);
+                itemResponse.AzureAsyncOperation,
+                ServiceClientAdapter.GetProtectedItemOperationStatusByURL);
 
             if (response != null && response.OperationStatus != null)
             {
                 WriteDebug(Resources.FinalOperationStatus + response.OperationStatus.Status);
 
-                if (response.OperationStatus.Properties != null &&
-                       ((OperationStatusJobExtendedInfo)response.OperationStatus.Properties).JobId != null)
+                if (response.OperationStatus.Properties != null)
                 {
-                    var jobStatusResponse = (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
-                    WriteObject(GetJobObject(jobStatusResponse.JobId));
+                    var jobExtendedInfo =
+                        (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+
+                    if (jobExtendedInfo.JobId != null)
+                    {
+                        var jobStatusResponse = 
+                            (OperationStatusJobExtendedInfo)response.OperationStatus.Properties;
+                        WriteObject(GetJobObject(jobStatusResponse.JobId));
+                    }
                 }
 
                 if (response.OperationStatus.Status == OperationStatusValues.Failed &&

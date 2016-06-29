@@ -47,20 +47,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// End time of Time range for which recovery points need to be fetched
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = DateTimeFilterParameterSet, ValueFromPipeline = false, 
-            Position = 1, HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
+        [Parameter(
+            Mandatory = false, 
+            ParameterSetName = DateTimeFilterParameterSet, 
+            ValueFromPipeline = false, 
+            Position = 1, 
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.EndDate)]        
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Protected Item object for which recovery points need to be fetched
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DateTimeFilterParameterSet, 
-            ValueFromPipeline = true, Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
-        [Parameter(Mandatory = true, ParameterSetName = RecoveryPointIdParameterSet, 
-            ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
-        [Parameter(Mandatory = true, ParameterSetName = NoFilterParameterSet,
-            ValueFromPipeline = true, Position = 0, HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
+        [Parameter(
+            Mandatory = true, 
+            ParameterSetName = DateTimeFilterParameterSet, 
+            ValueFromPipeline = true, 
+            Position = 2, 
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
+        [Parameter(
+            Mandatory = true, 
+            ParameterSetName = RecoveryPointIdParameterSet, 
+            ValueFromPipeline = true, 
+            Position = 0, 
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
+        [Parameter(
+            Mandatory = true, 
+            ParameterSetName = NoFilterParameterSet,
+            ValueFromPipeline = true, 
+            Position = 0, 
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.Item)]
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
@@ -72,8 +88,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = RecoveryPointIdParameterSet,
-            ValueFromPipeline = false, Position = 2, HelpMessage = ParamHelpMsgs.RecoveryPoint.KeyFileDownloadLocation)]
+        [Parameter(
+            Mandatory = false, 
+            ParameterSetName = RecoveryPointIdParameterSet,
+            ValueFromPipeline = false, 
+            Position = 2, 
+            HelpMessage = ParamHelpMsgs.RecoveryPoint.KeyFileDownloadLocation)]
         [ValidateNotNullOrEmpty]
         public string KeyFileDownloadLocation { get; set; }
 
@@ -146,7 +166,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         StartDate, EndDate, RecoveryPointId, KeyFileDownloadLocation));
 
                     parameter.Add(RecoveryPointParams.RecoveryPointId, RecoveryPointId);
-                    parameter.Add(RecoveryPointParams.KeyFileDownloadLocation, KeyFileDownloadLocation);
+                    parameter.Add(
+                        RecoveryPointParams.KeyFileDownloadLocation, KeyFileDownloadLocation);
                     PsBackupProviderManager providerManager = 
                         new PsBackupProviderManager(parameter, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider = 

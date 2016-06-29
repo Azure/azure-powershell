@@ -22,7 +22,8 @@ function Test-AzureSqlPolicyScenario
 	Assert-NotNull $retPolicy
 
 	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol1" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
+	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-Name "swatipol1" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
 		
 	# now get policy and update it with new schedule/retention
 	$policy1 = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol1"	
@@ -38,9 +39,11 @@ function Test-AzureSqlPolicyScenario
 	Assert-AreEqual $policy1.RetentionPolicy.RetentionDurationType "Weeks"
 
 	# create another policy
-	$policy2 = New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "swatipol2" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
+	$policy2 = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-Name "swatipol2" -WorkloadType "AzureSQL" -RetentionPolicy $retPolicy
 
-	$listPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureSQLDatabase"
+	$listPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+		-WorkloadType "AzureSQLDatabase"
 	Assert-NotNull $listPolicy
 
 	#cleanup 

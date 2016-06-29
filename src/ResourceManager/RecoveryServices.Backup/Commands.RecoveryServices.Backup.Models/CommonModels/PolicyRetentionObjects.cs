@@ -41,10 +41,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             base.Validate();
 
+            int weeklyLimit = PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql;
+            int monthlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql;
+            int yearlyLimit = PolicyConstants.MaxAllowedRetentionDurationCountYearlySql;
+
             if ((RetentionDurationType == RetentionDurationType.Days) ||
-            (RetentionDurationType == RetentionDurationType.Weeks && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountWeeklySql)) ||
-            (RetentionDurationType == RetentionDurationType.Months && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountMonthlySql)) ||
-            (RetentionDurationType == RetentionDurationType.Years && (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCountYearlySql)))
+                (RetentionDurationType == RetentionDurationType.Weeks &&
+                    (RetentionCount <= 0 || RetentionCount > weeklyLimit)) ||
+                (RetentionDurationType == RetentionDurationType.Months &&
+                    (RetentionCount <= 0 || RetentionCount > monthlyLimit)) ||
+                (RetentionDurationType == RetentionDurationType.Years &&
+                    (RetentionCount <= 0 || RetentionCount > yearlyLimit)))
             {
                 throw new ArgumentException(Resources.AllowedSqlRetentionRange);
             }
@@ -548,7 +555,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public void Validate()
         {
-            if (RetentionCount <= 0 || RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCount)
+            if (RetentionCount <= 0 || 
+                RetentionCount > PolicyConstants.MaxAllowedRetentionDurationCount)
             {
                 throw new ArgumentException(Resources.RetentionDurationCountInvalidException);
             }

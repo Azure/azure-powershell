@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Recovery point of the item to be restored
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
             HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Resource group name of Storage account name where the disks need to be recovered
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2, 
+        [Parameter(Mandatory = true, Position = 2,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 StorageModels.StorageAccount storageAccountDetails = null;
                 try
                 {
-                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", 
+                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}",
                         StorageAccountName));
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
                         identity, CancellationToken.None).Result;
                 }
                 catch (Exception)
@@ -83,17 +83,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                        StorageAccountName);
                     if (storageAccountDetails.Kind == StorageModels.Kind.BlobStorage)
                     {
-                        throw new ArgumentException(String.Format(Resources.UnsupportedStorageAccountException,
-                        storageAccountDetails.Kind.ToString(), StorageAccountName));
+                        throw new ArgumentException(
+                            String.Format(
+                                Resources.UnsupportedStorageAccountException,
+                                storageAccountDetails.Kind.ToString(),
+                                StorageAccountName));
                     }
                 }
 
-                string storageAccountId = (resource != null) ? resource.Resource.Id
-                                                : storageAccountDetails.Id;
-                string storageAccountlocation = (resource != null) ? resource.Resource.Location
-                                                : storageAccountDetails.Location;
-                string storageAccountType = (resource != null) ? resource.Resource.Type
-                                                : storageAccountDetails.Type;
+                string storageAccountId =
+                    (resource != null) ? resource.Resource.Id : storageAccountDetails.Id;
+                string storageAccountlocation =
+                    (resource != null) ? 
+                        resource.Resource.Location : storageAccountDetails.Location;
+                string storageAccountType =
+                    (resource != null) ? resource.Resource.Type : storageAccountDetails.Type;
 
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
 

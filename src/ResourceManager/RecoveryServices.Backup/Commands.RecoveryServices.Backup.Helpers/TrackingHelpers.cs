@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="serviceClientMethod"></param>
         /// <returns></returns>
         public static BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
-                                              string statusUrlLink,
-                                              Func<string, BackUpOperationStatusResponse> serviceClientMethod)
+            string statusUrlLink,
+            Func<string, BackUpOperationStatusResponse> serviceClientMethod)
         {
             // using this directly because it doesn't matter which function we use.
             // return type is same and currently we are using it in only two places.
@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 response.OperationStatus != null &&
                 response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
             {
-                Logger.Instance.WriteDebug("Tracking operation completion using status link: " + statusUrlLink);
+                Logger.Instance.WriteDebug(
+                    "Tracking operation completion using status link: " + statusUrlLink);
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
                 response = serviceClientMethod(statusUrlLink);
             }

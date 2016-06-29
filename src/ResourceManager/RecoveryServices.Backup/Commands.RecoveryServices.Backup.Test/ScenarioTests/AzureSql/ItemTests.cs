@@ -32,21 +32,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSqlItemScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-GetAzureSqlItemScenario");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), "Test-GetAzureSqlItemScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAzureSqlProtectionScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-DisableAzureSqlProtectionScenario");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), 
+                "Test-DisableAzureSqlProtectionScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSqlRecoveryPointsScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.AzureSql.ToString(), "Test-GetAzureSqlRecoveryPointsScenario");
+            this.RunPowerShellTest(
+                PsBackupProviderTypes.AzureSql.ToString(), 
+                "Test-GetAzureSqlRecoveryPointsScenario");
         }
     }
 }
