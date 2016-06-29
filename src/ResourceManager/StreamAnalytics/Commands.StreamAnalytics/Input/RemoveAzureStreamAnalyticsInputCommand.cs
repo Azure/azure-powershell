@@ -55,13 +55,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.InputRemovalConfirmationMessage,
-                    this.Name,
-                    this.JobName,
-                    this.ResourceGroupName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.InputRemoving,

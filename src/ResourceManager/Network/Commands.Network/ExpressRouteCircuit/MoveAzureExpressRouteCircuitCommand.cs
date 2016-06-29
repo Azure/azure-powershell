@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.MoveExpressRoutCircuitMessage,
+                Properties.Resources.MovingExpressRoutCircuitMessage,
                 Name,
                 () =>
                 {
