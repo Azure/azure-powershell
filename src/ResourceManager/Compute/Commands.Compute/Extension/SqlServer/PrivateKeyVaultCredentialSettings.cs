@@ -12,31 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security;
+
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// SQL Server extension's private settings 
+    /// AKV settings to configure on SQL VM
     /// </summary>
-    public class SqlServerPrivateSettings
+    public class PrivateKeyVaultCredentialSettings
     {
         /// <summary>
-        /// Azure blob store URL
+        /// Gets the azure key vault URL.
         /// </summary>
-        public string StorageUrl;
+        /// <value>
+        /// The azure key vault URL for Credential Management.
+        /// </value>
+        public string AzureKeyVaultUrl { get; set; }
 
         /// <summary>
-        /// Storage account access key
+        /// Gets the name of the principal.
         /// </summary>
-        public string StorageAccessKey;
+        /// <value>
+        /// The name of the service principal to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalName { get; set; }
 
         /// <summary>
-        ///  Password required for certification when encryption is enabled
+        /// Gets the principal secret.
         /// </summary>
-        public string Password;
-
-        /// <summary>
-        /// Azure Key Vault Credential settings
-        /// </summary>
-        public PrivateKeyVaultCredentialSettings PrivateKeyVaultCredentialSettings;
+        /// <value>
+        /// The service principal secret to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalSecret { get; set; }
     }
 }

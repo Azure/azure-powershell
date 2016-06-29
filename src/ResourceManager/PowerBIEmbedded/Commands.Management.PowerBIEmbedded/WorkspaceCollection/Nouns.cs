@@ -12,31 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Compute
+namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
-    /// <summary>
-    /// SQL Server extension's private settings 
-    /// </summary>
-    public class SqlServerPrivateSettings
+    public static class Nouns
     {
-        /// <summary>
-        /// Azure blob store URL
-        /// </summary>
-        public string StorageUrl;
-
-        /// <summary>
-        /// Storage account access key
-        /// </summary>
-        public string StorageAccessKey;
-
-        /// <summary>
-        ///  Password required for certification when encryption is enabled
-        /// </summary>
-        public string Password;
-
-        /// <summary>
-        /// Azure Key Vault Credential settings
-        /// </summary>
-        public PrivateKeyVaultCredentialSettings PrivateKeyVaultCredentialSettings;
+        private const string CommandPrefix = "AzureRmPowerBI";
+        public const string WorkspaceCollection = CommandPrefix + "WorkspaceCollection";
+        public const string WorkspaceCollectionAccessKeys = CommandPrefix + "WorkspaceCollectionAccessKeys";
+        public const string Workspace = CommandPrefix + "Workspace";
     }
 }
