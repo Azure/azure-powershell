@@ -163,6 +163,7 @@
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RMTestBase.cs" />
+    <Compile Include="TestExecutionHelpers.cs" />
     <Compile Include="XunitTracingInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>
