@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ProvisioningState = extension.ProvisioningState,
                     AutoBackupSettings = extensionPublicSettings.AutoBackupSettings,
                     AutoPatchingSettings = extensionPublicSettings.AutoPatchingSettings,
+                    KeyVaultCredentialSettings = extensionPublicSettings.KeyVaultCredentialSettings,
                     Statuses = extension.Statuses
                 };
 
