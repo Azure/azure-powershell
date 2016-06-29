@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementUser)]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementUser, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementUser : AzureApiManagementCmdletBase
     {
