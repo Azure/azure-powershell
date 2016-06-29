@@ -103,7 +103,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     {
                                         issueLogger.LogSignatureIssue(
                                             cmdlet: cmdlet,
-                                            severity: 1,
+                                            severity: 2,
                                             problemId: ActionIndicatesShouldProcess,
                                             description:
                                                 string.Format(
@@ -117,7 +117,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     {
                                         issueLogger.LogSignatureIssue(
                                            cmdlet: cmdlet, 
-                                           severity: 1,
+                                           severity: 2,
                                         problemId: ConfirmLevelChange,
                                         description: 
                                         string.Format("{0} changes the confirm impact.  Please ensure that the " +
@@ -131,7 +131,7 @@ namespace StaticAnalysis.SignatureVerifier
                                     {
                                         issueLogger.LogSignatureIssue(
                                            cmdlet: cmdlet, 
-                                           severity: 1,
+                                           severity: 2,
                                         problemId: CmdletWithDestructiveVerbNoForce,
                                         description:
                                             string.Format(
@@ -143,32 +143,6 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation: "Consider wehtehr the cmdlet should have a Force " +
                                                       "parameter and use ShouldContinue under some circumstances. ");
 
-                                    }
-
-                                    // Temporary detections, please remove these before checking in
-
-                                    if (cmdlet.IsShouldContinueVerb)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                           cmdlet: cmdlet, 
-                                           problemId:  CmdletWithDestructiveVerb,
-                                           description:  string.Format(
-                                            "[Temporary]: {0} uses a destructive verb.  Check to see if the cmdlet " +
-                                            "implements Confirmation correctly.", cmdlet.Name),
-                                           remediation: defaultRemediation,
-                                            severity: 1);
-                                    }
-
-                                    if (cmdlet.HasForceSwitch)
-                                    {
-                                        issueLogger.LogSignatureIssue(
-                                            cmdlet: cmdlet,
-                                            description:  string.Format(
-                                            "[Temporary]: {0} has a Force switch.  Check to see if the cmdlet " +
-                                            "implements Confirmation correctly.", cmdlet.Name),
-                                            remediation: defaultRemediation,
-                                            severity: 1,
-                                            problemId: CmdletWithForceParameter);
                                     }
                                 }
 
