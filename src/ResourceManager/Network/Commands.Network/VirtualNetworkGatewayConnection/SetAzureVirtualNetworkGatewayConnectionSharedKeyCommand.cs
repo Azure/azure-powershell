@@ -51,11 +51,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            var present = this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name);
-            ConfirmAction(
+            base.Execute();            var present = this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name);            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.SettingResourceMessage,
@@ -65,8 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                     var virtualNetworkGatewayConnectionSharedKey = SetVirtualNetworkGatewayConnectionSharedKey();
                     WriteObject(virtualNetworkGatewayConnectionSharedKey);
                 },
-                () => present);
-        }
+                () => present);        }
 
         private string SetVirtualNetworkGatewayConnectionSharedKey()
         {

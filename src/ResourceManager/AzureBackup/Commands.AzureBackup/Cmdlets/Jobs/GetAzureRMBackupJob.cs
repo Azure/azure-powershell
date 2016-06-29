@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         throw new Exception(Resources.AzureBackupJobArguementException);
                     }
                     WriteDebug(Resources.SettingStartTime);
-                    From = new DateTime();
                     From = AzureBackupJobHelper.MinimumAllowedDate;
                 }
 
@@ -112,7 +111,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     else
                     {
                         WriteDebug(Resources.SettingEndTime);
-                        To = new DateTime();
                         To = AzureBackupJobHelper.MinimumAllowedDate;
                     }
                 }
