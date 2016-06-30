@@ -14,7 +14,7 @@
 
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
-$vaultLocation = "westus";
+$vaultLocation = get_available_location;
 $defaultPolicyName = "DefaultPolicy";
 # Create VM instead of taking these as parameters
 $vmResourceGroupName = "arpittestresourcegroup";

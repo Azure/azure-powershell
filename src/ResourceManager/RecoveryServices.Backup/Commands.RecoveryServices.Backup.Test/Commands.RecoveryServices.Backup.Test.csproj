@@ -124,6 +124,9 @@
     <None Include="ScenarioTests\AzureSql\ItemTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\IaasVm\Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\IaasVm\JobTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

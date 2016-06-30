@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.RecoveryServices.Backup;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
                 string psFile = "ScenarioTests\\" + testFolderName + "\\" + this.GetType().Name + ".ps1";
+                string commonPsFile = "ScenarioTests\\" + testFolderName + "\\Common.ps1";
                 string rmProfileModule = helper.RMProfileModule;
                 string rmModulePath = helper.GetRMModulePath("AzureRM.RecoveryServices.Backup.psd1");
                 string recoveryServicesModulePath =
@@ -81,12 +83,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager,
-                    psFile,
-                    rmProfileModule,
-                    rmModulePath,
-                    recoveryServicesModulePath
-                    );
+
+                List<string> modules = new List<string>();
+
+                if (File.Exists(commonPsFile))
+                {
+                    modules.Add(commonPsFile);
+                }
+
+                modules.Add(psFile);
+                modules.Add(rmProfileModule);
+                modules.Add(rmModulePath);
+                modules.Add(recoveryServicesModulePath);
+
+                helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
                 helper.RunPowerShellTest(scripts);
             }
         }

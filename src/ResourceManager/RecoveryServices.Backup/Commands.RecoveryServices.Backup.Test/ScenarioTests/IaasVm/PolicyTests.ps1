@@ -14,7 +14,7 @@
 
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
-$vaultLocation = "westus";
+$vaultLocation = get_available_location;
 $policyName = "pwtest1";
 
 function Test-PolicyScenario
