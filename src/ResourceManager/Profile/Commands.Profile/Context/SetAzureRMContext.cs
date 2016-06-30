@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Profile
                     HelpMessage = "Subscription",
                     ValueFromPipelineByPropertyName = true
                 },
-                new ValidateSetAttribute(AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Subscriptions)),
             };
 
             var tenantIdAttributes = new Collection<Attribute>
@@ -139,8 +138,33 @@ namespace Microsoft.Azure.Commands.Profile
                     ValueFromPipelineByPropertyName = true
                 },
                 new AliasAttribute("Domain"),
-                new ValidateSetAttribute(AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants)),
             };
+
+            if (AzureRmProfileProvider.Instance != null
+                && AzureRmProfileProvider.Instance.Profile != null
+                && AzureRmProfileProvider.Instance.Profile.Context != null
+                && AzureRmProfileProvider.Instance.Profile.Context.Account != null)
+            {
+                var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
+                if (account.IsPropertySet(AzureAccount.Property.Subscriptions))
+                {
+                    var subscriptions = account.GetPropertyAsArray(AzureAccount.Property.Subscriptions);
+                    if (subscriptions != null && subscriptions.Length > 0)
+                    {
+                        subscriptionIdAttributes.Add(
+                            new ValidateSetAttribute(subscriptions));
+                    }
+                }
+                if (account.IsPropertySet(AzureAccount.Property.Tenants))
+                {
+                    var tenants = account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+                    if (tenants != null && tenants.Length > 0)
+                    {
+                        tenantIdAttributes.Add(
+                            new ValidateSetAttribute(tenants));
+                    }
+                }
+            }
 
             _tenantId = new RuntimeDefinedParameter("TenantId", typeof(string), tenantIdAttributes);
             _subscriptionId = new RuntimeDefinedParameter("SubscriptionId", typeof(string), subscriptionIdAttributes);

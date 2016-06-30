@@ -388,7 +388,6 @@ function Get-AllBuildServerCommands {
 
 	#TestValues
 	#$OutputPath = ".\Output";
-	#$ManifestFullName = "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
 
 	#Clean Output Path Trailing \ if exists
 	if($OutputPath.Substring(($OutputPath.Length - 1),1) -eq '\') 

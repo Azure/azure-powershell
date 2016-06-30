@@ -134,16 +134,16 @@
         <!-- <string>\\Test[s]?\\</string> -->
         <string>\\OneBox\\</string>
         <string>ART\\TSATest</string>
-	<string>KeyVault\\KeyVault.Tests\\Resources\\localhost.pfx</string>
+	    <string>KeyVault\\KeyVault.Tests\\Resources\\localhost.pfx</string>
         <string>ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\testcertificate.pfx</string>
-	<string>ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\InvalidProfile.PublishSettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\InvalidProfile.PublishSettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile3.PublishSettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile.PublishSettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\Azure.publishsettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChina.PublishSettings</string>
-	<string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings</string>
+	    <string>ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\InvalidProfile.PublishSettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\InvalidProfile.PublishSettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile3.PublishSettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile.PublishSettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\Azure.publishsettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChina.PublishSettings</string>
+	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings</string>
         <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile2.PublishSettings</string>
         <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\Resources\\BatchTestCert05.pfx</string>
         <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\Resources\\BatchTestCert04.pfx</string>
@@ -168,6 +168,8 @@
         <string>ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\ServiceConfiguration.cscfg</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx</string>
+		<string>\\bin\\Debug\\</string>
+		<string>\\package[s]?\\</string>
       </Filters>
     </ResourceFilter>
   </ResourceSearchFilters>
