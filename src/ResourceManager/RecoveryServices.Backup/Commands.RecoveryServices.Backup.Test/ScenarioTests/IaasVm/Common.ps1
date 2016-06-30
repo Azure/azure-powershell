@@ -25,9 +25,9 @@ function get_available_location
             return $resourceProvider.Locations[0]
         } else
         {
-            return @("West US")
+            return "West US"
         }
     }
 
-    return @("West US")
+    return "West US"
 }
