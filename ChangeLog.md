@@ -7,6 +7,33 @@
 	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+* Azure LogicApp
+  * Added LogicApp Integration accounts cmdlets.
+    - Get-AzureRmIntegrationAccountAgreement
+    - Get-AzureRmIntegrationAccountCallbackUrl
+    - Get-AzureRmIntegrationAccountCertificate
+    - Get-AzureRmIntegrationAccount
+    - Get-AzureRmIntegrationAccountMap
+    - Get-AzureRmIntegrationAccountPartner
+    - Get-AzureRmIntegrationAccountSchema
+    - New-AzureRmIntegrationAccountAgreement
+    - New-AzureRmIntegrationAccountCertificate
+    - New-AzureRmIntegrationAccount
+    - New-AzureRmIntegrationAccountMap
+    - New-AzureRmIntegrationAccountPartner
+    - New-AzureRmIntegrationAccountSchema
+    - Remove-AzureRmIntegrationAccountAgreement
+    - Remove-AzureRmIntegrationAccountCertificate
+    - Remove-AzureRmIntegrationAccount
+    - Remove-AzureRmIntegrationAccountMap
+    - Remove-AzureRmIntegrationAccountPartner
+    - Remove-AzureRmIntegrationAccountSchema
+    - Set-AzureRmIntegrationAccountAgreement
+    - Set-AzureRmIntegrationAccountCertificate
+    - Set-AzureRmIntegrationAccount
+    - Set-AzureRmIntegrationAccountMap
+    - Set-AzureRmIntegrationAccountPartner
+    - Set-AzureRmIntegrationAccountSchema
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
   - Fix a bug in New-AzureRmResourceGroupDeployment. In some deployments the cmdlet throws an exception with "Deployment 'deploymentName' could not be found." and causes the cmdlet to fail. The fix makes sure the deployment is created before getting operations.
