@@ -19,7 +19,11 @@
     } else {
       $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
-      $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
+      if($rg -eq $null) {
+        $resourceGroup = $null
+      } else {
+        $resourceGroup = Get-ResourceGroup $Name $Location $rg.ResourceGroup.Id
+      }
       Write-Output $resourceGroup
     }
   }
@@ -38,7 +42,11 @@ function Get-AzureRmResourceProvider
   PROCESS {
     $getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
     $pr = $getTask.Result
-    $provider = Get-Provider $pr.Provider.Namespace
+    if($pr -eq $null) {
+      $provider = $null
+    } else {
+      $provider = Get-Provider $pr.Provider.Namespace
+    }
     Write-Output $provider
   }
   END {}

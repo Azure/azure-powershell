@@ -207,6 +207,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region HybridrunbookWorker
+        HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
+        #endregion
+
         #region Credentials
 
         CredentialInfo CreateCredential(string resourceGroupName, string automationAccountName, string name, string userName, string password, string description);

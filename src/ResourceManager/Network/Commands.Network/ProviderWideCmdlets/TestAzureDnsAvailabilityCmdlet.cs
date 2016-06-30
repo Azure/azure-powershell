@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
+            base.Execute();
             this.Location = this.Location.Replace(" ", string.Empty);
             var result = this.NetworkClient.NetworkManagementClient.CheckDnsNameAvailability(this.Location, this.DomainNameLabel);
             WriteObject(result.Available);

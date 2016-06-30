@@ -1,13 +1,12 @@
 ﻿Param(
-  [Parameter(Mandatory=$True,Position=0)]   
-  [string]$testns 
+  [Parameter(Mandatory=$True,Position=0)]
+  [string]$testns
 )
 
-$invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
-. (Join-Path $invocationPath "PSHCommon\Common.ps1");
-. (Join-Path $invocationPath "PSHCommon\Assert.ps1");
-. (Join-Path $invocationPath "Common.ps1");
-. (Join-Path $invocationPath "VaultUITests.ps1");
+. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
+. (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Assert.ps1")
+. (Join-Path $PSScriptRoot "Common.ps1");
+. (Join-Path $PSScriptRoot "VaultUITests.ps1");
 
 $global:totalCount = 0;
 $global:passedCount = 0;
@@ -20,50 +19,50 @@ function Run-TestProtected
 {
    param([ScriptBlock]$script, [string] $testName)
    $testStart = Get-Date
-   try 
+   try
    {
      Write-Host  -ForegroundColor Green =====================================
-	 Write-Host  -ForegroundColor Green "Running test $testName"
+     Write-Host  -ForegroundColor Green "Running test $testName"
      Write-Host  -ForegroundColor Green =====================================
-	 Write-Host
+     Write-Host
      &$script
-	 $global:passedCount = $global:passedCount + 1
-	 Write-Host
+     $global:passedCount = $global:passedCount + 1
+     Write-Host
      Write-Host -ForegroundColor Green =====================================
-	 Write-Host -ForegroundColor Green "Test Passed"
+     Write-Host -ForegroundColor Green "Test Passed"
      Write-Host -ForegroundColor Green =====================================
-	 Write-Host
-	 $global:passedTests += $testName
+     Write-Host
+     $global:passedTests += $testName
    }
    catch
    {
      Out-String -InputObject $_.Exception | Write-Host -ForegroundColor Red
-	 Write-Host
+     Write-Host
      Write-Host  -ForegroundColor Red =====================================
-	 Write-Host -ForegroundColor Red "Test Failed"
+     Write-Host -ForegroundColor Red "Test Failed"
      Write-Host  -ForegroundColor Red =====================================
-	 Write-Host
-	 $global:failedTests += $testName
+     Write-Host
+     $global:failedTests += $testName
    }
    finally
    {
       $testEnd = Get-Date
-	  $testElapsed = $testEnd - $testStart
-	  $global:times[$testName] = $testElapsed
+      $testElapsed = $testEnd - $testStart
+      $global:times[$testName] = $testElapsed
       $global:totalCount = $global:totalCount + 1
    }
 }
 
-# Initialize 
+# Initialize
 Write-Host Delete log files
-Cleanup-Log $invocationPath
+Cleanup-LogFiles $invocationPath
 
 $testkeyVault = Get-KeyVault
 Write-Host Test key vault is $testKeyVault
 Write-Host Initializing Key Tests
-Initialize-KeyTest
+Cleanup-OldKeys
 Write-Host Initializing Secret Tests
-Initialize-SecretTest
+Cleanup-OldSecrets
 Write-Host Initialization Completed
 
 $global:startTime = Get-Date
