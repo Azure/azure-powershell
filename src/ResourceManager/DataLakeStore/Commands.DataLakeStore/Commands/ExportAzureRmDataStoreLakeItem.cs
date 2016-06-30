@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
                     CmdletCancellationToken,
                     isDownload: true, overwrite: Force, cmdletRunningRequest: this,
-                    perFileThreadCount: PerFileThreadCount, folderThreadCount: ConcurrentFileCount, recursive: Recurse);
+                    perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse);
             }
 
             WriteObject(powerShellReadyPath);

@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
-
             RunPsTestWorkflow(createWasbAccount,
                 () => scripts,
                 // no custom initializer

@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    PerFileThreadCount,
                     ConcurrentFileCount,
+                    PerFileThreadCount,
                     Recurse,
                     Force,
                     Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);

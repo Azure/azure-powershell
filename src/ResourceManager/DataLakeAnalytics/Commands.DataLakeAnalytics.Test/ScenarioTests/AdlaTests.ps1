@@ -186,7 +186,8 @@ function Test-DataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+		$nowTime = $accountCreated.Properties.CreationTime
+        
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -229,11 +230,11 @@ function Test-DataLakeAnalyticsJob
 
 		Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $(([DateTime]::Now).AddMinutes(-5))
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-5))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after five miuntes ago"
-
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $(([DateTime]::Now).AddMinutes(0))
+		# we add five minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(5)) 
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
 
@@ -347,7 +348,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+        $nowTime = $accountCreated.Properties.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -380,7 +381,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		# Attempt to Get debug data for a non-existent job
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsJobDebugInfo -AccountName $accountName -JobIdentity [Guid]::Empty}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTime]::Now)
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]$nowTime)
 
 		Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
