@@ -745,6 +745,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When uploading a new application package, you must specify a value for the FilePath parameter..
+        /// </summary>
+        internal static string NewApplicationPackageNoPathSpecified {
+            get {
+                return ResourceManager.GetString("NewApplicationPackageNoPathSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data..
         /// </summary>
         internal static string NoCertificateData {
