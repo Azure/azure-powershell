@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSFunction function = null;
-            bool functionExists = CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName);
             parameter.ConfirmAction(
                     parameter.Force,
                     string.Format(
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                             JobName = parameter.JobName
                         };
                     },
-                    () => functionExists);
+                    () => CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName));
 
             return function;
         }

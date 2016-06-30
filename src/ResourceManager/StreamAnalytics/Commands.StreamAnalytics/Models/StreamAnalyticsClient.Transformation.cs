@@ -60,9 +60,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSTransformation transformation = null;
-            bool transformationExists = CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, parameter.TransformationName);
             parameter.ConfirmAction(
-                    !transformationExists,
+                    parameter.Force,
                     string.Format(
                         CultureInfo.InvariantCulture,
                         Resources.TransformationExists,
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                                 JobName = parameter.JobName
                             };
                     },
-                    () => transformationExists);
+                    () => CheckTransformationExists(parameter.ResourceGroupName, parameter.JobName, parameter.TransformationName));
 
             return transformation;
         }
