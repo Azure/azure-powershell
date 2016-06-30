@@ -34,6 +34,7 @@
     <DataLakeAnalyticsTestDebug>.\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll</DataLakeAnalyticsTestDebug>
     <DataLakeStoreTestDebug>.\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeStore.Test.dll</DataLakeStoreTestDebug>
     <UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
+    <PowerBIEmbeddedTestDebug>.\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll</PowerBIEmbeddedTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
     <ScenarioTestFilter>All</ScenarioTestFilter>
     <OneSDKCITFilter>"OneSDK&#x26;CIT"</OneSDKCITFilter>
@@ -89,6 +90,7 @@
       <XUnitTests Include=".\src\ResourceManager\Cdn\Commands.Cdn.Test\bin\Debug\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.dll"/>
       <XUnitTests Include=".\src\ResourceManager\CognitiveServices\CognitiveServices.Test\bin\Debug\Microsoft.Azure.Commands.Management.CognitiveServices.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Automation\Commands.Automation.Test\bin\Debug\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"/>
+      <XUnitTests Include=".\src\ResourceManager\PowerBIEmbedded\Commands.PowerBIEmbedded.Test\bin\Debug\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\bin\Debug\Microsoft.Azure.Commands.DataLake.Test.dll"/>
       <!-- <XUnitTests Include=".\src\ResourceManager\AzureStackAdmin\Commands.AzureStackAdmin.Test\bin\Debug\Microsoft.AzureStack.Commands.Admin.Test.dll"/>
@@ -320,6 +322,13 @@
     <Message Importance="high" Text="Running DataLakeStore tests" />
     <Xunit.Runner.MSBuild.xunit Assemblies="$(DataLakeStoreTestDebug)" Html="$(TestOutputDirectory)\DataLakeStoreTests.xunit.dll.html" Verbose="true"
       IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
+  </Target>
+
+  <!-- Run the Power BI Embedded tests -->
+  <Target Name="PowerBIEmbeddedTests">
+    <Message Importance="high" Text="Running Power BI Embedded tests" />
+ 	<Xunit.Runner.MSBuild.xunit Assemblies="$(PowerBIEmbeddedTestDebug)" Html="$(TestOutputDirectory)\PowerBIEmbeddedTestDebug.xunit.dll.html" Verbose="true"
+	  IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
   </Target>
   
   <!-- run the UsageAggregationTests -->
