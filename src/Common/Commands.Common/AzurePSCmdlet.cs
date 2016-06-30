@@ -506,22 +506,35 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
-        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
-        /// particular action (e.g. a resource is being overwritten). By default, both 
-        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
-        /// must have a force parameter.
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy 
+        /// version forcompatibility with older RDFE cmdlets.
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
         /// <param name="continueMessage">Message to describe the action</param>
         /// <param name="processMessage">Message to prompt after the active is performed.</param>
         /// <param name="target">The target name.</param>
         /// <param name="action">The action code</param>
-        protected void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
             Action action)
         {
-            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (force || ShouldContinue(continueMessage, ""))
+            {
+                if (ShouldProcess(target, processMessage))
+                {
+                    if (_qosEvent != null)
+                    {
+                        _qosEvent.ResumeQosTimer();
+                    }
+                    action();
+                }
+            }
         }
+
         /// <summary>
         /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
         /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
@@ -535,7 +548,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="target">The target name.</param>
         /// <param name="action">The action code</param>
         /// <param name="useShouldContinue">A predicate indicating whether ShouldContinue should be invoked for thsi action</param>
-        protected void ConfirmAction(bool force, string continueMessage, string processMessage, string target, Action action, Func<bool> useShouldContinue)
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target, Action action, Func<bool> useShouldContinue)
         {
             if (null == useShouldContinue)
             {
@@ -567,7 +580,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="processMessage">The change being made to the resource</param>
         /// <param name="target">The resource that is being changed</param>
         /// <param name="action">The action to perform if confirmed</param>
-        protected void ConfirmAction(string processMessage, string target, Action action)
+        protected virtual void ConfirmAction(string processMessage, string target, Action action)
         {
             if (_qosEvent != null)
             {
