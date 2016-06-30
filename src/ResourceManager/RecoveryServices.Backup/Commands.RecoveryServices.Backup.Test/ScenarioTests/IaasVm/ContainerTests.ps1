@@ -14,7 +14,6 @@
 
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
-$vaultLocation = get_available_location;
 $defaultPolicyName = "DefaultPolicy";
 # Create VM instead of taking these as parameters
 $vmResourceGroupName = "arpittestresourcegroup";
@@ -26,6 +25,7 @@ $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 function Test-GetContainerScenario
 {
 	# 1. Create / update and get vault
+	$vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	

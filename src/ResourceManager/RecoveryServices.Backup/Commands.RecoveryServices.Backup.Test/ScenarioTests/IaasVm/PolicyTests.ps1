@@ -14,12 +14,12 @@
 
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
-$vaultLocation = get_available_location;
 $policyName = "pwtest1";
 
 function Test-PolicyScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	

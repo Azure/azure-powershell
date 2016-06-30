@@ -14,7 +14,6 @@
 
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
-$vaultLocation = get_available_location;
 $defaultPolicyName = "DefaultPolicy";
 # Create VM instead of taking these as parameters
 $vmResourceGroupName = "arpittestresourcegroup";
@@ -26,6 +25,7 @@ $vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
 function Test-GetItemScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
@@ -114,6 +114,7 @@ function Test-GetItemScenario
 function Test-EnableAzureVMProtectionScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
@@ -148,6 +149,7 @@ function Test-EnableAzureVMProtectionScenario
 function Test-DisableAzureVMProtectionScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
@@ -188,6 +190,7 @@ function Test-DisableAzureVMProtectionScenario
 function Test-GetAzureVMRecoveryPointsScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
@@ -241,6 +244,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 function Test-RestoreAzureVMRItemScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
@@ -298,6 +302,7 @@ function Test-RestoreAzureVMRItemScenario
 function Test-BackupItemScenario
 {
 	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
 	$vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
