@@ -1657,19 +1657,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             return Mapper.Map<PsApiManagementAccessInformation>(response.Value);
         }
-
-        public void TenantGitAccessSet(
-            PsApiManagementContext context,
-            bool enableGitAccess)
-        {
-            var tenantAccess = Client.TenantAccessGit.Get(context.ResourceGroupName, context.ServiceName);
-
-            var accessInformationParams = new AccessInformationUpdateParameters
-            {
-                Enabled = enableGitAccess
-            };
-            Client.TenantAccessGit.Update(context.ResourceGroupName, context.ServiceName, accessInformationParams, tenantAccess.ETag);
-        }
         #endregion
 
         #region TenantConfiguration

@@ -58,16 +58,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
-                AffinityGroup = String.Empty,
-                CloudServiceOrResourceGroup = String.Empty,
                 CreateNewCloudService = false,
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
-                SubnetId = string.Empty,
-                VirtualMachineName = string.Empty,
-                VirtualNetworkId = string.Empty,
+                SourceResourceId = rp.SourceResourceId,
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
