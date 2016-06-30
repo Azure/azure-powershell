@@ -35,14 +35,6 @@ namespace Microsoft.AzureStack.Commands
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateLength(1, 90)]
-        [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription identifier.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
@@ -61,18 +53,12 @@ namespace Microsoft.AzureStack.Commands
                 {
                     this.WriteVerbose(Resources.ListingGalleryItems);
 
-                    return string.IsNullOrEmpty(this.ResourceGroup)
-                        ? client.GalleryItem.ListWithoutResourceGroup().GalleryItems
-                        : client.GalleryItem.List(this.ResourceGroup).GalleryItems;
-                }
-                else if (string.IsNullOrEmpty(this.ResourceGroup))
-                {
-                    throw new ValidationMetadataException(Resources.ResourceGroupCannotBeEmpty);
+                    return client.GalleryItem.List().GalleryItems;
                 }
                 else
                 {
                     this.WriteVerbose(Resources.GettingGalleryItem.FormatArgs(this.Name));
-                    return client.GalleryItem.Get(this.ResourceGroup, this.Name).GalleryItem;
+                    return client.GalleryItem.Get(this.Name).GalleryItem;
                 }
             }
         }
