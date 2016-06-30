@@ -267,6 +267,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Primary</Label>
+                <PropertyName>Primary</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>

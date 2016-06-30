@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
-using Microsoft.Azure.Commands.Network.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             catch (Rest.Azure.CloudException ex)
             {
-                throw new NetworkCloudException(ex);
+                throw new Exception(ex.Message);
             }
         }
         public virtual void Execute()
