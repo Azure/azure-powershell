@@ -1696,15 +1696,8 @@ Param($resourceGroupName, $serviceName)
         $tenantGitAccess = Get-AzureRmApiManagementTenantGitAccess -Context $context
 
 		Assert-NotNull $tenantGitAccess
-        Assert-AreEqual $false $tenantGitAccess.Enabled        
+        Assert-AreEqual $true $tenantGitAccess.Enabled        
 		
-		#enable Tenant Git Access
-		$tenantGitAccess = $null
-        $tenantGitAccess = Set-AzureRmApiManagementTenantGitAccess -Context $context -Enabled $true -PassThru
-
-		Assert-NotNull $tenantGitAccess
-		Assert-AreEqual $true $tenantGitAccess.Enabled
-
 		#get Tenant Sync state
 		$tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
 		Assert-NotNull $tenantSyncState
@@ -1748,7 +1741,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-		Set-AzureRmApiManagementTenantGitAccess -Context $context -Enabled $false -PassThru		
+		
     }
 }
 

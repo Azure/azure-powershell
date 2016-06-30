@@ -206,7 +206,6 @@
     <Compile Include="Commands\SetAzureApiManagementSubscription.cs" />
     <Compile Include="Commands\SetAzureApiManagementUser.cs" />
     <Compile Include="Commands\SetAzureRmApiManagementTenantAccess.cs" />
-    <Compile Include="Commands\SetAzureRmApiManagementTenantGitAccess.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Models\ErrorBody.cs" />
     <Compile Include="Models\ErrorField.cs" />
