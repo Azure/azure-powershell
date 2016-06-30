@@ -114,9 +114,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSInput input = null;
-            bool inputExists = CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName);
             parameter.ConfirmAction(
-                    !inputExists,
+                    parameter.Force,
                     string.Format(
                         CultureInfo.InvariantCulture,
                         Resources.InputExists,
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                             JobName = parameter.JobName
                         };
                     },
-                    () => inputExists);
+                    () => CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName));
 
             return input;
         }

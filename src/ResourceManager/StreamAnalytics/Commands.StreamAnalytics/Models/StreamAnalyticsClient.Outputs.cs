@@ -114,9 +114,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSOutput output = null;
-            bool outputExists = CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName);
             parameter.ConfirmAction(
-                    !outputExists,
+                    parameter.Force,
                     string.Format(
                         CultureInfo.InvariantCulture,
                         Resources.OutputExists,
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                                 JobName = parameter.JobName
                             };
                     },
-                    () => outputExists);
+                    () => CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName));
 
             return output;
         }

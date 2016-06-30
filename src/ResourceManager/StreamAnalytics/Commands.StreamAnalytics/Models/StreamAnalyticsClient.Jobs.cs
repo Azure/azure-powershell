@@ -137,9 +137,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSJob job = null;
-            bool jobExists = CheckJobExists(parameter.ResourceGroupName, parameter.JobName);
             parameter.ConfirmAction(
-                    !jobExists,
+                    parameter.Force,
                     string.Format(
                         CultureInfo.InvariantCulture,
                         Resources.JobExists,
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                     {
                         job = CreateOrUpdatePSJob(parameter.ResourceGroupName, parameter.JobName, parameter.RawJsonContent);
                     },
-                    () => jobExists);
+                    () => CheckJobExists(parameter.ResourceGroupName, parameter.JobName));
             return job;
         }
 

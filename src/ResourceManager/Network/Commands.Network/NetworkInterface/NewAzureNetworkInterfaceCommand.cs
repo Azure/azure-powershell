@@ -229,6 +229,11 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     var networkInterface = CreateNetworkInterface();
+                    if (present)
+                    {
+                        networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
+                    }
+
                     WriteObject(networkInterface);
                 },
                 () => present);
