@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
                 List<string> modules = new List<string>();
 
-                if (File.Exists(commonPsFile))
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, commonPsFile)))
                 {
                     modules.Add(commonPsFile);
                 }
