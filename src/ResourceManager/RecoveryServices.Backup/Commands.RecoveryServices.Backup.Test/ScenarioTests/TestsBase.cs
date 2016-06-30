@@ -75,6 +75,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 string psFile = "ScenarioTests\\" + testFolderName + "\\" + this.GetType().Name + ".ps1";
                 string rmProfileModule = helper.RMProfileModule;
                 string rmModulePath = helper.GetRMModulePath("AzureRM.RecoveryServices.Backup.psd1");
+                string recoveryServicesModulePath =
+                    helper.GetRMModulePath("AzureRM.RecoveryServices.psd1");
 
                 SetupManagementClients();
 
@@ -82,7 +84,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     psFile,
                     rmProfileModule,
-                    rmModulePath
+                    rmModulePath,
+                    recoveryServicesModulePath
                     );
                 helper.RunPowerShellTest(scripts);
             }

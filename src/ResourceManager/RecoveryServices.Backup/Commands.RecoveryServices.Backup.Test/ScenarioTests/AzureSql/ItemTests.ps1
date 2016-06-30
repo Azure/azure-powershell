@@ -88,9 +88,9 @@ function Test-GetAzureSqlRecoveryPointsScenario
 		-Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 	Assert-AreEqual $item.Name "dsName;9b9d68c8cf7a47c68b67ac1f7f4be609";
 
-	$fixedStartDate = Get-Date -Date "2016-06-13 22:00:00"
+	$fixedStartDate = Get-Date -Date "2016-06-13 16:30:00Z"
 	$startDate = $fixedStartDate.ToUniversalTime()
-	$fixedEndDate = Get-Date -Date "2016-06-18 16:00:00"
+	$fixedEndDate = Get-Date -Date "2016-06-18 10:30:00Z"
 	$endDate = $fixedEndDate.ToUniversalTime()
 	
 	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint `
