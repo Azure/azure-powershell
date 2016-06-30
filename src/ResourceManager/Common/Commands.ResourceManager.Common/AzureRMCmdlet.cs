@@ -146,8 +146,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 resourceId), action, promptForContinuation);
         }
 
-
-
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)
