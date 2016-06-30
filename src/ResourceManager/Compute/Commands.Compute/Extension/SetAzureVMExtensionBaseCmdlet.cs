@@ -12,15 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Get, ProfileNouns.VirtualMachineExtension)]
-    [OutputType(typeof(PSVirtualMachineExtension))]
-    public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMExtensionBaseCmdlet : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -41,38 +37,38 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
-            Position = 2,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Alias("HandlerVersion", "Version")]
         [Parameter(
-            Position = 3,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To show the status.")]
+            HelpMessage = "The version")]
         [ValidateNotNullOrEmpty]
-        public SwitchParameter Status { get; set; }
+        public string TypeHandlerVersion { get; set; }
 
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
-            ExecuteClientAction(() =>
-            {
-                if (Status.IsPresent)
-                {
-                    var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                }
-                else
-                {
-                    var result = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(this.ResourceGroupName,
-                        this.VMName, this.Name).GetAwaiter().GetResult();
-                    WriteObject(result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName));
-                }
-            });
-        }
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Disable auto-upgrade of minor version")]
+        public SwitchParameter DisableAutoUpgradeMinorVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Force re-run even if extension configuration has not changed")]
+        [ValidateNotNullOrEmpty]
+        public string ForceRerun { get; set; }
     }
 }

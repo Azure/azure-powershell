@@ -396,6 +396,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
+        /// </summary>
+        public static string ErrorDuringChoosingStandardStorageAccount {
+            get {
+                return ResourceManager.GetString("ErrorDuringChoosingStandardStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
         /// </summary>
         public static string ErrorDuringCreatingStorageAccountForBootDiagnostics {

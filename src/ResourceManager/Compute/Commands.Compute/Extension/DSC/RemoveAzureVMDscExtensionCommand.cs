@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         VMName,
                         Name).GetAwaiter().GetResult();
 
-                    if (ComputeOperationStatus.Failed.Equals(op.Response.StatusCode))
+                    if ("Failed".Equals(op.Response.StatusCode))
                         //&& op.Error != null && "InternalExecutionError".Equals(op.Error.Code))
                     {
                         count++;
