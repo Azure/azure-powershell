@@ -167,28 +167,29 @@ namespace Microsoft.Azure.Commands.Profile
                 new AliasAttribute("Domain")
             };
 
-            if (AzureRmProfileProvider.Instance != null 
-                && AzureRmProfileProvider.Instance.Profile != null 
-                && AzureRmProfileProvider.Instance.Profile.Context != null 
+            if (AzureRmProfileProvider.Instance != null
+                && AzureRmProfileProvider.Instance.Profile != null
+                && AzureRmProfileProvider.Instance.Profile.Context != null
                 && AzureRmProfileProvider.Instance.Profile.Context.Account != null)
             {
                 var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
-                if (account.IsPropertySet(AzureAccount.Property.Subscriptions)
-                    && account.GetPropertyAsArray(AzureAccount.Property.Subscriptions).Any(s => !string.IsNullOrWhiteSpace(s)))
+                if (account.IsPropertySet(AzureAccount.Property.Subscriptions))
                 {
-                    subscriptionIdAttributes.Add(
-                        new ValidateSetAttribute(
-                            AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(
-                                AzureAccount.Property.Subscriptions)));
+                    var subscriptions = account.GetPropertyAsArray(AzureAccount.Property.Subscriptions);
+                    if (subscriptions != null && subscriptions.Length > 0)
+                    {
+                        subscriptionIdAttributes.Add(
+                            new ValidateSetAttribute(subscriptions));
+                    }
                 }
-
-                if (account.IsPropertySet(AzureAccount.Property.Tenants)
-                    && account.GetPropertyAsArray(AzureAccount.Property.Tenants).Any(s => !string.IsNullOrWhiteSpace(s)))
+                if (account.IsPropertySet(AzureAccount.Property.Tenants))
                 {
-                    tenantIdAttributes.Add(
-                        new ValidateSetAttribute(
-                            AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(
-                                AzureAccount.Property.Tenants)));
+                    var tenants = account.GetPropertyAsArray(AzureAccount.Property.Tenants);
+                    if (tenants != null && tenants.Length > 0)
+                    {
+                        tenantIdAttributes.Add(
+                            new ValidateSetAttribute(tenants));
+                    }
                 }
             }
 
