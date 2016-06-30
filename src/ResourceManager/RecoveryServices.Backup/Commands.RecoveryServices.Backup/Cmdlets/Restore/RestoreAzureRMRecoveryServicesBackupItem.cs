@@ -19,9 +19,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.Azure.Management.Storage;
 using ResourcesNS = Microsoft.Azure.Management.Resources;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 identity.ResourceType = string.Empty;
 
                 ResourcesNS.Models.ResourceGetResult resource = null;
-                StorageModels.StorageAccount storageAccountDetails = null;
                 try
                 {
                     WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}",
@@ -78,26 +75,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 catch (Exception)
                 {
-                    storageAccountDetails = this.StorageClient.StorageAccounts.GetProperties(
-                       StorageAccountResourceGroupName,
-                       StorageAccountName);
-                    if (storageAccountDetails.Kind == StorageModels.Kind.BlobStorage)
-                    {
-                        throw new ArgumentException(
-                            String.Format(
-                                Resources.UnsupportedStorageAccountException,
-                                storageAccountDetails.Kind.ToString(),
-                                StorageAccountName));
-                    }
+                    identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
+                    identity.ResourceProviderApiVersion = "2016-01-01";
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
+                        identity, CancellationToken.None).Result;
                 }
 
-                string storageAccountId =
-                    (resource != null) ? resource.Resource.Id : storageAccountDetails.Id;
-                string storageAccountlocation =
-                    (resource != null) ? 
-                        resource.Resource.Location : storageAccountDetails.Location;
-                string storageAccountType =
-                    (resource != null) ? resource.Resource.Type : storageAccountDetails.Type;
+                string storageAccountId = resource.Resource.Id;
+                string storageAccountlocation = resource.Resource.Location;
+                string storageAccountType = resource.Resource.Type;
 
                 WriteDebug(String.Format("StorageId = {0}", storageAccountId));
 
