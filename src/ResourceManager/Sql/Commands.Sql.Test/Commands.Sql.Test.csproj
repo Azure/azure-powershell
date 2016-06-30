@@ -195,12 +195,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScenarioTests\DatabaseBackupStretchTests.cs" />
+    <Compile Include="ScenarioTests\DatabaseCrudStretchTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
     <Compile Include="ScenarioTests\DatabaseActivationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseBackupTests.cs" />
     <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
+    <None Include="ScenarioTests\DatabaseBackupStretchTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\DatabaseCrudStretchTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\ThreatDetectionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -419,6 +427,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseActivationTests\TestDatabasePauseResumePiped.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupStretchTests\TestStretchDatabaseListRestorePoints.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestListDatabaseRestorePoints.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -438,6 +449,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestDatabaseBackupLongTermRetentionPolicy.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseCrudStretchTests\TestStretchDatabaseCreate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseCrudStretchTests\TestStretchDatabaseGet.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseCrudStretchTests\TestStretchDatabaseRemove.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseCrudStretchTests\TestStretchDatabaseUpdate.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseCrudTests\TestDatabaseCreate.json">

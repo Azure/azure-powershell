@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (rpResponse.RecPoint.Properties.GetType() ==
                 typeof(ServiceClientModel.RecoveryPoint))
             {
-                ServiceClientModel.RecoveryPoint recPoint = 
+                ServiceClientModel.RecoveryPoint recPoint =
                     rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
 
                 DateTime recPointTime = DateTime.ParseExact(
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     Id = rpResponse.RecPoint.Id,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                    EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ? 
+                    EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                         recPoint.IsSourceVMEncrypted.Value : false,
                     IlrSessionActive = recPoint.IsInstantILRSessionActive,
                 };
@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 result = vmResult;
             }
 
-            if (rpResponse.RecPoint.Properties.GetType() == 
+            if (rpResponse.RecPoint.Properties.GetType() ==
                 typeof(ServiceClientModel.GenericRecoveryPoint))
             {
-                ServiceClientModel.GenericRecoveryPoint recPoint = 
+                ServiceClientModel.GenericRecoveryPoint recPoint =
                     rpResponse.RecPoint.Properties as ServiceClientModel.GenericRecoveryPoint;
 
                 DateTime recPointTime = DateTime.ParseExact(
@@ -197,20 +197,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     CultureInfo.InvariantCulture);
 
                 AzureSqlRecoveryPoint sqlResult = new AzureSqlRecoveryPoint()
-                {
-                    RecoveryPointId = rpResponse.RecPoint.Name,
-                    BackupManagementType = item.BackupManagementType,
-                    ItemName = protectedItemName,
-                    ContainerName = containerUri,
-                    ContainerType = item.ContainerType,
-                    RecoveryPointTime = recPointTime,
-                    RecoveryPointType = recPoint.RecoveryPointType,
-                    Id = rpResponse.RecPoint.Id,
-                    WorkloadType = item.WorkloadType,
-                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                    SourceResourceId = item.SourceResourceId,
-                    FriendlyName = recPoint.FriendlyName
-                };
+            {
+                RecoveryPointId = rpResponse.RecPoint.Name,
+                BackupManagementType = item.BackupManagementType,
+                ItemName = protectedItemName,
+                ContainerName = containerUri,
+                ContainerType = item.ContainerType,
+                RecoveryPointTime = recPointTime,
+                RecoveryPointType = recPoint.RecoveryPointType,
+                Id = rpResponse.RecPoint.Id,
+                WorkloadType = item.WorkloadType,
+                RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                SourceResourceId = item.SourceResourceId,
+                FriendlyName = recPoint.FriendlyName
+            };
 
                 result = sqlResult;
             }
