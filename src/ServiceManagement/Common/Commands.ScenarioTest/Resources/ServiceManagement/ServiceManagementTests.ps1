@@ -37,6 +37,7 @@ function Test-GetAzureVM
 
     # Test
     New-AzureService -ServiceName $svcName -Location $location
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password "p@ssw0rd"
 
     Get-AzureVM -ServiceName $svcName -Name $vmName

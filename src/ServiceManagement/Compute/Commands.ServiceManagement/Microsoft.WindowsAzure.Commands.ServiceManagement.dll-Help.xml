@@ -3633,7 +3633,7 @@ New-AzureVMConfig -Name "NonDomainVM" -InstanceSize Small -ImageName "Image07" |
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Add-AzureVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01-09T22%3A15%3A49Z&amp;amp;se=2013-01-09T23%3A10%3A49Z&amp;amp;sr=b&amp;amp;sp=w&amp;amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveOSIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd"
+        <dev:code>PS C:\&gt;Add-AzureVhd -Destination "http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd?st=2013-01-09T22%3A15%3A49Z&amp;amp;se=2013-01-09T23%3A10%3A49Z&amp;amp;sr=b&amp;amp;sp=w&amp;amp;sig=13T9Ow%2FRJAMmhfO%2FaP3HhKKJ6AY093SmveOSIV4%2FR7w%3D" -LocalFilePath "C:\vhd\win7baseimage.vhd" <!--[SuppressMessage("Microsoft.Security", "CS001:SecretInline")]-->
 </dev:code>
         <dev:remarks>
           <maml:para>This command adds a .vhd file to a storage account and specifies the SAS URI.</maml:para>
@@ -17349,7 +17349,7 @@ PS C:\&gt; New-AzureDeployment -ServiceName $CloudSvc -Slot "Production" -Packag
         <dev:code>PS C:\&gt;Add-AzureCertificate -ServiceName "MySvc" -CertToDeploy "C:\temp\MyLxCert.cer"
 $myLxCert = New-AzureSSHKey ?Fingerprint "D7BECD4D63EBAF86023BB4F1A5FBF5C2C924902A" -Path "/home/username/.ssh/authorized_keys"
 New-AzureVMConfig -Name "MyVM2" -InstanceSize Small -ImageName $LxImage `
-          | Add-AzureProvisioningConfig -Linux -LinuxUser $lxUser -SSHPublicKeys $myLxCert -Password 'pass@word1' `
+          | Add-AzureProvisioningConfig -Linux -LinuxUser $lxUser -SSHPublicKeys $myLxCert -Password 'pass@word1' ` <!--[SuppressMessage("Microsoft.Security", "CS001:SecretInline")]-->
           | New-AzureVM -ServiceName "MySvc"
 </dev:code>
         <dev:remarks>

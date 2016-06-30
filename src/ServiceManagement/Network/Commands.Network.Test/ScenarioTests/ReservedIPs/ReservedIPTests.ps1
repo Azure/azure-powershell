@@ -75,6 +75,7 @@ function Test-CreateVMWithReservedIP
         
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location -ReservedIPName $reservedIPName
 
@@ -120,6 +121,7 @@ function Test-ReserveExistingDeploymentIP
 
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
     New-AzureReservedIP -ReservedIPName $reservedIPName -ServiceName $serviceName -Location $location -Label $label
@@ -173,6 +175,7 @@ function Test-SetAzureReservedIPAssociationSingleVip
         
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location 
 
@@ -229,6 +232,7 @@ function Test-RemoveAzureReservedIPAssociationSingleVip
         
     # Test
     New-AzureVMConfig -ImageName $image -Name $vmname -InstanceSize "Small" |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     New-AzureVM -ServiceName $serviceName -Location $location -ReservedIPName $reservedIPName
 
