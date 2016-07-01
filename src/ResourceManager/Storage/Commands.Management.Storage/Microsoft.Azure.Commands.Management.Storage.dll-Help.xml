@@ -696,8 +696,8 @@
 				<maml:name>Kind</maml:name>
 				<maml:description>
 					<maml:para>Kind of Storage Account. Valid values are:
-• Storage (Supports Blob, Table, Queue, and File data)
-• BlobStorage (Supports Blob data only)
+• Storage (General-purpose storage account which supports storing Blobs, Tables, Queues, Files and Disks)
+• BlobStorage (Blob storage account which supports storing Blobs only)
 Default is Storage.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -705,7 +705,8 @@ Default is Storage.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>AccessTier</maml:name>
 				<maml:description>
-					<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+					<maml:para>Access Tier for Blob Storage Accounts. This is mandatory when Storage Account Kind is equal to BlobStorage. Setting this will fail if Storage Account Kind is equal to Storage.
+
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -741,7 +742,7 @@ Valid values are:
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
@@ -809,8 +810,8 @@ Valid values are:
 			<maml:name>Kind</maml:name>
 			<maml:description>
 				<maml:para>Kind of Storage Account. Valid values are:
-• Storage (Supports Blob, Table, Queue, and File data)
-• BlobStorage (Supports Blob data only)
+• Storage (General-purpose storage account which supports storing Blobs, Tables, Queues, Files and Disks)
+• BlobStorage (Blob storage account which supports storing Blobs only)
 Default is Storage.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -823,7 +824,7 @@ Default is Storage.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 			<maml:name>AccessTier</maml:name>
 			<maml:description>
-				<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+				<maml:para>Access Tier for Blob Storage Accounts. This is mandatory when Storage Account Kind is equal to BlobStorage. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -884,7 +885,7 @@ Valid values are:
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>
@@ -1567,7 +1568,7 @@ Note that Standard_ZRS, Premium_LRS accounts cannot be changed to other account 
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>AccessTier</maml:name>
 				<maml:description>
-					<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+					<maml:para>Access Tier for Blob Storage Accounts. Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -1603,7 +1604,7 @@ Valid values are:
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
@@ -1672,7 +1673,7 @@ Note that Standard_ZRS, Premium_LRS accounts cannot be changed to other account 
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>AccessTier</maml:name>
 			<maml:description>
-				<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+				<maml:para>Access Tier for Blob Storage Accounts. Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -1733,7 +1734,7 @@ Valid values are:
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>

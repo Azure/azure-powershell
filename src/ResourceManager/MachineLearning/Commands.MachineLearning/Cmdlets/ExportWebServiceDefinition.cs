@@ -67,13 +67,19 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 
             if (!string.IsNullOrWhiteSpace(this.OutputFile))
             {
-                bool fileExisting = File.Exists(this.OutputFile);
+                var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
+                var definitionFileFullPath =
+                        Path.IsPathRooted(this.OutputFile) ?
+                            this.OutputFile :
+                            Path.Combine(currentPath, this.OutputFile);
+
+                bool fileExisting = File.Exists(definitionFileFullPath);
                 this.ConfirmAction(
                     this.Force || !fileExisting,
                     "Want to overwriting the output file?",
                     "Overwriting the output file",
-                    this.OutputFile,
-                    () => File.WriteAllText(this.OutputFile, serializedDefinition));
+                    definitionFileFullPath,
+                    () => File.WriteAllText(definitionFileFullPath, serializedDefinition));
             }
             else
             {
