@@ -136,6 +136,13 @@ function Test_SetRemoveAccessPolicyByObjectId
     Test-SetRemoveAccessPolicyByObjectId $global:testVault $global:resourceGroupName $global:objectId
 }
 
+function Test_SetRemoveAccessPolicyByBypassObjectIdValidation
+{
+    $securityGroupObjIdFromOtherTenant = [System.Guid]::NewGuid().toString()
+    Reset-PreCreatedVault
+    Test-SetRemoveAccessPolicyByObjectId $global:testVault $global:resourceGroupName $securityGroupObjIdFromOtherTenant -bypassObjectIdValidation
+}
+
 function Test_SetRemoveAccessPolicyByCompoundId
 {
     $appId = [System.Guid]::NewGuid()
