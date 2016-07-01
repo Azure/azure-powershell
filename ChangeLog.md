@@ -7,6 +7,20 @@
 	* Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+* Azure Data Lake Store
+	* Drastically improve performance of file and folder upload and download.
+		* This includes a slight change to the parameter names for download and inclusion of two new parameters for upload:
+			* NumThreads -> PerFileThreadCount, used to indicate the number of threads to use in a single file
+			* ConcurrentFileCount, used to indicate the number of files to upload/download in parallel for folder upload/download.
+		* Default threading values are now designed to give a better all around throughput for most file sizes. If performance is not as desired, the values above can be modified to meet requirements.
+* Azure Data Lake Analytics
+	* Get-AzureRMDataLakeAnalyticsDataSource now returns all data sources when called with no arguments.
+		* This change also removes the data source type parameter from the cmdlet.
+		* This change results in a new object being returned for the list operation with the following properties:
+			* Type, the type of data source
+			* Name, the name of the data source
+			* IsDefault, set to true if this is the default data source for the account
+	* Get-AzureRMDataLakeAnalyticsJob fixed for list for certain date time offset values when filtering on submittedBefore and submittedAfter.
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
   - Fix a bug in New-AzureRmResourceGroupDeployment. In some deployments the cmdlet throws an exception with "Deployment 'deploymentName' could not be found." and causes the cmdlet to fail. The fix makes sure the deployment is created before getting operations.
