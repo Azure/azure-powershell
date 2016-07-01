@@ -224,16 +224,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Id { get; set; }
 
-        /// <summary>
-        /// Type of recovery point (appConsistent\CrashConsistent etc) 
-        /// </summary>
-        public String RecoveryPointType { get; set; }
-
-        /// <summary>
-        /// Time when this recovery point was created
-        /// </summary>
-        public DateTime RecoveryPointTime { get; set; }
-
         public RecoveryPointBase()
             : base()
         {
