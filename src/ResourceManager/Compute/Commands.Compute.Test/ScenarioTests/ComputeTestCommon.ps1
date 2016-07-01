@@ -342,7 +342,7 @@ Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
+    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*')
 
     $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)

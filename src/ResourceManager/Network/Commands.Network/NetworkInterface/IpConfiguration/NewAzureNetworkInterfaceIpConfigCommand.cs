@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void Execute()
+        public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
 
-            base.Execute();
             // Get the subnetId and publicIpAddressId from the object if specified
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {

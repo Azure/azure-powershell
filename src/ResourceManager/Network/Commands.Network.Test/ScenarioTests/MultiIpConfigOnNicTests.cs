@@ -22,7 +22,11 @@ namespace Commands.Network.Test.ScenarioTests
     public class MultiIpConfigOnNicTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
 
+<<<<<<< HEAD
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+=======
+        [Fact]
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMultiIpConfigCRUD()
         {
@@ -42,11 +46,19 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-LBWithMultiIpConfigNICCRUD");
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNICToLBWithMultiIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-AddNICToLBWithMultiIpConfig");
+=======
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLBWithMultiIpConfigNICAssignedAfter()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-LBWithMultiIpConfigNICAssignedAfter");
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
         }
 
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
@@ -54,7 +66,11 @@ namespace Commands.Network.Test.ScenarioTests
         /// Public IP is not supported on secondary IpConfigurations
         public void TestLBWithMultiIpConfigMultiNIC()
         {
+<<<<<<< HEAD
             NetworkResourcesController.NewInstance.RunPsTest("Test-LBWithMultiIpConfigMultiNIC");
+=======
+            NetworkResourcesController.NewInstance.RunPsTest("Test-CreatePublicIpOnSecondary");
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
         }
     }
 }

@@ -35,9 +35,15 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Interface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
+<<<<<<< HEAD
         public override void Execute()
         {     
             base.Execute();
+=======
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
 
             var existingIpConfig = this.NetworkInterface.IpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 

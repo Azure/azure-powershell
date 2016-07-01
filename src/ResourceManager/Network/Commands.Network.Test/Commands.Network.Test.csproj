@@ -158,7 +158,13 @@
     <Compile Include="NetworkResourcesController.cs" />
     <Compile Include="ScenarioTests\ApplicationGatewayTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
+<<<<<<< HEAD
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
+=======
+    <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCircuitTests.cs" />

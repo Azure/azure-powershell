@@ -120,7 +120,11 @@ function Test-LBWithMultiIpConfigNICCRUD
 .SYNOPSIS
 Tests creating a NIC with Loadbalancer references with muultiple ip config
 #>
+<<<<<<< HEAD
 function Test-AddNICToLBWithMultiIpConfig
+=======
+function Test-LBWithMultiIpConfigNICAssignedAfter
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
   {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -203,7 +207,11 @@ function Test-AddNICToLBWithMultiIpConfig
 .SYNOPSIS
 Tests creating public ips on secondary ipconfig for a nic
 #>
+<<<<<<< HEAD
 function Test-LBWithMultiIpConfigMultiNIC
+=======
+function Test-CreatePublicIpOnSecondary
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -354,7 +362,11 @@ function Test-MultiIpConfigCRUD
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
 		Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
 
+<<<<<<< HEAD
 		# secondary CA
+=======
+		# secondary  CA
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
 		Assert-AreEqual $expectedNic.IpConfigurations[1].Name $actualNic.IpConfigurations[1].Name
         Assert-AreEqual $expectedNic.IpConfigurations[1].PublicIpAddress.Id $actualNic.IpConfigurations[1].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[1].Subnet.Id $actualNic.IpConfigurations[1].Subnet.Id
@@ -382,11 +394,19 @@ function Test-MultiIpConfigCRUD
         Assert-AreEqual "Succeeded" $list[0].ProvisioningState
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
+<<<<<<< HEAD
 		# Add new ipconfig and set nic
 		$nicAfterAdd = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Add-AzureRmNetworkInterfaceIpConfig -Name $ipconfig3Name -PrivateIpAddressVersion IPv4 -Subnet $vnet.Subnets[0]| Set-AzureRmNetworkInterface 
 		Assert-AreEqual 3 @($nicAfterAdd.IpConfigurations).Count
 
 	    # delete new ipconfig and set nic
+=======
+		# edit primary for nic to take a different IP
+		$nicAfterAdd = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Add-AzureRmNetworkInterfaceIpConfig -Name $ipconfig3Name -PrivateIpAddressVersion IPv4 -Subnet $vnet.Subnets[0]| Set-AzureRmNetworkInterface 
+		Assert-AreEqual 3 @($nicAfterAdd.IpConfigurations).Count
+
+	    # edit primary for nic to take a different IP
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
 		$nicAfterAdd = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Remove-AzureRmNetworkInterfaceIpConfig -Name $ipconfig2Name | Set-AzureRmNetworkInterface 
 		Assert-AreEqual 2 @($nicAfterAdd.IpConfigurations).Count
 

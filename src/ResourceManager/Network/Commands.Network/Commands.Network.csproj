@@ -234,8 +234,12 @@
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
+<<<<<<< HEAD
     <Compile Include="Common\NetworkClient.cs" />	
     <Compile Include="Common\NetworkCloudException.cs" />
+=======
+    <Compile Include="Common\NetworkClient.cs" />
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationBase.cs" />
@@ -285,7 +289,10 @@
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
+<<<<<<< HEAD
 	<Compile Include="Models\PSNetworkLongRunningOperation.cs" />
+=======
+>>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
     <Compile Include="Models\PSPeeringConfig.cs" />
