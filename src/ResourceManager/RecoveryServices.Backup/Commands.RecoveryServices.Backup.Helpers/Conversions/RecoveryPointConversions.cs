@@ -139,7 +139,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
-            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+            string containerName = IdUtils.GetNameFromUri(containerUri);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+            string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
             if (rpResponse.RecPoint.Properties.GetType() ==
                 typeof(ServiceClientModel.RecoveryPoint))
@@ -157,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     RecoveryPointId = rpResponse.RecPoint.Name,
                     BackupManagementType = item.BackupManagementType,
                     ItemName = protectedItemName,
-                    ContainerName = containerUri,
+                    ContainerName = containerName,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = recPointTime,
                     RecoveryPointType = recPoint.RecoveryPointType,
@@ -201,7 +203,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 RecoveryPointId = rpResponse.RecPoint.Name,
                 BackupManagementType = item.BackupManagementType,
                 ItemName = protectedItemName,
-                ContainerName = containerUri,
+                ContainerName = containerName,
                 ContainerType = item.ContainerType,
                 RecoveryPointTime = recPointTime,
                 RecoveryPointType = recPoint.RecoveryPointType,
