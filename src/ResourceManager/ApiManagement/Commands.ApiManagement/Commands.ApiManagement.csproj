@@ -169,7 +169,6 @@
     <Compile Include="Commands\NewAzureApiManagement.cs" />
     <Compile Include="Commands\RemoveAzureApiManagement.cs" />
     <Compile Include="Commands\RestoreAzureApiManagement.cs" />
-    <Compile Include="CommonConstants.cs" />
     <Compile Include="Models\PsApiManagement.cs" />
     <Compile Include="Models\PsApiManagementHostnameCertificate.cs" />
     <Compile Include="Models\PsApiManagementHostnameConfiguration.cs" />
