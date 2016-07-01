@@ -14,18 +14,17 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using System;
-using System.Linq;
+using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.DataDisk),
+        VerbsCommon.Set,
+        ProfileNouns.VirtualMachinePlan),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class SetAzureVMPlanCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -37,32 +36,48 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("Name")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMDataDiskName)]
+            HelpMessage = HelpMessages.VMPlanName)]
         [ValidateNotNullOrEmpty]
-        public string[] DataDiskNames { get; set; }
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMPlanProduct)]
+        [ValidateNotNullOrEmpty]
+        public string Product { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMPlanPromotionCode)]
+        [ValidateNotNullOrEmpty]
+        public string PromotionCode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMPlanPublisher)]
+        [ValidateNotNullOrEmpty]
+        public string Publisher { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var storageProfile = this.VM.StorageProfile;
-
-            if (storageProfile != null && storageProfile.DataDisks != null)
+            this.VM.Plan = new Plan
             {
-                var disks = storageProfile.DataDisks.ToList();
-                var comp = StringComparison.OrdinalIgnoreCase;
-                foreach (var diskName in DataDiskNames)
-                {
-                    disks.RemoveAll(d => string.Equals(d.Name, diskName, comp));
-                }
-                storageProfile.DataDisks = disks;
-            }
+                Name = this.Name,
+                Product = this.Product,
+                PromotionCode = this.PromotionCode,
+                Publisher = this.Publisher
+            };
 
-            this.VM.StorageProfile = storageProfile;
-            
             WriteObject(this.VM);
         }
     }

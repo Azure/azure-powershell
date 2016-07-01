@@ -15,9 +15,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
@@ -67,9 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCaching)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite, ValidateSetValues.None)]
-        public string Caching { get; set; }
+        public CachingTypes? Caching { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -98,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else
             {
-                if (! string.IsNullOrWhiteSpace(this.Caching))
+                if (this.Caching != null)
                 {
                     dataDisk.Caching = this.Caching;
                 }

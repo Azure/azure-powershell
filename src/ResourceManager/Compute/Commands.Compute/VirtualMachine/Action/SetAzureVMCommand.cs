@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -33,25 +32,47 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To generalize virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Generalized { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "To redeploy virtual machine.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Redeploy { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (this.Generalized.IsPresent)
             {
-                var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.Name).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                ExecuteClientAction(() =>
+                {
+                    var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
+            else if (this.Redeploy.IsPresent)
+            {
+                ExecuteClientAction(() =>
+                {
+                    var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

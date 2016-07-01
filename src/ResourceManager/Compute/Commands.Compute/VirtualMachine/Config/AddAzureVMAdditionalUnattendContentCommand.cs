@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -32,8 +31,8 @@ namespace Microsoft.Azure.Commands.Compute
         typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
-        private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
-        private const string defaultPassName = "oobeSystem";
+        private const ComponentNames defaultComponentName = ComponentNames.MicrosoftWindowsShellSetup;
+        private const PassNames defaultPassName = PassNames.OobeSystem;
 
         [Alias("VMProfile")]
         [Parameter(
@@ -56,8 +55,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Setting Name.")]
-        [ValidateNotNullOrEmpty]
-        public string SettingName { get; set; }
+        public SettingNames? SettingName { get; set; }
 
         public override void ExecuteCmdlet()
         {

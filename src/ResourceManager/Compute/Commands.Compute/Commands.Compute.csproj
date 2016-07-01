@@ -78,7 +78,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.11.1.0-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.11.3.1-prerelease\lib\net45\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -235,6 +235,7 @@
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionStatusContext.cs" />
+    <Compile Include="Extension\SetAzureVMExtensionBaseCmdlet.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
@@ -299,6 +300,7 @@
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMBootDiagnosticsCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMPlan.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMBootDiagnosticsDataCommand.cs" />
@@ -372,7 +374,6 @@
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    
     <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
