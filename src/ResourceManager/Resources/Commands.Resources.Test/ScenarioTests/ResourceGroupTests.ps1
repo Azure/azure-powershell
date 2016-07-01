@@ -52,7 +52,9 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Resource group '$rgname' could not be found."
+        Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} -ErrorAction SilentlyContinue
+        Assert-True { $Error[0] -like "*Provided resource group does not exist." }
+        $Error.Clear()
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
@@ -94,8 +96,13 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
 
     # Assert
-    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname1 } "Provided resource group does not exist."
-    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname2 } "Provided resource group does not exist."
+    Get-AzureRmResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
+    Assert-True { $Error[0] -like "*Provided resource group does not exist." }
+    $Error.Clear()
+ 
+    Get-AzureRmResourceGroup -Name $rgname2 -ErrorAction SilentlyContinue
+    Assert-True { $Error[0] -like "*Provided resource group does not exist." }
+    $Error.Clear()
 }
 
 <#
@@ -107,7 +114,9 @@ function Test-GetNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname } "Provided resource group does not exist."
+    Get-AzureRmResourceGroup -Name $rgname -ErrorAction SilentlyContinue
+    Assert-True { $Error[0] -like "*Provided resource group does not exist." }
+    $Error.Clear()
 }
 
 <#
@@ -131,7 +140,9 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Remove-AzureRmResourceGroup -Name $rgname -Force } "Provided resource group does not exist."
+    Remove-AzureRmResourceGroup -Name $rgname -Force -ErrorAction SilentlyContinue
+    Assert-True { $Error[0] -like "*Provided resource group does not exist." }
+    $Error.Clear()
 }
 
 <#
