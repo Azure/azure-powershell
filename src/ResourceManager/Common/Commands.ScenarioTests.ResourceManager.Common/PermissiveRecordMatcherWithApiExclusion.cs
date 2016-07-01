@@ -113,7 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.Contains("/applications?") &&
-                !requestUri.Contains("/servicePrincipals?"))
+                !requestUri.Contains("/servicePrincipals?") &&
+                !requestUri.StartsWith("/webhdfs/v1/?aclspec", StringComparison.InvariantCultureIgnoreCase))
             {
                 version = String.Empty;
                 return true;
