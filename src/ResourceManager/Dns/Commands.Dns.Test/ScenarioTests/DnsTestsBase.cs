@@ -143,7 +143,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
                 this.helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Dns.psd1"));
+                    helper.GetRMModulePath("AzureRM.Dns.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 try
                 {

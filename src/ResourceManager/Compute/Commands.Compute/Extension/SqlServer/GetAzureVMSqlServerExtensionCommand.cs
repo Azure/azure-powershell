@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-            var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
+            var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
             if (
                 extension.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ProvisioningState = extension.ProvisioningState,
                     AutoBackupSettings = extensionPublicSettings.AutoBackupSettings,
                     AutoPatchingSettings = extensionPublicSettings.AutoPatchingSettings,
+                    KeyVaultCredentialSettings = extensionPublicSettings.KeyVaultCredentialSettings,
                     Statuses = extension.Statuses
                 };
 

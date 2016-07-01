@@ -107,8 +107,8 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
+	$rg = New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
+	$rgdeployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
 	
 	$uid = $params.userName
@@ -180,6 +180,35 @@ Gets valid elastic pool name
 function Get-ElasticPoolName
 {
     return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets the location for a provider, if not found return East US
+#>
+function Get-ProviderLocation($provider)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "East US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "East US"
+	}
+
+	return "East US"
 }
 
 <#

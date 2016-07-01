@@ -262,7 +262,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -280,7 +282,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -288,7 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {
@@ -335,7 +341,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
-
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(

@@ -201,8 +201,6 @@
     <None Include="Scripts\proddata\byoktest1024.byok" />
     <None Include="Scripts\proddata\pfxtest.pfx" />
     <None Include="Scripts\proddata\pfxtest1024.pfx" />
-    <None Include="Scripts\PSHCommon\Assert.ps1" />
-    <None Include="Scripts\PSHCommon\Common.ps1" />
     <None Include="Scripts\RunKeyVaultTests.ps1" />
     <None Include="Scripts\RunUITests.ps1" />
     <None Include="Scripts\VaultKeyTests.ps1" />
