@@ -215,6 +215,8 @@ function Test-DataLakeAnalyticsJob
 		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
 		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
@@ -550,6 +552,10 @@ function Test-DataLakeAnalyticsCatalog
 "@
 		# run the script
 		$scriptToRun = [string]::Format($scriptTemplate, $databaseName, $tableName, $tvfName, $viewName, $procName)
+		
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("createCatalogJob01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
+		
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script $scriptToRun
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -706,7 +712,9 @@ function Test-DataLakeAnalyticsCatalog
 	CREATE CREDENTIAL {1} WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "{2}";
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName, $secretName)
-	
+		
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("createCredentialjob02")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -738,7 +746,8 @@ function Test-DataLakeAnalyticsCatalog
 	DROP CREDENTIAL {1};
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName)
-	
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("dropCredentialJob02")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
