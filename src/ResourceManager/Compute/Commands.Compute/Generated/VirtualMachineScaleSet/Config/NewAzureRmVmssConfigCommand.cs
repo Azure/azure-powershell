@@ -22,7 +22,6 @@
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -96,38 +95,105 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetNetworkConfiguration [] NetworkInterfaceConfiguration { get; set; }
+        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 11,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetExtension [] Extension { get; set; }
+        public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         protected override void ProcessRecord()
         {
             // Sku
-            var vSku = new Microsoft.Azure.Management.Compute.Models.Sku();
+            Microsoft.Azure.Management.Compute.Models.Sku vSku = null;
 
             // UpgradePolicy
-            var vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+            Microsoft.Azure.Management.Compute.Models.UpgradePolicy vUpgradePolicy = null;
 
             // VirtualMachineProfile
-            var vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+            Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile vVirtualMachineProfile = null;
 
-            // NetworkProfile
-            vVirtualMachineProfile.NetworkProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkProfile();
+            if (this.SkuName != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                vSku.Name = this.SkuName;
+            }
 
-            // ExtensionProfile
-            vVirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
-            vSku.Name = this.SkuName;
-            vSku.Tier = this.SkuTier;
-            vSku.Capacity = this.SkuCapacity;
-            vUpgradePolicy.Mode = this.UpgradePolicyMode;
-            vVirtualMachineProfile.OsProfile = this.OsProfile;
-            vVirtualMachineProfile.StorageProfile = this.StorageProfile;
-            vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
-            vVirtualMachineProfile.ExtensionProfile.Extensions = this.Extension;
+            if (this.SkuTier != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                vSku.Tier = this.SkuTier;
+            }
+
+            if (this.SkuCapacity != null)
+            {
+                if (vSku == null)
+                {
+                    vSku = new Microsoft.Azure.Management.Compute.Models.Sku();
+                }
+                vSku.Capacity = this.SkuCapacity;
+            }
+
+            if (this.UpgradePolicyMode != null)
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                vUpgradePolicy.Mode = this.UpgradePolicyMode;
+            }
+
+            if (this.OsProfile != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.OsProfile = this.OsProfile;
+            }
+
+            if (this.StorageProfile != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                vVirtualMachineProfile.StorageProfile = this.StorageProfile;
+            }
+
+            if (this.NetworkInterfaceConfiguration != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.NetworkProfile == null)
+                {
+                    vVirtualMachineProfile.NetworkProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkProfile();
+                }
+                vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
+            }
+
+            if (this.Extension != null)
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ExtensionProfile == null)
+                {
+                    vVirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+                }
+                vVirtualMachineProfile.ExtensionProfile.Extensions = this.Extension;
+            }
+
 
             var vVirtualMachineScaleSet = new VirtualMachineScaleSet
             {

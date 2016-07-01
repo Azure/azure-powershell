@@ -14,14 +14,9 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Management;
-using Microsoft.Azure.Management.HDInsight.Models;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {

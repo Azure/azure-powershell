@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
 {
@@ -134,7 +128,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     CreationDate = deletedDatabaseBackup.Properties.CreationDate,
                     DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                     RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
-                    ResourceId = deletedDatabaseBackup.Id
+                    ResourceId = deletedDatabaseBackup.Id,
                 };
             }).ToList();
         }
@@ -145,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>List of geo backups</returns>
+        /// <returns>A geo backup</returns>
         internal AzureSqlDatabaseGeoBackupModel GetGeoBackup(string resourceGroup, string serverName, string databaseName)
         {
             var geoBackup = Communicator.GetGeoBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
@@ -156,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ServerName = serverName,
                 ResourceId = geoBackup.Id,
                 Edition = geoBackup.Properties.Edition,
-                LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate
+                LastAvailableBackupDate = geoBackup.Properties.LastAvailableBackupDate,
             };
         }
 
@@ -166,7 +160,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>List of restorable deleted databases</returns>
+        /// <returns>A restorable deleted database</returns>
         internal AzureSqlDeletedDatabaseBackupModel GetDeletedDatabaseBackup(string resourceGroup, string serverName, string databaseName)
         {
             var deletedDatabaseBackup = Communicator.GetDeletedDatabaseBackup(resourceGroup, serverName, databaseName, Util.GenerateTracingId());
@@ -182,7 +176,132 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 CreationDate = deletedDatabaseBackup.Properties.CreationDate,
                 DeletionDate = deletedDatabaseBackup.Properties.DeletionDate,
                 RecoveryPeriodStartDate = deletedDatabaseBackup.Properties.EarliestRestoreDate,
-                ResourceId = deletedDatabaseBackup.Id
+                ResourceId = deletedDatabaseBackup.Id,
+            };
+        }
+
+        /// <summary>
+        /// Get a backup LongTermRetention vault for a given Azure SQL Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>A backup vault</returns>
+        internal AzureSqlServerBackupLongTermRetentionVaultModel GetBackupLongTermRetentionVault(
+            string resourceGroup, 
+            string serverName)
+        {
+            var baVault = Communicator.GetBackupLongTermRetentionVault(
+                resourceGroup,
+                serverName,
+                "RegisteredVault",
+                Util.GenerateTracingId());
+            return new AzureSqlServerBackupLongTermRetentionVaultModel()
+            {
+                Location = baVault.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                RecoveryServicesVaultResourceId = baVault.Properties.RecoveryServicesVaultResourceId,
+            };
+        }
+
+        /// <summary>
+        /// Get a backup LongTermRetention policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName)
+        {
+            var baPolicy = Communicator.GetDatabaseBackupLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId());
+            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                Location = baPolicy.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                State = baPolicy.Properties.State,
+                RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
+            };
+        }
+
+        /// <summary>
+        /// Create or update a backup LongTermRetention vault for a given Azure SQL Server
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>A backup vault</returns>
+        internal AzureSqlServerBackupLongTermRetentionVaultModel SetBackupLongTermRetentionVault(
+            string resourceGroup,
+            string serverName,
+            AzureSqlServerBackupLongTermRetentionVaultModel model)
+        {
+            var baVault = Communicator.SetBackupLongTermRetentionVault(
+                resourceGroup,
+                serverName,
+                "RegisteredVault",
+                Util.GenerateTracingId(),
+                new BackupLongTermRetentionVaultCreateOrUpdateParameters()
+            {
+                Location = model.Location,
+                Properties = new BackupLongTermRetentionVaultProperties()
+                {
+                    RecoveryServicesVaultResourceId = model.RecoveryServicesVaultResourceId
+                }
+            });
+            return new AzureSqlServerBackupLongTermRetentionVaultModel()
+            {
+                Location = baVault.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                RecoveryServicesVaultResourceId = baVault.Properties.RecoveryServicesVaultResourceId,
+            };
+        }
+
+        /// <summary>
+        /// Create or update a backup LongTermRetention policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel SetDatabaseBackupLongTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            AzureSqlDatabaseBackupLongTermRetentionPolicyModel model)
+        {
+            var baPolicy = Communicator.SetDatabaseBackupLongTermRetentionPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId(),
+                new DatabaseBackupLongTermRetentionPolicyCreateOrUpdateParameters()
+                {
+                    Location = model.Location,
+                    Properties = new DatabaseBackupLongTermRetentionPolicyProperties()
+                    {
+                        State = model.State,
+                        RecoveryServicesBackupPolicyResourceId = model.RecoveryServicesBackupPolicyResourceId,
+                    }
+                });
+            return new AzureSqlDatabaseBackupLongTermRetentionPolicyModel()
+            {
+                Location = baPolicy.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                State = baPolicy.Properties.State,
+                RecoveryServicesBackupPolicyResourceId = baPolicy.Properties.RecoveryServicesBackupPolicyResourceId,
             };
         }
 
@@ -191,26 +310,26 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
-        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, or deleted database)</param>
+        /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
-        /// <param name="parameters">Parameters describing the database restore request</param>
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
             DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
+            {
+                Location = model.Location,
+                Properties = new DatabaseCreateOrUpdateProperties()
                 {
-                    Location = model.Location,
-                    Properties = new DatabaseCreateOrUpdateProperties()
-                    {
-                        Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                        RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                        ElasticPoolName = model.ElasticPoolName,
-                        RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        SourceDatabaseId = resourceId,
-                        RestorePointInTime = restorePointInTime,
-                        CreateMode = model.CreateMode
-                    }
-                };
+                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
+                    RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
+                    ElasticPoolName = model.ElasticPoolName,
+                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
+                    SourceDatabaseId = resourceId,
+                    RecoveryServicesRecoveryPointResourceId = resourceId,
+                    RestorePointInTime = restorePointInTime,
+                    CreateMode = model.CreateMode
+                }
+            };
             var resp = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, Util.GenerateTracingId(), parameters);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
         }

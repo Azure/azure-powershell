@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (identifier == null)
                 throw new ArgumentNullException("identifier");
-          
+
             VaultName = vaultUriHelper.GetVaultName(identifier.Identifier);
             Name = identifier.Name;
             Version = identifier.Version;
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Version = identifier.Version;
             Id = identifier.Id;
         }
-       
+
 
         public string VaultName { get; set; }
 

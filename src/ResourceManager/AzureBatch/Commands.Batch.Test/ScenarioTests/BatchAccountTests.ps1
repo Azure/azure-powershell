@@ -138,36 +138,28 @@ function Test-GetBatchAccountsUnderResourceGroups
     # Setup
     $resourceGroup1 = Get-ResourceGroupName
     $resourceGroup2 = Get-ResourceGroupName
-    $account11 = Get-BatchAccountName
-    $account12 = Get-BatchAccountName
-    $account21 = Get-BatchAccountName
-    $location1 = Get-BatchAccountProviderLocation
-    $location2 = Get-BatchAccountProviderLocation 4
-    $location3 = Get-BatchAccountProviderLocation 7
+    $account = Get-BatchAccountName
+    $location = Get-BatchAccountProviderLocation
 
     try 
     {
-        New-AzureRmResourceGroup -Name $resourceGroup1 -Location $location1
-        New-AzureRmResourceGroup -Name $resourceGroup2 -Location $location1
-        New-AzureRmBatchAccount -Name $account11 -ResourceGroupName $resourceGroup1 -Location $location1 
-        New-AzureRmBatchAccount -Name $account12 -ResourceGroupName $resourceGroup1 -Location $location2 
-        New-AzureRmBatchAccount -Name $account21 -ResourceGroupName $resourceGroup2 -Location $location3
+        New-AzureRmResourceGroup -Name $resourceGroup1 -Location $location
+        New-AzureRmResourceGroup -Name $resourceGroup2 -Location $location
+        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup1 -Location $location 
 
         # Test
-        $allAccounts = Get-AzureRmBatchAccount | Where-Object {$_.ResourceGroupName -eq $resourceGroup1 -or $_.ResourceGroupName -eq $resourceGroup2}
         $resourceGroup1Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup1
+		$resourceGroup2Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup2
 
         # Assert
-        Assert-AreEqual 3 $allAccounts.Count
-        Assert-AreEqual 2 $resourceGroup1Accounts.Count
-        Assert-AreEqual 2 ($resourceGroup1Accounts | Where-Object {$_.ResourceGroupName -eq $resourceGroup1}).Count
+        Assert-AreEqual 1 $resourceGroup1Accounts.Count
+        Assert-AreEqual $null $resourceGroup2Accounts
     }
     finally
     {
         # Cleanup
-        Clean-BatchAccount $account11 $resourceGroup1
-        Clean-BatchAccountAndResourceGroup $account12 $resourceGroup1
-        Clean-BatchAccountAndResourceGroup $account21 $resourceGroup2
+        Clean-BatchAccountAndResourceGroup $account $resourceGroup1
+		Clean-ResourceGroup $resourceGroup2
     }
 }
 
@@ -245,5 +237,24 @@ function Test-BatchAccountKeys
     {
         # Cleanup
         Clean-BatchAccountAndResourceGroup $account $resourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
+Tests getting a list of Batch node agent skus
+#>
+function Test-GetBatchNodeAgentSkus
+{
+	$context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+	# Get the node agent skus
+	$nodeAgentSkus = Get-AzureBatchNodeAgentSku -BatchContext $context
+
+	foreach($nodeAgentSku in $nodeAgentSkus)
+    {
+        Assert-True { $nodeAgentSku.Id.StartsWith("batch.node") }
+		Assert-True { $nodeAgentSku.OSType -in "linux","windows" }
+		Assert-AreNotEqual 0 $nodeAgentSku.VerifiedImageReferences.Count
     }
 }

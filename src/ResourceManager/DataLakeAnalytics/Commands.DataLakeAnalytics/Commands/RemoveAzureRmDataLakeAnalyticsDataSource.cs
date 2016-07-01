@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource"), OutputType(typeof(bool))]
+    [Alias("Remove-AdlAnalyticsDataSource")]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, DataLakeStore),
                     DataLakeStore,
                     () => DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore));
-                
+
             }
             else
             {

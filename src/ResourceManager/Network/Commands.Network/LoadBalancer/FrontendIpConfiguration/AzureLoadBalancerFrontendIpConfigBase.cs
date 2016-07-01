@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -27,36 +27,45 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = "SetByResourceSubnet",
+            HelpMessage = "The private ip address of the frontendIpConfiguration " +
+                          "if static allocation is specified.")]
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "The private ip address of the frontendIpConfiguration " +
                           "if static allocation is specified.")]
         public string PrivateIpAddress { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
+            Mandatory = true,
+            ParameterSetName = "SetByResourceIdSubnet",
             HelpMessage = "SubnetId")]
         [ValidateNotNullOrEmpty]
         public string SubnetId { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResource",
+            Mandatory = true,
+            ParameterSetName = "SetByResourceSubnet",
             HelpMessage = "Subnet")]
         public PSSubnet Subnet { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResourceId",
+            Mandatory = true,
+            ParameterSetName = "SetByResourceIdPublicIpAddress",
             HelpMessage = "PublicIpAddressId")]
         public string PublicIpAddressId { get; set; }
 
         [Parameter(
-            ParameterSetName = "SetByResource",
+            Mandatory = true,
+            ParameterSetName = "SetByResourcePublicIpAddress",
             HelpMessage = "PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
-        
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
 
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+        public override void Execute()
+        {
+            base.Execute();
+            if (!ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
             {
                 if (this.Subnet != null)
                 {

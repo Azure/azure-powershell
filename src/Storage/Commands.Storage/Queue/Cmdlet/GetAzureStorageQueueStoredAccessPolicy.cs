@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-    using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
 
     [Cmdlet(VerbsCommon.Get, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(SharedAccessQueuePolicy))]
     public class GetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [Parameter(Position = 1,
             HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
-        public string Policy { get; set; }    
+        public string Policy { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the GetAzureStorageQueueStoredAccessPolicyCommand class.

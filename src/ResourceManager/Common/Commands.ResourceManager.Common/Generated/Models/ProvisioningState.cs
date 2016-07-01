@@ -31,52 +31,52 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         /// The provisioning state is not specified.
         /// </summary>
         public const string NotSpecified = "NotSpecified";
-        
+
         /// <summary>
         /// The provisioning state is accepted.
         /// </summary>
         public const string Accepted = "Accepted";
-        
+
         /// <summary>
         /// The provisioning state is running.
         /// </summary>
         public const string Running = "Running";
-        
+
         /// <summary>
         /// The provisioning state is registering.
         /// </summary>
         public const string Registering = "Registering";
-        
+
         /// <summary>
         /// The provisioning state is creating.
         /// </summary>
         public const string Creating = "Creating";
-        
+
         /// <summary>
         /// The provisioning state is created.
         /// </summary>
         public const string Created = "Created";
-        
+
         /// <summary>
         /// The provisioning state is deleting.
         /// </summary>
         public const string Deleting = "Deleting";
-        
+
         /// <summary>
         /// The provisioning state is deleted.
         /// </summary>
         public const string Deleted = "Deleted";
-        
+
         /// <summary>
         /// The provisioning state is canceled.
         /// </summary>
         public const string Canceled = "Canceled";
-        
+
         /// <summary>
         /// The provisioning state is failed.
         /// </summary>
         public const string Failed = "Failed";
-        
+
         /// <summary>
         /// The provisioning state is succeeded.
         /// </summary>

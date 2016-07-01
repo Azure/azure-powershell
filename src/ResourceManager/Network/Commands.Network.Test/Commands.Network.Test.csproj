@@ -65,14 +65,14 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.1.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.4.5.0-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5945.28173-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.0-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
@@ -173,6 +173,9 @@
     <Compile Include="ScenarioTests\VirtualNetworkGatewayConnectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
+      <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -264,10 +267,19 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerCRUDPublicUsingId.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerMultiVipInternal.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerMultiVipPublic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerNicAssociation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestLoadBalancerNicAssociationDuringCreate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestSetLoadBalancerObjectAssignment.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceCRUDStaticAllocation.json">
@@ -285,7 +297,13 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceIDns.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceIpv6.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceSet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkInterfaceTests\TestNetworkInterfaceWithIpConfiguration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUD.json">
@@ -301,6 +319,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressCRUDStaticAllocation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.PublicIpAddressTests\TestPublicIpAddressIpVersion.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.RouteTableTests\TestEmptyRouteTable.json">
@@ -325,6 +346,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionWithBgpCRUD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestSetVirtualNetworkGatewayCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkExpressRouteGatewayCRUD.json">

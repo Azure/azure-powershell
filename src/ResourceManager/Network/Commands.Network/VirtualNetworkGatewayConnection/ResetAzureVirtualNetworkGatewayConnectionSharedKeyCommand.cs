@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using AutoMapper;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Network;
+using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -52,10 +50,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             if (this.IsVirtualNetworkGatewayConnectionSharedKeyPresent(this.ResourceGroupName, this.Name))
             {
                 ConfirmAction(

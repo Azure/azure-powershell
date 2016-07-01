@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Text;
-using Microsoft.Azure.Test.HttpRecorder;
-using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {

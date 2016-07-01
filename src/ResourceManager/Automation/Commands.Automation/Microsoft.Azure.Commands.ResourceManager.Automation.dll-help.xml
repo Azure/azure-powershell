@@ -5761,7 +5761,7 @@ PS C:\&gt; $Value = $Variable.value
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Import-AzureRmAutomationRunbook cmdlet imports an Azure Automation runbook. Specify the path to a Windows PowerShell script (.ps1 ) file to import for Windows PowerShell and Windows PowerShell Workflow runbooks, or to a graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the name of the runbook. For Windows PowerShell Workflow runbooks, the script must contain a single Windows PowerShell Workflow definition that matches the name of the file.</maml:para>
+      <maml:para>The Import-AzureRmAutomationRunbook cmdlet imports an Azure Automation runbook. Specify the path to a Windows PowerShell script (.ps1 ) file to import for Windows PowerShell and Windows PowerShell Workflow runbooks, or to a graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the name of the runbook; however, for PowerShell, GraphicalPowerShell, and GraphicalPowerShellWorkflow runbook types the name can be specified during import by using the Name parameter. For Windows PowerShell Workflow runbooks, the script must contain a single Windows PowerShell Workflow definition that matches the name of the file.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -5805,14 +5805,14 @@ PS C:\&gt; $Value = $Variable.value
           <maml:description>
             <maml:para>Specifies whether the runbook logs progress information. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>LogVerbose</maml:name>
           <maml:description>
             <maml:para>Specifies whether the runbook logs detailed information.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="RunbookName">
           <maml:name>Name</maml:name>
@@ -5839,14 +5839,18 @@ PS C:\&gt; $Value = $Variable.value
           <maml:description>
             <maml:para>Specifies the type of runbook that this cmdlet creates. Valid values are:
 
--- Graph
 -- PowerShell
--- PowerShellWorkflow</maml:para>
+-- GraphicalPowerShell
+-- PowerShellWorkflow
+-- GraphicalPowerShellWorkflow
+-- Graph (obsolete; equivalent to GraphicalPowerShellWorkflow)</maml:para>
           </maml:description>
           <command:parameterValueGroup>
-            <command:parameterValue required="true" variableLength="false">Graph</command:parameterValue>
             <command:parameterValue required="true" variableLength="false">PowerShell</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">GraphicalPowerShell</command:parameterValue>
             <command:parameterValue required="true" variableLength="false">PowerShellWorkflow</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">GraphicalPowerShellWorkflow</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">Graph</command:parameterValue>
           </command:parameterValueGroup>
         </command:parameter>
       </command:syntaxItem>
@@ -5893,9 +5897,9 @@ PS C:\&gt; $Value = $Variable.value
         <maml:description>
           <maml:para>Specifies whether the runbook logs progress information. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -5905,9 +5909,9 @@ PS C:\&gt; $Value = $Variable.value
         <maml:description>
           <maml:para>Specifies whether the runbook logs detailed information.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -5977,9 +5981,11 @@ PS C:\&gt; $Value = $Variable.value
         <maml:description>
           <maml:para>Specifies the type of runbook that this cmdlet creates. Valid values are:
 
--- Graph
 -- PowerShell
--- PowerShellWorkflow</maml:para>
+-- GraphicalPowerShell
+-- PowerShellWorkflow
+-- GraphicalPowerShellWorkflow
+-- Graph (obsolete; equivalent to GraphicalPowerShellWorkflow)</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -6029,7 +6035,7 @@ PS C:\&gt; $Value = $Variable.value
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Tags = @{"tag01"='value01"; "tag02"="value02"}
-PS C:\&gt; Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type Graph
+PS C:\&gt; Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook -Tags $Tags -ResourceGroup "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -Type GraphicalPowerShell
 </dev:code>
         <dev:remarks>
           <maml:para>The first command assigns two key/value pairs to the $Tags variable. </maml:para>
@@ -7238,7 +7244,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRmAutomationRunbook cmdlet creates an empty Azure Automation runbook by using Azure PowerShell. Specify a name for the runbook. </maml:para>
+      <maml:para>The New-AzureRmAutomationRunbook cmdlet creates an empty Azure Automation runbook.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -7276,14 +7282,14 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies whether the runbook logs progress. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>LogVerbose</maml:name>
           <maml:description>
             <maml:para>Specifies whether logging includes detailed information.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tag">
           <maml:name>Tags</maml:name>
@@ -7297,14 +7303,18 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies the type of runbook that this cmdlet creates. Valid values are:
 
--- Graph
 -- PowerShell
--- PowerShellWorkflow</maml:para>
+-- GraphicalPowerShell
+-- PowerShellWorkflow
+-- GraphicalPowerShellWorkflow
+-- Graph (obsolete; equivalent to GraphicalPowerShellWorkflow)</maml:para>
           </maml:description>
           <command:parameterValueGroup>
-            <command:parameterValue required="true" variableLength="false">Graph</command:parameterValue>
             <command:parameterValue required="true" variableLength="false">PowerShell</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">GraphicalPowerShell</command:parameterValue>
             <command:parameterValue required="true" variableLength="false">PowerShellWorkflow</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">GraphicalPowerShellWorkflow</command:parameterValue>
+            <command:parameterValue required="true" variableLength="false">Graph</command:parameterValue>
           </command:parameterValueGroup>
         </command:parameter>
       </command:syntaxItem>
@@ -7339,9 +7349,9 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether the runbook logs progress. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7351,9 +7361,9 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether logging includes detailed information.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -7399,9 +7409,11 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies the type of runbook that this cmdlet creates. Valid values are:
 
--- Graph
 -- PowerShell
--- PowerShellWorkflow</maml:para>
+-- GraphicalPowerShell
+-- PowerShellWorkflow
+-- GraphicalPowerShellWorkflow
+-- Graph (obsolete; equivalent to GraphicalPowerShellWorkflow)</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -7449,10 +7461,10 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01"
+        <dev:code>PS C:\&gt;New-AzureRmAutomationRunbook -AutomationAccountName "Contoso17" -Name "Runbook02" -ResourceGroupName "ResourceGroup01" -Type PowerShell
 </dev:code>
         <dev:remarks>
-          <maml:para>This command creates a runbook named Runbook02 in the Azure Automation account named Contoso17.</maml:para>
+          <maml:para>This command creates a PowerShell runbook named Runbook02 in the Azure Automation account named Contoso17.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -7546,7 +7558,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7562,6 +7574,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7598,7 +7617,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>OneTime</maml:name>
@@ -7606,6 +7625,13 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
             <maml:para>Specifies that the cmdlet creates a one-time schedule.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>New-AzureRMAutomationSchedule</maml:name>
@@ -7642,7 +7668,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies a description for the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ExpiryTime</maml:name>
@@ -7657,6 +7683,218 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
             <maml:para>Specifies an interval, in hours, for the schedule.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRMAutomationSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Automation account for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies a name for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the start time of a schedule as a DateTimeOffset object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Description</maml:name>
+          <maml:description>
+            <maml:para>Specifies a description for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ExpiryTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the expiry time of a schedule as a DateTimeOffest object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DaysOfWeek</maml:name>
+          <maml:description>
+            <maml:para>The list of days of week for the weekly schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">System.DayOfWeek[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>WeekInterval</maml:name>
+          <maml:description>
+            <maml:para>Specifies an interval, in weeks, for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRMAutomationSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Automation account for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies a name for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the start time of a schedule as a DateTimeOffset object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Description</maml:name>
+          <maml:description>
+            <maml:para>Specifies a description for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ExpiryTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the expiry time of a schedule as a DateTimeOffest object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DaysOfMonth</maml:name>
+          <maml:description>
+            <maml:para>The list of days of month for the monthly schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">System.Int32[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MonthInterval</maml:name>
+          <maml:description>
+            <maml:para>Specifies an interval, in Month, for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRMAutomationSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a resource group for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Automation account for which this cmdlet creates a schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies a name for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="4" aliases="none">
+          <maml:name>StartTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the start time of a schedule as a DateTimeOffset object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Description</maml:name>
+          <maml:description>
+            <maml:para>Specifies a description for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>ExpiryTime</maml:name>
+          <maml:description>
+            <maml:para>Specifies the expiry time of a schedule as a DateTimeOffest object. You can specify a string that can be converted to a valid DateTimeOffset.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">DateTimeOffset</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DayOfWeek</maml:name>
+          <maml:description>
+            <maml:para>The day of week for the monthly occurrence.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">System.DayOfWeek</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>DayOfWeekOccurrence</maml:name>
+          <maml:description>
+            <maml:para>The Occurrence of the week within the month.The acceptable values either are 1, 2, 3, 4, -1 or First, Second, Third, Fourth and LastDay</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">System.Int32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>MonthInterval</maml:name>
+          <maml:description>
+            <maml:para>Specifies an interval, in Month, for the schedule.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>TimeZone</maml:name>
+          <maml:description>
+            <maml:para>The time zone for the schedule. This string can be the IANNA ID or the Windows Time Zone ID.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -7690,7 +7928,7 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies a description for the schedule.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
@@ -7769,6 +8007,77 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>WeekInterval</maml:name>
+        <maml:description>
+          <maml:para>Specifies an interval, in weeks, for the schedule.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        <dev:type>
+          <maml:name>Byte</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>MonthInterval</maml:name>
+        <maml:description>
+          <maml:para>Specifies an interval, in moonths, for the schedule.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Byte</command:parameterValue>
+        <dev:type>
+          <maml:name>Byte</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>DaysOfWeek</maml:name>
+        <maml:description>
+          <maml:para>The list of days of week for the weekly schedule.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">System.DayOfWeek[]</command:parameterValue>
+        <dev:type>
+          <maml:name>System.DayOfWeek[]</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>DayOfWeek</maml:name>
+        <maml:description>
+          <maml:para>The day of week for the monthly occurrence.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">System.DayOfWeek</command:parameterValue>
+        <dev:type>
+          <maml:name>System.DayOfWeek</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>DayOfWeekOccurrence</maml:name>
+        <maml:description>
+          <maml:para>The Occurrence of the week within the month.The acceptable values either are 1, 2, 3, 4, -1 or First, Second, Third, Fourth and LastDay</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">System.Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>System.Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>TimeZone</maml:name>
+        <maml:description>
+          <maml:para>The time zone for the schedule. This string can be the IANA ID or the Windows Time Zone ID.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -7803,15 +8112,18 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
     <command:nonTerminatingErrors />
     <command:examples>
       <command:example>
-        <maml:title>Example 1: Create a one-time schedule</maml:title>
+        <maml:title>Example 1: Create a one-time schedule in your machine's local time.</maml:title>
         <maml:introduction>
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01"
-</dev:code>
+        <dev:code>
+PS C:\&gt; $TimeZone = ([System.TimeZoneInfo]::Local).Id
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -TimeZone $TimeZone -OneTime -ResourceGroupName "ResourceGroup01"
+        </dev:code>
         <dev:remarks>
-          <maml:para>The following command creates a schedule that runs one time on the current date at 11:00 PM.</maml:para>
+          <maml:para>The first command gets the time zone ID from the system.</maml:para>
+          <maml:para>The second command creates a schedule that runs one time on the current date at 11:00 PM in your local time zone.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -7827,7 +8139,8 @@ PS C:\&gt; New-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$StartTime = Get-Date "13:00:00"
+        <dev:code>
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
 PS C:\&gt; $EndTime = $StartTime.AddYears(1)
 PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DailyInterval 1 -ResourceGroupName "ResourceGroup01"
 </dev:code>
@@ -7835,6 +8148,58 @@ PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Nam
           <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. </maml:para>
           <maml:para>The second command creates a date object by using the Get-Date cmdlet, and then stores the object in the $EndDate variable. The command specifies a future time. </maml:para>
           <maml:para>The final command creates a daily schedule named Schedule01 to begin at the time stored in $StartDate and expire at the time stored in $EndDate.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Create a recurring Weekly schedule</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
+PS C:\&gt; $EndTime = $StartTime.AddYears(1)
+PS C:\&gt; $days = @([System.DayOfWeek]::Monday, [System.DayOfWeek]::Saturday, [System.DayOfWeek]::Sunday)
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime -ExpiryTime $EndTime -WeeklyInterval 1 -DaysOfWeek $days -ResourceGroupName "ResourceGroup01"
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. </maml:para>
+          <maml:para>The second command creates a date object by using the Get-Date cmdlet, and then stores the object in the $EndDate variable. The command specifies a future time. </maml:para>
+          <maml:para>The third command creates an array of selected System.DayOfWeek in which the schedule is set to be run, and then stores the object in the $days variable.</maml:para>
+          <maml:para>The final command creates a weekly schedule named Schedule03 to begin at the time stored in $StartDate, expire at the time stored in $EndDate and run in the days of the week stored in $days.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Create a recurring Monthly schedule</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+PS C:\&gt; $StartTime = Get-Date "13:00:00"
+PS C:\&gt; $EndTime = $StartTime.AddYears(1)
+PS C:\&gt; $days = @($days = @(17,19,25, "LastDay"))
+PS C:\&gt; New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule04" -StartTime $StartTime -ExpiryTime $EndTime -MonthlyInterval 1 -DaysOfMonth $days -ResourceGroupName "ResourceGroup01"
+        </dev:code>
+        <dev:remarks>
+          <maml:para>The first command creates a date object by using the Get-Date cmdlet, and then stores the object in the $StartDate variable. Specify a time that is at least five minutes in the future. </maml:para>
+          <maml:para>The second command creates a date object by using the Get-Date cmdlet, and then stores the object in the $EndDate variable. The command specifies a future time. </maml:para>
+          <maml:para>The third command creates an array of selected System.Int in which the schedule is set to be run, and then stores the object in the $days variable.</maml:para>
+          <maml:para>The final command creates a monthlySchedule schedule named Schedule04 to begin at the time stored in $StartDate, expire at the time stored in $EndDate and run on the days of the month stored in $days.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -11201,7 +11566,7 @@ PS C:\&gt; Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGro
           <maml:description>
             <maml:para>Specifies whether the certificate can be exported.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Password</maml:name>
@@ -11249,9 +11614,9 @@ PS C:\&gt; Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGro
         <maml:description>
           <maml:para>Specifies whether the certificate can be exported.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12182,14 +12547,14 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies whether the runbook logs progress. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>LogVerbose</maml:name>
           <maml:description>
             <maml:para>Specifies whether logging includes detailed information.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Tags</maml:name>
@@ -12230,9 +12595,9 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether the runbook logs progress. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12242,9 +12607,9 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether logging includes detailed information.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12425,7 +12790,7 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies whether this cmdlet enables the schedule.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -12459,9 +12824,9 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether this cmdlet enables the schedule.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -12831,7 +13196,7 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
           <maml:description>
             <maml:para>Specifies whether the webhook is enabled.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="5" aliases="none">
           <maml:name>Parameters</maml:name>
@@ -12860,9 +13225,9 @@ PS C:\&gt; Set-AzureRmAutomationCredential -AutomationAccountName "Contoso17" -N
         <maml:description>
           <maml:para>Specifies whether the webhook is enabled.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -13182,7 +13547,7 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>Specifies the name of the resource group for which this cmdlet starts a runbook.</maml:para>
+            <maml:para>Specifies the name of the resource group in which this cmdlet starts a runbook.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -13210,9 +13575,62 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="HybridWorker">
           <maml:name>RunOn</maml:name>
           <maml:description>
-            <maml:para>Specifies a run on value.</maml:para>
+            <maml:para>Specifies an Automation hybrid worker group to run this runbook on.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Start-AzureRMAutomationRunbook</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the resource group in which this cmdlet starts a runbook.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the Automation account in which this cmdlet starts a runbook.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="RunbookName">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the runbook that this cmdlet starts.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Parameters</maml:name>
+          <maml:description>
+            <maml:para>Specifies a dictionary of key/value pairs. The keys are the runbook parameter names. The values are the runbook parameter values.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">IDictionary</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="HybridWorker">
+          <maml:name>RunOn</maml:name>
+          <maml:description>
+            <maml:para>Specifies an Automation hybrid worker group to run this runbook on.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Wait</maml:name>
+          <maml:description>
+            <maml:para>Waits for job to complete, suspend, or fail.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+          <dev:defaultValue>none</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>MaxWaitSeconds</maml:name>
+          <maml:description>
+            <maml:para>Maximum time in seconds to wait for job completion. Default max wait time is 10800 seconds.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -13256,7 +13674,7 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>Specifies the name of the resource group for which this cmdlet starts a runbook.</maml:para>
+          <maml:para>Specifies the name of the resource group in which this cmdlet starts a runbook.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -13268,7 +13686,7 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="HybridWorker">
         <maml:name>RunOn</maml:name>
         <maml:description>
-          <maml:para>Specifies a run on value.</maml:para>
+          <maml:para>Specifies an Automation hybrid worker group to run this runbook on.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -13276,6 +13694,25 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Wait</maml:name>
+        <maml:description>
+          <maml:para>Waits for job to complete, suspend, or fail.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>MaxWaitSeconds</maml:name>
+        <maml:description>
+          <maml:para>Maximum time in seconds to wait for job completion. Default max wait time is 10800 seconds.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">Int32</command:parameterValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -14064,4 +14501,204 @@ PS C:\&gt; Start-AzureRmAutomationDscCompilationJob -ConfigurationName "Config01
     </maml:relatedLinks>
   </command:command>
 
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureRMAutomationHybridWorkerGroup</command:name>
+      <maml:description>
+        <maml:para>Gets a Hybrid Runbook Worker Group</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureRMAutomationHybridWorkerGroup</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>
+        The Get-AzureRmAutomationHybridRunbookWorkerGroup cmdlet gets Azure Automation Hybrid runbook Worker Groups. To get a specific Group, specify its
+        name.
+      </maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRMAutomationHybridWorkerGroup</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para> Specifies the name of the resource group for which this cmdlet gets hybrid runbook worker groups</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Automation account in which this cmdlet gets hybrid runbook worker group.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRMAutomationHybridWorkerGroup</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="2">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the Hybrid Runbook Worker Group</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para> Specifies the name of the resource group for which this cmdlet gets hybrid runbook worker groups</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>AutomationAccountName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of an Automation account in which this cmdlet gets hybrid runbook worker group.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para> Specifies the name of the resource group for which this cmdlet gets hybrid runbook worker groups</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>AutomationAccountName</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name of an Automation account in which this cmdlet gets hybrid runbook worker group.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="2">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the Hybrid Runbook Worker Group</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker</maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors></command:terminatingErrors>
+    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Example 1: Get All Hybrid Runbook Worker Groups  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureRMAutomationHybridRunbookWorkerGroup -ResourceGroupName &quot;ResourceGroupName01&quot; -AutomationAccountName &quot;Contoso17&quot;</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets all Hybrid Runbook Worker Groups in the Azure Automation Account Contoso17</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Example 2: Get a single Hybrid Runbook Worker Group   --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;Get-AzureRMAutomationHybridRunbookWorkerGroup -ResourceGroupName &quot;ResourceGroupName01&quot; -AutomationAccountName &quot;Contoso17&quot; -Name &quot;hybridRunbookWorkerGroup01&quot;</dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the Hybrid Runbook Worker Group named hybridRunbookWorkerGroup01 in the Azure Automation Account Contoso17</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Example 3: Gets the Hybrid Runbook Workers in the Hybrid Runbook Worker Groups  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt; (Get-AzureRMAut
+          omationHybridWorker -ResourceGroupName ResourceGroupName01 -AutomationAccountName Contoso17 -Name &quot;hybridRunbookWorkerGroup01&quot; ).RunbookWorker
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command gets the Hybrid Runbook Workers in the Hybrid Runbook Worker Group named hybridRunbookWorkerGroup01 in the Azure Automation Account Contoso17</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
 </helpItems>

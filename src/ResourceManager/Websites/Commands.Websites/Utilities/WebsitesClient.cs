@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.WebSites;
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.WebApps.Models.WebApp;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
     public class WebsitesClient
     {
+        // Azure SDK requires a request parameter to be specified for a few Backup API calls, but
+        // the request is actually optional unless an update is needed
+        private static readonly BackupRequest EmptyRequest = new BackupRequest(location: "");
+
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                             SiteName = qualifiedSiteName,
                             Location = location,
                             ServerFarmId = serverFarmId,
-                            CloningInfo =  cloningInfo,
+                            CloningInfo = cloningInfo,
                             HostingEnvironmentProfile = profile
                         });
             }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         });
             }
 
-            
+
 
             GetWebAppConfiguration(resourceGroupName, webAppName, slotName, createdWebSite);
             return createdWebSite;
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         {
             var webApp = WrappedWebsitesClient.Sites.GetSite(resourceGroupName, webAppName);
             var currentHostNames = webApp.HostNames;
-            
+
             // Add new hostnames
             foreach (var hostName in hostNames)
             {
@@ -213,9 +213,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public Site GetWebApp(string resourceGroupName, string webSiteName, string slotName)
         {
-            Site site = null; 
+            Site site = null;
             string qualifiedSiteName;
-            
+
             site = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.GetSiteSlot(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.GetSite(resourceGroupName, webSiteName);
 
             GetWebAppConfiguration(resourceGroupName, webSiteName, slotName, site);
@@ -245,15 +245,15 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             };
 
             var publishingXml = (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlSlot(resourceGroupName, webSiteName, options, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, options));
-             var doc = XDocument.Load(publishingXml, LoadOptions.None);
-             doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
+            var doc = XDocument.Load(publishingXml, LoadOptions.None);
+            doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
             return doc.ToString();
         }
 
         public string ResetWebAppPublishingCredentials(string resourceGroupName, string webSiteName, string slotName)
         {
             string qualifiedSiteName;
-            if(CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName))
+            if (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName))
             {
                 WrappedWebsitesClient.Sites.GenerateNewSitePublishingPasswordSlot(resourceGroupName, webSiteName,
                     slotName);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             var doc = XDocument.Load(publishingXml, LoadOptions.None);
             var profile = doc.Root == null ? null : doc.Root.Element("publishData") == null ? null : doc.Root.Element("publishData").Elements("publishProfile")
                 .Single(p => p.Attribute("publishMethod").Value == "MSDeploy");
-            return profile == null ? null: profile.Attribute("userPWD").Value;
+            return profile == null ? null : profile.Attribute("userPWD").Value;
         }
 
         public IList<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 AdminSiteName = adminSiteName
             };
 
-            if(!string.IsNullOrEmpty(aseName)
+            if (!string.IsNullOrEmpty(aseName)
                 && !string.IsNullOrEmpty(aseResourceGroupName))
             {
                 serverFarm.HostingEnvironmentProfile = new HostingEnvironmentProfile
@@ -305,7 +305,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                     Name = aseName
                 };
             }
-            
+
             return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
 
@@ -347,7 +347,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
                 if (appSettings != null)
                 {
-                    WrappedWebsitesClient.Sites.UpdateSiteAppSettingsSlot(resourceGroupName, webSiteName, new StringDictionary { Location = location, Properties = appSettings}, slotName);
+                    WrappedWebsitesClient.Sites.UpdateSiteAppSettingsSlot(resourceGroupName, webSiteName, new StringDictionary { Location = location, Properties = appSettings }, slotName);
                 }
 
                 if (connectionStrings != null)
@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 {
                     WrappedWebsitesClient.Sites.UpdateSiteConfig(resourceGroupName, webSiteName, siteConfig);
                 }
-                
+
                 if (appSettings != null)
                 {
                     WrappedWebsitesClient.Sites.UpdateSiteAppSettings(resourceGroupName, webSiteName, new StringDictionary { Location = location, Properties = appSettings });
@@ -382,8 +382,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             try
             {
                 var appSettings = useSlot ? WrappedWebsitesClient.Sites.ListSiteAppSettingsSlot(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.ListSiteAppSettings(resourceGroupName, webSiteName);
-                
-                site.SiteConfig.AppSettings = appSettings.Properties.Select(s => new NameValuePair{ Name = s.Key, Value = s.Value}).ToList();
+
+                site.SiteConfig.AppSettings = appSettings.Properties.Select(s => new NameValuePair { Name = s.Key, Value = s.Value }).ToList();
 
                 var connectionStrings = useSlot ? WrappedWebsitesClient.Sites.ListSiteConnectionStringsSlot(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.ListSiteConnectionStrings(resourceGroupName, webSiteName);
 
@@ -392,6 +392,144 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             catch
             {
                 //ignore if this call fails as it will for reader RBAC
+            }
+        }
+
+        public BackupRequest GetWebAppBackupConfiguration(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfigurationSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupConfiguration(resourceGroupName,
+                    webSiteName);
+            }
+        }
+
+        public BackupRequest UpdateWebAppBackupConfiguration(string resourceGroupName, string webSiteName,
+            string slotName, BackupRequest newSchedule)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfigurationSlot(resourceGroupName,
+                    webSiteName, newSchedule, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.UpdateSiteBackupConfiguration(resourceGroupName, webSiteName, newSchedule);
+            }
+        }
+
+        public BackupItem BackupSite(string resourceGroupName, string webSiteName, string slotName,
+            BackupRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                var backup = WrappedWebsitesClient.Sites.BackupSiteSlot(resourceGroupName, webSiteName, request, slotName);
+                return backup;
+            }
+            else
+            {
+                var backup = WrappedWebsitesClient.Sites.BackupSite(resourceGroupName, webSiteName, request);
+                return backup;
+            }
+        }
+
+        public BackupItemCollection ListSiteBackups(string resourceGroupName, string webSiteName, string slotName)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackupsSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.ListSiteBackups(resourceGroupName, webSiteName);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatus(string resourceGroupName, string webSiteName, string slotName, string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName, backupId, EmptyRequest, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId,
+                    EmptyRequest);
+            }
+        }
+
+        public BackupItem GetSiteBackupStatusSecrets(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, BackupRequest request = null)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecretsSlot(resourceGroupName, webSiteName,
+                    backupId, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.GetSiteBackupStatusSecrets(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public BackupItem DeleteBackup(string resourceGroupName, string webSiteName, string slotName,
+            string backupId)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackupSlot(resourceGroupName, webSiteName, backupId, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.DeleteBackup(resourceGroupName, webSiteName, backupId);
+            }
+        }
+
+        public RestoreResponse RestoreSite(string resourceGroupName, string webSiteName, string slotName,
+            string backupId, RestoreRequest request)
+        {
+            string qualifiedSiteName;
+            var useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                return WrappedWebsitesClient.Sites.RestoreSiteSlot(resourceGroupName, webSiteName, backupId, request, slotName);
+            }
+            else
+            {
+                return WrappedWebsitesClient.Sites.RestoreSite(resourceGroupName, webSiteName, backupId, request);
+            }
+        }
+
+        public void RecoverSite(string resourceGroupName, string webSiteName, string slotName,
+            CsmSiteRecoveryEntity recoveryEntity)
+        {
+            string qualifiedSiteName;
+            bool useSlot = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName);
+            if (useSlot)
+            {
+                WrappedWebsitesClient.Sites.RecoverSiteSlot(resourceGroupName, webSiteName, recoveryEntity, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.RecoverSite(resourceGroupName, webSiteName, recoveryEntity);
             }
         }
 
@@ -443,6 +581,27 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                         webappWithNewSslBinding);
             }
             return updateWebSite;
+        }
+
+        public SlotConfigNamesResource GetSlotConfigNames(string resourceGroupName, string webSiteName)
+        {
+            return WrappedWebsitesClient.Sites.GetSlotConfigNames(resourceGroupName, webSiteName);
+        }
+
+        public SlotConfigNamesResource SetSlotConfigNames(string resourceGroupName, string webSiteName, IList<string> appSettingNames, IList<string> connectionStringNames)
+        {
+            var slotConfigNames = GetSlotConfigNames(resourceGroupName, webSiteName);
+            if(appSettingNames != null)
+            {
+                slotConfigNames.AppSettingNames = appSettingNames;
+            }
+
+            if(connectionStringNames != null)
+            {
+                slotConfigNames.ConnectionStringNames = connectionStringNames;
+            }
+
+            return WrappedWebsitesClient.Sites.UpdateSlotConfigNames(resourceGroupName, webSiteName, slotConfigNames);
         }
 
         private void WriteVerbose(string verboseFormat, params object[] args)

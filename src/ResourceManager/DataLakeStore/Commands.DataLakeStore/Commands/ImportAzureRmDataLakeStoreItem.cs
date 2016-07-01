@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Alias("Import-AdlStoreItem")]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // default number of threads
-        private int numThreads = 10;
+        private int numThreadsPerFile = 10;
+        private int fileCount = 5;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -61,14 +63,22 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter ForceBinary { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the total number of threads to use for the copy. Default is 10")]
-        public int NumThreads
+            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10")]
+        public int PerFileThreadCount
         {
-            get { return numThreads; }
-            set { numThreads = value; }
+            get { return numThreadsPerFile; }
+            set { numThreadsPerFile = value; }
         }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5")]
+        public int ConcurrentFileCount
+        {
+            get { return fileCount; }
+            set { fileCount = value; }
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 8, Mandatory = false,
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
@@ -83,8 +93,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    NumThreads,
-                    -1,
+                    PerFileThreadCount,
+                    ConcurrentFileCount,
                     Recurse,
                     Force,
                     Resume, ForceBinary, ForceBinary, this);
@@ -96,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
-                    NumThreads,
+                    PerFileThreadCount,
                     Force,
                     Resume,
                     ForceBinary,

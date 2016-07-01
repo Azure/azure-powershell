@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -28,8 +29,8 @@ namespace Microsoft.Azure.Commands.Compute
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
-        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will 
-        /// apply the settings to. 
+        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will
+        /// apply the settings to.
         /// </summary>
         [Alias("HandlerVersion")]
         [Parameter(
@@ -83,6 +84,14 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Key Vault configurations")]
+        [ValidateNotNullOrEmpty]
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -91,9 +100,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            if (string.IsNullOrEmpty(this.Location))
+
+            VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+            if (vm != null)
             {
-                this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                VirtualMachineExtension extension = vm.Resources.Where(x => x.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace)).FirstOrDefault();
+                if (extension != null)
+                {
+                    this.Name = extension.Name;
+                    this.Version = extension.TypeHandlerVersion;
+                }
+
+                this.Location = vm.Location;
             }
 
             var parameters = new VirtualMachineExtension
@@ -119,10 +137,11 @@ namespace Microsoft.Azure.Commands.Compute
                         VMName,
                         Name ?? VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
                         parameters).GetAwaiter().GetResult();
+                    break;
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content);
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
                     if ("Failed".Equals(errorReturned.Status)
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
@@ -130,7 +149,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        break;
+                        base.ThrowTerminatingError(new ErrorRecord(ex, "InvalidResult", ErrorCategory.InvalidResult, null));
                     }
                 }
             }
@@ -148,7 +167,8 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 AutoPatchingSettings = this.AutoPatchingSettings,
                 AutoBackupSettings = this.AutoBackupSettings,
-                AutoTelemetrySettings = new AutoTelemetrySettings() {Region = this.Location}
+                KeyVaultCredentialSettings = this.KeyVaultCredentialSettings,
+                AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location }
             };
         }
 
@@ -158,12 +178,25 @@ namespace Microsoft.Azure.Commands.Compute
         /// <returns></returns>
         private SqlServerPrivateSettings GetPrivateConfiguration()
         {
+            PrivateKeyVaultCredentialSettings akvPrivateSettings = null;
+
+            if (this.KeyVaultCredentialSettings != null)
+            {
+                akvPrivateSettings = new PrivateKeyVaultCredentialSettings
+                {
+                    AzureKeyVaultUrl = this.KeyVaultCredentialSettings.AzureKeyVaultUrl,
+                    ServicePrincipalName = this.KeyVaultCredentialSettings.ServicePrincipalName,
+                    ServicePrincipalSecret = this.KeyVaultCredentialSettings.ServicePrincipalSecret
+                };
+            }
+
             return new SqlServerPrivateSettings
             {
                 StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
                 StorageAccessKey =
                     (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
-                Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
+                Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password,
+                PrivateKeyVaultCredentialSettings = (akvPrivateSettings == null) ? null : akvPrivateSettings
             };
         }
     }

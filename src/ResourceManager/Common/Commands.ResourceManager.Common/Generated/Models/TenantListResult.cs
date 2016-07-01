@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Internal.Subscriptions.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class TenantListResult : AzureOperationResponse
     {
         private IList<TenantIdDescription> _tenantIds;
-        
+
         /// <summary>
         /// Optional. Gets or sets tenant Ids.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._tenantIds; }
             set { this._tenantIds = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TenantListResult class.
         /// </summary>

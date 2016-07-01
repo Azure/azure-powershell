@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
@@ -97,9 +96,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
+
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
             {
@@ -129,42 +130,39 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.FrontendIpConfiguration != null)
             {
-                loadBalancer.FrontendIpConfigurations = new List<PSFrontendIPConfiguration>();
                 loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
             }
 
             if (this.BackendAddressPool != null)
             {
-                loadBalancer.BackendAddressPools = new List<PSBackendAddressPool>();
                 loadBalancer.BackendAddressPools = this.BackendAddressPool;
             }
 
             if (this.Probe != null)
             {
-                loadBalancer.Probes = new List<PSProbe>();
                 loadBalancer.Probes = this.Probe;
             }
 
             if (this.InboundNatRule != null)
             {
-                loadBalancer.InboundNatRules = new List<PSInboundNatRule>();
                 loadBalancer.InboundNatRules = this.InboundNatRule;
             }
 
             if (this.LoadBalancingRule != null)
             {
-                loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
             }
 
             if (this.InboundNatPool != null)
             {
-                loadBalancer.InboundNatPools = new List<PSInboundNatPool>();
                 loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
+            loadBalancer.ResourceGroupName = this.ResourceGroupName;
+            loadBalancer.Name = this.Name;
+
             // Normalize the IDs
-            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer);
+            ChildResourceHelper.NormalizeChildResourcesId(loadBalancer, this.NetworkClient.NetworkManagementClient.SubscriptionId);
 
             // Map to the sdk object
             var lbModel = Mapper.Map<MNM.LoadBalancer>(loadBalancer);

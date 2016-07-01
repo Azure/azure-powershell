@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private static string mamlCall = "RemoveAccount";
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to remove.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]

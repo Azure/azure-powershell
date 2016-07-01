@@ -507,4 +507,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="DisableAzureDiskEncryptionConfirmation" xml:space="preserve">
     <value>This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?</value>
   </data>
+  <data name="ErrorDuringChoosingStandardStorageAccount" xml:space="preserve">
+    <value>Error occurred when choosing existing standard storage account for boot diagnostics: {0}</value>
+    <comment>{0} = an error message</comment>
+  </data>
+  <data name="TagFixWarningMessage" xml:space="preserve">
+    <value>The  usability of Tag parameter in this cmdlet will be modified in a future release.  This will impact creating, updating and appending tags for Azure resources.  For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
+  </data>
 </root>

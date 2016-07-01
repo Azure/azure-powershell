@@ -41,12 +41,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
+using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Linq;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
 {
@@ -54,11 +54,11 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
-        
+
         public string UserDomain { get; private set; }
 
-        public static TestsController NewInstance 
-        { 
+        public static TestsController NewInstance
+        {
             get
             {
                 return new TestsController();
@@ -76,9 +76,9 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -86,8 +86,8 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -98,20 +98,20 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
 
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(this.csmTestFactory);
                 }
-                
+
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
+                    AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
@@ -131,7 +131,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }

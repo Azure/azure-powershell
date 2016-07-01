@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Graph.RBAC.Models;
+﻿using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
@@ -46,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 var testEnv = testFactory.GetTestEnvironment();
                 var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
                 var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = testEnv.AuthorizationContext.TenantId;                
+                var tenantId = testEnv.AuthorizationContext.TenantId;
 
                 //Figure out which locations are available for Key Vault
                 location = GetKeyVaultLocation(resourcesClient);
@@ -56,7 +53,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 resourceGroupName = TestUtilities.GenerateName("pshtestrg");
 
                 resourcesClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
-                var createResponse = CreateVault(mgmtClient, location, tenantId);                
+                var createResponse = CreateVault(mgmtClient, location, tenantId);
             }
 
             initialized = true;

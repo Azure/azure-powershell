@@ -143,6 +143,9 @@ function Test-VirtualMachineScaleSet
         $output = $vmssList | Out-String;
         Write-Verbose ($output);
         Assert-True { $output.Contains("VirtualMachineProfile") };
+        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss | Format-Table');
+        $output = $vmssList | Format-Table | Out-String;
+        Write-Verbose ($output);
 
         # List from RG
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmss List');
@@ -157,7 +160,10 @@ function Test-VirtualMachineScaleSet
         $skuList = Get-AzureRmVmssSku -ResourceGroupName $rgname  -VMScaleSetName $vmssName;
         $output = $skuList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("Sku") };
+        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssSku | Format-Custom');
+        $output = $skuList | Format-Custom | Out-String;
+        Write-Verbose ($output);
+        #Assert-True { $output.Contains("Sku") };
 
         # List All VMs
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM List');
@@ -165,6 +171,9 @@ function Test-VirtualMachineScaleSet
         $output = $vmListResult | Out-String;
         Write-Verbose ($output);
         Assert-True { $output.Contains("StorageProfile") };
+        Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM | Format-Table');
+        $output = $vmListResult | Format-Table | Out-String;
+        Write-Verbose ($output);
 
         # List each VM
         for ($i = 0; $i -lt 2; $i++)
@@ -507,7 +516,6 @@ function Test-VirtualMachineScaleSetLB
         $skuList = Get-AzureRmVmssSku -ResourceGroupName $rgname  -VMScaleSetName $vmssName;
         $output = $skuList | Out-String;
         Write-Verbose ($output);
-        Assert-True { $output.Contains("Sku") };
 
         # List All VMs
         Write-Verbose ('Running Command : ' + 'Get-AzureRmVmssVM List');

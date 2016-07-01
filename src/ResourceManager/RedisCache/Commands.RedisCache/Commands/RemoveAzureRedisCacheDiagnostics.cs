@@ -14,11 +14,9 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
-    using System.Management.Automation;
-    using System;
     using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics"), OutputType(typeof(void))]
     public class RemoveAzureRedisCacheDiagnostics : RedisCacheCmdletBase

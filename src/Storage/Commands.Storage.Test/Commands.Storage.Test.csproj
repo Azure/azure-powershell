@@ -66,10 +66,10 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5945.28173-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -186,8 +186,6 @@
     <!-- <Compile Include="Blob\Cmdlet\GetAzureStorageBlobContentTest.cs" /> -->
     <!-- <Compile Include="Blob\Cmdlet\GetAzureStorageBlobTest.cs" /> -->
     <Compile Include="Blob\Cmdlet\GetAzureStorageContainerTest.cs" />
-    <Compile Include="Blob\Cmdlet\NewAzureStorageBlobSasTest.cs" />
-    <Compile Include="Blob\Cmdlet\NewAzureStorageContainerSasTest.cs" />
     <Compile Include="Blob\Cmdlet\NewAzureStorageContainerTest.cs" />
     <Compile Include="Blob\Cmdlet\RemoveAzureStorageBlobTest.cs" />
     <Compile Include="Blob\Cmdlet\RemoveAzureStorageContainerTest.cs" />
@@ -207,6 +205,7 @@
     <Compile Include="Common\CmdletOperationContextTest.cs" />
     <Compile Include="Common\ResourceAlreadyExistExceptionTest.cs" />
     <Compile Include="Common\ResourceNotFoundExceptionTest.cs" />
+    <Compile Include="Common\AccessPolicyHelperTest.cs" />
     <Compile Include="Common\SasTokenHelperTest.cs" />
     <Compile Include="Common\StorageCloudCmdletBaseTest.cs" />
     <Compile Include="Common\StorageExceptionUtilTest.cs" />
@@ -224,7 +223,6 @@
     <Compile Include="File\StorageFileTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue\GetAzureStorageQueueTest.cs" />
-    <Compile Include="Queue\NewAzureStorageQueueSasTest.cs" />
     <Compile Include="Queue\NewAzureStorageQueueTest.cs" />
     <Compile Include="Queue\RemoveAzureStorageQueueTest.cs" />
     <Compile Include="Queue\StorageQueueTestBase.cs" />
@@ -235,7 +233,6 @@
     <Compile Include="StorageTestBase.cs" />
     <Compile Include="Table\GetAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\GetAzureStorageTableTest.cs" />
-    <Compile Include="Table\NewAzureStorageTableSasTest.cs" />
     <Compile Include="Table\NewAzureStorageTableStoredAccessPolicyTest.cs" />
     <Compile Include="Table\NewAzureStorageTableTest.cs" />
     <Compile Include="Table\RemoveAzureStorageTableStoredAccessPolicyTest.cs" />

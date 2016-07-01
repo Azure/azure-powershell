@@ -15,10 +15,10 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 {
     using Microsoft.Azure.Commands.Common.Authentication;
-    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
     using System;
     using System.IO;
     using System.Text;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// The file utility.

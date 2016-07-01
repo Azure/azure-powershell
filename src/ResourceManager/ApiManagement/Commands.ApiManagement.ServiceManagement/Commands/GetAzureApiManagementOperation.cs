@@ -14,20 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementOperation", DefaultParameterSetName = AllApiOperations)]
-    [OutputType(typeof(IList<PsApiManagementOperation>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOperation, DefaultParameterSetName = AllApiOperations)]
+    [OutputType(typeof(IList<PsApiManagementOperation>), ParameterSetName = new[] { AllApiOperations })]
+    [OutputType(typeof(PsApiManagementOperation), ParameterSetName = new[] { FindById })]
     public class GetAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         private const string FindById = "Find by ID";
         private const string AllApiOperations = "All API Operations";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
@@ -35,8 +36,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = AllApiOperations,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of API Operation belongs to. This parameter is required.")]
         [Parameter(
             ParameterSetName = FindById,
@@ -48,8 +49,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = FindById,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier operation to look for. This parameter is optional.")]
         public String OperationId { get; set; }
 
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 WriteObject(Client.OperationById(Context, ApiId, OperationId));
             }
-            else 
+            else
             {
                 throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
             }

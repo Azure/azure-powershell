@@ -50,7 +50,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
 
 For detail descriptions and examples of the cmdlets, type
 * ```help azure``` to get all the cmdlets.
-* ```help azurerm``` to get all the Azure Resource Manaber (ARM) cmdlets.
+* ```help azurerm``` to get all the Azure Resource Manager (ARM) cmdlets.
 * ```help <cmdlet name>``` to get the details of a specific cmdlet.
 
 ## Supported Environments
@@ -72,9 +72,9 @@ For detail descriptions and examples of the cmdlets, type
 You can also find the standalone installers for all the versions at [Downloads](https://github.com/Azure/azure-powershell/releases)
 
 ### PowerShell Gallery
-1. Install [Windows Management Framework 5 ot PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
+1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
-3. run ```Install-AzureRm```
+3. Run ```Install-AzureRm```
 4. Top install RDFE cmdlets, run ```Install-Module Azure```
 
 ### Source Code
@@ -197,3 +197,6 @@ If you encounter any bugs with the library please file an issue in the [Issues](
 # Learn More
 
 * [Microsoft Azure Script Center](https://azure.microsoft.com/en-us/documentation/scripts/)
+
+---
+_This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments._
