@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {

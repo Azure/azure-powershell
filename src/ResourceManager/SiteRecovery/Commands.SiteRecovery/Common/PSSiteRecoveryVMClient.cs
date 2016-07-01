@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -31,9 +30,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <param name="replicationProtectedItemName">Replication Protected Item</param>
         /// <param name="input">Update Replication Protected Item Input</param>
         /// <returns></returns>
-        public LongRunningOperationResponse UpdateVmProperties(string fabricName, 
-            string protectionContainerName, 
-            string replicationProtectedItemName, 
+        public LongRunningOperationResponse UpdateVmProperties(string fabricName,
+            string protectionContainerName,
+            string replicationProtectedItemName,
             UpdateReplicationProtectedItemInput input)
         {
             return this.GetSiteRecoveryClient().ReplicationProtectedItem.BeginUpdateProtection(

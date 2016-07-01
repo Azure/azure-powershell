@@ -19,6 +19,12 @@ function Test-DataLakeAnalyticsAccount
 	{
 		# Creating Account and initial setup
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
@@ -45,6 +51,11 @@ function Test-DataLakeAnalyticsAccount
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics account is not in succeeded state even after 30 min."
 		}
+
+		# Test to make sure the account does exist now
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
@@ -106,8 +117,8 @@ function Test-DataLakeAnalyticsAccount
 		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
 		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
 
-		# get the list of data lakes
-		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource DataLakeStore
+		# get the list of all data sources
+		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
 		Assert-AreEqual 2 $adlsAccountInfos.Count
 
 		# remove the Data lake storage account
@@ -128,9 +139,9 @@ function Test-DataLakeAnalyticsAccount
 		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
 		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
 
-		# get the list of blobs
-		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource Blob
-		Assert-AreEqual 1 $blobAccountInfos.Count
+		# get the list of data sources (there should be two, one ADLS account and one blob storage account)
+		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
+		Assert-AreEqual 2 $blobAccountInfos.Count
 
 		# remove the blob storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
@@ -459,8 +470,9 @@ function Test-DataLakeAnalyticsCatalog
 			ClickedUrls     string,
 		INDEX idx1 //Name of index
 		CLUSTERED (Region ASC) //Column to cluster by
-		PARTITIONED BY HASH (Region) //Column to partition by
+		PARTITIONED BY BUCKETS (UserId) HASH (Region) //Column to partition by
 	);
+	ALTER TABLE {0}.dbo.{1} ADD IF NOT EXISTS PARTITION (1);
 	DROP FUNCTION IF EXISTS {0}.dbo.{2};
 
 	//create table weblogs on space-delimited website log data
@@ -587,6 +599,20 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
 		Assert-AreEqual $tableName $specificItem.Name
 
+		# retrieve the list of table partitions
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName"
+
+		Assert-NotNull $itemList "The table partition list is null"
+
+		Assert-True {$itemList.count -gt 0} "The table partition list is empty"
+		
+		$itemToFind = $itemList[0]
+	
+		# retrieve the specific table partition
+		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.[$($itemToFind.Name)]"
+		Assert-NotNull $specificItem "Could not retrieve the table partition by name"
+		Assert-AreEqual $itemToFind.Name $specificItem.Name
+
 		# retrieve the list of table valued functions and ensure the created tvf is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
 
@@ -659,8 +685,11 @@ function Test-DataLakeAnalyticsCatalog
 		# create the secret
 		$pw = ConvertTo-SecureString -String $secretPwd -AsPlainText -Force
 		$secret = New-Object System.Management.Automation.PSCredential($secretName,$pw)
+		$secretName2 = $secretName + "dup"
+		$secret2 = New-Object System.Management.Automation.PSCredential($secretName2,$pw)
 
 		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 
 		# verify that the credential can be retrieved
 		$getSecret = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
@@ -718,6 +747,12 @@ function Test-DataLakeAnalyticsCatalog
 
 		# verify that the secret cannot be retrieved
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
+
+		# delete all secrets
+		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -DatabaseName $databaseName -Force
+
+		# verify that the second secret cannot be retrieved
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
 		# Delete the DataLakeAnalytics account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."

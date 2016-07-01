@@ -15,25 +15,20 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
     public class NewAzureApiManagementVirtualNetwork : AzureRMCmdlet
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = false, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = true,
             HelpMessage = "Location of the virtual network.")]
 
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(

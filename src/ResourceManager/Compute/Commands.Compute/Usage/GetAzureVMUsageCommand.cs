@@ -15,11 +15,10 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -46,8 +45,8 @@ namespace Microsoft.Azure.Commands.Compute
                 var psResultList = new List<PSUsage>();
                 foreach (var item in result.Body)
                 {
-                    var psItem = Mapper.Map<PSUsage>(item);
-                    psItem = Mapper.Map(result, psItem);
+                    var psItem = Mapper.Map<PSUsage>(result);
+                    psItem = Mapper.Map(item, psItem);
                     psResultList.Add(psItem);
                 }
 

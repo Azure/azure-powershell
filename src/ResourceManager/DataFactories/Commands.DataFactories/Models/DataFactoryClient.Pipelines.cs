@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Management.DataFactories.Common.Models;
+using Microsoft.Azure.Management.DataFactories.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.Azure.Management.DataFactories;
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
-using Hyak.Common;
-using Microsoft.Azure.Management.DataFactories.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                     filterOptions.DataFactoryName);
             }
             filterOptions.NextLink = response != null ? response.NextLink : null;
-            
+
             if (response != null && response.Pipelines != null)
             {
                 foreach (var pipeline in response.Pipelines)

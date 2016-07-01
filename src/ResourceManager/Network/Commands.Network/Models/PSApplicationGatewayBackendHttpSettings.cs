@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     public class PSApplicationGatewayBackendHttpSettings : PSChildResource
-     {
+    {
         public int Port { get; set; }
         public string Protocol { get; set; }
         public string CookieBasedAffinity { get; set; }
@@ -30,5 +30,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-     }
+    }
 }

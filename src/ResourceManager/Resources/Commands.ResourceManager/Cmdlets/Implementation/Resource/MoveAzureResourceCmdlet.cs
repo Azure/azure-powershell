@@ -14,15 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Concurrent;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ResourceGroups;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
@@ -47,25 +46,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the id of the destination subscription.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Id of the subscription to move the resources into.")]
         [ValidateNotNullOrEmpty]
         [Alias("Id", "SubscriptionId")]
         public Guid? DestinationSubscriptionId { get; set; }
 
         /// <summary>
+        /// Gets or sets the ids of the resources to move.
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Ids of the resources to move.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ids of the resources to move.
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The Ids of the resources to move.")]
-        [ValidateNotNullOrEmpty]
-        public string[] ResourceId { get; set; }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -106,13 +105,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Where(resourceGroupId => !string.IsNullOrWhiteSpace(resourceGroupId))
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            var sourceResourceGroup = sourceResourceGroups.SingleOrDefault();
-
-            if (sourceResourceGroup == null)
+            var count = sourceResourceGroups.Count();
+            if (count == 0)
+            {
+                throw new InvalidOperationException("At least one valid resource Id must be provided.");
+            }
+            else if (count > 1)
             {
                 throw new InvalidOperationException(
                     string.Format("The resources being moved must all reside in the same resource group. The resources: {0}", resourceIdsToUse.ConcatStrings(", ")));
             }
+
+            var sourceResourceGroup = sourceResourceGroups.Single();
 
             var destinationResourceGroup = ResourceIdUtility.GetResourceId(
                 subscriptionId: this.DestinationSubscriptionId,

@@ -71,12 +71,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.1.0-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.2.0-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.19.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -138,11 +138,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
+    <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackup.cs" />
+    <Compile Include="Cmdlets\BackupRestore\AzureWebAppBackupConfiguration.cs" />
+    <Compile Include="Cmdlets\BackupRestore\BackupRestoreUtils.cs" />
+    <Compile Include="Cmdlets\BackupRestore\NewAzureRmWebAppDatabaseBackupSetting.cs" />
+    <Compile Include="Cmdlets\BackupRestore\RestoreAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\Certificates\GetAzureWebAppCertificate.cs" />
     <Compile Include="Cmdlets\Certificates\GetAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\Certificates\NewAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\Certificates\RemoveAzureWebAppSSLBinding.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotConfigName.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\NewAzureWebAppSlot.cs" />
@@ -150,13 +156,20 @@
     <Compile Include="Cmdlets\DeploymentSlots\ResetAzureWebAppSlotPublishingProfile.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\RestartAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlotConfigName.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StartAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StopAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\BackupRestore\EditAzureWebAppBackupConfiguration.cs" />
+    <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackup.cs" />
+    <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupConfiguration.cs" />
+    <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupList.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
+    <Compile Include="Cmdlets\BackupRestore\NewAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\WebApps\RemoveAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\NewAzureWebApp.cs" />
+    <Compile Include="Cmdlets\BackupRestore\RemoveAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\WebApps\ResetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\RestartAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\SetAzureWebApp.cs" />
@@ -170,6 +183,7 @@
     <Compile Include="Models.WebApp\DeploymentTemplate.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
+    <Compile Include="Models.WebApp\WebAppOptionalSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
     <Compile Include="Utilities\CmdletHelpers.cs" />
@@ -220,6 +234,10 @@
       <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Microsoft.Azure.Commands.Websites.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
@@ -190,9 +188,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-                poolOperations.DisableComputeNodeScheduling(parameters.PoolId, parameters.ComputeNodeId, parameters.DisableSchedulingOption, 
+                poolOperations.DisableComputeNodeScheduling(parameters.PoolId, parameters.ComputeNodeId, parameters.DisableSchedulingOption,
                     parameters.AdditionalBehaviors);
             }
+        }
+
+        /// <summary>
+        /// Get the settings required for remote login to a compute node
+        /// </summary>
+        /// <returns>The remote login settings for this compute node.</returns>
+        public PSRemoteLoginSettings ListComputeNodeRemoteLoginSettings(ComputeNodeOperationParameters parameters)
+        {
+            RemoteLoginSettings remoteLoginSettings;
+
+            if (parameters.ComputeNode != null)
+            {
+                remoteLoginSettings = parameters.ComputeNode.omObject.GetRemoteLoginSettings(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+                remoteLoginSettings = poolOperations.GetRemoteLoginSettings(parameters.PoolId, parameters.ComputeNodeId, parameters.AdditionalBehaviors);
+            }
+
+            PSRemoteLoginSettings psRemoteLoginSettings = new PSRemoteLoginSettings(remoteLoginSettings);
+            return psRemoteLoginSettings;
         }
     }
 }

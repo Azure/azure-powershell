@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
@@ -33,6 +31,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
             }
         }
         public string Status { get; set; }
-        public int NumberOfDocuments { get; set; }
+        public long NumberOfDocuments { get; set; }
     }
 }

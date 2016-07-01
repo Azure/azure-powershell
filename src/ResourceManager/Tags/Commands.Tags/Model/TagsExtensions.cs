@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             return new PSTag()
             {
                 Count = tag.Count.Value,
-                Name = tag.Name,
+                Name = tag.TagName,
                 Values = tag.Values.Select(v => v.ToPSTagValue()).ToList(),
                 ValuesTable = ConstructTagValuesTable(tag.Values.ToList())
             };
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             return new PSTagValue()
             {
                 Count = value.Count.Value,
-                Name = value.Value
+                Name = value.TagValueProperty
             };
         }
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             {
                 return new TagValue()
                 {
-                    Value = string.Empty,
+                    TagValueProperty = string.Empty,
                     Id = string.Empty,
                     Count = new TagCount()
                     {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
             if (tagValues.Count > 0)
             {
-                int maxNameLength = Math.Max("Name".Length, tagValues.Where(v => v.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Value.Length));
+                int maxNameLength = Math.Max("Name".Length, tagValues.Where(v => v.TagValueProperty != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.TagValueProperty.Length));
                 int maxCountLength = Math.Max("Count".Length, tagValues.Where(v => v.Count.Value != null).DefaultIfEmpty(EmptyTagValue).Max(v => v.Count.Value.Length));
 
                 string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxCountLength + "}\r\n";
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
                 foreach (TagValue tagValue in tagValues)
                 {
-                    tagValuesTable.AppendFormat(rowFormat, tagValue.Value, tagValue.Count.Value);
+                    tagValuesTable.AppendFormat(rowFormat, tagValue.TagValueProperty, tagValue.Count.Value);
                 }
             }
 

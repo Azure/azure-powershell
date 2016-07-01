@@ -22,13 +22,20 @@ using Microsoft.Azure.Test;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class SchedulerTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
-        
+
+        public SchedulerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]

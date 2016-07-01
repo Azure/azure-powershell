@@ -14,7 +14,9 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test
 {
@@ -99,6 +101,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                                                         "xn----wg8au7cnw2aykw7pn",
                                                         "xn----i68ae116lykweqn"
                                                     };
+
+        public IdnUtilitiesTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -12,18 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
     public class EndToEndTests : StreamAnalyticsScenarioTestsBase
     {
+        public EndToEndTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStreamingAnalyticsE2E()
         {
             RunPowerShellTest("Test-TestStreamingAnalyticsE2E");
-        }        
+        }
     }
 }

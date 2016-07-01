@@ -12,23 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using System.IO;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
@@ -111,12 +111,15 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.WebSites.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath(@"AzureRM.WebSites.psd1"),
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -147,14 +150,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
+
+            var armStorageManagementClient = GetArmStorageManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,
                 AuthorizationManagementClient,
-                GalleryClient
+                GalleryClient,
+                armStorageManagementClient
                 );
         }
 
+        protected StorageManagementClient GetArmStorageManagementClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -179,6 +189,6 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
-    
+
     }
 }

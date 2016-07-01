@@ -9,11 +9,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Globalization;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.Globalization;
 
     /// <summary>
     /// Extension methods for CloudBlobs and CloudFiles.
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="blob">Blob to append SAS.</param>
         /// <returns>Blob Uri with SAS appended.</returns>
         internal static CloudBlob GenerateCopySourceBlob(
-            this CloudBlob blob) 
+            this CloudBlob blob)
         {
             if (null == blob)
             {
@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return Util.GetBlobReference(blobUri, new StorageCredentials(sasToken), blob.BlobType);
         }
-        
+
         /// <summary>
         /// Append an auto generated SAS to a blob uri.
         /// </summary>

@@ -141,6 +141,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set;
         }
 
+        public string MigrationState
+        {
+            get;
+            set;
+        }
+
+        public string LicenseType
+        {
+            get;
+            set;
+        }
+
         public PersistentVM GetInstance()
         {
             return this;

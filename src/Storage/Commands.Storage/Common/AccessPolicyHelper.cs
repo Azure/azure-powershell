@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Management.Automation;
 
     internal class AccessPolicyHelper
     {
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="startTime">start time of the policy</param>
         /// <param name="expiryTime">end time of the policy</param>
         /// <param name="permission">the permission of the policy</param>
-        internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false) 
+        internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                 typeof(T) == typeof(SharedAccessFilePolicy) ||
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             SetupAccessPolicyLifeTime(startTime, expiryTime,
                 out accessStartTime, out accessExpiryTime);
 
-            if (startTime != null || noStartTime) 
+            if (startTime != null || noStartTime)
             {
                 policy.GetType().GetProperty("SharedAccessStartTime").SetValue(policy, accessStartTime);
             }
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 policy.GetType().GetProperty("SharedAccessExpiryTime").SetValue(policy, accessExpiryTime);
             }
-            
+
             SetupAccessPolicyPermission<T>(policy, permission);
         }
 
@@ -105,178 +105,62 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
         internal static void SetupAccessPolicyPermission<T>(T policy, string permission)
         {
-            if (typeof(T) == typeof(SharedAccessTablePolicy))
-            {
-                SetupAccessPolicyPermission((SharedAccessTablePolicy)(Object)policy, permission);
-            }
-            else if (typeof(T) == typeof(SharedAccessFilePolicy))
-            {
-                SetupAccessPolicyPermission((SharedAccessFilePolicy)(Object)policy, permission);
-            }
-            else if (typeof(T) == typeof(SharedAccessBlobPolicy))
-            {
-                SetupAccessPolicyPermission((SharedAccessBlobPolicy)(Object)policy, permission);
-            }
-            else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
-            {
-                SetupAccessPolicyPermission((SharedAccessQueuePolicy)(Object)policy, permission);
-            }
-            else
-            {
-                throw new ArgumentException(Resources.InvalidAccessPolicyType);
-            }
-        }
-
-        /// <summary>
-        /// Set up shared access policy permission for SharedAccessTablePolicy
-        /// </summary>
-        /// <param name="policy">SharedAccessTablePolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal static void SetupAccessPolicyPermission(SharedAccessTablePolicy policy, string permission)
-        {
-            //skip set the permission if passed-in value is null
-            if (permission == null) return;
-
-            policy.Permissions = SharedAccessTablePermissions.None;
-
             //set permission as none if passed-in value is empty
-            if (string.IsNullOrEmpty(permission)) return;
-
-            permission = permission.ToLower();
-            foreach (char op in permission)
+            if (permission == null)
+                return;
+            if (string.IsNullOrEmpty(permission))
             {
-                switch (op)
+                if (typeof(T) == typeof(SharedAccessTablePolicy))
                 {
-                    case StorageNouns.Permission.Add:
-                        policy.Permissions |= SharedAccessTablePermissions.Add;
-                        break;
-                    case StorageNouns.Permission.Update:
-                        policy.Permissions |= SharedAccessTablePermissions.Update;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessTablePermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.Read:
-                    case StorageNouns.Permission.Query:
-                        policy.Permissions |= SharedAccessTablePermissions.Query;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, op));
+                    ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePermissions.None;
+                }
+                else if (typeof(T) == typeof(SharedAccessFilePolicy))
+                {
+                    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePermissions.None;
+                }
+                else if (typeof(T) == typeof(SharedAccessBlobPolicy))
+                {
+                    ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPermissions.None;
+                }
+                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
+                {
+                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePermissions.None;
+                }
+                else
+                {
+                    throw new ArgumentException(Resources.InvalidAccessPolicyType);
+                }
+                return;
+            }
+            permission = permission.ToLower(CultureInfo.InvariantCulture);
+            try
+            {
+                if (typeof(T) == typeof(SharedAccessTablePolicy))
+                {
+                    //PowerShell will convert q to r in genreate table SAS. Add this to avoid regression
+                    string convertedPermission = permission.Replace('q', 'r');
+                    ((SharedAccessTablePolicy)(Object)policy).Permissions = SharedAccessTablePolicy.PermissionsFromString(convertedPermission);
+                }
+                else if (typeof(T) == typeof(SharedAccessFilePolicy))
+                {
+                    ((SharedAccessFilePolicy)(Object)policy).Permissions = SharedAccessFilePolicy.PermissionsFromString(permission);
+                }
+                else if (typeof(T) == typeof(SharedAccessBlobPolicy))
+                {
+                    ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPolicy.PermissionsFromString(permission);
+                }
+                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
+                {
+                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePolicy.PermissionsFromString(permission);
+                }
+                else
+                {
+                    throw new ArgumentException(Resources.InvalidAccessPolicyType);
                 }
             }
-        }
-
-        /// <summary>
-        /// Set up shared access policy permission for SharedAccessFilePolicy
-        /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal static void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
-        {
-            //skip set the permission if passed-in value is null
-            if (permission == null) return;
-
-            policy.Permissions = SharedAccessFilePermissions.None;
-
-            //set permission as none if passed-in value is empty
-            if (string.IsNullOrEmpty(permission)) return;
-
-            permission = permission.ToLower();
-            foreach (char op in permission)
+            catch (System.ArgumentOutOfRangeException)
             {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessFilePermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Write:
-                        policy.Permissions |= SharedAccessFilePermissions.Write;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessFilePermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.List:
-                        policy.Permissions |= SharedAccessFilePermissions.List;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, op));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Set up shared access policy permission for SharedAccessBlobPolicy
-        /// </summary>
-        /// <param name="policy">SharedAccessBlobPolicy object</param>
-        /// <param name="permission">Permission</param>
-        internal static void SetupAccessPolicyPermission(SharedAccessBlobPolicy policy, string permission)
-        {
-            //skip set the permission if passed-in value is null
-            if (permission == null) return;
-
-            policy.Permissions = SharedAccessBlobPermissions.None;
-
-            //set permission as none if passed-in value is empty
-            if (string.IsNullOrEmpty(permission)) return;
-
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessBlobPermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Write:
-                        policy.Permissions |= SharedAccessBlobPermissions.Write;
-                        break;
-                    case StorageNouns.Permission.Delete:
-                        policy.Permissions |= SharedAccessBlobPermissions.Delete;
-                        break;
-                    case StorageNouns.Permission.List:
-                        policy.Permissions |= SharedAccessBlobPermissions.List;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, op));
-                }
-            }
-        }
-
-        /// <summary>
-        /// Set up shared access policy permission for SharedAccessQueuePolicy
-        /// </summary>
-        /// <param name="policy">SharedAccessQueuePolicy object</param>
-        /// <param name="permission">Permisson</param>
-        internal static void SetupAccessPolicyPermission(SharedAccessQueuePolicy policy, string permission)
-        {
-            //skip set the permission if passed-in value is null
-            if (permission == null) return;
-
-            policy.Permissions = SharedAccessQueuePermissions.None;
-
-            //set permission as none if passed-in value is empty
-            if (string.IsNullOrEmpty(permission)) return;
-
-            permission = permission.ToLower();
-            foreach (char op in permission)
-            {
-                switch (op)
-                {
-                    case StorageNouns.Permission.Read:
-                        policy.Permissions |= SharedAccessQueuePermissions.Read;
-                        break;
-                    case StorageNouns.Permission.Add:
-                        policy.Permissions |= SharedAccessQueuePermissions.Add;
-                        break;
-                    case StorageNouns.Permission.Update:
-                        policy.Permissions |= SharedAccessQueuePermissions.Update;
-                        break;
-                    case StorageNouns.Permission.Process:
-                        policy.Permissions |= SharedAccessQueuePermissions.ProcessMessages;
-                        break;
-                    default:
-                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, op));
-                }
+                throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, permission));
             }
         }
 
@@ -292,13 +176,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return PowerShellUtilities.ConstructPSObject(
                 typeof(PSObject).FullName,
-                "Policy", 
+                "Policy",
                 policyName,
-                "Permissions", 
-                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]), 
-                "StartTime", 
+                "Permissions",
+                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]),
+                "StartTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessStartTime").GetValue(sharedAccessPolicies[policyName]),
-                "ExpiryTime", 
+                "ExpiryTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessExpiryTime").GetValue(sharedAccessPolicies[policyName]));
         }
 

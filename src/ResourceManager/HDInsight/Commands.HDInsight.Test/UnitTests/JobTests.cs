@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Linq;
+using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
-using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class JobTests : HDInsightTestBase
     {
-        public JobTests()
+        public JobTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForData();
         }
 
@@ -37,7 +40,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateHiveJob()
         {
-            var args = new[] {"arg1", "arg2"};
+            var args = new[] { "arg1", "arg2" };
             var defines = new Dictionary<string, string>
                 {
                     {"hive.1", "val1"},
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string name = "hivejob";
             const string file = "file";
             const string status = "folder";
-            var files = new[] {"file1", "file2"};
+            var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightHiveJobDefinitionCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string file = "file";
             const string status = "folder";
             const string query = "pigquery";
-            var files = new[] {"file1", "file2"};
+            var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightPigJobDefinitionCommand
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -121,7 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             const string status = "folder";
             const string classname = "class";
             const string jar = "jar";
-            var jars = new[] {"jar1"};
+            var jars = new[] { "jar1" };
             var files = new[] { "file1", "file2" };
             var cmdlet = new NewAzureHDInsightMapReduceJobDefinitionCommand
             {
@@ -288,7 +291,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 ClusterName = ClusterName
             };
 
-            var args = new[] {"arg1", "arg2"};
+            var args = new[] { "arg1", "arg2" };
             const string query = "show tables;";
             const string name = "hivejob";
             var hivedef = new AzureHDInsightHiveJobDefinition
@@ -378,6 +381,115 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             };
 
             return cmdlet;
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WaitForJobCompletion_Sucess()
+        {
+            var cmdlet = GetWaitAzureHDInsightJobCommandDefinition(JobCompletionType.Success);
+            cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WaitForJobCompletion_Fail()
+        {
+            var cmdlet = GetWaitAzureHDInsightJobCommandDefinition(JobCompletionType.Fail);
+
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+                throw new Exception("Operation didn't fail");
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WaitForJobCompletion_TimeOut()
+        {
+            var expectedExceptionMessage = "HDInsight job with ID {0} has not completed in {1} seconds. Increase the value of -TimeoutInSeconds or check the job runtime.";
+            WaitForJobCompletion_Internal(JobCompletionType.TimeOut, expectedExceptionMessage);
+        }
+
+        public void WaitForJobCompletion_Internal(JobCompletionType completionType, string expectedMessageFormat)
+        {
+            var cmdlet = GetWaitAzureHDInsightJobCommandDefinition(completionType);
+
+            bool success = false;
+
+            try
+            {
+                cmdlet.ExecuteCmdlet();
+            }
+            catch (CloudException ex)
+            {
+                var expectedExceptionMessage = string.Format(CultureInfo.InvariantCulture, expectedMessageFormat, cmdlet.JobId, cmdlet.TimeoutInSeconds);
+                if (ex.Message.Equals(expectedExceptionMessage))
+                {
+                    success = true;
+                }
+            }
+
+            if (!success)
+            {
+                throw new Exception("Operation didn't fail");
+            }
+        }
+
+        public WaitAzureHDInsightJobCommand GetWaitAzureHDInsightJobCommandDefinition(JobCompletionType jobCompetionType)
+        {
+            // Update HDInsight Management properties for Job.
+            SetupManagementClientForJobTests();
+
+            // Setup Job Management mocks
+            const string jobId = "jobid_1984120_001";
+
+            var cmdlet = new WaitAzureHDInsightJobCommand
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                HDInsightJobClient = hdinsightJobManagementMock.Object,
+                HDInsightManagementClient = hdinsightManagementMock.Object,
+                HttpCredential = new PSCredential("httpuser", string.Format("Password1!").ConvertToSecureString()),
+                ClusterName = ClusterName,
+                JobId = jobId,
+                TimeoutInSeconds = 10
+            };
+
+            JobGetResponse jobDetails = null;
+            TimeSpan? jobDuration = TimeSpan.FromSeconds(10);
+            hdinsightJobManagementMock.Setup(c => c.WaitForJobCompletion(It.IsAny<string>(), It.IsAny<TimeSpan?>(), null))
+                .Callback((string id, TimeSpan? duration, TimeSpan? interval) => { jobDetails = MockJobCompletion(id, jobCompetionType); })
+                .Returns(() => jobDetails);
+
+            return cmdlet;
+        }
+
+        public enum JobCompletionType { Success, Fail, TimeOut };
+
+        public JobGetResponse MockJobCompletion(string jobId, JobCompletionType type)
+        {
+            var jobResponse = new JobGetResponse
+            {
+                JobDetail = new JobDetailRootJsonObject { Id = jobId, Status = new Status(), Userargs = new Userargs() }
+            };
+
+            switch (type)
+            {
+                case JobCompletionType.Success:
+                    break;
+                case JobCompletionType.Fail:
+                    throw new CloudException("Some Failure");
+                case JobCompletionType.TimeOut:
+                    throw new TimeoutException("Some Failure");
+                default:
+                    break;
+            }
+
+            return jobResponse;
         }
     }
 }

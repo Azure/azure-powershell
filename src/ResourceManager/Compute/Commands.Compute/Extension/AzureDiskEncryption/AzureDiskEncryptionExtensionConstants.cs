@@ -35,5 +35,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string passphraseKey = "Passphrase";
         public const string osTypeLinux = "Linux";
         public const string osTypeWindows = "Windows";
+        public const string defaultKeyEncryptionAlgorithm = "RSA-OAEP";
     }
 }

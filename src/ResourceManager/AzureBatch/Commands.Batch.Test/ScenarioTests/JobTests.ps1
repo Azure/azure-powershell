@@ -18,9 +18,7 @@ Tests creating Batch jobs
 #>
 function Test-NewJob
 {
-    param([string]$accountName)
-
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     
     $jobId1 = "simple"
     $jobId2 = "complex"
@@ -42,11 +40,14 @@ function Test-NewJob
         $startTaskCmd = "cmd /c dir /s"
         $startTask.CommandLine = $startTaskCmd
 
+        $osFamily = 4
+        $targetOS = "*"
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
         $poolSpec.VirtualMachineSize = $vmSize = "small"
-        $poolSpec.OSFamily = $osFamily = "4"
-        $poolSpec.TargetOSVersion = $targetOS = "*"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
         $poolSpec.StartTask = $startTask
 
         $poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
@@ -159,8 +160,8 @@ function Test-NewJob
         Assert-AreEqual $poolLifeTime $job2.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
         Assert-AreEqual $targetDedicated $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
         Assert-AreEqual $vmSize $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
-        Assert-AreEqual $osFamily $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
-        Assert-AreEqual $targetOS $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+        Assert-AreEqual $osFamily $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.OSFamily
+        Assert-AreEqual $targetOS $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CloudServiceConfiguration.TargetOSVersion
         Assert-AreEqual $certRefCount $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
         Assert-AreEqual $storeLocation $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
         Assert-AreEqual $storeName $job2.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
@@ -233,9 +234,9 @@ Tests querying for a Batch job by id
 #>
 function Test-GetJobById
 {
-    param([string]$accountName, [string]$jobId)
+    param([string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
 
     Assert-AreEqual $jobId $job.Id
@@ -252,9 +253,9 @@ Tests querying for Batch jobs using a filter
 #>
 function Test-ListJobsByFilter
 {
-    param([string]$accountName, [string]$prefix, [string]$matches)
+    param([string]$prefix, [string]$matches)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "startswith(id,'$prefix')"
 
     $jobs = Get-AzureBatchJob -Filter $filter -BatchContext $context
@@ -272,9 +273,9 @@ Tests querying for Batch job using a select clause
 #>
 function Test-GetAndListJobsWithSelect
 {
-    param([string]$accountName, [string]$jobId)
+    param([string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $filter = "id eq '$jobId'"
     $selectClause = "id,state"
 
@@ -303,9 +304,9 @@ Tests querying for Batch jobs and supplying a max count
 #>
 function Test-ListJobsWithMaxCount
 {
-    param([string]$accountName, [string]$maxCount)
+    param([string]$maxCount)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobs = Get-AzureBatchJob -MaxCount $maxCount -BatchContext $context
 
     Assert-AreEqual $maxCount $jobs.Length
@@ -317,9 +318,9 @@ Tests querying for all jobs
 #>
 function Test-ListAllJobs
 {
-    param([string]$accountName, [string]$count)
+    param([string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobs = Get-AzureBatchJob -BatchContext $context
 
     Assert-AreEqual $count $jobs.Length
@@ -331,9 +332,9 @@ Tests listing the jobs under a job schedule
 #>
 function Test-ListJobsUnderSchedule
 {
-    param([string]$accountName, [string]$jobScheduleId, [string]$jobId, [string]$count)
+    param([string]$jobScheduleId, [string]$jobId, [string]$count)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $jobSchedule = Get-AzureBatchJobSchedule -Id $jobScheduleId -BatchContext $context
 
     # Verify that listing jobs works
@@ -362,16 +363,19 @@ Tests updating a job
 #>
 function Test-UpdateJob
 {
-    param([string]$accountName, [string]$jobId)
+    param([string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $osFamily = 4
+    $targetOS = "*"
+    $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
 
     # Create the job with an auto pool
     $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
     $poolSpec.TargetDedicated = 3
     $poolSpec.VirtualMachineSize = "small"
-    $poolSpec.OSFamily = "4"
-    $poolSpec.TargetOSVersion = "*"
+    $poolSpec.CloudServiceConfiguration = $paasConfiguration
     $poolSpec.Metadata = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSMetadataItem]
     $poolSpecMetaItem = New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "meta1","value1"
     $poolSpec.Metadata.Add($poolSpecMetaItem)
@@ -436,9 +440,9 @@ Tests deleting a job
 #>
 function Test-DeleteJob
 {
-    param([string]$accountName, [string]$jobId, [string]$usePipeline)
+    param([string]$jobId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job exists
     $job = Get-AzureBatchJob $jobId -BatchContext $context
@@ -464,9 +468,9 @@ Tests disabling and enabling a job
 #>
 function Test-DisableAndEnableJob
 {
-    param([string]$accountName, [string]$jobId)
+    param([string]$jobId)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Verify the job is Active
     $job = Get-AzureBatchJob $jobId -BatchContext $context
@@ -500,9 +504,9 @@ Tests terminating a job
 #>
 function Test-TerminateJob
 {
-    param([string]$accountName, [string]$jobId, [string]$usePipeline)
+    param([string]$jobId, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $terminateReason = "test"
 
     if ($usePipeline -eq '1')
@@ -518,4 +522,54 @@ function Test-TerminateJob
     $job = Get-AzureBatchJob $jobId -BatchContext $context
     Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
     Assert-AreEqual $terminateReason $job.ExecutionInformation.TerminateReason
+}
+
+<#
+.SYNOPSIS
+Tests create job with TaskDependencies
+#>
+function Test-JobWithTaskDependencies
+{
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob4"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c dir /s"
+        $taskId = "taskId1"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+        $taskIds = @("2","3")
+        $taskIdRange = New-Object Microsoft.Azure.Batch.TaskIdRange(1,10)
+        $dependsOn = New-Object Microsoft.Azure.Batch.TaskDependencies -ArgumentList @([string[]]$taskIds, [Microsoft.Azure.Batch.TaskIdRange[]]$taskIdRange)
+        New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -usesTaskDependencies
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -DependsOn $dependsOn -JobId $jobId
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.UsesTaskDependencies $TRUE
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.End 10
+        Assert-AreEqual $task.DependsOn.TaskIdRanges.Start 1
+        Assert-AreEqual $task.DependsOn.TaskIds[0] 2
+        Assert-AreEqual $task.DependsOn.TaskIds[1] 3
+    }
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
 }

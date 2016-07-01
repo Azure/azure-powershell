@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.Common.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
@@ -35,17 +36,22 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         [Trait("Type", "WAPackIaaS-Unit")]
         public void WaitOnJobCompletesImmediately()
         {
-            Guid jobId = Guid.NewGuid();
+            // Fix test flakiness
+            TestExecutionHelpers.RetryAction(
+                () =>
+                {
+                    Guid jobId = Guid.NewGuid();
 
-            MockRequestChannel mockChannel = MockRequestChannel.Create();
-            mockChannel.AddReturnObject(new Job {Name = "TestJob", ID = jobId, IsCompleted = true});
+                    MockRequestChannel mockChannel = MockRequestChannel.Create();
+                    mockChannel.AddReturnObject(new Job {Name = "TestJob", ID = jobId, IsCompleted = true});
 
-            var jobOperations = new JobOperations(new WebClientFactory(
-                                                      new Subscription(),
-                                                      mockChannel));
-            DateTime start = DateTime.Now;
-            jobOperations.WaitOnJob(jobId);
-            Assert.True((DateTime.Now - start).TotalMilliseconds < 500);
+                    var jobOperations = new JobOperations(new WebClientFactory(
+                        new Subscription(),
+                        mockChannel));
+                    DateTime start = DateTime.Now;
+                    jobOperations.WaitOnJob(jobId);
+                    Assert.True((DateTime.Now - start).TotalMilliseconds < 500);
+                });
         }
 
         /// <summary>
