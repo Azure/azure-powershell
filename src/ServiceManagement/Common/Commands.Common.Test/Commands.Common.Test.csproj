@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Common\PSTestTracingInterceptor.cs" />
     <Compile Include="Resources\ResourceLocator.cs" />
+    <Compile Include="TestExecutionHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
