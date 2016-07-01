@@ -189,7 +189,6 @@
     <Compile Include="Common\MockSubsciptionFactory.cs" />
     <Compile Include="Common\ProfileClientTests.cs" />
     <Compile Include="Common\ServicePrincipalStoreTests.cs" />
-    <Compile Include="Common\GeneralUtilitiesTests.cs" />
     <Compile Include="Common\Data.cs" />
     <Compile Include="Common\DirStack.cs" />
     <Compile Include="Common\EmbeddedFileWriter.cs" />
