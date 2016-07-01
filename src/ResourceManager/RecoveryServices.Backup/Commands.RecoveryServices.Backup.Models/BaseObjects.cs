@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public DateTime? LatestRecoveryPoint { get; set; }
 
+        /// <summary>
+        /// ARM ID of the resource represented by the item
+        /// </summary>
+        public string SourceResourceId { get; set; }
+
         public ItemBase(ServiceClientModel.ProtectedItemResource protectedItemResource,
             string containerName, ContainerType containerType)
             : base((ServiceClientModel.ProtectedItem)protectedItemResource.Properties, containerName, containerType)
@@ -186,6 +191,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             Name = protectedItemResource.Name;
             Id = protectedItemResource.Id;
             LatestRecoveryPoint = protectedItem.LastRecoveryPoint;
+            SourceResourceId = protectedItem.SourceResourceId;
         }
     }
 

@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             if (!this.IsRouteTablePresent(this.RouteTable.ResourceGroupName, this.RouteTable.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

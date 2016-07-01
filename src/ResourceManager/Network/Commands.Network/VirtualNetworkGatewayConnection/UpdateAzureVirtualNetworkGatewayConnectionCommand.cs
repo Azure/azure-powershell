@@ -36,10 +36,9 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             if (!this.IsVirtualNetworkGatewayConnectionPresent(this.VirtualNetworkGatewayConnection.ResourceGroupName, this.VirtualNetworkGatewayConnection.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);

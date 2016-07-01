@@ -108,9 +108,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "ApplicationGatewayBackendAddressPools")]
         public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
