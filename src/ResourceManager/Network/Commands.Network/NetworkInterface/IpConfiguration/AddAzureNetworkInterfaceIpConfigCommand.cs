@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Interface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
-        public override void Execute()
-        {
-            base.Execute();
 
+        public override void Execute()
+        {     
+            base.Execute();
             var existingIpConfig = this.NetworkInterface.IpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (existingIpConfig != null)
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var ipconfig = new PSNetworkInterfaceIPConfiguration();
             ipconfig.Name = this.Name;
-
+            ipconfig.Primary = this.Primary.IsPresent;
             if (!string.IsNullOrEmpty(this.SubnetId))
             {
                 ipconfig.Subnet = new PSSubnet();
