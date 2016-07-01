@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-
+            ipconfig.Primary = this.Primary.IsPresent;
             WriteObject(ipconfig);
 
         }

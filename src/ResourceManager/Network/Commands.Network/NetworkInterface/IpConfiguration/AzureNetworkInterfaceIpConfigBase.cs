@@ -44,6 +44,11 @@ namespace Microsoft.Azure.Commands.Network
         public string PrivateIpAddress { get; set; }
 
         [Parameter(
+          Mandatory = false,
+          HelpMessage = "The flag to specify if this is a primary IpConfiguration on the nic.")]
+        public SwitchParameter Primary { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ParameterSetName = "SetByResourceId",
             HelpMessage = "SubnetId")]
@@ -110,8 +115,6 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            
-
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Subnet != null)
