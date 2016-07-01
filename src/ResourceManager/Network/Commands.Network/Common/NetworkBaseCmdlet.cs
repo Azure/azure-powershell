@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             catch (Rest.Azure.CloudException ex)
             {
-                throw new Exception(ex.Message);
+                throw new NetworkCloudException(ex);
             }
         }
         public virtual void Execute()
