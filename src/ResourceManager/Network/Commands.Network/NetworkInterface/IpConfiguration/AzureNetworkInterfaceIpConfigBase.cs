@@ -45,11 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
           Mandatory = false,
-<<<<<<< HEAD
           HelpMessage = "The flag to specify if this is a primary IpConfiguration on the nic.")]
-=======
-          HelpMessage = "The flag to specify if this is a primary IpAddress on the nic.")]
->>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
         public SwitchParameter Primary { get; set; }
 
         [Parameter(
@@ -118,12 +114,9 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSApplicationGatewayBackendAddressPool> ApplicationGatewayBackendAddressPool { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-<<<<<<< HEAD
-=======
+        {        
             base.ExecuteCmdlet();
 
->>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (this.Subnet != null)

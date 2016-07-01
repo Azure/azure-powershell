@@ -13,11 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-<<<<<<< HEAD
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Network.Common;
-=======
->>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
+
 
 namespace Microsoft.Azure.Commands.Network
 {

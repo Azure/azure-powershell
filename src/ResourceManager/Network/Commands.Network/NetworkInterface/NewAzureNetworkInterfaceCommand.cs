@@ -227,16 +227,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-<<<<<<< HEAD
+
         public override void Execute()
         {           
             base.Execute();
-=======
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
 
->>>>>>> 944fbbb5a3ad6f02a8f01b03133504a7f09a91c8
             WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             if (this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name))
