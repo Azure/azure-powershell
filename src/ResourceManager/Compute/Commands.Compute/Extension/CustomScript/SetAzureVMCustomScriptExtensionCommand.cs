@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Linq;
@@ -176,23 +175,13 @@ namespace Microsoft.Azure.Commands.Compute
                     ForceUpdateTag = this.ForceRerun
                 };
 
-                try
-                {
-                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
-                    WriteObject(result);
-
-                }
-                catch (Rest.Azure.CloudException ex)
-                {
-                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
-                        ex.Response.Content);
-                    WriteObject(errorReturned);
-                }
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                this.ResourceGroupName,
+                this.VMName,
+                this.Name,
+                parameters).GetAwaiter().GetResult();
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 

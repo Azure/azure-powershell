@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ProfileNouns.VirtualMachineCustomScriptExtension)]
+        ProfileNouns.VirtualMachineADDomainExtension)]
     [OutputType(
-        typeof(VirtualMachineCustomScriptExtensionContext))]
-    public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
+        typeof(VirtualMachineADDomainExtensionContext))]
+    public class GetAzureVMADDomainExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -71,10 +71,10 @@ namespace Microsoft.Azure.Commands.Compute
                     var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
                     var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
-                    if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                        returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    if (returnedExtension.Publisher.Equals(VirtualMachineADDomainExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                        returnedExtension.ExtensionType.Equals(VirtualMachineADDomainExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                        WriteObject(new VirtualMachineADDomainExtensionContext(returnedExtension));
                     }
                     else
                     {
@@ -86,10 +86,10 @@ namespace Microsoft.Azure.Commands.Compute
                     var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
                     var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
-                    if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                        returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
+                    if (returnedExtension.Publisher.Equals(VirtualMachineADDomainExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                        returnedExtension.ExtensionType.Equals(VirtualMachineADDomainExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        WriteObject(new VirtualMachineCustomScriptExtensionContext(returnedExtension));
+                        WriteObject(new VirtualMachineADDomainExtensionContext(returnedExtension));
                     }
                     else
                     {
@@ -100,3 +100,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

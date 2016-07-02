@@ -204,6 +204,11 @@
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
     <Compile Include="ExtensionImages\VirtualMachineExtensionImageBaseCmdlet.cs" />
+    <Compile Include="Extension\ADDomain\ADDomainExtensionPrivateSettings.cs" />
+    <Compile Include="Extension\ADDomain\ADDomainExtensionPublicSettings.cs" />
+    <Compile Include="Extension\ADDomain\GetAzureVMADDomainExtensionCommand.cs" />
+    <Compile Include="Extension\ADDomain\SetAzureVMADDomainExtensionCommand.cs" />
+    <Compile Include="Extension\ADDomain\VirtualMachineADDomainExtensionContext.cs" />
     <Compile Include="Extension\AEM\AEMExtensionConstants.cs" />
     <Compile Include="Extension\AEM\AEMHelper.cs" />
     <Compile Include="Extension\AEM\AEMStringExtensions.cs" />
