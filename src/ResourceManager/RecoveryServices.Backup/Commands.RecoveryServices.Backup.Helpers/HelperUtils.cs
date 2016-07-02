@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
-                string idPattern = @"/[a-zA-Z]*/[a-zA-Z0-9-;.]*";
-                string uriPattern = @"/";                    
+                string idPattern = @"/[^/]*/[^/]*";
+                string uriPattern = @"/";
                 Regex reg = new Regex(idPattern, RegexOptions.IgnoreCase);
 
                 // Match the regular expression pattern against a uri string.
@@ -212,6 +212,62 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
             return policyName;
         }
-    
+
+        public static string GetSubscriptionIdFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
+            string id)
+        {
+            string subscriptionId = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.Subscriptions))
+            {
+                subscriptionId = keyValuePairs[CmdletModel.UriEnums.Subscriptions];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Subscriptions.ToString(), id));
+            }
+
+            return subscriptionId;
+        }
+
+        public static string GetResourceGroupNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
+        {
+            string resourceGroupName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.ResourceGroups))
+            {
+                resourceGroupName = keyValuePairs[CmdletModel.UriEnums.ResourceGroups];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.ResourceGroups.ToString(), id));
+            }
+
+            return resourceGroupName;
+        }
+
+        public static string GetVaultNameFromId(
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            string id)
+        {
+            string vaultName = string.Empty;
+
+            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.Vaults))
+            {
+                vaultName = keyValuePairs[CmdletModel.UriEnums.Vaults];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    CmdletModel.UriEnums.Vaults.ToString(), id));
+            }
+
+            return vaultName;
+        }
     }
 }
