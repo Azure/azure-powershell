@@ -114,45 +114,34 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSFunction function = null;
-            Action createFunction = () =>
-            {
-                function = new PSFunction(
-                    CreateOrUpdatePSFunction(parameter.ResourceGroupName,
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.FunctionExists,
+                        parameter.FunctionName,
                         parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.FunctionCreating,
                         parameter.FunctionName,
-                        parameter.RawJsonContent))
-                {
-                    ResourceGroupName = parameter.ResourceGroupName,
-                    JobName = parameter.JobName
-                };
-            };
-
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createFunction();
-            }
-            else
-            {
-                bool functionExists = CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName);
-
-                parameter.ConfirmAction(
-                        !functionExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.FunctionExists,
-                            parameter.FunctionName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.FunctionCreating,
-                            parameter.FunctionName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        parameter.FunctionName,
-                        createFunction);
-            }
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.FunctionName,
+                    () =>
+                    {
+                        function = new PSFunction(
+                            CreateOrUpdatePSFunction(parameter.ResourceGroupName,
+                                parameter.JobName,
+                                parameter.FunctionName,
+                                parameter.RawJsonContent))
+                        {
+                            ResourceGroupName = parameter.ResourceGroupName,
+                            JobName = parameter.JobName
+                        };
+                    },
+                    () => CheckFunctionExists(parameter.ResourceGroupName, parameter.JobName, parameter.FunctionName));
 
             return function;
         }

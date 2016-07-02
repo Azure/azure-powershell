@@ -115,7 +115,7 @@ Sleep in record mode only
 function SleepInRecordMode ([int]$SleepIntervalInMillisec)
 {
 	$mode = $env:AZURE_TEST_MODE
-	if ( $mode.ToUpperInvariant() -eq "RECORD")
+	if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
 	{	
 		Sleep -Milliseconds $SleepIntervalInMillisec 
 	}		

@@ -11,6 +11,9 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
+using System;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
@@ -28,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.")]
+        [Obsolete("Force parameter will be removed in an upcoming release", false)]
         public SwitchParameter Force { get; set; }
 
         public abstract string ActionWarning { get; }
@@ -36,8 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     ActionDescription,
                     ActionWarning,
                     Resources.ShouldProcessCaption))

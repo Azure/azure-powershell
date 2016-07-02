@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using System.Globalization;
 using System.Management.Automation;
@@ -20,7 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsOutput)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsOutput, SupportsShouldProcess = true)]
     public class RemoveAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
@@ -53,13 +55,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.OutputRemovalConfirmationMessage,
-                    this.Name,
-                    this.JobName,
-                    this.ResourceGroupName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.OutputRemoving,

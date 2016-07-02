@@ -184,6 +184,7 @@
     <Compile Include="ScenarioTests\AdlsAliasTests.cs" />
     <Compile Include="ScenarioTests\AdlsTestsBase.cs" />
     <Compile Include="ScenarioTests\AdlsTests.cs" />
+    <Compile Include="ScenarioTests\UrlDecodingRecordMatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">

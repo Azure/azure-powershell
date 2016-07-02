@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
@@ -19,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchCertificate)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchCertificate, SupportsShouldProcess = true)]
     public class RemoveBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string Thumbprint { get; set; }
 
         [Parameter]
+        [Obsolete("Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -41,8 +43,6 @@ namespace Microsoft.Azure.Commands.Batch
                 this.ThumbprintAlgorithm, this.Thumbprint, this.AdditionalBehaviors);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveCertificateConfirm, this.Thumbprint),
                 Resources.RemoveCertificate,
                 this.Thumbprint,
                 () => BatchClient.DeleteCertificate(parameters));
