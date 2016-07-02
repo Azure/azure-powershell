@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                        Properties.Resources.CmdletWillBeDeprecatedSoon,
+                        this.MyInvocation.MyCommand.Name));
+
                 StorageMappingListResponse storageMappingListResponse =
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryStorageMappings(this.PrimaryServer.ID, this.RecoveryServer.ID);

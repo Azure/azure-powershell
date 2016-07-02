@@ -331,4 +331,16 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VMNotFoundInGroup" xml:space="preserve">
     <value>Virtual Machine "{0}" not found in Group "{1}" for recovery plan "{2}"</value>
   </data>
+  <data name="ImproperServerObjectPassedForHyperVFailback" xml:space="preserve">
+    <value>Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to 'Yes' while doing failback in hyper-V to Azure scenario. </value>
+  </data>
+  <data name="InvalidParameterSet" xml:space="preserve">
+    <value>Invalid parameter set used. Please call the cmdlet with a valid parameter set.</value>
+  </data>
+  <data name="InvalidVaultObject" xml:space="preserve">
+    <value>Unsupported vault object is passed. Please pass Claasic or ARM vault object.</value>
+  </data>
+  <data name="ParameterWillBeDeprecatedSoon" xml:space="preserve">
+    <value>Parameter(s) "{0}" will be deprecated soon. Please use use parameter(s) "{1}" instead.</value>
+  </data>
 </root>

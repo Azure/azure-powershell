@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
+using System;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -24,6 +26,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
+        // default number of threads
+        private int numThreadsPerFile = 10;
+        private int fileCount = 5;
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
@@ -41,6 +47,33 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public string Destination { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Indicates if the download should be recursive for folder downloads. The default is false.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Recurse { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage =
+                "Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded."
+            )]
+        public SwitchParameter Resume { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage = "Indicates the maximum number of threads to use per file. Default is 10")]
+        public int PerFileThreadCount
+        {
+            get { return numThreadsPerFile; }
+            set { numThreadsPerFile = value; }
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download. Default is 5")]
+        public int ConcurrentFileCount
+        {
+            get { return fileCount; }
+            set { fileCount = value; }
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
@@ -52,14 +85,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             FileType type;
 
-            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
-                type != FileType.FILE)
+            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type))
             {
                 throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
             }
 
-            DataLakeStoreFileSystemClient.DownloadFile(Path.TransformedPath, Account, powerShellReadyPath, CmdletCancellationToken,
-                Force, this);
+            if (type == FileType.FILE)
+            {
+                DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
+                    isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount);
+            }
+            else
+            {
+                DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
+                    CmdletCancellationToken,
+                    isDownload: true, overwrite: Force, cmdletRunningRequest: this,
+                    perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse);
+            }
 
             WriteObject(powerShellReadyPath);
         }
