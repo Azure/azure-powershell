@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             {
                 VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
 
-                string currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-                if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
+                var currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
+                if (OperatingSystemTypes.Windows.Equals(currentOSType))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 }
-                else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+                else if (OperatingSystemTypes.Linux.Equals(currentOSType))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 }

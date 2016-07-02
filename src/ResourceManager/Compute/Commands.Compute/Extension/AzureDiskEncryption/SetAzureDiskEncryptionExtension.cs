@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        private string currentOSType = null;
+        private OperatingSystemTypes? currentOSType = null;
 
         private void ValidateInputParameters()
         {
@@ -208,7 +208,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       ErrorCategory.InvalidResult,
                                                       null));
             }
-            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(this.ResourceGroupName);
+
+            PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(
+                this.ResourceGroupName, this.VMName);
+
             if ((returnedExtension == null) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
@@ -219,7 +222,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       null));
             }
             bool publisherMatch = false;
-            if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
                     returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
@@ -227,7 +230,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     publisherMatch = true;
                 }
             }
-            else if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
+            else if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
                 if (returnedExtension.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
                     returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
@@ -349,7 +352,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             VirtualMachineExtension vmExtensionParameters = null;
-            if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
+            if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
                 this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
@@ -362,7 +365,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     ProtectedSettings = ProtectedSettingString,
                 };
             }
-            else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            else if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
@@ -417,7 +420,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                    if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+                    if (OperatingSystemTypes.Linux.Equals(currentOSType))
                     {
                         CreateVMBackupForLinx();
                     }

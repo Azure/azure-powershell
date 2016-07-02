@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -33,26 +33,44 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tags { get; set; }
 
         [Parameter(
             Position = 3,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public Hashtable[] Tags { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public string LicenseType { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -85,7 +103,8 @@ namespace Microsoft.Azure.Commands.Compute
                     NetworkProfile           = this.VM.NetworkProfile,
                     OsProfile                = this.VM.OSProfile,
                     Plan                     = this.VM.Plan,
-                    AvailabilitySet = this.VM.AvailabilitySetReference,
+                    LicenseType              = this.LicenseType ?? this.VM.LicenseType,
+                    AvailabilitySet          = this.VM.AvailabilitySetReference,
                     Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
                     Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
@@ -198,7 +217,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
 
         private Uri GetOrCreateStorageAccountForBootDiagnostics()
-        {                        
+        {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
                     AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
@@ -223,11 +242,6 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch (Exception e)
                 {
-                    if (e.Message.Contains("Unable to find a matching HTTP request"))
-                    {
-                        throw;
-                    }
-
                     if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
@@ -268,10 +282,14 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
-            if (storageAccountList == null)
+            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                return null;
+                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                if (storageAccountList == null || storageAccountList.Count() == 0)
+                {
+                    return null;
+                }
             }
 
             try
@@ -282,14 +300,12 @@ namespace Microsoft.Azure.Commands.Compute
             }
             catch (InvalidOperationException e)
             {
-                if (e.Message.Contains("Sequence contains no matching element"))
-                {
-                    return null;
-                }
-                throw;
+                WriteWarning(string.Format(
+                            Properties.Resources.ErrorDuringChoosingStandardStorageAccount, e.Message));
+                return null;
             }
         }
-        
+
         private Uri CreateStandardStorageAccount(StorageManagementClient client)
         {
             string storageAccountName;

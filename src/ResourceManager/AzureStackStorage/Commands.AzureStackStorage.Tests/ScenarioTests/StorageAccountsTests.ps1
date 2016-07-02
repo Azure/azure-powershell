@@ -134,7 +134,7 @@ function Test-UndoStorageAccountDeletion
     try 
     {
         $actual = Undo-ACSStorageAccountDeletion -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName `
-        -AccountId $accountId -NewAccountName $newAccountName 
+        -AccountId $accountId -NewAccountName $newAccountName -ResourceAdminApiVersion 1.0
     }
     finally
     {
@@ -159,7 +159,7 @@ function Test-StorageAccountPipeline
     try 
     {
         $actual = Get-ACSStorageAccount -ResourceGroupName $rgname -SubscriptionId $subscriptionId -FarmName $farmName -AccountId $accountId -Detail `
-            | Undo-ACSStorageAccountDeletion -NewAccountName $newAccountName 
+            | Undo-ACSStorageAccountDeletion -NewAccountName $newAccountName -ResourceAdminApiVersion 1.0
     }
     finally
     {
