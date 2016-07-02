@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             Account,
                             powerShellSourcePath,
                             CmdletCancellationToken,
-                            PerFileThreadCount,
                             ConcurrentFileCount,
+                            PerFileThreadCount,
                             Recurse,
                             Force,
-                            Resume, ForceBinary, ForceBinary, this);
+                            Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);
                     }
                     else if (File.Exists(powerShellSourcePath))
                     {
@@ -114,44 +114,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             Force,
                             Resume,
                             ForceBinary,
-                            this);
+                            cmdletRunningRequest: this);
                     }
                     else
                     {
-                        throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist,
-                            powerShellSourcePath));
+                        throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
                     }
-
-            if (Directory.Exists(powerShellSourcePath))
-            {
-                DataLakeStoreFileSystemClient.CopyDirectory(
-                    Destination.TransformedPath,
-                    Account,
-                    powerShellSourcePath,
-                    CmdletCancellationToken,
-                    ConcurrentFileCount,
-                    PerFileThreadCount,
-                    Recurse,
-                    Force,
-                    Resume, ForceBinary, ForceBinary, cmdletRunningRequest: this);
-            }
-            else if (File.Exists(powerShellSourcePath))
-            {
-                DataLakeStoreFileSystemClient.CopyFile(
-                    Destination.TransformedPath,
-                    Account,
-                    powerShellSourcePath,
-                    CmdletCancellationToken,
-                    PerFileThreadCount,
-                    Force,
-                    Resume,
-                    ForceBinary,
-                    cmdletRunningRequest: this);
-            }
-            else
-            {
-                throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
-            }
 
                     // only attempt to write output if this cmdlet hasn't been cancelled.
                     if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)

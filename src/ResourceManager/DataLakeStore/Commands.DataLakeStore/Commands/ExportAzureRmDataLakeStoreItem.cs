@@ -86,15 +86,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             FileType type;
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.OverwriteFileMessage, powerShellReadyPath),
                 VerbsData.Export,
                 Path.TransformedPath,
                 () =>
                 {
-                    if (
-                        !DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type) ||
-                        type != FileType.FILE)
+                    if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type))
                     {
                         throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
                     }
@@ -113,8 +109,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     }
 
                     WriteObject(powerShellReadyPath);
-                },
-                () => File.Exists(powerShellReadyPath));
+                });
         }
     }
 }
