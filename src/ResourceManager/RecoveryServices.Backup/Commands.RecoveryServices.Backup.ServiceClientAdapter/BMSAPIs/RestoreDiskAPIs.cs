@@ -13,13 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -65,6 +62,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 StorageAccountId = storageAccountId,
                 SourceResourceId = rp.SourceResourceId,
             };
+
+            if (rp.EncryptionEnabled)
+            {
+                restoreRequest.EncryptionDetails = new EncryptionDetails()
+                {
+                    EncryptionEnabled = rp.EncryptionEnabled,
+                    KekUrl = rp.KeyAndSecretDetails.KeyUrl,
+                    KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
+                    SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
+                    SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
+                };              
+            }
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
             triggerRestoreRequest.Item = new RestoreRequestResource();

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         Path.TransformedPath.LastIndexOf("/", StringComparison.InvariantCultureIgnoreCase) + 1);
             }
 
-            WriteObject(new DataLakeStoreItem(toReturn, itemName));
+            WriteObject(new DataLakeStoreItem(toReturn, itemName, "/" + Path.TransformedPath));
         }
     }
 }

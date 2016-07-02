@@ -118,7 +118,58 @@
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
-    </View>
+	</View>
+	<View>
+		<Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlPolicy</Name>
+		<ViewSelectedBy>
+			<TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlPolicy</TypeName>
+		</ViewSelectedBy>
+		<TableControl>
+			<TableHeaders>
+				<TableColumnHeader>
+					<Label>Name</Label>
+					<Width>20</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>WorkloadType</Label>
+					<Width>18</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>BackupManagementType</Label>
+					<Width>20</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>RetentionDurationType</Label>
+					<Width>25</Width>
+				</TableColumnHeader>
+				<TableColumnHeader>
+					<Label>RetentionCount</Label>
+					<Width>20</Width>
+				</TableColumnHeader>
+			</TableHeaders>
+			<TableRowEntries>
+				<TableRowEntry>
+					<TableColumnItems>
+						<TableColumnItem>
+							<PropertyName>Name</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>WorkloadType</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<PropertyName>BackupManagementType</PropertyName>
+						</TableColumnItem>
+						<TableColumnItem>
+							<ScriptBlock>$_.RetentionPolicy.RetentionDurationType</ScriptBlock>
+						</TableColumnItem>
+						<TableColumnItem>
+							<ScriptBlock>$_.RetentionPolicy.RetentionCount</ScriptBlock>
+						</TableColumnItem>
+					</TableColumnItems>
+				</TableRowEntry>
+			</TableRowEntries>
+		</TableControl>
+	</View>
     <View>
       <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase</Name>
       <ViewSelectedBy>
@@ -205,7 +256,7 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>FriendlyName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ResourceGroupName</PropertyName>
@@ -272,10 +323,112 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlItem</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlItem</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerType</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ContainerUniqueName</Label>
+            <Width>40</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>WorkloadType</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProtectionStatus</Label>
+            <Width>20</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ContainerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>WorkloadType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
 	  <View>
 		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmRecoveryPoint</Name>
 		  <ViewSelectedBy>
 			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureVmRecoveryPoint</TypeName>
+		  </ViewSelectedBy>
+		  <TableControl>
+			  <TableHeaders>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointId</Label>
+					  <Width>18</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointType</Label>
+					  <Width>18</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>RecoveryPointTime</Label>
+					  <Width>22</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>ContainerName</Label>
+					  <Width>36</Width>
+				  </TableColumnHeader>
+				  <TableColumnHeader>
+					  <Label>ContainerType</Label>
+					  <Width>15</Width>
+				  </TableColumnHeader>
+			  </TableHeaders>
+			  <TableRowEntries>
+				  <TableRowEntry>
+					  <TableColumnItems>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointId</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointType</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>RecoveryPointTime</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>ContainerName</PropertyName>
+						  </TableColumnItem>
+						  <TableColumnItem>
+							  <PropertyName>ContainerType</PropertyName>
+						  </TableColumnItem>
+					  </TableColumnItems>
+				  </TableRowEntry>
+			  </TableRowEntries>
+		  </TableControl>
+	  </View>
+  	  <View>
+		  <Name>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlRecoveryPoint</Name>
+		  <ViewSelectedBy>
+			  <TypeName>Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureSqlRecoveryPoint</TypeName>
 		  </ViewSelectedBy>
 		  <TableControl>
 			  <TableHeaders>
