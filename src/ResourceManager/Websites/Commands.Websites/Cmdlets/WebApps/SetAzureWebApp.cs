@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 15, Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
         public string AutoSwapSlotName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 15, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 

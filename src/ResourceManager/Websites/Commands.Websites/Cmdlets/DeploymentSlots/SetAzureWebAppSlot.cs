@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
 
-        [Parameter(Position = 16, Mandatory = false, HelpMessage = "Destination slot name for auto swap")]        
+        [Parameter(Mandatory = false, HelpMessage = "Destination slot name for auto swap")]        
         public string AutoSwapSlotName { get; set; }
 
         public override void ExecuteCmdlet()

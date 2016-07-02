@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet("Swap", "AzureRmWebAppSlot", SupportsShouldProcess = true)]
     public class SwapAzureWebAppSlot : WebAppBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the source slot.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the source slot.")]
         [ValidateNotNullOrEmpty]
         public string SourceSlotName { get; set; }
 
@@ -33,22 +33,24 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public string DestinationSlotName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Swap with preview action to use", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "Swap with preview action to use")]
         [ValidateNotNullOrEmpty]
         public SwapWithPreviewAction? SwapWithPreviewAction { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "Flag to determine if VNet should be preserved", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "Flag to determine if VNet should be preserved")]
         [ValidateNotNullOrEmpty]
         public bool? PreserveVnet { get; set; }
 
         public override void ExecuteCmdlet()
         {
+
             base.ExecuteCmdlet();
 
             string actionMessage;
             string processMessage;
 
             GetConfirmActionMessages(out actionMessage, out processMessage);
+
             this.ConfirmAction(
                 true,
                 actionMessage,
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                 Name,
                 () =>
                 {
+
                     if (!SwapWithPreviewAction.HasValue)
                     {
                         WebsitesClient.SwapSlot(ResourceGroupName, Name, SourceSlotName, DestinationSlotName, PreserveVnet);
@@ -64,15 +67,19 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     {
                         switch (SwapWithPreviewAction.Value)
                         {
+
                             case Utilities.SwapWithPreviewAction.ApplySlotConfig:
                                 WebsitesClient.SwapSlotWithPreviewApplySlotConfig(ResourceGroupName, Name, SourceSlotName, DestinationSlotName, PreserveVnet);
                                 break;
+
                             case Utilities.SwapWithPreviewAction.CompleteSlotSwap:
                                 WebsitesClient.SwapSlot(ResourceGroupName, Name, SourceSlotName, DestinationSlotName, PreserveVnet);
                                 break;
+
                             case Utilities.SwapWithPreviewAction.ResetSlotSwap:
                                 WebsitesClient.SwapSlotWithPreviewResetSlotSwap(ResourceGroupName, Name, SourceSlotName);
                                 break;
+
                         }
                     }
                 });
@@ -92,18 +99,22 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             {
                 switch (SwapWithPreviewAction.Value)
                 {
+
                     case Utilities.SwapWithPreviewAction.ApplySlotConfig:
                         actionMessage = string.Format("Swap with preview: Applying slot config from {0} slot onto {1} slot", DestinationSlotName, SourceSlotName);
                         processMessage = "Swap with preview: Applying slot config from destination slot onto source slot";
                         break;
+
                     case Utilities.SwapWithPreviewAction.CompleteSlotSwap:
                         actionMessage = string.Format("Swap with preview: Completing the current on-going slot swap operation between {0} and {1} slots", SourceSlotName, DestinationSlotName);
                         processMessage = "Swap with preview: Completing the current on-going slot swap operation";
                         break;
+
                     case Utilities.SwapWithPreviewAction.ResetSlotSwap:
                         actionMessage = string.Format("Swap with preview: Resetting the current on-going slot swap operation between {0} and {1} slots", SourceSlotName, DestinationSlotName);
                         processMessage = "Swap with preview: Resetting the current on-going slot swap operation";
                         break;
+
                 }
             }
         }
