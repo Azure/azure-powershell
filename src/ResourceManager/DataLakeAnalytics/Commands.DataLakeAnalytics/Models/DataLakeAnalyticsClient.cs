@@ -34,13 +34,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
 
+
+        /// <summary>
+        /// Gets or sets the job identifier queue, which is used exclusively as a test hook.
+        /// </summary>
+        /// <value>
+        /// The job identifier queue.
+        /// </value>
+        public static Queue<Guid> JobIdQueue { get; set; }
+
         public DataLakeAnalyticsClient(AzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
-
+            JobIdQueue = new Queue<Guid>();
             _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;

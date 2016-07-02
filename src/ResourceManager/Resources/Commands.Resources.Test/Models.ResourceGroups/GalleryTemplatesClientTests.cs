@@ -26,6 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Newtonsoft.Json.Linq;
 using Xunit;
 using Xunit.Abstractions;
@@ -498,10 +499,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ParseTemplateParameterFileContents_DeserializeWithCorrectType()
         {
-            Dictionary<string, TemplateFileParameterV1> result =
-                TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json");
-            Assert.Equal(true, result["isWorker"].Value);
-            Assert.Equal((System.Int64)1, result["numberOfWorker"].Value);
+            // Add up to 3 retries for flaky test
+            TestExecutionHelpers.RetryAction(() =>
+            {
+                Dictionary<string, TemplateFileParameterV1> result =
+                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json");
+                Assert.Equal(true, result["isWorker"].Value);
+                Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
+            });
         }
     }
 }
