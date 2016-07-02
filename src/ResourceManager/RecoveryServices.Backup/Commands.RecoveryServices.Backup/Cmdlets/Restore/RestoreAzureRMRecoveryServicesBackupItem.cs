@@ -12,21 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using ResourcesNS = Microsoft.Azure.Management.Resources;
-using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using ResourcesNS = Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -39,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Recovery point of the item to be restored
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0,
             HelpMessage = ParamHelpMsgs.RestoreDisk.RecoveryPoint)]
         [ValidateNotNullOrEmpty]
         public RecoveryPointBase RecoveryPoint { get; set; }
@@ -55,7 +48,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Resource group name of Storage account name where the disks need to be recovered
         /// </summary>
-        [Parameter(Mandatory = true, Position = 2, 
+        [Parameter(Mandatory = true, Position = 2,
             HelpMessage = ParamHelpMsgs.RestoreDisk.StorageAccountResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountResourceGroupName { get; set; }
@@ -75,19 +68,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ResourcesNS.Models.ResourceGetResult resource = null;
                 try
                 {
-                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}", 
+                    WriteDebug(String.Format("Query Microsoft.ClassicStorage with name = {0}",
                         StorageAccountName));
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
                         identity, CancellationToken.None).Result;
                 }
                 catch (Exception)
                 {
                     identity.ResourceProviderNamespace = "Microsoft.Storage/storageAccounts";
                     identity.ResourceProviderApiVersion = "2016-01-01";
-                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName, 
+                    resource = RmClient.Resources.GetAsync(StorageAccountResourceGroupName,
                         identity, CancellationToken.None).Result;
                 }
-                
+
                 string storageAccountId = resource.Resource.Id;
                 string storageAccountlocation = resource.Resource.Location;
                 string storageAccountType = resource.Resource.Type;

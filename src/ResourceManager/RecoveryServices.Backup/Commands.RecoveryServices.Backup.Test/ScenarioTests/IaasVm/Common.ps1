@@ -12,22 +12,22 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-Write-Output -InputObject 'Starting post-build script';
+function get_available_location
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = "Microsoft.RecoveryServices"
+        $type = "vaults"
+        $resourceProvider = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+  
+        if ($resourceProvider -ne $null -and $resourceProvider.Locations.Count -ne 0)
+        {
+            return $resourceProvider.Locations[0]
+        } else
+        {
+            return "West US"
+        }
+    }
 
-$sourceDir = $args[0];
-Write-Output -InputObject $sourceDir;
-
-$sourcePath = $sourceDir + "AzureResourceManager.psd1"
-$destDir = Split-Path -Path $sourceDir
-
-if (Test-Path -Path $sourcePath) {
-    Write-Output -InputObject "Copying '$sourcePath' to directory '$destDir'";
-    Copy-Item -Path $sourcePath -Destination $destDir;
+    return "West US"
 }
-
-if (Test-Path -Path $sourcePath) {
-    Write-Output "Removing $sourcePath";
-    Remove-Item -Path $sourcePath -Force;
-}
-
-Write-Output -InputObject 'Finished post-build script';
