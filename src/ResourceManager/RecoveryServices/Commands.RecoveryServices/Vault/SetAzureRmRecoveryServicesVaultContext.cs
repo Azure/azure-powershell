@@ -44,19 +44,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         Vault.Name);
                 }
 
-                if (string.IsNullOrEmpty(Vault.ResouceGroupName))
+                if (string.IsNullOrEmpty(Vault.ResourceGroupName))
                 {
                     throw new ArgumentException(
                         Properties.Resources.ResourceGroupNameNullOrEmpty,
-                        Vault.ResouceGroupName);
+                        Vault.ResourceGroupName);
                 }
 
-                var vault = RecoveryServicesClient.GetVault(Vault.ResouceGroupName, Vault.Name);
+                var vault = RecoveryServicesClient.GetVault(Vault.ResourceGroupName, Vault.Name);
                 if(vault == null)
                 {
                     throw new ArgumentException(
                         string.Format(Properties.Resources.VaultNotFound, Vault.Name),
-                        Vault.ResouceGroupName);
+                        Vault.ResourceGroupName);
                 }
 
                 Utilities.UpdateCurrentVaultContext(Vault);
