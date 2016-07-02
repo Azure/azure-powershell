@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.ComputerGroup)]
+    [Cmdlet(VerbsCommon.New, Constants.ComputerGroup, SupportsShouldProcess = true)]
     public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
