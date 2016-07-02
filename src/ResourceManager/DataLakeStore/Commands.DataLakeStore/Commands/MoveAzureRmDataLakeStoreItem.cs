@@ -55,15 +55,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (ShouldProcess(Destination.TransformedPath, VerbsCommon.Move))
             {
                 FileType fileType;
-                if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                        out fileType)
-                        && (Force.IsPresent || ShouldContinue(string.Format(Resources.OverwriteFileMessage, Destination.TransformedPath), "")))
+                if (Force.IsPresent && DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
+                        out fileType))
                 {
                     DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
                 }
 
-                if (
-                    !DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account,
+                if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account,
                         Destination.TransformedPath))
                 {
                     throw new CloudException(
