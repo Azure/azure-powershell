@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneName = this.ZoneName;
                 resourceGroupName = this.ResourceGroupName;
             }
-            else if (this.ParameterSetName == "Object")
+            else
             {
                 zoneName = this.Zone.Name;
                 resourceGroupName = this.Zone.ResourceGroupName;

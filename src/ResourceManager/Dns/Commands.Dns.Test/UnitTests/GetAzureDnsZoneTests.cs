@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
                 ResourceGroupName = "resourceGroup"
             };
 
-            Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<Microsoft.Rest.Azure.CloudException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }

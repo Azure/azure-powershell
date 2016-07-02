@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
                 RecordType = RecordType.A,
             };
 
-            Assert.Throws<PSArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<Microsoft.Rest.Azure.CloudException>(() => cmdlet.ExecuteCmdlet());
         }
     }
 }

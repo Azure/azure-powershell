@@ -24,22 +24,24 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Azure.Management.Dns;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Subscriptions;
-    using Microsoft.Azure.Test;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
     using System.Linq;
     using WindowsAzure.Commands.Test.Utilities.Common;
+    using LegacyTest = Microsoft.Azure.Test;
+    using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+    using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
     public class DnsTestsBase : RMTestBase
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
 
 
         private readonly EnvironmentSetupHelper helper;
 
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
-
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -68,7 +70,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         }
 
 
-        protected void SetupManagementClients(RestTestFramework.MockContext context) 
+        protected void SetupManagementClients(MockContext context) 
         {
             this.ResourceManagementClient = this.GetResourceManagementClient();
             this.SubscriptionClient = this.GetSubscriptionClient();
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -118,9 +120,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 
 
                 if (initialize != null)
@@ -171,27 +173,27 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         protected ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private DnsManagementClient GetFeatureClient(RestTestFramework.MockContext context) 
+        private DnsManagementClient GetFeatureClient(MockContext context) 
         {
-            return context.GetServiceClient<DnsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment()); 
+            return context.GetServiceClient<DnsManagementClient>(TestEnvironmentFactory.GetTestEnvironment()); 
         }
     }
 }

@@ -340,7 +340,7 @@ function Test-RecordSetAAAANonEmpty
 	
 	Assert-AreEqual 2 $getResult.Records.Count
 	Assert-AreEqual "2002::1" $getResult.Records[0].Ipv6Address
-	Assert-AreEqual "2002::1" $getResult.Records[0].Ipv6Address
+	Assert-AreEqual "2002::2" $getResult.Records[1].Ipv6Address
 
 	$removed = $getResult | Remove-AzureRmDnsRecordSet -Force -PassThru
 
