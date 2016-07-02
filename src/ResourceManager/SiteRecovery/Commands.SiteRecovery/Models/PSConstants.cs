@@ -114,12 +114,32 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Represents Optimize value ForDowntime.
         /// </summary>
-        public const string ForDowntime = "ForDowntime";
+        public const string ForDownTime = "ForDownTime";
 
         /// <summary>
         /// Represents Optimize value for Synchronization.
         /// </summary>
         public const string ForSynchronization = "ForSynchronization";
+
+        /// <summary>
+        /// Represents Yes.
+        /// </summary>
+        public const string Yes = "Yes";
+
+        /// <summary>
+        /// Represents No.
+        /// </summary>
+        public const string No = "No";
+
+        /// <summary>
+        /// Represents RecoveryVmCreationOption value for CreateVmIfNotFound in failback.
+        /// </summary>
+        public const string CreateVmIfNotFound = "CreateVmIfNotFound";
+
+        /// <summary>
+        /// Represents RecoveryVmCreationOption value for NoAction in failback.
+        /// </summary>
+        public const string NoAction = "NoAction";
 
         /// <summary>
         /// Represents primary location.

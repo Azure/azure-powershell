@@ -170,6 +170,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to &apos;Yes&apos; while doing failback in hyper-V to Azure scenario. .
+        /// </summary>
+        internal static string ImproperServerObjectPassedForHyperVFailback {
+            get {
+                return ResourceManager.GetString("ImproperServerObjectPassedForHyperVFailback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
         /// </summary>
         internal static string IncorrectReplicationProvider {
@@ -194,6 +203,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string InvalidCloudExceptionErrorMessage {
             get {
                 return ResourceManager.GetString("InvalidCloudExceptionErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter set used. Please call the cmdlet with a valid parameter set..
+        /// </summary>
+        internal static string InvalidParameterSet {
+            get {
+                return ResourceManager.GetString("InvalidParameterSet", resourceCulture);
             }
         }
         
@@ -230,6 +248,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string InvalidServerType {
             get {
                 return ResourceManager.GetString("InvalidServerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+        /// </summary>
+        internal static string InvalidVaultObject {
+            get {
+                return ResourceManager.GetString("InvalidVaultObject", resourceCulture);
             }
         }
         
@@ -302,6 +329,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string NullRecoveryServicesClient {
             get {
                 return ResourceManager.GetString("NullRecoveryServicesClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use use parameter(s) &quot;{1}&quot; instead..
+        /// </summary>
+        internal static string ParameterWillBeDeprecatedSoon {
+            get {
+                return ResourceManager.GetString("ParameterWillBeDeprecatedSoon", resourceCulture);
             }
         }
         

@@ -145,7 +145,7 @@
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
   </data>
   <data name="InvalidExportPathType" xml:space="preserve">
-    <value>The path '{0}' either does not exist or is not a file. This cmdlet can only export individual files that exist in ADL</value>
+    <value>The path '{0}' either does not exist or is not accessible. Please check the path and permission.</value>
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>Invalid file path: {0}. Files cannot end in '/' or '\\'. If creating a folder please use the -Folder flag</value>
