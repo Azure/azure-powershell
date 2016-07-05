@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Management.Media.Models
         }
 
         /// <summary>
-        /// Resource location
+        /// The location of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; set; }
 
         /// <summary>
-        /// Resource tags
+        /// The tags of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; set; }

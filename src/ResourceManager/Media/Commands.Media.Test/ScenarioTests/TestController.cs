@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public AzureMediaServices AzureMediaServiceClient { get; private set; }
+        public MediaServicesManagementClient MediaServicesManagementClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
             GalleryClient = TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
             AuthorizationManagementClient = TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
             StorageManagementClient = TestBase.GetServiceClient<StorageManagementClient>(_csmTestFactory);
-            AzureMediaServiceClient = context.GetServiceClient<AzureMediaServices>(TestEnvironmentFactory.GetTestEnvironment());
+            MediaServicesManagementClient = context.GetServiceClient<MediaServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
                 StorageManagementClient,
                 GalleryClient,
                 AuthorizationManagementClient,
-                AzureMediaServiceClient);
+                MediaServicesManagementClient);
         }
 
         /// <summary>

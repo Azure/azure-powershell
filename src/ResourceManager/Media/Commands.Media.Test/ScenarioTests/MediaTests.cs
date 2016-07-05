@@ -36,5 +36,12 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-Media");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMediaWithPiping()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-MediaWithPiping");
+        }
     }
 }

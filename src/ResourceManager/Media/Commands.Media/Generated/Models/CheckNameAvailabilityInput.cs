@@ -12,40 +12,36 @@ namespace Microsoft.Azure.Management.Media.Models
     using Microsoft.Rest.Serialization;
     using Microsoft.Rest.Azure;
 
-    public partial class Resource : IResource
+    /// <summary>
+    /// The request body for CheckNameAvailability API.
+    /// </summary>
+    public partial class CheckNameAvailabilityInput
     {
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the CheckNameAvailabilityInput class.
         /// </summary>
-        public Resource() { }
+        public CheckNameAvailabilityInput() { }
 
         /// <summary>
-        /// Initializes a new instance of the Resource class.
+        /// Initializes a new instance of the CheckNameAvailabilityInput class.
         /// </summary>
-        public Resource(string id = default(string), string name = default(string), string type = default(string))
+        public CheckNameAvailabilityInput(string name = default(string), string type = default(string))
         {
-            Id = id;
             Name = name;
             Type = type;
         }
 
         /// <summary>
-        /// Resource ID
-        /// </summary>
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Resource name
+        /// Specifies the type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Resource type
+        /// Specifies the type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
-        public string Type { get; private set; }
+        public string Type { get; set; }
 
     }
 }

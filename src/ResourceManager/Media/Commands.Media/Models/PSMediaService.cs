@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Media.Models
 
         public string Id { get; set; }
 
-        public string Name { get; set; }
+        public string AccountName { get; set; }
 
         public string Type { get; set; }
 

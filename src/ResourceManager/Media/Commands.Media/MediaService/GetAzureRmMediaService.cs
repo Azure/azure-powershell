@@ -13,24 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.Media.Common;
 using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.Media.Models;
+using Microsoft.Azure.Commands.Media.Common;
+using Microsoft.Azure.Commands.Media.Models;
 
 namespace Microsoft.Azure.Commands.Media.MediaService
 {
     /// <summary>
-    /// Remove a media service.
+    /// Get media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, MediaServiceNounStr), OutputType(typeof(bool))]
-    public class RemoveAzureRmMediaService : AzureMediaServiceCmdletBase
+    [Cmdlet(VerbsCommon.Get, MediaServiceNounStr), OutputType(typeof(PSMediaService))]
+    public class GetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
+        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        protected const string AccountNameParameterSet = "AccountNameParameterSet";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
+            ParameterSetName = ResourceGroupParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = AccountNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -38,8 +48,8 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         [Parameter(
             Position = 1,
-            Mandatory = true, 
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            ParameterSetName = AccountNameParameterSet,
             HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
@@ -49,21 +59,20 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            try
+            switch (ParameterSetName)
             {
-                MediaServicesManagementClient.MediaServices.DeleteMediaService(ResourceGroupName, AccountName);
-                WriteObject(true);
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
-                }
-                throw;
+                case ResourceGroupParameterSet:
+                    var mediaServices = MediaServicesManagementClient.MediaServices.ListByResourceGroup(ResourceGroupName);
+                    WriteObject(mediaServices.Select(x => x.ToPSMediaService()).ToList(), true);
+                    break;
+
+                case AccountNameParameterSet:
+                    var mediaService = MediaServicesManagementClient.MediaServices.GetMediaService(ResourceGroupName, AccountName);
+                    WriteObject(mediaService.ToPSMediaService(), true);
+                    break;
+
+                default:
+                    throw new ArgumentException("Bad ParameterSet Name");
             }
         }
     }

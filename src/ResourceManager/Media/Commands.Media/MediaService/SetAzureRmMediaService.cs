@@ -13,14 +13,15 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Media.Common;
 using Microsoft.Azure.Commands.Media.Models;
 using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.Media.Rest.Models;
-using RestMediaService = Microsoft.Azure.Management.Media.Rest.Models.MediaService;
+using Microsoft.Azure.Management.Media.Models;
+using RestMediaService = Microsoft.Azure.Management.Media.Models.MediaService;
 
 namespace Microsoft.Azure.Commands.Media.MediaService
 {
@@ -30,41 +31,104 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     [Cmdlet(VerbsCommon.Set, MediaServiceNounStr), OutputType(typeof(PSMediaService))]
     public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "The media service account name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        public string MediaServiceAccountName { get; set; }
+        [Alias(AccountNameAlias)]
+        public string AccountName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The tags associated with the media account.")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The tags associated with the media account.")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage accounts assosiated with the media account.")]
+        [ValidateNotNull]
+        public PSStorageAccount[] StorageAccounts { get; set; }
+        
         public override void ExecuteCmdlet()
         {
-            SetApiVersion();
+            var mediaServiceParams = new RestMediaService();
 
-            var mediaServiceParams = new RestMediaService
+            if (Tags != null)
             {
-                Tags = Tags.ToDictionaryTags()
-            };
+                mediaServiceParams.Tags = Tags.ToDictionaryTags();
+            }
+
+            if (StorageAccounts != null)
+            {
+                // check storage accounts parameter
+                var primaryStorageAccounts = StorageAccounts.Where(x => x.IsPrimary.HasValue && x.IsPrimary.Value).ToArray();
+                if(primaryStorageAccounts.Count() != 1)
+                {
+                    throw new ArgumentException("StorageAccounts should have exactly one primary storage account");
+                }
+
+                var mediaService = MediaServicesManagementClient.MediaServices.GetMediaService(ResourceGroupName, AccountName);
+                if (mediaService == null)
+                {
+                    throw new ArgumentException(string.Format(
+                        "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                        AccountName,
+                        SubscrptionName,
+                        ResourceGroupName));
+                }
+
+                var primaryStorageAccount = mediaService.Properties.StorageAccounts.FirstOrDefault(x => (x.IsPrimary.HasValue && x.IsPrimary.Value));
+                // there must be a primary storage account associated with the media service account
+                if (primaryStorageAccount == null)
+                {
+                    throw new Exception(string.Format(
+                        "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} has no primary storage account",
+                        AccountName,
+                        SubscrptionName,
+                        ResourceGroupName));
+                }
+
+                if (!string.Equals(primaryStorageAccount.Id, primaryStorageAccounts[0].Id, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException("Primary storage account cann't be changed");
+                }
+
+                mediaServiceParams.Properties = new MediaServiceProperties
+                {
+                    StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList()
+                };
+            }
 
             try
             {
-                var mediaService = AzureMediaServicesClient.PatchMediaservices(SubscriptionId, ResourceGroupName,
-                    MediaServiceAccountName, mediaServiceParams, ApiVersion);
-                WriteObject(mediaService, true);
+                var mediaServiceUpdated = MediaServicesManagementClient.MediaServices.UpdateMediaService(ResourceGroupName, AccountName, mediaServiceParams);
+                WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
             }
             catch (ApiErrorException exception)
             {
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
-                    throw new ArgumentException(string.Format(
-                        "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        MediaServiceAccountName,
+                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                        AccountName,
                         SubscrptionName,
                         ResourceGroupName));
                 }
+                throw;
             }
         }
     }

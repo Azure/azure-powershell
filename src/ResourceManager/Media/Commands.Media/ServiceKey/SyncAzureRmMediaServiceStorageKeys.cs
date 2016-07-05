@@ -17,7 +17,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Media.Common;
 using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.Media.Rest.Models;
+using Microsoft.Azure.Management.Media.Models;
 
 namespace Microsoft.Azure.Commands.Media.ServiceKey
 {
@@ -27,29 +27,42 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     [Cmdlet(VerbsData.Sync, MediaServiceStorageKeysNounStr), OutputType(typeof(bool))]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "The media service account name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        public string MediaServiceAccountName { get; set; }
+        [Alias(AccountNameAlias)]
+        public string AccountName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The storage account name.")]
+        [Parameter(
+            Position = 2,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The storage account associated with the media service account.")]
+        [Alias("Id")]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
+        public string StorageAccountId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SetApiVersion();
-
             try
             {
-                AzureMediaServicesClient.MediaservicesSyncStorageKeys(
-                    SubscriptionId,
+                MediaServicesManagementClient.MediaServices.SyncStorageKeys(
                     ResourceGroupName,
-                    MediaServiceAccountName,
-                    new SyncStorageKeysInput(GetStorageAccountId(StorageAccountName)),
-                    ApiVersion);
-
+                    AccountName,
+                    new SyncStorageKeysInput(StorageAccountId));
                 WriteObject(true);
             }
             catch (ApiErrorException exception)
@@ -57,11 +70,12 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     throw new ArgumentException(string.Format("MediaServiceAccount {0} or StorageAccount {1} under subscprition {2} and resourceGroup {3} doesn't exist",
-                        MediaServiceAccountName,
-                        StorageAccountName,
+                        AccountName,
+                        StorageAccountId,
                         SubscrptionName,
                         ResourceGroupName));
                 }
+                throw;
             }
         }
     }

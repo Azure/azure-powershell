@@ -15,13 +15,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Management.Media.Rest.Models;
+using Microsoft.Azure.Management.Media.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using RestApiEndpoint = Microsoft.Azure.Management.Media.Rest.Models.ApiEndpoint;
-using RestStorageAccount = Microsoft.Azure.Management.Media.Rest.Models.StorageAccount;
-using RestMediaServiceProperties = Microsoft.Azure.Management.Media.Rest.Models.MediaServiceProperties;
-using RestMediaService = Microsoft.Azure.Management.Media.Rest.Models.MediaService;
-using RestServiceKeys = Microsoft.Azure.Management.Media.Rest.Models.ServiceKeys;
+using RestApiEndpoint = Microsoft.Azure.Management.Media.Models.ApiEndpoint;
+using RestStorageAccount = Microsoft.Azure.Management.Media.Models.StorageAccount;
+using RestMediaServiceProperties = Microsoft.Azure.Management.Media.Models.MediaServiceProperties;
+using RestMediaService = Microsoft.Azure.Management.Media.Models.MediaService;
+using RestServiceKeys = Microsoft.Azure.Management.Media.Models.ServiceKeys;
 
 namespace Microsoft.Azure.Commands.Media.Models
 {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Media.Models
             return new PSMediaService
             {
                 Id = mediaService.Id,
-                Name = mediaService.Name,
+                AccountName = mediaService.Name,
                 Type = mediaService.Type,
                 Location = mediaService.Location,
                 Tags = mediaService.Tags.ToHashTableTags(),
@@ -101,12 +101,31 @@ namespace Microsoft.Azure.Commands.Media.Models
             };
         }
 
-        public static PSServiceKey ToPSServiceKey(this RegenerateKeyOutput serviceKey, string keyType)
+        public static PSServiceKey ToPSServiceKey(this RegenerateKeyOutput serviceKey, KeyType keyType)
         {
             return new PSServiceKey
             {
                 Key = serviceKey.Key,
-                KeyType = keyType
+                KeyType = keyType.ToString()
+            };
+        }
+
+        public static StorageAccount ToStorageAccount(this PSStorageAccount storageAccount)
+        {
+            return new StorageAccount
+            {
+                Id = storageAccount.Id,
+                IsPrimary = storageAccount.IsPrimary
+            };
+        }
+
+        public static PSCheckNameAvailabilityOutput ToPsCheckNameAvailabilityOutput(this CheckNameAvailabilityOutput output)
+        {
+            return new PSCheckNameAvailabilityOutput
+            {
+                NameAvailable = output.NameAvailable != null && output.NameAvailable.Value,
+                Reason = output.Reason.HasValue ? output.Reason.Value.ToString() : null,
+                Message = output.Message
             };
         }
     }
