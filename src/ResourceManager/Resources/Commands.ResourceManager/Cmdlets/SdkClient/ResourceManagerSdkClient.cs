@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public static List<string> KnownLocations = new List<string>
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
+            "East Asia", "South East Asia", "East US", "West US", "North Central US",
             "South Central US", "Central US", "North Europe", "West Europe"
         };
 
@@ -522,27 +522,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value;
 
             ResourceGroup resourceGroup = null;
-            Action createOrUpdateResourceGroup = () =>
-            {
-                resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
-                WriteVerbose(string.Format(ProjectResources.CreatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
-            };
+            parameters.ConfirmAction(parameters.Force,
+                ProjectResources.ResourceGroupAlreadyExists,
+                ProjectResources.NewResourceGroupMessage,
+                parameters.DeploymentName,
+                () =>
+                {
+                    resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
+                    WriteVerbose(string.Format(ProjectResources.CreatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
+                },
+                () => resourceExists);
 
-            if (resourceExists && !parameters.Force)
-            {
-                parameters.ConfirmAction(parameters.Force,
-                    ProjectResources.ResourceGroupAlreadyExists,
-                    ProjectResources.NewResourceGroupMessage,
-                    parameters.DeploymentName,
-                    createOrUpdateResourceGroup);
-                resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
-            }
-            else
-            {
-                createOrUpdateResourceGroup();
-            }
-
-            return resourceGroup.ToPSResourceGroup();
+            return  resourceGroup !=  null? resourceGroup.ToPSResourceGroup() : null;
         }
 
         /// <summary>
@@ -711,7 +702,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     WriteError(string.Format(ErrorFormat, error.Code, error.Message));
                     if (error.Details != null && error.Details.Count > 0)
                     {
-                        foreach(var innerError in error.Details)
+                        foreach (var innerError in error.Details)
                         {
                             DisplayInnerDetailErrorMessage(innerError);
                         }

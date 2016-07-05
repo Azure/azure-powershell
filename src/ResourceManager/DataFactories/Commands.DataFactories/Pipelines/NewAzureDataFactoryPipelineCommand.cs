@@ -21,8 +21,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Pipeline, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSPipeline))]
-
+    [Cmdlet(VerbsCommon.New, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
     public class NewAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The pipeline name.")]

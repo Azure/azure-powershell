@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Deletes an existing zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsZone"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsZone", SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     public class RemoveAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
@@ -82,18 +83,21 @@ namespace Microsoft.Azure.Commands.Dns
                 string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                 ProjectResources.Progress_RemovingZone,
                 this.Name,
-                () => { deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite); });
+                () =>
+                {
+                    deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
 
-            if (deleted)
-            {
-                WriteVerbose(ProjectResources.Success);
-                WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
-            }
+                    if (deleted)
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
+                    }
 
-            if (this.PassThru)
-            {
-                WriteObject(deleted);
-            }
+                    if (this.PassThru)
+                    {
+                        WriteObject(deleted);
+                    }
+                });
         }
     }
 }
