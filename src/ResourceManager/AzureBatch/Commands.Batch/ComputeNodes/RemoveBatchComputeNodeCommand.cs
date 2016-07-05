@@ -22,7 +22,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet, 
+        SupportsShouldProcess = true)]
     public class RemoveBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,

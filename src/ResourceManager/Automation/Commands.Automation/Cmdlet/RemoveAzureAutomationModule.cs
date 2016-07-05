@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationModule", SupportsShouldProcess = true, 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>

@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             };
         }
 
-        private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        private void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action, Func<bool> predicate)
         {
             ConfirmActionCounter++;
             action();
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private int RejectActionCounter = 0;
 
-        private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action, Func<bool> predicate)
         {
             RejectActionCounter++;
         }
