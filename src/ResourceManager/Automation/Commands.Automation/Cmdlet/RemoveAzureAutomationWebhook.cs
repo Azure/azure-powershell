@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationWebhook")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationWebhook", SupportsShouldProcess = true)]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         [Parameter(Position = 3, HelpMessage = "Confirm the removal of the webhook")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -42,8 +44,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingAzureAutomationResourceWarning, "Webhook"),
                 string.Format(Resources.RemoveAzureAutomationResourceDescription, "Webhook"),
                 Name,
                 () => this.AutomationClient.DeleteWebhook(

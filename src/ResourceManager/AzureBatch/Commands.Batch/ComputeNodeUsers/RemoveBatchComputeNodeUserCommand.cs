@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
@@ -20,7 +21,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNodeUser)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNodeUser, SupportsShouldProcess = true)]
     public class RemoveBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string Name { get; set; }
 
         [Parameter]
+        [Obsolete("Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -47,8 +49,6 @@ namespace Microsoft.Azure.Commands.Batch
                 this.Name, this.AdditionalBehaviors);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveComputeNodeUserConfirm, this.Name),
                 Resources.RemoveComputeNodeUser,
                 this.Name,
                 () => BatchClient.DeleteComputeNodeUser(parameters));
