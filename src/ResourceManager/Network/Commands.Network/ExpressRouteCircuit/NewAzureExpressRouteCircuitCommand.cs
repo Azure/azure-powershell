@@ -23,7 +23,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuit", SupportsShouldProcess = true),
+        OutputType(typeof(PSExpressRouteCircuit))]
     public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -114,24 +115,19 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            var present = this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var expressRouteCircuit = CreateExpressRouteCircuit();
+                    WriteObject(expressRouteCircuit);
+                },
+                () => present);
 
-            if (this.IsExpressRouteCircuitPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateExpressRouteCircuit());
-
-                WriteObject(this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var ExpressRouteCircuit = CreateExpressRouteCircuit();
-
-                WriteObject(ExpressRouteCircuit);
-            }
         }
 
         private PSExpressRouteCircuit CreateExpressRouteCircuit()

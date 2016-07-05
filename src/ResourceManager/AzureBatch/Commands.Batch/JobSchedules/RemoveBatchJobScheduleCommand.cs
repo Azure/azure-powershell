@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule, SupportsShouldProcess = true)]
     public class RemoveBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

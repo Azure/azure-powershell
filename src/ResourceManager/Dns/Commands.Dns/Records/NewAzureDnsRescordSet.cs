@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
+        OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -88,26 +89,25 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            if (this.DnsRecords == null)
-            {
-                this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
-            }
-
             ConfirmAction(
-                !Overwrite.IsPresent || Force.IsPresent,
+                Force.IsPresent,
                 string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.Progress_CreatingRecordSet,
+                ProjectResources.Progress_CreatingEmptyRecordSet,
                 this.Name,
-                () => { result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords); });
+                () =>
+                {
+                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
 
-            if (result != null)
-            {
-                WriteVerbose(ProjectResources.Success);
-                WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
-                WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
-            }
+                    if (result != null)
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                        WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+                    }
 
-            WriteObject(result);
+                    WriteObject(result);
+                },
+                () => Overwrite.IsPresent);
         }
     }
 }

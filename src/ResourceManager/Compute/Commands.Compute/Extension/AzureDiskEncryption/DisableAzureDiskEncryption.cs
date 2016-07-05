@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsLifecycle.Disable,
-        ProfileNouns.AzureDiskEncryption)]
+        ProfileNouns.AzureDiskEncryption, SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -230,8 +230,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                if (this.Force.IsPresent ||
-                    this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption))
+                if (this.ShouldProcess(VMName, Properties.Resources.DisableDiskEncryptionAction)
+                    && (this.Force.IsPresent ||
+                    this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption)))
                 {
                     VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse);
 
