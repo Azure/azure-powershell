@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -25,39 +24,32 @@ namespace Microsoft.Azure.Commands.Media.Common
     /// </summary>
     public class AzureMediaServiceCmdletBase : AzureRMCmdlet
     {
-        private IAzureMediaServices _azureMediaServices;
+        private IMediaServicesManagementClient _mediaServicesManagementClient;
 
-        protected const string DefaultApiVersion = "2015-10-01";
-        protected const string MediaServicesNounStr = "AzureRmMediaServices";
+        protected const string MediaServiceNameAvailabilityStr = "AzureRmMediaServiceNameAvailability";
         protected const string MediaServiceNounStr = "AzureRmMediaService";
         protected const string MediaServiceType = "Microsoft.Media/mediaservices";
         protected const string StorageProvider = "Microsoft.Storage";
         protected const string MediaServiceKeysNounStr = "AzureRmMediaServiceKeys";
         protected const string MediaServiceKeyNounStr = "AzureRmMediaServiceKey";
         protected const string MediaServiceStorageKeysNounStr = "AzureRmMediaServiceStorageKeys";
+        protected const string AccountNameAlias = "Name";
         protected const string MediaServiceAccountNamePattern = @"^[a-z0-9]+$";
         protected const int MediaServiceAccountNameMinLength = 3;
         protected const int MediaServiceAccountNameMaxLength = 26;
+        protected const string MediaServicesType = "mediaservices";
 
         /// <summary>
         /// Get the media service client 
         /// </summary>
-        protected IAzureMediaServices AzureMediaServicesClient
+        protected IMediaServicesManagementClient MediaServicesManagementClient
         {
             get
             {
-                return _azureMediaServices ??
-                       (_azureMediaServices = AzureSession.ClientFactory.CreateArmClient<AzureMediaServices>(DefaultProfile.Context, 
+                return _mediaServicesManagementClient ??
+                       (_mediaServicesManagementClient = AzureSession.ClientFactory.CreateArmClient<MediaServicesManagementClient>(DefaultProfile.Context, 
                        AzureEnvironment.Endpoint.ResourceManager));
             }
-        }
-
-        /// <summary>
-        /// The Subcription Id of the current context
-        /// </summary>
-        protected string SubscriptionId
-        {
-            get { return DefaultProfile.Context.Subscription.Id.ToString(); }
         }
 
         /// <summary>
@@ -66,43 +58,6 @@ namespace Microsoft.Azure.Commands.Media.Common
         protected string SubscrptionName
         {
             get { return DefaultProfile.Context.Subscription.Name; }
-        }
-
-        /// <summary>
-        /// Resource Group Name
-        /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Api Version
-        /// 
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The Api Version")]
-        [ValidateSet(DefaultApiVersion)]
-        public string ApiVersion { get; set; }
-
-        /// <summary>
-        /// Set Api Version
-        /// </summary>
-        protected void SetApiVersion()
-        {
-            if (string.IsNullOrEmpty(ApiVersion))
-            {
-                ApiVersion = DefaultApiVersion;
-            }
-        }
-
-        /// <summary>
-        /// Construct the storage account id
-        /// </summary>
-        /// <param name="storageAccountName"></param>
-        /// <returns></returns>
-        protected string GetStorageAccountId(string storageAccountName)
-        {
-            return string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/{2}/storageAccounts/{3}",
-                SubscriptionId, ResourceGroupName, StorageProvider, storageAccountName);
         }
     }
 }

@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.Media.Models
     /// </summary>
     public class PSStorageAccount
     {
-        private const string StorageAccountKeyFormat = @"\/subscriptions\/(?<{0}>[^/]+)\/resourcegroups\/(?<{1}>[^/]+)\/providers\/Microsoft\.(ClassicStorage|Storage)\/storageAccounts\/(?<{2}>.*)";
+        private const string AccountKeyFormat = @"\/subscriptions\/(?<{0}>[^/]+)\/resourcegroups\/(?<{1}>[^/]+)\/providers\/Microsoft\.(ClassicStorage|Storage)\/storageAccounts\/(?<{2}>.*)";
         private const string SubscriptionIdGroupKey = "subscriptionId";
         private const string ResourceGroupGroupKey = "resourceGroup";
-        private const string StorageAcountNameKey = "storageAcountName";
+        private const string AcountNameKey = "accountName";
 
         public string Id { get; set; }
 
@@ -32,26 +32,26 @@ namespace Microsoft.Azure.Commands.Media.Models
             get
             {
                 var match = Regex.Match(Id,
-                    string.Format(StorageAccountKeyFormat,
+                    string.Format(AccountKeyFormat,
                         SubscriptionIdGroupKey,
                         ResourceGroupGroupKey,
-                        StorageAcountNameKey), RegexOptions.IgnoreCase);
+                        AcountNameKey), RegexOptions.IgnoreCase);
 
                 return match.Groups[ResourceGroupGroupKey].Value;
             }
         }
 
-        public string StorageAccountName
+        public string AccountName
         {
             get
             {
                 var match = Regex.Match(Id,
-                    string.Format(StorageAccountKeyFormat,
+                    string.Format(AccountKeyFormat,
                         SubscriptionIdGroupKey,
                         ResourceGroupGroupKey,
-                        StorageAcountNameKey), RegexOptions.IgnoreCase);
+                        AcountNameKey), RegexOptions.IgnoreCase);
 
-                return match.Groups[StorageAcountNameKey].Value;
+                return match.Groups[AcountNameKey].Value;
             }
         }
     }

@@ -94,6 +94,30 @@ function RemoveStorageAccount([string]$rgname, [string]$name)
 
 <#
 .SYNOPSIS
+Get a storage account
+#>
+function GetStorageAccount
+{
+
+  [CmdletBinding()]
+  param(
+    [string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] $ResourceGroupName,
+    [string] [Parameter(Position=1, ValueFromPipelineByPropertyName=$true)] [alias("StorageAccountName")] $Name)
+  BEGIN { 
+    $context = Get-Context
+	  $client = Get-StorageClient $context
+  }
+  PROCESS {
+    $getTask = $client.StorageAccounts.GetPropertiesAsync($ResourceGroupName, $Name, [System.Threading.CancellationToken]::None)
+    <#$account = New-Object PSObject -Property @{"StorageAccountName" = $Name; "ResourceGroupName" = $ResourceGroupName; }#>
+	  Write-Output $getTask.Result.StorageAccount
+  }
+  END {}
+}
+
+
+<#
+.SYNOPSIS
 Asserts if two tags are equal
 #>
 function Assert-Tags($tags1, $tags2)

@@ -18,29 +18,40 @@ using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Media.Common;
 using Microsoft.Azure.Commands.Media.Models;
 using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.Media.Rest.Models;
+using Microsoft.Azure.Management.Media.Models;
 
 namespace Microsoft.Azure.Commands.Media.ServiceKey
 {
     /// <summary>
     /// List key information for accessing the REST endpoint associated with the media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Show, MediaServiceKeysNounStr), OutputType(typeof(PSServiceKeys))]
-    public class ShowAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
+    [Cmdlet(VerbsCommon.Get, MediaServiceKeysNounStr), OutputType(typeof(PSServiceKeys))]
+    public class GetAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "The media service account name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        public string MediaServiceAccountName { get; set; }
+        [Alias(AccountNameAlias)]
+        public string AccountName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SetApiVersion();
-
             try
             {
-                var serviceKeys = AzureMediaServicesClient.MediaservicesListKeys(SubscriptionId, ResourceGroupName, MediaServiceAccountName, ApiVersion);
+                var serviceKeys = MediaServicesManagementClient.MediaServices.ListKeys(ResourceGroupName, AccountName);
                 WriteObject(serviceKeys.ToPSServiceKeys(), true);
             }
             catch (ApiErrorException exception)
@@ -48,10 +59,11 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
                 if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                 {
                     throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        MediaServiceAccountName,
+                        AccountName,
                         SubscrptionName,
                         ResourceGroupName));
                 }
+                throw;
             }
         }
     }

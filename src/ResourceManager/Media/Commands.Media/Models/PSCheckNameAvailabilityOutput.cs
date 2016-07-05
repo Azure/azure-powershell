@@ -12,26 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Media.Common;
-using Microsoft.Azure.Commands.Media.Models;
-using Microsoft.Azure.Management.Media;
-
-namespace Microsoft.Azure.Commands.Media.MediaService
+namespace Microsoft.Azure.Commands.Media.Models
 {
     /// <summary>
-    /// Show all media services under the given subscription.
+    /// The PSCheckNameAvailabilityOutput
     /// </summary>
-    [Cmdlet(VerbsCommon.Show, MediaServicesNounStr), OutputType(typeof(PSMediaService))]
-    public class ShowAzureRmMediaServices : AzureMediaServiceCmdletBase
+    public class PSCheckNameAvailabilityOutput
     {
-        public override void ExecuteCmdlet()
-        {
-            SetApiVersion();
+        public bool NameAvailable { get; set; }
 
-            var mediaServices = AzureMediaServicesClient.GetAllMediaservices(SubscriptionId, ResourceGroupName, ApiVersion);
-            WriteObject(mediaServices.Value.Select(x => x.ToPSMediaService()).ToList(), true);
-        }
+        public string Reason { get; set; }
+
+        public string Message { get; set; }
     }
 }
