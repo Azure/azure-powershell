@@ -154,6 +154,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to the &apos;{0}&apos; resource named &apos;{1}&apos; in resource group &apos;{2}&apos;.
+        /// </summary>
+        public static string ResourceConfirmTarget {
+            get {
+                return ResourceManager.GetString("ResourceConfirmTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the resource with identity &apos;{0}&apos;.
+        /// </summary>
+        public static string ResourceIdConfirmTarget {
+            get {
+                return ResourceManager.GetString("ResourceIdConfirmTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attempting to register resource provider &apos;{0}&apos;.
         /// </summary>
         public static string ResourceProviderRegisterAttempt {

@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using System.Text;
 
-    [Cmdlet(VerbsData.Export, Constants.ApiManagementApi, DefaultParameterSetName = ExportContentToPipeline)]
+    [Cmdlet(VerbsData.Export, Constants.ApiManagementApi, DefaultParameterSetName = ExportContentToPipeline, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class ExportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -93,12 +94,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportWarning, SaveAs);
 
                 // Do nothing if force is not specified and user cancelled the operation
-                if (File.Exists(SaveAs) &&
-                    !Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
+                if (!ShouldProcess(ApiId,
+                        actionDescription) || (File.Exists(SaveAs) &&
+                    !Force.IsPresent && !ShouldContinue(actionWarning, Resources.ShouldProcessCaption)))
                 {
                     if (PassThru)
                     {

@@ -28,13 +28,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <summary>
         /// Saves a template file into specific directory.
         /// </summary>
-        /// <param name="deploymentName">The deployment name</param>
+        /// <param name="templateName">The template name</param>
         /// <param name="contents">The template contents</param>
         /// <param name="outputPath">The file output path</param>
         /// <param name="overwrite">Overrides existing file</param>
-        /// <param name="confirmAction">The confirmation action</param>
+        /// <param name="shouldContinue">The confirmation action</param>
         /// <returns>The file path</returns>
-        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Action<bool, string, string, string, Action> confirmAction)
+        public static string SaveTemplateFile(string templateName, string contents, string outputPath, bool overwrite, Func<string, string, bool> shouldContinue)
         {
             StringBuilder finalOutputPath = new StringBuilder();
 
@@ -59,16 +59,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
             Action saveFile = () => FileUtilities.DataStore.WriteFile(finalOutputPath.ToString(), contents);
 
-            if (FileUtilities.DataStore.FileExists(finalOutputPath.ToString()) && confirmAction != null)
-            {
-                confirmAction(
-                    overwrite,
-                    string.Format(ProjectResources.FileAlreadyExists, finalOutputPath.ToString()),
-                    ProjectResources.OverrdingFile,
-                    finalOutputPath.ToString(),
-                    saveFile);
-            }
-            else
+            if (!FileUtilities.DataStore.FileExists(finalOutputPath.ToString()) 
+                || overwrite
+                || (shouldContinue != null && shouldContinue(string.Format(ProjectResources.FileAlreadyExists, finalOutputPath),
+                    ProjectResources.OverrdingFile)))
             {
                 saveFile();
             }

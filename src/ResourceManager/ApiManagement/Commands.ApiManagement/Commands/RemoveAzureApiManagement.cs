@@ -12,13 +12,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System;
+
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagement", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -42,6 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         /// Gets or sets the switch to not confirm on the removal API Management service.
         /// </summary>
         [Parameter(HelpMessage = "Do not confirm on the removal of the API Management service.")]
+        [Obsolete("Force parameter will be removed in an upcoming release", false)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -57,8 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 Name);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))

@@ -122,30 +122,21 @@ namespace Microsoft.Azure.Commands.DataFactories
                     { ResourceGroupName = parameters.ResourceGroupName };
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the data factory exists or not.
-                createDataFactory();
-            }
-            else
-            {
-                bool dataFactoryExists = CheckDataFactoryExists(parameters.ResourceGroupName, parameters.DataFactoryName);
-
-                parameters.ConfirmAction(
-                    !dataFactoryExists,    // prompt only if the data factory exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DataFactoryExists,
-                        parameters.DataFactoryName,
-                        parameters.ResourceGroupName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DataFactoryCreating,
-                        parameters.DataFactoryName,
-                        parameters.ResourceGroupName),
+            parameters.ConfirmAction(
+                parameters.Force,    // prompt only if the data factory exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryExists,
                     parameters.DataFactoryName,
-                    createDataFactory);
-            }
+                    parameters.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryCreating,
+                    parameters.DataFactoryName,
+                    parameters.ResourceGroupName),
+                parameters.DataFactoryName,
+                createDataFactory,
+                () => CheckDataFactoryExists(parameters.ResourceGroupName, parameters.DataFactoryName, out dataFactory));
 
             if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataFactory.ProvisioningState))
             {
@@ -158,12 +149,13 @@ namespace Microsoft.Azure.Commands.DataFactories
             return dataFactory;
         }
 
-        private bool CheckDataFactoryExists(string resourceGroupName, string dataFactoryName)
+        private bool CheckDataFactoryExists(string resourceGroupName, string dataFactoryName, out PSDataFactory dataFactory)
         {
+            dataFactory = null;
             // ToDo: use HEAD to check if a resource exists or not
             try
             {
-                PSDataFactory dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
+                dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
 
                 return true;
             }
