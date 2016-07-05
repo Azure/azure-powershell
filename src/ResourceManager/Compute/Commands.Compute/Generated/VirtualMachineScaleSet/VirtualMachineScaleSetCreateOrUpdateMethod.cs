@@ -121,7 +121,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetCreateOrUpdate";
-            base.ProcessRecord();
+
+            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsCommon.New))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -178,7 +182,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetCreateOrUpdate";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsData.Update))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

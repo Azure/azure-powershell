@@ -74,56 +74,59 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(VirtualMachineADDomainExtensionContext.ExtensionDefaultName, VerbsCommon.Set))
             {
-                Hashtable publicSettings = new Hashtable();
-                publicSettings.Add(nameKey, this.DomainName);
-
-                if (this.OUPath != null)
+                ExecuteClientAction(() =>
                 {
-                    publicSettings.Add(ouPathKey, this.OUPath);
-                }
+                    Hashtable publicSettings = new Hashtable();
+                    publicSettings.Add(nameKey, this.DomainName);
 
-                if (this.JoinOption != null)
-                {
-                    publicSettings.Add(optionKey, this.JoinOption);
-                }
+                    if (this.OUPath != null)
+                    {
+                        publicSettings.Add(ouPathKey, this.OUPath);
+                    }
 
-                publicSettings.Add(restartKey, Restart.IsPresent);
+                    if (this.JoinOption != null)
+                    {
+                        publicSettings.Add(optionKey, this.JoinOption);
+                    }
 
-                Hashtable privateSettings = new Hashtable();
-                if (Credential != null)
-                {
-                    publicSettings.Add(userKey, Credential.UserName);
-                    privateSettings.Add(passwordKey, SecureStringExtensions.ConvertToString(this.Credential.Password));
-                }
+                    publicSettings.Add(restartKey, Restart.IsPresent);
 
-                if (string.IsNullOrEmpty(this.Location))
-                {
-                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
-                }
+                    Hashtable privateSettings = new Hashtable();
+                    if (Credential != null)
+                    {
+                        publicSettings.Add(userKey, Credential.UserName);
+                        privateSettings.Add(passwordKey, SecureStringExtensions.ConvertToString(this.Credential.Password));
+                    }
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Publisher = VirtualMachineADDomainExtensionContext.ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultVersion,
-                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = this.ForceRerun,
-                    Settings = publicSettings,
-                    ProtectedSettings = privateSettings
-                };
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
-                    parameters).GetAwaiter().GetResult();
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = VirtualMachineADDomainExtensionContext.ExtensionDefaultPublisher,
+                        VirtualMachineExtensionType = VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
+                        TypeHandlerVersion = this.TypeHandlerVersion ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultVersion,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun,
+                        Settings = publicSettings,
+                        ProtectedSettings = privateSettings
+                    };
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name ?? VirtualMachineADDomainExtensionContext.ExtensionDefaultName,
+                        parameters).GetAwaiter().GetResult();
+
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }
