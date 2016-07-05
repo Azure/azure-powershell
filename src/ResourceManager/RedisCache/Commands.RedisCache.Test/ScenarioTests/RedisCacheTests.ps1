@@ -447,7 +447,7 @@ function Test-ExportAzureRmRedisCache
     $resourceGroupName = "SunnyAAPT6"
     $cacheName = "sunny-importexport"
     $prefix = "sunny"
-    $container = "https://sunnystoragenew.blob.core.windows.net/sunny-importexport?sv=2015-04-05&sr=c&sig=HezZtBZ3DURmEGDduauE7pvETY4kqlPI8JCNa8ATmaw%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwdl"
+    $container = "<container sas key>"
     Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container
 }
 
@@ -459,7 +459,7 @@ function Test-ImportAzureRmRedisCache
 {
     $resourceGroupName = "SunnyAAPT6"
     $cacheName = "sunny-importexport"
-    $files = @("https://sunnystoragenew.blob.core.windows.net/sunny-importexport/sunny?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd")
+    $files = @("<blob sas key>")
     Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
 }
 
