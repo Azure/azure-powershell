@@ -1,16 +1,6 @@
-﻿# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
+﻿#------------------------------------------------------------
+# Copyright (c) Microsoft Corporation.  All rights reserved.
+#------------------------------------------------------------
 
 function Get-ResourceProviderRegistration
 {
@@ -20,191 +10,82 @@ function Get-ResourceProviderRegistration
     }
     else
     {
-        $providers = Get-AzureRMResourceProviderRegistration -ResourceGroup $systemResourceGroup -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $ApiVersion
+        $providers = Get-AzureRMResourceProviderRegistration -ResourceGroup $systemResourceGroup `
+            -SubscriptionId $Global:AzureStackConfig.SubscriptionId `
+            -AdminUri $Global:AzureStackConfig.AdminUri `
+            -Token $Global:AzureStackConfig.Token `
+            -ApiVersion $ApiVersion
     }
 
     return $providers
 }
 
-function Get-SQLRPDefaultQuota
+function Get-SqlRpQuotas
 {
-    $ApiVersion = "1.0"
-    $providerNamespace = "Microsoft.Sql"
-    $systemResourceGroup = "System"
+    $getSqlQuota = @{
+        Uri = "{0}subscriptions/{1}/providers/Microsoft.Sql.Admin/locations/{2}/quotas?api-version=2014-04-01-preview" -f $Global:AzureStackConfig.AdminUri, $Global:AzureStackConfig.SubscriptionId, $Global:AzureStackConfig.ArmLocation
+        Method = "GET"
+        Headers = @{ "Authorization" = "Bearer " + $Global:AzureStackConfig.Token }
+        ContentType = "application/json"
+    }
 
-    $defaultQuotaSettings = @{}
-    $editions = @()
-    $quota = @{}
-    $quota.maxDatabaseSize = 1024
-    $quota.maxDatabaseCount = 10000
-    $quota.name = "Web"
-    $quota.displayName = "Web"
-    $quota.baseDatabaseSize = 10
-    $editions += $quota
-    $defaultQuotaSettings.editions = $editions
+    $sqlQuota = Invoke-RestMethod @getSqlQuota
 
-    $providers = Get-ResourceProviderRegistration
-    $sqlProvider = $providers.Properties | Where-Object {$_.Manifest.Namespace -eq $providerNamespace }
-
-    $sqlDefaultQuota = [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]@{
-         Location = "redmond"
-         QuotaSyncState = "InSync"
-         ResourceProviderId = "SQL-REDMOND"
-         ResourceProviderNameSpace = "Microsoft.Sql"
-         ResourceProviderDisplayName = "Sql"
-         QuotaSettings = $defaultQuotaSettings | ConvertTo-Json
-       }
-
-    return $sqlDefaultQuota
+    Write-Output $sqlQuota.value
 }
 
 function Get-SubscriptionsDefaultQuota
 {
-    $ApiVersion = "1.0"
-    $providerNamespace = "Microsoft.Subscriptions"
-    $systemResourceGroup = "System"
-
-    $defaultQuotaSettings = @{}
-    $delegatedProviderQuotas = @{
-        maximumDelegationDepth = 2
-        allowCustomPortalBranding = $false
-        allowResourceProviderRegistration = $false
-        delegatedOffers=@()
-    }
-
-    $defaultQuotaSettings.delegatedProviderQuotas = $delegatedProviderQuotas
-
-    $providers = Get-ResourceProviderRegistration
-    $subscriptionsProvider = $providers.Properties | Where-Object {$_.Manifest.Namespace -eq $providerNamespace }
-
-    $subscriptionsDefaultQuota = [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]@{
-        location = $subscriptionsProvider.Location
-        quotaSyncState = "InSync"
-        resourceProviderDisplayName = ""
-        resourceProviderId = $subscriptionsProvider.Name
-        resourceProviderNameSpace = $subscriptionsProvider.Manifest.Namespace
-        quotaSettings = $defaultQuotaSettings | ConvertTo-Json
-    }
-
-   return $subscriptionsDefaultQuota
+	$defaultQuota = "/subscriptions/{0}/providers/Microsoft.Subscriptions.Admin/locations/local/quotas/delegatedProviderQuota" -f $Global:AzureStackConfig.SubscriptionId
+    Write-Output $defaultQuota
 }
 
-function Get-SubscriptionsQuota
+function Get-SqlRpDefaultQuota
 {
-    param
-    (
-        [Parameter(Mandatory=$false)]
-        [String[]] $DelegatedOfferNames
-    )
-
-    $quota = Get-SubscriptionsDefaultQuota
-
-    $delegatedOffers=@()
-   
-
-    $quotaSettings =  $quota.QuotaSettings | ConvertFrom-Json
-
-     foreach ($offerName in $DelegatedOfferNames)
-    {
-        $delegatedOffers +=  @{
-                                   offerName = $offerName
-                                   accessibilityState = "Private"
-                              }
-    }
-
-    #$quotaSettings.delegatedProviderQuotas.maximumDelegationDepth = 5
-    $quotaSettings.delegatedProviderQuotas.delegatedOffers += $delegatedOffers
-    $qsJson = $quotaSettings | ConvertTo-Json -Depth 4
-
-	$quota.QuotaSettings = $qsJson
-    Write-Output $quota
+    $sqlQuotas=Get-SqlRpQuotas
+    return $sqlQuotas[0].id
 }
 
 function Get-StorageDefaultQuota
 {
-    $ApiVersion = "1.0"
-    $providerNamespace = "Microsoft.Storage"
-    $systemResourceGroup = "System"
+    # Assumption - RP location is same as ARM
+    # Idempotent PUT call, creates it if does not exist
+    $quota = New-StorageQuota -QuotaName "Basic" -Location $Global:AzureStackConfig.ArmLocation
 
-    $defaultQuotaSettings = @{
-        maxCapacityInGB = 500
-        maxStorageAccounts = 20
-    }
-    
-    $providers = Get-ResourceProviderRegistration    
-    $subscriptionsProvider = $providers.Properties | Where-Object {$_.Manifest.Namespace -eq $providerNamespace }
-
-    $defaultQuota = [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]@{
-        location = $subscriptionsProvider.Location
-        quotaSyncState = "InSync"
-        resourceProviderDisplayName = ""
-        resourceProviderId = $subscriptionsProvider.Name
-        resourceProviderNameSpace = $subscriptionsProvider.Manifest.Namespace
-        quotaSettings = $defaultQuotaSettings | ConvertTo-Json
-    }
-
-   Write-Output $defaultQuota
-}
-
-
-function Get-NetworkDefaultQuota
-{
-    $ApiVersion = "1.0"
-    $providerNamespace = "Microsoft.Network"
-    $systemResourceGroup = "System"
-
-    $defaultQuotaSettings = @{
-        egressMaxBandwdith = 100
-        egressReservedBandwidth = 25
-        ingressMaxBandwith = 10
-        virtualNetworks = 25
-        publicIPAddresses = 5
-        gateways = 2
-        networkInterfaces = 100
-    }
-
-    $providers = Get-ResourceProviderRegistration
-    $subscriptionsProvider = $providers.Properties | Where-Object {$_.Manifest.Namespace -eq $providerNamespace }
-
-    $defaultQuota = [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]@{
-        location = $subscriptionsProvider.Location
-        quotaSyncState = "InSync"
-        resourceProviderDisplayName = ""
-        resourceProviderId = $subscriptionsProvider.Name
-        resourceProviderNameSpace = $subscriptionsProvider.Manifest.Namespace
-        quotaSettings = $defaultQuotaSettings | ConvertTo-Json
-    }
-
-   Write-Output $defaultQuota
+    Write-Output $quota.Id
 }
 
 function Get-ComputeDefaultQuota
 {
-    $ApiVersion = "1.0"
-    $providerNamespace = "Microsoft.Compute"
-    $systemResourceGroup = "System"
-    $name = [System.Guid]::NewGuid().ToString()
+    # Assumption - RP location is same as ARM
+    # Idempotent PUT call, creates it if does not exist
+    $quota = New-ComputeQuota -QuotaName "Basic" -Location $Global:AzureStackConfig.ArmLocation
 
-    $defaultQuotaSettings = @{
-          numberOfVMs = -1
-          amountOfMemory = -1
-          numberOfCPUs= -1
-          name= $name
+    Write-Output $quota.Id
+}
+
+function Get-NetworkDefaultQuota
+{
+    # Assumption - RP location is same as ARM
+    # Idempotent PUT call, creates it if does not exist
+    $quota = New-NetworkQuota -QuotaName "Basic" -Location $Global:AzureStackConfig.ArmLocation
+
+    Write-Output $quota.Id
+}
+
+function Get-KeyvaultDefaultQuota
+{
+    $getKeyvaultQuota = @{
+        Uri = "{0}subscriptions/{1}/providers/Microsoft.Keyvault.Admin/locations/{2}/quotas?api-version=2014-04-01-preview" -f $Global:AzureStackConfig.AdminUri, $Global:AzureStackConfig.SubscriptionId, $Global:AzureStackConfig.ArmLocation
+        Method = "GET"
+        Headers = @{ "Authorization" = "Bearer " + $Global:AzureStackConfig.Token }
+        ContentType = "application/json"
     }
 
-    $providers = Get-ResourceProviderRegistration
-    $subscriptionsProvider = $providers.Properties | Where-Object {$_.Manifest.Namespace -eq $providerNamespace }
+    # keyvault Creates only one default quota 'unlimited' as part of the deployment, just get that 
+    $keyvaultQuota = Invoke-RestMethod @getKeyvaultQuota
 
-    $defaultQuota = [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]@{
-        location = $subscriptionsProvider.Location
-        quotaSyncState = "InSync"
-        resourceProviderDisplayName = ""
-        resourceProviderId = $subscriptionsProvider.Name
-        resourceProviderNameSpace = $subscriptionsProvider.Manifest.Namespace
-        quotaSettings = $defaultQuotaSettings | ConvertTo-Json
-    }
-
-   Write-Output $defaultQuota
+    Write-Output $keyvaultQuota.value.Id
 }
 
 function Set-Offer
@@ -243,18 +124,13 @@ function Set-Plan
         [PSObject] $Plan,
 
         [Parameter(Mandatory=$true)]
-        [String] $ResourceGroup,
+        [String] $ResourceGroup
 
-        [Parameter(Mandatory=$true)]
-        [ValidateSet("Public", "Private", "Decommissioned")]
-        [String] $State
     )
-
-    $Plan.properties.state = $State
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        $Plan | Set-AzureRMPlan -ResourceGroup $ResourceGroup -SubscriptionId $Global:AzureStackConfig.SubscriptionId
+        $Plan | Set-AzureRMPlan -ResourceGroup $ResourceGroup 
     }
     else
     {
@@ -268,44 +144,39 @@ function Get-ServiceQuotas
 {
     param
     (
-        [Parameter(Mandatory=$false)]
-        [String[]] $rpServices,
-
-        [Parameter(Mandatory=$false)]
-        [String[]] $DelegatedOfferNames
+        [Parameter(Mandatory=$true)]
+        [String[]] $Services
     )
 
-    $serviceQuotas = New-Object "System.Collections.Generic.List``1 [Microsoft.AzureStack.Management.Models.ServiceQuotaDefinition]"
-    $serviceNames = $rpServices -split ","
-    foreach ($service in $serviceNames)
+    $serviceQuotas = @()
+    
+    foreach ($service in $Services)
     {
        switch($service)
        {
             "Microsoft.Sql" { 
-			            $serviceQuota = Get-SQLRPDefaultQuota
-                        $serviceQuotas.Add($serviceQuota)
+                        $serviceQuotas  += Get-SQLRPDefaultQuota
                     } 
-            "Microsoft.Subscriptions" {
-                         $serviceQuota = Get-SubscriptionsQuota -DelegatedOfferNames $DelegatedOfferNames
-                         $serviceQuotas.Add($serviceQuota)
-                    }
+            "Microsoft.Subscriptions" { 
+                        $serviceQuotas  += Get-SubscriptionsDefaultQuota
+                    } 
             "Microsoft.Storage" { 
-			            $serviceQuota = Get-StorageDefaultQuota
-                        $serviceQuotas.Add($serviceQuota)
-                    }  
-            "Microsoft.Network"  { 
-			            $serviceQuota = Get-NetworkDefaultQuota
-                        $serviceQuotas.Add($serviceQuota)
-                    }
-            "Microsoft.Compute" { 
-			            $serviceQuota = Get-ComputeDefaultQuota
-                        $serviceQuotas.Add($serviceQuota)
+                        $serviceQuotas  += Get-StorageDefaultQuota
                     } 
-            Default { "Wrong service name provided" }
+            "Microsoft.Compute" { 
+                        $serviceQuotas  += Get-ComputeDefaultQuota
+                    } 
+            "Microsoft.Network" { 
+                        $serviceQuotas  += Get-NetworkDefaultQuota
+                    } 
+            "Microsoft.Keyvault" { 
+                        $serviceQuotas  += Get-KeyvaultDefaultQuota
+                    } 
+            Default { throw "Wrong service name provided" }
        }
     }
 
-    return ,$serviceQuotas
+    return $serviceQuotas
 }
 
 function New-Plan
@@ -320,51 +191,23 @@ function New-Plan
         [String[]] $Services,
 
         [Parameter(Mandatory=$true)]
-        [String] $ResourceGroupName,
-
-        [String[]] $DelegatedOfferNames
+        [String] $ResourceGroupName
     )
 
     Write-Verbose "Creating the plan: $PlanName"
 
-    $name = [System.Guid]::NewGuid().ToString()
+    $quotaIds = Get-ServiceQuotas -Services $Services
 
-    $putPlan = @{
-        Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/" + $Global:AzureStackConfig.SubscriptionId + "/resourcegroups/${ResourceGroupName}/providers/Microsoft.Subscriptions/plans/${PlanName}?api-version=1.0"
-        Method = "PUT"
-        Headers = @{ "Authorization" = "Bearer " + $Global:AzureStackConfig.Token }
-        ContentType = "application/json"
+    if ($Global:AzureStackConfig.IsAAD)
+    {
+        $plan = New-AzureRMPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -QuotaIds $quotaIds -ApiVersion $Global:AzureStackConfig.ApiVersion
+    }
+    else
+    {
+        $plan = New-AzureRMPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -QuotaIds $quotaIds -ApiVersion $Global:AzureStackConfig.ApiVersion  -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token 
     }
 
-    $plan = New-AzureRMPlan -Name $PlanName -DisplayName $PlanName -State Private -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName
     Write-Verbose "Plan created successfully: $PlanName"
-
-    #$quotaDefinition = $plan.Properties.ServiceQuotas | Where ResourceProviderNamespace –ieq ‘Microsoft.Subscriptions’ | Select –First 1
-    #$quotaDefinition.QuotaSettings 
-    $serviceQuotas = Get-ServiceQuotas  -rpServices $Services -DelegatedOfferNames $DelegatedOfferNames
-    $plan.Properties.ServiceQuotas =  $serviceQuotas
-
-    #$rpServiceQuotas = @($serviceQuotas)
-
-    <#$planRequestBody = [pscustomobject]@{
-        name = $PlanName
-        location = $Global:AzureStackConfig.ArmLocation
-        tags = @{}
-        type = "Microsoft.Subscriptions/plans"
-        properties = [pscustomobject]@{
-               displayName = $PlanName
-               name = $PlanName
-               quotaSyncState = "InSync"
-               state = "Private"
-               serviceQuotas = $rpServiceQuotas
-            }
-    }
-
-    # Make the API call
-    $planCreated = $planRequestBody | ConvertTo-Json -Depth 7 | Invoke-RestMethod @putPlan
-    #>
-    Write-Verbose "Setting plan quotas"
-    $plan | Set-AzureRMPlan -ResourceGroup $ResourceGroupName
 
     $plan = Get-Plan -PlanName $PlanName -ResourceGroupName $ResourceGroupName
 
@@ -374,6 +217,7 @@ function New-Plan
     Write-Output $plan
 }
 
+# TODO: pass subscription id when needed
 function Remove-Plan
 {
  param
@@ -400,6 +244,7 @@ function Remove-Plan
     Write-Verbose "Deleted the plan successfully: $PlanName"
 }
 
+# TODO: pass subscription id when needed
 function Get-Plan
 {
  param
@@ -422,7 +267,6 @@ function Get-Plan
     }
 }
 
-
 function New-Offer
 {
  param
@@ -432,7 +276,7 @@ function New-Offer
         [String] $OfferName,
 
         [Parameter(Mandatory=$false)]
-        [PSObject] $BasePlan,
+        [string[]] $BasePlanIds,
 
         [Parameter(ValueFromPipeline=$true, Mandatory=$true, ValueFromPipelineByPropertyName=$true)]
         [String] $ResourceGroupName
@@ -440,11 +284,11 @@ function New-Offer
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        $offer = New-AzureRMOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlans @($BasePlan) -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -SubscriptionId $AzureStackConfig.SubscriptionId
+        $offer = New-AzureRMOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlanIds $BasePlanIds -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName
     }
     else
     {
-        $offer = New-AzureRMOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlans @($BasePlan) -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -SubscriptionId $AzureStackConfig.SubscriptionId -Token $AzureStackConfig.Token -AdminUri $AzureStackConfig.AdminUri -ApiVersion $AzureStackConfig.ApiVersion
+        $offer = New-AzureRMOffer -Name $OfferName -DisplayName $OfferName -State Private -BasePlanIds $BasePlanIds -ArmLocation $AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -SubscriptionId $AzureStackConfig.SubscriptionId -Token $AzureStackConfig.Token -AdminUri $AzureStackConfig.AdminUri -ApiVersion $AzureStackConfig.ApiVersion
     }
 
     Assert-NotNull $offer
@@ -516,49 +360,39 @@ function Get-Offer
             {
                 return Get-AzureRMOffer -Provider "default" -AdminUri $AzureStackConfig.AdminUri -Token $Token -ApiVersion $AzureStackConfig.ApiVersion | where name -eq $OfferName
             }
+            #ToDo- Not to hardcode default
         }
     }
 }
+
 
 function New-Subscription
 {
     param
     (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$true, ParameterSetName="Admin")]
         [String] $SubscriptionUser,
 
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$true, ParameterSetName="Admin")]
+        [Parameter(Mandatory=$true, ParameterSetName="Tenant")]
         [String] $OfferId,
 
-        [String] $Token,
-
-        [Switch] $Managed
+        [Parameter(Mandatory=$false, ParameterSetName="Tenant")]
+        [String] $Token
     )
 
     Write-Verbose "Creating the subscription for the user : $SubscriptionUser"
-    $subDisplayName = "$SubscriptionUser Test User"
+    $subDisplayName = "Test User-$SubscriptionUser"
 
-    if ($Managed)
+    switch ($PsCmdlet.ParameterSetName)
     {
-        if ($Global:AzureStackConfig.IsAAD)
+        "Admin"
         {
-            $subscription = New-AzureRmManagedSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName 
+                $subscription = New-AzureRmManagedSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName -SubscriptionId $Global:AzureStackConfig.SubscriptionId
         }
-        else
+        "Tenant"
         {
-            $subscription = New-AzureRmManagedSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $Global:AzureStackConfig.ApiVersion
-            $Token = $Global:AzureStackConfig.Token
-        }
-    }
-    else
-    {
-        if ($Global:AzureStackConfig.IsAAD)
-        {
-            $subscription = New-AzureRmTenantSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName
-        }
-        else
-        {
-            $subscription = New-AzureRmTenantSubscription -Owner $SubscriptionUser -OfferId $OfferId -DisplayName $subDisplayName -AdminUri $Global:AzureStackConfig.AdminUri -Token $token -ApiVersion $Global:AzureStackConfig.ApiVersion
+                $subscription = New-AzureRmTenantSubscription  -OfferId $OfferId -DisplayName $subDisplayName
         }
     }
 
@@ -568,14 +402,9 @@ function New-Subscription
         Token = $Token
         }
 
-    if ($Global:AzureStackConfig.IsAAD)
-    {
-        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId).QuotaSyncState -ieq "InSync"} -MaxTries 12 -IntervalInSeconds 5 | Out-Null
-    }
-    else
-    {
-        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token).QuotaSyncState -ieq "InSync"} -MaxTries 12 -IntervalInSeconds 5 | Out-Null
-    }
+    Retry-Function -ScriptBlock {
+        (Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId).State -ieq "Enabled"
+    } -MaxTries 12 -IntervalInSeconds 5 | Out-Null
 
     Write-Verbose "Successfully created the subscription for user : $SubscriptionUser"
     return $subscription
@@ -591,11 +420,15 @@ function Get-Subscription
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        return AzureRm.AzureStackAdmin\Get-AzureRmManagedSubscription -TargetSubscriptionId $SubscriptionId
+        return Get-AzureRmManagedSubscription -TargetSubscriptionId $SubscriptionId
     }
     else
     {
-        return AzureRm.AzureStackAdmin\Get-AzureRmManagedSubscription -TargetSubscriptionId $SubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $Global:AzureStackConfig.ApiVersion
+        return Get-AzureRmManagedSubscription -TargetSubscriptionId $SubscriptionId `
+        -SubscriptionId $Global:AzureStackConfig.SubscriptionId `
+        -AdminUri $Global:AzureStackConfig.AdminUri `
+        -Token $Global:AzureStackConfig.Token `
+        -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
 }
 
@@ -613,14 +446,14 @@ function Remove-Subscription
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        Set-AzureRMManagedSubscription -Subscription $subscription
-        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId).QuotaSyncState -ieq "InSync"} -MaxTries 12 -IntervalInSeconds 5
-        Remove-AzureRmManagedSubscription -TargetSubscriptionId $TargetSubscriptionId
+        Set-AzureRMManagedSubscription -Subscription $subscription  -ApiVersion $Global:AzureStackConfig.ApiVersion
+        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId).State -ieq "Disabled"} -MaxTries 12 -IntervalInSeconds 5
+        Remove-AzureRmManagedSubscription -TargetSubscriptionId $TargetSubscriptionId  -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
     else
     {
         Set-AzureRMManagedSubscription -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -Subscription $subscription 
-        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token).QuotaSyncState -ieq "InSync"} -MaxTries 12 -IntervalInSeconds 5
+        Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token).State -ieq "Disabled"} -MaxTries 12 -IntervalInSeconds 5
         Remove-AzureRmManagedSubscription -TargetSubscriptionId $TargetSubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
     
@@ -636,9 +469,10 @@ function Get-TenantPublicOffers
         [String] $Token
     )
 
+    #ToDo- Not to hardcode default
     if ($Global:AzureStackConfig.IsAAD)
     {
-        return Get-AzureRMOffer -Provider "default"
+        return Get-AzureRMOffer -Provider "default"  -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
     else
     {
@@ -671,7 +505,7 @@ function Get-DeploymentStatus
     param
     (
         [Parameter(Mandatory=$true)]
-        [string] $DeploymentName,
+        [string] $ResourceType,
 
         [Parameter(Mandatory=$true)]
         [string] $ResourceGroupName,
@@ -683,12 +517,53 @@ function Get-DeploymentStatus
         [string] $Token
     )
 
-    $deploymentUri = "{0}subscriptions/{1}/resourcegroups/{2}/deployments/{3}?api-version=1.0" -f  $Global:AzureStackConfig.AdminUri, $SubscriptionId, $ResourceGroupName, $DeploymentName
+    $deploymentUri = "{0}subscriptions/{1}/resourcegroups/{2}/deployments/{3}?api-version={4}" -f  $Global:AzureStackConfig.AdminUri, $SubscriptionId, $ResourceGroupName, $ResourceType, $Global:AzureStackConfig.ApiVersion
     $deploymentHeaders = @{ "Authorization" = "Bearer "+ $Token }
     $deploymentContentType = "application/json"
 
     $deploymentResponse = Invoke-RestMethod -Method Get -Uri $deploymentUri -Headers $deploymentHeaders -ContentType $deploymentContentType
 
     return $deploymentResponse.properties.provisioningState
+}
+
+function Register-ResourceProvider
+{
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [string[]] $Namespaces
+    )
+
+    foreach ($namespace in $Namespaces)
+    {
+        Register-AzureRmResourceProvider -ProviderNamespace $Namespace -Force
+    }
+
+    # TODO: Remove the need for this sleep
+    # BUG 7391118: Expose QuotaSyncState thru Get Admin and Tenant subscription
+    Start-Sleep -Seconds 30
+}
+
+function Unregister-ResourceProvider
+{
+    param
+    (
+        [Parameter(Mandatory=$false)]
+        [string] $SubscriptionId,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [string[]] $Namespaces
+    )
+
+    foreach ($namespace in $Namespaces)
+    {
+        Unregister-AzureRmResourceProvider -ProviderNamespace $Namespace -Force
+    }
+
+    # TODO: Remove the need for this sleep
+    # BUG 7391118: Expose QuotaSyncState thru Get Admin and Tenant subscription
+    Start-Sleep -Seconds 30
 }
 

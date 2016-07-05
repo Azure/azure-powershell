@@ -108,11 +108,11 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6030.17499-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5896.19355-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.6030.17499-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +126,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="AuthOperations.psm1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="CommonOperations.psm1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -134,7 +134,9 @@
     <None Include="GlobalVariables.psm1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Utilities.psm1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
