@@ -221,6 +221,12 @@
     <None Include="ScenarioTests\RedisCacheTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestExportAzureRmRedisCache.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestImportAzureRmRedisCache.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestRedisCache.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -231,6 +237,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestRemoveAzureRedisCacheDiagnostics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestResetAzureRmRedisCache.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestSetAzureRedisCacheDiagnostics.json">
