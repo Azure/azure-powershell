@@ -23,7 +23,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRouteTable", SupportsShouldProcess = true),
+        OutputType(typeof(PSRouteTable))]
     public class NewAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -67,27 +68,20 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
-
-            if (this.IsRouteTablePresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => this.CreateRouteTable());
-
-                WriteObject(this.GetRouteTable(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var routeTable = this.CreateRouteTable();
-
-                WriteObject(routeTable);
-            }
+            var present = this.IsRouteTablePresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var routeTable = this.CreateRouteTable();
+                    WriteObject(routeTable);
+                },
+                () => present);
         }
 
         private PSRouteTable CreateRouteTable()

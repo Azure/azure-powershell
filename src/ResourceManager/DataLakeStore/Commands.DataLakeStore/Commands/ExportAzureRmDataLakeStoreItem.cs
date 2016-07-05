@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
@@ -22,7 +23,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -84,26 +85,31 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
 
             FileType type;
+            ConfirmAction(
+                VerbsData.Export,
+                Path.TransformedPath,
+                () =>
+                {
+                    if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type))
+                    {
+                        throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
+                    }
 
-            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type))
-            {
-                throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
-            }
+                    if (type == FileType.FILE)
+                    {
+                        DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
+                            isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount);
+                    }
+                    else
+                    {
+                        DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
+                            CmdletCancellationToken,
+                            isDownload: true, overwrite: Force, cmdletRunningRequest: this,
+                            perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse);
+                    }
 
-            if (type == FileType.FILE)
-            {
-                DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
-                    isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount);
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
-                    CmdletCancellationToken,
-                    isDownload: true, overwrite: Force, cmdletRunningRequest: this,
-                    perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse);
-            }
-
-            WriteObject(powerShellReadyPath);
+                    WriteObject(powerShellReadyPath);
+                });
         }
     }
 }

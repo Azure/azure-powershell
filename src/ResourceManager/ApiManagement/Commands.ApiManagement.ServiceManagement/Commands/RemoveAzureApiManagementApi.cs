@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementApi)]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementApi, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional.")]
+        [Obsolete("Force parameter will be removed in an upcoming release", false)]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
@@ -56,8 +57,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiRemoveWarning, ApiId);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))

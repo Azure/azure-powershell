@@ -70,6 +70,13 @@
     <Compile Include="IReportRecord.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureLoader.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureMetadata.cs" />
+    <Compile Include="SignatureVerifier\OutputMetadata.cs" />
+    <Compile Include="SignatureVerifier\ParameterMetadata.cs" />
+    <Compile Include="SignatureVerifier\SignatureIssue.cs" />
+    <Compile Include="SignatureVerifier\SignatureVerifier.cs" />
+    <Compile Include="SignatureVerifier\TypeMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Exceptions\AssemblyVersionConflict.csv">
