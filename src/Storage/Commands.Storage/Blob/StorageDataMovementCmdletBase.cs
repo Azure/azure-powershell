@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security.Cryptography;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -65,6 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
         }

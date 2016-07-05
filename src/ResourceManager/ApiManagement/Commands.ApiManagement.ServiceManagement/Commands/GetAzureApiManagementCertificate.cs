@@ -19,7 +19,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll)]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementCertificate, DefaultParameterSetName = GetAll, 
+        SupportsShouldProcess= true)]
     [OutputType(typeof(IList<PsApiManagementCertificate>), ParameterSetName = new[] { GetAll })]
     [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase

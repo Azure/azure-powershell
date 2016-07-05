@@ -19,7 +19,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true), 
+        OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
@@ -60,15 +61,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 string.Format(ProjectResources.Confirm_RemoveProfile, profileToDelete.Name),
                 ProjectResources.Progress_RemovingProfile,
                 this.Name,
-                () => { deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete); });
+                () =>
+                {
+                    deleted = this.TrafficManagerClient.DeleteTrafficManagerProfile(profileToDelete);
+                    if (deleted)
+                    {
+                        this.WriteVerbose(ProjectResources.Success);
+                        this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
+                    }
 
-            if (deleted)
-            {
-                this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_RemoveProfile, profileToDelete.Name, profileToDelete.ResourceGroupName));
-            }
-
-            this.WriteObject(deleted);
+                    this.WriteObject(deleted);
+                });
         }
     }
 }

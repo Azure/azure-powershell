@@ -153,52 +153,94 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             switch (virtualMachine.HardwareProfile.VmSize)
             {
                 case "Standard_DS1":
-                case "Standard_DS1_v2":
                     result.HasSLA = true;
                     result.IOPS = 3200;
                     result.TP = 32;
                     break;
+                case "Standard_DS1_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 3200;
+                    result.TP = 48;
+                    break;
                 case "Standard_DS2":
+                    result.HasSLA = true;
+                    result.IOPS = 6400;
+                    result.TP = 64;
+                    break;
                 case "Standard_DS2_v2":
                     result.HasSLA = true;
                     result.IOPS = 6400;
-                    result.TP = 64;
+                    result.TP = 96;
                     break;
                 case "Standard_DS3":
-                case "Standard_DS3_v2":
                     result.HasSLA = true;
                     result.IOPS = 12800;
                     result.TP = 128;
                     break;
+                case "Standard_DS3_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 12800;
+                    result.TP = 192;
+                    break;
                 case "Standard_DS4":
-                case "Standard_DS4_v2":
                     result.HasSLA = true;
                     result.IOPS = 25600;
                     result.TP = 256;
                     break;
+                case "Standard_DS4_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 25600;
+                    result.TP = 384;
+                    break;
+                case "Standard_DS5_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 51200;
+                    result.TP = 768;
+                    break;
                 case "Standard_DS11":
-                case "Standard_DS11_v2":
                     result.HasSLA = true;
                     result.IOPS = 6400;
                     result.TP = 64;
                     break;
+                case "Standard_DS11_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 6400;
+                    result.TP = 96;
+                    break;
                 case "Standard_DS12":
-                case "Standard_DS12_v2":
                     result.HasSLA = true;
                     result.IOPS = 12800;
                     result.TP = 128;
                     break;
+                case "Standard_DS12_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 12800;
+                    result.TP = 192;
+                    break;
                 case "Standard_DS13":
-                case "Standard_DS13_v2":
                     result.HasSLA = true;
                     result.IOPS = 25600;
                     result.TP = 256;
                     break;
+                case "Standard_DS13_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 25600;
+                    result.TP = 384;
+                    break;
                 case "Standard_DS14":
+                    result.HasSLA = true;
+                    result.IOPS = 51200;
+                    result.TP = 512;
+                    break;
                 case "Standard_DS14_v2":
                     result.HasSLA = true;
-                    result.IOPS = 50000;
-                    result.TP = 512;
+                    result.IOPS = 51200;
+                    result.TP = 768;
+                    break;
+                case "Standard_DS15_v2":
+                    result.HasSLA = true;
+                    result.IOPS = 64000;
+                    result.TP = 960;
                     break;
                 case "Standard_GS1":
                     result.HasSLA = true;
