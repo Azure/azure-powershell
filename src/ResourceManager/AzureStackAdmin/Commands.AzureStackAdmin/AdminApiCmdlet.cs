@@ -111,6 +111,9 @@ namespace Microsoft.AzureStack.Commands
             }
             else
             {
+                // note: this code path should be deprecated
+                WriteWarning("Token and AdminUri parameters will be removed in a future release of AzureStackAdmin module.");
+
                 // if token is specified, AdminUri is required as well
                 if (this.AdminUri == null)
                 {

@@ -478,17 +478,17 @@ function Get-SasUri
 {
     param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
 
-	$uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+    $uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
 
-	$destUri = New-Object -TypeName System.Uri($uri);
-	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
-	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
-	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
-	$policy.Permissions = $type;
-	$policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
-	$uri += $destBlob.GetSharedAccessSignature($policy);
+    $destUri = New-Object -TypeName System.Uri($uri);
+    $cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+    $destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+    $policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+    $policy.Permissions = $type;
+    $policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
+    $uri += $destBlob.GetSharedAccessSignature($policy);
 
-	return $uri;
+    return $uri;
 }
 
 # Get a Location according to resource provider.
@@ -563,13 +563,13 @@ function Get-SubscriptionIdFromResourceGroup
 {
       param ([string] $rgname)
 
-	  $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
+      $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
 
-	  $rgid = $rg.ResourceId;
+      $rgid = $rg.ResourceId;
 
-	  # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
-	  # So return the second part to get subscription Id
-	  $first = $rgid.IndexOf('/', 1);
-	  $last = $rgid.IndexOf('/', $first + 1);
-	  return $rgid.Substring($first + 1, $last - $first - 1);
+      # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
+      # So return the second part to get subscription Id
+      $first = $rgid.IndexOf('/', 1);
+      $last = $rgid.IndexOf('/', $first + 1);
+      return $rgid.Substring($first + 1, $last - $first - 1);
 }

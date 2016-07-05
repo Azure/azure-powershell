@@ -16,7 +16,7 @@
 using System;
 using System.Management.Automation;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// Validation for URI parameters in cmdlets

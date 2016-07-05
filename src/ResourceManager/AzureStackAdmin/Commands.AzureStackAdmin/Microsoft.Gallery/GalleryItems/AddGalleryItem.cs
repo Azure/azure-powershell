@@ -31,21 +31,6 @@ namespace Microsoft.AzureStack.Commands
     public class AddGalleryItem : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the name.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
-        [ValidateNotNull]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
-        [ValidateLength(1, 90)]
-        [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription identifier.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
@@ -76,20 +61,15 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
-            this.WriteVerbose(Resources.AddingGalleryItem.FormatArgs(this.Name));
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                var galleryItemModel = new GalleryItemModel()
+                var galleryItemUriPayload = new GalleryItemUriPayload()
                 {
-                    Location = this.ArmLocation,
-                    Properties = new GalleryItemUriPayload()
-                    {
                         GalleryItemUri = this.GalleryItemUri
-                    }
                 };
 
-                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { GalleryItem = galleryItemModel };
-                return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.Name, uploadParameters);
+                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { GalleryItemUri = galleryItemUriPayload };
+                return client.GalleryItem.CreateOrUpdate(uploadParameters);
             }
         }
     }

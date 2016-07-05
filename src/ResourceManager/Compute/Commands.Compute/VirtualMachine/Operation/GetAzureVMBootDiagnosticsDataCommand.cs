@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -158,7 +157,7 @@ namespace Microsoft.Azure.Commands.Compute
         private void DownloadFromBlobUri(Uri sourceUri, string localFileInfo)
         {
             BlobUri blobUri;
-            string storagekey="";
+            string storagekey = "";
             if (!BlobUri.TryParseUri(sourceUri, out blobUri))
             {
                 throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());

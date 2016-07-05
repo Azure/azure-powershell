@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class ValidateUnc : ValidateArgumentsAttribute

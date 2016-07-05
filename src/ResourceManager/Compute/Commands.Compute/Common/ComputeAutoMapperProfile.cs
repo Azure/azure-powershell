@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Rest.Azure;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Models;
 

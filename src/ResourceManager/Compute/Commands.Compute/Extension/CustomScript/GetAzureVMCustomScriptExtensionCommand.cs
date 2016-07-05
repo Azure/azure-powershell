@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using Newtonsoft.Json;
 using System;
 using System.Management.Automation;
 
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (Status.IsPresent)
                 {
                     var result = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
                     if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
                         returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
                 else
                 {
                     var result = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName, this.VMName, this.Name);
-                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                    var returnedExtension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
                     if (returnedExtension.Publisher.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultPublisher, StringComparison.InvariantCultureIgnoreCase) &&
                         returnedExtension.ExtensionType.Equals(VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))

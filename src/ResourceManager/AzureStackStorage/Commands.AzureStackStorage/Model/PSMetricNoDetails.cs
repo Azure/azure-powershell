@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
     /// <summary>
     /// Wrapps around the Metric and exposes a summary of the properties properties

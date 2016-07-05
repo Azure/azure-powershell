@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class GetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
-        [ValidateGuidNotEmpty]
-        public Guid ApplicationObjectId { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string ApplicationObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         [ValidateGuidNotEmpty]
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            if (ApplicationObjectId != Guid.Empty)
+            if (!string.IsNullOrEmpty(ApplicationObjectId))
             {
-                WriteObject(ActiveDirectoryClient.GetApplication(ApplicationObjectId.ToString()));
+                WriteObject(ActiveDirectoryClient.GetApplication(ApplicationObjectId));
             }
             else
             {

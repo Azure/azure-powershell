@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
-        public Guid ObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The user SPN.")]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 SearchString = SearchString,
                 SPN = ServicePrincipalName,
-                Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                Id = ObjectId,
                 Paging = true
             };
 

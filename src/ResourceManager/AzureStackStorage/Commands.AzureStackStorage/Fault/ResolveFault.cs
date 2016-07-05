@@ -15,26 +15,27 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
-namespace Microsoft.AzureStack.Commands.StorageAdmin
-{ 
+namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
+{
     /// <summary>
     ///     dismiss faults
     ///    
     ///     SYNTAX
     ///         Resolve-Fault [-SubscriptionId] {string} [-Token] {string} [-AdminUri] {Uri} [-ResourceGroupName] {string} 
-    ///             [-SkipCertificateValidation] [-FarmName] {string} [-FaultId] {string} [-Force] [ {CommonParameters}]
+    ///             [-SkipCertificateValidation] [-FarmName] {string} [-FaultId] {Guid} [-Force] [ {CommonParameters}]
     ///     
     /// </summary>
     [Cmdlet(VerbsDiagnostic.Resolve, Nouns.AdminFault, SupportsShouldProcess = true)]
     public sealed class ResolveFault : AdminCmdlet
     {
-        const string ShouldProcessTargetFormat = "fault {0} ";
-        const string ShouldContinueQuery = "Continue with resolve fault?";
-        const string ShouldContinueCaption = "Confirm";
-        
+        /// <summary>
+        /// Resource group name
+        /// </summary>
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNull]
+        public string ResourceGroupName { get; set; }
+
         /// <summary>
         ///     Farm Identifier
         /// </summary>
@@ -51,7 +52,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5)]
         [ValidateNotNull]
-        public string FaultId
+        public Guid FaultId
         {
             get;
             set;
@@ -66,8 +67,8 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
 
         protected override void Execute()
         {
-            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, ShouldProcessTargetFormat, FaultId)) && 
-                (Force || ShouldContinue(ShouldContinueQuery,ShouldContinueCaption)))
+            if (ShouldProcess(string.Format(CultureInfo.InvariantCulture, Resources.ShouldResolveFaultProcessTargetFormat, FaultId)) && 
+                (Force || ShouldContinue(Resources.ShouldResoveFaultContinueQuery, Resources.ShouldContinueCaption)))
             {
                 Client.Faults.Dismiss(ResourceGroupName, FarmName, FaultId);
             }

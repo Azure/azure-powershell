@@ -120,7 +120,6 @@ namespace Microsoft.AzureStack.Commands
                     Name = this.Name,
                     Properties = new UsageConnection()
                                  {
-                                     Name = this.Name,
                                      ProviderLocation = this.ProviderLocation,
                                      ProviderNamespace = this.ProviderNamespace,
                                      UsageStorageConnectionString = this.UsageStorageConnectionString,

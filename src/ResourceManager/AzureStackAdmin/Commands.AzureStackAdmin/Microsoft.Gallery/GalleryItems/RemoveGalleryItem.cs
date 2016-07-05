@@ -35,14 +35,6 @@ namespace Microsoft.AzureStack.Commands
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group.
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateLength(1, 90)]
-        [ValidateNotNull]
-        public string ResourceGroup { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription identifier.
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
@@ -57,7 +49,7 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                return client.GalleryItem.Delete(this.ResourceGroup, this.Name);
+                return client.GalleryItem.Delete(this.Name);
             }
         }
     }
