@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Globalization;
+
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
@@ -24,7 +26,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account schema.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountSchema", SupportsShouldProcess = true),
+     OutputType(typeof (object))]
     public class UpdateAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
@@ -89,6 +92,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public object Metadata { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -100,7 +106,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName, this.Name,
+            var integrationAccountSchema = IntegrationAccountClient.GetIntegrationAccountSchema(this.ResourceGroupName,
+                this.Name,
                 this.SchemaName);
 
             if (!string.IsNullOrEmpty(this.SchemaFilePath))
@@ -129,9 +136,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountSchema.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.WriteObject(
-                IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName, integrationAccount.Name,
-                    this.SchemaName, integrationAccountSchema), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/integrationAccounts/schemas", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        IntegrationAccountClient.UpdateIntegrationAccountSchema(this.ResourceGroupName,
+                            integrationAccount.Name,
+                            this.SchemaName, integrationAccountSchema), true);
+                },
+                null);
         }
     }
 }

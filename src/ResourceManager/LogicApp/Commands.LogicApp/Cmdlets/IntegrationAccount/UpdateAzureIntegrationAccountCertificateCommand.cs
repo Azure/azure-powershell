@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account certificate.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountCertificate"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountCertificate", SupportsShouldProcess = true),
+     OutputType(typeof (object))]
     public class UpdateAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 
@@ -72,6 +74,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public object Metadata { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -83,8 +88,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountCertificate = IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName,
-                this.Name, this.CertificateName);
+            var integrationAccountCertificate =
+                IntegrationAccountClient.GetIntegrationAccountCertifcate(this.ResourceGroupName,
+                    this.Name, this.CertificateName);
 
             if (!string.IsNullOrEmpty(this.KeyName))
             {
@@ -124,9 +130,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountCertificate.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.WriteObject(
-                IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName, integrationAccount.Name,
-                    this.CertificateName, integrationAccountCertificate), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/integrationAccounts/certificates", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        IntegrationAccountClient.UpdateIntegrationAccountCertificate(this.ResourceGroupName,
+                            integrationAccount.Name,
+                            this.CertificateName, integrationAccountCertificate), true);
+                },
+                null);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class NewAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             {
                 this.AgreementContent =
                     CmdletHelper.GetContentFromFile(this.TryResolvePath(this.AgreementContentFilePath));
-            }            
+            }
 
             this.WriteObject(
                 IntegrationAccountClient.CreateIntegrationAccountAgreement(this.ResourceGroupName, integrationAccount.Name,

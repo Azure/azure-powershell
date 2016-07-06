@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancelling the LogicApp run..
+        /// </summary>
+        internal static string CancelLogicAppRunMessage {
+            get {
+                return ResourceManager.GetString("CancelLogicAppRunMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to cancel the LogicApp run..
+        /// </summary>
+        internal static string CancelLogicAppRunWarning {
+            get {
+                return ResourceManager.GetString("CancelLogicAppRunWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Definition content needs to be specified..
         /// </summary>
         internal static string DefinitionMissingWarning {
@@ -147,6 +165,24 @@ namespace Microsoft.Azure.Commands.LogicApp.Properties {
         internal static string ResourceNotFound {
             get {
                 return ResourceManager.GetString("ResourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating {0} {1}..
+        /// </summary>
+        internal static string UpdateResourceMessage {
+            get {
+                return ResourceManager.GetString("UpdateResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update the {0} {1}..
+        /// </summary>
+        internal static string UpdateResourceWarning {
+            get {
+                return ResourceManager.GetString("UpdateResourceWarning", resourceCulture);
             }
         }
     }

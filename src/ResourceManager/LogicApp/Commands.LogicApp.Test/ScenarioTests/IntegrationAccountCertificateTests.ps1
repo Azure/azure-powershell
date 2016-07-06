@@ -50,15 +50,15 @@ function Test-UpdateIntegrationAccountCertificate
 	$integrationAccountCertificate =  New-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -KeyVersion "faaa9c58967640c5af20fad4d273906e" -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -PublicCertificateFilePath $certFilePath
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificate.Name
 
-	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY"
+	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyName "PRIVATEKEY" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
 	Assert-AreEqual "PRIVATEKEY" $integrationAccountCertificateUpdated.Key.KeyName
 
-	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVersion "faaa9c58967640c5af20fad4d273906e"
+	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVersion "faaa9c58967640c5af20fad4d273906e" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
 	Assert-AreEqual "faaa9c58967640c5af20fad4d273906e" $integrationAccountCertificateUpdated.Key.KeyVersion
 
-	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1"
+	$integrationAccountCertificateUpdated = Set-AzureRmIntegrationAccountCertificate -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -CertificateName $integrationAccountCertificateName -KeyVaultId "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" -Force
 	Assert-AreEqual $integrationAccountCertificateName $integrationAccountCertificateUpdated.Name
 	Assert-AreEqual "/subscriptions/f34b22a3-2202-4fb1-b040-1332bd928c84/resourcegroups/IntegrationAccountPsCmdletTest/providers/microsoft.keyvault/vaults/IntegrationAccountVault1" $integrationAccountCertificateUpdated.Key.KeyVault.Id
 	

@@ -120,6 +120,12 @@
   <data name="ApplicationServicePlanIdFormat" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}</value>
   </data>
+  <data name="CancelLogicAppRunMessage" xml:space="preserve">
+    <value>Cancelling the LogicApp run.</value>
+  </data>
+  <data name="CancelLogicAppRunWarning" xml:space="preserve">
+    <value>Are you sure you want to cancel the LogicApp run.</value>
+  </data>
   <data name="DefinitionMissingWarning" xml:space="preserve">
     <value>Definition content needs to be specified.</value>
   </data>
@@ -146,5 +152,11 @@
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>The Resource '{0}' under resource group '{1}' was not found.</value>
+  </data>
+  <data name="UpdateResourceMessage" xml:space="preserve">
+    <value>Updating {0} {1}.</value>
+  </data>
+  <data name="UpdateResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to update the {0} {1}.</value>
   </data>
 </root>

@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account agreement.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true),
+     OutputType(typeof (object))]
     public class UpdateAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 
@@ -87,6 +88,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public object Metadata { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -96,14 +100,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            var integrationAccountAgreement = IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName,
-                this.Name, this.AgreementName);
+            var integrationAccountAgreement =
+                IntegrationAccountClient.GetIntegrationAccountAgreement(this.ResourceGroupName,
+                    this.Name, this.AgreementName);
 
             if (this.Metadata != null)
-            {                
+            {
                 integrationAccountAgreement.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
-            
+
             var hostPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName, this.Name,
                 string.IsNullOrEmpty(this.HostPartner)
                     ? integrationAccountAgreement.HostPartner
@@ -163,9 +168,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountAgreement.Content = CmdletHelper.ConvertToAgreementContent(this.AgreementContent);
             }
 
-            this.WriteObject(
-                IntegrationAccountClient.UpdateIntegrationAccountAgreement(this.ResourceGroupName, this.Name, this.AgreementName,
-                    integrationAccountAgreement), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/integrationAccounts/agreements", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        IntegrationAccountClient.UpdateIntegrationAccountAgreement(this.ResourceGroupName, this.Name,
+                            this.AgreementName,
+                            integrationAccountAgreement), true);
+
+                },
+                null);
         }
     }
 }

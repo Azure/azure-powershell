@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Stop the workflow run
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun"), OutputType(typeof(object))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun", SupportsShouldProcess = true), OutputType(typeof (object))]
     public class CancelAzureLogicAppRunCommand : LogicAppBaseCmdlet
     {
 
@@ -42,6 +42,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string RunName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -50,7 +53,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
+            ConfirmAction(Force.IsPresent,
+                Properties.Resource.CancelLogicAppRunWarning,
+                Properties.Resource.CancelLogicAppRunMessage,
+                Name,
+                () =>
+                {
+                    LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
+                },
+                null);
         }
     }
 }

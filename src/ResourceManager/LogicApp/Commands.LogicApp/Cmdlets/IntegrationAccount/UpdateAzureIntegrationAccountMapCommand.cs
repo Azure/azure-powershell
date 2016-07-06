@@ -19,11 +19,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using System.Globalization;
 
     /// <summary>
     /// Updates the integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof (object))]
     public class UpdateAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
@@ -88,6 +89,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public object Metadata { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -99,7 +103,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountMap = IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName, this.Name,
+            var integrationAccountMap = IntegrationAccountClient.GetIntegrationAccountMap(this.ResourceGroupName,
+                this.Name,
                 this.MapName);
 
             if (!string.IsNullOrEmpty(this.MapFilePath))
@@ -125,12 +130,23 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (this.Metadata != null)
             {
-               integrationAccountMap.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
+                integrationAccountMap.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.WriteObject(
-                IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName,
-                    integrationAccountMap), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/integrationAccounts/maps", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/integrationAccounts/maps", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        IntegrationAccountClient.UpdateIntegrationAccountMap(this.ResourceGroupName, this.Name,
+                            this.MapName,
+                            integrationAccountMap), true);
+                },
+                null);
         }
     }
 }

@@ -114,10 +114,10 @@ function Test-UpdateIntegrationAccountSchema
 	$integrationAccountSchema =  New-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 
-	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent
+	$integrationAccountSchemaUpdated =  Set-AzureRmIntegrationAccountSchema -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -SchemaName $integrationAccountSchemaName -SchemaDefinition $schemaContent -Force
 	Assert-AreEqual $integrationAccountSchemaName $integrationAccountSchema.Name
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force

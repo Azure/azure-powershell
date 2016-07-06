@@ -76,16 +76,16 @@ function Test-UpdateIntegrationAccount
 	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Sku "Standard"
 	Assert-AreEqual $integrationAccountName $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Sku "Standard" 	
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Sku "Standard"  -Force	
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Sku "Standard" 	
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Sku "Standard" -Force	
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 
-	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Location "brazilsouth"
+	$updatedIntegrationAccount = Set-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Force
 	Assert-AreEqual $updatedIntegrationAccount.Name $integrationAccount.Name 
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force

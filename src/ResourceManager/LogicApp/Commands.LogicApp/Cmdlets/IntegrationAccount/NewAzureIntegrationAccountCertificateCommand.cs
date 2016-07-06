@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountCertificate"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccountCertificate", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class NewAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 

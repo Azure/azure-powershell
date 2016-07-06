@@ -114,10 +114,10 @@ function Test-UpdateIntegrationAccountMap
 	$integrationAccountMap =  New-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 
-	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent
+	$integrationAccountMapUpdated =  Set-AzureRmIntegrationAccountMap -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -MapName $integrationAccountMapName -MapDefinition $mapContent -Force
 	Assert-AreEqual $integrationAccountMapName $integrationAccountMap.Name
 	
 	Remove-AzureRmIntegrationAccount -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -Force

@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using System;
@@ -22,7 +24,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Update the integration account partner.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountPartner"), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true),
+     OutputType(typeof (object))]
     public class UpdateAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
@@ -72,6 +75,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public object Metadata { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -83,7 +89,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             var integrationAccount = IntegrationAccountClient.GetIntegrationAccount(this.ResourceGroupName, this.Name);
 
-            var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(this.ResourceGroupName,
+            var integrationAccountPartner = IntegrationAccountClient.GetIntegrationAccountPartner(
+                this.ResourceGroupName,
                 this.Name, this.PartnerName);
 
             if (!string.IsNullOrEmpty(this.PartnerType))
@@ -102,10 +109,21 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 integrationAccountPartner.Metadata = CmdletHelper.ConvertToMetadataJObject(this.Metadata);
             }
 
-            this.WriteObject(
-                IntegrationAccountClient.UpdateIntegrationAccountPartner(this.ResourceGroupName, integrationAccount.Name,
-                    this.PartnerName,
-                    integrationAccountPartner), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        IntegrationAccountClient.UpdateIntegrationAccountPartner(this.ResourceGroupName,
+                            integrationAccount.Name,
+                            this.PartnerName,
+                            integrationAccountPartner), true);
+                },
+                null);
         }
     }
 }

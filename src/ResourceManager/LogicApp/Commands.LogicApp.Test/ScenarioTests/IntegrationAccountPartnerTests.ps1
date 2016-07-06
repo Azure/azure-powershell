@@ -112,7 +112,7 @@ function Test-UpdateIntegrationAccountPartner
 	$integrationAccountPartner =  New-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -BusinessIdentities $businessIdentities
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartner.Name
 
-	$integrationAccountPartnerUpdated = Set-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -BusinessIdentities $businessIdentities1	
+	$integrationAccountPartnerUpdated = Set-AzureRmIntegrationAccountPartner -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -PartnerName $integrationAccountPartnerName -BusinessIdentities $businessIdentities1	-Force
 	Assert-AreEqual $integrationAccountPartnerName $integrationAccountPartnerUpdated.Name
 	#Assert-AreEqual $businessIdentities1 $integrationAccountPartnerUpdated.businessIdentities
 	

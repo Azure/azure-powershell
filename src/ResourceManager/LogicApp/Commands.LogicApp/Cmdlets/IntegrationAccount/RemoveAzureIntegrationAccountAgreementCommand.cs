@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Removes the integration account agreement. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountAgreement"), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountAgreement", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class RemoveAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 

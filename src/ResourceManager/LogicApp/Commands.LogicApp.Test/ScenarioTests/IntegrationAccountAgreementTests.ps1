@@ -254,29 +254,29 @@ function Test-UpdateIntegrationAccountAgreement
 	Assert-AreEqual $integrationAccountAgreementName $integrationAccountAgreement.Name
 	Assert-AreEqual "X12" $integrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContent $agreementAS2Content
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContent $agreementAS2Content -Force
 	Assert-AreEqual "AS2" $updatedIntegrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContentFilePath $agreementAS2FilePath
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "AS2" -AgreementContentFilePath $agreementAS2FilePath -Force
 	Assert-AreEqual "AS2" $updatedIntegrationAccountAgreement.AgreementType
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestIdentityQualifier "XX" 
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestIdentityQualifier "XX" -Force
 	Assert-AreEqual "XX" $updatedIntegrationAccountAgreement.GuestIdentity.Qualifier
 	Assert-AreEqual "XX" $updatedIntegrationAccountAgreement.GuestIdentity.Value
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -HostIdentityQualifier "BB" 
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -HostIdentityQualifier "BB" -Force
 	Assert-AreEqual "BB" $updatedIntegrationAccountAgreement.HostIdentity.Qualifier
 	Assert-AreEqual "BB" $updatedIntegrationAccountAgreement.HostIdentity.Value
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" } "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner "TestGuest" -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -Force} "The partner 'TestGuest' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" } "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner "TestHost" -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "AA" -Force} "The partner 'TestHost' could not be found in integration account '$integrationAccountName'."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" } "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "BB" -HostIdentityQualifier "AA" -Force} "The qualifier 'BB' for partner '$guestPartnerName' is invalid."
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" } "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -AgreementType "X12" -GuestPartner $guestPartnerName -HostPartner $hostPartnerName -GuestIdentityQualifier "ZZ" -HostIdentityQualifier "OO" -Force} "The qualifier 'OO' for partner '$hostPartnerName' is invalid."
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestPartner $hostPartnerName -HostPartner $guestPartnerName
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -GuestPartner $hostPartnerName -HostPartner $guestPartnerName -Force
 	Assert-AreEqual $hostPartnerName $updatedIntegrationAccountAgreement.GuestPartner
 	Assert-AreEqual $guestPartnerName $updatedIntegrationAccountAgreement.HostPartner
 
@@ -292,9 +292,9 @@ function Test-UpdateIntegrationAccountAgreement
 
 	$metadata = $items | ConvertTo-JSON -Compress
 
-	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata "test" } "Invalid metadata."
+	Assert-ThrowsContains {Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata "test" -Force} "Invalid metadata."
 
-	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata $metadata	
+	$updatedIntegrationAccountAgreement =  Set-AzureRmIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -Metadata $metadata	-Force
 	
 	$result = $updatedIntegrationAccountAgreement.Metadata.ToString() | ConvertFrom-JSON 
 	Assert-AreEqualObjectProperties $items $result 

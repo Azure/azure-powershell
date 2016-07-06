@@ -15,13 +15,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System.Globalization;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.LogicApp.Utilities;
 
     /// <summary>
     /// Sets the secret of the access keys of a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLogicAppAccessKey", SupportsShouldProcess = true), OutputType(typeof (object))]
     public class UpdateAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
@@ -48,6 +49,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string KeyType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -57,9 +61,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            this.WriteObject(
-                LogicAppClient.RegenerateWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName,
-                    this.KeyType), true);
+            ConfirmAction(Force.IsPresent,
+                "Are you sure you want to regenerate LogicApp access keys.",
+                "Updating LogicApp access keys.",
+                Name,
+                () =>
+                {
+                    this.WriteObject(
+                        LogicAppClient.RegenerateWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName,
+                            this.KeyType), true);
+                },
+                null);
         }
     }
 }
