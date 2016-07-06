@@ -1,5 +1,5 @@
-##2016.07.11 version 1.6.0
-﻿* Azure Redis Cache
+﻿##2016.07.11 version 1.6.0
+* Azure Redis Cache
   * New cmdlet added for Reset-AzureRmRedisCache 
   * New cmdlet added for Export-AzureRmRedisCache 
   * New cmdlet added for Import-AzureRmRedisCache 
@@ -12,6 +12,33 @@
     * Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy
   * Restore-AzureRmSqlDatabase now supports point-in-time restore of a deleted database
   * Restore-AzureRmSqlDatabase now supports restoring from a Long Term Retention backup
+* Azure LogicApp
+  * Added LogicApp Integration accounts cmdlets.
+    * Get-AzureRmIntegrationAccountAgreement
+    * Get-AzureRmIntegrationAccountCallbackUrl
+    * Get-AzureRmIntegrationAccountCertificate
+    * Get-AzureRmIntegrationAccount
+    * Get-AzureRmIntegrationAccountMap
+    * Get-AzureRmIntegrationAccountPartner
+    * Get-AzureRmIntegrationAccountSchema
+    * New-AzureRmIntegrationAccountAgreement
+    * New-AzureRmIntegrationAccountCertificate
+    * New-AzureRmIntegrationAccount
+    * New-AzureRmIntegrationAccountMap
+    * New-AzureRmIntegrationAccountPartner
+    * New-AzureRmIntegrationAccountSchema
+    * Remove-AzureRmIntegrationAccountAgreement
+    * Remove-AzureRmIntegrationAccountCertificate
+    * Remove-AzureRmIntegrationAccount
+    * Remove-AzureRmIntegrationAccountMap
+    * Remove-AzureRmIntegrationAccountPartner
+    * Remove-AzureRmIntegrationAccountSchema
+    * Set-AzureRmIntegrationAccountAgreement
+    * Set-AzureRmIntegrationAccountCertificate
+    * Set-AzureRmIntegrationAccount
+    * Set-AzureRmIntegrationAccountMap
+    * Set-AzureRmIntegrationAccountPartner
+    * Set-AzureRmIntegrationAccountSchema
 * Azure Data Lake Store
   * Drastically improve performance of file and folder upload and download.
     * This includes a slight change to the parameter names for download and inclusion of two new parameters for upload:
