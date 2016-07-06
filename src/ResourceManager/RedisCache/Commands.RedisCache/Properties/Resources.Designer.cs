@@ -61,11 +61,47 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to import data into redis cache &apos;{0}&apos;?.
+        /// </summary>
+        internal static string ImportingRedisCache {
+            get {
+                return ResourceManager.GetString("ImportingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importing data into redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string ImportRedisCache {
+            get {
+                return ResourceManager.GetString("ImportRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The &apos;MaxMemoryPolicy&apos; setting has been deprecated. Please use &apos;RedisConfiguration&apos; setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{&quot;maxmemory-policy&quot; = &quot;allkeys-lru&quot;}.
         /// </summary>
         internal static string MaxMemoryPolicyException {
             get {
                 return ResourceManager.GetString("MaxMemoryPolicyException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to reboot redis cache &apos;{0}&apos; {1}?.
+        /// </summary>
+        internal static string RebootingRedisCache {
+            get {
+                return ResourceManager.GetString("RebootingRedisCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rebooting redis cache &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RebootRedisCache {
+            get {
+                return ResourceManager.GetString("RebootRedisCache", resourceCulture);
             }
         }
         
