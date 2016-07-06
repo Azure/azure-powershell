@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Logic.Models;
+
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
-    using System.Globalization;
     using System.Management.Automation;
 
     /// <summary>
     /// Creates a new LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmLogicApp", SupportsShouldProcess = true), 
-        OutputType(typeof(object))]
-    public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
+    public class RunAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
@@ -33,29 +33,39 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "The parameters for the workflow run.", ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
+        public object Parameters { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The name of the trigger.",
+            ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string TriggerName { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the remove workflow command
+        /// Executes the get workflow command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            ConfirmAction(Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveLogicAppWarning, this.Name),
-                Properties.Resource.RemoveLogicAppMessage,
-                Name,
-                () =>
-                {
-                    LogicAppClient.RemoveWorkflow(ResourceGroupName, Name);
-                });
+
+            if (string.IsNullOrEmpty(this.TriggerName))
+            {
+                this.WriteObject(
+                    LogicAppClient.RunWorkflow(this.ResourceGroupName, this.Name,
+                        new RunWorkflowParameters()), true);
+            }
+            else
+            {
+                LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
+            }
         }
     }
 }

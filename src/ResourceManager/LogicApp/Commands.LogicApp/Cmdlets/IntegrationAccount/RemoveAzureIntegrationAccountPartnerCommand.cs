@@ -12,60 +12,52 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Logic.Models;
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System.Globalization;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Removes the integration account partner. 
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmLogicApp"), OutputType(typeof(object))]
-    public class RunAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountPartner", SupportsShouldProcess = true), OutputType(typeof(object))]
+    public class RemoveAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
 
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The parameters for the workflow run.", ValueFromPipelineByPropertyName = false)]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account partner name.")]
         [ValidateNotNullOrEmpty]
-        public object Parameters { get; set; }
+        public string PartnerName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the trigger.",
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string TriggerName { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow command
+        /// Executes the command to remove integration account partner.
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            if (string.IsNullOrEmpty(this.TriggerName))
-            {
-                this.WriteObject(
-                    LogicAppClient.RunWorkflow(this.ResourceGroupName, this.Name,
-                        new RunWorkflowParameters()), true);
-            }
-            else
-            {
-                LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
-            }
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/partners", this.Name),
+                Name,
+                () => {
+                    IntegrationAccountClient.RemoveIntegrationAccountPartner(this.ResourceGroupName, this.Name, this.PartnerName);
+                });
         }
     }
 }
