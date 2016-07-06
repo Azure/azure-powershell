@@ -89,10 +89,15 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
+            if (this.DnsRecords == null)
+            {
+                this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
+            }
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.Progress_CreatingEmptyRecordSet,
+                ProjectResources.Progress_CreatingRecordSet,
                 this.Name,
                 () =>
                 {

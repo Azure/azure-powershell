@@ -81,23 +81,23 @@ namespace Microsoft.Azure.Commands.Dns
                 {
                     deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
 
-            if (deleted)
-            {
-                WriteVerbose(ProjectResources.Success);
-                WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
-            }
-            }
-            else
-            {
-                WriteVerbose(ProjectResources.Success);
-                WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, this.Name, this.ResourceGroupName));
-            }
+                    if (deleted)
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
+                    }
+                    else
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, this.Name, this.ResourceGroupName));
+                    }
 
                     if (this.PassThru)
                     {
                         WriteObject(deleted);
                     }
                 });
+            }
         }
 
         public DnsZone GetDnsZoneHandleNonExistentZone(string zoneName, string resourceGroupName)

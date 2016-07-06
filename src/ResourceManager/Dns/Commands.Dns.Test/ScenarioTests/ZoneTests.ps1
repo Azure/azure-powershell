@@ -235,7 +235,6 @@ function Test-ZoneRemoveNonExisting
     $resourceGroup = TestSetup-CreateResourceGroup
 	
 	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
-	Assert-True { $removed }
 }
 
 <#
