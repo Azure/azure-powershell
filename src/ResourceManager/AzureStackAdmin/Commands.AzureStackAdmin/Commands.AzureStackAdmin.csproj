@@ -73,7 +73,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.AzureStack.Management">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.9.1-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.0.9.6-preview\lib\net45\Microsoft.AzureStack.Management.dll</HintPath>
     </Reference>
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net40\Hyak.Common.dll</HintPath>
@@ -91,6 +91,10 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.1\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -111,15 +115,23 @@
   <ItemGroup>
     <Compile Include="AdminApiCmdlet.cs" />
     <Compile Include="ArgumentValidator.cs" />
+    <Compile Include="Common\AdjustToUniversalIsoDateTimeConverter.cs" />
+    <Compile Include="Common\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
+    <Compile Include="Common\JsonExtensions.cs" />
+    <Compile Include="Common\JsonLineInfo.cs" />
+    <Compile Include="Common\JsonPreserveCaseDictionaryAttribute.cs" />
+    <Compile Include="Common\LineInfoJsonConverter.cs" />
+    <Compile Include="Common\TimeSpanJsonConverter.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\AddUsageConnection.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\GetUsageConnection.cs" />
+    <Compile Include="Microsoft.Commerce\UsageConnections\RemoveUsageConnection.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="ValidateAbsoluteUriAttribute.cs" />
     <None Include="..\AzureRM.AzureStackAdmin.psd1">
       <Link>AzureRM.AzureStackAdmin.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1" />
     <Compile Include="CommonPSConst.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\GetManagedLocation.cs" />
     <Compile Include="Microsoft.Subscriptions\ManagedLocations\NewManagedLocation.cs" />
@@ -160,9 +172,7 @@
     <Compile Include="Token\Shared.Authorization.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MSSharedLibKey.snk">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -175,9 +185,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Microsoft.AzureStack.Commands.dll-help.xml" />
     <Content Include="Token\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

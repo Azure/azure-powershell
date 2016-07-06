@@ -34,7 +34,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
     {
         private EnvironmentSetupHelper helper;
         private CSMTestEnvironmentFactory armTestEnvironmentFactory;
-        private const string DefaultApiVersion = "1.0";
+        private const string DefaultApiVersion = "2015-11-01";
 
         public AzureStackClient azureStackClient;
 

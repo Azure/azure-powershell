@@ -41,7 +41,7 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient())
             {
-                this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId, this.Subscription.Owner));
+                this.WriteVerbose(Resources.UpdatingSubscription.FormatArgs(this.Subscription.SubscriptionId));
                 var parameters = new SubscriptionCreateOrUpdateParameters(this.Subscription);
                 return client.Subscriptions.CreateOrUpdate(parameters).Subscription;
             }

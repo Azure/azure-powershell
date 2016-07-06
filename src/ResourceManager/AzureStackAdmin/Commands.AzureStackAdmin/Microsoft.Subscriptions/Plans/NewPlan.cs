@@ -45,12 +45,6 @@ namespace Microsoft.AzureStack.Commands
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the state of the offer.
-        /// </summary>
-        [Parameter]
-        public AccessibilityState State { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource manager location.
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -61,16 +55,30 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource group.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
         public string ResourceGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateGuidNotEmpty]
         public Guid SubscriptionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quota ids.
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] QuotaIds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SKU ids.
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string[] SkuIds { get; set; }
 
         /// <summary>
         /// Executes the API call(s) against Azure Resource Management API(s).
@@ -97,15 +105,20 @@ namespace Microsoft.AzureStack.Commands
                     {
                         Name = this.Name,
                         Location = this.ArmLocation,
-                        Properties = new AdminPlanDefinition()
+                        Properties = new AdminPlanPropertiesDefinition()
                         {
                             Name = this.Name,
                             DisplayName = this.DisplayName,
-                            State = this.State,
-                            ServiceQuotas = new ServiceQuotaDefinition[0],
+                            QuotaIds = (this.QuotaIds != null ? this.QuotaIds.ToList() : null),
+                            SkuIds = (this.SkuIds != null ? this.SkuIds.ToList() : null)
                         }
                     }
                 };
+
+                if (QuotaIds == null && SkuIds == null)
+                {
+                    throw new PSInvalidOperationException(Resources.QuotaIdOrSkuIdRequired);
+                }
 
                 if (client.ManagedPlans.List(this.ResourceGroup, includeDetails: false).Plans
                     .Any(p => string.Equals(p.Properties.Name, parameters.Plan.Properties.Name, StringComparison.OrdinalIgnoreCase)))

@@ -39,16 +39,21 @@
         $WindowsAuthEndpoint = "https://{0}:12998" -f $AzureStackMachineName
     }
 
+	Set-AzureStackWithAadEnvironment -AzureStackMachineName $AzureStackMachineName -ArmEndpoint $ArmEndpoint -GalleryEndpoint $GalleryEndpoint -AadGraphUri $AadGraphUri -AadLoginUri $AadLoginUri -AadTenantId $AadTenantId -AadApplicationId $AadApplicationId
+
     $isAad = $PSCmdlet.ParameterSetName -eq "AadEnvironment"
-    $azStackPowershellGuid = "0a7bdc5c-7b57-40be-9939-d4c5fc7cd417"
+    $azStackPowershellGuid = "1950a258-227b-4e31-a9cf-717495945fc2"
+	$DebugPreference="Continue"
+	Write-Debug "Before Get-AzureRMSubscription"
     $adminSubscription = Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription" 
+	Write-Debug "After Get-AzureRMSubscription"
     $adminSubscriptionId = $adminSubscription.SubscriptionId
     Set-AzureRmContext -SubscriptionId $adminSubscriptionId
-    $location =  "redmond"
+    $location =  "local"
 
     $global:AzureStackConfig = [PSCustomObject]@{
                     AzureStackMachineName = $AzureStackMachineName
-                    ApiVersion = "1.0"
+                    ApiVersion = "2015-11-01"
                     ArmLocation = $location
                     Token = $token
                     SubscriptionId = $adminSubscriptionId
@@ -123,10 +128,8 @@ function Set-AzureStackWithAadEnvironment
         [String] $AadTenantId,
 
         [Parameter(Mandatory=$true)]
-        [String] $AadApplicationId,
+        [String] $AadApplicationId
 
-        [Parameter(Mandatory=$true)]
-        [PSCredential] $Credential
     )
 
     $Global:ErrorActionPreference='SilentlyContinue'
@@ -141,7 +144,7 @@ function Set-AzureStackWithAadEnvironment
         -GraphEndpoint $AadGraphUri
 
     $environment = Get-AzureRmEnvironment -Name $AzureStackMachineName
-    Login-AzureRmAccount -Environment $environment -Credential $Credential
+    #Login-AzureRmAccount -Environment $environment -Credential $Credential
 
     Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription" | Set-AzureRmContext
 }
@@ -163,11 +166,11 @@ function Get-DefaultLocation
     # TODO: always returning the first region, change if needed
     if ($Global:AzureStackConfig.IsAAD)
     {
-        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId -ApiVersion "1.0"
+        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId
     }
     else
     {
-        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId -Token $Token -AdminUri $AdminUri -ApiVersion "1.0"
+        $locations = Get-AzureRMManagedLocation -SubscriptionId $SubscriptionId -Token $Token -AdminUri $AdminUri
     }
     return $locations[0].Name
 }
