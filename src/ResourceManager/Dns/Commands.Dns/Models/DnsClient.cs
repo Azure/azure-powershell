@@ -483,17 +483,4 @@ namespace Microsoft.Azure.Commands.Dns.Models
             throw new FormatException(string.Format("Unable to extract resource group name from {0} ", id));
         }
     }
-
-    //public static class Logger
-    //{
-    //    private const string fileName = @"d:\scratch\pslog.txt";
-
-    //    public static void LogMesg(string s)
-    //    {
-    //        using (var file = File.AppendText(fileName))
-    //        {
-    //            file.WriteLine(s);
-    //        }
-    //    }
-    //}
 }
