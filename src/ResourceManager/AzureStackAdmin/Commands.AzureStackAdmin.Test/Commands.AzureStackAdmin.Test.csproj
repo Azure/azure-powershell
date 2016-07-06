@@ -171,15 +171,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestAddDelegatedOffer.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestDelegatedOffer.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestGalleryItem.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestManagedLocation.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -193,9 +184,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestTenantSubscription.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.AzureStack.Commands.Admin.Test.AzureStackTests\TestUpdateSubscriptionServiceQuota.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

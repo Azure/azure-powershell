@@ -12,10 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-#------------------------------------------------------------
-# Copyright (c) Microsoft Corporation.  All rights reserved.
-#------------------------------------------------------------
-
 <#
 .Synopsis
    Test the flow of Admin user creates a plan, offer and a tenant subscription for the specified user and deletes the created resources
@@ -65,7 +61,7 @@ function Test-TenantSubscription
 
     if (!$OfferName)
     {
-        $OfferName = "TestOffer0-TestTenantSubscription" 
+        $OfferName = "TestOffer0-TestTenantSubscription"
     }
 
     if (!$BasePlanName)
@@ -91,6 +87,7 @@ function Test-TenantSubscription
 
     $publicOffer = Get-Offer -OfferName $offerName
 	
+	#
 	[Microsoft.AzureStack.Commands.NewManagedSubscription]::SubscriptionIds.Enqueue("8E7DD69E-9AB2-44A1-94D8-F7BC8E12645E")
     # Creating subscription as an admin
     $subscription = New-Subscription -SubscriptionUser $SubscriptionUser -OfferId $offer.Id
