@@ -12,54 +12,63 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using Microsoft.Azure.Management.Logic.Models;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Sets the secret of the access keys of a workflow
+    /// Creates a new integration account 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
-    public class UpdateAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccount", SupportsShouldProcess = true), OutputType(typeof(object))]
+    public class NewAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
+
         #region Input Parameters
 
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow accesskey.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string AccessKeyName { get; set; }
+        public string Location { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The type of the key.",
-            ValueFromPipelineByPropertyName = false)]
-        [ValidateSet(Constants.KeyTypeNotSpecified, Constants.KeyTypePrimary, Constants.KeyTypeSecondary,
-            IgnoreCase = false)]
+        [Parameter(Mandatory = false, HelpMessage = "The integration account SKU.",
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string KeyType { get; set; }
+        public string Sku { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow accesskey command
+        /// Executes the integration account create command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             this.WriteObject(
-                LogicAppClient.RegenerateWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName,
-                    this.KeyType), true);
+                IntegrationAccountClient.CreateIntegrationAccount(this.ResourceGroupName, this.Name, new IntegrationAccount
+                {
+                    Location = this.Location,
+                    Sku = new IntegrationAccountSku
+                    {
+                        Name = (SkuName) Enum.Parse(typeof (SkuName), this.Sku)
+                    },
+                    Properties = new JObject()
+
+                }), true);
         }
     }
 }

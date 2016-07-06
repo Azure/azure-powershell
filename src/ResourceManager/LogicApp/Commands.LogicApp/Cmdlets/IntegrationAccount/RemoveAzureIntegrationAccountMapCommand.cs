@@ -12,45 +12,52 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System.Globalization;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
 
     /// <summary>
-    /// Stop the workflow run
+    /// Removes the integration account map. 
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmLogicAppRun"), OutputType(typeof(object))]
-    public class CancelAzureLogicAppRunCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof(object))]
+    public class RemoveAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
-        #region Input Parameters
+        #region Input Paramters
 
-        [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow run.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The integration account map name.")]
         [ValidateNotNullOrEmpty]
-        public string RunName { get; set; }
+        public string MapName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the stop workflow run command
+        /// Executes the command to remove integration account map
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            LogicAppClient.CancelWorkflowRun(this.ResourceGroupName, this.Name, this.RunName);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceWarning, "Microsoft.Logic/integrationAccounts/maps", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.RemoveResourceMessage, "Microsoft.Logic/integrationAccounts/maps", this.Name),
+                Name,
+                () => {
+                    IntegrationAccountClient.RemoveIntegrationAccountMap(this.ResourceGroupName, this.Name, this.MapName);
+                });
         }
     }
 }
