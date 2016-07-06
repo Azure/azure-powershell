@@ -51,9 +51,12 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
 
-        [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable[] Metadata { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
+        [ValidateNotNull]
+        public DnsRecordBase[] DnsRecords { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
@@ -86,14 +89,19 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
+            if (this.DnsRecords == null)
+            {
+                this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
+            }
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.Progress_CreatingEmptyRecordSet,
+                ProjectResources.Progress_CreatingRecordSet,
                 this.Name,
                 () =>
                 {
-                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Tag, this.Overwrite);
+                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
 
                     if (result != null)
                     {
