@@ -386,6 +386,24 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return results;
         }
 
+        public DnsZone GetDnsZoneHandleNonExistentZone(string zoneName, string resourceGroupName)
+        {
+            DnsZone retrievedZone = null;
+            try
+            {
+                retrievedZone = this.GetDnsZone(zoneName, resourceGroupName);
+            }
+            catch (CloudException exception)
+            {
+                if (exception.Body.Code != "ResourceNotFound")
+                {
+                    throw;
+                }
+            }
+
+            return retrievedZone;
+        }
+
         private static DnsRecordSet GetPowerShellRecordSet(string zoneName, string resourceGroupName, Management.Dns.Models.RecordSet mamlRecordSet)
         {
             // e.g. "/subscriptions/<guid>/resourceGroups/<rg>/providers/microsoft.dns/dnszones/<zone>/A/<recordset>"

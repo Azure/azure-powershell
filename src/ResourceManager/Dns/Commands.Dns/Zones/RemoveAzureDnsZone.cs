@@ -54,9 +54,15 @@ namespace Microsoft.Azure.Commands.Dns
             bool deleted = true;
             bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
+            if (!string.IsNullOrEmpty(this.Name) && this.Name.EndsWith("."))
+            {
+                this.Name = this.Name.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
+            }
+
             // There is a bug in sdk where it doesn't handle non existing zones on delete. Hence, handling the condition in powershell
             var zoneToDelete = (this.ParameterSetName != "Object")
-                ? GetDnsZoneHandleNonExistentZone(this.Name, this.ResourceGroupName)
+                ? this.DnsClient.GetDnsZoneHandleNonExistentZone(this.Name, this.ResourceGroupName)
                 : this.Zone;
 
             if (zoneToDelete != null)
@@ -98,30 +104,6 @@ namespace Microsoft.Azure.Commands.Dns
                     }
                 });
             }
-        }
-
-        public DnsZone GetDnsZoneHandleNonExistentZone(string zoneName, string resourceGroupName)
-        {
-            DnsZone retrievedZone = null;
-            try
-            {
-                if (zoneName.EndsWith("."))
-                {
-                    zoneName = zoneName.TrimEnd('.');
-                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
-                }
-
-                retrievedZone = this.DnsClient.GetDnsZone(zoneName, resourceGroupName);
-            }
-            catch (CloudException exception)
-            {
-                if (exception.Body.Code != "ResourceNotFound")
-                {
-                    throw;    
-                }
-            } 
-
-            return retrievedZone;
         }
     }
 }
