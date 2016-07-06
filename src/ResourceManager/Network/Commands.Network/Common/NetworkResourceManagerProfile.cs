@@ -82,6 +82,11 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.Subnet, CNM.PSSubnet>();
             Mapper.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
 
+            // VirtualNetwork Peering
+            Mapper.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
+
+            Mapper.CreateMap<MNM.VirtualNetworkPeering, CNM.PSVirtualNetworkPeering>();
+
             // VirtualNetwork
             // CNM to MNM
             Mapper.CreateMap<CNM.PSAddressSpace, MNM.AddressSpace>();
@@ -105,8 +110,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSNetworkInterface, MNM.NetworkInterface>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceDnsSettings, MNM.NetworkInterfaceDnsSettings>();
             Mapper.CreateMap<CNM.PSNetworkInterfaceIPConfiguration, MNM.NetworkInterfaceIPConfiguration>();
-
-
+            
             // MNM to CNM
             Mapper.CreateMap<MNM.NetworkInterface, CNM.PSNetworkInterface>();
             Mapper.CreateMap<MNM.NetworkInterfaceDnsSettings, CNM.PSNetworkInterfaceDnsSettings>();
