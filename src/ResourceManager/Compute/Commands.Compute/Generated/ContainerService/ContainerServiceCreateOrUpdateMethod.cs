@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("New", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet("New", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class NewAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Update", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet("Update", "AzureRmContainerService", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class UpdateAzureRmContainerService : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }

@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineCustomScriptExtension,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet

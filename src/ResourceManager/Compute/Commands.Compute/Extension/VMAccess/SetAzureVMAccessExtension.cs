@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension)]
+        ProfileNouns.VirtualMachineAccessExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {

@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineADDomainExtension)]
+        ProfileNouns.VirtualMachineADDomainExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMADDomainExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {

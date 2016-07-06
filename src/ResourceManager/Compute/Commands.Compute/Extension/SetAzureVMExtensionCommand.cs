@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineExtension,
-        DefaultParameterSetName = SettingsParamSet)]
+        DefaultParameterSetName = SettingsParamSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
