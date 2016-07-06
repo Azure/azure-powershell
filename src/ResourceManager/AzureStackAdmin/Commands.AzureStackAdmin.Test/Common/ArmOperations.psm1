@@ -1,16 +1,6 @@
-﻿# ----------------------------------------------------------------------------------
-#
-# Copyright Microsoft Corporation
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-# http://www.apache.org/licenses/LICENSE-2.0
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# ----------------------------------------------------------------------------------
+﻿#------------------------------------------------------------
+# Copyright (c) Microsoft Corporation.  All rights reserved.
+#------------------------------------------------------------
 
 function New-ResourceGroup
 {
@@ -35,7 +25,7 @@ function New-ResourceGroup
     {
         # Create resource group request
         $putResourceGroup = @{
-            Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/$SubscriptionId/resourcegroups/${ResourceGroupName}?api-version=1.0"
+            Uri = "{0}subscriptions/{1}/resourcegroups/{2}?api-version={3}" -f $Global:AzureStackConfig.AdminUri, $SubscriptionId, $ResourceGroupName, $Global:AzureStackConfig.ApiVersion
             Method = "PUT"
             Headers = @{ "Authorization" = "Bearer " + $Token }
             ContentType = "application/json"
@@ -95,7 +85,7 @@ function Remove-ResourceGroup
     {
         # Delete resource group request
         $deleteResourceGroup = @{
-            Uri = "$($Global:AzureStackConfig.AdminUri)/subscriptions/$SubscriptionId/resourcegroups/${ResourceGroupName}?api-version=1.0"
+            Uri = "{0}subscriptions/{1}/resourcegroups/{2}?api-version={3}" -f $Global:AzureStackConfig.AdminUri, $SubscriptionId, $ResourceGroupName, $Global:AzureStackConfig.ApiVersion
             Method = "DELETE"
             Headers = @{ "Authorization" = "Bearer " + $Token }
             ContentType = "application/json"
@@ -130,7 +120,7 @@ function Get-ResourceGroup
         }
 
         $getResourceGroup = @{
-            Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups/{1}?api-version=1.0&includeDetails=true" -f $SubscriptionId, $ResourceGroupName
+            Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups/{1}?api-version={2}&includeDetails=true" -f $SubscriptionId, $ResourceGroupName, $Global:AzureStackConfig.ApiVersion
             Method = "GET"
             Headers = @{ "Authorization" = "Bearer " + $Token }
             ContentType = "application/json"
@@ -147,7 +137,7 @@ function Get-ResourceGroup
         }
 
         $getResourceGroup = @{
-            Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups?api-version=1.0&includeDetails=true" -f $SubscriptionId, $ResourceGroupName
+            Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups?api-version={1}&includeDetails=true" -f $SubscriptionId, $Global:AzureStackConfig.ApiVersion
             Method = "GET"
             Headers = @{ "Authorization" = "Bearer " + $Token }
             ContentType = "application/json"
@@ -172,6 +162,11 @@ function Get-ResourceGroupDeployments
 
     Write-Verbose "Getting the Deployment details for the resourceGroup $ResourceGroupName"
 
+
+    if($Global:AzureStackConfig.IsAad)
+    {
+        #TODO: implement this
+    }
 
     $getResourceGroupDeployments = @{
         Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups/{1}/deployments?api-version=2014-04-01-preview&includeDetails=true" -f $SubscriptionId, $ResourceGroupName
@@ -198,6 +193,11 @@ function Get-ResourceGroupResources
 
     Write-Verbose "Getting the resource details for the resourceGroup $ResourceGroupName"
 
+
+    if($Global:AzureStackConfig.IsAad)
+    {
+        #TODO: implement this
+    }
 
     $getResources = @{
         Uri = $Global:AzureStackConfig.AdminUri + "subscriptions/{0}/resourcegroups/{1}/resources?api-version=2014-04-01-preview" -f $SubscriptionId, $ResourceGroupName
@@ -252,6 +252,10 @@ function Get-AllSusbscriptionsResources
 
     Write-Verbose "Getting the Deployment details for the resourceGroup $ResourceGroupName"
 
+    if($Global:AzureStackConfig.IsAad)
+    {
+        #TODO: implement this
+    }
     $filterParam = '$filter='
     $filterParam += Get-FilterQueryParam -ResourceType $ResourceType -Subscriptions $Subscriptions
     $getResourceGroup = @{
