@@ -1,5 +1,7 @@
 ##2016.07.11 version 1.6.0
-﻿* Azure Redis Cache
+* Azure Network
+  * New cmdlet added for Virtual Network Peering
+* Azure Redis Cache
   * New cmdlet added for Reset-AzureRmRedisCache 
   * New cmdlet added for Export-AzureRmRedisCache 
   * New cmdlet added for Import-AzureRmRedisCache 
