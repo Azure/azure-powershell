@@ -29,6 +29,9 @@
 * Web Apps
   * Add Swap-AzureRmWebAppSlot cmdlet for regular swap and swap with preview
   * Extend Set-AzureRmWebAppSlot cmdlet to support auto swap
+* Azure API Management
+  * Fixed Azure Api Management Deployment cmdlets for AzureChinaCloud.
+  * Removed cmdlet Set-AzureRmApiManagementTenantGitAccess as Git Access is enabled by Default.
 
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
