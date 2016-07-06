@@ -120,31 +120,22 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                         parameters.WorkspaceName);
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the data factory exists or not.
-                createStorageInsight();
-            }
-            else
-            {
-                bool storageInsightExists = CheckStorageInsightExists(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
-
-                parameters.ConfirmAction(
-                    !storageInsightExists,    // prompt only if the storageInsight exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.StorageInsightExists,
-                        parameters.Name,
-                        parameters.WorkspaceName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.StorageInsightCreating,
-                        parameters.Name,
-                        parameters.WorkspaceName),
+            parameters.ConfirmAction(
+                parameters.Force,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.StorageInsightExists,
                     parameters.Name,
-                    createStorageInsight);
-            }
-
+                    parameters.WorkspaceName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.StorageInsightCreating,
+                    parameters.Name,
+                    parameters.WorkspaceName),
+                parameters.Name,
+                createStorageInsight,
+                () => CheckStorageInsightExists(parameters.ResourceGroupName, 
+                    parameters.WorkspaceName, parameters.Name));
             return storageInsight;
         }
 

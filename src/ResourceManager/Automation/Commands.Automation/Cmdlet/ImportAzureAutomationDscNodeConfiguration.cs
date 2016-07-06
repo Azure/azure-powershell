@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc node configuration script
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscNodeConfiguration")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscNodeConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(NodeConfiguration))]
     public class ImportAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
     {
@@ -60,14 +60,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var nodeConfiguration = this.AutomationClient.CreateNodeConfiguration(
+            if (ShouldProcess(Path, VerbsData.Import))
+            {
+                var nodeConfiguration = this.AutomationClient.CreateNodeConfiguration(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.Path,
                     this.ConfigurationName,
                     this.Force);
 
-            this.WriteObject(nodeConfiguration);
+                this.WriteObject(nodeConfiguration);
+            }
         }
     }
 }

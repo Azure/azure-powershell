@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
@@ -22,7 +23,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCredential", SupportsShouldProcess = true, 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -33,6 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, HelpMessage = "Confirm the removal of the credential")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -42,8 +45,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       Force.IsPresent,
-                       string.Format(Resources.RemovingAzureAutomationResourceWarning, "Credential"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "Credential"),
                        Name,
                        () =>

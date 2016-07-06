@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Interface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
 
             var ipconfig = this.NetworkInterface.IpConfigurations.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -141,9 +141,8 @@ namespace Microsoft.Azure.Commands.Network
                     ipconfig.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
                 }
             }
-
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-
+            ipconfig.Primary = this.Primary.IsPresent;
             WriteObject(this.NetworkInterface);
         }
     }

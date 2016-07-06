@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets node report for a given node and report id
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscNodeReportContent", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscNodeReportContent", SupportsShouldProcess = true,
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
     {
@@ -67,9 +68,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var ret = this.AutomationClient.GetDscNodeReportContent(this.ResourceGroupName, this.AutomationAccountName, this.NodeId, this.ReportId, OutputFolder, overwriteExistingFile);
+            if (ShouldProcess(ReportId.ToString(), VerbsData.Export))
+            {
+                var ret = this.AutomationClient.GetDscNodeReportContent(this.ResourceGroupName,
+                    this.AutomationAccountName, this.NodeId, this.ReportId, OutputFolder, overwriteExistingFile);
 
-            this.WriteObject(ret, true);
+                this.WriteObject(ret, true);
+            }
         }
     }
 }
