@@ -1,4 +1,9 @@
 ##2016.07.11 version 1.6.0
+﻿* Azure Redis Cache
+  * New cmdlet added for Reset-AzureRmRedisCache 
+  * New cmdlet added for Export-AzureRmRedisCache 
+  * New cmdlet added for Import-AzureRmRedisCache 
+  * Modified cmdlet New-AzureRmRedisCache to include parameter change for vNet 
 * Azure SQL DB Backup/Restore
   * Cmdlets for LTR (Long Term Retention) backup feature
 	* Get-AzureRmSqlServerBackupLongTermRetentionVault
