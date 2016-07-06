@@ -141,6 +141,13 @@ namespace Microsoft.Azure.Commands.Dns
                                 && ((TxtRecord)record).Value == this.Value);
                             break;
                         }
+                    case RecordType.PTR:
+                        {
+                            removedCount = result.Records.RemoveAll(record =>
+                                record is PtrRecord
+                                && ((PtrRecord)record).Ptrdname == this.Ptrdname);
+                            break;
+                        }
                     case RecordType.CNAME:
                         {
                             removedCount = result.Records.RemoveAll(record =>
