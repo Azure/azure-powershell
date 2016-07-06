@@ -21,6 +21,9 @@
 			* Name, the name of the data source
 			* IsDefault, set to true if this is the default data source for the account
 	* Get-AzureRMDataLakeAnalyticsJob fixed for list for certain date time offset values when filtering on submittedBefore and submittedAfter.
+* Web Apps
+  * Add Swap-AzureRmWebAppSlot cmdlet for regular swap and swap with preview
+  * Extend Set-AzureRmWebAppSlot cmdlet to support auto swap
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
   - Fix a bug in New-AzureRmResourceGroupDeployment. In some deployments the cmdlet throws an exception with "Deployment 'deploymentName' could not be found." and causes the cmdlet to fail. The fix makes sure the deployment is created before getting operations.

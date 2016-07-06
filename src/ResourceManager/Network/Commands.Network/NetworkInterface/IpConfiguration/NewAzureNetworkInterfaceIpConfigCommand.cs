@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-
             base.Execute();
+
             // Get the subnetId and publicIpAddressId from the object if specified
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-
+            ipconfig.Primary = this.Primary.IsPresent;
             WriteObject(ipconfig);
 
         }
