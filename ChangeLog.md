@@ -1,4 +1,8 @@
 ﻿##2016.07.11 version 1.6.0
+* Azure Storage
+  * Change Tags Parameter to Tag, and add parameter alias Tags
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 * Azure Network
   * New cmdlet added for Virtual Network Peering
 * Azure Redis Cache
