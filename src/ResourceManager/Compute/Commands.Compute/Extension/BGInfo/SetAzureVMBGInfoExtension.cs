@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineBgInfoExtension)]
+        ProfileNouns.VirtualMachineBgInfoExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBGInfoExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
