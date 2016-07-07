@@ -20,19 +20,20 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Imports a certificate to the key vault. The certificate can be created by 
     /// adding the certificate after getting the CSR from 
-    /// New-AzureCertificateSigningRequest issued by a Certificate Authority or by 
+    /// Add-AzureKeyVaultCertificate issued by a Certificate Authority or by 
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>
     [Cmdlet(VerbsData.Import, CmdletNoun.AzureKeyVaultCertificate,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = ImportCertificateFromFileParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificate))]
@@ -55,9 +56,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault to which this cmdlet imports the certificate.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -66,9 +66,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the certificate in key vault.")]
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 
@@ -115,65 +114,68 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable representing certificate tags.")]
-        public Hashtable Tags { get; set; }
+            HelpMessage = "A hashtable representing certificate tags.")]        
+        public Hashtable Tag { get; set; }
 
         #endregion
 
         protected override void ProcessRecord()
         {
-            List<CertificateBundle> certBundleList = new List<CertificateBundle>();
-            CertificateBundle certBundle = null;
-
-            switch (ParameterSetName)
+            if (ShouldProcess(Name, Properties.Resources.ImportCertificate))
             {
-                case ImportCertificateFromFileParameterSet:
+                List<CertificateBundle> certBundleList = new List<CertificateBundle>();
+                CertificateBundle certBundle = null;
 
-                    certBundle = this.DataServiceClient.MergeCertificate(
-                        VaultName,
-                        Name,
-                        LoadCertificateFromFile(),
-                        Tags.ConvertToDictionary());
+                switch (ParameterSetName)
+                {
+                    case ImportCertificateFromFileParameterSet:
 
-                    break;
+                        certBundle = this.DataServiceClient.MergeCertificate(
+                            VaultName,
+                            Name,
+                            LoadCertificateFromFile(),
+                            Tag == null ? null : Tag.ConvertToDictionary());
 
-                case ImportWithPrivateKeyFromFileParameterSet:
+                        break;
 
-                    X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
-                    X509Certificate2Collection certColl = new X509Certificate2Collection();
+                    case ImportWithPrivateKeyFromFileParameterSet:
 
-                    byte[] base64Bytes;
+                        X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
+                        X509Certificate2Collection certColl = new X509Certificate2Collection();
 
-                    if (Password == null)
-                    {
-                        base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx);
-                    }
-                    else
-                    {
-                        base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password.ConvertToString());
-                    }
+                        byte[] base64Bytes;
 
-                    string base64CertCollection = Convert.ToBase64String(base64Bytes);
-                    certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tags == null ? null : Tags.ConvertToDictionary());
+                        if (Password == null)
+                        {
+                            base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx);
+                        }
+                        else
+                        {
+                            base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password.ConvertToString());
+                        }
 
-                    break;
+                        string base64CertCollection = Convert.ToBase64String(base64Bytes);
+                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
 
-                case ImportWithPrivateKeyFromCollectionParameterSet:
-                    certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateCollection, Tags == null ? null : Tags.ConvertToDictionary());
+                        break;
 
-                    break;
+                    case ImportWithPrivateKeyFromCollectionParameterSet:
+                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateCollection, Tag == null ? null : Tag.ConvertToDictionary());
 
-                case ImportWithPrivateKeyFromStringParameterSet:
-                    certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tags == null ? null : Tags.ConvertToDictionary());
+                        break;
 
-                    break;
+                    case ImportWithPrivateKeyFromStringParameterSet:
+                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag == null ? null : Tag.ConvertToDictionary());
 
-                default:
-                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
+                        break;
+
+                    default:
+                        throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
+                }
+
+                var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
+                this.WriteObject(certificate);
             }
-
-            var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
-            this.WriteObject(certificate);
         }
 
         internal X509Certificate2Collection LoadCertificateFromFile()

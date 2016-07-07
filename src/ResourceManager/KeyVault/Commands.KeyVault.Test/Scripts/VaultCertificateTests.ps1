@@ -213,10 +213,11 @@ function Test_MergeCerWithMismatchKeyPair
 {    
     $keyVault = Get-KeyVault
     $certificateName = Get-CertificateName 'mergecerwithmismatchkeypair'
-    $policy = New-AzureKeyVaultCertificatePolicy -DnsNames "test1.keyvault.com", "test2.keyvault.com" 
+    $policy = New-AzureKeyVaultCertificatePolicy -DnsNames "test1.keyvault.com", "test2.keyvault.com" -IssuerName "Unknown"
     
-    $csr = New-AzureKeyVaultCertificateSigningRequest $keyVault $certificateName $policy    
-    Assert-NotNull $csr
+    $certRequest = Add-AzureKeyVaultCertificate $keyVault $certificateName $policy
+    Assert-NotNull $certRequest
+    Assert-NotNull $certRequest.CertificateSigningRequest
     $global:createdCertificates += $certificateName
     
     $cerPath = Get-FilePathFromCommonData 'mergecer01.cer'    
@@ -345,18 +346,17 @@ Create an in-memory certificate policy
 #>
 
 function Test_NewCertificatePolicy
-{
-    Assert-Throws { $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "abc" }
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate"
+{ 
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -DnsNames "testCertificate.com","testCertificate2.com"
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -DnsNames "testCertificate.com","testCertificate2.com" -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0"
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -IssuerName Self
     Assert-NotNull $policy
     Assert-Throws { $policy = New-AzureKeyVaultCertificatePolicy -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self }
     $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     Assert-NotNull $policy
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailOnly
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailAtNumberOfDaysBeforeExpiry 15
     Assert-NotNull $policy
 }
 
@@ -372,7 +372,7 @@ function Test_SetCertificatePolicy
 
     $createdCert = CreateAKVCertificate $keyVault $certificateName
 
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self -EmailOnly
+    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=testCertificate" -Ekus "1.0","2.0" -SecretContentType application/x-pem-file -ReuseKeyOnRenewal -Disabled -RenewAtNumberOfDaysBeforeExpiry 10 -ValidityInMonths 10 -IssuerName Self
     $policySet = Set-AzureKeyVaultCertificatePolicy $keyVault $certificateName $policy -PassThru
     Assert-NotNull $policySet
 }
@@ -389,14 +389,8 @@ function Test_NewOrganizationDetails
 
     $admin2Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin2@contoso.com" -FirstName "admin" -LastName "2"
     Assert-NotNull $admin2Details
-
-    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Name"
-    Assert-AreEqual $orgDetails.Name "Name"
     
-    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Name" -Address1 "Address1" -Zip 98052 -AdministratorDetails $admin1Details
-    Assert-NotNull $orgDetails
-
-    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Id "MSFT" -Name "Microsoft Corporation" -Address1 "One Microsoft Way" -City "Redmond" -State "WA" -Zip 98052 -Country "US" -AdministratorDetails $admin1Details, $admin2Details
+    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $admin1Details, $admin2Details
     Assert-NotNull $orgDetails
 }
 
@@ -416,16 +410,13 @@ function Test_CreateSSLAdminIssuer
     $admin3Details = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin3@contoso.com" -FirstName "admin" -LastName "3" -PhoneNumber "425-555-5555"
     $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -AdministratorDetails $admin1Details, $admin2Details, $admin3Details
 
-	$issuer1 = Add-AzureKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider -OrganizationDetails $orgDetails -PassThru
+	$issuer1 = Set-AzureKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider -OrganizationDetails $orgDetails -PassThru
 	Assert-NotNull $issuer1
 	Assert-AreEqual $issuer1.Name $issuerName
 	Assert-AreEqual $issuer1.IssuerProvider $issuerProvider
 	Assert-Null $issuer1.OrganizationDetails
 	Assert-Null $issuer1.ApiKey
 	Assert-Null $issuer1.AccountName
-
-	# duplicate addition should cause a problem
-	Assert-Throws { Add-AzureKeyVaultCertificateIssuer $keyVault $issuerName -IssuerProvider $issuerProvider }
 
 	# cleanup
 	Remove-AzureKeyVaultCertificateIssuer $keyVault $issuerName
@@ -443,9 +434,9 @@ function Test_CreateAndGetTestIssuer
     $nonExistingIssuerName = "non-existingissuer"
 
     $adminDetails = New-AzureKeyVaultCertificateAdministratorDetails -EmailAddress "admin@contoso.com" -FirstName "admin" -LastName "admin" -PhoneNumber "425-555-5555"
-    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Microsoft Corporation" -Address1 "One Microsoft Way" -City "Redmond" -State "WA" -Zip 98052 -Country "US" -AdministratorDetails $adminDetails
+    $orgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Id "MSFT" -AdministratorDetails $adminDetails
 
-	$issuerAdded = Add-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -IssuerProvider "Test" -OrganizationDetails $orgDetails -PassThru
+	$issuerAdded = Set-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -IssuerProvider "Test" -OrganizationDetails $orgDetails -PassThru
 	$issuerGotten = Get-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name
 	Assert-AreEqual $issuerAdded.Name $issuerGotten.Name
 
@@ -461,40 +452,6 @@ function Test_CreateAndGetTestIssuer
     Assert-NotNull $issuerGotten
     
     Assert-Throws { Remove-AzureKeyVaultCertificateIssuer $keyVault $issuer01Name -Force }
-}
-
-<#
-.SYNOPSIS
-Tests New-AzureKeyVaultCertificateSigningRequest cmdlet
-#>
-
-function Test_New_AzureKeyVaultCertificateSigningRequest
-{
-    $keyVault = Get-KeyVault
-    $certificateName = Get-CertificateName 'csrcert'
-
-    # initial csr request fails without a policy and no cert is created
-    Assert-Throws { New-AzureKeyVaultCertificateSigningRequest $vaultName $certificateName }
-    Assert-Throws { Get-AzureKeyVaultCertificate $vaultName $certificateName }
-
-    # csr request with a policy
-    $policy = New-AzureKeyVaultCertificatePolicy -SubjectName "CN=$certificateName"
-    $csr = New-AzureKeyVaultCertificateSigningRequest $vaultName $certificateName $policy
-    
-    Assert-NotNull $csr
-    $cert = Get-AzureKeyVaultCertificate $vaultName $certificateName
-    Assert-NotNull $cert
-
-    # another request for csr fails
-    Assert-Throws { $csr = New-AzureKeyVaultCertificateSigningRequest $vaultName $certificateName $policy }
-
-    # request a csr for an existing certificate without policy
-    Remove-AzureKeyVaultCertificate $vaultName $certificateName -Force
-    CreateAKVCertificate $keyVault $certificateName
-    $csr = New-AzureKeyVaultCertificateSigningRequest $vaultName $certificateName
-    Assert-NotNull $csr
-
-    Remove-AzureKeyVaultCertificate $vaultName $certificateName -Force
 }
 
 <#
@@ -565,7 +522,7 @@ function Test_CertificateTags
     
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tags $tags
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
     $global:createdCertificates += $certificateName
     
     $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
@@ -594,7 +551,7 @@ function Test_UpdateCertificateTags
     
     $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
     $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tags $tags
+    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword -Tag $tags
     $global:createdCertificates += $certificateName
     
     $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
@@ -608,7 +565,7 @@ function Test_UpdateCertificateTags
     
     # Remove tags
     $tags = @{}
-    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tags $tags
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
     $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
@@ -618,7 +575,7 @@ function Test_UpdateCertificateTags
     $tags = @{}
     $tags.Add("Org", "Azure")
     $tags.Add("Team", "KeyVault")
-    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tags $tags
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
     $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags
@@ -632,7 +589,7 @@ function Test_UpdateCertificateTags
     $tags = @{}
     $tags.Add("State", "Washington")
     $tags.Add("City", "Redmond")
-    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tags $tags
+    Set-AzureKeyVaultCertificateAttribute $keyVault $certificateName -Tag $tags
     $retrievedCertificate = Get-AzureKeyVaultCertificate $keyVault $certificateName
     Assert-NotNull $retrievedCertificate
     Assert-NotNull $retrievedCertificate.Tags

@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// issuer object
     /// </summary>
     [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificateIssuer,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = ExpandedParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificatePolicy))]
@@ -45,9 +46,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate issuer.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -56,9 +56,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the issuer.")]
+                   HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.IssuerName)]
         public string Name { get; set; }
 
@@ -125,42 +124,45 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
-            KeyVaultCertificateIssuer issuerToUse;
-
-            switch (ParameterSetName)
+            if (ShouldProcess(Name, Properties.Resources.SetCertificateIssuer))
             {
-                case ExpandedParameterSet:
+                KeyVaultCertificateIssuer issuerToUse;
 
-                    issuerToUse = new KeyVaultCertificateIssuer
-                    {
-                        Name = Name,
-                        IssuerProvider = IssuerProvider,
-                        AccountId = AccountId,
-                        ApiKey = ApiKey,
-                        OrganizationDetails = OrganizationDetails,
-                    };
+                switch (ParameterSetName)
+                {
+                    case ExpandedParameterSet:
 
-                    break;
+                        issuerToUse = new KeyVaultCertificateIssuer
+                        {
+                            Name = Name,
+                            IssuerProvider = IssuerProvider,
+                            AccountId = AccountId,
+                            ApiKey = ApiKey,
+                            OrganizationDetails = OrganizationDetails,
+                        };
 
-                case ByValueParameterSet:
-                    issuerToUse = Issuer;
-                    break;
+                        break;
 
-                default:
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
-            }
+                    case ByValueParameterSet:
+                        issuerToUse = Issuer;
+                        break;
 
-            var resultantIssuer = this.DataServiceClient.UpdateCertificateIssuer(
-                                        VaultName,
-                                        Name,
-                                        issuerToUse.IssuerProvider,
-                                        issuerToUse.AccountId,
-                                        issuerToUse.ApiKey,
-                                        issuerToUse.OrganizationDetails);
+                    default:
+                        throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
+                }
 
-            if (PassThru.IsPresent)
-            {
-                this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
+                var resultantIssuer = this.DataServiceClient.SetCertificateIssuer(
+                                            VaultName,
+                                            Name,
+                                            issuerToUse.IssuerProvider,
+                                            issuerToUse.AccountId,
+                                            issuerToUse.ApiKey,
+                                            issuerToUse.OrganizationDetails);
+
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
+                }
             }
         }
     }

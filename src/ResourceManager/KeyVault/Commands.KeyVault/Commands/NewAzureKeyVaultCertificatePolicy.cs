@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// New-AzureKeyVaultCertificatePolicy creates an in-memory Certificate Policy object
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
+        SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificatePolicy))]
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
@@ -69,6 +70,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         public List<string> DnsNames { get; set; }
 
         /// <summary>
+        /// Key Usage
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,            
+            HelpMessage = "Specifies the key usages in the certificate.")]
+        public List<string> KeyUsage { get; set; }
+
+        /// <summary>
         /// Ekus
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
@@ -105,11 +113,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         public int? RenewAtPercentageLifetime { get; set; }
 
         /// <summary>
-        /// EmailOnly
+        /// EmailAtNumberOfDaysBeforeExpiry
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies that the certificate should not be auto-renewed but only emails should be sent.")]
-        public SwitchParameter EmailOnly { get; set; }
+                   HelpMessage = "Specifies how many days before expiry the automatic notification process begins.")]
+        public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
+
+        /// <summary>
+        /// EmailAtPercentageLifetime
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the notification begins.")]
+        public int? EmailAtPercentageLifetime { get; set; }        
 
         /// <summary>
         /// Key type
@@ -130,35 +145,40 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
-            // Validate input parameters
-            ValidateSubjectName();
-            ValidateDnsNames();
-            ValidateEkus();
-            ValidateRenewAtNumberOfDaysBeforeExpiry();
-            ValidateRenewAtPercentageLifetime();
-
-            // Validate combinations of parameters
-            ValidateBothPercentageAndNumberOfDaysAreNotPresent();
-            ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent();
-
-            var policy = new KeyVaultCertificatePolicy
+            if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificatePolicy))
             {
-                DnsNames = DnsNames,
-                Ekus = Ekus,
-                EmailOnly = EmailOnly.IsPresent,
-                Enabled = !Disabled.IsPresent,
-                IssuerName = IssuerName,
-                RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
-                RenewAtPercentageLifetime = RenewAtPercentageLifetime,
-                ReuseKeyOnRenewal = ReuseKeyOnRenewal.IsPresent,
-                SecretContentType = SecretContentType,
-                SubjectName = SubjectName,
-                ValidityInMonths = ValidityInMonths,
-                Kty = KeyType,
-                Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?) null
-            };
+                // Validate input parameters
+                ValidateSubjectName();
+                ValidateDnsNames();
+                ValidateKeyUsage();
+                ValidateEkus();
+                ValidateRenewAtNumberOfDaysBeforeExpiry();
+                ValidateRenewAtPercentageLifetime();
 
-            this.WriteObject(policy);
+                // Validate combinations of parameters
+                ValidateBothPercentageAndNumberOfDaysAreNotPresent();
+                ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent();
+
+                var policy = new KeyVaultCertificatePolicy
+                {
+                    DnsNames = DnsNames,
+                    Ekus = Ekus,
+                    Enabled = !Disabled.IsPresent,
+                    IssuerName = IssuerName,
+                    RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
+                    RenewAtPercentageLifetime = RenewAtPercentageLifetime,
+                    EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
+                    EmailAtPercentageLifetime = EmailAtPercentageLifetime,
+                    ReuseKeyOnRenewal = ReuseKeyOnRenewal.IsPresent,
+                    SecretContentType = SecretContentType,
+                    SubjectName = SubjectName,
+                    ValidityInMonths = ValidityInMonths,
+                    Kty = KeyType,
+                    Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
+                };
+
+                this.WriteObject(policy);
+            }
         }
 
         private void ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent()
@@ -202,6 +222,26 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (RenewAtNumberOfDaysBeforeExpiry <= 0)
                 {
                     throw new ArgumentException("RenewAtNumberOfDaysBeforeExpiry must be larger than 0.");
+                }
+            }
+        }
+
+        private void ValidateKeyUsage()
+        {
+            if (KeyUsage != null)
+            {
+                foreach (var usage in KeyUsage)
+                {
+                    if (string.IsNullOrWhiteSpace(usage))
+                    {
+                        throw new ArgumentException("One of the Key Usage provided is empty.");
+                    }
+
+                    X509KeyUsageFlags parsedUsage;
+                    if (!Enum.TryParse(usage, true, out parsedUsage))
+                    {
+                        throw new ArgumentException(string.Format("Key Usage {0} is invalid.", usage));
+                    }
                 }
             }
         }

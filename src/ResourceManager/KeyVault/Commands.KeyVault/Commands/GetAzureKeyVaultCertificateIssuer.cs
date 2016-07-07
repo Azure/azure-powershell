@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<CertificateIssuerIdentityItem>), typeof(KeyVaultCertificateIssuer))]
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -56,9 +55,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ByNameParameterSet,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.IssuerName)]
         public string Name { get; set; }
 

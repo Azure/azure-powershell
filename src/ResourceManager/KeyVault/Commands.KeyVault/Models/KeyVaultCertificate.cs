@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (certificateBundle.Id != null)
             {
-                kvCertificate.Id = certificateBundle.Id.BaseIdentifier;
-                kvCertificate.Name = certificateBundle.Id.Name;
+                kvCertificate.Id = certificateBundle.CertificateIdentifier.Identifier;
+                kvCertificate.Name = certificateBundle.CertificateIdentifier.Name;
             }
 
             if (certificateBundle.Cer != null)
@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 kvCertificate.Thumbprint = kvCertificate.Certificate.Thumbprint;
             }
 
-            if (certificateBundle.KeyId != null)
+            if (certificateBundle.KeyIdentifier != null)
             {
-                kvCertificate.KeyId = certificateBundle.KeyId.BaseIdentifier;
+                kvCertificate.KeyId = certificateBundle.KeyIdentifier.Identifier;
             }
 
-            if (certificateBundle.SecretId != null)
+            if (certificateBundle.SecretIdentifier != null)
             {
-                kvCertificate.SecretId = certificateBundle.SecretId.BaseIdentifier;
+                kvCertificate.SecretId = certificateBundle.SecretIdentifier.Identifier;
             }
 
             if (certificateBundle.Attributes != null)

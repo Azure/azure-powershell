@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
+         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RemoveAzureKeyVaultKey : KeyVaultCmdletBase
@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
 
@@ -84,6 +82,5 @@ namespace Microsoft.Azure.Commands.KeyVault
                 WriteObject(keyBundle);
             }
         }
-
     }
 }

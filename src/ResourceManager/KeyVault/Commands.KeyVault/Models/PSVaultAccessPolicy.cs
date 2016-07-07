@@ -30,16 +30,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             PermissionsToKeys = permissionsToKeys == null ? new List<string>() : new List<string>(permissionsToKeys);
             PermissionsToCertificates = permissionsToCertificates == null ? new List<string>() : new List<string>(permissionsToCertificates);
         }
-        public PSVaultAccessPolicy(KeyVaultManagement.AccessPolicyEntry s, ActiveDirectoryClient adClient)
+
+        public PSVaultAccessPolicy(KeyVaultManagement.Models.AccessPolicyEntry s, ActiveDirectoryClient adClient)
         {
             ObjectId = s.ObjectId;
             DisplayName = ModelExtensions.GetDisplayNameForADObject(s.ObjectId, adClient);
             ApplicationId = s.ApplicationId;
             TenantId = s.TenantId;
             TenantName = s.TenantId.ToString();
-            PermissionsToSecrets = new List<string>(s.PermissionsToSecrets);
-            PermissionsToKeys = new List<string>(s.PermissionsToKeys);
-            PermissionsToCertificates = new List<string>(s.PermissionsToCertificates);
+            PermissionsToSecrets = s.Permissions.Secrets == null ? new List<string>() : new List<string>(s.Permissions.Secrets);
+            PermissionsToKeys = s.Permissions.Keys == null ? new List<string>() : new List<string>(s.Permissions.Keys);
+            PermissionsToCertificates = s.Permissions.Certificates == null ? new List<string>() : new List<string>(s.Permissions.Certificates);
         }
 
         public Guid TenantId { get; private set; }

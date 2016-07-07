@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// policy for the Certificate object
     /// </summary>
     [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificatePolicy,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = ExpandedParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificatePolicy))]
@@ -50,7 +51,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 
@@ -107,6 +106,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         public List<string> DnsNames { get; set; }
 
         /// <summary>
+        /// Key Usage
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ExpandedParameterSet,
+            HelpMessage = "Specifies the key usages in the certificate.")]
+        public List<string> KeyUsage { get; set; }
+
+        /// <summary>
         /// Ekus
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
@@ -147,12 +154,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         public int? RenewAtPercentageLifetime { get; set; }
 
         /// <summary>
-        /// EmailOnly
+        /// EmailAtNumberOfDaysBeforeExpiry
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ExpandedParameterSet,
-                   HelpMessage = "Specifies that the certificate should not be auto-renewed but only emails should be sent.")]
-        public SwitchParameter EmailOnly { get; set; }
+                   HelpMessage = "Specifies how many days before expiry the automatic notification process begins.")]
+        public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
+
+        /// <summary>
+        /// EmailAtPercentageLifetime
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the notification begins.")]
+        public int? EmailAtPercentageLifetime { get; set; }
 
         /// <summary>
         /// Key type
@@ -189,58 +202,64 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
-            KeyVaultCertificatePolicy policy;
-
-            switch (ParameterSetName)
+            if (ShouldProcess(Name, Properties.Resources.SetCertificatePolicy))
             {
-                case ExpandedParameterSet:
+                KeyVaultCertificatePolicy policy;
 
-                    // Validate input parameters
-                    ValidateSubjectName();
-                    ValidateDnsNames();
-                    ValidateEkus();
-                    ValidateRenewAtNumberOfDaysBeforeExpiry();
-                    ValidateRenewAtPercentageLifetime();
+                switch (ParameterSetName)
+                {
+                    case ExpandedParameterSet:
 
-                    // Validate combinations of parameters
-                    ValidateBothPercentageAndNumberOfDaysAreNotPresent();
+                        // Validate input parameters
+                        ValidateSubjectName();
+                        ValidateDnsNames();
+                        ValidateKeyUsage();
+                        ValidateEkus();
+                        ValidateRenewAtNumberOfDaysBeforeExpiry();
+                        ValidateRenewAtPercentageLifetime();
 
-                    policy = new KeyVaultCertificatePolicy
-                    {
-                        DnsNames = DnsNames,
-                        Ekus = Ekus,
-                        EmailOnly = EmailOnly.IsPresent,
-                        Enabled = !Disabled.IsPresent,
-                        IssuerName = IssuerName,
-                        RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
-                        RenewAtPercentageLifetime = RenewAtPercentageLifetime,
-                        SecretContentType = SecretContentType,
-                        SubjectName = SubjectName,
-                        ValidityInMonths = ValidityInMonths,
-                        Kty = KeyType,
-                        Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
-                    };
+                        // Validate combinations of parameters
+                        ValidateBothPercentageAndNumberOfDaysAreNotPresent();
 
-                    if (ReuseKeyOnRenewal.HasValue)
-                    {
-                        policy.ReuseKeyOnRenewal = ReuseKeyOnRenewal.Value;
-                    }
+                        policy = new KeyVaultCertificatePolicy
+                        {
+                            DnsNames = DnsNames,
+                            KeyUsage = KeyUsage,
+                            Ekus = Ekus,
+                            Enabled = !Disabled.IsPresent,
+                            IssuerName = IssuerName,
+                            RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
+                            RenewAtPercentageLifetime = RenewAtPercentageLifetime,
+                            EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
+                            EmailAtPercentageLifetime = EmailAtPercentageLifetime,
+                            SecretContentType = SecretContentType,
+                            SubjectName = SubjectName,
+                            ValidityInMonths = ValidityInMonths,
+                            Kty = KeyType,
+                            Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
+                        };
 
-                    break;
+                        if (ReuseKeyOnRenewal.HasValue)
+                        {
+                            policy.ReuseKeyOnRenewal = ReuseKeyOnRenewal.Value;
+                        }
 
-                case ByValueParameterSet:
-                    policy = CertificatePolicy;
-                    break;
+                        break;
 
-                default:
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
-            }
+                    case ByValueParameterSet:
+                        policy = CertificatePolicy;
+                        break;
 
-            var resultantPolicy = DataServiceClient.UpdateCertificatePolicy(VaultName, Name, policy.ToCertificatePolicy());
+                    default:
+                        throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
+                }
 
-            if (PassThru.IsPresent)
-            {
-                this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
+                var resultantPolicy = DataServiceClient.UpdateCertificatePolicy(VaultName, Name, policy.ToCertificatePolicy());
+
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
+                }
             }
         }
 
@@ -276,6 +295,26 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (RenewAtNumberOfDaysBeforeExpiry <= 0)
                 {
                     throw new ArgumentException("RenewAtNumberOfDaysBeforeExpiry must be larger than 0.");
+                }
+            }
+        }
+
+        private void ValidateKeyUsage()
+        {
+            if (KeyUsage != null)
+            {
+                foreach (var usage in KeyUsage)
+                {
+                    if (string.IsNullOrWhiteSpace(usage))
+                    {
+                        throw new ArgumentException("One of the Key Usage provided is empty.");
+                    }
+
+                    X509KeyUsageFlags parsedUsage;
+                    if (!Enum.TryParse(usage, true, out parsedUsage))
+                    {
+                        throw new ArgumentException(string.Format("Key Usage {0} is invalid.", usage));
+                    }
                 }
             }
         }

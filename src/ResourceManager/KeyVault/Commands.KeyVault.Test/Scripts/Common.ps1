@@ -161,6 +161,21 @@ function Move-Log([string]$rootfolder)
 
 <#
 .SYNOPSIS
+Remove all old certificates starting with the given prefix.
+#>
+function Cleanup-OldCertificates
+{
+    Write-Host "Cleaning up old certificates..."
+
+    $keyVault = Get-KeyVault
+    $certificatePattern = Get-CertificateName '*'
+    Get-AzureKeyVaultCertificate $keyVault |
+        Where-Object {$_.Name -like $certificatePattern} |
+        Remove-AzureKeyVaultCertificate -Force -Confirm:$false
+}
+
+<#
+.SYNOPSIS
 Remove all old keys starting with the given prefix.
 #>
 function Cleanup-OldKeys

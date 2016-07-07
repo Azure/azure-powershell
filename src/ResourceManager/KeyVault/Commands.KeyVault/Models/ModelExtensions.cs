@@ -83,12 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             return str;
         }
 
-        public static string GetDisplayNameForADObject(Guid id, ActiveDirectoryClient adClient)
+        public static string GetDisplayNameForADObject(Guid? id, ActiveDirectoryClient adClient)
         {
             string displayName = "";
             string upnOrSpn = "";
 
-            if (adClient == null || id == Guid.Empty)
+            if (adClient == null || !id.HasValue || id.Value == Guid.Empty)
                 return displayName;
 
             try

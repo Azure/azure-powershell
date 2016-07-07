@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Starts the process for enrolling for a certificate in Azure Key Vault
     /// </summary>
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificate,
+        SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificateOperation))]
     public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
@@ -36,8 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
-        public string VaultName { get; set; }
+                public string VaultName { get; set; }
 
         /// <summary>
         /// Name
@@ -45,9 +45,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the certificate in key vault.")]
-        [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
+        [ValidateNotNullOrEmpty]        
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 
@@ -66,14 +65,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing certificate tags.")]
-        public Hashtable Tags { get; set; }
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
         #endregion
 
         protected override void ProcessRecord()
         {
-            var certificateOperation = this.DataServiceClient.EnrollCertificate(VaultName, Name, CertificatePolicy == null ? null : CertificatePolicy.ToCertificatePolicy(), Tags == null ? null : Tags.ConvertToDictionary());
-            var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
-            this.WriteObject(kvCertificateOperation);
+            if (ShouldProcess(Name, Properties.Resources.AddCertificate)) {
+                var certificateOperation = this.DataServiceClient.EnrollCertificate(VaultName, Name, CertificatePolicy == null ? null : CertificatePolicy.ToCertificatePolicy(), Tag == null ? null : Tag.ConvertToDictionary());
+                var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+                this.WriteObject(kvCertificateOperation);
+            }
         }
     }
 }

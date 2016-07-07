@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes the certificate operation for the selected certificate
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateOperation,
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
@@ -37,7 +39,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -46,9 +47,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the certificate in key vault.")]
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 

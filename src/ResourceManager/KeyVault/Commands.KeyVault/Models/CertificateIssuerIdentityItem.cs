@@ -14,26 +14,27 @@
 
 using System;
 using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class CertificateIssuerIdentityItem
     {
-        internal CertificateIssuerIdentityItem(ListCertificateIssuerResponseMessage issuerItem, VaultUriHelper vaultUriHelper)
+        internal CertificateIssuerIdentityItem(CertificateIssuerItem issuerItem, VaultUriHelper vaultUriHelper)
         {
             if (issuerItem == null)
                 throw new ArgumentNullException("issuerItem");
 
-            Name = new IssuerIdentifier(issuerItem.Id).Name;
+            Name = new CertificateIssuerIdentifier(issuerItem.Id).Name;
             IssuerProvider = issuerItem.Provider;
         }
 
-        internal CertificateIssuerIdentityItem(Issuer issuer)
+        internal CertificateIssuerIdentityItem(IssuerBundle issuer)
         {
             if (issuer == null)
                 throw new ArgumentNullException("issuer");
 
-            Name = issuer.Id.Name;
+            Name = issuer.IssuerIdentifier.Name;
             IssuerProvider = issuer.Provider;
         }
 

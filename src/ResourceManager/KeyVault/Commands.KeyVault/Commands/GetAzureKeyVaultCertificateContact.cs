@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Get-AzureKeyVaultCertificateContact gets the list of contacts for certificate objects in key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyVaultCertificateContact>))]
@@ -43,9 +43,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         #endregion
@@ -58,9 +57,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 contacts = this.DataServiceClient.GetCertificateContacts(this.VaultName);
             }
-            catch (KeyVaultClientException kvce)
+            catch (KeyVaultErrorException exception)
             {
-                if (kvce.Status != System.Net.HttpStatusCode.NotFound)
+                if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw;
                 }
@@ -69,14 +68,14 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             if (contacts == null ||
-                contacts.ContactsList == null)
+                contacts.ContactList == null)
             {
                 return;
             }
 
             var contactsModel = new List<KeyVaultCertificateContact>();
 
-            foreach (var contact in contacts.ContactsList)
+            foreach (var contact in contacts.ContactList)
             {
                 contactsModel.Add(KeyVaultCertificateContact.FromKVCertificateContact(contact));
             }

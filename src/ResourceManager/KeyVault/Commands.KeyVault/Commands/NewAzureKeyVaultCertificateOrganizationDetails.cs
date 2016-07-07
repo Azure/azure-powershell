@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateOrganizationDetails,
+        SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificateOrganizationDetails))]
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
@@ -36,56 +37,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public string Id { get; set; }
 
         /// <summary>
-        /// Name
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the organization.")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Address1
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the address of the organization.")]
-        public string Address1 { get; set; }
-
-        /// <summary>
-        /// Address2
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the address of the organization.")]
-        public string Address2 { get; set; }
-
-        /// <summary>
-        /// City
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the city of the organization.")]
-        public string City { get; set; }
-
-        /// <summary>
-        /// Zip
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the zip code of the organization.")]
-        public int? Zip { get; set; }
-
-        /// <summary>
-        /// State
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the state of the organization")]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Country
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the country of the organization")]
-        public string Country { get; set; }
-
-        /// <summary>
         /// AdministratorDetails
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
@@ -96,20 +47,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         protected override void ProcessRecord()
         {
-            var organizationDetails = new KeyVaultCertificateOrganizationDetails
+            if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificateAdministrator))
             {
-                Id = Id,
-                Name = Name,
-                Address1 = Address1,
-                Address2 = Address2,
-                City = City,
-                Zip = Zip,
-                State = State,
-                Country = Country,
-                AdministratorDetails = AdministratorDetails,
-            };
+                var organizationDetails = new KeyVaultCertificateOrganizationDetails
+                {
+                    Id = Id,
+                    AdministratorDetails = AdministratorDetails,
+                };
 
-            this.WriteObject(organizationDetails);
+                this.WriteObject(organizationDetails);
+            }
         }
     }
 }

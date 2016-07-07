@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             return new KeyVaultCertificateContact
             {
-                Email = contact.Email,
+                Email = contact.EmailAddress,
             };
         }
 
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             var result = new List<KeyVaultCertificateContact>();
 
-            if (contacts != null && contacts.ContactsList != null)
+            if (contacts != null && contacts.ContactList != null)
             {
-                foreach (var contact in contacts.ContactsList)
+                foreach (var contact in contacts.ContactList)
                 {
                     result.Add(FromKVCertificateContact(contact));
                 }

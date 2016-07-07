@@ -19,7 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
     {
@@ -33,7 +35,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -44,7 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
@@ -98,7 +98,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
-        public Hashtable Tags { get; set; }
+        [Alias(Constants.TagsAlias)]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
@@ -108,15 +109,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            var secret = DataServiceClient.UpdateSecret(
+            if (ShouldProcess(Name, Properties.Resources.SetSecretAttribute))
+            {
+                var secret = DataServiceClient.UpdateSecret(
                 VaultName,
                 Name,
-                Version,
-                new SecretAttributes(Enable, Expires, NotBefore, ContentType, Tags));
+                Version ?? string.Empty,
+                new SecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
 
-            if (PassThru)
-            {
-                WriteObject(secret);
+                if (PassThru)
+                {
+                    WriteObject(secret);
+                }
             }
         }
     }

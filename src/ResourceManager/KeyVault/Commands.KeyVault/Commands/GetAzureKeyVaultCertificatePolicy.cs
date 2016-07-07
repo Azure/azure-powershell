@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// Get-AzureKeyVaultCertificatePolicy gets the policy for a certificate object in key vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,        
         DefaultParameterSetName = ByVaultAndCertNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificatePolicy))]
@@ -42,9 +42,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                    ParameterSetName = ByVaultAndCertNameParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault from which the certificate policy is read.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -54,9 +53,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                    ParameterSetName = ByVaultAndCertNameParameterSet,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the certificate in key vault.")]
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate policy from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
         #endregion
@@ -69,9 +67,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
             {
                 certificatePolicy = this.DataServiceClient.GetCertificatePolicy(this.VaultName, this.Name);
             }
-            catch (KeyVaultClientException kvce)
+            catch (KeyVaultErrorException exception)
             {
-                if (kvce.Status != System.Net.HttpStatusCode.NotFound)
+                if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw;
                 }
