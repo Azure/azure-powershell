@@ -25,13 +25,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "d4bc30dc3e30ac17b41312e79c94f1a3"
+          "8bca75e8d73fafc68a32938091cd21c6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:46 GMT"
+          "Wed, 06 Jul 2016 03:53:14 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -42,8 +42,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/d4bc30dc3e30ac17b41312e79c94f1a3",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2Q0YmMzMGRjM2UzMGFjMTdiNDEzMTJlNzljOTRmMWEz",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/8bca75e8d73fafc68a32938091cd21c6",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzhiY2E3NWU4ZDczZmFmYzY4YTMyOTM4MDkxY2QyMWM2",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -54,7 +54,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>d4bc30dc-3e30-ac17-b413-12e79c94f1a3</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>8bca75e8-d73f-afc6-8a32-938091cd21c6</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -66,13 +66,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "4573b5ed6e29a86e9faa746ce3721cef"
+          "987d8d9fbb58a6a08457c463613456a0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:46 GMT"
+          "Wed, 06 Jul 2016 03:53:15 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -110,13 +110,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "acbd2ce288aca1628eb89c7930db3e4b"
+          "366c8bb747c8a2a4875be2f2f321d6c6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:48 GMT"
+          "Wed, 06 Jul 2016 03:53:16 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -127,8 +127,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/acbd2ce288aca1628eb89c7930db3e4b",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2FjYmQyY2UyODhhY2ExNjI4ZWI4OWM3OTMwZGIzZTRi",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/366c8bb747c8a2a4875be2f2f321d6c6",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM2NmM4YmI3NDdjOGEyYTQ4NzViZTJmMmYzMjFkNmM2",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -139,7 +139,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>acbd2ce2-88ac-a162-8eb8-9c7930db3e4b</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>366c8bb7-47c8-a2a4-875b-e2f2f321d6c6</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -151,13 +151,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "23f819eef407a8a3a5eeb27e39a28624"
+          "a5893b041eb1a2608b880d598c82cc84"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:49 GMT"
+          "Wed, 06 Jul 2016 03:53:19 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -195,13 +195,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c5ceee65e3a9a3a88f5105c8f1ec9805"
+          "dfba3b4341b4a120a2758dd2f27e618f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:50 GMT"
+          "Wed, 06 Jul 2016 03:53:20 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -239,13 +239,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "32f396b1856eac06b1e4573ab4682c78"
+          "a944b57a83baa511aef31d5c1d8683a7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:26 GMT"
+          "Wed, 06 Jul 2016 03:53:55 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -256,8 +256,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/c5ceee65e3a9a3a88f5105c8f1ec9805",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2M1Y2VlZTY1ZTNhOWEzYTg4ZjUxMDVjOGYxZWM5ODA1",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/dfba3b4341b4a120a2758dd2f27e618f",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2RmYmEzYjQzNDFiNGExMjBhMjc1OGRkMmYyN2U2MThm",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -268,7 +268,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>c5ceee65-e3a9-a3a8-8f51-05c8f1ec9805</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>dfba3b43-41b4-a120-a275-8dd2f27e618f</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -280,13 +280,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "738646b0169ea812ab55a6285fc77b1e"
+          "88a4ca2ed593a2ba8f84042bc4121629"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:50 GMT"
+          "Wed, 06 Jul 2016 03:53:20 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -300,13 +300,13 @@
       "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices",
       "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXM=",
       "RequestMethod": "POST",
-      "RequestBody": "<CreateStorageServiceInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk4323</ServiceName>\r\n  <Description p2:nil=\"true\" xmlns:p2=\"http://www.w3.org/2001/XMLSchema-instance\" />\r\n  <Label>b25lc2RrNDMyMw==</Label>\r\n  <Location>East US</Location>\r\n  <AccountType>Standard_GRS</AccountType>\r\n</CreateStorageServiceInput>",
+      "RequestBody": "<CreateStorageServiceInput xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>pstestonesdk5872</ServiceName>\r\n  <Description p2:nil=\"true\" xmlns:p2=\"http://www.w3.org/2001/XMLSchema-instance\" />\r\n  <Label>cHN0ZXN0b25lc2RrNTg3Mg==</Label>\r\n  <Location>East US</Location>\r\n  <AccountType>Standard_GRS</AccountType>\r\n</CreateStorageServiceInput>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
         ],
         "Content-Length": [
-          "344"
+          "358"
         ],
         "x-ms-version": [
           "2016-03-01"
@@ -327,16 +327,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fa6a29be40bca5beaa446055cbb3c89b"
+          "b919c4741231a4f0ad3d5a97fe64277d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:53 GMT"
+          "Wed, 06 Jul 2016 03:53:22 GMT"
         ],
         "Location": [
-          "https://management.core.windows.net/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/storage/onesdk4323"
+          "https://management.core.windows.net/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/storage/pstestonesdk5872"
         ],
         "Server": [
           "1.0.6198.397",
@@ -347,8 +347,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/fa6a29be40bca5beaa446055cbb3c89b",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2ZhNmEyOWJlNDBiY2E1YmVhYTQ0NjA1NWNiYjNjODli",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/b919c4741231a4f0ad3d5a97fe64277d",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2I5MTljNDc0MTIzMWE0ZjBhZDNkNWE5N2ZlNjQyNzdk",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -359,7 +359,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>fa6a29be-40bc-a5be-aa44-6055cbb3c89b</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>b919c474-1231-a4f0-ad3d-5a97fe64277d</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -374,13 +374,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9bc917ac0277aa39bf652bb42e5ef083"
+          "df08d47c0da2aaab8e645a723e7f15f7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:27:53 GMT"
+          "Wed, 06 Jul 2016 03:53:22 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -391,8 +391,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/fa6a29be40bca5beaa446055cbb3c89b",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2ZhNmEyOWJlNDBiY2E1YmVhYTQ0NjA1NWNiYjNjODli",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/b919c4741231a4f0ad3d5a97fe64277d",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2I5MTljNDc0MTIzMWE0ZjBhZDNkNWE5N2ZlNjQyNzdk",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -403,7 +403,7 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>fa6a29be-40bc-a5be-aa44-6055cbb3c89b</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>b919c474-1231-a4f0-ad3d-5a97fe64277d</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -418,13 +418,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "67a1de99e4dfa7fb966b86222788fc74"
+          "b04004af054dad5f8595346e397ba830"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:23 GMT"
+          "Wed, 06 Jul 2016 03:53:52 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -435,8 +435,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk4323",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNDMyMw==",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/pstestonesdk5872",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvcHN0ZXN0b25lc2RrNTg3Mg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -447,10 +447,10 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
         ]
       },
-      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk4323</Url>\r\n  <ServiceName>onesdk4323</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrNDMyMw==</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://onesdk4323.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk4323.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk4323.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://onesdk4323.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>East US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>West US</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2016-07-06T03:27:52Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-EastUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>East US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/pstestonesdk5872</Url>\r\n  <ServiceName>pstestonesdk5872</ServiceName>\r\n  <StorageServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>cHN0ZXN0b25lc2RrNTg3Mg==</Label>\r\n    <Status>Created</Status>\r\n    <Endpoints>\r\n      <Endpoint>https://pstestonesdk5872.blob.core.windows.net/</Endpoint>\r\n      <Endpoint>https://pstestonesdk5872.queue.core.windows.net/</Endpoint>\r\n      <Endpoint>https://pstestonesdk5872.table.core.windows.net/</Endpoint>\r\n      <Endpoint>https://pstestonesdk5872.file.core.windows.net/</Endpoint>\r\n    </Endpoints>\r\n    <GeoPrimaryRegion>East US</GeoPrimaryRegion>\r\n    <StatusOfPrimary>Available</StatusOfPrimary>\r\n    <GeoSecondaryRegion>West US</GeoSecondaryRegion>\r\n    <StatusOfSecondary>Available</StatusOfSecondary>\r\n    <CreationTime>2016-07-06T03:53:22Z</CreationTime>\r\n    <CustomDomains />\r\n    <AccountType>Standard_GRS</AccountType>\r\n  </StorageServiceProperties>\r\n  <ExtendedProperties>\r\n    <ExtendedProperty>\r\n      <Name>ResourceGroup</Name>\r\n      <Value>Default-Storage-EastUS</Value>\r\n    </ExtendedProperty>\r\n    <ExtendedProperty>\r\n      <Name>ResourceLocation</Name>\r\n      <Value>East US</Value>\r\n    </ExtendedProperty>\r\n  </ExtendedProperties>\r\n  <Capabilities>\r\n    <Capability>PersistentVMRole</Capability>\r\n  </Capabilities>\r\n</StorageService>",
       "ResponseHeaders": {
         "Content-Length": [
-          "1314"
+          "1358"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -462,13 +462,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5d49caedf52da558b20a5d9d16b922e2"
+          "21aade69f137acf39309520461a3de52"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:23 GMT"
+          "Wed, 06 Jul 2016 03:53:53 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -479,8 +479,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk4323/keys",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvb25lc2RrNDMyMy9rZXlz",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/pstestonesdk5872/keys",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9zdG9yYWdlc2VydmljZXMvcHN0ZXN0b25lc2RrNTg3Mi9rZXlz",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -491,10 +491,10 @@
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/6.0.0.0"
         ]
       },
-      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/onesdk4323</Url>\r\n  <StorageServiceKeys>\r\n    <Primary>Y51Osg5FX1TGsL+osmHHSqvx1SOxB+h1I+A0OVop92eyWXGqnn9Q0sL5XpzoWFQ6NJFs0XAjZdYn9mqrRaqJtw==</Primary>\r\n    <Secondary>0VzFFNhuJTP7EBfDM5tNAJWFji08CsPRbBP6Wc9SnuM7oYBx0nu6kehC6Omzz/rEjjkspXy+qh8QH3PaO7f6ng==</Secondary>\r\n  </StorageServiceKeys>\r\n</StorageService>",
+      "ResponseBody": "<StorageService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/storageservices/pstestonesdk5872</Url>\r\n  <StorageServiceKeys>\r\n    <Primary>7Y2yJcQ3NXe81zj8qsotJctkJMyaMS8df+sQumr3fNHt9djknt3a424Sp9ObUod02ey19eGUnyNHkZJWS/XmAw==</Primary>\r\n    <Secondary>rCdLm34B9tY/LmCa9aok0VGDXyLjqH0Uq/IMdFJzYi/dhGNx4HY2Fc1/hMIic8EqVZHAvA+Tcs4Vfk0dtU62mA==</Secondary>\r\n  </StorageServiceKeys>\r\n</StorageService>",
       "ResponseHeaders": {
         "Content-Length": [
-          "513"
+          "519"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -506,13 +506,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6af677d93965a03eb5e4161d81eab30e"
+          "27e3277d3a1ea38381bff6d4a645f1d3"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:23 GMT"
+          "Wed, 06 Jul 2016 03:53:53 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -526,13 +526,13 @@
       "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices",
       "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcw==",
       "RequestMethod": "POST",
-      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>onesdk1049</ServiceName>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Location>East US</Location>\r\n</CreateHostedService>",
+      "RequestBody": "<CreateHostedService xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ServiceName>pstestonesdk1100</ServiceName>\r\n  <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n  <Location>East US</Location>\r\n</CreateHostedService>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
         ],
         "Content-Length": [
-          "203"
+          "217"
         ],
         "x-ms-version": [
           "2016-06-01"
@@ -553,16 +553,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2966badf60ada0e5883a933f3c92755d"
+          "763f88722099ab13ae7349a51df1ae31"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:23 GMT"
+          "Wed, 06 Jul 2016 03:53:54 GMT"
         ],
         "Location": [
-          "https://management.core.windows.net/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/compute/onesdk1049"
+          "https://management.core.windows.net/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/compute/pstestonesdk1100"
         ],
         "Server": [
           "1.0.6198.397",
@@ -573,8 +573,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/2966badf60ada0e5883a933f3c92755d",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzI5NjZiYWRmNjBhZGEwZTU4ODNhOTMzZjNjOTI3NTVk",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/763f88722099ab13ae7349a51df1ae31",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzc2M2Y4ODcyMjA5OWFiMTNhZTczNDlhNTFkZjFhZTMx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -585,7 +585,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>2966badf-60ad-a0e5-883a-933f3c92755d</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>763f8872-2099-ab13-ae73-49a51df1ae31</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -597,13 +597,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "5a722f032c05a830a0c18e91d75c522c"
+          "1cd027e27d86a98ebabd9b542bd49303"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:24 GMT"
+          "Wed, 06 Jul 2016 03:53:54 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -614,8 +614,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deploymentslots/Production",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -641,13 +641,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c83602e8d9b1af26b0237853aecc0ff6"
+          "5c9f7dddec54aef9a2b3b6766e429ff4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:24 GMT"
+          "Wed, 06 Jul 2016 03:53:54 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -658,8 +658,8 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deploymentslots/Production",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -670,10 +670,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>Provisioning</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails>Remote access ready...</InstanceStateDetails>\r\n      <IpAddress>10.85.242.68</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56596</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56538</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <HostName>vm1</HostName>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:35:05Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm1.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:35:05Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>40.76.63.25</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>onesdk1049ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
+      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>pstestonesdk1100</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n  <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm01</RoleName>\r\n      <InstanceName>vm01</InstanceName>\r\n      <InstanceStatus>RoleStateUnknown</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.94.184.69</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>56810</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>61569</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Starting</PowerState>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:54:20Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm01.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm01</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56810</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>61569</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n        <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:54:20Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>13.82.58.10</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>pstestonesdk1100ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
       "ResponseHeaders": {
         "Content-Length": [
-          "4490"
+          "4329"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -685,13 +685,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "31c2542ac003aedaa1148cfd76ec0a39"
+          "2b9ca96ccabfab8493b9e59b09be9350"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:35:05 GMT"
+          "Wed, 06 Jul 2016 03:54:31 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -702,8 +702,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deploymentslots/Production",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -714,10 +714,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>ReadyRole</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.85.242.68</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56596</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56538</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <HostName>vm1</HostName>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:37:07Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm1.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:37:07Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>40.76.63.25</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>onesdk1049ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
+      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>pstestonesdk1100</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n  <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm01</RoleName>\r\n      <InstanceName>vm01</InstanceName>\r\n      <InstanceStatus>RoleStateUnknown</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.94.184.69</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>56810</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>61569</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Starting</PowerState>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:54:20Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm01.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm01</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56810</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>61569</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n        <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:54:20Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>13.82.58.10</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>pstestonesdk1100ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
       "ResponseHeaders": {
         "Content-Length": [
-          "4554"
+          "4329"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -729,13 +729,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "bc9df3a0f990ac7a906d448205a220fe"
+          "87cd83231e79a752825c57ea2314f7c4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:37:07 GMT"
+          "Wed, 06 Jul 2016 03:54:31 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -746,8 +746,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deploymentslots/Production",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -758,10 +758,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>ReadyRole</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.85.242.68</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56596</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56538</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <HostName>vm1</HostName>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:37:07Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm1.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:37:07Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>40.76.63.25</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>onesdk1049ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
+      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>pstestonesdk1100</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n  <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm01</RoleName>\r\n      <InstanceName>vm01</InstanceName>\r\n      <InstanceStatus>Provisioning</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.94.180.62</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>56810</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>61569</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:56:27Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm01.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm01</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56810</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>61569</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n        <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:56:26Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>13.82.58.10</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>pstestonesdk1100ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
       "ResponseHeaders": {
         "Content-Length": [
-          "4554"
+          "4324"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -773,13 +773,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "c9ad1a9b85b4a45c859b43dfd538d70c"
+          "4d740afc72dda29892e914384321725f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:37:07 GMT"
+          "Wed, 06 Jul 2016 03:56:34 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -790,8 +790,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deploymentslots/Production",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -802,10 +802,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>ReadyRole</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.85.242.68</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56596</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>40.76.63.25</Vip>\r\n          <PublicPort>56538</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <HostName>vm1</HostName>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:40:11Z</Timestamp>\r\n        <GuestAgentVersion>2.7.1198.778</GuestAgentVersion>\r\n        <Status>Ready</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>GuestAgent is running and accepting new configurations.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n      <ResourceExtensionStatusList>\r\n        <ResourceExtensionStatus>\r\n          <HandlerName>Microsoft.Compute.BGInfo</HandlerName>\r\n          <Version>2.1</Version>\r\n          <Status>Ready</Status>\r\n          <FormattedMessage>\r\n            <Language>en-US</Language>\r\n            <Message>Plugin enabled (name: Microsoft.Compute.BGInfo, version: 2.1).</Message>\r\n          </FormattedMessage>\r\n        </ResourceExtensionStatus>\r\n      </ResourceExtensionStatusList>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>40.76.63.25</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>40.76.63.25</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>onesdk1049ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
+      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>pstestonesdk1100</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n  <Status>Running</Status>\r\n  <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n  <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm01</RoleName>\r\n      <InstanceName>vm01</InstanceName>\r\n      <InstanceStatus>Provisioning</InstanceStatus>\r\n      <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n      <InstanceFaultDomain>0</InstanceFaultDomain>\r\n      <InstanceSize>Small</InstanceSize>\r\n      <InstanceStateDetails />\r\n      <IpAddress>10.94.180.62</IpAddress>\r\n      <InstanceEndpoints>\r\n        <InstanceEndpoint>\r\n          <Name>PowerShell</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>56810</PublicPort>\r\n          <LocalPort>5986</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n        <InstanceEndpoint>\r\n          <Name>RemoteDesktop</Name>\r\n          <Vip>13.82.58.10</Vip>\r\n          <PublicPort>61569</PublicPort>\r\n          <LocalPort>3389</LocalPort>\r\n          <Protocol>tcp</Protocol>\r\n        </InstanceEndpoint>\r\n      </InstanceEndpoints>\r\n      <PowerState>Started</PowerState>\r\n      <GuestAgentStatus>\r\n        <ProtocolVersion>1.0</ProtocolVersion>\r\n        <Timestamp>2016-07-06T03:56:27Z</Timestamp>\r\n        <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n        <Status>NotReady</Status>\r\n        <FormattedMessage>\r\n          <Language>en-US</Language>\r\n          <Message>Status not available for role vm01.</Message>\r\n        </FormattedMessage>\r\n      </GuestAgentStatus>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm01</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56810</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>61569</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <Vip>13.82.58.10</Vip>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n        <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:56:26Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <VirtualIPs>\r\n    <VirtualIP>\r\n      <Address>13.82.58.10</Address>\r\n      <IsDnsProgrammed>true</IsDnsProgrammed>\r\n      <Name>pstestonesdk1100ContractContract</Name>\r\n    </VirtualIP>\r\n  </VirtualIPs>\r\n  <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
       "ResponseHeaders": {
         "Content-Length": [
-          "4926"
+          "4324"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -817,145 +817,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5ed97f8c8672a1d094da534942b83ef0"
+          "8347d5f2af93a1659db867c1d82ae08a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:40:11 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Suspended</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>StoppedDeallocated</InstanceStatus>\r\n      <PowerState>Stopped</PowerState>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n      <MigrationState>Prepared</MigrationState>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs />\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "3538"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "3fd149af45cfa169966ce470194ce404"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:44:13 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Suspended</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>StoppedDeallocated</InstanceStatus>\r\n      <PowerState>Stopped</PowerState>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs />\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "3497"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "81e72952c1d5a020bbd8123774d2ef58"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:16 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deploymentslots/Production",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzbG90cy9Qcm9kdWN0aW9u",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n  <Status>Suspended</Status>\r\n  <Label>b25lc2RrMTA0OQ==</Label>\r\n  <Url>http://onesdk1049.cloudapp.net/</Url>\r\n  <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n  <RoleInstanceList>\r\n    <RoleInstance>\r\n      <RoleName>vm1</RoleName>\r\n      <InstanceName>vm1</InstanceName>\r\n      <InstanceStatus>StoppedDeallocated</InstanceStatus>\r\n      <PowerState>Stopped</PowerState>\r\n      <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n    </RoleInstance>\r\n  </RoleInstanceList>\r\n  <UpgradeDomainCount>1</UpgradeDomainCount>\r\n  <RoleList>\r\n    <Role i:type=\"PersistentVMRole\">\r\n      <RoleName>vm1</RoleName>\r\n      <OsVersion />\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Port>56596</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Port>56538</Port>\r\n              <Protocol>tcp</Protocol>\r\n              <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n          <State>Enable</State>\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <DataVirtualHardDisks />\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n        <OS>Windows</OS>\r\n        <IOType>Standard</IOType>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n        <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n  <SdkVersion />\r\n  <Locked>false</Locked>\r\n  <RollbackAllowed>false</RollbackAllowed>\r\n  <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n  <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n  <ExtendedProperties />\r\n  <PersistentVMDowntime>\r\n    <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n    <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n    <Status>PersistentVMUpdateScheduled</Status>\r\n  </PersistentVMDowntime>\r\n  <VirtualIPs />\r\n  <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n  <LoadBalancers />\r\n</Deployment>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "3497"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "eaa23c5a779caed2b63882b6a29604e5"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:17 GMT"
+          "Wed, 06 Jul 2016 03:56:35 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -993,13 +861,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "68d4173ef112af39a65b905795615d71"
+          "eccf7f1af80da5dab48a47ac83d90a67"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:24 GMT"
+          "Wed, 06 Jul 2016 03:53:55 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1010,8 +878,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/operations/isavailable/onesdk1049",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vcGVyYXRpb25zL2lzYXZhaWxhYmxlL29uZXNkazEwNDk=",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/operations/isavailable/pstestonesdk1100",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vcGVyYXRpb25zL2lzYXZhaWxhYmxlL3BzdGVzdG9uZXNkazExMDA=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1037,13 +905,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "90edb7a8a485ab1488a7171de982fdf0"
+          "e1e93832cb4da641a59e4390b2cc43da"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:26 GMT"
+          "Wed, 06 Jul 2016 03:53:55 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1081,13 +949,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "5c7397b41c52ad21a4b0ea3ee0ffc735"
+          "413bbabea261af68aa7fa735f796a185"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:26 GMT"
+          "Wed, 06 Jul 2016 03:53:56 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1098,16 +966,16 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deployments",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRz",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deployments",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRz",
       "RequestMethod": "POST",
-      "RequestBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk1049</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <Label>onesdk1049</Label>\r\n  <RoleList>\r\n    <Role>\r\n      <RoleName>vm1</RoleName>\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n          <PublicIPs />\r\n          <NetworkInterfaces />\r\n          <StoredCertificateSettings />\r\n        </ConfigurationSet>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n          <ComputerName>vm1</ComputerName>\r\n          <AdminPassword>PLACEHOLDER</AdminPassword>\r\n          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n          <StoredCertificateSettings />\r\n          <WinRM>\r\n            <Listeners>\r\n              <Listener>\r\n                <Protocol>Https</Protocol>\r\n              </Listener>\r\n            </Listeners>\r\n          </WinRM>\r\n          <AdminUsername>pstestuser</AdminUsername>\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <Label>onesdk1049</Label>\r\n      <OSVirtualHardDisk>\r\n        <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n      </OSVirtualHardDisk>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n</Deployment>",
+      "RequestBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>pstestonesdk1100</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <Label>pstestonesdk1100</Label>\r\n  <RoleList>\r\n    <Role>\r\n      <RoleName>vm01</RoleName>\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n          <PublicIPs />\r\n          <NetworkInterfaces />\r\n          <StoredCertificateSettings />\r\n        </ConfigurationSet>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n          <ComputerName>vm01</ComputerName>\r\n          <AdminPassword>p@ssw0rd</AdminPassword>\r\n          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n          <StoredCertificateSettings />\r\n          <WinRM>\r\n            <Listeners>\r\n              <Listener>\r\n                <Protocol>Https</Protocol>\r\n              </Listener>\r\n            </Listeners>\r\n          </WinRM>\r\n          <AdminUsername>pstestuser</AdminUsername>\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <Label>pstestonesdk1100</Label>\r\n      <OSVirtualHardDisk>\r\n        <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n        <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n      </OSVirtualHardDisk>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <DebugSettings>\r\n        <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n      </DebugSettings>\r\n    </Role>\r\n  </RoleList>\r\n</Deployment>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
         ],
         "Content-Length": [
-          "2570"
+          "2602"
         ],
         "x-ms-version": [
           "2016-06-01"
@@ -1128,13 +996,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "67bea4734ca2ac4e9405af09f8f26315"
+          "6e755a5048e8aeb3bcaf73134d8bbd22"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:29 GMT"
+          "Wed, 06 Jul 2016 03:54:01 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1145,8 +1013,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/67bea4734ca2ac4e9405af09f8f26315",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzY3YmVhNDczNGNhMmFjNGU5NDA1YWYwOWY4ZjI2MzE1",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/6e755a5048e8aeb3bcaf73134d8bbd22",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzZlNzU1YTUwNDhlOGFlYjNiY2FmNzMxMzRkOGJiZDIy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1157,7 +1025,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>67bea473-4ca2-ac4e-9405-af09f8f26315</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>6e755a50-48e8-aeb3-bcaf-73134d8bbd22</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1172,13 +1040,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "a46c55234cdda95ebf080ab435b148b9"
+          "cfc33ae535b7ab059f01a5d7ae1d6f34"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:29 GMT"
+          "Wed, 06 Jul 2016 03:54:01 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1189,8 +1057,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/67bea4734ca2ac4e9405af09f8f26315",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzY3YmVhNDczNGNhMmFjNGU5NDA1YWYwOWY4ZjI2MzE1",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/6e755a5048e8aeb3bcaf73134d8bbd22",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzZlNzU1YTUwNDhlOGFlYjNiY2FmNzMxMzRkOGJiZDIy",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1201,7 +1069,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>67bea473-4ca2-ac4e-9405-af09f8f26315</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>6e755a50-48e8-aeb3-bcaf-73134d8bbd22</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -1216,13 +1084,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9b76c948a13caf3aae04d64515f087ff"
+          "c7619dc94e02aba295a2709a69317129"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:28:59 GMT"
+          "Wed, 06 Jul 2016 03:54:31 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1233,8 +1101,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/c9ad1a9b85b4a45c859b43dfd538d70c",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2M5YWQxYTliODViNGE0NWM4NTliNDNkZmQ1MzhkNzBj",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/2b9ca96ccabfab8493b9e59b09be9350",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzJiOWNhOTZjY2FiZmFiODQ5M2I5ZTU5YjA5YmU5MzUw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1245,7 +1113,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>c9ad1a9b-85b4-a45c-859b-43dfd538d70c</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>2b9ca96c-cabf-ab84-93b9-e59b09be9350</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -1257,13 +1125,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "8daafe076803a680a37fd302d93e12e7"
+          "96ff54f11792a97ca56a6d08e39e3706"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:37:07 GMT"
+          "Wed, 06 Jul 2016 03:54:31 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1274,148 +1142,57 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deployments/onesdk1049/migration?comp=validate",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzL29uZXNkazEwNDkvbWlncmF0aW9uP2NvbXA9dmFsaWRhdGU=",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/87cd83231e79a752825c57ea2314f7c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzg3Y2Q4MzIzMWU3OWE3NTI4MjVjNTdlYTIzMTRmN2M0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>87cd8323-1e79-a752-825c-57ea2314f7c4</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "666e9313e8dcadbfb8695023421420de"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 06 Jul 2016 03:54:32 GMT"
+        ],
+        "Server": [
+          "1.0.6198.397",
+          "(rd_rdfe_stable.160624-1024)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deployments/pstestonesdk1100/roleinstances/vm01/Operations",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzL3BzdGVzdG9uZXNkazExMDAvcm9sZWluc3RhbmNlcy92bTAxL09wZXJhdGlvbnM=",
       "RequestMethod": "POST",
-      "RequestBody": "<DeploymentNetworkResource xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ResourceGroupName></ResourceGroupName>\r\n  <VirtualNetworkName></VirtualNetworkName>\r\n  <SubNetName></SubNetName>\r\n  <DestinationVirtualNetwork>New</DestinationVirtualNetwork>\r\n</DeploymentNetworkResource>",
+      "RequestBody": "<RedeployRoleOperation xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <OperationType>RedeployRoleOperation</OperationType>\r\n</RedeployRoleOperation>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
         ],
         "Content-Length": [
-          "286"
-        ],
-        "x-ms-version": [
-          "2016-03-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<ValidationMessages xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" />",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "123"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "213e65eaa9dcac3ea2e5204290271ee2"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:40:09 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/213e65eaa9dcac3ea2e5204290271ee2",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzIxM2U2NWVhYTlkY2FjM2VhMmU1MjA0MjkwMjcxZWUy",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-10-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>213e65ea-a9dc-ac3e-a2e5-204290271ee2</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "232"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "x-ms-request-id": [
-          "4872fb5a8caeacd689b909f347bd51dc"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:40:09 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/5ed97f8c8672a1d094da534942b83ef0",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzVlZDk3ZjhjODY3MmExZDA5NGRhNTM0OTQyYjgzZWYw",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-10-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>5ed97f8c-8672-a1d0-94da-534942b83ef0</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "232"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "x-ms-request-id": [
-          "831ad61cb495a9eeb11200f25410639f"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:40:11 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deployments/onesdk1049/migration?comp=prepare",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzL29uZXNkazEwNDkvbWlncmF0aW9uP2NvbXA9cHJlcGFyZQ==",
-      "RequestMethod": "POST",
-      "RequestBody": "<DeploymentNetworkResource xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <ResourceGroupName></ResourceGroupName>\r\n  <VirtualNetworkName></VirtualNetworkName>\r\n  <SubNetName></SubNetName>\r\n  <DestinationVirtualNetwork>New</DestinationVirtualNetwork>\r\n</DeploymentNetworkResource>",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/xml"
-        ],
-        "Content-Length": [
-          "286"
+          "149"
         ],
         "x-ms-version": [
           "2016-06-01"
@@ -1436,13 +1213,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "383ed34b50dcaa9580ef6ee4d95244fe"
+          "ea9eb41b7b67a9f893beaea48bb4f8c4"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:40:12 GMT"
+          "Wed, 06 Jul 2016 03:54:33 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1453,8 +1230,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ea9eb41b7b67a9f893beaea48bb4f8c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2VhOWViNDFiN2I2N2E5Zjg5M2JlYWVhNDhiYjRmOGM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1465,7 +1242,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ea9eb41b-7b67-a9f8-93be-aea48bb4f8c4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1480,13 +1257,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2b49eb04319cada6bec30c55b4152523"
+          "8e0b74ef2c28ad54abf7af6754386d2a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:40:12 GMT"
+          "Wed, 06 Jul 2016 03:54:33 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1497,8 +1274,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ea9eb41b7b67a9f893beaea48bb4f8c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2VhOWViNDFiN2I2N2E5Zjg5M2JlYWVhNDhiYjRmOGM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1509,7 +1286,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ea9eb41b-7b67-a9f8-93be-aea48bb4f8c4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1524,13 +1301,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "88a884173b0ea9efac6d7dbe213fb595"
+          "ecc24684db0fa205b2e756cde4da37af"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:40:43 GMT"
+          "Wed, 06 Jul 2016 03:55:03 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1541,8 +1318,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ea9eb41b7b67a9f893beaea48bb4f8c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2VhOWViNDFiN2I2N2E5Zjg5M2JlYWVhNDhiYjRmOGM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1553,7 +1330,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ea9eb41b-7b67-a9f8-93be-aea48bb4f8c4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1568,13 +1345,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "2fd7e60bb653a2d199ec5b57b8320737"
+          "9155acce01caa88184ddc9b756ca5a4a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:41:13 GMT"
+          "Wed, 06 Jul 2016 03:55:33 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1585,8 +1362,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ea9eb41b7b67a9f893beaea48bb4f8c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2VhOWViNDFiN2I2N2E5Zjg5M2JlYWVhNDhiYjRmOGM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1597,7 +1374,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ea9eb41b-7b67-a9f8-93be-aea48bb4f8c4</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -1612,13 +1389,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "43bfc5cf593da131b806785527a1e921"
+          "e4518a36fb4cac338ae736b66e9f2009"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:41:43 GMT"
+          "Wed, 06 Jul 2016 03:56:04 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1629,8 +1406,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/ea9eb41b7b67a9f893beaea48bb4f8c4",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2VhOWViNDFiN2I2N2E5Zjg5M2JlYWVhNDhiYjRmOGM0",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1641,183 +1418,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "fe52aa54c837aa90ad76f9574a7deb5d"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:42:13 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "e062ba00c676ae739babff58c64b3e33"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:42:44 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "03cb3cfb60c4a647bff0e76ad41f9114"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:43:14 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "035a6a3145cdaefc80e2f24f99e90b7a"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:43:43 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/383ed34b50dcaa9580ef6ee4d95244fe",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzM4M2VkMzRiNTBkY2FhOTU4MGVmNmVlNGQ5NTI0NGZl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>383ed34b-50dc-aa95-80ef-6ee4d95244fe</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>ea9eb41b-7b67-a9f8-93be-aea48bb4f8c4</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -1832,13 +1433,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "928427d98766a4228e5cd09ac515cd92"
+          "b20b529dc2e2aafe890279c7a51baa2f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:44:13 GMT"
+          "Wed, 06 Jul 2016 03:56:34 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1849,8 +1450,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/3fd149af45cfa169966ce470194ce404",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzNmZDE0OWFmNDVjZmExNjk5NjZjZTQ3MDE5NGNlNDA0",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/4d740afc72dda29892e914384321725f",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzRkNzQwYWZjNzJkZGEyOTg5MmU5MTQzODQzMjE3MjVm",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1861,7 +1462,7 @@
           "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3fd149af-45cf-a169-966c-e470194ce404</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>4d740afc-72dd-a298-92e9-14384321725f</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -1873,13 +1474,13 @@
           "ussouth3"
         ],
         "x-ms-request-id": [
-          "e6366b5032dfa59ca2c2f78aaef4e406"
+          "a0d4d023ea08ac17aec7681ba88f3f14"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:44:15 GMT"
+          "Wed, 06 Jul 2016 03:56:35 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1890,49 +1491,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deployments/onesdk1049/migration?comp=abort",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzL29uZXNkazEwNDkvbWlncmF0aW9uP2NvbXA9YWJvcnQ=",
-      "RequestMethod": "POST",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "0"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "a89868614150a9ca9066848cd132ed84"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:44:14 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100?embed-detail=true",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwP2VtYmVkLWRldGFpbD10cnVl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1943,10 +1503,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100</Url>\r\n  <ServiceName>pstestonesdk1100</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:53:53Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:54:17Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>pstestonesdk1100</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments>\r\n    <Deployment>\r\n      <Name>pstestonesdk1100</Name>\r\n      <DeploymentSlot>Production</DeploymentSlot>\r\n      <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n      <Status>Running</Status>\r\n      <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n      <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n      <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n      <RoleInstanceList>\r\n        <RoleInstance>\r\n          <RoleName>vm01</RoleName>\r\n          <InstanceName>vm01</InstanceName>\r\n          <InstanceStatus>Provisioning</InstanceStatus>\r\n          <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n          <InstanceFaultDomain>0</InstanceFaultDomain>\r\n          <InstanceSize>Small</InstanceSize>\r\n          <InstanceStateDetails />\r\n          <IpAddress>10.94.180.62</IpAddress>\r\n          <InstanceEndpoints>\r\n            <InstanceEndpoint>\r\n              <Name>PowerShell</Name>\r\n              <Vip>13.82.58.10</Vip>\r\n              <PublicPort>56810</PublicPort>\r\n              <LocalPort>5986</LocalPort>\r\n              <Protocol>tcp</Protocol>\r\n            </InstanceEndpoint>\r\n            <InstanceEndpoint>\r\n              <Name>RemoteDesktop</Name>\r\n              <Vip>13.82.58.10</Vip>\r\n              <PublicPort>61569</PublicPort>\r\n              <LocalPort>3389</LocalPort>\r\n              <Protocol>tcp</Protocol>\r\n            </InstanceEndpoint>\r\n          </InstanceEndpoints>\r\n          <PowerState>Started</PowerState>\r\n          <GuestAgentStatus>\r\n            <ProtocolVersion>1.0</ProtocolVersion>\r\n            <Timestamp>2016-07-06T03:56:27Z</Timestamp>\r\n            <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n            <Status>NotReady</Status>\r\n            <FormattedMessage>\r\n              <Language>en-US</Language>\r\n              <Message>Status not available for role vm01.</Message>\r\n            </FormattedMessage>\r\n          </GuestAgentStatus>\r\n        </RoleInstance>\r\n      </RoleInstanceList>\r\n      <UpgradeDomainCount>1</UpgradeDomainCount>\r\n      <RoleList>\r\n        <Role i:type=\"PersistentVMRole\">\r\n          <RoleName>vm01</RoleName>\r\n          <OsVersion />\r\n          <RoleType>PersistentVMRole</RoleType>\r\n          <ConfigurationSets>\r\n            <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n              <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n              <InputEndpoints>\r\n                <InputEndpoint>\r\n                  <LocalPort>5986</LocalPort>\r\n                  <Name>PowerShell</Name>\r\n                  <Port>56810</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <Vip>13.82.58.10</Vip>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n                <InputEndpoint>\r\n                  <LocalPort>3389</LocalPort>\r\n                  <Name>RemoteDesktop</Name>\r\n                  <Port>61569</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <Vip>13.82.58.10</Vip>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n              </InputEndpoints>\r\n              <SubnetNames />\r\n            </ConfigurationSet>\r\n          </ConfigurationSets>\r\n          <ResourceExtensionReferences>\r\n            <ResourceExtensionReference>\r\n              <ReferenceName>BGInfo</ReferenceName>\r\n              <Publisher>Microsoft.Compute</Publisher>\r\n              <Name>BGInfo</Name>\r\n              <Version>2.*</Version>\r\n              <ResourceExtensionParameterValues />\r\n              <State>Enable</State>\r\n            </ResourceExtensionReference>\r\n          </ResourceExtensionReferences>\r\n          <DataVirtualHardDisks />\r\n          <OSVirtualHardDisk>\r\n            <HostCaching>ReadWrite</HostCaching>\r\n            <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n            <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n            <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n            <OS>Windows</OS>\r\n            <IOType>Standard</IOType>\r\n          </OSVirtualHardDisk>\r\n          <RoleSize>Small</RoleSize>\r\n          <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n          <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n          <DebugSettings>\r\n            <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n            <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n          </DebugSettings>\r\n        </Role>\r\n      </RoleList>\r\n      <SdkVersion />\r\n      <Locked>false</Locked>\r\n      <RollbackAllowed>false</RollbackAllowed>\r\n      <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n      <LastModifiedTime>2016-07-06T03:56:26Z</LastModifiedTime>\r\n      <ExtendedProperties />\r\n      <VirtualIPs>\r\n        <VirtualIP>\r\n          <Address>13.82.58.10</Address>\r\n          <IsDnsProgrammed>true</IsDnsProgrammed>\r\n          <Name>pstestonesdk1100ContractContract</Name>\r\n        </VirtualIP>\r\n      </VirtualIPs>\r\n      <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n      <LoadBalancers />\r\n    </Deployment>\r\n  </Deployments>\r\n  <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
       "ResponseHeaders": {
         "Content-Length": [
-          "197"
+          "5156"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -1958,13 +1518,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1db89e685fe8afe1942ea36bab0e3b21"
+          "583ab6710dbdaffc8ab779082519304f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:44:16 GMT"
+          "Wed, 06 Jul 2016 03:56:35 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -1975,8 +1535,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100?embed-detail=true",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwP2VtYmVkLWRldGFpbD10cnVl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1987,10 +1547,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100</Url>\r\n  <ServiceName>pstestonesdk1100</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:53:53Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:54:17Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>pstestonesdk1100</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments>\r\n    <Deployment>\r\n      <Name>pstestonesdk1100</Name>\r\n      <DeploymentSlot>Production</DeploymentSlot>\r\n      <PrivateID>ba6f249d112f407f921a6a0a3936ee67</PrivateID>\r\n      <Status>Running</Status>\r\n      <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n      <Url>http://pstestonesdk1100.cloudapp.net/</Url>\r\n      <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTAxIj4NCiAgICA8SW5zdGFuY2VzIGNvdW50PSIxIiAvPg0KICA8L1JvbGU+DQo8L1NlcnZpY2VDb25maWd1cmF0aW9uPg==</Configuration>\r\n      <RoleInstanceList>\r\n        <RoleInstance>\r\n          <RoleName>vm01</RoleName>\r\n          <InstanceName>vm01</InstanceName>\r\n          <InstanceStatus>Provisioning</InstanceStatus>\r\n          <InstanceUpgradeDomain>0</InstanceUpgradeDomain>\r\n          <InstanceFaultDomain>0</InstanceFaultDomain>\r\n          <InstanceSize>Small</InstanceSize>\r\n          <InstanceStateDetails />\r\n          <IpAddress>10.94.180.62</IpAddress>\r\n          <InstanceEndpoints>\r\n            <InstanceEndpoint>\r\n              <Name>PowerShell</Name>\r\n              <Vip>13.82.58.10</Vip>\r\n              <PublicPort>56810</PublicPort>\r\n              <LocalPort>5986</LocalPort>\r\n              <Protocol>tcp</Protocol>\r\n            </InstanceEndpoint>\r\n            <InstanceEndpoint>\r\n              <Name>RemoteDesktop</Name>\r\n              <Vip>13.82.58.10</Vip>\r\n              <PublicPort>61569</PublicPort>\r\n              <LocalPort>3389</LocalPort>\r\n              <Protocol>tcp</Protocol>\r\n            </InstanceEndpoint>\r\n          </InstanceEndpoints>\r\n          <PowerState>Started</PowerState>\r\n          <GuestAgentStatus>\r\n            <ProtocolVersion>1.0</ProtocolVersion>\r\n            <Timestamp>2016-07-06T03:56:27Z</Timestamp>\r\n            <GuestAgentVersion>Unknown</GuestAgentVersion>\r\n            <Status>NotReady</Status>\r\n            <FormattedMessage>\r\n              <Language>en-US</Language>\r\n              <Message>Status not available for role vm01.</Message>\r\n            </FormattedMessage>\r\n          </GuestAgentStatus>\r\n        </RoleInstance>\r\n      </RoleInstanceList>\r\n      <UpgradeDomainCount>1</UpgradeDomainCount>\r\n      <RoleList>\r\n        <Role i:type=\"PersistentVMRole\">\r\n          <RoleName>vm01</RoleName>\r\n          <OsVersion />\r\n          <RoleType>PersistentVMRole</RoleType>\r\n          <ConfigurationSets>\r\n            <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n              <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n              <InputEndpoints>\r\n                <InputEndpoint>\r\n                  <LocalPort>5986</LocalPort>\r\n                  <Name>PowerShell</Name>\r\n                  <Port>56810</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <Vip>13.82.58.10</Vip>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n                <InputEndpoint>\r\n                  <LocalPort>3389</LocalPort>\r\n                  <Name>RemoteDesktop</Name>\r\n                  <Port>61569</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <Vip>13.82.58.10</Vip>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n              </InputEndpoints>\r\n              <SubnetNames />\r\n            </ConfigurationSet>\r\n          </ConfigurationSets>\r\n          <ResourceExtensionReferences>\r\n            <ResourceExtensionReference>\r\n              <ReferenceName>BGInfo</ReferenceName>\r\n              <Publisher>Microsoft.Compute</Publisher>\r\n              <Name>BGInfo</Name>\r\n              <Version>2.*</Version>\r\n              <ResourceExtensionParameterValues />\r\n              <State>Enable</State>\r\n            </ResourceExtensionReference>\r\n          </ResourceExtensionReferences>\r\n          <DataVirtualHardDisks />\r\n          <OSVirtualHardDisk>\r\n            <HostCaching>ReadWrite</HostCaching>\r\n            <DiskName>pstestonesdk1100-vm01-0-201607060354050878</DiskName>\r\n            <MediaLink>https://pstestonesdk5872.blob.core.windows.net/vhds/pstestonesdk1100-vm01-2016-7-5-20-53-57-71-0.vhd</MediaLink>\r\n            <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n            <OS>Windows</OS>\r\n            <IOType>Standard</IOType>\r\n          </OSVirtualHardDisk>\r\n          <RoleSize>Small</RoleSize>\r\n          <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n          <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n          <DebugSettings>\r\n            <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n            <ConsoleScreenshotBlobUri>http://pstestonesdk5872.blob.core.windows.net/bootdiagnosticsd092a8bc-d476-4833-a38a-58da4dfff030/pstestonesdk1100.ba6f249d112f407f921a6a0a3936ee67.vm01-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n          </DebugSettings>\r\n        </Role>\r\n      </RoleList>\r\n      <SdkVersion />\r\n      <Locked>false</Locked>\r\n      <RollbackAllowed>false</RollbackAllowed>\r\n      <CreatedTime>2016-07-06T03:54:00Z</CreatedTime>\r\n      <LastModifiedTime>2016-07-06T03:56:26Z</LastModifiedTime>\r\n      <ExtendedProperties />\r\n      <VirtualIPs>\r\n        <VirtualIP>\r\n          <Address>13.82.58.10</Address>\r\n          <IsDnsProgrammed>true</IsDnsProgrammed>\r\n          <Name>pstestonesdk1100ContractContract</Name>\r\n        </VirtualIP>\r\n      </VirtualIPs>\r\n      <InternalDnsSuffix>pstestonesdk1100.b10.internal.cloudapp.net</InternalDnsSuffix>\r\n      <LoadBalancers />\r\n    </Deployment>\r\n  </Deployments>\r\n  <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
       "ResponseHeaders": {
         "Content-Length": [
-          "197"
+          "5156"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -2002,13 +1562,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "fff9014a3a7eaa1fb4e8e931ccb50182"
+          "c49ee3538fd2ae65960af50b3a437f39"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:44:45 GMT"
+          "Wed, 06 Jul 2016 03:56:35 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2019,8 +1579,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100?embed-detail=true",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwP2VtYmVkLWRldGFpbD10cnVl",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2031,10 +1591,10 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100</Url>\r\n  <ServiceName>pstestonesdk1100</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>cHN0ZXN0b25lc2RrMTEwMA==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:53:53Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:54:17Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>pstestonesdk1100</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n  <DefaultWinRmCertificateThumbprint>075AE3E3AD3D9F190B4B3A54AC46E7C9FA1248DB</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
       "ResponseHeaders": {
         "Content-Length": [
-          "197"
+          "921"
         ],
         "Content-Type": [
           "application/xml; charset=utf-8"
@@ -2046,13 +1606,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "92327c180de5ad2bb7245fc417973152"
+          "6e4793e7094eacf6903327e480b411dd"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:45:16 GMT"
+          "Wed, 06 Jul 2016 03:57:07 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2063,357 +1623,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "3a7342aafa5ba98f90b5dfad15329857"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:45:46 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "767e39e8e112ac3b9c2d5f22ead64ba6"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:46:16 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "197"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "14587aad3ea1a4a793958c59b2143ae0"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:46:46 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/a89868614150a9ca9066848cd132ed84",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zL2E4OTg2ODYxNDE1MGE5Y2E5MDY2ODQ4Y2QxMzJlZDg0",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>a8986861-4150-a9ca-9066-848cd132ed84</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "232"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "f24bde6b4c7cad8ea9f9db21cfd5b906"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:16 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/81e72952c1d5a020bbd8123774d2ef58",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzgxZTcyOTUyYzFkNWEwMjBiYmQ4MTIzNzc0ZDJlZjU4",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2014-10-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
-        ]
-      },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>81e72952-c1d5-a020-bbd8-123774d2ef58</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "232"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "x-ms-request-id": [
-          "565752722c12a56d8c890ab353190591"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:17 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049?embed-detail=true",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5P2VtYmVkLWRldGFpbD10cnVl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049</Url>\r\n  <ServiceName>onesdk1049</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrMTA0OQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:28:23Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:47:03Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk1049</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments>\r\n    <Deployment>\r\n      <Name>onesdk1049</Name>\r\n      <DeploymentSlot>Production</DeploymentSlot>\r\n      <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n      <Status>Suspended</Status>\r\n      <Label>b25lc2RrMTA0OQ==</Label>\r\n      <Url>http://onesdk1049.cloudapp.net/</Url>\r\n      <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n      <RoleInstanceList>\r\n        <RoleInstance>\r\n          <RoleName>vm1</RoleName>\r\n          <InstanceName>vm1</InstanceName>\r\n          <InstanceStatus>StoppedDeallocated</InstanceStatus>\r\n          <PowerState>Stopped</PowerState>\r\n          <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n        </RoleInstance>\r\n      </RoleInstanceList>\r\n      <UpgradeDomainCount>1</UpgradeDomainCount>\r\n      <RoleList>\r\n        <Role i:type=\"PersistentVMRole\">\r\n          <RoleName>vm1</RoleName>\r\n          <OsVersion />\r\n          <RoleType>PersistentVMRole</RoleType>\r\n          <ConfigurationSets>\r\n            <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n              <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n              <InputEndpoints>\r\n                <InputEndpoint>\r\n                  <LocalPort>5986</LocalPort>\r\n                  <Name>PowerShell</Name>\r\n                  <Port>56596</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n                <InputEndpoint>\r\n                  <LocalPort>3389</LocalPort>\r\n                  <Name>RemoteDesktop</Name>\r\n                  <Port>56538</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n              </InputEndpoints>\r\n              <SubnetNames />\r\n            </ConfigurationSet>\r\n          </ConfigurationSets>\r\n          <ResourceExtensionReferences>\r\n            <ResourceExtensionReference>\r\n              <ReferenceName>BGInfo</ReferenceName>\r\n              <Publisher>Microsoft.Compute</Publisher>\r\n              <Name>BGInfo</Name>\r\n              <Version>2.*</Version>\r\n              <ResourceExtensionParameterValues />\r\n              <State>Enable</State>\r\n            </ResourceExtensionReference>\r\n          </ResourceExtensionReferences>\r\n          <DataVirtualHardDisks />\r\n          <OSVirtualHardDisk>\r\n            <HostCaching>ReadWrite</HostCaching>\r\n            <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n            <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n            <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n            <OS>Windows</OS>\r\n            <IOType>Standard</IOType>\r\n          </OSVirtualHardDisk>\r\n          <RoleSize>Small</RoleSize>\r\n          <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n          <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n          <DebugSettings>\r\n            <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n            <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n          </DebugSettings>\r\n        </Role>\r\n      </RoleList>\r\n      <SdkVersion />\r\n      <Locked>false</Locked>\r\n      <RollbackAllowed>false</RollbackAllowed>\r\n      <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n      <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n      <ExtendedProperties />\r\n      <PersistentVMDowntime>\r\n        <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n        <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n        <Status>PersistentVMUpdateScheduled</Status>\r\n      </PersistentVMDowntime>\r\n      <VirtualIPs />\r\n      <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n      <LoadBalancers />\r\n    </Deployment>\r\n  </Deployments>\r\n  <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "4303"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "1c52f810cac6ac61bff0597683be7728"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:17 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049?embed-detail=true",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5P2VtYmVkLWRldGFpbD10cnVl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049</Url>\r\n  <ServiceName>onesdk1049</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrMTA0OQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:28:23Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:47:03Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk1049</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments>\r\n    <Deployment>\r\n      <Name>onesdk1049</Name>\r\n      <DeploymentSlot>Production</DeploymentSlot>\r\n      <PrivateID>9bb38bf7152d4d03b452cbf394df270c</PrivateID>\r\n      <Status>Suspended</Status>\r\n      <Label>b25lc2RrMTA0OQ==</Label>\r\n      <Url>http://onesdk1049.cloudapp.net/</Url>\r\n      <Configuration>PFNlcnZpY2VDb25maWd1cmF0aW9uIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zPSJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL1NlcnZpY2VIb3N0aW5nLzIwMDgvMTAvU2VydmljZUNvbmZpZ3VyYXRpb24iPg0KICA8Um9sZSBuYW1lPSJ2bTEiPg0KICAgIDxJbnN0YW5jZXMgY291bnQ9IjEiIC8+DQogIDwvUm9sZT4NCjwvU2VydmljZUNvbmZpZ3VyYXRpb24+</Configuration>\r\n      <RoleInstanceList>\r\n        <RoleInstance>\r\n          <RoleName>vm1</RoleName>\r\n          <InstanceName>vm1</InstanceName>\r\n          <InstanceStatus>StoppedDeallocated</InstanceStatus>\r\n          <PowerState>Stopped</PowerState>\r\n          <RemoteAccessCertificateThumbprint>DA97AA99AE9541F4C08E3DCE97C5C44BE4F2E350</RemoteAccessCertificateThumbprint>\r\n        </RoleInstance>\r\n      </RoleInstanceList>\r\n      <UpgradeDomainCount>1</UpgradeDomainCount>\r\n      <RoleList>\r\n        <Role i:type=\"PersistentVMRole\">\r\n          <RoleName>vm1</RoleName>\r\n          <OsVersion />\r\n          <RoleType>PersistentVMRole</RoleType>\r\n          <ConfigurationSets>\r\n            <ConfigurationSet i:type=\"NetworkConfigurationSet\">\r\n              <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n              <InputEndpoints>\r\n                <InputEndpoint>\r\n                  <LocalPort>5986</LocalPort>\r\n                  <Name>PowerShell</Name>\r\n                  <Port>56596</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n                <InputEndpoint>\r\n                  <LocalPort>3389</LocalPort>\r\n                  <Name>RemoteDesktop</Name>\r\n                  <Port>56538</Port>\r\n                  <Protocol>tcp</Protocol>\r\n                  <EnableDirectServerReturn>false</EnableDirectServerReturn>\r\n                </InputEndpoint>\r\n              </InputEndpoints>\r\n              <SubnetNames />\r\n            </ConfigurationSet>\r\n          </ConfigurationSets>\r\n          <ResourceExtensionReferences>\r\n            <ResourceExtensionReference>\r\n              <ReferenceName>BGInfo</ReferenceName>\r\n              <Publisher>Microsoft.Compute</Publisher>\r\n              <Name>BGInfo</Name>\r\n              <Version>2.*</Version>\r\n              <ResourceExtensionParameterValues />\r\n              <State>Enable</State>\r\n            </ResourceExtensionReference>\r\n          </ResourceExtensionReferences>\r\n          <DataVirtualHardDisks />\r\n          <OSVirtualHardDisk>\r\n            <HostCaching>ReadWrite</HostCaching>\r\n            <DiskName>onesdk1049-vm1-0-201607060328330460</DiskName>\r\n            <MediaLink>https://onesdk4323.blob.core.windows.net/vhds/onesdk1049-vm1-2016-7-5-20-28-27-299-0.vhd</MediaLink>\r\n            <SourceImageName>03f55de797f546a1b29d1b8d66be687a__Team-Foundation-Server-2013-Update4-WS2012R2</SourceImageName>\r\n            <OS>Windows</OS>\r\n            <IOType>Standard</IOType>\r\n          </OSVirtualHardDisk>\r\n          <RoleSize>Small</RoleSize>\r\n          <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n          <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n          <DebugSettings>\r\n            <BootDiagnosticsEnabled>true</BootDiagnosticsEnabled>\r\n            <ConsoleScreenshotBlobUri>http://onesdk4323.blob.core.windows.net/bootdiagnostics0fab98cd-49e6-4f9b-9013-12f5670cedae/onesdk1049.9bb38bf7152d4d03b452cbf394df270c.vm1-screenshot.bmp</ConsoleScreenshotBlobUri>\r\n          </DebugSettings>\r\n        </Role>\r\n      </RoleList>\r\n      <SdkVersion />\r\n      <Locked>false</Locked>\r\n      <RollbackAllowed>false</RollbackAllowed>\r\n      <CreatedTime>2016-07-06T03:28:29Z</CreatedTime>\r\n      <LastModifiedTime>2016-07-06T03:40:11Z</LastModifiedTime>\r\n      <ExtendedProperties />\r\n      <PersistentVMDowntime>\r\n        <StartTime>2016-06-22T19:33:38Z</StartTime>\r\n        <EndTime>2017-06-22T19:33:38Z</EndTime>\r\n        <Status>PersistentVMUpdateScheduled</Status>\r\n      </PersistentVMDowntime>\r\n      <VirtualIPs />\r\n      <InternalDnsSuffix>onesdk1049.b5.internal.cloudapp.net</InternalDnsSuffix>\r\n      <LoadBalancers />\r\n    </Deployment>\r\n  </Deployments>\r\n  <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "4303"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "c30ebe6dc9a7af9298fb23d37138520c"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:17 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049?embed-detail=true",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5P2VtYmVkLWRldGFpbD10cnVl",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-version": [
-          "2016-06-01"
-        ],
-        "User-Agent": [
-          "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
-        ]
-      },
-      "ResponseBody": "<HostedService xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Url>https://management.core.windows.net/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049</Url>\r\n  <ServiceName>onesdk1049</ServiceName>\r\n  <HostedServiceProperties>\r\n    <Description i:nil=\"true\" />\r\n    <Location>East US</Location>\r\n    <Label>b25lc2RrMTA0OQ==</Label>\r\n    <Status>Created</Status>\r\n    <DateCreated>2016-07-06T03:28:23Z</DateCreated>\r\n    <DateLastModified>2016-07-06T03:47:03Z</DateLastModified>\r\n    <ExtendedProperties>\r\n      <ExtendedProperty>\r\n        <Name>ResourceGroup</Name>\r\n        <Value>onesdk1049</Value>\r\n      </ExtendedProperty>\r\n      <ExtendedProperty>\r\n        <Name>ResourceLocation</Name>\r\n        <Value>East US</Value>\r\n      </ExtendedProperty>\r\n    </ExtendedProperties>\r\n  </HostedServiceProperties>\r\n  <Deployments />\r\n  <DefaultWinRmCertificateThumbprint>69329A6FBDDF63AF451D23FE9A48B004293A896B</DefaultWinRmCertificateThumbprint>\r\n</HostedService>",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "895"
-        ],
-        "Content-Type": [
-          "application/xml; charset=utf-8"
-        ],
-        "x-ms-servedbyregion": [
-          "ussouth3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "32173b8445a1a584b2d502082d6aaa4b"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 06 Jul 2016 03:47:53 GMT"
-        ],
-        "Server": [
-          "1.0.6198.397",
-          "(rd_rdfe_stable.160624-1024)",
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049/deployments/onesdk1049",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5L2RlcGxveW1lbnRzL29uZXNkazEwNDk=",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100/deployments/pstestonesdk1100",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAwL2RlcGxveW1lbnRzL3BzdGVzdG9uZXNkazExMDA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2436,13 +1647,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "6ed67388a4afadf5b118b8edbf61c68a"
+          "662475f581efaf528ba1c7eea50cc220"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:47:22 GMT"
+          "Wed, 06 Jul 2016 03:56:36 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2453,8 +1664,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/6ed67388a4afadf5b118b8edbf61c68a",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzZlZDY3Mzg4YTRhZmFkZjViMTE4YjhlZGJmNjFjNjhh",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/662475f581efaf528ba1c7eea50cc220",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzY2MjQ3NWY1ODFlZmFmNTI4YmExYzdlZWE1MGNjMjIw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2465,7 +1676,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>6ed67388-a4af-adf5-b118-b8edbf61c68a</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>662475f5-81ef-af52-8ba1-c7eea50cc220</ID>\r\n  <Status>InProgress</Status>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "197"
@@ -2480,13 +1691,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "cd8622759be5abcf882a490590eb278e"
+          "9f3b0aeb4c8ea4e8a97a2300338d3524"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:47:22 GMT"
+          "Wed, 06 Jul 2016 03:56:37 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2497,8 +1708,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/6ed67388a4afadf5b118b8edbf61c68a",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzZlZDY3Mzg4YTRhZmFkZjViMTE4YjhlZGJmNjFjNjhh",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/operations/662475f581efaf528ba1c7eea50cc220",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9vcGVyYXRpb25zLzY2MjQ3NWY1ODFlZmFmNTI4YmExYzdlZWE1MGNjMjIw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2509,7 +1720,7 @@
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/13.0.0.0"
         ]
       },
-      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>6ed67388-a4af-adf5-b118-b8edbf61c68a</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>662475f5-81ef-af52-8ba1-c7eea50cc220</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
       "ResponseHeaders": {
         "Content-Length": [
           "232"
@@ -2524,13 +1735,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "24e377f21883ad058e9946d8c1422b27"
+          "5107e2600f94ad8880ac4439c853a80c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:47:53 GMT"
+          "Wed, 06 Jul 2016 03:57:06 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2541,8 +1752,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk1049",
-      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGsxMDQ5",
+      "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/pstestonesdk1100",
+      "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9wc3Rlc3RvbmVzZGsxMTAw",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -2565,13 +1776,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "9e7108576fa2addf9567797c205e47be"
+          "01aad672a182a3dda33a34ec028ffad6"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 06 Jul 2016 03:47:54 GMT"
+          "Wed, 06 Jul 2016 03:57:08 GMT"
         ],
         "Server": [
           "1.0.6198.397",
@@ -2583,9 +1794,9 @@
     }
   ],
   "Names": {
-    "Test-MigrationAbortAzureDeployment": [
-      "onesdk4323",
-      "onesdk1049"
+    "": [
+      "onesdk5872",
+      "onesdk1100"
     ]
   },
   "Variables": {
