@@ -25,9 +25,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
     [Cmdlet(VerbsCommon.Move, "AzureStorageAccount"), OutputType(typeof(OperationStatusResponse))]
     public class MoveStorageAccountCommand : ServiceManagementBaseCmdlet
     {
+        private const string ValidateParameterSetName = "ValidateMigrationParameterSet";
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
         private const string PrepareParameterSetName = "PrepareMigrationParameterSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ValidateParameterSetName,
+            HelpMessage = "Validate migration")]
+        public SwitchParameter Validate
+        {
+            get;
+            set;
+        }
 
         [Parameter(
             Position = 0,
@@ -77,7 +89,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
         {
             ServiceManagementProfile.Initialize();
 
-            if (this.Abort.IsPresent)
+            if (this.Validate.IsPresent)
+            {
+                ExecuteClientActionNewSM(
+                null,
+                CommandRuntime.ToString(),
+                () => this.StorageClient.StorageAccounts.ValidateMigration(this.StorageAccountName));
+            }
+            else if (this.Abort.IsPresent)
             {
                 ExecuteClientActionNewSM(
                 null,
