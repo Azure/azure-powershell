@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,28 +21,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     public class KeyVaultCertificateOrganizationDetails
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public int? Zip { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
+
         public List<KeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
 
         internal OrganizationDetails ToOrganizationDetails()
         {
             return new OrganizationDetails
-            {
+            {                
                 Id = Id,
-                Name = Name,
-                Address1 = Address1,
-                Address2 = Address2,
-                City = City,
-                Zip = Zip,
-                State = State,
-                Country = Country,
-                AdministratorDetails = KeyVaultCertificateAdministratorDetails.ToAdministratorDetails(AdministratorDetails),
+                AdminDetails = KeyVaultCertificateAdministratorDetails.ToAdministratorDetails(AdministratorDetails),
             };
         }
 
@@ -56,14 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var kvcOrganizationDetails = new KeyVaultCertificateOrganizationDetails
             {
                 Id = organizationalDetails.Id,
-                Name = organizationalDetails.Name,
-                Address1 = organizationalDetails.Address1,
-                Address2 = organizationalDetails.Address2,
-                City = organizationalDetails.City,
-                Zip = organizationalDetails.Zip,
-                State = organizationalDetails.State,
-                Country = organizationalDetails.Country,
-                AdministratorDetails = KeyVaultCertificateAdministratorDetails.FromAdministratorDetails(organizationalDetails.AdministratorDetails),
+                AdministratorDetails = KeyVaultCertificateAdministratorDetails.FromAdministratorDetails(organizationalDetails.AdminDetails),
             };
 
             return kvcOrganizationDetails;

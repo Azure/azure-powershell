@@ -12,17 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Security;
-using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.WebKey;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -30,7 +24,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// The Remove-AzureKeyVaultCertificate cmdlet deletes a certificate in an Azure Key Vault. 
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificate,
+        SupportsShouldProcess = true,
+        ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(KeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -43,7 +40,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>

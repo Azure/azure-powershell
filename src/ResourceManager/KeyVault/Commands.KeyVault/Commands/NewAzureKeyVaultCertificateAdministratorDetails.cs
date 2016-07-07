@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// New-AzureKeyVaultCertificateAdministratorDetails creates an in-memory administrator details object
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateAdministratorDetails,
+        SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificateAdministratorDetails))]
     public class NewAzureKeyVaultCertificateAdministratorDetails : KeyVaultCmdletBase
@@ -59,15 +60,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         protected override void ProcessRecord()
         {
-            var adminDetails = new KeyVaultCertificateAdministratorDetails
+            if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificateAdministrator))
             {
-                FirstName = FirstName,
-                LastName = LastName,
-                EmailAddress = EmailAddress,
-                PhoneNumber = PhoneNumber,
-            };
+                var adminDetails = new KeyVaultCertificateAdministratorDetails
+                {
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    EmailAddress = EmailAddress,
+                    PhoneNumber = PhoneNumber,
+                };
 
-            this.WriteObject(adminDetails);
+                this.WriteObject(adminDetails);
+            }
         }
     }
 }

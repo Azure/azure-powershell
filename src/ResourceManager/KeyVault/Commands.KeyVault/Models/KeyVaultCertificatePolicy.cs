@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,12 +28,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? ReuseKeyOnRenewal { get; set; }
         public string SubjectName { get; set; }
         public List<string> DnsNames { get; set; }
+        public List<string> KeyUsage { get; set; }
         public List<string> Ekus { get; set; }
         public int? ValidityInMonths { get; set; }
         public string IssuerName { get; set; }
         public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
         public int? RenewAtPercentageLifetime { get; set; }
-        public bool EmailOnly { get; set; }
+        public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
+        public int? EmailAtPercentageLifetime { get; set; }
 
         public bool? Enabled { get; set; }
         public DateTime? Created { get; internal set; }
@@ -56,14 +58,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 certificatePolicy.SecretProperties = new SecretProperties { ContentType = SecretContentType };
             }
 
-            if (!string.IsNullOrWhiteSpace(Kty) || 
+            if (!string.IsNullOrWhiteSpace(Kty) ||
                 KeySize.HasValue ||
                 ReuseKeyOnRenewal.HasValue ||
                 Exportable.HasValue)
             {
                 certificatePolicy.KeyProperties = new KeyProperties
                 {
-                    Kty = Kty,
+                    KeyType = Kty,
                     KeySize = KeySize,
                     Exportable = Exportable,
                     ReuseKey = ReuseKeyOnRenewal,
@@ -77,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (Enabled.HasValue)
             {
-                certificatePolicy.Attributes = new CertificatePolicyAttributes
+                certificatePolicy.Attributes = new CertificateAttributes
                 {
                     Enabled = Enabled,
                 };
@@ -86,6 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (!string.IsNullOrWhiteSpace(SubjectName) ||
                 DnsNames != null ||
                 Ekus != null ||
+                KeyUsage != null |
                 ValidityInMonths.HasValue)
             {
                 var x509CertificateProperties = new X509CertificateProperties
@@ -93,11 +96,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Subject = SubjectName,
                 };
 
+                if (KeyUsage != null)
+                {
+                    x509CertificateProperties.KeyUsage = new List<string>(KeyUsage);
+                }
+
                 if (Ekus != null)
                 {
-                    x509CertificateProperties.Ekus = new string[Ekus.Count];
-                    Ekus.CopyTo(x509CertificateProperties.Ekus, 0);
-                }
+                    x509CertificateProperties.Ekus = Ekus == null ? null : new List<string>(Ekus);
+                }                
 
                 if (DnsNames != null)
                 {
@@ -106,35 +113,41 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         DnsNames = new string[DnsNames.Count],
                     };
 
-                    DnsNames.CopyTo(x509CertificateProperties.SubjectAlternativeNames.DnsNames, 0);
+                    x509CertificateProperties.SubjectAlternativeNames.DnsNames = new List<string>(DnsNames);
                 }
 
                 if (ValidityInMonths.HasValue)
                 {
                     x509CertificateProperties.ValidityInMonths = ValidityInMonths.Value;
-                }
+                }                
 
                 certificatePolicy.X509CertificateProperties = x509CertificateProperties;
             }
 
             if (RenewAtNumberOfDaysBeforeExpiry.HasValue ||
-                RenewAtPercentageLifetime.HasValue)
+                RenewAtPercentageLifetime.HasValue ||
+                EmailAtNumberOfDaysBeforeExpiry.HasValue ||
+                EmailAtPercentageLifetime.HasValue)
             {
-                if (RenewAtNumberOfDaysBeforeExpiry.HasValue &&
-                    RenewAtPercentageLifetime.HasValue)
+                if ((RenewAtNumberOfDaysBeforeExpiry.HasValue ? 1:0) +
+                    (RenewAtPercentageLifetime.HasValue ? 1:0) +
+                    (EmailAtNumberOfDaysBeforeExpiry.HasValue ? 1:0) +
+                    (EmailAtPercentageLifetime.HasValue ? 1:0) > 1)
                 {
-                    throw new ArgumentException("Both RenewAtPercentageLifetime and RenewAtNumberOfDaysBeforeExpiry cannot be set.");
+                    throw new ArgumentException("Only one of the values for RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime, EmailAtNumberOfDaysBeforeExpiry, EmailAtPercentageLifetime  can be set.");
                 }
 
-                var lifetimeActions = new List<LifetimeAction>();
-                var actionType = EmailOnly ? "EmailContacts" : "AutoRenew";
+                if (certificatePolicy.LifetimeActions == null)
+                {
+                    certificatePolicy.LifetimeActions = new List<LifetimeAction>();
+                }
 
                 if (RenewAtNumberOfDaysBeforeExpiry.HasValue)
                 {
-                    lifetimeActions.Add(
+                    certificatePolicy.LifetimeActions.Add(
                         new LifetimeAction
                         {
-                            Action = new Azure.KeyVault.Action { Type = actionType },
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
                             Trigger = new Trigger { DaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry },
                         }
                     );
@@ -142,16 +155,35 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 if (RenewAtPercentageLifetime.HasValue)
                 {
-                    lifetimeActions.Add(
+                    certificatePolicy.LifetimeActions.Add(
                         new LifetimeAction
                         {
-                            Action = new Azure.KeyVault.Action { Type = actionType },
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
                             Trigger = new Trigger { LifetimePercentage = RenewAtPercentageLifetime },
                         }
                     );
                 }
+                if (EmailAtNumberOfDaysBeforeExpiry.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
+                            Trigger = new Trigger { DaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry },
+                        }
+                    );
+                }
 
-                certificatePolicy.LifetimeActions = lifetimeActions;
+                if (EmailAtPercentageLifetime.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
+                            Trigger = new Trigger { LifetimePercentage = EmailAtPercentageLifetime },
+                        }
+                    );
+                }
             }
 
             return certificatePolicy;
@@ -162,18 +194,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new KeyVaultCertificatePolicy
             {
                 SecretContentType = certificatePolicy.SecretProperties == null ? null : certificatePolicy.SecretProperties.ContentType,
-                Kty = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.Kty,
+                Kty = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.KeyType,
                 KeySize = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.KeySize,
                 Exportable = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.Exportable,
                 ReuseKeyOnRenewal = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.ReuseKey,
                 SubjectName = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Subject,
                 DnsNames = certificatePolicy.X509CertificateProperties == null || certificatePolicy.X509CertificateProperties.SubjectAlternativeNames == null ?
                     null : new List<string>(certificatePolicy.X509CertificateProperties.SubjectAlternativeNames.DnsNames),
-                Ekus = certificatePolicy.X509CertificateProperties == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),
+                KeyUsage = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.KeyUsage == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.KeyUsage),
+                Ekus = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Ekus == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),               
                 ValidityInMonths = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.ValidityInMonths,
                 IssuerName = certificatePolicy.IssuerReference == null ? null : certificatePolicy.IssuerReference.Name,
                 RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),
                 RenewAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.LifetimePercentage),
+                EmailAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),
+                EmailAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions, (trigger) => trigger.LifetimePercentage),
                 Enabled = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Enabled,
                 Created = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Created,
                 Updated = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Updated,
@@ -182,21 +217,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         private static int? FindIntValueForAutoRenewAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
         {
-            var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.Type == AutoRenewAction && intValueGetter(x.Trigger).HasValue);
+            var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.ActionType.HasValue &&  0 == string.Compare(x.Action.ActionType.Value.ToString(), ActionType.AutoRenew.ToString(), true) && intValueGetter(x.Trigger).HasValue);
 
             if (lifetimeAction == null)
             {
-                lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.Type == EmailAction && intValueGetter(x.Trigger).HasValue);
-                if (lifetimeAction == null)
-                {
-                    return null;
-                }
+                return null;                
             }
 
             return intValueGetter(lifetimeAction.Trigger);
         }
 
-        private const string AutoRenewAction = "AutoRenew";
-        private const string EmailAction = "EmailContacts";
+        private static int? FindIntValueForEmailAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
+        {
+            var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.ActionType.HasValue && 0 == string.Compare(x.Action.ActionType.Value.ToString(), ActionType.EmailContacts.ToString(), true) && intValueGetter(x.Trigger).HasValue);
+
+            if (lifetimeAction == null)
+            {
+                return null;
+            }
+
+            return intValueGetter(lifetimeAction.Trigger);
+        }
     }
 }

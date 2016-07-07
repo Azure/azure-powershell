@@ -12,14 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class KeyVaultCertificateOperation
     {
+        public string Id { get; private set; }
         public string Status { get; private set; }
+        public string StatusDetais { get; private set; }
+        public string RequestId { get; private set; }
+        public string Target { get; private set; }
+        public string Issuer { get; private set; }
         public bool? CancellationRequested { get; private set; }
         public string CertificateSigningRequest { get; private set; }
         public string ErrorCode { get; private set; }
@@ -34,7 +39,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var kvCertificateOperation = new KeyVaultCertificateOperation
             {
+                Id = certificateOperation.Id,
                 Status = certificateOperation.Status,
+                StatusDetais = certificateOperation.StatusDetails,
+                RequestId = certificateOperation.RequestId,
+                Target = certificateOperation.Target,
+                Issuer = certificateOperation.IssuerReference.Name,
                 CancellationRequested = certificateOperation.CancellationRequested,
             };
 

@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyVaultCertificate))]
     public class SetAzureKeyVaultCertificateAttribute : KeyVaultCmdletBase
     {
@@ -34,7 +35,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.ObjectNameRegExString)]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing certificate tags. If not specified, the existing tags of the sertificate remain unchanged. Remove a tag by specifying an empty Hashtable.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return certificate object.")]
@@ -84,20 +83,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            var certificateBundle = DataServiceClient.UpdateCertificate(
+            if (ShouldProcess(Name, Properties.Resources.SetCertificateAttributes))
+            {
+                var certificateBundle = DataServiceClient.UpdateCertificate(
                 VaultName,
                 Name,
-                Version,
+                Version ?? string.Empty,
                 new CertificateAttributes
                 {
                     Enabled = Enable,
-                }, 
-                Tags == null ? null : Tags.ConvertToDictionary());
+                },
+                Tag == null ? null : Tag.ConvertToDictionary());
 
-            if (PassThru)
-            {
-                var certificate = KeyVaultCertificate.FromCertificateBundle(certificateBundle);
-                this.WriteObject(certificate);
+                if (PassThru)
+                {
+                    var certificate = KeyVaultCertificate.FromCertificateBundle(certificateBundle);
+                    this.WriteObject(certificate);
+                }
             }
         }
     }

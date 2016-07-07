@@ -26,14 +26,15 @@ Param($rgName, $location, $tagName, $tagValue)
     $vaultname = Get-VaultName
 
     # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{$tagName = $tagValue}
+    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tag @{$tagName = $tagValue}
 
     # Assert
     Assert-AreEqual $vaultName $actual.VaultName
     Assert-AreEqual $rgname $actual.ResourceGroupName
     Assert-AreEqual $location $actual.Location
-    Assert-AreEqual $actual.Tags[0]["Value"] $tagValue
-    Assert-AreEqual $actual.Tags[0]["Name"] $tagName
+    Assert-AreEqual $actual.Tags.Count 1
+    Assert-AreEqual $actual.Tags.ContainsKey($tagName) $true
+    Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
     Assert-AreEqual "Standard" $actual.Sku
     Assert-AreEqual $false $actual.EnabledForDeployment
 
@@ -242,7 +243,7 @@ function Test-SetRemoveAccessPolicyByUPN
 
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
     $PermToSecrets = @("get", "list", "set", "delete")
-    $PermToCertificates = @("get", "list", "set", "delete")
+    $PermToCertificates = @("get", "list", "create", "delete")
     
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru
 	
@@ -261,7 +262,7 @@ function Test-SetRemoveAccessPolicyBySPN
 
     $PermToKeys = @()
     $PermToSecrets = @("get", "set", "list")
-    $PermToCertificates = @("get", "set")
+    $PermToCertificates = @("get", "import")
     
     $setAccessPolicyFunc = { Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ServicePrincipalName $spn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru }
     
@@ -273,7 +274,7 @@ function Test-SetRemoveAccessPolicyBySPN
 
         CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates
 
-        Assert-AreEqual $spn (Get-AzureRmADServicePrincipal -ObjectId $vault.AccessPolicies[0].ObjectId)[0].ServicePrincipalName
+        Assert-AreEqual $spn (Get-AzureRmADServicePrincipal -ObjectId $vault.AccessPolicies[0].ObjectId)[0].ServicePrincipalNames[0]
 
         $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $spn -PassThru
         Assert-AreEqual 0 $vault.AccessPolicies.Count
@@ -403,7 +404,7 @@ function Test-ModifyAccessPolicy
     $PermToCertificates = @("list", "delete")
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PassThru
 
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
+    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
 
     # Remove one perm from keys list, use piping to set
@@ -431,8 +432,6 @@ function Test-ModifyAccessPolicy
     # Finally remove certificates perms
     $PermToCertificates = @()
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToCertificates $PermToCertificates -PassThru
-    CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates
-
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }

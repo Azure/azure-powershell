@@ -14,15 +14,14 @@
 
 using System;
 using System.Collections;
-using Microsoft.Azure.KeyVault.WebKey;
-using Microsoft.Azure.KeyVault;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class CertificateIdentityItem : ObjectIdentifier
     {
-        internal CertificateIdentityItem(ListCertificateResponseMessage certItem, VaultUriHelper vaultUriHelper)
+        internal CertificateIdentityItem(CertificateItem certItem, VaultUriHelper vaultUriHelper)
         {
             if (certItem == null)
                 throw new ArgumentNullException("certItem");
@@ -38,6 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = certItem.Attributes.NotBefore;
             Created = certItem.Attributes.Created;
             Updated = certItem.Attributes.Updated;
+            Tags = (certItem.Tags == null) ? null : certItem.Tags.ConvertToHashtable();
         }
 
         internal CertificateIdentityItem(CertificateBundle certBundle)
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             SetObjectIdentifier(new ObjectIdentifier
             {
-                Id = certBundle.Id.Identifier,
-                Name = certBundle.Id.Name,
-                VaultName = certBundle.Id.VaultWithoutScheme,
-                Version = certBundle.Id.Version
+                Id = certBundle.CertificateIdentifier.Identifier,
+                Name = certBundle.CertificateIdentifier.Name,
+                VaultName = certBundle.CertificateIdentifier.VaultWithoutScheme,
+                Version = certBundle.CertificateIdentifier.Version
             });
 
             Enabled = certBundle.Attributes.Enabled;
@@ -60,6 +60,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = certBundle.Attributes.NotBefore;
             Created = certBundle.Attributes.Created;
             Updated = certBundle.Attributes.Updated;
+            Tags = certBundle.Tags.ConvertToHashtable();
         }
 
         public bool? Enabled { get; set; }

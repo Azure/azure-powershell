@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Adds a given certificate contact to Key Vault for certificate management
     /// </summary>
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificateContact,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = AddParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyVaultCertificateContact>))]
@@ -44,9 +45,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = AddParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate contact.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -68,47 +68,50 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
-            Contacts existingContacts;
+            if (ShouldProcess(EmailAddress, Properties.Resources.AddCertificateContact))
+            {
+                Contacts existingContacts;
 
-            try
-            {
-                existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
-            }
-            catch(KeyVaultClientException kvce)
-            {
-                if (kvce.Status != System.Net.HttpStatusCode.NotFound)
+                try
                 {
-                    throw;
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                }
+                catch (KeyVaultErrorException exception)
+                {
+                    if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+
+                    existingContacts = null;
                 }
 
-                existingContacts = null;
-            }
+                List<Contact> newContactList;
 
-            List<Contact> newContactList;
+                if (existingContacts == null ||
+                    existingContacts.ContactList == null)
+                {
+                    newContactList = new List<Contact>();
+                }
+                else
+                {
+                    newContactList = new List<Contact>(existingContacts.ContactList);
+                }
 
-            if (existingContacts == null ||
-                existingContacts.ContactsList == null)
-            {
-                newContactList = new List<Contact>();
-            }
-            else
-            {
-                newContactList = new List<Contact>(existingContacts.ContactsList);
-            }
+                if (newContactList.FindIndex(
+                    contact => (string.Compare(contact.EmailAddress, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0)) != -1)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' already exists.", EmailAddress));
+                }
 
-            if (newContactList.FindIndex(
-                contact => (string.Compare(contact.Email, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0)) != -1)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' already exists.", EmailAddress));
-            }
+                newContactList.Add(new Contact { EmailAddress = EmailAddress });
 
-            newContactList.Add(new Contact { Email = EmailAddress });
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = newContactList });
 
-            var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactsList = newContactList });
-
-            if (PassThru.IsPresent)
-            {
-                this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                }
             }
         }
     }

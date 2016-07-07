@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public SecureString ApiKey { get; set; }
         public KeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
 
-        internal static KeyVaultCertificateIssuer FromIssuer(Issuer issuer)
+        internal static KeyVaultCertificateIssuer FromIssuer(IssuerBundle issuer)
         {
             if (issuer == null)
             {
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             var kvcIssuer = new KeyVaultCertificateIssuer
             {
-                Name = issuer.Id.Name,
+                Name = issuer.IssuerIdentifier.Name,
                 IssuerProvider = issuer.Provider,
-                OrganizationDetails = KeyVaultCertificateOrganizationDetails.FromOrganizationalDetails(issuer.OrganizationalDetails),
+                OrganizationDetails = KeyVaultCertificateOrganizationDetails.FromOrganizationalDetails(issuer.OrganizationDetails),
             };
 
             if (issuer.Credentials != null)

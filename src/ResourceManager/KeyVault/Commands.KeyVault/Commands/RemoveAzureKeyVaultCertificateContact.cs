@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes a given certificate contact from Key Vault for certificate management
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateContact,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyVaultCertificateContact>))]
@@ -43,9 +44,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the name of the vault from which this cmdlet removes the certificate contact.")]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -66,51 +66,54 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected override void ProcessRecord()
         {
-            Contacts existingContacts;
+            if (ShouldProcess(EmailAddress, Properties.Resources.RemoveCertificateContact))
+            {
+                Contacts existingContacts;
 
-            try
-            {
-                existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
-            }
-            catch (KeyVaultClientException kvce)
-            {
-                if (kvce.Status != System.Net.HttpStatusCode.NotFound)
+                try
                 {
-                    throw;
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                }
+                catch (KeyVaultErrorException exception)
+                {
+                    if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                    {
+                        throw;
+                    }
+
+                    existingContacts = null;
                 }
 
-                existingContacts = null;
-            }
+                List<Contact> existingContactList;
 
-            List<Contact> existingContactList;
+                if (existingContacts == null ||
+                    existingContacts.ContactList == null)
+                {
+                    existingContactList = new List<Contact>();
+                }
+                else
+                {
+                    existingContactList = new List<Contact>(existingContacts.ContactList);
+                }
 
-            if (existingContacts == null ||
-                existingContacts.ContactsList == null)
-            {
-                existingContactList = new List<Contact>();
-            }
-            else
-            {
-                existingContactList = new List<Contact>(existingContacts.ContactsList);
-            }
+                var nContactsRemoved = existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0);
 
-            var nContactsRemoved = existingContactList.RemoveAll(contact => string.Compare(contact.Email, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0);
+                if (nContactsRemoved == 0)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' is not found.", EmailAddress));
+                }
 
-            if (nContactsRemoved == 0)
-            {
-                throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' is not found.", EmailAddress));
-            }
+                if (existingContactList.Count == 0)
+                {
+                    existingContactList = null;
+                }
 
-            if (existingContactList.Count == 0)
-            {
-                existingContactList = null;
-            }
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = existingContactList });
 
-            var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactsList = existingContactList });
-
-            if (PassThru.IsPresent)
-            {
-                this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                }
             }
         }
     }
