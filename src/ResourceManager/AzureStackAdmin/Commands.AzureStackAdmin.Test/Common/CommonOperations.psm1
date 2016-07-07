@@ -82,7 +82,7 @@ function Get-KeyvaultDefaultQuota
         ContentType = "application/json"
     }
 
-    # keyvault Creates only one default quota 'unlimited' as part of the deployment, just get that 
+    # keyvault Creates only one default quota 'unlimited' as part of the deployment, just get that
     $keyvaultQuota = Invoke-RestMethod @getKeyvaultQuota
 
     Write-Output $keyvaultQuota.value.Id
@@ -106,7 +106,7 @@ function Set-Offer
     $Offer.properties.state = $State
     if ($Global:AzureStackConfig.IsAAD)
     {
-        $Offer | Set-AzureRMOffer -ResourceGroup $ResourceGroup  
+        $Offer | Set-AzureRMOffer -ResourceGroup $ResourceGroup
     }
     else
     {
@@ -130,7 +130,7 @@ function Set-Plan
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        $Plan | Set-AzureRMPlan -ResourceGroup $ResourceGroup 
+        $Plan | Set-AzureRMPlan -ResourceGroup $ResourceGroup
     }
     else
     {
@@ -149,29 +149,29 @@ function Get-ServiceQuotas
     )
 
     $serviceQuotas = @()
-    
+
     foreach ($service in $Services)
     {
        switch($service)
        {
-            "Microsoft.Sql" { 
+            "Microsoft.Sql" {
                         $serviceQuotas  += Get-SQLRPDefaultQuota
-                    } 
-            "Microsoft.Subscriptions" { 
+                    }
+            "Microsoft.Subscriptions" {
                         $serviceQuotas  += Get-SubscriptionsDefaultQuota
-                    } 
-            "Microsoft.Storage" { 
+                    }
+            "Microsoft.Storage" {
                         $serviceQuotas  += Get-StorageDefaultQuota
-                    } 
-            "Microsoft.Compute" { 
+                    }
+            "Microsoft.Compute" {
                         $serviceQuotas  += Get-ComputeDefaultQuota
-                    } 
-            "Microsoft.Network" { 
+                    }
+            "Microsoft.Network" {
                         $serviceQuotas  += Get-NetworkDefaultQuota
-                    } 
-            "Microsoft.Keyvault" { 
+                    }
+            "Microsoft.Keyvault" {
                         $serviceQuotas  += Get-KeyvaultDefaultQuota
-                    } 
+                    }
             Default { throw "Wrong service name provided" }
        }
     }
@@ -204,7 +204,7 @@ function New-Plan
     }
     else
     {
-        $plan = New-AzureRMPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -QuotaIds $quotaIds -ApiVersion $Global:AzureStackConfig.ApiVersion  -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token 
+        $plan = New-AzureRMPlan -Name $PlanName -DisplayName $PlanName -ArmLocation $Global:AzureStackConfig.ArmLocation -ResourceGroup $ResourceGroupName -QuotaIds $quotaIds -ApiVersion $Global:AzureStackConfig.ApiVersion  -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token
     }
 
     Write-Verbose "Plan created successfully: $PlanName"
@@ -232,13 +232,13 @@ function Remove-Plan
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        Remove-AzureRMPlan -Name $PlanName -ResourceGroup $ResourceGroupName -SubscriptionId $Global:AzureStackConfig.SubscriptionId 
+        Remove-AzureRMPlan -Name $PlanName -ResourceGroup $ResourceGroupName -SubscriptionId $Global:AzureStackConfig.SubscriptionId
     }
     else
     {
         Remove-AzureRMPlan -Name $PlanName -ResourceGroup $ResourceGroupName -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
-    
+
     Assert-ResourceDeletion {Get-Plan -PlanName $PlanName -ResourceGroupName $ResourceGroupName}
 
     Write-Verbose "Deleted the plan successfully: $PlanName"
@@ -259,7 +259,7 @@ function Get-Plan
 
     if ($Global:AzureStackConfig.IsAAD)
     {
-        return Get-AzureRMPlan -Name $PlanName -SubscriptionId $AzureStackConfig.SubscriptionId -ResourceGroup $ResourceGroupName -Managed 
+        return Get-AzureRMPlan -Name $PlanName -SubscriptionId $AzureStackConfig.SubscriptionId -ResourceGroup $ResourceGroupName -Managed
     }
     else
     {
@@ -452,11 +452,11 @@ function Remove-Subscription
     }
     else
     {
-        Set-AzureRMManagedSubscription -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -Subscription $subscription 
+        Set-AzureRMManagedSubscription -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -Subscription $subscription
         Retry-Function -ScriptBlock {(Get-AzureRmManagedSubscription -TargetSubscriptionId $subscription.SubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token).State -ieq "Disabled"} -MaxTries 12 -IntervalInSeconds 5
         Remove-AzureRmManagedSubscription -TargetSubscriptionId $TargetSubscriptionId -SubscriptionId $Global:AzureStackConfig.SubscriptionId -AdminUri $Global:AzureStackConfig.AdminUri -Token $Global:AzureStackConfig.Token -ApiVersion $Global:AzureStackConfig.ApiVersion
     }
-    
+
     Assert-SubscriptionDeletion {Get-Subscription -SubscriptionId $TargetSubscriptionId}
     Write-Verbose "Successfully deleted the subscription : $TargetSubscriptionId"
 }
@@ -542,7 +542,7 @@ function Register-ResourceProvider
 
     # TODO: Remove the need for this sleep
     # BUG 7391118: Expose QuotaSyncState thru Get Admin and Tenant subscription
-    Start-Sleep -Seconds 30
+    Wait-Seconds 30
 }
 
 function Unregister-ResourceProvider
@@ -564,6 +564,5 @@ function Unregister-ResourceProvider
 
     # TODO: Remove the need for this sleep
     # BUG 7391118: Expose QuotaSyncState thru Get Admin and Tenant subscription
-    Start-Sleep -Seconds 30
+    Wait-Seconds 30
 }
-
