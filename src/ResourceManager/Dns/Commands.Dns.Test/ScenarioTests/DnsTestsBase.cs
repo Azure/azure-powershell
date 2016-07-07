@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using System;
+    using System.IO;
     using System.Linq;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using LegacyTest = Microsoft.Azure.Test;
@@ -119,6 +120,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
