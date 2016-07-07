@@ -86,7 +86,7 @@ function Test-CreateLogicAppWithDuplicateName
 	}
 	catch
 	{		
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' already exists."		
+		Assert-AreEqual $_.Exception.Message "The Resource '$WorkflowName' under resource group '$resourceGroupName' already exists."		
 	}
 	
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
@@ -241,18 +241,18 @@ function Test-UpdateLogicApp
 	#Case1: Update definition with no parameters and disable
 	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowTriggerDefinition.json"
 
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null -Force
 	
 	Assert-NotNull $UpdatedWorkflow
 	Assert-AreEqual $UpdatedWorkflow.State "Disabled"
 
 	#Case2: Update definition with parameters of logic app
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -Force
 
 	Assert-NotNull $UpdatedWorkflow
 
 	#Case3: Enable the logic app
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Enabled"
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Enabled" -Force
 	
 	Assert-NotNull $UpdatedWorkflow
 	Assert-AreEqual $UpdatedWorkflow.State "Enabled"
@@ -260,7 +260,7 @@ function Test-UpdateLogicApp
 	#Case4: Test update command to set logic app with null definition
 	try
 	{
-		$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null
+		$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null -Force
 	}
 	catch
 	{		
@@ -273,7 +273,7 @@ function Test-UpdateLogicApp
 	{
 		$workflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
 		$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowTriggerDefinition.json"
-		Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath
+		Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -Force
 	}
 	catch
 	{		
