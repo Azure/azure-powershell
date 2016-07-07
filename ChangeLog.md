@@ -1,4 +1,11 @@
 ﻿##2016.07.11 version 1.6.0
+* Azure Compute
+  * Set-AzureRmVMADDomainExtension
+  * Get-AzureRmVMADDomainExtension
+  * -Redeploy parameter for Restart-AzureVM
+  * -Validate parameter for Move-AzureService, Move-AzureStorageAccount, and Move-AzureVirtualNetwork
+  * Name and version parameters for extension cmdlets are optional as before.
+  * New-AzureVM can get a license type from VM object.
 * Azure Storage
   * Change Tags Parameter to Tag, and add parameter alias Tags
     - New-AzureRmStorageAccount
