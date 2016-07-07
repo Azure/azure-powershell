@@ -21,7 +21,7 @@ namespace Microsoft.AzureStack.Commands
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Resource Provider Registration Cmdlet
+    /// Get Resource Provider Registration Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, Nouns.ResourceProviderRegistration)]
     [OutputType(typeof(ProviderRegistrationModel))]
@@ -38,7 +38,7 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource group.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
         public string ResourceGroup { get; set; }
 

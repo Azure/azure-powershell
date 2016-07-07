@@ -17,8 +17,6 @@ namespace Microsoft.AzureStack.Commands.Security
     using System;
     using System.Collections.Specialized;
     using System.Management.Automation;
-    using System.Net;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     /// <summary>
@@ -67,6 +65,7 @@ namespace Microsoft.AzureStack.Commands.Security
         /// <summary>
         /// Gets or sets the resource.
         /// </summary>
+        [Parameter(ParameterSetName = "AAD", Mandatory = true)]
         [Parameter]
         [ValidateNotNull]
         public string Resource { get; set; }
@@ -93,46 +92,27 @@ namespace Microsoft.AzureStack.Commands.Security
         public PSCredential Credential { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether to disable certificate validation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter DisableCertificateValidation { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void ProcessRecord()
         {
-            var originalValidateCallback = ServicePointManager.ServerCertificateValidationCallback;
             AuthenticationResult result;
 
-            try
+            // note: this command should be deprecated
+            WriteWarning("Get-AzureStackToken cmdlet will be deprecated in a future release of AzureStackAdmin module.");
+
+            this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
+            // HACK - This ClientId parameter will be removed in a future release
+            this.ClientId = SharedConstants.AzurePowerShell.ClientId;
+
+
+            if (this.IsInteractiveTokenRequest())
             {
-                // TODO (bryanr) - Evaluate if this should be removed entirely
-                if (this.DisableCertificateValidation)
-                {
-                    this.WriteWarning(Resources.WarningDisableCertificateValidation);
-                    ServicePointManager.ServerCertificateValidationCallback = (s, certificate, chain, sslPolicyErrors) => true;
-                }
-
-                this.Resource = this.Resource ?? SharedConstants.ResourceManager.ClientId;
-                this.ClientId = this.ClientId ?? SharedConstants.AzureStackPowerShell.ClientId;
-
-                if (this.IsInteractiveTokenRequest())
-                {
-                    result = this.GetSecurityTokenWithInteractiveFlow();
-                }
-                else
-                {
-                    result = this.GetSecurityTokenWithNonInteractiveFlow();
-                }
+                result = this.GetSecurityTokenWithInteractiveFlow();
             }
-            finally
+            else
             {
-                if (this.DisableCertificateValidation)
-                {
-                    ServicePointManager.ServerCertificateValidationCallback = originalValidateCallback;
-                }
+                result = this.GetSecurityTokenWithNonInteractiveFlow();
             }
 
             // Write the object to the pipeline only after the certificate validation callback has been restored.
@@ -148,17 +128,10 @@ namespace Microsoft.AzureStack.Commands.Security
             var uriString = this.BuildAuthorityUriString();
             var userCredential = new UserCredential(this.Credential.UserName, this.Credential.Password);
             var result = default(AuthenticationResult);
-
-            if (this.IsRequestForAadToken())
-            {
-                var context = new AuthenticationContext(authority: uriString, validateAuthority: ValidateAuthority);
-                result = context.AcquireToken(resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
-            }
-            else
-            {
-                // NOTE: This is a case of using non-public APIs of ADAL.NET via reflection to acquire token (not officially supported by ADAL.NET team).
-                result = AuthenticationContextExtensions.AcquireTokenForAdfs(authority: uriString, resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
-            }
+            
+            var context = new AuthenticationContext(authority: uriString, validateAuthority: ValidateAuthority);
+            result = context.AcquireToken(resource: this.Resource, clientId: this.ClientId, userCredential: userCredential);
+     
             return result;
         }
 

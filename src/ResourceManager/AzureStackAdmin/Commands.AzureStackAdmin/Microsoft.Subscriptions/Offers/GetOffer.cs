@@ -55,7 +55,7 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource group.
         /// </summary>
         [Parameter(ParameterSetName = "Admin", Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
         public string ResourceGroup { get; set; }
 

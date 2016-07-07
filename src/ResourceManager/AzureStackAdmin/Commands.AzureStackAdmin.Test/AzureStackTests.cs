@@ -53,39 +53,9 @@ namespace Microsoft.AzureStack.Commands.Admin.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDelegatedOffer()
-        {
-            AzStackTestRunner.NewInstance.RunPsTest("Test-DelegatedOffer");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateSubscriptionServiceQuota()
-        {
-            AzStackTestRunner.NewInstance.RunPsTest("Test-UpdateSubscriptionServiceQuota");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddDelegatedOffer()
-        {
-            AzStackTestRunner.NewInstance.RunPsTest("Test-AddDelegatedOffer");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedLocation()
         {
             AzStackTestRunner.NewInstance.RunPsTest("Test-ManagedLocation");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGalleryItem()
-        {
-            var testRunner = AzStackTestRunner.NewInstance;
-            testRunner.ApiVersion = "2015-04-01";
-            testRunner.RunPsTest("Test-GalleryItem");
         }
 
     }

@@ -17,7 +17,6 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Management.Automation;
     using System.Net;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
@@ -32,7 +31,7 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// The default API version.
         /// </summary>
-        private const string DefaultApiVersion = "1.0";
+        private const string DefaultApiVersion = "2015-11-01";
 
         /// <summary>
         /// Gets or sets the admin base URI
@@ -55,12 +54,6 @@ namespace Microsoft.AzureStack.Commands
         [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
         public string ApiVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to disable certificate validation.
-        /// </summary>
-        [Parameter]
-        public SwitchParameter DisableCertificateValidation { get; set; }
 
         /// <summary>
         /// Gets the current default context. overriding it here since DefaultContext could be null for Windows Auth/ADFS environments
@@ -92,33 +85,11 @@ namespace Microsoft.AzureStack.Commands
 
             this.ValidateParameters();
 
-            try
-            {
-                // Note: (bryanr) Adding the tracing interceptor requires using a message pump and action queue. See relevant thread in PowerShell Discussions.
-                ////CloudContext.Configuration.Tracing.AddTracingInterceptor(this);
+            // Initialize parameters bound from the pipeline
+            this.ApiVersion = this.ApiVersion ?? DefaultApiVersion;
 
-                // TODO (bryanr) - Evaluate if this should be removed entirely
-                if (this.DisableCertificateValidation)
-                {
-                    this.WriteWarning(Resources.WarningDisableCertificateValidation);
-                    ServicePointManager.ServerCertificateValidationCallback = (s, certificate, chain, sslPolicyErrors) => true;
-                }
-
-                // Initialize parameters bound from the pipeline
-                this.ApiVersion = this.ApiVersion ?? DefaultApiVersion;
-
-                // Execute the API call(s) for the current cmdlet
-                result = this.ExecuteCore();
-            }
-            finally
-            {
-                if (this.DisableCertificateValidation)
-                {
-                    ServicePointManager.ServerCertificateValidationCallback = originalValidateCallback;
-                }
-                
-                ////CloudContext.Configuration.Tracing.RemoveTracingInterceptor(this);
-            }
+            // Execute the API call(s) for the current cmdlet
+            result = this.ExecuteCore();
 
             // Write the object to the pipeline only after the certificate validation callback has been restored.
             // This will prevent other cmdlets in the pipeline from inheriting this security vulnerability.
@@ -140,6 +111,9 @@ namespace Microsoft.AzureStack.Commands
             }
             else
             {
+                // note: this code path should be deprecated
+                WriteWarning("Token and AdminUri parameters will be removed in a future release of AzureStackAdmin module.");
+
                 // if token is specified, AdminUri is required as well
                 if (this.AdminUri == null)
                 {
