@@ -204,5 +204,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Test-NewAzureVMWithBYOL");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunRedeployVirtualMachineTest()
+        {
+            this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
+        }
     }
 }
