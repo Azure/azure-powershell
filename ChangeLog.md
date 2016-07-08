@@ -1,4 +1,15 @@
 ﻿##2016.07.11 version 1.6.0
+* Azure Compute
+  * Set-AzureRmVMADDomainExtension
+  * Get-AzureRmVMADDomainExtension
+  * -Redeploy parameter for Restart-AzureVM
+  * -Validate parameter for Move-AzureService, Move-AzureStorageAccount, and Move-AzureVirtualNetwork
+  * Name and version parameters for extension cmdlets are optional as before.
+  * New-AzureVM can get a license type from VM object.
+* Azure Storage
+  * Change Tags Parameter to Tag, and add parameter alias Tags
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 * Azure Network
   * New cmdlet added for Virtual Network Peering
 * Azure Redis Cache
@@ -61,6 +72,11 @@
 * Azure API Management
   * Fixed Azure Api Management Deployment cmdlets for AzureChinaCloud.
   * Removed cmdlet Set-AzureRmApiManagementTenantGitAccess as Git Access is enabled by Default.
+* Azure Recovery Services Backup
+  * Added support for the Azure SQL workload
+  * Added support for backing up and restoring encrypted Azure VMs
+  * Backup-AzureRmRecoveryServicesBackupItem - Added optional retention time feature for recovery points
+  * Minor filter-related bug fixes in Get-AzureRmRecoveryServicesBackupContainer and Get-AzureRmRecoveryServicesBackupItem cmdlets
 
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
