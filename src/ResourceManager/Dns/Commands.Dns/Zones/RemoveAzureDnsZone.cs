@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Dns
                     Force.IsPresent,
                     string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                     ProjectResources.Progress_RemovingZone,
-                    this.Name,
+                    zoneToDelete.Name,
                 () =>
                 {
                     deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Dns
                     else
                     {
                         WriteVerbose(ProjectResources.Success);
-                        WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, this.Name, this.ResourceGroupName));
+                        WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, zoneToDelete.Name, this.ResourceGroupName));
                     }
 
                     if (this.PassThru)
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Dns
                         WriteObject(deleted);
                     }
                 },
-                () => overwrite);
+                () => true);
             }
         }
     }
