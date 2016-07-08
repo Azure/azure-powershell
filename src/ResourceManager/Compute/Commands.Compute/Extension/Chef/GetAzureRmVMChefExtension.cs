@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     {
                         this.Name = chefExtension.Name;
                     }
-                }
+                } 
 
                 AzureOperationResponse<VirtualMachineExtension> virtualMachineExtensionGetResponse = null;
                 if (Status.IsPresent)
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                         this.Name).GetAwaiter().GetResult();
                 }
 
-                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
                 WriteObject(returnedExtension);
             });
         }
