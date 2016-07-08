@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Dns
 
                     WriteObject(result);
                 },
-                () => true);
+                () => this.Overwrite.IsPresent);
         }
     }
 }
