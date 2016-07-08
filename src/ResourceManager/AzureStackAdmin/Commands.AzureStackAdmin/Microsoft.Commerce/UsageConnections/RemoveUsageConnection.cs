@@ -16,45 +16,49 @@ namespace Microsoft.AzureStack.Commands
 {
     using System;
     using System.Management.Automation;
+    using Microsoft.Azure;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
-    using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Managed Subscription Cmdlet
+    /// Remove Usage Connection Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.ManagedSubscription)]
-    [OutputType(typeof(SubscriptionDefinition))]
-    public class SetManagedSubscription : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Remove, Nouns.UsageConnection)]
+    [OutputType(typeof(AzureOperationResponse))]
+    public class RemoveUsageConnection : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the subscription id.
+        /// Gets or sets the name.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [ValidateNotNull]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource group.
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateLength(1, 90)]
+        [ValidateNotNull]
+        public string ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the subscription identifier.
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [ValidateNotNull]
         [ValidateGuidNotEmpty]
         public Guid SubscriptionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription to be updated.
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        [ValidateNotNull]
-        public AdminSubscriptionDefinition Subscription { get; set; }
-
-        /// <summary>
-        /// Performs the API operation(s) against managed subscriptions.
+        /// Executes the API call(s) against Azure Resource Management API(s).
         /// </summary>
         protected override object ExecuteCore()
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                this.WriteVerbose(
-                    Resources.UpdatingManagedSubscription.FormatArgs(
-                        this.Subscription.SubscriptionId,
-                        this.SubscriptionId));
-
-                var parameters = new ManagedSubscriptionCreateOrUpdateParameters(this.Subscription);
-                return client.ManagedSubscriptions.CreateOrUpdate(parameters).Subscription;
+                this.WriteVerbose(Resources.RemovingUsageConnection.FormatArgs(this.Name));
+                return client.UsageConnections.Delete(this.ResourceGroup, this.Name);
             }
         }
     }

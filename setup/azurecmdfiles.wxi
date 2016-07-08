@@ -323,12 +323,6 @@
                         <Component Id="cmp048B605B1072F4A5467F2AFFD8ED2459" Guid="*">
                             <File Id="fil38FE506241BEC2CA3B34645613B821F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.AzureStack.Commands.dll" />
                         </Component>
-                        <Component Id="cmpB2F2FF5F057BDE656891B43C18ADF020" Guid="*">
-                            <File Id="fil952FAF0371C7CCC373DBDF330DB18A87" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.AzureStack.Commands.dll-help.psd1" />
-                        </Component>
-                        <Component Id="cmp889E4CFA9046EFFEFF5D63CB61E990A6" Guid="*">
-                            <File Id="filE0954BDD89FA012B32E270ADA2F66DD8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.AzureStack.Commands.dll-help.xml" />
-                        </Component>
                         <Component Id="cmpA2F17B479BD0FE1A81AED68A6C03B7A0" Guid="*">
                             <File Id="fil80D875AB0DAA2F1FDA208FBF372BDD50" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.AzureStack.Management.dll" />
                         </Component>
@@ -349,9 +343,6 @@
                         </Component>
                         <Component Id="cmp6EB96EE5B8B483216E7A8518E9CFD186" Guid="*">
                             <File Id="fil2FDFEF0F8155834400AE3C43299E397B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Microsoft.WindowsAzure.Commands.Common.dll" />
-                        </Component>
-                        <Component Id="cmp41CA6BD570A9230A902A50385F0BF998" Guid="*">
-                            <File Id="filB3F2141ECE63C94AE09C5D96FD7D0439" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\MSSharedLibKey.snk" />
                         </Component>
                         <Component Id="cmp434D905EBE6FE0458BA37A1AA97B13E7" Guid="*">
                             <File Id="fil20625964EB07A47DC1CD8A1176BFE3C2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\Newtonsoft.Json.dll" />
@@ -5063,8 +5054,6 @@
             <ComponentRef Id="cmpD0EF8A0F8719C6D155CF9683A6832BD9" />
             <ComponentRef Id="cmpFDFB38E21048DD505BCAD31F5136992E" />
             <ComponentRef Id="cmp048B605B1072F4A5467F2AFFD8ED2459" />
-            <ComponentRef Id="cmpB2F2FF5F057BDE656891B43C18ADF020" />
-            <ComponentRef Id="cmp889E4CFA9046EFFEFF5D63CB61E990A6" />
             <ComponentRef Id="cmpA2F17B479BD0FE1A81AED68A6C03B7A0" />
             <ComponentRef Id="cmp4E983C9ECBC2D4A29376A70418BE5E2B" />
             <ComponentRef Id="cmpD7DAB84173CC8537AFCD22E7B68C4B3D" />
@@ -5072,7 +5061,6 @@
             <ComponentRef Id="cmp3E40AAC7D8382D0CFA55C2E14FDDBD44" />
             <ComponentRef Id="cmpB4C00EEBB57370C79216E1C4FD5E0398" />
             <ComponentRef Id="cmp6EB96EE5B8B483216E7A8518E9CFD186" />
-            <ComponentRef Id="cmp41CA6BD570A9230A902A50385F0BF998" />
             <ComponentRef Id="cmp434D905EBE6FE0458BA37A1AA97B13E7" />
             <ComponentRef Id="cmp20BC1C9C8D5EE2CB519FA5A297E5931C" />
             <ComponentRef Id="cmp7460DEC2372E949D937FC3760B7CF7F1" />

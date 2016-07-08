@@ -15,38 +15,38 @@
 namespace Microsoft.AzureStack.Commands
 {
     using System;
-    using System.Linq;
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
-    /// Set Plan cmdlet
+    /// Get Usage Connection Cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, Nouns.Plan)]
-    [OutputType(typeof(AdminPlanModel))]
-    public class SetPlan : AdminApiCmdlet
+    [Cmdlet(VerbsCommon.Get, Nouns.UsageConnection)]
+    [OutputType(typeof(UsageConnectionModel))]
+    public class GetUsageConnection : AdminApiCmdlet
     {
         /// <summary>
-        /// Gets or sets the plan.
+        /// Gets or sets the name.
         /// </summary>
-        [Parameter(ValueFromPipeline = true, Mandatory = true)]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
-        public AdminPlanModel Plan { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
-        [ValidateLength(1,90)]
         public string ResourceGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id.
+        /// Gets or sets the subscription identifier.
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [ValidateNotNull]
         [ValidateGuidNotEmpty]
         public Guid SubscriptionId { get; set; }
 
@@ -57,9 +57,20 @@ namespace Microsoft.AzureStack.Commands
         {
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
-                this.WriteVerbose(Resources.UpdatingPlan.FormatArgs(this.Plan.Name, this.ResourceGroup));
-                var parameters = new ManagedPlanCreateOrUpdateParameters(this.Plan);
-                return client.ManagedPlans.CreateOrUpdate(this.ResourceGroup, parameters).Plan;
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    this.WriteVerbose(Resources.ListingUsageConnections);
+                    return client.UsageConnections.List(this.ResourceGroup).UsageConnections;
+                }
+                else if (string.IsNullOrEmpty(this.ResourceGroup))
+                {
+                    throw new ValidationMetadataException(Resources.ResourceGroupCannotBeEmpty);
+                }
+                else
+                {
+                    this.WriteVerbose(Resources.GettingUsageConnection.FormatArgs(this.Name));
+                    return client.UsageConnections.Get(this.ResourceGroup, this.Name).UsageConnections;
+                }
             }
         }
     }

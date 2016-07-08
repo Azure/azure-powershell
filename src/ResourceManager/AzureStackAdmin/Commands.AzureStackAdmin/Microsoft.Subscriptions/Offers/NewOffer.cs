@@ -51,12 +51,19 @@ namespace Microsoft.AzureStack.Commands
         [Parameter]
         public AccessibilityState State { get; set; }
 
+        // Todo:expose a way to add get AddOnPlanDefinition objects
         /// <summary>
-        /// Gets or sets the base plans.
+        /// Gets or sets the add on plans.
+        /// </summary>
+        [Parameter(ValueFromPipeline = true)]
+        public AddonPlanDefinition[] AddOnPlans { get; set; }
+
+        /// <summary>
+        /// Gets or sets the base plan ids.
         /// </summary>
         [Parameter(ValueFromPipeline = true)]
         [ValidateNotNull]
-        public AdminPlanModel[] BasePlans { get; set; }
+        public string[] BasePlanIds { get; set; }
 
         /// <summary>
         /// Gets or sets the resource manager location.
@@ -69,7 +76,7 @@ namespace Microsoft.AzureStack.Commands
         /// Gets or sets the resource group.
         /// </summary>
         [Parameter(Mandatory = true)]
-        [ValidateLength(1, 128)]
+        [ValidateLength(1, 90)]
         [ValidateNotNull]
         public string ResourceGroup { get; set; }
 
@@ -104,7 +111,7 @@ namespace Microsoft.AzureStack.Commands
                     {
                         Name = this.Name,
                         Location = this.ArmLocation,
-                        Properties = new AdminOfferDefinition()
+                        Properties = new AdminOfferPropertiesDefinition()
                         {
                             Name = this.Name,
                             DisplayName = this.DisplayName,
@@ -113,9 +120,14 @@ namespace Microsoft.AzureStack.Commands
                     }
                 };
 
-                if (this.BasePlans != null && this.BasePlans.Length > 0)
+                if (this.BasePlanIds != null && this.BasePlanIds.Length > 0)
                 {
-                    parameters.Offer.Properties.BasePlans = this.BasePlans.Select(plan => plan.Properties).ToArray();
+                    parameters.Offer.Properties.BasePlanIds = this.BasePlanIds;
+                }
+
+                if (this.AddOnPlans != null && this.AddOnPlans.Length > 0)
+                {
+                    parameters.Offer.Properties.AddonPlans = this.AddOnPlans.ToList();
                 }
 
                 if (client.ManagedOffers.List(this.ResourceGroup, includeDetails: false).Offers
