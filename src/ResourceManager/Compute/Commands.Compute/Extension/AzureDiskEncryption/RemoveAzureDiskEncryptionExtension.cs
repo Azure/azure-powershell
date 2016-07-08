@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.AzureDiskEncryptionExtension, SupportsShouldProcess = true)]
+        ProfileNouns.AzureDiskEncryptionExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {

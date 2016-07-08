@@ -12,19 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
+
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-    using System;
-    using System.Management.Automation;
 
     /// <summary>
     /// Updates a LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp"), OutputType(typeof(object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof (object))]
     public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
@@ -124,6 +126,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ParameterFilePath { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         #endregion Input Parameters
 
         /// <summary>
@@ -191,7 +196,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
             if (!string.IsNullOrEmpty(this.State))
             {
-                workflow.State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State);
+                workflow.State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State);
             }
 
             if (!string.IsNullOrEmpty(this.AppServicePlan))
@@ -199,7 +204,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
                 workflow.Sku = new Sku
                 {
-                    Name = (SkuName)Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
+                    Name = (SkuName) Enum.Parse(typeof (SkuName), servicePlan.Sku.Tier),
                     Plan = new ResourceReference
                     {
                         Id = servicePlan.Id
@@ -212,7 +217,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 throw new PSArgumentException(Properties.Resource.DefinitionMissingWarning);
             }
 
-            this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
+            ConfirmAction(Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceWarning,
+                    "Microsoft.Logic/workflows", this.Name),
+                string.Format(CultureInfo.InvariantCulture, Properties.Resource.UpdateResourceMessage,
+                    "Microsoft.Logic/workflows", this.Name),
+                Name,
+                () =>
+                {
+                    this.WriteObject(LogicAppClient.UpdateWorkflow(this.ResourceGroupName, this.Name, workflow), true);
+                },
+                null);
         }
     }
 }
