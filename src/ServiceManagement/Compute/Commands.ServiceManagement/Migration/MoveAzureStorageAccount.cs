@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Management.Storage.Models;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
@@ -94,7 +96,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.StorageClient.StorageAccounts.ValidateMigration(this.StorageAccountName));
+                () => this.StorageClient.StorageAccounts.ValidateMigration(this.StorageAccountName),
+                (operation, service) =>
+                {
+                    var context = ConvertToContext(operation, service);
+                    return context;
+                });
             }
             else if (this.Abort.IsPresent)
             {
@@ -117,6 +124,42 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                 CommandRuntime.ToString(),
                 () => this.StorageClient.StorageAccounts.PrepareMigration(this.StorageAccountName));
             }
+        }
+
+        private MigrationValidateContext ConvertToContext(
+            OperationStatusResponse operationResponse, XrpMigrationValidateStorageResponse validationResponse)
+        {
+            if (operationResponse == null) return null;
+
+            var result = new MigrationValidateContext
+            {
+                OperationId = operationResponse.Id,
+                Result = operationResponse.Status.ToString()
+            };
+
+            if (validationResponse == null || validationResponse.ValidateStorageMessages == null) return result;
+
+            var errorCount = validationResponse.ValidateStorageMessages.Count;
+
+            if (errorCount > 0)
+            {
+                result.ValidationMessages = new ValidationMessage[errorCount];
+
+                for (int i = 0; i < errorCount; i++)
+                {
+                    result.ValidationMessages[i] = new ValidationMessage
+                    {
+                        ResourceName = validationResponse.ValidateStorageMessages[i].ResourceName,
+                        ResourceType = validationResponse.ValidateStorageMessages[i].ResourceType,
+                        Category = validationResponse.ValidateStorageMessages[i].Category,
+                        Message = validationResponse.ValidateStorageMessages[i].Message,
+                        VirtualMachineName = validationResponse.ValidateStorageMessages[i].VirtualMachineName
+                    };
+                }
+                result.Result = "Validation failed.  Please see ValidationMessages for details";
+            }
+
+            return result;
         }
     }
 }

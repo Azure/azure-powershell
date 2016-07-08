@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network;
+using Microsoft.WindowsAzure.Management.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
@@ -94,7 +96,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.ValidateMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.Networks.ValidateMigration(this.VirtualNetworkName),
+                (operation, service) =>
+                {
+                    var context = ConvertToContext(operation, service);
+                    return context;
+                });
             }
             else if (this.Abort.IsPresent)
             {
@@ -117,6 +124,42 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 CommandRuntime.ToString(),
                 () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
             }
+        }
+
+        private MigrationValidateContext ConvertToContext(
+           OperationStatusResponse operationResponse, XrpMigrationValidateVirtualNetworkResponse validationResponse)
+        {
+            if (operationResponse == null) return null;
+
+            var result = new MigrationValidateContext
+            {
+                OperationId = operationResponse.Id,
+                Result = operationResponse.Status.ToString()
+            };
+
+            if (validationResponse == null || validationResponse.ValidateVirtualNetworkMessages == null) return result;
+
+            var errorCount = validationResponse.ValidateVirtualNetworkMessages.Count;
+
+            if (errorCount > 0)
+            {
+                result.ValidationMessages = new ValidationMessage[errorCount];
+
+                for (int i = 0; i < errorCount; i++)
+                {
+                    result.ValidationMessages[i] = new ValidationMessage
+                    {
+                        ResourceName = validationResponse.ValidateVirtualNetworkMessages[i].ResourceName,
+                        ResourceType = validationResponse.ValidateVirtualNetworkMessages[i].ResourceType,
+                        Category = validationResponse.ValidateVirtualNetworkMessages[i].Category,
+                        Message = validationResponse.ValidateVirtualNetworkMessages[i].Message,
+                        VirtualMachineName = validationResponse.ValidateVirtualNetworkMessages[i].VirtualMachineName
+                    };
+                }
+                result.Result = "Validation failed.  Please see ValidationMessages for details";
+            }
+
+            return result;
         }
     }
 }
