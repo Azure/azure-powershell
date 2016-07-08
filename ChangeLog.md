@@ -77,6 +77,8 @@
   * Added support for backing up and restoring encrypted Azure VMs
   * Backup-AzureRmRecoveryServicesBackupItem - Added optional retention time feature for recovery points
   * Minor filter-related bug fixes in Get-AzureRmRecoveryServicesBackupContainer and Get-AzureRmRecoveryServicesBackupItem cmdlets
+* Azure Automation
+  * Added Get-AzureRmAutomationHybridWorkerGroup
 
 ##2016.06.23 version 1.5.1
 * Azure Resource Manager
