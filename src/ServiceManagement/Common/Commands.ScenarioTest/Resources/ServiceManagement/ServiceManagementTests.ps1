@@ -673,7 +673,8 @@ function Test-MigrationAbortAzureDeployment
     New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password $PLACEHOLDER -WaitForBoot;
     Get-AzureVM -ServiceName $svcName -Name $vmName;
 
-    Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    Assert-AreEqual "Succeeded" $result.Result;
     $vm = Get-AzureVM -ServiceName $svcName -Name $vmName;
 
     Move-AzureService -Prepare -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
@@ -686,6 +687,33 @@ function Test-MigrationAbortAzureDeployment
 
     # Cleanup
     Cleanup-CloudService $svcName;
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureService with Abort
+#>
+function Test-MigrationValidateAzureDeployment
+{
+    # Setup
+    $location = Get-DefaultLocation;
+    $imgName = Get-DefaultImage $location;
+
+    $storageName = getAssetName;
+    New-AzureStorageAccount -StorageAccountName $storageName -Location $location;
+    Set-CurrentStorageAccountName $storageName;
+
+    $vmName = "vm1";
+    $svcName = Get-CloudServiceName;
+
+    # Test
+    New-AzureService -ServiceName $svcName -Location $location;
+    New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password $PLACEHOLDER;
+    Get-AzureVM -ServiceName $svcName -Name $vmName;
+
+    $result = Move-AzureService -Validate -ServiceName $svcName -DeploymentName $svcName -CreateNewVirtualNetwork;
+    Assert-AreNotEqual "Succeeded" $result.Result;
+    Assert-AreNotEqual 0 $result.ValidationMessages.Count;
 }
 
 <#
@@ -737,7 +765,8 @@ function Test-MigrationAbortAzureVNet
     Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath;
     Get-AzureVNetSite;
 
-    Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName;
+    $result = Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName;
+    Assert-AreEqual "Succeeded" $result.Result;
     Get-AzureVNetSite;
 
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
@@ -783,7 +812,8 @@ function Test-MigrationAbortAzureStorageAccount
     Get-AzureStorageAccount -StorageAccountName $storageName;
 
     # Test
-    Move-AzureStorageAccount -Validate -StorageAccountName $storageName;
+    $result = Move-AzureStorageAccount -Validate -StorageAccountName $storageName;
+    Assert-AreEqual "Succeeded" $result.Result;
     Get-AzureStorageAccount -StorageAccountName $storageName;
 
     Move-AzureStorageAccount -Prepare -StorageAccountName $storageName;

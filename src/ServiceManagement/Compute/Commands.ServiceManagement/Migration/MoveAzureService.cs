@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
@@ -247,7 +248,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     ExecuteClientActionNewSM(
                         null,
                         CommandRuntime.ToString(),
-                        () => this.ComputeClient.Deployments.ValidateMigration(this.ServiceName, DeploymentName, parameter));
+                        () => this.ComputeClient.Deployments.ValidateMigration(this.ServiceName, DeploymentName, parameter),
+                        (operation, service) =>
+                        {
+                            var context = ConvertToContext(operation, service);
+                            return context;
+                        });
                 }
                 else
                 {
@@ -257,6 +263,42 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                         () => this.ComputeClient.Deployments.PrepareMigration(this.ServiceName, DeploymentName, parameter));
                 }
             }
+        }
+
+        private MigrationValidateContext ConvertToContext(
+            OperationStatusResponse operationResponse, XrpMigrationValidateDeploymentResponse validationResponse)
+        {
+            if (operationResponse == null) return null;
+
+            var result = new MigrationValidateContext
+            {
+                OperationId = operationResponse.Id,
+                Result = operationResponse.Status.ToString()
+            };
+
+            if (validationResponse == null || validationResponse.ValidateDeploymentMessages == null) return result;
+
+            var errorCount = validationResponse.ValidateDeploymentMessages.Count;
+
+            if (errorCount > 0)
+            {
+                result.ValidationMessages = new ValidationMessage[errorCount];
+
+                for (int i = 0; i < errorCount; i++)
+                {
+                    result.ValidationMessages[i] = new ValidationMessage
+                    {
+                        ResourceName = validationResponse.ValidateDeploymentMessages[i].ResourceName,
+                        ResourceType = validationResponse.ValidateDeploymentMessages[i].ResourceType,
+                        Category = validationResponse.ValidateDeploymentMessages[i].Category,
+                        Message = validationResponse.ValidateDeploymentMessages[i].Message,
+                        VirtualMachineName = validationResponse.ValidateDeploymentMessages[i].VirtualMachineName
+                    };
+                }
+                result.Result = "Validation failed.  Please see ValidationMessages for details";
+            }
+
+            return result;
         }
     }
 }
