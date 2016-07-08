@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using System.Management.Automation;
-using System.Text.RegularExpressions;
-using System.Collections;
-using System.Linq;
 using System;
+using System.Collections;
 using System.IO;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
@@ -31,10 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private Hashtable privateConfiguration;
 
         private string PrivateConfigurationTemplate = "validation_key";
-        private string AutoUpdateTemplate = "autoUpdateClient";
-        private string DeleteChefConfigTemplate = "deleteChefConfig";
         private string BootstrapVersionTemplate = "bootstrap_version";
-        private string UninstallChefClientTemplate = "uninstallChefClient";
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
         private string RunListTemplate = "runlist";
@@ -119,27 +114,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Flag to opt for auto chef-client update. Chef-client update is false by default.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter AutoUpdateChefClient { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Delete the chef config files during update/uninstall extension. Default is false.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter DeleteChefConfig { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Chef client version to be installed with the extension. Works for only linux.")]
         [ValidateNotNullOrEmpty]
         public string BootstrapVersion { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Uninstall Chef client during update/uninstall extension. Default is false.")]
-         [ValidateNotNullOrEmpty]
-         public SwitchParameter UninstallChefClient { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -221,10 +198,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
                     bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
-                    string AutoUpdateChefClient = this.AutoUpdateChefClient.IsPresent ? "true" : "false";
-                    string DeleteChefConfig = this.DeleteChefConfig.IsPresent ? "true" : "false";
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
-                    string UninstallChefClient = this.UninstallChefClient.IsPresent ? "true" : "false";
 
                     //Cases handled:
                     // 1. When clientRb given by user and:
@@ -277,20 +251,14 @@ validation_client_name 	'{1}'
                         if (IsBootstrapOptionsEmpty)
                         {
                             var hashTable = new Hashtable();
-                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
-                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
                             hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             this.publicConfiguration = hashTable;
                         }
                         else
                         {
                             var hashTable = new Hashtable();
-                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
-                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
                             hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
                             this.publicConfiguration = hashTable;
@@ -301,10 +269,7 @@ validation_client_name 	'{1}'
                         if (IsBootstrapOptionsEmpty)
                         {
                             var hashTable = new Hashtable();
-                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
-                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
                             hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(RunListTemplate, this.RunList);
                             this.publicConfiguration = hashTable;
@@ -312,14 +277,11 @@ validation_client_name 	'{1}'
                         else
                         {
                             var hashTable = new Hashtable();
-                            hashTable.Add(AutoUpdateTemplate, AutoUpdateChefClient);
-                            hashTable.Add(DeleteChefConfigTemplate, DeleteChefConfig);
                             hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(UninstallChefClientTemplate, UninstallChefClient);
                             hashTable.Add(ClientRbTemplate, ClientConfig);
                             hashTable.Add(RunListTemplate, this.RunList);
                             hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
-                            this.publicConfiguration = hashTable;                            
+                            this.publicConfiguration = hashTable;
                         }
                     }
                 }
@@ -337,7 +299,7 @@ validation_client_name 	'{1}'
                     var hashTable = new Hashtable();
                     hashTable.Add(PrivateConfigurationTemplate, File.ReadAllText(this.ValidationPem).TrimEnd('\r', '\n'));
                     this.privateConfiguration = hashTable;
-                }                
+                }
 
                 return this.privateConfiguration;
             }
@@ -349,7 +311,7 @@ validation_client_name 	'{1}'
             {
                 var parameters = new VirtualMachineExtension
                 {
-                    Location = this.Location,                    
+                    Location = this.Location,
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = ExtensionDefaultPublisher,
@@ -415,7 +377,7 @@ validation_client_name 	'{1}'
         }
 
         private void ValidateParameters()
-        {            
+        {
             bool IsClientRbEmpty = string.IsNullOrEmpty(this.ClientRb);
             bool IsChefServerUrlEmpty = string.IsNullOrEmpty(this.ChefServerUrl);
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
