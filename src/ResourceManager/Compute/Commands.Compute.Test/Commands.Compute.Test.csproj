@@ -167,7 +167,6 @@
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
     <Compile Include="ScenarioTests\AEMExtensionTests.cs" />
-    <Compile Include="ScenarioTests\ChefExtensionTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
     <Compile Include="ScenarioTests\ContainerServiceTests.cs" />
     <Compile Include="ScenarioTests\DiagnosticsExtensionTests.cs" />
@@ -237,9 +236,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AEMExtensionTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\ChefExtensionTests.ps1" />
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ComputeCloudExceptionTests.ps1">
@@ -481,8 +477,6 @@
     <None Include="Templates\azuredeploy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\client.rb" />
-    <None Include="Templates\tstorgnztn-validator.pem" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
