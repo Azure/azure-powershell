@@ -51,7 +51,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Advisor\Model\AzureSqlElasticPoolAdvisor.cs" />
+    <Compile Include="Advisor\Model\AzureSqlDatabaseAdvisorModel.cs" />
+    <Compile Include="Advisor\Cmdlet\AzureSqlDatabaseAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlDatabaseAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlDatabaseAdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Advisor\Model\AzureSqlServerAdvisorModel.cs" />
+    <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
+    <Compile Include="Database\Cmdlet\GetAzureSqlDatabase2.cs" />
     <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
     <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
@@ -316,7 +325,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.47.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>G:\GitHub\azure-sdk-for-net\binaries\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
