@@ -1,4 +1,10 @@
 ﻿##2016.07.11 version 1.6.0
+* **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets:**
+  * Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
+  * Control over prompting using a session-wide $ConfirmPreference, so that the user is prompted based on the impact of a prospective change (as reported in the ConfirmImpact setting in the cmdlet)
+  * Cmdlet-specific control over confirmation prompts using the –Confirm parameter
+  * Consistent use of ShouldContinue and the –Force parameter across cmdlets, for only those actions that would require prompting from the user due to the special nature of the changes (for example, deleting hidden files)
+  * Consistency with other PowerShell cmdlets, so that PowerShell scripting knowledge from other cmdlets is immediately applicable to the Azure PowerShell cmdlets.
 * Azure Compute
   * Set-AzureRmVMADDomainExtension
   * Get-AzureRmVMADDomainExtension
