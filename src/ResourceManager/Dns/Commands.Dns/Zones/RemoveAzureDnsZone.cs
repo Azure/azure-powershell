@@ -18,6 +18,9 @@ using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Dns
 {
+    using System;
+    using Rest.Azure;
+
     /// <summary>
     /// Deletes an existing zone.
     /// </summary>
@@ -48,41 +51,38 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
-            bool deleted = false;
-            DnsZone zoneToDelete = null;
+            bool deleted = true;
+            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
-            if (this.ParameterSetName == "Fields")
+            if (!string.IsNullOrEmpty(this.Name) && this.Name.EndsWith("."))
             {
-                zoneToDelete = new DnsZone
-                {
-                    Name = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Etag = null,
-                };
+                this.Name = this.Name.TrimEnd('.');
+                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
             }
-            else if (this.ParameterSetName == "Object")
+
+            // There is a bug in sdk where it doesn't handle non existing zones on delete. Hence, handling the condition in powershell
+            var zoneToDelete = (this.ParameterSetName != "Object")
+                ? this.DnsClient.GetDnsZoneHandleNonExistentZone(this.Name, this.ResourceGroupName)
+                : this.Zone;
+
+            if (zoneToDelete != null)
             {
-                if ((string.IsNullOrWhiteSpace(this.Zone.Etag) || this.Zone.Etag == "*") && !this.Overwrite.IsPresent)
+                if ((string.IsNullOrWhiteSpace(zoneToDelete.Etag) || zoneToDelete.Etag == "*") && !overwrite)
                 {
                     throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsZone).Name));
                 }
 
-                zoneToDelete = this.Zone;
-            }
+                if (zoneToDelete.Name != null && zoneToDelete.Name.EndsWith("."))
+                {
+                    zoneToDelete.Name = zoneToDelete.Name.TrimEnd('.');
+                    this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneToDelete.Name));
+                }
 
-            if (zoneToDelete.Name != null && zoneToDelete.Name.EndsWith("."))
-            {
-                zoneToDelete.Name = zoneToDelete.Name.TrimEnd('.');
-                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneToDelete.Name));
-            }
-
-            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
-
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
-                ProjectResources.Progress_RemovingZone,
-                this.Name,
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
+                    ProjectResources.Progress_RemovingZone,
+                    zoneToDelete.Name,
                 () =>
                 {
                     deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
@@ -92,12 +92,19 @@ namespace Microsoft.Azure.Commands.Dns
                         WriteVerbose(ProjectResources.Success);
                         WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
                     }
+                    else
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, zoneToDelete.Name, this.ResourceGroupName));
+                    }
 
                     if (this.PassThru)
                     {
                         WriteObject(deleted);
                     }
-                });
+                },
+                () => true);
+            }
         }
     }
 }

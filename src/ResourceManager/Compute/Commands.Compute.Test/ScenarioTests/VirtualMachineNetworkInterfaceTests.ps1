@@ -424,7 +424,7 @@ function Test-AddNetworkInterface
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
-		# OS & Image
+        # OS & Image
         $user = "Foo12";
         $password = 'BaR@123' + $rgname;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;

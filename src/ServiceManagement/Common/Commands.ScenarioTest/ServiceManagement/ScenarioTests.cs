@@ -164,6 +164,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationValidateAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrationValidateAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestMigrateAzureVNet()
         {
             this.RunPowerShellTest("Test-MigrateAzureVNet");
@@ -203,6 +212,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void TestNewAzureVMWithBYOL()
         {
             this.RunPowerShellTest("Test-NewAzureVMWithBYOL");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunRedeployVirtualMachineTest()
+        {
+            this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
         }
     }
 }
