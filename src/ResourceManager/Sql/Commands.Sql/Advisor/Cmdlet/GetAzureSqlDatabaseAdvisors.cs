@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Expand Recommended Actions of this Advisor in the response.")]
         [ValidateNotNullOrEmpty]
-        public bool ExpandRecommendedActions { get; set; }
+        public SwitchParameter ExpandRecommendedActions { get; set; }
 
         /// <summary>
         /// Gets entities from the service.

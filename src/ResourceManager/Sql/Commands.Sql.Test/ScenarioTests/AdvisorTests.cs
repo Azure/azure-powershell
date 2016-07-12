@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListDatabaseAdvisorsExpanded()
+        {
+            RunPowerShellTest("Test-ListDatabaseAdvisorsExpanded");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetDatabaseAdvisor()
         {
             RunPowerShellTest("Test-GetDatabaseAdvisor");
