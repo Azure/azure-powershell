@@ -387,6 +387,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disable disk encryption.
+        /// </summary>
+        public static string DisableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("DisableDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {
@@ -419,6 +428,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string EnableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable disk encryption.
+        /// </summary>
+        public static string EnableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
             }
         }
         
@@ -955,6 +973,42 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove VM access extension.
+        /// </summary>
+        public static string RemoveAccessExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveAccessExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove disk encryption.
+        /// </summary>
+        public static string RemoveDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("RemoveDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove &apos;{0}&apos; extension.
+        /// </summary>
+        public static string RemoveExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove custom script extension.
+        /// </summary>
+        public static string RemoveScriptExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
             }
         }
         
