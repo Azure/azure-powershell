@@ -86,5 +86,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtensionWithSwitch");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineADDomainExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineADDomainExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineADDomainExtensionDomainJoin()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineADDomainExtensionDomainJoin");
+        }
     }
 }
