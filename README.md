@@ -45,7 +45,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * Cloud Service: CRUD cloud service.
 * Windows Azure Stack
   * Azure Stack Administration
-  * Storage Servcie Management
+  * Storage Service Management
   
 
 For detail descriptions and examples of the cmdlets, type
@@ -75,7 +75,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 1. Install [Windows Management Framework 5 with PowerShellGet cmdlets](https://www.powershellgallery.com/GettingStarted?section=Get%20Started)
 2. In an elevated PowerShell session, run  ```Install-Module AzureRM```
 3. Run ```Install-AzureRm```
-4. Top install RDFE cmdlets, run ```Install-Module Azure```
+4. To install RDFE cmdlets, run ```Install-Module Azure```
 
 ### Source Code
 
@@ -90,7 +90,7 @@ You can also find the standalone installers for all the versions at [Downloads](
 
 ## Get Started
 
-In general, following are the steps to start using Microsoft Azure PowerShell
+In general, follow these steps to start using Microsoft Azure PowerShell
 
 * Get yourself authenticated with Microsoft Azure. For details, please check out [this article](https://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).
   * Option 1: Login with your Microsoft account or Organizational account directly from PowerShell. Microsoft Azure Active Directory authentication is used in this case. No management certificate is needed.
@@ -102,7 +102,7 @@ The first step can be different for different environment you are targeting. Fol
 
 ### Microsoft Azure
 
-If you use both mechanisms on the same subscription, Microsoft Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ``Remove-AzureAccount``, which will remove the Microsoft Azure Active Directory information and bring management certificate authentication back in.
+If you use both mechanisms on the same subscription, Microsoft Azure Active Directory authentication always wins. If you want to go back to management certificate authentication, please use ```Remove-AzureAccount```, which will remove the Microsoft Azure Active Directory information and bring management certificate authentication back in.
 
 #### Login directly from PowerShell (Microsoft Azure Active Directory authentication)
 
@@ -165,12 +165,12 @@ New-WAPackWebsite -Name mywebsite
 
 All the cmdlets can be put into 3 categories:
 
-1. ARM management cmdlets use the noun 'AzureRm' (New-AzureRmResourceGroup, Get-AzureRmVM)
-2. Legacy RDFE management cmdlets use the noun 'Azure' (Get-AzureVM)
-3. Data plane cmdlets that work in ARM or RDFE use the noun Azure (Get-AzureBlob)
+1. ARM management cmdlets use the 'AzureRm' prefix (New-AzureRmResourceGroup, Get-AzureRmVM)
+2. Legacy RDFE management cmdlets use the 'Azure' prefix (Get-AzureVM)
+3. Data plane cmdlets that work in ARM or RDFE use the 'Azure' prefix (Get-AzureBlob)
 
 
-So you can use the following cmdlet to find out all the cmdlets for your environment
+You can use the following cmdlet to find out all the cmdlets for your environment
 
 ```powershell
 # Return all the cmdlets for Azure Resource Manager (ARM)
