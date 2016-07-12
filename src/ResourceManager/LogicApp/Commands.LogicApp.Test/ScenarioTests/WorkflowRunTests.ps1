@@ -79,11 +79,11 @@ function Test-GetAzureLogicAppRunAction
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname	
+	$definitionFilePath = [System.IO.Path]::Combine($TestOutputRoot, "Resources\TestSimpleWorkflowTriggerDefinition.json")		
 		
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
-	
+
 	[int]$counter = 0
 	do {
 		SleepInRecordMode 2000        
@@ -129,6 +129,6 @@ function Test-StopAzureRmLogicAppRun
 		
 	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
 
-	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
+	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -Force
 
 }

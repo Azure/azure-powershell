@@ -12,153 +12,334 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$resourceGroupName = "labRG1";
+$resourceName = "pstestrsvault";
+$defaultPolicyName = "DefaultPolicy";
+# Create VM instead of taking these as parameters
+$vmResourceGroupName = "arpittestresourcegroup";
+$vmName = "arpittestencvm1";
+$vmStorageAccountName = "mkheranirmrestore";
+$vmStorageAccountResourceGroup = "mkheranirmrestore";
+$vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
+
 function Test-GetItemScenario
 {
-	# 1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
-	# 2. Set the vault context
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	
-	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
+	# 3. Get container
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
+
+	# 4. If not already protected, enable protection
+	if ($global:container -eq $null)
+	{
+		# 4.1 Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;
+	
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
+
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
+	}
+
+	$protectionState = if ($global:container -eq $null) { "IRPending" } else { "Protected" };
+	
 	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType "AzureVM";
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-2: Get items for container with friendly name filter
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType "AzureVM" -Name $vmName;
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-3: Get items for container with ProtectionStatus filter
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionStatus "Healthy";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType "AzureVM" -ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-4: Get items for container with Status filter
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionState "IRPending";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType "AzureVM" -ProtectionState $protectionState;
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-5: Get items for container with friendly name and ProtectionStatus filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionStatus "Healthy";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container `
+		-WorkloadType "AzureVM" `
+		-Name $vmName `
+		-ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-6: Get items for container with friendly name and Status filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionState "IRPending";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container `
+		-WorkloadType "AzureVM" `
+		-Name $vmName `
+		-ProtectionState $protectionState;
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-7: Get items for container with Status and ProtectionStatus filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -ProtectionState "IRPending" -ProtectionStatus "Healthy";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container `
+		-WorkloadType "AzureVM" `
+		-ProtectionState $protectionState `
+		-ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name $vmUniqueName;
 
 	# VAR-8: Get items for container with friendly name, Status and ProtectionStatus filters
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM" -Name "mkheraniRMVM1" -ProtectionState "IRPending" -ProtectionStatus "Healthy";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container `
+		-WorkloadType "AzureVM" `
+		-Name $vmName `
+		-ProtectionState $protectionState `
+		-ProtectionStatus "Healthy";
+	Assert-AreEqual $item.Name $vmUniqueName;
 }
 
 function Test-EnableAzureVMProtectionScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
+	
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy";
+	# 3. Get container
+	$container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
 
-	$job = Enable-AzureRmRecoveryServicesBackupProtection -Name "mkheranirmvm1" -ResourceGroupName "mkheranirmvm1" -Policy $policy;
-	Assert-AreEqual $job.Status "Completed";
+	# 4. If already protected, disable protection
+	if (-Not ($container -eq $null))
+	{
+		# 4.1 Get item
+		$item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureVM;
 
+		# 4.2 Disable protection
+		Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
+	}
+
+	# 5. Get default policy
+	$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;
+	
+	# ACTION: Enable protection
+	Enable-AzureRmRecoveryServicesBackupProtection `
+		-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
 }
 
 function Test-DisableAzureVMProtectionScenario
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
-	# 2. Set the vault context
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+	# 3. Get container
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
+
+	# 4. If not already protected, enable protection
+	if ($global:container -eq $null)
+	{
+		# 4.1 Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;
 	
-	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
 
-	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
+	}
 
-	$job = Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
-	Assert-AreEqual $job.Status "Completed";
+	# 5. Get item
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType AzureVM;
+
+	# ACTION: Disable protection
+	Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints -Force;
 }
 
 function Test-GetAzureVMRecoveryPointsScenario
 {
-	#Set vault context
-		$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
-	# 2. Set the vault context
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	
-	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
 
-	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	$fixedStartDate = Get-Date -Date "2016-04-13 22:00:00"
-	$startDate = $fixedStartDate.ToUniversalTime()
-	$fixedEndDate = Get-Date -Date "2016-04-18 16:00:00"
-	$endDate = $fixedEndDate.ToUniversalTime()
+	# 3. Get container
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
 
-	
-	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -StartDate $startDate -EndDate $endDate
-	if (!($recoveryPoints -eq $null))
+	# 4. If not already protected, enable protection
+	if ($global:container -eq $null)
 	{
-		foreach($recoveryPoint in $recoveryPoints)
-		{
-			Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
-			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-			Assert-NotNull $recoveryPoint.Name  'RecoveryPointId should not be null'
-		}
+		# 4.1 Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;
+	
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
+
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
 	}
+	
+	# 5. Get item
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType AzureVM;
+	
+	# 6. Trigger backup and wait for completion
+	$fixedExpiryDate = Get-Date;
+	$expiryDate = $fixedExpiryDate.AddDays(2).ToUniversalTime();
+    $backupJob = Backup-AzureRmRecoveryServicesBackupItem `
+		-Item $item -ExpiryDateTimeUTC $expiryDate;
+	$backupJob = Wait-AzureRmRecoveryServicesBackupJob -Job $backupJob;
+	
+	# ACTION: Get latest recovery point; should be only one
+	$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
+	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item;
+
+	Assert-NotNull $recoveryPoint;
+	Assert-True { $recoveryPoint.ContainerName -match $vmUniqueName };
 }
 
 function Test-RestoreAzureVMRItemScenario
 {
-	#Set vault context
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "shankcanaryrg" -Name "shankcanary2";
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
-	# 2. Set the vault context
+	# 2. Set vault context
 	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+	# 3. Get container
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
+
+	# 4. If not already protected, enable protection
+	if ($global:container -eq $null)
+	{
+		# 4.1 Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;
 	
-	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "pra-vm2";
-	Assert-AreEqual $namedContainer.FriendlyName "pra-vm2";
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
 
-	# VAR-1: Get all items for container
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-
-	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint -Item $item[0] -RecoveryPointId "28805629667760";
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
+	}
 	
-	$job = Restore-AzureRMRecoveryServicesBackupItem -RecoveryPoint $recoveryPoints[0] -StorageAccountName shraccanseastorv2 -StorageAccountResourceGroupName shraccanrg
+	# 5. Get item
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType AzureVM;
+	
+	# 6. Trigger backup and wait for completion
+	$fixedExpiryDate = Get-Date;
+	$expiryDate = $fixedExpiryDate.AddDays(2).ToUniversalTime();
+    $backupJob = Backup-AzureRmRecoveryServicesBackupItem `
+		-Item $item -ExpiryDateTimeUTC $expiryDate;
+	$backupJob = Wait-AzureRmRecoveryServicesBackupJob -Job $backupJob;
+	
+	# 7. Get latest recovery point
+	$backupStartTime = $backupJob.StartTime.AddMinutes(-1);
+	$backupEndTime = $backupJob.EndTime.Value.AddMinutes(1);
+	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item
 
-	Assert-NotNull $job;
+	# ACTION: Trigger restore and wait for completion
+	$restoreJob = Restore-AzureRMRecoveryServicesBackupItem `
+		-RecoveryPoint $recoveryPoint `
+		-StorageAccountName $vmStorageAccountName `
+		-StorageAccountResourceGroupName $vmStorageAccountResourceGroup
+	Wait-AzureRmRecoveryServicesBackupJob -Job $restoreJob;
 }
 
 function Test-BackupItemScenario
 {
-	# 1. Get the vault
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "RsvTestRG" -Name "PsTestRsVault";
-
-	# 2. Set the vault context
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	# 1. Create / update and get vault
+    $vaultLocation = get_available_location;
+	$vault = New-AzureRmRecoveryServicesVault `
+		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
-	# 3. Get the container
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -Name "mkheraniRMVM1";
-	Assert-AreEqual $namedContainer.FriendlyName "mkheraniRMVM1";
+	# 2. Set vault context
+	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-	# 4: Get the item
-	$item = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM";
-	Assert-AreEqual $item.Name "iaasvmcontainerv2;mkheranirmvm1;mkheranirmvm1";
+	# 3. Get container
+	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		-ContainerType AzureVM `
+		-Name $vmName `
+		-ResourceGroupName $vmResourceGroupName `
+		-Status Registered;
 
-	# 5: Trigger backup
-	$job = Backup-AzureRmRecoveryServicesBackupItem -Item $item;
-	Assert-NotNull $job;
+	# 4. If not already protected, enable protection
+	if ($global:container -eq $null)
+	{
+		# 4.1 Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;	
+	
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
+
+		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Name $vmName `
+			-ResourceGroupName $vmResourceGroupName `
+			-Status Registered;
+	}
+	
+	# 6. Get item
+	$item = Get-AzureRmRecoveryServicesBackupItem `
+		-Container $global:container -WorkloadType AzureVM;
+
+	# ACTION: Trigger backup and wait for completion
+	$fixedExpiryDate = Get-Date;
+	$expiryDate = $fixedExpiryDate.AddDays(2).ToUniversalTime();
+    $backupJob = Backup-AzureRmRecoveryServicesBackupItem `
+		-Item $item -ExpiryDateTimeUTC $expiryDate;
+	Wait-AzureRmRecoveryServicesBackupJob -Job $backupJob;
 }

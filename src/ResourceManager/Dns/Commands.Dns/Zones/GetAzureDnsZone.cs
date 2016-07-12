@@ -21,28 +21,21 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing zones.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone", DefaultParameterSetName = "Default"), OutputType(typeof(DnsZone))]
     public class GetAzureDnsZone : DnsBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
+        private const string ParameterSetResourceGroup = "ResourceGroup";
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The full name of the zone (without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The resource group in which the zone exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The single or multiple label suffix to search in the zone name.")]
-        [ValidateNotNullOrEmpty]
-        public string EndsWith { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (this.Name != null && this.EndsWith != null)
-            {
-                throw new PSArgumentException(ProjectResources.Error_NameAndEndsWith);
-            }
-            else if (this.Name != null)
+            if (this.Name != null)
             {
                 if (this.Name.EndsWith("."))
                 {
@@ -52,9 +45,13 @@ namespace Microsoft.Azure.Commands.Dns
 
                 this.WriteObject(this.DnsClient.GetDnsZone(this.Name, this.ResourceGroupName));
             }
+            else if (!string.IsNullOrEmpty(this.ResourceGroupName))
+            {
+                WriteObject(this.DnsClient.ListDnsZonesInResourceGroup(this.ResourceGroupName));
+            }
             else
             {
-                WriteObject(this.DnsClient.ListDnsZones(this.ResourceGroupName, this.EndsWith));
+                WriteObject(this.DnsClient.ListDnsZonesInSubscription());
             }
         }
     }
