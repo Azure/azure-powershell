@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The text value for the TXT record to add.", ParameterSetName = "TXT")]
         [ValidateNotNullOrEmpty]
+        [ValidateLength(DnsClient.TxtRecordMinLength, DnsClient.TxtRecordMaxLength)]
         public string Value { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The priority value SRV record to add.", ParameterSetName = "SRV")]
@@ -127,17 +128,30 @@ namespace Microsoft.Azure.Commands.Dns
                         result.Records.Add(new TxtRecord { Value = this.Value });
                         break;
                     }
+                case RecordType.PTR:
+                    {
+                        result.Records.Add(new PtrRecord { Ptrdname = this.Ptrdname });
+                        break;
+                    }
                 case RecordType.CNAME:
                     {
-                        if (result.Records.Count == 0)
+                        if (result.Records.Count != 0)
                         {
-                            result.Records.Add(new CnameRecord { Cname = this.Cname });
-                        }
-                        else
-                        {
-                            throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            var currentCNameRecord = result.Records[0] as CnameRecord;
+                            if (currentCNameRecord == null)
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordTypeMismatch);
+                            }
+
+                            if (!string.IsNullOrEmpty(currentCNameRecord.Cname))
+                            {
+                                throw new ArgumentException(ProjectResources.Error_AddRecordMultipleCnames);
+                            }
+
+                            result.Records.Clear();
                         }
 
+                        result.Records.Add(new CnameRecord { Cname = this.Cname });
                         break;
                     }
                 default:

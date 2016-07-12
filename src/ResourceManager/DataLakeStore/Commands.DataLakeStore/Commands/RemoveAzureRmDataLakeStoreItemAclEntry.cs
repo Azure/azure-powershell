@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", DefaultParameterSetName = BaseParameterSetName),
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
+        DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
@@ -84,6 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage =
                 "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
             )]
+        [Obsolete("Force prameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -91,19 +93,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.GetAclSpec(false)
                 : string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
-                    string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
-                    Path.OriginalPath,
-                    () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
-            }
+            ConfirmAction(
+                string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
+                Path.OriginalPath,
+                () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
         }
     }
 }

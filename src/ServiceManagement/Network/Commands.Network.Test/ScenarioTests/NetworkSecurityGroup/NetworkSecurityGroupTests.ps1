@@ -231,6 +231,7 @@ function Test-SetNSGOnRoleAndUpdateVM
 
     # Test
     New-AzureVMConfig -ImageName $image -Name $VMName -InstanceSize Small |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     Set-AzureSubnet -SubnetNames $SubnetName |
     New-AzureVM -VNetName $VirtualNetworkName -ServiceName $VMName -Location $Location
@@ -264,6 +265,7 @@ function Test-SetNSGOnNICAndUpdateVM
 
     # Test
     New-AzureVMConfig -ImageName $image -Name $VMName -InstanceSize Large |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     Set-AzureSubnet -SubnetNames $SubnetName |
     Add-AzureNetworkInterfaceConfig -Name $nicName -SubnetName $SubnetName |

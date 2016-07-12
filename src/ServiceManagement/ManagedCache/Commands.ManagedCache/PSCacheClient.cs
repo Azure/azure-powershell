@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
                 CloudServiceResource matched = cloudService.Resources.FirstOrDefault(
                    resource => {
                        return IsCachingResource(resource.Type) 
-                        && cacheServiceName.Equals(resource.Name, StringComparison.OrdinalIgnoreCase);
+                           && cacheServiceName.Equals(resource.Name, StringComparison.OrdinalIgnoreCase) && (resource.State == null || resource.State.ToLower() != "unknown");
                    });
 
                 if (matched!=null)

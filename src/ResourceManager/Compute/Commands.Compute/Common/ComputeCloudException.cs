@@ -14,12 +14,9 @@
 
 
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
-using System;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -36,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             if (cloudException == null)
             {
-                throw new ArgumentNullException("cloudException");
+                return "No information in the cloud exception.";
             }
 
             var sb = new StringBuilder();
@@ -59,7 +56,14 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
                 sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
                 sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
-                sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                if (string.IsNullOrWhiteSpace(errorReturned.OperationId))
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.Name);
+                }
+                else
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                }
                 sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
                 if (errorReturned.Error == null)
                 {

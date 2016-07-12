@@ -34,13 +34,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
 
+
+        /// <summary>
+        /// Gets or sets the job identifier queue, which is used exclusively as a test hook.
+        /// </summary>
+        /// <value>
+        /// The job identifier queue.
+        /// </value>
+        public static Queue<Guid> JobIdQueue { get; set; }
+
         public DataLakeAnalyticsClient(AzureContext context)
         {
             if (context == null)
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
-
+            JobIdQueue = new Queue<Guid>();
             _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;
@@ -349,6 +358,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             account.Properties.StorageAccounts = null;
 
             _accountClient.Account.Update(resourceGroupName, accountName, account);
+        }
+
+        public IEnumerable<AdlDataSource> GetAllDataSources(string resourceGroupName, string accountName)
+        {
+            var toReturn = new List<AdlDataSource>();
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var defaultAdls = GetAccount(resourceGroupName, accountName).Properties.DefaultDataLakeStoreAccount;
+            foreach(var adlsAcct in ListDataLakeStoreAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(adlsAcct, adlsAcct.Name.Equals(defaultAdls, StringComparison.OrdinalIgnoreCase)));
+            }
+
+            foreach (var storageAcct in ListStorageAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(storageAcct));
+            }
+
+            return toReturn;
         }
 
         private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)

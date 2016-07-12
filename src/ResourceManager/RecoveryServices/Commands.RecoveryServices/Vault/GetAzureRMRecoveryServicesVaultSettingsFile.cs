@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             WriteDebug(string.Format(CultureInfo.InvariantCulture,
                                       Resources.ExecutingGetVaultCredCmdlet,
-                                      subscriptionId, this.Vault.ResouceGroupName, this.Vault.Name, targetLocation));
+                                      subscriptionId, this.Vault.ResourceGroupName, this.Vault.Name, targetLocation));
 
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(

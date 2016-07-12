@@ -19,37 +19,63 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRmProfile"), OutputType(typeof(PSAzureProfile))]
+    [Cmdlet(VerbsData.Save, "AzureRmProfile", SupportsShouldProcess = true), OutputType(typeof(PSAzureProfile))]
     public class SaveAzureRMProfileCommand : AzureRMCmdlet
     {
-        [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 0, ValueFromPipeline = true)]
         public AzureRMProfile Profile { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, Position = 1)]
         public string Path { get; set; }
+
+        [Parameter(Mandatory=false, HelpMessage="Overwrite the given file if it exists")]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             if (Profile != null)
             {
-                Profile.Save(Path);
+                if (ShouldProcess(string.Format(Resources.ProfileArgumentWrite, Path),
+                    string.Format(Resources.ProfileWriteWarning, Path),
+                    string.Empty))
+                {
+                    if (!AzureSession.DataStore.FileExists(Path) || Force ||
+                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
+                        Resources.FileOverwriteCaption))
+                    {
+                        Profile.Save(Path);
+                        WriteVerbose(string.Format(Resources.ProfileArgumentSaved, Path));
+                    }
+                }
             }
             else
             {
-                if (AzureRmProfileProvider.Instance.Profile == null)
+                if (ShouldProcess(string.Format(Resources.ProfileCurrentWrite, Path),
+                    string.Format(Resources.ProfileWriteWarning, Path), string.Empty))
                 {
-                    throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+                    if (AzureRmProfileProvider.Instance.Profile == null)
+                    {
+                        throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+                    }
+
+                    if (!AzureSession.DataStore.FileExists(Path) || Force ||
+                        ShouldContinue(string.Format(Resources.FileOverwriteMessage, Path), 
+                        Resources.FileOverwriteCaption))
+                    {
+                        AzureRmProfileProvider.Instance.Profile.Save(Path);
+                        WriteVerbose(string.Format(Resources.ProfileCurrentSaved, Path));
+                    }
                 }
-                AzureRmProfileProvider.Instance.Profile.Save(Path);
             }
 
-            WriteVerbose(string.Format("Profile saved to: {0}.", Path));
         }
+
     }
 }
