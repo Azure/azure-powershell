@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
@@ -48,7 +48,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2014-10-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Storage.StorageManagementClient/5.0.0.0"
@@ -95,7 +95,7 @@
           "309"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -186,7 +186,7 @@
           "201"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -271,7 +271,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -315,7 +315,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -359,7 +359,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -403,7 +403,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -447,7 +447,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -491,7 +491,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -535,7 +535,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -579,7 +579,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -623,7 +623,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -667,7 +667,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -711,7 +711,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -755,7 +755,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -799,7 +799,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -843,7 +843,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -887,7 +887,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -928,7 +928,7 @@
       "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk655/deployments",
       "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTUvZGVwbG95bWVudHM=",
       "RequestMethod": "POST",
-      "RequestBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk655</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <Label>onesdk655</Label>\r\n  <RoleList>\r\n    <Role>\r\n      <RoleName>vm1</RoleName>\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n          <PublicIPs />\r\n          <NetworkInterfaces />\r\n          <StoredCertificateSettings />\r\n        </ConfigurationSet>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n          <ComputerName>vm1</ComputerName>\r\n          <AdminPassword>User@onesdk655</AdminPassword>\r\n          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n          <StoredCertificateSettings />\r\n          <WinRM>\r\n            <Listeners>\r\n              <Listener>\r\n                <Protocol>Https</Protocol>\r\n              </Listener>\r\n            </Listeners>\r\n          </WinRM>\r\n          <AdminUsername>Useronesdk655</AdminUsername>\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <Label>vm1</Label>\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <MediaLink>http://mybyolosimagerdfe.blob.core.windows.net/myvhd/onesdk6550.vhd</MediaLink>\r\n        <SourceImageName>onesdk3617</SourceImageName>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <LicenseType>Windows_Server</LicenseType>\r\n    </Role>\r\n  </RoleList>\r\n</Deployment>",
+      "RequestBody": "<Deployment xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <Name>onesdk655</Name>\r\n  <DeploymentSlot>Production</DeploymentSlot>\r\n  <Label>onesdk655</Label>\r\n  <RoleList>\r\n    <Role>\r\n      <RoleName>vm1</RoleName>\r\n      <RoleType>PersistentVMRole</RoleType>\r\n      <ConfigurationSets>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n          <InputEndpoints>\r\n            <InputEndpoint>\r\n              <LocalPort>3389</LocalPort>\r\n              <Name>RemoteDesktop</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n            <InputEndpoint>\r\n              <LocalPort>5986</LocalPort>\r\n              <Name>PowerShell</Name>\r\n              <Protocol>tcp</Protocol>\r\n            </InputEndpoint>\r\n          </InputEndpoints>\r\n          <SubnetNames />\r\n          <PublicIPs />\r\n          <NetworkInterfaces />\r\n          <StoredCertificateSettings />\r\n        </ConfigurationSet>\r\n        <ConfigurationSet>\r\n          <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n          <ComputerName>vm1</ComputerName>\r\n          <AdminPassword>PLACEHOLDER</AdminPassword>\r\n          <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n          <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n          <StoredCertificateSettings />\r\n          <WinRM>\r\n            <Listeners>\r\n              <Listener>\r\n                <Protocol>Https</Protocol>\r\n              </Listener>\r\n            </Listeners>\r\n          </WinRM>\r\n          <AdminUsername>Useronesdk655</AdminUsername>\r\n        </ConfigurationSet>\r\n      </ConfigurationSets>\r\n      <ResourceExtensionReferences>\r\n        <ResourceExtensionReference>\r\n          <ReferenceName>BGInfo</ReferenceName>\r\n          <Publisher>Microsoft.Compute</Publisher>\r\n          <Name>BGInfo</Name>\r\n          <Version>2.*</Version>\r\n          <ResourceExtensionParameterValues />\r\n        </ResourceExtensionReference>\r\n      </ResourceExtensionReferences>\r\n      <Label>vm1</Label>\r\n      <OSVirtualHardDisk>\r\n        <HostCaching>ReadWrite</HostCaching>\r\n        <MediaLink>http://mybyolosimagerdfe.blob.core.windows.net/myvhd/onesdk6550.vhd</MediaLink>\r\n        <SourceImageName>onesdk3617</SourceImageName>\r\n      </OSVirtualHardDisk>\r\n      <RoleSize>Small</RoleSize>\r\n      <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n      <LicenseType>Windows_Server</LicenseType>\r\n    </Role>\r\n  </RoleList>\r\n</Deployment>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
@@ -937,7 +937,7 @@
           "2500"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -978,7 +978,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1022,7 +1022,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1066,7 +1066,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1107,7 +1107,7 @@
       "RequestUri": "/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e/services/hostedservices/onesdk655/deployments/onesdk655/roles",
       "EncodedRequestUri": "LzI0ZmIyM2UzLTZiYTMtNDFmMC05YjZlLWU0MTEzMWQ1ZDYxZS9zZXJ2aWNlcy9ob3N0ZWRzZXJ2aWNlcy9vbmVzZGs2NTUvZGVwbG95bWVudHMvb25lc2RrNjU1L3JvbGVz",
       "RequestMethod": "POST",
-      "RequestBody": "<PersistentVMRole xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <RoleName>vm2</RoleName>\r\n  <RoleType>PersistentVMRole</RoleType>\r\n  <ConfigurationSets>\r\n    <ConfigurationSet>\r\n      <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n      <InputEndpoints>\r\n        <InputEndpoint>\r\n          <LocalPort>3389</LocalPort>\r\n          <Name>RemoteDesktop</Name>\r\n          <Protocol>tcp</Protocol>\r\n        </InputEndpoint>\r\n        <InputEndpoint>\r\n          <LocalPort>5986</LocalPort>\r\n          <Name>PowerShell</Name>\r\n          <Protocol>tcp</Protocol>\r\n        </InputEndpoint>\r\n      </InputEndpoints>\r\n      <SubnetNames />\r\n      <PublicIPs />\r\n      <NetworkInterfaces />\r\n      <StoredCertificateSettings />\r\n    </ConfigurationSet>\r\n    <ConfigurationSet>\r\n      <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n      <ComputerName>vm2</ComputerName>\r\n      <AdminPassword>User@onesdk655</AdminPassword>\r\n      <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n      <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n      <StoredCertificateSettings />\r\n      <WinRM>\r\n        <Listeners>\r\n          <Listener>\r\n            <Protocol>Https</Protocol>\r\n          </Listener>\r\n        </Listeners>\r\n      </WinRM>\r\n      <AdminUsername>Useronesdk655</AdminUsername>\r\n    </ConfigurationSet>\r\n  </ConfigurationSets>\r\n  <ResourceExtensionReferences>\r\n    <ResourceExtensionReference>\r\n      <ReferenceName>BGInfo</ReferenceName>\r\n      <Publisher>Microsoft.Compute</Publisher>\r\n      <Name>BGInfo</Name>\r\n      <Version>2.*</Version>\r\n      <ResourceExtensionParameterValues />\r\n    </ResourceExtensionReference>\r\n  </ResourceExtensionReferences>\r\n  <OSVirtualHardDisk>\r\n    <HostCaching>ReadWrite</HostCaching>\r\n    <MediaLink>http://mybyolosimagerdfe.blob.core.windows.net/myvhd/onesdk6551.vhd</MediaLink>\r\n    <SourceImageName>onesdk3617</SourceImageName>\r\n  </OSVirtualHardDisk>\r\n  <RoleSize>Small</RoleSize>\r\n  <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n  <LicenseType>Windows_Server</LicenseType>\r\n</PersistentVMRole>",
+      "RequestBody": "<PersistentVMRole xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <RoleName>vm2</RoleName>\r\n  <RoleType>PersistentVMRole</RoleType>\r\n  <ConfigurationSets>\r\n    <ConfigurationSet>\r\n      <ConfigurationSetType>NetworkConfiguration</ConfigurationSetType>\r\n      <InputEndpoints>\r\n        <InputEndpoint>\r\n          <LocalPort>3389</LocalPort>\r\n          <Name>RemoteDesktop</Name>\r\n          <Protocol>tcp</Protocol>\r\n        </InputEndpoint>\r\n        <InputEndpoint>\r\n          <LocalPort>5986</LocalPort>\r\n          <Name>PowerShell</Name>\r\n          <Protocol>tcp</Protocol>\r\n        </InputEndpoint>\r\n      </InputEndpoints>\r\n      <SubnetNames />\r\n      <PublicIPs />\r\n      <NetworkInterfaces />\r\n      <StoredCertificateSettings />\r\n    </ConfigurationSet>\r\n    <ConfigurationSet>\r\n      <ConfigurationSetType>WindowsProvisioningConfiguration</ConfigurationSetType>\r\n      <ComputerName>vm2</ComputerName>\r\n      <AdminPassword>PLACEHOLDER</AdminPassword>\r\n      <ResetPasswordOnFirstLogon>false</ResetPasswordOnFirstLogon>\r\n      <EnableAutomaticUpdates>true</EnableAutomaticUpdates>\r\n      <StoredCertificateSettings />\r\n      <WinRM>\r\n        <Listeners>\r\n          <Listener>\r\n            <Protocol>Https</Protocol>\r\n          </Listener>\r\n        </Listeners>\r\n      </WinRM>\r\n      <AdminUsername>Useronesdk655</AdminUsername>\r\n    </ConfigurationSet>\r\n  </ConfigurationSets>\r\n  <ResourceExtensionReferences>\r\n    <ResourceExtensionReference>\r\n      <ReferenceName>BGInfo</ReferenceName>\r\n      <Publisher>Microsoft.Compute</Publisher>\r\n      <Name>BGInfo</Name>\r\n      <Version>2.*</Version>\r\n      <ResourceExtensionParameterValues />\r\n    </ResourceExtensionReference>\r\n  </ResourceExtensionReferences>\r\n  <OSVirtualHardDisk>\r\n    <HostCaching>ReadWrite</HostCaching>\r\n    <MediaLink>http://mybyolosimagerdfe.blob.core.windows.net/myvhd/onesdk6551.vhd</MediaLink>\r\n    <SourceImageName>onesdk3617</SourceImageName>\r\n  </OSVirtualHardDisk>\r\n  <RoleSize>Small</RoleSize>\r\n  <ProvisionGuestAgent>true</ProvisionGuestAgent>\r\n  <LicenseType>Windows_Server</LicenseType>\r\n</PersistentVMRole>",
       "RequestHeaders": {
         "Content-Type": [
           "application/xml"
@@ -1116,7 +1116,7 @@
           "2107"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1157,7 +1157,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1201,7 +1201,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1245,7 +1245,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1418,7 +1418,7 @@
           "1870"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1459,7 +1459,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1503,7 +1503,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1629,7 +1629,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1711,7 +1711,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1755,7 +1755,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1799,7 +1799,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1843,7 +1843,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1884,7 +1884,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1928,7 +1928,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1972,7 +1972,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-06-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
