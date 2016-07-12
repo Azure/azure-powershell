@@ -34,10 +34,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Location of the deployment region to update.")]
 
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(

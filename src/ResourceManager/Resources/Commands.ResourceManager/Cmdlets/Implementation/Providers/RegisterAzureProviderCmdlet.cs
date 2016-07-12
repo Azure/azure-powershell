@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -21,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider"), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureRmResourceProvider", SupportsShouldProcess = true), OutputType(typeof(PSResourceProvider))]
     public class RegisterAzureProviderCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets a switch that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -43,8 +46,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                force: this.Force,
-                actionMessage: string.Format(ProjectResources.RegisteringProvider, this.ProviderNamespace),
                 processMessage: ProjectResources.RegisterProviderMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ResourceManagerSdkClient.RegisterProvider(providerName: this.ProviderNamespace)));

@@ -14,9 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 
     /// <summary>
     /// Get an existing resource.
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var providers = this.ResourceManagerSdkClient.ListPSResourceProviders(providerName: this.ProviderNamespace, listAvailable: this.ListAvailable, location: this.Location);
+            var providers = this.ListPSResourceProviders();
 
             if (!string.IsNullOrEmpty(this.ProviderNamespace))
             {
@@ -88,6 +90,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 this.WriteObject(providers, enumerateCollection: true);
             }
+        }
+
+        private PSResourceProvider[] ListPSResourceProviders()
+        {
+            var providers = this.ResourceManagerSdkClient.ListResourceProviders(
+                providerName: this.ProviderNamespace, 
+                listAvailable: this.ListAvailable);
+
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                return providers
+                    .Select(provider => provider.ToPSResourceProvider())
+                    .ToArray();
+            }
+
+            var validLocations = this.SubscriptionSdkClient.ListLocations(DefaultContext.Subscription.Id.ToString());
+
+            if (!validLocations.Any(loc => loc.Name.EqualsAsLocation(this.Location)))
+            {
+                return new PSResourceProvider[] { };
+            }
+
+            foreach (var provider in providers)
+            {
+                provider.ResourceTypes = provider.ResourceTypes
+                    .Where(type => !type.Locations.Any() || type.Locations.Any(loc => loc.EqualsAsLocation(this.Location)))
+                    .ToList();
+            }
+
+            return providers
+                .Where(provider => provider.ResourceTypes.Any())
+                .Select(provider => provider.ToPSResourceProvider())
+                .ToArray();
         }
     }
 }

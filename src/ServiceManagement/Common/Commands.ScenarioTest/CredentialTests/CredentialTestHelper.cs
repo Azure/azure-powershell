@@ -42,19 +42,23 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
             switch (mode)
             {
                 case AzureModule.AzureProfile:
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
                     modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
                     modules.Add(@"ServiceManagement\Azure\Azure.psd1");
                     break;
 
                 case AzureModule.AzureServiceManagement:
-                     modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
                     modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
                     modules.Add(@"ServiceManagement\Azure\Azure.psd1");
                     break;
 
                 case AzureModule.AzureResourceManager:
-                   modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
                     break;
 
                 default:

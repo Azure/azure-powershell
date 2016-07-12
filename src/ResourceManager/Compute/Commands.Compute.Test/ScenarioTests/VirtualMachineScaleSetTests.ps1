@@ -331,19 +331,9 @@ function Test-VirtualMachineScaleSetReimageUpdate
         Assert-AreEqual "ProvisioningState/succeeded" $vmssInstanceViewResult.VirtualMachine.StatusesSummary[0].Code;
 
         # Reimage operation
-        try
-        {
-            Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        }
-        catch
-        {
-            $actualMessage = $_.Exception.Message;
-            Write-Output ("Caught exception: '$actualMessage'");
-            if (-not $actualMessage.Contains("Conflict"))
-            {
-                throw "Expected exception does not contain expected text 'Conflict', the actual message is '$actualMessage'";
-            }
-        }
+        Assert-ThrowsContains {
+            Set-AzureRmVmss -Reimage -ResourceGroupName $rgname -VMScaleSetName $vmssName; } `
+            "Conflict";
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1;
