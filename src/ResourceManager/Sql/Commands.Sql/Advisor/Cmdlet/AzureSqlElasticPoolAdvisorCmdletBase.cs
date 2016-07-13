@@ -22,9 +22,9 @@ using Microsoft.Azure.Commands.Sql.Advisor.Service;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// The base class of cmdlets for Azure SQL Database Advisor
+    /// The base class of cmdlets for Azure SQL ElasticPool Advisor
     /// </summary>
-    public abstract class AzureSqlDatabaseAdvisorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseAdvisorModel>, AzureSqlDatabaseAdvisorAdapter>
+    public abstract class AzureSqlElasticPoolAdvisorCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolAdvisorModel>, AzureSqlElasticPoolAdvisorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -36,22 +36,22 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         public string ServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the database.
+        /// Gets or sets the name of the elastic pool.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure SQL Database name.")]
+            HelpMessage = "Azure SQL Elastic Pool name.")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Initializes the model adapter
         /// </summary>
         /// <param name="subscription">The subscription the cmdlets are operation under</param>
         /// <returns>The advisor adapter</returns>
-        protected override AzureSqlDatabaseAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
+        protected override AzureSqlElasticPoolAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseAdvisorAdapter(DefaultProfile.Context);
+            return new AzureSqlElasticPoolAdvisorAdapter(DefaultProfile.Context);
         }
     }
 }
