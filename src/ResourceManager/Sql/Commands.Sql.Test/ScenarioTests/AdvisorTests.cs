@@ -27,6 +27,40 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
+        #region Server Advisor Tests
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListServerAdvisors()
+        {
+            RunPowerShellTest("Test-ListServerAdvisors");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListServerAdvisorsExpanded()
+        {
+            RunPowerShellTest("Test-ListServerAdvisorsExpanded");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetServerAdvisor()
+        {
+            RunPowerShellTest("Test-GetServerAdvisor");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateServerAdvisor()
+        {
+            RunPowerShellTest("Test-UpdateServerAdvisor");
+        }
+
+        #endregion
+
+        #region Database Advisor Tests
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseAdvisors()
@@ -54,5 +88,39 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-UpdateDatabaseAdvisor");
         }
+
+        #endregion
+
+        #region Elastic Pool Advisor Tests
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListElasticPoolAdvisors()
+        {
+            RunPowerShellTest("Test-ListElasticPoolAdvisors");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestListElasticPoolAdvisorsExpanded()
+        {
+            RunPowerShellTest("Test-ListElasticPoolAdvisorsExpanded");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetElasticPoolAdvisor()
+        {
+            RunPowerShellTest("Test-GetElasticPoolAdvisor");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateElasticPoolAdvisor()
+        {
+            RunPowerShellTest("Test-UpdateElasticPoolAdvisor");
+        }
+
+        #endregion
     }
 }
