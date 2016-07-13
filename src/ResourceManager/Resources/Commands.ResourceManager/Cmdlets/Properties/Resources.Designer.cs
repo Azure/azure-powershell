@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Deployment.
+        /// </summary>
+        internal static string CreateDeployment {
+            get {
+                return ResourceManager.GetString("CreateDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a deployment with Complete mode.
         /// </summary>
         internal static string CreateDeploymentCompleteMode {

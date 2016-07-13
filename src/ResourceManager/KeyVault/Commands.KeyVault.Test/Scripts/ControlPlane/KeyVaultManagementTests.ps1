@@ -276,11 +276,21 @@ function Test-SetRemoveAccessPolicyBySPN
 
 function Test-SetRemoveAccessPolicyByObjectId
 {
-    Param($existingVaultName, $rgName, $objId)
+    Param($existingVaultName, $rgName, $objId, [switch]$bypassObjectIdValidation)
 
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+
+    $vault;
+	if ($bypassObjectIdValidation.IsPresent)
+	{
+        $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -BypassObjectIdValidation -PassThru
+	}
+	else
+	{
+        $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+	}
+
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 

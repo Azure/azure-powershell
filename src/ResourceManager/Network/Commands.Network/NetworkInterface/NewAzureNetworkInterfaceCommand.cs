@@ -14,18 +14,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Network;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface", DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNetworkInterface", SupportsShouldProcess = true,
+        DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -49,16 +52,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The public IP address location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-
-        //[Parameter(
-        //    Mandatory = false,
-        //    HelpMessage = "The ipversion of the ipconfiguration")]
-        //[ValidateSet(
-        //    MNM.IPVersion.IPv4,
-        //    MNM.IPVersion.IPv6,
-        //    IgnoreCase = true)]
-        //[ValidateNotNullOrEmpty]
-        //public string PrivateIpAddressVersion { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -225,29 +218,28 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+
         public override void Execute()
-        {
+        {           
             base.Execute();
-
             WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            var present = this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var networkInterface = CreateNetworkInterface();
+                    if (present)
+                    {
+                        networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
+                    }
 
-            if (this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateNetworkInterface());
-
-                WriteObject(this.GetNetworkInterface(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var networkInterface = CreateNetworkInterface();
-
-                WriteObject(networkInterface);
-            }
+                    WriteObject(networkInterface);
+                },
+                () => present);
         }
 
         private PSNetworkInterface CreateNetworkInterface()
@@ -317,7 +309,7 @@ namespace Microsoft.Azure.Commands.Network
                 var nicIpConfiguration = new PSNetworkInterfaceIPConfiguration();
                 nicIpConfiguration.Name = string.IsNullOrEmpty(this.IpConfigurationName) ? "ipconfig1" : this.IpConfigurationName;
                 nicIpConfiguration.PrivateIpAllocationMethod = MNM.IPAllocationMethod.Dynamic;
-
+                nicIpConfiguration.Primary = true;
                 // Uncomment when ipv6 is supported as standalone ipconfig in a nic
                 // nicIpConfiguration.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
 
@@ -388,6 +380,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);

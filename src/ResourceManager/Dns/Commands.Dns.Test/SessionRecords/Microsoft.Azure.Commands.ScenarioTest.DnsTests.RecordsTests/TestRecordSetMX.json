@@ -1,124 +1,25 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Byb3ZpZGVycz9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.cache\",\r\n      \"namespace\": \"microsoft.cache\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"Redis\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"Central US\",\r\n            \"West Europe\",\r\n            \"North Europe\",\r\n            \"West US\",\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"Brazil South\",\r\n            \"Southeast Asia\",\r\n            \"East Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01-alpha\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkNameAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-03-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01-alpha\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"RedisConfigDefinition\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-03-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"Redis/metricDefinitions\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"Redis/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registering\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.dns\",\r\n      \"namespace\": \"microsoft.dns\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"dnszones\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/A\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/AAAA\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/CNAME\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/PTR\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/MX\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/TXT\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/SRV\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-16-alpha\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.insights\",\r\n      \"namespace\": \"microsoft.insights\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"components\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-08-01\",\r\n            \"2014-07-01-01dp\",\r\n            \"2014-04-01\",\r\n            \"2014-04\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"webtests\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-08-01\",\r\n            \"2014-04-01\",\r\n            \"2014-04\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"queries\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-08-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"alertrules\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2014-04-01\",\r\n            \"2014-04\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"autoscalesettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2014-04-01\",\r\n            \"2014-04\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"eventtypes\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2014-11-01\",\r\n            \"2014-04-01\",\r\n            \"2014-04\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metricDefinitionNamespace\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\",\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metricNamespace\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\",\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"automatedExportSettings\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.KeyVault\",\r\n      \"namespace\": \"Microsoft.KeyVault\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"vaults\",\r\n          \"locations\": [\r\n            \"East US 2\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-19-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"vaults/secrets\",\r\n          \"locations\": [\r\n            \"East US 2\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-19-preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Network\",\r\n      \"namespace\": \"Microsoft.Network\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"dnszones\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/A\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/AAAA\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/CNAME\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/PTR\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/MX\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/TXT\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dnszones/SRV\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-04-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"trafficmanagerprofiles\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-28-preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.visualstudio\",\r\n      \"namespace\": \"microsoft.visualstudio\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"account\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"Brazil South\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01-preview\",\r\n            \"2014-02-26\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"account/project\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"Brazil South\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01-preview\",\r\n            \"2014-02-26\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Web\",\r\n      \"namespace\": \"Microsoft.Web\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"sites/extensions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/slots/extensions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/instances\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/slots/instances\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/instances/extensions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/slots/instances/extensions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"ishostnameavailable\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"publishingUsers\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sourceControls\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/hostNameBindings\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/slots/hostNameBindings\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"certificates\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-preview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"serverFarms\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"runtimes\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/slots\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/metrics\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"serverFarms/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"serverFarms/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"georegions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"webquotas\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/premierOffers\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2014-11-01-privatepreview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/multiRolePools\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/workerPools\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/metrics\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/metricDefinitions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/multiRolePools/metrics\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/multiRolePools/metricDefinitions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/workerPools/metrics\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"hostingEnvironments/workerPools/metricDefinitions\",\r\n          \"locations\": [\r\n            \"South Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"deploymentLocations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-05-01\",\r\n            \"2015-04-01\",\r\n            \"2015-02-01-privatepreview\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01-privatepreview\",\r\n            \"2014-11-01\",\r\n            \"2014-06-01\",\r\n            \"2014-04-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/successbricks.cleardb\",\r\n      \"namespace\": \"successbricks.cleardb\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"databases\",\r\n          \"locations\": [\r\n            \"North Europe\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registering\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Azure.Security\",\r\n      \"namespace\": \"Azure.Security\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"default\",\r\n          \"locations\": [\r\n            \"DevFabric\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/biztalkservices\",\r\n      \"namespace\": \"biztalkservices\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"biztalk\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/mdp\",\r\n      \"namespace\": \"mdp\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"environments\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.AADPim\",\r\n      \"namespace\": \"Microsoft.AADPim\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"users\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"Notifications\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"NotificationRules\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"UserToRoleAssignments\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"Roles\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"AuditEvents\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.ADHybridHealthService\",\r\n      \"namespace\": \"Microsoft.ADHybridHealthService\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"services\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"configuration\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"agents\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.ApiManagement\",\r\n      \"namespace\": \"Microsoft.ApiManagement\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"service\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"West US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"Brazil South\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-14\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"validateServiceName\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-02-14\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkServiceNameAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-02-14\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Authorization\",\r\n      \"namespace\": \"Microsoft.Authorization\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"roleAssignments\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"roleDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"classicAdministrators\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"permissions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-10-01-preview\",\r\n            \"2014-07-01-preview\",\r\n            \"2014-04-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locks\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-06-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Automation\",\r\n      \"namespace\": \"Microsoft.Automation\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"automationAccounts\",\r\n          \"locations\": [\r\n            \"West US\",\r\n            \"East US\",\r\n            \"North Central US\",\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-01-01-preview\",\r\n            \"2015-01-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Azure.Notifications\",\r\n      \"namespace\": \"Microsoft.Azure.Notifications\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"namespaces\",\r\n          \"locations\": [\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-05-01\",\r\n            \"2014-05\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"namespaces/notificationhubs\",\r\n          \"locations\": [\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2012-03-01\",\r\n            \"2012-03\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.BackupBVTD2\",\r\n      \"namespace\": \"Microsoft.BackupBVTD2\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"West Europe\",\r\n            \"Southeast Asia\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.BackupPPECurrent\",\r\n      \"namespace\": \"Microsoft.BackupPPECurrent\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.BackupVaultRP\",\r\n      \"namespace\": \"Microsoft.BackupVaultRP\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.BackupVaultRPNew\",\r\n      \"namespace\": \"Microsoft.BackupVaultRPNew\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVaultNew\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Batch\",\r\n      \"namespace\": \"Microsoft.Batch\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"batchAccounts\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-05-01-privatepreview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.BizTalkServices\",\r\n      \"namespace\": \"Microsoft.BizTalkServices\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BizTalk\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.CisRP\",\r\n      \"namespace\": \"Microsoft.CisRP\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"CisVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.ClassicCompute\",\r\n      \"namespace\": \"Microsoft.ClassicCompute\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"domainNames\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"capabilities\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"quotas\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines/metricDefinitions\",\r\n          \"locations\": [\r\n            \"West US\",\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\",\r\n            \"2014-01-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.ClassicNetwork\",\r\n      \"namespace\": \"Microsoft.ClassicNetwork\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"virtualNetworks\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-01-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"quotas\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"reservedIps\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-01-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\",\r\n            \"2014-01-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.ClassicStorage\",\r\n      \"namespace\": \"Microsoft.ClassicStorage\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"capabilities\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts/services/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts/services/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkStorageAccountAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageAccounts/services\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"North Central US\",\r\n            \"West US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"quotas\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-06-01\",\r\n            \"2014-04-01\",\r\n            \"2014-01-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Compute\",\r\n      \"namespace\": \"Microsoft.Compute\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"availabilitySets\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachines/extensions\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"virtualMachineScaleSets/extensions\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/vmSizes\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-12-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.CSMBackupVaultRRP\",\r\n      \"namespace\": \"Microsoft.CSMBackupVaultRRP\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DataFactory\",\r\n      \"namespace\": \"Microsoft.DataFactory\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"dataFactories\",\r\n          \"locations\": [\r\n            \"West US\",\r\n            \"North Europe\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"adfgated6\",\r\n            \"adfgated5\",\r\n            \"adfgated4\",\r\n            \"adfgated3\",\r\n            \"adfgated2\",\r\n            \"adfgated1\",\r\n            \"adfbqupgrade\",\r\n            \"2015-extensibility\",\r\n            \"2015-01-01-preview\",\r\n            \"2014-12-01-preview\",\r\n            \"2014-10-01-preview\",\r\n            \"2014-09-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dataFactories/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"dataFactories/metricDefinitions\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkDataFactoryNameAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01-preview\",\r\n            \"2014-09-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkAzureDataFactoryNameAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"activityTypes\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"computeTypes\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-01-01-preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DataWarehouse\",\r\n      \"namespace\": \"Microsoft.DataWarehouse\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"datawarehouses\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DevTestHub\",\r\n      \"namespace\": \"Microsoft.DevTestHub\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"nodes\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"baseImages\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DevTestPool\",\r\n      \"namespace\": \"Microsoft.DevTestPool\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"hubs\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"environments\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"nodes\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"websites\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"baseImages\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DevTestPool.IouriS\",\r\n      \"namespace\": \"Microsoft.DevTestPool.IouriS\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"nodes\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"baseImages\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DevTestPoolIouriS\",\r\n      \"namespace\": \"Microsoft.DevTestPoolIouriS\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"nodes\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"baseImages\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DocumentDB\",\r\n      \"namespace\": \"Microsoft.DocumentDB\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"databaseAccounts\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"West US\",\r\n            \"North Europe\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-08\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"databaseAccountNames\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"West US\",\r\n            \"North Europe\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-08\",\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DomainRegistration\",\r\n      \"namespace\": \"Microsoft.DomainRegistration\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"domains\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"topLevelDomains\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkDomainAvailability\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"listDomainRecommendations\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"validateDomainRegistrationInformation\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"domainsearches\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"generateSsoRequest\",\r\n          \"locations\": [\r\n            \"global\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-02-01\",\r\n            \"2014-11-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.DWS\",\r\n      \"namespace\": \"Microsoft.DWS\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"databases\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Features\",\r\n      \"namespace\": \"Microsoft.Features\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"features\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-08-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"providers\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-08-01-preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.insights2\",\r\n      \"namespace\": \"microsoft.insights2\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metricNamespace\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.insights3\",\r\n      \"namespace\": \"microsoft.insights3\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"eventtypes\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.IntelligentSystems\",\r\n      \"namespace\": \"Microsoft.IntelligentSystems\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"accounts\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-28\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Kona\",\r\n      \"namespace\": \"Microsoft.Kona\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"konaaccount\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Kona1\",\r\n      \"namespace\": \"Microsoft.Kona1\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"KonaAccounts\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-10-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Mobile\",\r\n      \"namespace\": \"Microsoft.Mobile\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"mobileservices\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.MS-Pim\",\r\n      \"namespace\": \"Microsoft.MS-Pim\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"Home\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"Pim\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"1.0\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.NotificationHubs\",\r\n      \"namespace\": \"Microsoft.NotificationHubs\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"namespaces\",\r\n          \"locations\": [\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"namespaces/notificationHubs\",\r\n          \"locations\": [\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-09-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.OperationalInsights\",\r\n      \"namespace\": \"Microsoft.OperationalInsights\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"workspaces\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-20\",\r\n            \"2014-11-10\",\r\n            \"2014-10-10\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"storageInsightConfigs\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-10-10\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"linkTargets\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-20\",\r\n            \"2014-10-10\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-11-10\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Resources\",\r\n      \"namespace\": \"Microsoft.Resources\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"subscriptions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/providers\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/operationresults\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"subscriptions/locations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"resourceGroups\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"West US\",\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"Brazil South\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"links\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Scheduler\",\r\n      \"namespace\": \"Microsoft.Scheduler\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"jobcollections\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"South Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-08-01-preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Search\",\r\n      \"namespace\": \"Microsoft.Search\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"searchServices\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-02-28\",\r\n            \"2014-07-31-Preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"searchServicesCit\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-02-28\",\r\n            \"2014-07-31-Preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkServiceNameAvailability\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-02-28\",\r\n            \"2014-07-31-Preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"checkServiceNameAvailabilityCit\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2015-02-28\",\r\n            \"2014-07-31-Preview\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Sql\",\r\n      \"namespace\": \"Microsoft.Sql\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/capabilities\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/serviceObjectives\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/restorableDroppedDatabases\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/recoverableDatabases\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"West US\",\r\n            \"Southeast Asia\",\r\n            \"Japan East\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/import\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/importExportOperationResults\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/operationResults\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/firewallrules\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/elasticpools\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools/resourcePoolActivity\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools/resourcePoolDatabaseActivity\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools/databases\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/recommendedResourcePools\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/recommendedElasticPools\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/recommendedElasticPools/databases\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/recommendedElasticPools/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/usages\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/connectionPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databaseSecurityPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databaseSecurityMetrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/auditingPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/auditingPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/connectionPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/dataMaskingPolicies\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/dataMaskingPolicies/rules\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/securityMetrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/resourcepools/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/elasticpools/metricDefinitions\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/elasticpools/metrics\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Storage\",\r\n      \"namespace\": \"Microsoft.Storage\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"storageaccounts\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.StreamAnalytics\",\r\n      \"namespace\": \"Microsoft.StreamAnalytics\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"streamingjobs\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-03-01-preview\",\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-03-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"locations/quotas\",\r\n          \"locations\": [\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-04-01\",\r\n            \"2015-03-01-preview\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"streamingjobs/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"streamingjobs/metricDefinitions\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"East US 2\",\r\n            \"North Central US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Brazil South\",\r\n            \"West US\",\r\n            \"Central US\",\r\n            \"South Central US\",\r\n            \"Japan East\",\r\n            \"Japan West\",\r\n            \"East Asia\",\r\n            \"Southeast Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.support\",\r\n      \"namespace\": \"microsoft.support\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"supporttickets\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/microsoft.test\",\r\n      \"namespace\": \"microsoft.test\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"tests\",\r\n          \"locations\": [],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"tests/diagnosticSettings\",\r\n          \"locations\": [\r\n            \"East US\",\r\n            \"North Europe\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.Test.MarketPlaceRP\",\r\n      \"namespace\": \"Microsoft.Test.MarketPlaceRP\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"Servers\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.VisualStudio.Dev\",\r\n      \"namespace\": \"Microsoft.VisualStudio.Dev\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"account\",\r\n          \"locations\": [\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-26\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"account/project\",\r\n          \"locations\": [\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-26\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.VisualStudio.Test\",\r\n      \"namespace\": \"Microsoft.VisualStudio.Test\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"account\",\r\n          \"locations\": [\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-26\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"account/project\",\r\n          \"locations\": [\r\n            \"North Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-02-26\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WaAzureSiteRecoveryTest\",\r\n      \"namespace\": \"Microsoft.WaAzureSiteRecoveryTest\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"HyperVRecoveryManagerVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WABackup\",\r\n      \"namespace\": \"Microsoft.WABackup\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"Registered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WaBackupBVTD\",\r\n      \"namespace\": \"Microsoft.WaBackupBVTD\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WaBackupGuru\",\r\n      \"namespace\": \"Microsoft.WaBackupGuru\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WaBackupSql\",\r\n      \"namespace\": \"Microsoft.WaBackupSql\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft.WaBackupTest\",\r\n      \"namespace\": \"Microsoft.WaBackupTest\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"BackupVault\",\r\n          \"locations\": [\r\n            \"Southeast Asia\",\r\n            \"East US\",\r\n            \"West Europe\",\r\n            \"West US\",\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2015-03-15\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Microsoft_AADB2C\",\r\n      \"namespace\": \"Microsoft_AADB2C\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"tenants\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/MicrosoftSql\",\r\n      \"namespace\": \"MicrosoftSql\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"servers\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2.0\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"servers/databases\",\r\n          \"locations\": [\r\n            \"East US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2.0\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/MS.Intune.Test1\",\r\n      \"namespace\": \"MS.Intune.Test1\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"Devices\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/NewRelic.APM\",\r\n      \"namespace\": \"NewRelic.APM\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"accounts\",\r\n          \"locations\": [\r\n            \"North Central US\",\r\n            \"South Central US\",\r\n            \"West US\",\r\n            \"East US\",\r\n            \"North Europe\",\r\n            \"West Europe\",\r\n            \"Southeast Asia\",\r\n            \"East Asia\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-10-01\",\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/Providers.Test\",\r\n      \"namespace\": \"Providers.Test\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"statelessResources\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"statefulResources\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"statefulIbizaEngine\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"statefulResources/nestedResources\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"operations\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West Europe\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"2014-04-01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/sabanwebsites\",\r\n      \"namespace\": \"sabanwebsites\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"sites\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"sites/pages\",\r\n          \"locations\": [\r\n            \"Central US\",\r\n            \"West US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/StressRP\",\r\n      \"namespace\": \"StressRP\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"ResourceType1\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        },\r\n        {\r\n          \"resourceType\": \"ResourceType1/ResourceType2\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/vikashjorders\",\r\n      \"namespace\": \"vikashjorders\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"order\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": []\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/providers/visualstudiov2\",\r\n      \"namespace\": \"visualstudiov2\",\r\n      \"resourceTypes\": [\r\n        {\r\n          \"resourceType\": \"account\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"02\",\r\n            \"01\"\r\n          ]\r\n        },\r\n        {\r\n          \"resourceType\": \"account/project\",\r\n          \"locations\": [\r\n            \"Central US\"\r\n          ],\r\n          \"apiVersions\": [\r\n            \"01\"\r\n          ]\r\n        }\r\n      ],\r\n      \"registrationState\": \"NotRegistered\"\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "45896"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31947"
-        ],
-        "x-ms-request-id": [
-          "d2bfae7d-40ea-4cc9-ab21-6d84834094c6"
-        ],
-        "x-ms-correlation-request-id": [
-          "d2bfae7d-40ea-4cc9-ab21-6d84834094c6"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003029Z:d2bfae7d-40ea-4cc9-ab21-6d84834094c6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 21 Apr 2015 00:30:29 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourcegroups/onesdk9015?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlZ3JvdXBzL29uZXNkazkwMTU/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "HEAD",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "102"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31946"
-        ],
-        "x-ms-request-id": [
-          "5b793f9d-f573-4a4c-a6b0-9fe9180bd520"
-        ],
-        "x-ms-correlation-request-id": [
-          "5b793f9d-f573-4a4c-a6b0-9fe9180bd520"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003030Z:5b793f9d-f573-4a4c-a6b0-9fe9180bd520"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 21 Apr 2015 00:30:29 GMT"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourcegroups/onesdk9015?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlZ3JvdXBzL29uZXNkazkwMTU/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourcegroups/onesdk6946?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlZ3JvdXBzL29uZXNkazY5NDY/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"East Asia\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "31"
+          "29"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015\",\r\n  \"name\": \"onesdk9015\",\r\n  \"location\": \"eastasia\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946\",\r\n  \"name\": \"onesdk6946\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "175"
+          "173"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -130,16 +31,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1180"
+          "1193"
         ],
         "x-ms-request-id": [
-          "0a36967c-fad0-42fd-8be4-a7b67f5e79a3"
+          "5dc98ae7-df88-41a1-bd5f-6cfc0ae190b6"
         ],
         "x-ms-correlation-request-id": [
-          "0a36967c-fad0-42fd-8be4-a7b67f5e79a3"
+          "5dc98ae7-df88-41a1-bd5f-6cfc0ae190b6"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003032Z:0a36967c-fad0-42fd-8be4-a7b67f5e79a3"
+          "CENTRALUS:20160706T005524Z:5dc98ae7-df88-41a1-bd5f-6cfc0ae190b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,133 +49,40 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:32 GMT"
+          "Wed, 06 Jul 2016 00:55:23 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/resources?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTQtMDQtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "12"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31945"
-        ],
-        "x-ms-request-id": [
-          "f2095b7e-3fbe-4cd8-aa3d-601bc0a42fb3"
-        ],
-        "x-ms-correlation-request-id": [
-          "f2095b7e-3fbe-4cd8-aa3d-601bc0a42fb3"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003032Z:f2095b7e-3fbe-4cd8-aa3d-601bc0a42fb3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 21 Apr 2015 00:30:32 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourcegroups/onesdk9015/providers/Microsoft.Authorization/permissions?api-version=2014-07-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlZ3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3Blcm1pc3Npb25zP2FwaS12ZXJzaW9uPTIwMTQtMDctMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/0.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"actions\": [\r\n        \"*\"\r\n      ],\r\n      \"notActions\": []\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "45"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "centralus:e1447898-72f6-4c02-8a37-c20671ba3c58"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31924"
-        ],
-        "x-ms-correlation-request-id": [
-          "edfba15a-039e-4674-9bd0-2b55bedca040"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003032Z:edfba15a-039e-4674-9bd0-2b55bedca040"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 21 Apr 2015 00:30:31 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzc/YXBpLXZlcnNpb249MjAxNS0wNS0wNC1wcmV2aWV3",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3Q/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {},\r\n  \"name\": \"onesdk5037\",\r\n  \"location\": \"global\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"global\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "74"
+          "28"
         ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+        "x-ms-client-request-id": [
+          "3fe3c6cc-5a71-41ab-b326-789889de0292"
         ],
         "If-None-Match": [
           "*"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037\",\r\n  \"name\": \"onesdk5037\",\r\n  \"type\": \"Microsoft.Network/dnszones\",\r\n  \"etag\": \"a306928a-de90-4876-98af-7d2e0f107232\",\r\n  \"location\": \"global\",\r\n  \"properties\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test\",\r\n  \"name\": \"onesdk7086.pstest.test\",\r\n  \"type\": \"Microsoft.Network/dnszones\",\r\n  \"etag\": \"00000002-0000-0000-f7da-5a1421d7d101\",\r\n  \"location\": \"global\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"maxNumberOfRecordSets\": 5000,\r\n    \"nameServers\": [\r\n      \"ns1-07.daily.azure-dns.com.\",\r\n      \"ns2-07.daily.azure-dns.net.\",\r\n      \"ns3-07.daily.azure-dns.org.\",\r\n      \"ns4-07.daily.azure-dns.info.\"\r\n    ],\r\n    \"numberOfRecordSets\": 2\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "281"
+          "503"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -282,32 +90,32 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-request-id": [
-          "c4254af9-2715-4e2f-8210-c2897528e4d8"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11986"
-        ],
-        "x-ms-correlation-request-id": [
-          "672b717d-f331-483a-b279-8d63cfbb845b"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003034Z:672b717d-f331-483a-b279-8d63cfbb845b"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3fe3c6cc-5a71-41ab-b326-789889de0292"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "d8ed0e85-6bfd-49b5-8f02-8c8cae7733eb"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160706T005525Z:d8ed0e85-6bfd-49b5-8f02-8c8cae7733eb"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:34 GMT"
+          "Wed, 06 Jul 2016 00:55:25 GMT"
         ],
         "ETag": [
-          "a306928a-de90-4876-98af-7d2e0f107232"
+          "00000002-0000-0000-f7da-5a1421d7d101"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -319,28 +127,34 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzcvTVgvb25lc2RrMjQyNT9hcGktdmVyc2lvbj0yMDE1LTA1LTA0LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3QvTVgvb25lc2RrNDA0Nj9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": []\r\n  },\r\n  \"name\": \"onesdk2425\",\r\n  \"location\": \"global\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk4046\",\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": []\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "116"
+          "91"
         ],
-        "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+        "x-ms-client-request-id": [
+          "16ed426e-e910-4137-82b8-a7430ae108af"
         ],
         "If-None-Match": [
           "*"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425\",\r\n  \"name\": \"onesdk2425\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"08a50bdc-b378-48aa-8b74-5f55fd007aee\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"TTL\": 100\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046\",\r\n  \"name\": \"onesdk4046\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"c7b4c436-b939-46ad-ad30-f9f46662add3\",\r\n  \"properties\": {\r\n    \"metadata\": null,\r\n    \"fqdn\": \"onesdk4046.onesdk7086.pstest.test.\",\r\n    \"TTL\": 100,\r\n    \"MXRecords\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "310"
+          "377"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -348,32 +162,32 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-request-id": [
-          "cdca453d-0598-4a6e-bb0b-3f5eab0c625a"
+          "16ed426e-e910-4137-82b8-a7430ae108af"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b2f68b58-646f-4117-85aa-ef4519ec9401"
+          "148b50c3-9f5b-488c-b981-c196ed0d7518"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003035Z:b2f68b58-646f-4117-85aa-ef4519ec9401"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "CENTRALUS:20160706T005526Z:148b50c3-9f5b-488c-b981-c196ed0d7518"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:35 GMT"
+          "Wed, 06 Jul 2016 00:55:26 GMT"
         ],
         "ETag": [
-          "08a50bdc-b378-48aa-8b74-5f55fd007aee"
+          "c7b4c436-b939-46ad-ad30-f9f46662add3"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -385,28 +199,34 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzcvTVgvb25lc2RrMjQyNT9hcGktdmVyc2lvbj0yMDE1LTA1LTA0LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3QvTVgvb25lc2RrNDA0Nj9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"etag\": \"08a50bdc-b378-48aa-8b74-5f55fd007aee\",\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"preference\": 10,\r\n        \"exchange\": \"mail2.theg.com\"\r\n      }\r\n    ]\r\n  },\r\n  \"name\": \"onesdk2425\",\r\n  \"location\": \"global\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk4046\",\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"preference\": 10,\r\n        \"exchange\": \"mail2.theg.com\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "256"
+          "180"
+        ],
+        "x-ms-client-request-id": [
+          "cd78c073-aa4a-454b-bcee-1f6a93659a7c"
         ],
         "If-Match": [
-          "08a50bdc-b378-48aa-8b74-5f55fd007aee"
+          "c7b4c436-b939-46ad-ad30-f9f46662add3"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425\",\r\n  \"name\": \"onesdk2425\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"cb6aae00-f2cf-43af-923a-2674d100a74c\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046\",\r\n  \"name\": \"onesdk4046\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"3528b519-6402-4bb1-8c9f-e42ac80fdcb6\",\r\n  \"properties\": {\r\n    \"metadata\": null,\r\n    \"fqdn\": \"onesdk4046.onesdk7086.pstest.test.\",\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "370"
+          "422"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -414,32 +234,32 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-request-id": [
-          "0df92f1f-fded-4ce0-a005-7344648c7b87"
+          "cd78c073-aa4a-454b-bcee-1f6a93659a7c"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "fc581132-19da-444c-9dc6-341886abe9c6"
+          "8fd774ba-e821-4a7f-ba74-9ca5d292ce6f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003035Z:fc581132-19da-444c-9dc6-341886abe9c6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "CENTRALUS:20160706T005526Z:8fd774ba-e821-4a7f-ba74-9ca5d292ce6f"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:35 GMT"
+          "Wed, 06 Jul 2016 00:55:26 GMT"
         ],
         "ETag": [
-          "cb6aae00-f2cf-43af-923a-2674d100a74c"
+          "3528b519-6402-4bb1-8c9f-e42ac80fdcb6"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -451,19 +271,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzcvTVgvb25lc2RrMjQyNT9hcGktdmVyc2lvbj0yMDE1LTA1LTA0LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3QvTVgvb25lc2RrNDA0Nj9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4343c463-54ed-4559-adb2-a26ffa8e9f56"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425\",\r\n  \"name\": \"onesdk2425\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"cb6aae00-f2cf-43af-923a-2674d100a74c\",\r\n  \"location\": \"global\",\r\n  \"properties\": {\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046\",\r\n  \"name\": \"onesdk4046\",\r\n  \"type\": \"Microsoft.Network/dnszones/MX\",\r\n  \"etag\": \"3528b519-6402-4bb1-8c9f-e42ac80fdcb6\",\r\n  \"properties\": {\r\n    \"metadata\": null,\r\n    \"fqdn\": \"onesdk4046.onesdk7086.pstest.test.\",\r\n    \"TTL\": 100,\r\n    \"MXRecords\": [\r\n      {\r\n        \"exchange\": \"mail2.theg.com\",\r\n        \"preference\": 10\r\n      }\r\n    ]\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "370"
+          "422"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -471,32 +297,32 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-request-id": [
-          "3df6a0ba-af83-40b3-b8ee-c1cd1c5851d0"
+          "4343c463-54ed-4559-adb2-a26ffa8e9f56"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "86ad2e0c-d851-4b27-822b-ac62fd6c4bc3"
+          "e5f891a9-fc2a-465b-a93f-9a6f70ca57ed"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003036Z:86ad2e0c-d851-4b27-822b-ac62fd6c4bc3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "CENTRALUS:20160706T005526Z:e5f891a9-fc2a-465b-a93f-9a6f70ca57ed"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:35 GMT"
+          "Wed, 06 Jul 2016 00:55:26 GMT"
         ],
         "ETag": [
-          "cb6aae00-f2cf-43af-923a-2674d100a74c"
+          "3528b519-6402-4bb1-8c9f-e42ac80fdcb6"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -508,19 +334,25 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzcvTVg/YXBpLXZlcnNpb249MjAxNS0wNS0wNC1wcmV2aWV3",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3QvTVg/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7f7dccf0-8d06-4c55-b6b1-75c3486f88f3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425\",\r\n      \"name\": \"onesdk2425\",\r\n      \"type\": \"Microsoft.Network/dnszones/MX\",\r\n      \"etag\": \"cb6aae00-f2cf-43af-923a-2674d100a74c\",\r\n      \"location\": \"global\",\r\n      \"properties\": {\r\n        \"TTL\": 100,\r\n        \"MXRecords\": [\r\n          {\r\n            \"exchange\": \"mail2.theg.com\",\r\n            \"preference\": 10\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046\",\r\n      \"name\": \"onesdk4046\",\r\n      \"type\": \"Microsoft.Network/dnszones/MX\",\r\n      \"etag\": \"3528b519-6402-4bb1-8c9f-e42ac80fdcb6\",\r\n      \"properties\": {\r\n        \"metadata\": null,\r\n        \"fqdn\": \"onesdk4046.onesdk7086.pstest.test.\",\r\n        \"TTL\": 100,\r\n        \"MXRecords\": [\r\n          {\r\n            \"exchange\": \"mail2.theg.com\",\r\n            \"preference\": 10\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "382"
+          "434"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -528,29 +360,29 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-request-id": [
-          "a91a1102-9ac8-42cd-a8f6-d2df694933ae"
+          "7f7dccf0-8d06-4c55-b6b1-75c3486f88f3"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "5cdd8c3a-4296-4f4d-a97d-845deaf01038"
+          "8f6ddbf6-81a0-4ac0-9185-00456cfa17a4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003036Z:5cdd8c3a-4296-4f4d-a97d-845deaf01038"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "CENTRALUS:20160706T005526Z:8f6ddbf6-81a0-4ac0-9185-00456cfa17a4"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:36 GMT"
+          "Wed, 06 Jul 2016 00:55:26 GMT"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -562,16 +394,22 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037/MX/onesdk2425?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzcvTVgvb25lc2RrMjQyNT9hcGktdmVyc2lvbj0yMDE1LTA1LTA0LXByZXZpZXc=",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test/MX/onesdk4046?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3QvTVgvb25lc2RrNDA0Nj9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5a04994d-92f6-4b2a-b6ca-5f5e129cbad4"
+        ],
         "If-Match": [
-          "cb6aae00-f2cf-43af-923a-2674d100a74c"
+          "3528b519-6402-4bb1-8c9f-e42ac80fdcb6"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
       "ResponseBody": "",
@@ -582,29 +420,29 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
         "x-ms-request-id": [
-          "86038d21-b5f9-49a6-a947-51c1ff7b2310"
+          "5a04994d-92f6-4b2a-b6ca-5f5e129cbad4"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "2eddea38-f86d-4c38-9eea-7bff62dc8ef2"
+          "86d00a1b-f75e-4864-b9ae-51d38aefc920"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003037Z:2eddea38-f86d-4c38-9eea-7bff62dc8ef2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "CENTRALUS:20160706T005527Z:86d00a1b-f75e-4864-b9ae-51d38aefc920"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:36 GMT"
+          "Wed, 06 Jul 2016 00:55:27 GMT"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -616,13 +454,82 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/5ecfd42b-521f-4e3c-b4f4-47895f445068/resourceGroups/onesdk9015/providers/Microsoft.Network/dnszones/onesdk5037?api-version=2015-05-04-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWVjZmQ0MmItNTIxZi00ZTNjLWI0ZjQtNDc4OTVmNDQ1MDY4L3Jlc291cmNlR3JvdXBzL29uZXNkazkwMTUvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazUwMzc/YXBpLXZlcnNpb249MjAxNS0wNS0wNC1wcmV2aWV3",
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3Q/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cfe3a80e-3fdf-4bfe-b6e0-7448f34b6385"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test\",\r\n  \"name\": \"onesdk7086.pstest.test\",\r\n  \"type\": \"Microsoft.Network/dnszones\",\r\n  \"etag\": \"00000002-0000-0000-f7da-5a1421d7d101\",\r\n  \"location\": \"global\",\r\n  \"tags\": {},\r\n  \"properties\": {\r\n    \"maxNumberOfRecordSets\": 100000,\r\n    \"nameServers\": [\r\n      \"ns1-07.daily.azure-dns.com.\",\r\n      \"ns2-07.daily.azure-dns.net.\",\r\n      \"ns3-07.daily.azure-dns.org.\",\r\n      \"ns4-07.daily.azure-dns.info.\"\r\n    ],\r\n    \"numberOfRecordSets\": 2\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "505"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "cfe3a80e-3fdf-4bfe-b6e0-7448f34b6385"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "0af44411-5d27-49dc-b6b5-f28521b50a6a"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160706T005527Z:0af44411-5d27-49dc-b6b5-f28521b50a6a"
+        ],
+        "Cache-Control": [
+          "private"
+        ],
+        "Date": [
+          "Wed, 06 Jul 2016 00:55:27 GMT"
+        ],
+        "ETag": [
+          "00000002-0000-0000-f7da-5a1421d7d101"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnszones/onesdk7086.pstest.test?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc3pvbmVzL29uZXNkazcwODYucHN0ZXN0LnRlc3Q/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "36d330fe-2a99-4e50-ba0a-c8993cfdaa05"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.0.0.0"
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
         ]
       },
       "ResponseBody": "",
@@ -633,29 +540,89 @@
         "X-Content-Type-Options": [
           "nosniff"
         ],
-        "x-ms-request-id": [
-          "f50c303e-a5ed-4493-a2aa-17bca9f40e6c"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "db01b876-ee17-4893-a9ff-e398a74ef618"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20150421T003038Z:db01b876-ee17-4893-a9ff-e398a74ef618"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "Azure-AsyncOperation": [
+          "https://api-dogfood.resources.windows-int.net:443/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnsOperationStatuses/delzone636033633279331434c6141e38?api-version=2016-04-01"
+        ],
+        "x-ms-request-id": [
+          "36d330fe-2a99-4e50-ba0a-c8993cfdaa05"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ccf2acb-3a0a-4575-b0dc-5682119c4927"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160706T005528Z:5ccf2acb-3a0a-4575-b0dc-5682119c4927"
         ],
         "Cache-Control": [
           "private"
         ],
         "Date": [
-          "Tue, 21 Apr 2015 00:30:38 GMT"
+          "Wed, 06 Jul 2016 00:55:27 GMT"
+        ],
+        "Location": [
+          "https://api-dogfood.resources.windows-int.net/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnsOperationResults/delzone636033633279331434c6141e38?api-version=2016-04-01"
         ],
         "Server": [
-          "Microsoft-IIS/7.5"
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c/resourceGroups/onesdk6946/providers/Microsoft.Network/dnsOperationStatuses/delzone636033633279331434c6141e38?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvM2NmYjFiMzQtZTVhOS00Zjk4LWJmOWMtZTRkNjlhNmIxNzBjL3Jlc291cmNlR3JvdXBzL29uZXNkazY5NDYvcHJvdmlkZXJzL01pY3Jvc29mdC5OZXR3b3JrL2Ruc09wZXJhdGlvblN0YXR1c2VzL2RlbHpvbmU2MzYwMzM2MzMyNzkzMzE0MzRjNjE0MWUzOD9hcGktdmVyc2lvbj0yMDE2LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Dns.DnsManagementClient/1.7.2-preview"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7dea13fe-7d0d-4f77-bc43-b44aba19ca18"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "d63fcd9e-3d1a-4a7e-a057-26cce0a3b912"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160706T005558Z:d63fcd9e-3d1a-4a7e-a057-26cce0a3b912"
+        ],
+        "Cache-Control": [
+          "private"
+        ],
+        "Date": [
+          "Wed, 06 Jul 2016 00:55:58 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
         ],
         "X-AspNet-Version": [
           "4.0.30319"
@@ -669,12 +636,12 @@
   ],
   "Names": {
     "Test-RecordSetMX": [
-      "onesdk5037",
-      "onesdk2425",
-      "onesdk9015"
+      "onesdk7086",
+      "onesdk4046",
+      "onesdk6946"
     ]
   },
   "Variables": {
-    "SubscriptionId": "5ecfd42b-521f-4e3c-b4f4-47895f445068"
+    "SubscriptionId": "3cfb1b34-e5a9-4f98-bf9c-e4d69a6b170c"
   }
 }
