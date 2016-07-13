@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Management.Media
 
 
         /// <summary>
-        /// Gets the IMediaServicesOperations.
+        /// Gets the IMediaServiceOperations.
         /// </summary>
-        IMediaServicesOperations MediaServices { get; }
+        IMediaServiceOperations MediaService { get; }
 
     }
 }

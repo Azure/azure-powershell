@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         {
             try
             {
-                var serviceKeys = MediaServicesManagementClient.MediaServices.ListKeys(ResourceGroupName, AccountName);
+                var serviceKeys = MediaServicesManagementClient.MediaService.ListKeys(ResourceGroupName, AccountName);
                 WriteObject(serviceKeys.ToPSServiceKeys(), true);
             }
             catch (ApiErrorException exception)

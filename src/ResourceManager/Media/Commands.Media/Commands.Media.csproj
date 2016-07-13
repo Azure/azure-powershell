@@ -74,7 +74,7 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-	<Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.4-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -88,10 +88,10 @@
   <ItemGroup>
     <Compile Include="Common\AzureMediaServiceCmdletBase.cs" />
     <Compile Include="Generated\IMediaServicesManagementClient.cs" />
-    <Compile Include="Generated\IMediaServicesOperations.cs" />
+    <Compile Include="Generated\IMediaServiceOperations.cs" />
     <Compile Include="Generated\MediaServicesManagementClient.cs" />
-    <Compile Include="Generated\MediaServicesOperations.cs" />
-    <Compile Include="Generated\MediaServicesOperationsExtensions.cs" />
+    <Compile Include="Generated\MediaServiceOperations.cs" />
+    <Compile Include="Generated\MediaServiceOperationsExtensions.cs" />
     <Compile Include="Generated\Models\ApiEndpoint.cs" />
     <Compile Include="Generated\Models\ApiError.cs" />
     <Compile Include="Generated\Models\ApiErrorException.cs" />
@@ -100,7 +100,6 @@
     <Compile Include="Generated\Models\EntityNameUnavailabilityReason.cs" />
     <Compile Include="Generated\Models\KeyType.cs" />
     <Compile Include="Generated\Models\MediaService.cs" />
-    <Compile Include="Generated\Models\MediaServiceProperties.cs" />
     <Compile Include="Generated\Models\Page.cs" />
     <Compile Include="Generated\Models\RegenerateKeyInput.cs" />
     <Compile Include="Generated\Models\RegenerateKeyOutput.cs" />

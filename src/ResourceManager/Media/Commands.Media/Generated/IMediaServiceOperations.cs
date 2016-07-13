@@ -14,9 +14,9 @@ namespace Microsoft.Azure.Management.Media
     using Models;
 
     /// <summary>
-    /// MediaServicesOperations operations.
+    /// MediaServiceOperations operations.
     /// </summary>
-    public partial interface IMediaServicesOperations
+    public partial interface IMediaServiceOperations
     {
         /// <summary>
         /// Check whether the Media Service resource name is available. The
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Media
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<MediaService>> GetMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MediaService>> GetWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create a Media Service.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Media
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<MediaService>> PutMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MediaService>> CreateWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete a Media Service.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Media
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse> DeleteMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a Media Service.
         /// </summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Media
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<MediaService>> UpdateMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<MediaService>> UpdateWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Regenerate the key for a Media Service.
         /// </summary>

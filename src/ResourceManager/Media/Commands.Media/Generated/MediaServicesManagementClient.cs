@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Media
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IMediaServicesOperations.
+        /// Gets the IMediaServiceOperations.
         /// </summary>
-        public virtual IMediaServicesOperations MediaServices { get; private set; }
+        public virtual IMediaServiceOperations MediaService { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the MediaServicesManagementClient class.
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Management.Media
         /// </summary>
         private void Initialize()
         {
-            this.MediaServices = new MediaServicesOperations(this);
+            this.MediaService = new MediaServiceOperations(this);
             this.BaseUri = new Uri("https://management.azure.com");
             this.ApiVersion = "2015-10-01";
             this.AcceptLanguage = "en-US";
@@ -277,6 +277,7 @@ namespace Microsoft.Azure.Management.Media
                         new Iso8601TimeSpanConverter()
                     }
             };
+            SerializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings = new JsonSerializerSettings
             {
                 DateFormatHandling = DateFormatHandling.IsoDateFormat,
@@ -289,6 +290,7 @@ namespace Microsoft.Azure.Management.Media
                         new Iso8601TimeSpanConverter()
                     }
             };
+            DeserializationSettings.Converters.Add(new TransformationJsonConverter());
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter()); 
         }    
     }

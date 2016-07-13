@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Management.Media.Models
         }
 
         /// <summary>
-        /// Specifies the type of the resource.
+        /// The name of the resource. A name must be globally unique.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -43,5 +43,26 @@ namespace Microsoft.Azure.Management.Media.Models
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
+        /// <summary>
+        /// Validate the object. Throws ValidationException if validation fails.
+        /// </summary>
+        public virtual void Validate()
+        {
+            if (this.Name != null)
+            {
+                if (this.Name.Length > 24)
+                {
+                    throw new ValidationException(ValidationRules.MaxLength, "Name", 24);
+                }
+                if (this.Name.Length < 3)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Name", 3);
+                }
+                if (!System.Text.RegularExpressions.Regex.IsMatch(this.Name, "^[a-z0-9]"))
+                {
+                    throw new ValidationException(ValidationRules.Pattern, "Name", "^[a-z0-9]");
+                }
+            }
+        }
     }
 }

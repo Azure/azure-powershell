@@ -19,7 +19,6 @@ using Microsoft.Azure.Management.Media.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using RestApiEndpoint = Microsoft.Azure.Management.Media.Models.ApiEndpoint;
 using RestStorageAccount = Microsoft.Azure.Management.Media.Models.StorageAccount;
-using RestMediaServiceProperties = Microsoft.Azure.Management.Media.Models.MediaServiceProperties;
 using RestMediaService = Microsoft.Azure.Management.Media.Models.MediaService;
 using RestServiceKeys = Microsoft.Azure.Management.Media.Models.ServiceKeys;
 
@@ -36,16 +35,8 @@ namespace Microsoft.Azure.Commands.Media.Models
                 Type = mediaService.Type,
                 Location = mediaService.Location,
                 Tags = mediaService.Tags.ToHashTableTags(),
-                Properties = mediaService.Properties.ToPSMediaServiceProperties()
-            };
-        }
-
-        public static PSMediaServiceProperties ToPSMediaServiceProperties(this RestMediaServiceProperties mediaServiceProperties)
-        {
-            return new PSMediaServiceProperties
-            {
-                ApiEndpoints = mediaServiceProperties.ApiEndpoints.Select(x => x.ToPSApiEndpoint()).ToList(),
-                StorageAccounts = mediaServiceProperties.StorageAccounts.Select(x => x.ToPSStorageAccount()).ToList()
+                ApiEndpoints = mediaService.ApiEndpoints.Select(x => x.ToPSApiEndpoint()).ToList(),
+                StorageAccounts = mediaService.StorageAccounts.Select(x => x.ToPSStorageAccount()).ToList()
             };
         }
 

@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         {
             try
             {
-                MediaServicesManagementClient.MediaServices.DeleteMediaService(ResourceGroupName, AccountName);
+                MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
                 WriteObject(true);
             }
             catch (ApiErrorException exception)

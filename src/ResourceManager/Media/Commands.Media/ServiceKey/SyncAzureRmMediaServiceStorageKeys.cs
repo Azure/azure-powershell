@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         {
             try
             {
-                MediaServicesManagementClient.MediaServices.SyncStorageKeys(
+                MediaServicesManagementClient.MediaService.SyncStorageKeys(
                     ResourceGroupName,
                     AccountName,
                     new SyncStorageKeysInput(StorageAccountId));

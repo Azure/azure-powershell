@@ -14,9 +14,9 @@ namespace Microsoft.Azure.Management.Media
     using Models;
 
     /// <summary>
-    /// Extension methods for MediaServicesOperations.
+    /// Extension methods for MediaServiceOperations.
     /// </summary>
-    public static partial class MediaServicesOperationsExtensions
+    public static partial class MediaServiceOperationsExtensions
     {
             /// <summary>
             /// Check whether the Media Service resource name is available. The name must
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='checkNameAvailabilityInput'>
             /// Properties needed to check the availability of a name.
             /// </param>
-            public static CheckNameAvailabilityOutput CheckNameAvailabilty(this IMediaServicesOperations operations, CheckNameAvailabilityInput checkNameAvailabilityInput)
+            public static CheckNameAvailabilityOutput CheckNameAvailabilty(this IMediaServiceOperations operations, CheckNameAvailabilityInput checkNameAvailabilityInput)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).CheckNameAvailabiltyAsync(checkNameAvailabilityInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).CheckNameAvailabiltyAsync(checkNameAvailabilityInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CheckNameAvailabilityOutput> CheckNameAvailabiltyAsync(this IMediaServicesOperations operations, CheckNameAvailabilityInput checkNameAvailabilityInput, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CheckNameAvailabilityOutput> CheckNameAvailabiltyAsync(this IMediaServiceOperations operations, CheckNameAvailabilityInput checkNameAvailabilityInput, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CheckNameAvailabiltyWithHttpMessagesAsync(checkNameAvailabilityInput, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='resourceGroupName'>
             /// Name of the resource group within the Azure subscription.
             /// </param>
-            public static IEnumerable<MediaService> ListByResourceGroup(this IMediaServicesOperations operations, string resourceGroupName)
+            public static IEnumerable<MediaService> ListByResourceGroup(this IMediaServiceOperations operations, string resourceGroupName)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).ListByResourceGroupAsync(resourceGroupName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).ListByResourceGroupAsync(resourceGroupName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<MediaService>> ListByResourceGroupAsync(this IMediaServicesOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<MediaService>> ListByResourceGroupAsync(this IMediaServiceOperations operations, string resourceGroupName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListByResourceGroupWithHttpMessagesAsync(resourceGroupName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -100,9 +100,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='mediaServiceName'>
             /// Name of the Media Service.
             /// </param>
-            public static MediaService GetMediaService(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName)
+            public static MediaService Get(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).GetMediaServiceAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).GetAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaService> GetMediaServiceAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaService> GetAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetMediaServiceWithHttpMessagesAsync(resourceGroupName, mediaServiceName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, mediaServiceName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -143,9 +143,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='mediaService'>
             /// Media Service properties needed for creation.
             /// </param>
-            public static MediaService PutMediaService(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService)
+            public static MediaService Create(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).PutMediaServiceAsync(resourceGroupName, mediaServiceName, mediaService), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).CreateAsync(resourceGroupName, mediaServiceName, mediaService), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaService> PutMediaServiceAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaService> CreateAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PutMediaServiceWithHttpMessagesAsync(resourceGroupName, mediaServiceName, mediaService, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(resourceGroupName, mediaServiceName, mediaService, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='mediaServiceName'>
             /// Name of the Media Service.
             /// </param>
-            public static void DeleteMediaService(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName)
+            public static void Delete(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName)
             {
-                Task.Factory.StartNew(s => ((IMediaServicesOperations)s).DeleteMediaServiceAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IMediaServiceOperations)s).DeleteAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -206,9 +206,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteMediaServiceAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteMediaServiceWithHttpMessagesAsync(resourceGroupName, mediaServiceName, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteWithHttpMessagesAsync(resourceGroupName, mediaServiceName, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
@@ -226,9 +226,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='mediaService'>
             /// Media Service properties needed for update.
             /// </param>
-            public static MediaService UpdateMediaService(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService)
+            public static MediaService Update(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).UpdateMediaServiceAsync(resourceGroupName, mediaServiceName, mediaService), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).UpdateAsync(resourceGroupName, mediaServiceName, mediaService), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -249,9 +249,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaService> UpdateMediaServiceAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaService> UpdateAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, MediaService mediaService, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateMediaServiceWithHttpMessagesAsync(resourceGroupName, mediaServiceName, mediaService, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, mediaServiceName, mediaService, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -272,9 +272,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='regenerateKeyInput'>
             /// Properties needed to regenerate the Media Service key.
             /// </param>
-            public static RegenerateKeyOutput RegenerateKey(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, RegenerateKeyInput regenerateKeyInput)
+            public static RegenerateKeyOutput RegenerateKey(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, RegenerateKeyInput regenerateKeyInput)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).RegenerateKeyAsync(resourceGroupName, mediaServiceName, regenerateKeyInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).RegenerateKeyAsync(resourceGroupName, mediaServiceName, regenerateKeyInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RegenerateKeyOutput> RegenerateKeyAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, RegenerateKeyInput regenerateKeyInput, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RegenerateKeyOutput> RegenerateKeyAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, RegenerateKeyInput regenerateKeyInput, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.RegenerateKeyWithHttpMessagesAsync(resourceGroupName, mediaServiceName, regenerateKeyInput, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -315,9 +315,9 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='mediaServiceName'>
             /// Name of the Media Service.
             /// </param>
-            public static ServiceKeys ListKeys(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName)
+            public static ServiceKeys ListKeys(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).ListKeysAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).ListKeysAsync(resourceGroupName, mediaServiceName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceKeys> ListKeysAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceKeys> ListKeysAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListKeysWithHttpMessagesAsync(resourceGroupName, mediaServiceName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -359,9 +359,9 @@ namespace Microsoft.Azure.Management.Media
             /// Properties needed to sycnronize the keys for a storage account to the
             /// Media Service.
             /// </param>
-            public static MediaService SyncStorageKeys(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, SyncStorageKeysInput syncStorageKeysInput)
+            public static MediaService SyncStorageKeys(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, SyncStorageKeysInput syncStorageKeysInput)
             {
-                return Task.Factory.StartNew(s => ((IMediaServicesOperations)s).SyncStorageKeysAsync(resourceGroupName, mediaServiceName, syncStorageKeysInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IMediaServiceOperations)s).SyncStorageKeysAsync(resourceGroupName, mediaServiceName, syncStorageKeysInput), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Management.Media
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MediaService> SyncStorageKeysAsync(this IMediaServicesOperations operations, string resourceGroupName, string mediaServiceName, SyncStorageKeysInput syncStorageKeysInput, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<MediaService> SyncStorageKeysAsync(this IMediaServiceOperations operations, string resourceGroupName, string mediaServiceName, SyncStorageKeysInput syncStorageKeysInput, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.SyncStorageKeysWithHttpMessagesAsync(resourceGroupName, mediaServiceName, syncStorageKeysInput, null, cancellationToken).ConfigureAwait(false))
                 {

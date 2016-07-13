@@ -44,9 +44,9 @@ function Test-Media
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
   Assert-AreEqual $location $mediaService.Location
   Assert-Tags $tags $mediaService.Tags
-  Assert-AreEqual $storageAccountName1 $mediaService.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $rgname $mediaService.Properties.StorageAccounts[0].ResourceGroupName
+  Assert-AreEqual $storageAccountName1 $mediaService.StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $rgname $mediaService.StorageAccounts[0].ResourceGroupName
 
   $availability = Get-AzureRmMediaServiceNameAvailability -Name $accountName
   Assert-AreEqual $false $availability.nameAvailable
@@ -58,9 +58,9 @@ function Test-Media
   Assert-AreEqual $accountName $mediaServices[0].AccountName
   Assert-AreEqual $rgname $mediaServices[0].ResourceGroupName
   Assert-AreEqual $location $mediaServices[0].Location
-  Assert-AreEqual $storageAccountName1 $mediaServices[0].Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $rgname $mediaServices[0].Properties.StorageAccounts[0].ResourceGroupName
+  Assert-AreEqual $storageAccountName1 $mediaServices[0].StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $rgname $mediaServices[0].StorageAccounts[0].ResourceGroupName
 
   <# Get a media service with specifying resource group and account name #>
   $mediaService = Get-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName
@@ -68,9 +68,9 @@ function Test-Media
   Assert-AreEqual $accountName $mediaService.AccountName
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
   Assert-AreEqual $location $mediaService.Location
-  Assert-AreEqual $storageAccountName1 $mediaService.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $rgname $mediaService.Properties.StorageAccounts[0].ResourceGroupName
+  Assert-AreEqual $storageAccountName1 $mediaService.StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $rgname $mediaService.StorageAccounts[0].ResourceGroupName
 
   <# Set a media service #>
   $tagsUpdated = @{"tag3" = "value3"; "tag4" = "value4"}
@@ -83,12 +83,12 @@ function Test-Media
   Assert-Tags $tagsUpdated $mediaServiceUpdated.Tags
   echo "shit"
   echo $mediaServiceUpdated.AccountName
-  echo $mediaServiceUpdated.Properties.StorageAccounts[0].Id
-  echo $mediaServiceUpdated.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $storageAccountName1 $mediaServiceUpdated.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $storageAccountName2 $mediaServiceUpdated.Properties.StorageAccounts[1].AccountName
-  Assert-AreEqual $false $mediaServiceUpdated.Properties.StorageAccounts[1].IsPrimary
+  echo $mediaServiceUpdated.StorageAccounts[0].Id
+  echo $mediaServiceUpdated.StorageAccounts[0].AccountName
+  Assert-AreEqual $storageAccountName1 $mediaServiceUpdated.StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $storageAccountName2 $mediaServiceUpdated.StorageAccounts[1].AccountName
+  Assert-AreEqual $false $mediaServiceUpdated.StorageAccounts[1].IsPrimary
 
   <# Get service keys #>
   $serviceKeys = Get-AzureRmMediaServiceKeys -ResourceGroupName $rgname -AccountName $accountName
@@ -123,12 +123,12 @@ function Test-Media
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
   Assert-AreEqual $location $mediaService.Location
   Assert-Tags $tags $mediaService.Tags
-  Assert-AreEqual $storageAccountName1 $mediaService.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $rgname $mediaService.Properties.StorageAccounts[0].ResourceGroupName
-  Assert-AreEqual $storageAccountName2 $mediaService.Properties.StorageAccounts[1].AccountName
-  Assert-AreEqual $false $mediaService.Properties.StorageAccounts[1].IsPrimary
-  Assert-AreEqual $rgname $mediaService.Properties.StorageAccounts[1].ResourceGroupName
+  Assert-AreEqual $storageAccountName1 $mediaService.StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $rgname $mediaService.StorageAccounts[0].ResourceGroupName
+  Assert-AreEqual $storageAccountName2 $mediaService.StorageAccounts[1].AccountName
+  Assert-AreEqual $false $mediaService.StorageAccounts[1].IsPrimary
+  Assert-AreEqual $rgname $mediaService.StorageAccounts[1].ResourceGroupName
 
   Remove-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName
   RemoveStorageAccount $rgname $storageAccountName1
@@ -162,9 +162,9 @@ function Test-MediaWithPiping
   Assert-AreEqual $rgname $mediaService.ResourceGroupName
   Assert-AreEqual $location $mediaService.Location
   Assert-Tags $tags $mediaService.Tags
-  Assert-AreEqual $storageAccountName1 $mediaService.Properties.StorageAccounts[0].AccountName
-  Assert-AreEqual $true $mediaService.Properties.StorageAccounts[0].IsPrimary
-  Assert-AreEqual $rgname $mediaService.Properties.StorageAccounts[0].ResourceGroupName
+  Assert-AreEqual $storageAccountName1 $mediaService.StorageAccounts[0].AccountName
+  Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
+  Assert-AreEqual $rgname $mediaService.StorageAccounts[0].ResourceGroupName
 
   <# Update a media service with piping #>
   $tagsUpdated = @{"tag3" = "value3"; "tag4" = "value4"}

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Media.Models
         }
 
         /// <summary>
-        /// The new key of either the primary or secondary key.
+        /// The new value of either the primary or secondary key.
         /// </summary>
         [JsonProperty(PropertyName = "key")]
         public string Key { get; set; }

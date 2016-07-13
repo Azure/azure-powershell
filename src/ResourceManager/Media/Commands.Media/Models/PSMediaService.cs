@@ -10,6 +10,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Media.Models
@@ -48,6 +49,8 @@ namespace Microsoft.Azure.Commands.Media.Models
             }
         }
 
-        public PSMediaServiceProperties Properties { get; set; }
+        public ICollection<PSApiEndpoint> ApiEndpoints { get; set; }
+
+        public ICollection<PSStorageAccount> StorageAccounts { get; set; }
     }
 }

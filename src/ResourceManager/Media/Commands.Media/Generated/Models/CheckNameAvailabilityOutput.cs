@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Management.Media.Models
     using Microsoft.Rest.Azure;
 
     /// <summary>
-    /// The request body for CheckNameAvailability API.
+    /// The response body for CheckNameAvailability API.
     /// </summary>
     public partial class CheckNameAvailabilityOutput
     {
@@ -35,20 +35,20 @@ namespace Microsoft.Azure.Management.Media.Models
         }
 
         /// <summary>
-        /// Specifiies if the name is available.
+        /// Specifies if the name is available.
         /// </summary>
         [JsonProperty(PropertyName = "nameAvailable")]
         public bool? NameAvailable { get; set; }
 
         /// <summary>
-        /// Specifiies the reason if the name is not available. Possible
-        /// values include: 'None', 'Invalid', 'AlreadyExists'
+        /// Specifies the reason if the name is not available. Possible values
+        /// include: 'None', 'Invalid', 'AlreadyExists'
         /// </summary>
         [JsonProperty(PropertyName = "reason")]
         public EntityNameUnavailabilityReason? Reason { get; set; }
 
         /// <summary>
-        /// Specifiies the detailed reason if the name is not available
+        /// Specifies the detailed reason if the name is not available.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

@@ -21,17 +21,17 @@ namespace Microsoft.Azure.Management.Media
     using Models;
 
     /// <summary>
-    /// MediaServicesOperations operations.
+    /// MediaServiceOperations operations.
     /// </summary>
-    internal partial class MediaServicesOperations : IServiceOperations<MediaServicesManagementClient>, IMediaServicesOperations
+    internal partial class MediaServiceOperations : IServiceOperations<MediaServicesManagementClient>, IMediaServiceOperations
     {
         /// <summary>
-        /// Initializes a new instance of the MediaServicesOperations class.
+        /// Initializes a new instance of the MediaServiceOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
         /// </param>
-        internal MediaServicesOperations(MediaServicesManagementClient client)
+        internal MediaServiceOperations(MediaServicesManagementClient client)
         {
             if (client == null) 
             {
@@ -74,6 +74,10 @@ namespace Microsoft.Azure.Management.Media
             if (checkNameAvailabilityInput == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "checkNameAvailabilityInput");
+            }
+            if (checkNameAvailabilityInput != null)
+            {
+                checkNameAvailabilityInput.Validate();
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -405,7 +409,7 @@ namespace Microsoft.Azure.Management.Media
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<MediaService>> GetMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MediaService>> GetWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.Client.SubscriptionId == null)
             {
@@ -448,7 +452,7 @@ namespace Microsoft.Azure.Management.Media
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("mediaServiceName", mediaServiceName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "GetMediaService", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
@@ -600,7 +604,7 @@ namespace Microsoft.Azure.Management.Media
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<MediaService>> PutMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MediaService>> CreateWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.Client.SubscriptionId == null)
             {
@@ -652,7 +656,7 @@ namespace Microsoft.Azure.Management.Media
                 tracingParameters.Add("mediaServiceName", mediaServiceName);
                 tracingParameters.Add("mediaService", mediaService);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "PutMediaService", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
             }
             // Construct URL
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
@@ -825,7 +829,7 @@ namespace Microsoft.Azure.Management.Media
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.Client.SubscriptionId == null)
             {
@@ -868,7 +872,7 @@ namespace Microsoft.Azure.Management.Media
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("mediaServiceName", mediaServiceName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "DeleteMediaService", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
@@ -1002,7 +1006,7 @@ namespace Microsoft.Azure.Management.Media
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<MediaService>> UpdateMediaServiceWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<MediaService>> UpdateWithHttpMessagesAsync(string resourceGroupName, string mediaServiceName, MediaService mediaService, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (this.Client.SubscriptionId == null)
             {
@@ -1050,7 +1054,7 @@ namespace Microsoft.Azure.Management.Media
                 tracingParameters.Add("mediaServiceName", mediaServiceName);
                 tracingParameters.Add("mediaService", mediaService);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "UpdateMediaService", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "Update", tracingParameters);
             }
             // Construct URL
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;

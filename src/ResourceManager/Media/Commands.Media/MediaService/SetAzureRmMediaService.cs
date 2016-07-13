@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     throw new ArgumentException("StorageAccounts should have exactly one primary storage account");
                 }
 
-                var mediaService = MediaServicesManagementClient.MediaServices.GetMediaService(ResourceGroupName, AccountName);
+                var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
                 if (mediaService == null)
                 {
                     throw new ArgumentException(string.Format(
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                         ResourceGroupName));
                 }
 
-                var primaryStorageAccount = mediaService.Properties.StorageAccounts.FirstOrDefault(x => (x.IsPrimary.HasValue && x.IsPrimary.Value));
+                var primaryStorageAccount = mediaService.StorageAccounts.FirstOrDefault(x => (x.IsPrimary.HasValue && x.IsPrimary.Value));
                 // there must be a primary storage account associated with the media service account
                 if (primaryStorageAccount == null)
                 {
@@ -108,15 +108,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     throw new ArgumentException("Primary storage account cann't be changed");
                 }
 
-                mediaServiceParams.Properties = new MediaServiceProperties
-                {
-                    StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList()
-                };
+                mediaServiceParams.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
             }
 
             try
             {
-                var mediaServiceUpdated = MediaServicesManagementClient.MediaServices.UpdateMediaService(ResourceGroupName, AccountName, mediaServiceParams);
+                var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName, AccountName, mediaServiceParams);
                 WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
             }
             catch (ApiErrorException exception)

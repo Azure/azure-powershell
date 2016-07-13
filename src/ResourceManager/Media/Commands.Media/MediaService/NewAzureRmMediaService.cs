@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         {
             try
             {
-                var mediaService = MediaServicesManagementClient.MediaServices.GetMediaService(ResourceGroupName, AccountName);
+                var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
                 if (mediaService != null)
                 {
                     throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} exists",
@@ -133,15 +133,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     switch (ParameterSetName)
                     {
                         case PrimaryStorageAccountParamSet:
-                            restMediaService.Properties = new MediaServiceProperties
+                            restMediaService.StorageAccounts = new List<StorageAccount>
                             {
-                                StorageAccounts = new List<StorageAccount>
+                                new StorageAccount
                                 {
-                                    new StorageAccount
-                                    {
-                                        Id = StorageAccountId,
-                                        IsPrimary = true
-                                    }
+                                    Id = StorageAccountId,
+                                    IsPrimary = true
                                 }
                             };
                             break;
@@ -152,11 +149,8 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                                 throw new ArgumentException(
                                     "StorageAccounts should have exactly one primary storage account");
                             }
-
-                            restMediaService.Properties = new MediaServiceProperties
-                            {
-                                StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList()
-                            };
+                            
+                            restMediaService.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
                             break;
 
                         default:
@@ -164,8 +158,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     }
 
                     var mediaServiceCreated =
-                        MediaServicesManagementClient.MediaServices.PutMediaService(ResourceGroupName, AccountName,
-                            restMediaService);
+                        MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName, restMediaService);
                     WriteObject(mediaServiceCreated.ToPSMediaService(), true);
                 }
                 else

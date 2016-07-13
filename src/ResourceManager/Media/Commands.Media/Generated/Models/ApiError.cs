@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.Media.Models
         public string Code { get; set; }
 
         /// <summary>
-        /// Error message
+        /// Error message.
         /// </summary>
         [JsonProperty(PropertyName = "message")]
         public string Message { get; set; }

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         {
             try
             {
-                var serviceKey = MediaServicesManagementClient.MediaServices.RegenerateKey(
+                var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
                     ResourceGroupName, 
                     AccountName,
                     new RegenerateKeyInput(KeyType));

@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Management.Media.Models
         }
 
         /// <summary>
-        /// The keyType indicating which key you want to regenerate. Possible
-        /// values include: 'Primary', 'Secondary'
+        /// The keyType indicating which key you want to regenerate, Primary
+        /// or Secondary. Possible values include: 'Primary', 'Secondary'
         /// </summary>
         [JsonProperty(PropertyName = "keyType")]
         public KeyType? KeyType { get; set; }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            var result = MediaServicesManagementClient.MediaServices.CheckNameAvailabilty(new CheckNameAvailabilityInput
+            var result = MediaServicesManagementClient.MediaService.CheckNameAvailabilty(new CheckNameAvailabilityInput
             {
                 Name = Name,
                 Type = MediaServicesType

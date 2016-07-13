@@ -62,12 +62,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             switch (ParameterSetName)
             {
                 case ResourceGroupParameterSet:
-                    var mediaServices = MediaServicesManagementClient.MediaServices.ListByResourceGroup(ResourceGroupName);
+                    var mediaServices = MediaServicesManagementClient.MediaService.ListByResourceGroup(ResourceGroupName);
                     WriteObject(mediaServices.Select(x => x.ToPSMediaService()).ToList(), true);
                     break;
 
                 case AccountNameParameterSet:
-                    var mediaService = MediaServicesManagementClient.MediaServices.GetMediaService(ResourceGroupName, AccountName);
+                    var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
                     WriteObject(mediaService.ToPSMediaService(), true);
                     break;
 
