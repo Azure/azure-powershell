@@ -136,7 +136,8 @@ namespace Microsoft.Azure.Commands.Dns
                     {
                         WriteObject(deleted);
                     }
-                });
+                },
+                () => true);
         }
     }
 }

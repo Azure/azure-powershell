@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsLifecycle.Disable,
-        ProfileNouns.AzureDiskEncryption, SupportsShouldProcess =  true)]
+        ProfileNouns.AzureDiskEncryption,
+        SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
     {

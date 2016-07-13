@@ -15,7 +15,6 @@
 // 
 
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 using System;
 
 namespace Microsoft.Azure.Commands.Compute.Models
@@ -31,5 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public DateTime? EndTime { get; set; }
 
         public ApiError Error { get; set; }
+
+        public string Name { get; set; }
     }
 }
