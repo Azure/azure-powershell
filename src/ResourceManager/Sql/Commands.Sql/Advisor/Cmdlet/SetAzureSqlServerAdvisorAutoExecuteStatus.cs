@@ -20,27 +20,27 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
+    /// Defines the Set-AzureRmSqlServerAdvisorAutoExecuteStatus cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAdvisorAutoExecuteStatus",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAdvisorAutoExecuteStatus",
         ConfirmImpact = ConfirmImpact.Low)]
-    public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
+    public class SetAzureSqlServerAdvisorAutoExecuteStatus : AzureSqlServerAdvisorCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure SQL Database Advisor name.")]
+            HelpMessage = "Azure SQL Server Advisor name.")]
         [ValidateNotNullOrEmpty]
         public string AdvisorName { get; set; }
 
         /// <summary>
-        /// Gets or sets the new auto-execute status of Azure SQL Database Advisor.
+        /// Gets or sets the new auto-execute status of Azure SQL Server Advisor.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The new auto-execute status of Azure SQL Database Advisor.")]
+            HelpMessage = "The new auto-execute status of Azure SQL Server Advisor.")]
         [ValidateNotNullOrEmpty]
         public string AutoExecuteStatus { get; set; }
 
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// Gets entities from the service.
         /// </summary>
         /// <returns>A list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> GetEntity()
+        protected override IEnumerable<AzureSqlServerAdvisorModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseAdvisorModel>() {
-                ModelAdapter.GetDatabaseAdvisor(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.AdvisorName, expandRecommendedActions: false)
+            return new List<AzureSqlServerAdvisorModel>() {
+                ModelAdapter.GetServerAdvisor(this.ResourceGroupName, this.ServerName, this.AdvisorName, expandRecommendedActions: false)
             };
         }
 
@@ -60,14 +60,13 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseAdvisorModel> model)
+        protected override IEnumerable<AzureSqlServerAdvisorModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerAdvisorModel> model)
         {
-            List<AzureSqlDatabaseAdvisorModel> newEntity = new List<AzureSqlDatabaseAdvisorModel>();
-            newEntity.Add(new AzureSqlDatabaseAdvisorModel()
+            List<AzureSqlServerAdvisorModel> newEntity = new List<AzureSqlServerAdvisorModel>();
+            newEntity.Add(new AzureSqlServerAdvisorModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                DatabaseName = DatabaseName,
                 AdvisorName = AdvisorName,
                 AutoExecuteStatus = AutoExecuteStatus
             });
@@ -80,9 +79,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> PersistChanges(IEnumerable<AzureSqlDatabaseAdvisorModel> entity)
+        protected override IEnumerable<AzureSqlServerAdvisorModel> PersistChanges(IEnumerable<AzureSqlServerAdvisorModel> entity)
         {
-            return new List<AzureSqlDatabaseAdvisorModel>() {
+            return new List<AzureSqlServerAdvisorModel>() {
                 ModelAdapter.UpdateAutoExecuteStatus(entity.Single())
             };
         }

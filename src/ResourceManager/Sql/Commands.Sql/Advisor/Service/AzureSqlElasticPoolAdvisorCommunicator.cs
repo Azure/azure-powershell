@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
@@ -22,41 +20,42 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Service
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the database advisor REST endpoints
+    /// This class is responsible for all the REST communication with the Elastic Pool advisor REST endpoints
     /// </summary>
-    public class AzureSqlDatabaseAdvisorCommunicator : AzureSqlAdvisorCommunicatorBase
+    public class AzureSqlElasticPoolAdvisorCommunicator : AzureSqlAdvisorCommunicatorBase
     {
+
         /// <summary>
-        /// Creates a communicator for Azure Sql Database Advisors
+        /// Creates a communicator for Azure Sql Elastic Pool Advisors
         /// </summary>
-        public AzureSqlDatabaseAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlElasticPoolAdvisorCommunicator(AzureContext context) : base(context)
         {
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Advisor
+        /// Gets the Azure Sql Elastic Pool Advisor
         /// </summary>
-        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Get(resourceGroupName, serverName, databaseName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Get(resourceGroupName, serverName, elasticPoolName, advisorName, expand).Advisor;
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Advisors
+        /// Lists Azure Sql Elastic Pool Advisors
         /// </summary>
-        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, string elasticPoolName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.List(resourceGroupName, serverName, databaseName, expand).Advisors;
+            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.List(resourceGroupName, serverName, elasticPoolName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string elasticPoolName, string advisorName, string autoExecuteStatus, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Update(resourceGroupName, serverName, databaseName, advisorName,
+            return GetCurrentSqlClient(clientRequestId).ElasticPoolAdvisors.Update(resourceGroupName, serverName, elasticPoolName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

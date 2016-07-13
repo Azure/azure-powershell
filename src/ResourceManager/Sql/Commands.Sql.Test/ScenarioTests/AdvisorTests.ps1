@@ -14,6 +14,63 @@
 
 <#
 	.SYNOPSIS
+	Tests listing Server advisors
+#>
+function Test-ListServerAdvisors
+{
+	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east
+	Assert-NotNull $response
+	Assert-AreEqual $response.Count 4
+	foreach($advisor in $response)
+	{
+		ValidateServer $advisor
+		ValidateAdvisorProperties $advisor
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests listing Server advisors with recommended actions
+#>
+function Test-ListServerAdvisorsExpanded
+{
+	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ExpandRecommendedActions
+	Assert-NotNull $response
+	Assert-AreEqual $response.Count 4
+	$response > output.txt
+	foreach($advisor in $response)
+	{
+		ValidateServer $advisor
+		ValidateAdvisorProperties $advisor true
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a Server advisor
+#>
+function Test-GetServerAdvisor
+{
+	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex
+	Assert-NotNull $response
+	ValidateServer $response
+	ValidateAdvisorProperties $response
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a Server advisor
+#>
+function Test-UpdateServerAdvisor
+{
+	$response = Set-AzureRmSqlServerAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex -AutoExecuteStatus Disabled
+	Assert-NotNull $response
+	ValidateServer $response
+	ValidateAdvisorProperties $response
+}
+
+<#
+	.SYNOPSIS
 	Tests listing database advisors
 #>
 function Test-ListDatabaseAdvisors
@@ -66,6 +123,62 @@ function Test-UpdateDatabaseAdvisor
 	$response = Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex -AutoExecuteStatus Disabled
 	Assert-NotNull $response
 	ValidateDatabase $response
+	ValidateAdvisorProperties $response
+}
+<#
+	.SYNOPSIS
+	Tests listing elastic pool advisors
+#>
+function Test-ListElasticPoolAdvisors
+{
+	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool
+	Assert-NotNull $response
+	Assert-AreEqual $response.Count 4
+	foreach($advisor in $response)
+	{
+		ValidateElasticPool $advisor
+		ValidateAdvisorProperties $advisor
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests listing elastic pool advisors with recommended actions
+#>
+function Test-ListElasticPoolAdvisorsExpanded
+{
+	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -ExpandRecommendedActions
+	Assert-NotNull $response
+	Assert-AreEqual $response.Count 4
+	$response > output.txt
+	foreach($advisor in $response)
+	{
+		ValidateElasticPool $advisor
+		ValidateAdvisorProperties $advisor true
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests Getting a elastic pool advisor
+#>
+function Test-GetElasticPoolAdvisor
+{
+	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex
+	Assert-NotNull $response
+	ValidateElasticPool $response
+	ValidateAdvisorProperties $response
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a elastic pool advisor
+#>
+function Test-UpdateElasticPoolAdvisor
+{
+	$response = Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex -AutoExecuteStatus Disabled
+	Assert-NotNull $response
+	ValidateElasticPool $response
 	ValidateAdvisorProperties $response
 }
 

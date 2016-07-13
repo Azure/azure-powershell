@@ -51,13 +51,24 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Advisor\Cmdlet\AzureSqlElasticPoolAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\AzureSqlServerAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlElasticPoolAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlServerAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlElasticPoolAdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlServerAdvisorAutoExecuteStatus.cs" />
     <Compile Include="Advisor\Model\AzureSqlElasticPoolAdvisor.cs" />
     <Compile Include="Advisor\Model\AzureSqlDatabaseAdvisorModel.cs" />
     <Compile Include="Advisor\Cmdlet\AzureSqlDatabaseAdvisorCmdletBase.cs" />
     <Compile Include="Advisor\Cmdlet\GetAzureSqlDatabaseAdvisors.cs" />
     <Compile Include="Advisor\Cmdlet\SetAzureSqlDatabaseAdvisorAutoExecuteStatus.cs" />
     <Compile Include="Advisor\Model\AzureSqlServerAdvisorModel.cs" />
+    <Compile Include="Advisor\Service\AzureSqlAdvisorCommunicatorBase.cs" />
+    <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlServerAdvisorAdapter.cs" />
     <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorCommunicator.cs" />
+    <Compile Include="Advisor\Service\AzureSqlServerAdvisorCommunicator.cs" />
     <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="Database\Cmdlet\GetAzureSqlDatabase2.cs" />

@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
@@ -24,39 +22,39 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
     /// <summary>
     /// This class is responsible for all the REST communication with the database advisor REST endpoints
     /// </summary>
-    public class AzureSqlDatabaseAdvisorCommunicator : AzureSqlAdvisorCommunicatorBase
+    public class AzureSqlServerAdvisorCommunicator : AzureSqlAdvisorCommunicatorBase
     {
         /// <summary>
-        /// Creates a communicator for Azure Sql Database Advisors
+        /// Creates a communicator for Azure Sql Server Advisors
         /// </summary>
-        public AzureSqlDatabaseAdvisorCommunicator(AzureContext context) : base(context)
+        public AzureSqlServerAdvisorCommunicator(AzureContext context) : base(context)
         {
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Advisor
+        /// Gets the Azure Sql Server Advisor
         /// </summary>
-        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string databaseName, string advisorName, bool expandRecommendedActions, string clientRequestId)
+        public Management.Sql.Models.Advisor Get(string resourceGroupName, string serverName, string advisorName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Get(resourceGroupName, serverName, databaseName, advisorName, expand).Advisor;
+            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.Get(resourceGroupName, serverName, advisorName, expand).Advisor;
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Advisors
+        /// Lists Azure Sql Server Advisors
         /// </summary>
-        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, string databaseName, bool expandRecommendedActions, string clientRequestId)
+        public IList<Management.Sql.Models.Advisor> List(string resourceGroupName, string serverName, bool expandRecommendedActions, string clientRequestId)
         {
             string expand = expandRecommendedActions ? ExpandKey : null;
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.List(resourceGroupName, serverName, databaseName, expand).Advisors;
+            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.List(resourceGroupName, serverName, expand).Advisors;
         }
 
         /// <summary>
         /// Update Advisor Auto Execute Status
         /// </summary>
-        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string databaseName, string advisorName, string autoExecuteStatus, string clientRequestId)
+        public Management.Sql.Models.Advisor UpdateAutoExecuteStatus(string resourceGroupName, string serverName, string advisorName, string autoExecuteStatus, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).DatabaseAdvisors.Update(resourceGroupName, serverName, databaseName, advisorName,
+            return GetCurrentSqlClient(clientRequestId).ServerAdvisors.Update(resourceGroupName, serverName, advisorName,
                     new AdvisorUpdateParameters
                     {
                         Properties = new AdvisorUpdateProperties()

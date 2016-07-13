@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Service
         /// Updates Auto Execute Status of Azure Sql Database Advisor.
         /// </summary>
         /// <param name="model">The input parameters for the update operation</param>
-        /// <returns>The upserted Azure Sql Database</returns>
+        /// <returns>The upserted Azure Sql Database Advisor</returns>
         internal AzureSqlDatabaseAdvisorModel UpdateAutoExecuteStatus(AzureSqlDatabaseAdvisorModel model)
         {
             var response = Communicator.UpdateAutoExecuteStatus(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.AdvisorName, model.AutoExecuteStatus, Util.GenerateTracingId());
