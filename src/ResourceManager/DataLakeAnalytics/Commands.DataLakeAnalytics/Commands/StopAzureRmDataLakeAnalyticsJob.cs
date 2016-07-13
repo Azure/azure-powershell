@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob", SupportsShouldProcess = true)]
+    [Alias("Stop-AdlJob")]
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -48,12 +49,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 string.Format(Resources.StoppingDataLakeAnalyticsJob, JobId),
                 string.Format(Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
-                () => DataLakeAnalyticsClient.CancelJob(Account, JobId));
+                () =>
+                {
+                    DataLakeAnalyticsClient.CancelJob(Account, JobId);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
         }
     }
 }

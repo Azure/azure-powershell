@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets node report for a given node and report id
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscNodeReportContent", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscNodeReportContent", SupportsShouldProcess = true,
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
     {
@@ -41,8 +38,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary> 
         [Parameter(Mandatory = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node id.")]
         public Guid NodeId { get; set; }
-		
-		/// <summary> 
+
+        /// <summary> 
         /// Gets or sets the report id. 
         /// </summary> 
         [Parameter(Mandatory = true, ParameterSetName = AutomationCmdletParameterSets.ByAll, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node report id.")]
@@ -71,9 +68,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var ret = this.AutomationClient.GetDscNodeReportContent(this.ResourceGroupName, this.AutomationAccountName, this.NodeId, this.ReportId, OutputFolder, overwriteExistingFile);
+            if (ShouldProcess(ReportId.ToString(), VerbsData.Export))
+            {
+                var ret = this.AutomationClient.GetDscNodeReportContent(this.ResourceGroupName,
+                    this.AutomationAccountName, this.NodeId, this.ReportId, OutputFolder, overwriteExistingFile);
 
-            this.WriteObject(ret, true);
+                this.WriteObject(ret, true);
+            }
         }
     }
 }

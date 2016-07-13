@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     /// <summary>
     /// Extended status codes.
     /// </summary>
-    public static class  HttpStatusCodeExt
+    public static class HttpStatusCodeExt
     {
         /// <summary>
         /// Http Status code for too many requests

@@ -17,10 +17,10 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -131,14 +131,14 @@ namespace Microsoft.Azure.Commands.Compute
                         var psResult = Mapper.Map<PSVirtualMachine>(result);
                         if (result.Body != null)
                         {
-                            psResult = Mapper.Map<PSVirtualMachine>(result.Body);
+                            psResult = Mapper.Map(result.Body, psResult);
                         }
                         WriteObject(psResult);
                     }
                 }
                 else
                 {
-                    AzureOperationResponse<IEnumerable<VirtualMachine>> vmListResult = null;
+                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
                     vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
                     var psResultList = new List<PSVirtualMachine>();
@@ -146,8 +146,8 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         foreach (var item in vmListResult.Body)
                         {
-                            var psItem = Mapper.Map<PSVirtualMachine>(item);
-                            psItem = Mapper.Map(vmListResult, psItem);
+                            var psItem = Mapper.Map<PSVirtualMachine>(vmListResult);
+                            psItem = Mapper.Map(item, psItem);
                             psResultList.Add(psItem);
                         }
                     }

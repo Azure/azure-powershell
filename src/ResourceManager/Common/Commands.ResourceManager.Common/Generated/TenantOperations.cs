@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Internal.Subscriptions.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Internal.Subscriptions.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             this._client = client;
         }
-        
+
         private SubscriptionClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Internal.Subscriptions.SubscriptionClient.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Gets a list of the tenantIds.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         public async Task<TenantListResult> ListAsync(CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/tenants";
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -111,13 +111,13 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     TenantListResult result = null;
                     // Deserialize Response
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -167,14 +167,14 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 {
                                     TenantIdDescription tenantIdDescriptionInstance = new TenantIdDescription();
                                     result.TenantIds.Add(tenantIdDescriptionInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         tenantIdDescriptionInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken tenantIdValue = valueValue["tenantId"];
                                     if (tenantIdValue != null && tenantIdValue.Type != JTokenType.Null)
                                     {
@@ -184,14 +184,14 @@ namespace Microsoft.Azure.Internal.Subscriptions
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

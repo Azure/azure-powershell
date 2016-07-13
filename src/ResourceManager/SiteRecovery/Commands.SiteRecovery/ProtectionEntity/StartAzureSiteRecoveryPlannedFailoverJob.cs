@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Secondary Kek Cert pfx file.
         /// </summary>
         string secondaryKekCertpfx = null;
-        
+
         #endregion local parameters
 
         #region Parameters
@@ -84,21 +82,34 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets the Optimize value.
         /// </summary>
-        [Parameter]
-        [ValidateSet(Constants.ForDowntime, Constants.ForSynchronization)]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
+        [ValidateSet(Constants.ForDownTime, Constants.ForSynchronization)]
         public string Optimize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery vm creation value.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
+        [ValidateSet(Constants.Yes, Constants.No)]
+        public string CreateVmIfNotFound { get; set; }
+
+        /// <summary>
+        /// Gets or sets hyper-V server to create vm on.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
+        public ASRServer Server { get; set; }
 
         /// <summary>
         /// Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
         /// Gets or sets Data encryption certificate file path for failover of Protected Item.
         /// </summary>
-        [Parameter]
+        [Parameter(Mandatory = false, ValueFromPipeline = false)]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionSecondaryCertFile { get; set; }
 
@@ -186,10 +197,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 {
                     var failbackInput = new HyperVReplicaAzureFailbackProviderInput()
                     {
-                        DataSyncOption = this.Optimize == Constants.ForDowntime ? Constants.ForDowntime : Constants.ForSynchronization,
-                        //ProviderIdForAlternateRecovery = "",
-                        RecoveryVmCreationOption = "CreateVmIfNotFound" //CreateVmIfNotFound | NoAction
+                        DataSyncOption = this.Optimize == Constants.ForDownTime ? Constants.ForDownTime : Constants.ForSynchronization,
+                        RecoveryVmCreationOption = String.Compare(this.CreateVmIfNotFound, Constants.Yes, StringComparison.OrdinalIgnoreCase) == 0 ? Constants.CreateVmIfNotFound : Constants.NoAction
                     };
+
+                    if (String.Compare(this.CreateVmIfNotFound, Constants.Yes, StringComparison.OrdinalIgnoreCase) == 0 &&
+                        string.Compare(RecoveryServicesClient.GetAzureSiteRecoveryFabric(this.fabricName).Fabric.Properties.CustomDetails.InstanceType, Constants.HyperVSite) == 0)
+                    {
+                        if(this.Server == null || string.Compare(this.Server.FabricType, Constants.HyperVSite) != 0)
+                        {
+                            throw new InvalidOperationException(
+                                Properties.Resources.ImproperServerObjectPassedForHyperVFailback);
+                        }
+                        else
+                        {
+                            failbackInput.ProviderIdForAlternateRecovery = this.Server.ID;
+                        }                             
+                    }
+
                     input.Properties.ProviderSpecificDetails = failbackInput;
                 }
             }
@@ -245,8 +270,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                         var recoveryPlanHyperVReplicaAzureFailbackInput = new RecoveryPlanHyperVReplicaAzureFailbackInput()
                         {
                             InstanceType = replicationProvider + "Failback",
-                            DataSyncOption = this.Optimize == Constants.ForDowntime ? Constants.ForDowntime : Constants.ForSynchronization,
-                            RecoveryVmCreationOption = "CreateVmIfNotFound" //CreateVmIfNotFound | NoAction
+                            DataSyncOption = this.Optimize == Constants.ForDownTime ? Constants.ForDownTime : Constants.ForSynchronization,
+                            RecoveryVmCreationOption = String.Compare(this.CreateVmIfNotFound, Constants.Yes, StringComparison.OrdinalIgnoreCase) == 0 ? Constants.CreateVmIfNotFound : Constants.NoAction
                         };
                         recoveryPlanPlannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanHyperVReplicaAzureFailbackInput);
                     }

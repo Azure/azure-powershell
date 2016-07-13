@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMOSDiskDiskEncryptionKeyVaultId = "the Id of a disk encryption key vault";
         public const string VMOSDiskKeyEncryptionKeyUrl = "the URL referencing a key in a key encryption key vault";
         public const string VMOSDiskKeyEncryptionKeyVaultId = "the Id of a key encryption key Vault";
+        public const string VMOSDiskSizeInGB = "The virtual machine OS disk's size in GB.";
         public const string VMSourceImageUri = "The virtual machine OS disk's source image Uri.";
 
         public const string VMDataDiskName = "The virtual machine data disk's name.";
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string VirtualMachine = "AzureRmVM";
         public const string VirtualMachineExtension = "AzureRmVMExtension";
+        public const string VirtualMachineADDomainExtension = "AzureRmVMADDomainExtension";
         public const string VirtualMachineCustomScriptExtension = "AzureRmVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureRmVMAccessExtension";
         public const string VirtualMachineDiagnosticsExtension = "AzureRmVMDiagnosticsExtension";

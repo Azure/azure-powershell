@@ -12,55 +12,56 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Hub, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, Constants.Hub, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryHubCommand : HubContextBaseCmdlet
     {
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub name.")]
         [Alias("HubName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-         public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
 
-         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-         public override void ExecuteCmdlet()
-         {
-             if (ParameterSetName == ByFactoryObject)
-             {
-                 if (DataFactory == null)
-                 {
-                     throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
-                 }
+        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
+        public override void ExecuteCmdlet()
+        {
+            if (ParameterSetName == ByFactoryObject)
+            {
+                if (DataFactory == null)
+                {
+                    throw new PSArgumentNullException(string.Format(CultureInfo.InvariantCulture, Resources.DataFactoryArgumentInvalid));
+                }
 
-                 DataFactoryName = DataFactory.DataFactoryName;
-                 ResourceGroupName = DataFactory.ResourceGroupName;
-             }
+                DataFactoryName = DataFactory.DataFactoryName;
+                ResourceGroupName = DataFactory.ResourceGroupName;
+            }
 
-             this.ConfirmAction(
-                 this.Force.IsPresent,
-                 string.Format(
-                     CultureInfo.InvariantCulture,
-                     Resources.HubConfirmationMessage,
-                     this.Name,
-                     this.DataFactoryName),
-                 string.Format(
-                     CultureInfo.InvariantCulture, 
-                     Resources.HubRemoving, 
-                     this.Name, 
-                     this.DataFactoryName),
-                 this.Name,
-                 this.ExecuteDelete);
-         }
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.HubConfirmationMessage,
+                    this.Name,
+                    this.DataFactoryName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.HubRemoving,
+                    this.Name,
+                    this.DataFactoryName),
+                this.Name,
+                this.ExecuteDelete);
+        }
 
         private void ExecuteDelete()
         {

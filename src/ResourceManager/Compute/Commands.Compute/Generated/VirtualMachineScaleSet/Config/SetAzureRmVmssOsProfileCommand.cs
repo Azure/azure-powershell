@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public AdditionalUnattendContent [] AdditionalUnattendContent { get; set; }
+        public AdditionalUnattendContent[] AdditionalUnattendContent { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public WinRMListener [] Listener { get; set; }
+        public WinRMListener[] Listener { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 11,
             ValueFromPipelineByPropertyName = true)]
-        public SshPublicKey [] PublicKey { get; set; }
+        public SshPublicKey[] PublicKey { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 12,
             ValueFromPipelineByPropertyName = true)]
-        public VaultSecretGroup [] Secret { get; set; }
+        public VaultSecretGroup[] Secret { get; set; }
 
         protected override void ProcessRecord()
         {

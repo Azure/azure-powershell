@@ -12,15 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Commands.RecoveryServices;
-using System.Diagnostics;
+using System;
 using System.Collections.ObjectModel;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -36,14 +31,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets ASR vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ASRVault, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRVault ASRVault { get; set; }
 
         /// <summary>
         /// Gets or sets ARS vault Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ARSVault, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ARSVault ARSVault { get; set; }
 
@@ -64,6 +59,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 case ASRParameterSets.ARSVault:
                     this.SetARSVaultContext(this.ARSVault);
                     break;
+                default:
+                    throw new PSInvalidOperationException(Properties.Resources.InvalidParameterSet);
             }
         }
 

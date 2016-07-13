@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     public class Module
     {
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="Module"/> class.
         /// </summary>
         /// <param name="resourceGroupName">
@@ -43,9 +40,9 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = module.Name;
-            
+
             if (module.Properties == null) return;
-            
+
             this.CreationTime = module.Properties.CreationTime.ToLocalTime();
             this.LastModifiedTime = module.Properties.LastModifiedTime.ToLocalTime();
             this.IsGlobal = module.Properties.IsGlobal;

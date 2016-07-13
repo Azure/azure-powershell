@@ -1373,3 +1373,404 @@ Param($resourceGroupName, $serviceName)
         Assert-Null $server
     }
 }
+
+<#
+.SYNOPSIS
+Tests CRUD operations of Logger.
+#>
+function Logger-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    # create logger
+    $loggerId = getAssetName
+    try
+    {        
+        $newLoggerDescription = getAssetName
+		$eventHubName = "sdkeventhub"
+		$eventHubConnectionString = "TestConnectionString"
+
+        $logger = New-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Name $eventHubName -ConnectionString $eventHubConnectionString -Description $newLoggerDescription
+
+        Assert-AreEqual $loggerId $logger.LoggerId
+        Assert-AreEqual $newLoggerDescription $logger.Description
+        Assert-AreEqual 'AzureEventHub' $logger.Type
+		Assert-AreEqual $true $logger.IsBuffered
+        
+        # update logger to non-buffered
+        $newLoggerDescription = getAssetName
+
+		$logger = $null
+        $logger = Set-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Description $newLoggerDescription -PassThru
+
+        Assert-AreEqual $loggerId $logger.LoggerId
+        Assert-AreEqual $newLoggerDescription $logger.Description
+        Assert-AreEqual 'AzureEventHub' $logger.Type
+		Assert-AreEqual $false $logger.IsBuffered
+       
+        # get all Loggers
+        $loggers = Get-AzureRmApiManagementLogger -Context $context
+		
+		Assert-NotNull $loggers
+		Assert-AreEqual 1 $loggers.Count
+		
+		# get a specific logger
+		$logger = $null
+		$logger = Get-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId
+		Assert-AreEqual $loggerId $logger.LoggerId
+        Assert-AreEqual $newLoggerDescription $logger.Description
+        Assert-AreEqual 'AzureEventHub' $logger.Type
+		Assert-AreEqual $false $logger.IsBuffered
+        
+    }
+    finally
+    {
+        # remove created logger
+        $removed = Remove-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Force -PassThru
+        Assert-True {$removed}
+
+        $logger = $null
+        try
+        {
+            # check it was removed
+            $logger = Get-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId
+        }
+        catch
+        {
+        }
+
+        Assert-Null $logger
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations of OpenId Connect Provider.
+#>
+function OpenIdConnectProvider-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    # create openIdConnectProvider with default parameters
+    $openIdConnectProviderId = getAssetName
+    try
+    {        
+        $openIdConnectProviderName = getAssetName
+		$metadataEndpoint = "https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration"
+		$clientId = getAssetName
+		$openIdDescription = getAssetName
+
+        $openIdConectProvider = New-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -Name $openIdConnectProviderName -MetadataEndpointUri $metadataEndpoint -ClientId $clientId -Description $openIdDescription
+
+        Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
+        Assert-AreEqual $openIdConnectProviderName $openIdConectProvider.Name
+        Assert-AreEqual $metadataEndpoint $openIdConectProvider.MetadataEndpoint
+        Assert-AreEqual $clientId $openIdConectProvider.ClientId
+		Assert-AreEqual $openIdDescription $openIdConectProvider.Description
+        Assert-Null $openIdConectProvider.ClientSecret
+
+        # get openIdConnectProvider using Name
+		$openIdConectProvider = $null
+		$openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -Name $openIdConnectProviderName
+		
+		Assert-NotNull $openIdConectProvider
+		Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
+		
+		# get OpenId Connect Provider using Id
+		$openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId
+		
+		Assert-NotNull $openIdConectProvider
+		Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
+				
+		#get all openId Connect Providers
+		$openIdConectProviders = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context
+		Assert-AreEqual 1 $openIdConectProviders.Count
+		        
+		Assert-NotNull $openIdConectProviders
+		Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
+
+		#update the provider with Secret
+		$clientSecret = getAssetName
+        $openIdConectProvider = Set-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -ClientSecret $clientSecret -PassThru
+
+        Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
+        Assert-AreEqual $clientSecret $openIdConectProvider.ClientSecret
+		Assert-AreEqual $clientId $openIdConectProvider.ClientId
+		Assert-AreEqual $metadataEndpoint $openIdConectProvider.MetadataEndpoint
+		Assert-AreEqual $openIdConnectProviderName $openIdConectProvider.Name
+        
+        #remove openIdConnectProvider
+        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru
+		Assert-True {$removed}
+        
+		$openIdConectProvider = $null
+        try
+        {
+            # check it was removed
+            $openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId
+        }
+        catch
+        {
+        }
+		
+		Assert-Null $openIdConectProvider
+    }
+    finally
+    {
+        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru -Force
+		Assert-True {$removed}
+        
+		$openIdConectProvider = $null
+        try
+        {
+            # check it was removed
+            $openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId
+        }
+        catch
+        {
+        }
+		
+		Assert-Null $openIdConectProvider
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations on Properties.
+#>
+function Properties-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    # create non-Secret Property
+    $propertyId = getAssetName
+	$secretPropertyId = $null
+    try
+    {        
+        $propertyName = getAssetName
+		$propertyValue = getAssetName
+		$tags = 'sdk', 'powershell'
+        $property = New-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -Name $propertyName -Value $propertyValue -Tags $tags
+
+		Assert-NotNull $property
+        Assert-AreEqual $propertyId $property.PropertyId
+        Assert-AreEqual $propertyName $property.Name
+        Assert-AreEqual $propertyValue $property.Value
+        Assert-AreEqual $false  $property.Secret
+		Assert-AreEqual 2 $property.Tags.Count
+		
+		#create Secret Property
+		$secretPropertyId = getAssetName
+		$secretPropertyName = getAssetName
+		$secretPropertyValue = getAssetName		
+        $secretProperty = New-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -Name $secretPropertyName -Value $secretPropertyValue -Secret
+
+		Assert-NotNull $secretProperty
+        Assert-AreEqual $secretPropertyId $secretProperty.PropertyId
+        Assert-AreEqual $secretPropertyName $secretProperty.Name
+        Assert-AreEqual $secretPropertyValue $secretProperty.Value
+        Assert-AreEqual $true  $secretProperty.Secret
+		Assert-NotNull $secretProperty.Tags
+		Assert-AreEqual 0 $secretProperty.Tags.Count
+
+        # get all properties
+		$properties = Get-AzureRmApiManagementProperty -Context $context
+		
+		Assert-NotNull $properties
+		# there should be 2 properties
+		Assert-AreEqual 2 $properties.Count
+		
+		# get properties by name
+		$properties = $null
+		$properties = Get-AzureRmApiManagementProperty -Context $context -Name 'onesdk'
+		
+		Assert-NotNull $properties
+		# both the properties created start with 'onesdk'
+		Assert-AreEqual 2 $properties.Count
+		
+		# get properties by tag
+		$properties = $null
+		$properties = Get-AzureRmApiManagementProperty -Context $context -Tag 'sdk'
+		
+		Assert-NotNull $property
+		Assert-AreEqual 1 $properties.Count
+		
+		# get property by Id
+		$secretProperty = $null
+		$secretProperty = Get-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId
+		
+		Assert-NotNull $secretProperty
+        Assert-AreEqual $secretPropertyId $secretProperty.PropertyId
+        Assert-AreEqual $secretPropertyName $secretProperty.Name
+        Assert-AreEqual $secretPropertyValue $secretProperty.Value
+        Assert-AreEqual $true  $secretProperty.Secret
+		Assert-NotNull $secretProperty.Tags
+		Assert-AreEqual 0 $secretProperty.Tags.Count
+		
+		# update the secret property with a tag
+		$secretProperty = $null
+		$secretProperty = Set-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -Tags $tags -PassThru
+				
+		Assert-NotNull $secretProperty
+        Assert-AreEqual $secretPropertyId $secretProperty.PropertyId
+        Assert-AreEqual $secretPropertyName $secretProperty.Name
+        Assert-AreEqual $secretPropertyValue $secretProperty.Value
+        Assert-AreEqual $true  $secretProperty.Secret
+		Assert-NotNull $secretProperty.Tags
+		Assert-AreEqual 2 $secretProperty.Tags.Count
+		
+		#convert a non secret property to secret
+		$property = $null
+		$property = Set-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -Secret $true -PassThru
+				
+		Assert-NotNull $property
+        Assert-AreEqual $propertyId $property.PropertyId
+        Assert-AreEqual $propertyName $property.Name
+        Assert-AreEqual $propertyValue $property.Value
+        Assert-AreEqual $true  $property.Secret
+		Assert-NotNull $property.Tags
+		Assert-AreEqual 2 $property.Tags.Count
+				
+        #remove secret property
+        $removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru
+		Assert-True {$removed}
+        
+		$secretProperty = $null
+        try
+        {
+            # check it was removed
+            $secretProperty = Get-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId
+        }
+        catch
+        {
+        }
+		
+		Assert-Null $secretProperty
+    }
+    finally
+    {
+		$removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -PassThru -Force
+		Assert-True {$removed}
+        
+		$property = $null
+        try
+        {
+            # check it was removed
+            $property = Get-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId
+        }
+        catch
+        {
+        }
+		
+		Assert-Null $property
+		
+		# cleanup other Property
+		try
+		{
+			Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru -Force
+		}
+		catch
+		{
+		}
+    }
+}
+
+<#
+.SYNOPSIS
+Tests CRUD operations on Tenant Git Configuration.
+#>
+function TenantGitConfiguration-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    try
+    {        
+        $tenantGitAccess = Get-AzureRmApiManagementTenantGitAccess -Context $context
+
+		Assert-NotNull $tenantGitAccess
+        Assert-AreEqual $true $tenantGitAccess.Enabled        
+		
+		#get Tenant Sync state
+		$tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
+		Assert-NotNull $tenantSyncState
+		Assert-AreEqual $true $tenantSyncState.IsGitEnabled
+
+        # Do a initial Save to populate the master Branch with current state of Configuration database		
+		$saveResponse = Save-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -PassThru
+		
+		Assert-NotNull $saveResponse
+		Assert-AreEqual "Succeeded" $saveResponse.State
+		Assert-Null $saveResponse.Error
+
+		#get Tenant Sync state after Save
+		$tenantSyncState = $null
+		$tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
+		Assert-NotNull $tenantSyncState
+		Assert-AreEqual $true $tenantSyncState.IsGitEnabled
+		Assert-AreEqual "master" $tenantSyncState.Branch
+		
+		# Do a Validate to populate the master Branch with current state of Configuration database
+		$validateResponse = Publish-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -ValidateOnly -PassThru
+		
+		Assert-NotNull $validateResponse
+		Assert-AreEqual "Succeeded" $validateResponse.State
+		Assert-Null $validateResponse.Error
+		
+		# Do a Deploy to populate the master Branch with current state of Configuration database
+		$deployResponse = Publish-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -PassThru
+		
+		Assert-NotNull $deployResponse
+		Assert-AreEqual "Succeeded" $deployResponse.State
+		Assert-Null $deployResponse.Error
+
+		#get Tenant Sync state after Publish
+		$tenantSyncState = $null
+		$tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
+		Assert-NotNull $tenantSyncState
+		Assert-AreEqual $true $tenantSyncState.IsGitEnabled
+		Assert-AreEqual "master" $tenantSyncState.Branch
+		Assert-AreEqual $true $tenantSyncState.IsSynced
+    }
+    finally
+    {
+		
+    }
+}
+
+<#
+.SYNOPSIS
+Tests operations on Tenant Access.
+#>
+function TenantAccessConfiguration-CrudTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+	
+    try
+    {        
+        $tenantAccess = Get-AzureRmApiManagementTenantAccess -Context $context
+
+		Assert-NotNull $tenantAccess
+        Assert-AreEqual $false $tenantAccess.Enabled
+		
+		#enable Tenant Access
+		$tenantAccess = $null
+        $tenantAccess = Set-AzureRmApiManagementTenantAccess -Context $context -Enabled $true -PassThru
+
+		Assert-NotNull $tenantAccess
+		Assert-AreEqual $true $tenantAccess.Enabled
+    }
+    finally
+    {
+		Set-AzureRmApiManagementTenantAccess -Context $context -Enabled $false -PassThru
+    }
+}

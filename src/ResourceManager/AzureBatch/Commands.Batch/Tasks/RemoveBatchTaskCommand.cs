@@ -12,29 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
+using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask, SupportsShouldProcess = true)]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true,
             ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask InputObject { get; set; }

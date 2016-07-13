@@ -12,17 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), 
+        OutputType(typeof(string))]
+    [Alias("New-AdlStoreItem")]
     public class NewAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
@@ -66,30 +68,31 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             FileType ignored;
 
-            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out ignored))
-            {
-                if (!Force)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.OverwriteFileMessage, Path.TransformedPath),
+                "Create",
+                Path.TransformedPath,
+                () =>
                 {
-                    throw new CloudException(string.Format(Resources.ServerFileAlreadyExists, Path.TransformedPath));
-                }
-            }
+                    if (Folder)
+                    {
+                        DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
+                    }
+                    else
+                    {
+                        if (Path.TransformedPath.EndsWith("/"))
+                        {
+                            throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
+                        }
 
-            if (Folder)
-            {
-                DataLakeStoreFileSystemClient.CreateDirectory(Path.TransformedPath, Account);
-            }
-            else
-            {
-                if (Path.TransformedPath.EndsWith("/"))
-                {
-                    throw new CloudException(string.Format(Resources.InvalidFilePath, Path.TransformedPath));
-                }
+                        DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account,
+                            Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
+                    }
 
-                DataLakeStoreFileSystemClient.CreateFile(Path.TransformedPath, Account,
-                    Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
-            }
-
-            WriteObject(Path.OriginalPath);
+                    WriteObject(Path.OriginalPath);
+                },
+                () => DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out ignored));
         }
     }
 }

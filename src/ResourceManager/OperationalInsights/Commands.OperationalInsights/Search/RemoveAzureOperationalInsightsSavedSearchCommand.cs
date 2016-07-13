@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System.Globalization;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.SavedSearch)]
+    [Cmdlet(VerbsCommon.Remove, Constants.SavedSearch, SupportsShouldProcess = true)]
     public class RemoveAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -41,17 +40,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public string SavedSearchId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        [Obsolete("The Force parameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.SavedSearchDeleteConfirmationMessage,
-                    SavedSearchId,
-                    WorkspaceName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.SavedSearchRemoving,

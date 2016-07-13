@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SetAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Parameter(
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To generalize virtual machine.")]
+            HelpMessage = "To redeploy virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Redeploy { get; set; }
 
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.GeneralizeWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var op = this.VirtualMachineClient.RedeployWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
-                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                     WriteObject(result);
                 });
             }

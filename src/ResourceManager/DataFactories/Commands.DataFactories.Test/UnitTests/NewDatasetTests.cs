@@ -53,10 +53,15 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 ";
 
         private NewAzureDataFactoryDatasetCommand cmdlet;
-        
-        public NewDatasetTests()
+
+        public NewDatasetTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
+
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             cmdlet = new NewAzureDataFactoryDatasetCommand()
             {
@@ -100,7 +105,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
                     c.CreateOrUpdateDataset(ResourceGroupName, DataFactoryName, datasetName, rawJsonContent))
                 .Returns(expected)
                 .Verifiable();
-            
+
             // Action
             cmdlet.File = filePath;
             cmdlet.Force = true;
@@ -155,7 +160,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
             // Action
             cmdlet.File = filePath;
             cmdlet.Force = true;
-            
+
             // Assert
             Assert.Throws<ProvisioningFailedException>(() => cmdlet.ExecuteCmdlet());
         }

@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.File;
+using System;
+using System.Management.Automation;
+using System.Security.Permissions;
+using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Start, Constants.FileCopyCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsLifecycle.Start, Constants.FileCopyCmdletName, SupportsShouldProcess = true)]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
         private const string ContainerNameParameterSet = "ContainerName";
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Source container instance", Mandatory = true, ParameterSetName = ContainerParameterSet)]
         [ValidateNotNull]
         public CloudBlobContainer SrcContainer { get; set; }
-        
+
         [Alias("ICloudBlob")]
         [Parameter(HelpMessage = "Source blob instance", Mandatory = true,
            ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = BlobFilePathParameterSet)]
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Dest file instance", Mandatory = true, ParameterSetName = UriFileParameterSet)]
         [ValidateNotNull]
         public CloudFile DestFile { get; set; }
-        
+
         [Alias("SrcContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object",
             Mandatory = false,
@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             EnableMultiThread = true;
         }
-        
+
         /// <summary>
         /// Create file client and storage service management channel if need to.
         /// </summary>
@@ -219,25 +219,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             blobChannel = this.GetBlobChannel();
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
-
+            Action copyAction = null;
+            string target = DestFile != null ? DestFile.Name : DestFilePath;
             switch (ParameterSetName)
             {
                 case ContainerNameParameterSet:
                 case ContainerParameterSet:
                 case BlobFilePathParameterSet:
                 case BlobFileParameterSet:
-                    this.StartCopyFromBlob();
+                    copyAction = () => this.StartCopyFromBlob();
                     break;
                 case ShareNameParameterSet:
                 case ShareParameterSet:
                 case FileFilePathParameterSet:
                 case FileFileParameterSet:
-                    this.StartCopyFromFile();
+                    copyAction = () => this.StartCopyFromFile();
                     break;
                 case UriFilePathParameterSet:
                 case UriFileParameterSet:
-                    this.StartCopyFromUri();
+                    copyAction = () => this.StartCopyFromUri();
                     break;
+            }
+
+            if (copyAction != null && ShouldProcess(target, "Start file copy"))
+            {
+                copyAction();
             }
         }
 
@@ -268,7 +274,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 blob = srcContainer.GetBlobReference(this.SrcBlobName);
                 sourceBlobRelativeName = this.SrcBlobName;
             }
-            
+
             CloudFile destFile = GetDestFile();
 
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
@@ -344,7 +350,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             else
             {
                 string destPath = this.DestFilePath;
-                
+
                 NamingUtil.ValidateShareName(this.DestShareName, false);
                 CloudFileShare share = destChannal.GetShareReference(this.DestShareName);
 
@@ -352,7 +358,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 return share.GetRootDirectoryReference().GetFileReferenceByPath(path);
             }
         }
-        
+
         private async Task StartAsyncCopy(long taskId, CloudFile destFile, Func<bool> checkOverwrite, Func<Task<string>> startCopy)
         {
             bool destExist = true;

@@ -32,6 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using Xunit;
 
     // Get-AzureRemoteAppCollectionUsageDetails, Get-AzureRemoteAppCollectionUsageSummary, 
+
     public class RemoteAppCollectionTest : RemoteAppClientTest
     {
 

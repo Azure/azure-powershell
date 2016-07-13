@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -56,13 +55,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
+                var storageAccounts = this.StorageClient.StorageAccounts.List();
 
                 WriteStorageAccountList(storageAccounts);
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName).StorageAccounts;
+                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
                 WriteStorageAccountList(storageAccounts);
             }
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name).StorageAccount;
+                    this.Name);
 
                 WriteStorageAccount(storageAccount);
             }

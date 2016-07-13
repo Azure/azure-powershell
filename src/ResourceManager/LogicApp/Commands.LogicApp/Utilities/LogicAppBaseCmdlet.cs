@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     public abstract class LogicAppBaseCmdlet : AzureRMCmdlet
     {
         /// <summary>
-        /// LogicApp client
+        /// IntegrationAccount client
         /// </summary>
-        private LogicAppClient _logicAppClient = null;
+        private IntegrationAccountClient _integartionAccountClient = null;
 
         /// <summary>
         /// Websites client
@@ -29,24 +29,23 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         private WebsitesClient _websitesClient = null;
 
         /// <summary>
-        /// Gets or sets the LogicApp client used in the PowerShell commands.
+        /// Gets or sets the IntegrationAccount client used in the PowerShell commands.
         /// </summary>
-        public LogicAppClient LogicAppClient
+        public IntegrationAccountClient IntegrationAccountClient
         {
             get
             {
-                this._logicAppClient = new LogicAppClient(DefaultProfile.Context)
+                this._integartionAccountClient = new IntegrationAccountClient(DefaultProfile.Context)
                 {
                     VerboseLogger = WriteVerboseWithTimestamp,
                     ErrorLogger = WriteErrorWithTimestamp                    
-                };
-
-                return _logicAppClient;
+                };                
+                return _integartionAccountClient;
             }
 
             set
             {
-                this._logicAppClient = value;                 
+                this._integartionAccountClient = value;                 
             }
         }
 
@@ -71,5 +70,33 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 this._websitesClient = value;
             }
         }
+
+        /// <summary>
+        /// LogicApp client
+        /// </summary>
+        private LogicAppClient _logicAppClient = null;
+
+        /// <summary>
+        /// Gets or sets the LogicApp client used in the PowerShell commands.
+        /// </summary>
+        public LogicAppClient LogicAppClient
+        {
+            get
+            {
+                this._logicAppClient = new LogicAppClient(DefaultProfile.Context)
+                {
+                    VerboseLogger = WriteVerboseWithTimestamp,
+                    ErrorLogger = WriteErrorWithTimestamp
+                };
+
+                return _logicAppClient;
+            }
+
+            set
+            {
+                this._logicAppClient = value;
+            }
+        }
+
     }
 }

@@ -19,6 +19,12 @@ function Test-DataLakeAnalyticsAccount
 	{
 		# Creating Account and initial setup
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		# Test to make sure the account doesn't exist
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-False {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
+
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $secondDataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
@@ -45,6 +51,11 @@ function Test-DataLakeAnalyticsAccount
 			[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(30000)
 			Assert-False {$i -eq 60} "dataLakeAnalytics account is not in succeeded state even after 30 min."
 		}
+
+		# Test to make sure the account does exist now
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName}
+		# Test it without specifying a resource group
+		Assert-True {Test-AzureRMDataLakeAnalyticsAccount -Name $accountName}
 
 		# Updating Account
 		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
@@ -106,8 +117,8 @@ function Test-DataLakeAnalyticsAccount
 		$adlsAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataLakeStore $secondDataLakeAccountName
 		Assert-AreEqual $secondDataLakeAccountName $adlsAccountInfo.Name
 
-		# get the list of data lakes
-		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource DataLakeStore
+		# get the list of all data sources
+		$adlsAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
 		Assert-AreEqual 2 $adlsAccountInfos.Count
 
 		# remove the Data lake storage account
@@ -128,9 +139,9 @@ function Test-DataLakeAnalyticsAccount
 		$blobAccountInfo = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName
 		Assert-AreEqual $blobAccountName $blobAccountInfo.Name
 
-		# get the list of blobs
-		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName -DataSource Blob
-		Assert-AreEqual 1 $blobAccountInfos.Count
+		# get the list of data sources (there should be two, one ADLS account and one blob storage account)
+		$blobAccountInfos = Get-AzureRmDataLakeAnalyticsDataSource -Account $accountName
+		Assert-AreEqual 2 $blobAccountInfos.Count
 
 		# remove the blob storage account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsDataSource -Account $accountName -Blob $blobAccountName -Force -PassThru} "Remove blob Storage account failed."
@@ -175,7 +186,8 @@ function Test-DataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+		$nowTime = $accountCreated.Properties.CreationTime
+        
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -203,6 +215,8 @@ function Test-DataLakeAnalyticsJob
 		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
 		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
@@ -218,11 +232,11 @@ function Test-DataLakeAnalyticsJob
 
 		Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $(([DateTime]::Now).AddMinutes(-5))
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-5))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after five miuntes ago"
-
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $(([DateTime]::Now).AddMinutes(0))
+		# we add five minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(5)) 
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
 
@@ -336,7 +350,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+        $nowTime = $accountCreated.Properties.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -369,7 +383,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		# Attempt to Get debug data for a non-existent job
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsJobDebugInfo -AccountName $accountName -JobIdentity [Guid]::Empty}
 
-		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTime]::Now)
+		$jobsWithDateOffset = Get-AzureRmDataLakeAnalyticsJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]$nowTime)
 
 		Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
@@ -459,8 +473,9 @@ function Test-DataLakeAnalyticsCatalog
 			ClickedUrls     string,
 		INDEX idx1 //Name of index
 		CLUSTERED (Region ASC) //Column to cluster by
-		PARTITIONED BY HASH (Region) //Column to partition by
+		PARTITIONED BY BUCKETS (UserId) HASH (Region) //Column to partition by
 	);
+	ALTER TABLE {0}.dbo.{1} ADD IF NOT EXISTS PARTITION (1);
 	DROP FUNCTION IF EXISTS {0}.dbo.{2};
 
 	//create table weblogs on space-delimited website log data
@@ -537,6 +552,10 @@ function Test-DataLakeAnalyticsCatalog
 "@
 		# run the script
 		$scriptToRun = [string]::Format($scriptTemplate, $databaseName, $tableName, $tvfName, $viewName, $procName)
+		
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("createCatalogJob01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
+		
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJob" -Script $scriptToRun
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -586,6 +605,20 @@ function Test-DataLakeAnalyticsCatalog
 		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Table -Path "$databaseName.dbo.$tableName"
 		Assert-NotNull $specificItem "Could not retrieve the table by name"
 		Assert-AreEqual $tableName $specificItem.Name
+
+		# retrieve the list of table partitions
+		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName"
+
+		Assert-NotNull $itemList "The table partition list is null"
+
+		Assert-True {$itemList.count -gt 0} "The table partition list is empty"
+		
+		$itemToFind = $itemList[0]
+	
+		# retrieve the specific table partition
+		$specificItem = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TablePartition -Path "$databaseName.dbo.$tableName.[$($itemToFind.Name)]"
+		Assert-NotNull $specificItem "Could not retrieve the table partition by name"
+		Assert-AreEqual $itemToFind.Name $specificItem.Name
 
 		# retrieve the list of table valued functions and ensure the created tvf is in it
 		$itemList = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType TableValuedFunction -Path "$databaseName.dbo"
@@ -659,8 +692,11 @@ function Test-DataLakeAnalyticsCatalog
 		# create the secret
 		$pw = ConvertTo-SecureString -String $secretPwd -AsPlainText -Force
 		$secret = New-Object System.Management.Automation.PSCredential($secretName,$pw)
+		$secretName2 = $secretName + "dup"
+		$secret2 = New-Object System.Management.Automation.PSCredential($secretName2,$pw)
 
 		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
+		New-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -secret $secret2 -DatabaseName $databaseName -Uri "https://pstest.contoso.com:443"
 
 		# verify that the credential can be retrieved
 		$getSecret = Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"
@@ -676,7 +712,9 @@ function Test-DataLakeAnalyticsCatalog
 	CREATE CREDENTIAL {1} WITH USER_NAME = "scope@rkm4grspxa", IDENTITY = "{2}";
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName, $secretName)
-	
+		
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("createCredentialjob02")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -708,7 +746,8 @@ function Test-DataLakeAnalyticsCatalog
 	DROP CREDENTIAL {1};
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName)
-	
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("dropCredentialJob02")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AzureRMDataLakeAnalyticsJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -718,6 +757,12 @@ function Test-DataLakeAnalyticsCatalog
 
 		# verify that the secret cannot be retrieved
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName"}
+
+		# delete all secrets
+		Remove-AzureRmDataLakeAnalyticsCatalogSecret -AccountName $accountName -DatabaseName $databaseName -Force
+
+		# verify that the second secret cannot be retrieved
+		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
 		# Delete the DataLakeAnalytics account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."

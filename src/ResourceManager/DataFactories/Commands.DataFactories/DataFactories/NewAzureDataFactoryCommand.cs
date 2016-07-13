@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Models;
 using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.DataFactory), OutputType(typeof(PSDataFactory))]
+    [Cmdlet(VerbsCommon.New, Constants.DataFactory, SupportsShouldProcess = true), 
+        OutputType(typeof(PSDataFactory))]
     public class NewAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,

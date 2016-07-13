@@ -704,3 +704,126 @@ function Test-WebAppSlotPublishingProfile
 		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
+
+<#
+.SYNOPSIS
+Tests managing slot config names for a web app
+#>
+function Test-ManageSlotSlotConfigName
+{
+	$rgname = "Default-Web-EastAsia"
+	$appname = "webappslottest"
+
+	# Retrive Web App
+	$webApp = Get-AzureRmWebApp -ResourceGroupName $rgname -Name  $appname
+			
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+
+	# Make sure that None of the settings are currently marked as slot setting
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+
+	# Test - Mark all app settings as slot setting
+	$appSettingNames = $webApp.SiteConfig.AppSettings | Select-Object -ExpandProperty Name
+	$webApp | Set-AzureRmWebAppSlotConfigName -AppSettingNames $appSettingNames 
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+	Assert-AreEqual $webApp.SiteConfig.AppSettings.Count $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+
+	# Test- Mark all connection strings as slot setting
+	$connectionStringNames = $webApp.SiteConfig.ConnectionStrings | Select-Object -ExpandProperty Name
+	Set-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname -ConnectionStringNames $connectionStringNames
+	$slotConfigNames = Get-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname
+	Assert-AreEqual $webApp.SiteConfig.AppSettings.Count $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual $webApp.SiteConfig.ConnectionStrings.Count $slotConfigNames.ConnectionStringNames.Count
+
+	# Test- Clear slot app setting names
+	$webApp | Set-AzureRmWebAppSlotConfigName -RemoveAllAppSettingNames
+	$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual $webApp.SiteConfig.ConnectionStrings.Count $slotConfigNames.ConnectionStringNames.Count
+
+	# Test - Clear slot connection string names
+	Set-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname -RemoveAllConnectionStringNames
+	$slotConfigNames = Get-AzureRmWebAppSlotConfigName -ResourceGroupName $rgname -Name $appname
+	Assert-AreEqual 0 $slotConfigNames.AppSettingNames.Count
+	Assert-AreEqual 0 $slotConfigNames.ConnectionStringNames.Count
+}
+
+
+<#
+.SYNOPSIS
+Tests regular web app slot swap
+#>
+function Test-WebAppRegularSlotSwap
+{
+	$rgname = "Default-Web-EastAsia"
+	$appname = "webappslottest"
+	$sourceSlotName = "staging"
+	$destinationSlotName = "production"
+
+	# Swap Web App slots
+	$webApp = Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName
+}
+
+<#
+.SYNOPSIS
+Tests web app slot swap with preview: apply slot config followed by reset slot swap
+#>
+function Test-WebAppSwapWithPreviewResetSlotSwap
+{
+	Test-SlotSwapWithPreview 'ResetSlotSwap'
+}
+
+<#
+.SYNOPSIS
+Tests web app slot swap with preview: apply slot config followed by complete slot swap
+#>
+function Test-WebAppSwapWithPreviewCompleteSlotSwap
+{
+	Test-SlotSwapWithPreview 'CompleteSlotSwap'
+}
+
+<#
+.SYNOPSIS
+Test slot swap with preview feature
+#>
+function Test-SlotSwapWithPreview($swapWithPreviewAction)
+{
+	$rgname = "Default-Web-EastAsia"
+	$appname = "webappslottest"
+	$sourceSlotName = "staging"
+	$destinationSlotName = "production"
+	$appSettingName = 'testappsetting'
+	$originalSourceAppSettingValue = "staging"
+	$originalDestinationAppSettingValue = "production"
+
+	# Let's retrieve slot configs and make sure that it contains initial values as expected
+	$destinationWebApp = Get-AzureRmWebApp -ResourceGroupName $rgname -Name  $appname
+	Validate-SlotSwapAppSetting $destinationWebApp $appSettingName $originalDestinationAppSettingValue
+	
+	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $sourceSlotName
+	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+
+	# Let's apply slot config and make sure that app setting values have been swapped
+	Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
+	Wait-Seconds 30
+	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
+	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
+
+	# Let's finish the current slot swap operation (complete or reset)
+	Swap-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
+	Wait-Seconds 30
+	$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
+	Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+}
+
+<#
+.SYNOPSIS
+Validates slot app setting for slot swap tests
+#>
+function Validate-SlotSwapAppSetting($webApp, $appSettingName, $expectedValue)
+{
+	Assert-AreEqual $webApp.SiteConfig.AppSettings[0].Name $appSettingName
+	Assert-AreEqual $webApp.SiteConfig.AppSettings[0].Value $expectedValue
+}

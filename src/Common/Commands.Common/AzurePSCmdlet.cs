@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Management.Automation;
-using System.Reflection;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
-using System.IO;
-using System.Text;
-using System.Linq;
-using System.Net.Http.Headers;
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Management.Automation;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -41,13 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
         protected static string _errorRecordFolderPath = null;
         protected static string _sessionId = Guid.NewGuid().ToString();
-        protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff"; 
+        protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
         protected string _clientRequestId = Guid.NewGuid().ToString();
         protected MetricHelper _metricHelper;
         protected AzurePSQoSEvent _qosEvent;
         protected DebugStreamTraceListener _adalListener;
 
-        protected virtual bool IsUsageMetricEnabled {
+        protected virtual bool IsUsageMetricEnabled
+        {
             get { return true; }
         }
 
@@ -79,7 +80,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
-            
+
             //TODO: Inject from CI server
             _metricHelper = new MetricHelper();
             _metricHelper.AddTelemetryClient(new TelemetryClient
@@ -117,12 +118,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
             if (_dataCollectionProfile == null)
             {
-                string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory, 
+                string fileFullPath = Path.Combine(AzurePowerShell.ProfileDirectory,
                     AzurePSDataCollectionProfile.DefaultFileName);
-                if(File.Exists(fileFullPath))
+                if (File.Exists(fileFullPath))
                 {
                     string contents = File.ReadAllText(fileFullPath);
-                    _dataCollectionProfile = 
+                    _dataCollectionProfile =
                         JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
                 }
             }
@@ -171,10 +172,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected bool CheckIfInteractive()
         {
             bool interactive = true;
-            if (this.Host == null || 
-                this.Host.UI == null || 
+            if (this.Host == null ||
+                this.Host.UI == null ||
                 this.Host.UI.RawUI == null ||
-                Environment.GetCommandLineArgs().Any(s => 
+                Environment.GetCommandLineArgs().Any(s =>
                     s.Equals("-NonInteractive", StringComparison.OrdinalIgnoreCase)))
             {
                 interactive = false;
@@ -225,7 +226,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void SetupDebuggingTraces()
         {
-            _httpTracingInterceptor = _httpTracingInterceptor ?? new 
+            _httpTracingInterceptor = _httpTracingInterceptor ?? new
                 RecordingTracingInterceptor(DebugMessages);
             _adalListener = _adalListener ?? new DebugStreamTraceListener(DebugMessages);
             RecordingTracingInterceptor.AddToContext(_httpTracingInterceptor);
@@ -246,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 ModuleName, string.Format("v{0}", ModuleVersion));
             AzureSession.ClientFactory.UserAgents.Add(userAgentValue);
             AzureSession.ClientFactory.AddHandler(
-                new CmdletInfoHandler(this.CommandRuntime.ToString(), 
+                new CmdletInfoHandler(this.CommandRuntime.ToString(),
                     this.ParameterSetName, this._clientRequestId));
 
         }
@@ -292,7 +293,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected bool IsVerbose()
         {
-            bool verbose = MyInvocation.BoundParameters.ContainsKey("Verbose") 
+            bool verbose = MyInvocation.BoundParameters.ContainsKey("Verbose")
                 && ((SwitchParameter)MyInvocation.BoundParameters["Verbose"]).ToBool();
             return verbose;
         }
@@ -305,7 +306,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 _qosEvent.Exception = errorRecord.Exception;
                 _qosEvent.IsSuccess = false;
             }
-            
+
             base.WriteError(errorRecord);
         }
 
@@ -431,10 +432,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private void RecordDebugMessages()
         {
             // Create 'ErrorRecords' folder under profile directory, if not exists
-            if (string.IsNullOrEmpty(_errorRecordFolderPath) 
+            if (string.IsNullOrEmpty(_errorRecordFolderPath)
                 || !Directory.Exists(_errorRecordFolderPath))
             {
-                _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory, 
+                _errorRecordFolderPath = Path.Combine(AzurePowerShell.ProfileDirectory,
                     "ErrorRecords");
                 Directory.CreateDirectory(_errorRecordFolderPath);
             }
@@ -464,7 +465,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 sb.AppendLine(content);
             }
 
-           AzureSession.DataStore.WriteFile(filePath, sb.ToString());
+            AzureSession.DataStore.WriteFile(filePath, sb.ToString());
         }
 
         /// <summary>
@@ -505,30 +506,94 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Asks for confirmation before executing the action.
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  This is a legacy 
+        /// version forcompatibility with older RDFE cmdlets.
         /// </summary>
         /// <param name="force">Do not ask for confirmation</param>
-        /// <param name="actionMessage">Message to describe the action</param>
+        /// <param name="continueMessage">Message to describe the action</param>
         /// <param name="processMessage">Message to prompt after the active is performed.</param>
         /// <param name="target">The target name.</param>
         /// <param name="action">The action code</param>
-        protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
         {
             if (_qosEvent != null)
             {
                 _qosEvent.PauseQoSTimer();
             }
-            
-            if (force || ShouldContinue(actionMessage, ""))
+
+            if (force || ShouldContinue(continueMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
-                {                 
+                {
                     if (_qosEvent != null)
                     {
                         _qosEvent.ResumeQosTimer();
                     }
                     action();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        /// <param name="useShouldContinue">A predicate indicating whether ShouldContinue should be invoked for thsi action</param>
+        protected virtual void ConfirmAction(bool force, string continueMessage, string processMessage, string target, Action action, Func<bool> useShouldContinue)
+        {
+            if (null == useShouldContinue)
+            {
+                useShouldContinue = () => true;
+            }
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (ShouldProcess(target, processMessage))
+            {
+                if (force || !useShouldContinue() || ShouldContinue(continueMessage, ""))
+                {
+                    if (_qosEvent != null)
+                    {
+                        _qosEvent.ResumeQosTimer();
+                    }
+                    action();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Prompt for confirmation depending on the ConfirmLevel. By default No confirmation prompt 
+        /// occurs unless ConfirmLevel >= $ConfirmPreference.  Guarding the actions of a cmdlet with this 
+        /// method will enable the cmdlet to support -WhatIf and -Confirm parameters.
+        /// </summary>
+        /// <param name="processMessage">The change being made to the resource</param>
+        /// <param name="target">The resource that is being changed</param>
+        /// <param name="action">The action to perform if confirmed</param>
+        protected virtual void ConfirmAction(string processMessage, string target, Action action)
+        {
+            if (_qosEvent != null)
+            {
+                _qosEvent.PauseQoSTimer();
+            }
+
+            if (ShouldProcess(target, processMessage))
+            {
+                if (_qosEvent != null)
+                {
+                    _qosEvent.ResumeQosTimer();
+                }
+                action();
             }
         }
 

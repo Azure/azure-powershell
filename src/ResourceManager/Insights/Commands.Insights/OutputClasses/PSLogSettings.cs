@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// A value indicating whether the logs are enabled for this category.
         /// </summary>
-        public bool Enabled{ get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// The category of the log. Use Categories to selectively enabling and desabling logs.

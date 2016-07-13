@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
+using Microsoft.Azure.Management.DataFactories;
+using Microsoft.Azure.Management.DataFactories.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.DataFactories.Models;
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.Azure.Management.DataFactories;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 throw new ArgumentNullException("filterOptions");
             }
-            
+
             // ToDo: make ResourceGroupName optional
             if (string.IsNullOrWhiteSpace(filterOptions.ResourceGroupName))
             {
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                             Tags = tags
                         }
                 });
-            
+
             return response.DataFactory;
         }
 
@@ -119,33 +118,25 @@ namespace Microsoft.Azure.Commands.DataFactories
                 dataFactory =
                     new PSDataFactory(
                         CreateOrUpdateDataFactory(parameters.ResourceGroupName, parameters.DataFactoryName,
-                            parameters.Location, tags)) {ResourceGroupName = parameters.ResourceGroupName};
+                            parameters.Location, tags))
+                    { ResourceGroupName = parameters.ResourceGroupName };
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the data factory exists or not.
-                createDataFactory();
-            }
-            else
-            {
-                bool dataFactoryExists = CheckDataFactoryExists(parameters.ResourceGroupName, parameters.DataFactoryName);
-
-                parameters.ConfirmAction(
-                    !dataFactoryExists,    // prompt only if the data factory exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DataFactoryExists,
-                        parameters.DataFactoryName,
-                        parameters.ResourceGroupName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DataFactoryCreating,
-                        parameters.DataFactoryName,
-                        parameters.ResourceGroupName),
+            parameters.ConfirmAction(
+                parameters.Force,    // prompt only if the data factory exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryExists,
                     parameters.DataFactoryName,
-                    createDataFactory);
-            }
+                    parameters.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DataFactoryCreating,
+                    parameters.DataFactoryName,
+                    parameters.ResourceGroupName),
+                parameters.DataFactoryName,
+                createDataFactory,
+                () => CheckDataFactoryExists(parameters.ResourceGroupName, parameters.DataFactoryName, out dataFactory));
 
             if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataFactory.ProvisioningState))
             {
@@ -158,12 +149,13 @@ namespace Microsoft.Azure.Commands.DataFactories
             return dataFactory;
         }
 
-        private bool CheckDataFactoryExists(string resourceGroupName, string dataFactoryName)
+        private bool CheckDataFactoryExists(string resourceGroupName, string dataFactoryName, out PSDataFactory dataFactory)
         {
+            dataFactory = null;
             // ToDo: use HEAD to check if a resource exists or not
             try
             {
-                PSDataFactory dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
+                dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
 
                 return true;
             }
@@ -178,7 +170,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 throw;
             }
         }
-        
+
         public virtual HttpStatusCode DeleteDataFactory(string resourceGroupName, string dataFactoryName)
         {
             AzureOperationResponse response = DataPipelineManagementClient.DataFactories.Delete(resourceGroupName,

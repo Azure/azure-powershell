@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
+
+using Microsoft.Azure.Commands.Compute.Models;
+using Newtonsoft.Json;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -36,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             if (cloudException == null)
             {
-                throw new ArgumentNullException("cloudException");
+                return "No information in the cloud exception.";
             }
 
             var sb = new StringBuilder();
@@ -54,12 +51,19 @@ namespace Microsoft.Azure.Commands.Compute.Common
             if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
                 && cloudException.Response.Content != null)
             {
-                var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                     cloudException.Response.Content);
 
                 sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
                 sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
-                sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                if (string.IsNullOrWhiteSpace(errorReturned.OperationId))
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.Name);
+                }
+                else
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                }
                 sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
                 if (errorReturned.Error == null)
                 {
@@ -79,12 +83,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                     return sb.ToString();
                 }
 
-                var headers = cloudException.Response.Headers;
-
-                var match = Regex.Match(headers.ToString(),
-                    @"x-ms-request-id: ([a-z0-9]{8}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{4}\-[a-z0-9]{12})",
-                    RegexOptions.IgnoreCase);
-                string operationId = (match.Success) ? match.Groups[1].Value : "";
+                string operationId = cloudException.RequestId;
 
                 sb.AppendLine().AppendFormat(
                     "OperationID : '{0}'",
@@ -92,14 +91,5 @@ namespace Microsoft.Azure.Commands.Compute.Common
             }
             return sb.ToString();
         }
-    }
-
-    public class ComputeLongRunningOperationError
-    {
-        public string OperationId;
-        public string Status;
-        public DateTime? StartTime;
-        public DateTime? EndTime;
-        public ApiError Error;
     }
 }

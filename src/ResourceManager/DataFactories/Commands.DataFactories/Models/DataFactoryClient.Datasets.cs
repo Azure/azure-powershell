@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
-using Hyak.Common;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -149,31 +148,22 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the dataset exists or not.
-                createDataset();
-            }
-            else
-            {
-                bool datasetExists = this.CheckDatasetExists(parameters.ResourceGroupName, parameters.DataFactoryName,
-                    parameters.Name);
-
-                parameters.ConfirmAction(
-                    !datasetExists,  // prompt only if the dataset exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DatasetExists,
-                        parameters.Name,
-                        parameters.DataFactoryName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.DatasetCreating,
-                        parameters.Name,
-                        parameters.DataFactoryName),
+            parameters.ConfirmAction(
+                parameters.Force,  // prompt only if the dataset exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DatasetExists,
                     parameters.Name,
-                    createDataset);
-            }
+                    parameters.DataFactoryName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.DatasetCreating,
+                    parameters.Name,
+                    parameters.DataFactoryName),
+                parameters.Name,
+                createDataset,
+                () => this.CheckDatasetExists(parameters.ResourceGroupName, parameters.DataFactoryName,
+                parameters.Name));
 
             return dataset;
         }

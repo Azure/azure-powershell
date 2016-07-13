@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Globalization;
-using Microsoft.Azure.Commands.DataFactories.Properties;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataset))]
+    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName,
+        SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
     public class NewAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

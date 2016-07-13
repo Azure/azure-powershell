@@ -12,20 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Management.Automation.Host;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
+using System;
+using System.IO;
+using System.Management.Automation;
+using System.Management.Automation.Host;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -61,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         protected override void SaveDataCollectionProfile()
         {
-             if (_dataCollectionProfile == null)
+            if (_dataCollectionProfile == null)
             {
                 InitializeDataCollectionProfile();
             }
@@ -74,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             }
             AzureSession.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
-       }
+        }
 
         protected override void PromptForDataCollectionProfileIfNotExists()
         {
@@ -95,11 +90,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                 while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
                 {
-                    TestMockSupport.Delay(10*1000);
+                    TestMockSupport.Delay(10 * 1000);
                     endTime = DateTime.Now;
 
                     elapsedSeconds = (endTime - startTime).TotalSeconds;
-                    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
+                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
                     WriteProgress(record);
                 }
 
@@ -122,5 +117,25 @@ namespace Microsoft.WindowsAzure.Commands.Common
         protected override void InitializeQosEvent()
         {
         }
+
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
+        }
+
+
     }
 }

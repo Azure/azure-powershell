@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Management.Logic;
+    using Microsoft.Azure.Management.Logic.Models;
     using System;
 
     /// <summary>
@@ -64,10 +64,8 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 resourceGroupName,
                 workflowName,
                 accessKeyName,
-                new RegenerateSecretKeyParameters
-                {
-                    KeyType = (KeyType) Enum.Parse(typeof (KeyType), keyType)
-                });
+                (KeyType) Enum.Parse(typeof (KeyType), keyType)
+                );
         }
     }
 }

@@ -12,15 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Microsoft.WindowsAzure;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -49,9 +48,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 foreach (var job in response.Value)
                 {
                     jobs.Add(new PSJob(job)
-                        {
-                            ResourceGroupName = resourceGroupName
-                        });
+                    {
+                        ResourceGroupName = resourceGroupName
+                    });
                 }
             }
 
@@ -69,9 +68,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 foreach (var job in response.Value)
                 {
                     jobs.Add(new PSJob(job)
-                        {
-                            ResourceGroupName = StreamAnalyticsCommonUtilities.ExtractResourceGroupFromId(job.Id)
-                        });
+                    {
+                        ResourceGroupName = StreamAnalyticsCommonUtilities.ExtractResourceGroupFromId(job.Id)
+                    });
                 }
             }
 
@@ -124,10 +123,10 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                     new JobCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
 
             return new PSJob(response.Job)
-                {
-                    ResourceGroupName = resourceGroupName,
-                    JobName = jobName
-                };
+            {
+                ResourceGroupName = resourceGroupName,
+                JobName = jobName
+            };
         }
 
         public virtual PSJob CreatePSJob(CreatePSJobParameter parameter)
@@ -138,36 +137,24 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSJob job = null;
-            Action createJob = () =>
-            {
-                job = CreateOrUpdatePSJob(parameter.ResourceGroupName, parameter.JobName, parameter.RawJsonContent);
-            };
-
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createJob();
-            }
-            else
-            {
-                bool jobExists = CheckJobExists(parameter.ResourceGroupName, parameter.JobName);
-
-                parameter.ConfirmAction(
-                        !jobExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.JobExists,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.JobCreating,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.JobExists,
                         parameter.JobName,
-                        createJob);
-            }
-
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.JobCreating,
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.JobName,
+                    () =>
+                    {
+                        job = CreateOrUpdatePSJob(parameter.ResourceGroupName, parameter.JobName, parameter.RawJsonContent);
+                    },
+                    () => CheckJobExists(parameter.ResourceGroupName, parameter.JobName));
             return job;
         }
 

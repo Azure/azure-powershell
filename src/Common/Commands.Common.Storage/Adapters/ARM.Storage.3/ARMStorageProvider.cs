@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
             var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
-            return new ARMStorageService(account.StorageAccount, keys.StorageAccountKeys.Key1, 
+            return new ARMStorageService(account.StorageAccount, keys.StorageAccountKeys.Key1,
                 keys.StorageAccountKeys.Key2);
         }
     }

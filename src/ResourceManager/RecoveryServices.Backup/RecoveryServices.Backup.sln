@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Models", "Commands.RecoveryServices.Backup.Models\Commands.RecoveryServices.Backup.Models.csproj", "{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Providers", "Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.csproj", "{02234E90-BCDE-4B20-B1F5-01B1005821DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Helpers", "Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.csproj", "{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{54815A13-6BFB-406A-BEFC-44C31CABAFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Test", "Commands.RecoveryServices.Backup.Test\Commands.RecoveryServices.Backup.Test.csproj", "{65E15D74-1E24-4600-8671-D0B420524B17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Logger", "Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj", "{5E675749-6139-464A-904C-59C0FFDFEC82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authentication", "..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Cmdlets", "Commands.RecoveryServices.Backup\Commands.RecoveryServices.Backup.Cmdlets.csproj", "{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "..\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.ServiceClientAdapter", "Commands.RecoveryServices.Backup.ServiceClientAdapter\Commands.RecoveryServices.Backup.ServiceClientAdapter.csproj", "{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B92759-50B3-494E-B9F0-EC9A2CE9D57B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02234E90-BCDE-4B20-B1F5-01B1005821DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02234E90-BCDE-4B20-B1F5-01B1005821DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02234E90-BCDE-4B20-B1F5-01B1005821DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02234E90-BCDE-4B20-B1F5-01B1005821DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1D3F36-E6C8-4764-8C7D-6F9EE537490C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{604260DC-B392-4CF4-81EC-34B14591E2D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604260DC-B392-4CF4-81EC-34B14591E2D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604260DC-B392-4CF4-81EC-34B14591E2D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604260DC-B392-4CF4-81EC-34B14591E2D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E15D74-1E24-4600-8671-D0B420524B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E15D74-1E24-4600-8671-D0B420524B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E15D74-1E24-4600-8671-D0B420524B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E15D74-1E24-4600-8671-D0B420524B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E675749-6139-464A-904C-59C0FFDFEC82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E675749-6139-464A-904C-59C0FFDFEC82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E675749-6139-464A-904C-59C0FFDFEC82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E675749-6139-464A-904C-59C0FFDFEC82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3804B64-C0D3-48F8-82EC-1F632F833C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B3E879A-F856-46BF-AFF9-8AD6760CF7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B758FEC1-35C1-4F93-A954-66DD33F6E0EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{65E15D74-1E24-4600-8671-D0B420524B17} = {54815A13-6BFB-406A-BEFC-44C31CABAFB4}
+		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {54815A13-6BFB-406A-BEFC-44C31CABAFB4}
+	EndGlobalSection
+EndGlobal

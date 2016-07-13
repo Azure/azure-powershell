@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetIPConfiguration [] IpConfiguration { get; set; }
+        public VirtualMachineScaleSetIPConfiguration[] IpConfiguration { get; set; }
 
         protected override void ProcessRecord()
         {

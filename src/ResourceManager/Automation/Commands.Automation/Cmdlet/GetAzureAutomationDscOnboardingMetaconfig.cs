@@ -12,23 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Globalization;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets azure automation dsc onboarding meta configuration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscOnboardingMetaconfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
     [OutputType(typeof(DscOnboardingMetaconfig))]
     public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
     {
@@ -36,7 +31,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// True to overwrite the existing meta.mof; false otherwise.
         /// </summary>        
         private bool overwriteExistingFile;
-        
+
         /// <summary>
         /// Gets or sets the output folder for the metaconfig mof files
         /// </summary>

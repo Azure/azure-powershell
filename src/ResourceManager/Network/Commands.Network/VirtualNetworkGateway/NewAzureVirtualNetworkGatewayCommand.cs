@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
-using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true),
+        OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -143,27 +143,22 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
-            if (this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResource, Name),
-                    Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage,
-                    Name,
-                    () => CreateVirtualNetworkGateway());
-
-                WriteObject(this.GetVirtualNetworkGateway(this.ResourceGroupName, this.Name));
-            }
-            else
-            {
-                var virtualNetworkGateway = CreateVirtualNetworkGateway();
-
-                WriteObject(virtualNetworkGateway);
-            }
+            base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Properties.Resources.OverwritingResource, Name),
+                Properties.Resources.CreatingResourceMessage,
+                Name,
+                () =>
+                {
+                    var virtualNetworkGateway = CreateVirtualNetworkGateway();
+                    WriteObject(virtualNetworkGateway);
+                },
+                () => present);
         }
 
         private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
@@ -175,7 +170,6 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.IpConfigurations != null)
             {
-                vnetGateway.IpConfigurations = new List<PSVirtualNetworkGatewayIpConfiguration>();
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
@@ -235,21 +229,21 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.VpnClientConfiguration = null;
             }
 
-            if(this.Asn > 0 || this.PeerWeight > 0)
+            if (this.Asn > 0 || this.PeerWeight > 0)
             {
                 vnetGateway.BgpSettings = new PSBgpSettings();
                 vnetGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
 
-                if(this.Asn > 0)
+                if (this.Asn > 0)
                 {
                     vnetGateway.BgpSettings.Asn = this.Asn;
                 }
 
-                if(this.PeerWeight > 0)
+                if (this.PeerWeight > 0)
                 {
                     vnetGateway.BgpSettings.PeerWeight = this.PeerWeight;
                 }
-                else if(this.PeerWeight < 0)
+                else if (this.PeerWeight < 0)
                 {
                     throw new ArgumentException("PeerWeight must be a positive integer");
                 }

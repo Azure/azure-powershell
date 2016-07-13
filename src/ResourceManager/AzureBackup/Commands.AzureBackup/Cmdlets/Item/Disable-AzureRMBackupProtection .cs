@@ -14,22 +14,17 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
-using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
 {
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection", SupportsShouldProcess = true), OutputType(typeof(AzureRMBackupJob))]
     public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
@@ -40,7 +35,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }   
+        public SwitchParameter Force { get; set; }
 
         private bool DeleteBackupData;
 
@@ -83,7 +78,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                             new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location),
                             operationStatus.JobList).FirstOrDefault());
                     });
-                });            
+                });
         }
     }
 }

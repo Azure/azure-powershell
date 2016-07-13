@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceCreateOrUpdateResult : AzureOperationResponse
     {
         private GenericResourceExtended _resource;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resource; }
             set { this._resource = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceCreateOrUpdateResult
         /// class.

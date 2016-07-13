@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -114,45 +114,34 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSOutput output = null;
-            Action createOutput = () =>
-            {
-                output =
-                    new PSOutput(CreateOrUpdatePSOutput(parameter.ResourceGroupName,
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.OutputExists,
+                        parameter.OutputName,
                         parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.OutputCreating,
                         parameter.OutputName,
-                        parameter.RawJsonContent))
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.OutputName,
+                    () =>
                     {
-                        ResourceGroupName = parameter.ResourceGroupName,
-                        JobName = parameter.JobName
-                    };
-            };
-
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createOutput();
-            }
-            else
-            {
-                bool outputExists = CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName);
-
-                parameter.ConfirmAction(
-                        !outputExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.OutputExists,
-                            parameter.OutputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.OutputCreating,
-                            parameter.OutputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        parameter.OutputName,
-                        createOutput);
-            }
+                        output =
+                            new PSOutput(CreateOrUpdatePSOutput(parameter.ResourceGroupName,
+                                parameter.JobName,
+                                parameter.OutputName,
+                                parameter.RawJsonContent))
+                            {
+                                ResourceGroupName = parameter.ResourceGroupName,
+                                JobName = parameter.JobName
+                            };
+                    },
+                    () => CheckOutputExists(parameter.ResourceGroupName, parameter.JobName, parameter.OutputName));
 
             return output;
         }

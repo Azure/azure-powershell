@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof (List<JobInformation>), typeof (JobInformation))]
+     OutputType(typeof(List<JobInformation>), typeof(JobInformation))]
+    [Alias("Get-AdlJob")]
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "All In Resource Group and Account";
@@ -104,14 +105,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.DebugInfo)
                         {
-                            ((USqlJobProperties) jobDetails.Properties).DebugData =
+                            ((USqlJobProperties)jobDetails.Properties).DebugData =
                                 DataLakeAnalyticsClient.GetDebugDataPaths(Account, JobId);
                         }
 
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.Statistics)
                         {
-                            ((USqlJobProperties) jobDetails.Properties).Statistics =
+                            ((USqlJobProperties)jobDetails.Properties).Statistics =
                                 DataLakeAnalyticsClient.GetJobStatistics(Account, JobId);
                         }
                     }
@@ -127,14 +128,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     filter.Add(string.Format("submitter eq '{0}'", Submitter));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedAfter.HasValue)
                 {
-                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedAfter.Value.ToString("O"))));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedBefore.HasValue)
                 {
-                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedBefore.Value.ToString("O"))));
                 }
 
                 if (!string.IsNullOrEmpty(Name))

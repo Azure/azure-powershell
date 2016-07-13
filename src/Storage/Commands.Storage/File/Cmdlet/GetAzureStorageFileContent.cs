@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Storage.File;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalDirectory = System.IO.Directory;
     using LocalPath = System.IO.Path;
 
-    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Get, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
@@ -157,35 +157,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 targetFile = resolvedDestination;
             }
 
-            this.RunTask(async taskId =>
+            if (ShouldProcess(targetFile, "Download"))
             {
-                await fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext, CmdletCancellationToken);
+                this.RunTask(async taskId =>
+                {
+                    await
+                        fileToBeDownloaded.FetchAttributesAsync(null, this.RequestOptions, OperationContext,
+                            CmdletCancellationToken);
 
-                var progressRecord = new ProgressRecord(
-                    this.OutputStream.GetProgressId(taskId),
-                    string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity, fileToBeDownloaded.GetFullPath(), targetFile),
-                    Resources.PrepareDownloadingFile);
+                    var progressRecord = new ProgressRecord(
+                        this.OutputStream.GetProgressId(taskId),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ReceiveAzureFileActivity,
+                            fileToBeDownloaded.GetFullPath(), targetFile),
+                        Resources.PrepareDownloadingFile);
 
-                await DataMovementTransferHelper.DoTransfer(() =>
+                    await DataMovementTransferHelper.DoTransfer(() =>
                     {
                         return this.TransferManager.DownloadAsync(
                             fileToBeDownloaded,
                             targetFile,
-                            new DownloadOptions 
+                            new DownloadOptions
                             {
                                 DisableContentMD5Validation = !this.CheckMd5
                             },
                             this.GetTransferContext(progressRecord, fileToBeDownloaded.Properties.Length),
                             CmdletCancellationToken);
-                    }, 
-                    progressRecord,
-                    this.OutputStream);
-                
-                if (this.PassThru)
-                {
-                    this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
-                }
-            });
+                    },
+                        progressRecord,
+                        this.OutputStream);
+
+                    if (this.PassThru)
+                    {
+                        this.OutputStream.WriteObject(taskId, fileToBeDownloaded);
+                    }
+                });
+            }
         }
     }
 }

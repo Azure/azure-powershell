@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the resource lock.
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
-        [Alias("ExtensionResourceName")]
+        [Alias("ExtensionResourceName", "Name")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
@@ -80,15 +80,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceId = this.GetResourceId(this.LockName);
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceId)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             return await this
                 .GetResourcesClient()
                 .GetResource<JObject>(
                     resourceId: resourceId,
-                    apiVersion: apiVersion,
+                    apiVersion: this.LockApiVersion,
                     cancellationToken: this.CancellationToken.Value)
                 .ConfigureAwait(continueOnCapturedContext: false);
         }
@@ -100,10 +96,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceCollectionId = this.GetResourceId(this.LockName);
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceCollectionId)
-                .ConfigureAwait(continueOnCapturedContext: false);
-
             var filter = this.AtScope
                 ? "$filter=atScope()"
                 : null;
@@ -112,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .GetResourcesClient()
                 .ListObjectColleciton<JObject>(
                     resourceCollectionId: resourceCollectionId,
-                    apiVersion: apiVersion,
+                    apiVersion: this.LockApiVersion,
                     cancellationToken: this.CancellationToken.Value,
                     odataQuery: filter)
                 .ConfigureAwait(continueOnCapturedContext: false);

@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Globalization;
-using Microsoft.Azure.Commands.DataFactories.Properties;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Hub, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSHub))]
+    [Cmdlet(VerbsCommon.New, Constants.Hub, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true), OutputType(typeof(PSHub))]
     public class NewAzureDataFactoryHubCommand : HubContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,

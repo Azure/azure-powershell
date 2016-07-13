@@ -14,12 +14,16 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     public class ZoneTests : DnsTestsBase
     {
+        public ZoneTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneCrud()
@@ -47,7 +51,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrudWithPipingTrimsDot");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneList()
@@ -57,12 +61,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestZoneListWithEndsWith()
+        public void TestZoneListSubscription()
         {
-            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListWithEndsWith");
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneListSubscription");
         }
-        
-        [Fact(Skip = "Service does not yet support this")]
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestZoneNewAlreadyExists()
         {

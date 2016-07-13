@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources;
-using Moq;
 using Xunit;
-using System.Linq;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -34,6 +36,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
         private const string compatibleUri = "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Compute/virtualMachines/{vm-name}?validating={true|false}&api-version={api-version}";
 
         private const string incompatibleUri = "https://management.core.windows.net/<subscription-id>";
+
+        public RPRegistrationDelegatingHandlerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

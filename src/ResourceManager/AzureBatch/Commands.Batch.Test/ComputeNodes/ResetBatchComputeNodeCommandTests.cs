@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using BatchCommon = Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
@@ -33,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public ResetBatchComputeNodeCommandTests()
+        public ResetBatchComputeNodeCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new ResetBatchComputeNodeCommand()
@@ -61,7 +64,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reimage ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeReimageParameters, ComputeNodeReimageResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeReimageOption?,
+                ComputeNodeReimageOptions,
+                AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -77,23 +84,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.PoolId = "testPool";
             cmdlet.Id = "computeNode1";
-            cmdlet.ReimageOption = ComputeNodeReimageOption.Terminate;
+            cmdlet.ReimageOption = BatchCommon.ComputeNodeReimageOption.Terminate;
 
             ComputeNodeReimageOption? requestReimageOption = null;
 
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                BatchRequest<ComputeNodeReimageParameters, ComputeNodeReimageResponse> request =
-                (BatchRequest<ComputeNodeReimageParameters, ComputeNodeReimageResponse>)baseRequest;
+                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
                     // Grab the reimage option from the outgoing request.
-                    requestReimageOption = request.TypedParameters.ComputeNodeReimageOption;
+                    requestReimageOption = request.Parameters;
 
-                    ComputeNodeReimageResponse response = new ComputeNodeReimageResponse();
-                    Task<ComputeNodeReimageResponse> task = Task.FromResult(response);
+                    var response = new AzureOperationHeaderResponse<ComputeNodeReimageHeaders>();
+                    Task<AzureOperationHeaderResponse<ComputeNodeReimageHeaders>> task = Task.FromResult(response);
                     return task;
                 };
             });
@@ -102,7 +108,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the reimage option was properly set on the outgoing request
-            Assert.Equal(cmdlet.ReimageOption, requestReimageOption);
+            Assert.Equal(cmdlet.ReimageOption, BatchTestHelpers.MapEnum<BatchCommon.ComputeNodeReimageOption>(requestReimageOption));
         }
     }
 }

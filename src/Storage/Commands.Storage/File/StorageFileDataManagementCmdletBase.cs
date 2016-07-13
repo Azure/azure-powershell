@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
-    using System;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Blob;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
-    using Microsoft.WindowsAzure.Storage.File;
 
     public abstract class StorageFileDataManagementCmdletBase : AzureStorageFileCmdletBase
     {
@@ -66,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             base.BeginProcessing();
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
+            OutputStream.ConfirmWriter = (target, query, caption) => ShouldContinue(query, caption);
         }
 
         protected override void EndProcessing()

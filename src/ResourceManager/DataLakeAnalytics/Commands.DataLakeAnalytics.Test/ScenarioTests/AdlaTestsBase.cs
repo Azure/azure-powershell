@@ -13,30 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using Microsoft.Azure.Management.DataLake.Analytics;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Common.Authentication;
+using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
-    public class AdlaTestsBase
+    public class AdlaTestsBase : RMTestBase
     {
         internal string resourceGroupName { get; set; }
         internal string azureBlobStoreName { get; set; }
@@ -48,6 +51,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public NewResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -82,7 +87,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
-
             RunPsTestWorkflow(createWasbAccount,
                 () => scripts,
                 // no custom initializer
@@ -108,7 +112,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
-
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
@@ -126,7 +130,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"));
+                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
 
                 if (createWasbAccount)
                 {
@@ -195,7 +199,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             StorageManagementClient = GetStorageManagementClient();
             GalleryClient = GetGalleryClient();
+            NewResourceManagementClient = GetNewResourceManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
+                NewResourceManagementClient,
                 SubscriptionClient,
                 DataLakeAnalyticsAccountManagementClient,
                 DataLakeAnalyticsJobManagementClient,
@@ -226,6 +232,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private SubscriptionClient GetSubscriptionClient()
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+        }
+
+        private NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)

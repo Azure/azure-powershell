@@ -12,12 +12,12 @@
 // limitations under the License. 
 // ---------------------------------------------------------------------------------- 
 
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -25,9 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
     public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
-        private bool _ignoreGenericResource;
-        private Dictionary<string, string> _providersToIgnore;
-        private Dictionary<string, string> _userAgentsToIgnore;
+        protected bool _ignoreGenericResource;
+        protected Dictionary<string, string> _providersToIgnore;
+        protected Dictionary<string, string> _userAgentsToIgnore;
 
         public PermissiveRecordMatcherWithApiExclusion(bool ignoreResourcesClient, Dictionary<string, string> providers)
         {
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             _userAgentsToIgnore = userAgents;
         }
 
-        public string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
+        public virtual string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
         {
             var path = request.RequestUri.PathAndQuery;
             if (path.Contains("?&"))
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return string.Format("{0} {1}", request.Method, encodedPath);
         }
 
-        public string GetMatchingKey(RecordEntry recordEntry)
+        public virtual string GetMatchingKey(RecordEntry recordEntry)
         {
             var encodedPath = recordEntry.EncodedRequestUri;
             var path = recordEntry.RequestUri;
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
         }
 
-        private bool ContainsIgnoredProvider(string requestUri, out string version)
+        protected bool ContainsIgnoredProvider(string requestUri, out string version)
         {
             if (_ignoreGenericResource &&
                 !requestUri.Contains("providers") &&
@@ -113,7 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
                 !requestUri.Contains("/applications?") &&
-                !requestUri.Contains("/servicePrincipals?"))
+                !requestUri.Contains("/servicePrincipals?") &&
+                !requestUri.StartsWith("/webhdfs/v1/?aclspec", StringComparison.InvariantCultureIgnoreCase))
             {
                 version = String.Empty;
                 return true;
@@ -134,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return false;
         }
 
-        private string RemoveOrReplaceApiVersion(string requestUri, string version)
+        protected string RemoveOrReplaceApiVersion(string requestUri, string version)
         {
             if (!string.IsNullOrWhiteSpace(version))
             {

@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -51,34 +47,39 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
+            ConfirmAction(VerbsCommon.Remove, Site.FriendlyName,
+                () =>
+                {
+                    RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProvider(
+                            this.Site.Name);
 
-            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
-                    RecoveryServicesClient.GetAzureSiteRecoveryProvider(
-                    this.Site.Name);
+                    if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+                    {
+                        throw new PSInvalidOperationException(
+                            Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
+                    }
 
-            if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
-            {
-                throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
-            }
-         
-            LongRunningOperationResponse response;
+                    LongRunningOperationResponse response;
 
-            if (!this.Force.IsPresent)
-            {
-                response =
-                         RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
-            }
-            else
-            {
-                response =
-                        RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
-            }
+                    if (!this.Force.IsPresent)
+                    {
+                        response =
+                            RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
+                    }
+                    else
+                    {
+                        response =
+                            RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
+                    }
 
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    JobResponse jobResponse =
+                        RecoveryServicesClient
+                            .GetAzureSiteRecoveryJobDetails(
+                                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-            WriteObject(new ASRJob(jobResponse.Job));
+                    WriteObject(new ASRJob(jobResponse.Job));
+                });
         }
     }
 }

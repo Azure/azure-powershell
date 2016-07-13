@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public string [] VhdContainer { get; set; }
+        public string[] VhdContainer { get; set; }
 
         protected override void ProcessRecord()
         {

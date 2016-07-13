@@ -12,21 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -34,8 +35,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         private MemoryDataStore dataStore;
 
-        public EnvironmentCmdletTests()
+        public EnvironmentCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
         }
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void AddsAzureEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             var cmdlet = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -73,12 +76,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl], cmdlet.ManagementPortalUrl);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.Gallery], "http://galleryendpoint.com");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             var cmdlet = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -104,6 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureSMProfile();
             var commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             var cmdlet = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -131,6 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void IgnoresAddingPublicEnvironment()
         {
             var commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             var cmdlet = new AddAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -146,6 +152,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void AddsEnvironmentWithStorageEndpoint()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             PSAzureEnvironment actual = null;
             commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<object>()))
                 .Callback((object output) => actual = (PSAzureEnvironment)output);
@@ -172,6 +179,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void CanCreateEnvironmentWithAllProperties()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
             PSAzureEnvironment actual = null;
             commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()))
                 .Callback((object output) => actual = (PSAzureEnvironment)output);
@@ -196,7 +204,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience"
             };
-            
+
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -216,8 +224,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.ServiceEndpoint, actual.ServiceManagementUrl);
             Assert.Equal(cmdlet.StorageEndpoint, actual.StorageEndpointSuffix);
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
-            Assert.Equal( cmdlet.TrafficManagerDnsSuffix , actual.TrafficManagerDnsSuffix);
-            Assert.Equal( cmdlet.GraphAudience , actual.GraphEndpointResourceId);
+            Assert.Equal(cmdlet.TrafficManagerDnsSuffix, actual.TrafficManagerDnsSuffix);
+            Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
@@ -242,7 +250,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(3, environments.Count);
+            Assert.Equal(4, environments.Count);
         }
 
         [Fact]
@@ -266,12 +274,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             Assert.Equal(1, environments.Count);
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThrowsWhenSettingPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            SetupConfirmation(commandRuntimeMock);
 
             foreach (string name in AzureEnvironment.PublicEnvironments.Keys)
             {
@@ -307,7 +316,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlet = new RemoveAzureRMEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                Force = true,
                 Name = name
             };
 
@@ -329,7 +337,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 Name = "test2",
-                Force = true
             };
 
             cmdlet.InvokeBeginProcessing();
@@ -341,14 +348,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         public void ThrowsForPublicEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            SetupConfirmation(commandRuntimeMock);
 
             foreach (string name in AzureEnvironment.PublicEnvironments.Keys)
             {
                 var cmdlet = new RemoveAzureRMEnvironmentCommand()
                 {
                     CommandRuntime = commandRuntimeMock.Object,
-                    Force = true,
                     Name = name
                 };
 
@@ -356,7 +362,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
             }
         }
-
 
         public void Dispose()
         {

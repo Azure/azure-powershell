@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -102,7 +102,14 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.ObjectId = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file contents for accessing Azure Data Lake.")]
+        public byte[] CertificateFileContents
+        {
+            get { return _config.CertificateFileContents; }
+            set { _config.CertificateFileContents = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.")]
         public string CertificateFilePath
         {
             get { return _config.CertificateFilePath; }

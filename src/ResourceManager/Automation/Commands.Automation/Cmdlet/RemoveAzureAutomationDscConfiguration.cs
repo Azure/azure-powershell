@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a DSC configuration
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationDscConfiguration")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationDscConfiguration", SupportsShouldProcess = true)]
     public class RemoveAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>

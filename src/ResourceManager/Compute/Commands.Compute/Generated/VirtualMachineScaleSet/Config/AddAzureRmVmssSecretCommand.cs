@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public VaultCertificate [] VaultCertificate { get; set; }
+        public VaultCertificate[] VaultCertificate { get; set; }
 
         protected override void ProcessRecord()
         {

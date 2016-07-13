@@ -12,21 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using System.Threading;
-using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
-using System.Net;
-using System.Linq;
-using Microsoft.WindowsAzure.Management.Scheduler;
-using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
@@ -41,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         {
             var policyList = ListProtectionPolicies(resourceGroupName, resourceName);
             var filteredList = policyList.Where(x => x.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase));
-            return filteredList.FirstOrDefault();           
+            return filteredList.FirstOrDefault();
         }
 
         /// <summary>
@@ -51,7 +41,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         public IList<CSMProtectionPolicyResponse> ListProtectionPolicies(string resourceGroupName, string resourceName)
         {
             var listResponse = AzureBackupClient.CSMProtectionPolicy.ListAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-            return listResponse.CSMProtectionPolicyListResponse.Value;         
+            return listResponse.CSMProtectionPolicyListResponse.Value;
         }
 
         /// <summary>

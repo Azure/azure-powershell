@@ -19,11 +19,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you delete an Azure web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmWebApp")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmWebApp", SupportsShouldProcess = true)]
     public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
-       //always delete the slots, 
+        //always delete the slots, 
         private bool deleteSlotsByDefault = true;
 
         // leave behind the empty webhosting plan 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-            
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();

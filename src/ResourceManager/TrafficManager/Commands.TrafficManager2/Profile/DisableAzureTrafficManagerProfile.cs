@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerProfile", SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
@@ -61,15 +61,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 string.Format(ProjectResources.Confirm_DisableProfile, profileToDisable.Name),
                 ProjectResources.Progress_DisablingProfile,
                 profileToDisable.Name,
-                () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToDisable, shouldEnableProfileStatus: false); });
+                () =>
+                {
+                    disabled = this.TrafficManagerClient.EnableDisableTrafficManagerProfile(profileToDisable, shouldEnableProfileStatus: false);
+                    if (disabled)
+                    {
+                        this.WriteVerbose(ProjectResources.Success);
+                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableProfile, profileToDisable.Name, profileToDisable.ResourceGroupName));
+                    }
 
-            if (disabled)
-            {
-                this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_DisableProfile, profileToDisable.Name, profileToDisable.ResourceGroupName));
-            }
-
-            this.WriteObject(disabled);
+                    this.WriteObject(disabled);
+                });
         }
     }
 }

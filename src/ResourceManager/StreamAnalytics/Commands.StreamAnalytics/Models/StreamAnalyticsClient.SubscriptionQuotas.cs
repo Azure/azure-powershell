@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.StreamAnalytics;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
