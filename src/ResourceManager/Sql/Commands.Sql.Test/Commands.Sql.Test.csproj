@@ -195,6 +195,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScenarioTests\RecommendedActionTests.cs" />
     <Compile Include="ScenarioTests\DatabaseBackupStretchTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudStretchTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
@@ -203,6 +204,9 @@
     <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
+    <None Include="ScenarioTests\RecommendedActionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AdvisorTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -592,6 +596,33 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestGetIndexRecommendation.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestGetDatabaseRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestGetElasticPoolRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestGetServerRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestListDatabaseRecommendedActions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestListElasticPoolRecommendedActions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestListServerRecommendedActions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestUpdateDatabaseRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestUpdateElasticPoolRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedActionTests\TestUpdateServerRecommendedAction.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\ListRecommendedElasticPools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
