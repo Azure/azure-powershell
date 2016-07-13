@@ -20,27 +20,27 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
+    /// Defines the Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAdvisorAutoExecuteStatus",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPoolAdvisorAutoExecuteStatus",
         ConfirmImpact = ConfirmImpact.Low)]
-    public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
+    public class SetAzureSqlElasticPoolAdvisorAutoExecuteStatus : AzureSqlElasticPoolAdvisorCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure SQL Database Advisor name.")]
+            HelpMessage = "Azure SQL Elastic Pool Advisor name.")]
         [ValidateNotNullOrEmpty]
         public string AdvisorName { get; set; }
 
         /// <summary>
-        /// Gets or sets the new auto-execute status of Azure SQL Database Advisor.
+        /// Gets or sets the new auto-execute status of Azure SQL Elastic Pool Advisor.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The new auto-execute status of Azure SQL Database Advisor.")]
+            HelpMessage = "The new auto-execute status of Azure SQL Elastic Pool Advisor.")]
         [ValidateNotNullOrEmpty]
         public string AutoExecuteStatus { get; set; }
 
@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// Gets entities from the service.
         /// </summary>
         /// <returns>A list of entities</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> GetEntity()
+        protected override IEnumerable<AzureSqlElasticPoolAdvisorModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseAdvisorModel>() {
-                ModelAdapter.GetDatabaseAdvisor(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.AdvisorName, expandRecommendedActions: false)
+            return new List<AzureSqlElasticPoolAdvisorModel>() {
+                ModelAdapter.GetElasticPoolAdvisor(this.ResourceGroupName, this.ServerName, this.ElasticPoolName, this.AdvisorName, expandRecommendedActions: false)
             };
         }
 
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="model">Model retrieved from service</param>
         /// <returns>The model that was passed in</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseAdvisorModel> model)
+        protected override IEnumerable<AzureSqlElasticPoolAdvisorModel> ApplyUserInputToModel(IEnumerable<AzureSqlElasticPoolAdvisorModel> model)
         {
-            List<AzureSqlDatabaseAdvisorModel> newEntity = new List<AzureSqlDatabaseAdvisorModel>();
-            newEntity.Add(new AzureSqlDatabaseAdvisorModel()
+            List<AzureSqlElasticPoolAdvisorModel> newEntity = new List<AzureSqlElasticPoolAdvisorModel>();
+            newEntity.Add(new AzureSqlElasticPoolAdvisorModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                DatabaseName = DatabaseName,
+                ElasticPoolName = ElasticPoolName,
                 AdvisorName = AdvisorName,
                 AutoExecuteStatus = AutoExecuteStatus
             });
@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
-        protected override IEnumerable<AzureSqlDatabaseAdvisorModel> PersistChanges(IEnumerable<AzureSqlDatabaseAdvisorModel> entity)
+        protected override IEnumerable<AzureSqlElasticPoolAdvisorModel> PersistChanges(IEnumerable<AzureSqlElasticPoolAdvisorModel> entity)
         {
-            return new List<AzureSqlDatabaseAdvisorModel>() {
+            return new List<AzureSqlElasticPoolAdvisorModel>() {
                 ModelAdapter.UpdateAutoExecuteStatus(entity.Single())
             };
         }
