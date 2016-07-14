@@ -20,6 +20,7 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;

@@ -19,8 +19,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Remove, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet, 
-        SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RemoveAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
