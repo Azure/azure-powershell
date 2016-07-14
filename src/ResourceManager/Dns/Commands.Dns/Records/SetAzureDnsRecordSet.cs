@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
             }
 
+
             DnsRecordSet recordSetToUpdate = (DnsRecordSet)this.RecordSet.Clone();
 
             if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
