@@ -256,4 +256,8 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="StorageAccountValidationUnsuccessful" xml:space="preserve">
     <value>The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault.</value>
   </data>
+  <data name="CmdletWillBeDeprecatedSoon" xml:space="preserve">
+    <value>It is recommended that you use the Azure Site Recovery PowerShell cmdlets for Azure Resource Manager (https://msdn.microsoft.com/library/mt637930.aspx) to perform
+this action. The '{0}' cmdlet will be deprecated at some point in the future.</value>
+  </data>
 </root>

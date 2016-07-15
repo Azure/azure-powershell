@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -61,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             base.BeginProcessing();
 
             this.TransferManager = TransferManagerFactory.CreateTransferManager(this.GetCmdletConcurrency());
+            OutputStream.ConfirmWriter = (target, query, caption) => ShouldContinue(query, caption);
         }
 
         protected override void EndProcessing()

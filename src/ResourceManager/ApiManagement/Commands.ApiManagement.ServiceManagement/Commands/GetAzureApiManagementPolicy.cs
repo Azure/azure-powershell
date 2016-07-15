@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using System.Text;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel)]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
@@ -125,12 +126,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, SaveAs);
 
                 // Do nothing if force is not specified and user cancelled the operation
-                if (File.Exists(SaveAs) &&
+                if (!ShouldProcess(ApiId, actionDescription) || (File.Exists(SaveAs) &&
                     !Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
+                    !ShouldContinue(
                         actionWarning,
-                        Resources.ShouldProcessCaption))
+                        Resources.ShouldProcessCaption)))
                 {
                     return;
                 }
