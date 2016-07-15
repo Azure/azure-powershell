@@ -12,29 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
-using System;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-namespace Microsoft.Azure.Commands.Management.Storage
+namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    public partial class StorageManagementClientWrapper
+    public class ARMStorageProvider : IStorageServiceProvider
     {
-        public IStorageManagementClient StorageManagementClient { get; set; }
+        IStorageManagementClient _client;
 
-        public Action<string> VerboseLogger { get; set; }
-
-        public Action<string> ErrorLogger { get; set; }
-
-        public StorageManagementClientWrapper(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public ARMStorageProvider(IStorageManagementClient client)
         {
+            _client = client;
         }
-
-        public StorageManagementClientWrapper(IStorageManagementClient resourceManagementClient)
+        public IStorageService GetStorageService(string name, string resourceGroupName)
         {
-            StorageManagementClient = resourceManagementClient;
+            var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
+            var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
+            return new ARMStorageService(account, keys.Key1,
+                keys.Key2);
         }
     }
 }
