@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.StorageProfile == null) return null;
+                if (this.StorageProfile == null || this.StorageProfile.DataDisks == null) return null;
                 var listStr = new List<string>();
                 foreach (var item in StorageProfile.DataDisks)
                 {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         {
             get
             {
-                if (this.NetworkProfile == null) return null;
+                if (this.NetworkProfile == null || this.NetworkProfile.NetworkInterfaces == null) return null;
                 var listStr = new List<string>();
                 foreach (var item in NetworkProfile.NetworkInterfaces)
                 {

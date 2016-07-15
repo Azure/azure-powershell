@@ -399,4 +399,7 @@
   <data name="OperationFailedWithTimeOut" xml:space="preserve">
     <value>Operation failed because a request timed out.</value>
   </data>
+  <data name="CreateDeployment" xml:space="preserve">
+    <value>Creating Deployment</value>
+  </data>
 </root>

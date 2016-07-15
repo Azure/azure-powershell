@@ -128,14 +128,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     filter.Add(string.Format("submitter eq '{0}'", Submitter));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedAfter.HasValue)
                 {
-                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedAfter.Value.ToString("O"))));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedBefore.HasValue)
                 {
-                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedBefore.Value.ToString("O"))));
                 }
 
                 if (!string.IsNullOrEmpty(Name))

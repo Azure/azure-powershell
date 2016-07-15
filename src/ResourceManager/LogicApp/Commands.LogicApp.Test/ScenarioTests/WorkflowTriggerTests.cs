@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
+
     /// <summary>
     /// Scenario tests for the Workflow trigger commands
     /// </summary>

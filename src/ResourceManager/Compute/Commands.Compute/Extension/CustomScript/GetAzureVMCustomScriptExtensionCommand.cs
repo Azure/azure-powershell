@@ -22,14 +22,11 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ProfileNouns.VirtualMachineCustomScriptExtension,
-        DefaultParameterSetName = GetCustomScriptExtensionParamSetName),
-    OutputType(
+        ProfileNouns.VirtualMachineCustomScriptExtension)]
+    [OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        protected const string GetCustomScriptExtensionParamSetName = "GetCustomScriptExtension";
-
         [Parameter(
            Mandatory = true,
            Position = 0,
