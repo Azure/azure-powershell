@@ -47,8 +47,8 @@ function Test-SetAzureLogicAppAccessKey
 
 	#Case1: Regenerate secret for the access key of the workflow
 	$workflowAccessKeys = Get-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName
-	$workflowAccessKey1 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Primary"
-	$workflowAccessKey2 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Secondary"	
+	$workflowAccessKey1 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Primary" -Force
+	$workflowAccessKey2 = Set-AzureRmLogicAppAccessKey -ResourceGroupName $resourceGroupName -Name $workflowName -AccessKeyName "default" -KeyType "Secondary" -Force	
 	
 	Assert-AreNotEqual $workflowAccessKey1.PrimarySecretKey $workflowAccessKeys.PrimarySecretKey
 	Assert-AreNotEqual $workflowAccessKey2.SecondarySecretKey $workflowAccessKeys.SecondarySecretKey	

@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithDifferentStorageResource");
         }
 
-        [Fact (Skip="Record the test after storage account ps1 fix")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithPremiumStorageAccount()
         {

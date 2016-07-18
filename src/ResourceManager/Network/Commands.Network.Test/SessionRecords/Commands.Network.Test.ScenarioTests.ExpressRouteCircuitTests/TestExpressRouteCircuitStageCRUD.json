@@ -28,16 +28,16 @@
           "gateway"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14999"
         ],
         "x-ms-request-id": [
-          "f2f79b5d-e1d7-4f79-969c-0e19df5b07c0"
+          "eb22999f-58d4-4a00-b27e-85abe45f6e8a"
         ],
         "x-ms-correlation-request-id": [
-          "f2f79b5d-e1d7-4f79-969c-0e19df5b07c0"
+          "eb22999f-58d4-4a00-b27e-85abe45f6e8a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220003Z:f2f79b5d-e1d7-4f79-969c-0e19df5b07c0"
+          "WESTUS:20160526T051258Z:eb22999f-58d4-4a00-b27e-85abe45f6e8a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,7 +46,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:03 GMT"
+          "Thu, 26 May 2016 05:12:58 GMT"
         ]
       },
       "StatusCode": 404
@@ -73,16 +73,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14999"
         ],
         "x-ms-request-id": [
-          "96cc3305-ef34-46b7-9889-46b5b95aa46c"
+          "5cc05229-6fc2-4c29-8562-5590db860e3b"
         ],
         "x-ms-correlation-request-id": [
-          "96cc3305-ef34-46b7-9889-46b5b95aa46c"
+          "5cc05229-6fc2-4c29-8562-5590db860e3b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220213Z:96cc3305-ef34-46b7-9889-46b5b95aa46c"
+          "WESTUS:20160526T051507Z:5cc05229-6fc2-4c29-8562-5590db860e3b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,7 +91,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:13 GMT"
+          "Thu, 26 May 2016 05:15:06 GMT"
         ]
       },
       "StatusCode": 204
@@ -127,16 +127,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1199"
         ],
         "x-ms-request-id": [
-          "70663f00-b271-4afb-b728-ca420beecf6d"
+          "791d42bb-609c-47a6-997f-4f7fa5e733ac"
         ],
         "x-ms-correlation-request-id": [
-          "70663f00-b271-4afb-b728-ca420beecf6d"
+          "791d42bb-609c-47a6-997f-4f7fa5e733ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220004Z:70663f00-b271-4afb-b728-ca420beecf6d"
+          "WESTUS:20160526T051259Z:791d42bb-609c-47a6-997f-4f7fa5e733ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -145,7 +145,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:04 GMT"
+          "Thu, 26 May 2016 05:12:58 GMT"
         ]
       },
       "StatusCode": 201
@@ -175,16 +175,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
+          "14998"
         ],
         "x-ms-request-id": [
-          "e9fe9cca-4961-495e-bf3b-525051090404"
+          "b694227b-87d5-4fcb-a901-ae4c1e0c84e9"
         ],
         "x-ms-correlation-request-id": [
-          "e9fe9cca-4961-495e-bf3b-525051090404"
+          "b694227b-87d5-4fcb-a901-ae4c1e0c84e9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220004Z:e9fe9cca-4961-495e-bf3b-525051090404"
+          "WESTUS:20160526T051259Z:b694227b-87d5-4fcb-a901-ae4c1e0c84e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -193,19 +193,19 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:04 GMT"
+          "Thu, 26 May 2016 05:12:58 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "26a2c01b-ac58-4e8f-af9e-b7ae2ca5a173"
+          "37dffda4-1695-482f-b39b-6418d0121394"
         ],
         "accept-language": [
           "en-US"
@@ -214,7 +214,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/expressRouteCircuits/onesdk5223' under resource group 'movecircuit' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/expressRouteCircuits/onesdk8044' under resource group 'movecircuit' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "164"
@@ -232,13 +232,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "6b72b490-95d8-49ab-8004-bea7a44e38f1"
+          "49c784fe-ce7f-424c-98a3-b1290d908a98"
         ],
         "x-ms-correlation-request-id": [
-          "6b72b490-95d8-49ab-8004-bea7a44e38f1"
+          "49c784fe-ce7f-424c-98a3-b1290d908a98"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220004Z:6b72b490-95d8-49ab-8004-bea7a44e38f1"
+          "WESTUS:20160526T051259Z:49c784fe-ce7f-424c-98a3-b1290d908a98"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -247,14 +247,14 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:04 GMT"
+          "Thu, 26 May 2016 05:12:59 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -262,7 +262,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"a8ed3470-9211-46df-a156-b51c6a886567\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"23959fec-a85d-4d7b-a2ce-73c291562ca8\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "962"
@@ -277,7 +277,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f649c218-3e4d-4f27-96b6-a1ce2061068b"
+          "6a395d30-d4c3-40f4-a31f-dc8b7ad82f1d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -290,28 +290,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14974"
+          "14933"
         ],
         "x-ms-correlation-request-id": [
-          "47d88f4a-e860-422f-a793-255202cd3fde"
+          "45495c1d-cb01-4a0c-9c55-abaa9869ad02"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220036Z:47d88f4a-e860-422f-a793-255202cd3fde"
+          "WESTUS:20160526T051331Z:45495c1d-cb01-4a0c-9c55-abaa9869ad02"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:36 GMT"
+          "Thu, 26 May 2016 05:13:30 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4e81172c-4722-43aa-91f6-bae860a915d7"
+          "b203e4c8-df1c-4c9b-b5c1-dea0e1fb7d45"
         ],
         "accept-language": [
           "en-US"
@@ -320,7 +320,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"a8ed3470-9211-46df-a156-b51c6a886567\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"23959fec-a85d-4d7b-a2ce-73c291562ca8\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "962"
@@ -335,7 +335,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "f0d0838e-74e2-4258-beca-ddb3ba6bdab9"
+          "7843f198-89c5-4be8-b9fe-462695825c35"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -348,28 +348,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14973"
+          "14932"
         ],
         "x-ms-correlation-request-id": [
-          "4f8cec6f-423b-45ee-8443-62e2d95f043e"
+          "72b85f83-9eb9-47d6-9c2b-7cc5abb2f0ae"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220037Z:4f8cec6f-423b-45ee-8443-62e2d95f043e"
+          "WESTUS:20160526T051332Z:72b85f83-9eb9-47d6-9c2b-7cc5abb2f0ae"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:36 GMT"
+          "Thu, 26 May 2016 05:13:31 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f23a8f38-f2a6-447b-b2e5-608174c75a2a"
+          "c854155f-3e53-4cac-8f80-6c49c689aae5"
         ],
         "accept-language": [
           "en-US"
@@ -378,7 +378,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"a8ed3470-9211-46df-a156-b51c6a886567\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"23959fec-a85d-4d7b-a2ce-73c291562ca8\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "962"
@@ -393,7 +393,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e3bcd8dd-1ca8-4e1c-8bed-4ea31284954d"
+          "5c2b6642-fd7d-42a0-8968-b11052d3e840"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -406,28 +406,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14972"
+          "14931"
         ],
         "x-ms-correlation-request-id": [
-          "41d42778-5d56-49a9-bb1b-85b24463b32b"
+          "c120d879-1782-4808-99b3-be4d483084fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220037Z:41d42778-5d56-49a9-bb1b-85b24463b32b"
+          "WESTUS:20160526T051332Z:c120d879-1782-4808-99b3-be4d483084fa"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:37 GMT"
+          "Thu, 26 May 2016 05:13:31 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5f44dd0f-88c9-4e35-84b5-072f969dc1ae"
+          "e65e4abb-6b94-4179-b6af-13798960f5ac"
         ],
         "accept-language": [
           "en-US"
@@ -436,7 +436,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"a8ed3470-9211-46df-a156-b51c6a886567\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"23959fec-a85d-4d7b-a2ce-73c291562ca8\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "962"
@@ -451,7 +451,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6a7f14d1-8b64-499e-841b-d5ae07357195"
+          "b73a2df0-c07a-4449-aea1-f37965212cdd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -464,23 +464,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14971"
+          "14930"
         ],
         "x-ms-correlation-request-id": [
-          "4f6bb697-e624-469b-a1e1-15375e58a12a"
+          "0b413a45-8422-4888-be1e-3f2970fbd954"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220037Z:4f6bb697-e624-469b-a1e1-15375e58a12a"
+          "WESTUS:20160526T051332Z:0b413a45-8422-4888-be1e-3f2970fbd954"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:37 GMT"
+          "Thu, 26 May 2016 05:13:31 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -488,7 +488,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"75796909-d779-49f4-ab30-30ddc4a449fb\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"1be40a99-0be1-4974-9c55-056654474acf\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -503,7 +503,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "bf21e03a-a16c-4863-aa2e-6adef6db8522"
+          "243fd3d0-6d7c-43e8-9d40-3f3cb73e00ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -516,28 +516,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14969"
+          "14926"
         ],
         "x-ms-correlation-request-id": [
-          "55ed5337-ba3e-4467-b917-d10066a01a4c"
+          "286ec9ac-76e1-4c80-a3f7-471011d15e30"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220108Z:55ed5337-ba3e-4467-b917-d10066a01a4c"
+          "WESTUS:20160526T051403Z:286ec9ac-76e1-4c80-a3f7-471011d15e30"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:07 GMT"
+          "Thu, 26 May 2016 05:14:03 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dc61b182-5a3f-45dd-909b-f1f2c6331383"
+          "e6bff60c-4009-4636-aca5-626e9a36b099"
         ],
         "accept-language": [
           "en-US"
@@ -546,7 +546,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"75796909-d779-49f4-ab30-30ddc4a449fb\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"1be40a99-0be1-4974-9c55-056654474acf\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -561,7 +561,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "60236a2a-cbf5-46fc-a0dd-b84db1b56616"
+          "992fb2ac-af7b-4ba4-ac3c-c32633dab857"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -574,28 +574,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14968"
+          "14925"
         ],
         "x-ms-correlation-request-id": [
-          "8998afbd-f96c-49c7-83b7-62bbda069df7"
+          "c4a0e1a5-ca67-4def-b2e0-71b22cc35292"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220109Z:8998afbd-f96c-49c7-83b7-62bbda069df7"
+          "WESTUS:20160526T051403Z:c4a0e1a5-ca67-4def-b2e0-71b22cc35292"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:08 GMT"
+          "Thu, 26 May 2016 05:14:03 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8453f218-fdf8-498c-9ab4-d319b60f6830"
+          "d820c6cd-569e-4ee8-a494-ad80c7377697"
         ],
         "accept-language": [
           "en-US"
@@ -604,7 +604,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"75796909-d779-49f4-ab30-30ddc4a449fb\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"1be40a99-0be1-4974-9c55-056654474acf\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -619,7 +619,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b8eec1d1-78eb-4f92-8fce-fda50c60414c"
+          "49156bb0-25e2-4388-8283-1846b5f3b698"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -632,23 +632,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14967"
+          "14923"
         ],
         "x-ms-correlation-request-id": [
-          "e3623e19-4470-42ff-ba39-b177fc2fa9c9"
+          "a4290fc4-67d2-4c4f-91b6-802c7394e2ab"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220109Z:e3623e19-4470-42ff-ba39-b177fc2fa9c9"
+          "WESTUS:20160526T051404Z:a4290fc4-67d2-4c4f-91b6-802c7394e2ab"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:08 GMT"
+          "Thu, 26 May 2016 05:14:03 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -656,7 +656,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"e9385221-3c9b-4c2e-80ef-61ee864e77ac\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"6a498c08-8529-4e07-bc98-3f7139b04dba\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -671,7 +671,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "4622f137-984e-4a2c-9146-94844f070ca9"
+          "e74789d8-c7d7-4586-93ed-b39f1d334f0b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -684,28 +684,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14965"
+          "14921"
         ],
         "x-ms-correlation-request-id": [
-          "cf5286e0-0981-4b6d-81aa-12643da25334"
+          "3aa94517-cca4-445e-8a06-3caf3cef0a18"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220141Z:cf5286e0-0981-4b6d-81aa-12643da25334"
+          "WESTUS:20160526T051435Z:3aa94517-cca4-445e-8a06-3caf3cef0a18"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:40 GMT"
+          "Thu, 26 May 2016 05:14:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "65fa5c35-4495-4d98-b616-53d20cf6c87a"
+          "d84687ea-839f-47c5-bdf4-6fc5e37ee376"
         ],
         "accept-language": [
           "en-US"
@@ -714,7 +714,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"e9385221-3c9b-4c2e-80ef-61ee864e77ac\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"6a498c08-8529-4e07-bc98-3f7139b04dba\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -729,7 +729,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "822e7ba6-b328-41e5-a0c8-d696425aed71"
+          "b8ec2ff5-bea5-4d44-a339-d73e9554a330"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -742,28 +742,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14964"
+          "14920"
         ],
         "x-ms-correlation-request-id": [
-          "97770cb8-8c95-4943-8b43-69bda3d26051"
+          "0fe95957-8284-48e3-a54e-88054b6d58da"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220141Z:97770cb8-8c95-4943-8b43-69bda3d26051"
+          "WESTUS:20160526T051435Z:0fe95957-8284-48e3-a54e-88054b6d58da"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:41 GMT"
+          "Thu, 26 May 2016 05:14:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "27a04c35-5e5d-44c4-9886-148c52779baf"
+          "d7c91f43-e43d-4ade-bc00-efb94fede579"
         ],
         "accept-language": [
           "en-US"
@@ -772,7 +772,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"e9385221-3c9b-4c2e-80ef-61ee864e77ac\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"6a498c08-8529-4e07-bc98-3f7139b04dba\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -787,7 +787,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ba627d35-988a-4d80-806c-39cd4a5f5048"
+          "77df670f-dee5-4a52-b855-ef1cbe80c66e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -800,23 +800,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14963"
+          "14919"
         ],
         "x-ms-correlation-request-id": [
-          "f0d7d114-3c03-4a16-afb7-bc95fe34a2e6"
+          "3d99c002-a996-4c66-b437-eb41c2d4b545"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220142Z:f0d7d114-3c03-4a16-afb7-bc95fe34a2e6"
+          "WESTUS:20160526T051436Z:3d99c002-a996-4c66-b437-eb41c2d4b545"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:41 GMT"
+          "Thu, 26 May 2016 05:14:36 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  },\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"allowClassicOperations\": true,\r\n    \"authorizations\": [],\r\n    \"peerings\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -827,7 +827,7 @@
           "414"
         ],
         "x-ms-client-request-id": [
-          "48f12f4d-3eef-4812-add0-c5a1f9109bd8"
+          "8f94c081-227d-44c7-b5ab-0cd46ef57925"
         ],
         "accept-language": [
           "en-US"
@@ -836,7 +836,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"c91fec1b-66a0-465a-8320-c14d5190bbca\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"770b778f-23b6-444a-a5f2-1b05e86372fe\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": true,\r\n    \"serviceKey\": \"00000000-0000-0000-0000-000000000000\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "962"
@@ -854,10 +854,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "778d1afa-7ba1-47db-9225-9169cff38203"
+          "24251d6a-e67b-41c5-a19c-f742924a0793"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/778d1afa-7ba1-47db-9225-9169cff38203?api-version=2016-03-30"
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/24251d6a-e67b-41c5-a19c-f742924a0793?api-version=2016-06-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -870,25 +870,25 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "407f561d-70b5-4824-9424-bc4ef4d44f1c"
+          "d9e89098-f367-47ae-915e-b28d87bcd0c0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220006Z:407f561d-70b5-4824-9424-bc4ef4d44f1c"
+          "WESTUS:20160526T051300Z:d9e89098-f367-47ae-915e-b28d87bcd0c0"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:05 GMT"
+          "Thu, 26 May 2016 05:13:00 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  },\r\n  \"etag\": \"W/\\\"a8ed3470-9211-46df-a156-b51c6a886567\\\"\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"allowClassicOperations\": false,\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\",\r\n    \"authorizations\": [],\r\n    \"peerings\": [],\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  },\r\n  \"etag\": \"W/\\\"23959fec-a85d-4d7b-a2ce-73c291562ca8\\\"\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"allowClassicOperations\": false,\r\n    \"circuitProvisioningState\": \"Enabled\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\",\r\n    \"authorizations\": [],\r\n    \"peerings\": [],\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -897,7 +897,7 @@
           "824"
         ],
         "x-ms-client-request-id": [
-          "03109830-afb8-49b0-953b-1ad123788968"
+          "436c1546-c8f1-4985-90b7-a389f6779034"
         ],
         "accept-language": [
           "en-US"
@@ -906,7 +906,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"599d2367-0c6e-4bbd-9138-6373a2b085ce\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"13b7cfa3-d548-4735-99a0-3b9e1d85df95\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"serviceProviderProperties\": {\r\n      \"serviceProviderName\": \"equinix test\",\r\n      \"peeringLocation\": \"Silicon Valley Test\",\r\n      \"bandwidthInMbps\": 50\r\n    },\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Standard_MeteredData\",\r\n    \"tier\": \"Standard\",\r\n    \"family\": \"MeteredData\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "963"
@@ -924,10 +924,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "4ac6c25b-4b70-42ef-8e5a-8acdba913a57"
+          "62780727-0a52-41ae-9330-05aa80a31228"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/4ac6c25b-4b70-42ef-8e5a-8acdba913a57?api-version=2016-03-30"
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/62780727-0a52-41ae-9330-05aa80a31228?api-version=2016-06-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -940,25 +940,25 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1194"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "6a8341c3-b101-4de8-b741-083bdff3f6a9"
+          "710f5ebe-9459-495f-abbc-f0296418ab8d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220038Z:6a8341c3-b101-4de8-b741-083bdff3f6a9"
+          "WESTUS:20160526T051332Z:710f5ebe-9459-495f-abbc-f0296418ab8d"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:38 GMT"
+          "Thu, 26 May 2016 05:13:32 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"authorizations\": [],\r\n    \"peerings\": [],\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"authorizations\": [],\r\n    \"peerings\": [],\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -967,7 +967,7 @@
           "159"
         ],
         "x-ms-client-request-id": [
-          "5b665f52-7125-4f8b-8887-851c423cf661"
+          "f3ac9fa5-366a-4b87-be15-f709eeecf481"
         ],
         "accept-language": [
           "en-US"
@@ -976,7 +976,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"onesdk5223\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223\",\r\n  \"etag\": \"W/\\\"a0d52198-e766-4eab-a9af-0d753b8b3588\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"46b7c6e2-4cec-4dfa-bd3e-dba552b62f3c\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"93e47bf4-d76a-460c-a65f-246ab63f9aa2\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"onesdk8044\",\r\n  \"id\": \"/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044\",\r\n  \"etag\": \"W/\\\"120ef1eb-0220-49ee-a382-91731806ddbf\\\"\",\r\n  \"type\": \"Microsoft.Network/expressRouteCircuits\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"resourceGuid\": \"dadb471f-0e58-4b55-b820-8362a5c395e3\",\r\n    \"peerings\": [],\r\n    \"authorizations\": [],\r\n    \"circuitProvisioningState\": \"Disabled\",\r\n    \"allowClassicOperations\": false,\r\n    \"serviceKey\": \"e62a051c-5763-46f4-b6c6-13afcd4c4770\",\r\n    \"serviceProviderProvisioningState\": \"NotProvisioned\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "686"
@@ -994,10 +994,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "029a37ed-6652-4a26-95f7-bc6a4b6b493f"
+          "01fe921e-d046-4e18-bd86-ec46143162a7"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/029a37ed-6652-4a26-95f7-bc6a4b6b493f?api-version=2016-03-30"
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/01fe921e-d046-4e18-bd86-ec46143162a7?api-version=2016-06-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1010,23 +1010,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1193"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "c2a3054b-cf3d-4086-a22e-e9a63f0ca7c2"
+          "642a9cc3-8052-416e-9183-60e0e2d7d0eb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220111Z:c2a3054b-cf3d-4086-a22e-e9a63f0ca7c2"
+          "WESTUS:20160526T051405Z:642a9cc3-8052-416e-9183-60e0e2d7d0eb"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:11 GMT"
+          "Thu, 26 May 2016 05:14:04 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/778d1afa-7ba1-47db-9225-9169cff38203?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy83NzhkMWFmYS03YmExLTQ3ZGItOTIyNS05MTY5Y2ZmMzgyMDM/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/24251d6a-e67b-41c5-a19c-f742924a0793?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8yNDI1MWQ2YS1lNjdiLTQxYzUtYTE5Yy1mNzQyOTI0YTA3OTM/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1049,7 +1049,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ecbcbcc2-d044-4799-8386-fb91f54a3dd2"
+          "23cc9d4f-1e98-4b50-9319-94b2e8ae1fbd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1062,23 +1062,23 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14934"
         ],
         "x-ms-correlation-request-id": [
-          "c4223198-445b-4887-bba0-2c5b256bd1d0"
+          "6f26ea7b-bcc2-4140-9b7a-0d84ac03b36e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220036Z:c4223198-445b-4887-bba0-2c5b256bd1d0"
+          "WESTUS:20160526T051331Z:6f26ea7b-bcc2-4140-9b7a-0d84ac03b36e"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:00:36 GMT"
+          "Thu, 26 May 2016 05:13:30 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/4ac6c25b-4b70-42ef-8e5a-8acdba913a57?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy80YWM2YzI1Yi00YjcwLTQyZWYtOGU1YS04YWNkYmE5MTNhNTc/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/62780727-0a52-41ae-9330-05aa80a31228?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy82Mjc4MDcyNy0wYTUyLTQxYWUtOTMzMC0wNWFhODBhMzEyMjg/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1101,7 +1101,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3d8fec84-924f-4b60-94d6-e0e4b469a431"
+          "3774a420-994d-437e-b23c-0ff586c8f49c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1114,23 +1114,81 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14970"
+          "14927"
         ],
         "x-ms-correlation-request-id": [
-          "ec5f8d5e-3a28-4a9d-9374-852ff1ad2400"
+          "58a93512-877d-4131-b342-cb190e1c4437"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220108Z:ec5f8d5e-3a28-4a9d-9374-852ff1ad2400"
+          "WESTUS:20160526T051403Z:58a93512-877d-4131-b342-cb190e1c4437"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:07 GMT"
+          "Thu, 26 May 2016 05:14:02 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/029a37ed-6652-4a26-95f7-bc6a4b6b493f?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8wMjlhMzdlZC02NjUyLTRhMjYtOTVmNy1iYzZhNGI2YjQ5M2Y/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044/stats?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0L3N0YXRzP2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "afd34772-02a4-45e6-b873-d9f5e20b6ccd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"primaryBytesIn\": 0,\r\n  \"primaryBytesOut\": 0,\r\n  \"secondaryBytesIn\": 0,\r\n  \"secondaryBytesOut\": 0\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "105"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0fb22319-2683-4e96-a7a3-b1cbba17eb57"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14924"
+        ],
+        "x-ms-correlation-request-id": [
+          "2db3b620-ebb4-4f29-a40f-2bcd6bae8d9e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160526T051404Z:2db3b620-ebb4-4f29-a40f-2bcd6bae8d9e"
+        ],
+        "Date": [
+          "Thu, 26 May 2016 05:14:03 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/01fe921e-d046-4e18-bd86-ec46143162a7?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8wMWZlOTIxZS1kMDQ2LTRlMTgtYmQ4Ni1lYzQ2MTQzMTYyYTc/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1153,7 +1211,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "dfabbf6f-83db-47a8-ab6d-97cc196cc5c5"
+          "51d07a52-d6f7-4840-bb40-b7ef4a37d1e9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1166,28 +1224,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14966"
+          "14922"
         ],
         "x-ms-correlation-request-id": [
-          "2eea96e8-e917-4dca-ab3e-7ff9297235f1"
+          "f2d01044-546c-41f6-ae3b-ed39e0876239"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220141Z:2eea96e8-e917-4dca-ab3e-7ff9297235f1"
+          "WESTUS:20160526T051435Z:f2d01044-546c-41f6-ae3b-ed39e0876239"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:40 GMT"
+          "Thu, 26 May 2016 05:14:35 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk5223/?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs1MjIzLz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits/onesdk8044?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cy9vbmVzZGs4MDQ0P2FwaS12ZXJzaW9uPTIwMTYtMDYtMDE=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "893f2e95-5e16-4017-97d8-41a9e04ac0d0"
+          "66a36d4f-4cc7-4128-bb52-1159d03ca3d9"
         ],
         "accept-language": [
           "en-US"
@@ -1211,10 +1269,10 @@
           "10"
         ],
         "x-ms-request-id": [
-          "3924a26e-b4aa-4170-b2ca-2467b6a943ba"
+          "b0b3d833-c6d1-4249-89c5-cee51a41a03f"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/3924a26e-b4aa-4170-b2ca-2467b6a943ba?api-version=2016-03-30"
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/b0b3d833-c6d1-4249-89c5-cee51a41a03f?api-version=2016-06-01"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1223,30 +1281,30 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operationResults/3924a26e-b4aa-4170-b2ca-2467b6a943ba?api-version=2016-03-30"
+          "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operationResults/b0b3d833-c6d1-4249-89c5-cee51a41a03f?api-version=2016-06-01"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1192"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "907d60df-afac-47e5-913c-a8eac89f1f90"
+          "f0a8fd84-090d-42f7-bd38-9cc02d1a11c0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220142Z:907d60df-afac-47e5-913c-a8eac89f1f90"
+          "WESTUS:20160526T051436Z:f0a8fd84-090d-42f7-bd38-9cc02d1a11c0"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:01:42 GMT"
+          "Thu, 26 May 2016 05:14:36 GMT"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/3924a26e-b4aa-4170-b2ca-2467b6a943ba?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy8zOTI0YTI2ZS1iNGFhLTQxNzAtYjJjYS0yNDY3YjZhOTQzYmE/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/providers/Microsoft.Network/locations/westus.validation/operations/b0b3d833-c6d1-4249-89c5-cee51a41a03f?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzLnZhbGlkYXRpb24vb3BlcmF0aW9ucy9iMGIzZDgzMy1jNmQxLTQyNDktODljNS1jZWU1MWE0MWEwM2Y/YXBpLXZlcnNpb249MjAxNi0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1269,7 +1327,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8d522ad5-b301-482f-9b2c-02dbfd92f3b5"
+          "8524dd90-b627-4140-8d69-4f2af253f2ab"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1282,28 +1340,28 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14962"
+          "14922"
         ],
         "x-ms-correlation-request-id": [
-          "14e6058c-0a4a-47ec-b754-d37f1cb09a2c"
+          "2ce91368-0447-43c9-873f-d40731a9ac2f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220213Z:14e6058c-0a4a-47ec-b754-d37f1cb09a2c"
+          "WESTUS:20160526T051506Z:2ce91368-0447-43c9-873f-d40731a9ac2f"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:12 GMT"
+          "Thu, 26 May 2016 05:15:05 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cz9hcGktdmVyc2lvbj0yMDE2LTAzLTMw",
+      "RequestUri": "/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/resourceGroups/movecircuit/providers/Microsoft.Network/expressRouteCircuits?api-version=2016-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMThiMGRjMDYtYTJiOC00YzBmLTk1YWYtNTUwMzE5ZmE1ZWFjL3Jlc291cmNlR3JvdXBzL21vdmVjaXJjdWl0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9leHByZXNzUm91dGVDaXJjdWl0cz9hcGktdmVyc2lvbj0yMDE2LTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "21316ca6-d235-439b-8879-515f62348787"
+          "625a8e15-eddb-4ad3-b032-a3cb05eeb1c1"
         ],
         "accept-language": [
           "en-US"
@@ -1315,7 +1373,7 @@
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12"
+          "19"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1326,17 +1384,8 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14961"
-        ],
         "x-ms-request-id": [
-          "bdb77495-2f39-4621-84d4-c33485b2d4b4"
-        ],
-        "x-ms-correlation-request-id": [
-          "bdb77495-2f39-4621-84d4-c33485b2d4b4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20160324T220213Z:bdb77495-2f39-4621-84d4-c33485b2d4b4"
+          "2285c594-5267-419e-a99a-ab8ed6dab1b8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1344,8 +1393,21 @@
         "Cache-Control": [
           "no-cache"
         ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14921"
+        ],
+        "x-ms-correlation-request-id": [
+          "9e778448-dccf-480d-b3df-d9dfbf44ddb7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160526T051507Z:9e778448-dccf-480d-b3df-d9dfbf44ddb7"
+        ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:12 GMT"
+          "Thu, 26 May 2016 05:15:06 GMT"
         ]
       },
       "StatusCode": 200
@@ -1375,16 +1437,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-request-id": [
-          "f0ecfdb9-768f-4c20-9fe0-0d3f5e79d6cf"
+          "114eaf51-1aac-4cb5-92d0-667fe9299c2e"
         ],
         "x-ms-correlation-request-id": [
-          "f0ecfdb9-768f-4c20-9fe0-0d3f5e79d6cf"
+          "114eaf51-1aac-4cb5-92d0-667fe9299c2e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220213Z:f0ecfdb9-768f-4c20-9fe0-0d3f5e79d6cf"
+          "WESTUS:20160526T051507Z:114eaf51-1aac-4cb5-92d0-667fe9299c2e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1393,7 +1455,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:13 GMT"
+          "Thu, 26 May 2016 05:15:06 GMT"
         ],
         "Location": [
           "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1NT1ZFQ0lSQ1VJVC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01"
@@ -1429,16 +1491,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14998"
         ],
         "x-ms-request-id": [
-          "2a09946d-80e2-48e0-bf4a-82adf72e8533"
+          "6c68424d-efb0-450d-bc6b-34de62ba143c"
         ],
         "x-ms-correlation-request-id": [
-          "2a09946d-80e2-48e0-bf4a-82adf72e8533"
+          "6c68424d-efb0-450d-bc6b-34de62ba143c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220213Z:2a09946d-80e2-48e0-bf4a-82adf72e8533"
+          "WESTUS:20160526T051507Z:6c68424d-efb0-450d-bc6b-34de62ba143c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1447,7 +1509,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:13 GMT"
+          "Thu, 26 May 2016 05:15:06 GMT"
         ],
         "Location": [
           "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1NT1ZFQ0lSQ1VJVC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01"
@@ -1483,16 +1545,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14997"
         ],
         "x-ms-request-id": [
-          "52fc2aec-0008-44ac-8781-e37aa2ea8c60"
+          "798118f3-ab82-48da-a7c6-4bafe765c903"
         ],
         "x-ms-correlation-request-id": [
-          "52fc2aec-0008-44ac-8781-e37aa2ea8c60"
+          "798118f3-ab82-48da-a7c6-4bafe765c903"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220228Z:52fc2aec-0008-44ac-8781-e37aa2ea8c60"
+          "WESTUS:20160526T051522Z:798118f3-ab82-48da-a7c6-4bafe765c903"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1501,7 +1563,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:28 GMT"
+          "Thu, 26 May 2016 05:15:22 GMT"
         ],
         "Location": [
           "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1NT1ZFQ0lSQ1VJVC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01"
@@ -1537,16 +1599,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14996"
         ],
         "x-ms-request-id": [
-          "e0060809-61e2-41cc-ba2b-8cd97e5d3290"
+          "7474f965-4615-4b77-a73b-4f48254f5263"
         ],
         "x-ms-correlation-request-id": [
-          "e0060809-61e2-41cc-ba2b-8cd97e5d3290"
+          "7474f965-4615-4b77-a73b-4f48254f5263"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220244Z:e0060809-61e2-41cc-ba2b-8cd97e5d3290"
+          "WESTUS:20160526T051537Z:7474f965-4615-4b77-a73b-4f48254f5263"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1555,7 +1617,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:43 GMT"
+          "Thu, 26 May 2016 05:15:37 GMT"
         ],
         "Location": [
           "https://management.azure.com/subscriptions/18b0dc06-a2b8-4c0f-95af-550319fa5eac/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1NT1ZFQ0lSQ1VJVC1XRVNUVVMiLCJqb2JMb2NhdGlvbiI6Indlc3R1cyJ9?api-version=2016-02-01"
@@ -1588,16 +1650,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14995"
         ],
         "x-ms-request-id": [
-          "3da84a87-6c31-4511-9a3a-8e763b23f61d"
+          "820d74cc-8f76-4f6e-9867-e4d517f66588"
         ],
         "x-ms-correlation-request-id": [
-          "3da84a87-6c31-4511-9a3a-8e763b23f61d"
+          "820d74cc-8f76-4f6e-9867-e4d517f66588"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20160324T220259Z:3da84a87-6c31-4511-9a3a-8e763b23f61d"
+          "WESTUS:20160526T051552Z:820d74cc-8f76-4f6e-9867-e4d517f66588"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1606,7 +1668,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 24 Mar 2016 22:02:59 GMT"
+          "Thu, 26 May 2016 05:15:51 GMT"
         ]
       },
       "StatusCode": 200
@@ -1614,7 +1676,7 @@
   ],
   "Names": {
     "Test-ExpressRouteCircuitStageCRUD": [
-      "onesdk5223"
+      "onesdk8044"
     ]
   },
   "Variables": {

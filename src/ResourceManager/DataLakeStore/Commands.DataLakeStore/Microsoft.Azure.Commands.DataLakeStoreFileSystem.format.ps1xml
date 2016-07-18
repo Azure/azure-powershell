@@ -14,8 +14,8 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>LastWriteTime</Label>
-            <Alignment>Right</Alignment>
-            <Width>20</Width>
+            <Alignment>Left</Alignment>
+            <Width>30</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Length</Label>

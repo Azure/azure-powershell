@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc configuration script
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscConfiguration")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationDscConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(DscConfiguration))]
     public class ImportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var configuration = this.AutomationClient.CreateConfiguration(
+            if (ShouldProcess(SourcePath, VerbsData.Import))
+            {
+                var configuration = this.AutomationClient.CreateConfiguration(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.SourcePath,
@@ -99,7 +101,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.Published,
                     this.Force);
 
-            this.WriteObject(configuration);
+                this.WriteObject(configuration);
+            }
         }
     }
 }

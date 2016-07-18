@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGatewayIpConfiguration))]
-    public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
+    public class NewAzureVirtualNetworkGatewayIpConfigCommand : AzureVirtualNetworkGatewayIpConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             // Get the subnetId and publicIpAddressId from the objects if specified
             if (string.Equals(ParameterSetName, "object"))
             {

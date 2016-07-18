@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            if (edition == DatabaseEdition.Basic || edition == DatabaseEdition.Standard || edition == DatabaseEdition.Premium || edition == DatabaseEdition.DataWarehouse)
+            if (edition != DatabaseEdition.None && edition != DatabaseEdition.Free)
             {
                 return true;
             }

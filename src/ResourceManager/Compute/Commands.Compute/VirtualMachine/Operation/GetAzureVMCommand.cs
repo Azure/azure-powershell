@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    AzureOperationResponse<IEnumerable<VirtualMachine>> vmListResult = null;
+                    AzureOperationResponse<IPage<VirtualMachine>> vmListResult = null;
                     vmListResult = this.VirtualMachineClient.ListWithHttpMessagesAsync(this.ResourceGroupName)
                             .GetAwaiter().GetResult();
                     var psResultList = new List<PSVirtualMachine>();

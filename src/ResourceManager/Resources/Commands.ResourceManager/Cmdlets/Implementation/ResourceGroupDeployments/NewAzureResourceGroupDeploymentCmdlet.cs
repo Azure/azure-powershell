@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroupDeployment", SupportsShouldProcess = true,
+        DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCmdlet : ResourceWithParameterCmdletBase, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -53,38 +54,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            PSCreateResourceGroupDeploymentParameters parameters = new PSCreateResourceGroupDeploymentParameters()
-            {
-                ResourceGroupName = ResourceGroupName,
-                DeploymentName = Name,
-                DeploymentMode = Mode,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
-            };
 
-            if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
-            {
-                WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
-            }
-
-            if (this.Mode == DeploymentMode.Complete)
-            {
-                this.ConfirmAction(
-                    this.Force,
-                    string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
-                    ProjectResources.CreateDeploymentCompleteMode,
-                    ResourceGroupName,
-                    () =>
+            this.ConfirmAction(
+                this.Force,
+                string.Format(ProjectResources.ConfirmOnCompleteDeploymentMode, this.ResourceGroupName),
+                ProjectResources.CreateDeployment,
+                ResourceGroupName,
+                () =>
+                {
+                    PSCreateResourceGroupDeploymentParameters parameters = new PSCreateResourceGroupDeploymentParameters()
                     {
-                        WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
-                    });
-            }
-            else
-            {
-                WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
-            }
+                        ResourceGroupName = ResourceGroupName,
+                        DeploymentName = Name,
+                        DeploymentMode = Mode,
+                        TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
+                        TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                        ParameterUri = TemplateParameterUri,
+                        DeploymentDebugLogLevel = GetDeploymentDebugLogLevel(DeploymentDebugLogLevel)
+                    };
+
+                    if (!string.IsNullOrEmpty(parameters.DeploymentDebugLogLevel))
+                    {
+                        WriteWarning(ProjectResources.WarnOnDeploymentDebugSetting);
+                    }
+                    WriteObject(ResourceManagerSdkClient.ExecuteDeployment(parameters));
+                },
+                () => this.Mode == DeploymentMode.Complete);
         }
     }
 }

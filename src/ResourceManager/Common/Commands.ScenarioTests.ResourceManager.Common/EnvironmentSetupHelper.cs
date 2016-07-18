@@ -262,7 +262,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -280,7 +282,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             if (mode == AzureModule.AzureProfile)
             {
                 this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
@@ -288,7 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1"));
             }
             else
             {
@@ -309,14 +315,19 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public virtual Collection<PSObject> RunPowerShellTest(params string[] scripts)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            d.Add("Microsoft.Compute", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            // If a test customizes the reecord matcher, use the cutomized version otherwise use the default
+            // permissive record matcher.
+            if (HttpMockServer.Matcher == null || HttpMockServer.Matcher.GetType() == typeof(SimpleRecordMatcher))
+            {
+                Dictionary<string, string> d = new Dictionary<string, string>();
+                d.Add("Microsoft.Resources", null);
+                d.Add("Microsoft.Features", null);
+                d.Add("Microsoft.Authorization", null);
+                d.Add("Microsoft.Compute", null);
+                var providersToIgnore = new Dictionary<string, string>();
+                providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+                HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            }
 
             using (var powershell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
@@ -335,7 +346,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
-
                     if (powershell.Streams.Error.Count > 0)
                     {
                         throw new RuntimeException(
