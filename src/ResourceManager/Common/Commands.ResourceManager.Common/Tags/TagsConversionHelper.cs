@@ -16,10 +16,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
-using ProjectResources = Microsoft.Azure.Commands.Tags.Properties.Resources;
-
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 {
     public class TagsConversionHelper
     {
