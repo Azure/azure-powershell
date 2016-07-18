@@ -81,5 +81,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Tasks that this task depends on. The task will not be scheduled until all depended-on tasks have completed successfully.
         /// </summary>
         public TaskDependencies DependsOn { get; set; }
+
+        /// <summary>
+        /// A list of individual task exit codes and how the Batch service should respond to them.
+        /// </summary>
+        public PSExitConditions ExitConditions { get; set; }
     }
 }

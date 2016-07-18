@@ -303,5 +303,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 usePipeline ? "TestTerminateJobPipeline" : "TestTerminateJobById");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewJobCompletesWhenAnyTaskFails()
+        {
+            BatchController.NewInstance.RunPsTest("Test-NewJobCompletesWhenAnyTaskFails");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestJobWithExitConditionsAreBeingRoundTrippedCorrectly()
+        {
+            BatchController.NewInstance.RunPsTest("Test-JobWithExitConditionsAreBeingRoundTrippedCorrectly");
+        }
     }
 }

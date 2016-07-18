@@ -144,6 +144,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.AddTask(parameters.JobId, task, parameters.AdditionalBehaviors);
             }
+
+            if (parameters.ExitConditions != null)
+            {
+                task.ExitConditions = parameters.ExitConditions.omObject;
+            }
         }
 
         /// <summary>

@@ -153,6 +153,16 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 job.PoolInformation = parameters.PoolInformation.omObject;
             }
 
+            if (parameters.OnAllTasksComplete != null)
+            {
+                job.OnAllTasksComplete = parameters.OnAllTasksComplete;
+            }
+
+            if (parameters.OnTaskFailure != null)
+            {
+                job.OnTaskFailure = parameters.OnTaskFailure;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingJob, parameters.JobId));
             job.Commit(parameters.AdditionalBehaviors);
         }

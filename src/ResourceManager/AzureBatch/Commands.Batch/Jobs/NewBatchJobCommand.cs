@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+
+using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -66,8 +68,18 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter UsesTaskDependencies { get; set; }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public OnTaskFailure OnTaskFailure { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public OnAllTasksComplete OnAllTasksComplete { get; set; }
+
         public override void ExecuteCmdlet()
         {
+            System.Diagnostics.Debugger.Launch();
+
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
                 CommonEnvironmentSettings = this.CommonEnvironmentSettings,
@@ -80,6 +92,8 @@ namespace Microsoft.Azure.Commands.Batch
                 PoolInformation = this.PoolInformation,
                 Priority = this.Priority,
                 UsesTaskDependencies = this.UsesTaskDependencies.IsPresent,
+                OnAllTasksComplete = this.OnAllTasksComplete,
+                OnTaskFailure = this.OnTaskFailure,
             };
 
             BatchClient.CreateJob(parameters);
