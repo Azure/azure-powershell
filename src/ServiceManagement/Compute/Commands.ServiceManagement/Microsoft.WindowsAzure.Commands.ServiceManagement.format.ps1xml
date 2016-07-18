@@ -702,5 +702,32 @@
         </ListEntries>
       </ListControl>
     </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.MigrationValidateContext</Name>
+      <OutOfBand />
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.MigrationValidateContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>OperationId</Label>
+                <PropertyName>OperationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Result</Label>
+                <PropertyName>Result</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ValidationMessages</Label>
+                <PropertyName>ValidationMessages</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

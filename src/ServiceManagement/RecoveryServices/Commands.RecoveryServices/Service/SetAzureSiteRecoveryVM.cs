@@ -74,6 +74,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            this.WriteWarningWithTimestamp(
+                string.Format(
+                    Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name));
+
             // Check for at least one option
             if (string.IsNullOrEmpty(this.Name) && 
                 string.IsNullOrEmpty(this.Size) && 

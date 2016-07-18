@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemOwner"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemOwner", SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemOwner")]
     public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {
@@ -50,6 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage =
                 "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
+        [Obsolete("Force prameter will be removed in a future release.", false)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -68,20 +70,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 user = Id.ToString();
             }
 
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemOwner, Path.OriginalPath),
-                    string.Format(Resources.SetDataLakeStoreItemOwner, Path.OriginalPath),
-                    Path.OriginalPath,
-                    () =>
-                        DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group));
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group);
-            }
+            ConfirmAction(
+                string.Format(Resources.SetDataLakeStoreItemOwner, Path.OriginalPath),
+                Path.OriginalPath,
+                () =>
+                    DataLakeStoreFileSystemClient.SetOwner(Path.TransformedPath, Account, user, group));
         }
     }
 }

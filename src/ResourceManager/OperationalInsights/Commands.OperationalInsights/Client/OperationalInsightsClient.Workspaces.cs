@@ -192,43 +192,32 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                             parameters.CustomerId,
                             tags),
                         parameters.ResourceGroupName);
+                if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ProvisioningFailedException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.WorkspaceProvisioningFailed,
+                            parameters.WorkspaceName,
+                            parameters.ResourceGroupName));
+                }
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the data factory exists or not.
-                createWorkspace();
-            }
-            else
-            {
-                bool workspaceExists = CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName);
-
-                parameters.ConfirmAction(
-                    !workspaceExists,    // prompt only if the workspace exists
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.WorkspaceExists,
-                        parameters.WorkspaceName,
-                        parameters.ResourceGroupName),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.WorkspaceCreating,
-                        parameters.WorkspaceName,
-                        parameters.ResourceGroupName),
+            parameters.ConfirmAction(
+                parameters.Force,    // prompt only if the workspace exists
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.WorkspaceExists,
                     parameters.WorkspaceName,
-                    createWorkspace);
-            }
-
-            // If the workspace did not transition to a succeeded provisioning state then throw
-            if (!string.Equals(workspace.ProvisioningState, OperationStatus.Succeeded.ToString(), StringComparison.OrdinalIgnoreCase))
-            {
-                throw new ProvisioningFailedException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.WorkspaceProvisioningFailed,
-                        parameters.WorkspaceName,
-                        parameters.ResourceGroupName));
-            }
+                    parameters.ResourceGroupName),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    Resources.WorkspaceCreating,
+                    parameters.WorkspaceName,
+                    parameters.ResourceGroupName),
+                parameters.WorkspaceName,
+                createWorkspace,
+                () => CheckWorkspaceExists(parameters.ResourceGroupName, parameters.WorkspaceName));
 
             return workspace;
         }

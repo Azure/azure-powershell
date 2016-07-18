@@ -21,7 +21,10 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [Cmdlet(VerbsData.Update,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
@@ -37,30 +40,33 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(this.VM.Name, VerbsData.Update))
             {
-                WriteWarning(Properties.Resources.TagFixWarningMessage);
-                var parameters = new VirtualMachine
+                ExecuteClientAction(() =>
                 {
-                    DiagnosticsProfile = this.VM.DiagnosticsProfile,
-                    HardwareProfile = this.VM.HardwareProfile,
-                    StorageProfile = this.VM.StorageProfile,
-                    NetworkProfile = this.VM.NetworkProfile,
-                    OsProfile = this.VM.OSProfile,
-                    Plan = this.VM.Plan,
-                    AvailabilitySet = this.VM.AvailabilitySetReference,
-                    Location = this.VM.Location,
-                    LicenseType = this.VM.LicenseType,
-                    Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
-                };
+                    WriteWarning(Properties.Resources.TagFixWarningMessage);
+                    var parameters = new VirtualMachine
+                    {
+                        DiagnosticsProfile = this.VM.DiagnosticsProfile,
+                        HardwareProfile = this.VM.HardwareProfile,
+                        StorageProfile = this.VM.StorageProfile,
+                        NetworkProfile = this.VM.NetworkProfile,
+                        OsProfile = this.VM.OSProfile,
+                        Plan = this.VM.Plan,
+                        AvailabilitySet = this.VM.AvailabilitySetReference,
+                        Location = this.VM.Location,
+                        LicenseType = this.VM.LicenseType,
+                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                    };
 
-                var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VM.Name,
-                    parameters).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VM.Name,
+                        parameters).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }
