@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             var hdinsightManagementClient = GetHdInsightManagementClient();
 
-            helper.SetupManagementClients(hdinsightManagementClient);
+            helper.SetupSomeOfManagementClients(hdinsightManagementClient);
         }
 
         protected HDInsightManagementClient GetHdInsightManagementClient()

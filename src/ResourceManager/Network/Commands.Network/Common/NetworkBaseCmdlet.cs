@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.Network.Common;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -44,6 +46,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
             NetworkResourceManagerProfile.Initialize();
+            try
+            {
+                Execute();
+            }
+            catch (Rest.Azure.CloudException ex)
+            {
+                throw new NetworkCloudException(ex);
+            }
+        }
+        public virtual void Execute()
+        {
         }
 
         public static string GetResourceGroup(string resourceId)

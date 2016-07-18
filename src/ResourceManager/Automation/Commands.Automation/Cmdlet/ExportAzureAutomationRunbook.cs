@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation runbook definitions for a given account.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationRunbook")]
+    [Cmdlet(VerbsData.Export, "AzureRmAutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -63,9 +63,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             bool? isDraft = this.IsDraft();
 
-            var outputFolder = this.AutomationClient.ExportRunbook(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft, this.OutputFolder, this.Force.IsPresent);
+            if (ShouldProcess(Name, VerbsData.Export))
+            {
+                var outputFolder = this.AutomationClient.ExportRunbook(this.ResourceGroupName,
+                    this.AutomationAccountName, this.Name, isDraft, this.OutputFolder, this.Force.IsPresent);
 
-            this.WriteObject(outputFolder, true);
+                this.WriteObject(outputFolder, true);
+            }
         }
 
         /// <summary>

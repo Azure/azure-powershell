@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.SavedSearch)]
+    [Cmdlet(VerbsCommon.New, Constants.SavedSearch, SupportsShouldProcess = true)]
     public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search version.")]
         [ValidateNotNullOrEmpty]
-        public int Version { get; set; }
+        public long Version { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }

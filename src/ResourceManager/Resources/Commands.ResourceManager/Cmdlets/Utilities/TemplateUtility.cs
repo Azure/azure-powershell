@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
         /// <returns>The template parameters</returns>
         public static RuntimeDefinedParameterDictionary GetTemplateParametersFromFile(string templateFilePath, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
         {
-            RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
             string templateContent = null;
 
             if (templateFilePath != null)
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 }
             }
 
-            dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
+            RuntimeDefinedParameterDictionary dynamicParameters = ParseTemplateAndExtractParameters(templateContent, templateParameterObject, templateParameterFilePath, staticParameters);
 
             return dynamicParameters;
         }
