@@ -525,6 +525,468 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureRmDnsRecordConfig</command:name>
+      <maml:description>
+        <maml:para>Creates a new Dns Record that can be added to a record set.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureRmDnsRecord</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureRmDnsRecordConfig cmdlet creates a Domain Name System (DNS) record object that can be used to create record sets.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Cname</maml:name>
+          <maml:description>
+            <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Exchange</maml:name>
+          <maml:description>
+            <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Preference</maml:name>
+          <maml:description>
+            <maml:para>Specifies the preference for an MX record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Ipv4Address</maml:name>
+          <maml:description>
+            <maml:para>Specifies an IPv4 address for an A record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Ipv6Address</maml:name>
+          <maml:description>
+            <maml:para>Specifies an IPv6 address for an AAAA record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Nsdname</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Port</maml:name>
+          <maml:description>
+            <maml:para>Specifies the port for a service (SRV) record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Priority</maml:name>
+          <maml:description>
+            <maml:para>Specifies the priority for an SRV record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Target</maml:name>
+          <maml:description>
+            <maml:para>Specifies the target for an SRV record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Weight</maml:name>
+          <maml:description>
+            <maml:para>Specifies the weight for an SRV record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Ptrdname</maml:name>
+          <maml:description>
+            <maml:para>Specifies the DNAME of a pointer resource (PTR) record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmDnsRecordConfig</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>Value</maml:name>
+          <maml:description>
+            <maml:para>Specifies the value for a TXT record.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Cname</maml:name>
+        <maml:description>
+          <maml:para>Specifies the domain name for a canonical name (CNAME) record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Exchange</maml:name>
+        <maml:description>
+          <maml:para>Specifies the mail exchange server name for a mail exchange (MX) record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Ipv4Address</maml:name>
+        <maml:description>
+          <maml:para>Specifies an IPv4 address for an A record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Ipv6Address</maml:name>
+        <maml:description>
+          <maml:para>Specifies an IPv6 address for an AAAA record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Nsdname</maml:name>
+        <maml:description>
+          <maml:para>Specifies the name server for a name server (NS) record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Port</maml:name>
+        <maml:description>
+          <maml:para>Specifies the port for a service (SRV) record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt16</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Preference</maml:name>
+        <maml:description>
+          <maml:para>Specifies the preference for an MX record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt16</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Priority</maml:name>
+        <maml:description>
+          <maml:para>Specifies the priority for an SRV record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt16</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Ptrdname</maml:name>
+        <maml:description>
+          <maml:para>Specifies the DNAME of a pointer resource (PTR) record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Target</maml:name>
+        <maml:description>
+          <maml:para>Specifies the target for an SRV record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Value</maml:name>
+        <maml:description>
+          <maml:para>Specifies the value for a TXT record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>Weight</maml:name>
+        <maml:description>
+          <maml:para>Specifies the weight for an SRV record.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">UInt16</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt16</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordBase</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet returns the a Record object. </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a record set with a single A record  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$aRecord = New-AzureRmDnsRecordConfig -Ipv4Address &quot;172.16.0.0&quot;
+New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType A -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $aRecord</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates a new RecordSet named www as type A in the zone named myzone.com with a TTL of 3600 seconds. The record set has a single A record</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Create a record set with multiple AAAA records  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$aaaaRecords = @();
+$aaaaRecords += New-AzureRmDnsRecordConfig -Ipv6Address &quot;2001::1&quot;
+$aaaaRecords += New-AzureRmDnsRecordConfig -Ipv6Address &quot;2001::2&quot;
+
+New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType AAAA -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $aaaaRecords</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+      <command:example>
+        <maml:title>Example 3: Create a CNAME record to add to a record set</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>$record = New-AzureRmDnsRecordConfig -Cname "contoso.com" ;
+        New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType CNAME -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $record
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command creates a record with  contoso.com as a CNAME record.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 4: Create a MX record to add to a record set</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureRmDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command adds the specified mail exchange server as an MX record.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 5: Create NS record to add to a record set</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureRmDnsRecordConfig -Nsdname "contoso.myzone.com"
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates a NS record.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 6: Create SRV record</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureRmDnsRecordConfig -Port 8080 -Priority 0 -Target "target.example.com" -Weight 5
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates the specified service locator as an SRV record.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>Example 7: Add a TXT record</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>PS C:\&gt;New-AzureRmDnsRecordConfig -Value "This is a TXT Record"
+</dev:code>
+        <dev:remarks>
+          <maml:para>This command creates a TXT record that can be added to a record set.</maml:para>
+          <maml:para />
+          <maml:para />
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 9 : Create a PTR record  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$record = New-AzureRmDnsRecordConfig   -PtrdName &quot;contoso.com&quot;
+New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType PTR -ResourceGroupName &quot;MyResourceGroup&amp;quot&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $record</dev:code>
+			<dev:remarks>
+				<maml:para>Creates a record set with a PTR record</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>New-AzureRmDnsRecordConfig</maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmDnsRecordSet</command:name>
@@ -1031,10 +1493,10 @@
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+            <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1109,10 +1571,10 @@
             <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it exists. You will be prompted to confirm the operation unless you specify the Force parameter.</maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+            <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1239,10 +1701,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the RecordSet. Tags are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
+          <maml:para>Specifies an array of tags to associate with the RecordSet. Metadata are name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -1321,26 +1783,73 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <command:examples>
-      <command:example>
-        <maml:title>Example 1: Create a RecordSet</maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com"
-</dev:code>
-        <dev:remarks>
-          <maml:para>This command creates a new RecordSet named www as type A in the zone named myzone.com with a TTL of 3600 seconds.</maml:para>
-          <maml:para>Note that the record set will not contain any DNS records. Use Add-AzureRmDnsRecordConfig and Set-AzureRmDnsRecordSet to add records to the record set and commit changes.</maml:para>
-          <maml:para />
-          <maml:para />
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a record set with a single A record  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$aRecord = New-AzureRmDnsRecordConfig -Ipv4Address &quot;172.16.0.0&quot;
+New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType A -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $aRecord</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates a new RecordSet named www as type A in the zone named myzone.com with a TTL of 3600 seconds. The record set has a single A record</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Create a record set with multiple AAAA records  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>$aaaaRecords = @();
+$aaaaRecords += New-AzureRmDnsRecordConfig -Ipv6Address &quot;2001::1&quot;
+$aaaaRecords += New-AzureRmDnsRecordConfig -Ipv6Address &quot;2001::2&quot;
+
+New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType AAAA -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords $aaaaRecords</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 3 : Create an empty record set (without records)  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>New-AzureRmDnsRecordSet -Name &quot;www&quot; -RecordType A -ResourceGroupName &quot;MyResourceGroup&quot; -TTL 3600 -ZoneName &quot;myzone.com&quot; -DnsRecords @()</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates a new RecordSet named www as type A in the zone named myzone.com with a TTL of 3600 seconds.</maml:para>
+				<maml:para>Note that the record set will not contain any DNS records. Use Add-AzureRmDnsRecordConfig and
+Set-AzureRmDnsRecordSet to add records to the record set and commit changes.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
@@ -1380,10 +1889,10 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+            <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -1428,10 +1937,10 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+          <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -2687,10 +3196,10 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+          <maml:name>Metadata</maml:name>
           <maml:description>
-            <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+            <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
@@ -2763,10 +3272,10 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
-        <maml:name>Tag</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Metadata">
+        <maml:name>Metadata</maml:name>
         <maml:description>
-          <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
+          <maml:para>Specifies an array of tags to associate with the DNS zone. Metadata are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
@@ -2828,7 +3337,7 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-PS C:\&gt; $Zone.Tags = @(@{"Name"="Dept"; "Value"="Electrical"})
+PS C:\&gt; $Zone.Metadata = @(@{"Name"="Dept"; "Value"="Electrical"})
 PS C:\&gt; $Zone | Set-AzureRmDnsZone
 </dev:code>
         <dev:remarks>
@@ -2848,7 +3357,7 @@ PS C:\&gt; $Zone | Set-AzureRmDnsZone
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Tag @(@{"Name"="Dept"; "Value"="Electrical"})
+        <dev:code>PS C:\&gt;Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Metadata @(@{"Name"="Dept"; "Value"="Electrical"})
 </dev:code>
         <dev:remarks>
           <maml:para>This command updates the tags for the zone named myzone.com without first explicitly getting the zone.</maml:para>
