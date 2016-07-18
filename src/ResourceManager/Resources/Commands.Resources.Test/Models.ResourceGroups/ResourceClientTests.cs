@@ -1236,7 +1236,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal(1, groups1.Count);
             Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-            Assert.True(groups1[0].Resources == null || groups1[0].Resources.Count() == 0);
 
             List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "tag2", "" } }), false);
@@ -1244,8 +1243,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(2, groups2.Count);
             Assert.Equal(resourceGroup1.Name, groups2[0].ResourceGroupName);
             Assert.Equal(resourceGroup3.Name, groups2[1].ResourceGroupName);
-
-            Assert.True(groups2[0].Resources == null || groups2[0].Resources.Count() == 0);
 
             List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), false);
@@ -1290,7 +1287,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal(1, groups1.Count);
             Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
-            Assert.Equal(1, groups1[0].Resources.Count());
 
             List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "tag2", "" } }), true);
