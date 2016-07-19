@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
-        /// </summary>
-        internal static string AccountAlreadyExists {
-            get {
-                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
         /// </summary>
         internal static string AccountAndKeyInUse {
