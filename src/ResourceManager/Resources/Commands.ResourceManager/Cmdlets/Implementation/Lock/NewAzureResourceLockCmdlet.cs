@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The new azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock), OutputType(typeof(PSObject))]
     public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>

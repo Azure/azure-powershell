@@ -12,12 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
-using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -43,8 +37,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("ExtensionName")]
         [Parameter(
-            Mandatory = true,
-            Position = 2,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The extension name.")]
         [ValidateNotNullOrEmpty]
@@ -52,8 +45,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Alias("HandlerVersion", "Version")]
         [Parameter(
-            Mandatory = true,
-            Position = 3,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The version")]
         [ValidateNotNullOrEmpty]
