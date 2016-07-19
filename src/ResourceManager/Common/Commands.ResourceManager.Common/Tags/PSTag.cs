@@ -12,12 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Model
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 {
-    public class PSTagValue
+    public class PSTag
     {
         public string Name { get; set; }
 
+        public string ValuesTable { get; set; }
+
         public string Count { get; set; }
+
+        public List<PSTagValue> Values { get; set; }
     }
 }

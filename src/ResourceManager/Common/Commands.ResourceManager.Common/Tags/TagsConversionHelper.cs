@@ -15,30 +15,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources;
 
-using ProjectResources = Microsoft.Azure.Commands.Tags.Properties.Resources;
-
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 {
     public class TagsConversionHelper
     {
         public static PSTagValuePair Create(Hashtable hashtable)
         {
-            if (hashtable == null ||
-                !hashtable.ContainsKey("Name"))
+            if (hashtable == null)
             {
                 return null;
             }
 
-            PSTagValuePair tagValue = new PSTagValuePair();
-            tagValue.Name = hashtable["Name"].ToString();
-
-            if (hashtable.ContainsKey("Value"))
+            IDictionaryEnumerator ide = hashtable.GetEnumerator();
+            PSTagValuePair tagValuePair = new PSTagValuePair();
+            if(ide.MoveNext())
             {
-                tagValue.Value = hashtable["Value"].ToString();
+                DictionaryEntry entry = (DictionaryEntry) ide.Current;
+                tagValuePair.Name = entry.Key.ToString();
+                if(entry.Value != null)
+                {
+                    tagValuePair.Value = entry.Value.ToString();
+                }
             }
-
-            return tagValue;
+            return tagValuePair;
         }
 
         public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray, bool validate)
@@ -47,19 +49,21 @@ namespace Microsoft.Azure.Commands.Tags.Model
             if (hashtableArray != null && hashtableArray.Length > 0)
             {
                 tagDictionary = new Dictionary<string, string>();
+                PSTagValuePair tvPair = new PSTagValuePair();
                 foreach (var tag in hashtableArray)
                 {
-                    var tagValuePair = Create(tag);
-                    if (tagValuePair != null)
+                    foreach(DictionaryEntry entry in tag)
                     {
-                        if (tagValuePair.Value != null)
+                        tvPair.Name = entry.Key.ToString();
+                        if (entry.Value != null)
                         {
-                            tagDictionary[tagValuePair.Name] = tagValuePair.Value;
+                            tvPair.Value = entry.Value.ToString();
                         }
                         else
                         {
-                            tagDictionary[tagValuePair.Name] = "";
+                            tvPair.Value = string.Empty;
                         }
+                        tagDictionary[tvPair.Name] = tvPair.Value;
                     }
                 }
             }
@@ -69,11 +73,6 @@ namespace Microsoft.Azure.Commands.Tags.Model
                     (tagDictionary == null || tagDictionary.Count == 0))
                 {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
-                }
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
-                    (tagDictionary == null || hashtableArray.Length != tagDictionary.Count))
-                {
-                    throw new ArgumentException(ProjectResources.InvalidTagFormatNotUniqueName);
                 }
             }
 
@@ -92,8 +91,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             {
                 tagHashtable.Add(new Hashtable
                 {
-                    {"Name", key},
-                    {"Value", dictionary[key]}
+                    {key, dictionary[key]}
                 });
             }
             return tagHashtable.ToArray();
