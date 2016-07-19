@@ -36,6 +36,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSExitOptions exitOptions;
         
+        public PSExitCodeMapping(int code, PSExitOptions exitOptions)
+        {
+            this.omObject = new Microsoft.Azure.Batch.ExitCodeMapping(code, exitOptions.omObject);
+        }
+        
         internal PSExitCodeMapping(Microsoft.Azure.Batch.ExitCodeMapping omObject)
         {
             if ((omObject == null))

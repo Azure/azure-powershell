@@ -36,6 +36,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.AutoPoolSpecification", "PSAutoPoolSpecification"},
             {"Microsoft.Azure.Batch.AutoScaleRun", "PSAutoScaleRun"},
             {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
+            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
             {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
             {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
             {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
@@ -49,6 +50,10 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.ComputeNodeUser", "PSComputeNodeUser"},
             {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
             {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
+            {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
+            {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
+            {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
+            {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
             {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
             {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
             {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
@@ -68,6 +73,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
             {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
             {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
+            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
             {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
             {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
             {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
@@ -81,6 +87,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.StartTaskInformation", "PSStartTaskInformation"},
             {"Microsoft.Azure.Batch.SubtaskInformation", "PSSubtaskInformation"},
             {"Microsoft.Azure.Batch.TaskConstraints", "PSTaskConstraints"},
+            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
             {"Microsoft.Azure.Batch.TaskExecutionInformation", "PSTaskExecutionInformation"},
             {"Microsoft.Azure.Batch.TaskInformation", "PSTaskInformation"},
             {"Microsoft.Azure.Batch.TaskIdRange", "PSTaskIdRange"},
@@ -91,8 +98,6 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
             {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
-            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
-            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
         };
 
 
@@ -152,9 +157,14 @@ namespace PSModelGenerator
             CodeCompileUnit compileUnit = new CodeCompileUnit();
             CodeNamespace codeNamespace = new CodeNamespace(ModelNamespace);
             GenerateUsingDirectives(codeNamespace);
-            CodeTypeDeclaration codeType = new CodeTypeDeclaration(modelName);
-            codeType.IsClass = true;
-            codeType.TypeAttributes = TypeAttributes.Public;
+
+            var codeType = new CodeTypeDeclaration(modelName)
+            {
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public,
+                IsPartial = true, // allows us to provide some custom behaviours
+            };
+
             codeNamespace.Types.Add(codeType);
             compileUnit.Namespaces.Add(codeNamespace);
 
@@ -296,7 +306,7 @@ namespace PSModelGenerator
                     CodeAssignStatement omObjectAssignStatement = new CodeAssignStatement(new CodeVariableReferenceExpression(string.Format("{0}{1}", parameters[i].Name, "OmObject")), new CodeVariableReferenceExpression(string.Format("{0}.{1}", parameters[i].Name, OmObject)));
                     CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(omObjectArgumentReference, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
 
-                    // if the parameter is not null, use the omObject of the PS Wrapper class 
+                    // if the parameter is not null, use the omObject of the PS Wrapper class
                     constructor.Statements.Add(new CodeConditionStatement(nullCheck, omObjectAssignStatement));
 
                     passedInArg = string.Format("{0}{1}", parameters[i].Name, "OmObject");
@@ -311,7 +321,7 @@ namespace PSModelGenerator
                 }
 
                 codeArgumentReferences[i] = new CodeArgumentReferenceExpression(passedInArg);
-                constructor.Parameters.Add(new CodeParameterDeclarationExpression(paramType, paramName));                
+                constructor.Parameters.Add(new CodeParameterDeclarationExpression(paramType, paramName));
             }
 
             CodeObjectCreateExpression createExpression = new CodeObjectCreateExpression(implementationType, codeArgumentReferences);
@@ -360,8 +370,8 @@ namespace PSModelGenerator
                 codeProperty.Name = property.Name;
                 codeProperty.Type = new CodeTypeReference(propertyType);
 
-                // For properties with a backing field, the field will not be initialized in the constructor in order to avoid 
-                // hitting a run time access constraint from the OM. Instead, the field is initialized on the first access of 
+                // For properties with a backing field, the field will not be initialized in the constructor in order to avoid
+                // hitting a run time access constraint from the OM. Instead, the field is initialized on the first access of
                 // the property.
 
                 if (isGenericCollection)
@@ -404,7 +414,7 @@ namespace PSModelGenerator
                             CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", createListItem);
                             loopStatement.Statements.Add(addToList);
                         }
-     
+
                         // Initialize the backing field with the built list on first access of the property
                         CodeAssignStatement assignStatement;
                         if (property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>))
