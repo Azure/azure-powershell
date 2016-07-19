@@ -2955,7 +2955,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Create a new resource lock. Resource Locks are useful to prevent accidental deletions of your azure resources. Once a lock is placed on a resource, it can't be deleted unless the lock is removed. </maml:para>
+      <maml:para>Create a new resource lock. Resource Lock is useful to prevent accidental deletion or update of your azure resource. Once a lock is placed on a resource, based on lock level it can't be deleted or updated unless the lock is removed. </maml:para>
       <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
@@ -2964,7 +2964,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3058,7 +3060,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3145,7 +3149,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3246,7 +3252,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3347,7 +3355,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3427,7 +3437,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3514,7 +3526,9 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>LockLevel</maml:name>
         <maml:description>
-          <maml:para>TThe level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         <dev:type>
