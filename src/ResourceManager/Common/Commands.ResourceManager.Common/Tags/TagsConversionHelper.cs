@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             }
             if (validate)
             {
-                if (hashtableArray != null && hashtableArray.Length > 0 &&
+                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
                     (tagDictionary == null || tagDictionary.Count == 0))
                 {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
