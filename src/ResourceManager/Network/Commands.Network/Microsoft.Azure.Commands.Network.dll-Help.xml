@@ -169,7 +169,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -47306,6 +47307,30 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<dev:remarks>
 				<maml:para>This example creates a virtual network with one subnet. Then is calls Set-AzureRmVirtualNetworkSubnetConfig to modify the AddressPrefix of the subnet. This only impacts the in-memory representation of the virtual network. Set-AzureRmVirtualNetwork is then called to modify the virtual network in Azure.</maml:para>
 				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Add a network security group to a subnet  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>New-AzureRmResourceGroup -Name TestResourceGroup -Location centralus
+$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix &quot;10.0.1.0/24&quot;
+$virtualNetwork = New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix &quot;10.0.0.0/16&quot; -Subnet $frontendSubnet
+$rdpRule = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description &quot;Allow RDP&quot; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+$networkSecurityGroup = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestResourceGroup -Location centralus -Name &quot;NSG-FrontEnd&quot; -SecurityRules $rdpRule
+Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virtualNetwork -AddressPrefix &quot;10.0.1.0/24&quot; -NetworkSecurityGroup $networkSecurityGroup
+$virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
+			<dev:remarks>
+				<maml:para>This example creates a resource group with one virtual network containing just one subnet. It then creates a network security group with an allow rule for RDP traffic. The Set-AzureRmVirtualNetworkSubnetConfig cmdlet is used to modify the in-memory representation of the frontend subnet so that it points to the newly created network security group. The Set-AzureRmVirtualNetwork cmdlet is then called to write the modified state back to the service.</maml:para>
 				<maml:para />
 				<maml:para></maml:para>
 			</dev:remarks>
