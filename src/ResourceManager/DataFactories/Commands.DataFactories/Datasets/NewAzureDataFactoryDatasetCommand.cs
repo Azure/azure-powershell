@@ -21,7 +21,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataset))]
+    [Cmdlet(VerbsCommon.New, Constants.Dataset, DefaultParameterSetName = ByFactoryName,
+        SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
     public class NewAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

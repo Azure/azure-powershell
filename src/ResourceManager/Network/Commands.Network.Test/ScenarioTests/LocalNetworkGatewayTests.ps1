@@ -52,6 +52,22 @@ function Test-LocalNetworkGatewayCRUD
       $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual "200.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
+	  # Add BGP settings using Set-AzureRmLocalNetworkGateway
+	  $asn = 1234
+	  $bgpPeeringAddress = "1.2.3.4"
+	  $peerWeight = 15
+	  $actual = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn -BgpPeeringAddress $bgpPeeringAddress -PeerWeight $peerWeight
+      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+      Assert-AreEqual $asn $expected.BgpSettings.Asn
+	  Assert-AreEqual $bgpPeeringAddress $expected.BgpSettings.BgpPeeringAddress
+	  Assert-AreEqual $peerWeight $expected.BgpSettings.PeerWeight
+
+	  # Update BGP settings
+	  $asn = 1337
+	  $actual = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -Asn $asn
+      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+      Assert-AreEqual $asn $expected.BgpSettings.Asn
+
       # Delete LocalNetworkGateway
       $delete = Remove-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete

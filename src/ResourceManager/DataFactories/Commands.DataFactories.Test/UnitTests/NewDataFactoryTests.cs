@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Commands.DataFactories.Test.UnitTests
 
             tags = new Dictionary<string, string>() { { "foo", "bar" } };
 
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            commandRuntimeMock.Setup((m) => m.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+
             cmdlet = new NewAzureDataFactoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,

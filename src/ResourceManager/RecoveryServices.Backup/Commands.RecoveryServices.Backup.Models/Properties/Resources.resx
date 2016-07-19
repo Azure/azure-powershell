@@ -414,7 +414,7 @@ Please contact Microsoft for further assistant.</value>
     <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
   </data>
   <data name="UnsupportedContainerException" xml:space="preserve">
-    <value>Please provide Container of containerType as Windows and backupManagementType as MARS. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+    <value>Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
   </data>
   <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
     <value>Please specify startdate and enddate in UTC format</value>
@@ -434,10 +434,55 @@ Please contact Microsoft for further assistant.</value>
   <data name="UnExpectedBackupManagementTypeException" xml:space="preserve">
     <value>Unexpected BackupManagementType - expected:{0}, current:{1}</value>
   </data>
+  <data name="SchedulePolicyObjectNotRequiredForAzureSql" xml:space="preserve">
+    <value>SchedulePolicy Object is not required for WorkloadType AzureSql</value>
+  </data>
+  <data name="AzureSqlUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty for WorkloadType AzureSql</value>
+  </data>
+  <data name="RetentionPolicyEmptyInAzureSql" xml:space="preserve">
+    <value>RetentionPolicy is empty, nothing to update</value>
+  </data>
+  <data name="AllowedSqlRetentionRange" xml:space="preserve">
+    <value>Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10</value>
+  </data>
   <data name="BackupManagementTypeIncorrectForContainerType" xml:space="preserve">
     <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
   </data>
   <data name="UnsupportedJobWarning" xml:space="preserve">
     <value>Got some unsupported jobs</value>
+  </data>
+  <data name="ILRAnotherConnectionAlreadyAlive" xml:space="preserve">
+    <value>Another connection is already alive to this recovery point. You can either choose to terminate this or extend the deadline for access. Please run the appropriate command</value>
+  </data>
+  <data name="ILRConnectionNotAlive" xml:space="preserve">
+    <value>Please connect to the recovery point by running the connect command</value>
+  </data>
+  <data name="ILRConnectionExtensionSuccessful" xml:space="preserve">
+    <value>The connection has been extended for another 12 hours</value>
+  </data>
+  <data name="ILRConnectionDoesntExist" xml:space="preserve">
+    <value>No connection present to revoke</value>
+  </data>
+  <data name="ILRNoClientScriptsReturned" xml:space="preserve">
+    <value>Service didn't return any client scripts for this file / folder restore operation</value>
+  </data>
+  <data name="ILRTargetLocationInvalid" xml:space="preserve">
+    <value>Provided target location doesn't exist. Please provide a valid directory to download the script.</value>
+  </data>
+  <data name="ProtectionStateInvalidForAzureSqlItem" xml:space="preserve">
+    <value>Given Protection state is not valid for AzureSqlItem. Provided state : {0}</value>
+  </data>
+  <data name="ProtectionStatusNotAllowedForAzureSqlItem" xml:space="preserve">
+    <value>Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}</value>
+  </data>
+  <data name="AzureSqlRetainDataException" xml:space="preserve">
+    <value>Azure Sql does not support disable protection with retain data</value>
+  </data>
+  <data name="UnsupportedStorageAccountException" xml:space="preserve">
+    <value>Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account.</value>
+  </data>
+  <data name="GetContainerNameParamDeprecated" xml:space="preserve">
+    <value>Name parameter will be deprecated. Please use FriendlyName instead for filtering by name.</value>
   </data>
 </root>

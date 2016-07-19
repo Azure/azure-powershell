@@ -427,6 +427,44 @@ function Test-RemoveAzureRedisCacheDiagnostics
 
 <#
 .SYNOPSIS
+Tests ResetRMAzureRedisCache
+#>
+function Test-ResetAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-reboot"
+    $rebootType = "PrimaryNode"
+    
+    Reset-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RebootType $rebootType -Force
+}
+
+<#
+.SYNOPSIS
+Tests ExportRMAzureRedisCache
+#>
+function Test-ExportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $prefix = "sunny"
+    $container = "<container sas key>"
+    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container
+}
+
+<#
+.SYNOPSIS
+Tests ImportAzureRmRedisCache
+#>
+function Test-ImportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $files = @("<blob sas key>")
+    Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
+}
+
+<#
+.SYNOPSIS
 Sleeps but only during recording.
 #>
 function Start-TestSleep($milliseconds)

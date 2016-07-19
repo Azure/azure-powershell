@@ -20,7 +20,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ByFactoryName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ByFactoryName,
+        SupportsShouldProcess = true)]
     public class RemoveAzureDataFactoryDatasetCommand : DatasetContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]

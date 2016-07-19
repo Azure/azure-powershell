@@ -73,6 +73,17 @@ function TestSetup-CreateResourceGroup
 
 <#
 .SYNOPSIS
+Creates named resource group to use in tests
+#>
+function TestSetup-CreateNamedResourceGroup([string]$resourceGroupName)
+{    
+    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location "brazilsouth" -Force
+	
+	return $resourceGroup
+}
+
+<#
+.SYNOPSIS
 Creates an App Service Plan
 #>
 function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$AppServicePlan)
@@ -89,6 +100,17 @@ function TestSetup-CreateAppServicePlan ([string]$resourceGroupName, [string]$Ap
 		}
 	}
 	return $null	
+}
+
+
+<#
+.SYNOPSIS
+Creates a new Integration account
+#>
+function TestSetup-CreateIntegrationAccount ([string]$resourceGroupName, [string]$integrationAccountName)
+{		
+	$integrationAccount = New-AzureRmIntegrationAccount -ResourceGroupName $resourceGroupName -Name $integrationAccountName -Location "brazilsouth" -Sku "Standard" 	
+	return $integrationAccount
 }
 
 <#
@@ -115,7 +137,7 @@ Sleep in record mode only
 function SleepInRecordMode ([int]$SleepIntervalInMillisec)
 {
 	$mode = $env:AZURE_TEST_MODE
-	if ( $mode.ToUpperInvariant() -eq "RECORD")
+	if ( $mode -ne $null -and $mode.ToUpperInvariant() -eq "RECORD")
 	{	
 		Sleep -Milliseconds $SleepIntervalInMillisec 
 	}		

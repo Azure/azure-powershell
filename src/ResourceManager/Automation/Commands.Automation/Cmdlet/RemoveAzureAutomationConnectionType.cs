@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Connection type for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationConnectionType", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationConnectionType", SupportsShouldProcess = true, 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationConnectionType : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             var nextLink = string.Empty;
             var removeMessageWarning = Resources.RemovingAzureAutomationResourceWarning;
+            bool shouldConfirm = false;
 
             // check if any connections exists that use this connection type
             do
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                                                        StringComparison.CurrentCultureIgnoreCase)))
                 {
                     removeMessageWarning = Resources.RemoveConnectionTypeThatHasConnectionWarning;
+                    shouldConfirm = true;
                     break;
                 }
 
@@ -67,7 +70,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        string.Format(removeMessageWarning, "ConnectionType"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "ConnectionType"),
                        Name,
-                       () => this.AutomationClient.DeleteConnectionType(this.ResourceGroupName, this.AutomationAccountName, Name));
+                       () => this.AutomationClient.DeleteConnectionType(this.ResourceGroupName, this.AutomationAccountName, Name),
+                       () => shouldConfirm);
         }
     }
 }

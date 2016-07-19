@@ -172,9 +172,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 };
 
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(responseToUse: response, requestAction: extractTaskListAction);
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
-
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor };
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { requestInterceptor };
 
             cmdlet.ExecuteCmdlet();
 

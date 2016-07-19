@@ -33,7 +33,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Represents any windows containers such as those managed by the MAB device etc.
         /// </summary>
-        Windows
+        Windows,
+
+        /// <summary>
+        /// Represents any Azure Sql containers.
+        /// </summary>
+        AzureSQL
     }
 
     /// <summary>
@@ -60,6 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents the Azure Backup Server agent.
         /// </summary>
         AzureBackupServer,
+        AzureSQL,
     }
 
     /// <summary>
@@ -87,6 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents the Azure Virtual Machine (both Classic and Compute versions).
         /// </summary>
         AzureVM = 1,
+        AzureSQLDatabase,
     }
 
     /// <summary>
@@ -289,4 +296,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
     #endregion
 
+    public enum ILRAction
+    {
+        Connect,
+        Extend,
+        Terminate,
+    }
 }

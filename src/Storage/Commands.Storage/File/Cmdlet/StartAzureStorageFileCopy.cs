@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Start, Constants.FileCopyCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsLifecycle.Start, Constants.FileCopyCmdletName, SupportsShouldProcess = true)]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {
         private const string ContainerNameParameterSet = "ContainerName";
@@ -219,25 +219,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             blobChannel = this.GetBlobChannel();
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
-
+            Action copyAction = null;
+            string target = DestFile != null ? DestFile.Name : DestFilePath;
             switch (ParameterSetName)
             {
                 case ContainerNameParameterSet:
                 case ContainerParameterSet:
                 case BlobFilePathParameterSet:
                 case BlobFileParameterSet:
-                    this.StartCopyFromBlob();
+                    copyAction = () => this.StartCopyFromBlob();
                     break;
                 case ShareNameParameterSet:
                 case ShareParameterSet:
                 case FileFilePathParameterSet:
                 case FileFileParameterSet:
-                    this.StartCopyFromFile();
+                    copyAction = () => this.StartCopyFromFile();
                     break;
                 case UriFilePathParameterSet:
                 case UriFileParameterSet:
-                    this.StartCopyFromUri();
+                    copyAction = () => this.StartCopyFromUri();
                     break;
+            }
+
+            if (copyAction != null && ShouldProcess(target, "Start file copy"))
+            {
+                copyAction();
             }
         }
 
