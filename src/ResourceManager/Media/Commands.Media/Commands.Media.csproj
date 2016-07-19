@@ -78,6 +78,10 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.4-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Management.Media">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Media.1.0.0\lib\net45\Microsoft.Azure.Management.Media.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="System.Core" />
@@ -87,27 +91,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AzureMediaServiceCmdletBase.cs" />
-    <Compile Include="Generated\IMediaServicesManagementClient.cs" />
-    <Compile Include="Generated\IMediaServiceOperations.cs" />
-    <Compile Include="Generated\MediaServicesManagementClient.cs" />
-    <Compile Include="Generated\MediaServiceOperations.cs" />
-    <Compile Include="Generated\MediaServiceOperationsExtensions.cs" />
-    <Compile Include="Generated\Models\ApiEndpoint.cs" />
-    <Compile Include="Generated\Models\ApiError.cs" />
-    <Compile Include="Generated\Models\ApiErrorException.cs" />
-    <Compile Include="Generated\Models\CheckNameAvailabilityInput.cs" />
-    <Compile Include="Generated\Models\CheckNameAvailabilityOutput.cs" />
-    <Compile Include="Generated\Models\EntityNameUnavailabilityReason.cs" />
-    <Compile Include="Generated\Models\KeyType.cs" />
-    <Compile Include="Generated\Models\MediaService.cs" />
-    <Compile Include="Generated\Models\Page.cs" />
-    <Compile Include="Generated\Models\RegenerateKeyInput.cs" />
-    <Compile Include="Generated\Models\RegenerateKeyOutput.cs" />
-    <Compile Include="Generated\Models\Resource.cs" />
-    <Compile Include="Generated\Models\ServiceKeys.cs" />
-    <Compile Include="Generated\Models\StorageAccount.cs" />
-    <Compile Include="Generated\Models\SyncStorageKeysInput.cs" />
-    <Compile Include="Generated\Models\TrackedResource.cs" />
     <Compile Include="MediaService\GetAzureRmMediaServiceNameAvailability.cs" />
     <Compile Include="MediaService\RemoveAzureRmMediaService.cs" />
     <Compile Include="MediaService\NewAzureRmMediaService.cs" />
