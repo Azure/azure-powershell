@@ -42,6 +42,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSMetadataItem> metadata;
         
+        private PSNetworkConfiguration networkConfiguration;
+        
         private PSStartTask startTask;
         
         private PSTaskSchedulingPolicy taskSchedulingPolicy;
@@ -261,6 +263,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public PSNetworkConfiguration NetworkConfiguration
+        {
+            get
+            {
+                if (((this.networkConfiguration == null) 
+                            && (this.omObject.NetworkConfiguration != null)))
+                {
+                    this.networkConfiguration = new PSNetworkConfiguration(this.omObject.NetworkConfiguration);
+                }
+                return this.networkConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.NetworkConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.NetworkConfiguration = value.omObject;
+                }
+                this.networkConfiguration = value;
             }
         }
         

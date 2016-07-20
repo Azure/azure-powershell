@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSTaskExecutionInformation executionInformation;
         
+        private PSExitConditions exitConditions;
+        
         private PSMultiInstanceSettings multiInstanceSettings;
         
         private IList<PSResourceFile> resourceFiles;
@@ -239,6 +241,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.executionInformation = new PSTaskExecutionInformation(this.omObject.ExecutionInformation);
                 }
                 return this.executionInformation;
+            }
+        }
+        
+        public PSExitConditions ExitConditions
+        {
+            get
+            {
+                if (((this.exitConditions == null) 
+                            && (this.omObject.ExitConditions != null)))
+                {
+                    this.exitConditions = new PSExitConditions(this.omObject.ExitConditions);
+                }
+                return this.exitConditions;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ExitConditions = null;
+                }
+                else
+                {
+                    this.omObject.ExitConditions = value.omObject;
+                }
+                this.exitConditions = value;
             }
         }
         

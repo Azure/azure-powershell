@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = new Microsoft.Azure.Batch.JobReleaseTask();
         }
         
+        public PSJobReleaseTask(string commandLine)
+        {
+            this.omObject = new Microsoft.Azure.Batch.JobReleaseTask(commandLine);
+        }
+        
         internal PSJobReleaseTask(Microsoft.Azure.Batch.JobReleaseTask omObject)
         {
             if ((omObject == null))

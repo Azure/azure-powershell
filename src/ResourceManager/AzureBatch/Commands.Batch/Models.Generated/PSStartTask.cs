@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = new Microsoft.Azure.Batch.StartTask();
         }
         
+        public PSStartTask(string commandLine)
+        {
+            this.omObject = new Microsoft.Azure.Batch.StartTask(commandLine);
+        }
+        
         internal PSStartTask(Microsoft.Azure.Batch.StartTask omObject)
         {
             if ((omObject == null))

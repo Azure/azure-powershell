@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSImageReference
+    public partial class PSNetworkConfiguration
     {
         
-        internal Microsoft.Azure.Batch.ImageReference omObject;
+        internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
         
-        public PSImageReference(string offer, string publisher, string sku, string version = null)
+        public PSNetworkConfiguration()
         {
-            this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, sku, version);
+            this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
         }
         
-        internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
+        internal PSNetworkConfiguration(Microsoft.Azure.Batch.NetworkConfiguration omObject)
         {
             if ((omObject == null))
             {
@@ -48,35 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Offer
+        public string SubnetId
         {
             get
             {
-                return this.omObject.Offer;
+                return this.omObject.SubnetId;
             }
-        }
-        
-        public string Publisher
-        {
-            get
+            set
             {
-                return this.omObject.Publisher;
-            }
-        }
-        
-        public string Sku
-        {
-            get
-            {
-                return this.omObject.Sku;
-            }
-        }
-        
-        public string Version
-        {
-            get
-            {
-                return this.omObject.Version;
+                this.omObject.SubnetId = value;
             }
         }
     }
