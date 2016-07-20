@@ -16,7 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections.Generic;
