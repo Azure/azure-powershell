@@ -29,11 +29,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using System.Threading;
     using System.Threading.Tasks;
     using ServiceManagemenet.Common.Models;
-    using System;
-    using System.Management.Automation;
-    using System.Net;
-    using System.Threading;
-    using System.Threading.Tasks;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
     using Xunit.Abstractions;

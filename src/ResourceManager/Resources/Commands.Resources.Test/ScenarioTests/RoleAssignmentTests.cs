@@ -122,14 +122,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         DisplayName = userName,
                         AccountEnabled = true,
                         MailNickname = userName + "test",
-                        PasswordProfileSettings = new UserCreateParameters.PasswordProfile
+                        PasswordProfile= new PasswordProfile
                         {
                             ForceChangePasswordNextLogin = false,
                             Password = userPass
                         }
                     };
 
-                    newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
+                    newUser = controllerAdmin.GraphClient.Users.Create(parameter);
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
                                         .List()
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     if (newUser != null)
                     {
-                        controllerAdmin.GraphClient.User.Delete(newUser.ObjectId);
+                        controllerAdmin.GraphClient.Users.Delete(newUser.ObjectId);
                     }
                     controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
                 },

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             };
         }
 
-        public static PSADObject ToPSADObject(this Group group)
+        public static PSADObject ToPSADObject(this ADGroup group)
         {
             return new PSADObject()
             {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Mail = obj.Mail
                 };
             }
-            else if (obj.ObjectType == typeof(Group).Name)
+            else if (obj.ObjectType == typeof(ADGroup).Name)
             {
                 return new PSADGroup()
                 {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             };
         }
 
-        public static PSADGroup ToPSADGroup(this Group group)
+        public static PSADGroup ToPSADGroup(this ADGroup group)
         {
             return new PSADGroup()
             {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = application.DisplayName,
                     ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
-                    AvailableToOtherTenants = application.AvailableToOtherTenants
+                    AvailableToOtherTenants = application.AvailableToOtherTenants ?? false
                 };
             }
             else
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 StartDate = PSKeyCredential.StartDate,
                 EndDate = PSKeyCredential.EndDate,
-                KeyId = PSKeyCredential.KeyId,
+                KeyId = PSKeyCredential.KeyId.ToString(),
                 Type = PSKeyCredential.Type,
                 Usage = PSKeyCredential.Usage,
                 Value = PSKeyCredential.Value
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 StartDate = PSPasswordCredential.StartDate,
                 EndDate = PSPasswordCredential.EndDate,
-                KeyId = PSPasswordCredential.KeyId,
+                KeyId = PSPasswordCredential.KeyId.ToString(),
                 Value = PSPasswordCredential.Value
             };
         }

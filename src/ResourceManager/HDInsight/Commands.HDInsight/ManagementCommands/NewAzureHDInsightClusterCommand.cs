@@ -410,15 +410,23 @@ namespace Microsoft.Azure.Commands.HDInsight
         //Get ApplicationId for the given ObjectId.
         private Guid GetApplicationId()
         {
-            Guid tenantId = GetTenantId(AadTenantId);
+            //Guid tenantId = GetTenantId(AadTenantId);
 
-            SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
-            GraphRbacManagementClient graphClient = new GraphRbacManagementClient(tenantId.ToString(), cred);
+            //SubscriptionCloudCredentials cred = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+            //GraphRbacManagementClient graphClient = new GraphRbacManagementClient(tenantId.ToString(), cred);
 
-            ServicePrincipalGetResult res = graphClient.ServicePrincipal.Get(ObjectId.ToString());
+            //ServicePrincipalGetResult res = graphClient.ServicePrincipal.Get(ObjectId.ToString());
+
+
+            GraphRbacManagementClient graphClient = AzureSession.ClientFactory.CreateArmClient<GraphRbacManagementClient>(
+                DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
+
+            graphClient.TenantID = DefaultProfile.Context.Tenant.Id.ToString();
+
+            Microsoft.Azure.Graph.RBAC.Models.ServicePrincipal sp = graphClient.ServicePrincipals.Get(ObjectId.ToString());
 
             var applicationId = Guid.Empty;
-            Guid.TryParse(res.ServicePrincipal.AppId, out applicationId);
+            Guid.TryParse(sp.AppId, out applicationId);
             Debug.Assert(applicationId != Guid.Empty);
             return applicationId;
         }
