@@ -35,6 +35,7 @@ using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Test.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -90,6 +91,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 null,
                 callingClassType,
                 mockName);
+        }
+
+        public void RunPsTestWorkflow(
+            XunitTracingInterceptor interceptor,
+            Func<string[]> scriptBuilder,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
+            Action cleanup,
+            string callingClassType,
+            string mockName)
+        {
+            helper.TracingInterceptor = interceptor;
+            this.RunPsTestWorkflow(scriptBuilder, initialize, cleanup, callingClassType, mockName);
         }
 
         public void RunPsTestWorkflow(
@@ -160,7 +173,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
+            GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
             var testEnvironment = this.csmTestFactory.GetTestEnvironment();
@@ -179,15 +192,15 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 this.FeatureClient);
         }
 
-        private GraphRbacManagementClient GetGraphClient()
+        private GraphRbacManagementClient GetGraphClient(MockContext context)
         {
-            var environment = this.csmTestFactory.GetTestEnvironment();
+            var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenantId;
-                UserDomain = environment.AuthorizationContext.UserDomain;
+                tenantId = environment.Tenant;
+                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;
@@ -208,7 +221,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
             }
 
-            return LegacyTest.TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = tenantId;
+            return client;
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
