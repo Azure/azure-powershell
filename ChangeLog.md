@@ -1,4 +1,9 @@
-﻿##2016.07.11 version 1.6.0
+﻿* Azure Redis Cache
+  * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
+  * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
+  * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
+  * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
+##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
   * Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
   * Control over prompting using a session-wide $ConfirmPreference, so that the user is prompted based on the impact of a prospective change (as reported in the ConfirmImpact setting in the cmdlet)
