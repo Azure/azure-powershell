@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 {
     public class PSTagValuePair
     {
