@@ -21,7 +21,7 @@ using System;
 using System.Collections;
 using System.Net.Http;
 using System.Threading;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Batch
 {

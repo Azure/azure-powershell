@@ -706,10 +706,6 @@
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
     </ProjectReference>
-      <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
-      <Project>{2493a8f7-1949-4f29-8d53-9d459046c3b8}</Project>
-      <Name>Commands.Tags</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

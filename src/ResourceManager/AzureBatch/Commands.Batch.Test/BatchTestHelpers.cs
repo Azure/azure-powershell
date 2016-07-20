@@ -27,7 +27,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
