@@ -163,15 +163,15 @@ namespace Microsoft.Azure.Commands.Compute
                 throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
             }
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
 
             var storageService = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, blobUri.StorageAccountName);
             if (storageService != null)
             {
-                var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.StorageAccount.Name);
-                storagekey = storageKeys.StorageAccountKeys.Key1;
+                var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.Name);
+                storagekey = storageKeys.Key1;
             }
 
             StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);
