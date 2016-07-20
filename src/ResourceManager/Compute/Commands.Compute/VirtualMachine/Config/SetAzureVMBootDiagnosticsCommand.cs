@@ -98,16 +98,16 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                    var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                     var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.StorageAccountName);
 
-                    if (storageAccount.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                    if (storageAccount.AccountType.Equals(AccountType.PremiumLRS))
                     {
                         ThrowPremiumStorageError(this.StorageAccountName);
                     }
 
-                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.StorageAccount.PrimaryEndpoints.Blob.ToString();
+                    diagnosticsProfile.BootDiagnostics.StorageUri = storageAccount.PrimaryEndpoints.Blob.ToString();
                 }
             }
 
