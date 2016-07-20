@@ -19,6 +19,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Gallery;
