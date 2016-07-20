@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Create a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MediaServiceNounStr), OutputType(typeof(PSMediaService))]
+    [Cmdlet(VerbsCommon.New, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class NewAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         protected const string PrimaryStorageAccountParamSet = "StorageAccountIdParamSet";
@@ -54,11 +54,13 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Position = 1,
             Mandatory = true,
             ParameterSetName = PrimaryStorageAccountParamSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The media service account name.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
             ParameterSetName = StorageAccountsParamSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
@@ -157,9 +159,17 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                             throw new ArgumentException("Bad ParameterSet Name");
                     }
 
-                    var mediaServiceCreated =
-                        MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName, restMediaService);
-                    WriteObject(mediaServiceCreated.ToPSMediaService(), true);
+                    if (ShouldProcess(AccountName))
+                    {
+                        var mediaServiceCreated =
+                            MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName,
+                                restMediaService);
+                        WriteObject(mediaServiceCreated.ToPSMediaService(), true);
+                    }
+                    else
+                    {
+                        WriteObject(false);
+                    }
                 }
                 else
                 {

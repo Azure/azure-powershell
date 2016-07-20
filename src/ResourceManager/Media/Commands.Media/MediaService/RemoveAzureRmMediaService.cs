@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Remove a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, MediaServiceNounStr), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         [Parameter(
@@ -51,8 +51,15 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         {
             try
             {
-                MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
-                WriteObject(true);
+                if (ShouldProcess(AccountName))
+                {
+                    MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
+                    WriteObject(true);
+                }
+                else
+                {
+                    WriteObject(false);
+                }
             }
             catch (ApiErrorException exception)
             {

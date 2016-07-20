@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// Synchronizes storage account keys for a storage account associated with the Media Service.
     /// </summary>
-    [Cmdlet(VerbsData.Sync, MediaServiceStorageKeysNounStr), OutputType(typeof(bool))]
+    [Cmdlet(VerbsData.Sync, MediaServiceStorageKeysNounStr, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
         [Parameter(
@@ -59,11 +59,18 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         {
             try
             {
-                MediaServicesManagementClient.MediaService.SyncStorageKeys(
-                    ResourceGroupName,
-                    AccountName,
-                    new SyncStorageKeysInput(StorageAccountId));
-                WriteObject(true);
+                if (ShouldProcess(AccountName))
+                {
+                    MediaServicesManagementClient.MediaService.SyncStorageKeys(
+                        ResourceGroupName,
+                        AccountName,
+                        new SyncStorageKeysInput(StorageAccountId));
+                    WriteObject(true);
+                }
+                else
+                {
+                    WriteObject(false);
+                }
             }
             catch (ApiErrorException exception)
             {

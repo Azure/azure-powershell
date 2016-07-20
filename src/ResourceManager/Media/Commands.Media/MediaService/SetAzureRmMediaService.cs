@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// <summary>
     /// Update a media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, MediaServiceNounStr), OutputType(typeof(PSMediaService))]
+    [Cmdlet(VerbsCommon.Set, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         [Parameter(
@@ -113,8 +113,16 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
             try
             {
-                var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName, AccountName, mediaServiceParams);
-                WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
+                if (ShouldProcess(AccountName))
+                {
+                    var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
+                        AccountName, mediaServiceParams);
+                    WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
+                }
+                else
+                {
+                    WriteObject(false);
+                }
             }
             catch (ApiErrorException exception)
             {

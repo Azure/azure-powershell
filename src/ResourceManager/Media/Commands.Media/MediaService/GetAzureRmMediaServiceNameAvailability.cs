@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Position = 0,
             HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
+        [Alias("AccountName")]
         public string Name;
 
         public override void ExecuteCmdlet()

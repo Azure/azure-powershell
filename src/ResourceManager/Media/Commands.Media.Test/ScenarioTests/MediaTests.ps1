@@ -19,7 +19,9 @@ Test Media related Cmdlets
 function Test-Media 
 {
   $rgname = GetResourceGroupName
-  $location = "East US"
+  $preferedlocation = "East US"
+  $location = Get-AvailableLocation $preferedlocation
+  Write-Output $location
 
   $resourceGroup = CreateResourceGroup $rgname $location
 
@@ -143,7 +145,8 @@ Test Media related Cmdlets with piping
 function Test-MediaWithPiping
 {
   $rgname = GetResourceGroupName
-  $location = "East US"
+  $preferedlocation = "East US"
+  $location = Get-AvailableLocation $preferedlocation
 
   $resourceGroup = CreateResourceGroup $rgname $location
   Assert-NotNull $resourceGroup

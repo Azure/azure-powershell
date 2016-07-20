@@ -135,3 +135,24 @@ function Assert-Tags($tags1, $tags2)
     }
   }
 }
+
+<#
+.SYNOPSIS
+Get a location for test.
+#>
+function Get-AvailableLocation($preferedLocation)
+{
+  if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+  {
+    $namespace = "Microsoft.Media"
+    $provider = Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Media | where {$_.Locations.length -ne 0}
+    $locations = $provider.Locations
+    if($locations -contains $preferedLocation)
+    {
+      return $preferedLocation
+    }
+    return $locations[0]
+  }
+
+  return $preferedLocation
+}

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// <summary>
     /// Regenerate the key of media service.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, MediaServiceKeyNounStr), OutputType(typeof(PSServiceKey))]
+    [Cmdlet(VerbsCommon.Set, MediaServiceKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSServiceKey))]
     public class SetAzureRmMediaServiceKey : AzureMediaServiceCmdletBase
     {
         [Parameter(
@@ -57,12 +57,19 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         {
             try
             {
-                var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
-                    ResourceGroupName, 
-                    AccountName,
-                    new RegenerateKeyInput(KeyType));
+                if (ShouldProcess(AccountName))
+                {
+                    var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
+                        ResourceGroupName,
+                        AccountName,
+                        new RegenerateKeyInput(KeyType));
 
-                WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
+                    WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
+                }
+                else
+                {
+                    WriteObject(false);
+                }
             }
             catch (ApiErrorException exception)
             {
