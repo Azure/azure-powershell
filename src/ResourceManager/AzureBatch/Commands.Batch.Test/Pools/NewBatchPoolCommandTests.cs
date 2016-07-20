@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Rest.Azure;
@@ -67,6 +68,40 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolNetworkConfigurationParameterTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            var networkConfiguration = new PSNetworkConfiguration();
+            networkConfiguration.SubnetId = "fakeSubnetId";
+
+            cmdlet.Id = "testPool";
+            cmdlet.VirtualMachineSize = "small";
+            cmdlet.NetworkConfiguration = networkConfiguration;
+
+            string subnetId = null;
+
+            Action<BatchRequest<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>> extractPoolAction =
+                (request) =>
+                {
+                    subnetId = request.Parameters.NetworkConfiguration.SubnetId;
+                };
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractPoolAction);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.NetworkConfiguration.SubnetId, subnetId);
         }
     }
 }
