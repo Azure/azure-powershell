@@ -1830,7 +1830,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+      <maml:para>Moves existing resources to another resource group or subscription.</maml:para>
       <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
