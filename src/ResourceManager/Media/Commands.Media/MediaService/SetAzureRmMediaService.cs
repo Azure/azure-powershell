@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     [Cmdlet(VerbsCommon.Set, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
+        private const string SetMediaServiceWarning = "Are you sure you want to set MediaService {0} ?";
+        private const string SetMediaServiceWhatIfMessage = "Set MediaService ";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -63,7 +66,11 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             HelpMessage = "The storage accounts assosiated with the media account.")]
         [ValidateNotNull]
         public PSStorageAccount[] StorageAccounts { get; set; }
-        
+
+        [Parameter(Mandatory = false,
+           HelpMessage = "Force to set media service without confirm.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var mediaServiceParams = new RestMediaService();
@@ -113,15 +120,14 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
             try
             {
-                if (ShouldProcess(AccountName))
+                if (ShouldProcess(AccountName, string.Format(SetMediaServiceWhatIfMessage)))
                 {
-                    var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
-                        AccountName, mediaServiceParams);
-                    WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
-                }
-                else
-                {
-                    WriteObject(false);
+                    if (Force || ShouldContinue(string.Format(SetMediaServiceWarning, AccountName), ""))
+                    {
+                        var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
+                            AccountName, mediaServiceParams);
+                        WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
+                    }
                 }
             }
             catch (ApiErrorException exception)

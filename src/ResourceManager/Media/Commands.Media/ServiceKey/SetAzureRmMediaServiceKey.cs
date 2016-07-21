@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     [Cmdlet(VerbsCommon.Set, MediaServiceKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSServiceKey))]
     public class SetAzureRmMediaServiceKey : AzureMediaServiceCmdletBase
     {
+        private const string SetMediaServiceKeyWarning = "Are you sure you want to set MediaService key on {0} ?";
+        private const string SetMediaServiceKeyWhatIfMessage = "Set MediaService key";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -53,22 +56,25 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
             HelpMessage = "The key type")]
         public KeyType KeyType { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "Force to set media service key without confirm.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (ShouldProcess(AccountName))
+                if (ShouldProcess(AccountName, string.Format(SetMediaServiceKeyWhatIfMessage)))
                 {
-                    var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
-                        ResourceGroupName,
-                        AccountName,
-                        new RegenerateKeyInput(KeyType));
+                    if (Force || ShouldContinue(string.Format(SetMediaServiceKeyWarning, AccountName), ""))
+                    {
+                        var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
+                            ResourceGroupName,
+                            AccountName,
+                            new RegenerateKeyInput(KeyType));
 
-                    WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
-                }
-                else
-                {
-                    WriteObject(false);
+                        WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
+                    }
                 }
             }
             catch (ApiErrorException exception)

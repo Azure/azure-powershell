@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     {
         protected const string PrimaryStorageAccountParamSet = "StorageAccountIdParamSet";
         protected const string StorageAccountsParamSet = "StorageAccountsParamSet";
+        private const string NewMediaServiceWarning = "Are you sure you want to new a MediaService {0} ?";
+        private const string NewMediaServiceWhatIfMessage = "New a MediaService";
 
         [Parameter(
             Position = 0,
@@ -108,6 +110,10 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "Force to new a media service without confirm.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -159,16 +165,15 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                             throw new ArgumentException("Bad ParameterSet Name");
                     }
 
-                    if (ShouldProcess(AccountName))
+                    if (ShouldProcess(AccountName, string.Format(NewMediaServiceWhatIfMessage)))
                     {
-                        var mediaServiceCreated =
-                            MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName,
-                                restMediaService);
-                        WriteObject(mediaServiceCreated.ToPSMediaService(), true);
-                    }
-                    else
-                    {
-                        WriteObject(false);
+                        if (Force || ShouldContinue(string.Format(NewMediaServiceWarning, AccountName), ""))
+                        {
+                            var mediaServiceCreated =
+                                MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName,
+                                    restMediaService);
+                            WriteObject(mediaServiceCreated.ToPSMediaService(), true);
+                        }
                     }
                 }
                 else

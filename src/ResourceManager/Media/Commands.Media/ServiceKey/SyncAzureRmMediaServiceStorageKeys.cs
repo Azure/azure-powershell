@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     [Cmdlet(VerbsData.Sync, MediaServiceStorageKeysNounStr, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
+        private const string SyncMediaServiceStorageKeysWarning = "Are you sure you want to sync MediaService storage keys on {0} ?";
+        private const string SyncMediaServiceStorageKeysWhatIfMessage = "Sync MediaService storage keys";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -55,21 +58,24 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "Force to sync MediaService storage keys without confirm.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (ShouldProcess(AccountName))
+                if (ShouldProcess(AccountName, string.Format(SyncMediaServiceStorageKeysWhatIfMessage)))
                 {
-                    MediaServicesManagementClient.MediaService.SyncStorageKeys(
-                        ResourceGroupName,
-                        AccountName,
-                        new SyncStorageKeysInput(StorageAccountId));
-                    WriteObject(true);
-                }
-                else
-                {
-                    WriteObject(false);
+                    if (Force || ShouldContinue(string.Format(SyncMediaServiceStorageKeysWarning, AccountName), ""))
+                    {
+                        MediaServicesManagementClient.MediaService.SyncStorageKeys(
+                            ResourceGroupName,
+                            AccountName,
+                            new SyncStorageKeysInput(StorageAccountId));
+                        WriteObject(true);
+                    }
                 }
             }
             catch (ApiErrorException exception)

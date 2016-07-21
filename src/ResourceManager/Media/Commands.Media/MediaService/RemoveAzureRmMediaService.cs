@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     [Cmdlet(VerbsCommon.Remove, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmMediaService : AzureMediaServiceCmdletBase
     {
+        private const string RemoveMediaServiceWarning = "Are you sure you want to remove MediaService {0} ?";
+        private const string RemoveMediaServiceWhatIfMessage = "Remove MediaService";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -47,18 +50,21 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [Alias(AccountNameAlias)]
         public string AccountName { get; set; }
 
+        [Parameter(Mandatory = false,
+           HelpMessage = "Force to remove media service without confirm.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (ShouldProcess(AccountName))
+                if (ShouldProcess(AccountName, string.Format(RemoveMediaServiceWhatIfMessage)))
                 {
-                    MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
-                    WriteObject(true);
-                }
-                else
-                {
-                    WriteObject(false);
+                    if (Force || ShouldContinue(string.Format(RemoveMediaServiceWarning, AccountName), ""))
+                    {
+                        MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
+                        WriteObject(true);
+                    }
                 }
             }
             catch (ApiErrorException exception)
