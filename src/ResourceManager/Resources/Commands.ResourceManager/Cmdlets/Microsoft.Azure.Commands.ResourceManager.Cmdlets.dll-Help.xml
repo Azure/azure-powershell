@@ -1820,7 +1820,7 @@
     <command:details>
       <command:name>Move-AzureRmResource</command:name>
       <maml:description>
-        <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+        <maml:para>Moves existing resources to another resource group or subscription.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
