@@ -12,17 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using System.Collections;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-namespace Microsoft.Azure.Commands.Compute.Common
+namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    public static class HashTableExtensions
+    public class ARMStorageProvider : IStorageServiceProvider
     {
-        public static Dictionary<string, string> ToDictionary(this Hashtable[] tags)
+        IStorageManagementClient _client;
+
+        public ARMStorageProvider(IStorageManagementClient client)
         {
-            return TagsConversionHelper.CreateTagDictionary(tags, true);
+            _client = client;
+        }
+        public IStorageService GetStorageService(string name, string resourceGroupName)
+        {
+            var account = _client.StorageAccounts.GetProperties(resourceGroupName, name);
+            var keys = _client.StorageAccounts.ListKeys(resourceGroupName, name);
+            return new ARMStorageService(account, keys.Key1,
+                keys.Key2);
         }
     }
 }

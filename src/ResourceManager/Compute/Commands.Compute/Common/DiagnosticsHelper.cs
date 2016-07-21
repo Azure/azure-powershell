@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
             {
                 // Get value from StorageAccount
                 var endpoints = storageAccount.PrimaryEndpoints;
-                var context = CreateStorageContext(endpoints.Blob, endpoints.Queue, endpoints.Table, endpoints.File, storageAccountName, storageAccountKey);
+                var context = CreateStorageContext(new Uri(endpoints.Blob), new Uri(endpoints.Queue), new Uri(endpoints.Table), new Uri(endpoints.File), storageAccountName, storageAccountKey);
                 storageAccountEndpoint = GetEndpointFromStorageContext(context);
             }
             else if (!string.IsNullOrEmpty(
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             try
             {
-                var storageAccounts = storageClient.StorageAccounts.List().StorageAccounts;
+                var storageAccounts = storageClient.StorageAccounts.List();
                 storageAccount = storageAccounts == null ? null : storageAccounts.FirstOrDefault(account => account.Name.Equals(storageAccountName));
             }
             catch

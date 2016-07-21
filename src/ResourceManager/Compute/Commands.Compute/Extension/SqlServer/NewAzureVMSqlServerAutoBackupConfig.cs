@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = StorageUriParamSetName),
     OutputType(
         typeof(AutoBackupSettings))]
-    public class NewAzureVMSqlServerAutoBackupConfigCommand : PSCmdlet
+    public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
     {
         protected const string AzureVMSqlServerAutoBackupConfigNoun = "AzureVMSqlServerAutoBackupConfig";
 
@@ -158,7 +161,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = new StorageManagementClient();
+                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
 
@@ -166,11 +170,11 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     var keys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageName);
 
-                    if (keys != null && keys.StorageAccountKeys != null)
+                    if (keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ?
-                            keys.StorageAccountKeys.Key1 :
-                            keys.StorageAccountKeys.Key2;
+                        storageKey = !string.IsNullOrEmpty(keys.Key1) ?
+                            keys.Key1 :
+                            keys.Key2;
                     }
                 }
             }

@@ -104,7 +104,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
 
         internal int? GetDiskSizeGbFromBlobUri(string sBlobUri)
         {
-            var storageClient = new StorageManagementClient();
             var blobMatch = Regex.Match(sBlobUri, "https?://(\\S*?)\\..*?/(.*)");
             if (!blobMatch.Success)
             {
@@ -285,15 +284,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
             var resourceGroup = this.GetResourceGroupFromId(account.Id);
             var keys = this._StorageClient.StorageAccounts.ListKeys(resourceGroup, account.Name);
 
-            _StorageKeyCache.Add(account.Name, keys.StorageAccountKeys.Key1);
+            _StorageKeyCache.Add(account.Name, keys.Key1);
 
-            return keys.StorageAccountKeys.Key1;
+            return keys.Key1;
         }
 
         internal string GetCoreEndpoint(string storageAccountName)
         {
             var storage = this.GetStorageAccountFromCache(storageAccountName);
-            var blobendpoint = storage.PrimaryEndpoints.Blob.Host;
+            var blobendpoint = storage.PrimaryEndpoints.Blob;
 
             var blobMatch = Regex.Match(blobendpoint, ".*?\\.blob\\.(.*)");
             if (blobMatch.Success)

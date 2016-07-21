@@ -12,24 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Dns;
 using Microsoft.Azure.Management.Dns.Models;
-using Sdk = Microsoft.Azure.Management.Dns.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
+using Sdk = Microsoft.Azure.Management.Dns.Models;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
-    using Properties;
     using Rest.Azure;
-    using AzureOperationResponse = Azure.AzureOperationResponse;
 
     public class DnsClient
     {

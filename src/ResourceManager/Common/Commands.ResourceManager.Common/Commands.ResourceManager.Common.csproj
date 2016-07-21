@@ -282,6 +282,10 @@
     </Compile>
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
+    <Compile Include="Tags\PSTag.cs" />
+    <Compile Include="Tags\PSTagValue.cs" />
+    <Compile Include="Tags\PSTagValuePair.cs" />
+    <Compile Include="Tags\TagsConversionHelper.cs" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
