@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos;, resource group &apos;{2}&apos;.
+        ///   Looks up a localized string similar to There is already an existing endpoint with name &apos;{0}&apos;..
         /// </summary>
         internal static string Error_CreateExistingEndpoint {
             get {
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;.
+        ///   Looks up a localized string similar to There is already an existing profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos;..
         /// </summary>
         internal static string Error_CreateExistingProfile {
             get {
@@ -147,6 +147,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Error_DeleteNonExistingProfile {
             get {
                 return ResourceManager.GetString("Error_DeleteNonExistingProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
+        /// </summary>
+        internal static string Error_ProfileNotFound {
+            get {
+                return ResourceManager.GetString("Error_ProfileNotFound", resourceCulture);
             }
         }
         
