@@ -24,19 +24,19 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
     [Cmdlet(VerbsCommon.Get, "AzureRmCdnOrigin"), OutputType(typeof(PSOrigin))]
     public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn origin name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN origin name")]
         [ValidateNotNullOrEmpty]
         public string OriginName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

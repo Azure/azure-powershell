@@ -26,20 +26,23 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmCdnProfile : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group to which the Azure CDN profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter()]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -70,12 +73,14 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 }
             }
 
-            if (!ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
+            if (Force || ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
+            {
+                CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
+            }
+            else
             {
                 return;
             }
-
-            CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
 
             if (PassThru)
             {
