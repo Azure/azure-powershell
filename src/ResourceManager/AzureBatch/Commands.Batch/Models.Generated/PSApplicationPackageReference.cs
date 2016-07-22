@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSApplicationPackageReference
+    public partial class PSApplicationPackageReference
     {
         
         internal Microsoft.Azure.Batch.ApplicationPackageReference omObject;
