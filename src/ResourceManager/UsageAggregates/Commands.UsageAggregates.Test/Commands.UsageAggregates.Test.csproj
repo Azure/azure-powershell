@@ -53,7 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6047.25161-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6047.28041-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
