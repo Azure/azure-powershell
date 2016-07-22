@@ -156,7 +156,7 @@ namespace Microsoft.AzureStack.Commands
                                 Namespace = this.Namespace,
                                 Enabled = true,
                                 ProviderLocation = this.ProviderLocation,
-                                Extensions = this.Extensions.FromJson<List<Extension>>(),
+                                Extensions = (this.Extensions == null) ? null : this.Extensions.FromJson<List<Extension>>(),
                                 ResourceTypes = this.ResourceTypes.FromJson<List<ResourceType>>()
                             }
                         }
