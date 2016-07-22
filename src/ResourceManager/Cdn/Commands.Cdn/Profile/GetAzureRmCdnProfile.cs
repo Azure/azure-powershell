@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 var profiles =
                     CdnManagementClient.Profiles.ListByResourceGroup(ResourceGroupName).Select(p => p.ToPsProfile());
                 WriteVerbose(Resources.Success);
-                WriteObject(profiles, true);
+                WriteObject(profiles.ToArray(), true);
             }
             else if (ProfileName != null && ResourceGroupName == null)
             {

@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile.")]
         [ValidateCount(Constants.PurgeLoadMinimumCollectionCount, Constants.PurgeLoadMaximumCollectionCount)]
         public string[] LoadContent { get; set; }
 

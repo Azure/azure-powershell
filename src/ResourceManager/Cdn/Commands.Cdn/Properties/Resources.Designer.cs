@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Origin with name &apos;{0}&apos; on endpoint &apos;{1}&apos; could not be found..
+        /// </summary>
+        internal static string Error_DeleteNonExistingOrigin {
+            get {
+                return ResourceManager.GetString("Error_DeleteNonExistingOrigin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile with name &apos;{0}&apos; in the resource group &apos;{1}&apos; does not exist..
         /// </summary>
         internal static string Error_DeleteNonExistingProfile {
@@ -183,6 +192,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Progress_RemovingEndpoint {
             get {
                 return ResourceManager.GetString("Progress_RemovingEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing origin....
+        /// </summary>
+        internal static string Progress_RemovingOrigin {
+            get {
+                return ResourceManager.GetString("Progress_RemovingOrigin", resourceCulture);
             }
         }
         

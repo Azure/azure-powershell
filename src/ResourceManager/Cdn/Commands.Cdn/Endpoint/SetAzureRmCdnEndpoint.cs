@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
     [Cmdlet(VerbsCommon.Set, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
     public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.", ParameterSetName = "Object")]
         [ValidateNotNull]
         public PSEndpoint CdnEndpoint { get; set; }
 
