@@ -36,12 +36,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestCreateExistingBatchAccount()
-        {
-            BatchController.NewInstance.RunPsTest("Test-CreateExistingBatchAccount");
-        }
-
-        [Fact]
         public void TestUpdatesExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-UpdatesExistingBatchAccount");
