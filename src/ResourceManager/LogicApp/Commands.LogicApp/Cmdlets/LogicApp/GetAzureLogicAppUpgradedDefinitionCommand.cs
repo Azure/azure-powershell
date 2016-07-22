@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Gets the upgraded definition for a workflow.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicApp"), OutputType(typeof(object))]
-    public class GetAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppUpgradedDefinition"), OutputType(typeof(object))]
+    public class GetAzureLogicAppUpgradedDefinitionCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
@@ -32,13 +32,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
-        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The version of the workflow.")]
+        [Parameter(Mandatory = false, HelpMessage = "The target schema version for the definition.")]
         [ValidateNotNullOrEmpty]
-        public string Version { get; set; }
+        public string TargetSchemaVersion { get; set; }
 
         #endregion Input Parameters
 
@@ -48,14 +48,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (string.IsNullOrWhiteSpace(this.Version))
-            {
-                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
-            }
-            else
-            {
-                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
-            }
+            this.WriteObject(LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), true);
         }
     }
 }

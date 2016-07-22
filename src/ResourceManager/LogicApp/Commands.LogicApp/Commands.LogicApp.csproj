@@ -56,9 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Logic, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.Logic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.0.2.2-preview\lib\portable-net45+win8+wpa81\Microsoft.Azure.Management.Logic.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.1.0.0\lib\portable-net45+win8+wpa81\Microsoft.Azure.Management.Logic.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -142,17 +142,18 @@
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountPartnerCommand.cs" />
     <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountSchemaCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\CancelAzureLogicAppRunCommand.cs" />
-    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppAccessKeyCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppRunActionCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppRunHistoryCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerCallbackUrlCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerHistoryCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppUpgradedDefinitionCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\NewAzureLogicAppCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\RemoveAzureLogicAppCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\RunAzureLogicAppCommand.cs" />
-    <Compile Include="Cmdlets\LogicApp\UpdateAzureLogicAppAccessKeyCommand.cs" />
     <Compile Include="Cmdlets\LogicApp\UpdateAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\ValidateAzureLogicAppCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -174,7 +175,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Utilities\LogicAppClient.cs" />
-    <Compile Include="Utilities\LogicAppClientAccessKeyOperations.cs" />
     <Compile Include="Utilities\LogicAppClientRunOperations.cs" />
     <Compile Include="Utilities\LogicAppClientTriggerOperations.cs" />
     <Compile Include="Utilities\ParameterSet.cs" />

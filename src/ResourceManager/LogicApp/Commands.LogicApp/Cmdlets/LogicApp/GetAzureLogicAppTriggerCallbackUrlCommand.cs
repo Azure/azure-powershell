@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Logic.Models;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
@@ -19,16 +20,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using System.Management.Automation;
 
     /// <summary>
-    /// Gets the access key of a workflow.
+    /// Gets the callback URL for a trigger in a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
-    public class GetAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppTriggerCallbackUrl"), OutputType(typeof(object))]
+    public class GetAzureLogicAppTriggerCallbackUrlCommand : LogicAppBaseCmdlet
     {
-        #region private attribues
 
-        private string _accessKeyName = "default";
-
-        #endregion private attribues
         #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
@@ -38,29 +35,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the workflow accesskey.",
+        [Parameter(Mandatory = true, HelpMessage = "The name of the trigger in the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string AccessKeyName
-        {
-            get { return this._accessKeyName; }
-            set { this._accessKeyName = value; }
-        }
+        public string TriggerName { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow accesskey command
+        /// Executes the get workflow trigger callback url command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
             this.WriteObject(
-                LogicAppClient.GetWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName), true);
+                LogicAppClient.GetWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName), true);
         }
     }
 }

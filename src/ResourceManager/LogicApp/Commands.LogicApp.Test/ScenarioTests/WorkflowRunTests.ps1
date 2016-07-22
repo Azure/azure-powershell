@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$WORKFLOW_LOCATION = 'westus'
+
 <#
 .SYNOPSIS
 Test Start and Stop AzureLogicApp command for logic app workflow.
@@ -26,7 +28,7 @@ function Test-StartLogicApp
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
@@ -51,7 +53,7 @@ function Test-GetAzureLogicAppRunHistory
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
@@ -82,7 +84,7 @@ function Test-GetAzureLogicAppRunAction
 	$workflowName = getAssetname	
 	$definitionFilePath = [System.IO.Path]::Combine($TestOutputRoot, "Resources\TestSimpleWorkflowTriggerDefinition.json")		
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 
 	[int]$counter = 0
 	do {
@@ -117,7 +119,7 @@ function Test-StopAzureRmLogicAppRun
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
