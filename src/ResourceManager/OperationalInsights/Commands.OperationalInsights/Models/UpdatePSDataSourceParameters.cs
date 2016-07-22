@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+    public class UpdatePSDataSourceParameters : OperationalInsightsParametersBase
     {
-        public string StorageAccountResourceId { get; set; }
+        public string Name { get; set; }
 
-        public bool Force { get; set; }
-
-        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
+        public PSDataSourcePropertiesBase Properties { get; set; }
     }
 }
