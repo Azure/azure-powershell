@@ -29,6 +29,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Reflection;
+using Microsoft.Azure.Test.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
@@ -89,19 +90,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
             RecoveryServicesManagementClient client;
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
+                testEnvironment.SubscriptionId);
 
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesManagementClient(
                     "Microsoft.RecoveryServicesBVTD",
-                    testEnvironment.Credentials as SubscriptionCloudCredentials,
+                    credentials,
                     testEnvironment.BaseUri);
             }
             else
             {
                 client = new RecoveryServicesManagementClient(
                     "Microsoft.RecoveryServicesBVTD",
-                    testEnvironment.Credentials as SubscriptionCloudCredentials);
+                    credentials);
             }
             return GetServiceClient<T>(factory, client);
         }

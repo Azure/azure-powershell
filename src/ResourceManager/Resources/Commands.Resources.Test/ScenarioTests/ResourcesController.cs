@@ -34,7 +34,7 @@ using LegacyRMClient = Microsoft.Azure.Management.Resources;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-
+using Microsoft.Azure.Test.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
@@ -163,7 +163,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient();
             InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient(context);
-            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
+            var testEnvironment = this.csmTestFactory.GetTestEnvironment();
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
+                testEnvironment.SubscriptionId);
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
             helper.SetupManagementClients(ResourceManagementClient,
                 LegacyResourceManagementClient,

@@ -32,6 +32,7 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using LegacyTest = Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
@@ -153,8 +154,13 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             var subscriptionClient = LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
             var authManagementClient = LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
             var gallleryClient = LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+
+            var testEnvironment = this.csmTestFactory.GetTestEnvironment();
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
+                testEnvironment.SubscriptionId);
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(
-                    this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
+                    credentials);
             helper.SetupManagementClients(this.ResourceManagementClient, 
                 subscriptionClient, 
                 this.WebServicesManagementClient, 
