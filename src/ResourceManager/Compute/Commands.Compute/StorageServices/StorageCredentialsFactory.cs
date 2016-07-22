@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "SubscriptionId");
                 }
                 var storageKeys = this.client.StorageAccounts.ListKeys(this.resourceGroupName, destination.StorageAccountName);
-                return new StorageCredentials(destination.StorageAccountName, storageKeys.StorageAccountKeys.Key1);
+                return new StorageCredentials(destination.StorageAccountName, storageKeys.Key1);
             }
 
             return new StorageCredentials(destination.Uri.Query);
