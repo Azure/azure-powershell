@@ -1781,7 +1781,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Format</maml:name>
           <maml:description>
-            <maml:para>Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
+            <maml:para>Format for the blob. Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1794,7 +1794,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>PassThru</maml:name>
           <maml:description>
-            <maml:para>By default Import-AzureRmRedisCache imports data in cache and does not return any value. If the PassThru parameter is provided then Import-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+            <maml:para>By default Import-AzureRmRedisCache imports data into the cache and does not return any value. If the PassThru parameter is provided then Import-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -1842,7 +1842,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Format</maml:name>
         <maml:description>
-          <maml:para>Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
+          <maml:para>Format for the blob. Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1867,7 +1867,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
         <maml:description>
-          <maml:para>By default Import-AzureRmRedisCache imports data in cache and does not return any value. If the PassThru parameter is provided then Import-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+          <maml:para>By default Import-AzureRmRedisCache imports data into the cache and does not return any value. If the PassThru parameter is provided then Import-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
         </maml:description>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -1993,14 +1993,14 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Format</maml:name>
           <maml:description>
-            <maml:para>Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
+            <maml:para>Format for the blob. Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>PassThru</maml:name>
           <maml:description>
-            <maml:para>By default Export-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+            <maml:para>By default Export-AzureRmRedisCache does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -2061,7 +2061,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Format</maml:name>
         <maml:description>
-          <maml:para>Format for the blob.  Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
+          <maml:para>Format for the blob. Currently "rdb" is the only supported, with other formats expected in the future.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2074,7 +2074,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
         <maml:description>
-          <maml:para>By default Export-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+          <maml:para>By default Export-AzureRmRedisCache does not return any value. If the PassThru parameter is provided then Export-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
         </maml:description>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -2206,7 +2206,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>PassThru</maml:name>
           <maml:description>
-            <maml:para>By default Reset-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Reset-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+            <maml:para>By default Reset-AzureRmRedisCache does not return any value. If the PassThru parameter is provided then Reset-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -2266,7 +2266,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>When the Force parameter is provided, export will be performed without any confirmation prompts.</maml:para>
+          <maml:para>When the Force parameter is provided, reboot will be performed without any confirmation prompts.</maml:para>
         </maml:description>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -2278,7 +2278,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
         <maml:description>
-          <maml:para>By default Reset-AzureRmRedisCache export does not return any value. If the PassThru parameter is provided then Reset-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+          <maml:para>By default Reset-AzureRmRedisCache does not return any value. If the PassThru parameter is provided then Reset-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
         </maml:description>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
@@ -2351,6 +2351,556 @@
       <maml:navigationLink>
         <maml:linkText>Online Version:</maml:linkText>
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=717715</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureRmRedisCacheScheduleEntry</command:name>
+      <maml:description>
+        <maml:para>All AzureRmRedisCachePatchSchedule cmdlets use a custom object of type PSScheduleEntry. This cmdlet will create that object from user provided parameters.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureRmRedisCacheScheduleEntry</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>All AzureRmRedisCachePatchSchedule cmdlets use a custom object of type PSScheduleEntry. This cmdlet will create that object from user provided parameters.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmRedisCacheScheduleEntry</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>DayOfWeek</maml:name>
+          <maml:description>
+            <maml:para>Day of week for which to create schedule entry. Possible values are "Everyday", "Weekend", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday".</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>StartHourUtc</maml:name>
+          <maml:description>
+            <maml:para>Start time in hours when schedule should start on specified day of week.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>MaintenanceWindow</maml:name>
+          <maml:description>
+            <maml:para>Time window allowed for patching.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">TimeSpan</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>DayOfWeek</maml:name>
+        <maml:description>
+          <maml:para>Day of week for which want to create schedule entry. Possible values are "Everyday", "Weekend", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday".</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>StartHourUtc</maml:name>
+        <maml:description>
+          <maml:para>Start time in hours when schedule should start on specified day of week.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+        <dev:type>
+          <maml:name>Integer</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>MaintenanceWindow</maml:name>
+        <maml:description>
+          <maml:para>Time window allowed for patching.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue>
+        <dev:type>
+          <maml:name>TimeSpan</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>Returns object of type PSScheduleEntry created from parameter passed.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example: Create PSScheduleEntry for weekend</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+        </dev:code>
+        <dev:remarks>
+          <maml:para>
+            This command will return an object of type PSScheduleEntry that represents a weekend schedule with specified start time and window.
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>http://go.microsoft.com/fwlink/?linkid=822919</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>New-AzureRmRedisCachePatchSchedule</command:name>
+      <maml:description>
+        <maml:para>Creates a new patching schedule for a specified redis cache.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>New</command:verb>
+      <command:noun>AzureRmRedisCachePatchSchedule</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The New-AzureRmRedisCachePatchSchedule cmdlet creates a new patching schedule for a specified redis cache.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>New-AzureRmRedisCachePatchSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the redis cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Entries</maml:name>
+          <maml:description>
+            <maml:para>Array of schedules that we want to set on redis cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PSScheduleEntry[]</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the redis cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Entries</maml:name>
+        <maml:description>
+          <maml:para>Array of schedules that we want to set on redis cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PSScheduleEntry[]</command:parameterValue>
+        <dev:type>
+          <maml:name>PSScheduleEntry[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>Returns list of patch schedule entries set on redis cache.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example: create patch schedule on redis cache </maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\&gt;New-AzureRmRedisCachePatchSchedule -ResourceGroupName "resourceGroupName" -Name "cachename" -Entries @(New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00")
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command sets create patch schedules on specified redis cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=822920</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-AzureRmRedisCachePatchSchedule</command:name>
+      <maml:description>
+        <maml:para>Get patching schedule for a specified redis cache.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureRmRedisCachePatchSchedule</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-AzureRmRedisCachePatchSchedule cmdlet gets patching schedule for a specified redis cache.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRmRedisCachePatchSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the redis cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the redis cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>Returns list of patch schedule entries of redis cache.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example: gets patch schedule entries of redis cache </maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          C:\&gt;Get-AzureRmRedisCachePatchSchedule -ResourceGroupName "resourceGroupName" -Name "cachename" 
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command returns the patch schedule entries of the specified redis cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=822921</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-AzureRmRedisCachePatchSchedule</command:name>
+      <maml:description>
+        <maml:para>Remove patch schedule from redis cache.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureRmRedisCachePatchSchedule</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Remove-AzureRmRedisCachePatchSchedule cmdlet removes patch schedule from redis cache.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmRedisCachePatchSchedule</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the redis cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Name of the redis cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>Name of the resource group in which redis cache exists.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>You can pipe input to this cmdlet by property name, but not by value.</maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Void</maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>It does not return any value.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example: Remove patch schedule from redis cache</maml:title>
+        <maml:introduction>
+          <maml:para>
+          </maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName "resourceGroupName" -Name "cachename"
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This command removes the patch schedule from redis cache.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online Version:</maml:linkText>
+        <maml:uri>http://go.microsoft.com/fwlink/?LinkId=822922</maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>

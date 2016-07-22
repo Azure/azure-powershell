@@ -195,5 +195,22 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             _client.Redis.ForceReboot(resourceGroupName: resourceGroupName, name: cacheName, parameters: parameters);
         }
+
+        public IList<ScheduleEntry> SetPatchSchedules(string resourceGroupName, string cacheName, List<ScheduleEntry> schedules)
+        {
+            var response = _client.PatchSchedules.CreateOrUpdate(resourceGroupName, cacheName, new RedisPatchSchedulesRequest { ScheduleEntries = schedules });
+            return response.ScheduleEntries;
+        }
+
+        public IList<ScheduleEntry> GetPatchSchedules(string resourceGroupName, string cacheName)
+        {
+            var response = _client.PatchSchedules.Get(resourceGroupName, cacheName);
+            return response.ScheduleEntries;
+        }
+
+        public void RemovePatchSchedules(string resourceGroupName, string cacheName)
+        {
+            _client.PatchSchedules.Delete(resourceGroupName, cacheName);
+        }
     }
 }

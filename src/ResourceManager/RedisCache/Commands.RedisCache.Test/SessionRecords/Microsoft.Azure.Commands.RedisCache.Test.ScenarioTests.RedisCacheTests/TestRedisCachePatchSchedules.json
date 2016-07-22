@@ -1,0 +1,251 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aHNTdWIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9zdW5ueS1wcmVtaXVtL3BhdGNoU2NoZWR1bGVzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"scheduleEntries\": [\r\n      {\r\n        \"dayOfWeek\": \"Saturday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Sunday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Thursday\",\r\n        \"startHourUtc\": 10,\r\n        \"maintenanceWindow\": \"PT9H\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "413"
+        ],
+        "x-ms-client-request-id": [
+          "42cd27d7-4e09-47d7-b7f8-9b0393d75ee9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/3.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"sunny-premium/default\",\r\n  \"type\": \"Microsoft.Cache/Redis/PatchSchedules\",\r\n  \"properties\": {\r\n    \"scheduleEntries\": [\r\n      {\r\n        \"dayOfWeek\": \"Saturday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Sunday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Thursday\",\r\n        \"startHourUtc\": 10,\r\n        \"maintenanceWindow\": \"PT9H\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "497"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d640bc6c-2bce-4439-81e0-adaad9bddd1f"
+        ],
+        "x-rp-server-mvid": [
+          "ee94f66d-6cbf-4677-9102-16a91b3a282c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "5421c08b-3f59-4cd9-ae7b-4d06d65330fa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160708T184237Z:5421c08b-3f59-4cd9-ae7b-4d06d65330fa"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Jul 2016 18:42:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aHNTdWIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9zdW5ueS1wcmVtaXVtL3BhdGNoU2NoZWR1bGVzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "324e4dce-c420-43f0-b675-78b30f26b77a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/3.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default\",\r\n  \"location\": \"West US\",\r\n  \"name\": \"sunny-premium/default\",\r\n  \"type\": \"Microsoft.Cache/Redis/PatchSchedules\",\r\n  \"properties\": {\r\n    \"scheduleEntries\": [\r\n      {\r\n        \"dayOfWeek\": \"Saturday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Sunday\",\r\n        \"startHourUtc\": 2,\r\n        \"maintenanceWindow\": \"PT6H\"\r\n      },\r\n      {\r\n        \"dayOfWeek\": \"Thursday\",\r\n        \"startHourUtc\": 10,\r\n        \"maintenanceWindow\": \"PT9H\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "497"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1a881c23-8a3b-426f-89b7-704393c01584"
+        ],
+        "x-rp-server-mvid": [
+          "ee94f66d-6cbf-4677-9102-16a91b3a282c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "b88c1321-5d7e-4de7-b5af-4a6d82d9cc29"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160708T184237Z:b88c1321-5d7e-4de7-b5af-4a6d82d9cc29"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Jul 2016 18:42:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aHNTdWIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9zdW5ueS1wcmVtaXVtL3BhdGNoU2NoZWR1bGVzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "14a4a385-a71c-47af-a95f-7bbf6d014e83"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/3.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"There are no patch schedules found for redis cache 'sunny-premium'.\\r\\nRequestID=391c4d63-ee26-4815-aa51-95ef2e2e1014\",\r\n    \"target\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "181"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "391c4d63-ee26-4815-aa51-95ef2e2e1014"
+        ],
+        "x-rp-server-mvid": [
+          "ee94f66d-6cbf-4677-9102-16a91b3a282c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad39410b-e1a7-4591-bb67-f7f63cbae0fa"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160708T184238Z:ad39410b-e1a7-4591-bb67-f7f63cbae0fa"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Jul 2016 18:42:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/592cc9de-a3cd-4d70-9bc1-c1a28a3625b5/resourceGroups/SiddharthsSub/providers/Microsoft.Cache/Redis/sunny-premium/patchSchedules/default?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTkyY2M5ZGUtYTNjZC00ZDcwLTliYzEtYzFhMjhhMzYyNWI1L3Jlc291cmNlR3JvdXBzL1NpZGRoYXJ0aHNTdWIvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9zdW5ueS1wcmVtaXVtL3BhdGNoU2NoZWR1bGVzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNi0wNC0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bf82e809-a66d-4b73-84a0-24c63a1a32df"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/3.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "186590eb-25c0-40bf-81c6-7804aa2f11aa"
+        ],
+        "x-rp-server-mvid": [
+          "ee94f66d-6cbf-4677-9102-16a91b3a282c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "afecf077-f66b-479b-9f2d-28762401276d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160708T184237Z:afecf077-f66b-479b-9f2d-28762401276d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 08 Jul 2016 18:42:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "592cc9de-a3cd-4d70-9bc1-c1a28a3625b5"
+  }
+}
