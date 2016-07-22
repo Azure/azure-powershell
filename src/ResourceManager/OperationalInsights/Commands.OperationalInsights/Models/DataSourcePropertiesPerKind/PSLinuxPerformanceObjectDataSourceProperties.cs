@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public int IntervalSeconds { get; set; }
 
         [JsonProperty(PropertyName = "performanceCounters")]
-        public List<PerformanceCounterSubscription>PerformanceCounters { get; set; }
+        public List<PerformanceCounterIdentifier>PerformanceCounters { get; set; }
     }
 
     /// <summary>
     /// Subscribe to a Syslog Severity
     /// </summary>
-    public class PerformanceCounterSubscription
+    public class PerformanceCounterIdentifier
     {
         #region Public Properties
 

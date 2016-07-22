@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string SyslogName { get; set; }
 
         [JsonProperty(PropertyName = "syslogSeverities")]
-        public List<SyslogSeveritySubscription> SyslogSeverities { get; set; }
+        public List<SyslogSeverityIdentifier> SyslogSeverities { get; set; }
     }
 
     /// <summary>
     /// Subscribe to a Syslog Severity
     /// </summary>
-    public class SyslogSeveritySubscription
+    public class SyslogSeverityIdentifier
     {
         #region Public Properties
 

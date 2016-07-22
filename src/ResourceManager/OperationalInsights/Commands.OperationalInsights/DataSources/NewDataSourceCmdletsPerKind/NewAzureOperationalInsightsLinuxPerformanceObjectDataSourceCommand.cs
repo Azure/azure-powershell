@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            List<PerformanceCounterSubscription> counterNameSubscription = this.CounterNames.Select(counterName => new PerformanceCounterSubscription { CounterName = counterName }).ToList();
+            List<PerformanceCounterIdentifier> counterNameSubscription = this.CounterNames.Select(counterName => new PerformanceCounterIdentifier { CounterName = counterName }).ToList();
 
             var dsProperties = new PSLinuxPerformanceObjectDataSourceProperties
             {

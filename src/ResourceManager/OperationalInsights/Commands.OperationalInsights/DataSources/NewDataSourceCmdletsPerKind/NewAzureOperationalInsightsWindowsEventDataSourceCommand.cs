@@ -40,17 +40,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            List<WindowsEventTypeSubscription> eventTypeInstances = new List<WindowsEventTypeSubscription>();
+            List<WindowsEventTypeIdentifier> eventTypeInstances = new List<WindowsEventTypeIdentifier>();
             if (CollectErrors.IsPresent) {
-                eventTypeInstances.Add(new WindowsEventTypeSubscription { eventType = WindowsEventType.Error });
+                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Error });
             }
             if (CollectWarnings.IsPresent)
             {
-                eventTypeInstances.Add(new WindowsEventTypeSubscription { eventType = WindowsEventType.Warning });
+                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Warning });
             }
             if (CollectInformation.IsPresent)
             {
-                eventTypeInstances.Add(new WindowsEventTypeSubscription { eventType = WindowsEventType.Information });
+                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Information });
             }
 
             if (eventTypeInstances.Count == 0)

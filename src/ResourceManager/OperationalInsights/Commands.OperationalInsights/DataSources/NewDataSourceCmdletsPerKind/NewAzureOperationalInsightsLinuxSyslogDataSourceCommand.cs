@@ -54,14 +54,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            List<SyslogSeveritySubscription> severitySubscription = new List<SyslogSeveritySubscription>();
-            if (CollectEmerg.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.emerg }); }
-            if (CollectAlert.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.alert }); }
-            if (CollectCrit.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.crit }); }
-            if (CollectErr.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.err }); }
-            if (CollectWarning.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.warning }); }
-            if (CollectNotice.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.notice }); }
-            if (CollectDebug.IsPresent) { severitySubscription.Add(new SyslogSeveritySubscription { Severity = SyslogSeverities.debug }); }
+            List<SyslogSeverityIdentifier> severitySubscription = new List<SyslogSeverityIdentifier>();
+            if (CollectEmerg.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.emerg }); }
+            if (CollectAlert.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.alert }); }
+            if (CollectCrit.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.crit }); }
+            if (CollectErr.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.err }); }
+            if (CollectWarning.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.warning }); }
+            if (CollectNotice.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.notice }); }
+            if (CollectDebug.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.debug }); }
 
             if (severitySubscription.Count == 0) {
                 throw new ArgumentException("Please atleast have one severity level to enable log collection.");

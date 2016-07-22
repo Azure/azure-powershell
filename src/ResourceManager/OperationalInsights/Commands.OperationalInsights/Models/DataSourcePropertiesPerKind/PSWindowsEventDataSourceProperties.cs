@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string EventLogName { get; set; }
 
         [JsonProperty(PropertyName = "eventTypes")]
-        public List<WindowsEventTypeSubscription> EventTypes { get; set; }
+        public List<WindowsEventTypeIdentifier> EventTypes { get; set; }
     }
 
     /// <summary>
     /// The windows event type arm.
     /// </summary>
-    public class WindowsEventTypeSubscription
+    public class WindowsEventTypeIdentifier
     {
         #region Public Properties
 
