@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// <summary>
         /// Gets or sets the profile to update.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile object.")]
         [ValidateNotNull]
         public PSProfile CdnProfile { get; set; }
 

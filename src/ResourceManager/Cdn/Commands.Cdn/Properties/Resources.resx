@@ -133,10 +133,10 @@
     <value>There is already an existing custom domain with name '{0}' in the endpoint '{1}', profile '{2}', resource group '{3}'</value>
   </data>
   <data name="Error_CreateExistingEndpoint" xml:space="preserve">
-    <value>There is already an existing endpoint with name '{0}' in the profile '{1}', resource group '{2}'</value>
+    <value>There is already an existing endpoint with name '{0}'.</value>
   </data>
   <data name="Error_CreateExistingProfile" xml:space="preserve">
-    <value>There is already an existing profile with name '{0}' in the resource group '{1}'</value>
+    <value>There is already an existing profile with name '{0}' in the resource group '{1}'.</value>
   </data>
   <data name="Error_DeleteNonExistingCustomDomain" xml:space="preserve">
     <value>Custom domain with name '{0}' in the endpoint '{1}',profile '{2}', resource group '{3}' does not exist.</value>
@@ -144,7 +144,13 @@
   <data name="Error_DeleteNonExistingEndpoint" xml:space="preserve">
     <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' does not exist.</value>
   </data>
+  <data name="Error_DeleteNonExistingOrigin" xml:space="preserve">
+    <value>Origin with name '{0}' on endpoint '{1}' could not be found.</value>
+  </data>
   <data name="Error_DeleteNonExistingProfile" xml:space="preserve">
+    <value>Profile with name '{0}' in the resource group '{1}' does not exist.</value>
+  </data>
+  <data name="Error_ProfileNotFound" xml:space="preserve">
     <value>Profile with name '{0}' in the resource group '{1}' does not exist.</value>
   </data>
   <data name="Error_ResourceGroupNotSpecified" xml:space="preserve">
@@ -155,6 +161,9 @@
   </data>
   <data name="Progress_RemovingEndpoint" xml:space="preserve">
     <value>Removing endpoint ...</value>
+  </data>
+  <data name="Progress_RemovingOrigin" xml:space="preserve">
+    <value>Removing origin...</value>
   </data>
   <data name="Progress_RemovingProfile" xml:space="preserve">
     <value>Removing profile ...</value>

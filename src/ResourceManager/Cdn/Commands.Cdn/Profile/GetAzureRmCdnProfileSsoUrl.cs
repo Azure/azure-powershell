@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = ObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile object.")]
         [ValidateNotNullOrEmpty]
         public PSProfile CdnProfile { get; set; }
 
