@@ -103,5 +103,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportAzureRmRedisCache");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRedisCachePatchSchedules()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePatchSchedules");
+        }
     }
 }
