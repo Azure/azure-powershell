@@ -126,7 +126,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Media">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Media.1.0.0\lib\net45\Microsoft.Azure.Management.Media.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Media.0.1.0\lib\net45\Microsoft.Azure.Management.Media.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
