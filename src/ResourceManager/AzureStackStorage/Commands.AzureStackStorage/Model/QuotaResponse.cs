@@ -17,7 +17,7 @@ using Microsoft.AzureStack.AzureConsistentStorage.Models;
 
 namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 {
-    internal class QuotaResponse : ResponseBase
+    internal class QuotaResponse : BasicResponseBase
     {
         public QuotaResponse(QuotaModel resource) : base(resource)
         {
