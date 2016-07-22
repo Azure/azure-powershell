@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Cdn.Models.CustomDomain;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
@@ -30,28 +31,31 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         OutputType(typeof(bool))]
     public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn CustomDomain name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
         public string CustomDomainName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure Cdn profile name.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure Cdn Profile")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure CDN profile")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.", ParameterSetName = ObjectParameterSet)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The custom domain object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSCustomDomain CdnCustomDomain { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
+        
+        [Parameter()]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -63,47 +67,34 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                 CustomDomainName = CdnCustomDomain.Name;
             }
 
-            try
-            {
-                CdnManagementClient.CustomDomains.GetWithHttpMessagesAsync(
-                    CustomDomainName, 
-                    EndpointName, 
-                    ProfileName, 
-                    ResourceGroupName).Wait();
-            }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingCustomDomain,
-                        CustomDomainName,
-                        EndpointName,
-                        ProfileName,
-                        ResourceGroupName));
-                }
+            var existingCustomDomain = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName).Where(cd => cd.Name == CustomDomainName).FirstOrDefault();
+            if (existingCustomDomain == null)
+            {
+                throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingCustomDomain,
+                    CustomDomainName,
+                    EndpointName,
+                    ProfileName,
+                    ResourceGroupName));
             }
 
-            if (!ShouldProcess(string.Format(
+           if (Force || ShouldProcess(string.Format(
                             Resources.Confirm_RemoveCustomDomain,
                             CustomDomainName,
                             EndpointName,
                             ProfileName,
                             ResourceGroupName)))
             {
+                CdnManagementClient.CustomDomains.DeleteIfExists(
+                CustomDomainName,
+                EndpointName,
+                ProfileName,
+                ResourceGroupName);
+            }
+            else
+            {
                 return;
             }
-
-            CdnManagementClient.CustomDomains.DeleteIfExists(
-                            CustomDomainName,
-                            EndpointName,
-                            ProfileName,
-                            ResourceGroupName);
 
             if (PassThru)
             {

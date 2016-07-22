@@ -20,6 +20,8 @@ using Microsoft.Azure.Commands.Cdn.Models.Profile;
 using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
+using System.Linq;
+using Microsoft.Azure.Commands.Cdn.Helpers;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
@@ -52,27 +54,17 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ProfileName = CdnProfile.Name;
             }
 
-            try
-            {
-                CdnManagementClient.Profiles.GetWithHttpMessagesAsync(ProfileName, ResourceGroupName).Wait();
-            }
-            catch (AggregateException exception)
-            {
-                var errorResponseException = exception.InnerException as ErrorResponseException;
-                if (errorResponseException == null)
-                {
-                    throw;
-                }
+            var existingProfile = CdnManagementClient.Profiles.ListBySubscriptionId().Select(p => p.ToPsProfile())
+                .Where(p => p.Name == ProfileName).Where(p => p.ResourceGroupName == ResourceGroupName).FirstOrDefault();
 
-                if (errorResponseException.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new PSArgumentException(string.Format(
-                        Resources.Error_DeleteNonExistingProfile, 
-                        ProfileName,
-                        ResourceGroupName));
-                }
+            if (existingProfile == null)
+            {
+                throw new PSArgumentException(string.Format(
+                    Resources.Error_DeleteNonExistingProfile,
+                    ProfileName,
+                    ResourceGroupName));
             }
-
+        
             if (Force || ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
             {
                 CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);

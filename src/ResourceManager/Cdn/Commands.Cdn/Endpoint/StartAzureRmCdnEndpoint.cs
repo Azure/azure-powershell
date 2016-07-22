@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure Cdn profile.")]
+        [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The resource group of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

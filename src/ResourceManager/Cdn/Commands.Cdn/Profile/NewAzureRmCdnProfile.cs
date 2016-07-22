@@ -44,27 +44,27 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// <summary>
         /// The location in which to create the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN Profile.")]
+        [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         /// <summary>
         /// The pricing sku name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure CDN Profile. Valid values are StandardVerizon, StandardAkamai, and PremiumVerizon.")]
+        [Parameter(Mandatory = true, HelpMessage = "The pricing sku name of the Azure CDN profile. Valid values are StandardVerizon, StandardAkamai, and PremiumVerizon.")]
         public PSSkuName Sku { get; set; }
 
         /// <summary>
         /// The resource group name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile will be created in.")]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// The tags to associate with the Azure Cdn Profile.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure CDN Profile.")]
+            HelpMessage = "The tags to associate with the Azure CDN profile.")]
         public Hashtable Tags { get; set; }
 
 
