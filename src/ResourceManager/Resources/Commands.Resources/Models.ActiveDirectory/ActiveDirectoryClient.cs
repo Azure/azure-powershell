@@ -319,36 +319,31 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public List<PSADObject> GetGroupMembers(ADObjectFilterOptions options)
         {
             List<PSADObject> members = new List<PSADObject>();
-            PSADObject group = FilterGroups(options).FirstOrDefault();
+            Rest.Azure.IPage<AADObject> result = null;
 
-            if (group != null)
+            if (options.Paging)
             {
-                Rest.Azure.IPage<AADObject> result = null;
-
-                if (options.Paging)
+                if (string.IsNullOrEmpty(options.NextLink))
                 {
-                    if (string.IsNullOrEmpty(options.NextLink))
-                    {
-                        result = GraphClient.Groups.GetGroupMembers(group.Id.ToString());
-                    }
-                    else
-                    {
-                        result = GraphClient.Groups.GetGroupMembersNext(options.NextLink);
-                    }
-
-                    members.AddRange(result.Select(u => u.ToPSADObject()));
-                    options.NextLink = result.NextPageLink;
+                    result = GraphClient.Groups.GetGroupMembers(options.Id);
                 }
                 else
                 {
-                    result = GraphClient.Groups.GetGroupMembers(group.Id.ToString());
-                    members.AddRange(result.Select(u => u.ToPSADObject()));
+                    result = GraphClient.Groups.GetGroupMembersNext(options.NextLink);
+                }
 
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.Groups.GetGroupMembersNext(result.NextPageLink);
-                        members.AddRange(result.Select(u => u.ToPSADObject()));
-                    }
+                members.AddRange(result.Select(u => u.ToPSADObject()));
+                options.NextLink = result.NextPageLink;
+            }
+            else
+            {
+                result = GraphClient.Groups.GetGroupMembers(options.Id);
+                members.AddRange(result.Select(u => u.ToPSADObject()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = GraphClient.Groups.GetGroupMembersNext(result.NextPageLink);
+                    members.AddRange(result.Select(u => u.ToPSADObject()));
                 }
             }
 
