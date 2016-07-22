@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using Tags.Model;
 
     public class TrafficManagerClient
     {

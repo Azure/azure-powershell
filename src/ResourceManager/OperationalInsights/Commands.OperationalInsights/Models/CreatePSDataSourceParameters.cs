@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Model
-{
-    public class PSTagValue
-    {
-        public string Name { get; set; }
+using System;
+using System.Collections.Generic;
 
-        public string Count { get; set; }
+namespace Microsoft.Azure.Commands.OperationalInsights
+{
+    public class CreatePSDataSourceParameters : UpdatePSDataSourceParameters
+    {
+
+        public bool Force { get; set; }
+
+        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }

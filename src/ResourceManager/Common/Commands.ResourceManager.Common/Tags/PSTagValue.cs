@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 {
-    public class PSTagValuePair
+    public class PSTagValue
     {
         public string Name { get; set; }
-        public string Value { get; set; }
+
+        public string Count { get; set; }
     }
 }

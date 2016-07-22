@@ -12,18 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class PSTag
+    public class UpdatePSDataSourceParameters : OperationalInsightsParametersBase
     {
         public string Name { get; set; }
 
-        public string ValuesTable { get; set; }
-
-        public string Count { get; set; }
-
-        public List<PSTagValue> Values { get; set; }
+        public PSDataSourcePropertiesBase Properties { get; set; }
     }
 }
