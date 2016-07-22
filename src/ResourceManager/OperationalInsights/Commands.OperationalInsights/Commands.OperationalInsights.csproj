@@ -144,10 +144,10 @@
     <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsWindowsEventDataSourceCommand.cs" />
     <Compile Include="Models\CreatePSDataSourceParameters.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogCollectionDataSourceProperties.cs" />
-    <Compile Include="Models\DataSourcePropertiesPerKind\PSIISLogDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSIISLogsDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxPerformanceCollectionDataSourceProperties.cs" />
-    <Compile Include="Models\PSWindowsPerformanceCounterDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSWindowsPerformanceCounterDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxPerformanceObjectDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxSyslogDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxSyslogCollectionDataSourceProperties.cs" />

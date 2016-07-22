@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public PSDataSource GetSingletonDataSource(string resourceGroup, string workspaceName, string dataSourceKind)
         {
             List<PSDataSource> dataSources;
-            if (dataSourceKind == PSDataSourceKinds.IISLog
+            if (dataSourceKind == PSDataSourceKinds.IISLogs
                 || dataSourceKind == PSDataSourceKinds.LinuxPerformanceCollection
                 || dataSourceKind == PSDataSourceKinds.LinuxSyslogCollection
                 || dataSourceKind == PSDataSourceKinds.CustomLogCollection)

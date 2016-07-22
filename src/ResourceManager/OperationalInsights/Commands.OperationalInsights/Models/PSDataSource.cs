@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
     public class PSDataSourceKinds {
         public const string AzureAuditLog = "AzureAuditLog";
-        public const string IISLog = "IISLog";
+        public const string IISLogs = "IISLogs";
         public const string WindowsEvent = "WindowsEvent";
         public const string WindowsPerformanceCounter = "WindowsPerformanceCounter";
         public const string LinuxSyslogCollection = "LinuxSyslogCollection";
@@ -87,6 +87,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                     break;
                 case PSDataSourceKinds.CustomLog:
                     this.Properties = JsonConvert.DeserializeObject<PSCustomLogDataSourceProperties>(dataSource.Properties);
+                    break;
+                case PSDataSourceKinds.CustomLogCollection:
+                    this.Properties = JsonConvert.DeserializeObject<PSCustomLogCollectionDataSourceProperties>(dataSource.Properties);
+                    break;
+                case PSDataSourceKinds.IISLogs:
+                    this.Properties = JsonConvert.DeserializeObject<PSIISLogsDataSourceProperties>(dataSource.Properties);
                     break;
             }
 

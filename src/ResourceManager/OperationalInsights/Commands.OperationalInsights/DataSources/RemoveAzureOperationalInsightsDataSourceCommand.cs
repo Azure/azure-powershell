@@ -22,38 +22,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet(VerbsCommon.Remove, Constants.DataSource, SupportsShouldProcess = true,
         DefaultParameterSetName = ByWorkspaceName)]
-    public class RemoveAzureOperationalInsightsDataSourceCommand : OperationalInsightsBaseCmdlet
+    public class RemoveAzureOperationalInsightsDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The workspace that containts the data source.")]
-        [ValidateNotNull]
-        public PSWorkspace Workspace { get; set; }
-
-        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the workspace that contains the data source.")]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceName { get; set; }
-
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The data source name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == ByWorkspaceObject)
-            {
-                ResourceGroupName = Workspace.ResourceGroupName;
-                WorkspaceName = Workspace.Name;
-            }
 
             ConfirmAction(
                 Force.IsPresent,

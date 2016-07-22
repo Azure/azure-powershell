@@ -25,19 +25,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class DisableAzureOperationalInsightsIISLogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Whether to collect Linux Syslog.")]
-        public bool Enabled { get; set; }
-
         public override void ExecuteCmdlet()
         {
             PSDataSource dataSource = OperationalInsightsClient.GetSingletonDataSource(
                 this.ResourceGroupName, 
                 this.WorkspaceName, 
-                PSDataSourceKinds.IISLog);
+                PSDataSourceKinds.IISLogs);
             if (null == dataSource)
             {
-                var dsProperties = new PSIISLogDataSourceProperties
+                var dsProperties = new PSIISLogsDataSourceProperties
                 {
                     State = IISLogState.OnPremiseDisabled
                 };
@@ -46,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             }
             else
             {
-                PSIISLogDataSourceProperties dsProperties = dataSource.Properties as PSIISLogDataSourceProperties;
+                PSIISLogsDataSourceProperties dsProperties = dataSource.Properties as PSIISLogsDataSourceProperties;
                 dsProperties.State = IISLogState.OnPremiseDisabled;
                 UpdatePSDataSourceParameters parameters = new UpdatePSDataSourceParameters
                 {
@@ -55,7 +51,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                     Name = dataSource.Name,
                     Properties = dsProperties
                 };
-                OperationalInsightsClient.UpdatePSDataSource(parameters);
+                WriteObject(OperationalInsightsClient.UpdatePSDataSource(parameters));
             }
         }
     }

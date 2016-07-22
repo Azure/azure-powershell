@@ -40,25 +40,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
+
+        protected override void BeginProcessing()
+        {
+            if (ParameterSetName == ByWorkspaceObject)
+            {
+                ResourceGroupName = Workspace.ResourceGroupName;
+                WorkspaceName = Workspace.Name;
+            }
+            base.BeginProcessing();
+        }
+
         protected void CreatePSDataSourceWithProperties(PSDataSourcePropertiesBase createParameters, string dataSourceName)
         {
             CreatePSDataSourceParameters parameters = new CreatePSDataSourceParameters()
             {
                 Name = dataSourceName,
                 Properties = createParameters,
+                ResourceGroupName = this.ResourceGroupName,
+                WorkspaceName = this.WorkspaceName,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };
-            if (ParameterSetName == ByWorkspaceObject)
-            {
-                parameters.ResourceGroupName = Workspace.ResourceGroupName;
-                parameters.WorkspaceName = Workspace.Name;
-            }
-            else
-            {
-                parameters.ResourceGroupName = ResourceGroupName;
-                parameters.WorkspaceName = WorkspaceName;
-            }
             WriteObject(OperationalInsightsClient.CreatePSDataSource(parameters));
         }
 

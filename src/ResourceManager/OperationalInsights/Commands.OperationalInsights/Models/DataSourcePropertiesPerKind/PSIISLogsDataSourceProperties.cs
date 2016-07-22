@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
 
-    public class PSIISLogDataSourceProperties: PSDataSourcePropertiesBase
+    public class PSIISLogsDataSourceProperties: PSDataSourcePropertiesBase
     {
         [JsonIgnore]
-        public override string Kind { get { return PSDataSourceKinds.IISLog; } }
+        public override string Kind { get { return PSDataSourceKinds.IISLogs; } }
 
         /// <summary>
         /// Whether to enable IISLog collection on Windows computers.

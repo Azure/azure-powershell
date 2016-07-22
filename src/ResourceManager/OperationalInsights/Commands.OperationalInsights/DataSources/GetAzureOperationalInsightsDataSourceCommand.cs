@@ -50,13 +50,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        // ValidateSet below should exclude the singleton data source kinds, those kind are well covered by Enable- , Disable- cmdlets.
         [Parameter(Position = 4, ParameterSetName = ByWorkspaceNameByKind, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The data source name.")]
         [Parameter(ParameterSetName = ByWorkspaceObjectByKind)]
+        [ValidateSet(
+            PSDataSourceKinds.AzureAuditLog,
+            PSDataSourceKinds.CustomLog,
+            PSDataSourceKinds.LinuxPerformanceObject,
+            PSDataSourceKinds.LinuxSyslog,
+            PSDataSourceKinds.WindowsEvent,
+            PSDataSourceKinds.WindowsPerformanceCounter)]
         [ValidateNotNullOrEmpty]
         public string Kind { get; set; }
-
-        // TODO: List by Kind
 
         public override void ExecuteCmdlet()
         {

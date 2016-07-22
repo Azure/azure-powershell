@@ -25,10 +25,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class EnableAzureOperationalInsightsLinuxSyslogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "Whether to collect Linux Syslog.")]
-        public bool Enabled { get; set; }
-
         public override void ExecuteCmdlet()
         {
             PSDataSource dataSource = OperationalInsightsClient.GetSingletonDataSource(
@@ -55,7 +51,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                     Name = dataSource.Name,
                     Properties = dsProperties
                 };
-                OperationalInsightsClient.UpdatePSDataSource(parameters);
+                WriteObject(OperationalInsightsClient.UpdatePSDataSource(parameters));
             }
         }
     }
