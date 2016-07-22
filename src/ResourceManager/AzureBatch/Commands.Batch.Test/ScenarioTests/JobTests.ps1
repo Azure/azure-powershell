@@ -19,11 +19,11 @@ Tests creating Batch jobs
 function Test-NewJob
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    
+
     $jobId1 = "simple"
     $jobId2 = "complex"
 
-    try 
+    try
     {
         # Create a simple job
         $poolInformation1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
@@ -149,9 +149,9 @@ function Test-NewJob
         $priority = 1
 
         New-AzureBatchJob -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -Constraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
-        
+
         $job2 = Get-AzureBatchJob -Id $jobId2 -BatchContext $context
-        
+
         # Verify created job matches expectations
         Assert-AreEqual $jobId2 $job2.Id
         Assert-AreEqual $displayName $job2.DisplayName
@@ -346,7 +346,7 @@ function Test-ListJobsUnderSchedule
 
     # Verify that pipelining also works
     $scheduleJobs = $jobSchedule | Get-AzureBatchJob -BatchContext $context
-        
+
     Assert-AreEqual $count $scheduleJobs.Count
     Assert-True { $scheduleJobs.Count -lt $allJobs.Count }
 
@@ -568,6 +568,171 @@ function Test-JobWithTaskDependencies
         Assert-AreEqual $task.DependsOn.TaskIds[0] 2
         Assert-AreEqual $task.DependsOn.TaskIds[1] 3
     }
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
+}
+
+<#
+.SYNOPSIS
+Tests create job with exit conditions
+#>
+function Test-JobExitConditionsAreBeingRoundTrippedCorrectly
+{
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob5"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c dir /s"
+        $taskId = "taskId1"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+		$ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+        $ExitOptions.JobAction =  [Microsoft.Azure.Batch.Common.JobAction]::None
+        $ExitConditions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitConditions
+        $ExitConditions.Default = $ExitOptions
+        $ExitConditions.SchedulingError = $ExitOptions
+        $ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+        $ExitCodeRangeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping -ArgumentList @(0, 5, $ExitOptions)
+        $ExitConditions.ExitCodeRanges = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping[]]$ExitCodeRangeMapping
+        $PSExitCodeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeMapping -ArgumentList @(2, $ExitOptions)
+        $ExitConditions.ExitCodes = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeMapping[]]$PSExitCodeMapping
+
+		New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.OnTaskFailure "PerformExitOptionsJobAction"
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        Assert-AreEqual 2 $task.ExitConditions.ExitCodes[0].Code
+        Assert-AreEqual 0 $task.ExitConditions.ExitCodeRanges.Start
+		Assert-AreEqual 5 $task.ExitConditions.ExitCodeRanges.End
+		Assert-AreEqual 5 $task.ExitConditions.ExitCodeRanges.ExitOptions
+	}
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
+}
+
+<#
+.SYNOPSIS
+Tests create job with exit conditions
+#>
+function Test-JobExitConditionsAreBeingRoundTrippedCorrectly
+{
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob5"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c dir /s"
+        $taskId = "taskId1"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+		$ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+        $ExitOptions.JobAction =  [Microsoft.Azure.Batch.Common.JobAction]::None
+        $ExitConditions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitConditions
+        $ExitConditions.Default = $ExitOptions
+        $ExitConditions.SchedulingError = $ExitOptions
+        $ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+        $ExitCodeRangeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping -ArgumentList @(0, 5, $ExitOptions)
+        $ExitConditions.ExitCodeRanges = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping[]]$ExitCodeRangeMapping
+        $PSExitCodeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeMapping -ArgumentList @(2, $ExitOptions)
+        $ExitConditions.ExitCodes = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeMapping[]]$PSExitCodeMapping
+
+		New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.OnTaskFailure "PerformExitOptionsJobAction"
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $context
+        Assert-AreEqual 2 $task.ExitConditions.ExitCodes[0].Code
+        Assert-AreEqual 0 $task.ExitConditions.ExitCodeRanges.Start
+		Assert-AreEqual 5 $task.ExitConditions.ExitCodeRanges.End
+		Assert-AreEqual 5 $task.ExitConditions.ExitCodeRanges.ExitOptions
+	}
+    finally
+    {
+        Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context
+    }
+}
+
+<#
+.SYNOPSIS
+Tests create job with exit conditions
+#>
+function Test-JobCompletesWhenAnyTaskFails
+{
+    param([string]$jobId, [string]$taskId)
+
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $jobId = "testJob5"
+
+    try
+    {
+        $osFamily = 4
+        $targetOS = "*"
+        $cmd = "cmd /c exit 3"
+
+        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
+
+        $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+        $poolSpec.TargetDedicated = $targetDedicated = 3
+        $poolSpec.VirtualMachineSize = $vmSize = "small"
+        $poolSpec.CloudServiceConfiguration = $paasConfiguration
+        $autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+        $autoPoolSpec.PoolSpecification = $poolSpec
+        $autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+        $autoPoolSpec.KeepAlive =  $FALSE
+        $autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::Job)
+        $poolInformation = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+        $poolInformation.AutoPoolSpecification = $autoPoolSpec
+
+		$ExitOptions = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitOptions
+        $ExitOptions.JobAction =  [Microsoft.Azure.Batch.Common.JobAction]::Terminate
+        $ExitCodeRangeMapping = New-Object Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping -ArgumentList @(0, 5, $ExitOptions)
+        $ExitConditions.ExitCodeRanges = [Microsoft.Azure.Commands.Batch.Models.PSExitCodeRangeMapping[]]$ExitCodeRangeMapping
+
+		New-AzureBatchJob -Id $jobId -BatchContext $context -PoolInformation $poolInformation -OnTaskFailure PerformExitOptionsJobAction
+        New-AzureBatchTask -Id $taskId -CommandLine $cmd -BatchContext $context -JobId $jobId -ExitConditions $ExitConditions
+        $job = Get-AzureBatchJob -Id $jobId -BatchContext $context
+
+        Assert-AreEqual $job.OnTaskFailure "PerformExitOptionsJobAction"
+        $task = Get-AzureBatchTask -JobId $jobId -Id $taskId -BatchContext $conte
+	}
     finally
     {
         Remove-AzureBatchJob -Id $jobId -Force -BatchContext $context

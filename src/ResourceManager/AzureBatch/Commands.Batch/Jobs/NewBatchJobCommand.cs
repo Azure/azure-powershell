@@ -78,8 +78,6 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            System.Diagnostics.Debugger.Launch();
-
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
                 CommonEnvironmentSettings = this.CommonEnvironmentSettings,

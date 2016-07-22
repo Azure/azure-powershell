@@ -306,16 +306,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewJobCompletesWhenAnyTaskFails()
+        public void TestJobWithExitConditionsAreBeingRoundTrippedCorrectly()
         {
-            BatchController.NewInstance.RunPsTest("Test-NewJobCompletesWhenAnyTaskFails");
+            BatchController.NewInstance.RunPsTest("Test-JobExitConditionsAreBeingRoundTrippedCorrectly");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestJobWithExitConditionsAreBeingRoundTrippedCorrectly()
+        public void TestNewJobCompletesWhenAnyTaskFails()
         {
-            BatchController.NewInstance.RunPsTest("Test-JobWithExitConditionsAreBeingRoundTrippedCorrectly");
+            BatchController controller = BatchController.NewInstance;
+            string jobId = "JobCompletesWhenAnyTaskFails";
+            string taskId = "testTask";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => new[] { string.Format("Test-JobCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) },
+                () =>
+                {
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
+
     }
 }
