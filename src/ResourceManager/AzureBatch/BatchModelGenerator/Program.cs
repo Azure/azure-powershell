@@ -152,9 +152,14 @@ namespace PSModelGenerator
             CodeCompileUnit compileUnit = new CodeCompileUnit();
             CodeNamespace codeNamespace = new CodeNamespace(ModelNamespace);
             GenerateUsingDirectives(codeNamespace);
-            CodeTypeDeclaration codeType = new CodeTypeDeclaration(modelName);
-            codeType.IsClass = true;
-            codeType.TypeAttributes = TypeAttributes.Public;
+
+            var codeType = new CodeTypeDeclaration(modelName)
+            {
+                IsClass = true,
+                TypeAttributes = TypeAttributes.Public,
+                IsPartial = true, // allows us to provide some custom behaviours
+            };
+
             codeNamespace.Types.Add(codeType);
             compileUnit.Namespaces.Add(codeNamespace);
 
@@ -262,7 +267,7 @@ namespace PSModelGenerator
             CodeExpression[] codeArgumentReferences = new CodeExpression[parameters.Length];
             for (int i = 0; i < parameters.Length; i++)
             {
-                bool isOmTypeArg= false;
+                bool isOmTypeArg = false;
 
                 string paramType = parameters[i].ParameterType.FullName;
                 if (OMtoPSClassMappings.ContainsKey(paramType))
@@ -296,7 +301,7 @@ namespace PSModelGenerator
                     CodeAssignStatement omObjectAssignStatement = new CodeAssignStatement(new CodeVariableReferenceExpression(string.Format("{0}{1}", parameters[i].Name, "OmObject")), new CodeVariableReferenceExpression(string.Format("{0}.{1}", parameters[i].Name, OmObject)));
                     CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(omObjectArgumentReference, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
 
-                    // if the parameter is not null, use the omObject of the PS Wrapper class 
+                    // if the parameter is not null, use the omObject of the PS Wrapper class
                     constructor.Statements.Add(new CodeConditionStatement(nullCheck, omObjectAssignStatement));
 
                     passedInArg = string.Format("{0}{1}", parameters[i].Name, "OmObject");
@@ -311,7 +316,7 @@ namespace PSModelGenerator
                 }
 
                 codeArgumentReferences[i] = new CodeArgumentReferenceExpression(passedInArg);
-                constructor.Parameters.Add(new CodeParameterDeclarationExpression(paramType, paramName));                
+                constructor.Parameters.Add(new CodeParameterDeclarationExpression(paramType, paramName));
             }
 
             CodeObjectCreateExpression createExpression = new CodeObjectCreateExpression(implementationType, codeArgumentReferences);
@@ -338,7 +343,6 @@ namespace PSModelGenerator
                     (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
                      property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
 
-
                 CodeFieldReferenceExpression wrappedObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), OmObject);
                 CodePropertyReferenceExpression wrappedObjectProperty = new CodePropertyReferenceExpression(wrappedObject, property.Name);
                 CodeFieldReferenceExpression fieldReference = null;
@@ -360,8 +364,8 @@ namespace PSModelGenerator
                 codeProperty.Name = property.Name;
                 codeProperty.Type = new CodeTypeReference(propertyType);
 
-                // For properties with a backing field, the field will not be initialized in the constructor in order to avoid 
-                // hitting a run time access constraint from the OM. Instead, the field is initialized on the first access of 
+                // For properties with a backing field, the field will not be initialized in the constructor in order to avoid
+                // hitting a run time access constraint from the OM. Instead, the field is initialized on the first access of
                 // the property.
 
                 if (isGenericCollection)
@@ -404,7 +408,7 @@ namespace PSModelGenerator
                             CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(listReference, "Add", createListItem);
                             loopStatement.Statements.Add(addToList);
                         }
-     
+
                         // Initialize the backing field with the built list on first access of the property
                         CodeAssignStatement assignStatement;
                         if (property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>))
