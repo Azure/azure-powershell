@@ -60,35 +60,6 @@ function Test-CreatesNewBatchAccount
 
 <#
 .SYNOPSIS
-Tests creating an account that already exists throws
-#>
-function Test-CreateExistingBatchAccount
-{
-    # Setup
-    $account = Get-BatchAccountName
-    $resourceGroup = Get-ResourceGroupName
-    $location = Get-BatchAccountProviderLocation
-    $tagName = "testtag"
-    $tagValue = "testval"
-
-    try 
-    {
-        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
-
-        # Test
-        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue} 
-
-        Assert-Throws { New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location }
-    }
-    finally
-    {
-        # Cleanup
-        Clean-BatchAccountAndResourceGroup $account $resourceGroup
-    }
-}
-
-<#
-.SYNOPSIS
 Tests updating existing Batch account
 #>
 function Test-UpdatesExistingBatchAccount

@@ -26,6 +26,7 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -137,8 +138,8 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(Resource).GetRuntimeProperty("Type")
+                            typeof(CM.Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                            typeof(CM.Resource).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
                             var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
@@ -221,11 +222,11 @@ namespace Microsoft.Azure.Commands.Compute
                     && (this.VM.OSProfile.LinuxConfiguration != null));
         }
 
-        private Uri GetOrCreateStorageAccountForBootDiagnostics()
+        private string GetOrCreateStorageAccountForBootDiagnostics()
         {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
-                    AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
+                    AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(storageAccountName))
@@ -235,7 +236,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var storageAccountList = storageClient.StorageAccounts.List();
                     if (storageAccountList != null)
                     {
-                        var osDiskStorageAccount = storageAccountList.StorageAccounts.First(e => e.Name.Equals(storageAccountName));
+                        var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
                             && osDiskStorageAccount.AccountType.HasValue
@@ -287,10 +288,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
             if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                storageAccountList = client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
                 if (storageAccountList == null || storageAccountList.Count() == 0)
                 {
                     return null;
@@ -299,7 +300,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             try
             {
-                return storageAccountList.StorageAccounts.First(
+                return storageAccountList.First(
                 e => e.AccountType.HasValue
                     && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
             }
@@ -311,7 +312,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private Uri CreateStandardStorageAccount(StorageManagementClient client)
+        private string CreateStandardStorageAccount(StorageManagementClient client)
         {
             string storageAccountName;
 
@@ -321,7 +322,7 @@ namespace Microsoft.Azure.Commands.Compute
                 storageAccountName = GetRandomStorageAccountName(i);
                 i++;
             }
-            while (i < 10 && !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+            while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
@@ -335,7 +336,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var getresponse = client.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
                 WriteWarning(string.Format(Properties.Resources.CreatingStorageAccountForBootDiagnostics, storageAccountName));
 
-                return getresponse.StorageAccount.PrimaryEndpoints.Blob;
+                return getresponse.PrimaryEndpoints.Blob;
             }
             catch (Exception e)
             {
