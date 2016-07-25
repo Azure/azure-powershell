@@ -56,7 +56,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.11.0-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.13.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -153,6 +153,10 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\RemoveAzureRedisCachePatchSchedule.cs" />
+    <Compile Include="Commands\NewAzureRedisCacheScheduleEntry.cs" />
+    <Compile Include="Commands\GetAzureRedisCachePatchSchedule.cs" />
+    <Compile Include="Commands\NewAzureRedisCachePatchSchedule.cs" />
     <Compile Include="Commands\ResetAzureRedisCache.cs" />
     <Compile Include="Commands\ExportAzureRedisCache.cs" />
     <Compile Include="Commands\ImportAzureRedisCache.cs" />
@@ -164,6 +168,7 @@
     <Compile Include="Commands\GetAzureRedisCache.cs" />
     <Compile Include="Commands\RemoveAzureRedisCache.cs" />
     <Compile Include="Commands\NewAzureRedisCache.cs" />
+    <Compile Include="Models\PSScheduleEntry.cs" />
     <Compile Include="Models\RedisCacheAttributesWithAccessKeys.cs" />
     <Compile Include="Models\RedisCacheAttributes.cs" />
     <Compile Include="Models\RedisCacheClient.cs" />
