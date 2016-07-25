@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, "Remove Container"))
+            if (ShouldProcess(Name, "Remove container"))
             {
                 string localName = Name;
                 IStorageBlobManagement localChannel = Channel;

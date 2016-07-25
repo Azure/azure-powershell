@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            if (ShouldProcess(share.Name, "Remove Share"))
+            if (ShouldProcess(share.Name, "Remove share"))
             {
                 this.RunTask(async taskId =>
                 {

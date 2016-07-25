@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, "Remove Queue"))
+            if (ShouldProcess(Name, "Remove queue"))
             {
                 String result = string.Empty;
 

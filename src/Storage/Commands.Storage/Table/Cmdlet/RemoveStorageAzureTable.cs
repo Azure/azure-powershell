@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, "Remove Table"))
+            if (ShouldProcess(Name, "Remove table"))
             {
                 string result = string.Empty;
                 bool success = RemoveAzureTable(Name);
