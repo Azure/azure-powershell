@@ -132,13 +132,13 @@
     <Compile Include="Farm\GetFarm.cs" />
     <Compile Include="Farm\GetFarmMetricDefinitions.cs" />
     <Compile Include="Farm\GetFarmMetrics.cs" />
-    <Compile Include="Farm\InvokeLogCollect.cs" />
     <Compile Include="Farm\SetFarm.cs" />
     <Compile Include="Fault\GetFault.cs" />
     <Compile Include="Fault\GetFaultHistory.cs" />
     <Compile Include="Fault\ResolveFault.cs" />
     <Compile Include="Model\AccountContainerRoleInstanceResponse.cs" />
     <Compile Include="Model\AcquisitionResponse.cs" />
+    <Compile Include="Model\BasicResponseBase.cs" />
     <Compile Include="Model\BlobFrontEndRoleInstanceResponse.cs" />
     <Compile Include="Model\BlobServerRoleInstanceResponse.cs" />
     <Compile Include="Model\BlobServiceResponse.cs" />
@@ -201,7 +201,7 @@
     <Compile Include="Service\SetManagementService.cs" />
     <Compile Include="Service\SetQueueService.cs" />
     <Compile Include="Service\SetTableService.cs" />
-    <Compile Include="SettingFieldAttribute.cs" />
+    <Compile Include="SettingFieldAttribute.cs" />    
     <Compile Include="Share\GetShare.cs" />
     <Compile Include="Share\GetShareMetricDefinitions.cs" />
     <Compile Include="Share\GetShareMetrics.cs" />
