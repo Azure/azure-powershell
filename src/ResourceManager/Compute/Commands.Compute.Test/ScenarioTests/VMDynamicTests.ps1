@@ -152,7 +152,7 @@ function create_and_setup_nic_ids
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ($rgname + 'subnet') -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
     $vnet = Get-AzureRmVirtualNetwork -Name ($rgname + 'vnet') -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
 
