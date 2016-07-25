@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
     {
@@ -123,6 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             DeleteSnapshotsOption deleteSnapshotsOption = DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
+            string action = "Remove blob";
 
             if (IsSnapshot(blob))
             {
@@ -136,10 +137,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 if (deleteSnapshot)
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.DeleteSnapshotsOnly;
+                    action = "Remove snapshots of blob";
                 }
                 else if (force)
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
+                    action = "Remove blob and snapshots";
                 }
                 else
                 {
@@ -147,37 +150,42 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 }
             }
 
-            try
-            {
-                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
-                retryDeleteSnapshot = false;
-            }
-            catch (StorageException e)
-            {
-                if (e.IsConflictException() && retryDeleteSnapshot)
-                {
-                    //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
-                    retryDeleteSnapshot = true;
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldProcess(s2, action);
 
-            if (retryDeleteSnapshot)
+            if (OutputStream.ConfirmAsync(blob.Name).Result)
             {
-                string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
-
-                if (await OutputStream.ConfirmAsync(message))
+                try
                 {
-                    deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
                     await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                    retryDeleteSnapshot = false;
                 }
-                else
+                catch (StorageException e)
                 {
-                    string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.Container.Name);
-                    OutputStream.WriteVerbose(taskId, result);
+                    if (e.IsConflictException() && retryDeleteSnapshot)
+                    {
+                        //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
+                        retryDeleteSnapshot = true;
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                if (retryDeleteSnapshot)
+                {
+                    string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
+
+                    if (await OutputStream.ConfirmAsync(message))
+                    {
+                        deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
+                        await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                    }
+                    else
+                    {
+                        string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.Container.Name);
+                        OutputStream.WriteVerbose(taskId, result);
+                    }
                 }
             }
         }

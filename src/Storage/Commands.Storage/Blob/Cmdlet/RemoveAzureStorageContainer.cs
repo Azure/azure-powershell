@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// remove specified azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Container, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Container, SupportsShouldProcess = true),
         OutputType(typeof(Boolean))]
     public class RemoveAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
@@ -90,7 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             string result = string.Empty;
             bool removed = false;
 
-            if (force || await OutputStream.ConfirmAsync(name))
+            if (force || ContainerIsEmpty(container) || OutputStream.ConfirmAsync(String.Format("Remove container and all content in it: {0}", name)).Result)
             {
                 await localChannel.DeleteContainerAsync(container, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
                 result = String.Format(Resources.RemoveContainerSuccessfully, name);
@@ -110,15 +110,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
+        /// Cmdlet begin processing
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);            
+        }
+
+        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            string localName = Name;
-            IStorageBlobManagement localChannel = Channel;
-            Func<long, Task> taskGenerator = (taskId) => RemoveAzureContainer(taskId, localChannel, localName);
-            RunTask(taskGenerator);
+            if (ShouldProcess(Name, "Remove Container"))
+            {
+                string localName = Name;
+                IStorageBlobManagement localChannel = Channel;
+                Func<long, Task> taskGenerator = (taskId) => RemoveAzureContainer(taskId, localChannel, localName);
+                RunTask(taskGenerator);
+            }
         }
     }
 }
