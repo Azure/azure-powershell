@@ -26,7 +26,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "ClientRuntime upgrade - Please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerCRUDPublic()
         {
@@ -131,7 +131,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerMultiVip-Public");
         }
 
-        [Fact]
+        [Fact(Skip = "ClientRuntime upgrade - Please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLoadBalancerMultiVipInternal()
         {
