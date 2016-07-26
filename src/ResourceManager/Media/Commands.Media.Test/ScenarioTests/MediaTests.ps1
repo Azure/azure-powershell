@@ -83,10 +83,6 @@ function Test-Media
   $mediaServiceUpdated = Set-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Tags $tagsUpdated -StorageAccounts $storageAccounts
   Assert-NotNull $mediaServiceUpdated
   Assert-Tags $tagsUpdated $mediaServiceUpdated.Tags
-  echo "shit"
-  echo $mediaServiceUpdated.AccountName
-  echo $mediaServiceUpdated.StorageAccounts[0].Id
-  echo $mediaServiceUpdated.StorageAccounts[0].AccountName
   Assert-AreEqual $storageAccountName1 $mediaServiceUpdated.StorageAccounts[0].AccountName
   Assert-AreEqual $true $mediaService.StorageAccounts[0].IsPrimary
   Assert-AreEqual $storageAccountName2 $mediaServiceUpdated.StorageAccounts[1].AccountName
