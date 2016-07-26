@@ -591,6 +591,7 @@ function Test-NetworkInterfaceIpv6
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
+	$subnet2Name = Get-ResourceName
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
 	$ipconfigName = Get-ResourceName
@@ -606,7 +607,8 @@ function Test-NetworkInterfaceIpv6
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.2.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet,$subnet2
         
         # Create the publicip
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -638,33 +640,33 @@ function Test-NetworkInterfaceIpv6
 		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Add-AzureRmNetworkInterfaceIpConfig -Name $ipconfigName -PrivateIpAddressVersion ipv6  | Set-AzureRmNetworkInterface
 		Assert-AreEqual 2 @($nic.IpConfigurations).Count
 
-		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[1].Name
-        Assert-AreEqual $publicip.Id $nic.IpConfigurations[1].PublicIpAddress.Id
-        Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[1].Subnet.Id
-        Assert-NotNull $nic.IpConfigurations[1].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $nic.IpConfigurations[1].PrivateIpAllocationMethod
-		Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv4
+		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
+        Assert-AreEqual $publicip.Id $nic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 
-		Assert-AreEqual $ipconfigName $nic.IpConfigurations[0].Name
-        Assert-Null $nic.IpConfigurations[0].PublicIpAddress
-        Assert-Null $nic.IpConfigurations[0].Subnet
-        Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv6
+		Assert-AreEqual $ipconfigName $nic.IpConfigurations[1].Name
+        Assert-Null $nic.IpConfigurations[1].PublicIpAddress
+        Assert-Null $nic.IpConfigurations[1].Subnet
+        Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
 
 		# Set Ipconfig
-		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Set-AzureRmNetworkInterfaceIpConfig -Name $nic.IpConfigurations[1].Name -PrivateIpAddressVersion ipv4 -Subnet $nic.IpConfigurations[1].Subnet | Set-AzureRmNetworkInterface
+		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Set-AzureRmNetworkInterfaceIpConfig -Name $nic.IpConfigurations[0].Name -Subnet $vnet.Subnets[1] -PrivateIpAddress "10.0.2.10" | Set-AzureRmNetworkInterface
 		Assert-AreEqual 2 @($nic.IpConfigurations).Count
 
-		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[1].Name
-        Assert-Null $nic.IpConfigurations[1].PublicIpAddress
-        Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[1].Subnet.Id
-        Assert-NotNull $nic.IpConfigurations[1].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $nic.IpConfigurations[1].PrivateIpAllocationMethod
-		Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv4
-
-		Assert-AreEqual $ipconfigName $nic.IpConfigurations[0].Name
+		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
         Assert-Null $nic.IpConfigurations[0].PublicIpAddress
-        Assert-Null $nic.IpConfigurations[0].Subnet
-        Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv6
+        Assert-AreEqual $vnet.Subnets[1].Id $nic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
+
+		Assert-AreEqual $ipconfigName $nic.IpConfigurations[1].Name
+        Assert-Null $nic.IpConfigurations[1].PublicIpAddress
+        Assert-Null $nic.IpConfigurations[1].Subnet
+        Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
 
 		# Get IpConfig
 		$ipconfigv6 = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Get-AzureRmNetworkInterfaceIpConfig -Name $ipconfigName
@@ -679,17 +681,16 @@ function Test-NetworkInterfaceIpv6
 	
 		Assert-AreEqual 2 @($ipconfigList).Count
 
-		Assert-AreEqual $ipconfigList[1].Name $nic.IpConfigurations[1].Name
-        Assert-Null $ipconfigList[1].PublicIpAddress
-        Assert-AreEqual $vnet.Subnets[0].Id $ipconfigList[1].Subnet.Id
-        Assert-NotNull $ipconfigList[1].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $ipconfigList[1].PrivateIpAllocationMethod
-		Assert-AreEqual $ipconfigList[1].PrivateIpAddressVersion IPv4
+		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $ipconfigList[0].Name
+        Assert-Null $ipconfigList[0].PublicIpAddress.Id
+        Assert-NotNull $ipconfigList[0].PrivateIpAddress
+        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+		Assert-AreEqual $ipconfigList[0].PrivateIpAddressVersion IPv4
 
-		Assert-AreEqual $ipconfigList[0].Name $nic.IpConfigurations[0].Name
-        Assert-Null $ipconfigList[0].PublicIpAddress
-        Assert-Null $ipconfigList[0].Subnet
-        Assert-AreEqual $ipconfigList[0].PrivateIpAddressVersion IPv6
+		Assert-AreEqual $ipconfigName $ipconfigList[1].Name
+        Assert-Null $ipconfigList[1].PublicIpAddress
+        Assert-Null $ipconfigList[1].Subnet
+        Assert-AreEqual $ipconfigList[1].PrivateIpAddressVersion IPv6
 
 		# Remove IpConfig
 		$nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname | Remove-AzureRmNetworkInterfaceIpConfig -Name $ipconfigName | Set-AzureRmNetworkInterface
@@ -698,9 +699,9 @@ function Test-NetworkInterfaceIpv6
 
 		Assert-AreEqual $expectedNic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
         Assert-Null $nic.IpConfigurations[0].PublicIpAddress
-        Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[0].Subnet.Id
+        Assert-AreEqual $vnet.Subnets[1].Id $nic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+        Assert-AreEqual "Static" $nic.IpConfigurations[0].PrivateIpAllocationMethod
 		Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
 
         # Delete NetworkInterface
