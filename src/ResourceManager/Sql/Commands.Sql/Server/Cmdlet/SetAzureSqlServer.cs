@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -50,8 +52,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the server.")]
-        [ValidateNotNull]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable[] Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the server version
@@ -100,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ResourceGroupName = this.ResourceGroupName,
                 ServerName = this.ServerName,
                 SqlAdministratorPassword = this.SqlAdministratorPassword,
-                Tags = this.Tags,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ServerVersion = this.ServerVersion,
                 Location = model.FirstOrDefault().Location,
             });
