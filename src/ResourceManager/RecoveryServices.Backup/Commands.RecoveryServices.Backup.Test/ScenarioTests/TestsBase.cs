@@ -27,6 +27,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Azure.Test.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -110,18 +111,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
             RecoveryServicesBackupManagementClient client;
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
+                testEnvironment.SubscriptionId);
 
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    testEnvironment.Credentials as SubscriptionCloudCredentials,
+                    credentials,
                     testEnvironment.BaseUri);
             }
 
             else
             {
                 client = new RecoveryServicesBackupManagementClient(
-                    testEnvironment.Credentials as SubscriptionCloudCredentials);
+                    credentials);
             }
 
             client.ResourceNamespace = this.ResourceNamespace;
