@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Media.Models
         {
             if (table == null)
             {
-                return null;
+                table = new Hashtable();
             }
 
             return table.Cast<DictionaryEntry>().ToDictionary(x => (string) x.Key, x => (string) x.Value);
