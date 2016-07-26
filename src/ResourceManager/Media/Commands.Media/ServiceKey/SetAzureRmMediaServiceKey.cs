@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     [Cmdlet(VerbsCommon.Set, MediaServiceKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSServiceKey))]
     public class SetAzureRmMediaServiceKey : AzureMediaServiceCmdletBase
     {
-        private const string SetMediaServiceKeyWarning = "Are you sure you want to set MediaService key on {0} ?";
         private const string SetMediaServiceKeyWhatIfMessage = "Set MediaService key";
 
         [Parameter(
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         [Parameter(
@@ -56,37 +55,30 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
             HelpMessage = "The key type")]
         public KeyType KeyType { get; set; }
 
-        [Parameter(Mandatory = false,
-           HelpMessage = "Force to set media service key without confirm.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(AccountName, string.Format(SetMediaServiceKeyWhatIfMessage)))
             {
-                if (ShouldProcess(AccountName, string.Format(SetMediaServiceKeyWhatIfMessage)))
+                try
                 {
-                    if (Force || ShouldContinue(string.Format(SetMediaServiceKeyWarning, AccountName), ""))
-                    {
-                        var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
-                            ResourceGroupName,
-                            AccountName,
-                            new RegenerateKeyInput(KeyType));
-
-                        WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
-                    }
-                }
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                    var serviceKey = MediaServicesManagementClient.MediaService.RegenerateKey(
+                        ResourceGroupName,
                         AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
+                        new RegenerateKeyInput(KeyType));
+
+                    WriteObject(serviceKey.ToPSServiceKey(KeyType), true);
                 }
-                throw;
+                catch (ApiErrorException exception)
+                {
+                    if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                            AccountName,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+                    throw;
+                }
             }
         }
     }

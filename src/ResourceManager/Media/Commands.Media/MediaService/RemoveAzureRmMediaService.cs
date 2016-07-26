@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -56,27 +56,27 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(AccountName, string.Format(RemoveMediaServiceWhatIfMessage)))
             {
-                if (ShouldProcess(AccountName, string.Format(RemoveMediaServiceWhatIfMessage)))
+                if (Force || ShouldContinue(string.Format(RemoveMediaServiceWarning, AccountName), ""))
                 {
-                    if (Force || ShouldContinue(string.Format(RemoveMediaServiceWarning, AccountName), ""))
+                    try
                     {
                         MediaServicesManagementClient.MediaService.Delete(ResourceGroupName, AccountName);
                         WriteObject(true);
                     }
+                    catch (ApiErrorException exception)
+                    {
+                        if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                        {
+                            throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                                AccountName,
+                                SubscrptionName,
+                                ResourceGroupName));
+                        }
+                        throw;
+                    }
                 }
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
-                }
-                throw;
             }
         }
     }

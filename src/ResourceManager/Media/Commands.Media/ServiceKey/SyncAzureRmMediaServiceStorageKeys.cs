@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     [Cmdlet(VerbsData.Sync, MediaServiceStorageKeysNounStr, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
-        private const string SyncMediaServiceStorageKeysWarning = "Are you sure you want to sync MediaService storage keys on {0} ?";
         private const string SyncMediaServiceStorageKeysWhatIfMessage = "Sync MediaService storage keys";
 
         [Parameter(
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         [Parameter(
@@ -58,37 +57,30 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
 
-        [Parameter(Mandatory = false,
-           HelpMessage = "Force to sync MediaService storage keys without confirm.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(AccountName, string.Format(SyncMediaServiceStorageKeysWhatIfMessage)))
             {
-                if (ShouldProcess(AccountName, string.Format(SyncMediaServiceStorageKeysWhatIfMessage)))
+                try
                 {
-                    if (Force || ShouldContinue(string.Format(SyncMediaServiceStorageKeysWarning, AccountName), ""))
-                    {
-                        MediaServicesManagementClient.MediaService.SyncStorageKeys(
-                            ResourceGroupName,
-                            AccountName,
-                            new SyncStorageKeysInput(StorageAccountId));
-                        WriteObject(true);
-                    }
-                }
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} or StorageAccount {1} under subscprition {2} and resourceGroup {3} doesn't exist",
+                    MediaServicesManagementClient.MediaService.SyncStorageKeys(
+                        ResourceGroupName,
                         AccountName,
-                        StorageAccountId,
-                        SubscrptionName,
-                        ResourceGroupName));
+                        new SyncStorageKeysInput(StorageAccountId));
+                    WriteObject(true);
                 }
-                throw;
+                catch (ApiErrorException exception)
+                {
+                    if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new ArgumentException(string.Format("MediaServiceAccount {0} or StorageAccount {1} under subscprition {2} and resourceGroup {3} doesn't exist",
+                            AccountName,
+                            StorageAccountId,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+                    throw;
+                }
             }
         }
     }

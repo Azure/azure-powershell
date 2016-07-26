@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Media.Common
         protected const string MediaServiceKeysNounStr = "AzureRmMediaServiceKeys";
         protected const string MediaServiceKeyNounStr = "AzureRmMediaServiceKey";
         protected const string MediaServiceStorageKeysNounStr = "AzureRmMediaServiceStorageKeys";
-        protected const string AccountNameAlias = "Name";
         protected const string MediaServiceAccountNamePattern = @"^[a-z0-9]+$";
         protected const int MediaServiceAccountNameMinLength = 3;
         protected const int MediaServiceAccountNameMaxLength = 26;

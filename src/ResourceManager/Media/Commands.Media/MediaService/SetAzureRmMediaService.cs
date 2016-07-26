@@ -31,7 +31,6 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     [Cmdlet(VerbsCommon.Set, MediaServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
     public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
-        private const string SetMediaServiceWarning = "Are you sure you want to set MediaService {0} ?";
         private const string SetMediaServiceWhatIfMessage = "Set MediaService ";
 
         [Parameter(
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         [Parameter(
@@ -66,10 +65,6 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             HelpMessage = "The storage accounts assosiated with the media account.")]
         [ValidateNotNull]
         public PSStorageAccount[] StorageAccounts { get; set; }
-
-        [Parameter(Mandatory = false,
-           HelpMessage = "Force to set media service without confirm.")]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -118,28 +113,25 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                 mediaServiceParams.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
             }
 
-            try
+            if (ShouldProcess(AccountName, string.Format(SetMediaServiceWhatIfMessage)))
             {
-                if (ShouldProcess(AccountName, string.Format(SetMediaServiceWhatIfMessage)))
+                try
                 {
-                    if (Force || ShouldContinue(string.Format(SetMediaServiceWarning, AccountName), ""))
-                    {
-                        var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
+                    var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
                             AccountName, mediaServiceParams);
-                        WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
-                    }
+                    WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
                 }
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                catch (ApiErrorException exception)
                 {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
+                    if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                            AccountName,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+                    throw;
                 }
-                throw;
             }
         }
     }

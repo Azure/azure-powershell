@@ -50,11 +50,12 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Position = 1,
             Mandatory = true,
             ParameterSetName = AccountNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern, Options = RegexOptions.None)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         public override void ExecuteCmdlet()

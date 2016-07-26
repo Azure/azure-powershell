@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
+<ModuleObject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
   <Name>Microsoft.Azure.Commands.Media.dll-help</Name>
-  <Version>1.0.0</Version>
+  <Version>0.1.0</Version>
   <Description />
   <ModulePath>C:\one\github2\azure-powershell\src\ResourceManager\Media\Commands.Media\Microsoft.Azure.Commands.Media.dll-help.psd1</ModulePath>
   <HasManifest>false</HasManifest>
@@ -66,7 +66,7 @@
           <Description />
           <DefaultValue />
         </ParameterDescription>
-        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="1" globbing="false">
+        <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
           <Name>AccountName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -77,6 +77,7 @@
           </Attributes>
           <Aliases>
             <string>Name</string>
+            <string>ResourceName</string>
           </Aliases>
           <Description>The name of the Media Service.</Description>
           <DefaultValue />
@@ -177,22 +178,19 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="Name Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="AccountName Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureRmMediaServiceNameAvailability [-Name] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmMediaServiceNameAvailability [-AccountName] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="true" pos="0" globbing="false">
-          <Name>Name</Name>
+          <Name>AccountName</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
-          <Aliases>
-            <string>AccountName</string>
-          </Aliases>
+          <Aliases />
           <Description>The name of the Media Service.</Description>
           <DefaultValue />
         </ParameterDescription>
@@ -241,12 +239,12 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="StorageAccountIdParamSet" Params="ResourceGroupName AccountName Location StorageAccountId Tags Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
-        <CommandParameterSetInfo2 Name="StorageAccountsParamSet" Params="ResourceGroupName AccountName Location StorageAccounts Tags Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="StorageAccountIdParamSet" Params="ResourceGroupName AccountName Location StorageAccountId Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="StorageAccountsParamSet" Params="ResourceGroupName AccountName Location StorageAccounts Tags Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Location] &lt;String&gt; [-StorageAccountId] &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
-        <string>New-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Location] &lt;String&gt; [-StorageAccounts] &lt;PSStorageAccount[]&gt; [-Tags &lt;Hashtable&gt;] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Location] &lt;String&gt; [-StorageAccountId] &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
+        <string>New-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Location] &lt;String&gt; [-StorageAccounts] &lt;PSStorageAccount[]&gt; [-Tags &lt;Hashtable&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -268,12 +266,9 @@
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ValidateLengthAttribute</string>
             <string>System.Management.Automation.ValidatePatternAttribute</string>
-            <string>System.Management.Automation.AliasAttribute</string>
           </Attributes>
-          <Aliases>
-            <string>Name</string>
-          </Aliases>
-          <Description>The name of the Media Service.</Description>
+          <Aliases />
+          <Description>The name of the Resource Group of the Media Service.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
@@ -308,15 +303,6 @@
           </Attributes>
           <Aliases />
           <Description>Tags for the media service.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Force to new a media service without confirm.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -507,10 +493,10 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName Tags StorageAccounts Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName Tags StorageAccounts Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-StorageAccounts &lt;PSStorageAccount[]&gt;] [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
+        <string>Set-AzureRmMediaService [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-Tags &lt;Hashtable&gt;] [-StorageAccounts &lt;PSStorageAccount[]&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -535,7 +521,7 @@
           <Aliases>
             <string>Name</string>
           </Aliases>
-          <Description>The name of the Media Service.</Description>
+          <Description>The name of the Resource Group of the Media Service.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="Hashtable" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="false" pos="named" globbing="false">
@@ -556,15 +542,6 @@
           </Attributes>
           <Aliases />
           <Description>An array of storage accounts to associate with the media service.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Force to set media service without confirm.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -636,10 +613,10 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName KeyType Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName KeyType Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureRmMediaServiceKey [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-KeyType] &lt;KeyType&gt; [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
+        <string>Set-AzureRmMediaServiceKey [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-KeyType] &lt;KeyType&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -673,16 +650,7 @@
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
           <Aliases />
-          <Description>Specifies the type of the key which should be regenerated. Allowed values are “Primary”, “Secondary”.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Force to set media service key without confirm.</Description>
+          <Description>The name of the Media Service.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
@@ -754,10 +722,10 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName StorageAccountId Force Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName AccountName StorageAccountId Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable WhatIf Confirm" />
       </ParamSets>
       <Syntax>
-        <string>Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-StorageAccountId] &lt;String&gt; [-Force] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
+        <string>Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] &lt;String&gt; [-AccountName] &lt;String&gt; [-StorageAccountId] &lt;String&gt; [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;] [-WhatIf] [-Confirm]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
@@ -796,15 +764,6 @@
             <string>Id</string>
           </Aliases>
           <Description>The storage account associated with the media service account.</Description>
-          <DefaultValue />
-        </ParameterDescription>
-        <ParameterDescription type="SwitchParameter" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">
-          <Name>Force</Name>
-          <Attributes>
-            <string>System.Management.Automation.ParameterAttribute</string>
-          </Attributes>
-          <Aliases />
-          <Description>Force to sync Media Service storage keys without confirm.</Description>
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="ActionPreference" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="false" isPos="false" pos="named" globbing="false">

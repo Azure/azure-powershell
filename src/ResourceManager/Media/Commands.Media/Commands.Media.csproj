@@ -128,10 +128,6 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Tags\Commands.Tags\Commands.Tags.csproj">
-      <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
-      <Name>Commands.Tags</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.Media.psd1">

@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Media.MediaService
             Position = 0,
             HelpMessage = "The media service account name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("AccountName")]
-        public string Name;
+        [Alias("Name", "ResourceName")]
+        public string AccountName;
 
         public override void ExecuteCmdlet()
         {
             var result = MediaServicesManagementClient.MediaService.CheckNameAvailabilty(new CheckNameAvailabilityInput
             {
-                Name = Name,
+                Name = AccountName,
                 Type = MediaServicesType
             });
             WriteObject(result.ToPsCheckNameAvailabilityOutput(), true);

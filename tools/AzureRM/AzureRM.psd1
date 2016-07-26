@@ -83,7 +83,8 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.Tags'; RequiredVersion = '1.0.11'},
     @{ ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '1.0.11'},
     @{ ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '1.0.11'},
-    @{ ModuleName = 'AzureRM.Websites'; RequiredVersion = '1.1.3'}
+    @{ ModuleName = 'AzureRM.Websites'; RequiredVersion = '1.1.3'},
+	@{ ModuleName = 'AzureRM.Media'; RequiredVersion = '0.1.0'}
 ) 
   
 # Assemblies that must be loaded prior to importing this module  

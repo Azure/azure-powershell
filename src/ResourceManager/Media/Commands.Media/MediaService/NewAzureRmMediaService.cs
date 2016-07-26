@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     {
         protected const string PrimaryStorageAccountParamSet = "StorageAccountIdParamSet";
         protected const string StorageAccountsParamSet = "StorageAccountsParamSet";
-        private const string NewMediaServiceWarning = "Are you sure you want to new a MediaService {0} ?";
         private const string NewMediaServiceWhatIfMessage = "New a MediaService";
 
         [Parameter(
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [ValidateNotNullOrEmpty]
         [ValidateLength(MediaServiceAccountNameMinLength, MediaServiceAccountNameMaxLength)]
         [ValidatePattern(MediaServiceAccountNamePattern)]
-        [Alias(AccountNameAlias)]
+        [Alias("Name", "ResourceName")]
         public string AccountName { get; set; }
 
         [Parameter(
@@ -110,38 +109,36 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
-        [Parameter(Mandatory = false,
-           HelpMessage = "Force to new a media service without confirm.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(AccountName, string.Format(NewMediaServiceWhatIfMessage)))
             {
-                var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
-                if (mediaService != null)
+                try
                 {
-                    throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} exists",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
-                }
-            }
-            catch (ApiErrorException exception)
-            {
-                if (exception.Response != null && exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
-                {
-                    var restMediaService = new RestMediaService(
-                        Location,
-                        Tags.ToDictionaryTags(),
-                        null,
-                        null,
-                        MediaServiceType);
-
-                    switch (ParameterSetName)
+                    var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
+                    if (mediaService != null)
                     {
-                        case PrimaryStorageAccountParamSet:
-                            restMediaService.StorageAccounts = new List<StorageAccount>
+                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} exists",
+                            AccountName,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+                }
+                catch (ApiErrorException exception)
+                {
+                    if (exception.Response != null && exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
+                    {
+                        var restMediaService = new RestMediaService(
+                            Location,
+                            Tags.ToDictionaryTags(),
+                            null,
+                            null,
+                            MediaServiceType);
+
+                        switch (ParameterSetName)
+                        {
+                            case PrimaryStorageAccountParamSet:
+                                restMediaService.StorageAccounts = new List<StorageAccount>
                             {
                                 new StorageAccount
                                 {
@@ -149,36 +146,29 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                                     IsPrimary = true
                                 }
                             };
-                            break;
+                                break;
 
-                        case StorageAccountsParamSet:
-                            if (StorageAccounts.Count(x => x.IsPrimary.HasValue && x.IsPrimary.Value) != 1)
-                            {
-                                throw new ArgumentException(
-                                    "StorageAccounts should have exactly one primary storage account");
-                            }
-                            
-                            restMediaService.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
-                            break;
+                            case StorageAccountsParamSet:
+                                if (StorageAccounts.Count(x => x.IsPrimary.HasValue && x.IsPrimary.Value) != 1)
+                                {
+                                    throw new ArgumentException(
+                                        "StorageAccounts should have exactly one primary storage account");
+                                }
 
-                        default:
-                            throw new ArgumentException("Bad ParameterSet Name");
-                    }
+                                restMediaService.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
+                                break;
 
-                    if (ShouldProcess(AccountName, string.Format(NewMediaServiceWhatIfMessage)))
-                    {
-                        if (Force || ShouldContinue(string.Format(NewMediaServiceWarning, AccountName), ""))
-                        {
-                            var mediaServiceCreated =
-                                MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName,
-                                    restMediaService);
-                            WriteObject(mediaServiceCreated.ToPSMediaService(), true);
+                            default:
+                                throw new ArgumentException("Bad ParameterSet Name");
                         }
+
+                        var mediaServiceCreated = MediaServicesManagementClient.MediaService.Create(ResourceGroupName, AccountName, restMediaService);
+                        WriteObject(mediaServiceCreated.ToPSMediaService(), true);
                     }
-                }
-                else
-                {
-                    throw;
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
         }
