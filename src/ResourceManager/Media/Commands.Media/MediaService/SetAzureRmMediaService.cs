@@ -68,57 +68,57 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            var mediaServiceParams = new RestMediaService();
-
-            if (Tags != null)
-            {
-                mediaServiceParams.Tags = Tags.ToDictionaryTags();
-            }
-
-            if (StorageAccounts != null)
-            {
-                // check storage accounts parameter
-                var primaryStorageAccounts = StorageAccounts.Where(x => x.IsPrimary.HasValue && x.IsPrimary.Value).ToArray();
-                if(primaryStorageAccounts.Count() != 1)
-                {
-                    throw new ArgumentException("StorageAccounts should have exactly one primary storage account");
-                }
-
-                var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
-                if (mediaService == null)
-                {
-                    throw new ArgumentException(string.Format(
-                        "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
-                }
-
-                var primaryStorageAccount = mediaService.StorageAccounts.FirstOrDefault(x => (x.IsPrimary.HasValue && x.IsPrimary.Value));
-                // there must be a primary storage account associated with the media service account
-                if (primaryStorageAccount == null)
-                {
-                    throw new Exception(string.Format(
-                        "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} has no primary storage account",
-                        AccountName,
-                        SubscrptionName,
-                        ResourceGroupName));
-                }
-
-                if (!string.Equals(primaryStorageAccount.Id, primaryStorageAccounts[0].Id, StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new ArgumentException("Primary storage account cann't be changed");
-                }
-
-                mediaServiceParams.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
-            }
-
             if (ShouldProcess(AccountName, string.Format(SetMediaServiceWhatIfMessage)))
             {
+                var mediaServiceParams = new RestMediaService();
+
+                if (Tags != null)
+                {
+                    mediaServiceParams.Tags = Tags.ToDictionaryTags();
+                }
+
+                if (StorageAccounts != null)
+                {
+                    // check storage accounts parameter
+                    var primaryStorageAccounts = StorageAccounts.Where(x => x.IsPrimary.HasValue && x.IsPrimary.Value).ToArray();
+                    if (primaryStorageAccounts.Count() != 1)
+                    {
+                        throw new ArgumentException("StorageAccounts should have exactly one primary storage account");
+                    }
+
+                    var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
+                    if (mediaService == null)
+                    {
+                        throw new ArgumentException(string.Format(
+                            "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                            AccountName,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+
+                    var primaryStorageAccount = mediaService.StorageAccounts.FirstOrDefault(x => (x.IsPrimary.HasValue && x.IsPrimary.Value));
+                    // there must be a primary storage account associated with the media service account
+                    if (primaryStorageAccount == null)
+                    {
+                        throw new Exception(string.Format(
+                            "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} has no primary storage account",
+                            AccountName,
+                            SubscrptionName,
+                            ResourceGroupName));
+                    }
+
+                    if (!string.Equals(primaryStorageAccount.Id, primaryStorageAccounts[0].Id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException("Primary storage account cann't be changed");
+                    }
+
+                    mediaServiceParams.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();
+                }
+
                 try
                 {
                     var mediaServiceUpdated = MediaServicesManagementClient.MediaService.Update(ResourceGroupName,
-                            AccountName, mediaServiceParams);
+                                AccountName, mediaServiceParams);
                     WriteObject(mediaServiceUpdated.ToPSMediaService(), true);
                 }
                 catch (ApiErrorException exception)
