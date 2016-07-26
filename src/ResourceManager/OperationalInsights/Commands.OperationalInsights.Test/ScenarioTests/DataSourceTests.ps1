@@ -14,7 +14,7 @@
 
 <#
 .SYNOPSIS
-Create, update, and delete storage insights
+Create, update, and delete data sources
 #>
 function Test-DataSourceCreateUpdateDelete
 {
@@ -22,17 +22,16 @@ function Test-DataSourceCreateUpdateDelete
     $dsName = Get-ResourceName
     $saname = Get-ResourceName
     $rgname = Get-ResourceGroupName
-    #$said = Get-StorageResourceId $rgname $saname
 	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
 	$subId2 = "bc8edd8f-a09f-499d-978d-6b5ed2f84852"
     $wslocation = Get-ProviderLocation
     
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-    # Create a workspace to house the storage insight
+    # Create a workspace to house the data sources
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
 
-    # Create a storage insight
+    # Create a data source
     $dataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1
     Assert-AreEqual $dsName $dataSource.Name
     Assert-NotNull $dataSource.ResourceId
@@ -41,7 +40,7 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual $subId1 $dataSource.Properties.SubscriptionId
     Assert-AreEqual "AzureAuditLog" $dataSource.Kind
 
-    # Get the storage insight that was created
+    # Get the data source that was created
     $dataSource = Get-AzureRmOperationalInsightsDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName
     Assert-AreEqual $dsName $dataSource.Name
     Assert-NotNull $dataSource.ResourceId
@@ -50,11 +49,11 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual $subId1 $dataSource.Properties.SubscriptionId
     Assert-AreEqual "AzureAuditLog" $dataSource.Kind
 
-    # Create a second storage insight for list testing
+    # Create a second data source for list testing
     $daNametwo = Get-ResourceName
     $dataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $daNametwo -SubscriptionId $subId2
 
-    # List the storage insight in the workspace (both param sets)
+    # List the data source in the workspace (both param sets)
     $dataSources = Get-AzureRmOperationalInsightsDataSource -ResourceGroupName $rgname -WorkspaceName $wsname
     Assert-AreEqual 2 $dataSources.Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
@@ -65,7 +64,7 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
 
-    # Delete one of the storage insights
+    # Delete one of the data sources
     Remove-AzureRmOperationalInsightsDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $daNametwo -Force
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $daNametwo } "NotFound"
     $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace
@@ -73,14 +72,14 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
     Assert-AreEqual 0 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
 
-    # Perform an update on the storage insight
+    # Perform an update on the data source
 	$dataSource = $dataSources[0]
 	$dataSource.Properties.SubscriptionId = $subId2
     $dataSource = Set-AzureRmOperationalInsightsDataSource -DataSource $dataSource
     Assert-AreEqual "AzureAuditLog" $dataSource.Kind
     Assert-AreEqual $subId2 $dataSource.Properties.SubscriptionId
 
-    # Delete the remaining storage insight via piping
+    # Delete the remaining data source via piping
     Remove-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName -Force
     Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName } "NotFound"
     $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace
@@ -103,4 +102,75 @@ function Test-DataSourceCreateFailsWithoutWorkspace
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureAuditDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "ResourceNotFound"
+}
+
+<#
+.SYNOPSIS
+Validate that we can create all kinds of DataSource
+#>
+function Test-CreateAllKindsOfDataSource
+{
+	$wsname = Get-ResourceName
+    $dsName = Get-ResourceName
+    $saname = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $wslocation = Get-ProviderLocation
+
+	# Create a workspace to house the data source
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
+
+    # AzureAuditLog data source
+    $auditLogDataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name $dsName -SubscriptionId $subId1
+	
+	# windows event data source
+	$windowsEventDataSource = New-AzureRmOperationalInsightsWindowsEventDataSource -Workspace  -Name Application -EventLogName "Application" -CollectErrors -CollectWarnings -CollectInformation
+	
+	# windows performance data source
+	$windowsPerfDataSource = New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -Workspace $workspace -Name "processorPerf" -ObjectName Processor -InstanceName * -CounterName "% Processor Time" -IntervalSeconds 10
+
+	# linux syslog data source
+	$syslogDataSource = New-AzureRmOperationalInsightsLinuxSyslogDataSource -Workspace $workspace -Name "syslog-local1" -SyslogName "local1" -CollectEmerg -CollectAlert -CollectCrit -CollectErr -CollectWarning -CollectNotice -CollectDebug
+
+	# linux performance data source
+	$linuxPerfDataSource = New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -Workspace $workspace -Name "MemoryLinux" -ObjectName "Memory" -InstanceName * -CounterNames "Available bytes" -IntervalSeconds 10
+
+	# customlog
+	$customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":null,"joinStringRegex":null}}}]}'
+	$customLogDataSource = New-AzureRmOperationalInsightsCustomLogDataSource -Workspace $workspace -CustomLogRawJson $customLogRawJson
+
+}
+
+<#
+.SYNOPSIS
+Validate that we can enable/disable singleton datasources
+#>
+function Test-ToggleSingletonDataSourceState
+{
+	$wsname = Get-ResourceName
+    $dsName = Get-ResourceName
+    $saname = Get-ResourceName
+    $rgname = Get-ResourceGroupName
+	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $wslocation = Get-ProviderLocation
+
+	# Create a workspace to house the data source
+    $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
+
+    # enable/disable iislog collection
+    Enable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace
+	Disable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace
+
+	# enable/disable customlog collection on linux
+	Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
+	Disable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
+
+	# enable/disable linux perf collection
+	Enable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
+	Disable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
+
+	# enable/disable syslog collection
+	Enable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
+	Disable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
+
 }
