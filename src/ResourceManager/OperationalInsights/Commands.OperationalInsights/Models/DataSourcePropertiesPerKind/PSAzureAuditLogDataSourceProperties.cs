@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 return segments[1];
             }
 
-            // TODO: decide throw or return null.
-            throw new NotImplementedException("Unnecessary because CanRead is false. The type will skip the converter.");
+            return null;
         }
 
         public override bool CanRead

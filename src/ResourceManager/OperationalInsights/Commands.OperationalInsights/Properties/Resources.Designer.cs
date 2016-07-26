@@ -108,6 +108,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kind cannot be null..
+        /// </summary>
+        internal static string DataSourceKindCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("DataSourceKindCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DataSource &apos;{0}&apos; does not exist in workspace &apos;{1}&apos;..
         /// </summary>
         internal static string DataSourceNotFound {
@@ -122,6 +131,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         internal static string DataSourceRemoving {
             get {
                 return ResourceManager.GetString("DataSourceRemoving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;ve hit a internal error, please contact support with workspaceId. SingletonDataSourceHaveMultipleValues..
+        /// </summary>
+        internal static string DataSourceSingletonMultipleRecord {
+            get {
+                return ResourceManager.GetString("DataSourceSingletonMultipleRecord", resourceCulture);
             }
         }
         

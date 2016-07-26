@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         {
             if (dataSource == null)
             {
-                throw new ArgumentNullException("storageInsight");
+                throw new ArgumentNullException("dataSource");
             }
 
             this.ResourceGroupName = resourceGroupName;

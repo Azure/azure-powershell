@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
         public virtual PSDataSource UpdatePSDataSource(UpdatePSDataSourceParameters parameters)
         {
-            // Get the existing storage insight
+            // Get the existing data source
             DataSourceGetResponse response = OperationalInsightsManagementClient.DataSources.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
             DataSource dataSource = response.DataSource;
 
@@ -155,8 +155,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
 
             if (string.IsNullOrWhiteSpace(kind))
             {
-                //TODO: Kind cannot be null
-                throw new ArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
+                throw new ArgumentException(Resources.DataSourceKindCannotBeEmpty);
             }
 
             dataSources.AddRange(ListDataSources(resourceGroupName, workspaceName, kind));
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 throw new ArgumentException(String.Format(Resources.DataSourceEnableNotSupported, dataSourceKind));
             }
 
-            if (dataSources.Count > 1) { throw new Exception("Unexpected error, more than 1 record was returned for " + dataSourceKind); }
+            if (dataSources.Count > 1) { throw new Exception(Resources.DataSourceSingletonMultipleRecord); }
             if (dataSources.Count == 1)
             {
                 return dataSources[0];
@@ -190,7 +189,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         {
             try
             {
-                PSDataSource storageInsight = GetDataSource(resourceGroupName, workspaceName, dataSourceName);
+                PSDataSource datasource = GetDataSource(resourceGroupName, workspaceName, dataSourceName);
                 return true;
             }
             catch (CloudException e)

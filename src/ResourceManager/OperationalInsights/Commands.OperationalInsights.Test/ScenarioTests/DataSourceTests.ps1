@@ -20,7 +20,6 @@ function Test-DataSourceCreateUpdateDelete
 {
     $wsname = Get-ResourceName
     $dsName = Get-ResourceName
-    $saname = Get-ResourceName
     $rgname = Get-ResourceGroupName
 	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
 	$subId2 = "bc8edd8f-a09f-499d-978d-6b5ed2f84852"
@@ -94,7 +93,6 @@ function Test-DataSourceCreateFailsWithoutWorkspace
 {
     $wsname = Get-ResourceName
     $dsName = Get-ResourceName
-    $saname = Get-ResourceName
     $rgname = Get-ResourceGroupName
 	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation
@@ -111,8 +109,6 @@ Validate that we can create all kinds of DataSource
 function Test-CreateAllKindsOfDataSource
 {
 	$wsname = Get-ResourceName
-    $dsName = Get-ResourceName
-    $saname = Get-ResourceName
     $rgname = Get-ResourceGroupName
 	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation
@@ -123,7 +119,7 @@ function Test-CreateAllKindsOfDataSource
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
 
     # AzureAuditLog data source
-    $auditLogDataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name $dsName -SubscriptionId $subId1
+    $auditLogDataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name "myAuditLog" -SubscriptionId $subId1
 	
 	# windows event data source
 	$windowsEventDataSource = New-AzureRmOperationalInsightsWindowsEventDataSource -Workspace $workspace -Name Application -EventLogName "Application" -CollectErrors -CollectWarnings -CollectInformation
@@ -150,8 +146,6 @@ Validate that we can enable/disable singleton datasources
 function Test-ToggleSingletonDataSourceState
 {
 	$wsname = Get-ResourceName
-    $dsName = Get-ResourceName
-    $saname = Get-ResourceName
     $rgname = Get-ResourceGroupName
 	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation

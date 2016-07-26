@@ -134,11 +134,17 @@
 Continuing execution may overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
+  <data name="DataSourceKindCannotBeEmpty" xml:space="preserve">
+    <value>Kind cannot be null.</value>
+  </data>
   <data name="DataSourceNotFound" xml:space="preserve">
     <value>DataSource '{0}' does not exist in workspace '{1}'.</value>
   </data>
   <data name="DataSourceRemoving" xml:space="preserve">
     <value>Removing data source '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="DataSourceSingletonMultipleRecord" xml:space="preserve">
+    <value>We've hit a internal error, please contact support with workspaceId. SingletonDataSourceHaveMultipleValues.</value>
   </data>
   <data name="DataSourceUpdateCannotModifyKind" xml:space="preserve">
     <value>Cannot modify Kind while updating data source.</value>
