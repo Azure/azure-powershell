@@ -19,6 +19,7 @@ using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.IO;
 using System.Linq;
 using Xunit;
 
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         public KeyVaultManagementTests(KeyVaultTestFixture fixture)
         {
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             this._data = fixture;
             this._data.Initialize(TestUtilities.GetCallingClass());
         }
