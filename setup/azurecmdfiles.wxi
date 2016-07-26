@@ -2646,6 +2646,9 @@
                         <Component Id="cmp8BEB790F5784284266572BDFFD7F6739" Guid="*">
                             <File Id="filFEDB278BF20F946F48D5BF06C5531BA6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Scheduler\Newtonsoft.Json.dll" />
                         </Component>
+                        <Component Id="cmp3A8D17753C1D0566FEE3B038559CF56A" Guid="*">
+                            <File Id="fil2368E79E3C69FE8E7580414D633F468D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Scheduler\System.Management.Automation.dll" />
+                        </Component>
                         <Component Id="cmp850C99CBFC0F5A0C1CF0B08C732176AE" Guid="*">
                             <File Id="fil6CD4A25184A955BF7AD56095DD218A04" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Scheduler\System.Net.Http.Extensions.dll" />
                         </Component>
@@ -6392,6 +6395,7 @@
             <ComponentRef Id="cmpD53D60DFCE9509924D878266ED859F7F" />
             <ComponentRef Id="cmpE3047A706A7BAF1DC08F85754EC3677A" />
             <ComponentRef Id="cmp8BEB790F5784284266572BDFFD7F6739" />
+            <ComponentRef Id="cmp3A8D17753C1D0566FEE3B038559CF56A" />
             <ComponentRef Id="cmp850C99CBFC0F5A0C1CF0B08C732176AE" />
             <ComponentRef Id="cmp8BC5C1C92BC4651E6AEEDFBAEB5CB075" />
             <ComponentRef Id="cmpF725005539C2C4CFDDDC204E3674DEAD" />
