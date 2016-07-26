@@ -35,9 +35,23 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageInsightCreateFailsWithoutWorkspace()
+        public void TestDataSourceCreateFailsWithoutWorkspace()
         {
             RunPowerShellTest("Test-DataSourceCreateFailsWithoutWorkspace");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateAllKindsOfDataSource()
+        {
+            RunPowerShellTest("Test-CreateAllKindsOfDataSource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestToggleSingletonDataSourceState()
+        {
+            RunPowerShellTest("Test-ToggleSingletonDataSourceState");
         }
     }
 }
