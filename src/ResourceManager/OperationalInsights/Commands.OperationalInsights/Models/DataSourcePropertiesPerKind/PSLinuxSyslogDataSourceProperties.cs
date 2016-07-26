@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         err,
         warning,
         notice,
+        info,
         debug
     }
 

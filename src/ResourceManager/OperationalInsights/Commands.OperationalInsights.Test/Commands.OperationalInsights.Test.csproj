@@ -198,6 +198,18 @@
     <None Include="ScenarioTests\WorkspaceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestCreateAllKindsOfDataSource.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestDataSourceCreateFailsWithoutWorkspace.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestDataSourceCreateUpdateDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.DataSourceTests\TestToggleSingletonDataSourceState.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.OperationalInsights.Test.SearchTests\TestSearchGetSavedSearchesAndResults.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

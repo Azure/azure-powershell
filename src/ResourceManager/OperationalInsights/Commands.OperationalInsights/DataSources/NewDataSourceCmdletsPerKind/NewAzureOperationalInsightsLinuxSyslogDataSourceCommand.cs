@@ -29,19 +29,19 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The name of Linux Syslog.")]
         [ValidateNotNullOrEmpty]
-        public string SyslogName { get; set; }
+        public string Facility { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collect emerg log type.")]
-        public SwitchParameter CollectEmerg { get; set; }
+        public SwitchParameter CollectEmergency { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collect alert log type.")]
         public SwitchParameter CollectAlert { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collect crit log type.")]
-        public SwitchParameter CollectCrit { get; set; }
+        public SwitchParameter CollectCritical { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collect err log type.")]
-        public SwitchParameter CollectErr { get; set; }
+        public SwitchParameter CollectError { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Collect warning log type.")]
         public SwitchParameter CollectWarning { get; set; }
@@ -52,16 +52,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Mandatory = false, HelpMessage = "Collect debug log type.")]
         public SwitchParameter CollectDebug { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Collect informational log type.")]
+        public SwitchParameter CollectInformational { get; set; }
+
         public override void ExecuteCmdlet()
         {
             List<SyslogSeverityIdentifier> severitySubscription = new List<SyslogSeverityIdentifier>();
-            if (CollectEmerg.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.emerg }); }
+            if (CollectEmergency.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.emerg }); }
             if (CollectAlert.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.alert }); }
-            if (CollectCrit.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.crit }); }
-            if (CollectErr.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.err }); }
+            if (CollectCritical.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.crit }); }
+            if (CollectError.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.err }); }
             if (CollectWarning.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.warning }); }
             if (CollectNotice.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.notice }); }
             if (CollectDebug.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.debug }); }
+            if (CollectInformational.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.info }); }
 
             if (severitySubscription.Count == 0) {
                 throw new ArgumentException("Please atleast have one severity level to enable log collection.");
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             var dsProperties = new PSLinuxSyslogDataSourceProperties
             {
-                SyslogName = this.SyslogName,
+                SyslogName = this.Facility,
                 SyslogSeverities = severitySubscription
             };
 
