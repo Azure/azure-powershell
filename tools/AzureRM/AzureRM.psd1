@@ -75,6 +75,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '1.0.3'},
     @{ ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '1.1.9'},
     @{ ModuleName = 'AzureRM.Resources'; RequiredVersion = '2.0.2'},
+    @{ ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.9.0'},
     @{ ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '1.0.2'},
     @{ ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '1.1.10'},
     @{ ModuleName = 'AzureRM.Sql'; RequiredVersion = '1.0.11'},
