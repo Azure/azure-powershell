@@ -46,10 +46,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected virtual void SetupManagementClients()
         {
-            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
+            var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var resourcesClient = //MockDeploymentClientFactory.GetResourceClient(
+                GetResourcesClient()
+               // )
+                ;
             var authorizationClient = GetAuthorizationManagementClient();
             var graphClient = GetGraphClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
@@ -57,7 +60,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

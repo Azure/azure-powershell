@@ -44,7 +44,17 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// </summary>
     public abstract class BaseBlobAuditingPolicyModel : AuditingPolicyModel
     {
-        public AuditActionGroups[] AuditActionGroups { get; set; }
-        public string[] AuditActions { get; set; }
+        public AuditActionGroups[] AuditActionGroup { get; set; }
+        public string[] AuditAction { get; set; }
+
+
+        public override bool IsInUse()
+        {
+            return (AuditState == AuditStateType.Enabled ||
+                    !string.IsNullOrEmpty(StorageAccountName) ||
+                    RetentionInDays > 0 ||
+                    (AuditAction != null && AuditAction.Length > 0) ||
+                    (AuditActionGroup != null && AuditActionGroup.Length > 0));
+        }
     }
 }
