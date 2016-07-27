@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                    ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the queue without confirm")]
+        [Parameter(HelpMessage = "Force to remove the queue and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }

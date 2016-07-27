@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the Share without confirm")]
+        [Parameter(HelpMessage = "Force to remove the share and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }

@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
            ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the table without confirmation")]
+        [Parameter(HelpMessage = "Force to remove the table and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }

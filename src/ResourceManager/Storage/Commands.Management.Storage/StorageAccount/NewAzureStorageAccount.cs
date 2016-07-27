@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
                 Tags = TagsConversionHelper.CreateTagDictionary(hashtableArray, validate: true),
-            };            
+            };
 
             if (this.CustomDomainName != null)
             {

@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
         private bool deleteSnapshot;
 
-        [Parameter(HelpMessage = "Force to remove the blob and its snapshot without confirmation")]
+        [Parameter(HelpMessage = "Force to remove the blob and its snapshot")]
         public SwitchParameter Force
         {
             get { return force; }

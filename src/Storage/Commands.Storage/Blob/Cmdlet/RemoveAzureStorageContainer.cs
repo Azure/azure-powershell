@@ -38,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the container without confirm")]
+        [Parameter(HelpMessage = "Force to remove the container and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }
