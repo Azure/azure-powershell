@@ -113,6 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
                 List<HDInsightVersion> versionsFromPowerShell =
                     results.Results.ToEnumerable<IEnumerable<HDInsightVersion>>().SelectMany(ver => ver.ToList()).ToList();
                 var versions = new Collection<HDInsightVersion>();
+                versions.Add(new HDInsightVersion { Version = "1.2", VersionStatus = VersionStatus.Obsolete });
+                versions.Add(new HDInsightVersion { Version = "1.5", VersionStatus = VersionStatus.Obsolete });
                 versions.Add(new HDInsightVersion { Version = "1.6", VersionStatus = VersionStatus.Compatible });
                 versions.Add(new HDInsightVersion { Version = "2.1", VersionStatus = VersionStatus.Compatible });
                 foreach (HDInsightVersion version in versions)
