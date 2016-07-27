@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 # Constants used in the tests.
-$SCHEMA_VERSION_20160401PREVIEW = '2016-04-01-preview'
+$SCHEMA_VERSION_20160601 = '2016-06-01'
 $WORKFLOW_LOCATION = 'westus'
 
 <#
@@ -378,11 +378,10 @@ function Test-GetUpgradedDefinitionForLogicApp
 	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 
 	# Generate the upgraded definition.
-	$upgradedDefinition = Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -TargetSchemaVersion $SCHEMA_VERSION_20160401PREVIEW
+	$upgradedDefinition = Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -TargetSchemaVersion $SCHEMA_VERSION_20160601
 	
 	# Update the workflow with the upgraded definition.
-	$definition = [IO.File]::ReadAllText($definitionFilePath)
-	Set-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -Force
+	Set-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $upgradedDefinition.ToString() -Force
 
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }

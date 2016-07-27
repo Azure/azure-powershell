@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [Alias("ResourceName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The target schema version for the definition.")]
+        [Parameter(Mandatory = true, HelpMessage = "The target schema version for the definition.")]
         [ValidateNotNullOrEmpty]
         public string TargetSchemaVersion { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.WriteObject(LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), true);
+            this.WriteObject(LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), false);
         }
     }
 }

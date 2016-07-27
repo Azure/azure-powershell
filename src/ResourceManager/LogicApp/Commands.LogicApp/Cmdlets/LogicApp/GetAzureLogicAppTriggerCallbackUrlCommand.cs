@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         {
             base.ExecuteCmdlet();
             this.WriteObject(
-                LogicAppClient.GetWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName), true);
+                LogicAppClient.GetWorkflowTriggerCallbackUrl(this.ResourceGroupName, this.Name, this.TriggerName), true);
         }
     }
 }
