@@ -468,6 +468,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
+        public List<Provider> GetRegisteredProviders(List<Provider> providers)
+        {
+            return providers.CoalesceEnumerable().Where(this.IsProviderRegistered).ToList();
+        }
+
         private bool IsProviderRegistered(Provider provider)
         {
             return string.Equals(
