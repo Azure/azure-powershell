@@ -402,4 +402,7 @@
   <data name="CreateDeployment" xml:space="preserve">
     <value>Creating Deployment</value>
   </data>
+  <data name="InvalidLocation" xml:space="preserve">
+    <value>Provided location is not supported</value>
+  </data>
 </root>
