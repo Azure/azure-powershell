@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSImageReference
+    public partial class PSImageReference
     {
         
         internal Microsoft.Azure.Batch.ImageReference omObject;

@@ -139,6 +139,10 @@
                 <PropertyName>VirtualNetworkName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeeringState</Label>
+                <PropertyName>PeeringState</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>

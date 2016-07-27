@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
+        private static Queue<Guid> jobIdQueue;
 
 
         /// <summary>
@@ -41,7 +42,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// <value>
         /// The job identifier queue.
         /// </value>
-        public static Queue<Guid> JobIdQueue { get; set; }
+        public static Queue<Guid> JobIdQueue
+        {
+            get
+            {
+                if (jobIdQueue == null)
+                {
+                    jobIdQueue = new Queue<Guid>();
+                }
+
+                return jobIdQueue;
+            }
+            set { jobIdQueue = value; }
+        }
 
         public DataLakeAnalyticsClient(AzureContext context)
         {
@@ -49,7 +62,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
-            JobIdQueue = new Queue<Guid>();
+            
             _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;

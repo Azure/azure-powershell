@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Tags.Model
+namespace Microsoft.Azure.Commands.RedisCache.Models
 {
-    public class PSTagValuePair
+    using System;
+
+    public class PSScheduleEntry
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public string DayOfWeek { get; set; }
+        public int StartHourUtc { get; set; }
+        public TimeSpan? MaintenanceWindow { get; set; }
     }
 }
