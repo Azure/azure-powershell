@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14874"
+          "14692"
         ],
         "x-ms-request-id": [
-          "2009a582-0c18-4ade-a02a-994a0baad9de"
+          "09304299-7bbf-4d5e-b306-3b2f63d91bff"
         ],
         "x-ms-correlation-request-id": [
-          "2009a582-0c18-4ade-a02a-994a0baad9de"
+          "09304299-7bbf-4d5e-b306-3b2f63d91bff"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160726T183711Z:2009a582-0c18-4ade-a02a-994a0baad9de"
+          "CENTRALUS:20160727T000632Z:09304299-7bbf-4d5e-b306-3b2f63d91bff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,14 +43,14 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 26 Jul 2016 18:37:11 GMT"
+          "Wed, 27 Jul 2016 00:06:31 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk1447?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazE0NDc/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk6778?api-version=2016-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazY3Nzg/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"East US\"\r\n}",
       "RequestHeaders": {
@@ -64,7 +64,7 @@
           "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourceGroups/onesdk1447\",\r\n  \"name\": \"onesdk1447\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourceGroups/onesdk6778\",\r\n  \"name\": \"onesdk6778\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "173"
@@ -79,16 +79,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1193"
         ],
         "x-ms-request-id": [
-          "bffb1d07-1e4d-4203-8b48-d12786a26607"
+          "ae2587aa-2897-4399-8ab0-e5d41cbe3be4"
         ],
         "x-ms-correlation-request-id": [
-          "bffb1d07-1e4d-4203-8b48-d12786a26607"
+          "ae2587aa-2897-4399-8ab0-e5d41cbe3be4"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160726T183712Z:bffb1d07-1e4d-4203-8b48-d12786a26607"
+          "CENTRALUS:20160727T000633Z:ae2587aa-2897-4399-8ab0-e5d41cbe3be4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -97,25 +97,25 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 26 Jul 2016 18:37:12 GMT"
+          "Wed, 27 Jul 2016 00:06:33 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk1447/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk8776/dataSources/AzTestonesdk4254?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazE0NDcvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrODc3Ni9kYXRhU291cmNlcy9BelRlc3RvbmVzZGs0MjU0P2FwaS12ZXJzaW9uPTIwMTUtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk6778/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk2761/dataSources/AzTestonesdk6574?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazY3NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrMjc2MS9kYXRhU291cmNlcy9BelRlc3RvbmVzZGs2NTc0P2FwaS12ZXJzaW9uPTIwMTUtMTEtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6b6bb4f9-f6ed-426c-905d-ed8a6120f3f4"
+          "9b852518-d124-42e2-b41b-5c5c6dcf93b3"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.15.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'AzTestonesdk8776' not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'AzTestonesdk2761' not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "157"
@@ -133,13 +133,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a939da11-4e07-4853-97e5-b24981bc34f5"
+          "1ae74132-52b2-464f-9d7c-d84d5c820e67"
         ],
         "x-ms-correlation-request-id": [
-          "a939da11-4e07-4853-97e5-b24981bc34f5"
+          "1ae74132-52b2-464f-9d7c-d84d5c820e67"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160726T183713Z:a939da11-4e07-4853-97e5-b24981bc34f5"
+          "CENTRALUS:20160727T000634Z:1ae74132-52b2-464f-9d7c-d84d5c820e67"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,16 +148,16 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 26 Jul 2016 18:37:12 GMT"
+          "Wed, 27 Jul 2016 00:06:34 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk1447/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk8776/dataSources/AzTestonesdk4254?api-version=2015-11-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazE0NDcvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrODc3Ni9kYXRhU291cmNlcy9BelRlc3RvbmVzZGs0MjU0P2FwaS12ZXJzaW9uPTIwMTUtMTEtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/a6383be3-f0e8-4968-93d5-10f2625f5bb5/resourcegroups/onesdk6778/providers/Microsoft.OperationalInsights/workspaces/AzTestonesdk2761/dataSources/AzTestonesdk6574?api-version=2015-11-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTYzODNiZTMtZjBlOC00OTY4LTkzZDUtMTBmMjYyNWY1YmI1L3Jlc291cmNlZ3JvdXBzL29uZXNkazY3NzgvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25hbEluc2lnaHRzL3dvcmtzcGFjZXMvQXpUZXN0b25lc2RrMjc2MS9kYXRhU291cmNlcy9BelRlc3RvbmVzZGs2NTc0P2FwaS12ZXJzaW9uPTIwMTUtMTEtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"linkedResourceId\": \"/subscriptions/0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef/providers/microsoft.insights/eventtypes/management\"\r\n  },\r\n  \"name\": \"AzTestonesdk4254\",\r\n  \"kind\": \"AzureAuditLog\"\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"linkedResourceId\": \"/subscriptions/0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef/providers/microsoft.insights/eventtypes/management\"\r\n  },\r\n  \"name\": \"AzTestonesdk6574\",\r\n  \"kind\": \"AzureAuditLog\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json"
@@ -166,13 +166,13 @@
           "217"
         ],
         "x-ms-client-request-id": [
-          "84d5d49a-b991-4c9f-ac42-d4bd388ba341"
+          "27a6b212-c8f0-4479-9c3f-46b30a77c1a9"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.OperationalInsights.OperationalInsightsManagementClient/0.15.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'AzTestonesdk8776' not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ParentResourceNotFound\",\r\n    \"message\": \"Can not perform requested operation on nested resource. Parent resource 'AzTestonesdk2761' not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "157"
@@ -190,13 +190,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "a155a14f-a7a4-4299-aa0a-b4880531c5fc"
+          "efb8a9bd-fa0a-4d12-a939-3dba05dceae9"
         ],
         "x-ms-correlation-request-id": [
-          "a155a14f-a7a4-4299-aa0a-b4880531c5fc"
+          "efb8a9bd-fa0a-4d12-a939-3dba05dceae9"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160726T183714Z:a155a14f-a7a4-4299-aa0a-b4880531c5fc"
+          "CENTRALUS:20160727T000634Z:efb8a9bd-fa0a-4d12-a939-3dba05dceae9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -205,7 +205,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 26 Jul 2016 18:37:13 GMT"
+          "Wed, 27 Jul 2016 00:06:34 GMT"
         ]
       },
       "StatusCode": 404
@@ -213,10 +213,9 @@
   ],
   "Names": {
     "Test-DataSourceCreateFailsWithoutWorkspace": [
-      "onesdk8776",
-      "onesdk4254",
-      "onesdk5518",
-      "onesdk1447"
+      "onesdk2761",
+      "onesdk6574",
+      "onesdk6778"
     ]
   },
   "Variables": {
