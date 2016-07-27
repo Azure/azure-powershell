@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network’s link to this virtual network")]
+            HelpMessage = "Flag to allow gatewayLinks be used in remote virtual networkï¿½s link to this virtual network")]
         public SwitchParameter AlloowGatewayTransit { get; set; }
 
         [Parameter(
@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
 
             if (this.IsVirtualNetworkPeeringPresent(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name))
             {

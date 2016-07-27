@@ -132,6 +132,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
