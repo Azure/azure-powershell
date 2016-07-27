@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Remove Storage Account"))
             {
-                if (this.force || ShouldContinue(string.Format("Remove Storage Account {0} and all content in it from resource group {1}", this.Name, this.ResourceGroupName), ""))
+                if (this.force || ShouldContinue(string.Format("Remove Storage Account '{0}' and all content in it", this.Name), ""))
                 {
                     this.StorageClient.StorageAccounts.Delete(
                     this.ResourceGroupName,

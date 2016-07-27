@@ -123,7 +123,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             DeleteSnapshotsOption deleteSnapshotsOption = DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
-            string action = "Remove blob";
 
             if (IsSnapshot(blob))
             {
@@ -137,12 +136,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 if (deleteSnapshot)
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.DeleteSnapshotsOnly;
-                    action = "Remove snapshots of blob";
                 }
                 else if (force)
                 {
                     deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
-                    action = "Remove blob and snapshots";
                 }
                 else
                 {
@@ -150,42 +147,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                 }
             }
 
-            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldProcess(s2, action);
-
-            if (OutputStream.ConfirmAsync(blob.Name).Result)
+            try
             {
-                try
+                await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
+                retryDeleteSnapshot = false;
+            }
+            catch (StorageException e)
+            {
+                if (e.IsConflictException() && retryDeleteSnapshot)
                 {
+                    //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
+                    retryDeleteSnapshot = true;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            if (retryDeleteSnapshot)
+            {
+                string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
+
+                if (await OutputStream.ConfirmAsync(message))
+                {
+                    deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
                     await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
-                    retryDeleteSnapshot = false;
                 }
-                catch (StorageException e)
+                else
                 {
-                    if (e.IsConflictException() && retryDeleteSnapshot)
-                    {
-                        //If x-ms-delete-snapshots is not specified on the request and the blob has associated snapshots, the Blob service returns status code 409 (Conflict).
-                        retryDeleteSnapshot = true;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-
-                if (retryDeleteSnapshot)
-                {
-                    string message = string.Format(Resources.ConfirmRemoveBlobWithSnapshot, blob.Name, blob.Container.Name);
-
-                    if (await OutputStream.ConfirmAsync(message))
-                    {
-                        deleteSnapshotsOption = DeleteSnapshotsOption.IncludeSnapshots;
-                        await DeleteCloudAsync(taskId, localChannel, blob, deleteSnapshotsOption);
-                    }
-                    else
-                    {
-                        string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.Container.Name);
-                        OutputStream.WriteVerbose(taskId, result);
-                    }
+                    string result = String.Format(Resources.RemoveBlobCancelled, blob.Name, blob.Container.Name);
+                    OutputStream.WriteVerbose(taskId, result);
                 }
             }
         }
@@ -264,6 +256,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
+        /// Cmdlet begin processing
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
+        }
+
+        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -272,28 +273,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
-            switch (ParameterSetName)
+            string action = "Remove blob";
+            if (deleteSnapshot)
             {
-                case BlobPipelineParameterSet:
-                    CloudBlob localBlob = CloudBlob;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
-                    break;
-
-                case ContainerPipelineParameterSet:
-                    CloudBlobContainer localContainer = CloudBlobContainer;
-                    string localName = BlobName;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainer, localName);
-                    break;
-
-                case NameParameterSet:
-                default:
-                    string localContainerName = ContainerName;
-                    string localBlobName = BlobName;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainerName, localBlobName);
-                    break;
+                action = "Remove snapshots of blob";
+            }
+            else if (force)
+            {
+                action = "Remove blob and snapshots";
             }
 
-            RunTask(taskGenerator);
+            string blobName = BlobName;
+            if (ParameterSetName == BlobPipelineParameterSet)
+            {
+                blobName = CloudBlob.Name;
+            }
+
+            if (ShouldProcess(blobName, action))
+            { 
+                switch (ParameterSetName)
+                {
+                    case BlobPipelineParameterSet:
+                        CloudBlob localBlob = CloudBlob;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
+                        break;
+
+                    case ContainerPipelineParameterSet:
+                        CloudBlobContainer localContainer = CloudBlobContainer;
+                        string localName = BlobName;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainer, localName);
+                        break;
+
+                    case NameParameterSet:
+                    default:
+                        string localContainerName = ContainerName;
+                        string localBlobName = BlobName;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainerName, localBlobName);
+                        break;
+                }
+                RunTask(taskGenerator);
+            }
         }
     }
 }

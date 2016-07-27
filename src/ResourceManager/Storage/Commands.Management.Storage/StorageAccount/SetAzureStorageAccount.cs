@@ -103,13 +103,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         [Alias(TagsAlias)]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            WriteWarning("The usage of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             if (ShouldProcess(this.Name, "Set Storage Account"))
             {
@@ -123,7 +121,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     if (this.Tag != null)
                     {
-                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                        Hashtable[] hashtableArray = new Hashtable[1];
+                        hashtableArray[0] = Tag;
+
+                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(hashtableArray, validate: true);
                         updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
                     }
 

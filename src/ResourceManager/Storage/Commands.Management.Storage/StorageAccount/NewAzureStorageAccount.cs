@@ -101,13 +101,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
         [Alias(TagsAlias)]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            WriteWarning("The usage of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
 
             CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
             if (!checkNameAvailabilityResult.NameAvailable.Value)
@@ -115,13 +113,20 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
             }
 
+            Hashtable[] hashtableArray = null;
+            if (Tag != null)
+            {
+                hashtableArray = new Hashtable[1];
+                hashtableArray[0] = Tag;
+            }
+
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
                 Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
-                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
-            };
+                Tags = TagsConversionHelper.CreateTagDictionary(hashtableArray, validate: true),
+            };            
 
             if (this.CustomDomainName != null)
             {
