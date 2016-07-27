@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -84,8 +84,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
-
             bool success = RemoveAzureShareStoredAccessPolicy(Channel, ShareName, Policy);
             string result = string.Empty;
 

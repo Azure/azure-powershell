@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -99,8 +99,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
-
             if (String.IsNullOrEmpty(Table) || String.IsNullOrEmpty(Policy)) return;
             bool success = RemoveAzureTableStoredAccessPolicy(Channel, Table, Policy);
             string result = string.Empty;

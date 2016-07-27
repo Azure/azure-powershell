@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,8 +98,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
-
             if (String.IsNullOrEmpty(Queue) || String.IsNullOrEmpty(Policy)) return;
             bool success = RemoveAzureQueueStoredAccessPolicy(Channel, Queue, Policy);
             string result = string.Empty;
