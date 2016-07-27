@@ -92,51 +92,37 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             };
         }
 
-        public static string ConstructTagsTable(Hashtable[] tags)
+        public static string ConstructTagsTable(Hashtable tags)
         {
-            if (tags == null)
+            if (tags == null || tags.Count == 0)
             {
                 return null;
             }
 
-            Hashtable emptyHashtable = new Hashtable
-                {
-                    {"Name", string.Empty},
-                    {"Value", string.Empty}
-                };
             StringBuilder resourcesTable = new StringBuilder();
 
-            if (tags.Length > 0)
+            var tagsDictionary = TagsConversionHelper.CreateTagDictionary(tags, false);
+
+            int maxNameLength = Math.Max("Name".Length, tagsDictionary.Max(tag => tag.Key.Length));
+            int maxValueLength = Math.Max("Value".Length, tagsDictionary.Max(tag => tag.Value.Length));
+
+            string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            resourcesTable.AppendLine();
+            resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            resourcesTable.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            foreach (var tag in tagsDictionary)
             {
-                int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
-                int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
-
-                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
-                resourcesTable.AppendLine();
-                resourcesTable.AppendFormat(rowFormat, "Name", "Value");
-                resourcesTable.AppendFormat(rowFormat,
-                    GeneralUtilities.GenerateSeparator(maxNameLength, "="),
-                    GeneralUtilities.GenerateSeparator(maxValueLength, "="));
-
-                foreach (Hashtable tag in tags)
+                if (tag.Key.StartsWith(TagsClient.ExecludedTagPrefix))
                 {
-                    PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                    if (tagValuePair != null)
-                    {
-                        if (tagValuePair.Name.StartsWith(TagsClient.ExecludedTagPrefix))
-                        {
-                            continue;
-                        }
-
-                        if (tagValuePair.Value == null)
-                        {
-                            tagValuePair.Value = string.Empty;
-                        }
-                        resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
-                    }
+                    continue;
                 }
-            }
 
+                resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
+            }
+            
             return resourcesTable.ToString();
         }
 

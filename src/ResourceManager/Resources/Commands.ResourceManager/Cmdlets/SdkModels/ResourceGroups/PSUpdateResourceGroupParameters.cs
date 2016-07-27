@@ -20,6 +20,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     {
         public string ResourceGroupName { get; set; }
 
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
     }
 }
