@@ -219,7 +219,7 @@ function create_and_setup_vm_config_object
     $vmconfig = get_vm_config_object $rgname $vmsize
 
     $user = "Foo12";
-    $password = $rgname + "BaR#123";
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = $rgname + "cn";
