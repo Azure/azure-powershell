@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ProvisioningState { get; set; }
 
+        public string GatewayManagerEtag { get; set; }
+
         [JsonIgnore]
         public string SkuText
         {
