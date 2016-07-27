@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided location is not supported.
+        /// </summary>
+        internal static string InvalidLocation {
+            get {
+                return ResourceManager.GetString("InvalidLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoleDefinition Description is invalid..
         /// </summary>
         internal static string InvalidRoleDefinitionDescription {

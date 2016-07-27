@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private void VerifyGetCallPatternAndReset()
         {
             this.providerOperationsMock.Verify(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Once());
-            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Never);
+            this.providerOperationsMock.Verify(f => f.ListWithHttpMessagesAsync(null, null, It.IsAny<CancellationToken>()), Times.Once());
             this.providerOperationsMock.Verify(f => f.ListNextWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()), Times.Never);
             this.commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<object>(), It.IsAny<bool>()), Times.Once());
             this.ResetCalls();
