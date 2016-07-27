@@ -1031,15 +1031,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The  usability of Tag parameter in this cmdlet will be modified in a future release.  This will impact creating, updating and appending tags for Azure resources.  For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        public static string TagFixWarningMessage {
-            get {
-                return ResourceManager.GetString("TagFixWarningMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
         /// </summary>
         public static string UsingExistingStorageAccountForBootDiagnostics {
