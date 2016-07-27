@@ -75,8 +75,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Properties.Resources.TagFixWarningMessage);
-
             base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
