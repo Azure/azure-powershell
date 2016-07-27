@@ -52,7 +52,7 @@ function Test-DataLakeStoreAccount
 		Assert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -415,7 +415,7 @@ function Test-NegativeDataLakeStoreAccount
 		Assert-Throws {New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account
