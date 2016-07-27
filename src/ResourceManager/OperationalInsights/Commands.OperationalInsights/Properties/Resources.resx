@@ -146,11 +146,17 @@ Are you sure you want to continue?</value>
   <data name="DataSourceSingletonMultipleRecord" xml:space="preserve">
     <value>We've hit a internal error, please contact support with workspaceId. SingletonDataSourceHaveMultipleValues.</value>
   </data>
+  <data name="DataSourceSyslogNoSeveritySelected" xml:space="preserve">
+    <value>Please atleast have one severity level to enable log collection.</value>
+  </data>
   <data name="DataSourceUpdateCannotModifyKind" xml:space="preserve">
     <value>Cannot modify Kind while updating data source.</value>
   </data>
   <data name="DataSourceUpdateCannotModifyName" xml:space="preserve">
     <value>Cannot modify Name while updating data source, you might want delete and recreate.</value>
+  </data>
+  <data name="DataSourceWindowsEventNoEventTypeSelected" xml:space="preserve">
+    <value>Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation</value>
   </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
     <value>HTTP Status Code: {0}

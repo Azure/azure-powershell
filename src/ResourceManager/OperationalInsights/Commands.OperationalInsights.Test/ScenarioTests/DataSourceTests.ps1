@@ -21,10 +21,10 @@ function Test-DataSourceCreateUpdateDelete
     $wsname = Get-ResourceName
     $dsName = Get-ResourceName
     $rgname = Get-ResourceGroupName
-	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
-	$subId2 = "bc8edd8f-a09f-499d-978d-6b5ed2f84852"
+    $subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $subId2 = "bc8edd8f-a09f-499d-978d-6b5ed2f84852"
     $wslocation = Get-ProviderLocation
-    
+
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     # Create a workspace to house the data sources
@@ -72,8 +72,8 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual 0 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
 
     # Perform an update on the data source
-	$dataSource = $dataSources[0]
-	$dataSource.Properties.SubscriptionId = $subId2
+    $dataSource = $dataSources[0]
+    $dataSource.Properties.SubscriptionId = $subId2
     $dataSource = Set-AzureRmOperationalInsightsDataSource -DataSource $dataSource
     Assert-AreEqual "AzureAuditLog" $dataSource.Kind
     Assert-AreEqual $subId2 $dataSource.Properties.SubscriptionId
@@ -94,9 +94,9 @@ function Test-DataSourceCreateFailsWithoutWorkspace
     $wsname = Get-ResourceName
     $dsName = Get-ResourceName
     $rgname = Get-ResourceGroupName
-	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation
-    
+
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
     Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureAuditDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "ResourceNotFound"
@@ -108,34 +108,34 @@ Validate that we can create all kinds of DataSource
 #>
 function Test-CreateAllKindsOfDataSource
 {
-	$wsname = Get-ResourceName
+    $wsname = Get-ResourceName
     $rgname = Get-ResourceGroupName
-	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation
 
-	New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-	# Create a workspace to house the data source
+    # Create a workspace to house the data source
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
 
     # AzureAuditLog data source
     $auditLogDataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name "myAuditLog" -SubscriptionId $subId1
-	
-	# windows event data source
-	$windowsEventDataSource = New-AzureRmOperationalInsightsWindowsEventDataSource -Workspace $workspace -Name Application -EventLogName "Application" -CollectErrors -CollectWarnings -CollectInformation
-	
-	# windows performance data source
-	$windowsPerfDataSource = New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -Workspace $workspace -Name "processorPerf" -ObjectName Processor -InstanceName * -CounterName "% Processor Time" -IntervalSeconds 10
 
-	# linux syslog data source
-	$syslogDataSource = New-AzureRmOperationalInsightsLinuxSyslogDataSource -Workspace $workspace -Name "syslog-local1" -Facility "local1" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -CollectNotice -CollectDebug -CollectInformational
+    # windows event data source
+    $windowsEventDataSource = New-AzureRmOperationalInsightsWindowsEventDataSource -Workspace $workspace -Name Application -EventLogName "Application" -CollectErrors -CollectWarnings -CollectInformation
 
-	# linux performance data source
-	$linuxPerfDataSource = New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -Workspace $workspace -Name "MemoryLinux" -ObjectName "Memory" -InstanceName * -CounterNames "Available bytes" -IntervalSeconds 10
+    # windows performance data source
+    $windowsPerfDataSource = New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -Workspace $workspace -Name "processorPerf" -ObjectName Processor -InstanceName * -CounterName "% Processor Time" -IntervalSeconds 10
 
-	# customlog
-	$customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":null,"joinStringRegex":null}}}]}'
-	$customLogDataSource = New-AzureRmOperationalInsightsCustomLogDataSource -Workspace $workspace -CustomLogRawJson $customLogRawJson -Name "MyCustomLog"
+    # linux syslog data source
+    $syslogDataSource = New-AzureRmOperationalInsightsLinuxSyslogDataSource -Workspace $workspace -Name "syslog-local1" -Facility "local1" -CollectEmergency -CollectAlert -CollectCritical -CollectError -CollectWarning -CollectNotice -CollectDebug -CollectInformational
+
+    # linux performance data source
+    $linuxPerfDataSource = New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource -Workspace $workspace -Name "MemoryLinux" -ObjectName "Memory" -InstanceName * -CounterNames "Available bytes" -IntervalSeconds 10
+
+    # customlog
+    $customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":null,"joinStringRegex":null}}}]}'
+    $customLogDataSource = New-AzureRmOperationalInsightsCustomLogDataSource -Workspace $workspace -CustomLogRawJson $customLogRawJson -Name "MyCustomLog"
 
 }
 
@@ -145,30 +145,30 @@ Validate that we can enable/disable singleton datasources
 #>
 function Test-ToggleSingletonDataSourceState
 {
-	$wsname = Get-ResourceName
+    $wsname = Get-ResourceName
     $rgname = Get-ResourceGroupName
-	$subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
+    $subId1 = "0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef"
     $wslocation = Get-ProviderLocation
 
-	New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
+    New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-	# Create a workspace to house the data source
+    # Create a workspace to house the data source
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Force
 
     # enable/disable iislog collection
     Enable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace
-	Disable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace
+    Disable-AzureRmOperationalInsightsIISLogCollection -Workspace $workspace
 
-	# enable/disable customlog collection on linux
-	Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
-	Disable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
+    # enable/disable customlog collection on linux
+    Enable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
+    Disable-AzureRmOperationalInsightsLinuxCustomLogCollection -Workspace $workspace
 
-	# enable/disable linux perf collection
-	Enable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
-	Disable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
+    # enable/disable linux perf collection
+    Enable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
+    Disable-AzureRmOperationalInsightsLinuxPerformanceCollection -Workspace $workspace
 
-	# enable/disable syslog collection
-	Enable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
-	Disable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
+    # enable/disable syslog collection
+    Enable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
+    Disable-AzureRmOperationalInsightsLinuxSyslogCollection -Workspace $workspace
 
 }

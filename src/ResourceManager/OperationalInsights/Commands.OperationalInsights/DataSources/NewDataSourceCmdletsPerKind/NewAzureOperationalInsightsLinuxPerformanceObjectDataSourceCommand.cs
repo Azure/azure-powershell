@@ -25,33 +25,40 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsLinuxPerformanceObjectDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The name of object name of Linux Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string ObjectName { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        private string _InstanceName = "*";
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The name of instance name of Linux Performance Counter.")]
         [ValidateNotNullOrEmpty]
-        public string InstanceName { get; set; }
-
-        [Parameter(Position = 6, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        public string InstanceName
+        {
+            get { return _InstanceName; }
+            set { _InstanceName = value; }
+        }
+        
+        [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The array of countername for Linux Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string[] CounterNames { get; set; }
 
-        [Parameter(Position = 7, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        private int _InternalSeconds = 15;
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The interval to collect performance counter.")]
         [ValidateNotNullOrEmpty]
-        public int IntervalSeconds { get; set; }
-
+        public int IntervalSeconds
+        {
+            get { return _InternalSeconds; }
+            set { _InternalSeconds = value; }
+        }
         
-
         public override void ExecuteCmdlet()
         {
             List<PerformanceCounterIdentifier> counterNameSubscription = this.CounterNames.Select(counterName => new PerformanceCounterIdentifier { CounterName = counterName }).ToList();
-
+            
             var dsProperties = new PSLinuxPerformanceObjectDataSourceProperties
             {
                 ObjectName = this.ObjectName,
@@ -59,7 +66,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 IntervalSeconds = this.IntervalSeconds,
                 PerformanceCounters = counterNameSubscription
             };
-
+            
             CreatePSDataSourceWithProperties(dsProperties);
         }
     }

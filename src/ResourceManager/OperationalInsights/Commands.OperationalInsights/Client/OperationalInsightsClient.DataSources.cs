@@ -33,39 +33,37 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public virtual PSDataSource GetDataSource(string resourceGroupName, string workspaceName, string dataSourceName)
         {
             var response = OperationalInsightsManagementClient.DataSources.Get(resourceGroupName, workspaceName, dataSourceName);
-
+            
             return new PSDataSource(response.DataSource, resourceGroupName, workspaceName);
         }
-
+        
         public virtual List<PSDataSource> ListDataSources(string resourceGroupName, string workspaceName, string kind)
         {
             List<PSDataSource> dataSources = new List<PSDataSource>();
             
             // List data sources by kind
             var response = OperationalInsightsManagementClient.DataSources.ListInWorkspace(resourceGroupName, workspaceName, kind, string.Empty);
-            if (response != null && response.DataSources != null)
+            while (null != response)
             {
-                response.DataSources.ForEach(si => dataSources.Add(new PSDataSource(si, resourceGroupName, workspaceName)));
-            }
-
-            // if we have more data available, keep request next page.
-            while (null!=response && !string.IsNullOrEmpty(response.NextLink)) {
-                response = OperationalInsightsManagementClient.DataSources.ListNext(response.NextLink);
-                if (response != null && response.DataSources != null)
+                if (response.DataSources != null)
                 {
-                    response.DataSources.ForEach(si => dataSources.Add(new PSDataSource(si, resourceGroupName, workspaceName)));
+                    response.DataSources.ForEach(ds => dataSources.Add(new PSDataSource(ds, resourceGroupName, workspaceName)));
                 }
-            }            
-
+                if (!string.IsNullOrEmpty(response.NextLink))
+                {
+                    response = OperationalInsightsManagementClient.DataSources.ListNext(response.NextLink);
+                }
+            }
+            
             return dataSources;
         }
-
+        
         public virtual HttpStatusCode DeleteDataSource(string resourceGroupName, string workspaceName, string dataSourceName)
         {
             AzureOperationResponse response = OperationalInsightsManagementClient.DataSources.Delete(resourceGroupName, workspaceName, dataSourceName);
             return response.StatusCode;
         }
-
+        
         public virtual DataSource CreateOrUpdateDataSource(
             string resourceGroupName,
             string workspaceName,
@@ -73,7 +71,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             PSDataSourcePropertiesBase dataSourceProperties)
         {
             var serializedProperties = JsonConvert.SerializeObject(dataSourceProperties);
-
+            
             var response = OperationalInsightsManagementClient.DataSources.CreateOrUpdate(
                 resourceGroupName,
                 workspaceName,
@@ -81,34 +79,35 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 {
                     DataSource = new DataSource { Name = name, Kind=dataSourceProperties.Kind, Properties = serializedProperties}
                 });
-
+            
             return response.DataSource;
         }
-
+        
         public virtual PSDataSource UpdatePSDataSource(UpdatePSDataSourceParameters parameters)
         {
             // Get the existing data source
             DataSourceGetResponse response = OperationalInsightsManagementClient.DataSources.Get(parameters.ResourceGroupName, parameters.WorkspaceName, parameters.Name);
             DataSource dataSource = response.DataSource;
-
-            if (parameters.Properties.Kind != dataSource.Kind) {
+            
+            if (parameters.Properties.Kind != dataSource.Kind)
+            {
                 throw new ArgumentException(Resources.DataSourceUpdateCannotModifyKind);
             }
             if (parameters.Name != dataSource.Name)
             {
                 throw new ArgumentException(Resources.DataSourceUpdateCannotModifyName);
             }
-
+            
             // Execute the update
             DataSource updatedDataSource = CreateOrUpdateDataSource(
                 parameters.ResourceGroupName,
                 parameters.WorkspaceName,
                 dataSource.Name,
                 parameters.Properties);
-
+            
             return new PSDataSource(updatedDataSource, parameters.ResourceGroupName, parameters.WorkspaceName);
         }
-
+        
         public virtual PSDataSource CreatePSDataSource(CreatePSDataSourceParameters parameters)
         {
             PSDataSource dataSource = null;
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                         parameters.ResourceGroupName,
                         parameters.WorkspaceName);
             };
-
+            
             parameters.ConfirmAction(
                 parameters.Force,
                 string.Format(
@@ -143,26 +142,26 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                     parameters.WorkspaceName, parameters.Name));
             return dataSource;
         }
-
+        
         public virtual List<PSDataSource> FilterPSDataSources(string resourceGroupName, string workspaceName, string kind)
         {
             List<PSDataSource> dataSources = new List<PSDataSource>();
-
+            
             if (string.IsNullOrWhiteSpace(resourceGroupName) || string.IsNullOrWhiteSpace(workspaceName))
             {
                 throw new ArgumentException(Resources.WorkspaceDetailsCannotBeEmpty);
             }
-
+            
             if (string.IsNullOrWhiteSpace(kind))
             {
                 throw new ArgumentException(Resources.DataSourceKindCannotBeEmpty);
             }
-
+            
             dataSources.AddRange(ListDataSources(resourceGroupName, workspaceName, kind));
-
+            
             return dataSources;
         }
-
+        
         public PSDataSource GetSingletonDataSource(string resourceGroup, string workspaceName, string dataSourceKind)
         {
             List<PSDataSource> dataSources;
@@ -173,10 +172,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             {
                 dataSources = this.FilterPSDataSources(resourceGroup, workspaceName, dataSourceKind);
             }
-            else {
+            else
+            {
                 throw new ArgumentException(String.Format(Resources.DataSourceEnableNotSupported, dataSourceKind));
             }
-
+            
             if (dataSources.Count > 1) { throw new Exception(Resources.DataSourceSingletonMultipleRecord); }
             if (dataSources.Count == 1)
             {
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             }
             return null;
         }
-
+        
         private bool CheckDataSourceExists(string resourceGroupName, string workspaceName, string dataSourceName)
         {
             try
@@ -199,11 +199,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 {
                     return false;
                 }
-
                 throw;
             }
         }
-
-        
     }
 }

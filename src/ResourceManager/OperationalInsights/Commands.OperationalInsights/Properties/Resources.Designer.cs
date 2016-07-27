@@ -144,6 +144,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please atleast have one severity level to enable log collection..
+        /// </summary>
+        internal static string DataSourceSyslogNoSeveritySelected {
+            get {
+                return ResourceManager.GetString("DataSourceSyslogNoSeveritySelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot modify Kind while updating data source..
         /// </summary>
         internal static string DataSourceUpdateCannotModifyKind {
@@ -158,6 +167,15 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Properties {
         internal static string DataSourceUpdateCannotModifyName {
             get {
                 return ResourceManager.GetString("DataSourceUpdateCannotModifyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation.
+        /// </summary>
+        internal static string DataSourceWindowsEventNoEventTypeSelected {
+            get {
+                return ResourceManager.GetString("DataSourceWindowsEventNoEventTypeSelected", resourceCulture);
             }
         }
         

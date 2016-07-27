@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsAzureAuditDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
-        // TODO: consider use Guid type
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The azure subscription Id.")]
         [ValidateNotNullOrEmpty]

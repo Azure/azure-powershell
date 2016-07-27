@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsLinuxSyslogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The name of Linux Syslog.")]
         [ValidateNotNullOrEmpty]
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             if (CollectInformational.IsPresent) { severitySubscription.Add(new SyslogSeverityIdentifier { Severity = SyslogSeverities.info }); }
 
             if (severitySubscription.Count == 0) {
-                throw new ArgumentException("Please atleast have one severity level to enable log collection.");
+                throw new ArgumentException(Resources.DataSourceSyslogNoSeveritySelected);
             }
 
             var dsProperties = new PSLinuxSyslogDataSourceProperties

@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsWindowsEventDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
-        // Base class already take first 4 parameter position.
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The name of Windows EventLog.")]
         [ValidateNotNullOrEmpty]
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
             if (eventTypeInstances.Count == 0)
             {
-                throw new ArgumentException("Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation");
+                throw new ArgumentException(Resources.DataSourceWindowsEventNoEventTypeSelected);
             }
 
             var auditLogProperties = new PSWindowsEventDataSourceProperties
