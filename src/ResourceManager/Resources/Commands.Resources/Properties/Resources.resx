@@ -202,13 +202,13 @@
     <value>Invalid format of the resource group identifier. Expected 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}'.</value>
   </data>
   <data name="InvalidTagFormat" xml:space="preserve">
-    <value>Invalid tag format. Expect @{Name = "tagName"} or @{Name = "tagName"; Value = "tagValue"}</value>
+    <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
   </data>
   <data name="RemovingRoleAssignment" xml:space="preserve">
     <value>Removing role assignment for AD object '{0}' on scope '{1}' with role definition '{2}' </value>
   </data>
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
-    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
+    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = "tagValue1"; tagName2 = "tagValue2"}</value>
   </data>
   <data name="RoleDefinitionNotFound" xml:space="preserve">
     <value>Cannot find role definition with name '{0}'.</value>
