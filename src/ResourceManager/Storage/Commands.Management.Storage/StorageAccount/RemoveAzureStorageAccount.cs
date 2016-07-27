@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to Delete the Account")]
+        [Parameter(HelpMessage = "Force to Delete the Storage Account")]
         public SwitchParameter Force
         {
             get { return force; }
