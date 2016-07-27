@@ -223,6 +223,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
             client.TenantID = tenantId;
+            if (AzureRmProfileProvider.Instance != null &&
+                AzureRmProfileProvider.Instance.Profile != null &&
+                AzureRmProfileProvider.Instance.Profile.Context != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Tenant != null)
+            {
+                AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = Guid.Parse(client.TenantID);
+            }
             return client;
         }
 
