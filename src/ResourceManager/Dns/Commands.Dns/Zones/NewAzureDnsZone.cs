@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+
             if (this.Name.EndsWith("."))
             {
-                WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-
                 this.Name = this.Name.TrimEnd('.');
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", this.Name));
             }
