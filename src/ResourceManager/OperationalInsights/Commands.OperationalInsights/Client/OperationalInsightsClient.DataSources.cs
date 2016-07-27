@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
                 {
                     response = OperationalInsightsManagementClient.DataSources.ListNext(response.NextLink);
                 }
+                else
+                {
+                    break;
+                }
             }
             
             return dataSources;
