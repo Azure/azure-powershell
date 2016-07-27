@@ -25,8 +25,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
     [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineChefExtension)]
+        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
@@ -321,28 +320,28 @@ validation_client_name 	'{1}'
 
         private void ExecuteCommand()
         {
-            ExecuteClientAction(() =>
-            {
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Settings = this.PublicConfiguration,
-                    ProtectedSettings = this.PrivateConfiguration,
-                    Publisher = ExtensionDefaultPublisher,
-                    VirtualMachineExtensionType = this.Name,
-                    TypeHandlerVersion = this.TypeHandlerVersion,
-                    AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
-                };
+            ConfirmAction("Set Chef Extension", this.VMName,
+                () => {
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Settings = this.PublicConfiguration,
+                        ProtectedSettings = this.PrivateConfiguration,
+                        Publisher = ExtensionDefaultPublisher,
+                        VirtualMachineExtensionType = this.Name,
+                        TypeHandlerVersion = this.TypeHandlerVersion,
+                        AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
+                    };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
         }
 
         private void SetDefault()
