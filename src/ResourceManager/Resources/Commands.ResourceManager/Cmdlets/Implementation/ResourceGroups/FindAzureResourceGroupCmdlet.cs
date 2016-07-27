@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            this.WriteWarning(ProjectResources.WarnOnTags);
-
             PaginatedResponseHelper.ForEach(
                getFirstPage: () => this.GetResourceGroups(),
                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),

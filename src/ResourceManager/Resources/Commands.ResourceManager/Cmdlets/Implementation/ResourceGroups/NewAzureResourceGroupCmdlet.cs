@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(ProjectResources.WarnOnTags);
             PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters
             {
                 ResourceGroupName = Name,
