@@ -53,6 +53,8 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
     Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false} "does not exist"
 
     Assert-ThrowsContains { Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#
@@ -61,23 +63,8 @@ Gets and removes custom domain with stopped endpoint
 #>
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
-	<#
-    $endpointName = "sdktest-3d96e37e-79bd-440d-a84b-d71a8bb3bed6" 
-    $hostName = "sdktest-aef2f35e-01ca-4230-add5-5075b1506915.azureedge-test.net"  
-
-	- casoper
-	#>
-
-	<# 
-
-	So apparently the above endpoint name already exists, because it bombs when I try
-	to create it.  I don't have access to DNS for azureedge-test.net, so I can't add
-	a CNAME pointed to a different endpoint.  So I'm using my own domain to record this one...
-
-	#>
-
-    $endpointName = "camtest"  #belongs to casoper (see above)
-    $hostName = "cdn.camthegeek.com" #belongs to casoper (see above)
+    $endpointName = "sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713" 
+    $hostName = "sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net"  
 
 	$customDomainName = getAssetName
 
@@ -114,4 +101,6 @@ function Test-CustomDomainGetRemoveWithStoppedEndpoint
     Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false} "does not exist"
 
     Assert-ThrowsContains { Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+
+	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
