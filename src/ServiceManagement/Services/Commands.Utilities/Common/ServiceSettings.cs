@@ -16,6 +16,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
@@ -218,14 +219,48 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             {
                 name = globalStorageAccountName;
             }
-            // If none of previous succeed, does not set default storage name.
-            else
+            // If none of previous succeed, use service name as storage account name
+            else if (!string.IsNullOrEmpty(serviceName))
             {
-                return string.Empty;
+                name = SanitizeStorageAccountName(serviceName);
             }
 
             name = name.ToLower();
             ValidateStorageAccountName(name);
+
+            return name;
+        }
+
+        /// <summary>
+        /// Sanitize a name for use as a storage account name.
+        /// </summary>
+        /// <param name="name">The potential storage account name.</param>
+        /// <returns>The sanitized storage account name.</returns>
+        private static string SanitizeStorageAccountName(string name)
+        {
+            // Replace any non-letters or non-digits with their hex equivalent
+            StringBuilder builder = new StringBuilder(name.Length);
+            foreach (char ch in name)
+            {
+                if (char.IsLetter(ch) || char.IsDigit(ch))
+                {
+                    builder.Append(ch);
+                }
+                else
+                {
+                    builder.AppendFormat("x{0:X}", (ushort)ch);
+                }
+            }
+
+            // Trim the sanitized name to at most 24 characters.
+            name = builder.ToString(
+                0,
+                Math.Min(builder.Length, MaximumStorageAccountNameLength));
+
+            if (name.Length < 3)
+            {
+                name = name.PadRight(3, '0');
+            }
 
             return name;
         }
