@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided location is not supported.
+        /// </summary>
+        internal static string InvalidLocation {
+            get {
+                return ResourceManager.GetString("InvalidLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoleDefinition Description is invalid..
         /// </summary>
         internal static string InvalidRoleDefinitionDescription {
@@ -903,15 +912,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string WarnOnDeploymentDebugSetting {
             get {
                 return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string WarnOnTags {
-            get {
-                return ResourceManager.GetString("WarnOnTags", resourceCulture);
             }
         }
     }

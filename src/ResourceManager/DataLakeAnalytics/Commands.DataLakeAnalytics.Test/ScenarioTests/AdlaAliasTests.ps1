@@ -58,7 +58,7 @@ function Test-DataLakeAnalyticsAccount
 		Assert-True {Test-AdlAnalyticsAccount -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -306,7 +306,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		Assert-Throws {New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account
