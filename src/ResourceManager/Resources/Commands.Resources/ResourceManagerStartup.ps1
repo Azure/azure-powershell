@@ -223,9 +223,14 @@ Remove-AzureRmRoleAssignment
 
 			# Process Role definition details
             $out.RoleDefinitionId = $messageBody.properties.roleDefinitionId
+			
             if ($out.RoleDefinitionId -ne $null) {
-                if ($azureRoleDefinitionCache[$out.RoleDefinitionId]) {
-                    $out.RoleName = $azureRoleDefinitionCache[$out.RoleDefinitionId].Name
+								
+				#Extract roleDefinitionId Guid value from the fully qualified id string.
+				$roleDefinitionIdGuid= $out.RoleDefinitionId.Substring($out.RoleDefinitionId.LastIndexOf("/")+1)
+
+                if ($azureRoleDefinitionCache[$roleDefinitionIdGuid]) {
+                    $out.RoleName = $azureRoleDefinitionCache[$roleDefinitionIdGuid].Name
                 } else {
                     $out.RoleName = ""
                 }

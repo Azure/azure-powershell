@@ -31,6 +31,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyRMClient = Microsoft.Azure.Management.Resources;
+using LegacyRMSubscription = Microsoft.Azure.Subscriptions;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
@@ -52,6 +53,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public LegacyRMClient.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
+
+        public LegacyRMSubscription.SubscriptionClient LegacySubscriptionClient { get; private set; }
 
         public FeatureClient FeatureClient { get; private set; }
 
@@ -142,7 +145,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule);
+                    helper.RMResourceModule,
+                    helper.RMResourceManagerStartup,
+                    helper.RMInsightsModule);
 
                 try
                 {
@@ -169,6 +174,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             LegacyResourceManagementClient = GetLegacyResourceManagementClient();
+            LegacySubscriptionClient = GetLegacySubscriptionClient();
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
@@ -184,6 +190,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             helper.SetupManagementClients(ResourceManagementClient,
                 LegacyResourceManagementClient,
+                LegacySubscriptionClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
@@ -251,6 +258,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private LegacyRMClient.ResourceManagementClient GetLegacyResourceManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<LegacyRMClient.ResourceManagementClient>(this.csmTestFactory);
+        }
+
+        private LegacyRMSubscription.SubscriptionClient GetLegacySubscriptionClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<LegacyRMSubscription.SubscriptionClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient(MockContext context)

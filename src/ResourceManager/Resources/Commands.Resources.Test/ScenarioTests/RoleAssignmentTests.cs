@@ -37,63 +37,63 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
-
-        [Fact(Skip = "tenantID NullException")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
-
-        [Fact(Skip = "tenantID NullException")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
         }
 
-        [Fact(Skip = "Need to re-record test")]
+        [Fact(Skip = "Fix the flaky test and token error and then re-record the test.")]
         public void RaUserPermissions()
         {
             User newUser = null;
