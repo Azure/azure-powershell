@@ -30,9 +30,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             {
                 server = HttpMockServer.CreateInstance();
             }
-            catch (ApplicationException)
+            catch (InvalidOperationException)
             {
                 // mock server has never been initialized, we will need to initialize it.
+                HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
                 HttpMockServer.Initialize(className, "InitialCreation");
                 server = HttpMockServer.CreateInstance();
             }
