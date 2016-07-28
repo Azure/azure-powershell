@@ -61,8 +61,8 @@ Gets and removes custom domain with stopped endpoint
 #>
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
-    $endpointName = "sdktest-cee91bb1-996a-44f1-96e6-dceaa6707def"
-    $hostName = "sdktest-3acbafc1-3f50-4fa4-9132-6d8c944d67e9.azureedge-test.net"    
+    $endpointName = "camtest"
+    $hostName = "cdn.camthegeek.com"    
     $customDomainName = getAssetName
 
     $profileName = getAssetName

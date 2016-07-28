@@ -356,3 +356,37 @@ function Test-EndpointCrudAndActionWithStoppedEndpoint
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
+
+<#
+.SYNOPSIS
+Endpoint pipeline exercise
+#>
+function Test-EndpointPipeline
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "StandardVerizon"
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName1 = getAssetName
+	$endpointName2 = getAssetName
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+
+    
+    $createdEndpoint1 = New-AzureRmCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+    $createdEndpoint2 = New-AzureRmCdnEndpoint -EndpointName $endpointName2 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+
+	$endpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+
+	Assert-True {$endpoints.Count -eq 2}
+
+	Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint | Remove-AzureRmCdnEndpoint -Force
+
+	$deletedEndpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
+
+	Assert-True {$deletedEndpoints.Count -eq 0}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}

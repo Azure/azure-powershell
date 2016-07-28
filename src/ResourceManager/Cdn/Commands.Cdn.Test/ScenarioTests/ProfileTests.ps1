@@ -54,7 +54,7 @@ function Test-ProfileCrud
     $removed = Remove-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -80,7 +80,40 @@ function Test-ProfileDeleteAndSsoWithPiping
     $removed = Remove-AzureRmCdnProfile -CdnProfile $createdProfile -Confirm:$false -PassThru
 
     Assert-True { $removed }
-    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
+    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Profile cycle with piping multiple profiles down the pipeline
+#>
+function Test-ProfilePipeline
+{
+    $profileName1 = getAssetName
+	$profileName2 = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "StandardVerizon"
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $createdProfile1 = New-AzureRmCdnProfile -ProfileName $profileName1 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+
+    Assert-NotNull $createdProfile1
+
+	$createdProfile2 = New-AzureRmCdnProfile -ProfileName $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+
+    Assert-NotNull $createdProfile2
+
+	$profiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+
+	Assert-True { $profiles.Count -eq 2 }
+
+    Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzureRmCdnProfile -Force
+
+	$deletedProfiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+
+    Assert-True { $deletedProfiles.Count -eq 0 }
+    
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
