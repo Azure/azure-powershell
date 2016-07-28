@@ -58,11 +58,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            if(Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Resources.TagsWarning);
-            }
-
             try
             {
                 if (DataLakeStoreClient.GetAccount(ResourceGroupName, Name) != null)
