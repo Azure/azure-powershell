@@ -461,7 +461,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             switch (ParameterSetName)
             {
                 case ContainerParameterSet:
-                    if (ShouldProcess(VerbsCommon.Set, BlobName))
+                    if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
                         SetAzureBlobContent(FileName, BlobName);
                         containerName = CloudBlobContainer.Name;
@@ -471,7 +471,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     break;
 
                 case BlobParameterSet:
-                    if (ShouldProcess(VerbsCommon.Set, CloudBlob.Name))
+                    if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
                     {
                         SetAzureBlobContent(FileName, CloudBlob.Name);
                         containerName = CloudBlob.Container.Name;
@@ -482,7 +482,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
                 case ManualParameterSet:
                 default:
-                    if (ShouldProcess(VerbsCommon.Set, BlobName))
+                    if (ShouldProcess(BlobName, VerbsCommon.Set))
                     {
                         SetAzureBlobContent(FileName, BlobName);
                         containerName = ContainerName;
