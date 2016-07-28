@@ -61,9 +61,25 @@ Gets and removes custom domain with stopped endpoint
 #>
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
-    $endpointName = "camtest"
-    $hostName = "cdn.camthegeek.com"    
-    $customDomainName = getAssetName
+	<#
+    $endpointName = "sdktest-3d96e37e-79bd-440d-a84b-d71a8bb3bed6" 
+    $hostName = "sdktest-aef2f35e-01ca-4230-add5-5075b1506915.azureedge-test.net"  
+
+	- casoper
+	#>
+
+	<# 
+
+	So apparently the above endpoint name already exists, because it bombs when I try
+	to create it.  I don't have access to DNS for azureedge-test.net, so I can't add
+	a CNAME pointed to a different endpoint.  So I'm using my own domain to record this one...
+
+	#>
+
+    $endpointName = "camtest"  #belongs to casoper (see above)
+    $hostName = "cdn.camthegeek.com" #belongs to casoper (see above)
+
+	$customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
