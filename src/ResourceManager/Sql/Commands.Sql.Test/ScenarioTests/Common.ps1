@@ -62,17 +62,17 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironment ($testSuffix, $location = "West US")
+function Create-TestEnvironment ($testSuffix, $location = "West US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams $params  $location
+	Create-TestEnvironmentWithParams $params  $location $serverVersion
 }
 
 <#
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironmentWithParams ($params, $location)
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location $location
 
@@ -80,7 +80,7 @@ function Create-TestEnvironmentWithParams ($params, $location)
 	$serverLogin = "audittestusername"
 	$serverPassword = "t357ingP@s5w0rd!Audit"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
-	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion "12.0" -SqlAdministratorCredentials $credentials
+	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	New-AzureRmSqlDatabase -DatabaseName $params.databaseName  -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
 	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
 

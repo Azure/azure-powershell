@@ -20,9 +20,9 @@ Tests the default values of database's threat detection policy
 function Test-ThreatDetectionDatabaseGetDefualtPolicy
 {
 	# Setup
-	$testSuffix = 4000
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	$testSuffix = 4002
+	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try 
 	{
@@ -49,9 +49,9 @@ Tests that when modifying the properties of a databases's threat detection polic
 function Test-ThreatDetectionDatabaseUpdatePolicy
 {
 	# Setup
-	$testSuffix = 6001
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	$testSuffix = 6002
+	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -120,9 +120,9 @@ Tests that when turning off auditing or marking it as "use server default" , thr
 function Test-DisablingThreatDetection
 {
 	# Setup
-	$testSuffix = 7002
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	$testSuffix = 7005
+	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -162,10 +162,10 @@ Tests sending invalid arguments in database's threat detection
 #>
 function Test-InvalidArgumentsThreatDetection
 {
-	# Setup
-	$testSuffix = 8003
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	# Setup5
+	$testSuffix = 8009
+	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
@@ -203,9 +203,9 @@ Tests that thread detection doesn't work on 0.2 servers
 function Test-ThreatDetectionOnV2Server
 {
 	# Setup
-	$testSuffix = 5004
-	Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
-	$params = Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+	$testSuffix = 5007
+	Create-TestEnvironment $testSuffix "Japan East" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
