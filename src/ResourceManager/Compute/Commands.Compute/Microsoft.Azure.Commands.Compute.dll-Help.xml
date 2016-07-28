@@ -21448,13 +21448,17 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>WmfVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies the WMF version.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>WmfVersion</maml:name>
+        <maml:description>
+          <maml:para>
+            Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are &quot;4.0&quot;,&quot;latest&quot; and &quot;5.0&quot;.
+            A value of &quot;4.0&quot; will install WMF 4.0 Update packages (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 2012 R2, or (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 and on other versions of Windows if newer version is not already installed.
+            A value of &quot;5.0&quot; will install the latest release of WMF 5.0 (https://www.microsoft.com/en-us/download/details.aspx?id=50395). A value of &quot;5.1PP&quot; will install the WMF 5.1 preview (https://www.microsoft.com/en-us/download/details.aspx?id=53347). A value of &quot;latest&quot; will install the latest WMF, currently WMF 5.0. The default value is &quot;latest&quot;
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>DataCollection</maml:name>
 				<maml:description>
@@ -21673,18 +21677,22 @@ PS C:\&gt; Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGname -VMNa
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>WmfVersion</maml:name>
-			<maml:description>
-				<maml:para>Specifies the WMF version.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+      <maml:name>WmfVersion</maml:name>
+      <maml:description>
+        <maml:para>
+          Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are &quot;4.0&quot;,&quot;latest&quot; and &quot;5.0&quot;.
+          A value of &quot;4.0&quot; will install WMF 4.0 Update packages (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 2012 R2, or (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 and on other versions of Windows if newer version is not already installed.
+          A value of &quot;5.0&quot; will install the latest release of WMF 5.0 (https://www.microsoft.com/en-us/download/details.aspx?id=50395). A value of &quot;5.1PP&quot; will install the WMF 5.1 preview (https://www.microsoft.com/en-us/download/details.aspx?id=53347). A value of &quot;latest&quot; will install the latest WMF, currently WMF 5.0. The default value is &quot;latest&quot;
+        </maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      <dev:type>
+        <maml:name>String</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue>latest</dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>DataCollection</maml:name>
 			<maml:description>
