@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
 
     /// <summary>
@@ -214,6 +215,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage
                     Resources.InvalidBlobType,
                     blob.BlobType,
                     blob.Name));
+            }
+        }
+
+        protected bool ContainerIsEmpty(CloudBlobContainer container)
+        {
+            try
+            {
+                BlobContinuationToken blobToken = new BlobContinuationToken();
+                IEnumerator<IListBlobItem> listedBlobs = container.ListBlobsSegmented("", true, BlobListingDetails.None, 1, blobToken, RequestOptions, OperationContext).Results.GetEnumerator();
+                if (listedBlobs.MoveNext() && listedBlobs.Current != null)
+                    return false;
+                else
+                    return true;
+            }
+            catch(Exception)
+            {
+                return false;
             }
         }
 
