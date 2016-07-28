@@ -49,10 +49,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = //MockDeploymentClientFactory.GetResourceClient(
-                GetResourcesClient()
-               // )
-                ;
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
             var graphClient = GetGraphClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
