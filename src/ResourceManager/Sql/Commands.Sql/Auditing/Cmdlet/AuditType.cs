@@ -12,26 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.Auditing.Model
+namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
-    /// <summary>
-    /// The possible states in which the user server's policy property may be in
-    /// </summary>
-    public enum UseServerDefaultOptions { Enabled, Disabled }
-
-    /// <summary>
-    /// A class representing a database auditing policy
-    /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseTableAuditingPolicyModel
+    public enum AuditType
     {
-        /// <summary>
-        /// Gets or sets the database name
-        /// </summary>
-        public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the use server default property
-        /// </summary>
-        public UseServerDefaultOptions UseServerDefault { get; set; }
+        Table,
+        Blob
     }
 }

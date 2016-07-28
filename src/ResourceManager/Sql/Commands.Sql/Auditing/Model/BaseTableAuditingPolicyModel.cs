@@ -15,39 +15,16 @@
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
-    /// types of storage keys
-    /// </summary>
-    public enum StorageKeyKind { Primary, Secondary };
-
-    /// <summary>
     /// The possible audit event types
     /// </summary> 
     public enum AuditEventType { PlainSQL_Success, PlainSQL_Failure, ParameterizedSQL_Success, ParameterizedSQL_Failure, StoredProcedure_Success, StoredProcedure_Failure, Login_Success, Login_Failure, TransactionManagement_Success, TransactionManagement_Failure };
 
-    /// <summary>
-    /// The possible states in which an auditing policy may be in
-    /// </summary>
-    public enum AuditStateType { Enabled, Disabled, New };
 
     /// <summary>
     /// The base class that defines the core properties of an auditing policy
     /// </summary>
-    public abstract class BaseAuditingPolicyModel
+    public abstract class BaseTableAuditingPolicyModel : AuditingPolicyModel
     {
-        /// <summary>
-        /// Gets or sets the resource group
-        /// </summary>
-        public string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the server name
-        /// </summary>
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the storage account name
-        /// </summary>
-        public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the storage key type
@@ -60,16 +37,6 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public AuditEventType[] EventType { get; set; }
 
         /// <summary>
-        /// Gets or sets the audit state
-        /// </summary>
-        public AuditStateType AuditState { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retention days
-        /// </summary>
-        public uint? RetentionInDays { get; internal set; }
-
-        /// <summary>
         /// Gets or sets the audit logs table name 
         /// </summary>
         public string TableIdentifier { get; internal set; }
@@ -78,5 +45,16 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the full name of audit logs table 
         /// </summary>
         public string FullAuditLogsTableName { get; internal set; }
+
+        public override bool IsInUse()
+        {
+            if (AuditState == AuditStateType.New)
+            {
+                return false;
+            }
+            return (AuditState == AuditStateType.Enabled ||
+                    !string.IsNullOrEmpty(StorageAccountName) ||
+                    RetentionInDays > 0);
+        }
     }
 }
