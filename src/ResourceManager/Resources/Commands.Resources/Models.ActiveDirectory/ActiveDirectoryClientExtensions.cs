@@ -49,19 +49,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = obj.DisplayName,
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
-                    UserPrincipalName = obj.UserPrincipalName,
-                    Mail = obj.Mail
+                    UserPrincipalName = obj.UserPrincipalName
                 };
             }
-            else if (obj.ObjectType == typeof(ADGroup).Name)
+            else if (obj.ObjectType == "Group")
             {
                 return new PSADGroup()
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
                     Id = new Guid(obj.ObjectId),
-                    SecurityEnabled = obj.SecurityEnabled/*,
-                    Mail = group.Mail*/
+                    SecurityEnabled = obj.SecurityEnabled
                 };
 
             }
@@ -102,7 +100,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.Mail
+                Type = user.ObjectType
             };
         }
 
@@ -112,8 +110,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 DisplayName = group.DisplayName,
                 Id = new Guid(group.ObjectId),
-                SecurityEnabled = group.SecurityEnabled/*,
-                Mail = group.Mail*/
+                SecurityEnabled = group.SecurityEnabled,
+                Type = group.ObjectType
             };
         }
 
