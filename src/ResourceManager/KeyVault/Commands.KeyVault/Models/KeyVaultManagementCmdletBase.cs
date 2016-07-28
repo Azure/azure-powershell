@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             IResourceManagementClient armClient = this.ResourcesClient.ResourceManagementClient;
 
             PSTagValuePair tagValuePair = new PSTagValuePair();
-            if (tag != null)
+            if (tag != null && tag.Count > 0)
             {
                 tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null)

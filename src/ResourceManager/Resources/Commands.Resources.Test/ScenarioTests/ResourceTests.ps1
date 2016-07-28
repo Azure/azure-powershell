@@ -29,7 +29,7 @@ function Test-CreatesNewSimpleResource
 	# Test
 	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
         #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-        $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
+        $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
 	$expected = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 	
 	$list = Get-AzureRmResource -ResourceGroupName $rgname

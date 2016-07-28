@@ -23,7 +23,7 @@ function Test-RecordSetCrud
     $resourceGroup = TestSetup-CreateResourceGroup
 	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
-	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
+	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{ tag1 ="val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-NotNull $createdRecord.Etag
@@ -47,7 +47,7 @@ function Test-RecordSetCrud
 	# Assert-AreEqual 100 $createdRecord.Ttl
 
 	# TODO: change and pipe in retrievedRecord, not createdRecord but this is currently broken by a service bug
-	$createdRecord.Metadata = @{Name="tag1";Value="val1"},@{Name="tag2";Value="val2"}
+	$createdRecord.Metadata = @{ tag1 = "val1"; tag2 = "val2"}
 	$createdRecord.Ttl = 1300
 	$updatedRecord = $createdRecord | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
 
@@ -97,7 +97,7 @@ function Test-RecordSetCrudTrimsDotFromZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
-	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
+	$createdRecord = New-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-AreEqual $zoneName $createdRecord.ZoneName 
@@ -135,7 +135,7 @@ function Test-RecordSetCrudWithPiping
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
-    $updatedRecord = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"} | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
+    $updatedRecord = TestSetup-CreateResourceGroup | New-AzureRmDnsZone -Name $zoneName | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{tag1 = "val1"} | Add-AzureRmDnsRecordConfig -Ipv4Address 13.13.0.13 | Set-AzureRmDnsRecordSet
 
 	Assert-NotNull $updatedRecord
 	Assert-NotNull $updatedRecord.Etag
@@ -171,7 +171,7 @@ function Test-RecordSetCrudWithPipingTrimsDotFromZoneName
 	$zoneObjectWithDot.Name = $zoneNameWithDot
 	$zoneObjectWithDot.ResourceGroupName = $zone.ResourceGroupName
 	
-	$createdRecord = $zoneObjectWithDot | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{Name="tag1";Value="val1"}
+	$createdRecord = $zoneObjectWithDot | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -Metadata @{ tag1 ="val1"}
 
 	Assert-NotNull $createdRecord
 	Assert-AreEqual $recordName $createdRecord.Name 

@@ -7428,7 +7428,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Tag</maml:name>
         <maml:description>
-          <maml:para>The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.</maml:para>
+          <maml:para>The tag filter for the OData query. The expected format is @{tagName=$null} or @{tagName = 'tagValue'}.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -11594,7 +11594,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <maml:description>
           <maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a name and an optional value. To specify a new tag, use a hash table, such as @{FY2015=$null} or @{Department=&quot;IT&quot;}. To specify multiple tags, put them in one hash table, such as  -Tag @{FY2015=$null;Department=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
           <maml:name>Hashtable</maml:name>
           <maml:uri/>
@@ -12983,7 +12983,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
           Department  IT
 
 
-          PS C:\&gt;$tags += @{Name="Status";Value="Approved"}, @{Name="FY2016"}
+          PS C:\&gt;$tags += @{Status="Approved";FY2016=$null}
 
           PS C:\&gt;Set-AzureRmResourceGroup -Name ContosoRG -Tag $tags
 
@@ -14093,7 +14093,7 @@ Tags              :</dev:code>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResource -Tag @{Name="Department";Value="IT"}</dev:code>
+        <dev:code>PS C:\&gt;Get-AzureRmResource -Tag @{Department="IT"}</dev:code>
         <dev:remarks>
           <maml:para>This command gets resources that have a tag named "Department with a value of "IT".</maml:para>
           <maml:para />
@@ -14210,9 +14210,9 @@ Tags:
 			<maml:description>
 				<maml:para>Applies the specified tags to the new resource. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>hashtable[]</maml:name>
+				<maml:name>hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
