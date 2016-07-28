@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Name { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtables which represents resource tags.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
         [Alias("ResourceGroupId", "ResourceId")]
