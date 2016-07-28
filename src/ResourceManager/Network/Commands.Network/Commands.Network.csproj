@@ -72,8 +72,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=5.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.5.0.1-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=6.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.6.0.1-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
@@ -162,6 +162,12 @@
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
     <Compile Include="ApplicationGateway\ApplicationGatewayChildResourceHelper.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\AddAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\AzureApplicationGatewayAuthenticationCertificateBase.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\GetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\NewAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\RemoveAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AuthenticationCertificate\SetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AddAzureApplicationGatewayBackendAddressPoolCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AzureApplicationGatewayBackendAddressPoolBase.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\GetAzureApplicationGatewayBackendAddressPoolCommand.cs" />
@@ -226,6 +232,10 @@
     <Compile Include="ApplicationGateway\SslCertificate\NewAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\RemoveAzureApplicationGatewaySslCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\SslCertificate\SetAzureApplicationGatewaySslCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\SslPolicy\AzureApplicationGatewaySslPolicyBase.cs" />
+    <Compile Include="ApplicationGateway\SslPolicy\GetAzureApplicationGatewaySslPolicyCommand.cs" />
+    <Compile Include="ApplicationGateway\SslPolicy\NewAzureApplicationGatewaySslPolicyCommand.cs" />
+    <Compile Include="ApplicationGateway\SslPolicy\SetAzureApplicationGatewaySslPolicyCommand.cs" />
     <Compile Include="ApplicationGateway\StartAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\StopAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\AddAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
@@ -235,7 +245,7 @@
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
-    <Compile Include="Common\NetworkClient.cs" />	
+    <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
@@ -265,6 +275,8 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
+    <Compile Include="Models\PSApplicationGatewaySslPolicy.cs" />
     <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
@@ -286,9 +298,7 @@
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
-
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
-
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
     <Compile Include="Models\PSPeeringConfig.cs" />
