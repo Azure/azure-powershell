@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if (Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
-            }
-
             DataLakeStoreAccountInfo defaultAccount = null;
             if (!string.IsNullOrEmpty(DefaultDataLakeStore))
             {

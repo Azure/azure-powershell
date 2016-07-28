@@ -40,13 +40,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <returns>A BatchAccountContext object representing the new account</returns>
         public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autoStorageAccountId)
         {
-            // use the group lookup to validate whether account already exists. We don't care about the returned
-            // group name nor the exception
-            if (GetGroupForAccountNoThrow(accountName) != null)
-            {
-                throw new CloudException(Resources.AccountAlreadyExists);
-            }
-
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
 
             AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(autoStorageAccountId)) ? null : new AutoStorageBaseProperties
