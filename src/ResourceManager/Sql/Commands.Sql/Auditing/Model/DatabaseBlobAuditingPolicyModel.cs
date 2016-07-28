@@ -15,23 +15,13 @@
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
 {
     /// <summary>
-    /// The possible states in which the user server's policy property may be in
+    /// The class that defines the model of database blob auditing policy
     /// </summary>
-    public enum UseServerDefaultOptions { Enabled, Disabled }
-
-    /// <summary>
-    /// A class representing a database auditing policy
-    /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseTableAuditingPolicyModel
+    public class DatabaseBlobAuditingPolicyModel : BaseBlobAuditingPolicyModel
     {
         /// <summary>
         /// Gets or sets the database name
         /// </summary>
         public string DatabaseName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the use server default property
-        /// </summary>
-        public UseServerDefaultOptions UseServerDefault { get; set; }
     }
 }
