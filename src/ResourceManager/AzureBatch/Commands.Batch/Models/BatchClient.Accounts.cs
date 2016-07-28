@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 using CloudException = Hyak.Common.CloudException;
 
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <returns>A BatchAccountContext object representing the new account</returns>
         public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autoStorageAccountId)
         {
-            Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
+            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
             AutoStorageBaseProperties autoStorage = (string.IsNullOrEmpty(autoStorageAccountId)) ? null : new AutoStorageBaseProperties
             {
@@ -74,8 +75,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);
-
+            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
+            
             // need to the location in order to call
             var getResponse = BatchManagementClient.Account.Get(resourceGroupName, accountName);
 
