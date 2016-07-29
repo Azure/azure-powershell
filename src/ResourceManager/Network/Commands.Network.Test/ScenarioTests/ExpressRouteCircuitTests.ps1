@@ -194,6 +194,8 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
 		Assert-AreEqual "22" $p.VlanId
 		Assert-Null $p.MicrosoftPeeringConfig
+		Assert-Null $p.GatewayManagerEtag
+		Assert-Null $p.LastModifiedBy
 
 		# List peering
 		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
@@ -208,6 +210,7 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
 		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
 		Assert-AreEqual "33" $p.VlanId
+		Assert-Null $p.GatewayManagerEtag
 		
 		#set public peering
 	    $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePublicPeering -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 55  | Set-AzureRmExpressRouteCircuit 
