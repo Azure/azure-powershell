@@ -393,6 +393,9 @@
     <None Include="Profile\NewAzureProfileTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureProfileTests\TestSelectDefaultProfile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Test.Profile.SelectAzureProfileTests\TestMakeArmCallWithCreatedProfile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -326,9 +326,6 @@
     <None Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="ScenarioTests\DataMaskingTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
