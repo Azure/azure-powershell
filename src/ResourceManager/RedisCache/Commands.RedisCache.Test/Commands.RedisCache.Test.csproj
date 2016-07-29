@@ -230,6 +230,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestRedisCache.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestMaxMemoryPolicyErrorCheck.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests.RedisCacheTests\TestRedisCacheClustering.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
