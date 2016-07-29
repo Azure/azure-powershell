@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -59,7 +61,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure SQL Database Replication Link")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable[] Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group of the secondary.
@@ -142,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryServiceObjectiveName = this.SecondaryServiceObjectiveName,
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
-                Tags = this.Tags,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
             });
             return newEntity;
         }

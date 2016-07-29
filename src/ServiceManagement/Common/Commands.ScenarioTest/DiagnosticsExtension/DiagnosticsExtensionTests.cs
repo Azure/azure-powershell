@@ -91,5 +91,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Test-AzureServiceDiagnosticsExtensionConfigurationArray");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.DiagnosticsExtension)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestAzureServiceDiagnosticsExtensionWrongServiceName()
+        {
+            this.RunPowerShellTest("Test-AzureServiceDiagnosticsExtensionWrongServiceName");
+        }
     }
 }
