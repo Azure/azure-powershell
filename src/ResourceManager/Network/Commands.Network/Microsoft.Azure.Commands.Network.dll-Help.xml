@@ -169,8 +169,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -6963,7 +6962,7 @@ Subnets           : []</dev:code>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>Creates a peering between 2 virtual networks</maml:para>
+		<maml:para />
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -7178,6 +7177,68 @@ Subnets           : []</dev:code>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Create a peering between 2 virtual networks  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $vnet1 = Get-AzureRmVirtualNetwork –ResourceGroupName “MyResourceGroup” -Name vnet1
+PS C:\&gt; $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName “MyResourceGroup” -Name vnet2
+PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name LinkToVNet2 -VirtualNetwork “MyVirtualNetwork” -RemoteVirtualNetworkId $vnet2.id
+PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name LinkToVNet1 -VirtualNetwork “MyVirtualNetwork” -RemoteVirtualNetworkId $vnet1.id
+</dev:code>
+			<dev:remarks>
+				<maml:para>The first command gets a virtual network object called vnet1 associated with resource group “MyResourceGroup”. Similarly, the second command gets a virtual network object called vnet2 associated with the same resource group. The third command then adds a Vnet peering link from vnet1 to vnet2. This link is named LinkToVnet2. Finally, the forth command adds a link from vnet2 to vnet1 called LinkToVnet1. Note that vnet1 and vnet2 are assumed to be previously created in this example. Note that a link must be created from vnet1 to vnet2 and vice versa in order for peering to work.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Below is example output for this example:
+
+Name                             : LinkToVNet2
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/provi
+                                   ders/Microsoft.Network/virtualNetworks/MyVirtualNetwork/virtualNetworkPeerings/LinkToVNet2                     
+Etag                             : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGroupName                : MyResourceGroup
+VirtualNetworkName               : MyVirtualNetwork
+ProvisioningState                : Succeeded
+RemoteVirtualNetwork             : {
+                                     &quot;Id&quot;: &quot;/subscriptions/XXX/resourceGroups/MyResourceGroup
+                                   /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork&quot;
+                                   }
+AllowVirtualNetworkAccess        : True
+AllowForwardedTraffic            : False
+AllowGatewayTransit              : False
+UseRemoteGateways                : False
+RemoteGateways                   : null
+RemoteVirtualNetworkAddressSpace : null
+
+
+
+Name                             : LinkToVNet1
+Id                               : /subscriptions/XXXX/resourceGroups/MyResourceGroup/provi
+                                   ders/Microsoft.Network/virtualNetworks/MyVirtualNetwork/virtualNetworkPeerings/LinkToVNet1                     
+Etag                             : W/&quot;XXX&quot;
+ResourceGroupName                : MyResourceGroup
+VirtualNetworkName               : MyVirtualNetwork
+ProvisioningState                : Succeeded
+RemoteVirtualNetwork             : {
+                                     &quot;Id&quot;: &quot;/subscriptions/XXX/resourceGroups/MyResourceGroup
+                                   /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork&quot;
+                                   }
+AllowVirtualNetworkAccess        : True
+AllowForwardedTraffic            : False
+AllowGatewayTransit              : False
+UseRemoteGateways                : False
+RemoteGateways                   : null
+RemoteVirtualNetworkAddressSpace : null</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -15743,7 +15804,7 @@ Subnets           : [
 	<command:details>
 		<command:name>Get-AzureRmVirtualNetworkPeering</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Gets a Virtual Network Peering to view the status of VNet peering link</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -15892,6 +15953,47 @@ Subnets           : [
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Get a peering between 2 virtual networks    --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetwork “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets a previously created Virtual Network Peering called “LinkToVNet2” located in “MyVirtualNetwork” within the resource group called “MyResourceGroup”</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------    --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code></dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -26469,8 +26571,7 @@ Direction                : Inbound</maml:para>
 				<maml:name>AllocationMethod</maml:name>
 				<maml:description>
 					<maml:para>Specifies the method with which to allocate the public IP address. The acceptable values for this parameter are:Static or Dynamic.
-If it is specified as &#39;Static&#39;, a public IP address is immediately allocated. If it is specified as &#39;Dynamic&#39;, a public IP address gets allocated only when you start (or create) the associated resource (like a VM or load balancer).
-</maml:para>
+If it is specified as &#39;Static&#39;, a public IP address is immediately allocated. If it is specified as &#39;Dynamic&#39;, a public IP address gets allocated only when you start (or create) the associated resource (like a VM or load balancer).</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -26485,8 +26586,7 @@ If it is specified as &#39;Static&#39;, a public IP address is immediately alloc
 				<maml:name>DomainNameLabel</maml:name>
 				<maml:description>
 					<maml:para>Specifies the relative DNS name for a public IP address.
-A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointing to the public IP address of this resource, if the FQDN is available. If not, the command fails to create a public IP address resource. 
-</maml:para>
+A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointing to the public IP address of this resource, if the FQDN is available. If not, the command fails to create a public IP address resource.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -26494,8 +26594,7 @@ A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointi
 				<maml:name>ReverseFqdn</maml:name>
 				<maml:description>
 					<maml:para>Specifies a reverse fully qualified domain name (FQDN).
-Azure creates a DNS PTR record (reverse-lookup) for the public IP address allocated to this resource, pointing to the FQDN specified by this parameter. As a pre-requisite, the FQDN should have a DNS CNAME record (forward-lookup) pointing to $DomainNameLabel.$location.cloudapp.azure.com (where $DomainNameLabel is the value provided for -DomainNameLabel parameter).
-</maml:para>
+Azure creates a DNS PTR record (reverse-lookup) for the public IP address allocated to this resource, pointing to the FQDN specified by this parameter. As a pre-requisite, the FQDN should have a DNS CNAME record (forward-lookup) pointing to $DomainNameLabel.$location.cloudapp.azure.com (where $DomainNameLabel is the value provided for -DomainNameLabel parameter).</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -26592,8 +26691,7 @@ For additional information on this, refer to https://azure.microsoft.com/en-us/d
 			<maml:name>AllocationMethod</maml:name>
 			<maml:description>
 				<maml:para>Specifies the method with which to allocate the public IP address. The acceptable values for this parameter are:Static or Dynamic.
-If it is specified as &#39;Static&#39;, a public IP address is immediately allocated. If it is specified as &#39;Dynamic&#39;, a public IP address gets allocated only when you start (or create) the associated resource (like a VM or load balancer).
-</maml:para>
+If it is specified as &#39;Static&#39;, a public IP address is immediately allocated. If it is specified as &#39;Dynamic&#39;, a public IP address gets allocated only when you start (or create) the associated resource (like a VM or load balancer).</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -26618,8 +26716,7 @@ If it is specified as &#39;Static&#39;, a public IP address is immediately alloc
 			<maml:name>DomainNameLabel</maml:name>
 			<maml:description>
 				<maml:para>Specifies the relative DNS name for a public IP address.
-A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointing to the public IP address of this resource, if the FQDN is available. If not, the command fails to create a public IP address resource. 
-</maml:para>
+A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointing to the public IP address of this resource, if the FQDN is available. If not, the command fails to create a public IP address resource.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -26632,8 +26729,7 @@ A DNS record is created for $DomainNameLabel.$location.cloudapp.azure.com pointi
 			<maml:name>ReverseFqdn</maml:name>
 			<maml:description>
 				<maml:para>Specifies a reverse fully qualified domain name (FQDN).
-Azure creates a DNS PTR record (reverse-lookup) for the public IP address allocated to this resource, pointing to the FQDN specified by this parameter. As a pre-requisite, the FQDN should have a DNS CNAME record (forward-lookup) pointing to $DomainNameLabel.$location.cloudapp.azure.com (where $DomainNameLabel is the value provided for -DomainNameLabel parameter).
-</maml:para>
+Azure creates a DNS PTR record (reverse-lookup) for the public IP address allocated to this resource, pointing to the FQDN specified by this parameter. As a pre-requisite, the FQDN should have a DNS CNAME record (forward-lookup) pointing to $DomainNameLabel.$location.cloudapp.azure.com (where $DomainNameLabel is the value provided for -DomainNameLabel parameter).</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -36285,7 +36381,7 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 	<command:details>
 		<command:name>Remove-AzureRmVirtualNetworkPeering</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Deletes a Virtual network Peering that has been previously created</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -36510,6 +36606,28 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Delete a Virtual Network Peering  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Remove-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetworkName “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command deletes a previously created Virtual Network Peering called “LinkToVNet2” located in “MyVirtualNetwork” within the resource group called “MyResourceGroup”
+</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -45039,7 +45157,7 @@ Refer to New-AzureRmPublicIpAddress detailed help for possible parameters that c
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1: Change allocation method of a public IP address   --------------------------</maml:title>
+			<maml:title>--------------------------  1: Change allocation method of a public IP address  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -45047,14 +45165,11 @@ Refer to New-AzureRmPublicIpAddress detailed help for possible parameters that c
 PS C:\&gt; $publicIp.PublicIpAllocationMethod = &quot;Dynamic&quot;
 
 PS C:\&gt; Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
-PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
-
-</dev:code>
+PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName</dev:code>
 			<dev:remarks>
 				<maml:para>First command gets the public IP address resource with name $publicIPName in the resource group $rgName.
 Second command sets the allocation method of the public IP address object to &quot;Static&quot;.
-Set-AzureRmPublicIPAddress command updates the public IP address resource with the updated object, and modifies the allocation method to &#39;Static&#39;. A public IP address gets allocated immediately.
-</maml:para>
+Set-AzureRmPublicIPAddress command updates the public IP address resource with the updated object, and modifies the allocation method to &#39;Static&#39;. A public IP address gets allocated immediately.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>--- $publicIp before change  ---
@@ -45110,9 +45225,7 @@ DnsSettings              : {
 PS C:\&gt; $publicIp.DnsSettings.DomainNameLabel = &quot;newdnsprefix&quot;
 
 PS C:\&gt; Set-AzureRmPublicIpAddress -PublicIpAddress $publicIp
-PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName 
-
-</dev:code>
+PS C:\&gt; $publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName</dev:code>
 			<dev:remarks>
 				<maml:para>First command gets the public IP address resource with name $publicIPName in the resource group $rgName.
 Second command sets the DomainNameLabel property to the required dns prefix.
@@ -47010,6 +47123,97 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -Asn 1337
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Changing forward traffic configuration of a Virtual Network Peering  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
+PS C:\&gt; $LinkToVNet2.AllowForwardedTraffic = $true
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+</dev:code>
+			<dev:remarks>
+				<maml:para>This example shows how to change the forwarded traffic configuration to true instead of the default false option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable property to true. The final command changes the setting for the “LinkToVNet2” virtual network peering link to true.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2 Changing Virtual Network Access of a Virtual Network Peering  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
+PS C:\&gt; $LinkToVNet2.AllowVirtualNetworkAccess = $false
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+</dev:code>
+			<dev:remarks>
+				<maml:para>This example shows how to change the Virtual Network Access property configuration to false instead of the default true option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable associated with the property to false. The final command changes the setting for the “LinkToVNet2” virtual network peering link to false.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 3 Changing Gateway Transit property configuration of a Virtual Network Peering  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
+PS C:\&gt; $LinkToVNet2.AllowGatewayTransit = $true
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
+</dev:code>
+			<dev:remarks>
+				<maml:para>This example shows how to change the gateway transit property configuration to true instead of the default false option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable associated with this property to true. The final command changes the setting for the “LinkToVNet2” virtual network peering link to true. By changing this property to true, the peer VNet is allowed to use your VNet gateway.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 4 Making use of remote gateways in Virtual Network Peering  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
+PS C:\&gt; $LinkToVNet2.UseRemoteGateways = $true
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2</dev:code>
+			<dev:remarks>
+				<maml:para>This example shows how to change the remote gateway configuration to true instead of the default false option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command changes the configuration to true. The final command changes the setting for the “LinkToVNet2” virtual network peering link to true. By changing this property to true, your peer’s VNet gateway can be used. However, the peer VNet must have a gateway configured and AllowGatewayTransit must be configured to true. This property cannot be utilized if a gateway has already been configured previously.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -47307,6 +47511,7 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<dev:remarks>
 				<maml:para>This example creates a virtual network with one subnet. Then is calls Set-AzureRmVirtualNetworkSubnetConfig to modify the AddressPrefix of the subnet. This only impacts the in-memory representation of the virtual network. Set-AzureRmVirtualNetwork is then called to modify the virtual network in Azure.</maml:para>
 				<maml:para />
+				<maml:para />
 				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
@@ -47331,6 +47536,7 @@ Set-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -VirtualNetwork $virt
 $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<dev:remarks>
 				<maml:para>This example creates a resource group with one virtual network containing just one subnet. It then creates a network security group with an allow rule for RDP traffic. The Set-AzureRmVirtualNetworkSubnetConfig cmdlet is used to modify the in-memory representation of the frontend subnet so that it points to the newly created network security group. The Set-AzureRmVirtualNetwork cmdlet is then called to write the modified state back to the service.</maml:para>
+				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
 			</dev:remarks>
