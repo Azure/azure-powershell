@@ -17,9 +17,8 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+    public class CreatePSDataSourceParameters : UpdatePSDataSourceParameters
     {
-        public string StorageAccountResourceId { get; set; }
 
         public bool Force { get; set; }
 

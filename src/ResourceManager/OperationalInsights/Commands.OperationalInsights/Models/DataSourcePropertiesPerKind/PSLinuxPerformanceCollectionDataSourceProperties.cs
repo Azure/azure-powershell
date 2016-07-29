@@ -12,17 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+
+    public class PSLinuxPerformanceCollectionDataSourceProperties : PSDataSourcePropertiesBase
     {
-        public string StorageAccountResourceId { get; set; }
+        [JsonIgnore]
+        public override string Kind { get { return PSDataSourceKinds.LinuxPerformanceCollection; } }
 
-        public bool Force { get; set; }
-
-        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
+        [JsonProperty(PropertyName = "state")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CollectionState State { get; set; }
     }
+
 }

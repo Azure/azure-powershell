@@ -12,17 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System;
-using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+    public abstract class NewAzureOperationalInsightsDataSourceBaseCmdlet : AzureOperationalInsightsDataSourceBaseCmdlet
     {
-        public string StorageAccountResourceId { get; set; }
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The data source name.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
-        public bool Force { get; set; }
+        protected void CreatePSDataSourceWithProperties(PSDataSourcePropertiesBase createParameters)
+        {
+            CreatePSDataSourceWithProperties(createParameters, this.Name);
+        }
 
-        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }
