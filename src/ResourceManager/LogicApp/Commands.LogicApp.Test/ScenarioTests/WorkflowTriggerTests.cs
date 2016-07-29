@@ -52,6 +52,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureLogicAppTriggerCallbackUrl()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerCallbackUrl");
+        }
+
+        /// <summary>
         /// Test Start-AzureLogicAppTrigger command to run the trigger of the workflow.
         /// </summary>
         [Fact]
