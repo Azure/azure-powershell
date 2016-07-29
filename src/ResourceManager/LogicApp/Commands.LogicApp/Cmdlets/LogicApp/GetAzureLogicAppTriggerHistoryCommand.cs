@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

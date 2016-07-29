@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates a LogicApp workflow 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof (object))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmLogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof (object))]
     public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
@@ -42,19 +42,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         private object _definition = string.Empty;
 
         /// <summary>
-        /// Default value for the workflow definition Uri
-        /// </summary>
-        private string _definitionUri = string.Empty;
-
-        /// <summary>
         /// Default value for the workflow parameters
         /// </summary>
         private object _parameters = string.Empty;
-
-        /// <summary>
-        /// Default value for the workflow parameters Uri
-        /// </summary>
-        private string _parametersUri = string.Empty;
 
         #endregion private Variables
 
@@ -66,12 +56,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "App service plan name.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, HelpMessage = "App service plan name.", ValueFromPipelineByPropertyName = true, ParameterSetName = "HostingPlan")]
         [ValidateNotNullOrEmpty]
         public string AppServicePlan { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Use consumption based model.", ParameterSetName = "Consumption")]
+        public SwitchParameter UseConsumptionModel { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The state of the workflow.")]
         [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
@@ -81,17 +75,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             get { return this._status; }
             set { this._status = value; }
         }
-
-        [Parameter(Mandatory = false, HelpMessage = "The URI link to the workflow definition.")]
-        public string DefinitionLinkUri
-        {
-            get { return this._definitionUri; }
-            set { this._definitionUri = value; }
-        }
-
-        [Parameter(Mandatory = false, HelpMessage = "The content version of the definition link.")]
-        [ValidateNotNullOrEmpty]
-        public string DefinitionLinkContentVersion { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.")]
         public object Definition
@@ -104,16 +87,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string DefinitionFilePath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The parameters link Uri.")]
-        public string ParameterLinkUri
-        {
-            get { return this._parametersUri; }
-            set { this._parametersUri = value; }
-        }
-
-        [Parameter(Mandatory = false, HelpMessage = "The parameters link Uri content version.")]
+        [Parameter(Mandatory = false, HelpMessage = "The integration account id of the workflow.")]
         [ValidateNotNullOrEmpty]
-        public string ParameterLinkContentVersion { get; set; }
+        public string IntegrationAccountId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The parameters parameter for the logic app.")]
         public object Parameters
@@ -154,6 +130,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 workflow.Definition = CmdletHelper.GetDefinitionFromFile(this.TryResolvePath(this.DefinitionFilePath));
             }
 
+            if (!string.IsNullOrEmpty(this.IntegrationAccountId))
+            {
+                workflow.IntegrationAccount = new ResourceReference(this.IntegrationAccountId);
+            }
+
             if (this.Parameters == null)
             {
                 workflow.Parameters = null;
@@ -168,38 +149,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 workflow.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
 
-            if (this.DefinitionLinkUri == null)
-            {
-                workflow.DefinitionLink = null;
-            }
-            else if (this.DefinitionLinkUri != string.Empty)
-            {
-                workflow.DefinitionLink = new ContentLink
-                {
-                    Uri = this.DefinitionLinkUri,
-                    ContentVersion = this.DefinitionLinkContentVersion
-                };
-            }
-
-            if (this.ParameterLinkUri == null)
-            {
-                workflow.ParametersLink = null;
-            }
-            else if (this.ParameterLinkUri != string.Empty)
-            {
-                workflow.ParametersLink = new ContentLink
-                {
-                    Uri = this.ParameterLinkUri,
-                    ContentVersion = this.ParameterLinkContentVersion
-                };
-            }
-
             if (!string.IsNullOrEmpty(this.State))
             {
                 workflow.State = (WorkflowState) Enum.Parse(typeof (WorkflowState), this.State);
             }
 
-            if (!string.IsNullOrEmpty(this.AppServicePlan))
+            if (UseConsumptionModel.IsPresent)
+            {
+                workflow.Sku = null;
+            }
+            else if (!string.IsNullOrEmpty(this.AppServicePlan))
             {
                 var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
                 workflow.Sku = new Sku
@@ -212,7 +171,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 };
             }
 
-            if (workflow.DefinitionLink == null && workflow.Definition == null)
+            if (workflow.Definition == null)
             {
                 throw new PSArgumentException(Properties.Resource.DefinitionMissingWarning);
             }

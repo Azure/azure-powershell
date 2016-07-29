@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.QueueStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.QueueStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -38,9 +38,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
-
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
@@ -78,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ShouldProcess(policyName, "Remove policy"))
             {
                 queuePermissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetPermissions(queue, queuePermissions);
@@ -87,10 +84,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
             return success;
         }
-        internal virtual bool ConfirmRemove(string message)
-        {
-            return ShouldProcess(message);
-        }
 
         /// <summary>
         /// Execute command
@@ -98,8 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
-
             if (String.IsNullOrEmpty(Queue) || String.IsNullOrEmpty(Policy)) return;
             bool success = RemoveAzureQueueStoredAccessPolicy(Channel, Queue, Policy);
             string result = string.Empty;

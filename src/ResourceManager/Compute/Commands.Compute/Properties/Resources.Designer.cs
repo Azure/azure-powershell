@@ -261,6 +261,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string ChefExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         public static string CreatingStorageAccountForBootDiagnostics {

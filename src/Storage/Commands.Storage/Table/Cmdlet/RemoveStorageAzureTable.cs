@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// <summary>
     /// remove an azure table
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Table, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Table, SupportsShouldProcess = true),
         OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
            ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the table without confirmation")]
+        [Parameter(HelpMessage = "Force to remove the table and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ResourceNotFoundException(String.Format(Resources.TableNotFound, name));
             }
 
-            if (force || ConfirmRemove(name))
+            if (force || TableIsEmpty(table) || ShouldContinue(string.Format("Remove table and all content in it: {0}", name), ""))
             {
                 Channel.Delete(table, requestOptions, OperationContext);
                 return true;
@@ -113,23 +113,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            string result = string.Empty;
-            bool success = RemoveAzureTable(Name);
-
-            if (success)
+            if (ShouldProcess(Name, "Remove table"))
             {
-                result = String.Format(Resources.RemoveTableSuccessfully, Name);
-            }
-            else
-            {
-                result = String.Format(Resources.RemoveTableCancelled, Name);
-            }
+                string result = string.Empty;
+                bool success = RemoveAzureTable(Name);
 
-            WriteVerbose(result);
+                if (success)
+                {
+                    result = String.Format(Resources.RemoveTableSuccessfully, Name);
+                }
+                else
+                {
+                    result = String.Format(Resources.RemoveTableCancelled, Name);
+                }
 
-            if (PassThru)
-            {
-                WriteObject(success);
+                WriteVerbose(result);
+
+                if (PassThru)
+                {
+                    WriteObject(success);
+                }
             }
         }
     }
