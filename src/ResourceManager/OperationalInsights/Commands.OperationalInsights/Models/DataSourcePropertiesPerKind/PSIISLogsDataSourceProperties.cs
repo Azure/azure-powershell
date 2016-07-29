@@ -12,17 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class CreatePSStorageInsightParameters : UpdatePSStorageInsightParameters
+
+    public class PSIISLogsDataSourceProperties: PSDataSourcePropertiesBase
     {
-        public string StorageAccountResourceId { get; set; }
+        [JsonIgnore]
+        public override string Kind { get { return PSDataSourceKinds.IISLogs; } }
 
-        public bool Force { get; set; }
+        /// <summary>
+        /// Whether to enable IISLog collection on Windows computers.
+        /// </summary>
+        [JsonProperty(PropertyName="state")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public IISLogState State { get; set; }
+    }
 
-        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
+    public enum IISLogState {
+        OnPremiseEnabled,
+        OnPremiseDisabled
     }
 }
