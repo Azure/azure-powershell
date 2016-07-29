@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCaptureNegative()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCaptureNegative");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");

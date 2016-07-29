@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.ShareStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.ShareStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -42,17 +42,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
-
-        internal virtual bool ConfirmRemove(string message)
-        {
-            return ShouldProcess(message);
-        }
-
+        
         internal bool RemoveAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             bool success = false;
@@ -68,7 +60,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ShouldProcess(policyName, "Remove policy"))
             {
                 permissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetSharePermissions(share, permissions);
@@ -84,8 +76,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Force parameter in this cmdlet will be removed in a future release.");
-
             bool success = RemoveAzureShareStoredAccessPolicy(Channel, ShareName, Policy);
             string result = string.Empty;
 

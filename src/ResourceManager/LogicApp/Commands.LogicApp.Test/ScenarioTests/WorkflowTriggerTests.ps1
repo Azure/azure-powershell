@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$WORKFLOW_LOCATION = 'westus'
+
 <#
 .SYNOPSIS
 Test Get-AzureRmLogicAppTrigger for workflow triggers and test to get trigger by name
@@ -26,7 +28,7 @@ function Test-GetAzureLogicAppTrigger
 	$workflowName = getAssetname	
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 
 	$workflowTrigger = Get-AzureRmLogicAppTrigger -ResourceGroupName $resourceGroupName -Name $workflowName		    
 	Assert-NotNull $workflowTrigger	
@@ -49,7 +51,7 @@ function Test-GetAzureLogicAppTriggerHistory
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
 	[int]$counter = 0
 	do {
@@ -69,6 +71,32 @@ function Test-GetAzureLogicAppTriggerHistory
 
 <#
 .SYNOPSIS
+Test Get-AzureRmLogicAppTriggerCallbackUrl command to get workflow trigger callback URL
+#>
+function Test-GetAzureLogicAppTriggerCallbackUrl
+{	
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	$workflowName = getAssetname		
+	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"
+		
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	
+	[int]$counter = 0
+	do {
+		SleepInRecordMode 2000
+		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
+	
+	$callbackUrlString = Get-AzureRmLogicAppTriggerCallbackUrl -ResourceGroupName $resourceGroupName -Name $workflowName -TriggerName "manualTrigger"
+	Assert-NotNull $callbackUrlString
+}
+
+<#
+.SYNOPSIS
 Test Start-AzureRmLogicAppTrigger command to run workflow trigger
 #>
 function Test-StartAzureLogicAppTrigger
@@ -81,7 +109,7 @@ function Test-StartAzureLogicAppTrigger
 	$workflowName = getAssetname	
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 	
 	[int]$counter = 0
 	do {
