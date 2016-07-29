@@ -20,8 +20,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks
     public enum LockLevel
     {
         /// <summary>
-        /// The cannot delete lock.
+        /// The lock blocks delete.
         /// </summary>
         CanNotDelete,
+
+        /// <summary>
+        /// The lock blocks all updates and delete.
+        /// </summary>
+        ReadOnly
     }
 }

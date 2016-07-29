@@ -112,6 +112,33 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
+        /// Gets the given version of a workflow by name from given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="versionId">Version of the workflow</param>
+        /// <returns>Workflow object</returns>
+        public WorkflowVersion GetWorkflowVersion(string resourceGroupName, string workflowName, string versionId)
+        {
+            return this.LogicManagementClient.WorkflowVersions.Get(resourceGroupName, workflowName, versionId);
+        }
+
+        /// <summary>
+        /// Gets the upgraded definition for a workflow.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="targetSchemaVersion">Target schema version of the definition</param>
+        /// <returns>Workflow object</returns>
+        public object GetWorkflowUpgradedDefinition(string resourceGroupName, string workflowName, string targetSchemaVersion)
+        {
+            return this.LogicManagementClient.Workflows.GenerateUpgradedDefinition(
+                resourceGroupName,
+                workflowName,
+                targetSchemaVersion);
+        }
+
+        /// <summary>
         /// Removes the specified workflow from the given resource group.
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group</param>
@@ -119,6 +146,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public void RemoveWorkflow(string resourceGroupName, string workflowName)
         {
             this.LogicManagementClient.Workflows.Delete(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Validates the specified workflow from the given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="location">The workflow location.</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="workflow">The Workflow object.</param>
+        public void ValidateWorkflow(string resourceGroupName, string location, string workflowName, Workflow workflow)
+        {
+            this.LogicManagementClient.Workflows.Validate(resourceGroupName, location, workflowName, workflow);
         }
 
         /// <summary>

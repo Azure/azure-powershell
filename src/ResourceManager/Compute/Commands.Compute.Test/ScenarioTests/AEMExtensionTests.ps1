@@ -323,7 +323,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     # OS & Image
     $user = "Foo12";
-    $password = 'BaR@123' + $rgname;
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';

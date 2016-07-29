@@ -193,7 +193,7 @@ function Test-ListAllVaultsInSubscription
 function Test-ListVaultsByTag
 {
     Param($tagName, $tagValue)
-    $list = Get-AzureRmKeyVault -Tag  @{Name = $tagName; Value = $tagValue}
+    $list = Get-AzureRmKeyVault -Tag  @{ $tagName = $tagValue }
 
     Assert-NotNull $list
     Assert-True { $list.Count -gt 0 }
