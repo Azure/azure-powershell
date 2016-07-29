@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -55,7 +57,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Server")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable[] Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the server version
@@ -117,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
                 ServerVersion = this.ServerVersion,
                 SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
                 SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
-                Tags = this.Tags
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
             });
             return newEntity;
         }
