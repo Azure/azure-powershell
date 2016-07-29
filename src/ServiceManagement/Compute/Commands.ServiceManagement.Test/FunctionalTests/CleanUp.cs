@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
             try
             {
-                vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -Force");
+                vmPowershellCmdlets.RunPSScript("Get-AzureService | Remove-AzureService -DeleteAll -Force");
             }
             catch
             {
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
-                vmPowershellCmdlets.RunPSScript("Get-AzureDisk | Remove-AzureDisk");
+                vmPowershellCmdlets.RunPSScript("Get-AzureDisk | Remove-AzureDisk -DeleteVHD");
             }
             catch
             {
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             try
             {
-                vmPowershellCmdlets.RunPSScript(@"Get-AzureVMImage | where {$_.Category -eq 'User'} | Remove-AzureVMImage");
+                vmPowershellCmdlets.RunPSScript(@"Get-AzureVMImage | where {$_.Category -eq 'User'} | Remove-AzureVMImage -DeleteVHD");
             }
             catch
             {
