@@ -92,7 +92,7 @@ Profile cycle with piping multiple profiles down the pipeline
 function Test-ProfilePipeline
 {
     $profileName1 = getAssetName
-	$profileName2 = getAssetName
+    $profileName2 = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $profileLocation = "EastUS"
     $profileSku = "StandardVerizon"
@@ -101,19 +101,19 @@ function Test-ProfilePipeline
 
     Assert-NotNull $createdProfile1
 
-	$createdProfile2 = New-AzureRmCdnProfile -ProfileName $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
+    $createdProfile2 = New-AzureRmCdnProfile -ProfileName $profileName2 -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku -Tags $tags
 
     Assert-NotNull $createdProfile2
 
-	$profiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+    $profiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
-	Assert-True { $profiles.Count -eq 2 }
+    Assert-True { $profiles.Count -eq 2 }
 
     Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)} | Remove-AzureRmCdnProfile -Force
 
-	$deletedProfiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
+    $deletedProfiles = Get-AzureRmCdnProfile | where {($_.Name -eq $profileName1) -or ($_.Name -eq $profileName2)}
 
     Assert-True { $deletedProfiles.Count -eq 0 }
-    
+
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }

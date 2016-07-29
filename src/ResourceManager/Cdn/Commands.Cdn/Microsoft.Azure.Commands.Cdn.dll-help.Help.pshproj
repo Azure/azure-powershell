@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ModuleObject xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" fVersion="1.1" type="Manifest" mclass="External" useSupports="false">
   <Name>Microsoft.Azure.Commands.Cdn.dll-help</Name>
-  <Version>1.0.6</Version>
+  <Version>1.0.5</Version>
   <Description />
   <ModulePath>C:\src\azure-powershell\src\ResourceManager\Cdn\Commands.Cdn\Microsoft.Azure.Commands.Cdn.dll-help.psd1</ModulePath>
   <HasManifest>false</HasManifest>
