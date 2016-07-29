@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Batch.Models
+using Microsoft.Azure.Commands.OperationalInsights.Models;
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public class PSTagValuePair
+    public class UpdatePSDataSourceParameters : OperationalInsightsParametersBase
     {
         public string Name { get; set; }
-        public string Value { get; set; }
+
+        public PSDataSourcePropertiesBase Properties { get; set; }
     }
 }

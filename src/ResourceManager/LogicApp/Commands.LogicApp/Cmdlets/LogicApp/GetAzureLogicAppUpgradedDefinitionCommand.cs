@@ -12,55 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using System.Management.Automation;
 
     /// <summary>
-    /// Gets the access key of a workflow.
+    /// Gets the upgraded definition for a workflow.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppAccessKey"), OutputType(typeof(object))]
-    public class GetAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppUpgradedDefinition"), OutputType(typeof(object))]
+    public class GetAzureLogicAppUpgradedDefinitionCommand : LogicAppBaseCmdlet
     {
-        #region private attribues
 
-        private string _accessKeyName = "default";
-
-        #endregion private attribues
-        #region Input Parameters
+        #region Input Paramters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
         [ValidateNotNullOrEmpty]
+        [Alias("ResourceName")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The name of the workflow accesskey.",
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The target schema version for the definition.")]
         [ValidateNotNullOrEmpty]
-        public string AccessKeyName
-        {
-            get { return this._accessKeyName; }
-            set { this._accessKeyName = value; }
-        }
+        public string TargetSchemaVersion { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow accesskey command
+        /// Executes the get workflow command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            this.WriteObject(
-                LogicAppClient.GetWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName), true);
+            this.WriteObject(LogicAppClient.GetWorkflowUpgradedDefinition(this.ResourceGroupName, this.Name, this.TargetSchemaVersion), false);
         }
     }
 }

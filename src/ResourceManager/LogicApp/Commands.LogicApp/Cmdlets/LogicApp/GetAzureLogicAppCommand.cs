@@ -32,8 +32,13 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The version of the workflow.")]
+        [ValidateNotNullOrEmpty]
+        public string Version { get; set; }
 
         #endregion Input Parameters
 
@@ -43,7 +48,14 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+            if (string.IsNullOrWhiteSpace(this.Version))
+            {
+                this.WriteObject(LogicAppClient.GetWorkflow(this.ResourceGroupName, this.Name), true);
+            }
+            else
+            {
+                this.WriteObject(LogicAppClient.GetWorkflowVersion(this.ResourceGroupName, this.Name, this.Version), true);
+            }
         }
     }
 }
