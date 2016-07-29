@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Logic.Models;
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
-    using System.Globalization;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
+    using System.Management.Automation;
 
     /// <summary>
-    /// Sets the secret of the access keys of a workflow
+    /// Gets the callback URL for a trigger in a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmLogicAppAccessKey", SupportsShouldProcess = true), OutputType(typeof (object))]
-    public class UpdateAzureLogicAppAccessKeyCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmLogicAppTriggerCallbackUrl"), OutputType(typeof(object))]
+    public class GetAzureLogicAppTriggerCallbackUrlCommand : LogicAppBaseCmdlet
     {
+
         #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
@@ -34,44 +35,25 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow accesskey.",
+        [Parameter(Mandatory = true, HelpMessage = "The name of the trigger in the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string AccessKeyName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The type of the key.",
-            ValueFromPipelineByPropertyName = false)]
-        [ValidateSet(Constants.KeyTypeNotSpecified, Constants.KeyTypePrimary, Constants.KeyTypeSecondary,
-            IgnoreCase = false)]
-        [ValidateNotNullOrEmpty]
-        public string KeyType { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
+        public string TriggerName { get; set; }
 
         #endregion Input Parameters
 
         /// <summary>
-        /// Executes the get workflow accesskey command
+        /// Executes the get workflow trigger callback url command
         /// </summary>
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
-            ConfirmAction(Force.IsPresent,
-                "Are you sure you want to regenerate LogicApp access keys.",
-                "Updating LogicApp access keys.",
-                Name,
-                () =>
-                {
-                    this.WriteObject(
-                        LogicAppClient.RegenerateWorkflowAccessKey(this.ResourceGroupName, this.Name, this.AccessKeyName,
-                            this.KeyType), true);
-                },
-                null);
+            this.WriteObject(
+                LogicAppClient.GetWorkflowTriggerCallbackUrl(this.ResourceGroupName, this.Name, this.TriggerName), true);
         }
     }
 }

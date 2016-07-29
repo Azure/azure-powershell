@@ -14,19 +14,19 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
 
     /// <summary>
-    /// Creates a new LogicApp workflow 
+    /// Gets the callback URL for a trigger in a workflow
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmLogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
-    public class NewAzureLogicAppCommand : LogicAppBaseCmdlet
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmLogicApp"), OutputType(typeof(object))]
+    public class ValidateAzureLogicApp : LogicAppBaseCmdlet
     {
         #region private Variables
 
@@ -37,14 +37,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         #endregion private Variables
 
-        #region Input Paramters
+        #region Input Parameters
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
+            ValueFromPipelineByPropertyName = true)]
         [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         #endregion Input Parameters
 
         /// <summary>
-        /// Execute the create new workflow command
+        /// Validates the workflow 
         /// </summary>
         public override void ExecuteCmdlet()
         {
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
 
-            this.WriteObject(LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
+            LogicAppClient.ValidateWorkflow(this.ResourceGroupName, this.Location, this.Name, new Workflow
             {
                 Location = this.Location,
                 Definition = this.Definition,
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                     ? null
                     : new ResourceReference(this.IntegrationAccountId),
                 State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State)
-            }), true);
+            });
         }
     }
 }
