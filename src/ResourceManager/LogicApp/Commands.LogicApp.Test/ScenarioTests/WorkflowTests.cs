@@ -119,6 +119,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Test Test-AzureRmLogicApp command to validate given workflow definition.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestValidateLogicApp()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-ValidateLogicApp");
+        }
+
+        /// <summary>
         ///Test New-AzureLogicApp to create logic app for non-existing service plan. Constraint validation.
         /// </summary>
         [Fact]
@@ -126,6 +136,20 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestCreateLogicAppWithNonExistingAppServicePlan()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-CreateLogicAppWithNonExistingAppServicePlan");
+        }
+
+        /// <summary>
+        ///Test Set-AzureLogicApp command to update workflow defintion without parametrs.
+        ///Test Set-AzureLogicApp command to update workflow defintion and state to Disabled.
+        ///Test Set-AzureLogicApp command to update workflow state to Enabled.
+        ///Test Set-AzureLogicApp command to set logic app with null definition.
+        ///Test Set-AzureLogicApp command to set non-existing logic app.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUpgradedDefinitionForLogicApp()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetUpgradedDefinitionForLogicApp");
         }
     }
 }

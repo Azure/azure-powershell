@@ -21,92 +21,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Batch
 {
     internal class Helpers
     {
         // copied from Resources\Commands.Resources
-
         private const string ExcludedTagPrefix = "hidden-related:/";
-
-        public static PSTagValuePair Create(Hashtable hashtable)
-        {
-            if (hashtable == null ||
-                !hashtable.ContainsKey("Name"))
-            {
-                return null;
-            }
-
-            PSTagValuePair tagValue = new PSTagValuePair();
-            tagValue.Name = hashtable["Name"].ToString();
-
-            if (hashtable.ContainsKey("Value"))
-            {
-                tagValue.Value = hashtable["Value"].ToString();
-            }
-
-            return tagValue;
-        }
-
-        public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray, bool validate)
-        {
-            Dictionary<string, string> tagDictionary = null;
-            if (hashtableArray != null && hashtableArray.Length > 0)
-            {
-                tagDictionary = new Dictionary<string, string>();
-                foreach (var tag in hashtableArray)
-                {
-                    var tagValuePair = Create(tag);
-                    if (tagValuePair != null)
-                    {
-                        if (tagValuePair.Value != null)
-                        {
-                            tagDictionary[tagValuePair.Name] = tagValuePair.Value;
-                        }
-                        else
-                        {
-                            tagDictionary[tagValuePair.Name] = "";
-                        }
-                    }
-                }
-            }
-
-            if (validate)
-            {
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
-                    (tagDictionary == null || tagDictionary.Count == 0))
-                {
-                    throw new ArgumentException(Resources.InvalidTagFormat);
-                }
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
-                    (tagDictionary == null || hashtableArray.Length != tagDictionary.Count))
-                {
-                    throw new ArgumentException(Resources.InvalidTagFormatNotUniqueName);
-                }
-            }
-
-            return tagDictionary;
-        }
-
-        public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
-        {
-            List<Hashtable> tagHashtable = new List<Hashtable>();
-            if (dictionary != null)
-            {
-                foreach (string key in dictionary.Keys)
-                {
-                    tagHashtable.Add(new Hashtable
-                    {
-                        {"Name", key},
-                        {"Value", dictionary[key]}
-                    });
-                }
-            }
-
-            return tagHashtable.ToArray();
-        }
 
         public static string FormatTagsTable(Hashtable[] tags)
         {
@@ -130,13 +52,11 @@ namespace Microsoft.Azure.Commands.Batch
                 string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
                 resourcesTable.AppendLine();
                 resourcesTable.AppendFormat(rowFormat, "Name", "Value");
-                resourcesTable.AppendFormat(rowFormat,
-                    GeneralUtilities.GenerateSeparator(maxNameLength, "="),
-                    GeneralUtilities.GenerateSeparator(maxValueLength, "="));
 
                 foreach (Hashtable tag in tags)
                 {
-                    PSTagValuePair tagValuePair = Helpers.Create(tag);
+                    PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
+
                     if (tagValuePair != null)
                     {
                         if (tagValuePair.Name.StartsWith(ExcludedTagPrefix))
@@ -166,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (tag != null && tag.Count >= 1)
             {
-                PSTagValuePair tagValuePair = Helpers.Create(tag);
+                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null)
                 {
                     throw new ArgumentException(Resources.InvalidTagFormat);

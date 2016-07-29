@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Set, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.QueueStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -111,7 +111,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
-            SetAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            if (ShouldProcess(Policy, "Set"))
+            {
+                SetAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            }
         }
     }
 }
