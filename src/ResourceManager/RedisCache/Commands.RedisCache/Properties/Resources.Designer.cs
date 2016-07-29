@@ -79,6 +79,24 @@ namespace Microsoft.Azure.Commands.RedisCache.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name should not contain &apos;/&apos; or &apos;.&apos;. Name should be the plain, short name of the redis cache, e.g. &apos;mycache&apos;. (Not a fully qualified DNS name, and not an Azure resource identifier.).
+        /// </summary>
+        internal static string InvalidRedisCacheName {
+            get {
+                return ResourceManager.GetString("InvalidRedisCacheName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResourceGroupName should not contain &apos;/&apos;. Name should be the plain, short name of the resource group, e.g. &apos;myResourceGroup&apos;. (Not an Azure resource identifier.).
+        /// </summary>
+        internal static string InvalidResourceGroupName {
+            get {
+                return ResourceManager.GetString("InvalidResourceGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The &apos;MaxMemoryPolicy&apos; setting has been deprecated. Please use &apos;RedisConfiguration&apos; setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{&quot;maxmemory-policy&quot; = &quot;allkeys-lru&quot;}.
         /// </summary>
         internal static string MaxMemoryPolicyException {

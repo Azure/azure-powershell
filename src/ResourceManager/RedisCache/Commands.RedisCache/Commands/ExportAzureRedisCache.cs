@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             CacheClient.ExportToCache(ResourceGroupName, Name, Container, Prefix, Format);
             
             if (PassThru)
