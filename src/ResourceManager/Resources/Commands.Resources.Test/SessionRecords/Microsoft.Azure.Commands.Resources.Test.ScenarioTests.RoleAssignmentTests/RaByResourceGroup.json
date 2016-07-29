@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "fc35380f-ae1d-4661-92a6-ff54ee2b28e1"
+          "553a753d-a1df-419e-aa12-eaacd50380ca"
         ],
         "accept-language": [
           "en-US"
@@ -31,19 +31,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "VfUsEwfVIt6kKxw4w3DIj7NdfHZq0I7s9UKQB+zebI0="
         ],
         "request-id": [
-          "2dc674f2-e6ac-4b7c-8105-f62070e8c9ea"
+          "5c47c418-4e84-4f74-b3db-e1fc3f795e9a"
         ],
         "client-request-id": [
-          "7d3ff640-ff81-4cbf-ab23-10669aef15e5"
+          "ed1ad356-61c0-4bb8-a9fa-48ce73731182"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "idrMDZ1FT3jUUBRss13UrZGzFAiIvzYVL8lIQ43C7hGLk0hubRs3FFAB0GPROn5AQ7ci72r2MqakI-hXDNPmaAjrHRGbEs9gD5lAgNDZ9Nq7-NYbxeeKw1YA773z7ir_Kp7-K2m1tYNFaj793KzWuA.skSaLxH1-Wu2AmawbCjeJ-GF1bp9vsMwvhgIVf3KQqw"
+          "xW_9sGUM_4hRP3YXwX6yMCz6ePrBIAcqmuqkNnjUnDhkXEX0qOjQNxc0vr11XrlZE0CnsQrKbUj4SZlBN7nc02pKDfN797CyUsbSjRVIA28-_pGnTe6SkHXqqTOpy6ac.fX8o_J0AKX6IcWbZfrXYN2ZicQOv4v8Um3faESAAQIE"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -58,7 +58,7 @@
           "*"
         ],
         "Duration": [
-          "3036883"
+          "3143970"
         ],
         "Cache-Control": [
           "no-cache"
@@ -74,7 +74,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:12 GMT"
+          "Fri, 29 Jul 2016 04:52:39 GMT"
         ]
       },
       "StatusCode": 200
@@ -86,7 +86,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "af8f69ca-757a-4c38-82be-c600deae46a3"
+          "065e0d59-213f-4c30-b677-91c4c6cb4933"
         ],
         "accept-language": [
           "en-US"
@@ -110,19 +110,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "JDgMXdKsFXeLssEQZc5WDJbQGHd8O6Mlw3RJHgTj3jg="
         ],
         "request-id": [
-          "ee726fed-d803-44ea-a548-899a6150a122"
+          "a060a503-a4e7-4673-9631-13655ea52e6b"
         ],
         "client-request-id": [
-          "55900884-dff6-44a0-b1ed-94fd98f62b59"
+          "231a0b59-63a9-455b-a6ea-0af6b76410dd"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "Ws5dj4gRLg7Cqjj13lV5DaF7yk6CYLogxXhqztLmWs2xIKP_PfhOzGbFLb0c4RKGN-SJE-ixzHfia0oH0jqGv7NNV6kvS0M9GGxOMKf8EdXyfoN06oUoshfTsDaohHix2byMuEOJv6_zrv6jX_G4hA.v3Ggexyjoez4_vlrYaEE0pWkYN-zzE6x9vlbEH40We4"
+          "LgpDJLVD3D5Ui2PZx6Zi4r-GVAbodfsm1anYUYVtZ2Qdyy--ZSYQ1_ikXtSdkETu6uq-XHYo4RuCxylCLyGE01Q3xgnTibDUF3TFqxLfJeAneZM5VlkJjhLHZR0CBDfA.stp11_fuxzqJxZXLOfaQxN5Me06tdc7idCcdWfOQq-Q"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -137,7 +137,7 @@
           "*"
         ],
         "Duration": [
-          "2889972"
+          "3158342"
         ],
         "Cache-Control": [
           "no-cache"
@@ -153,7 +153,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:12 GMT"
+          "Fri, 29 Jul 2016 04:52:39 GMT"
         ]
       },
       "StatusCode": 200
@@ -165,7 +165,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ac43e12b-7176-41d0-b416-64ad29a0162a"
+          "c074e85d-2cd2-47c0-9b54-87ffe154fb41"
         ],
         "accept-language": [
           "en-US"
@@ -189,19 +189,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "jScj0D9LuG9lNt/fa5UfFAKwsavkI3rF1e+07pDuN5c="
+          "VfUsEwfVIt6kKxw4w3DIj7NdfHZq0I7s9UKQB+zebI0="
         ],
         "request-id": [
-          "757fadb9-735d-4ddd-8a45-0ebc2ffde2d5"
+          "a8f6e0a2-6284-4c38-8351-58fd68aaa942"
         ],
         "client-request-id": [
-          "473dd8dd-e1c8-4909-81cb-6bae5a107db8"
+          "786266b4-1f00-42aa-b947-9ca051fc3fd6"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "mymS0GkoLtY6UnHnjD_mgNX3pS1OztICv8ecOo67BBrPmqe9wDyMVemveOOHjEkSxdQxKuazTe65bHPfzMQH_zCuwFefk1zgAUGgpip79FcmzTFq4_VBYKpOS2mev6FpJnhKrgrOky9_GToB6JbMrg.jgVojThy8PPAD9QO0hE8wUzD4vBD1arsGu2kpLEfj9Q"
+          "QscqgVXwhuPgRY7-SijAr12gYSxl4DgGWbqm2NZOkCdMNH5pYhZXomjNgwv6JtlctIAEVXt_BoMcWc_ppoL8iLoT3QWiu-qjWxswCfnVNEZ1VYuuGUyT43jOicXKa1dg.3nVlXPLV9rIKVdX3EMH7Qmq7bjkpJXaq2jX8COdXHHY"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -216,7 +216,7 @@
           "*"
         ],
         "Duration": [
-          "2614472"
+          "2975056"
         ],
         "Cache-Control": [
           "no-cache"
@@ -232,7 +232,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:13 GMT"
+          "Fri, 29 Jul 2016 04:52:39 GMT"
         ]
       },
       "StatusCode": 200
@@ -244,7 +244,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "305d2560-4331-4ecf-b4ee-65f7b38bcc0b"
+          "d4d911be-15a0-4524-a185-a35d3a023347"
         ],
         "accept-language": [
           "en-US"
@@ -268,16 +268,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14998"
         ],
         "x-ms-request-id": [
-          "51ed712a-9bb6-45e1-b84f-2174ec8e7e8c"
+          "925250a2-c4bc-49ab-8330-585a8c853e53"
         ],
         "x-ms-correlation-request-id": [
-          "51ed712a-9bb6-45e1-b84f-2174ec8e7e8c"
+          "925250a2-c4bc-49ab-8330-585a8c853e53"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215813Z:51ed712a-9bb6-45e1-b84f-2174ec8e7e8c"
+          "CENTRALUS:20160729T045241Z:925250a2-c4bc-49ab-8330-585a8c853e53"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -286,7 +286,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:13 GMT"
+          "Fri, 29 Jul 2016 04:52:40 GMT"
         ]
       },
       "StatusCode": 200
@@ -316,7 +316,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "729ac45e-fb3d-41d8-90be-070b8ddc234e"
+          "53c231d0-1421-4ad3-9077-e7d9bea98ca2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -325,19 +325,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14987"
         ],
         "x-ms-correlation-request-id": [
-          "46db4a17-22a5-4559-ae2a-626ea0d4dfed"
+          "fc5a2b35-6418-46bd-b860-eda757686d1a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215814Z:46db4a17-22a5-4559-ae2a-626ea0d4dfed"
+          "CENTRALUS:20160729T045241Z:fc5a2b35-6418-46bd-b860-eda757686d1a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:14 GMT"
+          "Fri, 29 Jul 2016 04:52:40 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -367,7 +367,7 @@
           "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n    \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n    \"createdOn\": \"2016-07-28T21:58:15.2885865Z\",\r\n    \"updatedOn\": \"2016-07-28T21:58:15.2885865Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n    \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n    \"createdOn\": \"2016-07-29T04:52:41.6904758Z\",\r\n    \"updatedOn\": \"2016-07-29T04:52:41.6904758Z\",\r\n    \"createdBy\": null,\r\n    \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "746"
@@ -382,7 +382,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "0bf21c4b-bd1d-4db6-b492-5a83d5154929"
+          "82942a79-c988-4f84-89e4-eb56298d76c1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -391,19 +391,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "1b1787f0-0466-47e0-bf50-d2f074521e1f"
+          "f1530240-057e-48ea-8232-e39e2f6010e8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215816Z:1b1787f0-0466-47e0-bf50-d2f074521e1f"
+          "CENTRALUS:20160729T045242Z:f1530240-057e-48ea-8232-e39e2f6010e8"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:16 GMT"
+          "Fri, 29 Jul 2016 04:52:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -442,7 +442,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e9327bf2-04b9-4840-8866-8cbcbb2f9e52"
+          "e5879202-224e-4ca7-8638-af99fc2a12d1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -451,19 +451,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14986"
         ],
         "x-ms-correlation-request-id": [
-          "313c51d8-b830-4324-a99d-21ce1169f61f"
+          "04c46275-44ba-4c98-a737-dfd16d7785f0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215816Z:313c51d8-b830-4324-a99d-21ce1169f61f"
+          "CENTRALUS:20160729T045242Z:04c46275-44ba-4c98-a737-dfd16d7785f0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:16 GMT"
+          "Fri, 29 Jul 2016 04:52:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -490,7 +490,7 @@
           "116"
         ],
         "x-ms-client-request-id": [
-          "67474024-f367-4253-86d2-c2f365c8384c"
+          "a4e41d73-e61d-4270-84cf-147cd3da954f"
         ],
         "accept-language": [
           "en-US"
@@ -514,19 +514,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "jScj0D9LuG9lNt/fa5UfFAKwsavkI3rF1e+07pDuN5c="
+          "JDgMXdKsFXeLssEQZc5WDJbQGHd8O6Mlw3RJHgTj3jg="
         ],
         "request-id": [
-          "12219d25-4f65-4012-b40b-0c20c9a864b4"
+          "0c8c582a-26c6-411b-8668-3fb0ea6aaf56"
         ],
         "client-request-id": [
-          "6bb57346-b5a3-421a-b7bb-24fe86261ac6"
+          "d2521e80-6f4d-41f5-8e6a-14e123a13189"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6-internal"
         ],
         "ocp-aad-session-key": [
-          "_Y-WzN6xUfZOQHgjQIo9odXMU8iLZR5vWXKTObl7zLl2Qtd5uhz4IK8EmUsSNCpG5ikElSAt4YapVAvqIWvvPe2LjGSbPgEd2op5gkIOhDyBBhquKsgif-xXs7dYsWb644tG9nu2v0XCim1qC4O6PQ.V71T-OzEhn0ujXdLFPoAkb3bkrMyzEIv7aNSx0UyMzg"
+          "6edKJgauXMvENTdXJcUuTIY7MfSMtWGJHB2vLESRB6LwY11fpJ75N7CedWgKvJqyew9fKxdJx89kuRieTF_447yvtnhlLPb0Prl-i0MEv9pSqVwkW6QzPDZVVlzCoYzi.bT0LPYf3iS_j8ENuOFj-WjkS1qL7FS2deY-z7XzStUI"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -541,7 +541,7 @@
           "*"
         ],
         "Duration": [
-          "1232486"
+          "1283645"
         ],
         "Cache-Control": [
           "no-cache"
@@ -557,7 +557,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:15 GMT"
+          "Fri, 29 Jul 2016 04:52:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -575,7 +575,7 @@
           "116"
         ],
         "x-ms-client-request-id": [
-          "8a3f4d4c-171b-41f6-8a92-cfc2208893f8"
+          "4fa51f45-9372-4ef7-a630-7b0f07e76ce8"
         ],
         "accept-language": [
           "en-US"
@@ -599,19 +599,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "jScj0D9LuG9lNt/fa5UfFAKwsavkI3rF1e+07pDuN5c="
+          "JDgMXdKsFXeLssEQZc5WDJbQGHd8O6Mlw3RJHgTj3jg="
         ],
         "request-id": [
-          "e12da9ba-484a-49fd-a3e7-0884efe23b26"
+          "a5af4049-a2b3-4b9c-879c-f21af7adcb72"
         ],
         "client-request-id": [
-          "28f576f9-e709-45c0-8430-1fbaee38d86a"
+          "d65642a8-373f-42f2-9b53-403af3bc6683"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6-internal"
         ],
         "ocp-aad-session-key": [
-          "ojwDXuFq22xjEKdlmjVe9CqHOhj1UDl4w6LF07tXUvOrW1Zm5zMbZHebQk9QP83Ie6F2Z9aXMQ-qmUOfeuSWkC-Z-0mh2LTTuBLwJIjblrdbzZhOz_d9LQV4Zhq6Mpqu1Vgj2yyg41cG-slnScmONQ.5S0sM183SPfuRIJuNq9c8CbXYGbHBk6GwJmOp9EZQdY"
+          "YS0_4kdqbQ-g95JngXKnANW8Pb6DwBaPvtdMEmuhovoel1MIOP8X8dQktR-FF6HxHYMlD9luETFpf7RvGzo7VcyKs9AKk6WuuPwIpoViQnJrazsEwNnzRT2wjdYepiJk.ERf_LmBilobL0NSbB8511s0WYWSSVkWtlsVjogrv2ck"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -626,7 +626,7 @@
           "*"
         ],
         "Duration": [
-          "1230193"
+          "1359447"
         ],
         "Cache-Control": [
           "no-cache"
@@ -642,7 +642,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:16 GMT"
+          "Fri, 29 Jul 2016 04:52:42 GMT"
         ]
       },
       "StatusCode": 200
@@ -654,7 +654,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "7699eb57-3669-4d3c-a51b-f0086780a685"
+          "9a89ba5e-b8c4-447d-b0c6-e806232f30d4"
         ],
         "accept-language": [
           "en-US"
@@ -678,19 +678,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "+g9S9df1eU79iMfVZ0psO4Vd6TCUCddyFguh8uT50fw="
+          "JDgMXdKsFXeLssEQZc5WDJbQGHd8O6Mlw3RJHgTj3jg="
         ],
         "request-id": [
-          "4d33abe8-dc45-414f-ac51-d2b6f275ca3e"
+          "40b0012f-ecbd-425a-83a1-675d2b585b6d"
         ],
         "client-request-id": [
-          "c5fc3c96-c48e-4b75-8853-5870eafe18a1"
+          "aae31260-3a71-460f-8f16-6520e3d59827"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "a-pGgp4ZyAyigcfBFtOFW0sjJe0Dye6W3Elk9xXf7v67jlIux5QsmYaGaxreSqjc8m7hOj1nGGWqOost8O90pzWmwv6Gyivc9lPUY0f5L32dOkTUd_2bM2rMGDSYAZUCZz-typ2fmmaSAH9D2Y5CFg.3wPy4Nvu7ngLJxt_utw5wOy73cLru1oqaR6xBkc68k8"
+          "hzC5s8pFa3c8JOSaLv-5lDYedtbO9T8obWknOnn7iaSJZXxNW6VqCVz1PmbmiXECrhopoWnx34axF_-hsbYaUnxLAKTkA7kXhOOrPgU1BOXVLTSQ5BKmi-xviaaeybSv.jdf0wrNKlV1aROu2DB0Ab_-seEqvy0k1rajNv3cVrB4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -705,7 +705,7 @@
           "*"
         ],
         "Duration": [
-          "942156"
+          "1139231"
         ],
         "Cache-Control": [
           "no-cache"
@@ -721,7 +721,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:15 GMT"
+          "Fri, 29 Jul 2016 04:52:41 GMT"
         ]
       },
       "StatusCode": 200
@@ -733,7 +733,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "528e511b-c69c-45c0-9784-0c5d690ea804"
+          "bcc25518-3c37-4187-8fde-9d2049117d6d"
         ],
         "accept-language": [
           "en-US"
@@ -757,19 +757,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "11iwt901UN/FNchIH/Wpv/gMabTDDEDeFFgUOM8Kv5w="
+          "CsyM59IyEG8NtoG93Zs1iaZk8m7nLCS/ZIsRW3/qOUQ="
         ],
         "request-id": [
-          "09609f25-92b7-452a-a06d-e0f76d00e68b"
+          "4e22d4ad-7c46-4710-85dd-0314d76ef8d1"
         ],
         "client-request-id": [
-          "03703089-6b04-4631-bb0a-ffcbf25fb7c8"
+          "d406594e-d860-441e-aeec-7079b5eb6b1b"
         ],
         "x-ms-dirapi-data-contract-version": [
           "1.6"
         ],
         "ocp-aad-session-key": [
-          "L2Lk1RAcWE81FLYCEVNCkM3gTs80ZasWaW47F9lG5lRPQjEloTixZvF2j6C3PhEmxruXMiYpuIZ9DG7Zf8RK5wbsiNX23ax2jFRiC_etfMS6eAKZWROu2YaQ9F4Rh10DsWxdWJV11Cz8O2zpucFuQg.PtmLtvRHOaitoB6shYzMPslC0xCoO4lOlEdumFmGxJ0"
+          "mAvpWwoyI7Dh8VHI-sp3seQAxm7FfG6z56_uMtFvhlWXjV1KibWfC5lD6J8sKmlUGSflQCwrWpvl0W5BqkWdfW-CpOFX39xeaDxRwYE3Gi_0LuodgDU4JhgzAIciM43O.Gca2xlSqKcRziopyf5Qg6_mQmD0WQuvNIaa9v9avG8o"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -784,7 +784,7 @@
           "*"
         ],
         "Duration": [
-          "1023458"
+          "2242462"
         ],
         "Cache-Control": [
           "no-cache"
@@ -800,7 +800,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:17 GMT"
+          "Fri, 29 Jul 2016 04:52:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -815,7 +815,7 @@
           "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n        \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n        \"createdOn\": \"2016-07-28T21:58:16.6990029Z\",\r\n        \"updatedOn\": \"2016-07-28T21:58:16.6990029Z\",\r\n        \"createdBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\r\n        \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n        \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n        \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n        \"createdOn\": \"2016-07-29T04:52:42.5744787Z\",\r\n        \"updatedOn\": \"2016-07-29T04:52:42.5744787Z\",\r\n        \"createdBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\r\n        \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n      },\r\n      \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n      \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n      \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n    }\r\n  ],\r\n  \"nextLink\": null\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "808"
@@ -830,7 +830,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5aca9e1e-f303-47f9-8b8b-2503c0b381a2"
+          "870b6163-e760-48cb-8906-b27628498eb5"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -839,19 +839,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14985"
         ],
         "x-ms-correlation-request-id": [
-          "fdc800ce-ecac-4487-a746-35fcb5ce774d"
+          "b1efbd89-bf05-4a0e-b42d-fddf4f65c51e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215816Z:fdc800ce-ecac-4487-a746-35fcb5ce774d"
+          "CENTRALUS:20160729T045243Z:b1efbd89-bf05-4a0e-b42d-fddf4f65c51e"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:16 GMT"
+          "Fri, 29 Jul 2016 04:52:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -890,7 +890,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ac187ae1-4c05-4eb5-aade-cff259edfcfd"
+          "a86031a7-d88e-4f18-b6d4-78896ab7a734"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -899,19 +899,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14983"
         ],
         "x-ms-correlation-request-id": [
-          "661c4665-cb41-4693-b64f-56979b562167"
+          "42c4709c-ad5e-4884-afcb-ff8dffaa765f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215817Z:661c4665-cb41-4693-b64f-56979b562167"
+          "CENTRALUS:20160729T045244Z:42c4709c-ad5e-4884-afcb-ff8dffaa765f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:17 GMT"
+          "Fri, 29 Jul 2016 04:52:43 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -950,7 +950,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "db0409b0-fb6c-4ef9-a2f9-43f61aaab880"
+          "c716ca8b-3f4d-40a8-9967-161b2389bd60"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -959,19 +959,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14984"
         ],
         "x-ms-correlation-request-id": [
-          "51615816-57e8-4415-a01f-5f140862c90c"
+          "e12cd827-09c0-4d7e-a8f7-756456ca2e2b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215816Z:51615816-57e8-4415-a01f-5f140862c90c"
+          "CENTRALUS:20160729T045243Z:e12cd827-09c0-4d7e-a8f7-756456ca2e2b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:16 GMT"
+          "Fri, 29 Jul 2016 04:52:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -1010,7 +1010,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "cbe5aaf2-65cd-4c6f-a1d9-da7dca0121ea"
+          "086dcdc9-f7fc-4908-9294-4e1ca0f89e7c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1019,19 +1019,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14982"
         ],
         "x-ms-correlation-request-id": [
-          "39540704-2fd6-4b4e-846e-01f7e7e1e253"
+          "cd984aac-4e43-4687-a65c-e0fcccc1d047"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215817Z:39540704-2fd6-4b4e-846e-01f7e7e1e253"
+          "CENTRALUS:20160729T045244Z:cd984aac-4e43-4687-a65c-e0fcccc1d047"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:17 GMT"
+          "Fri, 29 Jul 2016 04:52:44 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -1055,7 +1055,7 @@
           "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n    \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n    \"createdOn\": \"2016-07-28T21:58:16.6990029Z\",\r\n    \"updatedOn\": \"2016-07-28T21:58:16.6990029Z\",\r\n    \"createdBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\r\n    \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"roleDefinitionId\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c\",\r\n    \"principalId\": \"32210fc0-633d-43dd-bcf5-2a22ee950925\",\r\n    \"scope\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG\",\r\n    \"createdOn\": \"2016-07-29T04:52:42.5744787Z\",\r\n    \"updatedOn\": \"2016-07-29T04:52:42.5744787Z\",\r\n    \"createdBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\",\r\n    \"updatedBy\": \"f8d526a0-54eb-4941-ae69-ebf4a334d0f0\"\r\n  },\r\n  \"id\": \"/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/Shubham_TestRG/providers/Microsoft.Authorization/roleAssignments/7a750d57-9d92-4be1-ad66-f099cecffc01\",\r\n  \"type\": \"Microsoft.Authorization/roleAssignments\",\r\n  \"name\": \"7a750d57-9d92-4be1-ad66-f099cecffc01\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "780"
@@ -1070,7 +1070,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "79347c19-b267-4c3b-8357-1e46c6ee2a11"
+          "c60238bd-40fa-4aa1-a68b-8a2747895cea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -1079,19 +1079,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "92382fcf-1e40-4f85-8cf6-7b3c2e2fbc3e"
+          "49503e34-51e7-47d0-85f7-34398f7512c0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160728T215817Z:92382fcf-1e40-4f85-8cf6-7b3c2e2fbc3e"
+          "CENTRALUS:20160729T045243Z:49503e34-51e7-47d0-85f7-34398f7512c0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 28 Jul 2016 21:58:17 GMT"
+          "Fri, 29 Jul 2016 04:52:43 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
