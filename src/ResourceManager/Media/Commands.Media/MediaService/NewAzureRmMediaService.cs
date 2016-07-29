@@ -111,14 +111,14 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(AccountName, string.Format(NewMediaServiceWhatIfMessage)))
+            if (ShouldProcess(AccountName, NewMediaServiceWhatIfMessage))
             {
                 try
                 {
                     var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
                     if (mediaService != null)
                     {
-                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} exists",
+                        throw new ArgumentException(string.Format(Properties.Resource.InvalidMediaServiceAccount,
                             AccountName,
                             SubscrptionName,
                             ResourceGroupName));
@@ -151,8 +151,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                             case StorageAccountsParamSet:
                                 if (StorageAccounts.Count(x => x.IsPrimary.HasValue && x.IsPrimary.Value) != 1)
                                 {
-                                    throw new ArgumentException(
-                                        "StorageAccounts should have exactly one primary storage account");
+                                    throw new ArgumentException(Properties.Resource.OnlyOnePrimaryStorageAccountAllowed);
                                 }
 
                                 restMediaService.StorageAccounts = StorageAccounts.Select(x => x.ToStorageAccount()).ToList();

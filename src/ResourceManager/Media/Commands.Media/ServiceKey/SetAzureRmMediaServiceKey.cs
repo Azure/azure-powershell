@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(AccountName, string.Format(SetMediaServiceKeyWhatIfMessage)))
+            if (ShouldProcess(AccountName, SetMediaServiceKeyWhatIfMessage))
             {
                 try
                 {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
                 {
                     if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                     {
-                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                        throw new ArgumentException(string.Format(Properties.Resource.InvalidMediaServiceAccount,
                             AccountName,
                             SubscrptionName,
                             ResourceGroupName));

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(AccountName, string.Format(RemoveMediaServiceWhatIfMessage)))
+            if (ShouldProcess(AccountName, RemoveMediaServiceWhatIfMessage))
             {
                 if (Force || ShouldContinue(string.Format(RemoveMediaServiceWarning, AccountName), ""))
                 {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     {
                         if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                         {
-                            throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                            throw new ArgumentException(string.Format(Properties.Resource.InvalidMediaServiceAccount,
                                 AccountName,
                                 SubscrptionName,
                                 ResourceGroupName));

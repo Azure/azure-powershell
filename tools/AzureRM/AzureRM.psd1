@@ -67,6 +67,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '1.1.10'},
     @{ ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '1.0.7'},
     @{ ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.9.2'},
+	@{ ModuleName = 'AzureRM.Media'; RequiredVersion = '0.1.0'},
     @{ ModuleName = 'AzureRM.Network'; RequiredVersion = '1.0.12'},
     @{ ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '1.0.11'},
     @{ ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '1.0.11'},
@@ -83,8 +84,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.Tags'; RequiredVersion = '1.0.11'},
     @{ ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '1.0.11'},
     @{ ModuleName = 'AzureRM.UsageAggregates'; RequiredVersion = '1.0.11'},
-    @{ ModuleName = 'AzureRM.Websites'; RequiredVersion = '1.1.3'},
-	@{ ModuleName = 'AzureRM.Media'; RequiredVersion = '0.1.0'}
+    @{ ModuleName = 'AzureRM.Websites'; RequiredVersion = '1.1.3'}
 ) 
   
 # Assemblies that must be loaded prior to importing this module  

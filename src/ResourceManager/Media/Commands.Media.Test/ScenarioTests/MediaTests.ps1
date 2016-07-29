@@ -77,8 +77,8 @@ function Test-Media
   <# Set a media service #>
   $tagsUpdated = @{"tag3" = "value3"; "tag4" = "value4"}
   $storageAccount2 = GetStorageAccount -ResourceGroupName $rgname -Name $storageAccountName2
-  $primaryStorageAccount = New-Object PSObject -Property @{"Id" = $storageAccount1.Id; "IsPrimary" = $true; }
-  $secondaryStorageAccount = New-Object PSObject -Property @{"Id" = $storageAccount2.Id; "IsPrimary" = $false; }
+  $primaryStorageAccount = New-AzureRmMediaServiceStorageConfig -storageAccountId $storageAccount1.Id -IsPrimary
+  $secondaryStorageAccount = New-AzureRmMediaServiceStorageConfig -storageAccountId $storageAccount2.Id
   $storageAccounts = @($primaryStorageAccount, $secondaryStorageAccount)
   $mediaServiceUpdated = Set-AzureRmMediaService -ResourceGroupName $rgname -AccountName $accountName -Tags $tagsUpdated -StorageAccounts $storageAccounts
   Assert-NotNull $mediaServiceUpdated

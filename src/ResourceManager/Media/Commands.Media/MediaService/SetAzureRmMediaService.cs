@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(AccountName, string.Format(SetMediaServiceWhatIfMessage)))
+            if (ShouldProcess(AccountName, SetMediaServiceWhatIfMessage))
             {
                 var mediaServiceParams = new RestMediaService();
 
@@ -83,14 +83,13 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     var primaryStorageAccounts = StorageAccounts.Where(x => x.IsPrimary.HasValue && x.IsPrimary.Value).ToArray();
                     if (primaryStorageAccounts.Count() != 1)
                     {
-                        throw new ArgumentException("StorageAccounts should have exactly one primary storage account");
+                        throw new ArgumentException(Properties.Resource.OnlyOnePrimaryStorageAccountAllowed);
                     }
 
                     var mediaService = MediaServicesManagementClient.MediaService.Get(ResourceGroupName, AccountName);
                     if (mediaService == null)
                     {
-                        throw new ArgumentException(string.Format(
-                            "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                        throw new ArgumentException(string.Format(Properties.Resource.InvalidMediaServiceAccount,
                             AccountName,
                             SubscrptionName,
                             ResourceGroupName));
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                     if (primaryStorageAccount == null)
                     {
                         throw new Exception(string.Format(
-                            "MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} has no primary storage account",
+                            Properties.Resource.InvalidMediaServiceAccount,
                             AccountName,
                             SubscrptionName,
                             ResourceGroupName));
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.Media.MediaService
                 {
                     if (exception.Response.StatusCode.Equals(HttpStatusCode.NotFound))
                     {
-                        throw new ArgumentException(string.Format("MediaServiceAccount {0} under subscprition {1} and resourceGroup {2} doesn't exist",
+                        throw new ArgumentException(string.Format(Properties.Resource.InvalidMediaServiceAccount,
                             AccountName,
                             SubscrptionName,
                             ResourceGroupName));
