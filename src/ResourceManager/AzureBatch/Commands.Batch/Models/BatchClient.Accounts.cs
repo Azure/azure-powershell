@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="tags">The tags to associate with the account</param>
         /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the new account</returns>
-        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable[] tags, string autoStorageAccountId)
+        public virtual BatchAccountContext CreateAccount(string resourceGroupName, string accountName, string location, Hashtable tags, string autoStorageAccountId)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="tags">New tags to associate with the account</param>
         /// <param name="autoStorageAccountId">The resource id of the storage account to be used for auto storage.</param>
         /// <returns>A BatchAccountContext object representing the updated account</returns>
-        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable[] tags, string autoStorageAccountId)
+        public virtual BatchAccountContext UpdateAccount(string resourceGroupName, string accountName, Hashtable tags, string autoStorageAccountId)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
