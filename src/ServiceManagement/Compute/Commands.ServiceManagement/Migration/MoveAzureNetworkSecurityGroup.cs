@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
 {
     /// <summary>
-    /// Migrate ASM virtual network to ARM
+    /// Migrate ASM Network Security Group to ARM
     /// </summary>
     [Cmdlet(VerbsCommon.Move, "AzureNetworkSecurityGroup"), OutputType(typeof(OperationStatusResponse))]
     public class MoveNetworkSecurityGroupCommand : MoveAzureNetworkResourceBase

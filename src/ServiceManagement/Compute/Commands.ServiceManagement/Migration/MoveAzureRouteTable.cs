@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
 {
     /// <summary>
-    /// Migrate ASM virtual network to ARM
+    /// Migrate ASM Route table to ARM
     /// </summary>
     [Cmdlet(VerbsCommon.Move, "AzureRouteTable"), OutputType(typeof(OperationStatusResponse))]
     public class MoveRouteTableCommand : MoveAzureNetworkResourceBase
