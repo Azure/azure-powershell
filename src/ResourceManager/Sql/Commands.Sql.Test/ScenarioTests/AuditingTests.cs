@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
               //  )
                 ;
             var authorizationClient = GetAuthorizationManagementClient();
-            var graphClient = GetGraphClient();
+            var graphClient = GetGraphClient(context);
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient, graphClient);
         }
 
