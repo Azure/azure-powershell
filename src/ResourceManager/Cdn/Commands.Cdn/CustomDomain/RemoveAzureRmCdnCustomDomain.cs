@@ -68,7 +68,10 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
             }
 
 
-            var existingCustomDomain = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName).Where(cd => cd.Name == CustomDomainName).FirstOrDefault();
+            var existingCustomDomain = CdnManagementClient.CustomDomains.ListByEndpoint(EndpointName, ProfileName, ResourceGroupName)
+                .Where(cd => cd.Name.ToLower() == CustomDomainName.ToLower())
+                .FirstOrDefault();
+
             if (existingCustomDomain == null)
             {
                 throw new PSArgumentException(string.Format(Resources.Error_DeleteNonExistingCustomDomain,
