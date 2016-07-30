@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// The base class for all SQL server auditing Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseServerAuditingCmdletBase : AzureSqlCmdletBase<ServerAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseServerAuditingCmdletBase : AzureSqlCmdletBase<AuditingPolicyModel, SqlAuditAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -32,13 +32,23 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
+        public virtual AuditType AuditType { get; set; }
+
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ServerAuditingPolicyModel GetEntity()
+        protected override AuditingPolicyModel GetEntity()
         {
-            return ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId);
+            if (AuditType == AuditType.Table)
+            {
+                ServerAuditingPolicyModel model;
+                ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId, out model);
+                return model;
+            }
+            ServerBlobAuditingPolicyModel blobModel;
+            ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId, out blobModel);
+            return blobModel;
         }
 
         /// <summary>
@@ -55,10 +65,19 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
+        /// <param name="baseModel">The model object with the data to be sent to the REST endpoints</param>
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel baseModel)
         {
-            ModelAdapter.SetServerAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            if (AuditType == AuditType.Table)
+            {
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerAuditingPolicyModel, clientRequestId, 
+                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            }
+            if (AuditType == AuditType.Blob)
+            {
+                ModelAdapter.SetServerAuditingPolicy(baseModel as ServerBlobAuditingPolicyModel, clientRequestId,
+                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            }
             return null;
         }
     }

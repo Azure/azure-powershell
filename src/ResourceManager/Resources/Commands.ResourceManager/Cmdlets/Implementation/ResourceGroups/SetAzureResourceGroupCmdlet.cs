@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(ProjectResources.WarnOnTags);
             PSUpdateResourceGroupParameters parameters = new PSUpdateResourceGroupParameters
             {
                 ResourceGroupName = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName,

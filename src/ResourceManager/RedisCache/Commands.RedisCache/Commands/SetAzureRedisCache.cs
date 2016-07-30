@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);

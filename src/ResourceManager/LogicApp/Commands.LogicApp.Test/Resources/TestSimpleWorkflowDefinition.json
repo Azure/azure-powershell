@@ -1,5 +1,5 @@
 {
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2014-12-01-preview/workflowdefinition.json#",
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "runworkflowmanually": {
@@ -11,7 +11,11 @@
             "defaultValue": "http://tempuri.org"
         }
     },
-    "triggers": {},
+    "triggers": {
+      "manualTrigger": {
+        "type": "Manual"
+      }
+    },
     "actions": {
         "http": {
             "type": "Http",

@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account name.",
             ValueFromPipelineByPropertyName = true)]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -111,7 +112,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                         {
                             KeyName = this.KeyName,
                             KeyVersion = this.KeyVersion,
-                            KeyVault = new ResourceReference()
+                            KeyVault = new KeyVaultKeyReferenceKeyVault()
                             {
                                 Id = this.KeyVaultId
                             }

@@ -56,11 +56,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if (Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
-            }
-
             try
             {
                 if (DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name) != null)
