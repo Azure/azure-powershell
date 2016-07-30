@@ -21,16 +21,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM virtual network to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
-    public class MoveVirtualNetworkCommand : MoveAzureNetworkResourceBase
+    [Cmdlet(VerbsCommon.Move, "AzureNetworkSecurityGroup"), OutputType(typeof(OperationStatusResponse))]
+    public class MoveNetworkSecurityGroupCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Virtual network name")]
+            HelpMessage = "Network Security Group name")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkName
+        public string NetworkSecurityGroupName
         {
             get;
             set;
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.ValidateMigration(this.VirtualNetworkName),
+                () => this.NetworkClient.NetworkSecurityGroups.ValidateMigration(this.NetworkSecurityGroupName),
                 (operation, service) =>
                 {
                     var context = MigrationValidateContextHelper.ConvertToContext(operation, service);
@@ -57,21 +57,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.NetworkSecurityGroups.AbortMigration(this.NetworkSecurityGroupName));
             }
             else if (this.Commit.IsPresent)
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.NetworkSecurityGroups.CommitMigration(this.NetworkSecurityGroupName));
             }
             else
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.NetworkSecurityGroups.PrepareMigration(this.NetworkSecurityGroupName));
             }
         }
     }

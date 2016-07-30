@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network;
 using System.Management.Automation;
 
@@ -21,16 +22,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM virtual network to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
-    public class MoveVirtualNetworkCommand : MoveAzureNetworkResourceBase
+    [Cmdlet(VerbsCommon.Move, "AzureReservedIP"), OutputType(typeof(OperationStatusResponse))]
+    public class MoveReservedIPCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Virtual network name")]
+            HelpMessage = "ReservedIP name")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkName
+        public string ReservedIPName
         {
             get;
             set;
@@ -45,7 +46,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.ValidateMigration(this.VirtualNetworkName),
+                () => this.NetworkClient.ReservedIPs.ValidateMigration(this.ReservedIPName),
                 (operation, service) =>
                 {
                     var context = MigrationValidateContextHelper.ConvertToContext(operation, service);
@@ -57,21 +58,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.ReservedIPs.AbortMigration(this.ReservedIPName));
             }
             else if (this.Commit.IsPresent)
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.ReservedIPs.CommitMigration(this.ReservedIPName));
             }
             else
             {
                 ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
+                () => this.NetworkClient.ReservedIPs.PrepareMigration(this.ReservedIPName));
             }
         }
     }
