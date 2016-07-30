@@ -261,6 +261,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string ChefExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         public static string CreatingStorageAccountForBootDiagnostics {
@@ -1027,15 +1036,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The  usability of Tag parameter in this cmdlet will be modified in a future release.  This will impact creating, updating and appending tags for Azure resources.  For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        public static string TagFixWarningMessage {
-            get {
-                return ResourceManager.GetString("TagFixWarningMessage", resourceCulture);
             }
         }
         

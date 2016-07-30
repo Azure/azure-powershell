@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     if (type == FileType.FILE)
                     {
                         DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
-                            isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount);
+                            isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount, resume: Resume);
                     }
                     else
                     {
                         DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
                             CmdletCancellationToken,
                             isDownload: true, overwrite: Force, cmdletRunningRequest: this,
-                            perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse);
+                            perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse, resume: Resume);
                     }
 
                     WriteObject(powerShellReadyPath);

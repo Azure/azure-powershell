@@ -27,6 +27,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             if (tags != null)
             {
-                resource.Tags = Microsoft.Azure.Commands.Batch.Helpers.CreateTagDictionary(tags, true);
+                resource.Tags = TagsConversionHelper.CreateTagDictionary(tags, true);
             }
 
             return resource;

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-MultipleNetworkInterface");
         }
 
-        [Fact(Skip = "ClientRuntime upgrade - Please re-record")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceDnsSettings()
         {
