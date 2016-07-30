@@ -58,7 +58,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            var existingEndpoint = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName).Where(e => e.Name == EndpointName).FirstOrDefault();
+            var existingEndpoint = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName)
+                .Where(e => e.Name.ToLower() == EndpointName.ToLower())
+                .FirstOrDefault();
+
             if(existingEndpoint == null)
             {
                 throw new PSArgumentException(string.Format(

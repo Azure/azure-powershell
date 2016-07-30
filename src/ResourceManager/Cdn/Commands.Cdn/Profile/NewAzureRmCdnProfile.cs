@@ -72,7 +72,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         {
 
             var existingProfile = CdnManagementClient.Profiles.ListBySubscriptionId().Select(p => p.ToPsProfile())
-                .Where(p => p.Name == ProfileName).Where(p => p.ResourceGroupName == ResourceGroupName).FirstOrDefault();
+                .Where(p => p.Name.ToLower() == ProfileName.ToLower())
+                .Where(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower())
+                .FirstOrDefault();
 
             if(existingProfile != null)
             {
