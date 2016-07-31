@@ -103,14 +103,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             this.RunPowerShellTest("Test-SetNetworkSecurityGroupToSubnetInDifferentRegion");
         }
 
-        [Fact(Skip ="asdsa")]
-        [Trait(Category.Service, Category.Network)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMoveNetworkSecurityGroup()
-        {
-            this.RunPowerShellTest("Test-MoveNetworkSecurityGroup");
-        }
-        
         [Fact]
         [Trait(Category.Service, Category.Network)]
         [Trait(Category.RunType, Category.LiveOnly)]

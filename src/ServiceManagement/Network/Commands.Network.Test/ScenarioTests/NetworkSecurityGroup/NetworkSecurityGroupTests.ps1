@@ -285,27 +285,3 @@ function Test-SetNSGOnNICAndUpdateVM
     $retrievedNSG = Get-AzureVM $VMName | Get-AzureNetworkSecurityGroupAssociation -NetworkInterfaceName $nicName
     Assert-AreEqual $securityGroupName $retrievedNSG.Name
 }
-
-########################## Validate, Prepare and abort NSG test ######################
-
-<#
-.SYNOPSIS
-Tests Move-AzureNetworkSecurityGroup
-#>
-function Test-MoveNetworkSecurityGroup
-{
-    # Setup
-    $securityGroupName = Get-SecurityGroupName
-    New-NetworkSecurityGroup $securityGroupName
-
-	# Validate move
-	$status = Move-NetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Validate
-	Assert-True "OK" $status.StatusCode
-
-    # Remove
-    $isDeleted = Remove-AzureNetworkSecurityGroup -Name $securityGroupName -Force -PassThru
-    
-    # Assert
-    Assert-True { $isDeleted } "Failed to delete Network Security Group $securityGroupName"
-    Assert-Throws { Get-AzureNetworkSecurityGroup -Name $securityGroupName } "ResourceNotFound: The Network Security Group $securityGroupName does not exist."
-}
