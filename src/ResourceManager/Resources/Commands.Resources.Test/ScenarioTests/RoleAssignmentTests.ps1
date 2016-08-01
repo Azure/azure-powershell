@@ -293,8 +293,7 @@ function DeleteRoleAssignment
     
     Remove-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId.Guid `
                                -Scope $roleAssignment.Scope `
-                               -RoleDefinitionName $roleAssignment.RoleDefinitionName `
-                               -Force
+                               -RoleDefinitionName $roleAssignment.RoleDefinitionName
 }
 
 <#
