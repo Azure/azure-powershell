@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Alias("Tags")]
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
