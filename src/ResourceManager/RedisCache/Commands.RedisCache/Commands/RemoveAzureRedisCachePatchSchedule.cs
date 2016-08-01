@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             CacheClient.RemovePatchSchedules(ResourceGroupName, Name);
         }
     }

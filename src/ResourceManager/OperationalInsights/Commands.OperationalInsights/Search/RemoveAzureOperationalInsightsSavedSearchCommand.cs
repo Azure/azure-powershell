@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The saved search id.")]
         [ValidateNotNullOrEmpty]
         public string SavedSearchId { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {

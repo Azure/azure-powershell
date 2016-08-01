@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             // Convert from PSScheduleEntry to ScheduleEntry
             List<ScheduleEntry> requestData = new List<ScheduleEntry>();
             foreach (var schedule in Entries)
