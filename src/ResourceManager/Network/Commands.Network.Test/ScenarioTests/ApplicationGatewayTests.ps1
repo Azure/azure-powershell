@@ -49,7 +49,7 @@ function Test-ApplicationGatewayCRUD
 	try 
 	{
 		# Create the resource group
-		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "APPGw tag"} 
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"} 
       
 		# Create the Virtual Network
 		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
