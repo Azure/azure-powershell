@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmCdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class StopAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
@@ -51,16 +51,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            if (!ShouldProcess(string.Format(
-                    Resources.Confirm_StopEndpoint, 
-                    EndpointName, 
-                    ProfileName,
-                    ResourceGroupName)))
-            {
-                return;
-            }
-
-            CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName);
+            ConfirmAction(MyInvocation.InvocationName,
+                EndpointName,
+                () => CdnManagementClient.Endpoints.Stop(EndpointName, ProfileName, ResourceGroupName));
 
             if (PassThru)
             {

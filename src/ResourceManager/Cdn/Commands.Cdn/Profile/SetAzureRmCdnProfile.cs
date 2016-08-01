@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class SetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
@@ -36,11 +36,18 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 
         public override void ExecuteCmdlet()
         {
+            ConfirmAction(MyInvocation.InvocationName,
+                CdnProfile.Name,
+                SetProfile);
+        }
+
+        private void SetProfile()
+        {
             var profile = CdnManagementClient.Profiles.Update(
-                CdnProfile.Name, 
-                CdnProfile.ResourceGroupName, 
+                CdnProfile.Name,
+                CdnProfile.ResourceGroupName,
                 CdnProfile.Tags.ToDictionaryTags());
-            
+
             WriteVerbose(Resources.Success);
             WriteObject(profile.ToPsProfile());
         }

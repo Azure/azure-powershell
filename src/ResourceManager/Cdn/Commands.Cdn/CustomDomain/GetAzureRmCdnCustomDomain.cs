@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSCustomDomain))]
     public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN custom domain name.")]

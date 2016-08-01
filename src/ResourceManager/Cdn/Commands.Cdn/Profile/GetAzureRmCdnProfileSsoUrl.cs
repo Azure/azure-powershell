@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl"), OutputType(typeof(PSSsoUri))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnProfileSsoUrl", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSSsoUri))]
     public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]

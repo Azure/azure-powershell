@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsData.Unpublish, "AzureRmCdnEndpointContent"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsData.Unpublish, "AzureRmCdnEndpointContent", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class UnpublishAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
@@ -55,7 +55,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 EndpointName = CdnEndpoint.Name;
             }
 
-            CdnManagementClient.Endpoints.PurgeContent(EndpointName, ProfileName, ResourceGroupName, PurgeContent);
+            ConfirmAction(MyInvocation.InvocationName,
+                EndpointName,                
+                () => CdnManagementClient.Endpoints.PurgeContent(EndpointName, ProfileName, ResourceGroupName, PurgeContent));
+
             WriteVerbose(Resources.Success);
 
             if (PassThru)

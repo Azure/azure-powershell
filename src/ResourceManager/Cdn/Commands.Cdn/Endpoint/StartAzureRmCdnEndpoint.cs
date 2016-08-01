@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmCdnEndpoint"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmCdnEndpoint", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class StartAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
@@ -50,7 +50,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                 ProfileName = CdnEndpoint.ProfileName;
                 EndpointName = CdnEndpoint.Name;
             }
-            CdnManagementClient.Endpoints.Start(EndpointName, ProfileName, ResourceGroupName);
+
+            ConfirmAction(MyInvocation.InvocationName,
+                EndpointName,
+                () => CdnManagementClient.Endpoints.Start(EndpointName, ProfileName, ResourceGroupName));
             
             WriteVerbose(Resources.Success);
             WriteVerbose(string.Format(Resources.Success_StartEndpoint, EndpointName, ProfileName, ResourceGroupName));

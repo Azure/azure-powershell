@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class NewAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile name.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "Azure CDN profile name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// <summary>
         /// The resource group name of the profile.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -76,12 +76,19 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 .Where(p => p.ResourceGroupName.ToLower() == ResourceGroupName.ToLower())
                 .FirstOrDefault();
 
-            if(existingProfile != null)
+            if (existingProfile != null)
             {
                 throw new PSArgumentException(string.Format(Resources.Error_CreateExistingProfile, ProfileName,
                     ResourceGroupName));
             }
 
+            ConfirmAction(MyInvocation.InvocationName,
+                ProfileName,
+                NewProfile);
+        }
+
+        private void NewProfile()
+        {
             var cdnProfile = CdnManagementClient.Profiles.Create(
                 ProfileName,
                 new ProfileCreateParameters(
@@ -91,7 +98,6 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 ResourceGroupName);
 
             WriteObject(cdnProfile.ToPsProfile());
-
         }
     }
 }

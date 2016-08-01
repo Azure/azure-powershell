@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Cdn;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsData.Publish, "AzureRmCdnEndpointContent"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsData.Publish, "AzureRmCdnEndpointContent", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class PublishAzureRmCdnEndpointContent : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]

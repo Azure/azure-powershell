@@ -24,7 +24,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnEndpoint", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
@@ -70,20 +70,18 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     ProfileName,
                     ResourceGroupName));
             }
-           
-            if(Force || ShouldProcess(string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName)))
-            {
-                CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName);
-            }
-            else
-            {
-                return;
-            }
 
+            ConfirmAction(Force,
+                string.Format(Resources.Confirm_RemoveEndpoint, EndpointName, ProfileName, ResourceGroupName),
+                this.MyInvocation.InvocationName,
+                EndpointName,
+                () => CdnManagementClient.Endpoints.DeleteIfExists(EndpointName, ProfileName, ResourceGroupName));
+           
             if (PassThru)
             {
                 WriteObject(true);
             }
         }
+
     }
 }

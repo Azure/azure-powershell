@@ -27,7 +27,7 @@ using Microsoft.Azure.Commands.Cdn.Models.Profile;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
     public class NewAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile.", ParameterSetName = FieldsParameterSet)]
+        [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile.", ValueFromPipelineByPropertyName = true, ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [ValidateNotNull]
         public PSProfile CdnProfile { get; set; }
         
-        [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.")]
+        [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -89,21 +89,30 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName == ObjectParameterSet)
+            if (ParameterSetName == ObjectParameterSet)
             {
                 ProfileName = CdnProfile.Name;
                 ResourceGroupName = CdnProfile.ResourceGroupName;
+                Location = CdnProfile.Location;
             }
 
             var checkExists = CdnManagementClient.NameAvailability.CheckNameAvailability(EndpointName, ResourceType.MicrosoftCdnProfilesEndpoints);
 
-            if(!checkExists.NameAvailable.Value)
+            if (!checkExists.NameAvailable.Value)
             {
                 throw new PSArgumentException(string.Format(
                     Resources.Error_CreateExistingEndpoint,
                     EndpointName));
             }
 
+            ConfirmAction(MyInvocation.InvocationName,
+                EndpointName,
+                () => NewEndpoint());
+          
+        }
+
+        private void NewEndpoint()
+        {
             var endpoint = CdnManagementClient.Endpoints.Create(EndpointName, new EndpointCreateParameters
             {
                 ContentTypesToCompress = ContentTypesToCompress,

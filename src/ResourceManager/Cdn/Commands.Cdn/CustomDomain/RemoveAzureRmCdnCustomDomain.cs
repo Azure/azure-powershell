@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
     [Cmdlet(VerbsCommon.Remove, 
         "AzureRmCdnCustomDomain", 
-        ConfirmImpact = ConfirmImpact.High, 
+        DefaultParameterSetName = FieldsParameterSet, 
         SupportsShouldProcess = true), 
         OutputType(typeof(bool))]
     public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
@@ -54,9 +54,6 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
         
-        [Parameter()]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ObjectParameterSet)
@@ -81,23 +78,12 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     ResourceGroupName));
             }
 
-           if (Force || ShouldProcess(string.Format(
-                            Resources.Confirm_RemoveCustomDomain,
-                            CustomDomainName,
-                            EndpointName,
-                            ProfileName,
-                            ResourceGroupName)))
-            {
-                CdnManagementClient.CustomDomains.DeleteIfExists(
-                CustomDomainName,
-                EndpointName,
-                ProfileName,
-                ResourceGroupName);
-            }
-            else
-            {
-                return;
-            }
+            ConfirmAction(MyInvocation.InvocationName,
+                String.Format("{0} ({1})", existingCustomDomain.Name, existingCustomDomain.HostName),
+                () => CdnManagementClient.CustomDomains.DeleteIfExists(CustomDomainName,
+                    EndpointName,
+                    ProfileName,
+                    ResourceGroupName));
 
             if (PassThru)
             {
