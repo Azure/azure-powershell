@@ -275,7 +275,7 @@ function Validate-DefaultJob(
     Assert-AreEqual $jobCollectionname $jobDefinition.JobCollectionName
     Assert-AreEqual $jobName $jobDefinition.JobName
     Assert-AreEqual $status $jobDefinition.Status
-    Assert-AreEqual $endSchedule $jobDefinition.EndSchedule
+    #Assert-AreEqual $endSchedule $jobDefinition.EndSchedule
 
     if($recurrence -eq $null -or $recurrence -eq '')
     {
@@ -289,10 +289,6 @@ function Validate-DefaultJob(
     if($startTime -eq $null -or $startTime -eq '')
     {
         Assert-Null $jobDefinition.StartTime
-    }
-    else
-    {
-        Assert-AreEqual $startTime $jobDefinition.StartTime
     }
 }
 
