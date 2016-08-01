@@ -19,7 +19,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayAuthenticationCertificate"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
@@ -32,17 +33,20 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (authCertificate != null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                throw new ArgumentException("Authentication certificate with the specified name already exists");
+                var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (authCertificate != null)
+                {
+                    throw new ArgumentException("Authentication certificate with the specified name already exists");
+                }
+
+                authCertificate = base.NewObject();
+                this.ApplicationGateway.AuthenticationCertificates.Add(authCertificate);
+
+                WriteObject(this.ApplicationGateway);
             }
-
-            authCertificate = base.NewObject();
-            this.ApplicationGateway.AuthenticationCertificates.Add(authCertificate);
-
-            WriteObject(this.ApplicationGateway);
         }
     }
 }
