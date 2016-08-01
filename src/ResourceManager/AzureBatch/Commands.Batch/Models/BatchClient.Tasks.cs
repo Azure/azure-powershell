@@ -134,6 +134,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.MultiInstanceSettings = parameters.MultiInstanceSettings.omObject;
             }
 
+            if (parameters.ApplicationPackageReference != null)
+            {
+                task.ApplicationPackageReferences = parameters.ApplicationPackageReference;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {
@@ -144,6 +149,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.AddTask(parameters.JobId, task, parameters.AdditionalBehaviors);
             }
+
+            
         }
 
         /// <summary>

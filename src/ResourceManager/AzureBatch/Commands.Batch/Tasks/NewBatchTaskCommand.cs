@@ -15,6 +15,7 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -90,6 +91,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public TaskDependencies DependsOn { get; set; }
 
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public IList<ApplicationPackageReference> ApplicationPackageReference { get; set; }
+        
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,
@@ -118,6 +124,7 @@ namespace Microsoft.Azure.Commands.Batch
                     Constraints = this.Constraints,
                     MultiInstanceSettings = this.MultiInstanceSettings,
                     DependsOn = this.DependsOn,
+                    ApplicationPackageReference = this.ApplicationPackageReference,
                 };
 
                 BatchClient.CreateTask(parameters);

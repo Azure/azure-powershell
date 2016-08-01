@@ -46,6 +46,9 @@ function Test-NewJobSchedule
 
 		$osFamily = "4"
 		$targetOS = "*"
+		
+		$ApplicationId = "test"
+		$ApplicationVersion = "beta"
 
         $poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
         $poolSpec.TargetDedicated = $targetDedicated = 3
@@ -75,6 +78,11 @@ function Test-NewJobSchedule
         $jobMgr = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobManagerTask
         $jobMgr.CommandLine = $jobMgrCmd = "cmd /c dir /s"
         $jobMgr.EnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+		$apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
+		$apr1.ApplicationId = $ApplicationId
+		$apr1.Version = $ApplicationVersion
+		$jobMgr.ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
+
         $env1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "name1","value1"
         $env2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "name2","value2"
         $env1Name = $env1.Name
@@ -217,6 +225,11 @@ function Test-NewJobSchedule
         Assert-AreEqual $env2Value $jobSchedule2.JobSpecification.JobManagerTask.EnvironmentSettings[1].Value
         Assert-AreEqual $resourceFileCount $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles.Count
         Assert-AreEqual $blobSource $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles[0].BlobSource
+
+		Assert-AreEqual $ApplicationId $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences[0].ApplicationId
+		Assert-AreEqual $ApplicationVersion $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences[0].Version
+		Assert-AreEqual $envCount $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences.Count
+
         Assert-AreEqual $filePath $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles[0].FilePath
         Assert-AreEqual $killOnCompletion $jobSchedule2.JobSpecification.JobManagerTask.KillJobOnCompletion
         Assert-AreEqual $jobMgrId $jobSchedule2.JobSpecification.JobManagerTask.Id

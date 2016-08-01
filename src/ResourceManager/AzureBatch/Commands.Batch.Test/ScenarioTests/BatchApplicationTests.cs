@@ -147,5 +147,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        public void TestCreateJobManagetTaskWithApplicationPackage()
+        {
+            string id = "JobManagerTaskWithApplicationPackage";
+
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () =>
+                {
+                    return new string[]
+                    {
+                        string.Format(string.Format("Test-JobManagerTaskWithApplicationPackage '{0}' '{1}' '{2}'", id, version, filePath))
+                    };
+                },
+                () =>
+                {
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateApplicationPackage(controller, context, id, version, filePath);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
+                    ScenarioTestHelpers.DeleteApplication(controller, context, id);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 }

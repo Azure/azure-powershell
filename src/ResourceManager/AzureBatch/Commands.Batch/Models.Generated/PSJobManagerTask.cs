@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobManagerTask omObject;
         
+        private IList<PSApplicationPackageReference> applicationPackageReferences;
+        
         private PSTaskConstraints constraints;
         
         private IList<PSEnvironmentSetting> environmentSettings;
@@ -52,6 +54,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public IList<PSApplicationPackageReference> ApplicationPackageReferences
+        {
+            get
+            {
+                if (((this.applicationPackageReferences == null) 
+                            && (this.omObject.ApplicationPackageReferences != null)))
+                {
+                    List<PSApplicationPackageReference> list;
+                    list = new List<PSApplicationPackageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
+                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                    }
+                    this.applicationPackageReferences = list;
+                }
+                return this.applicationPackageReferences;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationPackageReferences = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                }
+                this.applicationPackageReferences = value;
+            }
         }
         
         public string CommandLine
