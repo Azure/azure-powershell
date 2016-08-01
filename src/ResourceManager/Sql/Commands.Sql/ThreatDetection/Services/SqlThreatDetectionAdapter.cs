@@ -171,11 +171,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 }
 
                 // Check that auditing is turned on:
-                DatabaseAuditingPolicyModel databaseAuditingPolicyModel = AuditingAdapter.GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+                DatabaseAuditingPolicyModel databaseAuditingPolicyModel;
+                AuditingAdapter.GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, out databaseAuditingPolicyModel);
                 AuditStateType auditingState = databaseAuditingPolicyModel.AuditState;
                 if (databaseAuditingPolicyModel.UseServerDefault == UseServerDefaultOptions.Enabled)
                 {
-                    ServerAuditingPolicyModel serverAuditingPolicyModel = AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId);
+                    ServerAuditingPolicyModel serverAuditingPolicyModel;
+                    AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, out serverAuditingPolicyModel);
                     auditingState = serverAuditingPolicyModel.AuditState;
                 }
                 if (auditingState != AuditStateType.Enabled)
@@ -184,7 +186,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 }
             }
 
-            DatabaseSecurityAlertPolicyCreateOrUpdateParameters databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
+            var databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
             ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
         }
 

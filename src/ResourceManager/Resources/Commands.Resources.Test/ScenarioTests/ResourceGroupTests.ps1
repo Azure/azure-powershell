@@ -25,12 +25,12 @@ function Test-CreatesNewSimpleResourceGroup
     try 
     {
         # Test
-        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} 
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval"} 
         $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-        Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
+        Assert-AreEqual $expected.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
     }
     finally
     {
@@ -52,24 +52,22 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} -ErrorAction SilentlyContinue
+        Set-AzureRmResourceGroup -Name $rgname -Tags @{testtag = "testval"} -ErrorAction SilentlyContinue
         Assert-True { $Error[0] -like "*Provided resource group does not exist." }
         $Error.Clear()
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
         # Test update with bad tag format
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
-        # Test update with bad tag format
-        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"}, @{Name = "testtag"; Value = "testval2"} } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
+        # Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" }, @{ testtag = "testval2" } } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
             
-        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} 
+        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" } 
         $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual 0 $new.Tags.Count
-        Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
+        Assert-AreEqual $expected.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
     }
     finally
     {
@@ -255,7 +253,7 @@ function Test-RemoveDeployment
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "East US"
         $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force }
+        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {
@@ -280,33 +278,33 @@ function Test-FindResourceGroup
     try
     {
         # Test
-        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tag @{ Name = "testtag"; Value = "testval" }
-        $actual2 = New-AzureRmResourceGroup -Name $rgname2 -Location $location -Tag @{ Name = "testtag"; Value = "testval2" }
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tag @{ testtag = "testval" }
+        $actual2 = New-AzureRmResourceGroup -Name $rgname2 -Location $location -Tag @{ testtag = "testval2" }
 
         $expected1 = Get-AzureRmResourceGroup -Name $rgname
         # Assert
         Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected1.Tags[0]["Name"] $actual.Tags[0]["Name"]
+        Assert-AreEqual $expected1.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
 
 		$expected2 = Get-AzureRmResourceGroup -Name $rgname2
         # Assert
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
-        Assert-AreEqual $expected2.Tags[0]["Name"] $actual2.Tags[0]["Name"]
+        Assert-AreEqual $expected2.Tags[0]["testtag"] $actual2.Tags[0]["testtag"]
 
 		$expected3 = Find-AzureRmResourceGroup
 		$expectedCount = $originalCount + 2
 		# Assert
 		Assert-AreEqual @($expected3).Count $expectedCount
 
-		$expected4 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag";}
+		$expected4 = Find-AzureRmResourceGroup -Tag @{ testtag = $null}
         # Assert
         Assert-AreEqual @($expected4).Count 2
 
-		$expected5 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag"; Value = "testval" }
+		$expected5 = Find-AzureRmResourceGroup -Tag @{ testtag = "testval" }
         # Assert
         Assert-AreEqual @($expected5).Count 1
 
-		$expected6 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag2"}
+		$expected6 = Find-AzureRmResourceGroup -Tag @{ testtag2 = $null }
         # Assert
         Assert-AreEqual @($expected6).Count 0
     }
@@ -349,7 +347,7 @@ function Test-ExportResourceGroup
 		# Test
 		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
                 #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
 		Assert-AreEqual $r.ResourceGroupName $rgname
 
 		$exportOutput = Export-AzureRmResourceGroup -ResourceGroupName $rgname -Force

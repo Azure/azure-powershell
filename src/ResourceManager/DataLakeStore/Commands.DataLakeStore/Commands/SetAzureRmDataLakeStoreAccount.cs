@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using System.Collections;
 using System.Management.Automation;
@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            if (Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
-            }
-
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
             var location = currentAccount.Location;
 

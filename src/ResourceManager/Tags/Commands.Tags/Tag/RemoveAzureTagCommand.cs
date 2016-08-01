@@ -13,10 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Commands.Tags.Properties;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.Tags.Properties;
 
 namespace Microsoft.Azure.Commands.Tags.Tag
 {
@@ -33,10 +34,6 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Value of the tag to remove. If not specified, remove the entire tag. If specified, only remove the tag value.")]
         [ValidateNotNullOrEmpty]
         public string[] Value { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If not specified, will prompt for confirmation. If specified, won't prompt.")]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }

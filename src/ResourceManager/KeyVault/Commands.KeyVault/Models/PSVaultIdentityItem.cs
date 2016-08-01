@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using ResourceManagement = Microsoft.Azure.Management.Resources.Models;

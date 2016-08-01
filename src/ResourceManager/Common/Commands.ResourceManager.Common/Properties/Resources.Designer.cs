@@ -136,6 +136,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        /// </summary>
+        public static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials..
         /// </summary>
         public static string NoSubscriptionFound {
