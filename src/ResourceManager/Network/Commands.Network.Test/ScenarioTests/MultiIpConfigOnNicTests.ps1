@@ -29,7 +29,7 @@ function Test-LBWithMultiIpConfigNICCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -146,7 +146,7 @@ function Test-AddNICToLBWithMultiIpConfig
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -224,7 +224,7 @@ function Test-LBWithMultiIpConfigMultiNIC
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -239,7 +239,7 @@ function Test-LBWithMultiIpConfigMultiNIC
 		$ipconfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipconfig2Name -PublicIpAddress $publicip2 -Subnet $vnet.Subnets[0]
 
         # Create NetworkInterface
-        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{Name = "testtag"; Value = "testval"}
+        $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{ testtag = "testval" }
 
         Assert-AreEqual $rgname $nic.ResourceGroupName	
         Assert-AreEqual $nicName $nic.Name	
@@ -320,7 +320,7 @@ function Test-MultiIpConfigCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -336,7 +336,7 @@ function Test-MultiIpConfigCRUD
 		$ipconfig2 = New-AzureRmNetworkInterfaceIpConfig -Name $ipconfig2Name -PrivateIpAddressVersion IPv4 -Subnet $vnet.Subnets[0]
 
         # Create NetworkInterface
-        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{Name = "testtag"; Value = "testval"}
+        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{ testtag = "testval" }
         $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 			
 		Assert-AreEqual 2 @($expectedNic.IpConfigurations).Count

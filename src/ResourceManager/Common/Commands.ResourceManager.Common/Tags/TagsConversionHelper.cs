@@ -43,33 +43,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             return tagValuePair;
         }
 
-        public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray, bool validate)
+        public static Dictionary<string, string> CreateTagDictionary(Hashtable tags, bool validate)
         {
             Dictionary<string, string> tagDictionary = null;
-            if (hashtableArray != null && hashtableArray.Length > 0)
+            if (tags != null)
             {
                 tagDictionary = new Dictionary<string, string>();
                 PSTagValuePair tvPair = new PSTagValuePair();
-                foreach (var tag in hashtableArray)
+
+                foreach(DictionaryEntry entry in tags)
                 {
-                    foreach(DictionaryEntry entry in tag)
+                    tvPair.Name = entry.Key.ToString();
+                    if (entry.Value != null)
                     {
-                        tvPair.Name = entry.Key.ToString();
-                        if (entry.Value != null)
-                        {
-                            tvPair.Value = entry.Value.ToString();
-                        }
-                        else
-                        {
-                            tvPair.Value = string.Empty;
-                        }
-                        tagDictionary[tvPair.Name] = tvPair.Value;
+                        tvPair.Value = entry.Value.ToString();
                     }
+                    else
+                    {
+                        tvPair.Value = string.Empty;
+                    }
+                    tagDictionary[tvPair.Name] = tvPair.Value;
                 }
+                
             }
             if (validate)
             {
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
+                if (tags != null && tags.Count > 0 &&
                     (tagDictionary == null || tagDictionary.Count == 0))
                 {
                     throw new ArgumentException(ProjectResources.InvalidTagFormat);
@@ -79,22 +78,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             return tagDictionary;
         }
 
-        public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
+        public static Hashtable CreateTagHashtable(IDictionary<string, string> dictionary)
         {
             if (dictionary == null)
             {
-                return new Hashtable[0];
+                return null;
             }
 
-            List<Hashtable> tagHashtable = new List<Hashtable>();
+            Hashtable tagsHashtable = new Hashtable();
+
             foreach (string key in dictionary.Keys)
             {
-                tagHashtable.Add(new Hashtable
-                {
-                    {key, dictionary[key]}
-                });
+                tagsHashtable[key] = dictionary[key];
             }
-            return tagHashtable.ToArray();
+            return tagsHashtable;
         }
     }
 }

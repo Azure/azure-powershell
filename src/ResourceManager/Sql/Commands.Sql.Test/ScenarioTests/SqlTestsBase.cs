@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var graphClient = GetGraphClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
         }
-
+        
         protected void RunPowerShellTest(params string[] scripts)
         {
             HttpMockServer.Matcher = new PermissiveRecordMatcher();

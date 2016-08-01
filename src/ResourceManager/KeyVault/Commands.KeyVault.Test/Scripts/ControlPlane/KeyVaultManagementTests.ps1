@@ -26,7 +26,7 @@ Param($rgName, $location, $tagName, $tagValue)
     $vaultname = Get-VaultName
 
     # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{Name = $tagName; Value = $tagValue}
+    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{$tagName = $tagValue}
 
     # Assert
     Assert-AreEqual $vaultName $actual.VaultName
