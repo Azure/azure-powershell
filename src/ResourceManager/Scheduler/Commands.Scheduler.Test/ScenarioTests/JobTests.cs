@@ -40,13 +40,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
         {
             SchedulerController.NewInstance.RunPowerShellTests("Test-UpdateHttpJob");
         }
-
-        //[Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateStorageJob()
-        {
-            SchedulerController.NewInstance.RunPowerShellTests("Test-CreateStorageJob");
-        }
-
     }
 }
