@@ -71,7 +71,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.46.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.49.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -462,7 +462,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestAuditingServerUpdatePolicyWithStorage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestAuditingServerUpdatePolicyWithStorage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AuditingTests\TestAuditingUseServerDefault.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseActivationTests\TestDatabasePauseResume.json">
