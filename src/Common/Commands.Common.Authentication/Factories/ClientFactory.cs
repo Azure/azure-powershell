@@ -16,11 +16,14 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -30,12 +33,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private Dictionary<Type, IClientAction> _actions;
         private OrderedDictionary _handlers;
+        private ReaderWriterLockSlim _actionsLock;
+        private ReaderWriterLockSlim _handlersLock;
 
         public ClientFactory()
         {
             _actions = new Dictionary<Type, IClientAction>();
+            _actionsLock = new ReaderWriterLockSlim();
             UserAgents = new HashSet<ProductInfoHeaderValue>();
             _handlers = new OrderedDictionary();
+            _handlersLock = new ReaderWriterLockSlim();
         }
 
         public virtual TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
@@ -108,8 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         public virtual TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             TClient client = CreateClient<TClient>(profile.Context, endpoint);
-
-            foreach (IClientAction action in _actions.Values)
+            foreach (IClientAction action in GetActions())
             {
                 action.Apply<TClient>(client, profile, endpoint);
             }
@@ -154,7 +160,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             TClient client = CreateClient<TClient>(context, endpoint);
 
-            foreach (IClientAction action in _actions.Values)
+            foreach (IClientAction action in GetActions())
             {
                 action.Apply<TClient>(client, profile, endpoint);
             }
@@ -242,34 +248,82 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public void AddAction(IClientAction action)
         {
-            if (action != null)
+            _actionsLock.EnterWriteLock();
+            try
             {
-                action.ClientFactory = this;
-                _actions[action.GetType()] = action;
+                if (action != null)
+                {
+                    action.ClientFactory = this;
+                    _actions[action.GetType()] = action;
+                }
+            }
+            finally
+            {
+                _actionsLock.ExitWriteLock();
             }
         }
 
         public void RemoveAction(Type actionType)
         {
-            if (_actions.ContainsKey(actionType))
+            _actionsLock.EnterWriteLock();
+            try
             {
-                _actions.Remove(actionType);
+                if (_actions.ContainsKey(actionType))
+                {
+                    _actions.Remove(actionType);
+                }
             }
+            finally
+            {
+                _actionsLock.ExitWriteLock();
+            }
+        }
+
+        private IClientAction[] GetActions()
+        {
+            IClientAction[] result = null;
+            _actionsLock.EnterReadLock();
+            try
+            {
+                result = _actions.Values.ToArray();
+            }
+            finally
+            {
+                _actionsLock.ExitReadLock();
+            }
+
+            return result;
         }
 
         public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
-            if (handler != null)
+            _handlersLock.EnterWriteLock();
+            try
             {
-                _handlers[handler.GetType()] = handler;
+                if (handler != null)
+                {
+                    _handlers[handler.GetType()] = handler;
+                }
+            }
+            finally
+            {
+                _handlersLock.ExitWriteLock();
             }
         }
 
         public void RemoveHandler(Type handlerType)
         {
-            if (_handlers.Contains(handlerType))
+            _handlersLock.EnterWriteLock();
+            try
             {
-                _handlers.Remove(handlerType);
+                if (_handlers.Contains(handlerType))
+                {
+                    _handlers.Remove(handlerType);
+                }
+            }
+            finally
+            {
+                _handlersLock.ExitWriteLock();
             }
         }
 
@@ -296,24 +350,32 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public DelegatingHandler[] GetCustomHandlers()
         {
-            List<DelegatingHandler> newHandlers = new List<DelegatingHandler>();
-            var enumerator = _handlers.GetEnumerator();
-            while (enumerator.MoveNext())
+            _handlersLock.EnterReadLock();
+            try
             {
-                var handler = enumerator.Value;
-                ICloneable cloneableHandler = handler as ICloneable;
-                if (cloneableHandler != null)
+                List<DelegatingHandler> newHandlers = new List<DelegatingHandler>();
+                var enumerator = _handlers.GetEnumerator();
+                while (enumerator.MoveNext())
                 {
-                    var newHandler = cloneableHandler.Clone();
-                    DelegatingHandler convertedHandler = newHandler as DelegatingHandler;
-                    if (convertedHandler != null)
+                    var handler = enumerator.Value;
+                    ICloneable cloneableHandler = handler as ICloneable;
+                    if (cloneableHandler != null)
                     {
-                        newHandlers.Add(convertedHandler);
+                        var newHandler = cloneableHandler.Clone();
+                        DelegatingHandler convertedHandler = newHandler as DelegatingHandler;
+                        if (convertedHandler != null)
+                        {
+                            newHandlers.Add(convertedHandler);
+                        }
                     }
                 }
-            }
 
-            return newHandlers.ToArray();
+                return newHandlers.ToArray();
+            }
+            finally
+            {
+                _handlersLock.ExitReadLock();
+            }
         }
     }
 }
