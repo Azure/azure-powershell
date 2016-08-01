@@ -169,7 +169,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -7185,8 +7186,7 @@ Subnets           : []</dev:code>
 			<dev:code>PS C:\&gt; $vnet1 = Get-AzureRmVirtualNetwork –ResourceGroupName “MyResourceGroup” -Name vnet1
 PS C:\&gt; $vnet2 = Get-AzureRmVirtualNetwork -ResourceGroupName “MyResourceGroup” -Name vnet2
 PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name LinkToVNet2 -VirtualNetwork “MyVirtualNetwork” -RemoteVirtualNetworkId $vnet2.id
-PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name LinkToVNet1 -VirtualNetwork “MyVirtualNetwork” -RemoteVirtualNetworkId $vnet1.id
-</dev:code>
+PS C:\&gt; Add-AzureRmVirtualNetworkPeering -Name LinkToVNet1 -VirtualNetwork “MyVirtualNetwork” -RemoteVirtualNetworkId $vnet1.id</dev:code>
 			<dev:remarks>
 				<maml:para>The first command gets a virtual network object called vnet1 associated with resource group “MyResourceGroup”. Similarly, the second command gets a virtual network object called vnet2 associated with the same resource group. The third command then adds a Vnet peering link from vnet1 to vnet2. This link is named LinkToVnet2. Finally, the forth command adds a link from vnet2 to vnet1 called LinkToVnet1. Note that vnet1 and vnet2 are assumed to be previously created in this example. Note that a link must be created from vnet1 to vnet2 and vice versa in order for peering to work.</maml:para>
 				<maml:para />
@@ -7199,9 +7199,10 @@ Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 Etag                             : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
 ResourceGroupName                : MyResourceGroup
 VirtualNetworkName               : MyVirtualNetwork
+PeeringState                     : Initiated
 ProvisioningState                : Succeeded
 RemoteVirtualNetwork             : {
-                                     &quot;Id&quot;: &quot;/subscriptions/XXX/resourceGroups/MyResourceGroup
+                                     &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/MyResourceGroup
                                    /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork&quot;
                                    }
 AllowVirtualNetworkAccess        : True
@@ -7214,14 +7215,15 @@ RemoteVirtualNetworkAddressSpace : null
 
 
 Name                             : LinkToVNet1
-Id                               : /subscriptions/XXXX/resourceGroups/MyResourceGroup/provi
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/MyResourceGroup/provi
                                    ders/Microsoft.Network/virtualNetworks/MyVirtualNetwork/virtualNetworkPeerings/LinkToVNet1                     
-Etag                             : W/&quot;XXX&quot;
+Etag                             : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx&quot;
 ResourceGroupName                : MyResourceGroup
 VirtualNetworkName               : MyVirtualNetwork
+PeeringState                     : Initiated
 ProvisioningState                : Succeeded
 RemoteVirtualNetwork             : {
-                                     &quot;Id&quot;: &quot;/subscriptions/XXX/resourceGroups/MyResourceGroup
+                                     &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/MyResourceGroup
                                    /providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork&quot;
                                    }
 AllowVirtualNetworkAccess        : True
@@ -15954,12 +15956,11 @@ Subnets           : [
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1 Get a peering between 2 virtual networks    --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Get a peering between 2 virtual networks  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetwork “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”
-</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetwork “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets a previously created Virtual Network Peering called “LinkToVNet2” located in “MyVirtualNetwork” within the resource group called “MyResourceGroup”</maml:para>
 				<maml:para />
@@ -15975,7 +15976,7 @@ Subnets           : [
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------    --------------------------</maml:title>
+			<maml:title>--------------------------  Unknown  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -36611,11 +36612,9 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetworkName “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”
-</dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmVirtualNetworkPeering -Name “LinkToVNet2” -VirtualNetworkName “MyVirtualNetwork” -ResourceGroupName “MyResourceGroup”</dev:code>
 			<dev:remarks>
-				<maml:para>This command deletes a previously created Virtual Network Peering called “LinkToVNet2” located in “MyVirtualNetwork” within the resource group called “MyResourceGroup”
-</maml:para>
+				<maml:para>This command deletes a previously created Virtual Network Peering called “LinkToVNet2” located in “MyVirtualNetwork” within the resource group called “MyResourceGroup”</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -47130,8 +47129,7 @@ PS C:\&gt; Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -Asn 1337
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
 PS C:\&gt; $LinkToVNet2.AllowForwardedTraffic = $true
-PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
-</dev:code>
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2</dev:code>
 			<dev:remarks>
 				<maml:para>This example shows how to change the forwarded traffic configuration to true instead of the default false option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable property to true. The final command changes the setting for the “LinkToVNet2” virtual network peering link to true.</maml:para>
 				<maml:para />
@@ -47153,8 +47151,7 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
 PS C:\&gt; $LinkToVNet2.AllowVirtualNetworkAccess = $false
-PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
-</dev:code>
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2</dev:code>
 			<dev:remarks>
 				<maml:para>This example shows how to change the Virtual Network Access property configuration to false instead of the default true option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable associated with the property to false. The final command changes the setting for the “LinkToVNet2” virtual network peering link to false.</maml:para>
 				<maml:para />
@@ -47176,8 +47173,7 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $LinkToVNet2 = Get-AzureRmVirtualNetworkPeering -VirtualNetworkName “MyVirtualNetwork” ResourceGroupName “MyResourceGroup” -Name LinkToVNet2
 PS C:\&gt; $LinkToVNet2.AllowGatewayTransit = $true
-PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2
-</dev:code>
+PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2</dev:code>
 			<dev:remarks>
 				<maml:para>This example shows how to change the gateway transit property configuration to true instead of the default false option on a previously established VNet peering link. The first command gets the associated information regarding the link, in this case, called LinkToVNet2 within “MyResourceGroup” in virtual network “MyVirtualNetwork”. The next command updates the variable associated with this property to true. The final command changes the setting for the “LinkToVNet2” virtual network peering link to true. By changing this property to true, the peer VNet is allowed to use your VNet gateway.</maml:para>
 				<maml:para />
