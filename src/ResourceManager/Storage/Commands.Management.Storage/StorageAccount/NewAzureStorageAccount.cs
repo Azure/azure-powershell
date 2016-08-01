@@ -113,19 +113,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
             }
 
-            Hashtable[] hashtableArray = null;
-            if (Tag != null)
-            {
-                hashtableArray = new Hashtable[1];
-                hashtableArray[0] = Tag;
-            }
-
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
                 Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
-                Tags = TagsConversionHelper.CreateTagDictionary(hashtableArray, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
             if (this.CustomDomainName != null)

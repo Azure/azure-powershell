@@ -46,7 +46,7 @@ function Test-CreatesNewBatchAccount
         Assert-AreEqual $expected.AccountName $actual.AccountName
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
-        Assert-AreEqual $expected.Tags[0][$tagName] $actual.Tags[0][$tagName]
+        Assert-AreEqual $expected.Tags[$tagName] $actual.Tags[$tagName]
         Assert-True { $actual.CoreQuota -gt 0 }
         Assert-True { $actual.PoolQuota -gt 0 }
         Assert-True { $actual.ActiveJobAndJobScheduleQuota -gt 0 }
@@ -91,8 +91,8 @@ function Test-UpdatesExistingBatchAccount
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual 1 $expected.Tags.Count
-        Assert-AreEqual $tagValue2 $expected.Tags[0][$tagName2]
-        Assert-AreEqual $expected.Tags[0][$tagName2] $actual.Tags[0][$tagName2]
+        Assert-AreEqual $tagValue2 $expected.Tags[$tagName2]
+        Assert-AreEqual $expected.Tags[$tagName2] $actual.Tags[$tagName2]
 
     }
     finally
