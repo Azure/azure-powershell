@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,12 +47,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "The AAD object ID of the new owner entity")]
         [ValidateNotNull]
         public Guid Id { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
-        [Obsolete("Force prameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
