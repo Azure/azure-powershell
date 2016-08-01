@@ -253,7 +253,7 @@ function Test-RemoveDeployment
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "East US"
         $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force }
+        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {

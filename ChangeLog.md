@@ -4,6 +4,40 @@
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
   * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
   * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
+* Azure Storage
+  * Change -Tag parameter type from HashTable[] to HashTable
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
+    - Remove-AzureRmStorageAccount
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Remove-AzureStorageTable
+    - Remove-AzureStorageQueue
+    - Remove-AzureStorageShare
+    - Remove-AzureStorageDirectory
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageTableStoredAccessPolicy
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Set-AzureStorageContainerStoredAccessPolicy
+    - Set-AzureStorageShareStoredAccessPolicy
+    - Set-AzureStorageTableStoredAccessPolicy
+    - Set-AzureStorageQueueStoredAccessPolicy
+    - Set-AzureRmStorageAccount
+  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation
+    - Remove-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount 
+  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
+    - Remove-AzureStorageShare
+  * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
+    - Remove-AzureStorageContainer
+    - Remove-AzureStorageTable
+	
+	
+	
+	
 
 ##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:

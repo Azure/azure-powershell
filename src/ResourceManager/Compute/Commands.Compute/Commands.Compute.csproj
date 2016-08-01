@@ -238,6 +238,9 @@
     <Compile Include="Extension\AzureVMBackup\SetAzureVMBackupExtension.cs" />
     <Compile Include="Extension\BGInfo\SetAzureVMBGInfoExtension.cs" />
     <Compile Include="Extension\BGInfo\VirtualMachineBGInfoExtensionContext.cs" />
+    <Compile Include="Extension\Chef\GetAzureRmVMChefExtension.cs" />
+    <Compile Include="Extension\Chef\RemoveAzureRmVMChefExtension.cs" />
+    <Compile Include="Extension\Chef\SetAzureVMChefExtension.cs" />
     <Compile Include="Extension\CustomScript\GetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPrivateSettings.cs" />
     <Compile Include="Extension\CustomScript\CustomScriptExtensionPublicSettings.cs" />

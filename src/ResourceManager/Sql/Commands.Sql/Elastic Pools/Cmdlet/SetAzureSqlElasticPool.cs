@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -82,7 +84,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable[] Tags { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -116,7 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
-                Tags = Tags,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Location = location,
                 ElasticPoolName = ElasticPoolName,
                 DatabaseDtuMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (int?)DatabaseDtuMax : null,

@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         private string GetStorageAccountName(string storageAccountId)
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (string.IsNullOrEmpty(storageAccountId))
             {
                 throw new ArgumentException(Resources.StorageAccountIdException);

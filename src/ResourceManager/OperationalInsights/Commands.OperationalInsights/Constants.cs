@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public const string StorageInsight = "AzureRmOperationalInsightsStorageInsight";
 
+        public const string DataSource = "AzureRmOperationalInsightsDataSource";
+
         public const string IntelligencePack = "AzureRmOperationalInsightsIntelligencePack";
 
         public const string IntelligencePacks = "AzureRmOperationalInsightsIntelligencePacks";

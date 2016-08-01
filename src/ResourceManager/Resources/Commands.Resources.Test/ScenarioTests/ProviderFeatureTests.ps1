@@ -32,7 +32,7 @@ function Test-AzureProviderFeature
 
     Assert-True { $batchFeatures.Length -gt 0 }
 
-    Register-AzureRmProviderFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3" -Force
+    Register-AzureRmProviderFeature -ProviderName "Microsoft.Cache" -FeatureName "betaAccess3"
 
     $cacheRegisteredFeatures = Get-AzureRmProviderFeature -ProviderName "Microsoft.Cache"
 
