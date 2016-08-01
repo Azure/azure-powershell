@@ -51,13 +51,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.")]
-        [Obsolete("Force parameter will be removed in an upcoming release", false)]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteApiManagementCmdlet()
         {
             var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.UserRemoveDescription, UserId);

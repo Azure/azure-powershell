@@ -422,7 +422,7 @@ function Test-RemoveAzureRedisCacheDiagnostics
     $cacheName = "sunnycache"
     
     # Set Diagnostics
-    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -Force
+    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
 }
 
 <#

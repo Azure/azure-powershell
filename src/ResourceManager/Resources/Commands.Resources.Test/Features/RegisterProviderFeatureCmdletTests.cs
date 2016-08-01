@@ -121,8 +121,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     Body = registeredFeature
                 }));
-
-            this.cmdlet.Force = true;
+            
             this.cmdlet.ProviderNamespace = ProviderName;
             this.cmdlet.FeatureName = FeatureName;
 
