@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 {
     public static class HashTableExtensions
     {
-        public static Dictionary<string, string> ToDictionary(this Hashtable[] tags)
+        public static Dictionary<string, string> ToDictionary(this Hashtable tags)
         {
             return TagsConversionHelper.CreateTagDictionary(tags, true);
         }

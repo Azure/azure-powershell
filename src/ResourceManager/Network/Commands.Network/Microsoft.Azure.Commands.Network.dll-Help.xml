@@ -16630,7 +16630,7 @@ Id                       : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/r
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -16723,9 +16723,9 @@ Id                       : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/r
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -16959,9 +16959,9 @@ Id                       : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/r
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies the dictionary of tags associated with the application gateway.</maml:para>
+					<maml:para>Specifies the hashtable of tags associated with the application gateway.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -17172,11 +17172,11 @@ Id                       : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/r
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies the dictionary of tags associated with the application gateway.</maml:para>
+				<maml:para>Specifies the hashtable of tags associated with the application gateway.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -17295,7 +17295,7 @@ Id                       : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/r
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>This command creates a resource group for the application gateway.
-PS C:\&gt; $ResourceGroup = New-AzureRmResourceGroup -Name &quot;ResourceGroup01&quot; -Location &quot;West US&quot; -Tags @{Name = &quot;Department&quot;; Value = &quot;Marketing&quot;}
+PS C:\&gt; $ResourceGroup = New-AzureRmResourceGroup -Name &quot;ResourceGroup01&quot; -Location &quot;West US&quot; -Tags @{Department = &quot;Marketing&quot;}
 
 These four commands create a virtual network. The first command creates a subnet configuration. The second command creates a virtual network. The third command verifies the subnet configuration and the fourth command verifies that the virtual network is created successfully.
 PS C:\&gt; $Subnet = New-AzureRmVirtualNetworkSubnetConfig -Name &quot;Subnet01&quot; -AddressPrefix 10.0.0.0/24
@@ -20759,7 +20759,7 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -20936,9 +20936,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -21533,9 +21533,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies an array of tags to associate with a load balancer.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a load balancer.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>InboundNatPool</maml:name>
@@ -21681,11 +21681,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies an array of tags to associate with a load balancer.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with a load balancer.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -23804,7 +23804,7 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -23945,9 +23945,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -24156,9 +24156,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a network interface.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a network interface.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -24264,9 +24264,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a network interface.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a network interface.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -24407,9 +24407,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a network interface.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a network interface.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -24550,9 +24550,9 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a network interface.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a network interface.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -24679,11 +24679,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with a network interface.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with a network interface.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -25484,9 +25484,9 @@ New-AzureRmNetworkInterface -Name NetworkInterface1 -ResourceGroupName ResourceG
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a network security group.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a network security group.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -25577,11 +25577,11 @@ New-AzureRmNetworkInterface -Name NetworkInterface1 -ResourceGroupName ResourceG
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with a network security group.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with a network security group.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -26510,9 +26510,9 @@ For additional information on this, refer to https://azure.microsoft.com/en-us/d
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with a public IP address.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with a public IP address.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -26658,11 +26658,11 @@ For additional information on this, refer to https://azure.microsoft.com/en-us/d
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with a public IP address.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with a public IP address.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -27130,9 +27130,9 @@ NextHopIpAddress  :</dev:code>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with the route table.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with the route table.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -27223,11 +27223,11 @@ NextHopIpAddress  :</dev:code>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with the route table.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with the route table.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -27467,9 +27467,9 @@ Subnets           : []</dev:code>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags to associate with the network interface.</maml:para>
+					<maml:para>Specifies a hashtable of tags to associate with the network interface.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -27584,11 +27584,11 @@ Subnets           : []</dev:code>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags to associate with the network interface.</maml:para>
+				<maml:para>Specifies a hashtable of tags to associate with the network interface.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -27911,7 +27911,7 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -28124,9 +28124,9 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -28372,7 +28372,7 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -28501,7 +28501,7 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
@@ -28690,9 +28690,9 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -43881,7 +43881,7 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
 			<dev:code>$nic = Get-AzureRmNetworkInterface -ResourceGroupName ResourceGroup1 -Name NetworkInterface1
 $nic.IpConfigurations[0].PrivateIpAddress = &quot;10.0.1.20&quot;
 $nic.IpConfigurations[0].PrivateIpAllocationMethod = &quot;Static&quot;
-$nic.Tag = @{Name = &quot;Name&quot;; Value = &quot;Value&quot;}
+$nic.Tag = @{Name = &quot;Value&quot;}
 Set-AzureRmNetworkInterface -NetworkInterface $nic</dev:code>
 			<dev:remarks>
 				<maml:para>This example configures the network interface NetworkInterface1 in resource group ResourceGroup1 to use a static private IP address. It also sets a tag on the network interface.</maml:para>
@@ -46067,9 +46067,9 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>hashtable[]</maml:name>
+				<maml:name>hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>

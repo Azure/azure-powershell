@@ -35,10 +35,6 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [ValidateNotNullOrEmpty]
         public string[] Value { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If not specified, will prompt for confirmation. If specified, won't prompt.")]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 

@@ -23,7 +23,7 @@ function Test-CrudApiManagement
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -64,7 +64,7 @@ function Test-CrudApiManagement
 
     # Create on more group
     $secondResourceGroup = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location -Force
+    New-AzureRmResourceGroup -Name $secondResourceGroup -Location $location
 
     # Create one more service
     $secondApiManagementName = Get-ApiManagementServiceName
@@ -114,13 +114,13 @@ function Test-CrudApiManagement
     Assert-True {$found -eq 2} "Api Management services created earlier is not found."
 
     # Delete listed services
-    Get-AzureRmApiManagement | Remove-AzureRmApiManagement -Force
+    Get-AzureRmApiManagement | Remove-AzureRmApiManagement
 
     $allServices = Get-AzureRmApiManagement
     Assert-AreEqual 0 $allServices.Count
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName
 }
 
 <#
@@ -198,7 +198,7 @@ function Test-UpdateApiManagementDeployment
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -265,10 +265,10 @@ function Test-UpdateApiManagementDeployment
     Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName
 }
 
 <#
@@ -282,7 +282,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -349,10 +349,10 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName
 }
 
 <#
@@ -369,7 +369,7 @@ function Test-ImportApiManagementHostnameCertificate
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -386,10 +386,10 @@ function Test-ImportApiManagementHostnameCertificate
     Assert-AreEqual "51A702569BADEDB90A75141B070F2D4B5DDFA447" $result.Thumbprint
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName
 }
 
 <#
@@ -403,7 +403,7 @@ function Test-SetApiManagementVirtualNetworks
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -435,10 +435,10 @@ function Test-SetApiManagementVirtualNetworks
     finally
     {
         # Remove the service
-        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+        Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
         # Remove resource group
-        Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+        Remove-AzureRmResourceGroup -Name $resourceGroupName
     }
 }
 
@@ -458,7 +458,7 @@ function Test-SetApiManagementHostnames
 
     # Create resource group
     $resourceGroupName = 'onesdk598'#Get-ResourceGroupName
-    #New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+    #New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
     $apiManagementName = 'onesdk2394'#Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -489,8 +489,8 @@ function Test-SetApiManagementHostnames
     Assert-Null $result.PortalHostnameConfiguration
 
     # Remove the service
-    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     # Remove resource group
-    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroupName
 }

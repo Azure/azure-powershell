@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Dns
         public RecordType RecordType { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Metadata { get; set; }
+        public Hashtable Metadata { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
         [ValidateNotNull]
