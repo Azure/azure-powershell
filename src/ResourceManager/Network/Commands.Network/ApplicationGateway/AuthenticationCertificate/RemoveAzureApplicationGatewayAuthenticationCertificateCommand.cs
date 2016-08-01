@@ -18,7 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayAuthenticationCertificate"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayAuthenticationCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -35,16 +36,19 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (authCertificate != null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage))
             {
-                this.ApplicationGateway.AuthenticationCertificates.Remove(authCertificate);
-            }
+                base.ExecuteCmdlet();
 
-            WriteObject(this.ApplicationGateway);
+                var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (authCertificate != null)
+                {
+                    this.ApplicationGateway.AuthenticationCertificates.Remove(authCertificate);
+                }
+
+                WriteObject(this.ApplicationGateway);
+            }
         }
     }
 }

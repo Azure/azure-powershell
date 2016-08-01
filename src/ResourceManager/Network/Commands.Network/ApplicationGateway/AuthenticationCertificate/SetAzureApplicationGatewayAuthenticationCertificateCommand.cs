@@ -20,7 +20,8 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayAuthenticationCertificate"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
@@ -31,21 +32,24 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var oldAuthCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-            if (oldAuthCertificate == null)
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
-                throw new ArgumentException("Authentication certificate with the specified name does not exist");
+                base.ExecuteCmdlet();
+
+                var oldAuthCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                if (oldAuthCertificate == null)
+                {
+                    throw new ArgumentException("Authentication certificate with the specified name does not exist");
+                }
+
+                var newAuthCertificate = base.NewObject();
+
+                this.ApplicationGateway.AuthenticationCertificates.Remove(oldAuthCertificate);
+                this.ApplicationGateway.AuthenticationCertificates.Add(newAuthCertificate);
+
+                WriteObject(this.ApplicationGateway);
             }
-
-            var newAuthCertificate = base.NewObject();
-
-            this.ApplicationGateway.AuthenticationCertificates.Remove(oldAuthCertificate);
-            this.ApplicationGateway.AuthenticationCertificates.Add(newAuthCertificate);
-
-            WriteObject(this.ApplicationGateway);
         }
     }
 }

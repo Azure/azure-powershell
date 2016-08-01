@@ -17,13 +17,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayAuthenticationCertificate"), OutputType(typeof(PSApplicationGatewayAuthenticationCertificate))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGatewayAuthenticationCertificate))]
     public class NewAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-            WriteObject(base.NewObject());
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            {
+                base.ExecuteCmdlet();
+                WriteObject(base.NewObject());
+            }
         }
     }
 }
