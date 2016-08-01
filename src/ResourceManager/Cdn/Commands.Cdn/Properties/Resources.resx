@@ -124,10 +124,13 @@
     <value>Are you sure you want to permanently remove endpoint '{0}' from profile '{1}' in resource group '{2}'?</value>
   </data>
   <data name="Confirm_RemoveProfile" xml:space="preserve">
-    <value>Are you sure you want to permanently remove profile '{0}'?</value>
+    <value>Profile {0} currently contains endpoints.  Are you sure you want to permanently remove profile '{0}'?</value>
   </data>
   <data name="Confirm_StopEndpoint" xml:space="preserve">
     <value>Are you sure you want to stop endpoint '{0}' from profile '{1}' in resource group '{2}'?</value>
+  </data>
+  <data name="Confirm_Title" xml:space="preserve">
+    <value>Confirm</value>
   </data>
   <data name="Error_CreateExistingCustomDomain" xml:space="preserve">
     <value>There is already an existing custom domain with name '{0}' in the endpoint '{1}', profile '{2}', resource group '{3}'</value>
@@ -172,18 +175,18 @@
     <value>Success!</value>
   </data>
   <data name="Success_RemoveCustomDomain" xml:space="preserve">
-    <value>Custom Domain '{0}' was removed from endpoint '{1}', profile '{2}' and resource group '{3}'.</value>
+    <value>Remove-AzureRmCdnCustomDomain on {0}.</value>
   </data>
   <data name="Success_RemoveEndpoint" xml:space="preserve">
-    <value>Endpoint '{0}' was removed from profile '{1}' and resource group '{2}'.</value>
+    <value>Remove-AzureRmCdnEndpoint on {0}.</value>
   </data>
   <data name="Success_RemoveProfile" xml:space="preserve">
-    <value>Profile '{0}' was removed from resource group '{1}'.</value>
+    <value>Remove-AzureRmCdnProfile on {0}.</value>
   </data>
   <data name="Success_StartEndpoint" xml:space="preserve">
     <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' has been started.</value>
   </data>
   <data name="Success_StopEndpoint" xml:space="preserve">
-    <value>Endpoint with name '{0}' in the profile '{1}' and resource group '{2}' has been stopped.</value>
+    <value>Stop-AzureRmCdnEndpoint on {0}.</value>
   </data>
 </root>

@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to permanently remove profile &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Profile {0} currently contains endpoints.  Are you sure you want to permanently remove profile &apos;{0}&apos;?.
         /// </summary>
         internal static string Confirm_RemoveProfile {
             get {
@@ -93,6 +93,15 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         internal static string Confirm_StopEndpoint {
             get {
                 return ResourceManager.GetString("Confirm_StopEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm_Title {
+            get {
+                return ResourceManager.GetString("Confirm_Title", resourceCulture);
             }
         }
         
@@ -223,7 +232,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Domain &apos;{0}&apos; was removed from endpoint &apos;{1}&apos;, profile &apos;{2}&apos; and resource group &apos;{3}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnCustomDomain on {0}..
         /// </summary>
         internal static string Success_RemoveCustomDomain {
             get {
@@ -232,7 +241,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Endpoint &apos;{0}&apos; was removed from profile &apos;{1}&apos; and resource group &apos;{2}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_RemoveEndpoint {
             get {
@@ -241,7 +250,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profile &apos;{0}&apos; was removed from resource group &apos;{1}&apos;..
+        ///   Looks up a localized string similar to Remove-AzureRmCdnProfile on {0}..
         /// </summary>
         internal static string Success_RemoveProfile {
             get {
@@ -259,7 +268,7 @@ namespace Microsoft.Azure.Commands.Cdn.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Endpoint with name &apos;{0}&apos; in the profile &apos;{1}&apos; and resource group &apos;{2}&apos; has been stopped..
+        ///   Looks up a localized string similar to Stop-AzureRmCdnEndpoint on {0}..
         /// </summary>
         internal static string Success_StopEndpoint {
             get {

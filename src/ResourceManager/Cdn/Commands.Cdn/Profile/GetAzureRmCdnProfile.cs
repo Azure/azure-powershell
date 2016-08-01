@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// <summary>
         /// Gets or sets the profile name.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Azure CDN profile name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Azure CDN profile name.")]
         [ValidateNotNullOrEmpty]
         public string ProfileName { get; set; }
 
         /// <summary>
         /// The resource group name of the profile.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The resource group of the Azure CDN profile.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

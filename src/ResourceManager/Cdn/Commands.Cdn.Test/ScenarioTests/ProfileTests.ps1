@@ -51,7 +51,31 @@ function Test-ProfileCrud
     $sso = Get-AzureRmCdnProfileSsoUrl -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $removed = Remove-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
+
+    Assert-True { $removed }
+    Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Full Profile CRUD cycle
+#>
+function Test-ProfileDeleteWithEndpoints
+{
+    $profileName = getAssetName
+    $endpointName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $profileLocation = "EastUS"
+    $profileSku = "StandardVerizon"
+    
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $profileLocation -Sku $profileSku 
+
+    New-AzureRmCdnEndpoint -CdnProfile $createdProfile -OriginName "contoso" -OriginHostName "www.contoso.com" -EndpointName $endpointName
+
+    $removed = Remove-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
 
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
@@ -77,7 +101,7 @@ function Test-ProfileDeleteAndSsoWithPiping
     $sso = Get-AzureRmCdnProfileSsoUrl -CdnProfile $createdProfile
     Assert-NotNull $sso.SsoUriValue
 
-    $removed = Remove-AzureRmCdnProfile -CdnProfile $createdProfile -Confirm:$false -PassThru
+    $removed = Remove-AzureRmCdnProfile -CdnProfile $createdProfile -PassThru
 
     Assert-True { $removed }
     Assert-ThrowsContains { Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"

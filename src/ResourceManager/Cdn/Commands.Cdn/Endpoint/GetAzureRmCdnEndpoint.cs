@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.Cdn.Models.Profile;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint"), OutputType(typeof(PSEndpoint))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
     public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]

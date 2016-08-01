@@ -29,7 +29,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain"), OutputType(typeof(PSCustomDomain))]
+    [Cmdlet(VerbsCommon.New, "AzureRmCdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCustomDomain))]
     public class NewAzureRmCdnCustomDomain : AzureCdnCmdletBase, IModuleAssemblyInitializer
     {
         [Parameter(Mandatory = true, HelpMessage = "Host name (address) of the Azure CDN custom domain name.")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                 .Where(cd => cd.Name.ToLower() == CustomDomainName.ToLower())
                 .FirstOrDefault();
 
-            if(existingCustomDomain != null)
+            if (existingCustomDomain != null)
             {
                 throw new PSArgumentException(string.Format(
                     Resources.Error_CreateExistingCustomDomain,
@@ -79,7 +79,14 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                     ProfileName,
                     ResourceGroupName));
             }
-            
+
+            ConfirmAction(MyInvocation.InvocationName,
+                HostName,
+                NewCustomDomain);
+        }
+
+        private void NewCustomDomain()
+        {
             var customDomain = CdnManagementClient.CustomDomains.Create(
                 CustomDomainName,
                 EndpointName,
@@ -89,8 +96,6 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
             WriteVerbose(Resources.Success);
             WriteObject(customDomain.ToPsCustomDomain());
-
-
         }
 
         public void OnImport()

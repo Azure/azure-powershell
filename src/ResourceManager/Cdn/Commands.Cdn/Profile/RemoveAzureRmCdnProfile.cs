@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Cdn.Helpers;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmCdnProfile : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Azure CDN profile.")]
@@ -66,19 +66,32 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                     ProfileName,
                     ResourceGroupName));
             }
-        
-            if (Force || ShouldProcess(string.Format(Resources.Confirm_RemoveProfile, ProfileName)))
-            {
-                CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName);
-            }
-            else
-            {
-                return;
-            }
+
+
+            ConfirmAction(Force,
+                string.Format(Resources.Confirm_RemoveProfile, ProfileName),
+                this.MyInvocation.InvocationName,
+                ProfileName,
+                () => CdnManagementClient.Profiles.DeleteIfExists(ProfileName, ResourceGroupName),
+                () => ContainsEndpoints());
 
             if (PassThru)
             {
                 WriteObject(true);
+            }
+
+        }
+
+        private bool ContainsEndpoints()
+        {
+            var existingEndpoints = CdnManagementClient.Endpoints.ListByProfile(ProfileName, ResourceGroupName);
+            if(existingEndpoints.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

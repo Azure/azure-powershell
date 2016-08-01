@@ -18,8 +18,10 @@ Gets and removes custom domain with running endpoint.
 #>
 function Test-CustomDomainGetRemoveWithRunningEndpoint
 {
+    # Hard-coding host and endpoint names due to requirement for DNS CNAME
     $endpointName = "sdktest-3d96e37e-79bd-440d-a84b-d71a8bb3bed6"
     $hostName = "sdktest-aef2f35e-01ca-4230-add5-5075b1506915.azureedge-test.net"
+
     $customDomainName = getAssetName
 
     $profileName = getAssetName
@@ -48,9 +50,9 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
-    $removed = Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $removed = Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
     Assert-True{$removed}
-    Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false} "does not exist"
+    Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 
     Assert-ThrowsContains { Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
@@ -63,6 +65,7 @@ Gets and removes custom domain with stopped endpoint
 #>
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
+    # Hard-coding host and endpoint names due to requirement for DNS CNAME
     $endpointName = "sdktest-b0939e74-75ba-4558-afe6-edc5c19ea713" 
     $hostName = "sdktest-d8163a47-2912-4b95-8453-1588ca2d014f.azureedge-test.net"  
 
@@ -85,7 +88,7 @@ function Test-CustomDomainGetRemoveWithStoppedEndpoint
     $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName $hostName
     Assert-True{$validateResultbyPiping.CustomDomainValidated}
 
-    $stopped = Stop-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
+    $stopped = Stop-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
     $createdCustomDomain = New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
     Assert-AreEqual $customDomainName $createdCustomDomain.Name
@@ -96,9 +99,9 @@ function Test-CustomDomainGetRemoveWithStoppedEndpoint
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
-    $removed = Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
+    $removed = Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
     Assert-True{$removed}
-    Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false} "does not exist"
+    Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 
     Assert-ThrowsContains { Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
