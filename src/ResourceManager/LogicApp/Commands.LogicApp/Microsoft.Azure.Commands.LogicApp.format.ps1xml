@@ -43,24 +43,8 @@
                 <PropertyName>State</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DefinitionLinkUri</Label>
-                <ScriptBlock>$_.DefinitionLink.Uri.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>DefinitionLinkContentVersion</Label>
-                <ScriptBlock>$_.DefinitionLink.ContentVersion.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
                 <Label>Definition</Label>
                 <PropertyName>Definition</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ParametersLinkUri</Label>
-                <ScriptBlock>$_.ParametersLink.Uri.ToString()</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>ParametersLinkContentVersion</Label>
-                <ScriptBlock>$_.ParametersLink.ContentVersion.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Parameters</Label>

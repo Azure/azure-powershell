@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             IList<ScheduleEntry> response = CacheClient.GetPatchSchedules(ResourceGroupName, Name);
             List<PSScheduleEntry> returnValue = new List<PSScheduleEntry>();
             foreach (var schedule in response)

@@ -31,21 +31,22 @@ function Test-CreatesNewBatchAccount
     $account = Get-BatchAccountName
     $resourceGroup = Get-ResourceGroupName
     $location = Get-BatchAccountProviderLocation
+    $tagName = "testtag"
+    $tagValue = "testval"
 
     try 
     {
         New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         # Test
-        $actual = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
+        $actual = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue} 
         $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
 
         # Assert
         Assert-AreEqual $expected.AccountName $actual.AccountName
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
-        Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
-        Assert-AreEqual $expected.Tags[0]["Value"] $actual.Tags[0]["Value"]
+        Assert-AreEqual $expected.Tags[0][$tagName] $actual.Tags[0][$tagName]
         Assert-True { $actual.CoreQuota -gt 0 }
         Assert-True { $actual.PoolQuota -gt 0 }
         Assert-True { $actual.ActiveJobAndJobScheduleQuota -gt 0 }
@@ -78,11 +79,11 @@ function Test-UpdatesExistingBatchAccount
         New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         #Test
-        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location  -Tag @{Name = $tagName1; Value = $tagValue1} 
+        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location  -Tag @{$tagName1 = $tagValue1} 
         Assert-AreEqual 1 $new.Tags.Count
 
         # Update Tag
-        $actual = Set-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Tag @{Name = $tagName2; Value = $tagValue2} 
+        $actual = Set-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Tag @{$tagName2 = $tagValue2} 
         $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
 
         # Assert
@@ -90,10 +91,9 @@ function Test-UpdatesExistingBatchAccount
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual 1 $expected.Tags.Count
-        Assert-AreEqual $tagName2 $expected.Tags[0]["Name"]
-        Assert-AreEqual $tagValue2 $expected.Tags[0]["Value"]
-        Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
-        Assert-AreEqual $expected.Tags[0]["Value"] $actual.Tags[0]["Value"]
+        Assert-AreEqual $tagValue2 $expected.Tags[0][$tagName2]
+        Assert-AreEqual $expected.Tags[0][$tagName2] $actual.Tags[0][$tagName2]
+
     }
     finally
     {
@@ -179,13 +179,15 @@ function Test-BatchAccountKeys
     $account = Get-BatchAccountName
     $resourceGroup = Get-ResourceGroupName
     $location = Get-BatchAccountProviderLocation
+    $tagName = "testtag"
+    $tagValue = "testval"
 
     try 
     {
         New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         # Test
-        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
+        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{$tagName = $tagValue} 
         $originalKeys =  Get-AzureRmBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
         $originalPrimaryKey = $originalKeys.PrimaryAccountKey
         $originalSecondaryKey = $originalKeys.SecondaryAccountKey
