@@ -529,4 +529,8 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="RemoveScriptExtensionAction" xml:space="preserve">
     <value>Remove custom script extension</value>
   </data>
+  <data name="ChefExtensionNotFound" xml:space="preserve">
+    <value>No chef extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
 </root>

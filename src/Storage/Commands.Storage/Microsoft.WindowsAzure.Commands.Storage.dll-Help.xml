@@ -12800,7 +12800,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Force to remove the container and all content in it</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -12885,7 +12885,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Force to remove the container and all content in it</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -13087,14 +13087,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 					<maml:para>Azure Stored Access Policy.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Force to remove the policy without confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
+			</command:parameter>		
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
@@ -13181,18 +13174,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Force to remove the policy without confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -13690,7 +13671,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -13763,7 +13744,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -13836,7 +13817,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -13966,7 +13947,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Confirm</maml:name>
 			<maml:description>
-				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -14204,7 +14185,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -14277,7 +14258,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -14350,7 +14331,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -14416,7 +14397,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -14546,7 +14527,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Confirm</maml:name>
 			<maml:description>
-				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -14709,7 +14690,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>Force to remove the queue without confirmation</maml:para>
+					<maml:para>Force to remove the queue and all content in it</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -14773,7 +14754,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para>Force to remove the queue without confirmation</maml:para>
+				<maml:para>Force to remove the queue and all content in it</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -15005,13 +14986,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Force to remove the policy without confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>Output a bool value in order to indicate whether the specified policy is remove successfully.</maml:para>
@@ -15076,18 +15050,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Force to remove the policy without confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -15268,6 +15230,13 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Force to remove the share and all content in it</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para />
@@ -15326,7 +15295,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -15339,6 +15308,13 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 					<maml:para>The file share object</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">CloudFileShare</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Force to remove the share and all content in it</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
@@ -15392,7 +15368,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Confirm</maml:name>
 				<maml:description>
-					<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+					<maml:para />
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -15407,6 +15383,18 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>		
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Force to remove the share and all content in it</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -15510,7 +15498,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Confirm</maml:name>
 			<maml:description>
-				<maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+				<maml:para />
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -15658,13 +15646,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Force to remove the policy without confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>Output a bool value in order to indicate whether the specified policy is removed successfully.</maml:para>
@@ -15750,18 +15731,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Force to remove the policy without confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -15976,7 +15945,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para>Force to remove the table without confirmation</maml:para>
+					<maml:para>Force to remove the table and all content in it</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -16040,7 +16009,7 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para>Force to remove the table without confirmation</maml:para>
+				<maml:para>Force to remove the table and all content in it</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -16272,13 +16241,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Force to remove the policy without confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>Output a bool value in order to indicate whether the specified policy is remove successfully.</maml:para>
@@ -16343,18 +16305,6 @@ For example, 168.1.5.65 or 168.1.5.60-168.1.5.70.</maml:para>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Force to remove the policy without confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -17572,6 +17522,13 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -17727,6 +17684,18 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -18753,6 +18722,13 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -18872,6 +18848,18 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -19930,6 +19918,13 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -20089,6 +20084,18 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
 		<command:inputType>
@@ -20239,6 +20246,13 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
@@ -20358,6 +20372,18 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>

@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!Force.IsPresent)
             {
                 ConfirmAction(
