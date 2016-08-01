@@ -290,21 +290,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
-                    if (ShouldProcess("Download", CloudBlob.Name))
+                    if (ShouldProcess(CloudBlob.Name, "Download"))
                     {
                         GetBlobContent(CloudBlob, FileName, true);
                     }
                     break;
 
                 case ContainerParameterSet:
-                    if (ShouldProcess("Download", BlobName))
+                    if (ShouldProcess(BlobName, "Download"))
                     {
                         GetBlobContent(CloudBlobContainer, BlobName, FileName);
                     }
                     break;
 
                 case ManualParameterSet:
-                    if (ShouldProcess("Download", BlobName))
+                    if (ShouldProcess(BlobName, "Download"))
                     {
                         GetBlobContent(ContainerName, BlobName, FileName);
                     }

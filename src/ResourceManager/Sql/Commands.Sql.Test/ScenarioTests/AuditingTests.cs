@@ -29,9 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var resourcesClient = 
+              //  MockDeploymentClientFactory.GetResourceClient(
+                GetResourcesClient()
+              //  )
+                ;
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+            var graphClient = GetGraphClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient, graphClient);
         }
 
         public AuditingTests(ITestOutputHelper output)
@@ -215,6 +220,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestBlobAuditingOnDatabase()
+        {
+            RunPowerShellTest("Test-BlobAuditingOnDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestBlobAuditingOnServer()
+        {
+            RunPowerShellTest("Test-BlobAuditingOnServer");
+        }
+
+        [Fact (Skip = "Waiting backend validation")]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {

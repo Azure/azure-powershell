@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Net.Http;
 using System.Threading;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Batch
 {
@@ -178,7 +179,7 @@ namespace Microsoft.Azure.Commands.Batch
             this.AccountEndpoint = accountEndpoint;
             this.Location = resource.Location;
             this.State = resource.ProvisioningState.ToString();
-            this.Tags = Helpers.CreateTagHashtable(resource.Tags);
+            this.Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
             this.CoreQuota = resource.CoreQuota;
             this.PoolQuota = resource.PoolQuota;
             this.ActiveJobAndJobScheduleQuota = resource.ActiveJobAndJobScheduleQuota;

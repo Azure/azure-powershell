@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -38,9 +38,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
-
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
@@ -63,11 +60,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             EnableMultiThread = false;
         }
 
-        internal virtual bool ConfirmRemove(string message)
-        {
-            return ShouldProcess(message);
-        }
-
         internal bool RemoveAzureTableStoredAccessPolicy(IStorageTableManagement localChannel, string tableName, string policyName)
         {
             bool success = false;
@@ -83,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ShouldProcess(policyName, "Remove policy"))
             {
                 tablePermissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetTablePermissions(table, tablePermissions);
