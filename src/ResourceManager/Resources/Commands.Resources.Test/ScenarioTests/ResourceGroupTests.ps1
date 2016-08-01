@@ -30,7 +30,7 @@ function Test-CreatesNewSimpleResourceGroup
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-        Assert-AreEqual $expected.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
+        Assert-AreEqual $expected.Tags["testtag"] $actual.Tags["testtag"]
     }
     finally
     {
@@ -57,9 +57,6 @@ function Test-UpdatesExistingResourceGroup
         $Error.Clear()
         
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
-        
-        # Test update with bad tag format
-        # Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" }, @{ testtag = "testval2" } } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
             
         $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" } 
         $expected = Get-AzureRmResourceGroup -Name $rgname
@@ -67,7 +64,7 @@ function Test-UpdatesExistingResourceGroup
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
         Assert-AreEqual 0 $new.Tags.Count
-        Assert-AreEqual $expected.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
+        Assert-AreEqual $expected.Tags["testtag"] $actual.Tags["testtag"]
     }
     finally
     {
@@ -284,12 +281,12 @@ function Test-FindResourceGroup
         $expected1 = Get-AzureRmResourceGroup -Name $rgname
         # Assert
         Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected1.Tags[0]["testtag"] $actual.Tags[0]["testtag"]
+        Assert-AreEqual $expected1.Tags["testtag"] $actual.Tags["testtag"]
 
 		$expected2 = Get-AzureRmResourceGroup -Name $rgname2
         # Assert
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
-        Assert-AreEqual $expected2.Tags[0]["testtag"] $actual2.Tags[0]["testtag"]
+        Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
 
 		$expected3 = Find-AzureRmResourceGroup
 		$expectedCount = $originalCount + 2

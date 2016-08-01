@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.", ParameterSetName = "Fields")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = "Object")]
         [ValidateNotNullOrEmpty]
