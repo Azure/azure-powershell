@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
-            // NOTE: Use owner1@rbactest.onmicrosoft.com credentials for this test case
+            // NOTE: Use owner1@AzureSDKTeam.onmicrosoft.com credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
 
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
-            Assert.Equal("rbactest.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
+            Assert.Equal("AzureSDKTeam.onmicrosoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
             Assert.Equal(cmdlt.TenantId, AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString());
             Assert.Null(AzureRmProfileProvider.Instance.Profile.Context.Subscription);
         }
@@ -194,8 +194,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // NOTE: Use rbac SPN credentials for this test case
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.ServicePrincipal = true;
-            cmdlt.TenantId = "1449d5b7-8a83-47db-ae4c-9b03e888bad0";
-            cmdlt.ApplicationId = "20c58db7-4501-44e8-8e76-6febdb400c6b";
+            cmdlt.TenantId = "54826b22-38d6-4fb2-bad9-b7b93a3e9c5a";
+            cmdlt.ApplicationId = "99edf981-74c0-4284-bddf-3e9d092ba4e2";
             cmdlt.CertificateThumbprint = "F064B7C7EACC942D10662A5115E047E94FA18498";
 
             // Act
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
-            // NOTE: Use admin@rbactest.onmicrosoft.com credentials for this test case
+            // NOTE: Use account that has at exactly two tenants
             cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context.Account);
             var tenants = AzureRmProfileProvider.Instance.Profile.Context.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
             Assert.NotNull(tenants);
-            Assert.Equal(3, tenants.Length);
+            Assert.Equal(2, tenants.Length);
         }
 
         [Fact]
