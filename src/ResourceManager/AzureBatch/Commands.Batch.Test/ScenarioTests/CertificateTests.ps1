@@ -34,7 +34,7 @@ function Test-CertificateCrudOperations
     Assert-AreEqual $thumbprintAlgorithm $addedCert.ThumbprintAlgorithm
 
     # Delete the cert via pipelining
-    $addedCert | Remove-AzureBatchCertificate -Force -BatchContext $context
+    $addedCert | Remove-AzureBatchCertificate -BatchContext $context
 
     # Ensure that our delete call was successful. Use a list operation to avoid the 404 that a get will return.
     $allCerts = Get-AzureBatchCertificate -BatchContext $context
