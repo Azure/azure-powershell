@@ -23,22 +23,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             if (initialized)
                 return;
-
-            HttpMockServer server;
-
-            try
-            {
-                server = HttpMockServer.CreateInstance();
-            }
-            catch (InvalidOperationException)
-            {
-                // mock server has never been initialized, we will need to initialize it.
-                HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
-                HttpMockServer.Initialize(className, "InitialCreation");
-                server = HttpMockServer.CreateInstance();
-            }
-
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 var testFactory = new CSMTestEnvironmentFactory();
                 var testEnv = testFactory.GetTestEnvironment();

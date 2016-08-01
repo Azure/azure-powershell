@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,12 +44,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAcl Acl { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
-        [Obsolete("Force prameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
