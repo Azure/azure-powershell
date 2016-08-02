@@ -193,6 +193,24 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.Route, CNM.PSRoute>();
 
+            // EffectiveRouteTable
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSEffectiveRoute, MNM.EffectiveRoute>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.EffectiveRoute, CNM.PSEffectiveRoute>();
+
+            // EffectiveNetworkSecurityGroup
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSEffectiveNetworkSecurityGroup, MNM.EffectiveNetworkSecurityGroup>();
+            Mapper.CreateMap<CNM.PSEffectiveNetworkSecurityGroupAssociation, MNM.EffectiveNetworkSecurityGroupAssociation>();
+            Mapper.CreateMap<CNM.PSEffectiveSecurityRule, MNM.EffectiveNetworkSecurityRule>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.EffectiveNetworkSecurityGroup, CNM.PSEffectiveNetworkSecurityGroup>();
+            Mapper.CreateMap<MNM.EffectiveNetworkSecurityGroupAssociation, CNM.PSEffectiveNetworkSecurityGroupAssociation>();
+            Mapper.CreateMap<MNM.EffectiveNetworkSecurityRule, CNM.PSEffectiveSecurityRule>();
+
             // ExpressRouteCircuit
             // CNM to MNM
             Mapper.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();
@@ -211,6 +229,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSExpressRouteCircuitArpTable, MNM.ExpressRouteCircuitArpTable>();
             Mapper.CreateMap<CNM.PSExpressRouteCircuitRoutesTable, MNM.ExpressRouteCircuitRoutesTable>();
             Mapper.CreateMap<CNM.PSExpressRouteCircuitRoutesTableSummary, MNM.ExpressRouteCircuitRoutesTableSummary>();
+
             // ExpressRouteCircuitPeering
             // CNM to MNM
             Mapper.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
