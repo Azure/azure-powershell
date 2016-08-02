@@ -17,13 +17,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class NewAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-            WriteObject(base.NewObject());
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            {
+                base.ExecuteCmdlet();
+                WriteObject(base.NewObject());
+            }
         }
     }
 }

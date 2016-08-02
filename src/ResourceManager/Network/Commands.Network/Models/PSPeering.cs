@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
+         [JsonProperty(Order = 1)]  
+        public string GatewayManagerEtag { get; set; }  
+ 
+        [JsonProperty(Order = 1)]  
+        public string LastModifiedBy { get; set; }  
+
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
