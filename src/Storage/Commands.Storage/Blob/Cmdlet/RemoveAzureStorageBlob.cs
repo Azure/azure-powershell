@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.Blob, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(Boolean))]
     public class RemoveStorageAzureBlobCommand : StorageCloudBlobCmdletBase
     {
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
         private bool deleteSnapshot;
 
-        [Parameter(HelpMessage = "Force to remove the blob and its snapshot without confirmation")]
+        [Parameter(HelpMessage = "Force to remove the blob and its snapshot")]
         public SwitchParameter Force
         {
             get { return force; }
@@ -256,6 +256,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
 
         /// <summary>
+        /// Cmdlet begin processing
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
+        }
+
+        /// <summary>
         /// execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -264,28 +273,46 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             Func<long, Task> taskGenerator = null;
             IStorageBlobManagement localChannel = Channel;
 
-            switch (ParameterSetName)
+            string action = "Remove blob";
+            if (deleteSnapshot)
             {
-                case BlobPipelineParameterSet:
-                    CloudBlob localBlob = CloudBlob;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
-                    break;
-
-                case ContainerPipelineParameterSet:
-                    CloudBlobContainer localContainer = CloudBlobContainer;
-                    string localName = BlobName;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainer, localName);
-                    break;
-
-                case NameParameterSet:
-                default:
-                    string localContainerName = ContainerName;
-                    string localBlobName = BlobName;
-                    taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainerName, localBlobName);
-                    break;
+                action = "Remove snapshots of blob";
+            }
+            else if (force)
+            {
+                action = "Remove blob and snapshots";
             }
 
-            RunTask(taskGenerator);
+            string blobName = BlobName;
+            if (ParameterSetName == BlobPipelineParameterSet)
+            {
+                blobName = CloudBlob.Name;
+            }
+
+            if (ShouldProcess(blobName, action))
+            { 
+                switch (ParameterSetName)
+                {
+                    case BlobPipelineParameterSet:
+                        CloudBlob localBlob = CloudBlob;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localBlob, false);
+                        break;
+
+                    case ContainerPipelineParameterSet:
+                        CloudBlobContainer localContainer = CloudBlobContainer;
+                        string localName = BlobName;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainer, localName);
+                        break;
+
+                    case NameParameterSet:
+                    default:
+                        string localContainerName = ContainerName;
+                        string localBlobName = BlobName;
+                        taskGenerator = (taskId) => RemoveAzureBlob(taskId, localChannel, localContainerName, localBlobName);
+                        break;
+                }
+                RunTask(taskGenerator);
+            }
         }
     }
 }

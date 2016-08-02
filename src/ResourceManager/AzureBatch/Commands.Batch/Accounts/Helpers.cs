@@ -21,136 +21,44 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 
 namespace Microsoft.Azure.Commands.Batch
 {
     internal class Helpers
     {
         // copied from Resources\Commands.Resources
-
         private const string ExcludedTagPrefix = "hidden-related:/";
 
-        public static PSTagValuePair Create(Hashtable hashtable)
+        public static string FormatTagsTable(Hashtable tags)
         {
-            if (hashtable == null ||
-                !hashtable.ContainsKey("Name"))
+            if (tags == null || tags.Count == 0)
             {
                 return null;
             }
 
-            PSTagValuePair tagValue = new PSTagValuePair();
-            tagValue.Name = hashtable["Name"].ToString();
-
-            if (hashtable.ContainsKey("Value"))
-            {
-                tagValue.Value = hashtable["Value"].ToString();
-            }
-
-            return tagValue;
-        }
-
-        public static Dictionary<string, string> CreateTagDictionary(Hashtable[] hashtableArray, bool validate)
-        {
-            Dictionary<string, string> tagDictionary = null;
-            if (hashtableArray != null && hashtableArray.Length > 0)
-            {
-                tagDictionary = new Dictionary<string, string>();
-                foreach (var tag in hashtableArray)
-                {
-                    var tagValuePair = Create(tag);
-                    if (tagValuePair != null)
-                    {
-                        if (tagValuePair.Value != null)
-                        {
-                            tagDictionary[tagValuePair.Name] = tagValuePair.Value;
-                        }
-                        else
-                        {
-                            tagDictionary[tagValuePair.Name] = "";
-                        }
-                    }
-                }
-            }
-
-            if (validate)
-            {
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
-                    (tagDictionary == null || tagDictionary.Count == 0))
-                {
-                    throw new ArgumentException(Resources.InvalidTagFormat);
-                }
-                if (hashtableArray != null && hashtableArray.Length > 0 && hashtableArray[0].Count > 0 &&
-                    (tagDictionary == null || hashtableArray.Length != tagDictionary.Count))
-                {
-                    throw new ArgumentException(Resources.InvalidTagFormatNotUniqueName);
-                }
-            }
-
-            return tagDictionary;
-        }
-
-        public static Hashtable[] CreateTagHashtable(IDictionary<string, string> dictionary)
-        {
-            List<Hashtable> tagHashtable = new List<Hashtable>();
-            if (dictionary != null)
-            {
-                foreach (string key in dictionary.Keys)
-                {
-                    tagHashtable.Add(new Hashtable
-                    {
-                        {"Name", key},
-                        {"Value", dictionary[key]}
-                    });
-                }
-            }
-
-            return tagHashtable.ToArray();
-        }
-
-        public static string FormatTagsTable(Hashtable[] tags)
-        {
-            if (tags == null)
-            {
-                return null;
-            }
-
-            Hashtable emptyHashtable = new Hashtable
-                {
-                    {"Name", string.Empty},
-                    {"Value", string.Empty}
-                };
             StringBuilder resourcesTable = new StringBuilder();
 
-            if (tags.Length > 0)
+            var tagsDictionary = TagsConversionHelper.CreateTagDictionary(tags, false);
+
+            int maxNameLength = Math.Max("Name".Length, tagsDictionary.Max(tag => tag.Key.Length));
+            int maxValueLength = Math.Max("Value".Length, tagsDictionary.Max(tag => tag.Value.Length));
+
+            string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            resourcesTable.AppendLine();
+            resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            resourcesTable.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            foreach (var tag in tagsDictionary)
             {
-                int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
-                int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
-
-                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
-                resourcesTable.AppendLine();
-                resourcesTable.AppendFormat(rowFormat, "Name", "Value");
-                resourcesTable.AppendFormat(rowFormat,
-                    GeneralUtilities.GenerateSeparator(maxNameLength, "="),
-                    GeneralUtilities.GenerateSeparator(maxValueLength, "="));
-
-                foreach (Hashtable tag in tags)
+                if (tag.Key.StartsWith(ExcludedTagPrefix))
                 {
-                    PSTagValuePair tagValuePair = Helpers.Create(tag);
-                    if (tagValuePair != null)
-                    {
-                        if (tagValuePair.Name.StartsWith(ExcludedTagPrefix))
-                        {
-                            continue;
-                        }
-
-                        if (tagValuePair.Value == null)
-                        {
-                            tagValuePair.Value = string.Empty;
-                        }
-                        resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
-                    }
+                    continue;
                 }
+
+                resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
             }
 
             return resourcesTable.ToString();
@@ -166,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             if (tag != null && tag.Count >= 1)
             {
-                PSTagValuePair tagValuePair = Helpers.Create(tag);
+                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null)
                 {
                     throw new ArgumentException(Resources.InvalidTagFormat);

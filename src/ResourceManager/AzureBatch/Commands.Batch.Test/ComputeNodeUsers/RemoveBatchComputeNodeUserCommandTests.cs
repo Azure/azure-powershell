@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.BatchContext = context;
 
             // Setup cmdlet to skip confirmation popup
-            cmdlet.Force = true;
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -75,8 +75,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Properties.Resources.TagFixWarningMessage);
-
             base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
