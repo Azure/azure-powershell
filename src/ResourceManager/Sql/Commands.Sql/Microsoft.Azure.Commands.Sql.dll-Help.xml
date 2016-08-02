@@ -6156,9 +6156,9 @@ You can also create an elastic database by setting the ElasticPoolName parameter
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ServerName</maml:name>
@@ -6283,11 +6283,11 @@ You can also create an elastic database by setting the ElasticPoolName parameter
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -6531,7 +6531,7 @@ Tags                          :</maml:para>
 				<maml:description>
 					<maml:para>The tags to associate with the Azure SQL Database copy.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>CopyResourceGroupName</maml:name>
@@ -6626,9 +6626,9 @@ Tags                          :</maml:para>
 			<maml:description>
 				<maml:para>The tags to associate with the Azure SQL Database copy.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7201,7 +7201,7 @@ Tags                          :</maml:para>
 				<maml:description>
 					<maml:para>The tags to associate with the Azure SQL Database replication link.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PartnerResourceGroupName</maml:name>
@@ -7296,9 +7296,9 @@ Tags                          :</maml:para>
 			<maml:description>
 				<maml:para>The tags to associate with the Azure SQL Database replication link.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7502,9 +7502,9 @@ Tags                          :</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the elastic pool.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ServerName</maml:name>
@@ -7624,11 +7624,11 @@ Tags                          :</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the elastic pool.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -7819,9 +7819,9 @@ Tags              :</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ServerVersion</maml:name>
@@ -7894,11 +7894,11 @@ Tags              :</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -11919,9 +11919,9 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ServerName</maml:name>
@@ -12022,11 +12022,11 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the new server.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the new server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -14086,9 +14086,9 @@ resourcegroup01               server01                      database01          
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the elastic pool.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ServerName</maml:name>
@@ -14202,11 +14202,11 @@ resourcegroup01               server01                      database01          
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the elastic pool.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the elastic pool.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -14386,9 +14386,9 @@ Tags              :</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para>Specifies a dictionary of tags that this cmdlet associates with the server.</maml:para>
+					<maml:para>Specifies a hashtable of tags that this cmdlet associates with the server.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ServerVersion</maml:name>
@@ -14469,11 +14469,11 @@ Tags              :</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para>Specifies a dictionary of tags that this cmdlet associates with the server.</maml:para>
+				<maml:para>Specifies a hashtable of tags that this cmdlet associates with the server.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Dictionary`2[String]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>

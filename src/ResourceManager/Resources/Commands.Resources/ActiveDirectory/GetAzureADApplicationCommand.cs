@@ -52,21 +52,23 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             }
             else
             {
-                ApplicationFilterParameters parameters = new ApplicationFilterParameters();
+                Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
+
                 if (ApplicationId != Guid.Empty)
                 {
-                    parameters.AppId = ApplicationId;
+                    string appId = ApplicationId.ToString();
+                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
                 }
                 else if (!string.IsNullOrEmpty(DisplayNameStartWith))
                 {
-                    parameters.DisplayNameStartsWith = DisplayNameStartWith;
+                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName.StartsWith(DisplayNameStartWith));
                 }
                 else if (!string.IsNullOrEmpty(IdentifierUri))
                 {
-                    parameters.IdentifierUri = IdentifierUri;
+                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
                 }
 
-                WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(parameters), enumerateCollection: true);
+                WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
             }
         }
     }

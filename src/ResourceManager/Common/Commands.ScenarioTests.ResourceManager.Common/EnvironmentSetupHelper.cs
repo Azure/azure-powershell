@@ -100,6 +100,25 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        // This ResourceManagerStartup.ps1 contains Get-AzureRmAuthorizationChangeLog script
+        public string RMResourceManagerStartup
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\ResourceManagerStartup.ps1");
+            }
+        }
+
+        public string RMInsightsModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1");
+            }
+        }
+
         public string RMStorageModule
         {
             get

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
-        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable[] tags = null, string storageId = null)
+        public static AccountResource CreateAccountResource(string accountName, string resourceGroupName, Hashtable tags = null, string storageId = null)
         {
             string tenantUrlEnding = "batch-test.windows-int.net";
             string endpoint = string.Format("{0}.{1}", accountName, tenantUrlEnding);

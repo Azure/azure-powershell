@@ -148,10 +148,7 @@ Tests getting members from an Active Directory group.
 function Test-GetADGroupMemberWithBadGroupObjectId
 {
     # Test
-    $members = Get-AzureRmADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de"
-    
-    # Assert 
-    Assert-Null($members)
+    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId "baadc0de-baad-c0de-baad-c0debaadc0de" }    
 }
 
 <#
@@ -163,10 +160,7 @@ function Test-GetADGroupMemberWithUserObjectId
     param([string]$objectId)
 
     # Test
-    $members = Get-AzureRmADGroupMember -GroupObjectId $objectId
-    
-    # Assert 
-    Assert-Null($members)
+    Assert-Throws { Get-AzureRmADGroupMember -GroupObjectId $objectId }    
 }
 
 <#
