@@ -1633,7 +1633,7 @@ function Test-VirtualMachineTags
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
         # Test Tags
-        $tags = @{Name = "test1"; Value = "testval1"}, @{ Name = "test2"; Value = "testval2" };
+        $tags = @{test1 = "testval1"; test2 = "testval2" };
         $st = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p -Tags $tags;
         #Assert-NotNull $st.RequestId;
         Assert-NotNull $st.StatusCode;
@@ -1647,8 +1647,8 @@ function Test-VirtualMachineTags
         Assert-NotNull $vm.StatusCode;
 
         # Assert
-        Assert-AreEqual $tags[0].Value $vm.Tags[$tags[0].Name];
-        Assert-AreEqual $tags[1].Value $vm.Tags[$tags[1].Name];
+        Assert-AreEqual "testval1" $vm.Tags["test1"];
+        Assert-AreEqual "testval2" $vm.Tags["test2"];
     }
     finally
     {

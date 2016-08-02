@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return template;
         }
 
-        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
+        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
