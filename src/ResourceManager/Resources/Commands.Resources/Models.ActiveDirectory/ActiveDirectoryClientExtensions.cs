@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             };
         }
 
-        public static PSADObject ToPSADObject(this Group group)
+        public static PSADObject ToPSADObject(this ADGroup group)
         {
             return new PSADObject()
             {
@@ -49,19 +49,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = obj.DisplayName,
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
-                    UserPrincipalName = obj.UserPrincipalName,
-                    Mail = obj.Mail
+                    UserPrincipalName = obj.UserPrincipalName
                 };
             }
-            else if (obj.ObjectType == typeof(Group).Name)
+            else if (obj.ObjectType == "Group")
             {
                 return new PSADGroup()
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
                     Id = new Guid(obj.ObjectId),
-                    SecurityEnabled = obj.SecurityEnabled/*,
-                    Mail = group.Mail*/
+                    SecurityEnabled = obj.SecurityEnabled
                 };
 
             }
@@ -102,18 +100,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.Mail
+                Type = user.ObjectType
             };
         }
 
-        public static PSADGroup ToPSADGroup(this Group group)
+        public static PSADGroup ToPSADGroup(this ADGroup group)
         {
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
                 Id = new Guid(group.ObjectId),
-                SecurityEnabled = group.SecurityEnabled/*,
-                Mail = group.Mail*/
+                SecurityEnabled = group.SecurityEnabled,
+                Type = group.ObjectType
             };
         }
 
@@ -141,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = application.DisplayName,
                     ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
-                    AvailableToOtherTenants = application.AvailableToOtherTenants
+                    AvailableToOtherTenants = application.AvailableToOtherTenants ?? false
                 };
             }
             else
@@ -156,7 +154,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 StartDate = PSKeyCredential.StartDate,
                 EndDate = PSKeyCredential.EndDate,
-                KeyId = PSKeyCredential.KeyId,
+                KeyId = PSKeyCredential.KeyId.ToString(),
                 Type = PSKeyCredential.Type,
                 Usage = PSKeyCredential.Usage,
                 Value = PSKeyCredential.Value
@@ -169,7 +167,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 StartDate = PSPasswordCredential.StartDate,
                 EndDate = PSPasswordCredential.EndDate,
-                KeyId = PSPasswordCredential.KeyId,
+                KeyId = PSPasswordCredential.KeyId.ToString(),
                 Value = PSPasswordCredential.Value
             };
         }
