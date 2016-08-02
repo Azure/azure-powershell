@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Xunit;
-using Xunit.Abstractions;
+using System.Collections.Generic;
+using System.Management.Automation;
 
-namespace Commands.Network.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Network
 {
-    public class ApplicationGatewayTests : RMTestBase
+    public class AzureApplicationGatewaySslPolicyBase : NetworkBaseCmdlet
     {
-        public ApplicationGatewayTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
+        [Parameter(
+               Mandatory = true,
+               HelpMessage = "List of SSL protocols to be disabled")]
+        [ValidateSet("TLSv1_0", "TLSv1_1", "TLSv1_2", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public List<string> DisabledSslProtocols { get; set; }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestApplicationGatewayCRUD()
+        public override void ExecuteCmdlet()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            base.ExecuteCmdlet();
         }
     }
 }

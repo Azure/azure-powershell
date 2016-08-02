@@ -12,39 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Network.Models;
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), 
         OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    public class SetAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            if (ShouldProcess("AzureApplicationGatewaySslPolicy", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
                 base.ExecuteCmdlet();
 
-                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (backendAddressPool != null)
+                this.ApplicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
+                this.ApplicationGateway.SslPolicy.DisabledSslProtocols = new List<string>();
+                foreach (var protocol in this.DisabledSslProtocols)
                 {
-                    throw new ArgumentException("Backend address pool with the specified name already exists");
+                    this.ApplicationGateway.SslPolicy.DisabledSslProtocols.Add(protocol);
                 }
-
-                backendAddressPool = base.NewObject();
-                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
 
                 WriteObject(this.ApplicationGateway);
             }

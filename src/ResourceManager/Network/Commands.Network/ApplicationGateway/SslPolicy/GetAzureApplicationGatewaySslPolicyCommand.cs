@@ -13,15 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using System;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
+    public class GetAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -31,23 +28,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
-            {
-                base.ExecuteCmdlet();
-
-                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (backendAddressPool != null)
-                {
-                    throw new ArgumentException("Backend address pool with the specified name already exists");
-                }
-
-                backendAddressPool = base.NewObject();
-                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
-
-                WriteObject(this.ApplicationGateway);
-            }
+            base.ExecuteCmdlet();
+            WriteObject(this.ApplicationGateway.SslPolicy, true);
         }
     }
 }
