@@ -41,22 +41,22 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
     $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName $hostName
     Assert-True{$validateResultbyPiping.CustomDomainValidated}
 
-    $createdCustomDomain = New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $createdCustomDomain = $endpoint | New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName 
     Assert-AreEqual $customDomainName $createdCustomDomain.Name
     Assert-AreEqual $hostName $createdCustomDomain.HostName
     Assert-ThrowsContains { New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "existing"
 
-    $customDomain = Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $customDomain = $endpoint | Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName 
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
-    $removed = Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru
+    $removed = $customDomain | Remove-AzureRmCdnCustomDomain -PassThru
     Assert-True{$removed}
     Assert-ThrowsContains { Remove-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "does not exist"
 
     Assert-ThrowsContains { Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "NotFound"
 
-	Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
 
 <#

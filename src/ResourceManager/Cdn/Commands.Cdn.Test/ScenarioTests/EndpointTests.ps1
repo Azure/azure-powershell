@@ -375,8 +375,8 @@ function Test-EndpointPipeline
     $originHostName = "www.microsoft.com"
 
 
-    New-AzureRmCdnEndpoint -EndpointName $endpointName1 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
-    New-AzureRmCdnEndpoint -EndpointName $endpointName2 -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName1 -OriginName $originName -OriginHostName $originHostName
+    $createdProfile | New-AzureRmCdnEndpoint -EndpointName $endpointName2 -OriginName $originName -OriginHostName $originHostName
 
     $endpoints = Get-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName | Get-AzureRmCdnEndpoint
 
