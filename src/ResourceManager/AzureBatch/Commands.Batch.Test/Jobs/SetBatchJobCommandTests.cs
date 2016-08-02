@@ -23,6 +23,7 @@ using System;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using OnAllTasksComplete = Microsoft.Azure.Batch.Common.OnAllTasksComplete;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
@@ -55,7 +56,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
-
+            cmdlet.Job.OnAllTasksComplete = OnAllTasksComplete.NoAction;
+            
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 JobUpdateParameter,
                 JobUpdateOptions,
