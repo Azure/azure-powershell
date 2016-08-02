@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,10 +38,6 @@ namespace Microsoft.Azure.Commands.Batch
             HelpMessage = "The name of the compute node user to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter]
-        [Obsolete("Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {

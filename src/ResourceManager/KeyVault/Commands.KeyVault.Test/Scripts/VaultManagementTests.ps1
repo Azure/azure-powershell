@@ -275,7 +275,7 @@ function Reset-PreCreatedVault
                     -ResourceName $global:testVault `
                     -ResourceGroupName $global:resourceGroupName `
                     -PropertyObject $vaultProperties  `
-                    -Tag  @{Name = $tagName; Value = $tagValue} `
+                    -Tag  @{$tagName = $tagValue} `
                     -Force -Confirm:$false
 }
 
@@ -342,7 +342,7 @@ function Initialize-TemporaryState
     $keyVault = New-AzureRmResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
-                -Tag @{Name = $tagName; Value = $tagValue} `
+                -Tag @{$tagName = $tagValue} `
                 -Force -Confirm:$false
     if ($keyVault)
     {

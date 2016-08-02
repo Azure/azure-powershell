@@ -146,7 +146,7 @@ function Test-SearchSetAndRemoveSavedSearches
 	Assert-AreEqual $hasTag 1
 
 
-	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id -Force
+	Remove-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname -SavedSearchId $id
 	
 	# Check that the search was deleted
 	$savedSearches = Get-AzureRmOperationalInsightsSavedSearch -ResourceGroupName $rgname -WorkspaceName $wsname
