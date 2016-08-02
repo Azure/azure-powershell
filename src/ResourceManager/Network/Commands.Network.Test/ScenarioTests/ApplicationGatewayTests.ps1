@@ -18,6 +18,11 @@ Application gateway tests
 #>
 function Test-ApplicationGatewayCRUD
 {
+	param 
+	( 
+		$basedir = ".\" 
+	) 
+
 	# Setup	
 
 	$rglocation = Get-ProviderLocation ResourceManagement
@@ -81,7 +86,8 @@ function Test-ApplicationGatewayCRUD
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
 
-		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile ".\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Disabled 
 		$poolSetting02 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting02Name -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert01
 
