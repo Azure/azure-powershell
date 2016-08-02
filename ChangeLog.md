@@ -34,10 +34,13 @@
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
-	
-	
-	
-	
+* Azure Batch
+  * Add virtual network support
+    - New-AzureBatchPool
+  * Change -Tag parameter type from HashTable[] to HashTable
+    - Set-AzureRmBatchAccount
+    - New-AzureRmBatchAccount
+    - Get-AzureRmBatchAccount
 
 ##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
