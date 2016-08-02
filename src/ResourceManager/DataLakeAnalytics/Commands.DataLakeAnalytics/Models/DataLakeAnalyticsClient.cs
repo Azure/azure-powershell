@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             DataLakeStoreAccountInfo defaultDataLakeStoreAccount = null,
             IList<DataLakeStoreAccountInfo> additionalDataLakeStoreAccounts = null,
             IList<StorageAccountInfo> additionalStorageAccounts = null,
-            Hashtable[] customTags = null)
+            Hashtable customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {

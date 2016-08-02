@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private string resourceGroupName = "myResourceGroup";
         private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
 
-        private List<Hashtable> tags;
+        private Hashtable tags;
 
         public SetAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
@@ -52,11 +52,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
-            tags = new[] {new Hashtable
+            tags = new Hashtable
                 {
-                    {"Name", "value1"},
-                    {"Value", ""}
-                }}.ToList();
+                    {"value1", ""}
+                };
         }
 
         [Fact]
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             PSUpdateResourceGroupParameters expectedParameters = new PSUpdateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Tag = tags.ToArray()
+                Tag = tags
             };
             PSUpdateResourceGroupParameters actualParameters = new PSUpdateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             PSUpdateResourceGroupParameters expectedParameters = new PSUpdateResourceGroupParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Tag = tags.ToArray()
+                Tag = tags
             };
             PSUpdateResourceGroupParameters actualParameters = new PSUpdateResourceGroupParameters();
             PSResourceGroup expected = new PSResourceGroup()

@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         public static string InvalidTagFormat {
             get {

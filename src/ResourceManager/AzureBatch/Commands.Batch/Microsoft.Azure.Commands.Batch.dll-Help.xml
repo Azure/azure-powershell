@@ -8522,9 +8522,9 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -8581,11 +8581,11 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -12429,9 +12429,9 @@
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -12475,11 +12475,11 @@
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -12506,7 +12506,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Set-AzureRmBatchAccount -AccountName &quot;cmdletexample&quot; -Tag @(@{Name = &quot;tag1&quot;;Value = &quot;value1&quot;},@{Name = &quot;tag2&quot;;Value = &quot;value2&quot;})
+			<dev:code>PS C:\&gt;Set-AzureRmBatchAccount -AccountName &quot;cmdletexample&quot; -Tag @{tag1 = &quot;value1&quot;; tag2 = &quot;value2&quot;}
           AccountName                  : cmdletexample
 
           Location                     : westus
