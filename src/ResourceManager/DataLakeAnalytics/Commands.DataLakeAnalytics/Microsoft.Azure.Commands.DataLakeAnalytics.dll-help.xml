@@ -1500,7 +1500,7 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:description>
 					<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -1573,9 +1573,9 @@ Only East US 2 is supported at this time.</maml:para>
 			<maml:description>
 				<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -2818,7 +2818,7 @@ Only East US 2 is supported at this time.</maml:para>
 				<maml:description>
 					<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ResourceGroupName</maml:name>
@@ -2873,9 +2873,9 @@ Only East US 2 is supported at this time.</maml:para>
 			<maml:description>
 				<maml:para>Specifies key-value pairs that can be used to identify the Data Lake Analytics account among other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>

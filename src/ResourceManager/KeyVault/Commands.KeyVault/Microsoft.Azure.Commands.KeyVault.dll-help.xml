@@ -111,7 +111,7 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>KeyFilePath</maml:name>
@@ -183,7 +183,7 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Destination</maml:name>
@@ -323,9 +323,9 @@ Note: To import a key from your own hardware security module, you must first gen
         <maml:description>
           <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>System.Collections.Hashtable</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1507,7 +1507,7 @@ PS C:\&gt;Write-Host "Secret Value is: " $secret.SecretValueText
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1589,9 +1589,9 @@ PS C:\&gt;Write-Host "Secret Value is: " $secret.SecretValueText
         <maml:description>
           <maml:para>Specifies a hash table that represents resource tags.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>

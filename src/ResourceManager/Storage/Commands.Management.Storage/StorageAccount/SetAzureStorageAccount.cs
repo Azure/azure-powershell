@@ -121,10 +121,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                     if (this.Tag != null)
                     {
-                        Hashtable[] hashtableArray = new Hashtable[1];
-                        hashtableArray[0] = Tag;
-
-                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(hashtableArray, validate: true);
+                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
                         updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
                     }
 
