@@ -18,21 +18,25 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGatewaySslPolicy))]
     public class NewAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
-            policy.DisabledSslProtocols = new List<string>();
-            foreach (var protocol in this.DisabledSslProtocols)
+            if (ShouldProcess("AzureApplicationGatewaySslPolicy", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                policy.DisabledSslProtocols.Add(protocol);
-            }
+                base.ExecuteCmdlet();
 
-            WriteObject(policy);
+                PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
+                policy.DisabledSslProtocols = new List<string>();
+                foreach (var protocol in this.DisabledSslProtocols)
+                {
+                    policy.DisabledSslProtocols.Add(protocol);
+                }
+
+                WriteObject(policy);
+            }
         }
     }
 }
