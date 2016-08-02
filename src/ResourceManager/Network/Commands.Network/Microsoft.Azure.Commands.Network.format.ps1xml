@@ -1114,6 +1114,10 @@
                 <Label>AllowClassicOperations</Label>
                 <PropertyName>AllowClassicOperations</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>                
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1187,6 +1191,14 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastModifiedBy</Label>
+                <PropertyName>LastModifiedBy</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

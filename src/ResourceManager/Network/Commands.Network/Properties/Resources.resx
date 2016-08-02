@@ -207,6 +207,9 @@
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
   </data>
+  <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
+    <value>authenticationCertificates</value>
+  </data>
   <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
     <value>sslCertificates</value>
   </data>
