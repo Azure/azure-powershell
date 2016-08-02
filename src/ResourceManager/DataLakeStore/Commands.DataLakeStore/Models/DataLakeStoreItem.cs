@@ -37,7 +37,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             base(property.AccessTime, property.BlockSize, property.ChildrenNum, property.Group, property.Length, property.ModificationTime, property.Owner, string.IsNullOrEmpty(optionalName) ? property.PathSuffix : optionalName, property.Permission, property.Type)
         {
             // create two new properties
-            this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
+            try
+            {
+                this.LastWriteTime = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddMilliseconds((long)this.ModificationTime).ToLocalTime();
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                if(this.ModificationTime < 0)
+                {
+                    // set last write time to the min DateTime
+                    this.LastWriteTime = DateTime.MinValue;
+                }
+                else
+                {
+                    this.LastWriteTime = DateTime.MaxValue;
+                }
+            }
+
             this.Name = property.PathSuffix;
             if(!string.IsNullOrEmpty(optionalPath))
             {
