@@ -18,7 +18,8 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         [Parameter(
@@ -28,16 +29,19 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            this.ApplicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
-            this.ApplicationGateway.SslPolicy.DisabledSslProtocols = new List<string>();
-            foreach (var protocol in this.DisabledSslProtocols)
+            if (ShouldProcess("AzureApplicationGatewaySslPolicy", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                this.ApplicationGateway.SslPolicy.DisabledSslProtocols.Add(protocol);
-            }
+                base.ExecuteCmdlet();
 
-            WriteObject(this.ApplicationGateway);
+                this.ApplicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
+                this.ApplicationGateway.SslPolicy.DisabledSslProtocols = new List<string>();
+                foreach (var protocol in this.DisabledSslProtocols)
+                {
+                    this.ApplicationGateway.SslPolicy.DisabledSslProtocols.Add(protocol);
+                }
+
+                WriteObject(this.ApplicationGateway);
+            }
         }
     }
 }
