@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Path.Combine(AppDomain.CurrentDomain.BaseDirectory, SaveAzureWebsiteLogCommand.DefaultOutput)));
         }
 
-        [Fact (Skip="Test fails in build system. Disable temporarily.")]
+        [Fact (Skip="TODO: Investigate issue #2729. Test disabled temporarily.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureWebsiteLogWithNoFileExtensionTest()
         {
