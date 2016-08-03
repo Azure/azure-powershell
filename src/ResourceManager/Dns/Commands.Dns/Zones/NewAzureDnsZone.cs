@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {

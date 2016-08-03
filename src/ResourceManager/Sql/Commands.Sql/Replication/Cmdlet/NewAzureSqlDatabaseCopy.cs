@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure SQL Database Copy")]
         [Alias("Tag")]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group of the copy.

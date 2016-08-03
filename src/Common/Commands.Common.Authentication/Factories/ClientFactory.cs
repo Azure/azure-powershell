@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)

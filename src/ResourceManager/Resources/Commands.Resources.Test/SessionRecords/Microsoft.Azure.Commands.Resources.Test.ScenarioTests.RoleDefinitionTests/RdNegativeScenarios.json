@@ -25,10 +25,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "015f0435-3f01-4df5-bde8-e908ae990c27"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "023db213-b435-4378-9552-375a7b9bd9a2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -37,19 +34,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14977"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "e13b0bd5-ca85-4093-bcac-96be814600d2"
+          "68e95c9e-b649-4064-8dac-dcc5b0d6bfce"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151203T005459Z:e13b0bd5-ca85-4093-bcac-96be814600d2"
+          "WESTUS2:20160728T220843Z:68e95c9e-b649-4064-8dac-dcc5b0d6bfce"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 03 Dec 2015 00:54:58 GMT"
+          "Thu, 28 Jul 2016 22:08:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -88,10 +85,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6ba1f32a-59a1-4630-81c7-3a544119e7f3"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
+          "0c359008-9813-4085-98e2-5f6c5bdd836b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -100,19 +94,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14976"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "eb98f11c-a621-4d97-9ad0-728dc981cff1"
+          "4f9f0f12-7c5d-45f0-a6c8-3079d7fc744c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151203T005459Z:eb98f11c-a621-4d97-9ad0-728dc981cff1"
+          "WESTUS2:20160728T220843Z:4f9f0f12-7c5d-45f0-a6c8-3079d7fc744c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 03 Dec 2015 00:54:58 GMT"
+          "Thu, 28 Jul 2016 22:08:42 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -151,10 +145,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "75ddac9b-7558-4255-a7cd-0427c458ae08"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
+          "215b2d7f-886e-46c0-b4bc-75662af8de64"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -163,19 +154,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14975"
+          "14991"
         ],
         "x-ms-correlation-request-id": [
-          "f5d63563-e7c8-44a7-84a2-1b1295c7ffdc"
+          "07bbf958-c6f5-49aa-a1b4-7762d1b211ce"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151203T005500Z:f5d63563-e7c8-44a7-84a2-1b1295c7ffdc"
+          "WESTUS2:20160728T220843Z:07bbf958-c6f5-49aa-a1b4-7762d1b211ce"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 03 Dec 2015 00:55:00 GMT"
+          "Thu, 28 Jul 2016 22:08:43 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productionb; path=/"
@@ -194,6 +185,6 @@
   "Variables": {
     "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
     "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
-    "Domain": "rbacCliTest.onmicrosoft.com"
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }

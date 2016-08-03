@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(
             Mandatory = false,
