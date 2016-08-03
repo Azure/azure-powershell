@@ -299,6 +299,8 @@
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
+    <Compile Include="Models\PSEffectiveNetworkSecurityGroup.cs" />
+    <Compile Include="Models\PSEffectiveRoute.cs" />
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
     <Compile Include="Models\PSPeeringConfig.cs" />
