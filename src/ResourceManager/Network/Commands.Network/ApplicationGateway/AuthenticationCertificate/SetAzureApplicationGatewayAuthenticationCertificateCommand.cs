@@ -16,12 +16,13 @@ using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
         OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    public class SetAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
              Mandatory = true,
@@ -31,20 +32,21 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
             {
                 base.ExecuteCmdlet();
 
-                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                var oldAuthCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                if (backendAddressPool != null)
+                if (oldAuthCertificate == null)
                 {
-                    throw new ArgumentException("Backend address pool with the specified name already exists");
+                    throw new ArgumentException("Authentication certificate with the specified name does not exist");
                 }
 
-                backendAddressPool = base.NewObject();
-                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
+                var newAuthCertificate = base.NewObject();
+
+                this.ApplicationGateway.AuthenticationCertificates.Remove(oldAuthCertificate);
+                this.ApplicationGateway.AuthenticationCertificates.Add(newAuthCertificate);
 
                 WriteObject(this.ApplicationGateway);
             }

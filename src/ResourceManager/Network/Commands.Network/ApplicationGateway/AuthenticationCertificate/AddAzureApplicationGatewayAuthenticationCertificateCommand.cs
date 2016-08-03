@@ -19,9 +19,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
         OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    public class AddAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
              Mandatory = true,
@@ -31,20 +31,19 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
+
             if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                base.ExecuteCmdlet();
+                var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (backendAddressPool != null)
+                if (authCertificate != null)
                 {
-                    throw new ArgumentException("Backend address pool with the specified name already exists");
+                    throw new ArgumentException("Authentication certificate with the specified name already exists");
                 }
 
-                backendAddressPool = base.NewObject();
-                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
+                authCertificate = base.NewObject();
+                this.ApplicationGateway.AuthenticationCertificates.Add(authCertificate);
 
                 WriteObject(this.ApplicationGateway);
             }

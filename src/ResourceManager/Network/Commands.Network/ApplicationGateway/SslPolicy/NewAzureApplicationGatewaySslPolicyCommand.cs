@@ -12,21 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
-        OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
-    public class NewAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySslPolicy", SupportsShouldProcess = true), 
+        OutputType(typeof(PSApplicationGatewaySslPolicy))]
+    public class NewAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            if (ShouldProcess("AzureApplicationGatewaySslPolicy", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
                 base.ExecuteCmdlet();
-                WriteObject(base.NewObject());
+
+                PSApplicationGatewaySslPolicy policy = new PSApplicationGatewaySslPolicy();
+                policy.DisabledSslProtocols = new List<string>();
+                foreach (var protocol in this.DisabledSslProtocols)
+                {
+                    policy.DisabledSslProtocols.Add(protocol);
+                }
+
+                WriteObject(policy);
             }
         }
     }

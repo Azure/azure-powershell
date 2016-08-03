@@ -13,16 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
-using System;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), 
         OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
+    public class RemoveAzureApplicationGatewayAuthenticationCertificateCommand : NetworkBaseCmdlet
     {
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of the authentication certificate")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -31,20 +36,16 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            if (ShouldProcess(Name, Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage))
             {
                 base.ExecuteCmdlet();
 
-                var backendAddressPool = this.ApplicationGateway.BackendAddressPools.SingleOrDefault
-                    (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                var authCertificate = this.ApplicationGateway.AuthenticationCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-                if (backendAddressPool != null)
+                if (authCertificate != null)
                 {
-                    throw new ArgumentException("Backend address pool with the specified name already exists");
+                    this.ApplicationGateway.AuthenticationCertificates.Remove(authCertificate);
                 }
-
-                backendAddressPool = base.NewObject();
-                this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
 
                 WriteObject(this.ApplicationGateway);
             }
