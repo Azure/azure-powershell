@@ -169,7 +169,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5639,7 +5640,7 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;natRule
 			<dev:code>PS C:\&gt;$LoadBalancer = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
 PS C:\&gt; $LoadBalancer | Add-AzureRmLoadBalancerRuleConfig -Name &quot;LbRuleConfig&quot; -FrontendIPConfiguration $LoadBalancer.Properties.FrontendIPConfigurations[0] -BackendAddressPool $LoadBalancer.Properties.BackendAddressPools[0] -Probe $LoadBalancer.Properties.Probes[0] -Protocol &quot;Tcp&quot; -FrontendPort 80 -BackendPort 80 -IdleTimeoutInSeconds 15 -EnableFloatingIP | Set-AzureRmLoadBalancer</dev:code>
 			<dev:remarks>
-				<maml:para>The first command gets an existing load balancer named MyLoadBalancer, and then stores it in the $LoadBalancer variable. The second command adds a newly created rule configuration to this load balancer called &quot;LbRuleConfig&quot; with </maml:para>
+				<maml:para>The first command gets an existing load balancer named MyLoadBalancer, and then stores it in the $LoadBalancer variable. The second command adds a newly created rule configuration to this load balancer called &quot;LbRuleConfig&quot; with</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -22100,17 +22101,9 @@ InboundNatPools          : []</maml:para>
 			<dev:code>PS C:\&gt; New-AzureRmLoadBalancerBackendAddressPoolConfig -Name &quot;BackendAddressPool02&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>This command creates a new backend address pool configuration called &quot;BackendAddressPool02&quot; for a load balancer.</maml:para>
-				<maml:para>Note that this command lets you merely create a new backend address pool it does not set it to a load balancer or a resource group.</maml:para>
-				<maml:para>Running the command above will give out that looks like the following:</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Name                    : BackendAddressPool02
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroupNotSet/providers/Microsoft.Network/loadBalancers/LoadBalancerNameNo
-                          tSet/backendAddressPools/BackendAddressPool02
-Etag                    : 
-ProvisioningState       : 
-BackendIpConfigurations : null
-LoadBalancingRules      : null</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -22151,7 +22144,7 @@ LoadBalancingRules      : null</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The New-AzureRmLoadBalancerFrontendIpConfig cmdlet creates a  front-end IP configuration for an Azure load balancer.</maml:para>
+		<maml:para>The New-AzureRmLoadBalancerFrontendIpConfig cmdlet creates a front-end IP configuration for an Azure load balancer. A front-end IP configuration contains IP addresses (also known as virtual IPs/VIPs) for incoming network traffic.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -22439,16 +22432,34 @@ LoadBalancingRules      : null</maml:para>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Create a new front end IP configuration for a load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $publicip = New-AzureRmPublicIpAddress -ResourceGroupName MyResourceGroup -name MyPublicIP -location &apos;West US&apos; -AllocationMethod Dynamic
+
+PS C:\&gt; New-AzureRmLoadBalancerFrontendIpConfig -Name &quot;FrontendIpConfig01&quot; -PublicIpAddress $publicip</dev:code>
 			<dev:remarks>
+				<maml:para>The first command creates a new dynamic public IP address within the resource group &quot;MyResourceGroup&quot; called &quot;MyPublicIP&quot; located in West US.
+The second command creates a new Frontend IP configuration called &quot;FrontendIpConfig01&quot; using the puclicip created in the first command.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                      : FrontendIpConfig01
+Id                        : /subscriptions/366db6b2-be71-49ce-84b3-84a26f93b59f/resourceGroups/ResourceGroupNotSet/providers/Microsoft.Network/l
+                            oadBalancers/LoadBalancerNameNotSet/frontendIPConfigurations/FrontendIpConfig01
+Etag                      : 
+ProvisioningState         : 
+PrivateIpAddress          : 
+PrivateIpAllocationMethod : 
+Subnet                    : null
+PublicIpAddress           : {
+                              &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/pub
+                            licIPAddresses/MyPublicIP&quot;
+                            }
+InboundNatRules           : null
+LoadBalancingRules        : null
+InboundNatPools           : null
+</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
