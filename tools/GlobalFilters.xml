@@ -23,6 +23,7 @@
         <string>Password="UNUSED"</string>
 		<string>user ID</string>
         <string>Subscription="00000000\-0000\-0000\-0000\-000000000000"</string>
+        <string>http://contosoaccount.blob.core.windows.net/vhdstore/win7baseimage.vhd.*</string>
         <string>Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</string>
         <string>AutoGenerate</string>
         <string>PublicKeyToken</string>
