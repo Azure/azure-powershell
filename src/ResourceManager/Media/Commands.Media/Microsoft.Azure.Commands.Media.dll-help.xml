@@ -156,6 +156,46 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get all media services in a resource group  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Get-AzureRmMediaService -ResourceGroupName &quot;resourcegroup1&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets properties for all media services in the resource group named resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Get media service properties  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Get-AzureRmMediaService -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the properties of the media service named mediaservice1 in the resource group named resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -293,6 +333,26 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Get the key information for accessing the media service.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Get-AzureRmMediaServiceKeys -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command get the key information for accessing the media service named mediaservice1 in the resource group named resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -411,6 +471,26 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Checks whether a Media Service name is available.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Get-AzureRmMediaServiceNameAvailability -AccountName &quot;mediaservice1&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command checks if the name mediaservice1 is available.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -721,6 +801,98 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example1: Create a media service with the primary storage account only  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;# Variables
+## Global
+$ResourceGroupName = &quot;resourcegroup1&quot;
+$Location = &quot;East US&quot;
+
+## Storage
+$StorageName = &quot;storage1&quot;
+$StorageType = &quot;Standard_GRS&quot;
+
+## Media Service
+$Tags = @{&quot;tag1&quot; = &quot;value1&quot;; &quot;tag2&quot; = &quot;value2&quot;}
+$MediaServiceName = &quot;mediaservice1&quot;
+
+# Resource Group
+New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+
+# Storage
+$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName -Location $Location -Type $StorageType
+
+# Media Service
+New-AzureRmMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccountId $StorageAccount.Id -Tags $Tags
+</dev:code>
+			<dev:remarks>
+				<maml:para>This example shows how to create a media service with specifying primary storage account only. This script uses several other cmdlets.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Create a media service with multiple storage accounts  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;# Variables
+
+## Global
+$ResourceGroupName = &quot;resourcegroup1&quot;
+$Location = &quot;East US&quot;
+
+## Storage
+$StorageName1 = &quot;storage1&quot;
+$StorageName2 = &quot;storage2&quot;
+$StorageType = &quot;Standard_GRS&quot;
+
+## Media Service
+$Tags = @{&quot;tag1&quot; = &quot;value1&quot;; &quot;tag2&quot; = &quot;value2&quot;}
+$MediaServiceName = &quot;mediaservice1&quot;
+
+# Resource Group
+New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+
+# Storage
+$StorageAccount1 = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName1 -Location $Location -Type $StorageType
+$StorageAccount2 = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $StorageName2 -Location $Location -Type $StorageType
+
+# Media Service
+
+## Setup the storage configuration object.
+$PrimaryStorageAccount = New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount1.Id -IsPrimary
+$SecondaryStorageAccount = New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount2.Id
+$StorageAccounts = @($PrimaryStorageAccount, $SecondaryStorageAccount)
+
+## Create a media service.
+New-AzureRmMediaService -ResourceGroupName $ResourceGroupName -AccountName $MediaServiceName -Location $Location -StorageAccounts $StorageAccounts -Tags $Tags
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command shows how to create a media service with multiple storage accounts. This script uses several other cmdlets.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -915,6 +1087,26 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove a media service  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Remove-AzureRmMediaService -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command removes the media service named mediaservice1 in the resource group resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1128,6 +1320,27 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Set a media service.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;$Tags = @{&quot;tag1&quot; = &quot;value1&quot;; &quot;tag2&quot; = &quot;value2&quot;}
+Set-AzureRmMediaService -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot; -Tags $Tags -StorageAccounts $StorageAccounts</dev:code>
+			<dev:remarks>
+				<maml:para>This command updates the media service named mediaservice1 in the resource group named resourcegroup1 with tags object stored in $Tags variable and an array of storage configuration objects stored in $StorageAccounts variable. For how to build an array of storage configuration objects, please see the Example 2 of New-AzureRmMediaService cmdlet.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1322,6 +1535,46 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Regenerates the primary key used for accessing the Media Service.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Set-AzureRmMediaServiceKey -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot; -KeyType Primary</dev:code>
+			<dev:remarks>
+				<maml:para>This command regenerates the primary key for the media service named mediaservice1 in the resource group named resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Exmaple 2: Regenerates the secondary key used for accessing the Media Service.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Set-AzureRmMediaServiceKey -ResourceGroupName &quot;resourcegroup1&quot; -AccountName &quot;mediaservice1&quot; -KeyType Secondary</dev:code>
+			<dev:remarks>
+				<maml:para>This command regenerates the secondary key for the media service named mediaservice1 in the resource group named resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1516,6 +1769,33 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Synchronizes storage account keys for a storage account associated with the Media Service.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;# Variables
+$ResoureceGroupName = &quot;resourcegroup1&quot;
+
+# Gets a storage account associated with the media service.
+$StorageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name &quot;storage1&quot;
+
+# Synchronizes the storage account keys.
+Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $ResourceGroupName -AccoutName &quot;mediaservice1&quot; -StorageAccoutId $StorageAccount.Id</dev:code>
+			<dev:remarks>
+				<maml:para>This command synchronizes the keys of storage account named storage1 associated with the media service named mediaservice1 in the resource group resourcegroup1.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -1691,6 +1971,32 @@
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Create a storage account configuration for the media service Cmdlets.  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;# Create a storage account.
+$StorageAccount = New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name &quot;storage1&quot; -Location &quot;East US&quot; -Type &quot;Standard_GRS&quot;
+
+# Create a storage configuration object as the primary storage account associated with the media service.
+New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount.Id -IsPrimary
+
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command creates a storage configuration object by using storage account named storage1 and specifying it as the primary.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>

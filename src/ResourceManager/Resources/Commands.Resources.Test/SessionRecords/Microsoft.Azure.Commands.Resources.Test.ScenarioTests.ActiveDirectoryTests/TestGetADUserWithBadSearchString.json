@@ -1,13 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/users?$filter=startswith(displayName,'badsearchstring')&api-version=1.6-internal",
-      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi91c2Vycz8kZmlsdGVyPXN0YXJ0c3dpdGgoZGlzcGxheU5hbWUsJ2JhZHNlYXJjaHN0cmluZycpJmFwaS12ZXJzaW9uPTEuNi1pbnRlcm5hbA==",
+      "RequestUri": "/1273adef-00a3-4086-a51a-dbcce1857d36/users?$filter=startswith(displayName,'badsearchstring')&api-version=1.6",
+      "EncodedRequestUri": "LzEyNzNhZGVmLTAwYTMtNDA4Ni1hNTFhLWRiY2NlMTg1N2QzNi91c2Vycz8kZmlsdGVyPXN0YXJ0c3dpdGgoZGlzcGxheU5hbWUsJ2JhZHNlYXJjaHN0cmluZycpJmFwaS12ZXJzaW9uPTEuNg==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "74def173-90fd-4dbc-a7dc-840b3f92540d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/2.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/1273adef-00a3-4086-a51a-dbcce1857d36/$metadata#directoryObjects/Microsoft.DirectoryServices.User\",\r\n  \"value\": []\r\n}",
@@ -25,22 +31,19 @@
           "no-cache"
         ],
         "ocp-aad-diagnostics-server-name": [
-          "Oqko02haJxDTRhctK/G36gK387+J0M2ZgOrTBM5zf4M="
+          "VfUsEwfVIt6kKxw4w3DIj7NdfHZq0I7s9UKQB+zebI0="
         ],
         "request-id": [
-          "586f1d7d-3e4c-4180-b383-e1139f552259"
+          "5348b3aa-4fa8-4641-8ebe-cb80d6504595"
         ],
         "client-request-id": [
-          "8048b2b4-9c2f-466d-a4b0-938317500b57"
+          "ff4d7ca6-314c-47d3-a603-b34aa70b43e6"
         ],
         "x-ms-dirapi-data-contract-version": [
-          "1.6-internal"
-        ],
-        "x-ms-gateway-rewrite": [
-          "false"
+          "1.6"
         ],
         "ocp-aad-session-key": [
-          "gkWN4MkpJEuFt326GzT0iuc0NsOMPNW0bTSsR2lKR1wrWUEq1HrHofqS3YRTn4lEPPHBW1Qq9wxc3xdqo7fV6scSr6YpA6FXKqM7djOJpvnOxY3pgLmzk8rKdE1pzWLp947NZKX3tTElZJcxPc7c_g.IJ1uSMREjMgbGq4ef8AOSM9AtG4o_tWaxODN8waibEc"
+          "1y2wulvICoBl-lwV1gHrvOMzrCS6RKNoKLpbakbq6dKBjHlTAqNDSser4TW_OM_9ooxrb5daU1n1OT0suTFAvc3E4TfIJ1BiyYThGRNm360F7GlEMqamBzzpA2EXqoQvhRHRHoZeWJnDCMX2k7bQQQ.TDPPk2HEDJ8VjwkTc4rDNwQy0o7nj4UpletckMFTJ0s"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -55,7 +58,7 @@
           "*"
         ],
         "Duration": [
-          "860166"
+          "2432032"
         ],
         "Cache-Control": [
           "no-cache"
@@ -71,7 +74,7 @@
           "ASP.NET"
         ],
         "Date": [
-          "Wed, 27 Jan 2016 20:57:17 GMT"
+          "Thu, 21 Jul 2016 17:34:53 GMT"
         ]
       },
       "StatusCode": 200
@@ -81,6 +84,6 @@
   "Variables": {
     "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
     "TenantId": "1273adef-00a3-4086-a51a-dbcce1857d36",
-    "Domain": "rbacCliTest.onmicrosoft.com"
+    "Domain": "rbacclitest.onmicrosoft.com"
   }
 }
