@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var getEffectiveNsgs = this.NetworkInterfaceClient.ListEffectiveNetworkSecurityGroups(this.ResourceGroupName, this.NetworkInterfaceName);
 
-            var psEffectiveNsgs = Mapper.Map<List<PSEffectiveNetworkSecurityGroup>>(getEffectiveNsgs);
+            var psEffectiveNsgs = Mapper.Map<List<PSEffectiveNetworkSecurityGroup>>(getEffectiveNsgs.Value);
 
             WriteObject(psEffectiveNsgs, true);
         }

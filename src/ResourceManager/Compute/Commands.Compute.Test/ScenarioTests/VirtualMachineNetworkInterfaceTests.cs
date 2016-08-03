@@ -51,5 +51,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AddNetworkInterface");
         }
+
+
+        [Fact(Skip ="to be recorded after fixing compute test proj")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEffectiveRoutesAndNsg()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-EffectiveRoutesAndNsg");
+        }
     }
 }
