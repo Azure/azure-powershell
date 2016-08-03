@@ -16,7 +16,8 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
-    
+    using System.Collections.Generic;
+
     public class PSEffectiveSecurityRule
     {
         public string Name { get; set; }
@@ -37,10 +38,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string ExtendedSourceAddressPrefix { get; set; }
+        public List<string> ExtendedSourceAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string ExtendedDestinationAddressPrefix { get; set; }
+        public List<string> ExtendedDestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public string Access { get; set; }

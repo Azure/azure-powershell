@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var getEffectiveRouteTable = this.NetworkInterfaceClient.GetEffectiveRouteTable(this.ResourceGroupName, this.NetworkInterfaceName);
 
-            var psEffectiveRouteTable = Mapper.Map<List<PSEffectiveRoute>>(getEffectiveRouteTable);
+            var psEffectiveRouteTable = Mapper.Map<List<PSEffectiveRoute>>(getEffectiveRouteTable.Value);
 
             WriteObject(psEffectiveRouteTable, true);
         }
