@@ -18,12 +18,13 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class AuditingTests : SqlTestsBase
     {
-        protected override void SetupManagementClients()
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
@@ -35,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
               //  )
                 ;
             var authorizationClient = GetAuthorizationManagementClient();
-            var graphClient = GetGraphClient();
+            var graphClient = GetGraphClient(context);
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient, graphClient);
         }
 
