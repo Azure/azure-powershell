@@ -24,23 +24,30 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile"), OutputType(typeof(PSProfile))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class SetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile to update.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The profile.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Azure CDN profile object.")]
         [ValidateNotNull]
         public PSProfile CdnProfile { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            ConfirmAction(MyInvocation.InvocationName,
+                CdnProfile.Name,
+                SetProfile);
+        }
+
+        private void SetProfile()
+        {
             var profile = CdnManagementClient.Profiles.Update(
-                CdnProfile.Name, 
-                CdnProfile.ResourceGroupName, 
+                CdnProfile.Name,
+                CdnProfile.ResourceGroupName,
                 CdnProfile.Tags.ToDictionaryTags());
-            
+
             WriteVerbose(Resources.Success);
             WriteObject(profile.ToPsProfile());
         }
