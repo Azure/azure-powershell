@@ -826,6 +826,91 @@ function Test-MigrationAbortAzureStorageAccount
     Remove-AzureStorageAccount -StorageAccountName $storageName;
 }
 
+<#
+.SYNOPSIS
+Tests Move-AzureNetworkSecurityGroup
+#>
+function Test-MigrationNetworkSecurityGroup
+{
+    # Setup
+    $securityGroupName = getAssetName
+    $location = Get-DefaultLocation
+    New-AzureNetworkSecurityGroup -Name $securityGroupName -location $location
+
+    # Validate move
+    $status = Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Validate
+    Assert-NotNull $status
+    Assert-Null $status.ValidationMessages
+
+    # Prepare move
+    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Prepare
+
+    # Abort Move
+    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Abort
+
+    # Remove
+    $isDeleted = Remove-AzureNetworkSecurityGroup -Name $securityGroupName -Force -PassThru
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureRouteTable
+#>
+function Test-MigrationRouteTable
+{
+    # Setup
+    $routeTableName = getAssetName
+    $location = Get-DefaultLocation
+    New-AzureRouteTable -Name $routeTableName -location $location
+
+    # Validate move
+    $status = Move-AzureRouteTable -RouteTableName $routeTableName -Validate
+    Assert-NotNull $status
+    Assert-Null $status.ValidationMessages
+
+    # Prepare move
+    Move-AzureRouteTable -RouteTableName $routeTableName -Prepare
+
+    # Abort Move
+    Move-AzureRouteTable -RouteTableName $routeTableName -Abort
+
+    # Remove
+    $isDeleted = Remove-AzureRouteTable -Name $routeTableName -Force -PassThru
+}
+
+<#
+.SYNOPSIS
+Tests Move-AzureReservedIP
+#>
+function Test-MigrationAzureReservedIP
+{
+    # Setup
+    $name = getAssetName
+    $location = Get-DefaultLocation
+
+    # Test Create Reserved IP
+    New-AzureReservedIP -ReservedIPName $name -Location $location
+    $reservedIP = Get-AzureReservedIP -ReservedIPName $name
+
+    # Assert
+    Assert-NotNull($reservedIP)
+    Assert-AreEqual $reservedIP.Location $location
+    
+    # Validate move
+    $status = Move-AzureReservedIP -ReservedIPName $name -Validate
+    Assert-NotNull $status
+    Assert-Null $status.ValidationMessages
+
+    # Prepare move
+    Move-AzureReservedIP -ReservedIPName $name -Prepare
+
+    # Abort Move
+    Move-AzureReservedIP -ReservedIPName $name -Abort
+
+    #Test Remove reserved IP
+    $removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
+    Assert-AreEqual $removeReservedIP.OperationStatus "Succeeded"
+}
 
 function Test-NewAzureVMWithBYOL
 {
