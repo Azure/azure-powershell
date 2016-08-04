@@ -34,7 +34,8 @@
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
-	
+* Azure Sql
+  * Extended the auditing cmdlets to support management of blob auditing, both at the database and at the server level
 	
 	
 	
