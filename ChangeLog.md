@@ -1,4 +1,8 @@
 ##2016.08.03 version 2.0.0
+*Azure Resource Manager
+  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable.
+  * Fix an issue with Get-AzureRmResourceProvider cmdlet to support querying based on global locations through the Location parameter
+  * Remove all deprecation warning messages
 * Azure Redis Cache
   * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
