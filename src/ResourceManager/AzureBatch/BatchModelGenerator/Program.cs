@@ -93,6 +93,11 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
             {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
             {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
+            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
+            {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
+            {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
+            {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
+            {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
         };
 
 
