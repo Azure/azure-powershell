@@ -50,10 +50,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory.Models
             Exception targetEx = exception;
             string targetErrorId = String.Empty;
             ErrorCategory targetErrorCategory = ErrorCategory.NotSpecified;
+            var graphEx = exception as GraphErrorException;
 
-            if (exception is GraphErrorException)
+            if (graphEx != null)
             {
-                var graphEx = exception as GraphErrorException;
                 if (graphEx.Body != null)
                 {
                     WriteDebug(String.Format(ProjectResources.GraphException, graphEx.Body.Code, graphEx.Body.Message));

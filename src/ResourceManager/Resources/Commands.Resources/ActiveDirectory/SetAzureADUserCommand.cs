@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet(VerbsCommon.Set, "AzureRmADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class SetAzureADUserCommand: ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New display name for the user.")]
-        [ValidateNotNullOrEmpty]
-        public string DisplayName { get; set; }
-
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The userPrincipalName or ObjectId of the user to be updated.")]
         [ValidateNotNullOrEmpty]
         public string UPNOrObjectId { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New display name for the user.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+        
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "true for enabling the account; otherwise, false.")]
         [ValidateNotNullOrEmpty]
         public bool? EnableAccount { get; set; }

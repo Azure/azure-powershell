@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue,
-            HelpMessage = "The value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
+            HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue,
-            HelpMessage = "The value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
+            HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
         

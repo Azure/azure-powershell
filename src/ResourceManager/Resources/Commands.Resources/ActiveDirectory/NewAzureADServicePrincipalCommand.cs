@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The cert value for the key credentials associated with the application that will be valid for one year by default.")]
+            HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
-            HelpMessage = "The cert value for the key credentials associated with the application that will be valid for one year by default.")]
+            HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
 

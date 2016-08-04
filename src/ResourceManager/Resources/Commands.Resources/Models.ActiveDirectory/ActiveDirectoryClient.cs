@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         {
             var keyCredsList = GetAppKeyCredentials(appObjectId);
 
-            var toBeDeletedKeyCred = keyCredsList.Find(kc => kc.KeyId == keyId.ToString());
+            var toBeDeletedKeyCred = keyCredsList.Find(kc => Guid.Parse(kc.KeyId) == keyId);
 
             if (toBeDeletedKeyCred != null)
             {
@@ -538,7 +538,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             else
             {
                 var passwordCredsList = GetAppPasswordCredentials(appObjectId);
-                var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => pc.KeyId == keyId.ToString());
+                var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => Guid.Parse(pc.KeyId) == keyId);
 
                 if (toBeDeletedPasswwordCred != null)
                 {
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         {
             var keyCredsList = GetSpKeyCredentials(spObjectId);
 
-            var toBeDeletedKeyCred = keyCredsList.Find(kc => kc.KeyId == keyId.ToString());
+            var toBeDeletedKeyCred = keyCredsList.Find(kc => Guid.Parse(kc.KeyId) == keyId);
 
             if (toBeDeletedKeyCred != null)
             {
@@ -652,7 +652,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             else
             {
                 var passwordCredsList = GetSpPasswordCredentials(spObjectId);
-                var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => pc.KeyId == keyId.ToString());
+                var toBeDeletedPasswwordCred = passwordCredsList.Find(pc => Guid.Parse(pc.KeyId) == keyId);
 
                 if (toBeDeletedPasswwordCred != null)
                 {
