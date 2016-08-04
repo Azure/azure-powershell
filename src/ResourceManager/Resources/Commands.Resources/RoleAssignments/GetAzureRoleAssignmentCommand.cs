@@ -237,7 +237,9 @@ namespace Microsoft.Azure.Commands.Resources
                 ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString()), enumerateCollection: true);
+            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString());
+
+            WriteObject(ra, enumerateCollection: true);
         }
     }
 }

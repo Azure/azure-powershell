@@ -39,19 +39,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
-            HelpMessage = "The URL to the application’s homepage.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
-            HelpMessage = "The URL to the application’s homepage.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
-            HelpMessage = "The URL to the application’s homepage.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The URL to the application’s homepage.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
-            HelpMessage = "The URL to the application’s homepage.")]
-        [ValidateNotNullOrEmpty]
-        public string HomePage { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
             HelpMessage = "The URIs that identify the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The URIs that identify the application.")]
@@ -63,6 +50,44 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The URIs that identify the application.")]
         [ValidateNotNullOrEmpty]
         public string[] IdentifierUris { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
+            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
+            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
+            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
+            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
+            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+        [ValidateNotNullOrEmpty]
+        public string HomePage { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ReplyUrls { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        public bool AvailableToOtherTenants { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
             HelpMessage = "The collection of password credentials associated with the application.")]
@@ -78,17 +103,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public string Password { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The value for the key credentials associated with the application that will be valid for one year by default.")]
+            HelpMessage = "The cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
-        public string KeyValue { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-            HelpMessage = "The type of the key credentials associated with the application. Acceptable values are 'AsymmetricX509Cert', 'Password' and 'Symmetric'. Default is 'AsymmetricX509Cert'")]
-        public string KeyType { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
-           HelpMessage = "The usage of the key credentials associated with the application. Acceptable values are 'Sign' and 'Verify'. Default is 'Verify'")]
-        public string KeyUsage { get; set; }
+        public string CertValue { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
@@ -107,8 +124,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
             EndDate = currentTime.AddYears(1);
-            KeyType = "AsymmetricX509Cert";
-            KeyUsage = "Verify";
         }
 
         public override void ExecuteCmdlet()
@@ -117,7 +132,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 DisplayName = DisplayName,
                 HomePage = HomePage,
-                IdentifierUris = IdentifierUris
+                IdentifierUris = IdentifierUris,
+                ReplyUrls = ReplyUrls,
+                AvailableToOtherTenants = AvailableToOtherTenants
             };
 
             switch (ParameterSetName)
@@ -130,7 +147,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             StartDate = StartDate,
                             EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
-                            Value = Password
+                            Password = Password
                         }
                     };
                     break;
@@ -147,9 +164,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                             StartDate = StartDate,
                             EndDate = EndDate,
                             KeyId = Guid.NewGuid(),
-                            Type = KeyType,
-                            Usage = KeyUsage,
-                            Value = KeyValue
+                            CertValue = CertValue
                         }
                     };
                     break;
@@ -159,7 +174,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     break;
             }
 
-            WriteObject(ActiveDirectoryClient.CreateApplication(createParameters));
+            ExecutionBlock(() =>
+            {
+                WriteObject(ActiveDirectoryClient.CreateApplication(createParameters));
+            });
         }
     }
 }

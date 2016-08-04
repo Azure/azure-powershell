@@ -14,42 +14,34 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
-    /// Removes the service principal.
+    /// Gets AD service principal credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal", SupportsShouldProcess = true), 
-        OutputType(typeof(PSADServicePrincipal))]
-    public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADCredential))]
+    public class GetAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
-                  HelpMessage = "The service principal object id.")]
-        [Alias("PrincipalId")]
-        public Guid ObjectId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The servicePrincipal object id.")]
+        [ValidateNotNullOrEmpty]
+        public string ObjectId { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN, HelpMessage = "The servicePrincipal name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServicePrincipalName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                PSADServicePrincipal servicePrincipal = null;
-
-                ConfirmAction(
-                  ProjectResources.RemoveServicePrincipal,
-                  null,
-                  () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
-
-                if (PassThru)
+                if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
-                    WriteObject(servicePrincipal);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
                 }
+
+                WriteObject(ActiveDirectoryClient.GetSpCredentials(ObjectId), enumerateCollection: true);
             });
         }
     }

@@ -46,30 +46,33 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            if (ApplicationObjectId != Guid.Empty)
+            ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.GetApplication(ApplicationObjectId.ToString()));
-            }
-            else
-            {
-                Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
+                if (ApplicationObjectId != Guid.Empty)
+                {
+                    WriteObject(ActiveDirectoryClient.GetApplication(ApplicationObjectId.ToString()));
+                }
+                else
+                {
+                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
 
-                if (ApplicationId != Guid.Empty)
-                {
-                    string appId = ApplicationId.ToString();
-                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
-                }
-                else if (!string.IsNullOrEmpty(DisplayNameStartWith))
-                {
-                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName.StartsWith(DisplayNameStartWith));
-                }
-                else if (!string.IsNullOrEmpty(IdentifierUri))
-                {
-                    odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
-                }
+                    if (ApplicationId != Guid.Empty)
+                    {
+                        string appId = ApplicationId.ToString();
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
+                    }
+                    else if (!string.IsNullOrEmpty(DisplayNameStartWith))
+                    {
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName.StartsWith(DisplayNameStartWith));
+                    }
+                    else if (!string.IsNullOrEmpty(IdentifierUri))
+                    {
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
+                    }
 
-                WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
-            }
+                    WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
+                }
+            });
         }
     }
 }

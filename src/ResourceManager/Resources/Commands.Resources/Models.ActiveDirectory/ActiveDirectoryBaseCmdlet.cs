@@ -14,6 +14,11 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Models;
+using System;
+using System.Management.Automation;
+using System.Net;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory.Models
 {
@@ -34,6 +39,57 @@ namespace Microsoft.Azure.Commands.ActiveDirectory.Models
             }
 
             set { activeDirectoryClient = value; }
+        }
+
+        /// <summary>
+        /// Handles graph exceptions thrown by client
+        /// </summary>
+        /// <param name="exception"></param>
+        private void HandleException(Exception exception)
+        {
+            Exception targetEx = exception;
+            string targetErrorId = String.Empty;
+            ErrorCategory targetErrorCategory = ErrorCategory.NotSpecified;
+
+            if (exception is GraphErrorException)
+            {
+                var graphEx = exception as GraphErrorException;
+                if (graphEx.Body != null)
+                {
+                    WriteDebug(String.Format(ProjectResources.GraphException, graphEx.Body.Code, graphEx.Body.Message));
+                    targetEx = new Exception(graphEx.Body.Message);
+                    targetErrorId = graphEx.Body.Code;
+                }
+
+                if (graphEx.Response != null && graphEx.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    targetErrorCategory = ErrorCategory.InvalidArgument;
+                }
+                else
+                {
+                    targetErrorCategory = ErrorCategory.InvalidOperation;
+                }
+
+                var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
+                WriteError(errorRecord);
+            }
+            else
+            {
+                throw exception;
+            }
+        }
+
+        protected void ExecutionBlock(Action execAction)
+        {
+            try
+            {
+                execAction();
+            }
+            catch (Exception exception)
+            {
+                WriteDebug(String.Format(ProjectResources.ExceptionInExecution, exception.GetType()));
+                HandleException(exception);
+            }
         }
     }
 }

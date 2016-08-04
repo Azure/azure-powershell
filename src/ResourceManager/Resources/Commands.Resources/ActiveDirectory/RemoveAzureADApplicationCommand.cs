@@ -34,12 +34,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ConfirmAction(
+            ExecutionBlock(() =>
+            {
+                ConfirmAction(
                Force.IsPresent,
                string.Format(ProjectResources.RemovingApplication, ApplicationObjectId.ToString()),
                ProjectResources.RemoveApplication,
                ApplicationObjectId.ToString(),
                () => ActiveDirectoryClient.RemoveApplication(ApplicationObjectId.ToString()));
+            });
         }
     }
 }

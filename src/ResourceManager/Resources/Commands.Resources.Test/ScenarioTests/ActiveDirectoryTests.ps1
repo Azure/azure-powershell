@@ -236,7 +236,7 @@ function Test-GetADServicePrincipalWithSPN
     # Assert
     Assert-AreEqual $servicePrincipals.Count 1
     Assert-NotNull $servicePrincipals[0].Id
-    Assert-AreEqual $servicePrincipals[0].ServicePrincipalName $SPN
+	Assert-True { $servicePrincipals[0].ServicePrincipalNames.Contains($SPN) }
 }
 
 <#
@@ -267,7 +267,8 @@ function Test-GetADServicePrincipalWithSearchString
     Assert-AreEqual $servicePrincipals.Count 1
     Assert-AreEqual $servicePrincipals[0].DisplayName $displayName
     Assert-NotNull($servicePrincipals[0].Id)
-    Assert-NotNull($servicePrincipals[0].ServicePrincipalName)
+    Assert-NotNull($servicePrincipals[0].ServicePrincipalNames)
+	Assert-AreEqual $servicePrincipals[0].ServicePrincipalNames.Count 2
 }
 
 <#
@@ -482,6 +483,24 @@ function Test-NewADApplication
 	Assert-NotNull $app1
 	Assert-True { $app1.Count -ge 1}
 
+	$newDisplayName = getAssetName
+    $newHomePage = "http://" + $newDisplayName + ".com"
+    $newIdentifierUri = "http://" + $newDisplayName
+	
+	# Update displayName and HomePage
+	Set-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -DisplayName $newDisplayName -HomePage $newHomePage
+
+	# Update identifierUri 
+	Set-AzureRmADApplication -ApplicationId $application.ApplicationId -IdentifierUris $newIdentifierUri
+	
+	# Get application and verify updated properties
+	$app1 =  Get-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId
+	Assert-NotNull $app1
+	Assert-AreEqual $app1.Count 1
+	Assert-AreEqual $app1.DisplayName $newDisplayName
+	Assert-AreEqual $app1.HomePage $newHomePage
+	Assert-AreEqual $app1.IdentifierUris[0] $newIdentifierUri
+
 	# Delete 
 	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Force
 }
@@ -499,5 +518,69 @@ function Test-NewADServicePrincipal
 
     # Assert
     Assert-NotNull $servicePrincipal
+
+	# GetServicePrincipal by ObjectId
+	$sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+	Assert-NotNull $sp1
+	Assert-AreEqual $sp1.Count 1
+	Assert-AreEqual $sp1.Id $servicePrincipal.Id
+
+	# GetServicePrincipal by SPN
+	$sp1 = Get-AzureRmADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+	Assert-NotNull $sp1
+	Assert-AreEqual $sp1.Count 1
+	Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
+
+	# Delete SP
+	Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
 }
 
+<#
+.SYNOPSIS
+Tests Creating and deleting service principal without an exisitng application.
+#>
+function Test-NewADServicePrincipalWithoutApp
+{	
+	# Setup
+    $displayName = getAssetName
+
+    # Test
+    $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName
+
+    # Assert
+    Assert-NotNull $servicePrincipal
+	Assert-AreEqual $servicePrincipal.DisplayName $displayName
+
+	# GetServicePrincipal by ObjectId
+	$sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+	Assert-NotNull $sp1
+	Assert-AreEqual $sp1.Count 1
+	Assert-AreEqual $sp1.Id $servicePrincipal.Id
+
+	# GetServicePrincipal by SPN
+	$sp1 = Get-AzureRmADServicePrincipal -ServicePrincipalName $servicePrincipal.ServicePrincipalNames[0]
+	Assert-NotNull $sp1
+	Assert-AreEqual $sp1.Count 1
+	Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
+
+	# Get Application by ApplicationId
+	$app1 =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
+	Assert-NotNull $app1
+	Assert-AreEqual $app1.Count 1
+
+	# update SP displayName
+	$newDisplayName = getAssetName
+	
+	Set-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -DisplayName $newDisplayName
+
+	# Get SP and verify updated name
+	$sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+	Assert-NotNull $sp1
+	Assert-AreEqual $sp1.Count 1
+	Assert-AreEqual $sp1.DisplayName $newDisplayName
+
+	# Remove App should delete SP also
+	Remove-AzureRmADApplication -ApplicationObjectId $app1.ApplicationObjectId -Force
+
+	Assert-Throws { Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id }
+}

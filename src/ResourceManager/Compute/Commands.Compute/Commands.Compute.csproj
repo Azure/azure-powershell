@@ -66,7 +66,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.1.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>

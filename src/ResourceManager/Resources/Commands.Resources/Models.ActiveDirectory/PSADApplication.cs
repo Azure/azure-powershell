@@ -21,18 +21,20 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
     {
         public string DisplayName { get; set; }
 
+        public Guid ApplicationObjectId { get; set; }
+
+        public IList<string> IdentifierUris { get; set; }
+
+        public string HomePage { get; set; }
+
         public string Type { get; set; }
 
         public Guid ApplicationId { get; set; }
 
-        public Guid ApplicationObjectId { get; set; }
-
         public bool AvailableToOtherTenants { get; set; }
 
         public IList<string> AppPermissions { get; set; }
-
-        public IList<string> IdentifierUris { get; set; }
-
+        
         public IList<string> ReplyUrls { get; set; }
     }
 }

@@ -14,42 +14,35 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
-    /// Removes the service principal.
+    /// Removes the AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADServicePrincipal", SupportsShouldProcess = true), 
-        OutputType(typeof(PSADServicePrincipal))]
-    public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADUser", SupportsShouldProcess = true)]
+    public class RemoveAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
-                  HelpMessage = "The service principal object id.")]
-        [Alias("PrincipalId")]
-        public Guid ObjectId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The userPrincipalName or ObjectId of the user to be deleted.")]
+        [ValidateNotNullOrEmpty]
+        public string UPNOrObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                PSADServicePrincipal servicePrincipal = null;
-
                 ConfirmAction(
-                  ProjectResources.RemoveServicePrincipal,
-                  null,
-                  () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
-
-                if (PassThru)
-                {
-                    WriteObject(servicePrincipal);
-                }
+               Force.IsPresent,
+               string.Format(ProjectResources.RemoveUserConfirmation, UPNOrObjectId),
+               ProjectResources.RemovingUser,
+               UPNOrObjectId,
+               () => ActiveDirectoryClient.RemoveUser(UPNOrObjectId));
             });
         }
     }
