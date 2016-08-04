@@ -735,11 +735,11 @@ function Test-MigrateAzureVNet
 
     Get-AzureVNetSite;
 
-    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName -Confirm;
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
 
     Get-AzureVNetSite;
 
-    Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName -Confirm;
+    Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName;
 
     Get-AzureVNetSite;
 
@@ -769,10 +769,10 @@ function Test-MigrationAbortAzureVNet
     Assert-AreEqual "Succeeded" $result.Result;
     Get-AzureVNetSite;
 
-    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName -Confirm;
+    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName;
     Get-AzureVNetSite;
 
-    Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName -Confirm;
+    Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName;
     Get-AzureVNetSite;
 
     # Cleanup
@@ -843,10 +843,10 @@ function Test-MigrationNetworkSecurityGroup
     Assert-Null $status.ValidationMessages
 
     # Prepare move
-    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Prepare -Confirm
+    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Prepare
 
     # Abort Move
-    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Abort -Confirm
+    Move-AzureNetworkSecurityGroup -NetworkSecurityGroupName $securityGroupName -Abort
 
     # Remove
     $isDeleted = Remove-AzureNetworkSecurityGroup -Name $securityGroupName -Force -PassThru
@@ -869,10 +869,10 @@ function Test-MigrationRouteTable
     Assert-Null $status.ValidationMessages
 
     # Prepare move
-    Move-AzureRouteTable -RouteTableName $routeTableName -Prepare -Confirm
+    Move-AzureRouteTable -RouteTableName $routeTableName -Prepare
 
     # Abort Move
-    Move-AzureRouteTable -RouteTableName $routeTableName -Abort -Confirm
+    Move-AzureRouteTable -RouteTableName $routeTableName -Abort
 
     # Remove
     $isDeleted = Remove-AzureRouteTable -Name $routeTableName -Force -PassThru
@@ -902,10 +902,10 @@ function Test-MigrationAzureReservedIP
     Assert-Null $status.ValidationMessages
 
     # Prepare move
-    Move-AzureReservedIP -ReservedIPName $name -Prepare -Confirm
+    Move-AzureReservedIP -ReservedIPName $name -Prepare
 
     # Abort Move
-    Move-AzureReservedIP -ReservedIPName $name -Abort -Confirm
+    Move-AzureReservedIP -ReservedIPName $name -Abort
 
     #Test Remove reserved IP
     $removeReservedIP = Remove-AzureReservedIP -ReservedIPName $name -Force
