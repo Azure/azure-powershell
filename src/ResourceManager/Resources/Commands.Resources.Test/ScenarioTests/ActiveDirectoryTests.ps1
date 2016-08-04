@@ -463,8 +463,8 @@ function Test-NewADApplication
     # Assert
     Assert-NotNull $application
 
-	# Get Application by ApplicationObjectId
-	$app1 =  Get-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId
+	# Get Application by ObjectId
+	$app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
 	Assert-AreEqual $app1.Count 1
 
@@ -488,13 +488,13 @@ function Test-NewADApplication
     $newIdentifierUri = "http://" + $newDisplayName
 	
 	# Update displayName and HomePage
-	Set-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -DisplayName $newDisplayName -HomePage $newHomePage
+	Set-AzureRmADApplication -ObjectId $application.ObjectId -DisplayName $newDisplayName -HomePage $newHomePage
 
 	# Update identifierUri 
 	Set-AzureRmADApplication -ApplicationId $application.ApplicationId -IdentifierUris $newIdentifierUri
 	
 	# Get application and verify updated properties
-	$app1 =  Get-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId
+	$app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
 	Assert-AreEqual $app1.Count 1
 	Assert-AreEqual $app1.DisplayName $newDisplayName
@@ -502,7 +502,7 @@ function Test-NewADApplication
 	Assert-AreEqual $app1.IdentifierUris[0] $newIdentifierUri
 
 	# Delete 
-	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Force
+	Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
 }
 
 <#
@@ -532,7 +532,7 @@ function Test-NewADServicePrincipal
 	Assert-True { $sp1.ServicePrincipalNames.Contains($servicePrincipal.ServicePrincipalNames[0]) }
 
 	# Delete SP
-	Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
+	Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force
 }
 
 <#
@@ -580,9 +580,9 @@ function Test-NewADServicePrincipalWithoutApp
 	Assert-AreEqual $sp1.DisplayName $newDisplayName
 
 	# Remove App should delete SP also
-	Remove-AzureRmADApplication -ApplicationObjectId $app1.ApplicationObjectId -Force
+	Remove-AzureRmADApplication -ObjectId $app1.ObjectId -Force
 
-	Assert-Throws { Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id }
+	Assert-Throws { Remove-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id -Force}
 }
 
 <#
@@ -602,23 +602,23 @@ function Test-CreateDeleteAppPasswordCredentials
     # Assert
     Assert-NotNull $application
 
-	# Get Application by ApplicationObjectId
-	$app1 =  Get-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId
+	# Get Application by ObjectId
+	$app1 =  Get-AzureRmADApplication -ObjectId $application.ObjectId
 	Assert-NotNull $app1
 
 	# Get credential should fetch 1 credential
-	$cred1 = Get-AzureRmADAppCredential -ApplicationObjectId $application.ApplicationObjectId
+	$cred1 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
 	Assert-NotNull $cred1
 	Assert-AreEqual $cred1.Count 1
 
 	# Add 1 more password credential to the same app
 	$start = (Get-Date).ToUniversalTime()
 	$end = $start.AddYears(1)
-	$cred = New-AzureRmADAppCredential -ApplicationObjectId $application.ApplicationObjectId -Password $password -StartDate $start -EndDate $end
+	$cred = New-AzureRmADAppCredential -ObjectId $application.ObjectId -Password $password -StartDate $start -EndDate $end
 	Assert-NotNull $cred
 
 	# Get credential should fetch 2 credentials
-	$cred2 = Get-AzureRmADAppCredential -ApplicationObjectId $application.ApplicationObjectId
+	$cred2 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
 	Assert-NotNull $cred2
 	Assert-AreEqual $cred2.Count 2
 	$credCount = $cred2 | where {$_.KeyId -in $cred1.KeyId, $cred.KeyId}
@@ -632,12 +632,12 @@ function Test-CreateDeleteAppPasswordCredentials
 	Assert-AreEqual $cred3[0].KeyId $cred1.KeyId
 
 	# Remove All creds
-	Remove-AzureRmADAppCredential -ApplicationObjectId $application.ApplicationObjectId -All -Force
-	$cred3 = Get-AzureRmADAppCredential -ApplicationObjectId $application.ApplicationObjectId
+	Remove-AzureRmADAppCredential -ObjectId $application.ObjectId -All -Force
+	$cred3 = Get-AzureRmADAppCredential -ObjectId $application.ObjectId
 	Assert-Null $cred3
 
 	# Remove App 
-	Remove-AzureRmADApplication -ApplicationObjectId $application.ApplicationObjectId -Force
+	Remove-AzureRmADApplication -ObjectId $application.ObjectId -Force
 }
 
 
@@ -693,5 +693,5 @@ function Test-CreateDeleteSpPasswordCredentials
 
 	# Remove App 
 	$app =  Get-AzureRmADApplication -ApplicationId $servicePrincipal.ApplicationId
-	Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+	Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
 }

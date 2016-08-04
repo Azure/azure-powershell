@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes AD application credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, SupportsShouldProcess = true)]
     public class RemoveAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The application object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithAll, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The application id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithAll, HelpMessage = "The application id.")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ApplicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
                 bool deleteAllCredentials = false;
@@ -68,19 +68,19 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ConfirmAction(
                   Force.IsPresent,
-                  string.Format(ProjectResources.RemovingAppCredentialWithId, KeyId, ApplicationObjectId),
+                  string.Format(ProjectResources.RemovingAppCredentialWithId, KeyId, ObjectId),
                   ProjectResources.RemoveCredential,
-                  ApplicationObjectId,
-                  () => ActiveDirectoryClient.RemoveAppCredentialByKeyId(ApplicationObjectId, KeyId));
+                  ObjectId,
+                  () => ActiveDirectoryClient.RemoveAppCredentialByKeyId(ObjectId, KeyId));
                 }
                 else if (deleteAllCredentials)
                 {
                     ConfirmAction(
                   Force.IsPresent,
-                  string.Format(ProjectResources.RemovingAllAppCredentials, ApplicationObjectId.ToString()),
+                  string.Format(ProjectResources.RemovingAllAppCredentials, ObjectId.ToString()),
                   ProjectResources.RemoveCredential,
-                  ApplicationObjectId,
-                  () => ActiveDirectoryClient.RemoveAllAppCredentials(ApplicationObjectId));
+                  ObjectId,
+                  () => ActiveDirectoryClient.RemoveAllAppCredentials(ObjectId));
                 }
             });
         }

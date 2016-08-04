@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+        
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -42,9 +45,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 PSADServicePrincipal servicePrincipal = null;
 
                 ConfirmAction(
-                  ProjectResources.RemoveServicePrincipal,
-                  null,
-                  () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
+                    Force.IsPresent,
+                    string.Format(ProjectResources.RemovingServicePrincipal, ObjectId.ToString()),
+                    ProjectResources.RemoveServicePrincipal,
+                    ObjectId.ToString(),
+                    () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
 
                 if (PassThru)
                 {

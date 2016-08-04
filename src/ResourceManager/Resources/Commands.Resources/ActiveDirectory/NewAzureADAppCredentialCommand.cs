@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword), OutputType(typeof(PSADCredential))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
     public class NewAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue, HelpMessage = "The application id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword, HelpMessage = "The application id.")]
@@ -69,8 +69,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ApplicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
+
 
                 if (!string.IsNullOrEmpty(Password))
                 {
@@ -82,8 +83,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = Password
                     };
-
-                    WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ApplicationObjectId, passwordCredential));
+                    if (ShouldProcess(string.Format("Adding a new password to application with objectId {0}", ObjectId), ObjectId))
+                    {
+                        WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
+                    }
                 }
                 else if (!string.IsNullOrEmpty(CertValue))
                 {
@@ -97,13 +100,16 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
-
-                    WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ApplicationObjectId, keyCredential));
+                    if (ShouldProcess(string.Format("Adding a new certificate to application with objectId {0}", ObjectId), ObjectId))
+                    {
+                        WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
+                    }
                 }
                 else
                 {
                     throw new InvalidOperationException("No valid keyCredential or passowrdCredential to update!!");
                 }
+
             });
         }
     }

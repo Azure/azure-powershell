@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
     {
         public string DisplayName { get; set; }
 
-        public Guid ApplicationObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         public IList<string> IdentifierUris { get; set; }
 

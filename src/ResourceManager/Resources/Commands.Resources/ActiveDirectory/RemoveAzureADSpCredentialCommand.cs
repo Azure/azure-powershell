@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Removes AD SP credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId, SupportsShouldProcess = true)]
     public class RemoveAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The servicePrincipal object id.")]

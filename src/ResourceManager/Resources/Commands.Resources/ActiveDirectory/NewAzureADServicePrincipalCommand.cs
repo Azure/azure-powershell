@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
@@ -119,8 +119,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         HomePage = uri
                     };
 
-                    var application = ActiveDirectoryClient.CreateApplication(appParameters);
-                    ApplicationId = application.ApplicationId;
+                    if (ShouldProcess(string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName), appParameters.DisplayName))
+                    {
+                        var application = ActiveDirectoryClient.CreateApplication(appParameters);
+                        ApplicationId = application.ApplicationId;
+                    }
                 }
 
                 CreatePSServicePrincipalParameters createParameters = new CreatePSServicePrincipalParameters
@@ -170,7 +173,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         break;
                 }
 
-                WriteObject(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
+                if (ShouldProcess(string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId), createParameters.ApplicationId.ToString()))
+                {
+                    WriteObject(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
+                }
             });
         }
     }

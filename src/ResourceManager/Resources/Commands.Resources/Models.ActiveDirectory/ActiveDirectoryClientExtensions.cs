@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 return new PSADApplication()
                 {
-                    ApplicationObjectId = Guid.Parse(application.ObjectId),
+                    ObjectId = Guid.Parse(application.ObjectId),
                     DisplayName = application.DisplayName,
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),

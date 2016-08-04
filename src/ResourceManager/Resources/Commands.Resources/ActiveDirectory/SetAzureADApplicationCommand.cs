@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADApplication"), OutputType(typeof(PSADApplication))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmADApplication", SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
     public class SetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationObjectId { get; set; }
+        public string ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ApplicationObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
                 }
 
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters
@@ -84,7 +84,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AvailableToOtherTenants = AvailableToOtherTenants
                 };
 
-                ActiveDirectoryClient.UpdateApplication(ApplicationObjectId, parameters);
+                if (ShouldProcess(string.Format("Updating an application with object id '{0}'", ObjectId), ObjectId))
+                {
+                    ActiveDirectoryClient.UpdateApplication(ObjectId, parameters);
+                }
             });
         }
     }

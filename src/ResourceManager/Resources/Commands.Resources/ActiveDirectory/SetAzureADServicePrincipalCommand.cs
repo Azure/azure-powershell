@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an exisitng service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true)]
 
     public class SetAzureADServicePrincipalCommand: ActiveDirectoryBaseCmdlet
     {
@@ -67,16 +67,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (!string.IsNullOrEmpty(DisplayName))
                 {
-                    string uri = "http://" + DisplayName.Trim().Replace(' ', '_');
-
                     ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                     {
-                        DisplayName = DisplayName,
-                        Homepage = uri,
-                        IdentifierUris = new List<string> { uri }
+                        DisplayName = DisplayName
                     };
 
-                    ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
+                    if (ShouldProcess(string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id), sp.Id.ToString()))
+                    {
+                        ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
+                    }                        
                 }
             });
         }

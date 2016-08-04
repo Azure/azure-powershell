@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 throw new InvalidOperationException(String.Format(ProjectResources.ApplicationWithAppIdDoesntExist, applicationId));
             }
-            return app.ApplicationObjectId.ToString();
+            return app.ObjectId.ToString();
         }
 
 

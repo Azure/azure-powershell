@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD servicePrincipal Credential.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword), OutputType(typeof(PSADCredential))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.SpObjectIdWithPassword, SupportsShouldProcess = true), OutputType(typeof(PSADCredential))]
     public class NewAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithCertValue, HelpMessage = "The servicePrincipal object id.")]
@@ -84,8 +84,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = Password
                     };
-
-                    WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
+                    if (ShouldProcess(string.Format("Adding a new password to service principal with objectId {0}", ObjectId), ObjectId))
+                    {
+                        WriteObject(ActiveDirectoryClient.CreateSpPasswordCredential(ObjectId, passwordCredential));
+                    }
                 }
                 else if (!string.IsNullOrEmpty(CertValue))
                 {
@@ -100,7 +102,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Usage = "Verify"
                     };
 
-                    WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
+                    if (ShouldProcess(string.Format("Adding a new caertificate to service principal with objectId {0}", ObjectId), ObjectId))
+                    {
+                        WriteObject(ActiveDirectoryClient.CreateSpKeyCredential(ObjectId, keyCredential));
+                    }
                 }
                 else
                 {

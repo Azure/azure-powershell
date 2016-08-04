@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADUser"), OutputType(typeof(PSADUser))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class NewAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for the user.")]
@@ -66,7 +66,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.CreateUser(userCreateparameters));
+                if (ShouldProcess(string.Format("Adding a new user with UPN '{0}'", UserPrincipalName), UserPrincipalName))
+                {
+                    WriteObject(ActiveDirectoryClient.CreateUser(userCreateparameters));
+                }
             });
         }
     }

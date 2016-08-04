@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential), OutputType(typeof(PSADApplication))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
@@ -176,7 +176,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.CreateApplication(createParameters));
+                if (ShouldProcess(string.Format("Adding a new application with display name '{0}'", createParameters.DisplayName), createParameters.DisplayName))
+                {
+                    WriteObject(ActiveDirectoryClient.CreateApplication(createParameters));
+                }
             });
         }
     }

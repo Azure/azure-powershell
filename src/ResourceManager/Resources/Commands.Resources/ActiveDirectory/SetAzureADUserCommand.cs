@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Updates an existing AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADUser"), OutputType(typeof(PSADUser))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class SetAzureADUserCommand: ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "New display name for the user.")]
@@ -60,7 +60,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.UpdateUser(UPNOrObjectId, userUpdateParameters));
+                if (ShouldProcess(string.Format("Updating properties for user with upn or object id '{0}'", UPNOrObjectId), UPNOrObjectId))
+                {
+                    WriteObject(ActiveDirectoryClient.UpdateUser(UPNOrObjectId, userUpdateParameters));
+                }
             });
         }
     }
