@@ -14,34 +14,34 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
-    /// Removes the AD application.
+    /// Gets AD service principal credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication", SupportsShouldProcess = true)]
-    public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADCredential))]
+    public class GetAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application object id.")]
-        public Guid ObjectId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The servicePrincipal object id.")]
+        [ValidateNotNullOrEmpty]
+        public string ObjectId { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN, HelpMessage = "The servicePrincipal name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServicePrincipalName { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                ConfirmAction(
-               Force.IsPresent,
-               string.Format(ProjectResources.RemovingApplication, ObjectId.ToString()),
-               ProjectResources.RemoveApplication,
-               ObjectId.ToString(),
-               () => ActiveDirectoryClient.RemoveApplication(ObjectId.ToString()));
+                if (!string.IsNullOrEmpty(ServicePrincipalName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
+                }
+
+                WriteObject(ActiveDirectoryClient.GetSpCredentials(ObjectId), enumerateCollection: true);
             });
         }
     }

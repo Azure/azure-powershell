@@ -14,34 +14,34 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System;
 using System.Management.Automation;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
-    /// Removes the AD application.
+    /// Gets AD application credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication", SupportsShouldProcess = true)]
-    public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectId), OutputType(typeof(PSADCredential))]
+    public class GetAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application object id.")]
-        public Guid ObjectId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
+        [ValidateNotNullOrEmpty]
+        public string ObjectId { get; set; }
 
-        [Parameter(Mandatory = false)]
-        public SwitchParameter Force { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
+        [ValidateNotNullOrEmpty]
+        public string ApplicationId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                ConfirmAction(
-               Force.IsPresent,
-               string.Format(ProjectResources.RemovingApplication, ObjectId.ToString()),
-               ProjectResources.RemoveApplication,
-               ObjectId.ToString(),
-               () => ActiveDirectoryClient.RemoveApplication(ObjectId.ToString()));
+                if (!string.IsNullOrEmpty(ApplicationId))
+                {
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                }
+
+                WriteObject(ActiveDirectoryClient.GetAppCredentials(ObjectId), enumerateCollection: true);
             });
         }
     }

@@ -12,22 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
-    public class CreatePSApplicationParameters
+    public class PSADCredential
     {
-        public string DisplayName { get; set; }
+        public string StartDate { get; set; }
 
-        public string HomePage { get; set; }
+        public string EndDate { get; set; }
 
-        public string[] IdentifierUris { get; set; }
+        public string KeyId { get; set; }
 
-        public string[] ReplyUrls { get; set; }
-
-        public bool AvailableToOtherTenants { get; set; }
-
-        public PSADKeyCredential[] KeyCredentials { get; set; }
-
-        public PSADPasswordCredential[] PasswordCredentials { get; set; }
+        public string Type { get; set; }        
     }
 }

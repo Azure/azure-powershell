@@ -171,6 +171,8 @@
         <string>ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\ServiceConfiguration.cscfg</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx</string>
+		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteAppPasswordCredentials.json</string>
+		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
 		<string>\\bin\\Debug\\</string>
 		<string>\\package[s]?\\</string>
       </Filters>
