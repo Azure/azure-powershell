@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         HomePage = uri
                     };
 
-                    if (ShouldProcess(string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName), appParameters.DisplayName))
+                    if (ShouldProcess(target: appParameters.DisplayName, action: string.Format("Adding a new application for with display name '{0}'", appParameters.DisplayName)))
                     {
                         var application = ActiveDirectoryClient.CreateApplication(appParameters);
                         ApplicationId = application.ApplicationId;
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         break;
                 }
 
-                if (ShouldProcess(string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId), createParameters.ApplicationId.ToString()))
+                if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
                 {
                     WriteObject(ActiveDirectoryClient.CreateServicePrincipal(createParameters));
                 }

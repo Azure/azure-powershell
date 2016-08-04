@@ -72,10 +72,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         DisplayName = DisplayName
                     };
 
-                    if (ShouldProcess(string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id), sp.Id.ToString()))
+                    if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                     {
                         ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
-                    }                        
+                    }
                 }
             });
         }

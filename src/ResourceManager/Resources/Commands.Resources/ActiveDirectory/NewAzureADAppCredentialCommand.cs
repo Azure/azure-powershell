@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = Password
                     };
-                    if (ShouldProcess(string.Format("Adding a new password to application with objectId {0}", ObjectId), ObjectId))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
-                    if (ShouldProcess(string.Format("Adding a new certificate to application with objectId {0}", ObjectId), ObjectId))
+                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
                     }

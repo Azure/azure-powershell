@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                if (ShouldProcess(string.Format("Adding a new user with UPN '{0}'", UserPrincipalName), UserPrincipalName))
+                if (ShouldProcess(target: UserPrincipalName, action: string.Format("Adding a new user with UPN '{0}'", UserPrincipalName)))
                 {
                     WriteObject(ActiveDirectoryClient.CreateUser(userCreateparameters));
                 }

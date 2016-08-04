@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                if (ShouldProcess(string.Format("Updating properties for user with upn or object id '{0}'", UPNOrObjectId), UPNOrObjectId))
+                if (ShouldProcess(target: UPNOrObjectId, action: string.Format("Updating properties for user with upn or object id '{0}'", UPNOrObjectId)))
                 {
                     WriteObject(ActiveDirectoryClient.UpdateUser(UPNOrObjectId, userUpdateParameters));
                 }

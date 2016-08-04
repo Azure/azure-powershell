@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
             ExecutionBlock(() =>
             {
-                if (ShouldProcess(string.Format("Adding a new application with display name '{0}'", createParameters.DisplayName), createParameters.DisplayName))
+                if (ShouldProcess(target: createParameters.DisplayName, action: string.Format("Adding a new application with display name '{0}'", createParameters.DisplayName)))
                 {
                     WriteObject(ActiveDirectoryClient.CreateApplication(createParameters));
                 }
