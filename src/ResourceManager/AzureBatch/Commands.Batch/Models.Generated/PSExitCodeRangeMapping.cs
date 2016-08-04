@@ -29,17 +29,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSImageReference
+    public partial class PSExitCodeRangeMapping
     {
         
-        internal Microsoft.Azure.Batch.ImageReference omObject;
+        internal Microsoft.Azure.Batch.ExitCodeRangeMapping omObject;
         
-        public PSImageReference(string offer, string publisher, string sku, string version = null)
+        private PSExitOptions exitOptions;
+        
+        public PSExitCodeRangeMapping(int start, int end, PSExitOptions exitOptions)
         {
-            this.omObject = new Microsoft.Azure.Batch.ImageReference(offer, publisher, sku, version);
+            this.omObject = new Microsoft.Azure.Batch.ExitCodeRangeMapping(start, end, exitOptions.omObject);
         }
         
-        internal PSImageReference(Microsoft.Azure.Batch.ImageReference omObject)
+        internal PSExitCodeRangeMapping(Microsoft.Azure.Batch.ExitCodeRangeMapping omObject)
         {
             if ((omObject == null))
             {
@@ -48,35 +50,32 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public string Offer
+        public int End
         {
             get
             {
-                return this.omObject.Offer;
+                return this.omObject.End;
             }
         }
         
-        public string Publisher
+        public PSExitOptions ExitOptions
         {
             get
             {
-                return this.omObject.Publisher;
+                if (((this.exitOptions == null) 
+                            && (this.omObject.ExitOptions != null)))
+                {
+                    this.exitOptions = new PSExitOptions(this.omObject.ExitOptions);
+                }
+                return this.exitOptions;
             }
         }
         
-        public string Sku
+        public int Start
         {
             get
             {
-                return this.omObject.Sku;
-            }
-        }
-        
-        public string Version
-        {
-            get
-            {
-                return this.omObject.Version;
+                return this.omObject.Start;
             }
         }
     }
