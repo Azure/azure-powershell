@@ -14,44 +14,35 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
+
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     /// <summary>
-    /// Get AD groups members.
+    /// Removes the AD user.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADObject>))]
-    public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADUser", SupportsShouldProcess = true)]
+    public class RemoveAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The userPrincipalName or ObjectId of the user to be deleted.")]
         [ValidateNotNullOrEmpty]
-        public Guid GroupObjectId { get; set; }
+        public string UPNOrObjectId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                ADObjectFilterOptions options = new ADObjectFilterOptions
-                {
-                    Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
-                    Paging = true
-                };
-
-                PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
-                if (group == null)
-                {
-                    throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
-                }
-
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
-                } while (!string.IsNullOrEmpty(options.NextLink));
+                ConfirmAction(
+               Force.IsPresent,
+               string.Format(ProjectResources.RemoveUserConfirmation, UPNOrObjectId),
+               ProjectResources.RemovingUser,
+               UPNOrObjectId,
+               () => ActiveDirectoryClient.RemoveUser(UPNOrObjectId));
             });
         }
     }
