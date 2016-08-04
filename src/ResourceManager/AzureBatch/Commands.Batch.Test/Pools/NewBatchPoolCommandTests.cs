@@ -84,6 +84,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.VirtualMachineSize = "small";
             cmdlet.NetworkConfiguration = networkConfiguration;
 
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            
             string subnetId = null;
 
             Action<BatchRequest<
