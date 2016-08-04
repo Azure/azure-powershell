@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Network;
 using System.Management.Automation;
 
@@ -21,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM Route table to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureRouteTable"), OutputType(typeof(OperationStatusResponse))]
+    [Cmdlet(VerbsCommon.Move, "AzureRouteTable", SupportsShouldProcess = true), OutputType(typeof(OperationStatusResponse))]
     public class MoveRouteTableCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
@@ -54,24 +55,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             }
             else if (this.Abort.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Routes.AbortMigration(this.RouteTableName));
+                if(this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Abort", this.RouteTableName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Abort", this.RouteTableName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Routes.AbortMigration(this.RouteTableName));
+                }
             }
             else if (this.Commit.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Routes.CommitMigration(this.RouteTableName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Commit", this.RouteTableName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Commit", this.RouteTableName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Routes.CommitMigration(this.RouteTableName));
+                }
             }
             else
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Routes.PrepareMigration(this.RouteTableName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Prepare", this.RouteTableName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Prepare", this.RouteTableName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Routes.PrepareMigration(this.RouteTableName));
+                }
             }
         }
     }

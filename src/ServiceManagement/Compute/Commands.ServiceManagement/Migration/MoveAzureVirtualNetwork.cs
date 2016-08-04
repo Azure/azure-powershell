@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Network;
 using System.Management.Automation;
 
@@ -21,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM virtual network to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
+    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork", SupportsShouldProcess = true), OutputType(typeof(OperationStatusResponse))]
     public class MoveVirtualNetworkCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
@@ -54,24 +55,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             }
             else if (this.Abort.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Abort", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Abort", this.VirtualNetworkName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                }
             }
             else if (this.Commit.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Commit", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Commit", this.VirtualNetworkName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                }
             }
             else
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Prepare", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Prepare", this.VirtualNetworkName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
+                }
             }
         }
     }

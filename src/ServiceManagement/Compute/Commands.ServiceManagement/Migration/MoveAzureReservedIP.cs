@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Network;
 using System.Management.Automation;
 
@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM ReservedIP to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureReservedIP"), OutputType(typeof(OperationStatusResponse))]
+    [Cmdlet(VerbsCommon.Move, "AzureReservedIP", SupportsShouldProcess = true), OutputType(typeof(OperationStatusResponse))]
     public class MoveReservedIPCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
@@ -55,24 +55,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             }
             else if (this.Abort.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.ReservedIPs.AbortMigration(this.ReservedIPName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Abort", this.ReservedIPName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Abort", this.ReservedIPName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.ReservedIPs.AbortMigration(this.ReservedIPName));
+                }
             }
             else if (this.Commit.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.ReservedIPs.CommitMigration(this.ReservedIPName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Commit", this.ReservedIPName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Commit", this.ReservedIPName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.ReservedIPs.CommitMigration(this.ReservedIPName));
+                }
             }
             else
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.ReservedIPs.PrepareMigration(this.ReservedIPName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Prepare", this.ReservedIPName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Prepare", this.ReservedIPName)))
+                { 
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.ReservedIPs.PrepareMigration(this.ReservedIPName));
+                }
             }
         }
     }

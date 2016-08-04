@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Network;
 using System.Management.Automation;
 
@@ -21,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM Network Security Group to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureNetworkSecurityGroup"), OutputType(typeof(OperationStatusResponse))]
+    [Cmdlet(VerbsCommon.Move, "AzureNetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(OperationStatusResponse))]
     public class MoveNetworkSecurityGroupCommand : MoveAzureNetworkResourceBase
     {
         [Parameter(
@@ -54,24 +55,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
             }
             else if (this.Abort.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.NetworkSecurityGroups.AbortMigration(this.NetworkSecurityGroupName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Abort", this.NetworkSecurityGroupName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Abort", this.NetworkSecurityGroupName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.NetworkSecurityGroups.AbortMigration(this.NetworkSecurityGroupName));
+                }
             }
             else if (this.Commit.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.NetworkSecurityGroups.CommitMigration(this.NetworkSecurityGroupName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Commit", this.NetworkSecurityGroupName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Commit", this.NetworkSecurityGroupName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.NetworkSecurityGroups.CommitMigration(this.NetworkSecurityGroupName));
+                }
             }
             else
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.NetworkSecurityGroups.PrepareMigration(this.NetworkSecurityGroupName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Prepare", this.NetworkSecurityGroupName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Prepare", this.NetworkSecurityGroupName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.NetworkSecurityGroups.PrepareMigration(this.NetworkSecurityGroupName));
+                }
             }
         }
     }
