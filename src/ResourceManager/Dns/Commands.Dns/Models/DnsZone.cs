@@ -46,5 +46,11 @@ namespace Microsoft.Azure.Commands.Dns
         /// Name servers provisioned for this zone
         /// </summary>
         public List<string> NameServers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the number of records for this zone
+        /// </summary>
+        public long? NumberOfRecordSets { get; set; }
+        public long? MaxNumberOfRecordSets { get; set; }
     }
 }

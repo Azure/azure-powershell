@@ -27,6 +27,9 @@ function Test-ZoneCrud
 	Assert-AreEqual $zoneName $createdZone.Name 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdZone.ResourceGroupName 
 	Assert-AreEqual 1 $createdZone.Tags.Count
+	Assert-AreEqual 2 $createdZone.NumberOfRecordSets
+	Assert-AreNotEqual $createdZone.NumberOfRecordSets $createdZone.MaxNumberOfRecordSets
+
 
 	$retrievedZone = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
@@ -36,6 +39,8 @@ function Test-ZoneCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedZone.ResourceGroupName
 	Assert-AreEqual $retrievedZone.Etag $createdZone.Etag
 	Assert-AreEqual 1 $retrievedZone.Tags.Count
+	Assert-AreNotEqual 0 $createdZone.NumberOfRecordSets
+	Assert-AreNotEqual $createdZone.NumberOfRecordSets $createdZone.MaxNumberOfRecordSets
 
 	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{Name="tag1";Value="value1"},@{Name="tag2";Value="value2"}
 
