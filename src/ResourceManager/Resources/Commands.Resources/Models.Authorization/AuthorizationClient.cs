@@ -278,8 +278,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                     var userObject = adObject as PSADUser;
                     classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
-                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
-                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase)).ToList();
+                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase)).ToList();
                 }
 
                 result.AddRange(classicAdministratorsAssignments);

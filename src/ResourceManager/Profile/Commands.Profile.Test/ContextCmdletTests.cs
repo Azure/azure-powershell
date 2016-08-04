@@ -89,13 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
             account.SetProperty(AzureAccount.Property.Subscriptions, new string[0]);
 
-            var paramDictionary =
-                ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters());
-            var tenantParam = paramDictionary["TenantId"];
-            Assert.True(tenantParam.Attributes.Any(a => a is ValidateSetAttribute 
-              && ((ValidateSetAttribute)a).ValidValues.Any(v => string.Equals(v, tenantToSet, StringComparison.OrdinalIgnoreCase))));
-            Assert.False(paramDictionary["SubscriptionId"].Attributes.Any(a => a is ValidateSetAttribute));
-            tenantParam.Value = tenantToSet;
+            cmdlt.TenantId = tenantToSet;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -108,50 +102,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // TenantId is not sufficient to change the context.
             Assert.NotEqual(tenantToSet, context.Tenant.TenantId);
-        }
-
-        [Theory]
-        [InlineData(null, null)]
-        [InlineData(new string[0], new string[0])]
-        [InlineData(new string[] { guid1}, new string[] {guid2})]
-        [InlineData(new string[] { guid1, guid2 }, new string[] { guid3, guid4 })]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetsDynamicParametersForContext(string[] subscriptions, string[] tenants)
-        {
-            var cmdlt = new SetAzureRMContextCommand();
-
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-
-            // Make sure that the tenant ID we are attempting to set is
-            // valid for the account
-            var account = AzureRmProfileProvider.Instance.Profile.Context.Account;
-            account.SetProperty(AzureAccount.Property.Tenants, tenants);
-            account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions);
-
-            var paramDictionary =
-                ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters());
-            var subscriptionParams = paramDictionary["SubscriptionId"];
-            VerifyValidationAttribute(subscriptionParams, subscriptions);
-            var tenantParams = paramDictionary["TenantId"];
-            VerifyValidationAttribute(tenantParams, tenants);
-        }
-
-        private void VerifyValidationAttribute(RuntimeDefinedParameter parameter, string[] expectedValues)
-        {
-            if (expectedValues != null && expectedValues.Length > 0)
-            {
-                var validateAttribute = parameter.Attributes.First(a => a is ValidateSetAttribute) as ValidateSetAttribute;
-                Assert.NotNull(validateAttribute);
-                foreach (var expectedValue in expectedValues)
-                {
-                    Assert.Contains(expectedValue, validateAttribute.ValidValues, StringComparer.OrdinalIgnoreCase);
-                }
-            }
-            else
-            {
-                Assert.False(parameter.Attributes.Any(a => a is ValidateSetAttribute));
-            }
         }
 
         [Fact]
@@ -173,7 +123,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.NotNull(context);
         }
-
-
     }
 }
