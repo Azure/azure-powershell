@@ -12,7 +12,7 @@
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
+  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suppress ShouldProcess Conformation
     - Remove-AzureRmStorageAccount
     - Remove-AzureStorageBlob
     - Remove-AzureStorageContainer
@@ -30,7 +30,7 @@
     - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
     - Set-AzureRmStorageAccount
-  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation 
+  * Add confirmation and -Force parameter to suppress ShouldContinue confirmation 
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
   * Use -Force parameter instead of -Confirm parameter to suppress ShouldContinue confirmaiton
