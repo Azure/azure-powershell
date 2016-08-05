@@ -75,6 +75,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable[] Tag { get; set; }
 
         /// <summary>
+        /// Gets or sets the zones.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The zones.")]
+        public string[] Zones { get; set; }
+
+        /// <summary>
         /// Gets or sets a value that indicates if the full object was passed it.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
@@ -145,6 +151,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
                 Properties = this.Properties.ToResourcePropertiesBody(),
+                Zones = this.Zones
             };
         }
 
