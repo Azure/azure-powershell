@@ -1,4 +1,8 @@
 ##2016.08.03 version 2.0.0
+* Azure Resource Manager
+  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable. To  create a new tag object, do as follows @{tagName1='tagValue1'} instead of @{Name='tagName1';Value='tagValue1'}.
+  * Fix an issue with Get-AzureRmResourceProvider cmdlet to support querying based on global locations through the Location parameter
+  * Remove all deprecation warning messages
 * Azure Redis Cache
   * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
@@ -8,7 +12,7 @@
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
+  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suppress ShouldProcess Conformation
     - Remove-AzureRmStorageAccount
     - Remove-AzureStorageBlob
     - Remove-AzureStorageContainer
@@ -26,10 +30,10 @@
     - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
     - Set-AzureRmStorageAccount
-  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation
+  * Add confirmation and -Force parameter to suppress ShouldContinue confirmation 
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
-  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
+  * Use -Force parameter instead of -Confirm parameter to suppress ShouldContinue confirmaiton
     - Remove-AzureStorageShare
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
