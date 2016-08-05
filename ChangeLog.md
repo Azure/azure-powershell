@@ -30,6 +30,7 @@
     - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
     - Set-AzureRmStorageAccount
+  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation 
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
   * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
