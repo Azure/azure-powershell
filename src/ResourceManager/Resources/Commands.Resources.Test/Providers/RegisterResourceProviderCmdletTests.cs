@@ -125,8 +125,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                    Body = provider
               }));
 
-            this.cmdlet.Force = true;
-
             this.cmdlet.ProviderNamespace = ProviderName;
 
             // 1. register succeeds

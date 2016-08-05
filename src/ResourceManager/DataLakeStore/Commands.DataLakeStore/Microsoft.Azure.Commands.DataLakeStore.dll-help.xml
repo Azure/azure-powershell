@@ -2615,7 +2615,7 @@
 				<maml:description>
 					<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -2688,9 +2688,9 @@
 			<maml:description>
 				<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -3928,7 +3928,7 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<maml:description>
 					<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ResourceGroupName</maml:name>
@@ -3983,9 +3983,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<maml:description>
 				<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -88,14 +88,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The usage of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
-
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);

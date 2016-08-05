@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Cdn service cmdlets for Azure Resource Manager'  
+Description = 'Microsoft Azure PowerShell - CDN service cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  

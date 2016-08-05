@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
     /// <summary>
     /// A class representing a database auditing policy
     /// </summary>
-    public class DatabaseAuditingPolicyModel : BaseAuditingPolicyModel
+    public class DatabaseAuditingPolicyModel : BaseTableAuditingPolicyModel
     {
         /// <summary>
         /// Gets or sets the database name

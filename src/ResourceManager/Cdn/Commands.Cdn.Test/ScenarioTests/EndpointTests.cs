@@ -54,5 +54,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointCrudAndActionWithAllPropertiesWithPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEndpointPipeline()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-EndpointPipeline");
+        }
     }
 }

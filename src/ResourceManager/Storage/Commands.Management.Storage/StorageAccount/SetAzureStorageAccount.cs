@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(StorageModels.StorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(HelpMessage = "Force to Set the Account")]
+        public SwitchParameter Force
+        {
+            get { return force; }
+            set { force = value; }
+        }
+        private bool force = false;
 
         [Parameter(
             Mandatory = false,
@@ -95,58 +103,61 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [AllowEmptyCollection]
         [ValidateNotNull]
         [Alias(TagsAlias)]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            WriteWarning("Will add confirmation of executing the cmdlet and Force parameter in a future release. ");
-            WriteWarning("The usage of Tags parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
-
-            StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
-            if (this.SkuName != null)
+            if (ShouldProcess(this.Name, "Set Storage Account"))
             {
-                updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
-            }
-
-            if (this.Tag != null)
-            {
-                Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
-            }
-
-            if (this.CustomDomainName != null)
-            {
-                updateParameters.CustomDomain = new CustomDomain()
+                if (this.force || this.AccessTier == null || ShouldContinue("Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more.", ""))
                 {
-                    Name = CustomDomainName,
-                    UseSubDomain = UseSubDomain
-                };
+                    StorageAccountUpdateParameters updateParameters = new StorageAccountUpdateParameters();
+                    if (this.SkuName != null)
+                    {
+                        updateParameters.Sku = new Sku(ParseSkuName(this.SkuName));
+                    }
+
+                    if (this.Tag != null)
+                    {
+                        Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+                        updateParameters.Tags = tagDictionary ?? new Dictionary<string, string>();
+                    }
+
+                    if (this.CustomDomainName != null)
+                    {
+                        updateParameters.CustomDomain = new CustomDomain()
+                        {
+                            Name = CustomDomainName,
+                            UseSubDomain = UseSubDomain
+                        };
+                    }
+                    else if (UseSubDomain != null)
+                    {
+                        throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
+                    }
+
+                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null)
+                    {
+                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService);
+                    }
+
+                    if (this.AccessTier != null)
+                    {
+                        updateParameters.AccessTier = ParseAccessTier(AccessTier);
+                    }
+
+                    var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
+                        this.ResourceGroupName,
+                        this.Name,
+                        updateParameters);
+
+                    var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+
+                    WriteStorageAccount(storageAccount);
+                }
             }
-            else if (UseSubDomain != null)
-            {
-                throw new System.ArgumentException(string.Format("UseSubDomain must be set together with CustomDomainName."));
-            }
-
-            if (this.EnableEncryptionService != null || this.DisableEncryptionService != null)
-            {
-                updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService);
-            }
-
-            if (this.AccessTier != null)
-            {
-                updateParameters.AccessTier = ParseAccessTier(AccessTier);
-            }
-
-            var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(
-                this.ResourceGroupName,
-                this.Name,
-                updateParameters);
-
-            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
-
-            WriteStorageAccount(storageAccount);
         }
     }
 }
