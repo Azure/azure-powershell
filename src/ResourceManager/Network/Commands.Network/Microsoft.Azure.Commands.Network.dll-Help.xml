@@ -22604,7 +22604,7 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The New-AzureRmLoadBalancer cmdlet creates an Azure load balancer.</maml:para>
+		<maml:para>The New-AzureRmLoadBalancer cmdlet creates an Azure load balancer. Configuring a load balancer leads to providing higher availability for workloads in Azure. A load balancer distributes traffic among healthy services or virtual machines defined in a load balancer set.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -22946,7 +22946,7 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name &qu
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Example 1 Create a Load Balancer  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Create a Load Balancer   --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -22961,7 +22961,7 @@ PS C:\&gt; $lb = New-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName
 PS C:\&gt; Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
 </dev:code>
 			<dev:remarks>
-				<maml:para>This command created a new load balancer named MyLoadBalancer within the resource group MyResourceGroup in a specified location. In this case West US was selected.</maml:para>
+				<maml:para>Since deploying a load balancer requires certain objects to be created, this examples shows you how to create them. The second to last command creates a load balancer called MyLoadBalancer within resource group MyResourceGroup. And the last command is a get to ensure it was successfully created. Note that thios example only shows how to create a load balancer and it must be configured using Add-AzureRmVirtualNetworkInterface to assign the NICs to different VMs.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>Name                     : MyLoadBalancer
@@ -22981,7 +22981,7 @@ FrontendIpConfigurations : [
                            &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
                                &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
                                /resourceGroups/MyResourceGroup/providers/Microsoft.Net
-                           work/loadBalancers/anavinlb/frontendIPConfigurations/My
+                           work/loadBalancers/MyLoadBalancer/frontendIPConfigurations/My
                            FrontEnd&quot;,
                                &quot;PrivateIpAllocationMethod&quot;: &quot;Dynamic&quot;,
                                &quot;PublicIpAddress&quot;: {
@@ -23090,14 +23090,14 @@ InboundNatRules          : [
                                &quot;Etag&quot;: 
                            &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
                                &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Net
-                           work/loadBalancers//MyLoadBalancer/inboundNatRules/MyinboundNa
+                           work/loadBalancers/MyLoadBalancer/inboundNatRules/MyinboundNa
                            tRule1&quot;,
                                &quot;FrontendPort&quot;: 3389,
                                &quot;IdleTimeoutInMinutes&quot;: 15,
                                &quot;EnableFloatingIP&quot;: true,
                                &quot;FrontendIPConfiguration&quot;: {
                                  &quot;Id&quot;: &quot;/subscriptions/3xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.N
-                           etwork/loadBalancers//MyLoadBalancer/frontendIPConfigurations/
+                           etwork/loadBalancers/MyLoadBalancer/frontendIPConfigurations/
                            MyFrontEnd&quot;
                                },
                                &quot;BackendPort&quot;: 3389,
@@ -23109,7 +23109,7 @@ InboundNatRules          : [
                                &quot;Etag&quot;: 
                            &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
                                &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Net
-                           work/loadBalancers//MyLoadBalancer/inboundNatRules/MyinboundNa
+                           work/loadBalancers/MyLoadBalancer/inboundNatRules/MyinboundNa
                            tRule2&quot;,
                                &quot;FrontendPort&quot;: 3391,
                                &quot;IdleTimeoutInMinutes&quot;: 4,
