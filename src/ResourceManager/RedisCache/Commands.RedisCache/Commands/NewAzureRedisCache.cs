@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(RedisVersion))
             {
                 WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");

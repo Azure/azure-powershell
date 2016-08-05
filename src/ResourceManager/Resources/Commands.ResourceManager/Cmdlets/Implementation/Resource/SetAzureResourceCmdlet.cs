@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the zones.
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (!string.IsNullOrEmpty(this.ODataQuery))
             {
-                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRmResource cmdlet and will be removed in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRmResource cmdlet and will be removed in a future release.");
             }
 
             var resourceId = this.GetResourceId();

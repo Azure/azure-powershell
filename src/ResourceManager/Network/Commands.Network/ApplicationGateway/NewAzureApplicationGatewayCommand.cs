@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSApplicationGatewaySku Sku { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The SSL policy of application gateway")]
+        public virtual PSApplicationGatewaySslPolicy SslPolicy { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of IPConfiguration (subnet)")]
@@ -66,8 +72,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of ssl certificate")]
+             HelpMessage = "The list of ssl certificates")]
         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of authentication certificates")]
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -120,8 +132,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -132,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
+            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsApplicationGatewayPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
@@ -155,6 +167,12 @@ namespace Microsoft.Azure.Commands.Network
             applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
 
+            if (this.SslPolicy != null)
+            {
+                applicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
+                applicationGateway.SslPolicy = this.SslPolicy;
+            }
+
             if (this.GatewayIPConfigurations != null)
             {
                 applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations;
@@ -163,6 +181,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.SslCertificates != null)
             {
                 applicationGateway.SslCertificates = this.SslCertificates;
+            }
+
+            if (this.AuthenticationCertificates != null)
+            {
+                applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
             }
 
             if (this.FrontendIPConfigurations != null)

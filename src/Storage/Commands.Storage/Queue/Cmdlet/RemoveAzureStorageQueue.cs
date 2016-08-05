@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureStorageQueue", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
+    [Cmdlet(VerbsCommon.Remove, "AzureStorageQueue", SupportsShouldProcess = true),
         OutputType(typeof(Boolean))]
     public class RemoveAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                    ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the queue without confirm")]
+        [Parameter(HelpMessage = "Force to remove the queue and all content in it")]
         public SwitchParameter Force
         {
             get { return force; }
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
                 throw new ResourceNotFoundException(String.Format(Resources.QueueNotFound, name));
             }
 
-            if (force || ConfirmRemove(name))
+            if (force || ShouldContinue(string.Format("Remove queue and all content in it: {0}", name), ""))
             {
                 Channel.DeleteQueue(queue, requestOptions, OperationContext);
                 return true;
@@ -112,24 +112,27 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            String result = string.Empty;
-
-            bool success = RemoveAzureQueue(Name);
-
-            if (success)
+            if (ShouldProcess(Name, "Remove queue"))
             {
-                result = String.Format(Resources.RemoveQueueSuccessfully, Name);
-            }
-            else
-            {
-                result = String.Format(Resources.RemoveQueueCancelled, Name);
-            }
+                String result = string.Empty;
 
-            WriteVerbose(result);
+                bool success = RemoveAzureQueue(Name);
 
-            if (PassThru)
-            {
-                WriteObject(success);
+                if (success)
+                {
+                    result = String.Format(Resources.RemoveQueueSuccessfully, Name);
+                }
+                else
+                {
+                    result = String.Format(Resources.RemoveQueueCancelled, Name);
+                }
+
+                WriteVerbose(result);
+
+                if (PassThru)
+                {
+                    WriteObject(success);
+                }
             }
         }
     }

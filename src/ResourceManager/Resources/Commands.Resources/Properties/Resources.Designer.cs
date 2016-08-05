@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group with object id &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string GroupDoesntExist {
+            get {
+                return ResourceManager.GetString("GroupDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
         /// </summary>
         internal static string IncludeClassicAdminsNotSupported {
@@ -259,7 +268,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         internal static string InvalidTagFormat {
             get {
@@ -268,7 +277,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = &quot;tagValue1&quot;; tagName2 = &quot;tagValue2&quot;}.
         /// </summary>
         internal static string InvalidTagFormatNotUniqueName {
             get {

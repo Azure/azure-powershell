@@ -17,7 +17,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Table;
-
+    using System;
+    using System.Collections.Generic;
     /// <summary>
     /// base class for table cmdlet
     /// </summary>
@@ -51,6 +52,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table
             get
             {
                 return (TableRequestOptions)GetRequestOptions(StorageServiceType.Table);
+            }
+        }
+
+        protected bool TableIsEmpty(CloudTable table)
+        {
+            try
+            {
+                TableQuery<DynamicTableEntity> projectionQuery = new TableQuery<DynamicTableEntity>().Select(new string[] { "PartitionKey" });
+                projectionQuery.TakeCount = 1;
+                IEnumerator<DynamicTableEntity> result = table.ExecuteQuery(projectionQuery).GetEnumerator();
+                if (result.MoveNext() && result.Current != null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
