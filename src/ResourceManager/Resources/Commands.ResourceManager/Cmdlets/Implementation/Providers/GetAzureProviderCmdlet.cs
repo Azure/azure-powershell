@@ -80,8 +80,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceTypeName = type.ResourceTypeName,
                                             Locations = type.Locations,
                                             ApiVersions = type.ApiVersions,
+                                            ZoneMappings = type.ZoneMappings
                                         }
-                                    }
+                                    },
+                                    ZoneMappings = type.ZoneMappings
                                 }));
 
                 this.WriteObject(expandedProviders, enumerateCollection: true);

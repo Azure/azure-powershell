@@ -70,6 +70,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable[] Tag { get; set; }
 
         /// <summary>
+        /// Gets or sets the zones.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The zones.")]
+        public string[] Zones { get; set; }
+
+        /// <summary>
         /// Gets or sets a value that indicates if an HTTP PATCH request needs to be made instead of PUT.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates if an HTTP PATCH should be used to update the object instead of PUT.")]
@@ -156,6 +162,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags,
                         Location = resource.Location,
                         Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
+                        Zones = this.Zones ?? resource.Zones
                     }.ToJToken();
                 }
                 else
@@ -171,74 +178,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private Resource<JToken> GetPatchResourceBody()
         {
-            Resource<JToken> resourceBody = null;
+            if (this.Properties == null && this.Plan == null && this.Kind == null && this.Sku == null && this.Tag == null && this.Zones == null)
+            {
+                return null;
+            }
+
+            Resource<JToken> resourceBody = new Resource<JToken>();
 
             if (this.Properties != null)
             {
-                resourceBody = new Resource<JToken>()
-                {
-                    Properties = this.Properties.ToResourcePropertiesBody()
-                };
+                resourceBody.Properties = this.Properties.ToResourcePropertiesBody();
             }
 
             if (this.Plan != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>()
-                    };
-                }
+                resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
             }
 
             if (this.Kind != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Kind = this.Kind;
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Kind = this.Kind
-                    };
-                }
+                resourceBody.Kind = this.Kind;
             }
 
             if (this.Sku != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>()
-                    };
-                }
+                resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
             }
 
             if (this.Tag != null)
             {
-                if (resourceBody != null)
-                {
-                    resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
-                }
-                else
-                {
-                    resourceBody = new Resource<JToken>()
-                    {
-                        Tags = TagsHelper.GetTagsDictionary(this.Tag)
-                    };
-                }
+                resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
+            }
+
+            if (this.Zones != null)
+            {
+                resourceBody.Zones = this.Zones;
             }
 
             return resourceBody;
