@@ -33,7 +33,7 @@
   * Add confirmation and -Force parameter to suspress ShouldContinue confirmation 
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
-  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
+  * Use -Force parameter instead of -Confirm parameter to suppress ShouldContinue confirmaiton
     - Remove-AzureStorageShare
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
