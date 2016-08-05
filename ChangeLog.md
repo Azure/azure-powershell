@@ -1,6 +1,6 @@
 ##2016.08.03 version 2.0.0
 * Azure Resource Manager
-  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable.
+  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable. To  create a new tag object, do as follows @{tagName1='tagValue1'} instead of @{Name='tagName1';Value='tagValue1'}.
   * Fix an issue with Get-AzureRmResourceProvider cmdlet to support querying based on global locations through the Location parameter
   * Remove all deprecation warning messages
 * Azure Redis Cache
