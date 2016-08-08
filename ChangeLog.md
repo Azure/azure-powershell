@@ -1,10 +1,150 @@
 ##2016.08.03 version 2.0.0
+*Remove of Force parameters
+  * ApiManagement
+    - Remove-AzureRmApiManagement
+    - Remove-AzureRmApiManagementApi
+    - Remove-AzureRmApiManagementGroup
+    - Remove-AzureRmApiManagementLogger
+    - Remove-AzureRmApiManagementOpenIdConnectProvider
+    - Remove-AzureRmApiManagementOperation
+    - Remove-AzureRmApiManagementPolicy
+    - Remove-AzureRmApiManagementProduct
+    - Remove-AzureRmApiManagementProperty
+    - Remove-AzureRmApiManagementSubscription
+    - Remove-AzureRmApiManagementUser
+
+  * Automation
+    - Remove-AzureRmAutomationCertificate
+    - Remove-AzureRmAutomationCredential
+    - Remove-AzureRmAutomationVariable
+    - Remove-AzureRmAutomationWebhook
+
+  * Batch
+    - Remove-AzureBatchCertificate
+    - Remove-AzureBatchComputeNode
+    - Remove-AzureBatchComputeNodeUser
+
+  * DataFactories
+    - Resume-AzureRmDataFactoryPipeline
+    - Set-AzureRmDataFactoryPipelineActivePeriod
+    - Suspend-AzureRmDataFactoryPipeline
+
+  * DataLakeStore
+    - Remove-AzureRmDataLakeStoreItemAclEntry
+    - Set-AzureRmDataLakeStoreItemAcl
+    - Set-AzureRmDataLakeStoreItemAclEntry
+    - Set-AzureRmDataLakeStoreItemOwner
+
+  * OperationalInsights
+    - Remove-AzureRmOperationalInsightsSavedSearch
+
+  * Profile
+    - Remove-AzureRmEnvironment
+
+  * RedisCache
+    - Remove-AzureRmRedisCacheDiagnostics
+
+  * Resources
+    - Register-AzureRmProviderFeature
+    - Register-AzureRmResourceProvider
+    - Remove-AzureRmADServicePrincipal
+    - Remove-AzureRmPolicyAssignment
+    - Remove-AzureRmResourceGroupDeployment
+    - Remove-AzureRmRoleAssignment
+    - Stop-AzureRmResourceGroupDeployment
+    - Unregister-AzureRmResourceProvider
+
+  * Storage
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageTableStoredAccessPolicy
+
+  * StreamAnalytics
+    - Remove-AzureRmStreamAnalyticsFunction
+    - Remove-AzureRmStreamAnalyticsInput
+    - Remove-AzureRmStreamAnalyticsJob
+    - Remove-AzureRmStreamAnalyticsOutput
+
+  * Tag
+    - Remove-AzureRmTag
+* Change of Tag parameters
+  * Batch
+    - Get-AzureRmBatchAccount
+    - New-AzureRmBatchAccount
+    - Set-AzureRmBatchAccount
+
+  * Compute
+    - New-AzureRmVM
+    - Update-AzureRmVM
+
+  * DataLakeAnalytics
+    - New-AzureRmDataLakeAnalyticsAccount
+    - Set-AzureRmDataLakeAnalyticsAccount
+
+  * DataLakeStore
+    - New-AzureRmDataLakeStoreAccount
+    - Set-AzureRmDataLakeStoreAccount
+
+  * Dns
+    - New-AzureRmDnsZone
+    - Set-AzureRmDnsZone
+
+  * KeyVault
+    - Get-AzureRmKeyVault
+    - New-AzureRmKeyVault
+
+  * Network
+    - New-AzureRmApplicationGateway
+    - New-AzureRmExpressRouteCircuit
+    - New-AzureRmLoadBalancer
+    - New-AzureRmLocalNetworkGateway
+    - New-AzureRmNetworkInterface
+    - New-AzureRmNetworkSecurityGroup
+    - New-AzureRmPublicIpAddress
+    - New-AzureRmRouteTable
+    - New-AzureRmVirtualNetwork
+    - New-AzureRmVirtualNetworkGateway
+    - New-AzureRmVirtualNetworkGatewayConnection
+    - New-AzureRmVirtualNetworkPeering
+
+  * Resources
+    - Find-AzureRmResource
+    - Find-AzureRmResourceGroup
+    - New-AzureRmResource
+    - New-AzureRmResourceGroup
+    - Set-AzureRmResource
+    - Set-AzureRmResourceGroup
+
+  * SQL
+    - New-AzureRmSqlDatabase
+    - New-AzureRmSqlDatabaseCopy
+    - New-AzureRmSqlDatabaseSecondary
+    - New-AzureRmSqlElasticPool
+    - New-AzureRmSqlServer
+    - Set-AzureRmSqlDatabase
+    - Set-AzureRmSqlElasticPool
+    - Set-AzureRmSqlServer
+
+  * Storage
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+  * TrafficManager
+    - New-AzureRmTrafficManagerProfile
 * Azure Redis Cache
   * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
   * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
   * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
 * Azure Storage
+  * Get-AzureRmStorageAccountKey
+    - Cmdlet now returns a list of keys, rather than an object whose properties can access each key
+  * New-AzureRmStorageAccountKey
+    - `StorageAccountRegenerateKeyResponse` field in output of this cmdlet is renamed to `StorageAccountListKeysResults`, which is now a list of keys rather than an object whose properties can access each key
+  * New/Get/Set-AzureRmStorageAccount
+    - `AccountType` field in output of cmdlet is renamed to `Sku.Name`
+    - Output type for PrimaryEndpoints/Secondary endpoints blob/table/queue/file changed from `Uri` to `String`
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
