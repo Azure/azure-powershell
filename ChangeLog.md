@@ -117,6 +117,10 @@
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
   * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
   * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
+* Azure Resource Manager
+  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable. To create a new tag object, do as follows: `@{tagName1='tagValue1'}` instead of `@{Name='tagName1';Value='tagValue1'}`
+  * Fixed an issue with Get-AzureRmResourceProvider cmdlet to support querying based on global locations through the Location parameter
+  * Removed all deprecation warning messages
 * Azure Storage
   * Get-AzureRmStorageAccountKey
     - Cmdlet now returns a list of keys, rather than an object with properties for each key
@@ -154,8 +158,8 @@
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
-	
-	
+* Azure Sql
+  * Extended the auditing cmdlets to support management of blob auditing, both at the database and at the server level	
 	
 	
 
