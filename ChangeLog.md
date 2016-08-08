@@ -1,5 +1,5 @@
 ##2016.08.03 version 2.0.0
-* Removal of Force parameters
+* Removal of Force parameters that were obsoleted in the previous release
   * ApiManagement
     - Remove-AzureRmApiManagement
     - Remove-AzureRmApiManagementApi
@@ -12,38 +12,30 @@
     - Remove-AzureRmApiManagementProperty
     - Remove-AzureRmApiManagementSubscription
     - Remove-AzureRmApiManagementUser
-
   * Automation
     - Remove-AzureRmAutomationCertificate
     - Remove-AzureRmAutomationCredential
     - Remove-AzureRmAutomationVariable
     - Remove-AzureRmAutomationWebhook
-
   * Batch
     - Remove-AzureBatchCertificate
     - Remove-AzureBatchComputeNode
     - Remove-AzureBatchComputeNodeUser
-
   * DataFactories
     - Resume-AzureRmDataFactoryPipeline
     - Set-AzureRmDataFactoryPipelineActivePeriod
     - Suspend-AzureRmDataFactoryPipeline
-
   * DataLakeStore
     - Remove-AzureRmDataLakeStoreItemAclEntry
     - Set-AzureRmDataLakeStoreItemAcl
     - Set-AzureRmDataLakeStoreItemAclEntry
     - Set-AzureRmDataLakeStoreItemOwner
-
   * OperationalInsights
     - Remove-AzureRmOperationalInsightsSavedSearch
-
   * Profile
     - Remove-AzureRmEnvironment
-
   * RedisCache
     - Remove-AzureRmRedisCacheDiagnostics
-
   * Resources
     - Register-AzureRmProviderFeature
     - Register-AzureRmResourceProvider
@@ -53,47 +45,38 @@
     - Remove-AzureRmRoleAssignment
     - Stop-AzureRmResourceGroupDeployment
     - Unregister-AzureRmResourceProvider
-
   * Storage
     - Remove-AzureStorageContainerStoredAccessPolicy
     - Remove-AzureStorageQueueStoredAccessPolicy
     - Remove-AzureStorageShareStoredAccessPolicy
     - Remove-AzureStorageTableStoredAccessPolicy
-
   * StreamAnalytics
     - Remove-AzureRmStreamAnalyticsFunction
     - Remove-AzureRmStreamAnalyticsInput
     - Remove-AzureRmStreamAnalyticsJob
     - Remove-AzureRmStreamAnalyticsOutput
-
   * Tag
     - Remove-AzureRmTag
-* Change of Tag parameters
+* Change of `Tags` parameter name to `Tag`, and change of the parameter type from `HashTable[]` to `HashTable` for the following cmdlets
   * Batch
     - Get-AzureRmBatchAccount
     - New-AzureRmBatchAccount
     - Set-AzureRmBatchAccount
-
   * Compute
     - New-AzureRmVM
     - Update-AzureRmVM
-
   * DataLakeAnalytics
     - New-AzureRmDataLakeAnalyticsAccount
     - Set-AzureRmDataLakeAnalyticsAccount
-
   * DataLakeStore
     - New-AzureRmDataLakeStoreAccount
     - Set-AzureRmDataLakeStoreAccount
-
   * Dns
     - New-AzureRmDnsZone
     - Set-AzureRmDnsZone
-
   * KeyVault
     - Get-AzureRmKeyVault
     - New-AzureRmKeyVault
-
   * Network
     - New-AzureRmApplicationGateway
     - New-AzureRmExpressRouteCircuit
@@ -107,7 +90,6 @@
     - New-AzureRmVirtualNetworkGateway
     - New-AzureRmVirtualNetworkGatewayConnection
     - New-AzureRmVirtualNetworkPeering
-
   * Resources
     - Find-AzureRmResource
     - Find-AzureRmResourceGroup
@@ -115,7 +97,6 @@
     - New-AzureRmResourceGroup
     - Set-AzureRmResource
     - Set-AzureRmResourceGroup
-
   * SQL
     - New-AzureRmSqlDatabase
     - New-AzureRmSqlDatabaseCopy
@@ -125,11 +106,9 @@
     - Set-AzureRmSqlDatabase
     - Set-AzureRmSqlElasticPool
     - Set-AzureRmSqlServer
-
   * Storage
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-
   * TrafficManager
     - New-AzureRmTrafficManagerProfile
 * Azure Redis Cache
@@ -139,9 +118,9 @@
   * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
 * Azure Storage
   * Get-AzureRmStorageAccountKey
-    - Cmdlet now returns a list of keys, rather than an object whose properties can access each key
+    - Cmdlet now returns a list of keys, rather than an object with properties for each key
   * New-AzureRmStorageAccountKey
-    - `StorageAccountRegenerateKeyResponse` field in output of this cmdlet is renamed to `StorageAccountListKeysResults`, which is now a list of keys rather than an object whose properties can access each key
+    - `StorageAccountRegenerateKeyResponse` field in output of this cmdlet is renamed to `StorageAccountListKeysResults`, which is now a list of keys rather than an object with properties for each key
   * New/Get/Set-AzureRmStorageAccount
     - `AccountType` field in output of cmdlet is renamed to `Sku.Name`
     - Output type for PrimaryEndpoints/Secondary endpoints blob/table/queue/file changed from `Uri` to `String`
