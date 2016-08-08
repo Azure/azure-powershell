@@ -1,5 +1,6 @@
 ##2016.08.03 version 2.0.0
-* Removal of Force parameters that were obsoleted in the previous release
+* This release contains breaking changes. Please see [the migration guide](https://gist.github.com/cormacpayne/dad22c060dfd9acfda744f1405d4539c) for change details and the impact on existing scripts.
+* Removal of Force parameters that were marked as obsolete in the previous release
   * ApiManagement
     - Remove-AzureRmApiManagement
     - Remove-AzureRmApiManagementApi
@@ -57,7 +58,7 @@
     - Remove-AzureRmStreamAnalyticsOutput
   * Tag
     - Remove-AzureRmTag
-* Change of `Tags` parameter name to `Tag`, and change of the parameter type from `HashTable[]` to `HashTable` for the following cmdlets
+* Changed `Tags` parameter name to `Tag`, and changed the parameter type from `HashTable[]` to `HashTable` for the following cmdlets
   * Batch
     - Get-AzureRmBatchAccount
     - New-AzureRmBatchAccount
