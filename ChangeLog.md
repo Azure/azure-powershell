@@ -1,5 +1,5 @@
 ##2016.08.03 version 2.0.0
-* This release contains breaking changes. Please see [the migration guide](https://gist.github.com/cormacpayne/dad22c060dfd9acfda744f1405d4539c) for change details and the impact on existing scripts.
+* This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.2.0.0.md) for change details and the impact on existing scripts.
 * Removal of Force parameters that were marked as obsolete in the previous release
   * ApiManagement
     - Remove-AzureRmApiManagement
