@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.RdpPassword = RdpCredential.Password.ConvertToString();
             }
 
-            if (OSType == OSType.Linux)
+            if (OSType == OSType.Linux && SshCredential != null)
             {
                 parameters.SshUserName = SshCredential.UserName;
                 if (!string.IsNullOrEmpty(SshCredential.Password.ConvertToString()))
