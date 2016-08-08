@@ -8,30 +8,26 @@
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
-    - Remove-AzureRmStorageAccount
-    - Remove-AzureStorageBlob
-    - Remove-AzureStorageContainer
-    - Remove-AzureStorageTable
-    - Remove-AzureStorageQueue
-    - Remove-AzureStorageShare
-    - Remove-AzureStorageDirectory
-    - Remove-AzureStorageFile
-    - Remove-AzureStorageContainerStoredAccessPolicy
-    - Remove-AzureStorageShareStoredAccessPolicy
-    - Remove-AzureStorageTableStoredAccessPolicy
-    - Remove-AzureStorageQueueStoredAccessPolicy
+  * Added ShouldProcess support
     - Set-AzureStorageContainerStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
-    - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
-    - Set-AzureRmStorageAccount
-  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation
+    - Set-AzureStorageTableStoredAccessPolicy
+  * Downgraded ConfirmImpact to Medium
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageShare
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageQueue
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Remove-AzureStorageTable
+    - Remove-AzureStorageTableStoredAccessPolicy
+  * Add support for ShouldProcess and -Force parameter to supress confirmation
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
-  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
-    - Remove-AzureStorageShare
-  * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
+  * Confirmation needed only when there's data in the Container/Table to delete (suppress with -Force)
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
 * Azure Batch
