@@ -1,4 +1,4 @@
-##2016.08.03 version 2.0.0
+﻿##2016.08.03 version 2.0.0
 * Azure Redis Cache
   * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
@@ -34,10 +34,11 @@
   * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
-	
-	
-	
-	
+  * Remove -Force parameter 
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageTableStoredAccessPolicy
+    - Remove-AzureStorageQueueStoredAccessPolicy
 
 ##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
