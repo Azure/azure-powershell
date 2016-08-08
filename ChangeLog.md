@@ -1,5 +1,5 @@
 ##2016.08.03 version 2.0.0
-*Remove of Force parameters
+* Removal of Force parameters
   * ApiManagement
     - Remove-AzureRmApiManagement
     - Remove-AzureRmApiManagementApi
