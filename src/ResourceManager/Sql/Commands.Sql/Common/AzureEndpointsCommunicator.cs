@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Default Constructor.
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The Azure context</param>
         public AzureEndpointsCommunicator(AzureContext context)
         {
             Context = context;
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             await client.Credentials.ProcessHttpRequestAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             HttpResponseMessage httpResponse = await client.HttpClient.SendAsync(httpRequest, CancellationToken.None).ConfigureAwait(false);
             string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-            Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
+            Dictionary<StorageKeyKind, string> result = new Dictionary<StorageKeyKind, string>();
             try
             {
                 JToken responseDoc = JToken.Parse(responseContent);
@@ -143,11 +142,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             try
             {
-                return Task.Factory.StartNew((object epc) =>
-                {
-                    return ((AzureEndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName);
-                }
-                , this, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew((object epc) => (((AzureEndpointsCommunicator)epc).GetStorageKeysAsync(resourceGroupName, storageAccountName)),
+                                                        this, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
             catch
             {
@@ -193,6 +189,12 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 return getResourceGroupName("Microsoft.Storage/storageAccounts");
             }
+        }
+
+        public Dictionary<StorageKeyKind, string> GetStorageKeys(string storageName)
+        {
+            var resourceGroup = GetStorageResourceGroup(storageName);
+            return GetStorageKeys(resourceGroup, storageName);
         }
 
         /// <summary>

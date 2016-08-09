@@ -48,14 +48,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string resourceGroup = "resourceGroup";
             string storageId = "storageId";
 
-            Hashtable[] tags = new[]
-            {
-                new Hashtable
+            Hashtable tags = new Hashtable
                 {
                     {"Name", "tagName"},
                     {"Value", "tagValue"}
-                }
-            };
+                };
 
             AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);

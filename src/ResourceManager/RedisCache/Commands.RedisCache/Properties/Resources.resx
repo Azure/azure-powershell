@@ -156,4 +156,10 @@
   <data name="StorageAccountIdException" xml:space="preserve">
     <value>StorageAccountId is not valid ARM resource Id.</value>
   </data>
+  <data name="InvalidRedisCacheName" xml:space="preserve">
+    <value>Name should not contain '/' or '.'. Name should be the plain, short name of the redis cache, e.g. 'mycache'. (Not a fully qualified DNS name, and not an Azure resource identifier.)</value>
+  </data>
+  <data name="InvalidResourceGroupName" xml:space="preserve">
+    <value>ResourceGroupName should not contain '/'. Name should be the plain, short name of the resource group, e.g. 'myResourceGroup'. (Not an Azure resource identifier.)</value>
+  </data>
 </root>
