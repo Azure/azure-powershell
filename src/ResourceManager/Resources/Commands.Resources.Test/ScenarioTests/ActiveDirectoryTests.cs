@@ -601,6 +601,27 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipalWithoutApp()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithoutApp");
+        }
+
+        [Fact(Skip = "Not working in playback.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteAppPasswordCredentials()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-CreateDeleteAppPasswordCredentials");
+        }
+
+        [Fact(Skip = "Not working in playback.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateDeleteSpPasswordCredentials()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-CreateDeleteSpPasswordCredentials");
+        }        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipal()
         {
             const string scriptMethod = "Test-NewADServicePrincipal '{0}'";
