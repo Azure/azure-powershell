@@ -217,9 +217,9 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8d7dd69e-9ae2-44a1-94d8-f7bc8e12645e")
+	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8E052D34-3F84-4083-BA00-5E8772F7D46D")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -SignInName $users[0].Mail `
+                        -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
     
@@ -242,12 +242,12 @@ function Test-RaUserPermissions
     # Setup 
     
     # Test 
-    $permissions = Get-AzureRmResourceGroup -Name $rgName 
-        
-    # Assert 
-    Assert-AreEqual 1 $permissions.Permissions.Count "User should have only one permission." 
-    Assert-AreEqual 1 $permissions.Permissions[0].Actions.Count "User should have only one action in the permission." 
-    Assert-AreEqual	$action $permissions.Permissions[0].Actions[0] "Permission action mismatch." 
+    $rg = Get-AzureRmResourceGroup
+
+	Assert-AreEqual 1 $rg.Count "User should have access to only 1 RG." 
+
+	# User should not be able to create another RG as he doesnt have access to the subscription.
+	Assert-Throws{ New-AzureRmResourceGroup -Name 'NewGroupFromTest' -Location 'WestUS'}        
 }
 
 <#
@@ -256,7 +256,7 @@ Tests verifies Get-AzureRmAuthorizationChangeLog
 #>
 function Test-RaAuthorizationChangeLog
 {
-	$log1 = Get-AzureRmAuthorizationChangeLog -startTime 2015-08-27 -EndTime 2015-08-27T22:30:00Z
+	$log1 = Get-AzureRmAuthorizationChangeLog -startTime 2016-07-28 -EndTime 2016-07-28T22:30:00Z
 
 	# Assert
 	Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
@@ -293,8 +293,7 @@ function DeleteRoleAssignment
     
     Remove-AzureRmRoleAssignment -ObjectId $roleAssignment.ObjectId.Guid `
                                -Scope $roleAssignment.Scope `
-                               -RoleDefinitionName $roleAssignment.RoleDefinitionName `
-                               -Force
+                               -RoleDefinitionName $roleAssignment.RoleDefinitionName
 }
 
 <#

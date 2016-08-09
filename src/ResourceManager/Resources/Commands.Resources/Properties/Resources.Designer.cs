@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group with object id &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string GroupDoesntExist {
+            get {
+                return ResourceManager.GetString("GroupDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
         /// </summary>
         internal static string IncludeClassicAdminsNotSupported {
