@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to authenticationCertificates.
+        /// </summary>
+        public static string ApplicationGatewayAuthenticationCertificateName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayAuthenticationCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         public static string ApplicationGatewayBackendAddressPoolName {

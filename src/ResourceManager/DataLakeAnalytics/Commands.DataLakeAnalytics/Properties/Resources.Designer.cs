@@ -304,15 +304,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string TagsWarning {
-            get {
-                return ResourceManager.GetString("TagsWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Job is not yet done. Current job state: &apos;{0}&apos;.
         /// </summary>
         internal static string WaitJobState {

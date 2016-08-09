@@ -38,7 +38,7 @@ function Test-CreateComputeNodeUser
     # Verify that a user was created 
     # There is currently no Get/List user API, so verify by calling the delete operation. 
     # If the user account was created, it will succeed; otherwsie, it will throw a 404 error.
-    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
 }
 
 <#
@@ -66,9 +66,9 @@ function Test-DeleteComputeNodeUser
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
 
     # Verify the user was deleted
     # There is currently no Get/List user API, so try to delete the user again and verify that it fails.
-    Assert-Throws { Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
+    Assert-Throws { Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context }
 }

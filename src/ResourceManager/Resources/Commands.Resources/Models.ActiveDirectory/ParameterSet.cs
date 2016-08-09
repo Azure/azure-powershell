@@ -62,6 +62,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
 
+        public const string ApplicationObjectIdWithPassword = "ApplicationObjectIdWithPasswordParameterSet";
+
+        public const string ApplicationObjectIdWithCertValue = "ApplicationObjectIdWithCertValueParameterSet";
+
+        public const string ApplicationIdWithPassword = "ApplicationIdWithPasswordParameterSet";
+
+        public const string ApplicationIdWithCertValue = "ApplicationIdWithCertValueParameterSet";
+
         public const string Empty = "EmptyParameterSet";
 
         public const string InputFile = "InputFileParameterSet";
@@ -83,5 +91,47 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public const string ApplicationDisplayName = "ApplicationDisplayNameParameterSet";
 
         public const string ApplicationIdentifierUri = "ApplicationIdentifierUriParameterSet";
+
+        public const string ApplicationObjectIdWithKeyId = "ApplicationObjectIdWithKeyIdParameterSet";
+
+        public const string ApplicationObjectIdWithAll = "ApplicationObjectIdWithAllParameterSet";
+
+        public const string ApplicationIdWithKeyId = "ApplicationIdWithKeyIdParameterSet";
+
+        public const string ApplicationIdWithAll = "ApplicationIdWithAllParameterSet";
+
+        public const string SpObjectIdWithCertValue = "SpObjectIdWithCertValueParameterSet";
+
+        public const string SpObjectIdWithPassword = "SpObjectIdWithPasswordParameterSet";
+
+        public const string SPNWithCertValue = "SPNWithCertValueParameterSet";
+
+        public const string SPNWithPassword = "SPNWithPasswordParameterSet";
+
+        public const string ObjectIdWithKeyId = "ObjectIdWithKeyIdParameterSet";
+
+        public const string ObjectIdWithAll = "ObjectIdWithAllParameterSet";
+
+        public const string SPNWithKeyId = "SPNWithKeyIdParameterSet";
+
+        public const string SPNWithAll = "SPNWithAllParameterSet";
+
+        public const string ApplicationObjectIdWithUpdateParams = "ApplicationObjectIdWithUpdateParamsParameterSet";
+
+        public const string ApplicationIdWithUpdateParams = "ApplicationIdWithUpdateParamsParameterSet";
+
+        public const string DisplayNameWithoutCredential = "DisplayNameWithoutCredentialParameterSet";
+
+        public const string DisplayNameWithPasswordPlain = "DisplayNameWithPasswordPlainParameterSet";
+
+        public const string DisplayNameWithPasswordCredential = "DisplayNameWithPasswordCredentialParameterSet";
+
+        public const string DisplayNameWithKeyPlain = "DisplayNameWithKeyPlainParameterSet";
+
+        public const string DisplayNameWithKeyCredential = "DisplayNameWithKeyCredentialParameterSet";
+
+        public const string SpObjectIdWithDisplayName = "SpObjectIdWithDisplayNameParameterSet";
+
+        public const string SPNWithDisplayName = "SPNWithDisplayNameParameterSet";
     }
 }

@@ -872,6 +872,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performing migration action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessAction {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you should you want to perform migrate action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessTarget {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file to load the role does not exist.
         /// </summary>
         public static string MissingPersistentVMFile {
