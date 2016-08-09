@@ -315,7 +315,7 @@ function Test-ZoneListWithEndsWith
 
 <#
 .SYNOPSIS
-Add Record Set from Zone
+Add and Remove RecordSet from Zone and test NumberOfRecordSets
 #>
 function Test-AddRemoveRecordFromZone
 {
@@ -323,18 +323,15 @@ function Test-AddRemoveRecordFromZone
 	$recordName = getAssetname
     $resourceGroup = TestSetup-CreateResourceGroup 
 	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{Name="tag1";Value="value1"}
-	Assert-AreEqual 2 $createdZone.NumberOfRecordSets
 
-	$record = $createdZone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords @()
-
-	# add two records, remove one, remove another no-op
-	$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1
-	#$record = $record | Add-AzureRmDnsRecordConfig -Ipv4Address 2.2.2.2
-	#$record = $record | Remove-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1
-	#$record = $record | Remove-AzureRmDnsRecordConfig -Ipv4Address 3.3.3.3
-
-	$record | Set-AzureRmDnsRecordSet
+	$record = $createdZone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords @() | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1 | Set-AzureRmDnsRecordSet
 	$updatedZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
-
 	Assert-AreEqual 3 $updatedZone.NumberOfRecordSets
+
+	$removeRecord = $updatedZone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType A | Remove-AzureRmDnsRecordSet -Name $recordName -RecordType A -PassThru -Force
+	$finalZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
+	Assert-AreEqual 2 $finalZone.NumberOfRecordSets
+
+	$finalZone | Remove-AzureRmDnsZone -PassThru -Force
+
 }
