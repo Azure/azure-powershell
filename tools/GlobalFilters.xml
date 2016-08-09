@@ -23,6 +23,7 @@
         <string>Password="UNUSED"</string>
 		<string>user ID</string>
         <string>Subscription="00000000\-0000\-0000\-0000\-000000000000"</string>
+        <string>http://contosoaccount\.blob\.core\.windows\.net/vhdstore/win7baseimage\.vhd.*</string>
         <string>Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==</string>
         <string>AutoGenerate</string>
         <string>PublicKeyToken</string>
@@ -147,8 +148,9 @@
 	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChina.PublishSettings</string>
 	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfileChinaOld.PublishSettings</string>
         <string>Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile2.PublishSettings</string>
-        <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\Resources\\BatchTestCert05.pfx</string>
-        <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\Resources\\BatchTestCert04.pfx</string>
+        <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\Resources\\BatchTestCert01.pfx</string>
+        <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\\TestCancelCertificateDelete.json</string>
+        <string>ResourceManager\\AzureBatch\\Commands.Batch.Test\\SessionRecords\\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\\TestCertificateCrudOperations.json</string>
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Resources\\pshtest.pfx</string>
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest.pfx</string>
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest.pfx</string>
@@ -171,6 +173,8 @@
         <string>ServiceManagement\\Compute\\Commands.ServiceManagement.Test\\Resources\\ServiceConfiguration.cscfg</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx</string>
         <string>ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestSSLCert.pfx</string>
+		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteAppPasswordCredentials.json</string>
+		<string>ResourceManager\\Resources\\Commands.Resources.Test\\SessionRecords\\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\\TestCreateDeleteSpPasswordCredentials.json</string>
 		<string>\\bin\\Debug\\</string>
 		<string>\\package[s]?\\</string>
       </Filters>

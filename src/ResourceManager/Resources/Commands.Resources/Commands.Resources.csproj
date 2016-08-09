@@ -61,7 +61,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.1.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
@@ -131,15 +131,27 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADCredential.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
