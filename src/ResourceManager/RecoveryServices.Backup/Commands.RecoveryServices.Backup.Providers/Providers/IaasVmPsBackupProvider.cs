@@ -312,7 +312,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryFilter.StartDate = CommonHelpers.GetDateTimeStringForService(startDate);
             queryFilter.EndDate = CommonHelpers.GetDateTimeStringForService(endDate);
             RecoveryPointListResponse rpListResponse = null;
-
             rpListResponse = ServiceClientAdapter.GetRecoveryPoints(containerUri, protectedItemName, queryFilter);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
