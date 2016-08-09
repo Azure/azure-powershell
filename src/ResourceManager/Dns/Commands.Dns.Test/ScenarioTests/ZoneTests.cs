@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestZoneAddNewRecord()
+        public void TestZoneAddRemoveRecordSet()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-AddRemoveRecordFromZone");
         }
