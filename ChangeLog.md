@@ -1,5 +1,5 @@
 ## 2016.08.09 version 2.0.1
-* Fixed assembly signing issue causing load problems in some PowerShell versions.  #2747
+* Fixed assembly signing issue causing load problems in some PowerShell versions.  (Issue #2747)
 
 ##2016.08.08 version 2.0.0
 * This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.2.0.0.md) for change details and the impact on existing scripts.
