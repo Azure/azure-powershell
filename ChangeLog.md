@@ -1,5 +1,5 @@
 ##2016.08.03 version 2.0.0
-* This release contains breaking changes. Please see [the migration guide](https://gist.github.com/cormacpayne/dad22c060dfd9acfda744f1405d4539c) for change details and the impact on existing scripts.
+* This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.2.0.0.md) for change details and the impact on existing scripts.
 * Removal of Force parameters that were marked as obsolete in the previous release
   * ApiManagement
     - Remove-AzureRmApiManagement
@@ -132,32 +132,35 @@
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
-    - Remove-AzureRmStorageAccount
-    - Remove-AzureStorageBlob
-    - Remove-AzureStorageContainer
-    - Remove-AzureStorageTable
-    - Remove-AzureStorageQueue
-    - Remove-AzureStorageShare
-    - Remove-AzureStorageDirectory
-    - Remove-AzureStorageFile
-    - Remove-AzureStorageContainerStoredAccessPolicy
-    - Remove-AzureStorageShareStoredAccessPolicy
-    - Remove-AzureStorageTableStoredAccessPolicy
-    - Remove-AzureStorageQueueStoredAccessPolicy
+  * Added ShouldProcess support
     - Set-AzureStorageContainerStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
-    - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
-    - Set-AzureRmStorageAccount
-  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation
+    - Set-AzureStorageTableStoredAccessPolicy
+  * Downgraded ConfirmImpact to Medium
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageShare
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageQueue
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Remove-AzureStorageTable
+    - Remove-AzureStorageTableStoredAccessPolicy
+  * Add support for ShouldProcess and -Force parameter to supress confirmation
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
-  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
-    - Remove-AzureStorageShare
-  * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
+  * Confirmation needed only when there's data in the Container/Table to delete (suppress with -Force)
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
+* Azure Batch
+  * Add virtual network support
+    - New-AzureBatchPool
+  * Change -Tag parameter type from HashTable[] to HashTable
+    - Set-AzureRmBatchAccount
+    - New-AzureRmBatchAccount
+    - Get-AzureRmBatchAccount
 * Azure Sql
   * Extended the auditing cmdlets to support management of blob auditing, both at the database and at the server level	
 	
