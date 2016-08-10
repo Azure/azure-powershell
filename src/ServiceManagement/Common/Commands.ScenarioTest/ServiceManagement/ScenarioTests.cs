@@ -164,9 +164,45 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationValidateAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrationValidateAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestMigrateAzureVNet()
         {
             this.RunPowerShellTest("Test-MigrateAzureVNet");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationNetworkSecurityGroup()
+        {
+            this.RunPowerShellTest("Test-MigrationNetworkSecurityGroup");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAzureReservedIP()
+        {
+            this.RunPowerShellTest("Test-MigrationAzureReservedIP");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationRouteTable()
+        {
+            this.RunPowerShellTest("Test-MigrationRouteTable");
         }
 
         [Fact]
@@ -203,6 +239,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void TestNewAzureVMWithBYOL()
         {
             this.RunPowerShellTest("Test-NewAzureVMWithBYOL");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunRedeployVirtualMachineTest()
+        {
+            this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
         }
     }
 }

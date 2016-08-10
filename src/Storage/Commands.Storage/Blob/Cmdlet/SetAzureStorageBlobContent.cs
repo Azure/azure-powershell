@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
     /// <summary>
     /// download blob from azure
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ManualParameterSet),
+    [Cmdlet(VerbsCommon.Set, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
         OutputType(typeof(AzureStorageBlob))]
     public class SetAzureBlobContentCommand : StorageDataMovementCmdletBase
     {
@@ -461,23 +461,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             switch (ParameterSetName)
             {
                 case ContainerParameterSet:
-                    SetAzureBlobContent(FileName, BlobName);
-                    containerName = CloudBlobContainer.Name;
+                    if (ShouldProcess(BlobName, VerbsCommon.Set))
+                    {
+                        SetAzureBlobContent(FileName, BlobName);
+                        containerName = CloudBlobContainer.Name;
+                        UploadRequests.SetDestinationContainer(Channel, containerName);
+                    }
+
                     break;
 
                 case BlobParameterSet:
-                    SetAzureBlobContent(FileName, CloudBlob.Name);
-                    containerName = CloudBlob.Container.Name;
+                    if (ShouldProcess(CloudBlob.Name, VerbsCommon.Set))
+                    {
+                        SetAzureBlobContent(FileName, CloudBlob.Name);
+                        containerName = CloudBlob.Container.Name;
+                        UploadRequests.SetDestinationContainer(Channel, containerName);
+                    }
+
                     break;
 
                 case ManualParameterSet:
                 default:
-                    SetAzureBlobContent(FileName, BlobName);
-                    containerName = ContainerName;
+                    if (ShouldProcess(BlobName, VerbsCommon.Set))
+                    {
+                        SetAzureBlobContent(FileName, BlobName);
+                        containerName = ContainerName;
+                        UploadRequests.SetDestinationContainer(Channel, containerName);
+                    }
+
                     break;
             }
 
-            UploadRequests.SetDestinationContainer(Channel, containerName);
         }
     }
 }

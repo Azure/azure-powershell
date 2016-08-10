@@ -46,19 +46,22 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
+            ExecutionBlock(() =>
             {
-                SearchString = SearchString,
-                SPN = ServicePrincipalName,
-                Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
-                Paging = true
-            };
+                ADObjectFilterOptions options = new ADObjectFilterOptions
+                {
+                    SearchString = SearchString,
+                    SPN = ServicePrincipalName,
+                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Paging = true
+                };
 
-            do
-            {
-                WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options), true);
+                do
+                {
+                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options), true);
 
-            } while (!string.IsNullOrEmpty(options.NextLink));
+                } while (!string.IsNullOrEmpty(options.NextLink));
+            });
         }
     }
 }

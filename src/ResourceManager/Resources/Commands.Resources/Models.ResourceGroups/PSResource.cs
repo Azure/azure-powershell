@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public string ApiVersion { get; set; }
 
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public string TagsTable
         {

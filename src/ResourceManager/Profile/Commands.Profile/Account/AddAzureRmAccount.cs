@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User", SupportsShouldProcess=true)]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
     public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
@@ -192,15 +192,18 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
-            if (AzureRmProfileProvider.Instance.Profile == null)
+            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
             {
-                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                if (AzureRmProfileProvider.Instance.Profile == null)
+                {
+                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                }
+
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+
+                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                    SubscriptionName, password));
             }
-
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
-                SubscriptionName, password));
         }
 
         /// <summary>

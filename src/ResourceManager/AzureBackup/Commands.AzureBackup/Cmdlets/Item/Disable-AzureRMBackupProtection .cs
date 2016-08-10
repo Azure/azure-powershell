@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection", SupportsShouldProcess = true), OutputType(typeof(AzureRMBackupJob))]
     public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]

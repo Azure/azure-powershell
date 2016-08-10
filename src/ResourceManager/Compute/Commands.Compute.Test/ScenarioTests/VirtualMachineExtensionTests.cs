@@ -47,6 +47,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionWrongStorage()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionWrongStorage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCustomScriptExtensionSecureExecution()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionSecureExecution");
@@ -85,6 +92,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineExtensionWithSwitch()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtensionWithSwitch");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineADDomainExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineADDomainExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineADDomainExtensionDomainJoin()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineADDomainExtensionDomainJoin");
         }
     }
 }

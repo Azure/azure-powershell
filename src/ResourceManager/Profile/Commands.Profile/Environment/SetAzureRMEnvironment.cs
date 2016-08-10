@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to set Azure Environment in Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
@@ -113,43 +113,64 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-
-            foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
-            {
-                if (string.Equals(Name, key, StringComparison.OrdinalIgnoreCase))
+            ConfirmAction("updating environment", Name,
+                () =>
                 {
-                    throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
-                        "Cannot change built-in environment {0}.", key));
-                }
-            }
+                    var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
-            var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-            if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
-            {
-                newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
-            }
+                    foreach (var key in AzureEnvironment.PublicEnvironments.Keys)
+                    {
+                        if (string.Equals(Name, key, StringComparison.OrdinalIgnoreCase))
+                        {
+                            throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture,
+                                "Cannot change built-in environment {0}.", key));
+                        }
+                    }
 
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ResourceManager, ResourceManagerEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ManagementPortalUrl, ManagementPortalUrl);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.StorageEndpointSuffix, StorageEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory, ActiveDirectoryEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId, ActiveDirectoryServiceEndpointResourceId);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Gallery, GalleryEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, GraphEndpoint);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureKeyVaultDnsSuffix);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureKeyVaultServiceEndpointResourceId);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, TrafficManagerDnsSuffix);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, SqlDatabaseDnsSuffix);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, AzureDataLakeStoreFileSystemEndpointSuffix);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
-            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId, GraphAudience);
-            profileClient.AddOrSetEnvironment(newEnvironment);
+                    var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
+                    if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
+                    {
+                        newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
+                    }
 
-            WriteObject((PSAzureEnvironment)newEnvironment);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl,
+                        PublishSettingsFileUrl);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ResourceManager,
+                        ResourceManagerEndpoint);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ManagementPortalUrl,
+                        ManagementPortalUrl);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.StorageEndpointSuffix,
+                        StorageEndpoint);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ActiveDirectory,
+                        ActiveDirectoryEndpoint);
+                    SetEndpointIfProvided(newEnvironment,
+                        AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId,
+                        ActiveDirectoryServiceEndpointResourceId);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Gallery, GalleryEndpoint);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, GraphEndpoint);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix,
+                        AzureKeyVaultDnsSuffix);
+                    SetEndpointIfProvided(newEnvironment,
+                        AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId,
+                        AzureKeyVaultServiceEndpointResourceId);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.TrafficManagerDnsSuffix,
+                        TrafficManagerDnsSuffix);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix,
+                        SqlDatabaseDnsSuffix);
+                    SetEndpointIfProvided(newEnvironment,
+                        AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix,
+                        AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix);
+                    SetEndpointIfProvided(newEnvironment,
+                        AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix,
+                        AzureDataLakeStoreFileSystemEndpointSuffix);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
+                    SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.GraphEndpointResourceId,
+                        GraphAudience);
+                    profileClient.AddOrSetEnvironment(newEnvironment);
+
+                    WriteObject((PSAzureEnvironment)newEnvironment);
+                });
         }
 
         private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)

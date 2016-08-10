@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItem")]
     public class RemoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -72,21 +72,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     string.Format(Resources.RemoveDataLakeStoreItem, path.OriginalPath),
                     path.OriginalPath,
                     () =>
+                    {
                         success[0] =
-                            success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.TransformedPath, Account,
-                                Recurse));
-
-                if (pathExists && testClean == FileType.DIRECTORY && Clean)
-                {
-                    // recreate the directory as an empty directory if clean was specified.
-                    DataLakeStoreFileSystemClient.CreateDirectory(path.TransformedPath, Account);
-                }
+                            success[0] &&
+                            DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.TransformedPath, Account,
+                                Recurse);
+                        if (pathExists && testClean == FileType.DIRECTORY && Clean)
+                        {
+                            // recreate the directory as an empty directory if clean was specified.
+                            DataLakeStoreFileSystemClient.CreateDirectory(path.TransformedPath, Account);
+                        }
+                        if (PassThru)
+                        {
+                            WriteObject(success[0]);
+                        }
+                    });
             }
 
-            if (PassThru)
-            {
-                WriteObject(success[0]);
-            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using System.Globalization;
 using System.Management.Automation;
@@ -20,7 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction, SupportsShouldProcess = true)]
     public class RemoveAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
@@ -30,9 +31,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics function name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -53,13 +51,6 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             this.ConfirmAction(
-                this.Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.FunctionRemovalConfirmationMessage,
-                    this.Name,
-                    this.JobName,
-                    this.ResourceGroupName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FunctionRemoving,

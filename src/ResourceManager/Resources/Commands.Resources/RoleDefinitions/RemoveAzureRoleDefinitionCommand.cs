@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", SupportsShouldProcess = true, 
+        DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
@@ -74,19 +75,19 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
-            Action action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(options));
-
             ConfirmAction(
                 Force.IsPresent,
                 confirmMessage,
                 ProjectResources.RemoveRoleDefinition,
                 Id.ToString(),
-                action);
-
-            if (PassThru)
-            {
-                WriteObject(roleDefinition);
-            }
+                () =>
+                {
+                    roleDefinition = PoliciesClient.RemoveRoleDefinition(options);
+                    if (PassThru)
+                    {
+                        WriteObject(roleDefinition);
+                    }
+                });
         }
     }
 }

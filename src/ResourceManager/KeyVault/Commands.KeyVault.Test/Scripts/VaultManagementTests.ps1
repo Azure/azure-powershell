@@ -136,6 +136,13 @@ function Test_SetRemoveAccessPolicyByObjectId
     Test-SetRemoveAccessPolicyByObjectId $global:testVault $global:resourceGroupName $global:objectId
 }
 
+function Test_SetRemoveAccessPolicyByBypassObjectIdValidation
+{
+    $securityGroupObjIdFromOtherTenant = [System.Guid]::NewGuid().toString()
+    Reset-PreCreatedVault
+    Test-SetRemoveAccessPolicyByObjectId $global:testVault $global:resourceGroupName $securityGroupObjIdFromOtherTenant -bypassObjectIdValidation
+}
+
 function Test_SetRemoveAccessPolicyByCompoundId
 {
     $appId = [System.Guid]::NewGuid()
@@ -268,7 +275,7 @@ function Reset-PreCreatedVault
                     -ResourceName $global:testVault `
                     -ResourceGroupName $global:resourceGroupName `
                     -PropertyObject $vaultProperties  `
-                    -Tag  @{Name = $tagName; Value = $tagValue} `
+                    -Tag  @{$tagName = $tagValue} `
                     -Force -Confirm:$false
 }
 
@@ -335,7 +342,7 @@ function Initialize-TemporaryState
     $keyVault = New-AzureRmResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
-                -Tag @{Name = $tagName; Value = $tagValue} `
+                -Tag @{$tagName = $tagValue} `
                 -Force -Confirm:$false
     if ($keyVault)
     {

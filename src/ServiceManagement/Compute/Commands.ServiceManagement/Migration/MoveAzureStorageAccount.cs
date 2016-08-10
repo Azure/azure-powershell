@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.WindowsAzure.Management.Storage.Models;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
@@ -25,9 +27,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
     [Cmdlet(VerbsCommon.Move, "AzureStorageAccount"), OutputType(typeof(OperationStatusResponse))]
     public class MoveStorageAccountCommand : ServiceManagementBaseCmdlet
     {
+        private const string ValidateParameterSetName = "ValidateMigrationParameterSet";
         private const string AbortParameterSetName = "AbortMigrationParameterSet";
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
         private const string PrepareParameterSetName = "PrepareMigrationParameterSet";
+
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ValidateParameterSetName,
+            HelpMessage = "Validate migration")]
+        public SwitchParameter Validate
+        {
+            get;
+            set;
+        }
 
         [Parameter(
             Position = 0,
@@ -77,7 +91,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
         {
             ServiceManagementProfile.Initialize();
 
-            if (this.Abort.IsPresent)
+            if (this.Validate.IsPresent)
+            {
+                ExecuteClientActionNewSM(
+                null,
+                CommandRuntime.ToString(),
+                () => this.StorageClient.StorageAccounts.ValidateMigration(this.StorageAccountName),
+                (operation, service) =>
+                {
+                    var context = ConvertToContext(operation, service);
+                    return context;
+                });
+            }
+            else if (this.Abort.IsPresent)
             {
                 ExecuteClientActionNewSM(
                 null,
@@ -98,6 +124,42 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
                 CommandRuntime.ToString(),
                 () => this.StorageClient.StorageAccounts.PrepareMigration(this.StorageAccountName));
             }
+        }
+
+        private MigrationValidateContext ConvertToContext(
+            OperationStatusResponse operationResponse, XrpMigrationValidateStorageResponse validationResponse)
+        {
+            if (operationResponse == null) return null;
+
+            var result = new MigrationValidateContext
+            {
+                OperationId = operationResponse.Id,
+                Result = operationResponse.Status.ToString()
+            };
+
+            if (validationResponse == null || validationResponse.ValidateStorageMessages == null) return result;
+
+            var errorCount = validationResponse.ValidateStorageMessages.Count;
+
+            if (errorCount > 0)
+            {
+                result.ValidationMessages = new ValidationMessage[errorCount];
+
+                for (int i = 0; i < errorCount; i++)
+                {
+                    result.ValidationMessages[i] = new ValidationMessage
+                    {
+                        ResourceName = validationResponse.ValidateStorageMessages[i].ResourceName,
+                        ResourceType = validationResponse.ValidateStorageMessages[i].ResourceType,
+                        Category = validationResponse.ValidateStorageMessages[i].Category,
+                        Message = validationResponse.ValidateStorageMessages[i].Message,
+                        VirtualMachineName = validationResponse.ValidateStorageMessages[i].VirtualMachineName
+                    };
+                }
+                result.Result = "Validation failed.  Please see ValidationMessages for details";
+            }
+
+            return result;
         }
     }
 }

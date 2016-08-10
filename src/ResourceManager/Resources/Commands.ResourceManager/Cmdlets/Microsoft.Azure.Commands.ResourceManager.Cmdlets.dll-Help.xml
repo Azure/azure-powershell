@@ -16,6 +16,7 @@
     </command:details>
     <maml:description>
       <maml:para>Gets existing resources.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -905,6 +906,7 @@
     <maml:description>
       <maml:para>This lists all the operations that were part of a deployment. It can be used for debugging deployment failures as it will help you identify and give more information about the exact operations that failed for a particular deployment. It can also give out the response and the request content for each deployment operation. This is the same information that you get from the deployment details on the portal. </maml:para>
       <maml:para>For getting the request and the response content, the setting will have to be enabled when submitting a deployment through New-AzureRmResourceGroupDeployment. It can potentially log and expose secrets like passwords used in the resource property or listKeys operations that are then returned when you retrieve the deployment operations. For more details on this setting and how to enable it, please see the help for New-AzureRmResourceGroupDeployment or https://aka.ms/deploymentdebug </maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1188,6 +1190,7 @@
     </command:details>
     <maml:description>
       <maml:para>Gets the azure resource lock.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1817,7 +1820,7 @@
     <command:details>
       <command:name>Move-AzureRmResource</command:name>
       <maml:description>
-        <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+        <maml:para>Moves existing resources to another resource group or subscription.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1827,7 +1830,8 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+      <maml:para>Moves existing resources to another resource group or subscription.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2141,6 +2145,7 @@
     </command:details>
     <maml:description>
       <maml:para>Create a new azure resource.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2185,7 +2190,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>IsFullObject</maml:name>
@@ -2307,7 +2312,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>IsFullObject</maml:name>
@@ -2457,7 +2462,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>IsFullObject</maml:name>
@@ -2637,7 +2642,7 @@
         <maml:description>
           <maml:para>A hash table which represents resource tags.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
           <maml:name>Hashtable[]</maml:name>
           <maml:uri />
@@ -2950,7 +2955,8 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>Create a new resource lock. Resource Locks are useful to prevent accidental deletions of your azure resources. Once a lock is placed on a resource, it can't be deleted unless the lock is removed. </maml:para>
+      <maml:para>Create a new resource lock. Resource Lock is useful to prevent accidental deletion or update of your azure resource. Once a lock is placed on a resource, based on lock level it can't be deleted or updated unless the lock is removed. </maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -2958,7 +2964,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3052,7 +3060,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3139,7 +3149,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3240,7 +3252,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3341,7 +3355,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3421,7 +3437,9 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>LockLevel</maml:name>
           <maml:description>
-            <maml:para>The level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed.</maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         </command:parameter>
@@ -3508,7 +3526,9 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>LockLevel</maml:name>
         <maml:description>
-          <maml:para>TThe level of the lock. The currently supported lock level is "CannotDelete". When this level is set on a resource, that resource cannont be deleted unless the lock is removed. </maml:para>
+            <maml:para>The level of the lock. The currently supported lock levels are "CannotDelete" and "ReadOnly". </maml:para>
+            <maml:para>CannotDelete - When this level is set on a resource, that resource cannot be deleted unless the lock is removed.</maml:para>
+            <maml:para>ReadOnly - When this level is set on a resource, that resource cannot updated or deleted unless the lock is removed.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">LockLevel</command:parameterValue>
         <dev:type>
@@ -3811,6 +3831,7 @@
     </command:details>
     <maml:description>
       <maml:para>Removes the azure resource.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -4383,6 +4404,7 @@
     </command:details>
     <maml:description>
       <maml:para>Removes the azure resource lock.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -4461,6 +4483,13 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureRmResourceLock</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The resource group name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
           <maml:description>
             <maml:para>The resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
@@ -4474,24 +4503,10 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ParentResource</maml:name>
-          <maml:description>
-            <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ExtensionResourceName</maml:name>
           <maml:description>
-            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ExtensionResourceType</maml:name>
-          <maml:description>
-            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+            <maml:para>The extension resource name. e.g. the lock name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4499,13 +4514,6 @@
           <maml:name>ODataQuery</maml:name>
           <maml:description>
             <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceGroupName</maml:name>
-          <maml:description>
-            <maml:para>The resource group name.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4569,30 +4577,16 @@
       <command:syntaxItem>
         <maml:name>Remove-AzureRmResourceLock</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceName</maml:name>
+          <maml:name>LockName</maml:name>
           <maml:description>
-            <maml:para>The resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+            <maml:para>The name of the lock.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ResourceType</maml:name>
+          <maml:name>Scope</maml:name>
           <maml:description>
-            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ExtensionResourceName</maml:name>
-          <maml:description>
-            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>ExtensionResourceType</maml:name>
-          <maml:description>
-            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+            <maml:para>The scope of the lcok.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -4602,13 +4596,6 @@
             <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>TenantLevel</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this is a tenant level operation.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
@@ -4672,11 +4659,76 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ResourceId</maml:name>
         <maml:description>
-          <maml:para>The fully qualified resource Id, including the subscription. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers/myServer/databases/myDatabase</maml:para>
+          <maml:para>The fully qualified resource Id, including the subscription. e.g. /subscriptions/{subscriptionId}/providers/Microsoft.Sql/servers/myServer/databases/myDatabase/providers/Microsoft.Authorization/locks/testlock</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceName</maml:name>
+        <maml:description>
+          <maml:para>The resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceType</maml:name>
+        <maml:description>
+          <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ExtensionResourceName</maml:name>
+        <maml:description>
+          <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The resource group name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TenantLevel</maml:name>
+        <maml:description>
+          <maml:para>Indicates that this is a tenant level operation.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -4799,110 +4851,6 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceName</maml:name>
-        <maml:description>
-          <maml:para>The resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceType</maml:name>
-        <maml:description>
-          <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ParentResource</maml:name>
-        <maml:description>
-          <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ExtensionResourceName</maml:name>
-        <maml:description>
-          <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ExtensionResourceType</maml:name>
-        <maml:description>
-          <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-        <maml:name>SubscriptionId</maml:name>
-        <maml:description>
-          <maml:para>The subscription to use.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[Guid]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>ResourceGroupName</maml:name>
-        <maml:description>
-          <maml:para>The resource group name.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>TenantLevel</maml:name>
-        <maml:description>
-          <maml:para>Indicates that this is a tenant level operation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -4997,6 +4945,7 @@
     </command:details>
     <maml:description>
       <maml:para>Updates an existing azure resource.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -5034,7 +4983,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>UsePatchSemantics</maml:name>
@@ -5149,7 +5098,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>UsePatchSemantics</maml:name>
@@ -5292,7 +5241,7 @@
           <maml:description>
             <maml:para>A hash table which represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>UsePatchSemantics</maml:name>
@@ -5459,7 +5408,7 @@
         <maml:description>
           <maml:para>A hash table which represents resource tags.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
           <maml:name>Hashtable[]</maml:name>
           <maml:uri />
@@ -5777,6 +5726,7 @@
     </command:details>
     <maml:description>
       <maml:para>Updates an existing resource lock.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -6624,6 +6574,7 @@
     </command:details>
     <maml:description>
       <maml:para>Searches for resources using the specified parameters.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -7443,7 +7394,7 @@
     <maml:relatedLinks>
     </maml:relatedLinks>
   </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>Find-AzureRmResourceGroup</command:name>
@@ -7459,6 +7410,7 @@
     </command:details>
     <maml:description>
       <maml:para>Searches for resource group using the specified parameters.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -7466,7 +7418,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Tag</maml:name>
           <maml:description>
-            <maml:para>The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.</maml:para>
+            <maml:para>The tag filter for the OData query. The expected format is @{tagName=$null} or @{tagName = 'tagValue'}.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
@@ -7476,7 +7428,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Tag</maml:name>
         <maml:description>
-          <maml:para>The tag filter for the OData query. The expected format is @{Name = 'tagName'} or @{Name = 'tagName'; Value = 'tagValue'}.</maml:para>
+          <maml:para>The tag filter for the OData query. The expected format is @{tagName=$null} or @{tagName = 'tagValue'}.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
@@ -7546,7 +7498,7 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Find-AzureRmResourceGroup -Tag @{ Name = "testtag" }</dev:code>
+        <dev:code>Find-AzureRmResourceGroup -Tag @{ testtag = $null }</dev:code>
         <dev:remarks>
           <maml:para>Finds all resource group with a tag with name 'testtag'.</maml:para>
           <maml:para />
@@ -7566,7 +7518,7 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>Find-AzureRmResourceGroup -Tag @{ Name = "testtag"; Value = "testval" }</dev:code>
+        <dev:code>Find-AzureRmResourceGroup -Tag @{ testtag = "testval" }</dev:code>
         <dev:remarks>
           <maml:para>Finds all resource group with a tag with name 'testtag' and value 'testval'.</maml:para>
           <maml:para />
@@ -7601,6 +7553,7 @@
     </command:details>
     <maml:description>
       <maml:para>Gets a list of all policy assignments or a particular assignment identified by name and scope or by Id</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -7926,6 +7879,7 @@
     </command:details>
     <maml:description>
       <maml:para>Gets a list of all the policy definitions or a specific policy definition identified by Name</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8203,6 +8157,7 @@
     </command:details>
     <maml:description>
       <maml:para>Creates a new policy assignment</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8440,6 +8395,7 @@
     </command:details>
     <maml:description>
       <maml:para>Creates a new policy definition</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8693,6 +8649,7 @@
     </command:details>
     <maml:description>
       <maml:para>Updates existing policy assignment</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -8968,6 +8925,7 @@
     </command:details>
     <maml:description>
       <maml:para>Updates an existing policy definition</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -9275,6 +9233,7 @@
 	</command:details>
 	<maml:description>
 		<maml:para>Removes the specified policy assignment</maml:para>
+    <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9553,7 +9512,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 	<maml:relatedLinks>
 	</maml:relatedLinks>
 </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
 		<command:name>Remove-AzureRmPolicyDefinition</command:name>
@@ -9569,6 +9528,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
 	</command:details>
 	<maml:description>
 		<maml:para>Removes the policy definition</maml:para>
+    <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9842,6 +9802,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 	</command:details>
 	<maml:description>
 		<maml:para>Invokes the specified action on a resource. This command is an equivalent of a POST operation on a resource. To get a list of suported actions you can do something like Get-AzureRmProviderOperation -OperationSearchString * | where{$_.Operation -like "*action"} | FT Operation. You can also use the Azure Resource Explorer tool to discover these actions and the schema of the -Parameters property </maml:para>
+    <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -10136,6 +10097,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
     </command:details>
     <maml:description>
       <maml:para>Save the resource group deployment template to a file on disk</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -10384,6 +10346,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
     </command:details>
     <maml:description>
       <maml:para>Captures the specifies resource group as a template and saves it to a file on disk.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -10637,7 +10600,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para />
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -10860,6 +10823,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
     </command:details>
     <maml:description>
       <maml:para>Get all locations and the supported resource providers.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -10945,7 +10909,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para />
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -11102,6 +11066,7 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
     </command:details>
     <maml:description>
       <maml:para>The Get-AzureRmResourceGroup cmdlet gets the Azure resource groups in your subscription. You can use the Name parameter to select resource groups by name. The default is all resource groups. An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -11329,6 +11294,7 @@ Tags:
     </command:details>
     <maml:description>
       <maml:para>The Get-AzureRmResourceGroupDeployment cmdlet gets the deployments in an Azure resource group. You can use the Name (DeploymentName) and ProvisioningState parameters to filter the deployments. By default, Get-AzureRmResourceGroupDeployment returns all deployments for a specified resource group.An Azure resource is a user-managed Azure entity, such as a database server, database, or web site. An Azure resource group is a collection of Azure resources that are deployed as a unit. A deployment is the operation that makes the resources in the resource group available for use.This cmdlet is very useful for tracking. For debugging, use it with the Get-AzureRmResourceGroupLog cmdlet.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -11563,6 +11529,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>The New-AzureRmResourceGroup cmdlet creates an Azure resource group and returns an object that represents the resource group.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -11584,9 +11551,9 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>Tag</maml:name>
           <maml:description>
-            <maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
+            <maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a name and an optional value. To specify a new tag, use a hash table, such as @{FY2015=$null} or @{Department=&quot;IT&quot;}. To specify multiple tags, put them in one hash table, such as -Tag @{FY2015=$null;Department=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
@@ -11625,11 +11592,11 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Tag</maml:name>
         <maml:description>
-          <maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
+          <maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Find-AzureRmResource and Find-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a name and an optional value. To specify a new tag, use a hash table, such as @{FY2015=$null} or @{Department=&quot;IT&quot;}. To specify multiple tags, put them in one hash table, such as  -Tag @{FY2015=$null;Department=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -11726,7 +11693,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRmResourceGroup -Name RG1 -Location "South Central US" -Tag @{Name="Empty"}, @{Name="Department";Value="Marketing"}</dev:code>
+        <dev:code>PS C:\&gt;New-AzureRmResourceGroup -Name RG1 -Location "South Central US" -Tag @{Empty=$null; Department="Marketing"}</dev:code>
         <dev:remarks>
           <maml:para>This command creates a new empty resource group. This command is the same as the command in Example 1, except that it assigns tags to the resource group. The first tag, named "Empty," could be used to identify resource groups that have no resources. The second tag is named "Department" and has a value of "Marketing". You can use a tag like this one to categorize resource groups for administration or budgeting.</maml:para>
           <maml:para />
@@ -11770,6 +11737,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <maml:para>To add a resource group deployment, specify the name of an existing resource group and a resource group template, which is a JSON string that represents of a resource group for a complex cloud-based service, such as a web portal. The template includes parameter (placeholders) for required resources and configurable property values, likes names and sizes. You can find many templates in the Azure template gallery and you can create your own templates. </maml:para>
       <maml:para>You can also create a custom resource group template, either by typing in a text file  or by editing a gallery template. To use a custom template to create a resource group, use TemplateFile or TemplateUri parameters to supply the location and file name. Each template has different parameters for configurable properties. To specify values for the template parameters, use a JSON-formatted parameter file (TemplateParameterFile parameter) or a hash table of parameter names and values (TemplateParameterObject parameter). Or, use the template parameters that are added to the command dynamically as soon as you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value. Template parameter values that are typed at the command line take precedence over values in a template parameter object or file.</maml:para>
       <maml:para>For more information about deploying template, please refer https://azure.microsoft.com/en-us/documentation/articles/resource-group-template-deploy/</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -12341,6 +12309,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>Registers a subscription with a resource provider. A subscription must be registered with a resource provider before you can start using the resources supported by that provider. You can check the registration state of the providers in your subscription by running Get-AzureRmResourceProvider -ListAvailable</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -12494,7 +12463,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para />
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -12646,6 +12615,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>The Remove-AzureRmResourceGroup cmdlet deletes a resource group and its resources from your subscription. By default, Remove-AzureRmResourceGroup prompts you for confirmation. To suppress the prompt, use the Force parameter.To delete a resource, but leave the resource group, use the Remove-AzureRmResource cmdlet.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -12854,6 +12824,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>The Set-AzureRmResourceGroup cmdlet changes the properties of a resource group. You can use this cmdlet to add, change, or delete the Azure tags applied to a resource group. Use the Name parameter to identify the resource group and the Tag parameter to change the tags. You cannot use this cmdlet to change the name of a resource group.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -12868,9 +12839,9 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>Tag</maml:name>
           <maml:description>
-            <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{Name="FY2015"} or @{Name="Department";Value="IT"}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name="FY2015"}, @{Name="Department";Value="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
+            <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{FY2015=$null} or @{Department="IT"}. To specify multiple tags, put them in one hash table, such as -Tag @{FY2015=$null; Department="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -12885,9 +12856,9 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>Tag</maml:name>
           <maml:description>
-            <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{Name="FY2015"} or @{Name="Department";Value="IT"}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name="FY2015"}, @{Name="Department";Value="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
+            <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{FY2015=$null} or @{Department="IT"}. To specify multiple tags, put them in one hash table, such as -Tag @{FY2015=$null; Department="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -12921,11 +12892,11 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>Tag</maml:name>
         <maml:description>
-          <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{Name="FY2015"} or @{Name="Department";Value="IT"}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name="FY2015"}, @{Name="Department";Value="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
+          <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{FY2015=$null} or @{Department="IT"}. To specify multiple tags, put them in one hash table, such as -Tag @{FY2015=$null; Department="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -12978,7 +12949,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name ContosoRG -Tag @{Name="Department";Value="IT"}</dev:code>
+        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name ContosoRG -Tag @{Department="IT"}</dev:code>
         <dev:remarks>
           <maml:para>This command applies a "Department" tag with a value of "IT" to a resource group that has no existing tags.</maml:para>
           <maml:para />
@@ -13012,7 +12983,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
           Department  IT
 
 
-          PS C:\&gt;$tags += @{Name="Status";Value="Approved"}, @{Name="FY2016"}
+          PS C:\&gt;$tags += @{Status="Approved";FY2016=$null}
 
           PS C:\&gt;Set-AzureRmResourceGroup -Name ContosoRG -Tag $tags
 
@@ -13086,6 +13057,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>The Stop-AzureRmResourceGroupDeployment cmdlet cancels an Azure resource group deployment that is started, but not completed. To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.An Azure resource is a user-managed entity, such as a website, database, or database server. A resource group is a collection of resources that are deployed as a unit. To deploy a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.This cmdlet stops only one running deployment. Use the Name parameter to stop a particular deployment. If you omit the Name parameter, Stop-AzureRmResourceGroupDeployment searches for a running deployment and stops it, but if it finds more than one running deployment, the command fails.By default, Stop-AzureRmResourceGroupDeployment prompts you for confirmation. To suppress the prompt, use the Force parameter.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -13240,6 +13212,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     <maml:description>
       <maml:para>The Test-AzureResourceGroupDeployment cmdlet verifies the validity of a resource group template, its parameters, and parameter values. It returns errors that it finds. Otherwise, it does not return any output.</maml:para>
       <maml:para>To specify a template, use the TemplateUri or TemplateFile parameters. To specify the template parameter values, use the TemplateParameterFile or TemplateParameterObject parameters, or use the template parameters that are added to the command dynamically when you specify the template. To get the parameters, just type a minus sign (-) to indicate a parameter name and press the TAB key to trigger tab-completion. If you miss a required parameter, the cmdlet prompts you for the value. Parameter values typed at the command line take precedence over values in a template parameter object or file.A resource group template is a JSON-based model of a resource group for a complex cloud-based service, such as a web portal. You can use a resource group template to create a resource group or resource group deployment. The template includes parameter (placeholders) for configurable property values, likes names and sizes. You can find many templates in the Azure template gallery and you can create your own templates.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -13665,7 +13638,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para />
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -13822,6 +13795,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
     </command:details>
     <maml:description>
       <maml:para>The Get-AzureRmResource cmdlet gets the Azure resources in the subscription. By default, it gets all resources in the subscription, but you can use the parameters in the cmdlet to filter the results.An Azure resource is a user-managed Azure entity, such as a database server, database, or website. Every Azure resource is associated with a resource group, which is a collection of resources that are deployed as a unit.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
     </command:syntax>
@@ -14119,7 +14093,7 @@ Tags              :</dev:code>
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResource -Tag @{Name="Department";Value="IT"}</dev:code>
+        <dev:code>PS C:\&gt;Get-AzureRmResource -Tag @{Department="IT"}</dev:code>
         <dev:remarks>
           <maml:para>This command gets resources that have a tag named "Department with a value of "IT".</maml:para>
           <maml:para />
@@ -14174,175 +14148,7 @@ Tags:
 		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Move-AzureRmResource</command:name>
-		<maml:description>
-			<maml:para />
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb></command:verb>
-		<command:noun></command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para />
-	</maml:description>
-	<command:syntax>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>DestinationResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>DestinationSubscriptionId</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>PassThru</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>ResourceId</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string[]</command:parameterValue>
-			<dev:type>
-				<maml:name>string[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Profile</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">azureprofile</command:parameterValue>
-			<dev:type>
-				<maml:name>azureprofile</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>WhatIf</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Confirm</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			<maml:name>DestinationSubscriptionName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-	</command:examples>
-	<maml:relatedLinks>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
 		<command:name>New-AzureRmResource</command:name>
@@ -14358,6 +14164,7 @@ Tags:
 	</command:details>
 	<maml:description>
 		<maml:para>The New-AzureRmResource cmdlet creates an Azure resource, such as a website, SQL Azure database server, or SQL Azure database, in a new or existing resource group.If a resource with the same name exists in the resource group, the cmdlet prompts for confirmation before replacing the existing resource. To suppress the confirmation prompt, use the Force parameter.A resource is a user-managed Azure entity. A resource group is a collection of resources that are deployed as a unit. Every resource belongs to exactly one resource group.Typically, you use a template to create a resource group (New-AzureRmResourceGroup) and its resources. Then, if necessary, you can use this cmdlet to add additional resources to it.</maml:para>
+    <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
 	</maml:description>
 	<command:syntax>
 	</command:syntax>
@@ -14403,9 +14210,9 @@ Tags:
 			<maml:description>
 				<maml:para>Applies the specified tags to the new resource. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="false">hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>hashtable[]</maml:name>
+				<maml:name>hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -14598,6 +14405,7 @@ Properties        : {[name, ContosoWeb], [state, Running], [hostNames,
     </command:details>
     <maml:description>
       <maml:para>The Remove-AzureRmResource cmdlet deletes a resource from your subscription. It does not delete the resource group of the resource. By default, Remove-AzureRmResource prompts you for confirmation. To suppress the prompt, use the Force parameter.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
     </command:syntax>
@@ -14841,6 +14649,7 @@ True</dev:code>
     </command:details>
     <maml:description>
       <maml:para>The Set-AzureRmResource cmdlet changes the properties of an Azure resource. To use the cmdlet, use the Name, ResourceGroupName, ResourceGroupType, and ParentResource parameters to identify the resource, and the PropertyObject parameter to specify the new property names and values.If the command succeeds, it returns the resource with the new properties and values.An Azure resource is a user-managed entity, such as an Azure Website or Azure SQL Database. Some resources have properties, which are user-configured values, like sizes and operational modes. You can specify these values when you create the resource, such as by using the New-AzureRmResource, New-AzureRmResourceGroup, or New-AzureRmResourceGroupDeployment cmdlets. And, you can change the properties by using this cmdlet.To get the properties of a resource, use the Get-AzureRmResource cmdlet to get the resource. Then use the dot method to get the Properties property collection and a particular named property. For example, to get the siteMode property of an object, type (Get-AzureRmResource -Name MyWebSite -ResourceGroupName RG -ResourceType Microsoft.Web/sites -ApiVersion 2014-04-01).Properties.siteMode</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
     </command:syntax>
@@ -15139,6 +14948,7 @@ Tags:
     </command:details>
     <maml:description>
       <maml:para>The Remove-AzureRmResourceGroupDeployment removes the specified deployment.</maml:para>
+      <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>

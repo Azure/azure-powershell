@@ -62,20 +62,30 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironment ($testSuffix)
+function Create-TestEnvironment ($testSuffix, $location = "West US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams ($params)
+	Create-TestEnvironmentWithParams $params  $location $serverVersion
 }
 
 <#
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironmentWithParams ($params)
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
-	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup-classic-storage.json" -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount  -Force
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+
+	$serverName = $params.serverName
+	$serverLogin = "audittestusername"
+	$serverPassword = "t357ingP@s5w0rd!Audit"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	New-AzureRmSqlDatabase -DatabaseName $params.databaseName  -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
+
+
+#	$res = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile sql_audit_test_env_setup_classic_storage.json -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount
 }
 
 <#
@@ -237,7 +247,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East", $server)
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName)]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true)]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -42,6 +42,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Whether to stop the copy when copy id is different with the one input.", Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            OutputStream.ConfirmWriter = (target, query, caption) => ShouldContinue(query, caption);
+        }
+
         /// <summary>
         /// Execute command
         /// </summary>
@@ -62,9 +68,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 file = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference().GetFileReferenceByPath(path);
             }
 
-            Func<long, Task> taskGenerator = (taskId) => this.StopCopyFile(taskId, localChannel, file, CopyId);
+            if (ShouldProcess(file.Name, "Stop file copy task"))
+            {
+                Func<long, Task> taskGenerator = (taskId) => this.StopCopyFile(taskId, localChannel, file, CopyId);
 
-            RunTask(taskGenerator);
+                RunTask(taskGenerator);
+            }
         }
 
         /// <summary>

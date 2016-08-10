@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGateway")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGateway", SupportsShouldProcess = true)]
     public class RemoveAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -48,15 +48,17 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
-                Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
+                string.Format(Properties.Resources.RemovingResource, Name),
+                Properties.Resources.RemoveResourceMessage,
                 Name,
-                () => this.VirtualNetworkGatewayClient.Delete(this.ResourceGroupName, this.Name));
-
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
+                () =>
+                {
+                    this.VirtualNetworkGatewayClient.Delete(this.ResourceGroupName, this.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }

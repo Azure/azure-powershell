@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuit")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuit", SupportsShouldProcess =  true)]
     public class RemoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -51,12 +51,15 @@ namespace Microsoft.Azure.Commands.Network
                 string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
                 Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
                 Name,
-                () => this.ExpressRouteCircuitClient.Delete(this.ResourceGroupName, this.Name));
+                () =>
+                {
+                    this.ExpressRouteCircuitClient.Delete(this.ResourceGroupName, this.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
         }
     }
 }

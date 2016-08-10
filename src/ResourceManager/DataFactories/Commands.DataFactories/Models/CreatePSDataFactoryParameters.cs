@@ -25,6 +25,6 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public Hashtable Tags { get; set; }
 
-        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
+        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }

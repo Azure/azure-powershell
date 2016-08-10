@@ -97,5 +97,26 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppRegularSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppSwapWithPreviewResetSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewResetSlotSwap");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppSwapWithPreviewCompleteSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewCompleteSlotSwap");
+        }
     }
 }

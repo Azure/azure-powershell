@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Collections.Generic;
@@ -22,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmProviderFeature"), OutputType(typeof(List<PSProviderFeature>))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureRmProviderFeature", SupportsShouldProcess = true), OutputType(typeof(List<PSProviderFeature>))]
     public class RegisterAzureProviderFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
@@ -40,19 +42,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ProviderNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets a switch that indicates if the user should be prompted for confirmation.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
-                force: this.Force,
-                actionMessage: string.Format(ProjectResources.RegisteringProviderFeature, this.FeatureName, this.ProviderNamespace),
                 processMessage: ProjectResources.RegisterProviderFeatureMessage,
                 target: this.ProviderNamespace,
                 action: () => this.WriteObject(this.ProviderFeatureClient.RegisterProviderFeature(providerName: this.ProviderNamespace, featureName: this.FeatureName)));

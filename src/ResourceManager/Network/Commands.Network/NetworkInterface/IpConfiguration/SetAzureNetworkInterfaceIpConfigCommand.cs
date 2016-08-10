@@ -141,9 +141,8 @@ namespace Microsoft.Azure.Commands.Network
                     ipconfig.ApplicationGatewayBackendAddressPools.Add(new PSApplicationGatewayBackendAddressPool { Id = appgwBepoolId });
                 }
             }
-
             ipconfig.PrivateIpAddressVersion = this.PrivateIpAddressVersion;
-
+            ipconfig.Primary = this.Primary.IsPresent;
             WriteObject(this.NetworkInterface);
         }
     }
