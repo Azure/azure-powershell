@@ -58,7 +58,7 @@ function Test-DataLakeAnalyticsAccount
 		Assert-True {Test-AdlAnalyticsAccount -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -186,7 +186,7 @@ function Test-DataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+		$nowTime = $accountCreated.Properties.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -214,6 +214,9 @@ function Test-DataLakeAnalyticsJob
 		# Wait for two minutes and 30 seconds prior to attempting to submit the job in the freshly created account.
 		[Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(150000)
 		# submit a job
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("jobTest02")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
+
 		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJob" -Script "DROP DATABASE IF EXISTS foo; CREATE DATABASE foo;"
 		Assert-NotNull {$jobInfo}
 
@@ -229,11 +232,12 @@ function Test-DataLakeAnalyticsJob
 
 		Assert-NotNull {Get-AdlJob -AccountName $accountName}
 
-		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedAfter $(([DateTime]::Now).AddMinutes(-5))
+		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]($nowTime).AddMinutes(-5))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted after five miuntes ago"
-
-		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedBefore $(([DateTime]::Now).AddMinutes(0))
+		
+		# we add five minutes to ensure that the timing is right, since we are using the account creation time, and not truly "now"
+		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedBefore $([DateTimeOffset]($nowTime).AddMinutes(5))
 
 		Assert-True {$jobsWithDateOffset.Count -gt 0} "Failed to retrieve jobs submitted before right now"
 
@@ -274,7 +278,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+		
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -302,7 +306,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 		Assert-Throws {New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account
@@ -347,7 +351,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 		New-AdlStore -ResourceGroupName $resourceGroupName -Name $dataLakeAccountName -Location $location
 		$accountCreated = New-AdlAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
-    
+		$nowTime = $accountCreated.Properties.CreationTime
 		Assert-AreEqual $accountName $accountCreated.Name
 		Assert-AreEqual $location $accountCreated.Location
 		Assert-AreEqual "Microsoft.DataLakeAnalytics/accounts" $accountCreated.Type
@@ -380,7 +384,7 @@ function Test-NegativeDataLakeAnalyticsJob
 		# Attempt to Get debug data for a non-existent job
 		Assert-Throws {Get-AdlJobDebugInfo -AccountName $accountName -JobIdentity [Guid]::Empty}
 
-		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedAfter $([DateTime]::Now)
+		$jobsWithDateOffset = Get-AdlJob -AccountName $accountName -SubmittedAfter $([DateTimeOffset]$nowTime)
 
 		Assert-True {$jobsWithDateOffset.Count -eq 0} "Retrieval of jobs submitted after right now returned results and should not have"
 
@@ -549,6 +553,8 @@ function Test-DataLakeAnalyticsCatalog
 "@
 		# run the script
 		$scriptToRun = [string]::Format($scriptTemplate, $databaseName, $tableName, $tvfName, $viewName, $procName)
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("catalogCreationJob01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJob" -Script $scriptToRun
 		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -706,6 +712,8 @@ function Test-DataLakeAnalyticsCatalog
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName, $secretName)
 	
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("credentialCreateJob01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result
@@ -737,7 +745,8 @@ function Test-DataLakeAnalyticsCatalog
 	DROP CREDENTIAL {1};
 "@
 		$credentialJob = [string]::Format($credentialJobTemplate, $databaseName, $credentialName)
-	
+		$guidForJob = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateGuid("credentialDropJob01")
+		[Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsClient]::JobIdQueue.Enqueue($guidForJob)
 		$jobInfo = Submit-AdlJob -AccountName $accountName -Name "TestJobCredential" -Script $credentialJob
 		$result = Wait-AdlJob -AccountName $accountName -JobId $jobInfo.JobId
 		Assert-AreEqual "Succeeded" $result.Result

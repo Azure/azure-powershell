@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -96,7 +96,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
-            SetAzureShareStoredAccessPolicy(Channel, ShareName, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            if (ShouldProcess(Policy, "Set"))
+            {
+                SetAzureShareStoredAccessPolicy(Channel, ShareName, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            }
         }
     }
 }

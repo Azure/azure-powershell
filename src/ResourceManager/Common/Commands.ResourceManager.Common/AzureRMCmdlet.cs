@@ -85,6 +85,85 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
+        }
+        
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceType">The resource type</param>
+        /// <param name="resourceName">The resource name for the changed reource</param>
+        /// <param name="resourceGroupName">The resource group containign the changed resource</param>
+        /// <param name="processMessage">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
+            string processMessage, Action action)
+        {
+            ConfirmAction(processMessage, string.Format(Resources.ResourceConfirmTarget,
+                resourceType, resourceName, resourceGroupName), action);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceType">The resource type</param>
+        /// <param name="resourceName">The resource name for the changed reource</param>
+        /// <param name="resourceGroupName">The resource group containign the changed resource</param>
+        /// <param name="force">True if Force parameter was passed</param>
+        /// <param name="continueMessage">The message to display in a ShouldContinue prompt, if offered</param>
+        /// <param name="processMessage">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
+        protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
+            bool force, string continueMessage, string processMessage, Action action, Func<bool> promptForContinuation = null )
+        {
+            ConfirmAction(force, continueMessage, processMessage, string.Format(Resources.ResourceConfirmTarget,
+                resourceType, resourceName, resourceGroupName), action, promptForContinuation);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceId">The identity of the resource to be changed</param>
+        /// <param name="actionName">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        protected void ConfirmResourceAction(string resourceId, string actionName, Action action)
+        {
+            ConfirmAction(actionName, string.Format(Resources.ResourceIdConfirmTarget,
+                resourceId), action);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceId">The identity of the resource to be changed</param>
+        /// <param name="force">True if Force parameter was passed</param>
+        /// <param name="continueMessage">The message to display in a ShouldContinue prompt, if offered</param>
+        /// <param name="actionName">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
+        protected void ConfirmResourceAction(string resourceId, bool force, string continueMessage, string actionName, 
+            Action action, Func<bool> promptForContinuation = null)
+        {
+            ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
+                resourceId), action, promptForContinuation);
+        }
+
         protected override void SaveDataCollectionProfile()
         {
             if (_dataCollectionProfile == null)

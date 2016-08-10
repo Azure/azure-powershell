@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Deployment.
+        /// </summary>
+        internal static string CreateDeployment {
+            get {
+                return ResourceManager.GetString("CreateDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating a deployment with Complete mode.
         /// </summary>
         internal static string CreateDeploymentCompleteMode {
@@ -322,6 +331,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provided location is not supported.
+        /// </summary>
+        internal static string InvalidLocation {
+            get {
+                return ResourceManager.GetString("InvalidLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RoleDefinition Description is invalid..
         /// </summary>
         internal static string InvalidRoleDefinitionDescription {
@@ -340,7 +358,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         internal static string InvalidTagFormat {
             get {
@@ -349,7 +367,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = &quot;tagValue1&quot;; tagName2 = &quot;tagValue2&quot;}.
         /// </summary>
         internal static string InvalidTagFormatNotUniqueName {
             get {
@@ -894,15 +912,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string WarnOnDeploymentDebugSetting {
             get {
                 return ResourceManager.GetString("WarnOnDeploymentDebugSetting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string WarnOnTags {
-            get {
-                return ResourceManager.GetString("WarnOnTags", resourceCulture);
             }
         }
     }

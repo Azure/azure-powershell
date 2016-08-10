@@ -26,7 +26,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, StorageNouns.BlobContent, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ManualParameterSet),
+    [Cmdlet(VerbsCommon.Get, StorageNouns.BlobContent, SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),
         OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobContentCommand : StorageDataMovementCmdletBase
     {
@@ -91,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             get { return checkMd5; }
             set { checkMd5 = value; }
         }
+
         private bool checkMd5;
 
         private BlobToFileSystemNameResolver fileNameResolver;
@@ -289,15 +290,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             switch (ParameterSetName)
             {
                 case BlobParameterSet:
-                    GetBlobContent(CloudBlob, FileName, true);
+                    if (ShouldProcess(CloudBlob.Name, "Download"))
+                    {
+                        GetBlobContent(CloudBlob, FileName, true);
+                    }
                     break;
 
                 case ContainerParameterSet:
-                    GetBlobContent(CloudBlobContainer, BlobName, FileName);
+                    if (ShouldProcess(BlobName, "Download"))
+                    {
+                        GetBlobContent(CloudBlobContainer, BlobName, FileName);
+                    }
                     break;
 
                 case ManualParameterSet:
-                    GetBlobContent(ContainerName, BlobName, FileName);
+                    if (ShouldProcess(BlobName, "Download"))
+                    {
+                        GetBlobContent(ContainerName, BlobName, FileName);
+                    }
                     break;
             }
         }

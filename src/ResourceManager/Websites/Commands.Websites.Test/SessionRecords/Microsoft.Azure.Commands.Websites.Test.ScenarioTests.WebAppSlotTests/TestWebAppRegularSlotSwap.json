@@ -1,0 +1,212 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging/slotsswap?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RBc2lhL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcHNsb3R0ZXN0L3Nsb3RzL3N0YWdpbmcvc2xvdHNzd2FwP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"targetSlot\": \"production\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "34"
+        ],
+        "x-ms-client-request-id": [
+          "5e32b648-58ac-4609-8a9b-737d685fba2a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "cb7e943b-964f-4623-8ada-7d445995c9d0"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb7e943b-964f-4623-8ada-7d445995c9d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160622T010800Z:cb7e943b-964f-4623-8ada-7d445995c9d0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Jun 2016 01:08:00 GMT"
+        ],
+        "ETag": [
+          "\"1D1CC1143EBEB20\""
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging/operationresults/7df37e6b-4fac-4964-917b-09de6bb62d6b?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging/operationresults/7df37e6b-4fac-4964-917b-09de6bb62d6b?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RBc2lhL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcHNsb3R0ZXN0L3Nsb3RzL3N0YWdpbmcvb3BlcmF0aW9ucmVzdWx0cy83ZGYzN2U2Yi00ZmFjLTQ5NjQtOTE3Yi0wOWRlNmJiNjJkNmI/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14930"
+        ],
+        "x-ms-request-id": [
+          "b5e1e34f-8899-4b32-9fa0-d04240f7c747"
+        ],
+        "x-ms-correlation-request-id": [
+          "b5e1e34f-8899-4b32-9fa0-d04240f7c747"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160622T010830Z:b5e1e34f-8899-4b32-9fa0-d04240f7c747"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Jun 2016 01:08:30 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging/operationresults/7df37e6b-4fac-4964-917b-09de6bb62d6b?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging/operationresults/7df37e6b-4fac-4964-917b-09de6bb62d6b?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RBc2lhL3Byb3ZpZGVycy9NaWNyb3NvZnQuV2ViL3NpdGVzL3dlYmFwcHNsb3R0ZXN0L3Nsb3RzL3N0YWdpbmcvb3BlcmF0aW9ucmVzdWx0cy83ZGYzN2U2Yi00ZmFjLTQ5NjQtOTE3Yi0wOWRlNmJiNjJkNmI/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.0.0.2"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/sites/webappslottest/slots/staging\",\r\n  \"name\": \"webappslottest/staging\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"East Asia\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"name\": \"webappslottest(staging)\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"webappslottest-staging.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"eastasiawebspace\",\r\n    \"selfLink\": \"https://waws-prod-hk1-001.api.azurewebsites.windows.net:454/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/webspaces/eastasiawebspace/sites/webappslottest\",\r\n    \"repositorySiteName\": \"webappslottest\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"webappslottest-staging.azurewebsites.net\",\r\n      \"webappslottest-staging.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"webappslottest-staging.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"webappslottest-staging.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/Default-Web-EastAsia/providers/Microsoft.Web/serverfarms/appservicecertificatedemoplan\",\r\n    \"lastModifiedTimeUtc\": \"2016-06-22T01:08:50.45\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"webappslottest__44d9\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Standard\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"65.52.168.77,65.52.168.81,65.52.168.84,65.52.160.98\",\r\n    \"containerSize\": 0,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-hk1-001\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": null,\r\n    \"resourceGroup\": \"Default-Web-EastAsia\",\r\n    \"defaultHostName\": \"webappslottest-staging.azurewebsites.net\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2452"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c11929cd-cdda-4623-b9c4-5cb9eb7fec07"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14929"
+        ],
+        "x-ms-correlation-request-id": [
+          "9b1dd934-bd65-41e1-8387-791c012df2e3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160622T010901Z:9b1dd934-bd65-41e1-8387-791c012df2e3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 22 Jun 2016 01:09:00 GMT"
+        ],
+        "ETag": [
+          "\"1D1CC22A2E7A720\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "fb2c25dc-6bab-45c4-8cc9-cece7c42a95a"
+  }
+}

@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string MacAddress { get; set; }
 
-        public bool Primary { get; set; }
+        public bool? Primary { get; set; }
 
-        public bool EnableIPForwarding { get; set; }
+        public bool? EnableIPForwarding { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
 

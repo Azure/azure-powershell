@@ -26,10 +26,11 @@ using System.Collections;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
+    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine, SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -74,8 +75,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(Properties.Resources.TagFixWarningMessage);
-
             base.ExecuteCmdlet();
 
             if (this.VM.DiagnosticsProfile == null)
@@ -95,60 +94,63 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
-                var parameters = new VirtualMachine
+                ExecuteClientAction(() =>
                 {
-                    DiagnosticsProfile = this.VM.DiagnosticsProfile,
-                    HardwareProfile = this.VM.HardwareProfile,
-                    StorageProfile = this.VM.StorageProfile,
-                    NetworkProfile = this.VM.NetworkProfile,
-                    OsProfile = this.VM.OSProfile,
-                    Plan = this.VM.Plan,
-                    LicenseType = this.LicenseType,
-                    AvailabilitySet = this.VM.AvailabilitySetReference,
-                    Location = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                    Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
-                };
-
-                var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VM.Name,
-                    parameters);
-                var wait = op.GetAwaiter();
-                var resultop = wait.GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(resultop);
-
-                if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
-                {
-
-                    var currentBginfoVersion = GetBginfoExtension();
-
-                    if (!string.IsNullOrEmpty(currentBginfoVersion))
+                    var parameters = new VirtualMachine
                     {
-                        var extensionParameters = new VirtualMachineExtension
+                        DiagnosticsProfile = this.VM.DiagnosticsProfile,
+                        HardwareProfile = this.VM.HardwareProfile,
+                        StorageProfile = this.VM.StorageProfile,
+                        NetworkProfile = this.VM.NetworkProfile,
+                        OsProfile = this.VM.OSProfile,
+                        Plan = this.VM.Plan,
+                        LicenseType = this.LicenseType ?? this.VM.LicenseType,
+                        AvailabilitySet = this.VM.AvailabilitySetReference,
+                        Location = this.Location ?? this.VM.Location,
+                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                    };
+
+                    var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VM.Name,
+                        parameters);
+                    var wait = op.GetAwaiter();
+                    var resultop = wait.GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(resultop);
+
+                    if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
+                    {
+
+                        var currentBginfoVersion = GetBginfoExtension();
+
+                        if (!string.IsNullOrEmpty(currentBginfoVersion))
                         {
-                            Location = this.Location,
-                            Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
-                            VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                            TypeHandlerVersion = currentBginfoVersion,
-                            AutoUpgradeMinorVersion = true,
-                        };
+                            var extensionParameters = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = VirtualMachineBGInfoExtensionContext.ExtensionDefaultPublisher,
+                                VirtualMachineExtensionType = VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                TypeHandlerVersion = currentBginfoVersion,
+                                AutoUpgradeMinorVersion = true,
+                            };
 
-                        typeof(Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                        typeof(Resource).GetRuntimeProperty("Type")
-                            .SetValue(extensionParameters, VirtualMachineExtensionType);
+                            typeof(CM.Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                            typeof(CM.Resource).GetRuntimeProperty("Type")
+                                .SetValue(extensionParameters, VirtualMachineExtensionType);
 
-                        var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
-                            this.ResourceGroupName,
-                            this.VM.Name,
-                            VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
-                            extensionParameters).GetAwaiter().GetResult();
-                        result = Mapper.Map<PSAzureOperationResponse>(op2);
+                            var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
+                                this.ResourceGroupName,
+                                this.VM.Name,
+                                VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
+                                extensionParameters).GetAwaiter().GetResult();
+                            result = Mapper.Map<PSAzureOperationResponse>(op2);
+                        }
                     }
-                }
-                WriteObject(result);
-            });
+                    WriteObject(result);
+                });
+            }
         }
 
         private string GetBginfoExtension()
@@ -218,11 +220,11 @@ namespace Microsoft.Azure.Commands.Compute
                     && (this.VM.OSProfile.LinuxConfiguration != null));
         }
 
-        private Uri GetOrCreateStorageAccountForBootDiagnostics()
+        private string GetOrCreateStorageAccountForBootDiagnostics()
         {
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
-                    AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
+                    AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
                         AzureEnvironment.Endpoint.ResourceManager);
 
             if (!string.IsNullOrEmpty(storageAccountName))
@@ -232,7 +234,7 @@ namespace Microsoft.Azure.Commands.Compute
                     var storageAccountList = storageClient.StorageAccounts.List();
                     if (storageAccountList != null)
                     {
-                        var osDiskStorageAccount = storageAccountList.StorageAccounts.First(e => e.Name.Equals(storageAccountName));
+                        var osDiskStorageAccount = storageAccountList.First(e => e.Name.Equals(storageAccountName));
 
                         if (osDiskStorageAccount != null
                             && osDiskStorageAccount.AccountType.HasValue
@@ -284,10 +286,10 @@ namespace Microsoft.Azure.Commands.Compute
 
         private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
         {
-            StorageAccountListResponse storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
             if (storageAccountList == null || storageAccountList.Count() == 0)
             {
-                storageAccountList = (StorageAccountListResponse) client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
+                storageAccountList = client.StorageAccounts.List().Where(e => e.Location.Canonicalize().Equals(this.Location.Canonicalize()));
                 if (storageAccountList == null || storageAccountList.Count() == 0)
                 {
                     return null;
@@ -296,7 +298,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             try
             {
-                return storageAccountList.StorageAccounts.First(
+                return storageAccountList.First(
                 e => e.AccountType.HasValue
                     && !e.AccountType.Value.ToString().ToLowerInvariant().Contains("premium"));
             }
@@ -308,7 +310,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private Uri CreateStandardStorageAccount(StorageManagementClient client)
+        private string CreateStandardStorageAccount(StorageManagementClient client)
         {
             string storageAccountName;
 
@@ -318,7 +320,7 @@ namespace Microsoft.Azure.Commands.Compute
                 storageAccountName = GetRandomStorageAccountName(i);
                 i++;
             }
-            while (i < 10 && !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+            while (i < 10 && (bool) !client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
 
             var storaeAccountParameter = new StorageAccountCreateParameters
             {
@@ -332,7 +334,7 @@ namespace Microsoft.Azure.Commands.Compute
                 var getresponse = client.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
                 WriteWarning(string.Format(Properties.Resources.CreatingStorageAccountForBootDiagnostics, storageAccountName));
 
-                return getresponse.StorageAccount.PrimaryEndpoints.Blob;
+                return getresponse.PrimaryEndpoints.Blob;
             }
             catch (Exception e)
             {

@@ -81,11 +81,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <returns></returns>
         public string GetResourceGroupName()
         {
-            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.ResouceGroupName))
+            if (string.IsNullOrEmpty(PSRecoveryServicesClient.arsVault.ResourceGroupName))
             {
                 throw new ArgumentException(Resources.SetVaultContextFirst);
             }
-            return PSRecoveryServicesClient.arsVault.ResouceGroupName;
+            return PSRecoveryServicesClient.arsVault.ResourceGroupName;
         }
 
         /// <summary>

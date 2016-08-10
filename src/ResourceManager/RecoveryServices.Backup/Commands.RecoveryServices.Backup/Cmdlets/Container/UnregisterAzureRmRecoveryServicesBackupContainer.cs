@@ -46,15 +46,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
                 
-                if (Container.ContainerType != ContainerType.Windows || Container.BackupManagementType 
-                    != BackupManagementType.MARS)
+                if (!((Container.ContainerType == ContainerType.Windows && 
+                       Container.BackupManagementType == BackupManagementType.MARS) ||
+                    (Container.ContainerType == ContainerType.AzureSQL && 
+                     Container.BackupManagementType == BackupManagementType.AzureSQL)))
                 {
                     throw new ArgumentException(String.Format(Resources.UnsupportedContainerException, 
                         Container.ContainerType, Container.BackupManagementType));
                 }
-                MabContainer mabContainer = 
-                    Container as MabContainer;
-                string containerName = mabContainer.Name;
+                string containerName = Container.Name;
+                
+                if (Container.ContainerType == ContainerType.AzureSQL)
+                {
+                    containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
+                }
+
                 ServiceClientAdapter.UnregisterContainers(containerName);
             });
         }

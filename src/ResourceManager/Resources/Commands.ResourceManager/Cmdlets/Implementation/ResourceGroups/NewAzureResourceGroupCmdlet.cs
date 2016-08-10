@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Filters resource groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup"), OutputType(typeof(List<PSResourceGroup>))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", SupportsShouldProcess = true), OutputType(typeof(List<PSResourceGroup>))]
     public class NewAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         [Alias("ResourceGroupName")]
@@ -36,15 +36,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Location { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(ProjectResources.WarnOnTags);
             PSCreateResourceGroupParameters parameters = new PSCreateResourceGroupParameters
             {
                 ResourceGroupName = Name,

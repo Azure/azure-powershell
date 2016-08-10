@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public bool Force { get; set; }
 
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
-        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
+        public Action<bool, string, string, string, Action, Func<bool>> ConfirmAction { get; set; }
     }
 }

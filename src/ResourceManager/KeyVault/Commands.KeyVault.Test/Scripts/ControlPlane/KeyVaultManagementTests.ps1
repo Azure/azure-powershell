@@ -26,7 +26,7 @@ Param($rgName, $location, $tagName, $tagValue)
     $vaultname = Get-VaultName
 
     # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{Name = $tagName; Value = $tagValue}
+    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{$tagName = $tagValue}
 
     # Assert
     Assert-AreEqual $vaultName $actual.VaultName
@@ -193,7 +193,7 @@ function Test-ListAllVaultsInSubscription
 function Test-ListVaultsByTag
 {
     Param($tagName, $tagValue)
-    $list = Get-AzureRmKeyVault -Tag  @{Name = $tagName; Value = $tagValue}
+    $list = Get-AzureRmKeyVault -Tag  @{ $tagName = $tagValue }
 
     Assert-NotNull $list
     Assert-True { $list.Count -gt 0 }
@@ -276,11 +276,21 @@ function Test-SetRemoveAccessPolicyBySPN
 
 function Test-SetRemoveAccessPolicyByObjectId
 {
-    Param($existingVaultName, $rgName, $objId)
+    Param($existingVaultName, $rgName, $objId, [switch]$bypassObjectIdValidation)
 
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+
+    $vault;
+	if ($bypassObjectIdValidation.IsPresent)
+	{
+        $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -BypassObjectIdValidation -PassThru
+	}
+	else
+	{
+        $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+	}
+
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 

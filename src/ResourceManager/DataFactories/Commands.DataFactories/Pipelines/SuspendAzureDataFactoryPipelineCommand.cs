@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using System.Globalization;
 using System.Management.Automation;
@@ -19,12 +20,10 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsLifecycle.Suspend, Constants.Pipeline, DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Suspend, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -40,12 +39,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    "Are you sure you want to suspend pipeline '{0}' in data factory '{1}'?",
-                    Name,
-                    DataFactoryName),
                 string.Format(
                     CultureInfo.InvariantCulture,
                     "Suspending pipeline '{0}' in data factory '{1}'.",

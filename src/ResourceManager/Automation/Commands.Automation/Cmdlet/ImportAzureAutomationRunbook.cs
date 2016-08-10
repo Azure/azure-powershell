@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(Runbook))]
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -100,7 +100,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var runbook = this.AutomationClient.ImportRunbook(
+            if (ShouldProcess(Name, VerbsData.Import))
+            {
+                var runbook = this.AutomationClient.ImportRunbook(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.ResolvePath(this.Path),
@@ -113,7 +115,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.Force.IsPresent,
                     this.Name);
 
-            this.WriteObject(runbook);
+                this.WriteObject(runbook);
+            }
         }
     }
 }

@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
             PSLogProfile psResult = new PSLogProfile(
                 "/subscriptions/{0}/providers/microsoft.insights/logprofiles/{1}"
-                    .FormatInvariant(DefaultContext.Subscription, this.Name),
+                    .FormatInvariant(DefaultContext.Subscription.Id.ToString(), this.Name), 
                 this.Name,
                 putParameters.Properties);
             WriteObject(psResult);
