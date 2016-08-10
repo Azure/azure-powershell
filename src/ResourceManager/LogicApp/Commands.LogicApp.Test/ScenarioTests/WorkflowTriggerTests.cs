@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
+
     /// <summary>
     /// Scenario tests for the Workflow trigger commands
     /// </summary>
@@ -48,6 +49,16 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppTriggerHistory()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerHistory");
+        }
+
+        /// <summary>
+        /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureLogicAppTriggerCallbackUrl()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerCallbackUrl");
         }
 
         /// <summary>

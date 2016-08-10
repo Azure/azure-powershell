@@ -25,6 +25,7 @@ function Test-GetAzureRmDiagnosticSetting
 
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470" $actual.StorageAccountId
 		Assert-AreEqual montest3470 $actual.StorageAccountName 
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count 
 		Assert-AreEqual $true       $actual.Metrics[0].Enabled 
 		Assert-AreEqual "PT1M"      $actual.Metrics[0].Timegrain 
@@ -53,6 +54,7 @@ function Test-SetAzureRmDiagnosticSetting
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual montest3470 $actual.StorageAccountName
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count
 		Assert-AreEqual $true       $actual.Metrics[0].Enabled
 		Assert-AreEqual "PT1M"      $actual.Metrics[0].Timegrain
@@ -81,6 +83,7 @@ function Test-SetAzureRmDiagnosticSettingWithRetention
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual montest3470 $actual.StorageAccountName
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count
 		Assert-AreEqual $true       $actual.Metrics[0].Enabled
 		Assert-AreEqual "PT1M"      $actual.Metrics[0].Timegrain
@@ -115,6 +118,7 @@ function Test-SetAzureRmDiagnosticSetting-CategoriesOnly
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual montest3470 $actual.StorageAccountName
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count
 		Assert-AreEqual $false       $actual.Metrics[0].Enabled
 		Assert-AreEqual "PT1M"      $actual.Metrics[0].Timegrain
@@ -143,6 +147,7 @@ function Test-SetAzureRmDiagnosticSetting-TimegrainsOnly
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual montest3470 $actual.StorageAccountName
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count
 		Assert-AreEqual $true       $actual.Metrics[0].Enabled
 		Assert-AreEqual "PT1M"      $actual.Metrics[0].Timegrain

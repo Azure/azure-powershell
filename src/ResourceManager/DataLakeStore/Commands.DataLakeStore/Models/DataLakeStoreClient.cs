@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         #region Account Related Operations
 
         public DataLakeStoreAccount CreateOrUpdateAccount(string resourceGroupName, string accountName,
-            string defaultGroup, string location, Hashtable[] customTags = null)
+            string defaultGroup, string location, Hashtable customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {

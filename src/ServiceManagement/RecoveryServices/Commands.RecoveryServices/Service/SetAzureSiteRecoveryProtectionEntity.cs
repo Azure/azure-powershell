@@ -116,6 +116,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            this.WriteWarningWithTimestamp(
+                string.Format(
+                    Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name));
+
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:

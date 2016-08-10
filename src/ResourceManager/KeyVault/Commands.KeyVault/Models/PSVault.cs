@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using System;
 using System.Linq;
 using KeyVaultManagement = Microsoft.Azure.Management.KeyVault;

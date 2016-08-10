@@ -199,6 +199,7 @@ function Run-AllControlPlaneTests
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByUPN } "Test_SetRemoveAccessPolicyByUPN" } "Test_SetRemoveAccessPolicyByUPN"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyBySPN } "Test_SetRemoveAccessPolicyBySPN" } "Test_SetRemoveAccessPolicyBySPN"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByObjectId } "Test_SetRemoveAccessPolicyByObjectId" } "Test_SetRemoveAccessPolicyByObjectId"
+    Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByBypassObjectIdValidation } "Test_SetRemoveAccessPolicyByBypassObjectIdValidation" } "Test_SetRemoveAccessPolicyByBypassObjectIdValidation"
     Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByCompoundId } "Test_SetRemoveAccessPolicyByCompoundId" } "Test_SetRemoveAccessPolicyByCompoundId"
     Run-TestProtected { Run-VaultTest { Test_RemoveAccessPolicyWithCompoundIdPolicies } "Test_RemoveAccessPolicyWithCompoundIdPolicies" } "Test_RemoveAccessPolicyWithCompoundIdPolicies"
     Run-TestProtected { Run-VaultTest { Test_SetCompoundIdAccessPolicy } "Test_SetCompoundIdAccessPolicy" } "Test_SetCompoundIdAccessPolicy"

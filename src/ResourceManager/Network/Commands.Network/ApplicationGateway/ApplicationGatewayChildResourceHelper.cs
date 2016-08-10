@@ -86,6 +86,15 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize AuthenticationCertificates
+            if (applicationGateway.AuthenticationCertificates != null)
+            {
+                foreach (var authCertificate in applicationGateway.AuthenticationCertificates)
+                {
+                    authCertificate.Id = string.Empty;
+                }
+            }
+
             // Normalize FrontendIpConfiguration
             if (applicationGateway.FrontendIPConfigurations != null)
             {
@@ -135,6 +144,16 @@ namespace Microsoft.Azure.Commands.Network
                                                     backendHttpSettings.Probe.Id,
                                                     applicationGateway.ResourceGroupName,
                                                     applicationGateway.Name);
+                    }
+                    if (null != backendHttpSettings.AuthenticationCertificates)
+                    {
+                        foreach (var authCert in backendHttpSettings.AuthenticationCertificates)
+                        {
+                            authCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    authCert.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                        }
                     }
                 }
             }

@@ -150,6 +150,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
+        /// <summary>
+        /// Flag for bypassing object ID validation or not
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByObjectId,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether the object ID needs to be validated or not.")]
+        public SwitchParameter BypassObjectIdValidation { get; set; }
+
         [Parameter(Mandatory = false,
            HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns the updated key vault object.")]
         public SwitchParameter PassThru { get; set; }
@@ -181,7 +190,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
             if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
-                Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                Guid objId = this.ObjectId;
+                if (!this.BypassObjectIdValidation.IsPresent)
+                {
+                    objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                }
 
                 if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);

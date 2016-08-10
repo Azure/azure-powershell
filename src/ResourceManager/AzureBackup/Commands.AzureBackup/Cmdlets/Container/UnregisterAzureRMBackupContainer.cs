@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupContainer")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupContainer", SupportsShouldProcess = true)]
     public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm unregistration and deletion of server")]
@@ -61,13 +61,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void UnregisterContainer()
         {
-            string containerUniqueName = Container.ContainerUniqueName;
-            var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
+            ConfirmAction(Resources.UnregisterContainerAction,
+                string.Format(Resources.UnregisterContainerTarget, Container.ResourceName, Container.ResourceGroupName),
+                () =>
+            {
+                string containerUniqueName = Container.ContainerUniqueName;
+                var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName,
+                    Container.ResourceName, containerUniqueName);
 
-            WriteObject(GetCreatedJobs(Container.ResourceGroupName,
-                Container.ResourceName,
-                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location),
-                GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList).FirstOrDefault());
+                WriteObject(GetCreatedJobs(Container.ResourceGroupName,
+                    Container.ResourceName,
+                    new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName,
+                        Container.Location),
+                    GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList)
+                    .FirstOrDefault());
+            });
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to remove an azure backup vault in the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmBackupVault")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmBackupVault", SupportsShouldProcess = true)]
     public class RemoveAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm deletion of vault")]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                ConfirmAction(Force, Resources.DeleteVaultCaption, Resources.DeleteVaultMessage, "",
+                ConfirmAction(Force, Resources.DeleteVaultCaption, Resources.DeleteVaultMessage, Vault.Name,
                     () =>
                     {
                         if (!AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name))

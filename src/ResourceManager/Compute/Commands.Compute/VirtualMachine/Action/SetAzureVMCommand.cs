@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To generalize virtual machine.")]
+            HelpMessage = "To redeploy virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Redeploy { get; set; }
 

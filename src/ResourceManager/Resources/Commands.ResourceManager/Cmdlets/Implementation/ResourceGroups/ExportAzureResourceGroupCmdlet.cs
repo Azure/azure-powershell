@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Captures the specifies resource group as a template and saves it to a file on disk.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmResourceGroup"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsData.Export, "AzureRmResourceGroup", SupportsShouldProcess = true), 
+        OutputType(typeof(PSObject))]
     public class ExportAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -68,59 +69,66 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-
-            var resourceId = this.GetResourceId();
-
-            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
-
-            var parameters = new ExportTemplateParameters
+            if (ShouldProcess(ResourceGroupName, VerbsData.Export))
             {
-                Resources = new string[] { "*" },
-                Options = this.GetExportOptions() ?? null
-            };
 
-            var operationResult = this.GetResourcesClient()
-                        .InvokeActionOnResource<JObject>(
-                            resourceId: resourceId,
-                            action: Constants.ExportTemplate,
-                            parameters: parameters.ToJToken(),
-                            apiVersion: apiVersion,
-                            cancellationToken: this.CancellationToken.Value)
-                        .Result;
+                var resourceId = this.GetResourceId();
 
-            var managementUri = this.GetResourcesClient()
-                .GetResourceManagementRequestUri(
-                    resourceId: resourceId,
-                    apiVersion: apiVersion,
-                    action: Constants.ExportTemplate);
+                var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
-            var activity = string.Format("POST {0}", managementUri.PathAndQuery);
-            var resultString = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
-                .WaitOnOperation(operationResult: operationResult);
-
-            var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
-
-            if (JObject.Parse(resultString)["error"] != null)
-            {
-                ExtendedErrorInfo error;
-                if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
+                var parameters = new ExportTemplateParameters
                 {
-                    WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
-                    foreach (var detail in error.Details)
+                    Resources = new string[] {"*"},
+                    Options = this.GetExportOptions() ?? null
+                };
+
+                var operationResult = this.GetResourcesClient()
+                    .InvokeActionOnResource<JObject>(
+                        resourceId: resourceId,
+                        action: Constants.ExportTemplate,
+                        parameters: parameters.ToJToken(),
+                        apiVersion: apiVersion,
+                        cancellationToken: this.CancellationToken.Value)
+                    .Result;
+
+                var managementUri = this.GetResourcesClient()
+                    .GetResourceManagementRequestUri(
+                        resourceId: resourceId,
+                        apiVersion: apiVersion,
+                        action: Constants.ExportTemplate);
+
+                var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                var resultString = this.GetLongRunningOperationTracker(activityName: activity,
+                    isResourceCreateOrUpdate: false)
+                    .WaitOnOperation(operationResult: operationResult);
+
+                var template = JToken.FromObject(JObject.Parse(resultString)["template"]);
+
+                if (JObject.Parse(resultString)["error"] != null)
+                {
+                    ExtendedErrorInfo error;
+                    if (JObject.Parse(resultString)["error"].TryConvertTo(out error))
                     {
-                        WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                        WriteWarning(string.Format("{0} : {1}", error.Code, error.Message));
+                        foreach (var detail in error.Details)
+                        {
+                            WriteWarning(string.Format("{0} : {1}", detail.Code, detail.Message));
+                        }
                     }
                 }
+
+                string path = FileUtility.SaveTemplateFile(
+                    templateName: this.ResourceGroupName,
+                    contents: template.ToString(),
+                    outputPath:
+                        string.IsNullOrEmpty(this.Path)
+                            ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName)
+                            : this.TryResolvePath(this.Path),
+                    overwrite: Force.IsPresent,
+                    shouldContinue: ShouldContinue);
+
+                WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
             }
-
-            string path = FileUtility.SaveTemplateFile(
-                templateName: this.ResourceGroupName,
-                contents: template.ToString(),
-                outputPath: string.IsNullOrEmpty(this.Path) ? System.IO.Path.Combine(CurrentPath(), this.ResourceGroupName) : this.TryResolvePath(this.Path),
-                overwrite: this.Force,
-                confirmAction: ConfirmAction);
-
-            WriteObject(PowerShellUtilities.ConstructPSObject(null, "Path", path));
         }
 
         /// <summary>

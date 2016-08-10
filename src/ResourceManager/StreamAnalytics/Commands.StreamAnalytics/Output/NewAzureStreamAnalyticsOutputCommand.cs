@@ -21,7 +21,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsOutput), OutputType(typeof(PSOutput))]
+    [Cmdlet(VerbsCommon.New, Constants.StreamAnalyticsOutput, SupportsShouldProcess = true), 
+        OutputType(typeof(PSOutput))]
     public class NewAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
@@ -61,7 +62,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 ConfirmAction = ConfirmAction
             };
 
-            WriteObject(StreamAnalyticsClient.CreatePSOutput(parameter));
+            var result = StreamAnalyticsClient.CreatePSOutput(parameter);
+            if (result != null)
+            {
+                WriteObject(result);
+            }
         }
     }
 }

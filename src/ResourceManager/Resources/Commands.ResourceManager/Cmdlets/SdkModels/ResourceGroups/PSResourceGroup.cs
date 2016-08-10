@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ProvisioningState { get; set; }
 
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public string TagsTable
         {

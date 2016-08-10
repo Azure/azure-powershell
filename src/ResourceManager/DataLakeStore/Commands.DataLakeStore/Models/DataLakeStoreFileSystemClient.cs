@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Azure.Management.DataLake.StoreUploader;
+using Microsoft.Rest;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         private readonly DataLakeStoreFileSystemManagementClient _client;
         private readonly Random uniqueActivityIdGenerator;
+        private const int MaxConnectionLimit = 1000;
 
         #region Constructors
 
@@ -57,6 +59,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix, true);
 
             uniqueActivityIdGenerator = new Random();
+
+            // We need to override the default .NET value for max connections to a host to our number of threads, if necessary.
+            // Otherwise we won't achieve the parallelism we want.
+            // This is also required before the first call on the data lake store client.
+            ServicePointManager.DefaultConnectionLimit = Math.Max(MaxConnectionLimit,
+                ServicePointManager.DefaultConnectionLimit);
         }
 
         #endregion
@@ -362,77 +370,100 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         public void CopyFile(string destinationPath, string accountName, string sourcePath,
-            CancellationToken cmdletCancellationToken, int threadCount = -1, bool overwrite = false, bool resume = false,
-            bool isBinary = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
+            CancellationToken cmdletCancellationToken, int threadCount = 10, bool overwrite = false, bool resume = false,
+            bool isBinary = false, bool isDownload = false, Cmdlet cmdletRunningRequest = null, ProgressRecord parentProgress = null)
         {
-            FileType ignoredType;
-            if (!overwrite && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType))
-            {
-                throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
-            }
-
-            //TODO: defect: 4259238 (located here: http://vstfrd:8080/Azure/RD/_workitems/edit/4259238) needs to be resolved or the tracingadapter work around needs to be put back in
-            // default the number of threads to use to the processor count
-            if (threadCount < 1)
-            {
-                threadCount = Environment.ProcessorCount;
-            }
-
-            // Progress bar indicator.
-            var description = string.Format("Copying File: {0} to DataLakeStore Location: {1} for account: {2}",
-                sourcePath, destinationPath, accountName);
-            var progress = new ProgressRecord(
-                uniqueActivityIdGenerator.Next(0, 10000000),
-                "Upload to DataLakeStore Store",
-                description)
-            {
-                PercentComplete = 0
-            };
-
-            if (parentProgress != null)
-            {
-                progress.ParentActivityId = parentProgress.ActivityId;
-            }
-
-            // On update from the Data Lake store uploader, capture the progress.
-            var progressTracker = new System.Progress<UploadProgress>();
-            progressTracker.ProgressChanged += (s, e) =>
-            {
-                lock (ConsoleOutputLock)
-                {
-                    progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
-                }
-            };
-
-            var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                isOverwrite: overwrite, isResume: resume, isBinary: isBinary);
-            var uploader = new DataLakeStoreUploader(uploadParameters,
-                new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
-                cmdletCancellationToken,
-                progressTracker);
-
-            var previousExpect100 = ServicePointManager.Expect100Continue;
+            var previousTracing = ServiceClientTracing.IsEnabled;
             try
             {
-                ServicePointManager.Expect100Continue = false;
-
-                // Execute the uploader.
-                var uploadTask = Task.Run(() =>
+                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
+                ServiceClientTracing.IsEnabled = false;
+                FileType ignoredType;
+                if (!overwrite && (!isDownload && TestFileOrFolderExistence(destinationPath, accountName, out ignoredType) || (isDownload && File.Exists(destinationPath))))
                 {
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                    uploader.Execute();
-                    cmdletCancellationToken.ThrowIfCancellationRequested();
-                }, cmdletCancellationToken);
+                    throw new InvalidOperationException(string.Format(Properties.Resources.LocalFileAlreadyExists, destinationPath));
+                }
 
-                TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
-            }
-            catch (Exception e)
-            {
-                throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
+                if (threadCount < 1)
+                {
+                    threadCount = 10; // 10 is the default per our documentation.
+                }
+
+                // Progress bar indicator.
+                var description = string.Format("Copying {0} File: {1} {2} Location: {3} for account: {4}",
+                    isDownload ? "Data Lake Store" : "Local",
+                    sourcePath,
+                    isDownload ? "to local" : "to Data Lake Store",
+                    destinationPath, accountName);
+                var progress = new ProgressRecord(
+                    uniqueActivityIdGenerator.Next(0, 10000000),
+                    string.Format("{0} Data Lake Store Store", isDownload ? "Download from" : "Upload to"),
+                    description)
+                {
+                    PercentComplete = 0
+                };
+
+                if (parentProgress != null)
+                {
+                    progress.ParentActivityId = parentProgress.ActivityId;
+                }
+
+                // On update from the Data Lake store uploader, capture the progress.
+                var progressTracker = new System.Progress<UploadProgress>();
+                progressTracker.ProgressChanged += (s, e) =>
+                {
+                    lock (ConsoleOutputLock)
+                    {
+                        var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        // powershell defect protection. If, through some defect in
+                        // our progress tracking, the number is outside of 0 - 100,
+                        // powershell will crash if it is set to that value. Instead
+                        // just keep the value unchanged in that case.
+                        if (toSet < 0 || toSet > 100)
+                        {
+                            progress.PercentComplete = progress.PercentComplete;
+                        }
+                        else
+                        {
+                            progress.PercentComplete = toSet;
+                        }
+                    }
+                };
+
+                var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
+                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isDownload: isDownload);
+                var uploader = new DataLakeStoreUploader(uploadParameters,
+                    new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
+                    cmdletCancellationToken,
+                    progressTracker);
+
+                var previousExpect100 = ServicePointManager.Expect100Continue;
+                try
+                {
+                    ServicePointManager.Expect100Continue = false;
+
+                    // Execute the uploader.
+                    var uploadTask = Task.Run(() =>
+                    {
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                        uploader.Execute();
+                        cmdletCancellationToken.ThrowIfCancellationRequested();
+                    }, cmdletCancellationToken);
+
+                    TrackUploadProgress(uploadTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+                }
+                catch (Exception e)
+                {
+                    throw new CloudException(string.Format(Properties.Resources.UploadFailedMessage, e));
+                }
+                finally
+                {
+                    ServicePointManager.Expect100Continue = previousExpect100;
+                }
             }
             finally
             {
-                ServicePointManager.Expect100Continue = previousExpect100;
+                ServiceClientTracing.IsEnabled = previousTracing;
             }
         }
 
@@ -441,17 +472,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             string accountName,
             string sourceFolderPath,
             CancellationToken cmdletCancellationToken,
-            int folderThreadCount = 5,
+            int concurrentFileCount = 5,
             int perFileThreadCount = 10,
             bool recursive = false,
             bool overwrite = false,
             bool resume = false,
             bool forceBinaryOrText = false,
             bool isBinary = false,
+            bool isDownload = false,
             Cmdlet cmdletRunningRequest = null)
         {
-            var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive);
-            var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive);
+            var totalBytes = GetByteCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
+            var totalFiles = GetFileCountInDirectory(sourceFolderPath, recursive, isDownload, accountName);
 
             var progress = new ProgressRecord(
                 uniqueActivityIdGenerator.Next(0, 10000000),
@@ -462,14 +494,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             UpdateProgress(progress, cmdletRunningRequest);
 
-            var internalFolderThreads = folderThreadCount <= 0 ? 5 : folderThreadCount;
+            var internalFolderThreads = concurrentFileCount <= 0 ? 5 : concurrentFileCount;
             var internalFileThreads = perFileThreadCount <= 0 ? 10 : perFileThreadCount;
 
             // we need to override the default .NET value for max connections to a host to our number of threads, if necessary (otherwise we won't achieve the parallelism we want)
             var previousDefaultConnectionLimit = ServicePointManager.DefaultConnectionLimit;
             var previousExpect100 = ServicePointManager.Expect100Continue;
+            var previousTracing = ServiceClientTracing.IsEnabled;
             try
             {
+                // disable this due to performance issues during download until issue: https://github.com/Azure/azure-powershell/issues/2499 is resolved.
+                ServiceClientTracing.IsEnabled = false;
                 ServicePointManager.DefaultConnectionLimit =
                     Math.Max((internalFolderThreads * internalFileThreads) + internalFolderThreads,
                         ServicePointManager.DefaultConnectionLimit);
@@ -488,7 +523,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 };
 
                 var uploadParameters = new UploadParameters(sourceFolderPath, destinationFolderPath, accountName, internalFileThreads, internalFolderThreads,
-                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive);
+                    isOverwrite: overwrite, isResume: resume, isBinary: isBinary, isRecursive: recursive, isDownload: isDownload);
                 var uploader = new DataLakeStoreUploader(uploadParameters,
                     new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken),
                     cmdletCancellationToken,
@@ -520,6 +555,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
             finally
             {
+                ServiceClientTracing.IsEnabled = previousTracing;
                 ServicePointManager.DefaultConnectionLimit = previousDefaultConnectionLimit;
                 ServicePointManager.Expect100Continue = previousExpect100;
             }
@@ -533,54 +569,101 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// Gets the file count in directory.
         /// </summary>
         /// <param name="directory">The directory.</param>
-        /// <param name="recursive">
-        /// if set to <c>true</c> gets the count of all files underneath a directory and all
-        /// subdirectories.
-        /// </param>
-        /// <param name="byteCount">The byte count.</param>
+        /// <param name="recursive">if set to <c>true</c> gets the count of all files underneath a directory and all
+        /// subdirectories.</param>
+        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
+        /// <param name="accountName">Name of the account.</param>
         /// <returns>
         /// the total number of files in a directory
         /// </returns>
-        private int GetFileCountInDirectory(string directory, bool recursive)
+        private int GetFileCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
         {
-            directory = directory.TrimEnd('\\');
-            directory += "\\";
             var count = 0;
-            foreach (var entry in Directory.GetFileSystemEntries(directory))
+            if (!isDownload)
             {
-                if (Directory.Exists(entry))
+                directory = directory.TrimEnd('\\');
+                directory += "\\";
+                foreach (var entry in Directory.GetFileSystemEntries(directory))
                 {
-                    if (recursive)
+                    if (Directory.Exists(entry))
                     {
-                        count += GetFileCountInDirectory(entry, true);
+                        if (recursive)
+                        {
+                            count += GetFileCountInDirectory(entry, true, false, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count++;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
                 {
-                    count++;
+                    if (entry.Type == FileType.DIRECTORY)
+                    {
+                        if (recursive)
+                        {
+                            count += GetFileCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count ++;
+                    }
                 }
             }
 
             return count;
         }
 
-        private long GetByteCountInDirectory(string directory, bool recursive)
+        /// <summary>
+        /// Gets the byte count in directory.
+        /// </summary>
+        /// <param name="directory">The directory.</param>
+        /// <param name="recursive">if set to <c>true</c> [recursive].</param>
+        /// <param name="isDownload">if set to <c>true</c> [is download].</param>
+        /// <param name="accountName">Name of the account.</param>
+        /// <returns>The total byte count of the directory</returns>
+        private long GetByteCountInDirectory(string directory, bool recursive, bool isDownload, string accountName)
         {
-            directory = directory.TrimEnd('\\');
-            directory += "\\";
             long count = 0;
-            foreach (var entry in Directory.GetFileSystemEntries(directory))
+            if (!isDownload)
             {
-                if (Directory.Exists(entry))
+                directory = directory.TrimEnd('\\');
+                directory += "\\";
+                foreach (var entry in Directory.GetFileSystemEntries(directory))
                 {
-                    if (recursive)
+                    if (Directory.Exists(entry))
                     {
-                        count += GetByteCountInDirectory(entry, true);
+                        if (recursive)
+                        {
+                            count += GetByteCountInDirectory(entry, true, false, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count += new FileInfo(entry).Length;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (var entry in GetFileStatuses(directory, accountName).FileStatus)
                 {
-                    count += new FileInfo(entry).Length;
+                    if (entry.Type == FileType.DIRECTORY)
+                    {
+                        if (recursive)
+                        {
+                            count += GetByteCountInDirectory(string.Format("{0}/{1}", directory, entry.PathSuffix), true, true, accountName);
+                        }
+                    }
+                    else
+                    {
+                        count += entry.Length.GetValueOrDefault();
+                    }
                 }
             }
 
