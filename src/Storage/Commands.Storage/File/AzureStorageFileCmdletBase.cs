@@ -18,6 +18,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
@@ -57,6 +59,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         {
             NamingUtil.ValidateShareName(name, false);
             return this.Channel.GetShareReference(name);
+        }
+
+        protected bool ShareIsEmpty(CloudFileShare share)
+        {
+            try
+            {
+                FileContinuationToken fileToken = new FileContinuationToken();
+                IEnumerator<IListFileItem> listedFiles = share.GetRootDirectoryReference().ListFilesAndDirectoriesSegmented(1, fileToken, RequestOptions, OperationContext).Results.GetEnumerator();
+                if (listedFiles.MoveNext() && listedFiles.Current != null)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

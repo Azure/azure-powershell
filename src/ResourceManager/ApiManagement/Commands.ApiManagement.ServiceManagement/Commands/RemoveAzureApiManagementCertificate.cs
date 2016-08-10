@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementCertificate)]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementCertificate, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementCertificate : AzureApiManagementRemoveCmdletBase
     {

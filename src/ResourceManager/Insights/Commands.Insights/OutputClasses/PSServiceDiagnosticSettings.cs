@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public string StorageAccountId { get; set; }
 
         /// <summary>
+        /// The service bus rule id.
+        /// </summary>
+        public string ServiceBusRuleId { get; set; }
+
+        /// <summary>
         /// The storage account name.
         /// </summary>
         public string StorageAccountName { get; set; }
@@ -48,6 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSServiceDiagnosticSettings(ServiceDiagnosticSettings serviceDiagnosticSettings)
         {
             this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
+            this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
             this.Metrics = new List<PSMetricSettings>();
             foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
             {

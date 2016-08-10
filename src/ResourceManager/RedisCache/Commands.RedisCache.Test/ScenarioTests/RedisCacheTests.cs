@@ -82,5 +82,33 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResetAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ResetAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ExportAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRedisCachePatchSchedules()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePatchSchedules");
+        }
     }
 }

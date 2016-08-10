@@ -151,11 +151,22 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="InvalidDefaultSubscription" xml:space="preserve">
     <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
   </data>
+  <data name="InvalidTagFormat" xml:space="preserve">
+    <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
+  </data>
   <data name="NoSubscriptionFound" xml:space="preserve">
     <value>The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials.</value>
   </data>
   <data name="ProfileCannotBeNull" xml:space="preserve">
     <value>Profile cannot be null.  Please run Add-AzureRmAccount.</value>
+  </data>
+  <data name="ResourceConfirmTarget" xml:space="preserve">
+    <value>the '{0}' resource named '{1}' in resource group '{2}'</value>
+    <comment>{0} is resource type name, {1} is resource name, {2} is resource group name</comment>
+  </data>
+  <data name="ResourceIdConfirmTarget" xml:space="preserve">
+    <value>the resource with identity '{0}'</value>
+    <comment>{0} is resource identity</comment>
   </data>
   <data name="ResourceProviderRegisterAttempt" xml:space="preserve">
     <value>Attempting to register resource provider '{0}'</value>

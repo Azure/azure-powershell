@@ -53,11 +53,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-DisableAzureVMProtectionScenario");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupItemScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-BackupItemScenario");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureVMRecoveryPointsScenario()
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetAzureVMRecoveryPointsScenario");
@@ -67,6 +71,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         {
             this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-RestoreAzureVMRItemScenario");
         }
-
     }
 }

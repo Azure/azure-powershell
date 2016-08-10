@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension)]
+        ProfileNouns.VirtualMachineAccessExtension,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
@@ -46,39 +47,42 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(VirtualMachineAccessExtensionContext.ExtensionDefaultName, VerbsCommon.Set))
             {
-                Hashtable publicSettings = new Hashtable();
-                publicSettings.Add(userNameKey, UserName ?? "");
-
-                Hashtable privateSettings = new Hashtable();
-                privateSettings.Add(passwordKey, Password ?? "");
-
-                if (string.IsNullOrEmpty(this.Location))
+                ExecuteClientAction(() =>
                 {
-                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
-                }
+                    Hashtable publicSettings = new Hashtable();
+                    publicSettings.Add(userNameKey, UserName ?? "");
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    VirtualMachineExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
-                    Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
-                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
-                    Settings = publicSettings,
-                    ProtectedSettings = privateSettings,
-                    AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
-                    ForceUpdateTag = this.ForceRerun
-                };
+                    Hashtable privateSettings = new Hashtable();
+                    privateSettings.Add(passwordKey, Password ?? "");
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    this.Name,
-                    parameters).GetAwaiter().GetResult();
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
-                WriteObject(result);
-            });
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
+
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        VirtualMachineExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
+                        Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
+                        TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
+                        Settings = publicSettings,
+                        ProtectedSettings = privateSettings,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
+
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

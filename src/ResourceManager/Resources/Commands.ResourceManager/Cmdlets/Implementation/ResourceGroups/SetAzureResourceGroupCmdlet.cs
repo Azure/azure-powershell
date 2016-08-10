@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Name { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Alias("ResourceGroupId", "ResourceId")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group Id.")]
@@ -52,13 +52,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning(ProjectResources.WarnOnTags);
             PSUpdateResourceGroupParameters parameters = new PSUpdateResourceGroupParameters
             {
                 ResourceGroupName = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName,
                 Tag = Tag,
             };
-            WriteObject(ResourceManagerSdkClient.UpdatePSResourceGroup(parameters));
+
+            var resourceGroup = ResourceManagerSdkClient.UpdatePSResourceGroup(parameters);
+            if (resourceGroup != null)
+            {
+                WriteObject(resourceGroup);
+            }
         }
     }
 }

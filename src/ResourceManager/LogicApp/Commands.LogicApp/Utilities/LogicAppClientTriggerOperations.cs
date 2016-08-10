@@ -47,6 +47,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         }
 
         /// <summary>
+        /// Gets the specified trigger callback URL from the workflow
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Name of the workflow</param>
+        /// <param name="triggerName">Name of the trigger</param>
+        /// <returns>Workflow trigger</returns>
+        public WorkflowTriggerCallbackUrl GetWorkflowTriggerCallbackUrl(string resourceGroupName, string workflowName, string triggerName)
+        {
+            return this.LogicManagementClient.WorkflowTriggers.ListCallbackUrl(resourceGroupName, workflowName, triggerName);
+        }
+
+        /// <summary>
         /// Gets the workflow trigger histories.
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group</param>

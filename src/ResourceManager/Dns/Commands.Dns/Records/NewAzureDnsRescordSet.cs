@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
+        OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -50,9 +51,12 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
 
-        [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Metadata { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
+        [ValidateNotNull]
+        public DnsRecordBase[] DnsRecords { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
@@ -62,8 +66,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The output object type of this cmdlet will be modified in a future release. Also, the usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
-
             string zoneName = null;
             string resourceGroupname = null;
             DnsRecordSet result = null;
@@ -85,21 +87,30 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            ConfirmAction(
-                !Overwrite.IsPresent || Force.IsPresent,
-                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.Progress_CreatingEmptyRecordSet,
-                this.Name,
-                () => { result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Tag, this.Overwrite); });
-
-            if (result != null)
+            if (this.DnsRecords == null)
             {
-                WriteVerbose(ProjectResources.Success);
-                WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
-                WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+                this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
             }
 
-            WriteObject(result);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
+                ProjectResources.Progress_CreatingRecordSet,
+                this.Name,
+                () =>
+                {
+                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
+
+                    if (result != null)
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                        WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+                    }
+
+                    WriteObject(result);
+                },
+                () => Overwrite.IsPresent);
         }
     }
 }

@@ -54,15 +54,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if(Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Resources.TagsWarning);
-            }
-
             try
             {
                 if (DataLakeStoreClient.GetAccount(ResourceGroupName, Name) != null)

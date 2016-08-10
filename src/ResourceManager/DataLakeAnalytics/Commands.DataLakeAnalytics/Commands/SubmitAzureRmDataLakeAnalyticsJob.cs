@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var jobInfo = new JobInformation
             {
-                JobId = Guid.NewGuid(),
+                JobId = DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
                 Name = Name,
                 Properties = properties,
                 Type = jobType,

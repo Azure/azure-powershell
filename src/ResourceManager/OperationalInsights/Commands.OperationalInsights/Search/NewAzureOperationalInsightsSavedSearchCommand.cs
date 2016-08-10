@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, Constants.SavedSearch)]
+    [Cmdlet(VerbsCommon.New, Constants.SavedSearch, SupportsShouldProcess = true)]
     public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

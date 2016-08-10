@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -101,6 +102,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
+                testEnvironment.SubscriptionId);
+
             if (typeof(T) == typeof(BackupVaultServicesManagementClient))
             {
                 BackupVaultServicesManagementClient client;
@@ -108,14 +113,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupVaultServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
 
                 else
                 {
                     client = new BackupVaultServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
 
                 return GetServiceClient<T>(factory, client);
@@ -127,14 +132,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
 
                 else
                 {
                     client = new BackupServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
 
                 return GetVaultServiceClient<T>(factory, client);

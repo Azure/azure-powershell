@@ -52,7 +52,7 @@ function Test-DataLakeStoreAccount
 		Assert-True {Test-AdlStore -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -321,29 +321,29 @@ function Test-DataLakeStoreFileSystemPermissions
 		Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
 		$currentCount = $result.UserAces.Count
 		$result.UserAces.Add($aceUserId, "rwx") 
-		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserACes.Count
 		$result.UserAces.Remove($aceUserId)
 		# remove the account
-		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 
 		# Set and get a specific permission with friendly sets
-		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Force
+		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with friendly remove
-		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Force
+		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 		# set and get a specific permission with the ACE string
-		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Force
+		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with the ACE string
-		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
+		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 
@@ -415,7 +415,7 @@ function Test-NegativeDataLakeStoreAccount
 		Assert-Throws {New-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AdlStore -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account

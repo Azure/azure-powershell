@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
@@ -19,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchCertificate)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchCertificate, SupportsShouldProcess = true)]
     public class RemoveBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -32,17 +33,12 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Thumbprint { get; set; }
 
-        [Parameter]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             CertificateOperationParameters parameters = new CertificateOperationParameters(this.BatchContext,
                 this.ThumbprintAlgorithm, this.Thumbprint, this.AdditionalBehaviors);
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemoveCertificateConfirm, this.Thumbprint),
                 Resources.RemoveCertificate,
                 this.Thumbprint,
                 () => BatchClient.DeleteCertificate(parameters));

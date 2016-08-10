@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
@@ -21,7 +22,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Deletes a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroupDeployment", DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroupDeployment", SupportsShouldProcess = true,
+        DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -34,42 +36,39 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
 
-        [Parameter(Position = 0, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 1, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true, 
+        [Parameter(Position = 1, ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Alias("DeploymentId", "ResourceId")]
-        [Parameter(ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true, 
+        [Parameter(ParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentIdParameterSet, Mandatory = true,
             HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the remove.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
-            {
-                ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
-                Name = ResourceIdUtility.GetResourceName(Id);
-            }
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.DeleteResourceGroupDeployment, Name),
                 ProjectResources.DeleteResourceGroupDeploymentMessage,
                 ResourceGroupName,
-                () => ResourceManagerSdkClient.DeleteDeployment(ResourceGroupName, Name));
+                () =>
+                {
+                    if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+                    {
+                        ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
+                        Name = ResourceIdUtility.GetResourceName(Id);
+                    }
 
-            WriteObject(true);
-
+                    ResourceManagerSdkClient.DeleteDeployment(ResourceGroupName, Name);
+                    WriteObject(true);
+                });
         }
     }
 }

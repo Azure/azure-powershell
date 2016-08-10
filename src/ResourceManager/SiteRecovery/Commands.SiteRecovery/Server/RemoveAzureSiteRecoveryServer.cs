@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRServer>))]
     public class RemoveAzureSiteRecoveryServer : SiteRecoveryCmdletBase
     {
@@ -48,8 +49,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-            RemoveServer();
+            ConfirmAction(
+                VerbsCommon.Remove,
+                Server.FriendlyName,
+                () =>
+            {
+                base.ExecuteSiteRecoveryCmdlet();
+                RemoveServer();
+            });
         }
 
         /// <summary>
