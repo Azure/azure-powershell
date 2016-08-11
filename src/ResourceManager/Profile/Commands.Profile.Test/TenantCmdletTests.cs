@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Hyak.Common;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Profile.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -58,8 +59,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
             
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
         }
         
         [Fact]
@@ -77,9 +78,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
         }
         
         [Fact]
@@ -96,9 +97,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
-            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 3);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).TenantId.ToString());
+            Assert.Equal("microsoft.com", ((PSAzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
         }
 
         private void Login(string subscriptionId, string tenantId)
