@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Server")]
         [Alias("Tag")]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the server version

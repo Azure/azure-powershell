@@ -57,6 +57,12 @@ namespace Microsoft.Azure.Commands.Network
         public virtual PSApplicationGatewaySku Sku { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The SSL policy of application gateway")]
+        public virtual PSApplicationGatewaySslPolicy SslPolicy { get; set; }
+
+        [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of IPConfiguration (subnet)")]
@@ -66,8 +72,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of ssl certificate")]
+             HelpMessage = "The list of ssl certificates")]
         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of authentication certificates")]
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -120,8 +132,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "An array of hashtables which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+            HelpMessage = "A hashtable which represents resource tags.")]
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -155,6 +167,12 @@ namespace Microsoft.Azure.Commands.Network
             applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
 
+            if (this.SslPolicy != null)
+            {
+                applicationGateway.SslPolicy = new PSApplicationGatewaySslPolicy();
+                applicationGateway.SslPolicy = this.SslPolicy;
+            }
+
             if (this.GatewayIPConfigurations != null)
             {
                 applicationGateway.GatewayIPConfigurations = this.GatewayIPConfigurations;
@@ -163,6 +181,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.SslCertificates != null)
             {
                 applicationGateway.SslCertificates = this.SslCertificates;
+            }
+
+            if (this.AuthenticationCertificates != null)
+            {
+                applicationGateway.AuthenticationCertificates = this.AuthenticationCertificates;
             }
 
             if (this.FrontendIPConfigurations != null)

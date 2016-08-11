@@ -83,8 +83,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-03-01",
-      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
       "RequestMethod": "POST",
       "RequestBody": "<CreateLocalNetworkGatewayParameters xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <a:string>10.0.0.0/8</a:string>\r\n  </AddressSpace>\r\n  <GatewayName>onesdk2927</GatewayName>\r\n  <IpAddress>1.2.3.4</IpAddress>\r\n  <BgpSettings>\r\n    <Asn>1234</Asn>\r\n    <BgpPeeringAddress>10.0.0.1</BgpPeeringAddress>\r\n    <PeerWeight>0</PeerWeight>\r\n  </BgpSettings>\r\n</CreateLocalNetworkGatewayParameters>",
       "RequestHeaders": {
@@ -95,7 +95,7 @@
           "485"
         ],
         "x-ms-version": [
-          "2016-03-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -133,13 +133,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-03-01",
-      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDMtMDE=",
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -218,13 +218,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-03-01",
-      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -303,13 +303,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-03-01",
-      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2016-03-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"

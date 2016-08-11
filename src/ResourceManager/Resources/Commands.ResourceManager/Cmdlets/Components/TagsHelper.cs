@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
@@ -30,33 +31,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a tags dictionary from an enumerable of tags.
         /// </summary>
         /// <param name="tags">The enumerable of tags</param>
-        internal static InsensitiveDictionary<string> GetTagsDictionary(IEnumerable<Hashtable> tags)
+        internal static InsensitiveDictionary<string> GetTagsDictionary(Hashtable tags)
         {
             if(tags == null)
             {
                 return null;
             }
 
-            Dictionary<string, string> tagsDic = new Dictionary<string, string>();
-            foreach(var tag in tags)
-            {
-                foreach(DictionaryEntry entry in tag)
-                {
-                    tagsDic.Add(entry.Key.ToString(), entry.Value == null ? string.Empty : entry.Value.ToString());
-                }
-            }
-            return tagsDic.Distinct(kvp => kvp.Key).ToInsensitiveDictionary(kvp => kvp.Key, kvp => kvp.Value);
+            var tagsDictionary = TagsConversionHelper.CreateTagDictionary(tags, true);
+            return tagsDictionary.Distinct(kvp => kvp.Key).ToInsensitiveDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
 
         /// <summary>
         /// Gets a tags hash table from a tags dictionary.
         /// </summary>
         /// <param name="tags">The tags dictionary.</param>
-        internal static List<Hashtable> GetTagsHashtables(InsensitiveDictionary<string> tags)
+        internal static Hashtable GetTagsHashtable(InsensitiveDictionary<string> tags)
         {
             return tags == null
                 ? null
-                : tags.Select(kvp => new Hashtable { { kvp.Key, kvp.Value } }).ToList();
+                : TagsConversionHelper.CreateTagHashtable(tags);
         }
     }
 }

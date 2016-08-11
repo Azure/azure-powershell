@@ -30,6 +30,11 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
+    using TestBase = Microsoft.Azure.Test.TestBase;
+    using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+
     public class KeyVaultManagementController
     {
 
@@ -97,10 +102,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
@@ -108,7 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment();
 
@@ -144,13 +147,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GraphClient = GetGraphClient();
+            GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
@@ -186,15 +189,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private GraphRbacManagementClient GetGraphClient()
+        private GraphRbacManagementClient GetGraphClient(MockContext context)
         {
-            var environment = this.csmTestFactory.GetTestEnvironment();
+            var environment = TestEnvironmentFactory.GetTestEnvironment();
             string tenantId = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenantId;
-                UserDomain = environment.AuthorizationContext.UserDomain;
+                tenantId = environment.Tenant;
+                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;
@@ -214,7 +217,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
             }
 
-            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(this.csmTestFactory, tenantId);
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = tenantId;
+            return client;
         }
 
     }

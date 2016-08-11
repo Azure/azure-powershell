@@ -31,10 +31,6 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The environment name")]
         public string Name { get; set; }
 
-        [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of subscription")]
-        [Obsolete]
-        public SwitchParameter Force { get; set; }
-
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet

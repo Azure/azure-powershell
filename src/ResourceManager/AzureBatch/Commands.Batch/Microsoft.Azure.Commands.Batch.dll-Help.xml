@@ -7275,6 +7275,114 @@
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NetworkConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Specifies the network configuration of the pool. Specify the ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. The virtual network must be in the same region and subscription as the Azure Batch account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSNetworkConfiguration</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResizeTimeout</maml:name>
+				<maml:description>
+					<maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;TimeSpan&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StartTask</maml:name>
+				<maml:description>
+					<maml:para>Specifies the start task specification for the pool. The start task is run when a compute node joins the pool, or when the compute node is rebooted or reimaged.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSStartTask</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TargetDedicated</maml:name>
+				<maml:description>
+					<maml:para>Specifies the target number of compute nodes to allocate to the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;Int32&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TaskSchedulingPolicy</maml:name>
+				<maml:description>
+					<maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSTaskSchedulingPolicy</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualMachineSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machines in the pool. For more information about virtual machine sizes, see Sizes for virtual machines (https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/) in the Microsoft Azure site.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureBatchPool</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>BatchContext</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies certificates associated with the pool. The Batch service installs the referenced certificates on each compute node of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSCertificateReference[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DisplayName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the display name of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the pool to create.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InterComputeNodeCommunicationEnabled</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet sets up the pool for direct communication between dedicated compute nodes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>MaxTasksPerComputeNode</maml:name>
+				<maml:description>
+					<maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;Int32&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Metadata</maml:name>
+				<maml:description>
+					<maml:para>Specifies the metadata, as key/value pairs, to add to the new pool. The key is the metadata name. The value is the metadata value.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NetworkConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Specifies the network configuration of the pool. Specify the ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. The virtual network must be in the same region and subscription as the Azure Batch account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSNetworkConfiguration</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ResizeTimeout</maml:name>
 				<maml:description>
 					<maml:para>Specifies the timeout for allocating compute nodes to the pool.</maml:para>
@@ -7395,6 +7503,114 @@
 					<maml:para>Specifies the metadata, as key/value pairs, to add to the new pool. The key is the metadata name. The value is the metadata value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NetworkConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Specifies the network configuration of the pool. Specify the ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. The virtual network must be in the same region and subscription as the Azure Batch account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSNetworkConfiguration</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>StartTask</maml:name>
+				<maml:description>
+					<maml:para>Specifies the start task specification for the pool. The start task is run when a compute node joins the pool, or when the compute node is rebooted or reimaged.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSStartTask</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>TaskSchedulingPolicy</maml:name>
+				<maml:description>
+					<maml:para>Specifies the task scheduling policy, such as the ComputeNodeFillType.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSTaskSchedulingPolicy</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualMachineSize</maml:name>
+				<maml:description>
+					<maml:para>Specifies the size of the virtual machines in the pool. For more information about virtual machine sizes, see Sizes for virtual machines (https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-size-specs/) in the Microsoft Azure site.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureBatchPool</maml:name>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies application packages associated with the pool. The Batch service installs the referenced application packages on each compute node of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AutoScaleEvaluationInterval</maml:name>
+				<maml:description>
+					<maml:para>Specifies the amount of time (in minutes) that elapses before the pool size is automatically adjusted according to the AutoScale formula. The default value is 15 minutes, and the minimum value is 5 minutes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;TimeSpan&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>AutoScaleFormula</maml:name>
+				<maml:description>
+					<maml:para>Specifies the formula for automatically scaling the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>BatchContext</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>CertificateReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies certificates associated with the pool. The Batch service installs the referenced certificates on each compute node of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSCertificateReference[]</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DisplayName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the display name of the pool.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
+				<maml:name>Id</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the pool to create.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InterComputeNodeCommunicationEnabled</maml:name>
+				<maml:description>
+					<maml:para>Indicates that this cmdlet sets up the pool for direct communication between dedicated compute nodes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>MaxTasksPerComputeNode</maml:name>
+				<maml:description>
+					<maml:para>Specifies the maximum number of tasks that can run on a single compute node.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;Int32&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Metadata</maml:name>
+				<maml:description>
+					<maml:para>Specifies the metadata, as key/value pairs, to add to the new pool. The key is the metadata name. The value is the metadata value.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>NetworkConfiguration</maml:name>
+				<maml:description>
+					<maml:para>Specifies the network configuration of the pool. Specify the ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. The virtual network must be in the same region and subscription as the Azure Batch account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSNetworkConfiguration</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>StartTask</maml:name>
@@ -7558,6 +7774,18 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>NetworkConfiguration</maml:name>
+			<maml:description>
+				<maml:para>Specifies the network configuration of the pool. Specify the ARM resource identifier of the virtual network subnet which the compute nodes of the pool will join. The virtual network must be in the same region and subscription as the Azure Batch account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSNetworkConfiguration</command:parameterValue>
+			<dev:type>
+				<maml:name>PSNetworkConfiguration</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>ResizeTimeout</maml:name>
@@ -8294,9 +8522,9 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -8353,11 +8581,11 @@
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -12201,9 +12429,9 @@
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Tag</maml:name>
 				<maml:description>
-					<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -12247,11 +12475,11 @@
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Tag</maml:name>
 			<maml:description>
-				<maml:para>Specifies an array of hash tables of tags for the account.</maml:para>
+				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -12278,7 +12506,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Set-AzureRmBatchAccount -AccountName &quot;cmdletexample&quot; -Tag @(@{Name = &quot;tag1&quot;;Value = &quot;value1&quot;},@{Name = &quot;tag2&quot;;Value = &quot;value2&quot;})
+			<dev:code>PS C:\&gt;Set-AzureRmBatchAccount -AccountName &quot;cmdletexample&quot; -Tag @{tag1 = &quot;value1&quot;; tag2 = &quot;value2&quot;}
           AccountName                  : cmdletexample
 
           Location                     : westus

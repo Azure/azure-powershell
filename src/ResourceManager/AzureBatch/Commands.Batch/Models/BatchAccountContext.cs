@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <summary>
         /// Tags associated with the account resource.
         /// </summary>
-        public Hashtable[] Tags { get; private set; }
+        public Hashtable Tags { get; private set; }
 
         /// <summary>
         /// A string representation of the Tags property.

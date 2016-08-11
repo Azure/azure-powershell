@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string Location { get; protected set; }
 
-        public Hashtable[] Tags { get; protected set; }
+        public Hashtable Tags { get; protected set; }
 
         public string TagsTable
         {

@@ -1,41 +1,168 @@
 ##2016.08.03 version 2.0.0
+* This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.2.0.0.md) for change details and the impact on existing scripts.
+* Removal of Force parameters that were marked as obsolete in the previous release
+  * ApiManagement
+    - Remove-AzureRmApiManagement
+    - Remove-AzureRmApiManagementApi
+    - Remove-AzureRmApiManagementGroup
+    - Remove-AzureRmApiManagementLogger
+    - Remove-AzureRmApiManagementOpenIdConnectProvider
+    - Remove-AzureRmApiManagementOperation
+    - Remove-AzureRmApiManagementPolicy
+    - Remove-AzureRmApiManagementProduct
+    - Remove-AzureRmApiManagementProperty
+    - Remove-AzureRmApiManagementSubscription
+    - Remove-AzureRmApiManagementUser
+  * Automation
+    - Remove-AzureRmAutomationCertificate
+    - Remove-AzureRmAutomationCredential
+    - Remove-AzureRmAutomationVariable
+    - Remove-AzureRmAutomationWebhook
+  * Batch
+    - Remove-AzureBatchCertificate
+    - Remove-AzureBatchComputeNode
+    - Remove-AzureBatchComputeNodeUser
+  * DataFactories
+    - Resume-AzureRmDataFactoryPipeline
+    - Set-AzureRmDataFactoryPipelineActivePeriod
+    - Suspend-AzureRmDataFactoryPipeline
+  * DataLakeStore
+    - Remove-AzureRmDataLakeStoreItemAclEntry
+    - Set-AzureRmDataLakeStoreItemAcl
+    - Set-AzureRmDataLakeStoreItemAclEntry
+    - Set-AzureRmDataLakeStoreItemOwner
+  * OperationalInsights
+    - Remove-AzureRmOperationalInsightsSavedSearch
+  * Profile
+    - Remove-AzureRmEnvironment
+  * RedisCache
+    - Remove-AzureRmRedisCacheDiagnostics
+  * Resources
+    - Register-AzureRmProviderFeature
+    - Register-AzureRmResourceProvider
+    - Remove-AzureRmADServicePrincipal
+    - Remove-AzureRmPolicyAssignment
+    - Remove-AzureRmResourceGroupDeployment
+    - Remove-AzureRmRoleAssignment
+    - Stop-AzureRmResourceGroupDeployment
+    - Unregister-AzureRmResourceProvider
+  * Storage
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageTableStoredAccessPolicy
+  * StreamAnalytics
+    - Remove-AzureRmStreamAnalyticsFunction
+    - Remove-AzureRmStreamAnalyticsInput
+    - Remove-AzureRmStreamAnalyticsJob
+    - Remove-AzureRmStreamAnalyticsOutput
+  * Tag
+    - Remove-AzureRmTag
+* Changed `Tags` parameter name to `Tag`, and changed the parameter type from `HashTable[]` to `HashTable` for the following cmdlets
+  * Batch
+    - Get-AzureRmBatchAccount
+    - New-AzureRmBatchAccount
+    - Set-AzureRmBatchAccount
+  * Compute
+    - New-AzureRmVM
+    - Update-AzureRmVM
+  * DataLakeAnalytics
+    - New-AzureRmDataLakeAnalyticsAccount
+    - Set-AzureRmDataLakeAnalyticsAccount
+  * DataLakeStore
+    - New-AzureRmDataLakeStoreAccount
+    - Set-AzureRmDataLakeStoreAccount
+  * Dns
+    - New-AzureRmDnsZone
+    - Set-AzureRmDnsZone
+  * KeyVault
+    - Get-AzureRmKeyVault
+    - New-AzureRmKeyVault
+  * Network
+    - New-AzureRmApplicationGateway
+    - New-AzureRmExpressRouteCircuit
+    - New-AzureRmLoadBalancer
+    - New-AzureRmLocalNetworkGateway
+    - New-AzureRmNetworkInterface
+    - New-AzureRmNetworkSecurityGroup
+    - New-AzureRmPublicIpAddress
+    - New-AzureRmRouteTable
+    - New-AzureRmVirtualNetwork
+    - New-AzureRmVirtualNetworkGateway
+    - New-AzureRmVirtualNetworkGatewayConnection
+    - New-AzureRmVirtualNetworkPeering
+  * Resources
+    - Find-AzureRmResource
+    - Find-AzureRmResourceGroup
+    - New-AzureRmResource
+    - New-AzureRmResourceGroup
+    - Set-AzureRmResource
+    - Set-AzureRmResourceGroup
+  * SQL
+    - New-AzureRmSqlDatabase
+    - New-AzureRmSqlDatabaseCopy
+    - New-AzureRmSqlDatabaseSecondary
+    - New-AzureRmSqlElasticPool
+    - New-AzureRmSqlServer
+    - Set-AzureRmSqlDatabase
+    - Set-AzureRmSqlElasticPool
+    - Set-AzureRmSqlServer
+  * Storage
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+  * TrafficManager
+    - New-AzureRmTrafficManagerProfile
 * Azure Redis Cache
   * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
   * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
   * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
   * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
+* Azure Resource Manager
+  * Tag parameter type has been changed for all cmdlets which used it. The type has been changed from HashTable[] to HashTable. To create a new tag object, do as follows: `@{tagName1='tagValue1'}` instead of `@{Name='tagName1';Value='tagValue1'}`
+  * Fixed an issue with Get-AzureRmResourceProvider cmdlet to support querying based on global locations through the Location parameter
+  * Removed all deprecation warning messages
 * Azure Storage
+  * Get-AzureRmStorageAccountKey
+    - Cmdlet now returns a list of keys, rather than an object with properties for each key
+  * New-AzureRmStorageAccountKey
+    - `StorageAccountRegenerateKeyResponse` field in output of this cmdlet is renamed to `StorageAccountListKeysResults`, which is now a list of keys rather than an object with properties for each key
+  * New/Get/Set-AzureRmStorageAccount
+    - `AccountType` field in output of cmdlet is renamed to `Sku.Name`
+    - Output type for PrimaryEndpoints/Secondary endpoints blob/table/queue/file changed from `Uri` to `String`
   * Change -Tag parameter type from HashTable[] to HashTable
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
-  * Normalize the ShouldProcess Confirmation, so when $ConfirmPreference is set lower than "High", user need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts to suspress ShouldProcess Conformation
-    - Remove-AzureRmStorageAccount
-    - Remove-AzureStorageBlob
-    - Remove-AzureStorageContainer
-    - Remove-AzureStorageTable
-    - Remove-AzureStorageQueue
-    - Remove-AzureStorageShare
-    - Remove-AzureStorageDirectory
-    - Remove-AzureStorageFile
-    - Remove-AzureStorageContainerStoredAccessPolicy
-    - Remove-AzureStorageShareStoredAccessPolicy
-    - Remove-AzureStorageTableStoredAccessPolicy
-    - Remove-AzureStorageQueueStoredAccessPolicy
+  * Added ShouldProcess support
     - Set-AzureStorageContainerStoredAccessPolicy
     - Set-AzureStorageShareStoredAccessPolicy
-    - Set-AzureStorageTableStoredAccessPolicy
     - Set-AzureStorageQueueStoredAccessPolicy
-    - Set-AzureRmStorageAccount
-  * Add confirmation and -Force parameter to suspress ShouldContinue confirmation
+    - Set-AzureStorageTableStoredAccessPolicy
+  * Downgraded ConfirmImpact to Medium
+    - Remove-AzureStorageBlob
+    - Remove-AzureStorageContainer
+    - Remove-AzureStorageContainerStoredAccessPolicy
+    - Remove-AzureStorageFile
+    - Remove-AzureStorageShare
+    - Remove-AzureStorageShareStoredAccessPolicy
+    - Remove-AzureStorageQueue
+    - Remove-AzureStorageQueueStoredAccessPolicy
+    - Remove-AzureStorageTable
+    - Remove-AzureStorageTableStoredAccessPolicy
+  * Add support for ShouldProcess and -Force parameter to supress confirmation
     - Remove-AzureRmStorageAccount
     - Set-AzureRmStorageAccount 
-  * Use -Force parameter instead of -Confirm parameter to suspress ShouldContinue confirmaiton
-    - Remove-AzureStorageShare
-  * ShouldContinue confirmation needed (suspress with -Force) only when there's data in the Container/Table to delete
+  * Confirmation needed only when there's data in the Container/Table to delete (suppress with -Force)
     - Remove-AzureStorageContainer
     - Remove-AzureStorageTable
-	
-	
+* Azure Batch
+  * Add virtual network support
+    - New-AzureBatchPool
+  * Change -Tag parameter type from HashTable[] to HashTable
+    - Set-AzureRmBatchAccount
+    - New-AzureRmBatchAccount
+    - Get-AzureRmBatchAccount
+* Azure Sql
+  * Extended the auditing cmdlets to support management of blob auditing, both at the database and at the server level	
 	
 	
 
