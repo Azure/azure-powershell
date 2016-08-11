@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, supplies the Azure Active Directory Tenant ID to create the Key Vault in.  Otherwise, it will use the AAD Tenant of the current user account.")]
+        public string TenantId { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
@@ -123,6 +128,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                 };
             }
 
+            Guid tenantId;
+            if (!Guid.TryParse(this.TenantId, out tenantId))
+            {
+                // Use the default TenantId only when one wasn't provided as a parameter.
+                tenantId = GetTenantId();
+            }
+
             var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
             {
                 VaultName = this.VaultName,
@@ -133,7 +145,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
                 SkuFamilyName = DefaultSkuFamily,
                 SkuName = string.IsNullOrWhiteSpace(this.Sku) ? DefaultSkuName : this.Sku,
-                TenantId = GetTenantId(),
+                TenantId = tenantId,
                 AccessPolicy = accessPolicy,
                 Tags = this.Tag
             },
