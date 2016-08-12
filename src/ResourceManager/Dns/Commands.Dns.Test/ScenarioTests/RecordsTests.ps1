@@ -808,6 +808,9 @@ function Test-RecordSetSOA
 
 	$record = $zone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType SOA
 
+	#Ensure that SOA RecordSet cannot be created
+	Assert-Throws { New-AzureRmDnsRecordSet -Name $recordName -RecordType SOA -ResourceGroupName $resourceGroup -ZoneName $zoneName  -Ttl 100 } "There can be only one record set of type SOA, and it can be modified but not deleted."
+
 	# can only update SOA values, can't add or remove
 	Assert-AreEqual 1 $record.Count
 	$record.Records[0].RefreshTime = 13
