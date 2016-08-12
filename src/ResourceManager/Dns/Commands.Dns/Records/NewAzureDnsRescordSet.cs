@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Dns
             string resourceGroupname = null;
             DnsRecordSet result = null;
 
+            if (RecordType == RecordType.SOA)
+            {
+                throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
+            }
+
             if (ParameterSetName == "Fields")
             {
                 zoneName = this.ZoneName;
