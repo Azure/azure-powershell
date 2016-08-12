@@ -1,13 +1,13 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d83af9fa-2bce-47ec-a2a3-f5f465c492f9"
+          "15c072d7-8730-469c-9b96-403e2669c57f"
         ],
         "accept-language": [
           "en-US"
@@ -16,10 +16,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-updateapplicationp-c8ab891134526756161acdd8565c03773460c3b0/updateapplicationpackage-foo-4a437bb1-fc19-4e4c-aabe-15c18f037193?sv=2014-02-14&sr=b&sig=%2BHQKXQ%2B87FkwcjjjcLAcY3lodld2uQ2UpXGZanMtOOA%3D&st=2016-05-19T17%3A39%3A15Z&se=2016-05-19T21%3A44%3A15Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-19T21:44:15.1989424Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-19T17:36:51.2520027Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-updateapplicationp-c8ab891134526756161acdd8565c03773460c3b0/updateapplicationpackage-foo-5e4c3d12-52b2-4cd6-920b-09c4132709ff?sv=2014-02-14&sr=b&sig=ohBFj%2Fx38H%2BW3%2B%2BtL%2FHgPIYxIdMRfWny5VKuBVI44NM%3D&st=2016-08-01T18%3A54%3A41Z&se=2016-08-01T22%3A59%3A41Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-08-01T22:59:41.5593403Z\",\r\n  \"state\": \"pending\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "508"
+          "448"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -31,7 +31,7 @@
           "no-cache"
         ],
         "request-id": [
-          "9c6674b9-793b-4be4-9c56-b42a3d7da2c9"
+          "809f7c1e-5089-42b0-a1ec-fa666b61f644"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,19 +40,19 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "6965d86f-926f-4083-9fc3-34c1fa7cafa9"
+          "8e45c36b-74b4-4886-9d1b-fe18bcbd845f"
         ],
         "x-ms-correlation-request-id": [
-          "6965d86f-926f-4083-9fc3-34c1fa7cafa9"
+          "8e45c36b-74b4-4886-9d1b-fe18bcbd845f"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174414Z:6965d86f-926f-4083-9fc3-34c1fa7cafa9"
+          "WESTUS2:20160801T185943Z:8e45c36b-74b4-4886-9d1b-fe18bcbd845f"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:13 GMT"
+          "Mon, 01 Aug 2016 18:59:43 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -61,13 +61,13 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f917510c-2a46-485d-949a-9fd243c47aac"
+          "9dbab67c-1460-4040-a427-604837110bb3"
         ],
         "accept-language": [
           "en-US"
@@ -76,10 +76,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"packages\": [\r\n    {\r\n      \"version\": \"foo\",\r\n      \"state\": \"active\",\r\n      \"lastActivationTime\": \"2016-05-19T17:36:51.2520027Z\",\r\n      \"format\": \"zip\"\r\n    }\r\n  ],\r\n  \"allowUpdates\": true\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"packages\": [\r\n    {\r\n      \"version\": \"foo\",\r\n      \"state\": \"pending\"\r\n    }\r\n  ],\r\n  \"allowUpdates\": true\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "168"
+          "102"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -88,37 +88,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Thu, 19 May 2016 17:36:45 GMT"
+          "Mon, 01 Aug 2016 18:59:42 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "57c27d4a-a426-438f-ab88-41676b1dc0ac"
+          "244dc979-63d0-4880-810d-eb161883cb42"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14989"
         ],
         "x-ms-request-id": [
-          "7af288d4-88d0-4c2b-a8e4-002484ca1c97"
+          "f428c9d4-ada5-4d42-9a30-a47ba81bc06d"
         ],
         "x-ms-correlation-request-id": [
-          "7af288d4-88d0-4c2b-a8e4-002484ca1c97"
+          "f428c9d4-ada5-4d42-9a30-a47ba81bc06d"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174418Z:7af288d4-88d0-4c2b-a8e4-002484ca1c97"
+          "WESTUS2:20160801T185949Z:f428c9d4-ada5-4d42-9a30-a47ba81bc06d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:18 GMT"
+          "Mon, 01 Aug 2016 18:59:48 GMT"
         ],
         "ETag": [
-          "0x8D3800C264C8A66"
+          "0x8D3BA3DFF126BEB"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -127,13 +127,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "43937137-f321-4c2f-bfe4-40de7b8f5e36"
+          "6b104d2b-7a05-4d97-9e84-68ec1a51b940"
         ],
         "accept-language": [
           "en-US"
@@ -142,10 +142,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"displayName\": \"application-display-name\",\r\n  \"packages\": [\r\n    {\r\n      \"version\": \"foo\",\r\n      \"state\": \"active\",\r\n      \"lastActivationTime\": \"2016-05-19T17:44:19.467189Z\",\r\n      \"format\": \"zip\"\r\n    }\r\n  ],\r\n  \"allowUpdates\": true,\r\n  \"defaultVersion\": \"foo\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"displayName\": \"application-display-name\",\r\n  \"packages\": [\r\n    {\r\n      \"version\": \"foo\",\r\n      \"state\": \"active\",\r\n      \"lastActivationTime\": \"2016-08-01T18:59:49.6472172Z\",\r\n      \"format\": \"zip\"\r\n    }\r\n  ],\r\n  \"allowUpdates\": true,\r\n  \"defaultVersion\": \"foo\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "231"
+          "232"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -154,37 +154,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Thu, 19 May 2016 17:44:20 GMT"
+          "Mon, 01 Aug 2016 18:59:49 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "d5dda553-3fde-481f-9f24-fb07ffe0e57a"
+          "e989adc0-aed3-4dfd-8f04-83b078d93d12"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14987"
         ],
         "x-ms-request-id": [
-          "d515c5b3-6dfb-4be2-b24b-ac905e4b33c6"
+          "7856ae92-8b5c-486b-a75e-cc6f26f7f20a"
         ],
         "x-ms-correlation-request-id": [
-          "d515c5b3-6dfb-4be2-b24b-ac905e4b33c6"
+          "7856ae92-8b5c-486b-a75e-cc6f26f7f20a"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174420Z:d515c5b3-6dfb-4be2-b24b-ac905e4b33c6"
+          "WESTUS2:20160801T185950Z:7856ae92-8b5c-486b-a75e-cc6f26f7f20a"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:19 GMT"
+          "Mon, 01 Aug 2016 18:59:49 GMT"
         ],
         "ETag": [
-          "0x8D3800D34F99FAF"
+          "0x8D3BA3E032B52AA"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -193,8 +193,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo/activate?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28vYWN0aXZhdGU/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo/activate?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28vYWN0aXZhdGU/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"format\": \"zip\"\r\n}",
       "RequestHeaders": {
@@ -205,7 +205,7 @@
           "23"
         ],
         "x-ms-client-request-id": [
-          "c79903e9-04a5-4a40-97f2-d5ca25f9d89c"
+          "d9499e25-dbb1-491b-b395-cf5b4612905f"
         ],
         "accept-language": [
           "en-US"
@@ -223,13 +223,13 @@
           "-1"
         ],
         "Last-Modified": [
-          "Thu, 19 May 2016 17:44:14 GMT"
+          "Mon, 01 Aug 2016 18:59:42 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "4e41bb01-2057-4c3d-940e-013a7db3a790"
+          "4d28249a-aad3-43ba-be75-ff6fdb8d47ff"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -238,22 +238,22 @@
           "1198"
         ],
         "x-ms-request-id": [
-          "52c716fc-1d27-4e4f-8dda-d67d7fdf03d0"
+          "08aba387-765e-407e-a70e-e6f99cd0b3ae"
         ],
         "x-ms-correlation-request-id": [
-          "52c716fc-1d27-4e4f-8dda-d67d7fdf03d0"
+          "08aba387-765e-407e-a70e-e6f99cd0b3ae"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174419Z:52c716fc-1d27-4e4f-8dda-d67d7fdf03d0"
+          "WESTUS2:20160801T185949Z:08aba387-765e-407e-a70e-e6f99cd0b3ae"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:18 GMT"
+          "Mon, 01 Aug 2016 18:59:48 GMT"
         ],
         "ETag": [
-          "0x8D3800D319AF0D8"
+          "0x8D3BA3DFF07D6C2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -262,13 +262,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bcd06ae9-e692-4bda-bff9-2b77abb4f534"
+          "e40360d8-fb7e-4968-8206-ad9f88a94776"
         ],
         "accept-language": [
           "en-US"
@@ -277,10 +277,10 @@
           "Microsoft.Azure.Management.Batch.BatchManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-updateapplicationp-c8ab891134526756161acdd8565c03773460c3b0/updateapplicationpackage-foo-4a437bb1-fc19-4e4c-aabe-15c18f037193?sv=2014-02-14&sr=b&sig=gRO3dYVriwCD%2Bf7z%2BpA81wzhVWpq7bI9UPcWlrayys8%3D&st=2016-05-19T17%3A39%3A20Z&se=2016-05-19T21%3A44%3A20Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-05-19T21:44:20.2100008Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-05-19T17:44:19.467189Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"updateApplicationPackage\",\r\n  \"version\": \"foo\",\r\n  \"storageUrl\": \"https://pstestaccount.blob.core.windows.net/app-updateapplicationp-c8ab891134526756161acdd8565c03773460c3b0/updateapplicationpackage-foo-5e4c3d12-52b2-4cd6-920b-09c4132709ff?sv=2014-02-14&sr=b&sig=B3RudXYZgRhsi5WZxT6rJCrByJhsem84SKhCE1nmMSo%3D&st=2016-08-01T18%3A54%3A47Z&se=2016-08-01T22%3A59%3A47Z&sp=rw\",\r\n  \"storageUrlExpiry\": \"2016-08-01T22:59:47.9677035Z\",\r\n  \"state\": \"active\",\r\n  \"format\": \"zip\",\r\n  \"lastActivationTime\": \"2016-08-01T18:59:49.6472172Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "507"
+          "504"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -289,37 +289,37 @@
           "-1"
         ],
         "Last-Modified": [
-          "Thu, 19 May 2016 17:44:19 GMT"
+          "Mon, 01 Aug 2016 18:59:48 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "3972bc70-c661-4354-800f-9731bf2943a7"
+          "9f24b194-5ee5-4313-9cd7-54a6dc7ca149"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14988"
         ],
         "x-ms-request-id": [
-          "3280cede-fa3b-4167-bb02-062740a7fcf0"
+          "3eb6f414-3f76-4220-8785-d13ccc0f68f7"
         ],
         "x-ms-correlation-request-id": [
-          "3280cede-fa3b-4167-bb02-062740a7fcf0"
+          "3eb6f414-3f76-4220-8785-d13ccc0f68f7"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174419Z:3280cede-fa3b-4167-bb02-062740a7fcf0"
+          "WESTUS2:20160801T185950Z:3eb6f414-3f76-4220-8785-d13ccc0f68f7"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:18 GMT"
+          "Mon, 01 Aug 2016 18:59:49 GMT"
         ],
         "ETag": [
-          "0x8D3800D347112B7"
+          "0x8D3BA3E02BF09AA"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -328,8 +328,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
       "RequestMethod": "PATCH",
       "RequestBody": "{\r\n  \"defaultVersion\": \"foo\",\r\n  \"displayName\": \"application-display-name\"\r\n}",
       "RequestHeaders": {
@@ -340,7 +340,7 @@
           "77"
         ],
         "x-ms-client-request-id": [
-          "69db8f48-ab64-412c-ab36-f8bf6ad78ceb"
+          "a0f9bd6a-23a1-4338-b190-24147a373cd2"
         ],
         "accept-language": [
           "en-US"
@@ -358,13 +358,13 @@
           "-1"
         ],
         "Last-Modified": [
-          "Thu, 19 May 2016 17:36:45 GMT"
+          "Mon, 01 Aug 2016 18:59:42 GMT"
         ],
         "Pragma": [
           "no-cache"
         ],
         "request-id": [
-          "8e948ebf-b0fb-4f0f-a379-f1d634e0e0fc"
+          "9916988d-7380-46eb-8ae5-9eeff8aa4fa5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -373,22 +373,22 @@
           "1197"
         ],
         "x-ms-request-id": [
-          "e2c26956-356b-4e91-97c1-29a1349dbc09"
+          "b0a30a57-5b65-4320-9494-3dc87e858442"
         ],
         "x-ms-correlation-request-id": [
-          "e2c26956-356b-4e91-97c1-29a1349dbc09"
+          "b0a30a57-5b65-4320-9494-3dc87e858442"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174420Z:e2c26956-356b-4e91-97c1-29a1349dbc09"
+          "WESTUS2:20160801T185950Z:b0a30a57-5b65-4320-9494-3dc87e858442"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:19 GMT"
+          "Mon, 01 Aug 2016 18:59:49 GMT"
         ],
         "ETag": [
-          "0x8D3800C264C8A66"
+          "0x8D3BA3DFF126BEB"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -397,13 +397,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage/versions/foo?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZS92ZXJzaW9ucy9mb28/YXBpLXZlcnNpb249MjAxNS0xMi0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "bda51a7d-b3e9-4130-9203-80b2e1fa7ae7"
+          "afb1e36d-d1eb-4d3f-8353-f63a973d5fe2"
         ],
         "accept-language": [
           "en-US"
@@ -424,7 +424,7 @@
           "no-cache"
         ],
         "request-id": [
-          "82c36bde-0070-4f5f-a2af-d265ccca237e"
+          "8a7ca3b7-7fe1-47ac-b2c2-e36976b1bd48"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -433,19 +433,19 @@
           "1196"
         ],
         "x-ms-request-id": [
-          "834cf877-8a6b-43c9-a35f-a8ec16396ed4"
+          "f64634b6-22f6-4966-b689-f516c5a3c147"
         ],
         "x-ms-correlation-request-id": [
-          "834cf877-8a6b-43c9-a35f-a8ec16396ed4"
+          "f64634b6-22f6-4966-b689-f516c5a3c147"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174421Z:834cf877-8a6b-43c9-a35f-a8ec16396ed4"
+          "WESTUS2:20160801T185951Z:f64634b6-22f6-4966-b689-f516c5a3c147"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:20 GMT"
+          "Mon, 01 Aug 2016 18:59:50 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -454,13 +454,13 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/accountmgmtsamplegroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL2FjY291bnRtZ210c2FtcGxlZ3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
+      "RequestUri": "/subscriptions/46241355-bb95-46a9-ba6c-42b554d71925/resourceGroups/AccountMgmtSampleGroup/providers/Microsoft.Batch/batchAccounts/pstestaccount/applications/updateApplicationPackage?api-version=2015-12-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDYyNDEzNTUtYmI5NS00NmE5LWJhNmMtNDJiNTU0ZDcxOTI1L3Jlc291cmNlR3JvdXBzL0FjY291bnRNZ210U2FtcGxlR3JvdXAvcHJvdmlkZXJzL01pY3Jvc29mdC5CYXRjaC9iYXRjaEFjY291bnRzL3BzdGVzdGFjY291bnQvYXBwbGljYXRpb25zL3VwZGF0ZUFwcGxpY2F0aW9uUGFja2FnZT9hcGktdmVyc2lvbj0yMDE1LTEyLTAx",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "73971b5d-5105-443a-be83-e9974abdfedf"
+          "3453160b-17ab-4693-9514-9f191cd1510a"
         ],
         "accept-language": [
           "en-US"
@@ -481,7 +481,7 @@
           "no-cache"
         ],
         "request-id": [
-          "f2446956-fead-4ab2-b394-ccfb584b2dfd"
+          "0a4b1986-ab86-4501-9da3-c02122616fa6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -490,19 +490,19 @@
           "1195"
         ],
         "x-ms-request-id": [
-          "c88895c5-0690-4949-b046-f346f68e4d2c"
+          "a0217bb5-a43f-4d19-b808-fe2574ec4189"
         ],
         "x-ms-correlation-request-id": [
-          "c88895c5-0690-4949-b046-f346f68e4d2c"
+          "a0217bb5-a43f-4d19-b808-fe2574ec4189"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20160519T174421Z:c88895c5-0690-4949-b046-f346f68e4d2c"
+          "WESTUS2:20160801T185951Z:a0217bb5-a43f-4d19-b808-fe2574ec4189"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 19 May 2016 17:44:21 GMT"
+          "Mon, 01 Aug 2016 18:59:50 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -516,6 +516,6 @@
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
     "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
+    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
   }
 }

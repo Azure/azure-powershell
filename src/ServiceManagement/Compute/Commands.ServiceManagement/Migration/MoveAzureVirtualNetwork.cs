@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Management.Network;
-using Microsoft.WindowsAzure.Management.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
@@ -24,57 +22,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     /// <summary>
     /// Migrate ASM virtual network to ARM
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork"), OutputType(typeof(OperationStatusResponse))]
-    public class MoveVirtualNetworkCommand : ServiceManagementBaseCmdlet
+    [Cmdlet(VerbsCommon.Move, "AzureVirtualNetwork", SupportsShouldProcess = true), OutputType(typeof(OperationStatusResponse))]
+    public class MoveVirtualNetworkCommand : MoveAzureNetworkResourceBase
     {
-        private const string ValidateParameterSetName = "ValidateMigrationParameterSet";
-        private const string AbortParameterSetName = "AbortMigrationParameterSet";
-        private const string CommitParameterSetName = "CommitMigrationParameterSet";
-        private const string PrepareParameterSetName = "PrepareMigrationParameterSet";
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = ValidateParameterSetName,
-            HelpMessage = "Validate migration")]
-        public SwitchParameter Validate
-        {
-            get;
-            set;
-        }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = AbortParameterSetName,
-            HelpMessage = "Abort migration")]
-        public SwitchParameter Abort
-        {
-            get;
-            set;
-        }
-
-        [Parameter(Position = 0,
-            Mandatory = true,
-            ParameterSetName = CommitParameterSetName,
-            HelpMessage = "Commit migration")]
-        public SwitchParameter Commit
-        {
-            get;
-            set;
-        }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = PrepareParameterSetName,
-            HelpMessage = "Prepare migration")]
-        public SwitchParameter Prepare
-        {
-            get;
-            set;
-        }
-
         [Parameter(
             Position = 1,
             Mandatory = true,
@@ -99,67 +49,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
                 () => this.NetworkClient.Networks.ValidateMigration(this.VirtualNetworkName),
                 (operation, service) =>
                 {
-                    var context = ConvertToContext(operation, service);
+                    var context = MigrationValidateContextHelper.ConvertToContext(operation, service);
                     return context;
                 });
             }
             else if (this.Abort.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Abort", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Abort", this.VirtualNetworkName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.AbortMigration(this.VirtualNetworkName));
+                }
             }
             else if (this.Commit.IsPresent)
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Commit", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Commit", this.VirtualNetworkName)))
+                {
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.CommitMigration(this.VirtualNetworkName));
+                }
             }
             else
             {
-                ExecuteClientActionNewSM(
-                null,
-                CommandRuntime.ToString(),
-                () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
-            }
-        }
-
-        private MigrationValidateContext ConvertToContext(
-           OperationStatusResponse operationResponse, XrpMigrationValidateVirtualNetworkResponse validationResponse)
-        {
-            if (operationResponse == null) return null;
-
-            var result = new MigrationValidateContext
-            {
-                OperationId = operationResponse.Id,
-                Result = operationResponse.Status.ToString()
-            };
-
-            if (validationResponse == null || validationResponse.ValidateVirtualNetworkMessages == null) return result;
-
-            var errorCount = validationResponse.ValidateVirtualNetworkMessages.Count;
-
-            if (errorCount > 0)
-            {
-                result.ValidationMessages = new ValidationMessage[errorCount];
-
-                for (int i = 0; i < errorCount; i++)
+                if (this.ShouldProcess(string.Format(Resources.MigrateResourceShoudlProcessAction, "Prepare", this.VirtualNetworkName), string.Format(Resources.MigrateResourceShoudlProcessTarget, "Prepare", this.VirtualNetworkName)))
                 {
-                    result.ValidationMessages[i] = new ValidationMessage
-                    {
-                        ResourceName = validationResponse.ValidateVirtualNetworkMessages[i].ResourceName,
-                        ResourceType = validationResponse.ValidateVirtualNetworkMessages[i].ResourceType,
-                        Category = validationResponse.ValidateVirtualNetworkMessages[i].Category,
-                        Message = validationResponse.ValidateVirtualNetworkMessages[i].Message,
-                        VirtualMachineName = validationResponse.ValidateVirtualNetworkMessages[i].VirtualMachineName
-                    };
+                    ExecuteClientActionNewSM(
+                    null,
+                    CommandRuntime.ToString(),
+                    () => this.NetworkClient.Networks.PrepareMigration(this.VirtualNetworkName));
                 }
-                result.Result = "Validation failed.  Please see ValidationMessages for details";
             }
-
-            return result;
         }
     }
 }
