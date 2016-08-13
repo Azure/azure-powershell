@@ -22,7 +22,8 @@ This proposed policy is meant to apply to all stable Azure modules, starting wit
 
 ##  Preview Modules
 
-The breaking change policy should not prevent providing cmdlet support for non-GA services or experimenting with new cmndlets for existing services.  To satisfy these two needs, Azure PowerShell will begin supportign Preview modules in the October release.
+The breaking change policy should not prevent providing cmdlet support for non-GA services or experimenting with new cmdlets for existing services.  To satisfy these two needs, Azure PowerShell will begin supporting Preview modules in the October release.
+
 - Preview modules use the suffix Preview in their module name, as in 'AzureRM.Compute.Preview' 
 - Preview modules will not be included in the AzureRM module in the PowerShell Gallery, or in the released PowerShell MSI.
 - A new roll-up module, AzureRM.Preview will reference the existing set of preview modules, allowing uses to download all of them at once.
