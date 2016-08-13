@@ -7,9 +7,9 @@ a showstopper bug requiring a hotfix**.
 
 This proposed policy is meant to apply to all Azure modules, starting with the 2.0 release. Details of the policy are as follows.
 - Each module in Azure PowerShell is versioned using [semantic versioning](http://semver.org).
-- Non-breaking changes and associated version updates are handled independently by module owners.  [Breaking changes](#Breaking-Change-Definition) are scheduled for once a year and coordinated with the Azure SDK Team.
+- Non-breaking changes and associated version updates are handled independently by module owners.  [Breaking changes](#breaking-change-definition) are scheduled for once a year and coordinated with the Azure SDK Team.
 - Each breaking change release will be preceded by 3-months notice of the break to customers.  The SDK Team will coordinate the notice of breaking changes.
-- It is the responsibility of the service teams to introduce no breaking changes in their cmdlet external interfaces.  A definition of breaking changes is provided [here](#Breaking-Change-Definition).  It is the responsibility of the SDK Team to introduce no breaking changes in SDK cmdlets, and in the public types in common code used as parameters or returned by cmdlets.
+- It is the responsibility of the service teams to introduce no breaking changes in their cmdlet external interfaces.  A definition of breaking changes is provided [here](#breaking-change-definition).  It is the responsibility of the SDK Team to introduce no breaking changes in SDK cmdlets, and in the public types in common code used as parameters or returned by cmdlets.
   - The SDK Team will provide tools in the October release to automatically detect and prevent breaking changes
   - Until breaking change detection tools are available, the feature teams and SDK team will use code reviews to prevent breaking changes
 - In the event that a breaking change is released outside of a planned breaking change release, the cmdlet owner must coordinate with the SDK team to create a hotfix that mitigates the impact of the breaking changes on existing scripts.
