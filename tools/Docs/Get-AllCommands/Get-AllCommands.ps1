@@ -693,6 +693,6 @@ Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\sr
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\AzureRM\AzureRM.psd1"
 
 $modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1", "AzureRM.Tags.psd1") | sort -Unique -Property Name
-$modules += (Get-Item ""..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1")
+$modules += (Get-Item "..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1")
 $modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
 
