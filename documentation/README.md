@@ -1,6 +1,7 @@
 # Microsoft Azure PowerShell Documentation
 
 * [Cmdlet design guidelines](./design.md)
+* [Breaking changes and Versioning](./changes.md)
 * Required Features For Resource Providers (RPs)
 * How to Write Cmdlets and Tests
 * How to contribute
