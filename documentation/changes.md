@@ -5,7 +5,7 @@ Customers and MVPs have told us many times in emphatic terms that breaking chang
 **To address customer concerns, Azure PowerShell is committing to limit breaking changes to one release per year and to treat any unplanned breaking change that ships as 
 a showstopper bug requiring a hotfix**.
 
-At the same time, we are introducing a new mechanism for Pre-release AzureRM modules.  This is detailed in the section [here](#preview-modules).
+At the same time, we are introducing a new mechanism for [Pre-release AzureRM modules](#preview-modules).  This is detailed in the section [here](#preview-modules).
 
 This proposed policy is meant to apply to all stable Azure modules, starting with the 2.0 release. Details of the policy are as follows.
 - Each module in Azure PowerShell is versioned using [semantic versioning](http://semver.org).
