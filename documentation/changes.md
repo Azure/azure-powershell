@@ -5,7 +5,9 @@ Customers and MVPs have told us many times in emphatic terms that breaking chang
 **To address customer concerns, Azure PowerShell is committing to limit breaking changes to one release per year and to treat any unplanned breaking change that ships as 
 a showstopper bug requiring a hotfix**.
 
-This proposed policy is meant to apply to all Azure modules, starting with the 2.0 release. Details of the policy are as follows.
+At the same time, we are introducing a new mechanism for Pre-release AzureRM modules.  This is detailed in the section [here](#preview-modules).
+
+This proposed policy is meant to apply to all stable Azure modules, starting with the 2.0 release. Details of the policy are as follows.
 - Each module in Azure PowerShell is versioned using [semantic versioning](http://semver.org).
 - Non-breaking changes and associated version updates are handled independently by module owners.  [Breaking changes](#breaking-change-definition) are scheduled for once a year and coordinated with the Azure SDK Team.
 - Each breaking change release will be preceded by 3-months notice of the break to customers.  The SDK Team will coordinate the notice of breaking changes.
@@ -17,6 +19,16 @@ This proposed policy is meant to apply to all Azure modules, starting with the 2
   - Service Teams must provide a list of breaking changes and the migration guide at the start of the sprint containing the breaking changes
   - The SDK Team will coordinate the breaking change documentation and assemble a migration guide from the feature team submissions
   - A sample migration guide for the 2.0 release is provided [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/release-notes/migration-guide.2.0.0.md)
+
+##  Preview Modules
+
+The breaking change policy should not prevent providing cmdlet support for non-GA services or experimenting with new cmndlets for existing services.  To satisfy these two needs, Azure PowerShell will begin supportign Preview modules in the October release.
+- Preview modules use the suffix Preview in their module name, as in 'AzureRM.Compute.Preview' 
+- Preview modules will not be included in the AzureRM module in the PowerShell Gallery, or in the released PowerShell MSI.
+- A new roll-up module, AzureRM.Preview will reference the existing set of preview modules, allowing uses to download all of them at once.
+- Non-GA services will automatically begin as Preview modules. However, a full set of non-preview cmdlets must be available in the PowerShell Gallery and PowerShell msi within 3 months of service GA.
+- GA Services may *also* have a preview module to use when experimenting with new cmdlets
+- Preview modules will *not* use semantic versioning
 
 ## Breaking Change Definition
 
