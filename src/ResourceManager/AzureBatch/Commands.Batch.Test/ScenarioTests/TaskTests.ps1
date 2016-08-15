@@ -85,13 +85,49 @@ function Test-CreateTask
     }
     Assert-AreEqual $numInstances $task2.MultiInstanceSettings.NumberOfInstances
     Assert-AreEqual $coordinationCommandLine $task2.MultiInstanceSettings.CoordinationCommandLine
-    
+
 	Assert-AreEqual $ApplicationId $task2.ApplicationPackageReferences[0].ApplicationId
     Assert-AreEqual $Version $task2.ApplicationPackageReferences[0].Version
-    
+
     Assert-AreEqual $commonResourceBlob $task2.MultiInstanceSettings.CommonResourceFiles[0].BlobSource
     Assert-AreEqual $commonResourceFile $task2.MultiInstanceSettings.CommonResourceFiles[0].FilePath
 }
+
+<#
+.SYNOPSIS
+Tests creating a Task
+#>
+function Test-CreateTaskWithApplicationPackages
+{
+    param([string]$jobId)
+
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+
+    $taskId2 = "complex"
+    $cmd = "cmd /c dir /s"
+
+    Get-AzureBatchJob -Id $jobId -BatchContext $context
+    # Verify created task matches expectations
+	$ApplicationId = "test"
+    $Version = "beta"
+
+	$apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
+    $apr1.ApplicationId = $ApplicationId
+    $apr1.Version = $Version
+	$ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
+    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -ApplicationPackageReferences $ApplicationPackageReferences -BatchContext $context
+
+    $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
+
+    # Verify created task matches expectations
+    Assert-AreEqual $taskId2 $task2.Id
+    Assert-AreEqual $cmd $task2.CommandLine
+
+	Assert-AreEqual $ApplicationId $task2.ApplicationPackageReferences[0].ApplicationId
+    Assert-AreEqual $Version $task2.ApplicationPackageReferences[0].Version
+
+}
+
 <#
 .SYNOPSIS
 Tests creating a collection of tasks

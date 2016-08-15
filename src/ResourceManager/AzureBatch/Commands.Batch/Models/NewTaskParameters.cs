@@ -85,6 +85,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// A list of application packages that the Batch service will deploy to the compute node before running the command line.
         /// </summary>
-        public IList<ApplicationPackageReference> ApplicationPackageReference { get; set; }
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
     }
 }

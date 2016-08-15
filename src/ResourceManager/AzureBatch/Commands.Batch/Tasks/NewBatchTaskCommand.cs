@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
         [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
         [ValidateNotNullOrEmpty]
-        public IList<ApplicationPackageReference> ApplicationPackageReference { get; set; }
-        
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
         [Parameter(ParameterSetName = JobObjectAndBulkAddParameterSet,
             HelpMessage = "The collection of tasks to add to a job.")]
         [Parameter(ParameterSetName = JobIdAndBulkAddParameterSet,
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Batch
                     Constraints = this.Constraints,
                     MultiInstanceSettings = this.MultiInstanceSettings,
                     DependsOn = this.DependsOn,
-                    ApplicationPackageReference = this.ApplicationPackageReference,
+                    ApplicationPackageReferences = this.ApplicationPackageReferences,
                 };
 
                 BatchClient.CreateTask(parameters);

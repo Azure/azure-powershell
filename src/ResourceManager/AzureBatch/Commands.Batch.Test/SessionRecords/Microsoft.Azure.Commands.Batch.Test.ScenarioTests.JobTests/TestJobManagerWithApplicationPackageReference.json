@@ -1,0 +1,167 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/jobs?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"id\": \"JobManagerWithApplicationPackageReference\",\r\n  \"priority\": 0,\r\n  \"jobManagerTask\": {\r\n    \"id\": \"jobManager\",\r\n    \"commandLine\": \"cmd /c dir /s\",\r\n    \"applicationPackageReferences\": [\r\n      {\r\n        \"applicationId\": \"foo\",\r\n        \"version\": \"beta\"\r\n      }\r\n    ]\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"usesTaskDependencies\": false\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "373"
+        ],
+        "client-request-id": [
+          "c0f80bb3-de82-4b95-9d1e-33e9c1452490"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 15 Aug 2016 03:18:04 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Last-Modified": [
+          "Mon, 15 Aug 2016 03:18:05 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "0af093eb-094e-4285-9df8-8c95717558b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "DataServiceId": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/job-1"
+        ],
+        "Date": [
+          "Mon, 15 Aug 2016 03:18:06 GMT"
+        ],
+        "ETag": [
+          "0x8D3C4BAC60B6198"
+        ],
+        "Location": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/job-1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/jobs/JobManagerWithApplicationPackageReference?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iTWFuYWdlcldpdGhBcHBsaWNhdGlvblBhY2thZ2VSZWZlcmVuY2U/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "ebb2ea58-8c24-42a1-935c-e3959147fe7f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 15 Aug 2016 03:18:05 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobManagerWithApplicationPackageReference\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobManagerWithApplicationPackageReference\",\r\n  \"eTag\": \"0x8D3C4BAC60B6198\",\r\n  \"lastModified\": \"2016-08-15T03:18:05.4967704Z\",\r\n  \"creationTime\": \"2016-08-15T03:18:05.4487712Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-15T03:18:05.4967704Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"jobManagerTask\": {\r\n    \"id\": \"jobManager\",\r\n    \"commandLine\": \"cmd /c dir /s\",\r\n    \"applicationPackageReferences\": [\r\n      {\r\n        \"applicationId\": \"foo\",\r\n        \"version\": \"beta\"\r\n      }\r\n    ],\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"runElevated\": false,\r\n    \"runExclusive\": true,\r\n    \"killJobOnCompletion\": true\r\n  },\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-15T03:18:05.4967704Z\",\r\n    \"poolId\": \"testPool\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"noaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 15 Aug 2016 03:18:05 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "25c1ec3a-dbbd-49a8-a9ce-408a6baca639"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 15 Aug 2016 03:18:07 GMT"
+        ],
+        "ETag": [
+          "0x8D3C4BAC60B6198"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobManagerWithApplicationPackageReference?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iTWFuYWdlcldpdGhBcHBsaWNhdGlvblBhY2thZ2VSZWZlcmVuY2U/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "2327cbed-b516-49f6-9930-da7e834c4681"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 15 Aug 2016 03:18:06 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "ff2cd598-bf71-4ed6-9e82-b5842b6630ef"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 15 Aug 2016 03:18:07 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
+    "AZURE_BATCH_ACCOUNT": "pstestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
+  }
+}
