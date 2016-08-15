@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The relative record set name &quot;{0}&quot; includes the zone name &quot;{1}&quot;. This will result in the set name &quot;{0}.{1}&quot;..
+        /// </summary>
+        internal static string Error_RecordSetNameEndsWithZoneName {
+            get {
+                return ResourceManager.GetString("Error_RecordSetNameEndsWithZoneName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot remove a record of type {0} from a record set of type {1}. The types must match..
         /// </summary>
         internal static string Error_RemoveRecordTypeMismatch {
