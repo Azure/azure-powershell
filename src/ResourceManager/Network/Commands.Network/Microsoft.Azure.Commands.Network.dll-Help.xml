@@ -25648,13 +25648,7 @@ PublicIpAddress           : {
                             }
 InboundNatRules           : null
 LoadBalancingRules        : null
-<<<<<<< HEAD
-InboundNatPools           : null
-</maml:para>
-
-=======
 InboundNatPools           : null</maml:para>
->>>>>>> upstream/dev
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
