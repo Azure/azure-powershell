@@ -1038,3 +1038,28 @@ function Test-RecordSetGetWithEndsWith
 
 	$zone | Remove-AzureRmDnsZone -Force -Overwrite
 }
+
+<#
+.SYNOPSIS
+Record Set Name incorrectly entered includes Zone Name
+#>
+function Test-RecordSetEndsWithZoneName
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = (getAssetname) + "." + $zoneName
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$zone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
+
+	$warning = $env:TEMP + "\warning.txt"
+	$message = [System.String]::Format("The relative record set name `"{0}`" includes the zone name `"{1}`". This will result in the set name `"{0}.{1}`".", $recordName, $zoneName);
+	(New-AzureRmDnsRecordSet -Name $recordName -RecordType A -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Ttl 100) 3> $warning
+
+	if(Test-Path $warning){
+		$warningCombined = (Get-Content $warning)[0] + (Get-Content $warning)[1]
+		Assert-AreEqual $warningCombined $message
+		Remove-Item $warning
+	}
+	Remove-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A -PassThru -Force
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+
+}
