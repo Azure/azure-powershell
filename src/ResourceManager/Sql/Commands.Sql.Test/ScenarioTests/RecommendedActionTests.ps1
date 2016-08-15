@@ -12,6 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+# ============================================================
+# A NOTE ON (LACK OF) TEST SETUP FOR RECOMMENDED ACTIONS TESTS
+# ============================================================
+# Recommended actions are generated based on database workload and new database won't get any recommended actions.
+# It's hard to generate mock recommendations on a new server, database or elastic pool from this code as well, as the process is Microsoft Internal.
+# For now, Tests have to use recorded responses on some specific database that already has recommended actions.
+
 <#
 	.SYNOPSIS
 	Tests listing Server recommended actions
