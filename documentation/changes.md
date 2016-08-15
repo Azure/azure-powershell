@@ -19,6 +19,7 @@ This proposed policy is meant to apply to all stable Azure modules, starting wit
   - Service Teams must provide a list of breaking changes and the migration guide at the start of the sprint containing the breaking changes
   - The SDK Team will coordinate the breaking change documentation and assemble a migration guide from the feature team submissions
   - A sample migration guide for the 2.0 release is provided [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/release-notes/migration-guide.2.0.0.md)
+  - The breaking change list and migration guide will be distributed to customers in the github release, in an azure.com blog post, and in powershell help topics
 
 ##  Preview Modules
 
