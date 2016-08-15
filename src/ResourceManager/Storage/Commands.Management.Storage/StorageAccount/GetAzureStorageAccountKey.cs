@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKey))]
+    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
     public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                  this.ResourceGroupName,
                  this.Name).Keys;
 
-            WriteObject(storageKeys);
+            StorageAccountKeys returnValue = new StorageAccountKeys(storageKeys);
+
+            WriteObject(returnValue);
         }
     }
 }
