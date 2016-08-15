@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network")]
-        public SwitchParameter AlloowGatewayTransit { get; set; }
+        public SwitchParameter AllowGatewayTransit { get; set; }
 
         [Parameter(
             Mandatory = false,
