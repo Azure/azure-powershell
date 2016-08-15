@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new auto-execute status of Azure SQL Server Advisor.")]
         [ValidateNotNullOrEmpty]
-        public string AutoExecuteStatus { get; set; }
+        public AdvisorAutoExecuteStatusValues AutoExecuteStatus { get; set; }
 
         /// <summary>
         /// Gets entities from the service.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 AdvisorName = AdvisorName,
-                AutoExecuteStatus = AutoExecuteStatus
+                AutoExecuteStatus = AutoExecuteStatus.ToString()
             });
 
             return newEntity;

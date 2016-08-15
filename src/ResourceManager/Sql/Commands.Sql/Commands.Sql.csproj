@@ -51,12 +51,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatusValues.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlDatabaseRecommendedActions.cs" />
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlElasticPoolRecommendedActions.cs" />
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlServerRecommendedActions.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\RecommendedActionStateValues.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlDatabaseRecommendedActionState.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlElasticPoolRecommendedActionState.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlServerRecommendedActionState.cs" />
@@ -354,7 +356,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.49.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>G:\GitHub2\azure-powershell\src\packages\Microsoft.Azure.Management.Sql.0.49.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

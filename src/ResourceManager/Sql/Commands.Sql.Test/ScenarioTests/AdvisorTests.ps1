@@ -18,13 +18,25 @@
 #>
 function Test-ListServerAdvisors
 {
-	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	foreach($advisor in $response)
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = SetupServer $rg
+
+	try
 	{
-		ValidateServer $advisor
-		ValidateAdvisorProperties $advisor
+		$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateServer $advisor $server
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -34,14 +46,25 @@ function Test-ListServerAdvisors
 #>
 function Test-ListServerAdvisorsExpanded
 {
-	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ExpandRecommendedActions
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	$response > output.txt
-	foreach($advisor in $response)
+		# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = SetupServer $rg
+
+	try
 	{
-		ValidateServer $advisor
-		ValidateAdvisorProperties $advisor true
+		$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -ExpandRecommendedActions
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateServer $advisor $server
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -51,10 +74,22 @@ function Test-ListServerAdvisorsExpanded
 #>
 function Test-GetServerAdvisor
 {
-	$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex
-	Assert-NotNull $response
-	ValidateServer $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = SetupServer $rg
+
+	try
+	{
+		$response = Get-AzureRmSqlServerAdvisor -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -AdvisorName CreateIndex
+		Assert-NotNull $response
+		ValidateServer $response $server
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -63,10 +98,22 @@ function Test-GetServerAdvisor
 #>
 function Test-UpdateServerAdvisor
 {
-	$response = Set-AzureRmSqlServerAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex -AutoExecuteStatus Disabled
-	Assert-NotNull $response
-	ValidateServer $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$server = SetupServer $rg
+
+	try
+	{
+		$response = Set-AzureRmSqlServerAdvisorAutoExecuteStatus -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -AdvisorName CreateIndex -AutoExecuteStatus Disabled
+		Assert-NotNull $response
+		ValidateServer $response $server
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -75,13 +122,25 @@ function Test-UpdateServerAdvisor
 #>
 function Test-ListDatabaseAdvisors
 {
-	$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner 
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	foreach($advisor in $response)
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$db = SetupDatabase $rg
+
+	try
 	{
-		ValidateDatabase $advisor
-		ValidateAdvisorProperties $advisor
+		$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName 
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateDatabase $advisor $db
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -91,14 +150,25 @@ function Test-ListDatabaseAdvisors
 #>
 function Test-ListDatabaseAdvisorsExpanded
 {
-	$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -ExpandRecommendedActions
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	$response > output.txt
-	foreach($advisor in $response)
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$db = SetupDatabase $rg
+
+	try
 	{
-		ValidateDatabase $advisor
-		ValidateAdvisorProperties $advisor true
+		$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -ExpandRecommendedActions
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateDatabase $advisor $db
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -108,10 +178,22 @@ function Test-ListDatabaseAdvisorsExpanded
 #>
 function Test-GetDatabaseAdvisor
 {
-	$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex
-	Assert-NotNull $response
-	ValidateDatabase $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$db = SetupDatabase $rg
+
+	try
+	{
+		$response = Get-AzureRmSqlDatabaseAdvisor -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AdvisorName CreateIndex
+		Assert-NotNull $response
+		ValidateDatabase $response $db
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -120,10 +202,22 @@ function Test-GetDatabaseAdvisor
 #>
 function Test-UpdateDatabaseAdvisor
 {
-	$response = Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex -AutoExecuteStatus Disabled
-	Assert-NotNull $response
-	ValidateDatabase $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$db = SetupDatabase $rg
+
+	try
+	{
+		$response = Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -AdvisorName CreateIndex -AutoExecuteStatus Disabled
+		Assert-NotNull $response
+		ValidateDatabase $response $db
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
 }
 <#
 	.SYNOPSIS
@@ -131,13 +225,25 @@ function Test-UpdateDatabaseAdvisor
 #>
 function Test-ListElasticPoolAdvisors
 {
-	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	foreach($advisor in $response)
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$ep = SetupElasticPool $rg
+
+	try
 	{
-		ValidateElasticPool $advisor
-		ValidateAdvisorProperties $advisor
+		$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName $ep.ResourceGroupName -ServerName $ep.ServerName -ElasticPoolName $ep.ElasticPoolName
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateElasticPool $advisor $ep
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -147,14 +253,25 @@ function Test-ListElasticPoolAdvisors
 #>
 function Test-ListElasticPoolAdvisorsExpanded
 {
-	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -ExpandRecommendedActions
-	Assert-NotNull $response
-	Assert-AreEqual $response.Count 4
-	$response > output.txt
-	foreach($advisor in $response)
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$ep = SetupElasticPool $rg
+
+	try
 	{
-		ValidateElasticPool $advisor
-		ValidateAdvisorProperties $advisor true
+		$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName $ep.ResourceGroupName -ServerName $ep.ServerName -ElasticPoolName $ep.ElasticPoolName -ExpandRecommendedActions
+		Assert-NotNull $response
+		Assert-AreEqual 4 $response.Count
+		foreach($advisor in $response)
+		{
+			ValidateElasticPool $advisor $ep
+			ValidateAdvisorProperties $advisor
+		}
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
 	}
 }
 
@@ -164,10 +281,22 @@ function Test-ListElasticPoolAdvisorsExpanded
 #>
 function Test-GetElasticPoolAdvisor
 {
-	$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex
-	Assert-NotNull $response
-	ValidateElasticPool $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$ep = SetupElasticPool $rg
+
+	try
+	{
+		$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName $ep.ResourceGroupName -ServerName $ep.ServerName -ElasticPoolName $ep.ElasticPoolName -AdvisorName CreateIndex
+		Assert-NotNull $response
+		ValidateElasticPool $response $ep
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -176,94 +305,101 @@ function Test-GetElasticPoolAdvisor
 #>
 function Test-UpdateElasticPoolAdvisor
 {
-	$response = Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex -AutoExecuteStatus Disabled
-	Assert-NotNull $response
-	ValidateElasticPool $response
-	ValidateAdvisorProperties $response
+	# Setup
+	$rg = Create-ResourceGroupForTest
+	$ep = SetupElasticPool $rg
+
+	try
+	{
+		$response = Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus -ResourceGroupName $ep.ResourceGroupName -ServerName $ep.ServerName -ElasticPoolName $ep.ElasticPoolName -AdvisorName CreateIndex -AutoExecuteStatus Disabled
+		#$response = Get-AzureRmSqlElasticPoolAdvisor -ResourceGroupName $ep.ResourceGroupName -ServerName $ep.ServerName -ElasticPoolName $ep.ElasticPoolName -AdvisorName CreateIndex
+		Assert-NotNull $response
+		ValidateElasticPool $response $ep
+		ValidateAdvisorProperties $response
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Setup Server for tests
+#>
+function SetupServer($resourceGroup)
+{
+	$location = "Southeast Asia"
+	$serverVersion = "12.0";
+	$server = Create-ServerForTest $resourceGroup $serverVersion $location
+	return $server
+}
+
+<#
+	.SYNOPSIS
+	Setup Database for tests
+#>
+function SetupDatabase($resourceGroup)
+{
+	$server = SetupServer $resourceGroup
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition Basic
+	return $db
+}
+
+<#
+	.SYNOPSIS
+	Setup Elastic pool for tests
+#>
+function SetupElasticPool($resourceGroup)
+{
+	$server = SetupServer $resourceGroup
+	$poolName = Get-ElasticPoolName
+	$ep = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $server.ResourceGroupName -ElasticPoolName $poolName -Edition Basic
+	return $ep
 }
 
 <#
 	.SYNOPSIS
 	Validates server resource in Advisor response
 #>
-function ValidateServer($advisor)
+function ValidateServer($responseAdvisor, $expectedServer)
 {
-	Assert-AreEqual $advisor.ResourceGroupName "WIRunnersProd"
-	Assert-AreEqual $advisor.ServerName "wi-runner-australia-east"
+	Assert-AreEqual $responseAdvisor.ResourceGroupName $expectedServer.ResourceGroupName
+	Assert-AreEqual $responseAdvisor.ServerName $expectedServer.ServerName
 }
 
 <#
 	.SYNOPSIS
 	Validates database resource in Advisor response
 #>
-function ValidateDatabase($advisor)
+function ValidateDatabase($responseAdvisor, $expectedDatabase)
 {
-	ValidateServer $advisor
-	Assert-AreEqual $advisor.DatabaseName "WIRunner"
+	Assert-AreEqual $responseAdvisor.ResourceGroupName $expectedDatabase.ResourceGroupName
+	Assert-AreEqual $responseAdvisor.ServerName $expectedDatabase.ServerName
+	Assert-AreEqual $responseAdvisor.DatabaseName $expectedDatabase.DatabaseName
 }
 
 <#
 	.SYNOPSIS
 	Validates elastic pool resource in Advisor response
 #>
-function ValidateElasticPool($advisor)
+function ValidateElasticPool($responseAdvisor, $expectedElasticPool)
 {
-	ValidateServer $advisor
-	Assert-AreEqual $advisor.ElasticPoolName "WIRunnerPool"
+	Assert-AreEqual $responseAdvisor.ResourceGroupName $expectedElasticPool.ResourceGroupName
+	Assert-AreEqual $responseAdvisor.ServerName $expectedElasticPool.ServerName
+	Assert-AreEqual $responseAdvisor.ElasticPoolName $expectedElasticPool.ElasticPoolName
 }
 
 <#
 	.SYNOPSIS
 	Validates properties in Advisor response
+	Some Advisor properties are volatile and var with DB worload, so we exlude them from validation in tests.
 #>
 function ValidateAdvisorProperties($advisor, $expanded = $false)
 {
-		$countOfRecommendedActions = 0
-
-		if($advisor.AdvisorName -eq "CreateIndex")
-		{
-			if($expanded){ $countOfRecommendedActions = 10 }
-			Assert-AreEqual $advisor.AdvisorStatus "GA"
-			Assert-AreEqual $advisor.AutoExecuteStatus "Disabled"
-			Assert-AreEqual $advisor.AutoExecuteStatusInheritedFrom "Database"
-			Assert-AreEqual $advisor.LastChecked "6/23/2016 3:57:09 AM"
-			Assert-AreEqual $advisor.RecommendationsStatus "Ok"
-			Assert-AreEqual $advisor.RecommendedActions.Count $countOfRecommendedActions
-		}
-
-		elseif($advisor.AdvisorName -eq "DropIndex")
-		{
-			if($expanded){ $countOfRecommendedActions = 10 }
-			Assert-AreEqual $advisor.AdvisorStatus "PublicPreview"
-			Assert-AreEqual $advisor.AutoExecuteStatus "Disabled"
-			Assert-AreEqual $advisor.AutoExecuteStatusInheritedFrom "Database"
-			Assert-AreEqual $advisor.LastChecked "6/22/2016 6:34:42 PM"
-			Assert-AreEqual $advisor.RecommendationsStatus "Ok"
-			Assert-AreEqual $advisor.RecommendedActions.Count $countOfRecommendedActions
-		}
-
-		elseif($advisor.AdvisorName -eq "DbParameterization")
-		{
-			Assert-AreEqual $advisor.AdvisorStatus "PublicPreview"
-			Assert-AreEqual $advisor.AutoExecuteStatus "Disabled"
-			Assert-AreEqual $advisor.AutoExecuteStatusInheritedFrom "Subscription"
-			Assert-AreEqual $advisor.LastChecked "6/21/2016 10:04:57 PM"
-			Assert-AreEqual $advisor.RecommendationsStatus "NoDbParameterizationIssue"
-			Assert-AreEqual $advisor.RecommendedActions.Count $countOfRecommendedActions
-		}
-
-		elseif($advisor.AdvisorName -eq "SchemaIssue")
-		{
-			Assert-AreEqual $advisor.AdvisorStatus "PublicPreview"
-			Assert-AreEqual $advisor.AutoExecuteStatus "Disabled"
-			Assert-AreEqual $advisor.AutoExecuteStatusInheritedFrom "Subscription"
-			Assert-AreEqual $advisor.LastChecked "6/23/2016 10:20:59 AM"
-			Assert-AreEqual $advisor.RecommendationsStatus "SchemaIsConsistent"
-			Assert-AreEqual $advisor.RecommendedActions.Count $countOfRecommendedActions
-		}
-
-		else
-		{
-			throw "Unexpected advisor name"
-		}
+	Assert-True {($advisor.AdvisorStatus -eq "GA") -or ($advisor.AdvisorStatus -eq "PublicPreview") -or ($advisor.AdvisorStatus -eq "PrivatePreview")}
+	Assert-AreEqual "Disabled" $advisor.AutoExecuteStatus
+	Assert-True {($advisor.AutoExecuteStatusInheritedFrom -eq "Default") -or ($advisor.AutoExecuteStatusInheritedFrom -eq "Server") -or ($advisor.AutoExecuteStatusInheritedFrom -eq "ElasticPool") -or ($advisor.AutoExecuteStatusInheritedFrom -eq "Database")}
 }

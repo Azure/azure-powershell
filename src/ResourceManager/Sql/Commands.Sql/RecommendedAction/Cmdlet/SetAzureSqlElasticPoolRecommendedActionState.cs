@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new state of Azure SQL Elastic Pool Recommended Action.")]
         [ValidateNotNullOrEmpty]
-        public string State { get; set; }
+        public RecommendedActionStateValues State { get; set; }
 
         /// <summary>
         /// Gets entities from the service.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
                 RecommendedActionName = RecommendedActionName,
                 State = new RecommendedActionStateInfo()
                 {
-                    CurrentValue = State
+                    CurrentValue = State.ToString()
                 }
             });
 
