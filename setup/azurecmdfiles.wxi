@@ -1150,9 +1150,6 @@
                         <Component Id="cmp8E83AE26F1E00FEE33094F91A50BEA3B" Guid="*">
                             <File Id="fil3F680BC8D663CD94F9920DE902582C96" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmpA891C099DB11113B39543AD69C675E9B" Guid="*">
-                            <File Id="fil921ECD30870D53869C92D3293E853BB1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-                        </Component>
                         <Component Id="cmp8CAF07EFCB05F51776BA5BEA4554C071" Guid="*">
                             <File Id="filD63E73224A8BE26DA2228345B68E6CA8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DevTestLabs\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
@@ -2099,9 +2096,6 @@
                         </Component>
                         <Component Id="cmp397B4551DF9E338CCC8CCDB595331094" Guid="*">
                             <File Id="filED96393B1571E9D5B5B467062212ECC0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-                        </Component>
-                        <Component Id="cmp729FD57580E2AB78200B412A9365DAC7" Guid="*">
-                            <File Id="fil97F457E30B3D8008DC1F46DB4416F769" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
                         </Component>
                         <Component Id="cmp145E2E2149B0B39F3E17936846B0D643" Guid="*">
                             <File Id="filDCB947927D0CDD1030919C4992C43686" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.PowerBIEmbedded\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
@@ -5830,7 +5824,6 @@
             <ComponentRef Id="cmp95F2278E8024575B268B5ADB26BF55E3" />
             <ComponentRef Id="cmp01C0D7F5A138E257E63C9A88A6E77FB5" />
             <ComponentRef Id="cmp8E83AE26F1E00FEE33094F91A50BEA3B" />
-            <ComponentRef Id="cmpA891C099DB11113B39543AD69C675E9B" />
             <ComponentRef Id="cmp8CAF07EFCB05F51776BA5BEA4554C071" />
             <ComponentRef Id="cmp6A0A2D259AAD3356C7AFB688CDA4A47C" />
             <ComponentRef Id="cmp724AB863284E427493220027492E6558" />
@@ -6140,7 +6133,6 @@
             <ComponentRef Id="cmp7A9ACF44DF74CCBEE65ACEF64A8D4BF7" />
             <ComponentRef Id="cmpCE88A6EB381A0717BB0174CE2088DAC0" />
             <ComponentRef Id="cmp397B4551DF9E338CCC8CCDB595331094" />
-            <ComponentRef Id="cmp729FD57580E2AB78200B412A9365DAC7" />
             <ComponentRef Id="cmp145E2E2149B0B39F3E17936846B0D643" />
             <ComponentRef Id="cmp70A2BE523812E016CC27971061216FAA" />
             <ComponentRef Id="cmp9283719AA2CA4560433AF1A1E43D12F0" />
