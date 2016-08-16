@@ -1,4 +1,10 @@
-﻿##2016.07.11 version 1.6.0
+﻿##2016.08.22 version 1.7.0
+* Azure Storage
+  * Change the return Type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (To migrate a breaking change from 1.4.0)
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname).Key1 
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname)[0].Value 
+
+##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
   * Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
   * Control over prompting using a session-wide $ConfirmPreference, so that the user is prompted based on the impact of a prospective change (as reported in the ConfirmImpact setting in the cmdlet)
