@@ -1,6 +1,6 @@
 # Breaking Change Policy
 
-Customers and MVPs have told us many times in emphatic terms that breaking changes are a continuing problem in Azure PowerShell releases.  These changes cause an undue burden on users maintaining scripts to manage their Azure assets, and this causes reluctance in picking up the later versions os Azure PowerShell. It is clear that continuing, unmanaged breaking changes are unnacceptable to customers. 
+Customers and MVPs have told us many times in emphatic terms that breaking changes are a continuing problem in Azure PowerShell releases.  These changes cause an undue burden on users maintaining scripts to manage their Azure assets, and this causes reluctance in picking up the later versions of Azure PowerShell. It is clear that continuing, unmanaged breaking changes are unnacceptable to customers. 
 
 **To address customer concerns, Azure PowerShell is committing to limit breaking changes to one release per year and to treat any unplanned breaking change that ships as 
 a showstopper bug requiring a hotfix**.
