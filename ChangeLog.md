@@ -1,6 +1,6 @@
 ﻿##2016.08.22 version 1.7.0
 * Azure Storage
-  * Change the return Type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (To migrate a breaking change from 1.4.0)
+  * Change the return type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (To migrate a breaking change from 1.4.0)
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname).Key1 
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname)[0].Value 
 
