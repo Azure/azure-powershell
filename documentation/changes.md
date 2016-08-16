@@ -21,9 +21,16 @@ This proposed policy is meant to apply to all stable Azure modules, starting wit
   - A sample migration guide for the 2.0 release is provided [here](https://github.com/Azure/azure-powershell/blob/dev/documentation/release-notes/migration-guide.2.0.0.md)
   - The breaking change list and migration guide will be distributed to customers in the github release, in an azure.com blog post, and in powershell help topics
 
+### Exceptions
+The majority of cmdlet enhancement and fixes should not require breaking changes.  However, to accomodate extraordinary circumstances, exceptions to the breaking change policy can be made for the following reasons:
+- High impact security bugs, data loss, or other severe functionality issues that can only be resolved through a breaking change
+- Important fixes and new features that require a breaking change, for which usage data or extensive customer outreach shows extremely low impact on customer scripts
+
 ##  Preview Modules
 
 The breaking change policy should not prevent providing cmdlet support for non-GA services or experimenting with new cmdlets for existing services.  To satisfy these two needs, Azure PowerShell will begin supporting Preview modules in the October release.
+
+Note that, participation in Preview modules is entirely volunatry for feature teams.  If cmdlets for an Azure service remain stable, the service team may decide not to support a preview module.
 
 - Preview modules use the suffix Preview in their module name, as in 'AzureRM.Compute.Preview' 
 - Preview modules will not be included in the AzureRM module in the PowerShell Gallery, or in the released PowerShell MSI.
