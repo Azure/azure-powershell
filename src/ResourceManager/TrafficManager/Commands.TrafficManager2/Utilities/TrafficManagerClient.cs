@@ -19,13 +19,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
     using Management.TrafficManager;
     using Management.TrafficManager.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Models;
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using Tags.Model;
 
     public class TrafficManagerClient
     {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public ITrafficManagerManagementClient TrafficManagerManagementClient { get; set; }
 
-        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable[] tag)
+        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, Hashtable tag)
         {
             ProfileCreateOrUpdateResponse response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,

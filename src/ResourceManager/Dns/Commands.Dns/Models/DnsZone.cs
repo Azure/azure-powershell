@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Dns
         /// <summary>
         /// Gets or sets the tags of this resource
         /// </summary>
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Name servers provisioned for this zone

@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public Guid KeyId { get; set; }
 
-        public string Value { get; set; }
-
+        public string Password { get; set; }
     }
 }

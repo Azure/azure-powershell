@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,17 +78,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4,
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be set.")]
         public SwitchParameter Default { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
-        [Obsolete("Force prameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
