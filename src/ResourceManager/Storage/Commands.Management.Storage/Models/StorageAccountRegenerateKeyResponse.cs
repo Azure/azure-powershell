@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Models
                 Keys = result.Keys;
             }
         }
-        public StorageAccountKeys StorageAccountKeys { get; }
-        public IList<StorageAccountKey> Keys { get; }
+        public StorageAccountKeys StorageAccountKeys { get; set; }
+        public IList<StorageAccountKey> Keys { get; set; }
     }
 }
