@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Storage.Models
             this.Key2 = storageKeys[1].Value;
         }
 
-        public string Key1 { get; set; }
-        public string Key2 { get; set; }
+        public string Key1 { get; }
+        public string Key2 { get; }
     }
 }

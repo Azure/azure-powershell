@@ -1,12 +1,12 @@
 ﻿##2016.08.22 version 1.7.0
 * Azure Storage
-  * Change the return type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (Migrate breaking change from 1.4.0)
+  * Change the return type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (Mitigate breaking change from 1.4.0)
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname).Key1 
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname)[0].Value 
-  * Change the return type of New/Get/Set-AzureRMStorageAccount cmdlet by add back AccountType, to make both of following works (Migrate breaking change from 1.4.0)
+  * Change the return type of New/Get/Set-AzureRMStorageAccount cmdlet by add back AccountType, to make both of following works (Mitigate breaking change from 1.4.0)
     - $AccountType = (Get-AzureRmStorageAccount -ResourceGroupName $groupname -Name $accountname).AccountType
     - $AccountType = (Get-AzureRmStorageAccount -ResourceGroupName $groupname -Name $accountname).Sku.Name
-  * Change the return type of New-AzureRmStorageAccountKey cmdlet, to make both of following works (Migrate breaking change from 1.4.0)
+  * Change the return type of New-AzureRmStorageAccountKey cmdlet, to make both of following works (Mitigate breaking change from 1.4.0)
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname -KeyName $keyname).StorageAccountKeys.Key1
     - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname -KeyName $keyname).Keys[0].Value
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Storage.Models
 {
@@ -10,13 +6,13 @@ namespace Microsoft.Azure.Management.Storage.Models
     {
         public StorageAccountRegenerateKeyResponse(StorageAccountListKeysResult result) 
         {
-            if (result.Keys !=null)
+            if (result.Keys != null)
             {
                 StorageAccountKeys = new StorageAccountKeys(result.Keys);
                 Keys = result.Keys;
             }
         }
-        public StorageAccountKeys StorageAccountKeys { get; set; }
+        public StorageAccountKeys StorageAccountKeys { get; }
         public IList<StorageAccountKey> Keys { get; }
     }
 }
