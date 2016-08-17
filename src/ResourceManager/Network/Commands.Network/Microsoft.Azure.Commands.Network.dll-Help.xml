@@ -403,7 +403,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5170,12 +5171,47 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name &quot;myLB&quot; -ResourceGroupName &qu
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+</dev:code>
 			<dev:remarks>
+				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a varibale called $slb. The second command then adds an Inbound NAT rule configuration with appropriate details. Note that these are chosen as an example and these may change based on one&#39;s loadbalancer.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                     : MyLoadBalancer
+ResourceGroupName        : MyResourceGroup
+Location                 : westus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer
+Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState        : Succeeded
+Tags                     : 
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : [
+                             
+                             {
+                               &quot;Name&quot;: &quot;NewNatRule&quot;,
+                               &quot;Etag&quot;: &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
+                               &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inbo
+                           undNatRules/NewRule&quot;,
+                               &quot;FrontendPort&quot;: 81,
+                               &quot;IdleTimeoutInMinutes&quot;: 4,
+                               &quot;EnableFloatingIP&quot;: true,
+                               &quot;FrontendIPConfiguration&quot;: {
+                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/fr
+                           ontendIPConfigurations/MyFrontEnd&quot;
+                               },
+                               &quot;BackendPort&quot;: 8181,
+                               &quot;Protocol&quot;: &quot;Tcp&quot;,
+                               &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                             }
+                           ]
+InboundNatPools          : []
+</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -5952,12 +5988,43 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name &quot;myLB&quot; -ResourceGroupName &qu
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>
+PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+</dev:code>
 			<dev:remarks>
+				<maml:para>The first command stores the existing load balancer called &quot;MyLoadBalancer&quot; in variable $slb. The second command then adds the rule called &quot;NewRule&quot; with certain specifications.</maml:para>
+				<maml:para>Below is what sample output looks like for this specific scenario:</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                     : MyLoadBalancer
+ResourceGroupName        : MyResourceGroup
+Location                 : westus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer
+Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState        : Succeeded
+Tags                     : 
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : [
+                                &quot;Name&quot;: &quot;NewRule&quot;,
+                               &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inbo
+                           undNatRules/NewRule&quot;,
+                               &quot;FrontendPort&quot;: 3350,
+                               &quot;EnableFloatingIP&quot;: true,
+                               &quot;FrontendIPConfiguration&quot;: {
+                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/fr
+                           ontendIPConfigurations/MyFrontEnd&quot;
+                               },
+                               &quot;BackendPort&quot;: 3350,
+                               &quot;Protocol&quot;: &quot;Tcp&quot;
+                             }
+                           ]
+Probes                   : []
+InboundNatRules          : []
+</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -13591,36 +13658,12 @@ InboundNatPools           : []</maml:para>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
 
-PS C:\&gt; Get-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;MyinboundNatRule1&quot; -LoadBalancer $slb
-</dev:code>
+PS C:\&gt; Get-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;MyinboundNatRule1&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
 				<maml:para>The first command gets the existing load balancer for which the inbound NAT rule is wanted and stores it in the variable slb. The second command then gets the accodiated NAT rule called MyinboundNatRule1.</maml:para>
-				<maml:para>Below is the sample output:</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Name                    : MyinboundNatRule1
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/
-                          providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inboundNatRules/Myinbound
-                          NatRule1
-Etag                    : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
-ProvisioningState       : Succeeded
-Protocol                : Tcp
-FrontendPort            : 3389
-BackendPort             : 3389
-IdleTimeoutInMinutes    : 15
-EnableFloatingIP        : True
-FrontendIPConfiguration : {
-                            &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/
-                           MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/frontendIPConfig
-                          urations/MyFrontEnd&quot;
-                          }
-BackendIPConfiguration  : {
-                            &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/
-                          MyResourceGroup/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigur
-                          ations/ipconfig1&quot;,
-                            &quot;Primary&quot;: false
-                          }
-</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -13804,32 +13847,12 @@ BackendIPConfiguration  : {
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
 
-PS C:\&gt; Get-AzureRmLoadBalancerProbeConfig -Name &quot;MyProbe&quot; -LoadBalancer $slb
-</dev:code>
+PS C:\&gt; Get-AzureRmLoadBalancerProbeConfig -Name &quot;MyProbe&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
 				<maml:para>The first command gets the load balancer called &quot;MyLoadBalancer&quot; and stores it in the variable $slb. The second command then gets the associated probe configuration called MyProbe.</maml:para>
-				<maml:para>
-Below is sample output:</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>
-Name               : MyProbe
-Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/provi
-                     ders/Microsoft.Network/loadBalancers/MyLoadBalancer/probes/MyProbe
-Etag               : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
-ProvisioningState  : Succeeded
-Protocol           : Http
-Port               : 80
-IntervalInSeconds  : 15
-NumberOfProbes     : 2
-RequestPath        : healthcheck.aspx
-LoadBalancingRules : [
-                       {
-                         &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup
-                      /providers/Microsoft.Network/loadBalancers/MyLoadBalancer/loadBalancingRules/MyLBr
-                     uleName&quot;
-                       }
-                     ]</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -14013,35 +14036,12 @@ LoadBalancingRules : [
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
 
-PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name &quot;MyLBrulename&quot; -LoadBalancer $slb
-</dev:code>
+PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name &quot;MyLBrulename&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
 				<maml:para>The first command gets the load balancer and stores it in the variable $slb. The second command gets the associated rule configuration called MyLBrulename.</maml:para>
-				<maml:para>Below is sample output:</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Name                    : MyLBruleName
-Id                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/provi
-                          ders/Microsoft.Network/loadBalancers/MyLoadBalancer/probes/MyLBrulename
-Etag                    : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
-ProvisioningState       : Succeeded
-Protocol                : Tcp
-FrontendPort            : 80
-BackendPort             : 80
-IdleTimeoutInMinutes    : 15
-v                       : SourceIP
-EnableFloatingIP        : True
-FrontendIPConfiguration : {
-                           &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup
-                         /providers/Microsoft.Network/loadBalancers/MyLoadBalancer//frontendIPConfig
-                          urations/MyFrontEnd&quot;
-                          }
-BackendAddressPool      : 
-Probe                   : {
-                            &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup
-                             /providers/Microsoft.Network/loadBalancers/MyLoadBalancer/probes/MyProbe&quot;
-
-                           }</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -45249,16 +45249,52 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name &quot;NewFronten
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Updating the inbound NAT rule configuration on an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+
+PS C:\&gt; $slb | Set-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350 </dev:code>
 			<dev:remarks>
+				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a varibale called $slb. The second command then adds an Inbound NAT rule configuration with certain properties. One of these is enablibling floating IP. However once added, lets assume one no longer wants this properly enabled, then the third command is used to update this for the load balancer using the Set-AzureRmLoadBalancerInboundNatRuleConfig.</maml:para>
+				<maml:para>Notice how the output below has -EnablePloatingIP to false even though when NewNatRule was added it was set to true. Similarly, other properties can be changed using this cmdlet.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                     : MyLoadBalancer
+ResourceGroupName        : MyResourceGroup
+Location                 : westus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer
+Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState        : Succeeded
+Tags                     : 
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : [
+                             
+                             {
+                               &quot;Name&quot;: &quot;NewNatRule&quot;,
+                               &quot;Etag&quot;: &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
+                               &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inbo
+                           undNatRules/NewRule&quot;,
+                               &quot;FrontendPort&quot;: 81,
+                               &quot;IdleTimeoutInMinutes&quot;: 4,
+                               &quot;EnableFloatingIP&quot;: false,
+                               &quot;FrontendIPConfiguration&quot;: {
+                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/fr
+                           ontendIPConfigurations/MyFrontEnd&quot;
+                               },
+                               &quot;BackendPort&quot;: 8181,
+                               &quot;Protocol&quot;: &quot;Tcp&quot;,
+                               &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                             }
+                           ]
+InboundNatPools          : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -46023,16 +46059,51 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerProbeConfig -Name &quot;NewProbe&quot; 
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Updating a load balancing rule on an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | $slb | Add-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+
+
+PS C:\&gt; $slb | Set-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350
+
+
+</dev:code>
 			<dev:remarks>
+				<maml:para>The first command stores an existing load balancer called MyLoadBalancer in the variable $slb. The second command adds a load balancing rule called NewRule with certain specifications. One of these is enabling floating IP to be true. However once added, lets assume one no longer wants this properly enabled, then the third command is used to update this for the load balancer using the Set-AzureRmLoadBalancerRuleConfig.</maml:para>
+				<maml:para>Notice how the output below has -EnablePloatingIP to false even though when NewRule was added it was set to true. Similarly, other properties can be changed using this cmdlet.
+</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                     : MyLoadBalancer
+ResourceGroupName        : MyResourceGroup
+Location                 : westus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer
+Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState        : Succeeded
+Tags                     : 
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : [
+                                &quot;Name&quot;: &quot;NewRule&quot;,
+                               &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inbo
+                           undNatRules/NewRule&quot;,
+                               &quot;FrontendPort&quot;: 3350,
+                               &quot;EnableFloatingIP&quot;: false,
+                               &quot;FrontendIPConfiguration&quot;: {
+                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/fr
+                           ontendIPConfigurations/MyFrontEnd&quot;
+                               },
+                               &quot;BackendPort&quot;: 3350,
+                               &quot;Protocol&quot;: &quot;Tcp&quot;
+                             }
+                           ]
+Probes                   : []
+InboundNatRules          : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
