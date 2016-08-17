@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,10 +24,6 @@ namespace Microsoft.Azure.Commands.DataFactories
         SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
-        [Obsolete("Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {

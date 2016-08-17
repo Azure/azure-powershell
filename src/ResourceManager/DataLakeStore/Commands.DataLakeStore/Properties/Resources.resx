@@ -229,9 +229,6 @@
   <data name="SettingDataLakeStoreItemOwner" xml:space="preserve">
     <value>Are you sure you want to replace the existing owning group or user at the Data Lake item at path: '{0}'?</value>
   </data>
-  <data name="TagsWarning" xml:space="preserve">
-    <value>The usage of 'Tags' parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
-  </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
   </data>

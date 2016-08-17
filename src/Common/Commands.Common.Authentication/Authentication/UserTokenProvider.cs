@@ -15,6 +15,7 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Runtime.InteropServices;
@@ -228,7 +229,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 if (promptBehavior != PromptBehavior.Never)
                 {
-                    ClearCookies();
+                    AdalTokenCache.ClearCookies();
                 }
 
                 result = context.AcquireToken(
@@ -309,20 +310,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     return LoginType.OrgId;
                 }
             }
-        }
-
-        private void ClearCookies()
-        {
-            NativeMethods.InternetSetOption(IntPtr.Zero, NativeMethods.INTERNET_OPTION_END_BROWSER_SESSION, IntPtr.Zero, 0);
-        }
-
-        private static class NativeMethods
-        {
-            internal const int INTERNET_OPTION_END_BROWSER_SESSION = 42;
-
-            [DllImport("wininet.dll", SetLastError = true)]
-            internal static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer,
-                int lpdwBufferLength);
         }
 
         public IAccessToken GetAccessTokenWithCertificate(

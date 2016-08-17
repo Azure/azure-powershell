@@ -120,9 +120,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.providerOperationsMock
               .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
               .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = provider }));
-
-            this.cmdlet.Force = true;
-
+            
             this.cmdlet.ProviderNamespace = ProviderName;
 
             // 1. Unregister succeeds
