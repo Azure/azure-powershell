@@ -247,7 +247,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East", $server)
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
