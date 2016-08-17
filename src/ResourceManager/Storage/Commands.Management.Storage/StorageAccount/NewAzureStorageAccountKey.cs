@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKey))]
+    [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         private const string Key1 = "key1";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.Name,
                 this.KeyName);
 
-            WriteObject(keys);
+            WriteObject(new StorageAccountRegenerateKeyResponse(keys));
         }
     }
 }
