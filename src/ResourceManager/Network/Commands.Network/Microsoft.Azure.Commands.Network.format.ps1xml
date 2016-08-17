@@ -432,6 +432,32 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>NetworkSecurityGroup</Label>
+                <PropertyName>NetworkSecurityGroupText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Association</Label>
+                <PropertyName>AssociationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EffectiveSecurityRules</Label>
+                <PropertyName>EffectiveSecurityRulesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup</TypeName>
