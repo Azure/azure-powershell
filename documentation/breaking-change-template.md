@@ -24,4 +24,4 @@ The following cmdlets were affected this release:
 # Sample of how the cmdlet should now be called
 ```
 
-For an example migration guide for breaking changes, click [here](documentation/release-notes/migration-guide.2.0.0.md).
+For an example migration guide for breaking changes, click [here](release-notes/migration-guide.2.0.0.md).
