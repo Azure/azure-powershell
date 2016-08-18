@@ -5,6 +5,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
 {
     public class AzureSqlDatabaseGeoBackupPolicyModel
     {
+        public enum GeoBackupPolicyState
+        {
+            Disabled,
+            Enabled
+        };
+
         /// <summary>
         /// Gets or sets the location
         /// </summary>
@@ -28,6 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the geo backup policy state
         /// </summary>
-        public string State { get; set; }
+        public GeoBackupPolicyState State { get; set; }
     }
 }

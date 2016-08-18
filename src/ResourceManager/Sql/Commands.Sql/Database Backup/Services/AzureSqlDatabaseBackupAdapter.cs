@@ -329,7 +329,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                State = geoBackupPolicy.Properties.State,
+                State = (AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState) Enum.Parse(
+                    typeof(AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState),
+                    geoBackupPolicy.Properties.State),
             };
         }
 
@@ -357,7 +359,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Location = model.Location,
                     Properties = new GeoBackupPolicyProperties()
                     {
-                        State = model.State,
+                        State = model.State.ToString(),
                     }
                 });
 
@@ -367,7 +369,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
                 DatabaseName = databaseName,
-                State = geoBackupPolicy.Properties.State,
+                State = (AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState) Enum.Parse(
+                    typeof(AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState),
+                    geoBackupPolicy.Properties.State),
             };
         }
 
