@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "The state of the geo backup policy, 'Enabled' or 'Disabled'")]
         [ValidateNotNullOrEmpty]
-        public string State { get; set; }
+        public AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState State { get; set; }
 
         /// <summary>
         /// Get the entities from the service
