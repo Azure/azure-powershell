@@ -229,5 +229,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetGet");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRecordSetNewRecordNoName()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetNewRecordNoName");
+        }
     }
 }
