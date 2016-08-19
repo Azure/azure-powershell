@@ -141,6 +141,9 @@
   <data name="Error_NameAndEndsWith" xml:space="preserve">
     <value>Name parameter cannot be used with EndsWith.</value>
   </data>
+  <data name="Error_RecordSetNameEndsWithZoneName" xml:space="preserve">
+    <value>The relative record set name "{0}" includes the zone name "{1}". This will result in the set name "{0}.{1}".</value>
+  </data>
   <data name="Error_RemoveRecordTypeMismatch" xml:space="preserve">
     <value>Cannot remove a record of type {0} from a record set of type {1}. The types must match.</value>
   </data>
