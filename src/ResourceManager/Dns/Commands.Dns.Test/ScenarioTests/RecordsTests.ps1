@@ -1063,7 +1063,7 @@ function Test-RecordSetEndsWithZoneName
 		Remove-Item $warning
 	}
 	Remove-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType A -PassThru -Force
-	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
 }
 
@@ -1089,6 +1089,6 @@ function Test-RecordSetNewRecordNoName
 	$record2 = $record2 | Remove-AzureRmDnsRecordConfig -Exchange mail2.theg.com -Preference 10
 	$removed = $getRecordSetTwo | Remove-AzureRmDnsRecordSet -Force -PassThru
 	Assert-True { $removed }
-	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false
 
 }
