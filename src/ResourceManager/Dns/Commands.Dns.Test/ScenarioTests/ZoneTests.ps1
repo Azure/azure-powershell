@@ -27,6 +27,9 @@ function Test-ZoneCrud
 	Assert-AreEqual $zoneName $createdZone.Name 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdZone.ResourceGroupName 
 	Assert-AreEqual 1 $createdZone.Tags.Count
+	Assert-AreEqual 2 $createdZone.NumberOfRecordSets
+	Assert-AreNotEqual $createdZone.NumberOfRecordSets $createdZone.MaxNumberOfRecordSets
+
 
 	$retrievedZone = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
 
@@ -36,6 +39,9 @@ function Test-ZoneCrud
 	Assert-AreEqual $resourceGroup.ResourceGroupName $retrievedZone.ResourceGroupName
 	Assert-AreEqual $retrievedZone.Etag $createdZone.Etag
 	Assert-AreEqual 1 $retrievedZone.Tags.Count
+	Assert-AreEqual $createdZone.NumberOfRecordSets $retrievedZone.NumberOfRecordSets
+	# broken by bug
+	#Assert-AreEqual $createdZone.MaxNumberOfRecordSets $retrievedZone.MaxNumberOfRecordSets
 
 	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"}
 
@@ -305,4 +311,27 @@ function Test-ZoneListWithEndsWith
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[0].ResourceGroupName
 
 	$result | Remove-AzureRmDnsZone -PassThru -Force
+}
+
+<#
+.SYNOPSIS
+Add and Remove RecordSet from Zone and test NumberOfRecordSets
+#>
+function Test-AddRemoveRecordFromZone
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$createdZone = New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{Name="tag1";Value="value1"}
+
+	$record = $createdZone | New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType A -DnsRecords @() | Add-AzureRmDnsRecordConfig -Ipv4Address 1.1.1.1 | Set-AzureRmDnsRecordSet
+	$updatedZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
+	Assert-AreEqual 3 $updatedZone.NumberOfRecordSets
+
+	$removeRecord = $updatedZone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType A | Remove-AzureRmDnsRecordSet -Name $recordName -RecordType A -PassThru -Force
+	$finalZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
+	Assert-AreEqual 2 $finalZone.NumberOfRecordSets
+
+	$finalZone | Remove-AzureRmDnsZone -PassThru -Force
+
 }
