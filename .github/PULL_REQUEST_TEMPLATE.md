@@ -12,7 +12,7 @@ Below in **Overall Changes**, check off the boxes that apply to your PR. Within 
 ### General
 - [ ] Title of the PR is clear and informative
 - [ ] There are a small number of commits that each have an informative message
-- [ ] If it applies, references the bug that the PR fixes
+- [ ] If it applies, references the bug/issue that the PR fixes
 - [ ] All files have the Microsoft copyright header
 - [ ] Cmdlets refer to management libraries through nuget references - no dlls are checked in
 - [ ] The PR does not introduce breaking changes (unless a major version change occurs in the assembly and module)
@@ -27,7 +27,7 @@ Below in **Overall Changes**, check off the boxes that apply to your PR. Within 
 - [ ] Tests should use Start-Sleep to pause rather than Thread.Sleep
 
 ### Cmdlet Signature
-- [ ] Cmdlet name uses an approved PowerShell verb - use the enumbs for `VerbsCommon`, `VerbsCommunication`, `VerbsLifecycle`, `VerbsOther` whenever possible
+- [ ] Cmdlet name uses an approved PowerShell verb - use the enums for `VerbsCommon`, `VerbsCommunication`, `VerbsLifecycle`, `VerbsOther` whenever possible
 - [ ] Cmdlet noun name uses the AzureRm prefix for management cmdlets, and the Azure prefix for data plane cmdlets
 - [ ] Cmdlet specifies the `OutputType` attribute if any output is produced; if the cmdlet produces no output, it should implement a `PassThrough` parameter
 - [ ] If the cmdlet makes changes or has side effects, it should implement `ShouldProcess` and have `SupportShouldProcess = true` specified in the cmdlet attribute. See a discussion about correct `ShouldProcess` implementation [here](https://gist.github.com/markcowl/338e16fe5c8bbf195aff9f8af0db585d#what-is-the-change)
