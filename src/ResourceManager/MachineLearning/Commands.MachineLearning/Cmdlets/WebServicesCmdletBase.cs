@@ -71,6 +71,9 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void BeginProcessing()
         {
+            var versionInfo = typeof(WebServicesCmdletBase).Assembly.GetName().Version;
+            this.WriteVerbose(Resources.VersionInfo.FormatInvariant(versionInfo.ToString(3)));
+
             try
             {
                 if (this.cancellationSource == null)

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         WebServicesCmdletBase.CommandletSuffix, 
         SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
-    public class ExportWebServiceDefinition : AzureRMCmdlet
+    public class ExportWebServiceDefinition : WebServicesCmdletBase
     {
         private const string ExportToFileParamSet = "Export to file.";
         private const string ExportToStringParamSet = "Export to JSON string.";
