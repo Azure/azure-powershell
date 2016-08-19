@@ -61,7 +61,7 @@ function Test-ZoneCrud
 	Assert-AreEqual $retrievedZone.Etag $updatedZone.Etag
 	Assert-AreEqual 2 $retrievedZone.Tags.Count
 
-	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -92,7 +92,7 @@ function Test-ZoneCrudTrimsDot
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name 
 
-	$removed = Remove-AzureRmDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Force
+	$removed = Remove-AzureRmDnsZone -Name $zoneNameWithDot -ResourceGroupName $resourceGroup.ResourceGroupName -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -125,7 +125,7 @@ function Test-ZoneCrudWithPiping
 	Assert-AreNotEqual $updatedZone.Etag $createdZone.Etag
 	Assert-AreEqual 0 $updatedZone.Tags.Count 
 
-	$removed = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Remove-AzureRmDnsZone -PassThru -Force
+	$removed = Get-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -153,7 +153,7 @@ function Test-ZoneCrudWithPipingTrimsDot
 	Assert-NotNull $updatedZone
 	Assert-AreEqual $zoneName $updatedZone.Name 
 
-	$removed = $zoneObjectWithDot | Remove-AzureRmDnsZone -Overwrite -PassThru -Force
+	$removed = $zoneObjectWithDot | Remove-AzureRmDnsZone -Overwrite -PassThru -Confirm:$false
 
 	Assert-True { $removed }
 
@@ -174,7 +174,7 @@ function Test-ZoneNewAlreadyExists
 	$message = [System.String]::Format("The Zone {0} exists already and hence cannot be created again.", $zoneName);
 	Assert-Throws { New-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroupName } $message
 
-	$createdZone | Remove-AzureRmDnsZone -PassThru -Force
+	$createdZone | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -196,7 +196,7 @@ function Test-ZoneSetEtagMismatch
 	Assert-AreNotEqual "gibberish" $updatedZone.Etag
 	Assert-AreNotEqual $createdZone.Etag $updatedZone.Etag
 
-	$updatedZone | Remove-AzureRmDnsZone -PassThru -Force
+	$updatedZone | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -224,9 +224,9 @@ function Test-ZoneRemoveEtagMismatch
 	$createdZone.Etag = "gibberish"
 
 	$message = [System.String]::Format("The Zone {0} has been modified (etag mismatch).", $zoneName);
-	Assert-Throws { $createdZone | Remove-AzureRmDnsZone -Force } $message
+	Assert-Throws { $createdZone | Remove-AzureRmDnsZone -Confirm:$false } $message
 
-	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Force -PassThru
+	$removed = $createdZone | Remove-AzureRmDnsZone -Overwrite -Confirm:$false -PassThru
 
 	Assert-True { $removed }
 }
@@ -240,7 +240,7 @@ function Test-ZoneRemoveNonExisting
 	$zoneName = Get-RandomZoneName
     $resourceGroup = TestSetup-CreateResourceGroup
 	
-	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force -PassThru
+	$removed = Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Confirm:$false -PassThru
 }
 
 <#
@@ -269,7 +269,7 @@ function Test-ZoneList
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[1].ResourceGroupName
 	Assert-AreEqual 0 $result[1].Tags.Count 
 
-	$result | Remove-AzureRmDnsZone -PassThru -Force
+	$result | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 function Test-ZoneListSubscription
@@ -284,8 +284,8 @@ function Test-ZoneListSubscription
 
 	Assert-True   { $result.Count -ge 2 }
 
-	$createdZone1 | Remove-AzureRmDnsZone -PassThru -Force
-	$createdZone2 | Remove-AzureRmDnsZone -PassThru -Force
+	$createdZone1 | Remove-AzureRmDnsZone -PassThru -Confirm:$false
+	$createdZone2 | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -309,8 +309,7 @@ function Test-ZoneListWithEndsWith
 	Assert-AreEqual $createdZone2.Etag $result[0].Etag
 	Assert-AreEqual $createdZone2.Name $result[0].Name
 	Assert-NotNull $resourceGroup.ResourceGroupName $result[0].ResourceGroupName
-
-	$result | Remove-AzureRmDnsZone -PassThru -Force
+	$result | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
 
 <#
@@ -332,6 +331,5 @@ function Test-AddRemoveRecordFromZone
 	$finalZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
 	Assert-AreEqual 2 $finalZone.NumberOfRecordSets
 
-	$finalZone | Remove-AzureRmDnsZone -PassThru -Force
-
+	$finalZone | Remove-AzureRmDnsZone -PassThru -Confirm:$false
 }
