@@ -129,6 +129,9 @@
   <data name="Error_AddRecordMultipleCnames" xml:space="preserve">
     <value>There already exists a CNAME record in this set. A CNAME record set can only contain one record.</value>
   </data>
+  <data name="Error_AddRecordSOA" xml:space="preserve">
+    <value>There can be only one record set of type SOA, and it can be modified but not deleted.</value>
+  </data>
   <data name="Error_AddRecordTypeMismatch" xml:space="preserve">
     <value>Cannot add a record of type {0} to a record set of type {1}. The types must match.</value>
   </data>

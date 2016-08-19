@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There can be only one record set of type SOA, and it can be modified but not deleted..
+        /// </summary>
+        internal static string Error_AddRecordSOA {
+            get {
+                return ResourceManager.GetString("Error_AddRecordSOA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot add a record of type {0} to a record set of type {1}. The types must match..
         /// </summary>
         internal static string Error_AddRecordTypeMismatch {
