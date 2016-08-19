@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Deletes an existing zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsZone", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
         OutputType(typeof(bool))]
     public class RemoveAzureDnsZone : DnsBaseCmdlet
-    {
+    {   
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -42,9 +42,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the Zone parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -79,7 +76,7 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 ConfirmAction(
-                    Force.IsPresent,
+                    true,
                     string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                     ProjectResources.Progress_RemovingZone,
                     zoneToDelete.Name,
