@@ -1,8 +1,15 @@
-﻿* Azure Redis Cache
-  * New cmdlet added for New-AzureRmRedisCacheScheduleEntry 
-  * New cmdlet added for New-AzureRmRedisCachePatchSchedule 
-  * New cmdlet added for Get-AzureRmRedisCachePatchSchedule
-  * New cmdlet added for Remove-AzureRmRedisCachePatchSchedule
+﻿##2016.08.22 version 1.7.0
+* Azure Storage
+  * Change the return type of Get-AzureRmStorageAccountKey cmdlet, to make both of following works (Mitigate breaking change from 1.4.0)
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname).Key1 
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname)[0].Value 
+  * Change the return type of New/Get/Set-AzureRMStorageAccount cmdlet by add back AccountType, to make both of following works (Mitigate breaking change from 1.4.0)
+    - $AccountType = (Get-AzureRmStorageAccount -ResourceGroupName $groupname -Name $accountname).AccountType
+    - $AccountType = (Get-AzureRmStorageAccount -ResourceGroupName $groupname -Name $accountname).Sku.Name
+  * Change the return type of New-AzureRmStorageAccountKey cmdlet, to make both of following works (Mitigate breaking change from 1.4.0)
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname -KeyName $keyname).StorageAccountKeys.Key1
+    - $key = (Get-AzureRmStorageAccountKey -ResourceGroupName $groupname -Name $accountname -KeyName $keyname).Keys[0].Value
+
 ##2016.07.11 version 1.6.0
 * **Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.** This changes are addressing following issues:
   * Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes
