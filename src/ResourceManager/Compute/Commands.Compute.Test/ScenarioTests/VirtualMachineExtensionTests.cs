@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "ClientRuntime upgrade - Please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineExtension");
         }
 
-        [Fact]
+        [Fact(Skip = "ClientRuntime upgrade - Please re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineExtensionUsingHashTable()
         {
@@ -43,6 +43,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineCustomScriptExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtension");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineCustomScriptExtensionWrongStorage()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineCustomScriptExtensionWrongStorage");
         }
 
         [Fact]
