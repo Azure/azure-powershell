@@ -85,6 +85,10 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
+            if(this.Name.EndsWith(zoneName.ToString()))
+            {   
+                this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
+            }
 
             if (zoneName != null && zoneName.EndsWith("."))
             {
