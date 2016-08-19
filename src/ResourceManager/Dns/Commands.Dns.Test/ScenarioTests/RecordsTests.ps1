@@ -1038,3 +1038,29 @@ function Test-RecordSetGetWithEndsWith
 
 	$zone | Remove-AzureRmDnsZone -Force -Overwrite
 }
+
+function Test-RecordSetNewRecordNoName
+{
+	$zoneName = Get-RandomZoneName
+	$recordName = getAssetname
+    $resourceGroup = TestSetup-CreateResourceGroup 
+	$zone = $resourceGroup | New-AzureRmDnsZone -Name $zoneName 
+	$recordSet = New-AzureRmDnsRecordSet -Name $recordName -Ttl 100 -RecordType MX -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName
+	$recordSet = Get-AzureRmDnsRecordSet -ResourceGroupName $resourceGroup.ResourceGroupName -ZoneName $zoneName -RecordType MX
+	$record1 = Add-AzureRmDnsRecordConfig -Exchange mail1.theg.com -Preference 1 -RecordSet $recordSet
+	$recordSet | Set-AzureRmDnsRecordSet
+	$getRecordSetOne = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX 
+	Assert-AreEqual 1 $getRecordSetOne.Records.Count
+
+	$record2 = Add-AzureRmDnsRecordConfig -Exchange mail2.theg.com -Preference 10 -RecordSet $getRecordSetOne
+	$getRecordSetOne | Set-AzureRmDnsRecordSet
+	$getRecordSetTwo = Get-AzureRmDnsRecordSet -Name $recordName -ZoneName $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -RecordType MX
+	Assert-AreEqual 2 $getRecordSetTwo.Records.Count
+
+	$record1 = $record1 | Remove-AzureRmDnsRecordConfig -Exchange mail1.theg.com -Preference 1
+	$record2 = $record2 | Remove-AzureRmDnsRecordConfig -Exchange mail2.theg.com -Preference 10
+	$removed = $getRecordSetTwo | Remove-AzureRmDnsRecordSet -Force -PassThru
+	Assert-True { $removed }
+	Remove-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Force
+
+}
