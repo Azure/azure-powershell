@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
 using System;
+using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -54,6 +55,54 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             HelpMessage = "The extension name. If this parameter is not specified, default values used are AzureDiskEncryption for windows VMs and AzureDiskEncryptionForLinux for Linux VMs")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+        
+        private VirtualMachineExtension GetVmExtensionParameters(VirtualMachine vmParameters, OSType currentOSType)
+        {
+            Hashtable publicSettings = new Hashtable();
+            Hashtable protectedSettings = new Hashtable();
+
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.queryEncryptionStatusOperation);
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.sequenceVersionKey, Guid.NewGuid().ToString());
+
+            if (vmParameters == null)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Get-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+
+            VirtualMachineExtension vmExtensionParameters = null;
+
+            if (OperatingSystemTypes.Windows.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
+                vmExtensionParameters = new VirtualMachineExtension
+                {
+                    Location = vmParameters.Location,
+                    Publisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
+                    VirtualMachineExtensionType = this.Name,
+                    TypeHandlerVersion = AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
+                    Settings = publicSettings,
+                    ProtectedSettings = protectedSettings
+                };
+            }
+            else if (OperatingSystemTypes.Linux.Equals(currentOSType))
+            {
+                this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
+                vmExtensionParameters = new VirtualMachineExtension
+                {
+                    Location = vmParameters.Location,
+                    Publisher = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
+                    VirtualMachineExtensionType = this.Name,
+                    TypeHandlerVersion = AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
+                    Settings = publicSettings,
+                    ProtectedSettings = protectedSettings
+                };
+            }
+
+            return vmExtensionParameters;
+        }
 
         private string GetExtensionStatusMessage(OSType currentOSType)
         {
@@ -284,13 +333,33 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 EncryptionStatus osVolumeEncrypted = IsOsVolumeEncrypted(vmParameters);
                 DiskEncryptionSettings osVolumeEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);
                 EncryptionStatus dataVolumesEncrypted = AreDataVolumesEncrypted(vmParameters);
+                AzureDiskEncryptionStatusContext encryptionStatus = null;
 
                 OSType osType = GetOSType(vmParameters);
                 switch (osType)
                 {
                     case OSType.Windows:
+                        encryptionStatus = new AzureDiskEncryptionStatusContext
+                        {
+                            OsVolumeEncrypted = osVolumeEncrypted,
+                            DataVolumesEncrypted = dataVolumesEncrypted,
+                            OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
+                            ProgressMessage = GetExtensionStatusMessage(osType)
+                        };
+                        WriteObject(encryptionStatus);
+                        break;
                     case OSType.Linux:
-                        AzureDiskEncryptionStatusContext encryptionStatus = new AzureDiskEncryptionStatusContext
+                        VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
+                            this.ResourceGroupName, VMName).Body;
+                        VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse, osType);
+
+                        this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                            this.ResourceGroupName,
+                            this.VMName,
+                            this.Name,
+                            parameters).GetAwaiter().GetResult();
+
+                        encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
                             DataVolumesEncrypted = dataVolumesEncrypted,
