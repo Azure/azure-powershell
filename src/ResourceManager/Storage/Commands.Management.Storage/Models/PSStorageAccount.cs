@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
             this.Sku = storageAccount.Sku;
+            this.AccountType = GetAccountType(storageAccount.Sku);
             this.Encryption = storageAccount.Encryption;
             this.Kind = storageAccount.Kind;
             this.AccessTier = storageAccount.AccessTier;
@@ -56,6 +57,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string Location { get; set; }
 
         public Sku Sku { get; set; }
+        public AccountType AccountType { get; set; }
         public Kind? Kind { get; set; }
         public Encryption Encryption { get; set; }
         public AccessTier? AccessTier { get; set; }
@@ -120,6 +122,27 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             // Allow listing storage contents through piping
             return null;
+        }
+
+        /// <summary>
+        /// Convert SkuName to Account Type
+        /// </summary>
+        public static AccountType GetAccountType(Sku sku)
+        {
+            switch (sku.Name)
+            {
+                case SkuName.PremiumLRS:
+                    return AccountType.PremiumLRS;
+                case SkuName.StandardLRS:
+                    return AccountType.StandardLRS;
+                case SkuName.StandardRAGRS:
+                    return AccountType.StandardRAGRS;
+                case SkuName.StandardZRS:
+                    return AccountType.StandardZRS;
+                case SkuName.StandardGRS:
+                default:
+                    return AccountType.StandardGRS;
+            }
         }
     }
 }

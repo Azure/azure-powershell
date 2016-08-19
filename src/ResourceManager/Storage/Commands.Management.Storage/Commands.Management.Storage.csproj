@@ -142,8 +142,11 @@
     <Compile Include="..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.5\ARMStorageService.cs">
       <Link>Common\ARMStorageService.cs</Link>
     </Compile>
+    <Compile Include="Models\AccountType.cs" />
     <Compile Include="Models\PSStorageAccount.cs" />
     <Compile Include="Models\PSUsage.cs" />
+    <Compile Include="Models\StorageAccountKeys.cs" />
+    <Compile Include="Models\StorageAccountRegenerateKeyResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccount.cs" />
     <Compile Include="StorageAccount\GetAzureStorageAccountKey.cs" />
