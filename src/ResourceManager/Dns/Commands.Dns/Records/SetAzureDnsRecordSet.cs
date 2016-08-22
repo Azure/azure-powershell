@@ -38,20 +38,27 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
             }
 
-
             DnsRecordSet recordSetToUpdate = (DnsRecordSet)this.RecordSet.Clone();
+                    if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
+                    {
+                        recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
+                        this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
+                    }
 
-            if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
-            {
-                recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
-                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
-            }
+            ConfirmAction(
+                    true,
+                    string.Format(ProjectResources.Confirm_SetRecordSet, recordSetToUpdate.Name),
+                    ProjectResources.Progress_Modifying,
+                    recordSetToUpdate.Name,
+                () =>
+                {
+                    DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
 
-            DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
+                    WriteVerbose(ProjectResources.Success);
 
-            WriteVerbose(ProjectResources.Success);
-
-            WriteObject(result);
-        }
+                    WriteObject(result);
+                },
+                () => true);
+                }
     }
-}
+    }
