@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
     {
         Encrypted,
         NotEncrypted,
+        NotMounted,
+        EncryptionInProgress,
+        VMRestartPending,
         Unknown
     }
 
