@@ -40,7 +40,7 @@ function Test-ZoneCrud
 	Assert-AreEqual $retrievedZone.Etag $createdZone.Etag
 	Assert-AreEqual 1 $retrievedZone.Tags.Count
 	Assert-AreEqual $createdZone.NumberOfRecordSets $retrievedZone.NumberOfRecordSets
-	# broken by bug
+	# broken by bug RDBug #6993514
 	#Assert-AreEqual $createdZone.MaxNumberOfRecordSets $retrievedZone.MaxNumberOfRecordSets
 
 	$updatedZone = Set-AzureRmDnsZone -Name $zoneName -ResourceGroupName $resourceGroup.ResourceGroupName -Tags @{tag1="value1";tag2="value2"}
