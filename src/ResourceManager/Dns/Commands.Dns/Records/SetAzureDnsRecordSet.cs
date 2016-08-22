@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Updates an existing record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDnsRecordSet", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(DnsRecordSet))]
     public class SetAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
