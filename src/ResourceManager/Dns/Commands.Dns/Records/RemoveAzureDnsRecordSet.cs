@@ -55,9 +55,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -119,7 +116,7 @@ namespace Microsoft.Azure.Commands.Dns
             bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
             ConfirmAction(
-                Force.IsPresent,
+                true,
                 string.Format(ProjectResources.Confirm_RemoveRecordSet, recordSetToDelete.Name, recordSetToDelete.ZoneName),
                 ProjectResources.Progress_RemovingRecordSet,
                 this.Name,

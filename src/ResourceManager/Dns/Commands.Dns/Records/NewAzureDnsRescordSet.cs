@@ -61,9 +61,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string zoneName = null;
@@ -93,7 +90,7 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             ConfirmAction(
-                Force.IsPresent,
+                true,
                 string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
                 ProjectResources.Progress_CreatingRecordSet,
                 this.Name,
