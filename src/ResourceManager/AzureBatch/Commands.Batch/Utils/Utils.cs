@@ -389,5 +389,30 @@ namespace Microsoft.Azure.Commands.Batch.Utils
             };
             return applicationPackageReference;
         }
+
+        public static void ExitConditionsSyncCollections(PSExitConditions exitConditions)
+        {
+            if (exitConditions != null)
+            {
+                exitConditions.omObject.ExitCodeRanges = CreateSyncedList(exitConditions.ExitCodeRanges,
+                    (e) =>
+                    {
+                        ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, ConvertExitOptions(e.ExitOptions));
+                        return exitCodeRangeMapping;
+                    });
+
+                exitConditions.omObject.ExitCodes = CreateSyncedList(exitConditions.ExitCodes,
+                    (e) =>
+                    {
+                        ExitCodeMapping exitCodeMapping = new ExitCodeMapping(e.Code, ConvertExitOptions(e.ExitOptions));
+                        return exitCodeMapping;
+                    });
+            }
+        }
+
+        private static ExitOptions ConvertExitOptions(PSExitOptions exitOptions)
+        {
+            return new ExitOptions() { JobAction = exitOptions.JobAction };
+        }
     }
 }

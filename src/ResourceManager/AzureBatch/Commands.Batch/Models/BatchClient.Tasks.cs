@@ -134,6 +134,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.MultiInstanceSettings = parameters.MultiInstanceSettings.omObject;
             }
 
+            if (parameters.ExitConditions != null)
+            {
+                Utils.Utils.ExitConditionsSyncCollections(parameters.ExitConditions);
+                task.ExitConditions = parameters.ExitConditions.omObject;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {
@@ -143,11 +149,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.AddTask(parameters.JobId, task, parameters.AdditionalBehaviors);
-            }
-
-            if (parameters.ExitConditions != null)
-            {
-                task.ExitConditions = parameters.ExitConditions.omObject;
             }
         }
 

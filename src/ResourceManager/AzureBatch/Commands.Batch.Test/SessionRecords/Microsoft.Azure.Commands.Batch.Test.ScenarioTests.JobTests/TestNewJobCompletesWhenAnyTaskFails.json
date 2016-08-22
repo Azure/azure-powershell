@@ -1,0 +1,904 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/jobs?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"\"\r\n        },\r\n        \"targetDedicated\": 3\r\n      }\r\n    }\r\n  },\r\n  \"onAllTasksComplete\": \"noAction\",\r\n  \"onTaskFailure\": \"performExitOptionsJobAction\",\r\n  \"usesTaskDependencies\": false\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "551"
+        ],
+        "client-request-id": [
+          "c6f8568a-1967-4675-a5da-b4b4df834263"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "b1bcff91-a08b-4c09-b5b5-42fdf9975822"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "DataServiceId": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/job-1"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:16:47 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Location": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/job-1"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails/tasks?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscy90YXNrcz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"id\": \"task-id-2\",\r\n  \"commandLine\": \"cmd /c exit 3\",\r\n  \"exitConditions\": {\r\n    \"exitCodeRanges\": [\r\n      {\r\n        \"start\": 2,\r\n        \"end\": 4,\r\n        \"exitOptions\": {\r\n          \"jobAction\": \"terminate\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"runElevated\": false\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "277"
+        ],
+        "client-request-id": [
+          "b9c9b03e-763b-441a-969e-64148df3b458"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:16:48 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:47 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "eb8e574a-1b0c-4462-8864-4f42e00244cf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "DataServiceId": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails/tasks/task-id-2"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:16:47 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219B70091A"
+        ],
+        "Location": [
+          "https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails/tasks/task-id-2"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "fa5e3939-25b1-4590-ae02-06bdef64a90c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:16:49 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "51293084-07af-4ece-a248-72889c31f95c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:16:47 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "a999dfb4-762d-47d1-a32f-bcec36251b3d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:17:19 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "7a6b252e-f308-4a15-bddd-9236dd4b5243"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:17:18 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "0ad02eff-ec37-49f3-a77c-f18a0a8e10ee"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:17:49 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "2a22cc8d-6cc2-4ace-a4e3-1a82c7dbc4a1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:17:48 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "742fd9ba-5d87-4fc6-9ab8-05b0069be212"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:18:19 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "f5353f6b-cc65-45e8-8627-24d7952d2634"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:18:19 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "437cb061-12ae-43ea-a32b-82780b75591d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:18:50 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "187cbf2a-b493-4276-becf-5c5807a05281"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:18:49 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "e444c201-edb3-43fb-b9eb-09f4d5468754"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:19:20 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "c00d1a0e-5016-4332-941e-21a98b343c80"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:19:19 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "fa03cd71-1ec8-4e68-8b3f-36599f09f7e6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:19:50 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "bb023da9-de77-4ec2-9ba8-0f8c18dd38d5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:19:49 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "8198760e-47d5-4699-a8e5-c630c418b38c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:20:20 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "bf62155a-5be8-4434-8eb1-f7b434a4b8e0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:20:20 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "421df0a8-7363-46bc-ad45-99cfa3f6f4f8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:20:51 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "7f17f50c-36c1-4cf5-9153-0d5baa32e64a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:20:50 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "2bbb421f-a5c4-4455-8974-a52c99b3e3c8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:21:21 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "a975278e-10d9-434d-ac15-a9e564cd4e9a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:21:20 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "23a10e96-50aa-49f4-9d81-afe839a64cf4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:21:51 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA219AAD4314\",\r\n  \"lastModified\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:16:46 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "6fde569c-d133-4e59-b18e-5b8da557e261"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:21:51 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA219AAD4314"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "e822ceb6-ac36-469b-9263-ddfac3328a02"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:22:22 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA225A4B2157\",\r\n  \"lastModified\": \"2016-08-22T00:22:08.1943895Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:22:08.1943895Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\",\r\n    \"terminateReason\": \"TaskFailed\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:22:08 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "bd4d1402-864d-4b10-8329-fbe54687a0ff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:22:21 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA225A4B2157"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "a811a30e-91eb-4755-ae61-552550f0a4ce"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:22:52 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA225A4B2157\",\r\n  \"lastModified\": \"2016-08-22T00:22:08.1943895Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:22:39.0609194Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"endTime\": \"2016-08-22T00:22:39.0609194Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\",\r\n    \"terminateReason\": \"TaskFailed\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:22:08 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "f629d90a-35a5-4591-ae80-d3303460f2b6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:22:51 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA225A4B2157"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "81003d19-9875-400c-a5f6-f86c3ffd17fb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:22:52 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobs/@Element\",\r\n  \"id\": \"JobCompletesWhenAnyTaskFails\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/JobCompletesWhenAnyTaskFails\",\r\n  \"eTag\": \"0x8D3CA225A4B2157\",\r\n  \"lastModified\": \"2016-08-22T00:22:08.1943895Z\",\r\n  \"creationTime\": \"2016-08-22T00:16:46.6698835Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2016-08-22T00:22:39.0609194Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n  \"priority\": 0,\r\n  \"usesTaskDependencies\": false,\r\n  \"constraints\": {\r\n    \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n    \"maxTaskRetryCount\": 0\r\n  },\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"maxTasksPerNode\": 1,\r\n        \"taskSchedulingPolicy\": {\r\n          \"nodeFillType\": \"Spread\"\r\n        },\r\n        \"resizeTimeout\": \"PT15M\",\r\n        \"targetDedicated\": 3,\r\n        \"enableAutoScale\": false,\r\n        \"enableInterNodeCommunication\": false,\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"*\"\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"startTime\": \"2016-08-22T00:16:46.7149588Z\",\r\n    \"endTime\": \"2016-08-22T00:22:39.0609194Z\",\r\n    \"poolId\": \"TestSpecPrefix_93BE7B63-92D5-46DE-AAD7-FA11F7A51ECE\",\r\n    \"terminateReason\": \"TaskFailed\"\r\n  },\r\n  \"onAllTasksComplete\": \"noaction\",\r\n  \"onTaskFailure\": \"performexitoptionsjobaction\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Mon, 22 Aug 2016 00:22:08 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "544c89fc-774a-4033-a396-cbef129302df"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:22:51 GMT"
+        ],
+        "ETag": [
+          "0x8D3CA225A4B2157"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobs/JobCompletesWhenAnyTaskFails?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L2pvYnMvSm9iQ29tcGxldGVzV2hlbkFueVRhc2tGYWlscz9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "7dd781c9-4732-4b26-9858-c632ea68d776"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 22 Aug 2016 00:22:52 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "131b5d33-ab69-41ca-89d7-8380579c4161"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 22 Aug 2016 00:22:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
+    "AZURE_BATCH_ACCOUNT": "pstestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
+  }
+}

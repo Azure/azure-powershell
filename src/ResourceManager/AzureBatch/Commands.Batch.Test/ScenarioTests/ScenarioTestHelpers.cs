@@ -508,6 +508,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Deletes a job used in a Scenario test.
+        /// </summary>
+        public static bool DidJobFail(BatchController controller, BatchAccountContext context, string jobId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            CloudJob job = context.BatchOMClient.JobOperations.GetJob(jobId);
+
+            return job.ExecutionInformation.TerminateReason == "TaskFailed";
+        }
+
+        /// <summary>
         /// Terminates a job
         /// </summary>
         public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)

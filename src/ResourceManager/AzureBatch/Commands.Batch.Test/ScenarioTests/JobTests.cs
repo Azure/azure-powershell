@@ -315,8 +315,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewJobCompletesWhenAnyTaskFails()
         {
-            BatchController controller = BatchController.NewInstance;
-            string jobId = "JobCompletesWhenAnyTaskFails";
+            BatchController.NewInstance.RunPsTest("Test-JobCompletesWhenAnyTaskFails");
+
+            /*BatchController controller = BatchController.NewInstance;
+            string jobId = "JobCompletesWhenAnyTaskFails-" + Guid.NewGuid();
             string taskId = "testTask";
 
             BatchAccountContext context = null;
@@ -329,11 +331,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                    //ScenarioTestHelpers.DidJobFail(controller, context, jobId);
+                    // ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
                 TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                TestUtilities.GetCurrentMethodName());*/
         }
-
     }
 }
