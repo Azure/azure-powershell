@@ -17,8 +17,10 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 
@@ -74,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             VirtualMachineExtension vmExtensionParameters = null;
 
-            if (OperatingSystemTypes.Windows.Equals(currentOSType))
+            if (OSType.Windows.Equals(currentOSType))
             {
                 this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
@@ -87,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     ProtectedSettings = protectedSettings
                 };
             }
-            else if (OperatingSystemTypes.Linux.Equals(currentOSType))
+            else if (OSType.Linux.Equals(currentOSType))
             {
                 this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 vmExtensionParameters = new VirtualMachineExtension
@@ -104,7 +106,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return vmExtensionParameters;
         }
 
-        private string GetExtensionStatusMessage(OSType currentOSType)
+        private string GetExtensionStatusMessage(OSType currentOSType, bool returnSubstatusMessage=false)
         {
             AzureOperationResponse<VirtualMachineExtension> extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
             if (extensionResult == null)
@@ -157,6 +159,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                           ErrorCategory.InvalidResult,
                                                           null));
                 }
+
+                if (returnSubstatusMessage)
+                {
+                    return context.SubStatuses[0].Message;
+                }
+
                 return context.Statuses[0].Message;
             }
             else
@@ -359,10 +367,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             this.Name,
                             parameters).GetAwaiter().GetResult();
 
+                        string encryptionStatusJson = GetExtensionStatusMessage(osType, returnSubstatusMessage: true);
+                        Dictionary<string, string> encryptionStatusParsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(encryptionStatusJson);
+
                         encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
-                            OsVolumeEncrypted = osVolumeEncrypted,
-                            DataVolumesEncrypted = dataVolumesEncrypted,
+                            OsVolumeEncrypted = (EncryptionStatus) Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed["os"]),
+                            DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed["data"]),
                             OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
                             ProgressMessage = GetExtensionStatusMessage(osType)
                         };
