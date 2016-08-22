@@ -61,11 +61,29 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create new zone &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_CreateNewZone {
+            get {
+                return ResourceManager.GetString("Confirm_CreateNewZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to overwrite any existing record set &apos;{0}&apos; of type {1} in zone &apos;{2}&apos;? You will lose any existing records in that record set..
         /// </summary>
         internal static string Confirm_OverwriteRecord {
             get {
                 return ResourceManager.GetString("Confirm_OverwriteRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to overwrite the existing zone &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_OverwriteZone {
+            get {
+                return ResourceManager.GetString("Confirm_OverwriteZone", resourceCulture);
             }
         }
         
@@ -84,6 +102,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         internal static string Confirm_RemoveZone {
             get {
                 return ResourceManager.GetString("Confirm_RemoveZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to make changes to record set &apos;{0}&apos;?.
+        /// </summary>
+        internal static string Confirm_SetRecordSet {
+            get {
+                return ResourceManager.GetString("Confirm_SetRecordSet", resourceCulture);
             }
         }
         
@@ -160,11 +187,29 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating zone ....
+        /// </summary>
+        internal static string Progress_CreatingNewZone {
+            get {
+                return ResourceManager.GetString("Progress_CreatingNewZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating record set ....
         /// </summary>
         internal static string Progress_CreatingRecordSet {
             get {
                 return ResourceManager.GetString("Progress_CreatingRecordSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modifying ....
+        /// </summary>
+        internal static string Progress_Modifying {
+            get {
+                return ResourceManager.GetString("Progress_Modifying", resourceCulture);
             }
         }
         
