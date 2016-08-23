@@ -34,22 +34,25 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
+            ExecutionBlock(() =>
             {
-                Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
-                Paging = true
-            };
+                ADObjectFilterOptions options = new ADObjectFilterOptions
+                {
+                    Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
+                    Paging = true
+                };
 
-            PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
-            if (group == null)
-            {
-                throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
-            }
+                PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
+                if (group == null)
+                {
+                    throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
+                }
 
-            do
-            {
-                WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
-            } while (!string.IsNullOrEmpty(options.NextLink));
+                do
+                {
+                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
+                } while (!string.IsNullOrEmpty(options.NextLink));
+            });
         }
     }
 }
