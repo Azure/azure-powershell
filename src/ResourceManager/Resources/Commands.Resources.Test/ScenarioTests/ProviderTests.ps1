@@ -59,6 +59,21 @@ function Test-AzureProvider
 
  <#
     .SYNOPSIS
+    Tests getting resource provider with zone mappings.
+#>
+function Test-AzureProvider-WithZoneMappings
+{
+    $testProvider = Get-AzureRmResourceProvider -ProviderNamespace "Providers.Test"
+
+	Assert-True {$testProvider.Count -gt 0}
+	Assert-NotNull {$testProvider[1].ZoneMappings}
+
+	Assert-True {$testProvider[1].ZoneMappings.Count -eq 2}
+	Assert-True {$testProvider[1].ZoneMappings["West Europe"] -contains "3"}
+}
+
+<#
+    .SYNOPSIS
     Tests querying for a resource provider's operations/actions
 #>
 function Test-AzureProviderOperation
