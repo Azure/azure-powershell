@@ -23,29 +23,9 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseGeoBackupPolicyCmdletBase : 
-        AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseGeoBackupPolicyModel>, AzureSqlDatabaseBackupAdapter>
+    public abstract class AzureSqlDatabaseGeoBackupPolicyCmdletBase :
+        AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseGeoBackupPolicyModel>, AzureSqlDatabaseBackupAdapter>
     {
-        /// <summary>
-        /// Gets or sets the name of the database server to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the database is in.")]
-        [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the database to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to use.")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
-
         /// <summary>
         /// Initializes the adapter
         /// </summary>
