@@ -46,19 +46,19 @@ namespace Microsoft.Azure.Commands.Dns
                     }
 
             ConfirmAction(
-                    true,
-                    string.Format(ProjectResources.Confirm_SetRecordSet, recordSetToUpdate.Name),
-                    ProjectResources.Progress_Modifying,
-                    recordSetToUpdate.Name,
-                () =>
-                {
-                    DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
+                true,
+                string.Format(ProjectResources.Confirm_SetRecordSet, recordSetToUpdate.Name),
+                ProjectResources.Progress_Modifying,
+                recordSetToUpdate.Name,
+            () =>
+            {
+                DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
 
-                    WriteVerbose(ProjectResources.Success);
+                WriteVerbose(ProjectResources.Success);
 
-                    WriteObject(result);
-                },
-                () => true);
-                }
+                WriteObject(result);
+            },
+            () => true);
+            }
     }
     }
