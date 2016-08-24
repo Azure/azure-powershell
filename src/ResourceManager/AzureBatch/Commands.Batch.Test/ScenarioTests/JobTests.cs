@@ -316,26 +316,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestNewJobCompletesWhenAnyTaskFails()
         {
             BatchController.NewInstance.RunPsTest("Test-JobCompletesWhenAnyTaskFails");
-
-            /*BatchController controller = BatchController.NewInstance;
-            string jobId = "JobCompletesWhenAnyTaskFails-" + Guid.NewGuid();
-            string taskId = "testTask";
-
-            BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                () => new[] { string.Format("Test-JobCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
-                },
-                () =>
-                {
-                    //ScenarioTestHelpers.DidJobFail(controller, context, jobId);
-                    // ScenarioTestHelpers.DeleteJob(controller, context, jobId);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());*/
         }
     }
 }
