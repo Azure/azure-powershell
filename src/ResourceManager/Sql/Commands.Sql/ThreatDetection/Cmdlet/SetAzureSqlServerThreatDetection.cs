@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseThreatDetectionPolicy"), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerThreatDetectionPolicy"), OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    public class SetAzureSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override DatabaseThreatDetectionPolicyModel ApplyUserInputToModel(DatabaseThreatDetectionPolicyModel model)
+        protected override ServerThreatDetectionPolicyModel ApplyUserInputToModel(ServerThreatDetectionPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
 
@@ -78,8 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
             {
                 model.EmailAdmins = (bool)EmailAdmins;
             }
-
-            ExcludedDetectionType = BaseThreatDetectionPolicyModel.ProcessExcludedDetectionTypes(ExcludedDetectionType);
 
             if (ExcludedDetectionType != null)
             {
