@@ -1,4 +1,4 @@
-﻿## 2016.08.09 version 2.0.1
+## 2016.08.09 version 2.0.1
 * Fixed assembly signing issue causing load problems in some PowerShell versions.  (Issue #2747)
 
 ##2016.08.08 version 2.0.0
