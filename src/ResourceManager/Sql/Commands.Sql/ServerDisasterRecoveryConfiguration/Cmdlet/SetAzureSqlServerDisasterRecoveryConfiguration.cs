@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
     /// Cmdlet to set a new Azure Sql Server Disaster Recovery Configuration (used for failover)
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerDisasterRecoveryConfiguration",
-        ConfirmImpact = ConfirmImpact.High)]
+        ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true)]
     public class SetAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
     {
 
