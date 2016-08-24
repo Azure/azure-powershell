@@ -7730,6 +7730,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">PSApplicationPackageReference</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>BatchContext</maml:name>
 				<maml:description>
@@ -7840,6 +7847,13 @@
 					<maml:para>Specifies a locality hint that the Batch service uses to select a node on which to run the task.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">PSApplicationPackageReference</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>BatchContext</maml:name>
@@ -8198,6 +8212,31 @@
           PS C:\&gt; New-AzureBatchTask -JobId &quot;Job-000001&quot; -Tasks @($task1, $task2) -BatchContext $context</dev:code>
 			<dev:remarks>
 				<maml:para>This command adds a task with the ID Task1 and a task with the ID Task2 under the job that has the ID &quot;Job-000001&quot;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 5: Create a Batch task with Application Package References  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $taskId2 = &quot;Task1&quot;
+	       PS C:\&gt; $apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
+    	   PS C:\&gt; $apr1.ApplicationId = &quot;Foo&quot;
+    	   PS C:\&gt; $apr1.Version = &quot;Beta&quot;
+		   PS C:\&gt; $ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
+		   PS C:\&gt;Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $Context | New-AzureBatchTask -Id &quot;Task23&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -ApplicationPackageReferences $ApplicationPackageReferences -BatchContext $Context</dev:code>
+			<dev:remarks>
+				<maml:para>This command adds a task with a reference to an application package that will deploy to the compute node before running the command line.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
