@@ -6758,6 +6758,20 @@
 					<maml:para>Specifies metadata, as key/value pairs, to add to the job. The key is the metadata name. The value is the metadata value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+			</command:parameter>			
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OnTaskFailure</maml:name>
+				<maml:description>
+					<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">OnTaskFailure</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OnAllTasksComplete</maml:name>
+				<maml:description>
+					<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">OnAllTasksComplete</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PoolInformation</maml:name>
@@ -6890,6 +6904,20 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>OnTaskFailure</maml:name>
+			<maml:description>
+				<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">OnTaskFailure</command:parameterValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>OnAllTasksComplete</maml:name>
+			<maml:description>
+				<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">OnAllTasksComplete</command:parameterValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PoolInformation</maml:name>
