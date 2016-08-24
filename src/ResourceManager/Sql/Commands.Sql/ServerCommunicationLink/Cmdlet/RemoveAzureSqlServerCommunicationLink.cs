@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             return entity;
         }
 
-        /// <summary>
+   /*     /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         protected override void ProcessRecord()
@@ -86,6 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             }
 
             base.ProcessRecord();
-        }
+        }*/
     }
 }
