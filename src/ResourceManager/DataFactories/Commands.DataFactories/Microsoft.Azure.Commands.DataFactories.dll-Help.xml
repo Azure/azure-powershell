@@ -5072,12 +5072,6 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet removes a pipeline without prompting you for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Remove-AzureRmDataFactoryPipeline</maml:name>
@@ -5094,12 +5088,6 @@
             <maml:para>Specifies the name of the pipeline to remove.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet removes a pipeline without prompting you for confirmation.</maml:para>
-          </maml:description>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5130,20 +5118,7 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Indicates that this cmdlet removes a pipeline without prompting you for confirmation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
+     <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="PipelineName">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the pipeline to remove.</maml:para>
@@ -6279,12 +6254,6 @@
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet sets the active period without prompting you for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>ForceRecalculate</maml:name>
           <maml:description>
             <maml:para>Indicates that this cmdlet uses force recalculate.</maml:para>
@@ -6329,12 +6298,6 @@
           <maml:name>AutoResolve</maml:name>
           <maml:description>
             <maml:para>Indicates that this cmdlet uses auto resolve.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet sets the active period without prompting you for confirmation.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
@@ -6395,19 +6358,6 @@
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Indicates that this cmdlet sets the active period without prompting you for confirmation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -6918,12 +6868,6 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet suspends a pipeline without prompting you for confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Suspend-AzureRmDataFactoryPipeline</maml:name>
@@ -6940,12 +6884,6 @@
             <maml:para>Specifies the name of the pipeline to suspend.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Indicates that this cmdlet suspends a pipeline without prompting you for confirmation.</maml:para>
-          </maml:description>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -6971,19 +6909,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Indicates that this cmdlet suspends a pipeline without prompting you for confirmation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
