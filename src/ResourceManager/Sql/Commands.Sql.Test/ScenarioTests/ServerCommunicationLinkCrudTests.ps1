@@ -98,7 +98,7 @@ function Test-RemoveServerCommunicationLink
 	
 	try
 	{
-		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.Name -Force
+		Remove-AzureRmSqlServerCommunicationLink -ServerName $server1.ServerName -ResourceGroupName $rg.ResourceGroupName -LinkName $ep1.Name –Confirm:$false
 		
 		$all = $server1 | Get-AzureRmSqlServerCommunicationLink
 		Assert-AreEqual $all.Count 0
