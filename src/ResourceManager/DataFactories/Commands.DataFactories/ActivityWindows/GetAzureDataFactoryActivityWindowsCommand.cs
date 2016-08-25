@@ -46,40 +46,45 @@ namespace Microsoft.Azure.Commands.DataFactories
         [ValidateNotNullOrEmpty]
         public string ActivityName { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The state of the activity window. The possible states includes: None, Waiting, InProgress, Ready, Failed, and Skipped")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The state of the activity window. The possible states includes: None, Waiting, InProgress, Ready, Failed, and Skipped")]
         [ValidateNotNullOrEmpty]
         public string WindowState { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The substate of the activity window. The possible substates includes: Canceled, timedOut, Validating," +
-                                                                                                          " ScheduledTime, DatasetDependencies, ComputeResources, ConcurrencyLimit, ActivityResume, Retry, Validation, ValidationRetry.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The substate of the activity window. The possible substates includes: Canceled, timedOut, Validating," +
+            " ScheduledTime, DatasetDependencies, ComputeResources, ConcurrencyLimit, ActivityResume, Retry, Validation, ValidationRetry.")]
         [ValidateNotNullOrEmpty]
         public string WindowSubstate { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window filter based on Azure Search filter grammar. For more information see https://msdn.microsoft.com/en-us/library/azure/dn798921.aspx")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The activity window filter based on Azure Search filter " +
+                          "grammar. For more information see https://msdn.microsoft.com/en-us/library/azure/dn798921.aspx")]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Order the response by one of the activity window list parameters.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Order the response by one of the activity window list parameters.")]
         [ValidateNotNullOrEmpty]
         public string OrderBy { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window start time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window start time.")]
         [ValidateNotNullOrEmpty]
         public DateTime? WindowStart { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window end time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window end time.")]
         [ValidateNotNullOrEmpty]
         public DateTime? WindowEnd { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window run start time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window run start time.")]
         [ValidateNotNullOrEmpty]
         public DateTime? RunStart { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window run end time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The activity window run end time.")]
         [ValidateNotNullOrEmpty]
         public DateTime? RunEnd { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The number of activity windows to be listed.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The number of activity windows to be listed.")]
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
 
