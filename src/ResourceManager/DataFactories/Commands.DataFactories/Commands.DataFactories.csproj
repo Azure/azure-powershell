@@ -176,7 +176,6 @@
     <Compile Include="Models\CreatePSLinkedServiceParameters.cs" />
     <Compile Include="LinkedServices\GetAzureDataFactoryLinkedServiceCommand.cs" />
     <Compile Include="LinkedServices\LinkedServiceContextBaseCmdlet.cs" />
-    <Compile Include="ActivityWindows\ActivityWindowContextBaseCmdlet.cs" />
     <Compile Include="ActivityWindows\GetAzureDataFactoryActivityWindowsCommand.cs" />
     <Compile Include="Models\CreatePSPipelineParameters.cs" />
     <Compile Include="Models\DataFactoryClient.ActivityWindows.cs" />

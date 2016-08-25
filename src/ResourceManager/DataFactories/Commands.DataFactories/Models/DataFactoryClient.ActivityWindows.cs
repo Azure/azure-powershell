@@ -35,37 +35,42 @@ namespace Microsoft.Azure.Commands.DataFactories
                 !string.IsNullOrWhiteSpace(filterOptions.DatasetName) &&
                 string.IsNullOrWhiteSpace(filterOptions.ActivityName))
             {
-                ActivityWindowsByDatasetListParameters byDatasetListParameters = this.GenerateListParameters<ActivityWindowsByDatasetListParameters>(filterOptions);
+                ActivityWindowsByDatasetListParameters byDatasetListParameters =
+                    this.GenerateListParameters<ActivityWindowsByDatasetListParameters>(filterOptions);
                 response = this.ListByDatasetActivityWindows(filterOptions.NextLink, byDatasetListParameters);
             }
             else if (string.IsNullOrWhiteSpace(filterOptions.DatasetName) &&
                 !string.IsNullOrWhiteSpace(filterOptions.PipelineName) &&
                 string.IsNullOrWhiteSpace(filterOptions.ActivityName))
             {
-                ActivityWindowsByPipelineListParameters byPipelineListParameters = this.GenerateListParameters<ActivityWindowsByPipelineListParameters>(filterOptions);
+                ActivityWindowsByPipelineListParameters byPipelineListParameters =
+                    this.GenerateListParameters<ActivityWindowsByPipelineListParameters>(filterOptions);
                 response = this.ListByPipelineActivityWindows(filterOptions.NextLink, byPipelineListParameters);
             }
             else if (string.IsNullOrWhiteSpace(filterOptions.DatasetName) &&
                 !string.IsNullOrWhiteSpace(filterOptions.PipelineName) &&
                 !string.IsNullOrWhiteSpace(filterOptions.ActivityName))
             {
-                ActivityWindowsByActivityListParameters byActivityListParameters = this.GenerateListParameters<ActivityWindowsByActivityListParameters>(filterOptions);
+                ActivityWindowsByActivityListParameters byActivityListParameters =
+                    this.GenerateListParameters<ActivityWindowsByActivityListParameters>(filterOptions);
                 response = this.ListByActivityActivityWindows(filterOptions.NextLink, byActivityListParameters);
             }
             else if (string.IsNullOrWhiteSpace(filterOptions.DatasetName) &&
                 string.IsNullOrWhiteSpace(filterOptions.PipelineName) &&
                 string.IsNullOrWhiteSpace(filterOptions.ActivityName))
             {
-                ActivityWindowsByDataFactoryListParameters byDataFactoryListParameters = this.GenerateListParameters<ActivityWindowsByDataFactoryListParameters>(filterOptions);
+                ActivityWindowsByDataFactoryListParameters byDataFactoryListParameters =
+                    this.GenerateListParameters<ActivityWindowsByDataFactoryListParameters>(filterOptions);
                 response = this.ListByDataFactoryActivityWindows(filterOptions.NextLink, byDataFactoryListParameters);
             }
             else
             {
-                throw new PSArgumentException("An incorrect combination of arguments was passed. One of the following combinations of arguments must be provided:\n" +
-                                              "1) List activity windows by data factory: '-ResourceGroupName' and '-DataFactoryName'.\n" +
-                                              "2) List activity windows by pipeline: '-ResourceGroupName' and '-DataFactoryName' and '-PipelineName'.\n" +
-                                              "3) List activity windows by pipeline activity: '-ResourceGroupName' and '-DataFactoryName' and '-PipelineName' and '-ActivityName'.\n" +
-                                              "4) List activity windows by dataset: '-ResourceGroupName' and '-DataFactoryName' and '-DatasetName'.\n");
+                throw new PSArgumentException(
+                    "An incorrect combination of arguments was passed. One of the following combinations of arguments must be provided:\n" +
+                    "1) List activity windows by data factory: '-ResourceGroupName' and '-DataFactoryName'.\n" +
+                    "2) List activity windows by pipeline: '-ResourceGroupName' and '-DataFactoryName' and '-PipelineName'.\n" +
+                    "3) List activity windows by pipeline activity: '-ResourceGroupName' and '-DataFactoryName' and '-PipelineName' and '-ActivityName'.\n" +
+                    "4) List activity windows by dataset: '-ResourceGroupName' and '-DataFactoryName' and '-DatasetName'.\n");
             }
 
             filterOptions.NextLink = response != null ? response.NextLink : null;
@@ -85,28 +90,32 @@ namespace Microsoft.Azure.Commands.DataFactories
                 DataPipelineManagementClient.ActivityWindows.List(listParameters);
         }
 
-        public virtual ActivityWindowListResponse ListByDatasetActivityWindows(string nextLink, ActivityWindowsByDatasetListParameters listParameters)
+        public virtual ActivityWindowListResponse ListByDatasetActivityWindows(
+            string nextLink, ActivityWindowsByDatasetListParameters listParameters)
         {
             return nextLink.IsNextPageLink() ?
                 DataPipelineManagementClient.ActivityWindows.ListNext(nextLink, listParameters) :
                 DataPipelineManagementClient.ActivityWindows.List(listParameters);
         }
 
-        public virtual ActivityWindowListResponse ListByDataFactoryActivityWindows(string nextLink, ActivityWindowsByDataFactoryListParameters listParameters)
+        public virtual ActivityWindowListResponse ListByDataFactoryActivityWindows(
+            string nextLink, ActivityWindowsByDataFactoryListParameters listParameters)
         {
             return nextLink.IsNextPageLink() ?
                 DataPipelineManagementClient.ActivityWindows.ListNext(nextLink, listParameters) :
                 DataPipelineManagementClient.ActivityWindows.List(listParameters);
         }
 
-        public virtual ActivityWindowListResponse ListByActivityActivityWindows(string nextLink, ActivityWindowsByActivityListParameters listParameters)
+        public virtual ActivityWindowListResponse ListByActivityActivityWindows(
+            string nextLink, ActivityWindowsByActivityListParameters listParameters)
         {
             return nextLink.IsNextPageLink() ?
                 DataPipelineManagementClient.ActivityWindows.ListNext(nextLink, listParameters) :
                 DataPipelineManagementClient.ActivityWindows.ListByPipelineActivity(listParameters);
         }
 
-        private T GenerateListParameters<T>(ActivityWindowFilterOptions filterOptions) where T : ActivityWindowsListParameters, new()
+        private T GenerateListParameters<T>(ActivityWindowFilterOptions filterOptions)
+            where T : ActivityWindowsListParameters, new()
         {
             T listParameters = new T();
 
