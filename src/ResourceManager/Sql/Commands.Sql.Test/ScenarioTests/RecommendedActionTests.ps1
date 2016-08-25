@@ -20,13 +20,39 @@
 # It's hard to generate mock recommendations on a new server, database or elastic pool from this code as well, as the process is Microsoft Internal.
 # For now, Tests have to use recorded responses on some specific database that already has recommended actions.
 
+# Follow below steps for recording tests:
+# =======================================
+# 1. If you already have necessary resources (a server, elastic Pool and database), replace resource names with your resources in "GetResourceNames()" function
+# 2. If you don't have existing resources, "SetupResources()" function will create necessary resources for you on your subscription.
+# 3. Send a mail to "mdcsworkloadinsight@microsoft.com" with your server/elastic pool/database details requesting to add mock recommendations for your resources.
+#    Provide your subscription along with resource details and mention that you are contributing to Azure Powershell cmdlets.
+
+<#
+	.SYNOPSIS
+	Get Resource names for tests
+#>
+function GetResourceNames()
+{
+	return @{ `
+		"Location"          = "Australia East"
+		"ResourceGroupName" = "WIRunnersProd"; `
+		"ServerName"        = "wi-runner-australia-east"; `
+		"DatabaseName"      = "WIRunner"; `
+		"ElasticPoolName"   = "WIRunnerPool"; `
+	}
+}
+
 <#
 	.SYNOPSIS
 	Tests listing Server recommended actions
 #>
 function Test-ListServerRecommendedActions
 {
-	$response = Get-AzureRmSqlServerRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlServerRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-AdvisorName CreateIndex
 	Assert-NotNull $response
 	Assert-AreEqual $response.Count 2
 }
@@ -37,7 +63,12 @@ function Test-ListServerRecommendedActions
 #>
 function Test-GetServerRecommendedAction
 {
-	$response = Get-AzureRmSqlServerRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlServerRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
 	Assert-NotNull $response
 	ValidateServer $response
 	ValidateRecommendedActionProperties $response
@@ -49,7 +80,13 @@ function Test-GetServerRecommendedAction
 #>
 function Test-UpdateServerRecommendedAction
 {
-	$response = Set-AzureRmSqlServerRecommendedActionState -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 -State Pending
+	$names = GetResourceNames
+	$response = Set-AzureRmSqlServerRecommendedActionState `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
+		-State Pending
 	Assert-NotNull $response
 	ValidateServer $response
 	ValidateRecommendedActionProperties $response 'Pending'
@@ -61,7 +98,12 @@ function Test-UpdateServerRecommendedAction
 #>
 function Test-ListDatabaseRecommendedActions
 {
-	$response = Get-AzureRmSqlDatabaseRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlDatabaseRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-DatabaseName $names["DatabaseName"] `
+		-AdvisorName CreateIndex
 	Assert-NotNull $response
 	Assert-AreEqual $response.Count 2
 }
@@ -72,7 +114,13 @@ function Test-ListDatabaseRecommendedActions
 #>
 function Test-GetDatabaseRecommendedAction
 {
-	$response = Get-AzureRmSqlDatabaseRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlDatabaseRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-DatabaseName $names["DatabaseName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
 	Assert-NotNull $response
 	ValidateDatabase $response
 	ValidateRecommendedActionProperties $response
@@ -84,7 +132,14 @@ function Test-GetDatabaseRecommendedAction
 #>
 function Test-UpdateDatabaseRecommendedAction
 {
-	$response = Set-AzureRmSqlDatabaseRecommendedActionState -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -DatabaseName WIRunner -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 -State Pending
+	$names = GetResourceNames
+	$response = Set-AzureRmSqlDatabaseRecommendedActionState `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-DatabaseName $names["DatabaseName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
+		-State Pending
 	Assert-NotNull $response
 	ValidateDatabase $response
 	ValidateRecommendedActionProperties $response 'Pending'
@@ -95,7 +150,12 @@ function Test-UpdateDatabaseRecommendedAction
 #>
 function Test-ListElasticPoolRecommendedActions
 {
-	$response = Get-AzureRmSqlElasticPoolRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlElasticPoolRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-ElasticPoolName $names["ElasticPoolName"] `
+		-AdvisorName CreateIndex
 	Assert-NotNull $response
 	Assert-AreEqual $response.Count 2
 }
@@ -106,7 +166,13 @@ function Test-ListElasticPoolRecommendedActions
 #>
 function Test-GetElasticPoolRecommendedAction
 {
-	$response = Get-AzureRmSqlElasticPoolRecommendedAction -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
+	$names = GetResourceNames
+	$response = Get-AzureRmSqlElasticPoolRecommendedAction `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-ElasticPoolName $names["ElasticPoolName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893
 	Assert-NotNull $response
 	ValidateElasticPool $response
 	ValidateRecommendedActionProperties $response
@@ -118,7 +184,14 @@ function Test-GetElasticPoolRecommendedAction
 #>
 function Test-UpdateElasticPoolRecommendedAction
 {
-	$response = Set-AzureRmSqlElasticPoolRecommendedActionState -ResourceGroupName WIRunnersProd -ServerName wi-runner-australia-east -ElasticPoolName WIRunnerPool -AdvisorName CreateIndex -RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 -State Pending
+	$names = GetResourceNames
+	$response = Set-AzureRmSqlElasticPoolRecommendedActionState `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName wi-runner-australia-east `
+		-ElasticPoolName $names["ElasticPoolName"] `
+		-AdvisorName CreateIndex `
+		-RecommendedActionName IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893 `
+		-State Pending
 	Assert-NotNull $response
 	ValidateElasticPool $response
 	ValidateRecommendedActionProperties $response 'Pending'
@@ -130,8 +203,8 @@ function Test-UpdateElasticPoolRecommendedAction
 #>
 function ValidateServer($recommendedAction)
 {
-	Assert-AreEqual $recommendedAction.ResourceGroupName "WIRunnersProd"
-	Assert-AreEqual $recommendedAction.ServerName "wi-runner-australia-east"
+	Assert-AreEqual $recommendedAction.ResourceGroupName $names["ResourceGroupName"]
+	Assert-AreEqual $recommendedAction.ServerName $names["ServerName"]
 	Assert-AreEqual $recommendedAction.AdvisorName "CreateIndex"
 }
 
@@ -142,7 +215,7 @@ function ValidateServer($recommendedAction)
 function ValidateDatabase($recommendedAction)
 {
 	ValidateServer $recommendedAction
-	Assert-AreEqual $recommendedAction.DatabaseName "WIRunner"
+	Assert-AreEqual $recommendedAction.DatabaseName $names["DatabaseName"]
 }
 
 <#
@@ -152,7 +225,7 @@ function ValidateDatabase($recommendedAction)
 function ValidateElasticPool($recommendedAction)
 {
 	ValidateServer $recommendedAction
-	Assert-AreEqual $recommendedAction.ElasticPoolName "WIRunnerPool"
+	Assert-AreEqual $recommendedAction.ElasticPoolName $names["ElasticPoolName"]
 }
 
 <#
@@ -224,4 +297,43 @@ function ValidateRecommendedActionDetails($details)
 	Assert-AreEqual $details.Item("includedColumns") "[included_1]"
 	Assert-AreEqual $details.Item("indexActionStartTime") "04/21/2016 15:24:47"
 	Assert-AreEqual $details.Item("indexActionDuration") "00:01:00"
+}
+
+<#
+	.SYNOPSIS
+	Sets up necessary resources for these tests. This won't be run as a part of
+	tests. See the note at the top of this file. 
+#>
+function SetupResources()
+{
+	$names = GetResourceNames
+
+	# Create Resource Group
+	New-AzureRmResourceGroup -Name $names["ResourceGroupName"] -Location $names["Location"]
+	
+	# Create Server
+	$serverLogin = "testusername"
+	$serverPassword = "t357ingP@s5w0rd!"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin `
+		, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	
+	New-AzureRmSqlServer -ResourceGroupName  $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-Location $names["Location"] `
+		-ServerVersion "12.0" `
+		-SqlAdministratorCredentials $credentials
+
+	# Create database
+	New-AzureRmSqlDatabase `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-DatabaseName $names["DatabaseName"] `
+		-Edition Basic
+
+	# Create elastic pool
+	New-AzureRmSqlElasticPool `
+		-ResourceGroupName $names["ResourceGroupName"] `
+		-ServerName $names["ServerName"] `
+		-ElasticPoolName $names["ElasticPoolName"] `
+		-Edition Basic
 }

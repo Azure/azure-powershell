@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.RecommendedAction.Model;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Sql.Models;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// Defines the Set-AzureRmSqlElasticPoolRecommendedActionState cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPoolRecommendedActionState",
-        ConfirmImpact = ConfirmImpact.Low)]
+        SupportsShouldProcess = true)]
     public class SetAzureSqlElasticPoolRecommendedActionState : AzureSqlElasticPoolRecommendedActionCmdletBase
     {
         /// <summary>
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new state of Azure SQL Elastic Pool Recommended Action.")]
         [ValidateNotNullOrEmpty]
-        public RecommendedActionStateValues State { get; set; }
+        public RecommendedActionState State { get; set; }
 
         /// <summary>
         /// Gets entities from the service.
@@ -90,6 +91,22 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
             return new List<AzureSqlElasticPoolRecommendedActionModel>() {
                 ModelAdapter.UpdateState(entity.Single())
             };
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!ShouldProcess(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetRecommendedActionStateDescription, this.RecommendedActionName, this.State),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetRecommendedActionStateWarning, this.RecommendedActionName, this.State),
+                    Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
         }
     }
 }

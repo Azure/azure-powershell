@@ -12,41 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
+
+namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
 {
     /// <summary>
-    /// Allowed values for updating Recommended Action State
+    /// Allowed values for updating Advisor Auto-execute Status
     /// </summary>
-    public enum RecommendedActionStateValues
+    public enum AdvisorAutoExecuteStatus
     {
         /// <summary>
-        /// To cancel the inititiated recommended action while it's not yet applied, or to un-ignore an ignored recommended action.
+        /// To explicitly enable auto-execute on the current resource for this advisor
         /// </summary>
-        Active,
+        Enabled,
 
         /// <summary>
-        /// To initiate applying recommended action.
+        /// To explicity disable auto-execute on the current resource for this advisor
         /// </summary>
-        Pending,
+        Disabled,
 
         /// <summary>
-        /// To start reverting the applied recommended action.
+        /// To clear the explicit value previously set and inherit the default value from the parent of the current resource.
         /// </summary>
-        PendingRevert,
-
-        /// <summary>
-        /// To cancel the initiated revert action.
-        /// </summary>
-        RevertCancelled,
-
-        /// <summary>
-        /// To ignore the recommended action
-        /// </summary>
-        Ignored,
-
-        /// <summary>
-        /// To indicate if customer has manually applied the recommendation and wants to resolve the recommended action.
-        /// </summary>
-        Resolved
+        Default
     }
 }

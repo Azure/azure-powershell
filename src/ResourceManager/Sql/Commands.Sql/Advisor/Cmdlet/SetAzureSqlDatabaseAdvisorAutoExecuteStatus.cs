@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Sql.Advisor.Model;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAdvisorAutoExecuteStatus",
-        ConfirmImpact = ConfirmImpact.Low)]
+        SupportsShouldProcess = true)]
     public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
     {
         /// <summary>
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The new auto-execute status of Azure SQL Database Advisor.")]
         [ValidateNotNullOrEmpty]
-        public AdvisorAutoExecuteStatusValues AutoExecuteStatus { get; set; }
+        public AdvisorAutoExecuteStatus AutoExecuteStatus { get; set; }
 
         /// <summary>
         /// Gets entities from the service.
@@ -85,6 +86,22 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
             return new List<AzureSqlDatabaseAdvisorModel>() {
                 ModelAdapter.UpdateAutoExecuteStatus(entity.Single())
             };
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!ShouldProcess(
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAdvisorAutoExecuteStatusDescription, this.AdvisorName, this.AutoExecuteStatus),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAdvisorAutoExecuteStatusWarning, this.AdvisorName, this.AutoExecuteStatus),
+                    Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            base.ExecuteCmdlet();
         }
     }
 }

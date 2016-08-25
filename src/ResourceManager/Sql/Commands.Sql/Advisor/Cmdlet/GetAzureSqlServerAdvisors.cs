@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlServerAdvisors cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAdvisor", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAdvisor")]
     public class GetAzureSqlServerAdvisors : AzureSqlServerAdvisorCmdletBase
     {
         /// <summary>
