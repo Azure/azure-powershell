@@ -19,9 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerActiveDirectoryAdministrator",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerActiveDirectoryAdministrator", SupportsShouldProcess = true)]
     public class RemoveAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
