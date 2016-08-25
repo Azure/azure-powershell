@@ -9257,13 +9257,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Thumbprint</maml:name>
 				<maml:description>
@@ -9289,18 +9282,6 @@
 			<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
 			<dev:type>
 				<maml:name>BatchAccountContext</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -9360,9 +9341,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Get-AzureBatchCertificate -Filter &quot;state eq &apos;active&apos;&quot; -BatchContext $Context | Remove-AzureBatchCertificate -Force -BatchContext $Context</dev:code>
+			<dev:code>PS C:\&gt;Get-AzureBatchCertificate -Filter &quot;state eq &apos;active&apos;&quot; -BatchContext $Context | Remove-AzureBatchCertificate -BatchContext $Context</dev:code>
 			<dev:remarks>
-				<maml:para>This command gets all certificates that are active by using the Get-AzureBatchCertificate cmdlet. The command passes the active certificates to the current cmdlet by using the pipeline operator. That cmdlet removes each certificate. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>
+				<maml:para>This command gets all certificates that are active by using the Get-AzureBatchCertificate cmdlet. The command passes the active certificates to the current cmdlet by using the pipeline operator. That cmdlet removes each certificate.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -9433,13 +9414,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;ComputeNodeDeallocationOption&gt;</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Ids</maml:name>
 				<maml:description>
@@ -9486,13 +9460,6 @@
 				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;ComputeNodeDeallocationOption&gt;</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ResizeTimeout</maml:name>
 				<maml:description>
 					<maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
@@ -9534,18 +9501,6 @@
 			<command:parameterValue required="true" variableLength="false">System.Nullable&lt;ComputeNodeDeallocationOption&gt;</command:parameterValue>
 			<dev:type>
 				<maml:name>System.Nullable&lt;ComputeNodeDeallocationOption&gt;</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -9617,9 +9572,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Get-AzureBatchComputeNode -PoolId &quot;Pool07&quot; -Id &quot;tvm-2316545714_1-20150725t213220z&quot; -BatchContext $Context | Remove-AzureBatchComputeNode -Force -BatchContext $Context</dev:code>
+			<dev:code>PS C:\&gt;Get-AzureBatchComputeNode -PoolId &quot;Pool07&quot; -Id &quot;tvm-2316545714_1-20150725t213220z&quot; -BatchContext $Context | Remove-AzureBatchComputeNode -BatchContext $Context</dev:code>
 			<dev:remarks>
-				<maml:para>This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzureBatchComputeNode cmdlet. The command passes that node to the current cmdlet by using the pipeline. The current cmdlet removes the compute node. The command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>
+				<maml:para>This command gets the compute node that has the specified ID from pool that has the ID Pool07 by using the Get-AzureBatchComputeNode cmdlet. The command passes that node to the current cmdlet by using the pipeline. The current cmdlet removes the compute node.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -9637,9 +9592,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Remove-AzureBatchComputeNode -PoolId &quot;Pool07&quot; @(&quot;tvm-1783593343_28-20151117t214257z&quot;,&quot;tvm-1783593343_29-20151117t214257z&quot;) -Force -BatchContext $Context</dev:code>
+			<dev:code>PS C:\&gt;Remove-AzureBatchComputeNode -PoolId &quot;Pool07&quot; @(&quot;tvm-1783593343_28-20151117t214257z&quot;,&quot;tvm-1783593343_29-20151117t214257z&quot;) -BatchContext $Context</dev:code>
 			<dev:remarks>
-				<maml:para>This command removes two compute nodes from the pool that has the ID Pool07. The command does not prompt you for confirmation.</maml:para>
+				<maml:para>This command removes two compute nodes from the pool that has the ID Pool07.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -9702,13 +9657,6 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Name</maml:name>
 				<maml:description>
@@ -9750,18 +9698,6 @@
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Name</maml:name>
 			<maml:description>
@@ -9797,9 +9733,9 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Remove-AzureBatchComputeNodeUser -PoolId &quot;Pool01&quot; -ComputeNodeId &quot;ComputeNode01&quot; -Name &quot;User14&quot; -Force -BatchContext $Context</dev:code>
+			<dev:code>PS C:\&gt;Remove-AzureBatchComputeNodeUser -PoolId &quot;Pool01&quot; -ComputeNodeId &quot;ComputeNode01&quot; -Name &quot;User14&quot; -BatchContext $Context</dev:code>
 			<dev:remarks>
-				<maml:para>This command deletes the user named User14 from compute node named ComputeNode01. The compute node is in the pool named Pool01. This command specifies the Force parameter. Therefore, the command does not prompt you for confirmation.</maml:para>
+				<maml:para>This command deletes the user named User14 from compute node named ComputeNode01. The compute node is in the pool named Pool01.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
