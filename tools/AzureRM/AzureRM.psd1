@@ -66,7 +66,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.Insights'; RequiredVersion = '1.0.12'},
     @{ ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '1.1.11'},
     @{ ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '1.0.8'},
-    @{ ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.9.3'},
+    @{ ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.9.2.1'},
     @{ ModuleName = 'AzureRM.Network'; RequiredVersion = '1.0.13'},
     @{ ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '1.0.12'},
     @{ ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '1.0.12'},
