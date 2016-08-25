@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 {
                     break;
                 }
-                Task.Delay(2000); // wait 2 seconds between each poll
+                TestMockSupport.Delay(2000); // wait 2 seconds between each poll
             }
         }
 
