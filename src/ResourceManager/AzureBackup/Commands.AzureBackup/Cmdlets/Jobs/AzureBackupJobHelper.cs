@@ -12,13 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using System;
 
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -90,7 +85,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public static bool IsValidStatus(string inputStatus)
         {
             JobStatus status;
-            if(!Enum.TryParse<JobStatus>(inputStatus, out status) || status == JobStatus.Invalid)
+            if (!Enum.TryParse<JobStatus>(inputStatus, out status) || status == JobStatus.Invalid)
             {
                 return false;
             }
@@ -100,7 +95,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public static bool IsValidOperationType(string inputOperationType)
         {
             JobOperationType operationType;
-            if(!Enum.TryParse<JobOperationType>(inputOperationType, out operationType) || operationType == JobOperationType.Invalid)
+            if (!Enum.TryParse<JobOperationType>(inputOperationType, out operationType) || operationType == JobOperationType.Invalid)
             {
                 return false;
             }

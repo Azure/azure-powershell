@@ -12,20 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
 using System;
-using System.Web;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.BackupServices.Models;
-using MBS = Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Commands.AzureBackup.Properties;
-using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.Azure.Commands.AzureBackup.Helpers;
-using Microsoft.Azure.Management.BackupServices;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -48,7 +41,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.RGName)]
         public string ResourceGroupName { get; set; }
 
-        
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -59,14 +52,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 string rgName = String.Empty;
                 string ServiceOrRG = String.Empty;
 
-                if(this.ParameterSetName == V1VMParameterSet)
+                if (this.ParameterSetName == V1VMParameterSet)
                 {
                     vmName = Name;
                     rgName = ServiceName;
                     WriteDebug(String.Format(Resources.RegisteringARMVM1, vmName, rgName));
                     ServiceOrRG = "CloudServiceName";
                 }
-                else if(this.ParameterSetName == V2VMParameterSet)
+                else if (this.ParameterSetName == V2VMParameterSet)
                 {
                     vmName = Name;
                     rgName = ResourceGroupName;
@@ -84,7 +77,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 CSMContainerResponse container = null;
                 isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
-                if(isDiscoveryNeed)
+                if (isDiscoveryNeed)
                 {
                     WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
                     RefreshContainer(Vault.ResourceGroupName, Vault.Name);
@@ -96,7 +89,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         WriteDebug(errMsg);
                         ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                     }
-                }                
+                }
 
                 //Container is discovered. Register the container
                 WriteDebug(String.Format(Resources.RegisteringVM, vmName));
@@ -149,7 +142,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug(String.Format(Resources.RertyDiscovery));
                 }
             }
-            return isRetryNeeded;         
+            return isRetryNeeded;
         }
 
         private bool IsDiscoveryNeeded(string vmName, string rgName, out CSMContainerResponse container)
@@ -158,7 +151,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ContainerQueryParameters parameters = new ContainerQueryParameters()
             {
                 ContainerType = ManagedContainerType.IaasVM.ToString(),
-                FriendlyName = vmName,      
+                FriendlyName = vmName,
                 Status = AzureBackupContainerRegistrationStatus.NotRegistered.ToString(),
             };
 
@@ -176,7 +169,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             else
             {
                 //We can have multiple container with same friendly name. 
-                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault(); 
+                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
                 if (container == null)
                 {
                     //Container is not in list of registered container

@@ -6,7 +6,7 @@ function Test-RedisCache
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershelltest"
     $location = "North Central US"
 
@@ -31,7 +31,7 @@ function Test-RedisCache
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -145,7 +145,7 @@ function Test-SetNonExistingRedisCacheTest
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "NonExistingRedisCache"
     $location = "North Central US"
 
@@ -161,7 +161,7 @@ function Test-RedisCachePipeline
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershelltestpipe"
     $location = "North Central US"
 
@@ -187,7 +187,7 @@ function Test-RedisCachePipeline
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -247,7 +247,7 @@ function Test-SetRedisCacheBugFixTest
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "siddharth"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "siddharthchatrola"
     $location = "North Central US"
 
@@ -284,7 +284,7 @@ function Test-RedisCacheClustering
 {
     # Setup
     # resource group should exists
-    $resourceGroupName = "MyResourceGroup"
+    $resourceGroupName = "SunnyAAPT6"
     $cacheName = "powershellcluster"
     $location = "East US"
 
@@ -306,7 +306,7 @@ function Test-RedisCacheClustering
     # In loop to check if cache exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        Start-TestSleep 30000
         $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
@@ -393,4 +393,141 @@ function Test-RedisCacheClustering
 
     # Delete cache
     Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+}
+
+<#
+.SYNOPSIS
+Tests SetAzureRedisCacheDiagnostics
+#>
+function Test-SetAzureRedisCacheDiagnostics
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunnycache"
+    
+    # Set Diagnostics
+    Set-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName -StorageAccountId "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourceGroups/SunnyAAPT6/providers/Microsoft.ClassicStorage/storageAccounts/sunnystoragenew"
+}
+
+<#
+.SYNOPSIS
+Tests RemoveAzureRedisCacheDiagnostics
+#>
+function Test-RemoveAzureRedisCacheDiagnostics
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunnycache"
+    
+    # Set Diagnostics
+    Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName $resourceGroupName -Name $cacheName
+}
+
+<#
+.SYNOPSIS
+Tests ResetRMAzureRedisCache
+#>
+function Test-ResetAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-reboot"
+    $rebootType = "PrimaryNode"
+    
+    Reset-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RebootType $rebootType -Force
+}
+
+<#
+.SYNOPSIS
+Tests ExportRMAzureRedisCache
+#>
+function Test-ExportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $prefix = "sunny"
+    $container = "<container sas key>"
+    Export-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Prefix $prefix -Container $container
+}
+
+<#
+.SYNOPSIS
+Tests ImportAzureRmRedisCache
+#>
+function Test-ImportAzureRmRedisCache
+{
+    $resourceGroupName = "SunnyAAPT6"
+    $cacheName = "sunny-importexport"
+    $files = @("<blob sas key>")
+    Import-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Files $files -Force
+}
+
+<#
+.SYNOPSIS
+Tests schedule patching
+#>
+function Test-RedisCachePatchSchedules
+{
+    $resourceGroupName = "SiddharthsSub"
+    $cacheName = "sunny-premium"
+    
+    $weekend = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00"
+    $thursday = New-AzureRmRedisCacheScheduleEntry -DayOfWeek "Thursday" -StartHourUtc 10 -MaintenanceWindow "09:00:00"
+
+    $createResult = New-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName -Entries @($weekend, $thursday)
+    Assert-True {$createResult.Count -eq 3}
+    foreach ($scheduleEntry in $createResult)
+    {
+        if($scheduleEntry.DayOfWeek -eq "Thursday")
+        {
+            Assert-AreEqual 10 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "09:00:00" $scheduleEntry.MaintenanceWindow
+        } 
+        elseif($scheduleEntry.DayOfWeek -eq "Saturday" -or $scheduleEntry.DayOfWeek -eq "Sunday")
+        {
+            Assert-AreEqual 2 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "06:00:00" $scheduleEntry.MaintenanceWindow
+        }
+        else
+        {
+            Assert-True $false "Unknown DayOfWeek."
+        }
+    }
+
+    $getResult = Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+    Assert-True {$getResult.Count -eq 3}
+    foreach ($scheduleEntry in $getResult)
+    {
+        if($scheduleEntry.DayOfWeek -eq "Thursday")
+        {
+            Assert-AreEqual 10 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "09:00:00" $scheduleEntry.MaintenanceWindow
+        } 
+        elseif($scheduleEntry.DayOfWeek -eq "Saturday" -or $scheduleEntry.DayOfWeek -eq "Sunday")
+        {
+            Assert-AreEqual 2 $scheduleEntry.StartHourUtc
+            Assert-AreEqual "06:00:00" $scheduleEntry.MaintenanceWindow
+        }
+        else
+        {
+            Assert-True $false "Unknown DayOfWeek."
+        }
+    }
+
+    Remove-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName
+
+    Assert-ThrowsContains {Get-AzureRmRedisCachePatchSchedule -ResourceGroupName $resourceGroupName -Name $cacheName} "There are no patch schedules found for redis cache 'sunny-premium'"
+}
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep($milliseconds)
+{
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        Start-Sleep -Milliseconds $milliseconds
+    }
 }

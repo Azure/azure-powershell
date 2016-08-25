@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
     public class CreatePSApplicationParameters
@@ -23,6 +21,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public string HomePage { get; set; }
 
         public string[] IdentifierUris { get; set; }
+
+        public string[] ReplyUrls { get; set; }
+
+        public bool AvailableToOtherTenants { get; set; }
 
         public PSADKeyCredential[] KeyCredentials { get; set; }
 

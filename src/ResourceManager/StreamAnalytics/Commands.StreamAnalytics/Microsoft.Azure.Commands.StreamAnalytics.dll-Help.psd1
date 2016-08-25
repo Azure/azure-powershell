@@ -55,12 +55,12 @@ ScriptsToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll'
 )
 
 # Functions to export from this module
@@ -82,6 +82,27 @@ ModuleList = @()
 FileList =  @()
 
 # Private data to pass to the module specified in ModuleToProcess
-PrivateData = ''
+PrivateData = @{
+
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable
 
 }

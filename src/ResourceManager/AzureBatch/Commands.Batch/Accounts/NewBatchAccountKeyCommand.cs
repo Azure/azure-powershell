@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchAccountKey), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string ResourceGroupName { get; set; }
 
         private AccountKeyType keyType;
-        [Parameter(Mandatory = true, ValueFromPipeline = false, 
+        [Parameter(Mandatory = true, ValueFromPipeline = false,
             HelpMessage = "The type of key (primary or secondary) to regenerate.")]
         [ValidateSet("Primary", "Secondary")]
         public string KeyType

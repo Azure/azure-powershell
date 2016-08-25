@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -31,8 +30,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Primary Server object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
-        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer PrimaryServer { get; set; }
 
@@ -61,30 +60,25 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                networkMappingsListResponse =
+            base.ExecuteSiteRecoveryCmdlet();
+
+            networkMappingsListResponse =
                     RecoveryServicesClient
                     .GetAzureSiteRecoveryNetworkMappings();
 
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.EnterpriseToEnterprise:
-                        this.FilterE2EMappings();
-                        break;
-                    case ASRParameterSets.EnterpriseToAzure:
-                        this.FilterE2AMappings();
-                        break;
-                    case ASRParameterSets.Default:
-                        WriteNetworkMappings(networkMappingsListResponse.NetworkMappingsList);
-                        break;
-                }
-            }
-            catch (Exception exception)
+            switch (this.ParameterSetName)
             {
-                this.HandleException(exception);
+                case ASRParameterSets.EnterpriseToEnterprise:
+                    this.FilterE2EMappings();
+                    break;
+                case ASRParameterSets.EnterpriseToAzure:
+                    this.FilterE2AMappings();
+                    break;
+                case ASRParameterSets.Default:
+                    WriteNetworkMappings(networkMappingsListResponse.NetworkMappingsList);
+                    break;
             }
         }
 
@@ -100,8 +94,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (NetworkMapping networkMapping in networkMappingsListResponse.NetworkMappingsList)
             {
-                string primaryFabricName = 
+                string primaryFabricName =
                     Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
+
+                // Skip azure cases 
+                if (!networkMapping.Properties.RecoveryNetworkId.ToLower().Contains(ARMResourceTypeConstants.ReplicationFabrics.ToLower()))
+                    continue;
+
                 string recoveryFabricName =
                     Utilities.GetValueFromArmId(networkMapping.Properties.RecoveryNetworkId, ARMResourceTypeConstants.ReplicationFabrics);
 
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
 
                 if (0 == string.Compare(primaryFabricName, this.primaryServerName, true) &&
-                    ! networkMapping.Properties.RecoveryNetworkId.Contains(ARMResourceTypeConstants.ReplicationFabrics))
+                    !networkMapping.Properties.RecoveryNetworkId.Contains(ARMResourceTypeConstants.ReplicationFabrics))
                 {
                     this.WriteNetworkMapping(networkMapping);
                 }

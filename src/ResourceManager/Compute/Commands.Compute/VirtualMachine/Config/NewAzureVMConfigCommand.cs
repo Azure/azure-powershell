@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Compute.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -61,16 +60,16 @@ namespace Microsoft.Azure.Commands.Compute
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
-                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new AvailabilitySetReference
+                AvailabilitySetReference = string.IsNullOrEmpty(this.AvailabilitySetId) ? null : new SubResource
                 {
-                    ReferenceUri = this.AvailabilitySetId
+                    Id = this.AvailabilitySetId
                 }
             };
 
             if (!string.IsNullOrEmpty(this.VMSize))
             {
                 vm.HardwareProfile = new HardwareProfile();
-                vm.HardwareProfile.VirtualMachineSize = this.VMSize;
+                vm.HardwareProfile.VmSize = this.VMSize;
             }
 
             WriteObject(vm);

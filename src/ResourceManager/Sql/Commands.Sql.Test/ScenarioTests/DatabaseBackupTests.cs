@@ -13,18 +13,61 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DatabaseBackupTests : SqlTestsBase
     {
+        public DatabaseBackupTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListDatabaseRestorePoints()
         {
             RunPowerShellTest("Test-ListDatabaseRestorePoints");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreGeoBackup()
+        {
+            RunPowerShellTest("Test-RestoreGeoBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreDeletedDatabaseBackup()
+        {
+            RunPowerShellTest("Test-RestoreDeletedDatabaseBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestorePointInTimeBackup()
+        {
+            RunPowerShellTest("Test-RestorePointInTimeBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerBackupLongTermRetentionVault()
+        {
+            RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseBackupLongTermRetentionPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreLongTermRetentionBackup()
+        {
+            RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
         }
     }
 }

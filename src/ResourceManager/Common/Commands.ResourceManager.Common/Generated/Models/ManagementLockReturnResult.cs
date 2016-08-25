@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ManagementLockReturnResult : AzureOperationResponse
     {
         private ManagementLockObject _managementLock;
-        
+
         /// <summary>
         /// Optional. Gets or sets the management lock.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._managementLock; }
             set { this._managementLock = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ManagementLockReturnResult class.
         /// </summary>

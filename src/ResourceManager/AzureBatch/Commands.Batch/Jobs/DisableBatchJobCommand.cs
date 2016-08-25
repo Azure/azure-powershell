@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -23,12 +22,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchJob)]
     public class DisableBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the job to disable.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, 
+        [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Specifies what to do with active tasks associated with the job.")]
         public DisableJobOption DisableJobOption { get; set; }
 

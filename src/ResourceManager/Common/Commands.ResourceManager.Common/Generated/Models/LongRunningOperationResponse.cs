@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class LongRunningOperationResponse : AzureOperationResponse
     {
         private ResourceManagementError _error;
-        
+
         /// <summary>
         /// Optional.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._error; }
             set { this._error = value; }
         }
-        
+
         private string _operationStatusLink;
-        
+
         /// <summary>
         /// Optional.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._operationStatusLink; }
             set { this._operationStatusLink = value; }
         }
-        
+
         private int _retryAfter;
-        
+
         /// <summary>
         /// Optional.
         /// </summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._retryAfter; }
             set { this._retryAfter = value; }
         }
-        
+
         private OperationStatus _status;
-        
+
         /// <summary>
         /// Optional.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._status; }
             set { this._status = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the LongRunningOperationResponse
         /// class.

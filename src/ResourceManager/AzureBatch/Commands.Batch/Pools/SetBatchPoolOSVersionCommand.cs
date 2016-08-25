@@ -13,9 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -24,12 +22,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Set, Constants.AzureBatchPoolOSVersion)]
     public class SetBatchPoolOSVersionCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, 
+        [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "The Azure Guest OS version to be installed on the virtual machines in the pool.")]
         [ValidateNotNullOrEmpty]
         public string TargetOSVersion { get; set; }

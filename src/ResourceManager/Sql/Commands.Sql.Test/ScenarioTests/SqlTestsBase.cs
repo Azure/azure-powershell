@@ -12,24 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-
+using System.Linq;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
+    using System.IO;
+
     public class SqlTestsBase : RMTestBase
     {
         protected SqlEvnSetupHelper helper;
@@ -44,41 +47,49 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             helper = new SqlEvnSetupHelper();
         }
 
-        protected virtual void SetupManagementClients()
+        protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
+            var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
-            var resourcesClient = GetResourcesClient();
+            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
-            var graphClient = GetGraphClient();
+            var graphClient = GetGraphClient(context);
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
         }
-
+        
         protected void RunPowerShellTest(params string[] scripts)
         {
-            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
-            // Enable undo functionality as well as mock recording
-            using (UndoContext context = UndoContext.Current)
-            {
-                // Configure recordings
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
 
-                SetupManagementClients();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient", "1.42-previewInternal");
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+
+            // Enable undo functionality as well as mock recording
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            {
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.RMStorageDataPlaneModule, 
-                    helper.RMStorageModule, 
-                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
-                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"),
+                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -117,7 +128,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         }
 
         protected AuthorizationManagementClient GetAuthorizationManagementClient()
-        {   
+        {
             AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
@@ -127,16 +138,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected GraphRbacManagementClient GetGraphClient()
+        protected GraphRbacManagementClient GetGraphClient(RestTestFramework.MockContext context)
         {
-            var testFactory = new CSMTestEnvironmentFactory();
-            var environment = testFactory.GetTestEnvironment();
-            string tenantId = Guid.Empty.ToString();
+            var environment = RestTestFramework.TestEnvironmentFactory.GetTestEnvironment();
+            string tenantId = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenantId;
-                UserDomain = environment.AuthorizationContext.UserDomain;
+                tenantId = environment.Tenant;
+                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;
@@ -155,7 +165,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 }
             }
 
-            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
+            var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
+            client.TenantID = tenantId;
+            return client;
         }
 
         protected Management.Storage.StorageManagementClient GetStorageV2Client()

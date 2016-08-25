@@ -126,6 +126,9 @@
   <data name="DefaultAclWord" xml:space="preserve">
     <value>"default "</value>
   </data>
+  <data name="DownloadFileDataMessage" xml:space="preserve">
+    <value>Download file data</value>
+  </data>
   <data name="FailedToDiscoverResourceGroup" xml:space="preserve">
     <value>Could not find account: '{0}' in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it.</value>
   </data>
@@ -145,7 +148,7 @@
     <value>Invalid encoding selected. 'Byte' encoding can only be used with byte content. Use text encoding instead.</value>
   </data>
   <data name="InvalidExportPathType" xml:space="preserve">
-    <value>The path '{0}' either does not exist or is not a file. This cmdlet can only export individual files that exist in ADL</value>
+    <value>The path '{0}' either does not exist or is not accessible. Please check the path and permission.</value>
   </data>
   <data name="InvalidFilePath" xml:space="preserve">
     <value>Invalid file path: {0}. Files cannot end in '/' or '\\'. If creating a folder please use the -Folder flag</value>
@@ -171,6 +174,9 @@
   <data name="InvalidSourceDestinationPathTypeCombination" xml:space="preserve">
     <value>The source and destination path type cannot be the same. One must be webhdfs qualified and the other a local or network path.</value>
   </data>
+  <data name="LargeDownloadWarning" xml:space="preserve">
+    <value>Download a very large amount of data</value>
+  </data>
   <data name="LocalFileAlreadyExists" xml:space="preserve">
     <value>The destination path '{0}' already exists. Please set overwrite to true or use the force switch in order to overwrite this file</value>
   </data>
@@ -179,6 +185,13 @@
   </data>
   <data name="MoveFailed" xml:space="preserve">
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
+  </data>
+  <data name="OffsetOutOfRange" xml:space="preserve">
+    <value>The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero.</value>
+  </data>
+  <data name="OverwriteFileMessage" xml:space="preserve">
+    <value>Overwrite existing file '{0}'?</value>
+    <comment>{0} = local file path</comment>
   </data>
   <data name="RemoveDataLakeStoreAccount" xml:space="preserve">
     <value>Removing DataLakeStore account '{0}' ...</value>
@@ -218,5 +231,11 @@
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>
+  </data>
+  <data name="UploadFailedMessage" xml:space="preserve">
+    <value>"Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the "Resume" option. If the error persists, please contact Microsoft support."</value>
+  </data>
+  <data name="UploadFileMessage" xml:space="preserve">
+    <value>Upload file or directory</value>
   </data>
 </root>

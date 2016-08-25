@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
-       
+
         /// <summary>
         /// Secret expires time in UTC time
         /// </summary>
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
 
         public override void ExecuteCmdlet()
-        {            
+        {
             var secret = DataServiceClient.UpdateSecret(
                 VaultName,
                 Name,

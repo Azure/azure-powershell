@@ -14,10 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
-    using Newtonsoft.Json;
-
     public class PSVpnClientRootCertificate : PSChildResource
     {
         public string ProvisioningState { get; set; }

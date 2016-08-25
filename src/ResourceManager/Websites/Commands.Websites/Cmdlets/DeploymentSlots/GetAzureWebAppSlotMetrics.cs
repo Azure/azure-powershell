@@ -15,15 +15,13 @@
 
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you get Azure Web App slot metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotMetrics")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotMetrics")]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]

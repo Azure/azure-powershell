@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     (expected, actual) =>
                     {
                         Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                        Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                        Assert.IsNotNull(actual.UserAgent);
                         if (expected.Index < 10)
                         {
                             // Request 0-2: Set testdb1 with new MaxSize
@@ -142,7 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     (expected, actual) =>
                     {
                         Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                        Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                        Assert.IsNotNull(actual.UserAgent);
                         if (expected.Index < 10)
                         {
                             // Request 0-4: Set testdb1 with new name of new_testdb1
@@ -211,7 +211,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     (expected, actual) =>
                     {
                         Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                        Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                        Assert.IsNotNull(actual.UserAgent);
                         switch (expected.Index)
                         {
                             // Request 0-1: Get Service Objective

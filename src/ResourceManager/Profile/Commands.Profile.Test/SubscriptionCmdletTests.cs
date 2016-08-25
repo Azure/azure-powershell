@@ -13,39 +13,48 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class SubscriptionCmdletTests
     {
+        private XunitTracingInterceptor xunitLogger;
+
+        public SubscriptionCmdletTests(ITestOutputHelper output)
+        {
+            xunitLogger = new XunitTracingInterceptor(output);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AllParameterSetsSucceed()
         {
-            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-GetSubscriptionsEndToEnd");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-GetSubscriptionsEndToEnd");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWorks()
         {
-            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextEndToEnd");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextEndToEnd");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PipingWithRmContextWorks()
         {
-            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-PipingWithContext");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-PipingWithContext");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWithoutSubscription()
         {
-            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextWithoutSubscription");
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-SetAzureRmContextWithoutSubscription");
         }
     }
 }

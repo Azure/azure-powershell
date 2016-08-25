@@ -53,6 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         {
             try
             {
+                this.WriteWarningWithTimestamp(
+                    string.Format(
+                        Properties.Resources.CmdletWillBeDeprecatedSoon,
+                        this.MyInvocation.MyCommand.Name));
+
                 string cloudServiceName = Utilities.GenerateCloudServiceName(this.Location);
                 byte[] bytes = System.Text.Encoding.UTF8.GetBytes(cloudServiceName);
                 string base64Label = Convert.ToBase64String(bytes);

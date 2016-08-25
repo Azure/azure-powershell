@@ -301,6 +301,112 @@ function Test-CloneNewWebApp
 .SYNOPSIS
 Tests clone a website.
 #>
+function Test-CloneNewWebAppAndDeploymentSlots
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$appname = Get-WebsiteName
+	$slot1name = "staging"
+	$slot2name = "testing"
+	$location = Get-Location
+	$planName = Get-WebHostPlanName
+	$tier = "Premium"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+
+	# Destination setup
+	$destPlanName = Get-WebHostPlanName
+	$destLocation = Get-SecondaryLocation
+	$destAppName = Get-WebsiteName
+
+	try
+	{
+		#Setup
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		$serverFarm = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Location  $location -Tier $tier
+		
+		# Create new web app
+		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName 
+		
+		# Assert
+		Assert-AreEqual $appname $webapp.Name
+		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
+
+		# Get new web app
+		$webapp = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $appname
+		
+		# Assert
+		Assert-AreEqual $appname $webapp.Name
+		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
+
+		# Create deployment slot 1
+		$slot1 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot1name -AppServicePlan $planName
+		$appWithSlotName = "$appname/$slot1name"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot1.Name
+		Assert-AreEqual $serverFarm.Id $slot1.ServerFarmId
+
+		# Create deployment slot 2
+		$slot2 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot2name -AppServicePlan $planName
+		$appWithSlotName = "$appname/$slot2name"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot2.Name
+		Assert-AreEqual $serverFarm.Id $slot2.ServerFarmId
+
+		# Create new server Farm
+		$serverFarm2 = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Location  $destLocation -Tier $tier
+
+		# Clone web app
+		$webapp2 = New-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Location $destLocation -AppServicePlan $destPlanName -SourceWebApp $webapp -IncludeSourceWebAppSlots
+		
+		# Assert
+		Assert-AreEqual $destAppName $webapp2.Name
+
+		# Get new web app
+		$webapp2 = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName
+		
+		# Assert
+		Assert-AreEqual $destAppName $webapp2.Name
+
+		# Get new web app slot1
+		$slot1 = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slot1name
+
+		$appWithSlotName = "$destAppName/$slot1name"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot1.Name
+		Assert-AreEqual $serverFarm2.Id $slot1.ServerFarmId
+
+		# Get new web app slot1
+		$slot2 = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slot2name
+		$appWithSlotName = "$destAppName/$slot2name"
+
+		# Assert
+		Assert-AreEqual $appWithSlotName $slot2.Name
+		Assert-AreEqual $serverFarm2.Id $slot2.ServerFarmId
+	}
+    finally
+	{
+		# Cleanup
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot1name -Force
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot2name -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
+
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slot1name -Force
+		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slot2name -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests clone a website.
+#>
 function Test-CloneNewWebAppWithTrafficManager
 {
 	# Setup
@@ -405,6 +511,46 @@ function Test-CreateNewWebApp
 		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
 		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a new website on an ase
+#>
+function Test-CreateNewWebAppOnAse
+{
+	# Setup
+	$rgname = "appdemorg"
+	$wname = Get-WebsiteName
+	$location = "West US"
+	$whpName = "travel_production_plan"
+	$aseName = "asedemo"
+	$apiversion = "2015-08-01"
+	$resourceType = "Microsoft.Web/sites"
+	try
+	{
+		#Setup
+		$serverFarm = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+
+		# Create new web app
+		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName
+		
+		# Assert
+		Assert-AreEqual $wname $actual.Name
+		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+
+		# Get new web app
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+		
+		# Assert
+		Assert-AreEqual $wname $result.Name
+		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
+	}
+    finally
+	{
+		# Cleanup
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
     }
 }
 

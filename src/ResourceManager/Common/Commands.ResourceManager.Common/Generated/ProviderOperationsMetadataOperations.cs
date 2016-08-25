@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private ResourceManagementClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient.
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Gets provider operations metadata
         /// </summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("resourceProviderNamespace");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("resourceProviderNamespace", resourceProviderNamespace);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/providers/Microsoft.Authorization/providerOperations/";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderOperationsMetadataGetResult result = null;
                     // Deserialize Response
@@ -168,40 +168,40 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             ProviderOperationsMetadata providerInstance = new ProviderOperationsMetadata();
                             result.Provider = providerInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 providerInstance.Id = idInstance;
                             }
-                            
+
                             JToken nameValue = responseDoc["name"];
                             if (nameValue != null && nameValue.Type != JTokenType.Null)
                             {
                                 string nameInstance = ((string)nameValue);
                                 providerInstance.Name = nameInstance;
                             }
-                            
+
                             JToken typeValue = responseDoc["type"];
                             if (typeValue != null && typeValue.Type != JTokenType.Null)
                             {
                                 string typeInstance = ((string)typeValue);
                                 providerInstance.Type = typeInstance;
                             }
-                            
+
                             JToken displayNameValue = responseDoc["displayName"];
                             if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                             {
                                 string displayNameInstance = ((string)displayNameValue);
                                 providerInstance.DisplayName = displayNameInstance;
                             }
-                            
+
                             JToken resourceTypesArray = responseDoc["resourceTypes"];
                             if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                             {
@@ -209,21 +209,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ResourceType resourceTypeInstance = new ResourceType();
                                     providerInstance.ResourceTypes.Add(resourceTypeInstance);
-                                    
+
                                     JToken nameValue2 = resourceTypesValue["name"];
                                     if (nameValue2 != null && nameValue2.Type != JTokenType.Null)
                                     {
                                         string nameInstance2 = ((string)nameValue2);
                                         resourceTypeInstance.Name = nameInstance2;
                                     }
-                                    
+
                                     JToken displayNameValue2 = resourceTypesValue["displayName"];
                                     if (displayNameValue2 != null && displayNameValue2.Type != JTokenType.Null)
                                     {
                                         string displayNameInstance2 = ((string)displayNameValue2);
                                         resourceTypeInstance.DisplayName = displayNameInstance2;
                                     }
-                                    
+
                                     JToken operationsArray = resourceTypesValue["operations"];
                                     if (operationsArray != null && operationsArray.Type != JTokenType.Null)
                                     {
@@ -231,35 +231,35 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             Operation operationInstance = new Operation();
                                             resourceTypeInstance.Operations.Add(operationInstance);
-                                            
+
                                             JToken nameValue3 = operationsValue["name"];
                                             if (nameValue3 != null && nameValue3.Type != JTokenType.Null)
                                             {
                                                 string nameInstance3 = ((string)nameValue3);
                                                 operationInstance.Name = nameInstance3;
                                             }
-                                            
+
                                             JToken displayNameValue3 = operationsValue["displayName"];
                                             if (displayNameValue3 != null && displayNameValue3.Type != JTokenType.Null)
                                             {
                                                 string displayNameInstance3 = ((string)displayNameValue3);
                                                 operationInstance.DisplayName = displayNameInstance3;
                                             }
-                                            
+
                                             JToken descriptionValue = operationsValue["description"];
                                             if (descriptionValue != null && descriptionValue.Type != JTokenType.Null)
                                             {
                                                 string descriptionInstance = ((string)descriptionValue);
                                                 operationInstance.Description = descriptionInstance;
                                             }
-                                            
+
                                             JToken originValue = operationsValue["origin"];
                                             if (originValue != null && originValue.Type != JTokenType.Null)
                                             {
                                                 string originInstance = ((string)originValue);
                                                 operationInstance.Origin = originInstance;
                                             }
-                                            
+
                                             JToken propertiesValue = operationsValue["properties"];
                                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                             {
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken operationsArray2 = responseDoc["operations"];
                             if (operationsArray2 != null && operationsArray2.Type != JTokenType.Null)
                             {
@@ -278,35 +278,35 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     Operation operationInstance2 = new Operation();
                                     providerInstance.Operations.Add(operationInstance2);
-                                    
+
                                     JToken nameValue4 = operationsValue2["name"];
                                     if (nameValue4 != null && nameValue4.Type != JTokenType.Null)
                                     {
                                         string nameInstance4 = ((string)nameValue4);
                                         operationInstance2.Name = nameInstance4;
                                     }
-                                    
+
                                     JToken displayNameValue4 = operationsValue2["displayName"];
                                     if (displayNameValue4 != null && displayNameValue4.Type != JTokenType.Null)
                                     {
                                         string displayNameInstance4 = ((string)displayNameValue4);
                                         operationInstance2.DisplayName = displayNameInstance4;
                                     }
-                                    
+
                                     JToken descriptionValue2 = operationsValue2["description"];
                                     if (descriptionValue2 != null && descriptionValue2.Type != JTokenType.Null)
                                     {
                                         string descriptionInstance2 = ((string)descriptionValue2);
                                         operationInstance2.Description = descriptionInstance2;
                                     }
-                                    
+
                                     JToken originValue2 = operationsValue2["origin"];
                                     if (originValue2 != null && originValue2.Type != JTokenType.Null)
                                     {
                                         string originInstance2 = ((string)originValue2);
                                         operationInstance2.Origin = originInstance2;
                                     }
-                                    
+
                                     JToken propertiesValue2 = operationsValue2["properties"];
                                     if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                                     {
@@ -316,14 +316,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets provider operations metadata list
         /// </summary>
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         public async Task<ProviderOperationsMetadataListResult> ListAsync(CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/providers/Microsoft.Authorization/providerOperations";
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -400,13 +400,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -432,7 +432,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     ProviderOperationsMetadataListResult result = null;
                     // Deserialize Response
@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -456,35 +456,35 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     ProviderOperationsMetadata providerOperationsMetadataInstance = new ProviderOperationsMetadata();
                                     result.Providers.Add(providerOperationsMetadataInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         providerOperationsMetadataInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken nameValue = valueValue["name"];
                                     if (nameValue != null && nameValue.Type != JTokenType.Null)
                                     {
                                         string nameInstance = ((string)nameValue);
                                         providerOperationsMetadataInstance.Name = nameInstance;
                                     }
-                                    
+
                                     JToken typeValue = valueValue["type"];
                                     if (typeValue != null && typeValue.Type != JTokenType.Null)
                                     {
                                         string typeInstance = ((string)typeValue);
                                         providerOperationsMetadataInstance.Type = typeInstance;
                                     }
-                                    
+
                                     JToken displayNameValue = valueValue["displayName"];
                                     if (displayNameValue != null && displayNameValue.Type != JTokenType.Null)
                                     {
                                         string displayNameInstance = ((string)displayNameValue);
                                         providerOperationsMetadataInstance.DisplayName = displayNameInstance;
                                     }
-                                    
+
                                     JToken resourceTypesArray = valueValue["resourceTypes"];
                                     if (resourceTypesArray != null && resourceTypesArray.Type != JTokenType.Null)
                                     {
@@ -492,21 +492,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             ResourceType resourceTypeInstance = new ResourceType();
                                             providerOperationsMetadataInstance.ResourceTypes.Add(resourceTypeInstance);
-                                            
+
                                             JToken nameValue2 = resourceTypesValue["name"];
                                             if (nameValue2 != null && nameValue2.Type != JTokenType.Null)
                                             {
                                                 string nameInstance2 = ((string)nameValue2);
                                                 resourceTypeInstance.Name = nameInstance2;
                                             }
-                                            
+
                                             JToken displayNameValue2 = resourceTypesValue["displayName"];
                                             if (displayNameValue2 != null && displayNameValue2.Type != JTokenType.Null)
                                             {
                                                 string displayNameInstance2 = ((string)displayNameValue2);
                                                 resourceTypeInstance.DisplayName = displayNameInstance2;
                                             }
-                                            
+
                                             JToken operationsArray = resourceTypesValue["operations"];
                                             if (operationsArray != null && operationsArray.Type != JTokenType.Null)
                                             {
@@ -514,35 +514,35 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                                 {
                                                     Operation operationInstance = new Operation();
                                                     resourceTypeInstance.Operations.Add(operationInstance);
-                                                    
+
                                                     JToken nameValue3 = operationsValue["name"];
                                                     if (nameValue3 != null && nameValue3.Type != JTokenType.Null)
                                                     {
                                                         string nameInstance3 = ((string)nameValue3);
                                                         operationInstance.Name = nameInstance3;
                                                     }
-                                                    
+
                                                     JToken displayNameValue3 = operationsValue["displayName"];
                                                     if (displayNameValue3 != null && displayNameValue3.Type != JTokenType.Null)
                                                     {
                                                         string displayNameInstance3 = ((string)displayNameValue3);
                                                         operationInstance.DisplayName = displayNameInstance3;
                                                     }
-                                                    
+
                                                     JToken descriptionValue = operationsValue["description"];
                                                     if (descriptionValue != null && descriptionValue.Type != JTokenType.Null)
                                                     {
                                                         string descriptionInstance = ((string)descriptionValue);
                                                         operationInstance.Description = descriptionInstance;
                                                     }
-                                                    
+
                                                     JToken originValue = operationsValue["origin"];
                                                     if (originValue != null && originValue.Type != JTokenType.Null)
                                                     {
                                                         string originInstance = ((string)originValue);
                                                         operationInstance.Origin = originInstance;
                                                     }
-                                                    
+
                                                     JToken propertiesValue = operationsValue["properties"];
                                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                                     {
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             }
                                         }
                                     }
-                                    
+
                                     JToken operationsArray2 = valueValue["operations"];
                                     if (operationsArray2 != null && operationsArray2.Type != JTokenType.Null)
                                     {
@@ -561,35 +561,35 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             Operation operationInstance2 = new Operation();
                                             providerOperationsMetadataInstance.Operations.Add(operationInstance2);
-                                            
+
                                             JToken nameValue4 = operationsValue2["name"];
                                             if (nameValue4 != null && nameValue4.Type != JTokenType.Null)
                                             {
                                                 string nameInstance4 = ((string)nameValue4);
                                                 operationInstance2.Name = nameInstance4;
                                             }
-                                            
+
                                             JToken displayNameValue4 = operationsValue2["displayName"];
                                             if (displayNameValue4 != null && displayNameValue4.Type != JTokenType.Null)
                                             {
                                                 string displayNameInstance4 = ((string)displayNameValue4);
                                                 operationInstance2.DisplayName = displayNameInstance4;
                                             }
-                                            
+
                                             JToken descriptionValue2 = operationsValue2["description"];
                                             if (descriptionValue2 != null && descriptionValue2.Type != JTokenType.Null)
                                             {
                                                 string descriptionInstance2 = ((string)descriptionValue2);
                                                 operationInstance2.Description = descriptionInstance2;
                                             }
-                                            
+
                                             JToken originValue2 = operationsValue2["origin"];
                                             if (originValue2 != null && originValue2.Type != JTokenType.Null)
                                             {
                                                 string originInstance2 = ((string)originValue2);
                                                 operationInstance2.Origin = originInstance2;
                                             }
-                                            
+
                                             JToken propertiesValue2 = operationsValue2["properties"];
                                             if (propertiesValue2 != null && propertiesValue2.Type != JTokenType.Null)
                                             {
@@ -601,14 +601,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

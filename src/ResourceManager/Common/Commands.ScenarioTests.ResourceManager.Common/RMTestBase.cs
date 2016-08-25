@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 using System.Threading;
+using Moq;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         public RMTestBase()
         {
+            System.Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             BaseSetup();
         }
 
@@ -54,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                     }
                 },
-            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
             new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
 
             AzureRmProfileProvider.Instance.Profile = currentProfile;
@@ -69,6 +71,18 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             TestMockSupport.RunningMocked = true;
             //This is needed for AutoRest Authentication
             SynchronizationContext.SetSynchronizationContext(new SynchronizationContext());
+        }
+
+        /// <summary>
+        /// Set up the command runtime to return true for all confirmation prompts
+        /// </summary>
+        /// <param name="mock">The mock command runtiem to set up</param>
+        public static void SetupConfirmation(Mock<ICommandRuntime> mock)
+        {
+            mock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            mock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
     }
 }

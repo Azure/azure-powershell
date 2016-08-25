@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Entities.Providers;
+    using Extensions;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Runtime.Caching;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Providers;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Helper class for determining the API version
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             apiVersions = apiVersions.CoalesceEnumerable().ToArray();
             var apiVersionsToSelectFrom = apiVersions;
-            if (pre == null || pre  == false)
+            if (pre == null || pre == false)
             {
                 apiVersionsToSelectFrom = apiVersions
                     .Where(apiVersion => apiVersion.IsDecimal(NumberStyles.AllowDecimalPoint) || apiVersion.IsDateTime("yyyy-mm-dd", DateTimeStyles.None))
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 selectedApiVersion = apiVersions.OrderByDescending(apiVersion => apiVersion).FirstOrDefault();
             }
 
-            var result = string.IsNullOrWhiteSpace(selectedApiVersion) 
+            var result = string.IsNullOrWhiteSpace(selectedApiVersion)
                 ? Constants.DefaultApiVersion
                 : selectedApiVersion;
 
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 getFirstPage: () => resourceManagerClient
                     .ListObjectColleciton<ResourceProviderDefinition>(
                         resourceCollectionId: resourceCollectionId,
-                        apiVersion:Constants.DefaultApiVersion,
+                        apiVersion: Constants.DefaultApiVersion,
                         cancellationToken: cancellationToken),
                 getNextPage: nextLink => resourceManagerClient
                     .ListNextBatch<ResourceProviderDefinition>(
-                    nextLink: nextLink, 
+                    nextLink: nextLink,
                     cancellationToken: cancellationToken),
                 cancellationToken: cancellationToken);
 

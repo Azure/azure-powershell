@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             var footerSerializer = new VhdFooterSerializer(footer);
             var byteArray = footerSerializer.ToByteArray();
 
-            using(var memoryStream = new MemoryStream(byteArray))
+            using (var memoryStream = new MemoryStream(byteArray))
             {
                 var binaryReader = new BinaryReader(memoryStream);
                 var vhdDataReader = new VhdDataReader(binaryReader);
@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private long ReadPhysicalSize(VhdPropertyAttribute attribute)
         {
-            return (long) dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
+            return (long)dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
         }
 
         private IAsyncResult BeginReadPhysicalSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
@@ -212,7 +212,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private long EndReadPhysicalSize(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt64(result);
-            return (long) value;
+            return (long)value;
         }
 
         private byte[] ReadWholeFooter(VhdPropertyAttribute attribute)
@@ -228,7 +228,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private byte[] EndReadWholeFooter(IAsyncResult result)
         {
             var value = dataReader.EndReadBytes(result);
-            return (byte[]) value;
+            return (byte[])value;
         }
 
         private byte[] ReadReserved(VhdPropertyAttribute attribute)
@@ -244,7 +244,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private byte[] EndReadReserved(IAsyncResult result)
         {
             var value = dataReader.EndReadBytes(result);
-            return (byte[]) value;
+            return (byte[])value;
         }
 
         private bool ReadSavedState(VhdPropertyAttribute attribute)
@@ -260,7 +260,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private bool EndReadSavedState(IAsyncResult result)
         {
             var value = dataReader.EndReadBoolean(result);
-            return (bool) value;
+            return (bool)value;
         }
 
         private uint ReadCheckSum(VhdPropertyAttribute attribute)
@@ -276,7 +276,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private uint EndReadCheckSum(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt32(result);
-            return (uint) value;
+            return (uint)value;
         }
 
         private DiskGeometry ReadDiskGeometry(VhdPropertyAttribute attribute)
@@ -285,7 +285,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
             var attributeHelper = new AttributeHelper<DiskGeometry>();
             var diskGeometry = new DiskGeometry();
-            diskGeometry.Cylinder = dataReader.ReadInt16(offset + attributeHelper.GetAttribute(()=>diskGeometry.Cylinder).Offset);
+            diskGeometry.Cylinder = dataReader.ReadInt16(offset + attributeHelper.GetAttribute(() => diskGeometry.Cylinder).Offset);
             diskGeometry.Heads = dataReader.ReadByte(offset + attributeHelper.GetAttribute(() => diskGeometry.Heads).Offset);
             diskGeometry.Sectors = dataReader.ReadByte(offset + attributeHelper.GetAttribute(() => diskGeometry.Sectors).Offset);
             return diskGeometry;
@@ -385,7 +385,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private VhdFeature EndReadFeatures(IAsyncResult result)
         {
-            return (VhdFeature) dataReader.EndReadUInt32(result);
+            return (VhdFeature)dataReader.EndReadUInt32(result);
         }
 
         private Guid ReadUniqueId(VhdPropertyAttribute attribute)
@@ -420,7 +420,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private long ReadHeaderOffset(VhdPropertyAttribute attribute)
         {
-            return (long) dataReader.ReadUInt64(GetFooterOffset() + attribute.Offset);
+            return (long)dataReader.ReadUInt64(GetFooterOffset() + attribute.Offset);
         }
 
         private IAsyncResult BeginReadHeaderOffset(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
@@ -452,7 +452,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private long ReadVirtualSize(VhdPropertyAttribute attribute)
         {
-            return (long) dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
+            return (long)dataReader.ReadUInt64(this.GetFooterOffset() + attribute.Offset);
         }
 
         private IAsyncResult BeginReadVirtualSize(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
@@ -462,7 +462,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private long EndReadVirtualSize(IAsyncResult result)
         {
-            return (long) dataReader.EndReadUInt64(result);
+            return (long)dataReader.EndReadUInt64(result);
         }
 
         private void ValidateVhdSize()
@@ -509,7 +509,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         {
             var vhdCookie = new VhdCookie(VhdCookieType.Footer, cookie);
             if (!vhdCookie.IsValid())
-                throw new VhdParsingException(String.Format("Invalid Vhd footer cookie:{0}",vhdCookie.StringData));
+                throw new VhdParsingException(String.Format("Invalid Vhd footer cookie:{0}", vhdCookie.StringData));
             return vhdCookie;
         }
 

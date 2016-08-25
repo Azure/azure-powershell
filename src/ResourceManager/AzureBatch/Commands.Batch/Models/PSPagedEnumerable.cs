@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Batch;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -123,14 +124,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return ((IEnumerator<T2>)this.omEnumerator).MoveNext();
         }
 
-        public Task<bool> MoveNextAsync()
+        public Task<bool> MoveNextAsync(CancellationToken cancellationToken)
         {
-            return this.omEnumerator.MoveNextAsync();
+            return this.omEnumerator.MoveNextAsync(cancellationToken);
         }
 
-        public Task ResetAsync()
+        public Task ResetAsync(CancellationToken cancellationToken)
         {
-            return this.omEnumerator.ResetAsync();
+            return this.omEnumerator.ResetAsync(cancellationToken);
         }
 
         public void Reset()

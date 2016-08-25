@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Threading;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.IO;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
-using System.Collections.Generic;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Management.Automation;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 {

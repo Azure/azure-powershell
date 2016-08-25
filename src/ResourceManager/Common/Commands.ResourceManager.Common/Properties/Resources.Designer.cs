@@ -136,6 +136,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
+        /// </summary>
+        public static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials..
         /// </summary>
         public static string NoSubscriptionFound {
@@ -150,6 +159,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string ProfileCannotBeNull {
             get {
                 return ResourceManager.GetString("ProfileCannotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the &apos;{0}&apos; resource named &apos;{1}&apos; in resource group &apos;{2}&apos;.
+        /// </summary>
+        public static string ResourceConfirmTarget {
+            get {
+                return ResourceManager.GetString("ResourceConfirmTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to the resource with identity &apos;{0}&apos;.
+        /// </summary>
+        public static string ResourceIdConfirmTarget {
+            get {
+                return ResourceManager.GetString("ResourceIdConfirmTarget", resourceCulture);
             }
         }
         

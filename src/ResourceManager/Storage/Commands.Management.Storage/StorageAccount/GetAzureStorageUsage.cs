@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         {
             base.ExecuteCmdlet();
 
-            foreach (var usage in this.StorageClient.Usage.List().Usages)
+            foreach (var usage in this.StorageClient.Usage.List().Value)
             {
-                WriteObject(new PSUsage() 
+                WriteObject(new PSUsage()
                 {
                     LocalizedName = usage.Name.LocalizedValue,
                     Name = usage.Name.Value,

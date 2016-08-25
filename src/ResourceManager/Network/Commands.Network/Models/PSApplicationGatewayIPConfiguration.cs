@@ -13,20 +13,19 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewayIPConfiguration : PSChildResource
-     {
+    {
         public PSResourceId Subnet { get; set; }
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
         public string SubnetText
-         {
-             get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-         }
-     }
+        {
+            get { return JsonConvert.SerializeObject(Subnet, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
 }

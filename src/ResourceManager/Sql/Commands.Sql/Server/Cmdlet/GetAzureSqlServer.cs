@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Sql.Server.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
-using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         protected override IEnumerable<AzureSqlServerModel> GetEntity()
         {
             ICollection<AzureSqlServerModel> results = null;
-            
+
             if (this.MyInvocation.BoundParameters.ContainsKey("ServerName"))
             {
                 results = new List<AzureSqlServerModel>();

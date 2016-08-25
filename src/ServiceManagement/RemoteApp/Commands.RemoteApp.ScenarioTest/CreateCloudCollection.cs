@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -38,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.RemoteAppTests
                 Collection<T> result = new Collection<T>();
                 EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-                modules = Directory.GetFiles(@"..\..\Scripts", "*.ps1").ToList();
+                modules = Directory.GetFiles(@"..\..\Scripts".AsAbsoluteLocation(), "*.ps1").ToList();
                 helper.SetupSomeOfManagementClients();
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());

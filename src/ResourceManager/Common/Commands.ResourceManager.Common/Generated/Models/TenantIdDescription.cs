@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class TenantIdDescription
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets Id
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _tenantId;
-        
+
         /// <summary>
         /// Optional. Gets or sets tenantId
         /// </summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._tenantId; }
             set { this._tenantId = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TenantIdDescription class.
         /// </summary>

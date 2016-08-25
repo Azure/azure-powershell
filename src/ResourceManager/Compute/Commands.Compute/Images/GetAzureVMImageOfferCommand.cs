@@ -14,8 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using System.Linq;
 using System.Management.Automation;
 
@@ -37,19 +35,15 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                var parameters = new VirtualMachineImageListOffersParameters
-                {
-                    Location = Location.Canonicalize(),
-                    PublisherName = PublisherName
-                };
+                var result = this.VirtualMachineImageClient.ListOffersWithHttpMessagesAsync(
+                    this.Location.Canonicalize(),
+                    this.PublisherName).GetAwaiter().GetResult();
 
-                VirtualMachineImageResourceList result = this.VirtualMachineImageClient.ListOffers(parameters);
-
-                var images = from r in result.Resources
+                var images = from r in result.Body
                              select new PSVirtualMachineImageOffer
                              {
                                  RequestId = result.RequestId,
-                                 StatusCode = result.StatusCode,
+                                 StatusCode = result.Response.StatusCode,
                                  Id = r.Id,
                                  Location = r.Location,
                                  Offer = r.Name,

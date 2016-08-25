@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         private readonly PSCredential _httpCred;
 
-        public NewClusterTests()
+        public NewClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
             cmdlet = new NewAzureHDInsightClusterCommand
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             cmdlet.HttpCredential = _httpCred;
             cmdlet.DefaultStorageAccountName = StorageName;
             cmdlet.DefaultStorageAccountKey = StorageKey;
+            cmdlet.ClusterType = ClusterType;
 
             var cluster = new Cluster
             {
@@ -67,7 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = "Hadoop"
+                        ClusterType = ClusterType
                     },
                     QuotaInfo = new QuotaInfo
                     {
@@ -99,33 +101,33 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse {Cluster = cluster};
-            
+            var getresponse = new ClusterGetResponse { Cluster = cluster };
+
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                parameters => 
+                parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageAccountName == StorageName &&
                     parameters.DefaultStorageAccountKey == StorageKey &&
                     parameters.Location == Location &&
                     parameters.UserName == _httpCred.UserName &&
                     parameters.Password == _httpCred.Password.ConvertToString() &&
-                    parameters.ClusterType == HDInsightClusterType.Hadoop &&
+                    parameters.ClusterType == ClusterType &&
                     parameters.OSType == OSType.Windows)))
             .Returns(getresponse)
-            .Verifiable();    
-            
+            .Verifiable();
+
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.Is<AzureHDInsightCluster>(
                 clusterout =>
                     clusterout.ClusterState == "Running" &&
-                    clusterout.ClusterType == HDInsightClusterType.Hadoop &&
+                    clusterout.ClusterType == ClusterType &&
                     clusterout.ClusterVersion == "3.1" &&
                     clusterout.CoresUsed == 24 &&
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
-                    clusterout.OperatingSystemType == OSType.Windows)), 
+                    clusterout.OperatingSystemType == OSType.Windows)),
                     Times.Once);
         }
     }

@@ -12,29 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
+        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        protected const string AccountNameParameterSet = "AccountNameParameterSet";
+
         [Parameter(
             Position = 0,
             Mandatory = false,
+            ParameterSetName = ResourceGroupParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group StorageAccountName.")]
+            HelpMessage = "Resource Group Name.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = AccountNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resource Group Name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account StorageAccountName.")]
+            ParameterSetName = AccountNameParameterSet,
+            HelpMessage = "Storage Account Name.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -45,13 +55,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (string.IsNullOrEmpty(this.ResourceGroupName))
             {
-                var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
+                var storageAccounts = this.StorageClient.StorageAccounts.List();
 
                 WriteStorageAccountList(storageAccounts);
             }
             else if (string.IsNullOrEmpty(this.Name))
             {
-                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName).StorageAccounts;
+                var storageAccounts = this.StorageClient.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
 
                 WriteStorageAccountList(storageAccounts);
             }
@@ -59,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 var storageAccount = this.StorageClient.StorageAccounts.GetProperties(
                     this.ResourceGroupName,
-                    this.Name).StorageAccount;
+                    this.Name);
 
                 WriteStorageAccount(storageAccount);
             }

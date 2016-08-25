@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
-    using System;
-    using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.TrafficManager;
-
+    using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Subscriptions;
+    using System;
+    using System.Linq;
     using WindowsAzure.Commands.Test.Utilities.Common;
 
     public class TestController : RMTestBase
@@ -68,9 +67,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             this.TrafficManagerManagementClient = this.GetFeatureClient();
 
             this.helper.SetupManagementClients(
-                this.ResourceManagementClient, 
+                this.ResourceManagementClient,
                 this.SubscriptionClient,
-                this.GalleryClient, 
+                this.GalleryClient,
                 this.AuthorizationManagementClient,
                 this.TrafficManagerManagementClient);
         }
@@ -98,8 +97,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {
@@ -120,12 +123,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
 
-                this.helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.TrafficManager.psd1"));
+                this.helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath(@"AzureRM.TrafficManager.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 try
                 {

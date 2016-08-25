@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StreamAnalytics.Models;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.StreamAnalytics.Models;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -47,15 +47,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
             }
 
             StartPSJobParameter parameter = new StartPSJobParameter()
+            {
+                ResourceGroupName = ResourceGroupName,
+                JobName = Name,
+                StartParameters = new JobStartParameters()
                 {
-                    ResourceGroupName = ResourceGroupName,
-                    JobName = Name,
-                    StartParameters = new JobStartParameters()
-                    {
-                        OutputStartMode = OutputStartMode,
-                        OutputStartTime = OutputStartTime
-                    }
-                };
+                    OutputStartMode = OutputStartMode,
+                    OutputStartTime = OutputStartTime
+                }
+            };
 
             try
             {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 {
                     WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.JobNotFound, Name, ResourceGroupName));
                 }
-                else 
+                else
                 {
                     WriteObject(false);
                 }

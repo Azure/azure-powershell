@@ -80,10 +80,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
-        ///Message: {0}
-        ///Possible Causes: {1}
-        ///Recommended Action: {2}
-        ///ClientRequestId: {3}.
+        ///.
         /// </summary>
         internal static string CloudExceptionDetails {
             get {
@@ -110,6 +107,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory {0} Not Found.
+        /// </summary>
+        internal static string DirectoryNotFound {
+            get {
+                return ResourceManager.GetString("DirectoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to disable protection on {0}.
         /// </summary>
         internal static string DisableProtectionWarning {
@@ -128,11 +134,47 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File &quot;{0}&quot; already exists. Specify a different name or path..
+        /// </summary>
+        internal static string FileAlreadyExists {
+            get {
+                return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File {0} Not Found.
+        /// </summary>
+        internal static string FileNotFound {
+            get {
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group &quot;{0}&quot; not found for recovery plan &quot;{1}&quot;.
+        /// </summary>
+        internal static string GroupNotFoundInRecoveryPlan {
+            get {
+                return ResourceManager.GetString("GroupNotFoundInRecoveryPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
         /// </summary>
         internal static string IDBasedParamUsageNotSupportedFromNextRelease {
             get {
                 return ResourceManager.GetString("IDBasedParamUsageNotSupportedFromNextRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please pass a valid Hyper-V server object if you have set CreateVmIfNotFound to &apos;Yes&apos; while doing failback in hyper-V to Azure scenario. .
+        /// </summary>
+        internal static string ImproperServerObjectPassedForHyperVFailback {
+            get {
+                return ResourceManager.GetString("ImproperServerObjectPassedForHyperVFailback", resourceCulture);
             }
         }
         
@@ -161,6 +203,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string InvalidCloudExceptionErrorMessage {
             get {
                 return ResourceManager.GetString("InvalidCloudExceptionErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid parameter set used. Please call the cmdlet with a valid parameter set..
+        /// </summary>
+        internal static string InvalidParameterSet {
+            get {
+                return ResourceManager.GetString("InvalidParameterSet", resourceCulture);
             }
         }
         
@@ -197,6 +248,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string InvalidServerType {
             get {
                 return ResourceManager.GetString("InvalidServerType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported vault object is passed. Please pass Claasic or ARM vault object..
+        /// </summary>
+        internal static string InvalidVaultObject {
+            get {
+                return ResourceManager.GetString("InvalidVaultObject", resourceCulture);
             }
         }
         
@@ -269,6 +329,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string NullRecoveryServicesClient {
             get {
                 return ResourceManager.GetString("NullRecoveryServicesClient", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter(s) &quot;{0}&quot; will be deprecated soon. Please use use parameter(s) &quot;{1}&quot; instead..
+        /// </summary>
+        internal static string ParameterWillBeDeprecatedSoon {
+            get {
+                return ResourceManager.GetString("ParameterWillBeDeprecatedSoon", resourceCulture);
             }
         }
         
@@ -431,6 +500,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string ResourceNameNullOrEmpty {
             get {
                 return ResourceManager.GetString("ResourceNameNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generated JSON for Recovery Plan {0} at {1}.
+        /// </summary>
+        internal static string RPJSONPath {
+            get {
+                return ResourceManager.GetString("RPJSONPath", resourceCulture);
             }
         }
         
@@ -622,6 +700,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string VirtualMachineNotFound {
             get {
                 return ResourceManager.GetString("VirtualMachineNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; is already part of Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
+        /// </summary>
+        internal static string VMAlreadyPartOfGroup {
+            get {
+                return ResourceManager.GetString("VMAlreadyPartOfGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Virtual Machine &quot;{0}&quot; not found in Group &quot;{1}&quot; for recovery plan &quot;{2}&quot;.
+        /// </summary>
+        internal static string VMNotFoundInGroup {
+            get {
+                return ResourceManager.GetString("VMNotFoundInGroup", resourceCulture);
             }
         }
         

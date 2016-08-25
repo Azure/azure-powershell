@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.AnalyticsJob.Models;
-using JobState = Microsoft.Azure.Management.DataLake.AnalyticsJob.Models.JobState;
+using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJob", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof (List<JobInformation>), typeof (JobInformation))]
+     OutputType(typeof(List<JobInformation>), typeof(JobInformation))]
+    [Alias("Get-AdlJob")]
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "All In Resource Group and Account";
@@ -86,25 +87,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public JobResult[] Result { get; set; }
 
-        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 3,
-            Mandatory = false, HelpMessage = "Name of resource group under which want to retrieve the job information.")
-        ]
-        [Parameter(ParameterSetName = JobInfoParameterSetName, ValueFromPipelineByPropertyName = true, Position = 7,
-            Mandatory = false,
-            HelpMessage = "Name of resource group under which want to to retrieve the job information.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (JobId != null && JobId != Guid.Empty)
             {
                 // Get for single job
-                var jobDetails = DataLakeAnalyticsClient.GetJob(ResourceGroupName, Account, JobId);
+                var jobDetails = DataLakeAnalyticsClient.GetJob(Account, JobId);
 
                 if (Include != DataLakeAnalyticsEnums.ExtendedJobData.None)
                 {
-                    if (!jobDetails.Type.Equals(JobType.USql, StringComparison.InvariantCultureIgnoreCase))
+                    if (jobDetails.Type != JobType.USql)
                     {
                         WriteWarningWithTimestamp(string.Format(Resources.AdditionalDataNotSupported, jobDetails.Type));
                     }
@@ -113,15 +105,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.DebugInfo)
                         {
-                            ((USqlProperties) jobDetails.Properties).DebugData =
-                                DataLakeAnalyticsClient.GetDebugDataPaths(ResourceGroupName, Account, JobId);
+                            ((USqlJobProperties)jobDetails.Properties).DebugData =
+                                DataLakeAnalyticsClient.GetDebugDataPaths(Account, JobId);
                         }
 
                         if (Include == DataLakeAnalyticsEnums.ExtendedJobData.All ||
                             Include == DataLakeAnalyticsEnums.ExtendedJobData.Statistics)
                         {
-                            ((USqlProperties) jobDetails.Properties).Statistics =
-                                DataLakeAnalyticsClient.GetJobStatistics(ResourceGroupName, Account, JobId);
+                            ((USqlJobProperties)jobDetails.Properties).Statistics =
+                                DataLakeAnalyticsClient.GetJobStatistics(Account, JobId);
                         }
                     }
                 }
@@ -136,14 +128,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     filter.Add(string.Format("submitter eq '{0}'", Submitter));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedAfter.HasValue)
                 {
-                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedAfter.Value.ToString("O"))));
                 }
 
+                // due to issue: https://github.com/Azure/autorest/issues/975,
+                // date time offsets must be explicitly escaped before being passed to the filter
                 if (SubmittedBefore.HasValue)
                 {
-                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value.ToString("O")));
+                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", Uri.EscapeDataString(SubmittedBefore.Value.ToString("O"))));
                 }
 
                 if (!string.IsNullOrEmpty(Name))
@@ -168,7 +164,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 var filterString = string.Join(" and ", filter.ToArray());
 
                 // List all accounts in given resource group if avaliable otherwise all accounts in the subscription
-                var list = DataLakeAnalyticsClient.ListJobs(ResourceGroupName, Account,
+                var list = DataLakeAnalyticsClient.ListJobs(Account,
                     string.IsNullOrEmpty(filterString) ? null : filterString, null, null);
                 WriteObject(list, true);
             }

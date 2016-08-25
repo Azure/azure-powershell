@@ -54,6 +54,10 @@
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>VirtualNetworkPeerings</Label>
+                <PropertyName>VirtualNetworkPeeringsText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -99,6 +103,76 @@
               <ListItem>
                 <Label>RouteTable</Label>
                 <PropertyName>RouteTableText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetworkName</Label>
+                <PropertyName>VirtualNetworkName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeeringState</Label>
+                <PropertyName>PeeringState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteVirtualNetwork</Label>
+                <PropertyName>RemoteVirtualNetworkText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowVirtualNetworkAccess</Label>
+                <PropertyName>AllowVirtualNetworkAccess</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowForwardedTraffic</Label>
+                <PropertyName>AllowForwardedTraffic</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AllowGatewayTransit</Label>
+                <PropertyName>AllowGatewayTransit</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>UseRemoteGateways</Label>
+                <PropertyName>UseRemoteGateways</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteGateways</Label>
+                <PropertyName>RemoteGatewaysText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RemoteVirtualNetworkAddressSpace</Label>
+                <PropertyName>RemoteVirtualNetworkAddressSpaceText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -153,6 +227,10 @@
               <ListItem>
                 <Label>IpAddress</Label>
                 <PropertyName>IpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublicIpAddressVersion</Label>
+                <PropertyName>PublicIpAddressVersion</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>IdleTimeoutInMinutes</Label>
@@ -263,12 +341,20 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Primary</Label>
+                <PropertyName>Primary</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>PrivateIpAddress</Label>
                 <PropertyName>PrivateIpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PrivateIpAddressVersion</Label>
+                <PropertyName>PrivateIpAddressVersion</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>PrivateIpAllocationMethod</Label>
@@ -281,10 +367,14 @@
               <ListItem>
                 <Label>PublicIpAddress</Label>
                 <PropertyName>PublicIpAddressText</PropertyName>
-              </ListItem>
+              </ListItem>              
               <ListItem>
                 <Label>LoadBalancerBackendAddressPools</Label>
                 <PropertyName>LoadBalancerBackendAddressPoolsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApplicationGatewayBackendAddressPools</Label>
+                <PropertyName>ApplicationGatewayBackendAddressPoolsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>LoadBalancerInboundNatRules</Label>
@@ -335,6 +425,32 @@
               <ListItem>
                 <Label>PublicIpAddress</Label>
                 <PropertyName>PublicIpAddressText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>NetworkSecurityGroup</Label>
+                <PropertyName>NetworkSecurityGroupText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Association</Label>
+                <PropertyName>AssociationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EffectiveSecurityRules</Label>
+                <PropertyName>EffectiveSecurityRulesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -511,8 +627,8 @@
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>FrontendIPConfigurations</Label>
-                <PropertyName>FrontendIPConfigurationsText</PropertyName>
+                <Label>FrontendIpConfigurations</Label>
+                <PropertyName>FrontendIpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>BackendAddressPools</Label>
@@ -1019,7 +1135,15 @@
               <ListItem>
                 <Label>Authorizations</Label>
                 <PropertyName>AuthorizationsText</PropertyName>
-              </ListItem>		
+              </ListItem>
+              <ListItem>
+                <Label>AllowClassicOperations</Label>
+                <PropertyName>AllowClassicOperations</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>                
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1093,6 +1217,14 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastModifiedBy</Label>
+                <PropertyName>LastModifiedBy</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

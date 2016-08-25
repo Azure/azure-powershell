@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ProviderListParameters
     {
         private int? _top;
-        
+
         /// <summary>
         /// Optional. Get or sets the number of records to return. Optional.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._top; }
             set { this._top = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ProviderListParameters class.
         /// </summary>

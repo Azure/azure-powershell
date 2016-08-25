@@ -141,6 +141,9 @@
   <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
     <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
   </data>
+  <data name="ServerDisasterRecoveryConfigurationNameExists" xml:space="preserve">
+    <value>Server Disaster Recovery Configuration already exists in server '{1}'.</value>
+  </data>
   <data name="ElasticPoolNameExists" xml:space="preserve">
     <value>Elastic Pool with name: '{0}' already exists in server '{1}'.</value>
   </data>
@@ -180,6 +183,9 @@
   <data name="RemoveAzureSqlDatabaseDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database '{0}' on server '{1}'.</value>
   </data>
+  <data name="RemoveAzureSqlServerDisasterRecoveryConfigurationDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Disaster Recovery Configuration '{0}' on server '{1}'.</value>
+  </data>
   <data name="RemoveAzureSqlDatabaseElasticPoolDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Elastic Pool '{0}' on server '{1}'.</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="RemoveAzureSqlDatabaseWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database '{0}' on server '{1}'?</value>
+  </data>
+  <data name="RemoveAzureSqlServerDisasterRecoveryConfigurationWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Disaster Recovery Configuration '{0}' on server '{1}'?</value>
   </data>
   <data name="RemoveAzureSqlServerActiveDirectoryAdministratorDescription" xml:space="preserve">
     <value>Removing Azure Sql Server Active Directory Administrator on server '{0}'.</value>
@@ -249,8 +258,20 @@
   <data name="SetSecondaryNoOptionProvided" xml:space="preserve">
     <value>No Set Options were provided</value>
   </data>
+  <data name="SetDisasterRecoveryConfigurationNoOptionProvided" xml:space="preserve">
+    <value>No Set Options were provided</value>
+  </data>
   <data name="ServerNotApplicableForDataMasking" xml:space="preserve">
     <value>Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database.</value>
+  </data>
+  <data name="RemoveAzureSqlServerCommunicationLinkDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Server communication link '{0}' on server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerCommunicationLinkWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server communication link '{0}' on server '{1}'?</value>
+  </data>
+  <data name="ServerCommunicationLinkNameExists" xml:space="preserve">
+    <value>Server communication link with name: '{0}' already exists in server '{1}'.</value>
   </data>
   <data name="EmailsAreNotValid" xml:space="preserve">
     <value>One or more of the email addresses you entered are not valid.</value>
@@ -263,5 +284,8 @@
   </data>
   <data name="AuditingIsTurnedOff" xml:space="preserve">
     <value>In order to enable Threat Detection, please enable database auditing.</value>
+  </data>
+  <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
+    <value>Cannot use the '{0}' option with other excluded detection types.</value>
   </data>
 </root>

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
             {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
         };
-        
+
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
 
@@ -60,26 +60,20 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string Disabled = "Disabled";
 
         // Threat Detection disabled types:
-        public const string Successful_SQLi = "Successful_SQLi";
-        public const string Attempted_SQLi = "Attempted_SQLi";
-        public const string Client_GEO_Anomaly = "Client_GEO_Anomaly";
-        public const string Failed_Logins_Anomaly = "Failed_Logins_Anomaly";
-        public const string Failed_Queries_Anomaly = "Failed_Queries_Anomaly";
-        public const string Data_Extraction_Anomaly = "Data_Extraction_Anomaly";
-        public const string Data_Alteration_Anomaly = "Data_Alteration_Anomaly";
+        public const string Sql_Injection = "Sql_Injection";
+        public const string Sql_Injection_Vulnerability = "Sql_Injection_Vulnerability";
+        public const string Access_Anomaly = "Access_Anomaly";
+        public const string Usage_Anomaly = "Usage_Anomaly";
 
         public static readonly Dictionary<string, DetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
             <string, DetectionType>
         {
-            {Successful_SQLi, DetectionType.Successful_SQLi},
-            {Attempted_SQLi, DetectionType.Attempted_SQLi},
-            {Client_GEO_Anomaly, DetectionType.Client_GEO_Anomaly},
-            {Failed_Logins_Anomaly, DetectionType.Failed_Logins_Anomaly},
-            {Failed_Queries_Anomaly, DetectionType.Failed_Queries_Anomaly},
-            {Data_Extraction_Anomaly, DetectionType.Data_Extraction_Anomaly},
-            {Data_Alteration_Anomaly, DetectionType.Data_Alteration_Anomaly},
+            {Sql_Injection, DetectionType.Sql_Injection},
+            {Sql_Injection_Vulnerability, DetectionType.Sql_Injection_Vulnerability},
+            {Access_Anomaly, DetectionType.Access_Anomaly},
+            {Usage_Anomaly, DetectionType.Usage_Anomaly}
         };
-        
+
         // Masking functions
         public const string NoMasking = "NoMasking";
         public const string Default = "Default";

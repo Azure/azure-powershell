@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Insights.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets the Count of the metric
         /// </summary>
         public long? Count { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the Last value of the metric
         /// </summary>
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// Gets or sets the Maximum value of the metric
         /// </summary>
         public double? Maximum { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the Minimum value of the metric
         /// </summary>
         public double? Minimum { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the Total of the metric
         /// </summary>

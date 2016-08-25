@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddingResourceGroup" xml:space="preserve">
+    <value>Adding resource group ...</value>
+  </data>
+  <data name="CancelResourceGroupDeployment" xml:space="preserve">
+    <value>Are you sure you want to cancel the active deployment of resource group '{0}'?</value>
+  </data>
+  <data name="CancelResourceGroupDeploymentMessage" xml:space="preserve">
+    <value>Cancelling active resource group deployment ...</value>
+  </data>
+  <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory.</value>
+  </data>
+  <data name="CreateServicePrincipalNotAllowedGuestUser" xml:space="preserve">
+    <value>You are a guest user in the directory and are not allowed to create a service principal. Please contact the administrator of the directory.</value>
+  </data>
+  <data name="DeleteResourceGroupDeployment" xml:space="preserve">
+    <value>Are you sure you want to delete the deployment '{0}'?</value>
+  </data>
+  <data name="DeleteResourceGroupDeploymentMessage" xml:space="preserve">
+    <value>Deleting the deployment ...</value>
+  </data>
+  <data name="DeploymentDoesntExist" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
+  </data>
+  <data name="DeploymentWithNameNotFound" xml:space="preserve">
+    <value>Cannot find a deployment with name '{0}'.</value>
+  </data>
+  <data name="ExpandGroupsNotSupported" xml:space="preserve">
+    <value>ExpandPrincipalGroups is only supported for a User principal</value>
+  </data>
+  <data name="FailedToParseProperty" xml:space="preserve">
+    <value>Cannot parse {0} '{1}'</value>
+  </data>
+  <data name="FailureParsingTemplateParameterFile" xml:space="preserve">
+    <value>Cannot set parameter '{0}' from TemplateParameterFile. Incompatible value '{1}'.</value>
+  </data>
+  <data name="FailureParsingTemplateParameterObject" xml:space="preserve">
+    <value>Cannot set parameter '{0}' from TemplateParameterObject. Incompatible value '{1}'.</value>
+  </data>
+  <data name="FeatureNotFound" xml:space="preserve">
+    <value>Could not find the feature '{0}' for the resource provider '{1}'.</value>
+  </data>
+  <data name="FileAlreadyExists" xml:space="preserve">
+    <value>The provided file path '{0}' already exists, do you want to override it?</value>
+  </data>
+  <data name="FileAlreadyExists1" xml:space="preserve">
+    <value>The provided file path '{0}' already exists, do you want to override it?</value>
+  </data>
+  <data name="IncludeClassicAdminsNotSupported" xml:space="preserve">
+    <value>IncludeClassicAdministrators is only supported for a User principal</value>
+  </data>
+  <data name="InvalidActions" xml:space="preserve">
+    <value>Invalid value for Actions</value>
+  </data>
+  <data name="InvalidAssignableScopes" xml:space="preserve">
+    <value>Invalid value for AssignableScopes</value>
+  </data>
+  <data name="InvalidFormatOfResourceGroupId" xml:space="preserve">
+    <value>Invalid format of the resource group identifier. Expected 'subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}'.</value>
+  </data>
+  <data name="InvalidFormatOfResourceId" xml:space="preserve">
+    <value>Invalid format of the resource identifier.</value>
+  </data>
+  <data name="InvalidRoleDefinitionDescription" xml:space="preserve">
+    <value>RoleDefinition Description is invalid.</value>
+  </data>
+  <data name="InvalidRoleDefinitionName" xml:space="preserve">
+    <value>RoleDefinition Name is invalid</value>
+  </data>
+  <data name="InvalidTagFormat" xml:space="preserve">
+    <value>Invalid tag format. Expect @{tagName = $null} or @{tagName = "tagValue"}</value>
+  </data>
+  <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
+    <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = "tagValue1"; tagName2 = "tagValue2"}</value>
+  </data>
+  <data name="InvalidTemplateIdentity" xml:space="preserve">
+    <value>Cannot find a template with identity '{0}'. Check the template identity and try the command again.</value>
+  </data>
+  <data name="MoveResourcesMessage" xml:space="preserve">
+    <value>Moving resource(s) ...</value>
+  </data>
+  <data name="MovingResources" xml:space="preserve">
+    <value>Are you sure you want to move resource(s) into the resource group named '{0}' - the resource(s): '{1}'</value>
+  </data>
+  <data name="MovingResourcesFromDifferentSourceResourceGroupsNotAllowed" xml:space="preserve">
+    <value>Moving resources from different source resource groups is not allowed.</value>
+  </data>
+  <data name="MovingResourcesFromDifferentSubscriptionsIsNotAllowed" xml:space="preserve">
+    <value>Moving resources from different subscriptions is not currently supported.</value>
+  </data>
+  <data name="MovingResourcesFromNonDefaultSubscriptionNotAllowed" xml:space="preserve">
+    <value>Moving resources that are not in the default subscription is not allowed. Please select the subscription you want to move resources from and try again.</value>
+  </data>
+  <data name="MovingResourcesIntoNewSubscription" xml:space="preserve">
+    <value>Are you sure you want to move resource(s) into the resource group named '{0}' in the subscription named '{1}' and id '{2}' - the resource(s): '{3}'</value>
+  </data>
+  <data name="MultipleRoleDefinitionsFoundWithSameName" xml:space="preserve">
+    <value>Multiple role definitions found with name '{0}'. Specify role definition using it's Id instead.</value>
+  </data>
+  <data name="NewResourceGroupMessage" xml:space="preserve">
+    <value>Replacing resource group ...</value>
+  </data>
+  <data name="NewResourceMessage" xml:space="preserve">
+    <value>Replacing resource ...</value>
+  </data>
+  <data name="NoDeploymentWereFound" xml:space="preserve">
+    <value>Cannot find any deployments in resource group '{0}'.</value>
+  </data>
+  <data name="OperationSearchStringInvalidProviderName" xml:space="preserve">
+    <value>To get all operations under {0}, please specify the search string as {0}/*.</value>
+  </data>
+  <data name="OperationSearchStringInvalidWildcard" xml:space="preserve">
+    <value>Individual parts in the search string should either equal * or not contain *.</value>
+  </data>
+  <data name="OverrdingFile" xml:space="preserve">
+    <value>Overriding the existing file.</value>
+  </data>
+  <data name="OverrdingFile1" xml:space="preserve">
+    <value>Overriding the existing file.</value>
+  </data>
+  <data name="PrincipalNotFound" xml:space="preserve">
+    <value>Cannot find principal using the specified options</value>
+  </data>
+  <data name="ProviderOperationUnsupportedWildcard" xml:space="preserve">
+    <value>Wildcard character ? is not supported.</value>
+  </data>
+  <data name="RegisteredFeatureNotFound" xml:space="preserve">
+    <value>Could not find a registered feature named '{0}' for the resource provider '{1}'.</value>
+  </data>
+  <data name="RegisteringProvider" xml:space="preserve">
+    <value>Are you sure you want to register the provider '{0}'</value>
+  </data>
+  <data name="RegisteringProviderFeature" xml:space="preserve">
+    <value>Are you sure you want to register for the feature '{0}' of the provider '{1}'</value>
+  </data>
+  <data name="RegisterProviderFeatureMessage" xml:space="preserve">
+    <value>Registering provider feature ...</value>
+  </data>
+  <data name="RegisterProviderMessage" xml:space="preserve">
+    <value>Registering provider ...</value>
+  </data>
+  <data name="RemoveApplication" xml:space="preserve">
+    <value>Removing application ...</value>
+  </data>
+  <data name="RemoveResourceGroupMessage" xml:space="preserve">
+    <value>Removing resource group ...</value>
+  </data>
+  <data name="RemoveResourceMessage" xml:space="preserve">
+    <value>Removing resource ...</value>
+  </data>
+  <data name="RemoveRoleDefinition" xml:space="preserve">
+    <value>Are you sure you want to remove role definition with id '{0}'.</value>
+  </data>
+  <data name="RemoveRoleDefinitionWithName" xml:space="preserve">
+    <value>Are you sure you want to remove role definition with name '{0}'.</value>
+  </data>
+  <data name="RemoveServicePrincipal" xml:space="preserve">
+    <value>Removing service principal ...</value>
+  </data>
+  <data name="RemovingApplication" xml:space="preserve">
+    <value>Are you sure you want to remove application with object id '{0}'.</value>
+  </data>
+  <data name="RemovingResource" xml:space="preserve">
+    <value>Are you sure you want to remove resource '{0}'</value>
+  </data>
+  <data name="RemovingResourceGroup" xml:space="preserve">
+    <value>Are you sure you want to remove resource group '{0}'</value>
+  </data>
+  <data name="RemovingRoleAssignment" xml:space="preserve">
+    <value>Removing role assignment for AD object '{0}' on scope '{1}' with role definition '{2}' </value>
+  </data>
+  <data name="RemovingServicePrincipal" xml:space="preserve">
+    <value>Are you sure you want to remove service principal with object id '{0}'.</value>
+  </data>
+  <data name="ResourceAlreadyExists" xml:space="preserve">
+    <value>Provided resource already exists. Are you sure you want to replace it?</value>
+  </data>
+  <data name="ResourceDoesntExists" xml:space="preserve">
+    <value>Provided resource does not exist.</value>
+  </data>
+  <data name="ResourceGroupAlreadyExists" xml:space="preserve">
+    <value>Provided resource group already exists. Are you sure you want to update it?</value>
+  </data>
+  <data name="ResourceGroupDoesntExists" xml:space="preserve">
+    <value>Provided resource group does not exist.</value>
+  </data>
+  <data name="ResourceGroupDoesntExistsAdd" xml:space="preserve">
+    <value>Provided resource group does not exist. Would you like to create it?</value>
+  </data>
+  <data name="ResourceProviderNotFound" xml:space="preserve">
+    <value>Could not find the resource provider '{0}'.</value>
+  </data>
+  <data name="ResourceProviderRegistrationFailed" xml:space="preserve">
+    <value>Could not register the resource provider '{0}'</value>
+  </data>
+  <data name="ResourceProviderUnregistrationFailed" xml:space="preserve">
+    <value>Could not unregister the resource provider '{0}'</value>
+  </data>
+  <data name="ResourceTypeFormat" xml:space="preserve">
+    <value>Resource type needs to be in the ResourceProvider/type format. For example Microsoft.Web/sites.</value>
+  </data>
+  <data name="RoleDefinitionIdShouldBeAGuid" xml:space="preserve">
+    <value>Role definition id should be a valid guid.</value>
+  </data>
+  <data name="RoleDefinitionNotFound" xml:space="preserve">
+    <value>Cannot find role definition with name '{0}'.</value>
+  </data>
+  <data name="RoleDefinitionWithIdNotFound" xml:space="preserve">
+    <value>Cannot find role definition with id '{0}'.</value>
+  </data>
+  <data name="ServicePrincipalDoesntExist" xml:space="preserve">
+    <value>Service principal with object id '{0}' does not exist.</value>
+  </data>
+  <data name="StorageAccountNameNeedsToBeSpecified" xml:space="preserve">
+    <value>Because the current subscription does not have a current storage account, you must specify the StorageAccountName parameter.</value>
+  </data>
+  <data name="SubscriptionWithTheSpecifiedIdNotFount" xml:space="preserve">
+    <value>A subscription with the Id '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptions.</value>
+  </data>
+  <data name="SubscriptionWithTheSpecifiedNameNotFount" xml:space="preserve">
+    <value>A subscription with the name '{0}' was not found. If this is a newly created subscription you will need to re-download your subscriptions.</value>
+  </data>
+  <data name="TemplateValid" xml:space="preserve">
+    <value>Template is valid.</value>
+  </data>
+  <data name="UnableToFindGallery" xml:space="preserve">
+    <value>Cannot find Gallery item '{0}'.</value>
+  </data>
+  <data name="UnregisteringProvider" xml:space="preserve">
+    <value>Are you sure you want to unregister the provider '{0}'</value>
+  </data>
+  <data name="UnregisterProviderMessage" xml:space="preserve">
+    <value>Unregistering provider ...</value>
+  </data>
+  <data name="WarnOnDeploymentDebugSetting" xml:space="preserve">
+    <value>The DeploymentDebug setting has been enabled. This can potentially log secrets like passwords used in resource property or listKeys operations when you retrieve the deployment operations through Get-AzureRmResourceGroupDeploymentOperation</value>
+  </data>
+  <data name="CheckingDeploymentStatus" xml:space="preserve">
+    <value>Checking deployment status in {0} seconds</value>
+  </data>
+  <data name="ConfirmInvokeAction" xml:space="preserve">
+    <value>Are you sure you want to invoke the '{0}' action on the following resource: {1}</value>
+  </data>
+  <data name="ConfirmOnCompleteDeploymentMode" xml:space="preserve">
+    <value>Are you sure you want to use the complete deployment mode? Resources in the resource group '{0}' which are not included in the template will be deleted.</value>
+  </data>
+  <data name="CreatedDeployment" xml:space="preserve">
+    <value>Create template deployment '{0}'</value>
+  </data>
+  <data name="CreateDeploymentCompleteMode" xml:space="preserve">
+    <value>Creating a deployment with Complete mode</value>
+  </data>
+  <data name="CreatedResourceGroup" xml:space="preserve">
+    <value>Created resource group '{0}' in location '{1}'</value>
+  </data>
+  <data name="FailedDeploymentValidation" xml:space="preserve">
+    <value>The deployment validation failed</value>
+  </data>
+  <data name="GetParameterTypeError" xml:space="preserve">
+    <value>Parameter type in parameters cannot be null or empty</value>
+  </data>
+  <data name="InvokingResourceAction" xml:space="preserve">
+    <value>Invoking the '{0}' action on the resource.</value>
+  </data>
+  <data name="MultipleRunningDeployment" xml:space="preserve">
+    <value>There are more than one running deployment please specify one</value>
+  </data>
+  <data name="NoDeploymentToCancel" xml:space="preserve">
+    <value>There is no deployment called '{0}' to cancel</value>
+  </data>
+  <data name="NoRunningDeployments" xml:space="preserve">
+    <value>There are no running deployments under resource group '{0}'</value>
+  </data>
+  <data name="UpdatedResourceGroup" xml:space="preserve">
+    <value>Updated resource group '{0}' in location '{1}'</value>
+  </data>
+  <data name="OperationFailedWithTimeOut" xml:space="preserve">
+    <value>Operation failed because a request timed out.</value>
+  </data>
+  <data name="CreateDeployment" xml:space="preserve">
+    <value>Creating Deployment</value>
+  </data>
+  <data name="InvalidLocation" xml:space="preserve">
+    <value>Provided location is not supported</value>
+  </data>
+</root>

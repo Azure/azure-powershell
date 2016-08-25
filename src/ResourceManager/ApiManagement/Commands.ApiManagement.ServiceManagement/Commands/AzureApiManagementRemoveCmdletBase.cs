@@ -11,10 +11,13 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
+using System;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
+    using System.Management.Automation;
 
     abstract public class AzureApiManagementRemoveCmdletBase : AzureApiManagementCmdletBase
     {
@@ -24,20 +27,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.")]
-        public SwitchParameter Force { get; set; }
-
         public abstract string ActionWarning { get; }
 
         public abstract string ActionDescription { get; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     ActionDescription,
                     ActionWarning,
                     Resources.ShouldProcessCaption))

@@ -15,7 +15,7 @@
 using AutoMapper;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
@@ -411,7 +411,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     new VirtualMachineExtensionImageFactory(this.ComputeClient).MakeList(
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultPublisher,
                         VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultName,
-                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion))
+                        VirtualMachineBGInfoExtensionCmdletBase.ExtensionDefaultVersion)),
+                DebugSettings = new Management.Compute.Models.DebugSettings
+                {
+                    BootDiagnosticsEnabled = true
+                }
             };
 
             if (!_isVMImage && vm.OSVirtualHardDisk.MediaLink == null && String.IsNullOrEmpty(vm.OSVirtualHardDisk.Name))

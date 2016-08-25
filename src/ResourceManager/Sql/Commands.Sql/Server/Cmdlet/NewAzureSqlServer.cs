@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
-        [Parameter(Mandatory = true, 
+        [Parameter(Mandatory = true,
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
@@ -56,15 +57,24 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Server")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the server version
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
             HelpMessage = "Determines which version of Sql Azure Server is created")]
         [ValidateNotNullOrEmpty]
         public string ServerVersion { get; set; }
+
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Check to see if the server already exists in this resource group.
@@ -76,9 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
             {
                 ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName);
             }
-            catch(CloudException ex)
+            catch (CloudException ex)
             {
-                if(ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
                     // This is what we want.  We looked and there is no server with this name.
                     return null;
@@ -103,15 +113,15 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         {
             List<Model.AzureSqlServerModel> newEntity = new List<Model.AzureSqlServerModel>();
             newEntity.Add(new Model.AzureSqlServerModel()
-                {
-                    Location = this.Location,
-                    ResourceGroupName = this.ResourceGroupName,
-                    ServerName = this.ServerName,
-                    ServerVersion = this.ServerVersion,
-                    SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
-                    SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
-                    Tags = this.Tags
-                });
+            {
+                Location = this.Location,
+                ResourceGroupName = this.ResourceGroupName,
+                ServerName = this.ServerName,
+                ServerVersion = this.ServerVersion,
+                SqlAdministratorPassword = this.SqlAdministratorCredentials.Password,
+                SqlAdministratorLogin = this.SqlAdministratorCredentials.UserName,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+            });
             return newEntity;
         }
 
@@ -122,8 +132,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The created server</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> PersistChanges(IEnumerable<Model.AzureSqlServerModel> entity)
         {
-            return new List<Model.AzureSqlServerModel>() { 
-                ModelAdapter.UpsertServer(entity.First()) 
+            return new List<Model.AzureSqlServerModel>() {
+                ModelAdapter.UpsertServer(entity.First())
             };
         }
     }

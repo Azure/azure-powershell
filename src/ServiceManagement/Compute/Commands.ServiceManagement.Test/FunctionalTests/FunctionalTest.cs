@@ -26,7 +26,7 @@ using System.Threading;
 using System.Xml;
 using Hyak.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
@@ -280,21 +280,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, string.Empty);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, string.Empty));
-
-                vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, testAVSetName);
-                vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
-
                 vm = vmPowershellCmdlets.SetAzureAvailabilitySet(vmName, serviceName, null);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
                 Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
 
                 vm = vmPowershellCmdlets.RemoveAzureAvailabilitySet(vmName, serviceName);
                 vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
-                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, testAVSetName));
+                Assert.IsTrue(Verify.AzureAvailabilitySet(vmPowershellCmdlets.GetAzureVM(vmName, serviceName).VM, null));
 
                 pass = true;
             }
@@ -1587,13 +1579,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             string location = staticParameters[1];
             string affinity = staticParameters[2];
 
-            Console.WriteLine("Name: {0}, Label: {1}, Description: {2}, AffinityGroup: {3}, Location: {4}, GeoReplicationEnabled: {5}, AccountType: {6}",
+            Console.WriteLine("Name: {0}, Label: {1}, Description: {2}, AffinityGroup: {3}, Location: {4}, AccountType: {5}",
                 storageContext.StorageAccountName,
                 storageContext.Label,
                 storageContext.StorageAccountDescription,
                 storageContext.AffinityGroup,
                 storageContext.Location,
-                storageContext.GeoReplicationEnabled,
                 storageContext.AccountType);
 
             try
@@ -1603,7 +1594,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 Assert.AreEqual(description, storageContext.StorageAccountDescription, "Error: Storage Account Description is not equal!");
                 Assert.AreEqual(affinity, storageContext.AffinityGroup, "Error: Affinity Group is not equal!");
                 Assert.AreEqual(location, storageContext.Location, "Error: Location is not equal!");
-                Assert.AreEqual(geoReplicationEnabled, storageContext.GeoReplicationEnabled, "Error: GeoReplicationEnabled is not equal!");
                 Assert.AreEqual(accountType, storageContext.AccountType, "Error: AccountType is not equal!");
                 Console.WriteLine("All contexts are matched!!\n");
             }

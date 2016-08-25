@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMWebAppSlot")]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebAppSlot")]
     public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
@@ -60,6 +59,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettingsOverrides { get; set; }
 
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Name of application service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseName { get; set; }
+
+        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Resource group of Application Service environment")]
+        [ValidateNotNullOrEmpty]
+        public string AseResourceGroupName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -78,7 +85,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Removes a Certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCertificate", SupportsShouldProcess = true,
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
     public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -35,9 +34,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByCertificateName, Position = 3, HelpMessage = "Confirm the removal of the certificate")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -45,8 +41,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       Force.IsPresent,
-                      string.Format(Resources.RemovingAzureAutomationResourceWarning, "Certificate"),
                        string.Format(Resources.RemoveAzureAutomationResourceDescription, "Certificate"),
                        Name,
                        () =>

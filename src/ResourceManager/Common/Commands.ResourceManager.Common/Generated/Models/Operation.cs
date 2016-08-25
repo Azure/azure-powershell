@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class Operation
     {
         private string _description;
-        
+
         /// <summary>
         /// Optional. Gets or sets the operation description
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._description; }
             set { this._description = value; }
         }
-        
+
         private string _displayName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the operation display name
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._displayName; }
             set { this._displayName = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the operation name
         /// </summary>
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private string _origin;
-        
+
         /// <summary>
         /// Optional. Gets or sets the operation origin
         /// </summary>
@@ -70,9 +70,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._origin; }
             set { this._origin = value; }
         }
-        
+
         private object _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the operation properties
         /// </summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Operation class.
         /// </summary>

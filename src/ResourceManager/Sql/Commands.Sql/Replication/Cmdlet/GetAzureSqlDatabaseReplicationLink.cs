@@ -13,14 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Replication.Model;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseReplicationLink",
-        DefaultParameterSetName = ByDatabaseName,        
+        DefaultParameterSetName = ByDatabaseName,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseReplicationLink : AzureSqlDatabaseSecondaryCmdletBase
     {
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// ParameterSet to get a Replication Link by its partner Azure SQL Server Name
         /// </summary>
         internal const string ByPartnerServerName = "ByPartnerServerName";
- 
+
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database to retrieve links for.
         /// </summary>

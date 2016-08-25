@@ -23,22 +23,31 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureRmBatchAccountKey = "AzureRmBatchAccountKey";
         public const string AzureRmBatchAccountKeys = "AzureRmBatchAccountKeys";
         public const string AzureRmBatchSubscriptionQuotas = "AzureRmBatchSubscriptionQuotas";
+        public const string AzureRmBatchApplication = "AzureRmBatchApplication";
+        public const string AzureRmBatchApplicationPackage = "AzureRmBatchApplicationPackage";
 
         // Batch Service cmdlet nouns
         public const string AzureBatchPool = "AzureBatchPool";
+        public const string AzureBatchPoolUsageMetrics = "AzureBatchPoolUsageMetrics";
         public const string AzureBatchPoolResize = "AzureBatchPoolResize";
         public const string AzureBatchComputeNode = "AzureBatchComputeNode";
+        public const string AzureBatchComputeNodeScheduling = "AzureBatchComputeNodeScheduling";
         public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
         public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
         public const string AzureBatchJob = "AzureBatchJob";
+        public const string AzureBatchJobStatistics = "AzureBatchJobStatistics";
         public const string AzureBatchTask = "AzureBatchTask";
+        public const string AzureBatchSubtask = "AzureBatchSubtask";
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
+        public const string AzureBatchRemoteLoginSettings = "AzureBatchRemoteLoginSettings";
         public const string AzureBatchAutoScale = "AzureBatchAutoScale";
         public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";
+        public const string AzureBatchPoolStatistics = "AzureBatchPoolStatistics";
         public const string AzureBatchCertificate = "AzureBatchCertificate";
         public const string AzureBatchCertificateDeletion = "AzureBatchCertificateDeletion";
+        public const string AzureBatchNodeAgentSku = "AzureBatchNodeAgentSku";
 
         // Parameter sets
         public const string IdParameterSet = "Id";

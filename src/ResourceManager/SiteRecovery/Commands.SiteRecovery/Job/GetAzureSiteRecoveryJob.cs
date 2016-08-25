@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -86,30 +86,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            base.ExecuteSiteRecoveryCmdlet();
+            switch (this.ParameterSetName)
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ByObject:
-                        this.Name = this.Job.Name;
-                        this.GetByName();
-                        break;
+                case ASRParameterSets.ByObject:
+                    this.Name = this.Job.Name;
+                    this.GetByName();
+                    break;
 
-                    case ASRParameterSets.ByName:
-                        this.GetByName();
-                        break;
+                case ASRParameterSets.ByName:
+                    this.GetByName();
+                    break;
 
-                    case ASRParameterSets.ByParam:
-                    default:
-                        this.GetByParam();
-                        break;
-                }
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
+                case ASRParameterSets.ByParam:
+                default:
+                    this.GetByParam();
+                    break;
             }
         }
 
@@ -128,26 +122,27 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             JobQueryParameter jqp = new JobQueryParameter();
 
-            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob().Jobs;
-
-            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();           
             if (this.StartTime.HasValue)
             {
-                filteredJobsList = filteredJobsList.Where(j => j.Properties.StartTime.Value.ToUniversalTime().ToBinary() >= this.StartTime.Value.ToUniversalTime().ToBinary());
+                jqp.StartTime = this.StartTime.Value.ToUniversalTime().ToString("o");
             }
 
             if (this.EndTime.HasValue)
             {
-                filteredJobsList = filteredJobsList.Where(j => j.Properties.EndTime.Value.ToUniversalTime().ToBinary() <= this.EndTime.Value.ToUniversalTime().ToBinary());
+                jqp.EndTime = this.EndTime.Value.ToUniversalTime().ToString("o");
             }
 
             if (this.State != null)
             {
-                filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.State.ToString(),
-                    this.State.ToString(),StringComparison.OrdinalIgnoreCase));
+                jqp.JobStatus = new List<string>();
+                jqp.JobStatus.Add(this.State);
             }
 
-            if(this.TargetObjectId != null)
+            IList<Management.SiteRecovery.Models.Job> completeJobsList = RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp).Jobs;
+
+            // Filtering TargetObjectId
+            IEnumerable<Management.SiteRecovery.Models.Job> filteredJobsList = completeJobsList.ToArray().AsEnumerable();
+            if (this.TargetObjectId != null)
             {
                 filteredJobsList = filteredJobsList.Where(j => 0 == string.Compare(j.Properties.TargetObjectId.ToString(),
                      this.TargetObjectId.ToString(), StringComparison.OrdinalIgnoreCase));

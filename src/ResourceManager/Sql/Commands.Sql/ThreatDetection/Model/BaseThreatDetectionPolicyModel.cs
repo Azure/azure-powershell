@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
-   /// <summary>
+    /// <summary>
     /// The possible states in which an auditing policy may be in
     /// </summary>
     public enum ThreatDetectionStateType { Enabled, Disabled, New };
@@ -24,13 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
     /// </summary> 
     public enum DetectionType
     {
-        Successful_SQLi,
-        Attempted_SQLi,
-        Client_GEO_Anomaly,
-        Failed_Logins_Anomaly,
-        Failed_Queries_Anomaly,
-        Data_Extraction_Anomaly,
-        Data_Alteration_Anomaly
+        Sql_Injection,
+        Sql_Injection_Vulnerability,
+        Access_Anomaly,
+        Usage_Anomaly,
     };
 
     /// <summary>

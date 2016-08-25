@@ -13,19 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppTests : RMTestBase
     {
+        public WebAppTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewAppOnAse()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
@@ -54,6 +68,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestCloneNewWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCloneNewWebAppAndDeploymentSlots()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppAndDeploymentSlots");
         }
 
         [Fact]

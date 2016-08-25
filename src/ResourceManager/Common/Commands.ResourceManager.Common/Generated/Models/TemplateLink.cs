@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TemplateLink
     {
         private string _contentVersion;
-        
+
         /// <summary>
         /// Optional. If included it must match the ContentVersion in the
         /// template.
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._contentVersion; }
             set { this._contentVersion = value; }
         }
-        
+
         private Uri _uri;
-        
+
         /// <summary>
         /// Required. URI referencing the template.
         /// </summary>
@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._uri; }
             set { this._uri = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TemplateLink class.
         /// </summary>
         public TemplateLink()
         {
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TemplateLink class with required
         /// arguments.

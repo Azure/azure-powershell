@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ProviderOperationsMetadataGetResult : AzureOperationResponse
     {
         private ProviderOperationsMetadata _provider;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provider; }
             set { this._provider = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ProviderOperationsMetadataGetResult class.

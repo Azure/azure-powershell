@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {

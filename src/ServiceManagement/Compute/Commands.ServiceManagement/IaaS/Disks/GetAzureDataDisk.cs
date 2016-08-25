@@ -14,11 +14,12 @@
 
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Disks
 {
-    [Cmdlet(VerbsCommon.Get, "AzureDataDisk"), OutputType(typeof(DataVirtualHardDisk))]
+    [Cmdlet(VerbsCommon.Get, ProfileNouns.DataDisk), OutputType(typeof(DataVirtualHardDisk))]
     public class GetAzureDataDisk : VirtualMachineConfigurationCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "Data Disk LUN")]

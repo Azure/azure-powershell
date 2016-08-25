@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Common.Authentication
+namespace Microsoft.Azure.ServiceManagemenet.Common
 {
     /// <summary>
     /// This class handles mapping management client types
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Common.Authentication
         private const string StorageProviderNamespace = "Microsoft.Storage";
         private const string WebAppProviderNamespace = "Microsoft.Web";
 
-        internal static IList<string> RequiredProvidersForServiceManagement<T>() 
+        internal static IList<string> RequiredProvidersForServiceManagement<T>()
         {
             if (typeof(T).FullName.EndsWith("WebSiteManagementClient"))
             {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Common.Authentication
             return new string[0];
         }
 
-        internal static IList<string> RequiredProvidersForResourceManager<T>() 
+        internal static IList<string> RequiredProvidersForResourceManager<T>()
         {
             if (typeof(T).FullName.EndsWith("ResourceManagementClient"))
             {

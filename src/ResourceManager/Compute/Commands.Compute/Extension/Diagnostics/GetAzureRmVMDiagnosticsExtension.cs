@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
+using System;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -69,11 +70,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
-                    var diagnosticsExtension = virtualMachine.Extensions != null
-                            ? virtualMachine.Extensions.FirstOrDefault(extension =>
+                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+                    var diagnosticsExtension = virtualMachine.Resources != null
+                            ? virtualMachine.Resources.FirstOrDefault(extension =>
                                 extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                                extension.ExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
+                                extension.VirtualMachineExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
                             : null;
 
                     if (diagnosticsExtension == null)
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-                VirtualMachineExtensionGetResponse virtualMachineExtensionGetResponse = null;
+                AzureOperationResponse<VirtualMachineExtension> virtualMachineExtensionGetResponse = null;
                 if (Status.IsPresent)
                 {
                     virtualMachineExtensionGetResponse =
@@ -95,11 +96,15 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    virtualMachineExtensionGetResponse = this.VirtualMachineExtensionClient.Get(this.ResourceGroupName,
-                        this.VMName, this.Name);
+                    virtualMachineExtensionGetResponse = this.VirtualMachineExtensionClient.GetWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
                 }
 
-                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(this.ResourceGroupName);
+                var returnedExtension = virtualMachineExtensionGetResponse.ToPSVirtualMachineExtension(
+                    this.ResourceGroupName, this.VMName);
+
                 WriteObject(returnedExtension);
             });
         }

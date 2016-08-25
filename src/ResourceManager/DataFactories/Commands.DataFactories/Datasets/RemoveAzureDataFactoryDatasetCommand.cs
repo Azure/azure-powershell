@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataFactories.Properties;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.DataFactories.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ByFactoryName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Dataset, DefaultParameterSetName = ByFactoryName,
+        SupportsShouldProcess = true)]
     public class RemoveAzureDataFactoryDatasetCommand : DatasetContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -59,8 +60,8 @@ namespace Microsoft.Azure.Commands.DataFactories
         private void ExecuteDelete()
         {
             HttpStatusCode response = DataFactoryClient.DeleteDataset(ResourceGroupName, DataFactoryName, Name);
-                
-            if(response == HttpStatusCode.NoContent)
+
+            if (response == HttpStatusCode.NoContent)
             {
                 WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.DatasetNotFound, Name, DataFactoryName));
             }

@@ -37,9 +37,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
             get; set;
         }
 
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The local network gateway BGP speaker's ASN")]
+        public uint Asn
+        {
+            get; set;
+        }
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The local network gateway BGP speaker's IP/BGP identifier")]
+        public string BgpPeeringAddress
+        {
+            get; set;
+        }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Weight for routes learned from local network gateway's BGP speaker")]
+        public int PeerWeight
+        {
+            get; set;
+        }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.UpdateLocalNetworkGateway(GatewayId, AddressSpace));
+            WriteObject(Client.UpdateLocalNetworkGateway(GatewayId, AddressSpace, Asn, BgpPeeringAddress, PeerWeight));
         }
     }
 }

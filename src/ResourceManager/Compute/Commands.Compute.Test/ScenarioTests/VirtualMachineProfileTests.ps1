@@ -22,7 +22,7 @@ function Test-VirtualMachineProfile
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);
@@ -45,7 +45,7 @@ function Test-VirtualMachineProfile
     $p = Remove-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri1;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $ipRefUri1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
     # Storage
@@ -69,16 +69,16 @@ function Test-VirtualMachineProfile
         
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-    Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
     # Remove all data disks
     $p = $p | Remove-AzureRmVMDataDisk;
@@ -91,15 +91,15 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
     # Windows OS
     $user = "Foo12";
-    $password = 'BaR@000' + ((Get-Random) % 10000);
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
@@ -142,22 +142,22 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
     Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateStore $certStore2;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateUrl $certUrl2;
-    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.ReferenceUri $referenceUri2;
+    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.Id $referenceUri2;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateUrl $certUrl;
     Assert-AreEqual $encodedCustom $p.OSProfile.CustomData;
 
     # Verify WinRM
-    Assert-Null $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].CertificateUrl;
-    Assert-AreEqual "http" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].Protocol ;
-    Assert-AreEqual $winRMCertUrl $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].CertificateUrl ;
-    Assert-AreEqual "https" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].Protocol ;
+    Assert-Null $p.OSProfile.WindowsConfiguration.WinRM.Listeners[0].CertificateUrl;
+    Assert-AreEqual "http" $p.OSProfile.WindowsConfiguration.WinRM.Listeners[0].Protocol ;
+    Assert-AreEqual $winRMCertUrl $p.OSProfile.WindowsConfiguration.WinRM.Listeners[1].CertificateUrl ;
+    Assert-AreEqual "https" $p.OSProfile.WindowsConfiguration.WinRM.Listeners[1].Protocol ;
 
     # Verify Windows Provisioning Setup
     Assert-AreEqual $true $p.OSProfile.WindowsConfiguration.ProvisionVMAgent;
@@ -165,14 +165,14 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $timeZone $p.OSProfile.WindowsConfiguration.TimeZone;
 
     # Verify Additional Unattend Content
-    Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[0].ComponentName;
-    Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[0].Content;
-    Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[0].PassName;
-    Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[0].SettingName;
-    Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[1].ComponentName;
-    Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[1].Content;
-    Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[1].PassName;
-    Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents[1].SettingName;
+    #Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].ComponentName;
+    Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].Content;
+    Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].PassName;
+    Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[0].SettingName;
+    #Assert-AreEqual "Microsoft-Windows-Shell-Setup" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].ComponentName;
+    Assert-AreEqual $aucContent $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].Content;
+    Assert-AreEqual "oobeSystem" $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].PassName;
+    Assert-AreEqual $aucSetting $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent[1].SettingName;
 
     # Linux OS
     $img = "b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP3-v206";
@@ -197,16 +197,16 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
     Assert-AreEqual $encodedCustom $p.OSProfile.CustomData;
 
     # Verify SSH configuration
-    Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[0].KeyData;
-    Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[0].Path;
-    Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[1].KeyData;
-    Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.SshConfiguration.PublicKeys[1].Path;
+    Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].KeyData;
+    Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[0].Path;
+    Assert-AreEqual $sshPublicKey $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[1].KeyData;
+    Assert-AreEqual $sshPath $p.OSProfile.LinuxConfiguration.Ssh.PublicKeys[1].Path;
     Assert-AreEqual $true $p.OSProfile.LinuxConfiguration.DisablePasswordAuthentication
 }
 
@@ -220,7 +220,7 @@ function Test-VirtualMachineProfileWithoutAUC
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # Network
     $ipname = 'hpfip' + ((Get-Random) % 10000);
@@ -231,7 +231,7 @@ function Test-VirtualMachineProfileWithoutAUC
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri;
 
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $ipRefUri;
 
     # Storage
     $stoname = 'hpfteststo' + ((Get-Random) % 10000);
@@ -256,26 +256,26 @@ function Test-VirtualMachineProfileWithoutAUC
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
-    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri $dekId
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.DiskEncryptionKey.SourceVault.Id $dekId
     Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.DiskEncryptionKey.SecretUrl $dekUri
-    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.KeyEncryptionKey.SourceVault.ReferenceUri $kekId
+    Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.KeyEncryptionKey.SourceVault.Id $kekId
     Assert-AreEqual $p.StorageProfile.OSDisk.EncryptionSettings.KeyEncryptionKey.KeyUrl $kekUri
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-    Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+    Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 0;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
     # Windows OS
     $user = "Foo12";
-    $password = 'BaR@000' + ((Get-Random) % 10000);
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
@@ -315,22 +315,22 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[0].CertificateUrl $certUrl;
-    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.ReferenceUri $referenceUri;
+    Assert-AreEqual $p.OSProfile.Secrets[0].SourceVault.Id $referenceUri;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateStore $certStore2;
     Assert-AreEqual $p.OSProfile.Secrets[0].VaultCertificates[1].CertificateUrl $certUrl2;
-    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.ReferenceUri $referenceUri2;
+    Assert-AreEqual $p.OSProfile.Secrets[1].SourceVault.Id $referenceUri2;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateStore $certStore;
     Assert-AreEqual $p.OSProfile.Secrets[1].VaultCertificates[0].CertificateUrl $certUrl;
     Assert-AreEqual $encodedCustom $p.OSProfile.CustomData;
 
     # Verify WinRM
-    Assert-Null $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].CertificateUrl;
-    Assert-AreEqual "http" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[0].Protocol ;
-    Assert-AreEqual $winRMCertUrl $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].CertificateUrl ;
-    Assert-AreEqual "https" $p.OSProfile.WindowsConfiguration.WinRMConfiguration.Listeners[1].Protocol ;
+    Assert-Null $p.OSProfile.WindowsConfiguration.WinRM.Listeners[0].CertificateUrl;
+    Assert-AreEqual "http" $p.OSProfile.WindowsConfiguration.WinRM.Listeners[0].Protocol ;
+    Assert-AreEqual $winRMCertUrl $p.OSProfile.WindowsConfiguration.WinRM.Listeners[1].CertificateUrl ;
+    Assert-AreEqual "https" $p.OSProfile.WindowsConfiguration.WinRM.Listeners[1].Protocol ;
 
     # Verify Windows Provisioning Setup
     Assert-AreEqual $true $p.OSProfile.WindowsConfiguration.ProvisionVMAgent;
@@ -338,6 +338,6 @@ function Test-VirtualMachineProfileWithoutAUC
     Assert-AreEqual $timeZone $p.OSProfile.WindowsConfiguration.TimeZone;
 
     # Verify Additional Unattend Content
-    Assert-Null $p.OSProfile.WindowsConfiguration.AdditionalUnattendContents "NULL";
-    Assert-False {$p.OSProfile.WindowsConfiguration.AdditionalUnattendContents.IsInitialized};
+    Assert-Null $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent "NULL";
+    Assert-False {$p.OSProfile.WindowsConfiguration.AdditionalUnattendContent.IsInitialized};
 }

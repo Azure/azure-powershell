@@ -2623,6 +2623,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
+                    <!--[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]-->
                     PS C:\&gt;$Value = ConvertTo-SecureString 'UID=user123;PWD=password123;AuthMode=mode1;Token=token1' -AsPlainText -Force
                 </dev:code>
         <dev:code>

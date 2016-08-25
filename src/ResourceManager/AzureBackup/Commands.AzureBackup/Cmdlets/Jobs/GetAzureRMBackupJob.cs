@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using System.Web;
-using Microsoft.Azure.Management.BackupServices;
-using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
+using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -93,7 +90,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         throw new Exception(Resources.AzureBackupJobArguementException);
                     }
                     WriteDebug(Resources.SettingStartTime);
-                    From = new DateTime();
                     From = AzureBackupJobHelper.MinimumAllowedDate;
                 }
 
@@ -115,7 +111,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     else
                     {
                         WriteDebug(Resources.SettingEndTime);
-                        To = new DateTime();
                         To = AzureBackupJobHelper.MinimumAllowedDate;
                     }
                 }

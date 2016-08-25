@@ -13,24 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Validations;
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.Azure.Commands.WebApps.Validations;
-using Microsoft.Azure.Internal.Subscriptions.Models;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmWebApp")]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
@@ -86,7 +83,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 15, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
+        [Parameter(Position = 15, Mandatory = false, HelpMessage = "Destination slot name for auto swap")]
+        public string AutoSwapSlotName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
@@ -120,7 +120,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                     : null,
                             WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
                             Use32BitWorkerProcess =
-                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
+                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null,
+                            AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null
                         };
                     }
 

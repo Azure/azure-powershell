@@ -1,0 +1,63 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/managementservices/default?api-version=2015-12-01-preview",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/managementservices/default\",\"name\":\"6fc55539-11fa-4a2d-aa19-a88cd546ef45/default\",\"type\":\"Microsoft.Storage.Admin/farms/managementservices\",\"location\":\"redmond\",\"properties\":{\"settings\":{\"wacContainerGcFullScanIntervalInSeconds\":3600,\"wacAccountGcFullScanIntervalInSeconds\":3600,\"wacGcWaitPeriodInMilliseconds\":32000,\"wacHoldingPeriodInHours\":336,\"wacMaxGcThreadNumber\":10,\"wacMaxCacheSize\":2097152,\"wacMaxConnections\":2000,\"healthAccountName\":\"monitoringaccount\",\"healthAccountKey\":\"zN8d5l/m+h2DmGDYEoTpz0wPHPdRzP8R+sVTFSzdwjCYWIt4hzA7JN6Gcjto2ZuFt7JbCqP7oU80tGRm6F1GTQ==\",\"healthHistoryDays\":7,\"metricsBucketCount\":8,\"metricsAccountName\":\"metricaccount\",\"metricsAccountKey\":\"IwULNjunNhFEfI6p53MpW1lb16h9+TRfHzrlcF/3t3csuOBG/7c4RSagXSSL975bfKSX049t2oARdqM4Xz+8mg==\"},\"version\":\"1.0\",\"healthStatus\":\"Healthy\"}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-GetTableService": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

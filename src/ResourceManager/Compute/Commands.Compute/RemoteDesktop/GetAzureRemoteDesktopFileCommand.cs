@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Network;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -60,14 +60,18 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            Position = 3, 
-            HelpMessage = "Start a remote desktop session to the specified role instance.", 
+            Position = 3,
+            HelpMessage = "Start a remote desktop session to the specified role instance.",
             ParameterSetName = "Launch")]
         public SwitchParameter Launch
         {
             get;
             set;
         }
+
+        const string PublicIPAddressResource = "publicIPAddresses";
+        const string NetworkInterfaceResouce = "networkInterfaces";
+        const string LoadBalancerResouce = "loadBalancers";
 
         public override void ExecuteCmdlet()
         {
@@ -85,21 +89,19 @@ namespace Microsoft.Azure.Commands.Compute
                 // Get Azure VM
                 var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
 
+                var nicId = vmResponse.NetworkProfile.NetworkInterfaces.First().Id;
+
                 // Get the NIC
-                var nicResourceGroupName =
-                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
+                var nicResourceGroupName = this.GetResourceGroupName(nicId);
 
-                var nicName =
-                    this.GetResourceName(
-                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
+                var nicName = this.GetResourceName(nicId, NetworkInterfaceResouce);
 
-                var nic =
-                    this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
+                var nic = this.NetworkClient.NetworkManagementClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
 
-                if (nic.IpConfigurations.First().PublicIPAddress != null && !string.IsNullOrEmpty(nic.IpConfigurations.First().Id))
+                if (nic.IpConfigurations.First().PublicIPAddress != null && !string.IsNullOrEmpty(nic.IpConfigurations.First().PublicIPAddress.Id))
                 {
                     // Get PublicIPAddress resource if present
-                    address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().Id);
+                    address = this.GetAddressFromPublicIPResource(nic.IpConfigurations.First().PublicIPAddress.Id);
                 }
                 else if (nic.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
                 {
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Commands.Compute
                     // Get ipaddress and port from loadbalancer
                     foreach (var nicRuleRef in nic.IpConfigurations.First().LoadBalancerInboundNatRules)
                     {
-                        var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
+                        var lbName = this.GetResourceName(nicRuleRef.Id, LoadBalancerResouce);
                         var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
 
                         var loadbalancer =
@@ -167,10 +169,10 @@ namespace Microsoft.Azure.Commands.Compute
                 if (Launch.IsPresent)
                 {
                     var startInfo = new ProcessStartInfo
-                                        {
-                                            CreateNoWindow = true,
-                                            WindowStyle = ProcessWindowStyle.Hidden
-                                        };
+                    {
+                        CreateNoWindow = true,
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    };
 
                     if (this.LocalPath == null)
                     {
@@ -203,7 +205,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             // Get IpAddress from public IPAddress resource
             var publicIPResourceGroupName = this.GetResourceGroupName(resourceId);
-            var publicIPName = this.GetResourceName(resourceId, "publicIPAddresses");
+            var publicIPName = this.GetResourceName(resourceId, PublicIPAddressResource);
 
             var publicIp =
                 this.NetworkClient.NetworkManagementClient.PublicIPAddresses.Get(
@@ -230,7 +232,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         private string GetResourceName(string resourceId, string resource)
         {
-            return resourceId.Split('/')[8];
+            int resourceTypeLocation = resourceId.IndexOf(resource, StringComparison.OrdinalIgnoreCase);
+
+            var resourceName = resourceId.Substring(resourceTypeLocation + resource.Length + 1);
+            if (resourceName.Contains("/"))
+            {
+                int resourceNameEnd = resourceName.IndexOf("/");
+                resourceName = resourceName.Substring(0, resourceNameEnd);
+            }
+
+            return resourceName;
         }
     }
 }

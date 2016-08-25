@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Microsoft.Azure.Commands.Management.Storage;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Storage.Auth;
+using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Management.Storage;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -33,9 +31,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 var keys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
 
-                if (keys != null && keys.StorageAccountKeys != null)
+                if (keys != null)
                 {
-                    var storageAccountKey = string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ? keys.StorageAccountKeys.Key2 : keys.StorageAccountKeys.Key1;
+                    var storageAccountKey = string.IsNullOrEmpty(keys.Key1) ? keys.Key2 : keys.Key1;
 
                     credentials = new StorageCredentials(storageAccountName, storageAccountKey);
                 }

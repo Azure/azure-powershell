@@ -14,34 +14,18 @@
 
 
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption;
-using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
 {
     [Cmdlet(
     VerbsCommon.Remove,
     ProfileNouns.AzureVMBackup)]
-    [OutputType(typeof(PSComputeLongRunningOperation))]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMBackup : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -72,10 +56,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         {
             base.ExecuteCmdlet();
 
-            VirtualMachineGetResponse virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
-            string currentOSType = virtualMachineResponse.VirtualMachine.StorageProfile.OSDisk.OperatingSystemType;
+            var virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(this.ResourceGroupName, VMName);
+            var currentOSType = virtualMachineResponse.Body.StorageProfile.OsDisk.OsType;
 
-            if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+            if (OperatingSystemTypes.Linux.Equals(currentOSType))
             {
                 AzureVMBackupExtensionUtil util = new AzureVMBackupExtensionUtil();
                 AzureVMBackupConfig vmConfig = new AzureVMBackupConfig();

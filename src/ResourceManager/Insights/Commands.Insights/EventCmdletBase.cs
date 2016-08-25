@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.Insights.Properties;
+using Microsoft.Azure.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights
 {

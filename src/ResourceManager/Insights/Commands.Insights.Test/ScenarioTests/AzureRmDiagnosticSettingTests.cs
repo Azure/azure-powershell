@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class AzureRmDiagnosticSettingTests : RMTestBase
     {
+        public AzureRmDiagnosticSettingTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmDiagnosticSetting()
@@ -32,6 +37,27 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         public void TestSetAzureRmDiagnosticSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingWithRetention()
+        {
+            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSettingWithRetention");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
+        {
+            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
+        {
+            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
         }
     }
 }

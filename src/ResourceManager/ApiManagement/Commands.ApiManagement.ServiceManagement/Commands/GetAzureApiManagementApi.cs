@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementApi", DefaultParameterSetName = AllApis)]
-    [OutputType(typeof(IList<PsApiManagementApi>))]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApi, DefaultParameterSetName = AllApis)]
+    [OutputType(typeof(IList<PsApiManagementApi>), ParameterSetName = new[] { AllApis, FindByName, FindByProductId })]
+    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { FindById })]
     public class GetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         private const string FindByProductId = "Find by product ID";
@@ -29,30 +30,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string AllApis = "All APIs";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
             ParameterSetName = FindById,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "API identifier to look for. If specified will try to get the API by the Id. This parameter is optional.")]
         public String ApiId { get; set; }
 
         [Parameter(
             ParameterSetName = FindByName,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Name of the API. If specified will try to get the API by name. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
             ParameterSetName = FindByProductId,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "If specified will try to get all Product APIs. This parameter is optional.")]
         public String ProductId { get; set; }
 

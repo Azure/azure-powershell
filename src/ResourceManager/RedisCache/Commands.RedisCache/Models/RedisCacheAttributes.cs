@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
-    using System.Collections;
     using System.Collections.Generic;
 
     public class RedisCacheAttributes
@@ -26,31 +25,26 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Location = cache.Location;
             Name = cache.Name;
             Type = cache.Type;
-            HostName = cache.Properties.HostName;
-            Port = cache.Properties.Port;
-            ProvisioningState = cache.Properties.ProvisioningState;
-            SslPort = cache.Properties.SslPort;
-            RedisConfiguration = cache.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Properties.EnableNonSslPort.Value;
-            RedisVersion = cache.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
-            Sku = cache.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName; 
-            VirtualNetwork = cache.Properties.VirtualNetwork;
-            Subnet = cache.Properties.Subnet;
-            StaticIP = cache.Properties.StaticIP;
-            TenantSettings = cache.Properties.TenantSettings;
-            ShardCount = cache.Properties.ShardCount;
+            HostName = cache.HostName;
+            Port = cache.Port.HasValue ? cache.Port.Value : 0;
+            ProvisioningState = cache.ProvisioningState;
+            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
+            RedisConfiguration = cache.RedisConfiguration;
+            EnableNonSslPort = cache.EnableNonSslPort.Value;
+            RedisVersion = cache.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
+            Sku = cache.Sku.Name;
+            ResourceGroupName = resourceGroupName;
+            SubnetId = cache.SubnetId;
+            StaticIP = cache.StaticIP;
+            TenantSettings = cache.TenantSettings;
+            ShardCount = cache.ShardCount;
         }
-
-        public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
-            : this(cache.Resource, resourceGroupName)
-        {}
 
         public RedisCacheAttributes() { }
 
         private string _resourceGroupName;
-        public string ResourceGroupName 
+        public string ResourceGroupName
         {
             get
             {
@@ -64,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     _resourceGroupName = value;
                 }
                 else
-                { 
+                {
                     // if resource group name is null (when try to get all cache in given subscription it will be null) we have to fetch it from Id.
                     _resourceGroupName = Id.Split('/')[4];
                 }
@@ -101,9 +95,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int? ShardCount { get; protected set; }
 
-        public string VirtualNetwork { get; protected set; }
-
-        public string Subnet { get; protected set; }
+        public string SubnetId { get; protected set; }
 
         public string StaticIP { get; protected set; }
     }

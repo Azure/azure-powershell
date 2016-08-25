@@ -27,5 +27,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public string IpAddress { get; set; }
 
         public List<string> AddressSpace { get; set; }
+
+        public uint Asn { get; set; }
+
+        public string BgpPeeringAddress { get; set; }
+
+        public int PeerWeight { get; set; }
     }
 }

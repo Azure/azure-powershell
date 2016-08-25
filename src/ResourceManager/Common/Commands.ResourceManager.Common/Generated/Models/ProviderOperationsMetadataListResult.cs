@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ProviderOperationsMetadataListResult : AzureOperationResponse
     {
         private IList<ProviderOperationsMetadata> _providers;
-        
+
         /// <summary>
         /// Optional. Gets or sets the list of providers.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._providers; }
             set { this._providers = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ProviderOperationsMetadataListResult class.

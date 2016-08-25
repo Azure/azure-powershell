@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BlobAlreadyExists" xml:space="preserve">
+    <value>Blob '{0}' in container '{1}' already exists.</value>
+  </data>
+  <data name="BlobNameNotFound" xml:space="preserve">
+    <value>Can not find blob name or container name.</value>
+  </data>
+  <data name="BlobNotFound" xml:space="preserve">
+    <value>Can not find blob '{0}' in container '{1}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
+  </data>
+  <data name="BlobUriNotFound" xml:space="preserve">
+    <value>Can not find blob '{0}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
+  </data>
+  <data name="ConfirmRemoveContainer" xml:space="preserve">
+    <value>Are you sure to remove container '{0}'?</value>
+  </data>
+  <data name="ConfirmRemoveContainerCaption" xml:space="preserve">
+    <value>Confirm to remove azure container.</value>
+  </data>
+  <data name="ContainerAlreadyExists" xml:space="preserve">
+    <value>Container '{0}' already exists.</value>
+  </data>
+  <data name="ContainerNotFound" xml:space="preserve">
+    <value>Can not find the container '{0}'.</value>
+  </data>
+  <data name="DirectoryNotExists" xml:space="preserve">
+    <value>Directory '{0}' doesn't exist.</value>
+  </data>
+  <data name="DownloadBlobFailed" xml:space="preserve">
+    <value>Cannot download the blob '{0}' in container '{1}' into local file '{2}'. Error: {3}</value>
+    <comment>place holder 0 for blob name, 1 for blob's container name, 2 for download destination in local machine. 3 for excpetion error message.</comment>
+  </data>
+  <data name="DownloadBlobSuccessful" xml:space="preserve">
+    <value>Download blob '{0}' successful.</value>
+  </data>
+  <data name="FileAlreadyExists" xml:space="preserve">
+    <value>File '{0}' already exists.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Can not find the specified file '{0}'.</value>
+  </data>
+  <data name="FileTransmitStatus" xml:space="preserve">
+    <value>Percent : {0}%.</value>
+  </data>
+  <data name="InvalidBlobName" xml:space="preserve">
+    <value>Blob name '{0}' is invalid. Valid names should be 1 through 1024 characters long and should not end with a . or /.</value>
+  </data>
+  <data name="InvalidContainerName" xml:space="preserve">
+    <value>Container name '{0}' is invalid. Valid names start and end with a lower case letter or a number and has in between a lower case letter, number or dash with no consecutive dashes and is 3 through 63 characters long.</value>
+  </data>
+  <data name="InvalidExpiryTime" xml:space="preserve">
+    <value>Invalid expiry time '{0}'.</value>
+  </data>
+  <data name="InvalidHTTPMethod" xml:space="preserve">
+    <value>'{0}' is an invalid HTTP method.</value>
+  </data>
+  <data name="InvalidStartTime" xml:space="preserve">
+    <value>Invalid start time '{0}'.</value>
+  </data>
+  <data name="FileNotSupportLogging" xml:space="preserve">
+    <value>It doesn't support logging in Microsoft Azure File service.</value>
+  </data>
+  <data name="OnlyOnePermissionForContainer" xml:space="preserve">
+    <value>You must supply only one permission in Off/Blob/Container for container.</value>
+  </data>
+  <data name="QueueAlreadyExists" xml:space="preserve">
+    <value>Queue '{0}' already exists.</value>
+  </data>
+  <data name="QueueNotFound" xml:space="preserve">
+    <value>Can not find queue '{0}'.</value>
+  </data>
+  <data name="RemoveBlobSuccessfully" xml:space="preserve">
+    <value>Removed blob '{0}' in container '{1}' successfully.</value>
+  </data>
+  <data name="RemoveContainerCancelled" xml:space="preserve">
+    <value>The remove operation of container '{0}' has been cancelled.</value>
+  </data>
+  <data name="RemoveContainerSuccessfully" xml:space="preserve">
+    <value>Removed container '{0}' successfully.</value>
+  </data>
+  <data name="RemoveQueueSuccessfully" xml:space="preserve">
+    <value>Removed queue '{0}' successfully.</value>
+  </data>
+  <data name="RemoveTableSuccessfully" xml:space="preserve">
+    <value>Removed table '{0}' successfully.</value>
+  </data>
+  <data name="StartDownloadBlob" xml:space="preserve">
+    <value>Start to download blob '{0}' to '{1}'.</value>
+  </data>
+  <data name="StartUploadFile" xml:space="preserve">
+    <value>Start to upload '{0}' to blob '{1}'.</value>
+  </data>
+  <data name="DefaultStorageCredentialsNotFound" xml:space="preserve">
+    <value>Can not find your azure storage credential. Please set current storage account using "Set-AzureSubscription" or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+  </data>
+  <data name="TableAlreadyExists" xml:space="preserve">
+    <value>Table '{0}' already exists.</value>
+  </data>
+  <data name="TableNotFound" xml:space="preserve">
+    <value>Can not find table '{0}'.</value>
+  </data>
+  <data name="UnknownBlob" xml:space="preserve">
+    <value>Unknown blob.</value>
+  </data>
+  <data name="Upload2BlobFailed" xml:space="preserve">
+    <value>Can not upload file to azure blob. Error: {0}.</value>
+  </data>
+  <data name="UploadFileFailed" xml:space="preserve">
+    <value>Upload file '{0}' failed.  Error: '{1}'.</value>
+  </data>
+  <data name="UploadFileSuccessfully" xml:space="preserve">
+    <value>Upload file '{0}' successfully.</value>
+  </data>
+  <data name="BlobTypeMismatch" xml:space="preserve">
+    <value>Blob type mismatched, the current blob type of '{0}' is {1}.</value>
+  </data>
+  <data name="CannotSendDirectory" xml:space="preserve">
+    <value>Can not upload the directory '{0}' to azure. If you want to upload directory, please use "ls -File -Recurse | Set-AzureStorageBlobContent -Container containerName".</value>
+  </data>
+  <data name="PrepareUploadingBlob" xml:space="preserve">
+    <value>Prepare to upload blob.</value>
+  </data>
+  <data name="SendAzureBlobActivity" xml:space="preserve">
+    <value>Upload file '{0}' to blob '{1}' in container '{2}'.</value>
+  </data>
+  <data name="SendAzureBlobCancelled" xml:space="preserve">
+    <value>Upload file '{0}' to blob '{1}' cancelled.</value>
+    <comment>0 local file path, 1 blob name</comment>
+  </data>
+  <data name="ReceiveAzureBlobActivity" xml:space="preserve">
+    <value>Download blob '{0}' into '{1}'.</value>
+  </data>
+  <data name="InvalidQueueName" xml:space="preserve">
+    <value>Queue name '{0}' is invalid. Valid names start and end with a lower case letter or a number and has in between a lower case letter, number or dash with no consecutive dashes and is 3 through 63 characters long.</value>
+  </data>
+  <data name="InvalidTableName" xml:space="preserve">
+    <value>Table name '{0}' is invalid. Valid names are case insensitive, start with a letter and is followed by letters or numbers and is 3 through 63 characters long.</value>
+  </data>
+  <data name="RemoveQueueCancelled" xml:space="preserve">
+    <value>The remove operation of queue '{0}' has been cancelled.</value>
+  </data>
+  <data name="RemoveTableCancelled" xml:space="preserve">
+    <value>The remove operation of table '{0}' has been cancelled.</value>
+  </data>
+  <data name="InvalidAccountParameterCombination" xml:space="preserve">
+    <value>invalid parameter combination, please see the command help.</value>
+  </data>
+  <data name="BlobEndPointTips" xml:space="preserve">
+    <value>Blob End Point: {0}.</value>
+  </data>
+  <data name="InvalidBlobWithoutContainer" xml:space="preserve">
+    <value>CloudBlob "{0}" should contain container properties.</value>
+  </data>
+  <data name="ObjectCannotBeNull" xml:space="preserve">
+    <value>Object '{0}' cannot be null.</value>
+  </data>
+  <data name="InvalidFileName" xml:space="preserve">
+    <value>File name "{0}" is invalid.</value>
+  </data>
+  <data name="StorageExceptionDetails" xml:space="preserve">
+    <value>Error Message {0}. HTTP Status Code: {1} - HTTP Error Message: {2}</value>
+  </data>
+  <data name="ClientRequestIdFormat" xml:space="preserve">
+    <value>Azure-Storage-PowerShell-{0}</value>
+  </data>
+  <data name="EndProcessingLog" xml:space="preserve">
+    <value>{0} end processing, Start {1} remote calls. Finish {2} remote calls. Elapsed time {3:0.00} ms. Client operation id: {4}.</value>
+    <comment>0 for cmdlet name. 1 for started remote call counter, 2 for finished remote call counter, 3 for running time, 4 for client request id</comment>
+  </data>
+  <data name="ExceptionCannotEmpty" xml:space="preserve">
+    <value>Exception cannot be null or empty.</value>
+  </data>
+  <data name="FinishRemoteCall" xml:space="preserve">
+    <value>Finish remote call for {0} with status code {1}({2}) and service request id {3}. Elapsed time {4:0.00} ms.</value>
+    <comment>0 for request uri, 1 http status code in number, 2 http status code, 3 service request id, 4 for elapsed time.</comment>
+  </data>
+  <data name="InitOperationContextLog" xml:space="preserve">
+    <value>Init Operation Context for '{0}' with client request id  {1}. If you want to get more details, please add "-Debug" to your command.</value>
+    <comment>0 is cmdlet name， 1 is client request id</comment>
+  </data>
+  <data name="StartRemoteCall" xml:space="preserve">
+    <value>Start {0}th remote call, method: {1}, destination: {2}.</value>
+    <comment>0 for int counter, 1 for request method, 2 for request uri</comment>
+  </data>
+  <data name="StopProcessingLog" xml:space="preserve">
+    <value>{0} stop processing, Use {1} remote calls. Elapsed time {2:0.00} ms. Client operation id: {3}.</value>
+    <comment>0 for cmdlet name. 1 for remote call counter, 2 for running time, 3 for client request id</comment>
+  </data>
+  <data name="VerboseLogFormat" xml:space="preserve">
+    <value>{0} {1}.</value>
+    <comment>0 for time, 1 for message</comment>
+  </data>
+  <data name="HttpBlobEndPointFormat" xml:space="preserve">
+    <value>http://{0}.blob.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="HttpQueueEndPointFormat" xml:space="preserve">
+    <value>http://{0}.queue.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="HttpTableEndPointFormat" xml:space="preserve">
+    <value>http://{0}.table.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="CurrentStorageAccountNameNotFound" xml:space="preserve">
+    <value>Current Storage Account not found in subscription '{0}'. Please set it use "Set-AzureSubscription".</value>
+    <comment>0 subscription name</comment>
+  </data>
+  <data name="HTTPPrefix" xml:space="preserve">
+    <value>http://</value>
+  </data>
+  <data name="HTTPSPrefix" xml:space="preserve">
+    <value>https://</value>
+  </data>
+  <data name="CurrentStorageAccountNotFoundOnAzure" xml:space="preserve">
+    <value>Can not found current storage account '{0}' of subsciption '{1}' on azure, please check whether the specified storage account exists.</value>
+    <comment>0 storage account name, 1 subscription name</comment>
+  </data>
+  <data name="UseCurrentStorageAccountFromSubscription" xml:space="preserve">
+    <value>Use current storage account '{0}' from subscription '{1}'.</value>
+    <comment>0 storage account name 1 subscription name</comment>
+  </data>
+  <data name="GetStorageAccountFromEnvironmentVariable" xml:space="preserve">
+    <value>Get storage account from environment variable 'AZURE_STORAGE_CONNECTION_STRING'.</value>
+  </data>
+  <data name="EnvConnectionString" xml:space="preserve">
+    <value>AZURE_STORAGE_CONNECTION_STRING</value>
+  </data>
+  <data name="InitChannelFromSubscription" xml:space="preserve">
+    <value>Init service channel from current subscription.</value>
+  </data>
+  <data name="UseStorageAccountFromContext" xml:space="preserve">
+    <value>Use storage account '{0}' from storage context.</value>
+    <comment>0 for storage account name</comment>
+  </data>
+  <data name="BeginProcessingWithoutParameterSetLog" xml:space="preserve">
+    <value>{0} begin processing without ParameterSet.</value>
+  </data>
+  <data name="BeginProcessingWithParameterSetLog" xml:space="preserve">
+    <value>{0} begin processing with ParameterSet '{1}'.</value>
+  </data>
+  <data name="InvalidBlobType" xml:space="preserve">
+    <value>Blob type '{0}' of blob '{1}' is not supported.</value>
+    <comment>0 for blob type, 1 is the blob name. DRAFT</comment>
+  </data>
+  <data name="OnlyCopyFromBlockBlobToAzureFile" xml:space="preserve">
+    <value>Only support to copy from azure file to a block blob.</value>
+  </data>
+  <data name="CannotDeleteSnapshotForSnapshot" xml:space="preserve">
+    <value>The specified blob '{0}' is already a snapshot with snapshot time {1}. Can't use "DeleteSnapshot" option for it.</value>
+    <comment>0 for blob name, 1 for snapshot time </comment>
+  </data>
+  <data name="ConfirmRemoveBlobWithSnapshot" xml:space="preserve">
+    <value>The blob '{0}' in container '{1}' has snapshots.</value>
+    <comment>0 for blob name, 1 for container name</comment>
+  </data>
+  <data name="RemoveBlobCancelled" xml:space="preserve">
+    <value>The remove operation of  blob '{0}' in container '{1}' is cancelled.</value>
+    <comment>0 for blob name, 1 for container name</comment>
+  </data>
+  <data name="GetAzureStorageContainerAclCmdletName" xml:space="preserve">
+    <value>Get-AzureStorageContainerAcl</value>
+  </data>
+  <data name="GetAzureStorageContainerCmdletName" xml:space="preserve">
+    <value>Get-AzureStorageContainer</value>
+  </data>
+  <data name="NewAlias" xml:space="preserve">
+    <value>New-Alias</value>
+  </data>
+  <data name="NewAliasName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NewAliasValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="CannotGetSotrageAccountFromSubscription" xml:space="preserve">
+    <value>Can not get storage account  from subscription. Please check the subscription settings using "Get-AzureSubscription".</value>
+    <comment>0 storage account name 1 subscription name</comment>
+  </data>
+  <data name="CannotGetStorageAccountFromEnvironmentVariable" xml:space="preserve">
+    <value>Can not get storage account from environment variable 'AZURE_STORAGE_CONNECTION_STRING'. Please check whether this environment variable is valid.</value>
+  </data>
+  <data name="InvalidPageBlobSize" xml:space="preserve">
+    <value>The page blob size must be a multiple of 512 bytes. But the size of local file '{0}' is {1}.</value>
+    <comment>0 for local file path, 1 file size</comment>
+  </data>
+  <data name="WritePermissionDenied" xml:space="preserve">
+    <value>Write to file '{0}' is denied.</value>
+    <comment>0 for local file path</comment>
+  </data>
+  <data name="FileNameCannotEmpty" xml:space="preserve">
+    <value>File name can not be empty.</value>
+  </data>
+  <data name="PrepareDownloadingBlob" xml:space="preserve">
+    <value>Prepare to download blob.</value>
+  </data>
+  <data name="FileNameFormatForSnapShot" xml:space="preserve">
+    <value>{0} ({1}){2}</value>
+    <comment>0 for blob name, 1 for snaphsot time, 2 blob name extension</comment>
+  </data>
+  <data name="SkipDownloadSnapshot" xml:space="preserve">
+    <value>Skip to download blob '{0}' with snapshot time '{0}'.</value>
+  </data>
+  <data name="DownloadBlobCancelled" xml:space="preserve">
+    <value>Downloading blob '{0}' in container '{1}' is cancelled.</value>
+    <comment>0 blob name, 1 container name</comment>
+  </data>
+  <data name="InvalidBlobProperties" xml:space="preserve">
+    <value>Blob properties '{0}' with value '{1}' is invalid</value>
+    <comment>0 for property name, 1 for property value</comment>
+  </data>
+  <data name="HttpsBlobEndPointFormat" xml:space="preserve">
+    <value>https://{0}.blob.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="HttpsQueueEndPointFormat" xml:space="preserve">
+    <value>https://{0}.queue.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="HttpsTableEndPointFormat" xml:space="preserve">
+    <value>https://{0}.table.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="CopyIdCannotBeEmpty" xml:space="preserve">
+    <value>CopyId can not be empty.</value>
+  </data>
+  <data name="StopCopyBlobSuccessfully" xml:space="preserve">
+    <value>Stopped the copy task on blob '{0}' in container '{1}' successfully.</value>
+    <comment>0 for blob name, 1 for container name</comment>
+  </data>
+  <data name="StopCopyFileSuccessfully" xml:space="preserve">
+    <value>Stopped the copy task on file '{0}' successfully.</value>
+    <comment>0 for file uri</comment>
+  </data>
+  <data name="CopyPendingStatus" xml:space="preserve">
+    <value>Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes.</value>
+    <comment>0 for copied percent, 1 for bytes copied, 2 for total bytes.</comment>
+  </data>
+  <data name="CopyBlobStatus" xml:space="preserve">
+    <value>'{0}' copy to blob '{1}' in container '{2}' from '{3}'.</value>
+    <comment>0 for copy status, 1 for destination blob name, 2 for destination container name, 3 for source uri.</comment>
+  </data>
+  <data name="CopyFileStatus" xml:space="preserve">
+    <value>'{0}' copy to file '{1}' in share '{2}' from '{3}'.</value>
+    <comment>0 for copy status, 1 for destination file path, 2 for destination share name, 3 for source uri.</comment>
+  </data>
+  <data name="CopyBlobToBlobSuccessfully" xml:space="preserve">
+    <value>Successfully start copy blob '{0}' in container '{1}' to blob '{2}' in container '{3}'.</value>
+    <comment>0 for source blob name, 1 for source container name, 2 for destination blob name, 3 for destination container name.</comment>
+  </data>
+  <data name="CopyUriToBlobSuccessfully" xml:space="preserve">
+    <value>Successfully start copy '{0}'  to blob '{1}' in container '{2}'.</value>
+    <comment>0 for source uri, 1 for destination blob name, 2 for destination container name. </comment>
+  </data>
+  <data name="CopyBlobActivity" xml:space="preserve">
+    <value>Copy Blob.</value>
+  </data>
+  <data name="CopyFileActivity" xml:space="preserve">
+    <value>Copy File.</value>
+  </data>
+  <data name="CopyBlobSummaryActivity" xml:space="preserve">
+    <value>Copy Blob Status Summary.</value>
+  </data>
+  <data name="CopyBlobSummaryCount" xml:space="preserve">
+    <value>Total: {0}. Successful: {1}. Active: {2}. Failed: {3}.</value>
+    <comment>0,1,2,3 for related task count.</comment>
+  </data>
+  <data name="CopyTaskNotFound" xml:space="preserve">
+    <value>Can not find copy task on the specified blob '{0}' in container '{1}'.</value>
+    <comment>0 for blob name, 1 for container name.</comment>
+  </data>
+  <data name="FileCopyTaskNotFound" xml:space="preserve">
+    <value>Can not find copy task on the specified file '{0}'.</value>
+    <comment>0 for file uri.</comment>
+  </data>
+  <data name="CORSRuleError" xml:space="preserve">
+    <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx" to get detailed information.</value>
+  </data>
+  <data name="TransmitFailed" xml:space="preserve">
+    <value>Transmit failed. Exception: {0}.</value>
+    <comment>0 for error message.</comment>
+  </data>
+  <data name="TransmitSuccessfully" xml:space="preserve">
+    <value>Transmit successfully.</value>
+  </data>
+  <data name="CopyDestinationBlobPending" xml:space="preserve">
+    <value>Copy request to blob '{0}' in container '{1}' has been scheduled with copyId {2}.</value>
+    <comment>0 for blob name, 1 for container name. 2 for copyid.</comment>
+  </data>
+  <data name="ConfirmAbortCopyOperation" xml:space="preserve">
+    <value>blob '{0}' in container '{1}' with CopyId {2}.</value>
+    <comment>0 for blob name, 1 for container name, 2 for copy id.</comment>
+  </data>
+  <data name="ConfirmAbortFileCopyOperation" xml:space="preserve">
+    <value>file '{0}' with CopyId {1}.</value>
+    <comment>0 for file uri, 1 for copy id.</comment>
+  </data>
+  <data name="CopyIdMismatch" xml:space="preserve">
+    <value>CopyId mismatch on  blob '{0}' in container '{1}'. Expected:{2}. User supplied: {3}.</value>
+    <comment>0 for blob name, 1 for container name. 2 for copy id on blob, 3 for user supplied copy id.</comment>
+  </data>
+  <data name="DestinationBlobTypeNotMatch" xml:space="preserve">
+    <value>User specified blob type does not match the blob type of the existing destination blob.</value>
+  </data>    
+  <data name="StopCopyOperationCancelled" xml:space="preserve">
+    <value>The stop copy operation on blob '{0}' in container '{1}' is cancelled.</value>
+    <comment>0 for blob name, 1 for container name.</comment>
+  </data>
+  <data name="AnonymousAccountName" xml:space="preserve">
+    <value>[Anonymous]</value>
+  </data>
+  <data name="OverwriteConfirmation" xml:space="preserve">
+    <value>Are you sure to overwrite '{0}'?</value>
+    <comment>0 for destination path</comment>
+  </data>
+  <data name="HumanReadableSizeFormat_Bytes" xml:space="preserve">
+    <value>{0:0.##}bytes</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_ExaBytes" xml:space="preserve">
+    <value>{0:0.##}EB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_GigaBytes" xml:space="preserve">
+    <value>{0:0.##}GB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_KiloBytes" xml:space="preserve">
+    <value>{0:0.##}KB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_MegaBytes" xml:space="preserve">
+    <value>{0:0.##}MB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_PetaBytes" xml:space="preserve">
+    <value>{0:0.##}PB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="HumanReadableSizeFormat_TeraBytes" xml:space="preserve">
+    <value>{0:0.##}TB</value>
+    <comment>{0: -&gt; take value from the first parameter.
+0.##} -&gt;Display at least 1 digit before the decimal point and up to 2 digits after the decimal point. </comment>
+  </data>
+  <data name="TransferSummary" xml:space="preserve">
+    <value>Transfer Summary
+--------------------------------
+Total:  {0}.
+Successful: {1}.
+Failed: {2}.</value>
+    <comment>0 for total task count, 1 for successful count, 2 for failed count</comment>
+  </data>
+  <data name="StartCopySourceContextMismatch" xml:space="preserve">
+    <value>Ignore mismatch source storage context.. The source uri is {0}, the end point is {1}.</value>
+    <comment>0 for source uri, 1 for blob end point.</comment>
+  </data>
+  <data name="GetContainerPermissionException" xml:space="preserve">
+    <value>Fetch Permission for container '{0}' failed. Exception: {1}</value>
+    <comment>0 for container name, 1 for error message.</comment>
+  </data>
+  <data name="CmdletFormat" xml:space="preserve">
+    <value>{0}-{1}</value>
+    <comment>0 for Cmdlet verb, 1 for Cmdlet noun.</comment>
+  </data>
+  <data name="DefaultStorageEndPointDomain" xml:space="preserve">
+    <value>core.windows.net</value>
+  </data>
+  <data name="InvalidStorageEndPoint" xml:space="preserve">
+    <value>Invalid storage end point '{0}'.</value>
+    <comment>0 for storage end point</comment>
+  </data>
+  <data name="InvalidStorageServiceType" xml:space="preserve">
+    <value>Storage service type should be one of Blob,Table,Queue.</value>
+  </data>
+  <data name="InvalidEnumName" xml:space="preserve">
+    <value>Invalid enum name {0}.</value>
+    <comment>0 for enum name</comment>
+  </data>
+  <data name="ExpiryTimeGreatThanStartTime" xml:space="preserve">
+    <value>The expiry time of the specified access policy should be greater than start time. Expiry time : {0}. Start time: {1}.</value>
+    <comment>0 for expiry time.  1 for start time.</comment>
+  </data>
+  <data name="InvalidAccessPermission" xml:space="preserve">
+    <value>Invalid access permission '{0}'.</value>
+    <comment>0 for permission</comment>
+  </data>
+  <data name="InvalidAccessPolicy" xml:space="preserve">
+    <value>Invalid access policy '{0}'.</value>
+    <comment>0 for access policy.</comment>
+  </data>
+  <data name="SasTokenAccountName" xml:space="preserve">
+    <value>[SasToken]</value>
+  </data>
+  <data name="EndpkMustAccomanyEndrk" xml:space="preserve">
+    <value>Endpk must accompany Endrk.</value>
+  </data>
+  <data name="StartpkMustAccomanyStartrk" xml:space="preserve">
+    <value>Startpk must accompany startrk.</value>
+  </data>
+  <data name="BlobIsNotReadable" xml:space="preserve">
+    <value>Can't read the blob properties.</value>
+  </data>
+  <data name="SignedStartTimeMustBeOmitted" xml:space="preserve">
+    <value>This start time field must be omitted if it has been specified in an associated stored access policy.</value>
+  </data>
+  <data name="SignedExpiryTimeMustBeOmitted" xml:space="preserve">
+    <value>This expiry time field must be omitted if it has been specified in an associated stored access policy.</value>
+  </data>
+  <data name="SignedPermissionsMustBeOmitted" xml:space="preserve">
+    <value>This permission field must be omitted if it has been specified in an associated stored access policy.</value>
+  </data>
+  <data name="InvalidRetentionDay" xml:space="preserve">
+    <value>The minimum value of retention days is 1, the largest value is 365 (one year). -1 means turn off the retention policy. Current is {0}.</value>
+    <comment>0 for the user specified retention day</comment>
+  </data>
+  <data name="ConfirmCaption" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="DefaultDomain" xml:space="preserve">
+    <value>core.windows.net</value>
+  </data>
+  <data name="TransmitActiveSummary" xml:space="preserve">
+    <value>Total: {0}. Successful: {1}. Failed: {2}. Active: {3}.</value>
+    <comment>0 for total task count, 1 for successful count, 2 for failed count, 3 for active count.</comment>
+  </data>
+  <data name="TransmitActivity" xml:space="preserve">
+    <value>{0} task status :</value>
+    <comment>0 for cmdlet name.</comment>
+  </data>
+  <data name="BlobNameShouldBeEmptyWhenUploading" xml:space="preserve">
+    <value>Blob name should be empty when uploading multiple files.</value>
+  </data>
+  <data name="NoneAndAllOperationShouldBeAlone" xml:space="preserve">
+    <value>None or All operation can't be used with other operations.</value>
+  </data>
+  <data name="CloudFileConflict" xml:space="preserve">
+    <value>The specified cloud file '{0}' already exists. If you want to overwrite this file, use -Force option.</value>
+  </data>
+  <data name="FileNameShouldNotEndWithSlash" xml:space="preserve">
+    <value>The given file name '{0}' is not valid since a file name could not end with a '/' forward slash.</value>
+  </data>
+  <data name="HttpFileEndPointFormat" xml:space="preserve">
+    <value>http://{0}.file.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="HttpsFileEndPointFormat" xml:space="preserve">
+    <value>https://{0}.file.{1}/</value>
+    <comment>0 for storage account name, 1 for end point domain.</comment>
+  </data>
+  <data name="InvalidResource" xml:space="preserve">
+    <value>The specified path does not represent any resource on the server.</value>
+  </data>
+  <data name="InvalidTimeoutValue" xml:space="preserve">
+    <value>The specified timeout value ({0}) was out of range. The timeout accepted is in seconds and can only be a positive integer or -1.</value>
+  </data>
+  <data name="PathInvalid" xml:space="preserve">
+    <value>The given path/prefix '{0}' is not a valid name for a file or directory or does match the requirement for Microsoft Azure File Service REST API.</value>
+  </data>
+  <data name="PathTooLong" xml:space="preserve">
+    <value>The length of the given path/prefix '{0}' exceeded the max allowed length {1} for Microsoft Azure File Service REST API.</value>
+  </data>
+  <data name="ShareNameInvalid" xml:space="preserve">
+    <value>The given share name/prefix '{0}' is not a valid name for a file share of Microsoft Azure File Service; refer to https://msdn.microsoft.com/library/azure/dn167011.aspx for details.</value>
+  </data>
+  <data name="SourceFileNotFound" xml:space="preserve">
+    <value>The specified source file '{0}' was not found.</value>
+  </data>
+  <data name="PrepareDownloadingFile" xml:space="preserve">
+    <value>Prepare to download file.</value>
+  </data>
+  <data name="PrepareUploadingFile" xml:space="preserve">
+    <value>Prepare to upload file.</value>
+  </data>
+  <data name="ReceiveAzureFileActivity" xml:space="preserve">
+    <value>Download file '{0}' into '{1}'.</value>
+  </data>
+  <data name="SendAzureFileActivity" xml:space="preserve">
+    <value>Upload file '{0}' to '{1}' in share '{2}'.</value>
+  </data>
+  <data name="TransmitCancelled" xml:space="preserve">
+    <value>Transmit cancelled by user.</value>
+  </data>
+  <data name="ValidEnvironmentName" xml:space="preserve">
+    <value>Valid environment names are: '{0}' and '{1}'</value>
+    <comment>0 and 1 are for the correct Environment names</comment>
+  </data>
+  <data name="PolicyAlreadyExists" xml:space="preserve">
+    <value>Policy '{0}' already exists.</value>
+  </data>
+  <data name="PolicyNotFound" xml:space="preserve">
+    <value>Can not find policy '{0}'.</value>
+  </data>
+  <data name="RemovePolicyCancelled" xml:space="preserve">
+    <value>The remove operation of policy '{0}' has been cancelled.</value>
+  </data>
+  <data name="RemovePolicySuccessfully" xml:space="preserve">
+    <value>Removed policy '{0}' successfully.</value>
+  </data>
+  <data name="InvalidAccessPolicyType" xml:space="preserve">
+    <value>Access policy type is invalid, only SharedAccessBlobPolicy, SharedAccessQueuePolicy, and SharedAccessTablePolicy are supported</value>
+  </data>
+  <data name="InvalidAccessPolicyName" xml:space="preserve">
+    <value>Access policy name '{0}' is invalid. Valid names should be 1 through 64 characters long.</value>
+  </data>
+  <data name="ExpiryTimeParameterConflict" xml:space="preserve">
+    <value>Parameter -ExpiryTime and -NoExpiryTime are mutually exclusive</value>
+  </data>
+  <data name="StartTimeParameterConflict" xml:space="preserve">
+    <value>Parameter -StartTime and -NoStartTime are mutually exclusive</value>
+  </data>
+</root>

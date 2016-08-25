@@ -12,12 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class AuthorizationTests
     {
+        public AuthorizationTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
         [Fact(Skip = "TODO: Fix the broken test.")]

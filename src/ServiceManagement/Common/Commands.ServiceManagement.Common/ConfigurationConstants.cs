@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             var binding = new WebHttpBinding(WebHttpSecurityMode.Transport);
             binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.Certificate;
-            binding.ReaderQuotas.MaxStringContentLength = 
+            binding.ReaderQuotas.MaxStringContentLength =
                 maxStringContentLength > 0 ?
                 maxStringContentLength :
                 MaxStringContentLength;

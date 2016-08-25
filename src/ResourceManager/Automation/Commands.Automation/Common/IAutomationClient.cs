@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.IO;
 using System.Security;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
-        
+
         #endregion
 
         #region Compilationjobs
@@ -62,6 +61,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
 
         NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
+
+        void DeleteNodeConfiguration(string resourceGroupName, string automationAccountName, string name, bool ignoreNodeMappings);
         #endregion
 
         #region Configurations
@@ -73,6 +74,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         DscConfiguration CreateConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags, string description, bool? logVerbose, bool published, bool overWrite);
 
         DirectoryInfo GetConfigurationContent(string resourceGroupName, string automationAccountName, string configurationName, bool? isDraft, string outputFolder, bool overwriteExistingFile);
+
+        void DeleteConfiguration(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
 
@@ -87,7 +90,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region DscNode Operations
-        
+
         DscNode GetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId);
 
         IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status);
@@ -204,6 +207,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region HybridrunbookWorker
+        HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
+        #endregion
+
         #region Credentials
 
         CredentialInfo CreateCredential(string resourceGroupName, string automationAccountName, string name, string userName, string password, string description);
@@ -236,6 +245,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             DateTimeOffset? time, string streamType, ref string nextLink);
 
         JobStreamRecord GetJobStreamRecord(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
+
+        object GetJobStreamRecordAsPsObject(string resourceGroupName, string automationAccountName, Guid jobId, string jobStreamId);
 
         #endregion
 

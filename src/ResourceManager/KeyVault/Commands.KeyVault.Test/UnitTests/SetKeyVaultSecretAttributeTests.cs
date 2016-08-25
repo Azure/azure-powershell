@@ -14,13 +14,10 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.KeyVault;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
-using System.Management.Automation;
-using System.Security;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
@@ -88,10 +85,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             {
                 cmdlet.ExecuteCmdlet();
             }
-            catch{}
+            catch { }
 
             keyVaultClientMock.VerifyAll();
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<Secret>()), Times.Never());
         }
-    }    
+    }
 }

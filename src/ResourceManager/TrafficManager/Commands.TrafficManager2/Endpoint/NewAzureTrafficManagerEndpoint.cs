@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
-
+using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    using System.Net;
     using Hyak.Common;
+    using System.Net;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
@@ -68,6 +67,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available. Only applicable to endpoint of type 'NestedEndpoints'.")]
+        [ValidateNotNullOrEmpty]
+        public uint? MinChildEndpoints { get; set; }
+
         public override void ExecuteCmdlet()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
@@ -93,7 +96,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.EndpointStatus,
                         this.Weight,
                         this.Priority,
-                        this.EndpointLocation);
+                        this.EndpointLocation,
+                        this.MinChildEndpoints);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

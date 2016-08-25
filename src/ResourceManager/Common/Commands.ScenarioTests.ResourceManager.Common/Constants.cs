@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string LiveOnly = "LiveOnly";
         //Uncomment when we need to tag on only run under mock
         //public const string MockedOnly = "MockedOnly";
-       
+
         // Environment
         public const string Environment = "Environment";
 

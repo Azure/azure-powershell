@@ -66,12 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                 catch (JsonException)
                 {
                     throw;
-                } 
+                }
             }
             return extensionPublicSettings;
         }
 
-         /// <summary>
+        /// <summary>
         /// Convert hashtable of public settings into two parts:
         /// 1) Array of public settings in format:
         /// [
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                         newValue["Password"] = String.Format(CultureInfo.InvariantCulture, "PrivateSettingsRef:{0}",
                             passwordRef);
                         entryValue = newValue;
-                        entryType = typeof (PSCredential).ToString();
+                        entryType = typeof(PSCredential).ToString();
                     }
 
                     var entry = new DscExtensionPublicSettings.Property

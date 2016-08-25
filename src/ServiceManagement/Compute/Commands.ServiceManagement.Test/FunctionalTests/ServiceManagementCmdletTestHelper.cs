@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
@@ -1317,6 +1317,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 RunPSCmdletAndReturnFirst<ExtensionConfigurationInput>(
                     new NewAzureServiceExtensionConfigCmdletInfo(thumbprint, algorithm, roles, extensionName,
                         providerNamespace, publicConfig, privateConfig, version));
+        }
+
+        public ExtensionConfigurationInput NewAzureServiceExtensionConfig(string extensionId, string extensionStatus,
+            string [] roles = null)
+        {
+            return
+                RunPSCmdletAndReturnFirst<ExtensionConfigurationInput>(
+                    new NewAzureServiceExtensionConfigCmdletInfo(extensionId, extensionStatus, roles));
         }
 
         // Set-AzureServiceExtension

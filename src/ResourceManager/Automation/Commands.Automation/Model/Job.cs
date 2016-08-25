@@ -10,13 +10,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Globalization;
 using Microsoft.Azure.Commands.Automation.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+using System.Collections;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -58,29 +55,30 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.StatusDetails = job.Properties.StatusDetails;
             this.RunbookName = job.Properties.Runbook.Name;
             this.Exception = job.Properties.Exception;
-            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
+            this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?)null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
             this.HybridWorker = job.Properties.RunOn;
+            this.StartedBy = job.Properties.StartedBy;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in job.Properties.Parameters) 
+            foreach (var kvp in job.Properties.Parameters)
             {
-                if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
+                if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) &&
                     0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
                 {
                     object paramValue;
                     try
                     {
-                        paramValue = ((object) PowerShellJsonConverter.Deserialize(kvp.Value));
+                        paramValue = ((object)PowerShellJsonConverter.Deserialize(kvp.Value));
                     }
                     catch (CmdletInvocationException exception)
                     {
                         if (!exception.Message.Contains("Invalid JSON primitive"))
                             throw;
-                        
+
                         paramValue = kvp.Value;
                     }
                     this.JobParameters.Add(kvp.Key, paramValue);
-                   
+
                 }
             }
         }
@@ -161,5 +159,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the HybridWorker.
         /// </summary>
         public string HybridWorker { get; set; }
+
+        /// <summary>
+        /// Gets or sets the StartedBy property.
+        /// </summary>
+        public string StartedBy { get; set; }
     }
 }

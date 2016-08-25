@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             /// Gets or sets the properties of the database at the time of the start of the operation
             /// </summary>
             public IDictionary<string, string> Current { get; set; }
-            
+
             /// <summary>
             /// Gets or sets the requested properties for the database
             /// </summary>

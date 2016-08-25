@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
     {
         private readonly IBlockFactory blockFactory;
         private byte[] data;
-        
+
         public Block(IBlockFactory blockFactory)
         {
             this.blockFactory = blockFactory;

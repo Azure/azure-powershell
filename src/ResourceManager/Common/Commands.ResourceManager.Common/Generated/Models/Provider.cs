@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class Provider : AzureOperationResponse
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider id.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _namespace;
-        
+
         /// <summary>
         /// Optional. Gets or sets the namespace of the provider.
         /// </summary>
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._namespace; }
             set { this._namespace = value; }
         }
-        
+
         private string _registrationState;
-        
+
         /// <summary>
         /// Optional. Gets or sets the registration state of the provider.
         /// </summary>
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._registrationState; }
             set { this._registrationState = value; }
         }
-        
+
         private IList<ProviderResourceType> _resourceTypes;
-        
+
         /// <summary>
         /// Optional. Gets or sets the collection of provider resource types.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceTypes; }
             set { this._resourceTypes = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Provider class.
         /// </summary>

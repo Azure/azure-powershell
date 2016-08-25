@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -64,6 +62,17 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewaySslCertificate SslCertificate { get; set; }
 
         [Parameter(
+               HelpMessage = "Host name")]
+        [ValidateNotNullOrEmpty]
+        public string HostName { get; set; }
+
+        [Parameter(
+               HelpMessage = "RequireServerNameIndication")]
+        [ValidateSet("true", "false", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string RequireServerNameIndication { get; set; }
+
+        [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
         [ValidateSet("Http", "Https", IgnoreCase = true)]
@@ -73,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
                 if (FrontendIPConfiguration != null)
@@ -96,6 +105,8 @@ namespace Microsoft.Azure.Commands.Network
             var httpListener = new PSApplicationGatewayHttpListener();
             httpListener.Name = this.Name;
             httpListener.Protocol = this.Protocol;
+            httpListener.HostName = this.HostName;
+            httpListener.RequireServerNameIndication = this.RequireServerNameIndication;
 
             if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
             {

@@ -18,31 +18,30 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
     public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
-        public RedisCacheAttributesWithAccessKeys(RedisCreateOrUpdateResponse cache, string resourceGroupName)
+        public RedisCacheAttributesWithAccessKeys(RedisResourceWithAccessKey cache, string resourceGroupName)
         {
-            Id = cache.Resource.Id;
-            Location = cache.Resource.Location;
-            Name = cache.Resource.Name;
-            Type = cache.Resource.Type;
-            HostName = cache.Resource.Properties.HostName;
-            Port = cache.Resource.Properties.Port;
-            ProvisioningState = cache.Resource.Properties.ProvisioningState;
-            SslPort = cache.Resource.Properties.SslPort;
-            RedisConfiguration = cache.Resource.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort.Value;
-            RedisVersion = cache.Resource.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Resource.Properties.Sku.Family, cache.Resource.Properties.Sku.Capacity);
-            Sku = cache.Resource.Properties.Sku.Name;
+            Id = cache.Id;
+            Location = cache.Location;
+            Name = cache.Name;
+            Type = cache.Type;
+            HostName = cache.HostName;
+            Port = cache.Port.HasValue ? cache.Port.Value : 0;
+            ProvisioningState = cache.ProvisioningState;
+            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
+            RedisConfiguration = cache.RedisConfiguration;
+            EnableNonSslPort = cache.EnableNonSslPort.Value;
+            RedisVersion = cache.RedisVersion;
+            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
+            Sku = cache.Sku.Name;
 
-            PrimaryKey = cache.Resource.Properties.AccessKeys.PrimaryKey;
-            SecondaryKey = cache.Resource.Properties.AccessKeys.SecondaryKey;
+            PrimaryKey = cache.AccessKeys.PrimaryKey;
+            SecondaryKey = cache.AccessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
 
-            VirtualNetwork = cache.Resource.Properties.VirtualNetwork;
-            Subnet = cache.Resource.Properties.Subnet;
-            StaticIP = cache.Resource.Properties.StaticIP;
-            TenantSettings = cache.Resource.Properties.TenantSettings;
-            ShardCount = cache.Resource.Properties.ShardCount;
+            SubnetId = cache.SubnetId;
+            StaticIP = cache.StaticIP;
+            TenantSettings = cache.TenantSettings;
+            ShardCount = cache.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

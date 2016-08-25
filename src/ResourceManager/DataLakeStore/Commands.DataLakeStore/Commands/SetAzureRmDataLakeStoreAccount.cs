@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof (DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Alias("Set-AdlStore")]
     public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            // TODO: Define what can be updated for DataLakeStore accounts
             var currentAccount = DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
             var location = currentAccount.Location;
 
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DefaultGroup = currentAccount.Properties.DefaultGroup;
             }
 
-            if (Tags == null || Tags.Length == 0)
+            if (Tags == null)
             {
                 Tags = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
             }

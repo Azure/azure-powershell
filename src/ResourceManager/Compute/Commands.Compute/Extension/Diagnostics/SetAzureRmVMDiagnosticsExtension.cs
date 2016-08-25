@@ -12,33 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Management.Automation;
-using System.Xml.Linq;
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
+using System;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        private string publicConfiguration;
-        private string privateConfiguration;
+        private Hashtable publicConfiguration;
+        private Hashtable privateConfiguration;
         private string extensionName = "Microsoft.Insights.VMDiagnosticsSettings";
         private string location;
         private string version = "1.5";
@@ -108,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location.")]
-        public string Location {
+        public string Location
+        {
             get
             {
                 if (string.IsNullOrEmpty(this.location))
@@ -176,29 +173,30 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        private string PublicConfiguration
+        private Hashtable PublicConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.publicConfiguration))
+                if (this.publicConfiguration == null)
                 {
+                    var vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
                     this.publicConfiguration =
-                        DiagnosticsHelper.GetJsonSerializedPublicDiagnosticsConfigurationFromFile(
-                            this.DiagnosticsConfigurationPath, this.StorageAccountName);
+                        DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(this.DiagnosticsConfigurationPath,
+                            this.StorageAccountName, vm.Id, cmdlet: this);
                 }
 
                 return this.publicConfiguration;
             }
         }
 
-        private string PrivateConfiguration
+        private Hashtable PrivateConfiguration
         {
             get
             {
-                if (string.IsNullOrEmpty(this.privateConfiguration))
+                if (this.privateConfiguration == null)
                 {
-                    this.privateConfiguration = DiagnosticsHelper.GetJsonSerializedPrivateDiagnosticsConfiguration(this.StorageAccountName, this.StorageAccountKey,
-                            this.StorageAccountEndpoint);
+                    this.privateConfiguration = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(this.DiagnosticsConfigurationPath,
+                        this.StorageAccountName, this.StorageAccountKey, this.StorageAccountEndpoint);
                 }
 
                 return this.privateConfiguration;
@@ -211,7 +209,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.storageClient == null)
                 {
-                    this.storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+                    this.storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
@@ -226,134 +224,63 @@ namespace Microsoft.Azure.Commands.Compute
                 var parameters = new VirtualMachineExtension
                 {
                     Location = this.Location,
-                    Name = this.Name,
-                    Type = DiagnosticsExtensionConstants.VirtualMachineExtensionResourceType,
                     Settings = this.PublicConfiguration,
                     ProtectedSettings = this.PrivateConfiguration,
                     Publisher = DiagnosticsExtensionConstants.ExtensionPublisher,
-                    ExtensionType = DiagnosticsExtensionConstants.ExtensionType,
+                    VirtualMachineExtensionType = DiagnosticsExtensionConstants.ExtensionType,
                     TypeHandlerVersion = this.TypeHandlerVersion,
                     AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion
                 };
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
                     this.VMName,
-                    parameters);
+                    this.Name,
+                    parameters).GetAwaiter().GetResult();
 
-                WriteObject(op);
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
 
         private void InitializeStorageParameters()
         {
             InitializeStorageAccountName();
-
-            var storageAccounts = this.StorageClient.StorageAccounts.List().StorageAccounts;
-            var storageAccount = storageAccounts == null ? null : storageAccounts.FirstOrDefault(account => account.Name.Equals(this.StorageAccountName));
-
-            InitializeStorageAccountKey(storageAccount);
-            InitializeStorageAccountEndpoint(storageAccount);
+            InitializeStorageAccountKey();
+            InitializeStorageAccountEndpoint();
         }
 
-        /// <summary>
-        /// Make sure the storage account name is set.
-        /// It can be defined in multiple places, we only take the one with higher precedence. And the precedence is:
-        /// 1. Directly specified from command line parameter
-        /// 2. The one get from StorageContext parameter
-        /// 3. The one parsed from the diagnostics configuration file
-        /// </summary>
         private void InitializeStorageAccountName()
         {
+            this.StorageAccountName = this.StorageAccountName ??
+                DiagnosticsHelper.InitializeStorageAccountName(this.StorageContext, this.DiagnosticsConfigurationPath);
+
             if (string.IsNullOrEmpty(this.StorageAccountName))
             {
-                if (this.StorageContext != null)
-                {
-                    this.StorageAccountName = this.StorageContext.StorageAccountName;
-                }
-                else
-                {
-                    var config = XElement.Load(this.DiagnosticsConfigurationPath);
-                    var storageNode = config.Elements().FirstOrDefault(ele => ele.Name.LocalName == "StorageAccount");
-
-                    if (storageNode == null)
-                    {
-                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountNameNotDefined);
-                    }
-                    else
-                    {
-                        this.StorageAccountName = storageNode.Value;
-                    }
-                }
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountName);
             }
         }
 
-        /// <summary>
-        /// Make sure the storage account key is set.
-        /// If user doesn't specify it in command line, we try to resolve the key for the user given the storage account.
-        /// </summary>
-        /// <param name="storageAccount">The storage account to list the key.</param>
-        private void InitializeStorageAccountKey(StorageAccount storageAccount)
+        private void InitializeStorageAccountKey()
         {
+            this.StorageAccountKey = this.StorageAccountKey ??
+                DiagnosticsHelper.InitializeStorageAccountKey(this.StorageClient, this.StorageAccountName, this.DiagnosticsConfigurationPath);
+
             if (string.IsNullOrEmpty(this.StorageAccountKey))
             {
-                if (storageAccount == null)
-                {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Properties.Resources.DiagnosticsExtensionFailedToListKeyForNoStorageAccount, this.StorageAccountName));
-                }
-
-                var psStorageAccount = new PSStorageAccount(storageAccount);
-                var credentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, psStorageAccount.ResourceGroupName, psStorageAccount.StorageAccountName);
-                this.StorageAccountKey = credentials.ExportBase64EncodedKey();
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
             }
         }
 
-        /// <summary>
-        /// Make sure we set the correct storage account endpoint.
-        /// We can get the value from multiple places, we only take the one with higher precedence. And the precedence is:
-        /// 1. Directly specified from command line parameter
-        /// 2. The one get from StorageContext parameter
-        /// 3. The one get from the storage account we list
-        /// 4. The one get from current Azure Environment
-        /// </summary>
-        /// <param name="storageAccount">The storage account to help get the endpoint.</param>
-        private void InitializeStorageAccountEndpoint(StorageAccount storageAccount)
+        private void InitializeStorageAccountEndpoint()
         {
+            this.StorageAccountEndpoint = this.StorageAccountEndpoint ??
+                DiagnosticsHelper.InitializeStorageAccountEndpoint(this.StorageAccountName, this.StorageAccountKey, this.StorageClient,
+                    this.StorageContext, this.DiagnosticsConfigurationPath, this.DefaultContext);
+
             if (string.IsNullOrEmpty(this.StorageAccountEndpoint))
             {
-                var context = this.StorageContext;
-                if (context == null)
-                {
-                    Uri blobEndpoint = null, queueEndpoint = null, tableEndpoint = null, fileEndpoint = null;
-                    if (storageAccount != null)
-                    {
-                        // Create storage context from storage account
-                        var endpoints = storageAccount.PrimaryEndpoints;
-                        blobEndpoint = endpoints.Blob;
-                        queueEndpoint = endpoints.Queue;
-                        tableEndpoint = endpoints.Table;
-                        fileEndpoint = endpoints.File;
-                    }
-                    else if (this.DefaultContext != null && this.DefaultContext.Environment != null)
-                    {
-                        // Create storage context from default azure environment. Default to use https
-                        blobEndpoint = DefaultContext.Environment.GetStorageBlobEndpoint(this.StorageAccountName);
-                        queueEndpoint = DefaultContext.Environment.GetStorageQueueEndpoint(this.StorageAccountName);
-                        tableEndpoint = DefaultContext.Environment.GetStorageTableEndpoint(this.StorageAccountName);
-                        fileEndpoint = DefaultContext.Environment.GetStorageFileEndpoint(this.StorageAccountName);
-                    }
-                    else
-                    {
-                        // Can't automatically get the endpoint to create storage context
-                        throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionStorageAccountEndpointNotDefined);
-                    }
-                    var credentials = new StorageCredentials(this.StorageAccountName, this.StorageAccountKey);
-                    var cloudStorageAccount = new CloudStorageAccount(credentials, blobEndpoint, queueEndpoint, tableEndpoint, fileEndpoint);
-                    context = new AzureStorageContext(cloudStorageAccount);
-                }
-
-                var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
-                this.StorageAccountEndpoint = scheme + context.EndPointSuffix;
+                throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
             }
         }
 

@@ -12,186 +12,276 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataLake.AnalyticsCatalog;
-using Microsoft.Azure.Management.DataLake.AnalyticsJob;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.DataLake.Analytics;
+using Microsoft.Azure.Management.DataLake.Store;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
-    using Microsoft.Azure;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Management.DataLake.Store;
-    using Microsoft.Azure.Management.DataLake.Store.Models;
-    using Microsoft.Azure.Management.Storage;
-    using Microsoft.Azure.Management.Storage.Models;
-    using Microsoft.Azure.Management.DataLake.Analytics;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using System;
-    using System.Net;
-    using System.Reflection;
-
-    public abstract class AdlaTestsBase : TestBase, IDisposable
+    public class AdlaTestsBase : RMTestBase
     {
         internal string resourceGroupName { get; set; }
-        internal string dataLakeAnalyticsAccountName { get; set; }
-        internal string dataLakeStoreAccountName { get; set; }
-        internal string secondDataLakeStoreAccountName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
-        internal string dbName { get; set; }
-        internal string tableName { get; set; }
-        internal string tvfName { get; set; }
-        internal string procName { get; set; }
-        internal string viewName { get; set; }
-        internal string secretName { get; set; }
-        internal string secretPwd { get; set; }
-        internal string credName { get; set; }
         internal const string resourceGroupLocation = "East US 2";
 
+        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
+        private const string AuthorizationApiVersion = "2014-07-01-preview";
 
-        private DataLakeAnalyticsManagementClient dataLakeAnalyticsManagementClient;
-        private DataLakeAnalyticsJobManagementClient dataLakeAnalyticsJobManagementClient;
-        private DataLakeAnalyticsCatalogManagementClient dataLakeAnalyticsCatalogManagementClient;
-        private DataLakeStoreManagementClient dataLakeStoreManagementClient;
-        private ResourceManagementClient resourceManagementClient;
-        private StorageManagementClient storageManagementClient;
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public NewResourceManagementClient NewResourceManagementClient { get; private set; }
+
+        public SubscriptionClient SubscriptionClient { get; private set; }
+
+        public DataLakeStoreAccountManagementClient DataLakeStoreAccountManagementClient { get; private set; }
+
+        public DataLakeAnalyticsAccountManagementClient DataLakeAnalyticsAccountManagementClient { get; private set; }
+
+        public DataLakeAnalyticsJobManagementClient DataLakeAnalyticsJobManagementClient { get; private set; }
+
+        public DataLakeAnalyticsCatalogManagementClient DataLakeAnalyticsCatalogManagementClient { get; private set; }
+
+        public StorageManagementClient StorageManagementClient { get; private set; }
+
+        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
+        public GalleryClient GalleryClient { get; private set; }
+
+        public static AdlaTestsBase NewInstance
+        {
+            get
+            {
+                return new AdlaTestsBase();
+            }
+        }
 
         protected AdlaTestsBase()
         {
             helper = new EnvironmentSetupHelper();
-            dataLakeAnalyticsManagementClient = GetDataLakeAnalyticsManagementClient();
-            dataLakeAnalyticsJobManagementClient = GetDataLakeAnalyticsJobManagementClient();
-            dataLakeAnalyticsCatalogManagementClient = GetDataLakeAnalyticsCatalogManagementClient();
-            resourceManagementClient = GetResourceManagementClient();
-            dataLakeStoreManagementClient = GetDataLakeStoreManagementClient();
-            storageManagementClient = GetStorageManagementClient();
-            this.resourceGroupName = TestUtilities.GenerateName("abarg1");
-            this.dataLakeAnalyticsAccountName = TestUtilities.GenerateName("testaba1");
-            this.dataLakeStoreAccountName = TestUtilities.GenerateName("datalake01");
-            this.secondDataLakeStoreAccountName = TestUtilities.GenerateName("datalake02");
-            this.azureBlobStoreName = TestUtilities.GenerateName("azureblob01");
-            this.dbName = TestUtilities.GenerateName("adladb01");
-            this.tableName = TestUtilities.GenerateName("adlatable01");
-            this.tvfName = TestUtilities.GenerateName("adlatvf01");
-            this.procName = TestUtilities.GenerateName("adlaproc01");
-            this.viewName = TestUtilities.GenerateName("adlaview01");
-            this.secretName = TestUtilities.GenerateName("adlasecret01");
-            this.secretPwd = TestUtilities.GenerateName("adlasecretpwd01");
-            this.credName = TestUtilities.GenerateName("adlacred01");
         }
 
-        protected void SetupManagementClients()
+        public void RunPsTest(bool createWasbAccount, params string[] scripts)
         {
-            helper.SetupManagementClients(dataLakeAnalyticsManagementClient, dataLakeAnalyticsJobManagementClient,
-                dataLakeAnalyticsCatalogManagementClient,
-                resourceManagementClient, dataLakeStoreManagementClient, storageManagementClient);
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+            RunPsTestWorkflow(createWasbAccount,
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+
+        public void RunPsTestWorkflow(bool createWasbAccount,
+            Func<string[]> scriptBuilder,
+            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
+            Action cleanup,
+            string callingClassType,
+            string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
-                SetupManagementClients();
-
-                // Create the resource group
-                this.TryRegisterSubscriptionForResource();
-                this.TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
-                this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.dataLakeStoreAccountName, resourceGroupLocation);
-                this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.secondDataLakeStoreAccountName, resourceGroupLocation);
-                string storageSuffix;
-                this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName, this.azureBlobStoreName,
-                    "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
-                    out storageSuffix);
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"));
-
-                // inject the access key into the script if necessary.
-                for (int i =0; i < scripts.Length; i++)
+                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                if (initialize != null)
                 {
-                    if (scripts[i].Contains("-blobAccountKey"))
-                    {
-                        scripts[i] = scripts[i].Replace("-blobAccountKey",
-                            string.Format("-blobAccountKey '{0}'", this.azureBlobStoreAccessKey));
-                    }
+                    initialize(this.csmTestFactory);
                 }
 
-                helper.RunPowerShellTest(scripts);
+                SetupManagementClients(context);
+
+                // register the namespace.
+                this.TryRegisterSubscriptionForResource();
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                var callingClassName = callingClassType
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                                        .Last();
+                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
+                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
+
+                if (createWasbAccount)
+                {
+                    string storageSuffix;
+                    this.resourceGroupName = TestUtilities.GenerateName("abarg1");
+                    TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
+                    this.azureBlobStoreName = TestUtilities.GenerateName("azureblob01");
+                    this.azureBlobStoreAccessKey = this.TryCreateStorageAccount(this.resourceGroupName,
+                        this.azureBlobStoreName,
+                        "DataLakeAnalyticsTestStorage", "DataLakeAnalyticsTestStorageDescription", resourceGroupLocation,
+                        out storageSuffix);
+                }
+
+                try
+                {
+                    if (scriptBuilder != null)
+                    {
+                        var psScripts = scriptBuilder();
+
+                        if (psScripts != null)
+                        {
+                            // inject the access key into the script if necessary.
+                            for (int i = 0; i < psScripts.Length; i++)
+                            {
+                                if (psScripts[i].Contains("-blobAccountKey") && createWasbAccount)
+                                {
+                                    psScripts[i] = psScripts[i].Replace("-blobAccountKey",
+                                        string.Format("-blobAccountName {0} -blobAccountKey '{1}'", this.azureBlobStoreName, this.azureBlobStoreAccessKey));
+                                }
+                            }
+
+                            helper.RunPowerShellTest(psScripts);
+                        }
+                    }
+                }
+                finally
+                {
+                    if (createWasbAccount)
+                    {
+                        try
+                        {
+                            ResourceManagementClient.ResourceGroups.Delete(this.resourceGroupName);
+                        }
+                        catch
+                        {
+                            // best effort cleanup.
+                        }
+                    }
+
+                    if (cleanup != null)
+                    {
+                        cleanup();
+                    }
+                }
             }
         }
 
+        private void SetupManagementClients(MockContext context)
+        {
+            ResourceManagementClient = GetResourceManagementClient();
+            SubscriptionClient = GetSubscriptionClient();
+            DataLakeStoreAccountManagementClient = GetDataLakeStoreAccountManagementClient(context);
+            DataLakeAnalyticsAccountManagementClient = GetDataLakeAnalyticsAccountManagementClient(context);
+            DataLakeAnalyticsJobManagementClient = GetDataLakeAnalyticsJobManagementClient(context);
+            DataLakeAnalyticsCatalogManagementClient = GetDataLakeAnalyticsCatalogManagementClient(context);
+            AuthorizationManagementClient = GetAuthorizationManagementClient(context);
+            StorageManagementClient = GetStorageManagementClient();
+            GalleryClient = GetGalleryClient();
+            NewResourceManagementClient = GetNewResourceManagementClient(context);
+            helper.SetupManagementClients(ResourceManagementClient,
+                NewResourceManagementClient,
+                SubscriptionClient,
+                DataLakeAnalyticsAccountManagementClient,
+                DataLakeAnalyticsJobManagementClient,
+                DataLakeAnalyticsCatalogManagementClient,
+                DataLakeStoreAccountManagementClient,
+                AuthorizationManagementClient,
+                StorageManagementClient,
+                GalleryClient
+                );
+        }
+
         #region client creation helpers
-        protected DataLakeAnalyticsManagementClient GetDataLakeAnalyticsManagementClient()
+        private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<DataLakeAnalyticsManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        protected DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient()
+        private ResourceManagementClient GetResourceManagementClient()
         {
-            return GetDataLakeAnalyticsJobOrCatalogServiceClient<DataLakeAnalyticsJobManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
-        protected DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient()
+        private StorageManagementClient GetStorageManagementClient()
         {
-            return GetDataLakeAnalyticsJobOrCatalogServiceClient<DataLakeAnalyticsCatalogManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
         }
 
-        protected DataLakeStoreManagementClient GetDataLakeStoreManagementClient()
+        private SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<DataLakeStoreManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        protected StorageManagementClient GetStorageManagementClient()
+        private NewResourceManagementClient GetNewResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        private DataLakeStoreAccountManagementClient GetDataLakeStoreAccountManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<DataLakeStoreAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private DataLakeAnalyticsAccountManagementClient GetDataLakeAnalyticsAccountManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<DataLakeAnalyticsAccountManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient(MockContext context)
+        {
+            var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsJobManagementClient>(currentEnvironment, true);
+            toReturn.AdlaJobDnsSuffix =
+                currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
+            return toReturn;
+        }
+
+        private DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient(MockContext context)
+        {
+            var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+            var toReturn = context.GetServiceClient<DataLakeAnalyticsCatalogManagementClient>(currentEnvironment, true);
+            toReturn.AdlaCatalogDnsSuffix =
+                currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
+            return toReturn;
+        }
+
+        private GalleryClient GetGalleryClient()
+        {
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
         #endregion
 
         #region private helper methods
 
-        /// <summary>
-        /// Gets DataLakeAnalytics catalog or job client for the current test environment 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="factory"></param>
-        /// <returns></returns>
-        private static T GetDataLakeAnalyticsJobOrCatalogServiceClient<T>(
-            TestEnvironmentFactory factory)
-            where T : class
-        {
-            TestEnvironment currentEnvironment = factory.GetTestEnvironment();
-            T client = null;
-
-            ConstructorInfo constructor = typeof(T).GetConstructor(new Type[] 
-                    { 
-                        typeof(SubscriptionCloudCredentials), 
-                        typeof(string) 
-                    });
-            client = constructor.Invoke(new object[] 
-                    { 
-                        currentEnvironment.Credentials as SubscriptionCloudCredentials, 
-                        // Have to remove the https:// since this is a suffix
-                        currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://","") }) as T;
-
-            return AddMockHandler<T>(ref client);
-        }
-
         private void TryRegisterSubscriptionForResource(string providerName = "Microsoft.DataLakeAnalytics")
         {
-            var reg = resourceManagementClient.Providers.Register(providerName);
+            var reg = ResourceManagementClient.Providers.Register(providerName);
             ThrowIfTrue(reg == null, "resourceManagementClient.Providers.Register returned null.");
             ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, string.Format("resourceManagementClient.Providers.Register returned with status code {0}", reg.StatusCode));
 
-            var resultAfterRegister = resourceManagementClient.Providers.Get(providerName);
+            var resultAfterRegister = ResourceManagementClient.Providers.Get(providerName);
             ThrowIfTrue(resultAfterRegister == null, "resourceManagementClient.Providers.Get returned null.");
             ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Provider.Id), "Provider.Id is null or empty.");
             ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), string.Format("Provider name is not equal to {0}.", providerName));
@@ -199,34 +289,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
                 string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
             ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
-            ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes[0].Locations == null || resultAfterRegister.Provider.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
         }
 
         private void TryCreateResourceGroup(string resourceGroupName, string location)
         {
-            ResourceGroupCreateOrUpdateResult result = resourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
-            var newlyCreatedGroup = resourceManagementClient.ResourceGroups.Get(resourceGroupName);
+            ResourceGroupCreateOrUpdateResult result = ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup { Location = location });
+            var newlyCreatedGroup = ResourceManagementClient.ResourceGroups.Get(resourceGroupName);
             ThrowIfTrue(newlyCreatedGroup == null, "resourceManagementClient.ResourceGroups.Get returned null.");
             ThrowIfTrue(!resourceGroupName.Equals(newlyCreatedGroup.ResourceGroup.Name), string.Format("resourceGroupName is not equal to {0}", resourceGroupName));
-        }
-
-        private string TryCreateDataLakeStoreAccount(string resourceGroupName, string dataLakeAccountName, string location)
-        {
-            var dataLakeCreateParameters = new DataLakeStoreAccountCreateOrUpdateParameters
-            {
-                DataLakeStoreAccount = new DataLakeStoreAccount
-                {
-                    Location = location,
-                    Name = dataLakeAccountName
-                }
-            };
-
-            var createResponse = dataLakeStoreManagementClient.DataLakeStoreAccount.Create(resourceGroupName, dataLakeCreateParameters);
-            ThrowIfTrue(createResponse.Status != OperationStatus.Succeeded, string.Format("Failed to provision a DataLake Store account in the success state. Actual State: {0}", createResponse.Status));
-            var dataLakeAccountSuffix = dataLakeStoreManagementClient.DataLakeStoreAccount.Get(resourceGroupName, dataLakeAccountName).DataLakeStoreAccount.Properties.Endpoint.Replace(dataLakeAccountName + ".", "");
-            ThrowIfTrue(string.IsNullOrEmpty(dataLakeAccountSuffix), "dataLakeStoreManagementClient.DataLakeStoreAccount.Create did not properly populate the suffix property");
-            return dataLakeAccountSuffix;
-
         }
 
         public string TryCreateStorageAccount(string resourceGroupName, string storageAccountName, string label, string description, string location, out string storageAccountSuffix)
@@ -237,16 +307,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 AccountType = AccountType.StandardGRS
             };
 
-
             // retrieve the storage account
-            storageManagementClient.StorageAccounts.Create(resourceGroupName, storageAccountName, stoInput);
+            StorageManagementClient.StorageAccounts.Create(resourceGroupName, storageAccountName, stoInput);
 
             // retrieve the storage account primary access key
-            var accessKey = storageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName).StorageAccountKeys.Key1;
+            var accessKey = StorageManagementClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName).StorageAccountKeys.Key1;
             ThrowIfTrue(string.IsNullOrEmpty(accessKey), "storageManagementClient.StorageAccounts.ListKeys returned null.");
 
             // set the storage account suffix
-            var getResponse = storageManagementClient.StorageAccounts.GetProperties(resourceGroupName, storageAccountName);
+            var getResponse = StorageManagementClient.StorageAccounts.GetProperties(resourceGroupName, storageAccountName);
             storageAccountSuffix = getResponse.StorageAccount.PrimaryEndpoints.Blob.ToString();
             storageAccountSuffix = storageAccountSuffix.Replace("https://", "").TrimEnd('/');
             storageAccountSuffix = storageAccountSuffix.Replace(storageAccountName, "").TrimStart('.');
@@ -262,8 +331,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             }
         }
         #endregion
-        public void Dispose()
-        {
-        }
     }
 }

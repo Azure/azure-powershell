@@ -39,10 +39,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
     {
         #region Constants
 
-        public static string windowsAzurePowershellPath = Path.Combine(Environment.CurrentDirectory, "ServiceManagement\\Azure");
-        public static string windowsAzurePowershellDefaultPath = Environment.CurrentDirectory;
+        public static string AzurePowershellPath = AppDomain.CurrentDomain.BaseDirectory;
 
-        public const string windowsAzurePowershellServiceModule = "Azure.psd1";
+        public const string AzurePowershellProfileModule = "Microsoft.WindowsAzure.Commands.Profile.dll";
+        public const string AzurePowershellCommandsModule = "Microsoft.WindowsAzure.Commands.dll";
+        public const string AzurePowershellStorageModule = "Microsoft.WindowsAzure.Commands.Storage.dll";
+        public const string AzurePowershellServiceManagementModule = "Microsoft.WindowsAzure.Commands.ServiceManagement.dll";
         public const string AzurePowershellModuleServiceManagementPirModule = "Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.dll";
         public const string AzurePowershellModuleServiceManagementPreviewModule = "Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll";
 

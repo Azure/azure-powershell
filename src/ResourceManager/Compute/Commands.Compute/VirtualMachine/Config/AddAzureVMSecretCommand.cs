@@ -15,8 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -78,12 +76,13 @@ namespace Microsoft.Azure.Commands.Compute
 
             int i = 0;
 
-            for(; i <= this.VM.OSProfile.Secrets.Count; i++)
+            for (; i <= this.VM.OSProfile.Secrets.Count; i++)
             {
                 if (i == this.VM.OSProfile.Secrets.Count)
                 {
-                    var sourceVault = new SourceVaultReference {
-                        ReferenceUri = this.SourceVaultId
+                    var sourceVault = new SubResource
+                    {
+                        Id = this.SourceVaultId
                     };
 
                     var vaultCertificates = new List<VaultCertificate>{
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute
                     break;
                 }
 
-                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.ReferenceUri.Equals(this.SourceVaultId))
+                if (this.VM.OSProfile.Secrets[i].SourceVault != null && this.VM.OSProfile.Secrets[i].SourceVault.Id.Equals(this.SourceVaultId))
                 {
                     if (this.VM.OSProfile.Secrets[i].VaultCertificates == null)
                     {

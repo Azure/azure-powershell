@@ -14,17 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
+    using AutoMapper;
+    using Microsoft.Azure.Commands.ApiManagement.Properties;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
-    using AutoMapper;
-    using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using Microsoft.Azure.Management.ApiManagement.Models;
 
     public class PsApiManagement
     {
-        private static readonly Regex ResourceGroupRegex = 
+        private static readonly Regex ResourceGroupRegex =
             new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
 
         public PsApiManagement()
@@ -147,17 +147,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location) || AdditionalRegions.Any(r => location.Equals(r.Location)))
             {
                 throw new ArgumentException(string.Format(Resources.AddRegionExistsMessage, location), "location");
@@ -183,17 +172,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 throw new ArgumentNullException("location");
             }
 
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
-            }
-
             if (location.Equals(Location))
             {
                 throw new ArgumentException(
@@ -211,17 +189,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             if (location == null)
             {
                 throw new ArgumentNullException("location");
-            }
-
-            if (!CommonConstants.ValidLocationsSet.Contains(location))
-            {
-                throw new ArgumentException(
-                    string.Format(
-                        Resources.InvalidLocation,
-                        location,
-                        string.Join(",", CommonConstants.ValidLocationsSet)
-                        ),
-                    "location");
             }
 
             var regionToUpdate = AdditionalRegions.FirstOrDefault(r => location.Equals(r.Location));

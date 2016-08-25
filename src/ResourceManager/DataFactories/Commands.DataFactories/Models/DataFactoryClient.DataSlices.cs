@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
@@ -22,6 +19,9 @@ using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                     new DataSliceRunListParameters()
                     {
                         DataSliceStartTime = filterOptions.StartDateTime.ConvertToISO8601DateTimeString()
-                    });    
+                    });
             }
             filterOptions.NextLink = response != null ? response.NextLink : null;
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                     });
             }
             filterOptions.NextLink = response != null ? response.NextLink : null;
-            
+
             if (response != null && response.DataSlices != null)
             {
                 foreach (var dataSlice in response.DataSlices)

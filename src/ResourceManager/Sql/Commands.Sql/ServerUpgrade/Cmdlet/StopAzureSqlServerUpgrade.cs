@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
@@ -40,8 +39,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The entity going to be deleted</returns>
         protected override IEnumerable<Model.AzureSqlServerUpgradeModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerUpgradeModel>() { 
-                ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName) 
+            return new List<Model.AzureSqlServerUpgradeModel>() {
+                ModelAdapter.GetUpgrade(this.ResourceGroupName, this.ServerName)
             };
         }
 

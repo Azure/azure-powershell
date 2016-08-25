@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Rest.Azure;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof (DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,13 +67,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
             catch (CloudException ex)
             {
-                if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) && ex.Error.Code == "ResourceNotFound" ||
+                if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) && ex.Body.Code == "ResourceNotFound" ||
                     ex.Message.Contains("ResourceNotFound"))
                 {
                     // account does not exists so go ahead and create one
                 }
-                else if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) &&
-                         ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Body != null && !string.IsNullOrEmpty(ex.Body.Code) &&
+                         ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }

@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
-using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 return;
             }
 
-            if(disposing)
+            if (disposing)
             {
                 if (SingleInstanceMutex != null)
                 {

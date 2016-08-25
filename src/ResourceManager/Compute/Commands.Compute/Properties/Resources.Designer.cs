@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string AEMExtensionNotFound {
+            get {
+                return ResourceManager.GetString("AEMExtensionNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
         public static string AvailabilitySetRemovalCaption {
@@ -252,6 +261,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No chef extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
+        /// </summary>
+        public static string ChefExtensionNotFound {
+            get {
+                return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         public static string CreatingStorageAccountForBootDiagnostics {
@@ -279,11 +297,47 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to list storage account key. Can&apos;t find storage account &quot;{0}&quot; under current subscription..
+        ///   Looks up a localized string similar to No DiagnosticMonitorConfiguration element defined in the configuration file..
         /// </summary>
-        public static string DiagnosticsExtensionFailedToListKeyForNoStorageAccount {
+        public static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionFailedToListKeyForNoStorageAccount", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the xml configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in xml or json format..
+        /// </summary>
+        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resourceId defined in the config file does not match the actual resource&apos;s id..
+        /// </summary>
+        public static string DiagnosticsExtensionMetricsResourceIdNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMetricsResourceIdNotMatch", resourceCulture);
             }
         }
         
@@ -297,20 +351,56 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Storage account endpoint is not defined..
+        ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
-        public static string DiagnosticsExtensionStorageAccountEndpointNotDefined {
+        public static string DiagnosticsExtensionNullStorageAccountEndpoint {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountEndpointNotDefined", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountKey {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountKey", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Storage account name is not defined..
         /// </summary>
-        public static string DiagnosticsExtensionStorageAccountNameNotDefined {
+        public static string DiagnosticsExtensionNullStorageAccountName {
             get {
-                return ResourceManager.GetString("DiagnosticsExtensionStorageAccountNameNotDefined", resourceCulture);
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionCaption {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?.
+        /// </summary>
+        public static string DisableAzureDiskEncryptionConfirmation {
+            get {
+                return ResourceManager.GetString("DisableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable disk encryption.
+        /// </summary>
+        public static string DisableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("DisableDiskEncryptionAction", resourceCulture);
             }
         }
         
@@ -347,6 +437,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string EnableAzureDiskEncryptionConfirmation {
             get {
                 return ResourceManager.GetString("EnableAzureDiskEncryptionConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable disk encryption.
+        /// </summary>
+        public static string EnableDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("EnableDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when choosing existing standard storage account for boot diagnostics: {0}.
+        /// </summary>
+        public static string ErrorDuringChoosingStandardStorageAccount {
+            get {
+                return ResourceManager.GetString("ErrorDuringChoosingStandardStorageAccount", resourceCulture);
             }
         }
         
@@ -874,6 +982,42 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove VM access extension.
+        /// </summary>
+        public static string RemoveAccessExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveAccessExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove disk encryption.
+        /// </summary>
+        public static string RemoveDiskEncryptionAction {
+            get {
+                return ResourceManager.GetString("RemoveDiskEncryptionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove &apos;{0}&apos; extension.
+        /// </summary>
+        public static string RemoveExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove custom script extension.
+        /// </summary>
+        public static string RemoveScriptExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
             }
         }
         

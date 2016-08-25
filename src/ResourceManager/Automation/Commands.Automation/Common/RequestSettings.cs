@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation;
+using System;
+using System.Diagnostics.Eventing;
 
 namespace Microsoft.Azure.Commands.Automation
 {
@@ -38,7 +34,7 @@ namespace Microsoft.Azure.Commands.Automation
             EventProvider.SetActivityId(ref activityId);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
         }
-        
+
         public void Dispose()
         {
             Dispose(true);

@@ -14,6 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Linq;
     using System.Net;
@@ -21,10 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Operations;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A client for managing resources behind the Azure Resource Manager service.
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
             resourceIdStringBuilder.AppendFormat("?{0}", queryString);
 
             var relativeUri = resourceIdStringBuilder.ToString()
-                .Select(character => char.IsWhiteSpace(character) ? "+" : character.ToString())
+                .Select(character => char.IsWhiteSpace(character) ? "%20" : character.ToString())
                 .ConcatStrings();
 
             return new Uri(baseUri: this.EndpointUri, relativeUri: relativeUri);

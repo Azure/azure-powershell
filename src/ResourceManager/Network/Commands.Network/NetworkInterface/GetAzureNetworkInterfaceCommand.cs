@@ -14,37 +14,73 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkInterface", DefaultParameterSetName = "NoExpandStandAloneNic"), OutputType(typeof(PSNetworkInterface))]
     public class GetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
-        [Alias("ResourceName")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpandStandAloneNic")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "ExpandStandAloneNic")]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpandScaleSetNic")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "ExpandScaleSetNic")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpandStandAloneNic")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "ExpandStandAloneNic")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpandScaleSetNic")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "ExpandScaleSetNic")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual Machine Scale Set Name.",
-            ParameterSetName = "ScaleSetNic")]
+            ParameterSetName = "NoExpandScaleSetNic")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Scale Set Name.",
+            ParameterSetName = "ExpandScaleSetNic")]
         [ValidateNotNullOrEmpty]
         public string VirtualMachineScaleSetName { get; set; }
 
@@ -52,42 +88,74 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual Machine Index.",
-            ParameterSetName = "ScaleSetNic")]
+            ParameterSetName = "NoExpandScaleSetNic")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Machine Index.",
+            ParameterSetName = "ExpandScaleSetNic")]
         [ValidateNotNullOrEmpty]
         public string VirtualMachineIndex { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "ExpandStandAloneNic")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "ExpandScaleSetNic")]
+        [ValidateNotNullOrEmpty]
+        public string ExpandResource { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            
+            base.Execute();
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 PSNetworkInterface networkInterface;
 
-                if (ParameterSetName.Equals("ScaleSetNic"))
+                if (ParameterSetName.Contains("ScaleSetNic"))
                 {
-                    networkInterface = this.GetScaleSetNetworkInterface(this.ResourceGroupName, this.VirtualMachineScaleSetName, this.VirtualMachineIndex, this.Name);
+                    networkInterface = this.GetScaleSetNetworkInterface(this.ResourceGroupName, this.VirtualMachineScaleSetName, this.VirtualMachineIndex, this.Name, this.ExpandResource);
                 }
                 else
                 {
-                    networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
+                    networkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name, this.ExpandResource);
                 }
-                
+
                 WriteObject(networkInterface);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
             {
                 IEnumerable<MNM.NetworkInterface> nicList;
 
-                if (ParameterSetName.Equals("ScaleSetNic"))
+                if (ParameterSetName.Contains("ScaleSetNic"))
                 {
-                    nicList = this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(this.ResourceGroupName, this.VirtualMachineScaleSetName);
+                    if (string.IsNullOrEmpty(this.VirtualMachineIndex))
+                    {
+                        nicList =
+                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetNetworkInterfaces(
+                                this.ResourceGroupName,
+                                this.VirtualMachineScaleSetName);
+                    }
+                    else
+                    {
+                        nicList =
+                            this.NetworkInterfaceClient.ListVirtualMachineScaleSetVMNetworkInterfaces(
+                                this.ResourceGroupName,
+                                this.VirtualMachineScaleSetName,
+                                this.VirtualMachineIndex);
+                    }
                 }
                 else
                 {
                     nicList = this.NetworkInterfaceClient.List(this.ResourceGroupName);
                 }
-                
+
                 var psNetworkInterfaces = new List<PSNetworkInterface>();
 
                 foreach (var nic in nicList)
@@ -119,4 +187,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

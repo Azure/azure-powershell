@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -31,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public EnableBatchAutoScaleCommandTests()
+        public EnableBatchAutoScaleCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new EnableBatchAutoScaleCommand()
@@ -54,12 +56,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Id = "testPool";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-
-            cmdlet.AutoScaleFormula = "formula";
-
             // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                PoolEnableAutoScaleParameter,
+                PoolEnableAutoScaleOptions,
+                AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>();
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -74,24 +76,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             string formula = "$TargetDedicated=2";
+            TimeSpan? interval = TimeSpan.FromMinutes(6);
             string requestFormula = null;
+            TimeSpan? requestInterval = null;
 
             cmdlet.Id = "testPool";
             cmdlet.AutoScaleFormula = formula;
+            cmdlet.AutoScaleEvaluationInterval = interval;
 
             // Don't go to the service on an Enable AutoScale call
-            Action<BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>> extractFormulaAction =
+            Action<BatchRequest<PoolEnableAutoScaleParameter, PoolEnableAutoScaleOptions, AzureOperationHeaderResponse<PoolEnableAutoScaleHeaders>>> extractFormulaAction =
                 (request) =>
                 {
-                    requestFormula = request.TypedParameters.AutoScaleFormula;
+                    requestFormula = request.Parameters.AutoScaleFormula;
+                    requestInterval = request.Parameters.AutoScaleEvaluationInterval;
                 };
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the autoscale formula was properly set on the outgoing request
+            // Verify that the autoscale parameters were properly set on the outgoing request
             Assert.Equal(formula, requestFormula);
+            Assert.Equal(interval, requestInterval);
         }
     }
 }

@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
-using Newtonsoft.Json;
+using System.Management.Automation;
+using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.UpdateVariableValue, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The encrypted property of the variable.")]
         [ValidateNotNull]
         public bool Encrypted { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the variable description.
         /// </summary>
@@ -74,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
             Variable ret;
             if (ParameterSetName == AutomationCmdletParameterSets.UpdateVariableValue)
-            { 
+            {
                 ret = this.AutomationClient.UpdateVariable(variable, VariableUpdateFields.OnlyValue);
             }
             else

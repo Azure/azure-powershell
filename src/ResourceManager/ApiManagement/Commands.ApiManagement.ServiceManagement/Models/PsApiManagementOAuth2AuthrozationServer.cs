@@ -12,10 +12,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System.Collections;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System.Collections;
-
     public class PsApiManagementOAuth2AuthrozationServer
     {
         public string ServerId { get; internal set; }

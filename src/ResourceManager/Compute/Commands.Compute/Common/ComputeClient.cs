@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Compute;
 using System;
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         public Action<string> ErrorLogger { get; set; }
 
         public ComputeClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.ClientFactory.CreateArmClient<ComputeManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

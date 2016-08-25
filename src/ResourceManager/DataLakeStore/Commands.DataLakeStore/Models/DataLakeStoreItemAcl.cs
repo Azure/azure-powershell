@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Hyak.Common;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -174,13 +174,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         .ToList();
 
                 toReturn.AddRange(from object entry in UserAces.Keys
-                    select string.Format("user:{0}:{1}", entry, UserAces[entry]));
+                                  select string.Format("user:{0}:{1}", entry, UserAces[entry]));
 
                 toReturn.AddRange(from object entry in DefaultUserAces.Keys
-                    select string.Format("default:user:{0}:{1}", entry, DefaultUserAces[entry]));
+                                  select string.Format("default:user:{0}:{1}", entry, DefaultUserAces[entry]));
 
                 toReturn.AddRange(from object entry in DefaultGroupAces.Keys
-                    select string.Format("default:group:{0}:{1}", entry, DefaultGroupAces[entry]));
+                                  select string.Format("default:group:{0}:{1}", entry, DefaultGroupAces[entry]));
 
                 if (!string.IsNullOrEmpty(MaskPermission))
                 {
@@ -229,13 +229,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         .ToList();
 
                 toReturn.AddRange(from object entry in UserAces.Keys
-                    select string.Format("user:{0}", entry));
+                                  select string.Format("user:{0}", entry));
 
                 toReturn.AddRange(from object entry in DefaultUserAces.Keys
-                    select string.Format("default:user:{0}", entry));
+                                  select string.Format("default:user:{0}", entry));
 
                 toReturn.AddRange(from object entry in DefaultGroupAces.Keys
-                    select string.Format("default:group:{0}", entry));
+                                  select string.Format("default:group:{0}", entry));
             }
 
             return string.Join(",", toReturn);

@@ -13,15 +13,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -55,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name)
+        public PSNetworkInterface GetNetworkInterface(string resourceGroupName, string name, string expandResource = null)
         {
-            var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name);
+            var nic = this.NetworkInterfaceClient.Get(resourceGroupName, name, expandResource);
 
             var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
@@ -67,9 +65,9 @@ namespace Microsoft.Azure.Commands.Network
             return psNetworkInterface;
         }
 
-        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name)
+        public PSNetworkInterface GetScaleSetNetworkInterface(string resourceGroupName, string scaleSetName, string vmIndex, string name, string expandResource = null)
         {
-            var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name);
+            var nic = this.NetworkInterfaceClient.GetVirtualMachineScaleSetNetworkInterface(resourceGroupName, scaleSetName, vmIndex, name, expandResource);
 
             var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
@@ -89,8 +87,9 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ipconfig.LoadBalancerBackendAddressPools = ipconfig.LoadBalancerBackendAddressPools ?? new List<PSBackendAddressPool>();
                 ipconfig.LoadBalancerInboundNatRules = ipconfig.LoadBalancerInboundNatRules ?? new List<PSInboundNatRule>();
+                ipconfig.ApplicationGatewayBackendAddressPools = ipconfig.ApplicationGatewayBackendAddressPools ?? new List<PSApplicationGatewayBackendAddressPool>();
             }
-            
+
             return psNic;
         }
     }

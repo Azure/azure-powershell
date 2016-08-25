@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Customer AS number")]
         public UInt32 CustomerAsn { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Peer Asn")]
         public UInt32? PeerAsn { get; set; }
 
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
         [ValidateNotNullOrEmpty]
         public string SharedKey { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Vlan Id")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Vlan Id")]
         public UInt32? VlanId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Microsoft, Public or Private")]

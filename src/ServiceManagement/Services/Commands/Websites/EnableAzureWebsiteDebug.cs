@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The visual studio version.")]
-        public RemoteDebuggingVersion Version { get; set; }
+        public string Version { get; set; }
 
         public override void ExecuteCmdlet()
         {

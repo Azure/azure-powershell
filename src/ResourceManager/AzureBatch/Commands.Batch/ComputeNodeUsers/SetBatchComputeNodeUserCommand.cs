@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Batch.Models;
+using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, 
+        [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "The id of the compute node containing the user account to update.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, 
+        [Parameter(Position = 2, Mandatory = true,
             HelpMessage = "The name of the user account to update.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

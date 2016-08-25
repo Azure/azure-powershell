@@ -15,9 +15,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSProbe : PSChildResource
     {
@@ -46,6 +45,21 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string LoadBalancingRulesText
         {
             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializePort()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeIntervalInSeconds()
+        {
+            return !string.IsNullOrEmpty(this.Name);
+        }
+
+        public bool ShouldSerializeNumberOfProbes()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

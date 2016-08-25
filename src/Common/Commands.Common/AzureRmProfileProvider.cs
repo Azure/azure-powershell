@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -43,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public void SetTokenCacheForProfile(AzureRMProfile profile)
         {
-            
+
         }
 
         public void ResetDefaultProfile()

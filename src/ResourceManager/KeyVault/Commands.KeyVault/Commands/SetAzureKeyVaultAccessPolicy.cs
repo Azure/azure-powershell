@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
         [ValidateSet("get", "list", "set", "delete", "all")]
         public string[] PermissionsToSecrets { get; set; }
-        
+
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
@@ -150,6 +150,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, enables secrets to be retrieved from this key vault by Azure Disk Encryption.")]
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
+        /// <summary>
+        /// Flag for bypassing object ID validation or not
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByObjectId,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether the object ID needs to be validated or not.")]
+        public SwitchParameter BypassObjectIdValidation { get; set; }
+
         [Parameter(Mandatory = false,
            HelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns the updated key vault object.")]
         public SwitchParameter PassThru { get; set; }
@@ -164,11 +173,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new ArgumentException(PSKeyVaultProperties.Resources.VaultPermissionFlagMissing);
             }
 
-            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;           
+            ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
             PSKeyVaultModels.PSVault vault = null;
 
             // Get the vault to be updated
-            if (!string.IsNullOrWhiteSpace(ResourceGroupName))                
+            if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                 vault = KeyVaultManagementClient.GetVault(
                                                    VaultName,
                                                    ResourceGroupName);
@@ -179,16 +188,20 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             // Update vault policies
             PSKeyVaultModels.PSVaultAccessPolicy[] updatedListOfAccessPolicies = vault.AccessPolicies;
-            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != null && ObjectId != Guid.Empty))
+            if (!string.IsNullOrEmpty(UserPrincipalName) || !string.IsNullOrEmpty(ServicePrincipalName) || (ObjectId != Guid.Empty))
             {
-                Guid objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                Guid objId = this.ObjectId;
+                if (!this.BypassObjectIdValidation.IsPresent)
+                {
+                    objId = GetObjectId(this.ObjectId, this.UserPrincipalName, this.ServicePrincipalName);
+                }
 
                 if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
 
                 //Both arrays cannot be null
                 if (PermissionsToKeys == null && PermissionsToSecrets == null)
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);                
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
                 else
                 {
                     //Validate 
@@ -206,7 +219,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         existingPolicy.PermissionsToKeys.ToArray() : null);
 
                     var secrets = PermissionsToSecrets ?? (existingPolicy != null && existingPolicy.PermissionsToSecrets != null ?
-                        existingPolicy.PermissionsToSecrets.ToArray() : null);                    
+                        existingPolicy.PermissionsToSecrets.ToArray() : null);
 
                     //Remove old policies for this policy identity and add a new one with the right permissions, iff there were some non-empty permissions
                     updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => !MatchVaultAccessPolicyIdentity(ap, objId, this.ApplicationId)).ToArray();
@@ -234,7 +247,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             return ap.ApplicationId == applicationId && ap.ObjectId == objectId;
         }
-       
+
         private bool IsMeaningfulPermissionSet(string[] perms)
         {
             if (perms == null || perms.Length == 0)

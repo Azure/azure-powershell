@@ -13,14 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
     public class MockAccessTokenProvider : ITokenProvider
     {
+        public AdalConfiguration AdalConfiguration { get; set; }
+
         private readonly IAccessToken accessToken;
 
         public MockAccessTokenProvider(string token)
@@ -39,11 +41,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
             AzureAccount.AccountType credentialType)
         {
+            AdalConfiguration = config;
             return this.accessToken;
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, AzureAccount.AccountType credentialType)
         {
+            AdalConfiguration = config;
             return this.accessToken;
         }
     }

@@ -15,10 +15,16 @@
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-
+    using Xunit.Abstractions;
     public class EndpointTests
     {
+        public EndpointTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddEndpoint()
@@ -82,28 +88,28 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest("Test-RemoveNonExistingEndpointFromProfile");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpoint");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpoint()
         {
             TestController.NewInstance.RunPowerShellTest("Test-DisableEndpoint");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableEndpointUsingPiping()
         {
             TestController.NewInstance.RunPowerShellTest("Test-EnableEndpointUsingPiping");
         }
 
-        [Fact(Skip = "Bug")]
+        [Fact(Skip = "TFS#5185296")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEndpointUsingPiping()
         {

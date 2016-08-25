@@ -15,13 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Properties;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
         /// </summary>
         /// <param name="context">The Azure context instance</param>
         public TagsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -64,18 +63,18 @@ namespace Microsoft.Azure.Commands.Tags.Model
 
         public List<PSTag> ListTags()
         {
-            TagsListResult result = ResourceManagementClient.Tags.List();
+            var result = ResourceManagementClient.Tags.List();
             List<PSTag> tags = new List<PSTag>();
 
             do
             {
-                result.Tags.Where(t => !t.Name.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
+                result.Where(t => !t.TagName.StartsWith(ExecludedTagPrefix)).ForEach(t => tags.Add(t.ToPSTag()));
 
-                if (!string.IsNullOrEmpty(result.NextLink))
+                if (!string.IsNullOrEmpty(result.NextPageLink))
                 {
-                    result = ResourceManagementClient.Tags.ListNext(result.NextLink);
+                    result = ResourceManagementClient.Tags.ListNext(result.NextPageLink);
                 }
-            } while (!string.IsNullOrEmpty(result.NextLink));
+            } while (!string.IsNullOrEmpty(result.NextPageLink));
 
             return tags;
         }

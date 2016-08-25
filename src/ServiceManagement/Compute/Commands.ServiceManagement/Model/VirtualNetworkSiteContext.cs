@@ -37,6 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 
         public string Label { get; set; }
 
+        public string MigrationState { get; set; }
+
         public string Name { get; set; }
 
         public string State { get; set; }

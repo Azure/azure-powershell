@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.StreamAnalytics.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 }
             }
 
-            string propertiesToExpand = "inputs,transformation,outputs";
+            string propertiesToExpand = "inputs,transformation,outputs,functions";
             if (NoExpand.IsPresent)
             {
                 propertiesToExpand = string.Empty;

@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Linq;
     using System.Text;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Class for building and parsing resource Ids.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="resourceType">The resource type string in the format: '{providerName}/{typeName}'</param>
         /// <param name="resourceName">The resource name in the format: '{resourceName}'</param>
         /// <returns></returns>
-        public static  string GetResourceId(Guid subscriptionId, string resourceGroupName, string parentResource, string resourceType, string resourceName)
+        public static string GetResourceId(Guid subscriptionId, string resourceGroupName, string parentResource, string resourceType, string resourceName)
         {
             var provider = ResourceIdUtility.GetProviderFromLegacyResourceTypeString(resourceType);
             resourceType = ResourceIdUtility.GetTypeFromLegacyResourceTypeString(resourceType);
@@ -115,10 +115,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var parameters = new[]
             {
                 subscriptionId.ToString(),
-                resourceGroupName, 
-                provider, 
+                resourceGroupName,
+                provider,
                 parentResource.Trim('/'),
-                resourceType.Trim('/'), 
+                resourceType.Trim('/'),
                 resourceName.Trim('/'),
             };
 
@@ -325,7 +325,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             var segmentString = segments.Skip(1)
                 .TakeWhile(segment => !segment.EqualsInsensitively(Constants.Providers))
-                .Where((segment, index) => getResourceName ? index%2 != 0 : index%2 == 0)
+                .Where((segment, index) => getResourceName ? index % 2 != 0 : index % 2 == 0)
                 .ConcatStrings("/");
 
             return getResourceName
@@ -370,8 +370,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 ? resourceId.LastIndexOf(segment, StringComparison.InvariantCultureIgnoreCase)
                 : resourceId.IndexOf(segment, StringComparison.InvariantCultureIgnoreCase);
 
-            return index < 0 
-                ? null 
+            return index < 0
+                ? null
                 : resourceId.Substring(index + segment.Length);
         }
 

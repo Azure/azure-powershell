@@ -48,5 +48,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
         public string SubnetId { get; set; }
         
         public string EnableBgp { get; set; }
+
+        public uint Asn { get; set; }
+
+        public string BgpPeeringAddress { get; set; }
+
+        public int PeerWeight { get; set; }
     }
 }

@@ -12,60 +12,57 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public BatchAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-GetNonExistingBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-CreatesNewBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateExistingBatchAccount()
-        {
-            BatchController.NewInstance.RunPsTest("Test-CreateExistingBatchAccount");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdatesExistingBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-UpdatesExistingBatchAccount");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBatchAccountsUnderResourceGroups()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchAccountsUnderResourceGroups");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAndRemoveBatchAccountViaPiping()
         {
             BatchController.NewInstance.RunPsTest("Test-CreateAndRemoveBatchAccountViaPiping");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBatchAccountKeys()
         {
             BatchController.NewInstance.RunPsTest("Test-BatchAccountKeys");
+        }
+
+        [Fact]
+        public void TestListNodeAgentSkus()
+        {
+            BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
         }
     }
 }

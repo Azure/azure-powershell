@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
 
@@ -72,18 +71,21 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var avSetParams = new AvailabilitySet
                 {
-                    Name = this.Name,
                     Location = this.Location,
                     PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
                     PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
-                var result = this.AvailabilitySetClient.CreateOrUpdate(
+                var result = this.AvailabilitySetClient.CreateOrUpdateWithHttpMessagesAsync(
                     this.ResourceGroupName,
-                    avSetParams);
+                    this.Name,
+                    avSetParams).GetAwaiter().GetResult();
 
-                var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-                psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
+                var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                if (result.Body != null)
+                {
+                    psResult = Mapper.Map(result.Body, psResult);
+                }
                 WriteObject(psResult);
             });
         }

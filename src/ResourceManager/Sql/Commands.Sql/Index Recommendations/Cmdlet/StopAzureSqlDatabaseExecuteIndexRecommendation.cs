@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Model;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
             {
                 recommendation.State = IndexState.Active;
                 return recommendation;
-            } 
+            }
             else if (recommendation.State == IndexState.PendingRevert)
             {
                 recommendation.State = IndexState.RevertCanceled;

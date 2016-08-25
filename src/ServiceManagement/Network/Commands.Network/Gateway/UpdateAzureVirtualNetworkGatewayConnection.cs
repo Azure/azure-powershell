@@ -54,9 +54,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
             set;
         }
 
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Whether to establish a BGP session over this connection")]
+        public bool EnableBgp
+        {
+            get;
+            set;
+        }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.UpdateVirtualNetworkGatewayConnection(GatewayId, ConnectedEntityId, RoutingWeight, SharedKey));
+            WriteObject(Client.UpdateVirtualNetworkGatewayConnection(GatewayId, ConnectedEntityId, RoutingWeight, SharedKey, EnableBgp));
         }
     }
 }

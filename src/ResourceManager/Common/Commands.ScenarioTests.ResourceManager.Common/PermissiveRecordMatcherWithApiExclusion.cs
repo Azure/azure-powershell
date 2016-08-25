@@ -12,11 +12,12 @@
 // limitations under the License. 
 // ---------------------------------------------------------------------------------- 
 
+using Microsoft.Azure.Test.HttpRecorder;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -24,8 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     // If alternate api version is provided, uses that to match records else removes the api-version matching.
     public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
-        private bool _ignoreGenericResource;
-        private Dictionary<string, string> _providersToIgnore;
+        protected bool _ignoreGenericResource;
+        protected Dictionary<string, string> _providersToIgnore;
+        protected Dictionary<string, string> _userAgentsToIgnore;
 
         public PermissiveRecordMatcherWithApiExclusion(bool ignoreResourcesClient, Dictionary<string, string> providers)
         {
@@ -33,7 +35,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             _providersToIgnore = providers;
         }
 
-        public string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
+        public PermissiveRecordMatcherWithApiExclusion(
+            bool ignoreResourcesClient,
+            Dictionary<string, string> providers,
+            Dictionary<string, string> userAgents)
+        {
+            _ignoreGenericResource = ignoreResourcesClient;
+            _providersToIgnore = providers;
+            _userAgentsToIgnore = userAgents;
+        }
+
+        public virtual string GetMatchingKey(System.Net.Http.HttpRequestMessage request)
         {
             var path = request.RequestUri.PathAndQuery;
             if (path.Contains("?&"))
@@ -46,12 +58,27 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 path = RemoveOrReplaceApiVersion(path, version);
             }
+            else if (_userAgentsToIgnore != null && _userAgentsToIgnore.Any())
+            {
+                var agent = request.Headers.FirstOrDefault(h => h.Key.Equals("User-Agent"));
+                if (agent.Key != null)
+                {
+                    foreach (var userAgnet in _userAgentsToIgnore)
+                    {
+                        if (agent.Value.Any(v => v.StartsWith(userAgnet.Key, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            path = RemoveOrReplaceApiVersion(path, userAgnet.Value);
+                            break;
+                        }
+                    }
+                }
+            }
 
             var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
             return string.Format("{0} {1}", request.Method, encodedPath);
         }
 
-        public string GetMatchingKey(RecordEntry recordEntry)
+        public virtual string GetMatchingKey(RecordEntry recordEntry)
         {
             var encodedPath = recordEntry.EncodedRequestUri;
             var path = recordEntry.RequestUri;
@@ -77,9 +104,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
         }
 
-        private bool ContainsIgnoredProvider(string requestUri, out string version)
+        protected bool ContainsIgnoredProvider(string requestUri, out string version)
         {
-            if (_ignoreGenericResource && !requestUri.Contains("providers"))
+            if (_ignoreGenericResource &&
+                !requestUri.Contains("providers") &&
+                !requestUri.StartsWith("/certificates?", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/pools", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobs", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.StartsWith("/jobschedules", StringComparison.InvariantCultureIgnoreCase) &&
+                !requestUri.Contains("/applications?") &&
+                !requestUri.Contains("/servicePrincipals?") &&
+                !requestUri.StartsWith("/webhdfs/v1/?aclspec", StringComparison.InvariantCultureIgnoreCase))
             {
                 version = String.Empty;
                 return true;
@@ -100,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return false;
         }
 
-        private string RemoveOrReplaceApiVersion(string requestUri, string version)
+        protected string RemoveOrReplaceApiVersion(string requestUri, string version)
         {
             if (!string.IsNullOrWhiteSpace(version))
             {
@@ -108,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else
             {
-                var result= Regex.Replace(requestUri, @"&api-version=[^&]+", string.Empty);
+                var result = Regex.Replace(requestUri, @"&api-version=[^&]+", string.Empty);
                 return Regex.Replace(result, @"\?api-version=[^&]+[&]*", "?");
             }
         }

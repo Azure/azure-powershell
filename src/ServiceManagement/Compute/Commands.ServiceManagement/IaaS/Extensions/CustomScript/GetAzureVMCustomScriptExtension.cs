@@ -14,6 +14,7 @@
 
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Newtonsoft.Json;
 
@@ -21,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     [Cmdlet(
         VerbsCommon.Get,
-        VirtualMachineCustomScriptExtensionNoun,
+        ProfileNouns.VirtualMachineCustomScriptExtension,
         DefaultParameterSetName = GetCustomScriptExtensionParamSetName),
     OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]

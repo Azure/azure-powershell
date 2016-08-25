@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Security.Cryptography;
 using Microsoft.Azure.Batch;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Batch.Properties;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class DownloadRemoteDesktopProtocolFileOptions : ComputeNodeOperationParameters
     {
-        public DownloadRemoteDesktopProtocolFileOptions(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode, string destinationPath, 
+        public DownloadRemoteDesktopProtocolFileOptions(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode, string destinationPath,
             Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(destinationPath) && stream == null)

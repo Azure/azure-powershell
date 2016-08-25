@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Net;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.WindowsAzure;
-using Hyak.Common;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.DataFactoryName,
                             parameters.Name,
                             parameters.RawJsonContent))
-                    {DataFactoryName = parameters.DataFactoryName, ResourceGroupName = parameters.ResourceGroupName};
+                    { DataFactoryName = parameters.DataFactoryName, ResourceGroupName = parameters.ResourceGroupName };
 
                 if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
                 {
@@ -109,10 +108,10 @@ namespace Microsoft.Azure.Commands.DataFactories
             var response = DataPipelineManagementClient.Hubs.Get(resourceGroupName, dataFactoryName, hubName);
 
             return new PSHub(response.Hub)
-                       {
-                           ResourceGroupName = resourceGroupName,
-                           DataFactoryName = dataFactoryName
-                       };
+            {
+                ResourceGroupName = resourceGroupName,
+                DataFactoryName = dataFactoryName
+            };
         }
 
         public virtual List<PSHub> ListHubs(HubFilterOptions filterOptions)
@@ -136,10 +135,10 @@ namespace Microsoft.Azure.Commands.DataFactories
                 foreach (var hub in response.Hubs)
                 {
                     hubs.Add(new PSHub(hub)
-                                 {
-                                     ResourceGroupName = filterOptions.ResourceGroupName,
-                                     DataFactoryName = filterOptions.DataFactoryName
-                                 });
+                    {
+                        ResourceGroupName = filterOptions.ResourceGroupName,
+                        DataFactoryName = filterOptions.DataFactoryName
+                    });
                 }
             }
 

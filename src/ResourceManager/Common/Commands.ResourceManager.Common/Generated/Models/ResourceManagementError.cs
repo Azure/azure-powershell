@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceManagementError
     {
         private string _code;
-        
+
         /// <summary>
         /// Required. Gets or sets the error code returned from the server.
         /// </summary>
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._code; }
             set { this._code = value; }
         }
-        
+
         private string _message;
-        
+
         /// <summary>
         /// Required. Gets or sets the error message returned from the server.
         /// </summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._message; }
             set { this._message = value; }
         }
-        
+
         private string _target;
-        
+
         /// <summary>
         /// Optional. Gets or sets the target of the error.
         /// </summary>
@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._target; }
             set { this._target = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementError class.
         /// </summary>
         public ResourceManagementError()
         {
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementError class
         /// with required arguments.

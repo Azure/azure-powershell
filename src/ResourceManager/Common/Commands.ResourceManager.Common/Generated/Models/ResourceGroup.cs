@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Collections.Generic;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceGroup
     {
         private string _location;
-        
+
         /// <summary>
         /// Required. Gets or sets the location of the resource group. It
         /// cannot be changed after the resource group has been created. Has
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._location; }
             set { this._location = value; }
         }
-        
+
         private string _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource group properties.
         /// </summary>
@@ -54,9 +54,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         private string _provisioningState;
-        
+
         /// <summary>
         /// Optional. Gets or sets resource group provisioning state.
         /// </summary>
@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provisioningState; }
             set { this._provisioningState = value; }
         }
-        
+
         private IDictionary<string, string> _tags;
-        
+
         /// <summary>
         /// Optional. Gets or sets the tags attached to the resource group.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._tags; }
             set { this._tags = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroup class.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         {
             this.Tags = new LazyDictionary<string, string>();
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroup class with required
         /// arguments.

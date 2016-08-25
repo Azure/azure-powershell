@@ -19,8 +19,9 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
 {
@@ -41,16 +42,23 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
             switch (mode)
             {
                 case AzureModule.AzureProfile:
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
+                    modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
                     modules.Add(@"ServiceManagement\Azure\Azure.psd1");
-                    modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
                     break;
 
                 case AzureModule.AzureServiceManagement:
-                   modules.Add(@"ServiceManagement\Azure\Azure.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"Storage\Azure.Storage\Azure.Storage.psd1");
+                    modules.Add(@"ServiceManagement\Azure\Azure.psd1");
                     break;
 
                 case AzureModule.AzureResourceManager:
-                   modules.Add(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+                    modules.Add(@"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1");
                     break;
 
                 default:
@@ -86,25 +94,30 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.CredentialTests
                 }
                 catch (Exception psException)
                 {
-                    powershell.LogPowerShellException(psException);
+                    powershell.LogPowerShellException(psException, null);
                     throw;
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output);
+                    powershell.LogPowerShellResults(output, null);
                 }
             }
         }
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
-            powershell.AddScript(string.Format("cd \"{0}\"", Environment.CurrentDirectory));
+            powershell.AddScript("$error.clear()");
+            powershell.AddScript(string.Format("cd \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
 
             foreach (string moduleName in modules)
             {
-                powershell.AddScript(string.Format("Import-Module \".\\{0}\"", moduleName));
+                powershell.AddScript(string.Format("Import-Module \"{0}\"",
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, moduleName)));
             }
 
+            powershell.AddScript(
+                string.Format("set-location \"{0}\"", AppDomain.CurrentDomain.BaseDirectory));
+            powershell.AddScript(string.Format(@"$TestOutputRoot='{0}'", AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
             powershell.AddScript("$ErrorActionPreference='Stop'");

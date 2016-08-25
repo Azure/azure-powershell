@@ -12,22 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using TestBase = Microsoft.Azure.Test.TestBase;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchController
     {
+        internal static string BatchAccount, BatchAccountKey, BatchAccountUrl, BatchResourceGroup;
+
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
@@ -61,7 +68,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -75,26 +82,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
-            using (UndoContext context = UndoContext.Current)
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
                 this.csmTestFactory = SetupCSMTestEnvironmentFactory();
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     "Microsoft.Azure.Commands.Batch.Test.dll",
-                    helper.RMProfileModule, 
+                    helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Batch.psd1"));
+                    helper.GetRMModulePath("AzureRM.Batch.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -131,12 +144,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return factory;
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
             ResourceManagementClient = GetResourceManagementClient();
-            BatchManagementClient = GetBatchManagementClient();
+            BatchManagementClient = GetBatchManagementClient(context);
 
             helper.SetupManagementClients(AuthorizationManagementClient,
                                           GalleryClient,
@@ -159,9 +172,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
-        private BatchManagementClient GetBatchManagementClient()
+        private BatchManagementClient GetBatchManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<BatchManagementClient>(this.csmTestFactory);
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                BatchAccount = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
+                BatchAccountKey = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountKey);
+                BatchAccountUrl = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountEndpoint);
+                BatchResourceGroup = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountResourceGroup);
+
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName] = BatchAccount;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountUrl;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup] = BatchResourceGroup;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                BatchAccount = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName];
+                BatchAccountKey = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==";
+                BatchAccountUrl = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint];
+
+                if (HttpMockServer.Variables.ContainsKey(ScenarioTestHelpers.BatchAccountResourceGroup))
+                {
+                    BatchResourceGroup = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup];
+                }
+            }
+
+            return context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

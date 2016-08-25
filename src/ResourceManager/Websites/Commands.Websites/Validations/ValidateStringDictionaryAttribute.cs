@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections;
-using System.Linq;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Validations
 {
@@ -33,13 +29,13 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
 
             foreach (var key in hashtable.Keys)
             {
-                if (key.GetType() != typeof (string))
+                if (key.GetType() != typeof(string))
                 {
                     throw new ValidationMetadataException(string.Format("Key '{0}' should be of type string instead of {1}", key, key.GetType()));
                 }
 
                 var value = hashtable[key];
-                if (value.GetType() != typeof (string))
+                if (value.GetType() != typeof(string))
                 {
                     throw new ValidationMetadataException(string.Format("Value '{0}' should be of type string instead of {1}", value, value.GetType()));
                 }

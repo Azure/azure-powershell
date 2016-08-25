@@ -473,14 +473,64 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>No diagnostics extension found under resource group '{0}', virtual machine '{1}'.</value>
     <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
-  <data name="DiagnosticsExtensionFailedToListKeyForNoStorageAccount" xml:space="preserve">
-    <value>Failed to list storage account key. Can't find storage account "{0}" under current subscription.</value>
-    <comment>{0} = storage account name</comment>
+  <data name="DiagnosticsExtensionNullStorageAccountKey" xml:space="preserve">
+    <value>Storage account key is not specified or can not be retrieved automatically.</value>
   </data>
-  <data name="DiagnosticsExtensionStorageAccountNameNotDefined" xml:space="preserve">
+  <data name="DiagnosticsExtensionNullStorageAccountName" xml:space="preserve">
     <value>Storage account name is not defined.</value>
   </data>
-  <data name="DiagnosticsExtensionStorageAccountEndpointNotDefined" xml:space="preserve">
-    <value>Storage account endpoint is not defined.</value>
+  <data name="DiagnosticsExtensionNullStorageAccountEndpoint" xml:space="preserve">
+    <value>Storage account endpoint is not defined or can not be retrieved automatically.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInJson" xml:space="preserve">
+    <value>No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionInvalidConfigFileFormat" xml:space="preserve">
+    <value>Invalid diagnostics configuration file. It should be in xml or json format.</value>
+  </data>
+  <data name="DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined" xml:space="preserve">
+    <value>No DiagnosticMonitorConfiguration element defined in the configuration file.</value>
+  </data>
+  <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
+    <value>The resourceId defined in the config file does not match the actual resource's id.</value>
+  </data>
+  <data name="DiagnosticsExtensionIaaSConfigElementNotDefinedInXml" xml:space="preserve">
+    <value>No WadCfg or WadCfgBlob element defined in the xml configuration file.</value>
+  </data>
+  <data name="AEMExtensionNotFound" xml:space="preserve">
+    <value>No Azure Enhanced Monitoring extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
+  </data>
+  <data name="DisableAzureDiskEncryptionCaption" xml:space="preserve">
+    <value>Disable AzureDiskEncryption on the VM</value>
+  </data>
+  <data name="DisableAzureDiskEncryptionConfirmation" xml:space="preserve">
+    <value>This cmdlet disables encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?</value>
+  </data>
+  <data name="ErrorDuringChoosingStandardStorageAccount" xml:space="preserve">
+    <value>Error occurred when choosing existing standard storage account for boot diagnostics: {0}</value>
+    <comment>{0} = an error message</comment>
+  </data>
+  <data name="DisableDiskEncryptionAction" xml:space="preserve">
+    <value>Disable disk encryption</value>
+  </data>
+  <data name="EnableDiskEncryptionAction" xml:space="preserve">
+    <value>Enable disk encryption</value>
+  </data>
+  <data name="RemoveAccessExtensionAction" xml:space="preserve">
+    <value>Remove VM access extension</value>
+  </data>
+  <data name="RemoveDiskEncryptionAction" xml:space="preserve">
+    <value>Remove disk encryption</value>
+  </data>
+  <data name="RemoveExtensionAction" xml:space="preserve">
+    <value>Remove '{0}' extension</value>
+  </data>
+  <data name="RemoveScriptExtensionAction" xml:space="preserve">
+    <value>Remove custom script extension</value>
+  </data>
+  <data name="ChefExtensionNotFound" xml:space="preserve">
+    <value>No chef extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
 </root>

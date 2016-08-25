@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -93,13 +93,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         private string CreateFileLocator(ParentLocator locator, byte[] fileLocator)
         {
-            switch(locator.PlatformCode)
+            switch (locator.PlatformCode)
             {
                 case PlatformCode.None:
                     return String.Empty;
                 case PlatformCode.Wi2R:
                 case PlatformCode.Wi2K:
-                    throw new VhdParsingException(String.Format("Deprecated PlatformCode:{0}",locator.PlatformCode));
+                    throw new VhdParsingException(String.Format("Deprecated PlatformCode:{0}", locator.PlatformCode));
                 case PlatformCode.W2Ru:
                     //TODO: Add differencing disks path name, this is relative path
                     return Encoding.Unicode.GetString(fileLocator);
@@ -122,13 +122,13 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private string EndReadFileLocator(IAsyncResult result)
         {
             var fileLocator = dataReader.EndReadBytes(result);
-            var locator = (ParentLocator) result.AsyncState;
+            var locator = (ParentLocator)result.AsyncState;
             return CreateFileLocator(locator, fileLocator);
         }
 
         private PlatformCode ReadPlaformCode(VhdPropertyAttribute attribute)
         {
-            return (PlatformCode) dataReader.ReadUInt32(offset + attribute.Offset);
+            return (PlatformCode)dataReader.ReadUInt32(offset + attribute.Offset);
         }
 
         private IAsyncResult BeginReadPlatformCode(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
@@ -139,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private PlatformCode EndReadPlatformCode(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt32(result);
-            return (PlatformCode) value;
+            return (PlatformCode)value;
         }
 
         private int ReadPlatformDataSpace(VhdPropertyAttribute attribute)
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private int EndReadPlatformDataSpace(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt32(result);
-            return (int) value;
+            return (int)value;
         }
 
         private int ReadPlatformDataLength(VhdPropertyAttribute attribute)
@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private int EndReadPlatformDataLength(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt32(result);
-            return (int) value;
+            return (int)value;
         }
 
         private int ReadReserved(VhdPropertyAttribute attribute)
@@ -187,12 +187,12 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private int EndReadReserved(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt32(result);
-            return (int) value;
+            return (int)value;
         }
 
         private long ReadPlatformDataOffset(VhdPropertyAttribute attribute)
         {
-            return (long) dataReader.ReadUInt64(offset + attribute.Offset);
+            return (long)dataReader.ReadUInt64(offset + attribute.Offset);
         }
 
         private IAsyncResult BeginReadPlatformDataOffset(VhdPropertyAttribute attribute, AsyncCallback callback, object state)
@@ -203,7 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
         private long EndReadPlatformDataOffset(IAsyncResult result)
         {
             var value = dataReader.EndReadUInt64(result);
-            return (long) value;
+            return (long)value;
         }
 
     }

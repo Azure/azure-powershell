@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Model;
 using Microsoft.Azure.Commands.Sql.FirewallRule.Services;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
 {
@@ -86,13 +86,13 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         public AzureSqlServerFirewallRuleModel UpsertFirewallRule(AzureSqlServerFirewallRuleModel model)
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.FirewallRuleName, Util.GenerateTracingId(), new FirewallRuleCreateOrUpdateParameters()
+            {
+                Properties = new FirewallRuleCreateOrUpdateProperties()
                 {
-                    Properties = new FirewallRuleCreateOrUpdateProperties()
-                    {
-                        EndIpAddress= model.EndIpAddress,
-                        StartIpAddress = model.StartIpAddress
-                    }
-                });
+                    EndIpAddress = model.EndIpAddress,
+                    StartIpAddress = model.StartIpAddress
+                }
+            });
 
             return CreateFirewallRuleModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }

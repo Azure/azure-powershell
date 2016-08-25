@@ -29,5 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         public const string ExtensionNameHelpMessage = "Extension Name";
         public const string VersionHelpMessage = "Extension Version";
         public const string ExtensionIdHelpMessage = "Extension ID";
+        public const string ExtensionStateHelpMessage = "Extension State.  It is either Enable, Disable or Uninstall";
     }
 }

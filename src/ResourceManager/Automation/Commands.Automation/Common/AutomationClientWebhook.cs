@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
     using System.Collections;
     using System.Linq;
 
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
     public partial class AutomationClient : IAutomationClient
     {
         public Model.Webhook CreateWebhook(
@@ -45,16 +43,16 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 var rbAssociationProperty = new RunbookAssociationProperty { Name = runbookName };
                 var createOrUpdateProperties = new WebhookCreateOrUpdateProperties
-                                                   {
-                                                       IsEnabled = isEnabled,
-                                                       ExpiryTime = expiryTime,
-                                                       Runbook = rbAssociationProperty,
-                                                       Uri =
+                {
+                    IsEnabled = isEnabled,
+                    ExpiryTime = expiryTime,
+                    Runbook = rbAssociationProperty,
+                    Uri =
                                                            this.automationManagementClient
                                                            .Webhooks.GenerateUri(
                                                                resourceGroupName,
                                                                automationAccountName).Uri
-                                                   };
+                };
                 if (runbookParameters != null)
                 {
                     createOrUpdateProperties.Parameters = this.ProcessRunbookParameters(resourceGroupName, automationAccountName, runbookName, runbookParameters);

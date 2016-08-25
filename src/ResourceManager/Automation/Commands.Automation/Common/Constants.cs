@@ -63,6 +63,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const int JobSummaryLength = 80;
 
+        public const int MaxWaitSeconds = 10800;
+
         // The template file is a json
         public const string TemplateFile = @"https://eus2oaasibizamarketprod1.blob.core.windows.net/automationdscpreview/azuredeployV2.json";
 
@@ -79,6 +81,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string PowerShellWorkflow = "PowerShellWorkflow";
 
             public const string Graph = "Graph";
+
+            public const string GraphicalPowerShell = "GraphicalPowerShell";
+
+            public const string GraphicalPowerShellWorkflow = "GraphicalPowerShellWorkflow";
         }
 
         public static class SupportedFileExtensions

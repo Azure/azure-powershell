@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Insights
 {
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights
     public abstract class InsightsCmdletBase : AzureRMCmdlet
     {
         /// <summary>
-        /// Executes the Cmdlet. This is a callback function to simplify the execption handling
+        /// Executes the Cmdlet. This is a callback function to simplify the exception handling
         /// </summary>
         protected abstract void ProcessRecordInternal();
 

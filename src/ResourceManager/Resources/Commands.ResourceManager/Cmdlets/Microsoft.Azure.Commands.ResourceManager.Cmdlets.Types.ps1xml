@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+  <Type>
+    <Name>System.Management.Automation.PSCustomObject#DeploymentOperation</Name>
+    <Members>
+    </Members>
+  </Type>
+</Types>

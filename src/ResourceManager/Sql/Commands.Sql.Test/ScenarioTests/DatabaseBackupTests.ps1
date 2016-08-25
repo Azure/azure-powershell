@@ -53,3 +53,87 @@ function Test-ListDatabaseRestorePoints
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-RestoreGeoBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_georestored"
+
+	Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName
+}
+
+function Test-RestoreDeletedDatabaseBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$droppedDbName = "powershell_db_georestored"
+	$restoredDbName = "powershell_db_deleted"
+
+	Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+}
+
+function Test-RestorePointInTimeBackup
+{
+	# Setup
+	$location = "Southeast Asia"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_restored"
+
+	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
+}
+
+function Test-ServerBackupLongTermRetentionVault
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$vaultResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault"
+
+	# set
+	Set-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ResourceId $vaultResourceId
+	# get
+	$result = Get-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName
+	#verify
+	Assert-True { $result.RecoveryServicesVaultResourceId -eq $vaultResourceId }
+}
+
+function Test-DatabaseBackupLongTermRetentionPolicy
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$policyResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy"
+
+	# set
+	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State "Enabled" -ResourceId $policyResourceId
+	# get
+	$result = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	#verify
+	Assert-True { $result.RecoveryServicesBackupPolicyResourceId -eq $policyResourceId }
+}
+
+function Test-RestoreLongTermRetentionBackup
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_restored_ltr"
+	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
+
+    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+}

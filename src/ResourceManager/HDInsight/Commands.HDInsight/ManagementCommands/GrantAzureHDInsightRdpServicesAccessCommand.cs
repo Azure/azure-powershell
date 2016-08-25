@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-        
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
         public string ResourceGroupName { get; set; }
-        
+
         #endregion
 
         public override void ExecuteCmdlet()

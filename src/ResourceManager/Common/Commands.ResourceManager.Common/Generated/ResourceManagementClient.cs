@@ -19,6 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +28,13 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
     public partial class ResourceManagementClient : ServiceClient<ResourceManagementClient>, IResourceManagementClient
     {
         private string _apiVersion;
-        
+
         /// <summary>
         /// Gets the API version.
         /// </summary>
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._apiVersion; }
         }
-        
+
         private Uri _baseUri;
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._baseUri; }
         }
-        
+
         private SubscriptionCloudCredentials _credentials;
-        
+
         /// <summary>
         /// Gets subscription credentials which uniquely identify Microsoft
         /// Azure subscription. The subscription ID forms part of the URI for
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._credentials; }
         }
-        
+
         private int _longRunningOperationInitialTimeout;
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
             get { return this._longRunningOperationInitialTimeout; }
             set { this._longRunningOperationInitialTimeout = value; }
         }
-        
+
         private int _longRunningOperationRetryTimeout;
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
             get { return this._longRunningOperationRetryTimeout; }
             set { this._longRunningOperationRetryTimeout = value; }
         }
-        
+
         private IDeploymentOperationOperations _deploymentOperations;
-        
+
         /// <summary>
         /// Operations for managing deployment operations.
         /// </summary>
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._deploymentOperations; }
         }
-        
+
         private IDeploymentOperations _deployments;
-        
+
         /// <summary>
         /// Operations for managing deployments.
         /// </summary>
@@ -106,9 +106,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._deployments; }
         }
-        
+
         private IProviderOperations _providers;
-        
+
         /// <summary>
         /// Operations for managing providers.
         /// </summary>
@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._providers; }
         }
-        
+
         private IProviderOperationsMetadataOperations _providerOperationsMetadata;
-        
+
         /// <summary>
         /// Operations for getting provider operations metadata.
         /// </summary>
@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._providerOperationsMetadata; }
         }
-        
+
         private IResourceGroupOperations _resourceGroups;
-        
+
         /// <summary>
         /// Operations for managing resource groups.
         /// </summary>
@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._resourceGroups; }
         }
-        
+
         private IResourceOperations _resources;
-        
+
         /// <summary>
         /// Operations for managing resources.
         /// </summary>
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._resources; }
         }
-        
+
         private IResourceProviderOperationDetailsOperations _resourceProviderOperationDetails;
-        
+
         /// <summary>
         /// Operations for managing Resource provider operations.
         /// </summary>
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._resourceProviderOperationDetails; }
         }
-        
+
         private ITagOperations _tags;
-        
+
         /// <summary>
         /// Operations for managing tags.
         /// </summary>
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._tags; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -212,10 +212,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -233,10 +233,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -288,10 +288,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceManagementClient class.
         /// </summary>
@@ -312,10 +312,10 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Clones properties from current instance to another
         /// ResourceManagementClient instance
@@ -326,21 +326,21 @@ namespace Microsoft.Azure.Management.Internal.Resources
         protected override void Clone(ServiceClient<ResourceManagementClient> client)
         {
             base.Clone(client);
-            
+
             if (client is ResourceManagementClient)
             {
                 ResourceManagementClient clonedClient = ((ResourceManagementClient)client);
-                
+
                 clonedClient._credentials = this._credentials;
                 clonedClient._baseUri = this._baseUri;
                 clonedClient._apiVersion = this._apiVersion;
                 clonedClient._longRunningOperationInitialTimeout = this._longRunningOperationInitialTimeout;
                 clonedClient._longRunningOperationRetryTimeout = this._longRunningOperationRetryTimeout;
-                
+
                 clonedClient.Credentials.InitializeServiceClient(clonedClient);
             }
         }
-        
+
         /// <summary>
         /// The Get Operation Status operation returns the status of the
         /// specified operation. After calling an asynchronous operation, you
@@ -363,7 +363,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("operationStatusLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -374,12 +374,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("operationStatusLink", operationStatusLink);
                 TracingAdapter.Enter(invocationId, this, "GetLongRunningOperationStatusAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + operationStatusLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -387,14 +387,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
                 httpRequest.Headers.Add("x-ms-version", "2014-04-01-preview");
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     LongRunningOperationResponse result = null;
                     // Deserialize Response
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.Status = OperationStatus.Succeeded;
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

@@ -22,11 +22,11 @@
       <command:syntaxItem>
         <maml:name>Add-AzureRmAccount</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -69,11 +69,11 @@
           <command:parameterValue required="false" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -109,11 +109,11 @@
           <command:parameterValue required="false" variableLength="false">PSCredential</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-          <maml:name>Environment</maml:name>
+          <maml:name>EnvironmentName</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+            <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>SubscriptionId</maml:name>
@@ -172,13 +172,13 @@
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
-        <maml:name>Environment</maml:name>
+        <maml:name>EnvironmentName</maml:name>
         <maml:description>
-          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud. The default is AzureCloud.</maml:para>
+          <maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">AzureEnvironment</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>AzureEnvironment</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -773,8 +773,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx
     <command:details>
       <command:name>Disable-AzureRmDataCollection</command:name>
       <maml:description>
-        <maml:para>
-        </maml:para>
+        <maml:para>Opts out of collecting data to improve the AzurePowerShell cmdlets.  Data is not collected unless you explicitly opt in.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -784,70 +783,30 @@ Tenant: xxxx-xxxx-xxxx-xxxx
       <dev:version />
     </command:details>
     <maml:description>
+      <maml:para>
+        You can improve the experience of using the Microsoft Cloud and Azure PowerShell by opting in to data collection. Azure PowerShell does not collect data without your consent - you must explicitly opt in by executing Enable-AzureRmDataCollection, or by answering yes when Azure PowerShell prompts you about collecting data the first time you execute a cmdlet. Microsoft aggregates collected data to identify patterns of usage, to identify common issues and to improve the experience of using Azure PowerShell. Microsoft Azure PowerShell does not collect any private data, or any personally identifiable information. 
+      </maml:para>
+      <maml:para>
+       Run the Disable-AzureRMDataCollection cmdlet to disable data collection for the current user. This will prevent the current user from being prompted about data collection the first time cmdlets are executed. 
+      </maml:para>
+      <maml:para>
+       To enable data collection for the current user, run the Enable-AzureRmDataCollection cmdlet.
+      </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Disable-AzureRmDataCollection</maml:name>
       </command:syntaxItem>
     </command:syntax>
-    <command:parameters>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
+    <command:parameters/>
+    <command:inputTypes/>
+    <command:returnValues />
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <command:examples>
-      <command:example>
-        <maml:title> 1: </maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:remarks>
-          <maml:para>
-          </maml:para>
-          <maml:para />
-          <maml:para />
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
+    <command:examples />    
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Enable-AzureRmDataCollection</maml:linkText>
-        <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
@@ -855,81 +814,38 @@ Tenant: xxxx-xxxx-xxxx-xxxx
     <command:details>
       <command:name>Enable-AzureRmDataCollection</command:name>
       <maml:description>
-        <maml:para>
-        </maml:para>
+        <maml:para>Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets. Executing this cmdlet opts in to data collection for the current user on the current machine. No data is collected unless you explicitly opt in.</maml:para>
       </maml:description>
-      <maml:copyright>
-        <maml:para />
-      </maml:copyright>
+      <maml:copyright />
       <command:verb>Enable</command:verb>
       <command:noun>AzureRmDataCollection</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
+      <maml:para>
+        You can improve the experience of using the Microsoft Cloud and Azure PowerShell by opting in to data collection. Azure PowerShell does not collect data without your consent - you must explicitly opt in by executing Enable-AzureRmDataCollection, or by answering yes when Azure PowerShell prompts you about collecting data the first time you execute a cmdlet. Microsoft aggregates collected data to identify patterns of usage, to identify common issues and to improve the experience of using Azure PowerShell. Microsoft Azure PowerShell does not collect any private data, or any personally identifiable information.
+      </maml:para>
+      <maml:para>
+        Run the Enable-AzureRMDataCollection cmdlet to enable data collection for the current user on the current machine. This will prevent the current user from being prompted about data collection the first time cmdlets are executed.
+      </maml:para>
+      <maml:para>
+        To disable data collection for the current user, run the Disable-AzureRmDataCollection cmdlet.
+      </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Enable-AzureRmDataCollection</maml:name>
       </command:syntaxItem>
     </command:syntax>
-    <command:parameters>
-    </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-        </dev:type>
-        <maml:description>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <command:examples>
-      <command:example>
-        <maml:title> 1: </maml:title>
-        <maml:introduction>
-          <maml:para>
-          </maml:para>
-        </maml:introduction>
-        <dev:remarks>
-          <maml:para>
-          </maml:para>
-          <maml:para />
-          <maml:para />
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-    </command:examples>
+    <command:examples />
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>Disable-AzureRmDataCollection</maml:linkText>
-        <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>

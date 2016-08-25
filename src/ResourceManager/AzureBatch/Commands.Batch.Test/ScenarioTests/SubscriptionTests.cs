@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class SubscriptionTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetSubscriptionQuotas()

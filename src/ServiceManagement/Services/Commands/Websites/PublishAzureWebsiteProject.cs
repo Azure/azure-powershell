@@ -5,6 +5,7 @@ using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Common;
+using Microsoft.Web.Deployment;
 
 namespace Microsoft.WindowsAzure.Commands.Websites
 {
@@ -27,6 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [Parameter(ParameterSetName = "Package", Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The connection strings to use for the deployment.")]
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionString { get; set; }
+
+        [Parameter(ParameterSetName = "Package", Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The configuration tokens to use for the deployment.")]
+        [ValidateNotNullOrEmpty]
+        public string Tokens { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = "Package", HelpMessage = "The WebDeploy SetParameters.xml file to transform configuration within the package.")]
         public string SetParametersFile { get; set; }
@@ -83,11 +88,51 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                 }
             }
 
+            if (!string.IsNullOrEmpty(fullSetParametersFile) && !File.Exists(fullSetParametersFile))
+            {
+                if (File.Exists(Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile)))
+                {
+                    WriteVerbose("Setting path for Parameters file to local one to package: " + Path.Combine(Path.GetDirectoryName(fullPackage), fullSetParametersFile));
+                    fullSetParametersFile = Path.Combine(Path.GetDirectoryName(fullPackage),fullSetParametersFile);
+                }
+            }
+
+            // If tokens are passed in, update the parameters file if there is one
+            if (!string.IsNullOrEmpty(Tokens) && !string.IsNullOrEmpty(fullSetParametersFile))
+            {
+                // Convert tokens string to hashtable
+                string[] tokenSplit = Tokens.Split(';');
+
+                WriteVerbose(string.Format("Replacing tokens in {0}", fullSetParametersFile));
+                var fileContents = File.ReadAllText(fullSetParametersFile);
+
+                foreach (string pair in tokenSplit)
+                {
+                    string[] data = pair.Split('=');
+                    fileContents = fileContents.Replace(string.Format("__{0}__", data[0].Replace("\"", "")), data[1].Replace("\"", ""));
+                }
+
+                File.WriteAllText(fullSetParametersFile, fileContents);
+            }
+
             try
             {
                 // Publish the package.
-                WebsitesClient.PublishWebProject(Name, Slot, fullPackage, fullSetParametersFile, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
+                DeploymentChangeSummary changeSummary = WebsitesClient.PublishWebProject(Name, Slot, fullPackage, fullSetParametersFile, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
                 WriteVerbose(string.Format(Resources.CompletePublishingProjectTemplate, fullPackage));
+
+                if (changeSummary != null)
+                {
+                    WriteObject("Change Summary:");
+                    WriteObject(string.Format("Bytes Copied: {0}", changeSummary.BytesCopied.ToString()));
+                    WriteObject(string.Format("Files Added: {0}", changeSummary.ObjectsAdded.ToString()));
+                    WriteObject(string.Format("Files Updated: {0}", changeSummary.ObjectsUpdated.ToString()));
+                    WriteObject(string.Format("Files Deleted: {0}", changeSummary.ObjectsDeleted.ToString()));
+                    WriteObject(string.Format("Errors: {0}", changeSummary.Errors.ToString()));
+                    WriteObject(string.Format("Warnings: {0}", changeSummary.Warnings.ToString()));
+                    WriteObject(string.Format("Parameters Changed: {0}", changeSummary.ParameterChanges.ToString()));
+                    WriteObject(string.Format("Total No of Changes: {0}", changeSummary.TotalChanges.ToString()));
+                }
             }
             catch (Exception)
             {

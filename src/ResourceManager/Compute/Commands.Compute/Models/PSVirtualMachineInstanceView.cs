@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Models
@@ -26,27 +25,9 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
 
-        [JsonIgnore]
-        public string BootDiagnosticsText
-        {
-            get { return JsonConvert.SerializeObject(BootDiagnostics, Formatting.Indented); }
-        }
-
         public IList<DiskInstanceView> Disks { get; set; }
 
-        [JsonIgnore]
-        public string DisksText
-        {
-            get { return JsonConvert.SerializeObject(Disks, Formatting.Indented); }
-        }
-
         public IList<VirtualMachineExtensionInstanceView> Extensions { get; set; }
-
-        [JsonIgnore]
-        public string ExtensionsText
-        {
-            get { return JsonConvert.SerializeObject(Extensions, Formatting.Indented); }
-        }
 
         public int? PlatformFaultDomain { get; set; }
 
@@ -56,19 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public VirtualMachineAgentInstanceView VMAgent { get; set; }
 
-        [JsonIgnore]
-        public string VMAgentText
-        {
-            get { return JsonConvert.SerializeObject(VMAgent, Formatting.Indented); }
-        }
-
         public IList<InstanceViewStatus> Statuses { get; set; }
-
-        [JsonIgnore]
-        public string StatusesText
-        {
-            get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
-        }
     }
 
     public static class PSVirtualMachineInstanceViewExtension
@@ -88,15 +57,15 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 Statuses = virtualMachineInstanceView.Statuses,
                 PlatformFaultDomain = virtualMachineInstanceView.PlatformFaultDomain,
                 PlatformUpdateDomain = virtualMachineInstanceView.PlatformUpdateDomain,
-                RemoteDesktopThumbprint = virtualMachineInstanceView.RemoteDesktopThumbprint,
-                VMAgent = virtualMachineInstanceView.VMAgent
+                RemoteDesktopThumbprint = virtualMachineInstanceView.RdpThumbPrint,
+                VMAgent = virtualMachineInstanceView.VmAgent
             };
 
             return result;
         }
 
         public static PSVirtualMachineInstanceView ToPSVirtualMachineInstanceView(
-            this VirtualMachineGetResponse response,
+            this VirtualMachine response,
             string resourceGroupName = null,
             string vmName = null)
         {
@@ -105,7 +74,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
                 return null;
             }
 
-            return response.VirtualMachine.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
+            return response.InstanceView.ToPSVirtualMachineInstanceView(resourceGroupName, vmName);
         }
     }
 }

@@ -1,0 +1,57 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/nodeagentskus?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L25vZGVhZ2VudHNrdXM/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "client-request-id": [
+          "113bdb51-dbfa-4b4e-b848-084e3efddcca"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Mon, 01 Aug 2016 20:04:39 GMT"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "AzurePowershell/v1.6.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodeagentskus\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"batch.node.centos 7\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.0\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS\",\r\n          \"sku\": \"7.2\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"OpenLogic\",\r\n          \"offer\": \"CentOS-HPC\",\r\n          \"sku\": \"7.1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Oracle\",\r\n          \"offer\": \"Oracle-Linux\",\r\n          \"sku\": \"7.0\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.debian 8\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"15.10\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Credativ\",\r\n          \"offer\": \"Debian\",\r\n          \"sku\": \"8\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.opensuse 13.2\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"openSUSE\",\r\n          \"sku\": \"13.2\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.opensuse 42.1\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"openSUSE-Leap\",\r\n          \"sku\": \"42.1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES\",\r\n          \"sku\": \"12\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES\",\r\n          \"sku\": \"12-SP1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"SUSE\",\r\n          \"offer\": \"SLES-HPC\",\r\n          \"sku\": \"12\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.ubuntu 14.04\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.1-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.2-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.3-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.4-LTS\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.ubuntu 16.04\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"linux\"\r\n    },\r\n    {\r\n      \"id\": \"batch.node.windows amd64\",\r\n      \"verifiedImageReferences\": [\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2008-R2-SP1\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-Datacenter\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"2012-R2-Datacenter\",\r\n          \"version\": \"latest\"\r\n        },\r\n        {\r\n          \"publisher\": \"MicrosoftWindowsServer\",\r\n          \"offer\": \"WindowsServer\",\r\n          \"sku\": \"Windows-Server-Technical-Preview\",\r\n          \"version\": \"latest\"\r\n        }\r\n      ],\r\n      \"osType\": \"windows\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "request-id": [
+          "21447a59-3dc8-4534-8a7f-9e8b33fa09d9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Mon, 01 Aug 2016 20:04:37 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
+    "AZURE_BATCH_ACCOUNT": "pstestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
+  }
+}

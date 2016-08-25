@@ -177,37 +177,37 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
         public SwitchParameter ExpandPrincipalGroups { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Empty, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SPN, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SPN,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Scope, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Scope,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithObjectId, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSignInName, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSPN, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroup, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroup,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithObjectId, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSignInName, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSPN, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Resource, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Resource,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithObjectId, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSignInName, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
-        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSPN, 
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
         public SwitchParameter IncludeClassicAdministrators { get; set; }
 
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinitionId = RoleDefinitionId == Guid.Empty ? null : RoleDefinitionId.ToString(),
                 ADObjectFilter = new ADObjectFilterOptions
                 {
-                    SignInName = SignInName,
+                    UPN = SignInName,
                     SPN = ServicePrincipalName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                 },
@@ -237,7 +237,9 @@ namespace Microsoft.Azure.Commands.Resources
                 ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString()), enumerateCollection: true);
+            List<PSRoleAssignment> ra = PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString());
+
+            WriteObject(ra, enumerateCollection: true);
         }
     }
 }

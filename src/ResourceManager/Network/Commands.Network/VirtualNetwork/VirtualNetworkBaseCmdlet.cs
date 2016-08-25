@@ -13,13 +13,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -55,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name)
+        public PSVirtualNetwork GetVirtualNetwork(string resourceGroupName, string name, string expandResource = null)
         {
-            var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name);
+            var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name, expandResource);
 
             var psVirtualNetwork = Mapper.Map<PSVirtualNetwork>(vnet);
             psVirtualNetwork.ResourceGroupName = resourceGroupName;

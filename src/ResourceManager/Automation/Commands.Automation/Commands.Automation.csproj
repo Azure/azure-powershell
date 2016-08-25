@@ -53,35 +53,40 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.4.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Automation, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.2.0.1\lib\net40\Microsoft.Azure.Management.Automation.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.Automation, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Automation.0.50.2-prerelease\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -98,14 +103,6 @@
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\dotnet\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -127,6 +124,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationHybridWorkerGroup.cs" />
+    <Compile Include="Cmdlet\GetAzureAutomationJobOutputRecord.cs" />
     <Compile Include="Cmdlet\ImportAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
@@ -163,10 +162,12 @@
     <Compile Include="Cmdlet\RemoveAzureAutomationConnectionType.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCredential.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationSchedule.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationVariable.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationWebhook.cs" />
     <Compile Include="Cmdlet\ResumeAzureAutomationJob.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationCertificate.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Common\RequiresExtensions.cs" />
     <Compile Include="Common\ResourceCommonException.cs" />
     <Compile Include="Common\ResourceNotFoundException.cs" />
+    <Compile Include="Common\RunbookTypeSdkValue.cs" />
     <Compile Include="Common\StreamType.cs" />
     <Compile Include="Common\VariableUpdateFields.cs" />
     <Compile Include="DataContract\ErrorResponse.cs" />
@@ -222,14 +224,18 @@
     <Compile Include="Model\ConfigurationContent.cs" />
     <Compile Include="Model\Connection.cs" />
     <Compile Include="Model\CredentialInfo.cs" />
+    <Compile Include="Model\DayOfWeek.cs" />
     <Compile Include="Model\DscNode.cs" />
     <Compile Include="Model\DscNodeReport.cs" />
     <Compile Include="Model\DscOnboardingMetaconfig.cs" />
+    <Compile Include="Model\HybridRunbookWorker.cs" />
+    <Compile Include="Model\HybridRunbookWorkerGroup.cs" />
     <Compile Include="Model\Job.cs" />
     <Compile Include="Model\JobSchedule.cs" />
     <Compile Include="Model\JobStreamRecord.cs" />
     <Compile Include="Model\JobStream.cs" />
     <Compile Include="Model\Module.cs" />
+    <Compile Include="Model\MonthlyScheduleOptions.cs" />
     <Compile Include="Model\NodeConfiguration.cs" />
     <Compile Include="Model\BaseProperties.cs" />
     <Compile Include="Model\Runbook.cs" />
@@ -237,6 +243,7 @@
     <Compile Include="Model\ScheduleFrequency.cs" />
     <Compile Include="Model\Variable.cs" />
     <Compile Include="Model\Webhook.cs" />
+    <Compile Include="Model\WeeklyScheduleOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -269,6 +276,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>

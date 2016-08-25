@@ -269,6 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                   .ForMember(c => c.InputEndpoints, o => o.MapFrom(r => r.InputEndpoints != null ? r.InputEndpoints.ToList() : null))
                   .ForMember(c => c.SubnetNames, o => o.MapFrom(r => r.SubnetNames != null ? r.SubnetNames.ToList() : null))
                   .ForMember(c => c.PublicIPs, o => o.MapFrom(r => r.PublicIPs != null ? r.PublicIPs.ToList() : null));
+            Mapper.CreateMap<PVM.DebugSettings, NSM.DebugSettings>();
 
             Mapper.CreateMap<PVM.LinuxProvisioningConfigurationSet.SSHKeyPair, NSM.SshSettingKeyPair>();
             Mapper.CreateMap<PVM.LinuxProvisioningConfigurationSet.SSHPublicKey, NSM.SshSettingPublicKey>();
@@ -313,6 +314,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                   .ForMember(c => c.OS, o => o.MapFrom(r => r.OperatingSystem));
             Mapper.CreateMap<NSM.ConfigurationSet, PVM.ConfigurationSet>();
             Mapper.CreateMap<NSM.ConfigurationSet, PVM.NetworkConfigurationSet>();
+            Mapper.CreateMap<NSM.DebugSettings, PVM.DebugSettings>();
 
             Mapper.CreateMap<NSM.SshSettingKeyPair, PVM.LinuxProvisioningConfigurationSet.SSHKeyPair>();
             Mapper.CreateMap<NSM.SshSettingPublicKey, PVM.LinuxProvisioningConfigurationSet.SSHPublicKey>();
@@ -461,19 +463,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
             Mapper.CreateMap<StorageAccountGetResponse, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.StorageAccountDescription, o => o.MapFrom(r => r.StorageAccount.Properties == null ? null : r.StorageAccount.Properties.Description))
                   .ForMember(c => c.StorageAccountName, o => o.MapFrom(r => r.StorageAccount.Name))
-                  .ForMember(c => c.GeoReplicationEnabled, o => o.MapFrom(r => string.Equals(r.StorageAccount.Properties.AccountType, StorageAccountTypes.StandardGRS) ? (bool?)true : null));
+                  .ForMember(c => c.MigrationState, o => o.MapFrom(r => r.StorageAccount.MigrationState));
             Mapper.CreateMap<StorageAccountProperties, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.StorageAccountDescription, o => o.MapFrom(r => r.Description))
                   .ForMember(c => c.GeoPrimaryLocation, o => o.MapFrom(r => r.GeoPrimaryRegion))
                   .ForMember(c => c.GeoSecondaryLocation, o => o.MapFrom(r => r.GeoSecondaryRegion))
                   .ForMember(c => c.StorageAccountStatus, o => o.MapFrom(r => r.Status))
                   .ForMember(c => c.StatusOfPrimary, o => o.MapFrom(r => r.StatusOfGeoPrimaryRegion))
-                  .ForMember(c => c.StatusOfSecondary, o => o.MapFrom(r => r.StatusOfGeoSecondaryRegion))
-                  .ForMember(c => c.GeoReplicationEnabled, o => o.MapFrom(r => string.Equals(r.AccountType, StorageAccountTypes.StandardGRS) ? (bool?)true : null));
+                  .ForMember(c => c.StatusOfSecondary, o => o.MapFrom(r => r.StatusOfGeoSecondaryRegion));
             Mapper.CreateMap<StorageAccount, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.StorageAccountDescription, o => o.MapFrom(r => r.Properties == null ? null : r.Properties.Description))
-                  .ForMember(c => c.StorageAccountName, o => o.MapFrom(r => r.Name))
-                  .ForMember(c => c.GeoReplicationEnabled, o => o.MapFrom(r => string.Equals(r.Properties.AccountType, StorageAccountTypes.StandardGRS) ? (bool?)true : null));
+                  .ForMember(c => c.StorageAccountName, o => o.MapFrom(r => r.Name));
             Mapper.CreateMap<OperationStatusResponse, PVM.StorageServicePropertiesOperationContext>()
                   .ForMember(c => c.OperationId, o => o.MapFrom(r => r.Id))
                   .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.Status.ToString()));

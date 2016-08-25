@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections;
-using System.Security;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -99,8 +99,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         public override void ExecuteCmdlet()
         {
             var secret = DataServiceClient.SetSecret(
-                VaultName, 
-                Name, 
+                VaultName,
+                Name,
                 SecretValue,
                 new SecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tags));
             WriteObject(secret);

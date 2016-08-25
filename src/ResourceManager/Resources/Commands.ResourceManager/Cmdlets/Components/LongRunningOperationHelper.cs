@@ -14,17 +14,17 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using System;
-    using System.Management.Automation;
-    using System.Net;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json.Linq;
+    using System;
+    using System.Management.Automation;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// A helper class for tracking long running operations.
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 return null;
             }
 
-            if(resource == null && operationResult.HttpStatusCode == HttpStatusCode.Created)
+            if (resource == null && operationResult.HttpStatusCode == HttpStatusCode.Created)
             {
                 return this.SuccessfulResult(operationResult);
             }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     return this.WaitResult(operationResult);
                 }
             }
-           
+
             return this.SuccessfulResult(operationResult);
         }
 
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 {
                     return null;
                 }
-                
+
                 if (resource == null)
                 {
                     return null;

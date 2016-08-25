@@ -1,6 +1,5 @@
-﻿using System;
-using System.Net.PeerToPeer.Collaboration;
-using Microsoft.Azure.Management.HDInsight.Models;
+﻿using Microsoft.Azure.Management.HDInsight.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {

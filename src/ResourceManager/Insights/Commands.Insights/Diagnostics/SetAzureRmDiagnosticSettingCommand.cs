@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -19,8 +21,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -42,8 +42,16 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
+        [ValidateNotNullOrEmpty]
         public string StorageAccountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service bus rule id parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
+        [ValidateNotNullOrEmpty]
+        public string ServiceBusRuleId { get; set; }
 
         /// <summary>
         /// Gets or sets the enable parameter of the cmdlet
@@ -55,51 +63,65 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
+        [ValidateNotNullOrEmpty]
         public List<string> Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
+        [ValidateNotNullOrEmpty]
         public List<string> Timegrains { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether retention should be enabled
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled")]
+        [ValidateNotNullOrEmpty]
+        public bool? RetentionEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retention in days
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
+        public int? RetentionInDays { get; set; }
 
         #endregion
 
         protected override void ProcessRecordInternal()
         {
             var putParameters = new ServiceDiagnosticSettingsPutParameters();
-            
-            if (this.Categories == null && this.Timegrains == null && !this.Enabled)
-            {
-                // This is the only case where no call to get diagnostic settings is necessary. Since we are disabling everything, we just need to request stroage account false.
 
-                putParameters.Properties = new ServiceDiagnosticSettings();
+            ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
+
+            ServiceDiagnosticSettings properties = getResponse.Properties;
+
+            if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
+            {
+                properties.StorageAccountId = this.StorageAccountId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.ServiceBusRuleId))
+            {
+                properties.ServiceBusRuleId = this.ServiceBusRuleId;
+            }
+
+            if (this.Categories == null && this.Timegrains == null)
+            {
+                foreach (var log in properties.Logs)
+                {
+                    log.Enabled = this.Enabled;
+                }
+
+                foreach (var metric in properties.Metrics)
+                {
+                    metric.Enabled = this.Enabled;
+                }
             }
             else
             {
-                ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
-
-                ServiceDiagnosticSettings properties = getResponse.Properties;
-
-                if (this.Enabled && string.IsNullOrWhiteSpace(this.StorageAccountId))
-                {
-                    throw new ArgumentException("StorageAccountId can't be null when enabling");
-                }
-
-                if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
-                {
-                    properties.StorageAccountId = this.StorageAccountId;
-                }
-                
-                if (this.Categories == null)
-                {
-                    foreach (var log in properties.Logs)
-                    {
-                        log.Enabled = this.Enabled;
-                    }
-                }
-                else
+                if (this.Categories != null)
                 {
                     foreach (string category in this.Categories)
                     {
@@ -107,21 +129,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                         if (logSettings == null)
                         {
-                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available for '{1}'", category, this.StorageAccountId));
+                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Log category '{0}' is not available", category));
                         }
 
                         logSettings.Enabled = this.Enabled;
-                    }   
-                }
-
-                if (this.Timegrains == null)
-                {
-                    foreach (var metric in properties.Metrics)
-                    {
-                        metric.Enabled = this.Enabled;
                     }
                 }
-                else
+
+                if (this.Timegrains != null)
                 {
                     foreach (string timegrainString in this.Timegrains)
                     {
@@ -130,14 +145,39 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                         if (metricSettings == null)
                         {
-                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available for '{1}'", timegrainString, this.StorageAccountId));
+                            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric timegrain '{0}' is not available", timegrainString));
                         }
                         metricSettings.Enabled = this.Enabled;
                     }
                 }
-
-                putParameters.Properties = properties;
             }
+
+            if (this.RetentionEnabled.HasValue)
+            {
+                var retentionPolicy = new RetentionPolicy
+                {
+                    Enabled = this.RetentionEnabled.Value,
+                    Days = this.RetentionInDays.Value
+                };
+
+                if (properties.Logs != null)
+                {
+                    foreach (LogSettings logSettings in properties.Logs)
+                    {
+                        logSettings.RetentionPolicy = retentionPolicy;
+                    }
+                }
+
+                if (properties.Metrics != null)
+                {
+                    foreach (MetricSettings metricSettings in properties.Metrics)
+                    {
+                        metricSettings.RetentionPolicy = retentionPolicy;
+                    }
+                }
+            }
+
+            putParameters.Properties = properties;
 
             this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.PutAsync(this.ResourceId, putParameters, CancellationToken.None).Wait();
             PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(putParameters.Properties);

@@ -1,0 +1,43 @@
+{
+  "Entries": [{
+    "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/logprofiles/default?api-version=2016-03-01",
+    "RequestMethod": "PUT",
+    "RequestBody": "{\r\n  \"properties\": {\r\n    \"storageAccountId\": \"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\r\n    \"locations\": [\r\n      \"global\"\r\n    ],\r\n    \"categories\": [\r\n      \"Delete\",\r\n      \"Write\",\r\n      \"Action\"\r\n    ],\r\n    \"retentionPolicy\": {\r\n      \"enabled\": true,\r\n      \"days\": 90\r\n    }\r\n  }\r\n}\r\n",
+    "RequestHeaders": {
+      "Accept": ["application/json"],
+      "Authorization": ["Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDU4MDAyOTE2LCJuYmYiOjE0NTgwMDI5MTYsImV4cCI6MTQ1ODAwNjgxNiwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzL2M4YzdjZDVlLTJlNGQtNGNhNC1hNTAxLWRjYWZlNzc0NmI3Ny9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYW1yIjpbInJzYSIsIndpYSIsIm1mYSJdLCJhcHBpZCI6IjE5NTBhMjU4LTIyN2ItNGUzMS1hOWNmLTcxNzQ5NTk0NWZjMiIsImFwcGlkYWNyIjoiMCIsImZhbWlseV9uYW1lIjoiTWVkZWlyb3MgUnVlbGEiLCJnaXZlbl9uYW1lIjoiVmluaWNpdXMiLCJpbl9jb3JwIjoidHJ1ZSIsImlwYWRkciI6IjEzMS4xMDcuMTQ3LjQ3IiwibmFtZSI6IlZpbmljaXVzIE1lZGVpcm9zIFJ1ZWxhIiwib2lkIjoiYzhjN2NkNWUtMmU0ZC00Y2E0LWE1MDEtZGNhZmU3NzQ2Yjc3Iiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTEzMDcxODA4IiwicHVpZCI6IjEwMDMwMDAwODcyMjgwRUYiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJpQTlnamJCbmdYX0ViMHFqdGVOb05NN1dzWkJQU2hQQXpoODFIcXIya0hzIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJ2aXJ1ZWxhQG1pY3Jvc29mdC5jb20iLCJ1cG4iOiJ2aXJ1ZWxhQG1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.hINbHavN-dVbaiVvAS7juyZXekRJS1USNyw1epA5ZRuZ8797oP8zeaqmK5LfvN2Gu69MZgGWhWVMF2Ntaiy5R7wv4LvSBejg4lFZirCvhGlI0H7v4FKgOmWviAgNHDBF4hSLxib5vjYdHVxcrBOZa_U1O7emz2rRHok7IeMIEbKgHKAdpbzC_nKcoJXVvPxbqHm6vc0jORoZKyMss6GIqOYt9jQZCzpQxNRrD3k7ucr9jKTWS7mdL44bkPVN4q7O-g7v4I66MyVoWMqdtuO4-430QqU8wq05XEAUtH_tORd5b0wIHR6DiFzPhXOM6_-1lI7uUHi8GcZFCZdnjGQw_w"],
+      "User-Agent": ["Microsoft.Azure.Management.Insights.InsightsManagementClient/0.9.0.0 AzurePowershell/v1.0.0.0"],
+      "CommandName": ["Add-AzureRmLogProfile"],
+      "ParameterSetName": ["__AllParameterSets"],
+      "x-ms-client-request-id": ["df510176-9d5e-492b-a1ad-5e8b7a8d956a"],
+      "Content-Type": ["application/json"],
+      "Host": ["management.azure.com"],
+      "Content-Length": ["409"],
+      "Expect": ["100-continue"]
+    },
+    "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/providers/microsoft.insights/logprofiles/default\",\"name\":\"default\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/insightsintegration7777\",\"serviceBusRuleId\":null,\"locations\":[\"global\"],\"categories\":[\"Delete\",\"Write\",\"Action\"],\"retentionPolicy\":{\"enabled\":false,\"days\":0}}}\r\n",
+    "ResponseHeaders": {
+      "Cache-Control": ["no-cache"],
+      "Pragma": ["no-cache"],
+      "Content-Length": ["461"],
+      "Content-Type": ["application/json",
+      "charset=utf-8"],
+      "Expires": ["-1"],
+      "Strict-Transport-Security": ["max-age=31536000",
+      "includeSubDomains"],
+      "x-ms-request-id": ["79dd7aaf-68c8-49d9-9cc8-601aee5535a2"],
+      "Server": ["Microsoft-IIS/8.5"],
+      "x-ms-ratelimit-remaining-subscription-writes": ["1199"],
+      "x-ms-correlation-request-id": ["2ae1b73b-85f4-45b4-a603-66331c28f08a"],
+      "x-ms-routing-request-id": ["WESTUS:20160315T005341Z:2ae1b73b-85f4-45b4-a603-66331c28f08a"],
+      "Date": ["Tue, 15 Mar 2016 00:53:41 GMT"]
+    },
+    "StatusCode": "200"
+  }],
+  "Names": {
+    "Test-AddAlertRule": [""]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

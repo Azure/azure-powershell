@@ -14,11 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.ScenarioTests
 {
-    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Network;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -58,9 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.Scenari
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                List<string> modules = Directory.GetFiles("ScenarioTests\\IPForwarding", "*.ps1").ToList();
-                modules.AddRange(Directory.GetFiles("ScenarioTests", "*.ps1"));
-                modules.Add("Common.ps1");
+                List<string> modules = Directory.GetFiles("ScenarioTests\\IPForwarding".AsAbsoluteLocation(), "*.ps1").ToList();
+                modules.AddRange(Directory.GetFiles("ScenarioTests".AsAbsoluteLocation(), "*.ps1"));
 
                 SetupManagementClients();
 

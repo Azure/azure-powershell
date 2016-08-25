@@ -14,17 +14,32 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
-using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsLifecycle.Restart, "AzureVM", DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
+    [Cmdlet(VerbsLifecycle.Restart, ProfileNouns.VirtualMachine, DefaultParameterSetName = "ByName"), OutputType(typeof(ManagementOperationContext))]
     public class RestartAzureVMCommand : IaaSDeploymentManagementCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Virtual Machine to restart.", ParameterSetName = "ByName")]
+        private const string RestartInputParameterSet = "RestartInput";
+        private const string RestartByNameParameterSet = "RestartByName";
+        private const string RedployInputParameterSet = "RedeployInput";
+        private const string RedployByNameParameterSet = "RedeployByName";
+
+        [Parameter(Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Virtual Machine to restart.",
+            ParameterSetName = RestartByNameParameterSet)]
+        [Parameter(Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Virtual Machine to redeploy.",
+            ParameterSetName = RedployByNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Name
         {
@@ -32,10 +47,30 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Virtual Machine to restart.", ParameterSetName = "Input")]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Virtual Machine to restart.",
+            ParameterSetName = RestartInputParameterSet)]
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Virtual Machine to redeploy.",
+            ParameterSetName = RedployInputParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
         public PersistentVM VM
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Mandatory = true,
+            HelpMessage = "Redeploy the Virtual Machine",
+            ParameterSetName = RedployInputParameterSet)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "Redeploy the Virtual Machine",
+            ParameterSetName = RedployByNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Redeploy
         {
             get;
             set;
@@ -50,12 +85,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 return;
             }
 
-            string roleName = (this.ParameterSetName == "ByName") ? this.Name : this.VM.RoleName;
-            ExecuteClientActionNewSM(
+            string roleName = (this.ParameterSetName.Contains("ByName")) ? this.Name : this.VM.RoleName;
+
+            if (this.Redeploy.IsPresent)
+            { // Redeploy VM
+                ExecuteClientActionNewSM(
+                null,
+                CommandRuntime.ToString(),
+                () => this.ComputeClient.VirtualMachines.Redeploy(this.ServiceName, CurrentDeploymentNewSM.Name, roleName),
+                (s, response) => ContextFactory<OperationStatusResponse, ManagementOperationContext>(response, s));
+            }
+            else
+            { // Restart VM
+                ExecuteClientActionNewSM(
                 null,
                 CommandRuntime.ToString(),
                 () => this.ComputeClient.VirtualMachines.Restart(this.ServiceName, CurrentDeploymentNewSM.Name, roleName),
                 (s, response) => ContextFactory<OperationStatusResponse, ManagementOperationContext>(response, s));
+            }
         }
     }
 }

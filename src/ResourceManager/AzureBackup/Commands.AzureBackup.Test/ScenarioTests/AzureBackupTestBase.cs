@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
@@ -58,6 +60,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            d.Add("Microsoft.Compute", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
@@ -65,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRM.Backup.psd1")
@@ -92,6 +102,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
+                testEnvironment.SubscriptionId);
+
             if (typeof(T) == typeof(BackupVaultServicesManagementClient))
             {
                 BackupVaultServicesManagementClient client;
@@ -99,14 +113,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupVaultServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
 
                 else
                 {
                     client = new BackupVaultServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
 
                 return GetServiceClient<T>(factory, client);
@@ -118,14 +132,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
 
                 else
                 {
                     client = new BackupServicesManagementClient(
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
 
                 return GetVaultServiceClient<T>(factory, client);
@@ -165,8 +179,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;
@@ -205,8 +219,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
                 if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
                 {
-                    property1.SetValue((object)obj2, (object)0);
-                    property2.SetValue((object)obj2, (object)0);
+                    property1.SetValue((object)obj2, (object)-1);
+                    property2.SetValue((object)obj2, (object)-1);
                 }
             }
             return obj2;

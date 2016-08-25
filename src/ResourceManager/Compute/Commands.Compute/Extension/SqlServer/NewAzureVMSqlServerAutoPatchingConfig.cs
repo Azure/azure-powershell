@@ -46,13 +46,6 @@ namespace Microsoft.Azure.Commands.Compute
         public string PatchCategory { get; set; }
 
         /// <summary>
-        /// Initialzies a new instance of the <see cref="NewSqlServerAutoPatchingConfigCommand"/> class.
-        /// </summary>
-        public NewAzureVMSqlServerAutoPatchingConfigCommand()
-        {
-        }
-
-        /// <summary>
         /// Creates and returns <see cref="AutoPatchingSettings"/> object.
         /// </summary>
         protected override void ProcessRecord()

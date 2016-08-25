@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
-{    
+{
     /// <summary>
     /// Cmdlet to get user tenant information. 
     /// </summary>
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("Domain", "Tenant")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            
+
             WriteObject(profileClient.ListTenants(TenantId).Select((t) => (PSAzureTenant)t), enumerateCollection: true);
         }
     }

@@ -13,14 +13,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -54,9 +52,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name)
+        public PSLoadBalancer GetLoadBalancer(string resourceGroupName, string name, string expandResource = null)
         {
-            var lb = this.LoadBalancerClient.Get(resourceGroupName, name);
+            var lb = this.LoadBalancerClient.Get(resourceGroupName, name, expandResource);
 
             var psLoadBalancer = Mapper.Map<PSLoadBalancer>(lb);
             psLoadBalancer.ResourceGroupName = resourceGroupName;

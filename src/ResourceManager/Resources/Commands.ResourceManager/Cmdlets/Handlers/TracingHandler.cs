@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
+    using Hyak.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-    using Hyak.Common;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// Tracing handler.

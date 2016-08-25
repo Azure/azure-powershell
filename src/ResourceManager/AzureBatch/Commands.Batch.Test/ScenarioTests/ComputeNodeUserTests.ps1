@@ -18,9 +18,9 @@ Tests creating a compute node user
 #>
 function Test-CreateComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $password = "Password1234!"
 
     # Create a user
@@ -38,7 +38,7 @@ function Test-CreateComputeNodeUser
     # Verify that a user was created 
     # There is currently no Get/List user API, so verify by calling the delete operation. 
     # If the user account was created, it will succeed; otherwsie, it will throw a 404 error.
-    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
 }
 
 <#
@@ -47,9 +47,9 @@ Tests updating a compute node user
 #>
 function Test-UpdateComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     # Basically just validating that we can set the parameters and execute the cmdlet without error. 
     # If a Get user API is added, we can validate that the properties were actually updated.
@@ -62,13 +62,13 @@ Tests deleting a compute node user
 #>
 function Test-DeleteComputeNodeUser
 {
-    param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+    param([string]$poolId, [string]$computeNodeId, [string]$userName)
 
-    $context = Get-ScenarioTestContext $accountName
+    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+    Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context
 
     # Verify the user was deleted
     # There is currently no Get/List user API, so try to delete the user again and verify that it fails.
-    Assert-Throws { Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
+    Assert-Throws { Remove-AzureBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context }
 }

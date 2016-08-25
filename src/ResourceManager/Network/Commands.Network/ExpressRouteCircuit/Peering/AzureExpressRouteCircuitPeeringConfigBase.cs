@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         public string PeeringType { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The PeerAsn")]
         [ValidateNotNullOrEmpty]
         public int PeerASN { get; set; }

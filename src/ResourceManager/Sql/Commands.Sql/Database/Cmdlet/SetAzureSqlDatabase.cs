@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -74,7 +75,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable Tags { get; set; }
+
+        /// <summary>
+        /// Overriding to add warning message
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Get the entities from the service
@@ -82,8 +92,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
-            return new List<AzureSqlDatabaseModel>() { 
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName) 
+            return new List<AzureSqlDatabaseModel>() {
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
             };
         }
 
@@ -103,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Edition = Edition,
                 MaxSizeBytes = MaxSizeBytes,
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = Tags,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
                 Location = model.FirstOrDefault().Location,
             });

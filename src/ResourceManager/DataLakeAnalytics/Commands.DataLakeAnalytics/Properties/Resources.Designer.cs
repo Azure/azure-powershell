@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos; ....
+        /// </summary>
+        internal static string RemoveDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemoveDataLakeAnalyticsCatalogSecrets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing Data Lake Analytics Data Lake Store account &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeAnalyticsDataLakeStore {
@@ -246,6 +255,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string RemovingDataLakeAnalyticsCatalogSecret {
             get {
                 return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove ALL Data Lake Analytics catalog secrets in database &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemovingDataLakeAnalyticsCatalogSecrets {
+            get {
+                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogSecrets", resourceCulture);
             }
         }
         

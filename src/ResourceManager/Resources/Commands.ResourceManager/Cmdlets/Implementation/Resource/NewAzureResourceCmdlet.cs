@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
+    using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using System.Collections;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// A cmdlet that creates a new azure resource.
@@ -49,31 +48,32 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the property object.
         /// </summary>
         [Alias("PropertyObject")]
-        [Parameter(Mandatory = true, HelpMessage = "A hash table which represents resource properties.")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource properties.")]
         [ValidateNotNullOrEmpty]
         public PSObject Properties { get; set; }
 
         /// <summary>
         /// Gets or sets the plan object.
         /// </summary>
+        [Alias("PlanObject")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource plan properties.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable PlanObject { get; set; }
+        public Hashtable Plan { get; set; }
 
         /// <summary>  
-        /// Gets or sets the plan object.  
+        /// Gets or sets the Sku object.  
         /// </summary>  
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
-        [ValidateNotNullOrEmpty]  
-        public Hashtable SkuObject { get; set; }  
-
+        [Alias("SkuObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Sku { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
         /// </summary>
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates if the full object was passed it.
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
                 this.Force,
-                "Are you sure you want to create the following resource: "+ resourceId,
+                "Are you sure you want to create the following resource: " + resourceId,
                 "Creating the resource...",
                 resourceId,
                 () =>
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 Location = this.Location,
                 Kind = this.Kind,
-                Plan = this.PlanObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
-                Sku = this.SkuObject.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
+                Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
+                Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
                 Tags = TagsHelper.GetTagsDictionary(this.Tag),
                 Properties = this.Properties.ToResourcePropertiesBody(),
             };

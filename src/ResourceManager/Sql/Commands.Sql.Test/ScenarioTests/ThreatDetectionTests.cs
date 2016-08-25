@@ -12,23 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ThreatDetectionTests : SqlTestsBase
     {
-        protected override void SetupManagementClients()
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
-            var resourcesClient = GetResourcesClient();
+            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
+            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient,
                 authorizationClient);
+        }
+
+        public ThreatDetectionTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]

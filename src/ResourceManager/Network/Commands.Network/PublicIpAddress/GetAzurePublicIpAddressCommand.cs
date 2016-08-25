@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -27,24 +26,44 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource name.")]
+            HelpMessage = "The resource name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
+            HelpMessage = "The resource group name.",
+            ParameterSetName = "NoExpand")]
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The resource group name.",
+           ParameterSetName = "Expand")]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource reference to be expanded.",
+            ParameterSetName = "Expand")]
+        [ValidateNotNullOrEmpty]
+        public string ExpandResource { get; set; }
+
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
-                var publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name);
-                
+                var publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name, this.ExpandResource);
+
                 WriteObject(publicIp);
             }
             else if (!string.IsNullOrEmpty(this.ResourceGroupName))
@@ -52,7 +71,7 @@ namespace Microsoft.Azure.Commands.Network
                 var publicIPList = this.PublicIpAddressClient.List(this.ResourceGroupName);
 
                 var psPublicIps = new List<PSPublicIpAddress>();
-                
+
                 // populate the publicIpAddresses with the ResourceGroupName
                 foreach (var publicIp in publicIPList)
                 {
@@ -83,4 +102,3 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
- 

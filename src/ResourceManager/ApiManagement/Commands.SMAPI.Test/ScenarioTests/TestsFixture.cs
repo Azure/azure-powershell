@@ -1,17 +1,17 @@
 ﻿namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using System.Net;
-    using System.Xml.Linq;
     using Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Management;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Xml.Linq;
 
     public class TestsFixture : TestBase
     {
@@ -23,11 +23,11 @@
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=;AADTenant=");
+            //    "SubscriptionId=;Environment=Prod");
 
             //Environment.SetEnvironmentVariable(
             //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=");
+            //    "SubscriptionId=;Environment=Prod");
 #endif
 
             TestUtilities.StartTest();

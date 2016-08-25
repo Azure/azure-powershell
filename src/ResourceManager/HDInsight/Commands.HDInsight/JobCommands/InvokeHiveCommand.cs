@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.IO;
-using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -45,8 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { hiveJobDefinitionCommand.Files = value; }
         }
 
-        [Parameter(Mandatory = true,
-            HelpMessage = "The output location to use for the job.")]
+        [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
         {
             get { return hiveJobDefinitionCommand.StatusFolder; }
@@ -88,13 +86,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { hiveJobDefinitionCommand.RunAsFileJob = value; }
         }
 
-        [Parameter(Mandatory = true, HelpMessage = "The default container name.")]
+        [Parameter(HelpMessage = "The default container name.")]
         public string DefaultContainer { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The default storage account name.")]
+        [Parameter(HelpMessage = "The default storage account name.")]
         public string DefaultStorageAccountName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The default storage account key.")]
+        [Parameter(HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
         #endregion
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Commands.HDInsight
             var resourceGroup =
                 SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
 
-            _clusterName = clusterConnection;
             _credential = new BasicAuthenticationCloudCredentials
             {
                 Username = clusterCred.UserName,
@@ -155,37 +152,35 @@ namespace Microsoft.Azure.Commands.HDInsight
             };
 
             var job = waitJobCommand.WaitJob();
+
+            _clusterName = clusterConnection.Substring(0, clusterConnection.IndexOf('.'));
+
+            var getOutputCommand = new GetAzureHDInsightJobOutputCommand
+            {
+                HttpCredential = clusterCred,
+                ResourceGroupName = resourceGroup,
+                ClusterName = clusterConnection,
+                DefaultContainer = DefaultContainer,
+                DefaultStorageAccountName = DefaultStorageAccountName,
+                DefaultStorageAccountKey = DefaultStorageAccountKey,
+                JobId = jobid
+            };
+
+            var storageAccess = getOutputCommand.GetDefaultStorageAccess(resourceGroup, _clusterName);
+
             string output;
             if (job.ExitValue == 0)
             {
                 //get job output
-                var getOutputCommand = new GetAzureHDInsightJobOutputCommand
-                {
-                    HttpCredential = clusterCred,
-                    ResourceGroupName = resourceGroup,
-                    ClusterName = clusterConnection,
-                    DefaultContainer = DefaultContainer,
-                    DefaultStorageAccountName = DefaultStorageAccountName,
-                    DefaultStorageAccountKey = DefaultStorageAccountKey,
-                    JobId = jobid
-                };
-
-                output = getOutputCommand.GetJobOutput();
+                output = getOutputCommand.GetJobOutput(storageAccess);
             }
             else
             {
                 //get job error
-                output = Convert(HDInsightJobClient.GetJobError(jobid, DefaultStorageAccountName, DefaultStorageAccountKey,
-                    DefaultContainer));
+                output = getOutputCommand.GetJobError(storageAccess);
             }
-            WriteObject(output);
-        }
 
-        private static string Convert(Stream stream)
-        {
-            var reader = new StreamReader(stream);
-            var text = reader.ReadToEnd();
-            return text;
+            WriteObject(output);
         }
     }
 }

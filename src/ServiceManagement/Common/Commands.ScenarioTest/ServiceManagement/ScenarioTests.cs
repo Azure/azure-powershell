@@ -12,12 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public partial class ServiceManagementTests
     {
+        public ServiceManagementTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -44,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Run-ServiceManagementCloudExceptionTests");
         }
-        
+
         [Fact]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -133,6 +140,114 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public void RunEnableAndDisableDataCollectionTests()
         {
             this.RunPowerShellTest("Run-EnableAndDisableDataCollectionTests");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationValidateAzureDeployment()
+        {
+            this.RunPowerShellTest("Test-MigrationValidateAzureDeployment");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureVNet()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureVNet");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationNetworkSecurityGroup()
+        {
+            this.RunPowerShellTest("Test-MigrationNetworkSecurityGroup");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAzureReservedIP()
+        {
+            this.RunPowerShellTest("Test-MigrationAzureReservedIP");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationRouteTable()
+        {
+            this.RunPowerShellTest("Test-MigrationRouteTable");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureVNet()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureVNet");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrateAzureStorageAccount()
+        {
+            this.RunPowerShellTest("Test-MigrateAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestMigrationAbortAzureStorageAccount()
+        {
+            this.RunPowerShellTest("Test-MigrationAbortAzureStorageAccount");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestNewAzureVMWithBYOL()
+        {
+            this.RunPowerShellTest("Test-NewAzureVMWithBYOL");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.ServiceManagement)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void RunRedeployVirtualMachineTest()
+        {
+            this.RunPowerShellTest("Run-RedeployVirtualMachineTest");
         }
     }
 }

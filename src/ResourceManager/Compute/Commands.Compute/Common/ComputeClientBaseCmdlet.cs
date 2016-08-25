@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Compute.Common;
 using System;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -61,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 action();
             }
-            catch (CloudException ex)
+            catch (Rest.Azure.CloudException ex)
             {
                 try
                 {
@@ -77,3 +75,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

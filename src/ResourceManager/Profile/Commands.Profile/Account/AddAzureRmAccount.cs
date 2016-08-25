@@ -12,27 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
-using System;
-using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User", SupportsShouldProcess=true)]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
-    public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
+    public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
     {
         private const string UserParameterSet = "User";
         private const string ServicePrincipalParameterSet = "ServicePrincipal";
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (Environment == null && EnvironmentName == null)
             {
-                Environment = AzureEnvironment.PublicEnvironments[Microsoft.Azure.Common.Authentication.Models.EnvironmentName.AzureCloud];
+                Environment = AzureEnvironment.PublicEnvironments[Common.Authentication.Models.EnvironmentName.AzureCloud];
             }
             else if (Environment == null && EnvironmentName != null)
             {
@@ -134,14 +134,14 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !string.IsNullOrWhiteSpace(SubscriptionName))
             {
                 throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
-            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) &&
                 !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (!string.IsNullOrEmpty(AccessToken))
             {
-                if (string.IsNullOrWhiteSpace(AccountId) )
+                if (string.IsNullOrWhiteSpace(AccountId))
                 {
                     throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
@@ -192,15 +192,18 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
-            if( AzureRmProfileProvider.Instance.Profile == null)
+            if (ShouldProcess(string.Format(Resources.LoginTarget, azureAccount.Type, Environment.Name), "log in"))
             {
-                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
-            }
+                if (AzureRmProfileProvider.Instance.Profile == null)
+                {
+                    AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
+                }
 
-            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-            
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
-                SubscriptionName, password));
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+
+                WriteObject((PSAzureProfile) profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId,
+                    SubscriptionName, password));
+            }
         }
 
         /// <summary>

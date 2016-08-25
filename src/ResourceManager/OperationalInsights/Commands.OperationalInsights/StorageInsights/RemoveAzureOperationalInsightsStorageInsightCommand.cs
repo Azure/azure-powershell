@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
-using Microsoft.Azure.Commands.OperationalInsights.Properties;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StorageInsight, DefaultParameterSetName = ByWorkspaceName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StorageInsight, SupportsShouldProcess = true,
+        DefaultParameterSetName = ByWorkspaceName)]
     public class RemoveAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,

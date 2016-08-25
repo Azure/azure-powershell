@@ -14,13 +14,15 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TrafficManagerProfile
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string ResourceGroupName { get; set; }
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         {
             var profile = new Profile
             {
+                Id = this.Id,
                 Name = this.Name,
                 Type = Constants.ProfileType,
                 Location = TrafficManagerClient.ProfileResourceLocation,

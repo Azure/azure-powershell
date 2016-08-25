@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
+        DefaultParameterSetName = BaseParameterSetName),
+     OutputType(typeof(bool))]
+    [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "Remove ACL Entries using ACL object";
@@ -73,36 +75,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
-            )]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 5,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
-            )]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.GetAclSpec(false)
                 : string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
-                    string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
-                    Path.OriginalPath,
-                    () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
-            }
+            ConfirmAction(
+                string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
+                Path.OriginalPath,
+                () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec); });
         }
     }
 }

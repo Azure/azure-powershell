@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using System;
 using System.IO;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefinitionSchema;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         public void SerializationTestWithGB18030()
         {
             // Setup
-            string outputFileName = "outputFile.txt";
+            string outputFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"outputFile.txt");
             ServiceDefinition serviceDefinition = XmlUtilities.DeserializeXmlFile<ServiceDefinition>(
                 Testing.GetTestResourcePath("GB18030ServiceDefinition.csdef"));
 

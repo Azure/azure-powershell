@@ -14,21 +14,27 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementAuthorizationServer")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementAuthorizationServer, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementAuthorizationServer : AzureApiManagementRemoveCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Identifier of existing authorization server. This parameter is required.")]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Identifier of existing authorization server. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ServerId { get; set; }
 
@@ -41,7 +47,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             get { return string.Format(CultureInfo.CurrentCulture, Resources.GroupRemoveDescription, ServerId); }
         }
-      
+
         protected override void ExecuteRemoveLogic()
         {
             Client.AuthorizationServerRemove(Context, ServerId);

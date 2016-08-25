@@ -421,7 +421,7 @@ Values:
         0001        0
 
 </dev:code>
-        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{CostCenter="0001"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -446,7 +446,7 @@ Values:
         0001        1
 
 </dev:code>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
+        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Tag @{CostCenter=$null}
 Name:      EngineerBlog
 Location:  East US
 Resources: 

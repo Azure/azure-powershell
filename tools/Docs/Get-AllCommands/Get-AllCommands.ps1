@@ -388,7 +388,6 @@ function Get-AllBuildServerCommands {
 
 	#TestValues
 	#$OutputPath = ".\Output";
-	#$ManifestFullName = "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
 
 	#Clean Output Path Trailing \ if exists
 	if($OutputPath.Substring(($OutputPath.Length - 1),1) -eq '\') 
@@ -597,12 +596,12 @@ function Get-AllBuildServerCommands {
 			[System.XML.XMLDocument] $docCmdlet = New-Object System.XML.XMLDocument
 			$docCmdlet.Load((Join-Path -Path $ModuleOutputPath -ChildPath $_))
 			[System.XML.XMLNode] $rootCmdlet = $docCmdlet.DocumentElement
-			[System.XML.XMLNode] $cmdletNode = $RawDataXML.ImportNode($rootCmdlet, $true)
-			[System.XML.XMLNode] $newChild2 = $RawDataXMLRoot.AppendChild($cmdletNode)
+			[System.XML.XMLNode] $cmdletNode = $RawDataXml.ImportNode($rootCmdlet, $true)
+			[System.XML.XMLNode] $newChild2 = $RawDataXmlRoot.AppendChild($cmdletNode)
 			Remove-Item -Path (Join-Path -Path $ModuleOutputPath -ChildPath $_) 
 		}
 		#save main file
-		$RawDataXML.Save((Join-Path -Path $ModuleOutputPath -ChildPath $PSRawData))
+		$RawDataXml.Save((Join-Path -Path $ModuleOutputPath -ChildPath $PSRawData))
 
 		#Creating XML object of Project Writer file
 		[xml] $xmlProjectWriter = get-content $ProjectOutputFile
@@ -693,6 +692,7 @@ rm .\Output -Recurse -Force -ErrorAction SilentlyContinue
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Release\ServiceManagement\Azure\Azure.psd1"
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\AzureRM\AzureRM.psd1"
 
-$modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
+$modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1", "AzureRM.Tags.psd1") | sort -Unique -Property Name
+$modules += (Get-Item "..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1")
 $modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
 

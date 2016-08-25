@@ -24,9 +24,9 @@ using Microsoft.Azure.Management.ManagedCache;
 using Microsoft.Azure.Management.ManagedCache.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.ManagedCache
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
                 CloudServiceResource matched = cloudService.Resources.FirstOrDefault(
                    resource => {
                        return IsCachingResource(resource.Type) 
-                        && cacheServiceName.Equals(resource.Name, StringComparison.OrdinalIgnoreCase);
+                           && cacheServiceName.Equals(resource.Name, StringComparison.OrdinalIgnoreCase) && (resource.State == null || resource.State.ToLower() != "unknown");
                    });
 
                 if (matched!=null)

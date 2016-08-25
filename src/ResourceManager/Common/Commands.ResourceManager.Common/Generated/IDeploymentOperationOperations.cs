@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Deployment operation.
         /// </returns>
         Task<DeploymentOperationsGetResult> GetAsync(string resourceGroupName, string deploymentName, string operationId, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a list of deployments operations.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of deployment operations.
         /// </returns>
         Task<DeploymentOperationsListResult> ListAsync(string resourceGroupName, string deploymentName, DeploymentOperationsListParameters parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a next list of deployments operations.
         /// </summary>
