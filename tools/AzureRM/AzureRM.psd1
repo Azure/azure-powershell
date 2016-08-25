@@ -78,7 +78,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '1.0.3'},
     @{ ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '1.1.11'},
     @{ ModuleName = 'AzureRM.Sql'; RequiredVersion = '1.0.12'},
-    @{ ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.1.4'},
+    @{ ModuleName = 'AzureRM.Storage'; RequiredVersion = '1.2.0'},
     @{ ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '1.0.12'},
     @{ ModuleName = 'AzureRM.Tags'; RequiredVersion = '1.0.12'},
     @{ ModuleName = 'AzureRM.TrafficManager'; RequiredVersion = '1.0.12'},
