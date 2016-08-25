@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -315,7 +316,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewJobCompletesWhenAnyTaskFails()
         {
-            BatchController.NewInstance.RunPsTest("Test-JobCompletesWhenAnyTaskFails");
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "testJobCompletesWhenTaskFails";
+            string taskId = "taskId-1";
+            PSCloudJob completedJob = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-JobCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
+                null,
+                () =>
+                {
+                    context = new ScenarioTestContext();
+                    completedJob = ScenarioTestHelpers.WaitForJobCompletion(controller, context, jobId, taskId);
+                    CheckJobIsComplete(completedJob);
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        private void CheckJobIsComplete(PSCloudJob job)
+        {
+            Assert.Equal(Azure.Batch.Common.JobState.Completed, job.State);
+            Assert.Equal("TaskFailed", job.ExecutionInformation.TerminateReason);
         }
     }
 }

@@ -6758,20 +6758,20 @@
 					<maml:para>Specifies metadata, as key/value pairs, to add to the job. The key is the metadata name. The value is the metadata value.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
-			</command:parameter>			
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>OnTaskFailure</maml:name>
-				<maml:description>
-					<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">OnTaskFailure</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>OnAllTasksComplete</maml:name>
 				<maml:description>
 					<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
 				</maml:description>
-				<command:parameterValue required="false" variableLength="false">OnAllTasksComplete</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">OnAllTasksComplete</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OnTaskFailure</maml:name>
+				<maml:description>
+					<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">OnTaskFailure</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PoolInformation</maml:name>
@@ -6906,18 +6906,28 @@
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>OnTaskFailure</maml:name>
-			<maml:description>
-				<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">OnTaskFailure</command:parameterValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>OnAllTasksComplete</maml:name>
 			<maml:description>
 				<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
 			</maml:description>
-			<command:parameterValue required="false" variableLength="false">OnAllTasksComplete</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">OnAllTasksComplete</command:parameterValue>
+			<dev:type>
+				<maml:name>OnAllTasksComplete</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>OnTaskFailure</maml:name>
+			<maml:description>
+				<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">OnTaskFailure</command:parameterValue>
+			<dev:type>
+				<maml:name>OnTaskFailure</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PoolInformation</maml:name>
@@ -7800,6 +7810,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ExitConditions</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Id</maml:name>
 				<maml:description>
@@ -7910,6 +7927,13 @@
 					<maml:para>Specifies the environment settings, as key/value pairs, that this cmdlet adds to the task. The key is the environment setting name. The value is the environment setting.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ExitConditions</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Id</maml:name>
@@ -8056,6 +8080,18 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ExitConditions</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
+			<dev:type>
+				<maml:name>PSExitConditions</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Id</maml:name>
