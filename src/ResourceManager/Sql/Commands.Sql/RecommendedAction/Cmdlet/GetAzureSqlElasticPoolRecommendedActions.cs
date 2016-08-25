@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlElasticPoolRecommendedActions cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendedAction", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendedAction")]
     public class GetAzureSqlElasticPoolRecommendedAction : AzureSqlElasticPoolRecommendedActionCmdletBase
     {
         /// <summary>
