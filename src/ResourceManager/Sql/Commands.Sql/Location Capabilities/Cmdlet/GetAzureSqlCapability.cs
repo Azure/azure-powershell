@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability",
         ConfirmImpact = ConfirmImpact.None,
-        DefaultParameterSetName = _filtered)]
+        DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
     public class GetAzureSqlCapability : AzureRMCmdlet
     {
         /// <summary>

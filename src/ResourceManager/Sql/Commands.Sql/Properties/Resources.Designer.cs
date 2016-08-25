@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to process resource.
+        /// </summary>
+        internal static string BaseConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("BaseConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -187,7 +196,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
+        ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
+        /// </summary>
+        internal static string InvalidDetectionTypeList {
+            get {
+                return ResourceManager.GetString("InvalidDetectionTypeList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot use the None option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
             get {
@@ -427,8 +445,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             get {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
             }
-        }        
-
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -495,13 +513,12 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
-        internal static string SetDisasterRecoveryConfigurationNoOptionProvided
-        {
+        internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
