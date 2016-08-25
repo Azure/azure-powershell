@@ -18,17 +18,17 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
-    /// Returns the auditing policy of a specific database.
+    /// Returns the auditing policy of a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),
-            OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerThreatDetectionPolicy", SupportsShouldProcess = true), 
+        OutputType(typeof(ServerThreatDetectionPolicyModel))]
+    public class AzureRmSqlServerThreatDetectionPolicy : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseThreatDetectionPolicyModel PersistChanges(DatabaseThreatDetectionPolicyModel model)
+        protected override ServerThreatDetectionPolicyModel PersistChanges(ServerThreatDetectionPolicyModel model)
         {
             return null;
         }

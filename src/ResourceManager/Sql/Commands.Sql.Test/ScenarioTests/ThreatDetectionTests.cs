@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
-        public void ThreatDetectionDatabaseGetDefualtPolicy()
+        public void ThreatDetectionGetDefualtPolicy()
         {
-            RunPowerShellTest("Test-ThreatDetectionDatabaseGetDefualtPolicy");
+            RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
         }
 
         [Fact]
@@ -54,6 +54,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void ThreatDetectionServerUpdatePolicy()
+        {
+            RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
