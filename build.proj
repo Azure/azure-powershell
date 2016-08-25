@@ -58,6 +58,12 @@
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
   </ItemGroup>
   
+  <!-- Tasks -->
+  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+  <UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+  
   <!--
   CI build related
   -->
@@ -143,7 +149,7 @@
     <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" 
           ContinueOnError="false" />
     <!-- Restore packages for static analysis-->
-    <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch)"
+    <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
           ContinueOnError="false" />
 
     <!--Restore the xunit runner needed to run unit tests-->
@@ -155,13 +161,15 @@
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
+	<Copy SourceFiles="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" DestinationFiles="$(LibrarySourceFolder)\Package\$(Configuration)\Microsoft.Azure.Commands.Build.Tasks.dll" />
+	<DebugTask/>
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)" 
       ContinueOnError="false" />
-      
+    
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
     <MSBuild
@@ -192,9 +200,6 @@
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
-  
-  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />  
   
   <Target Name="CodeSignBinaries">
     <PropertyGroup>
@@ -257,7 +262,12 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-    
+	
+	<VerifyAuthenticodeSignatureTask
+        Assembly="%(DelaySignedAssembliesToSign.Identity)"
+        ContinueOnError="false" 
+        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+	
     <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckStrongNameSignature.ps1 &quot;"/>
 
     <!-- Copying signed shortcut back -->
