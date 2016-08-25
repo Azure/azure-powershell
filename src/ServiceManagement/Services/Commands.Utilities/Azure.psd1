@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '1.6.0'
+ModuleVersion = '1.6.1'
 
 # ID used to uniquely identify this module
 GUID = 'D48CF693-4125-4D2D-8790-1514F44CE325'
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @( @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.1.5'})
+RequiredModules = @( @{ ModuleName = 'Azure.Storage'; ModuleVersion = '1.1.6'})
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
