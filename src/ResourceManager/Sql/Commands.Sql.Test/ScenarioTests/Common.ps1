@@ -62,20 +62,30 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironment ($testSuffix)
+function Create-TestEnvironment ($testSuffix, $location = "West US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams ($params)
+	Create-TestEnvironmentWithParams $params  $location $serverVersion
 }
 
 <#
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironmentWithParams ($params)
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
-	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup-classic-storage.json" -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount  -Force
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+
+	$serverName = $params.serverName
+	$serverLogin = "audittestusername"
+	$serverPassword = "t357ingP@s5w0rd!Audit"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	New-AzureRmSqlDatabase -DatabaseName $params.databaseName  -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
+
+
+#	$res = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile sql_audit_test_env_setup_classic_storage.json -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount
 }
 
 <#
@@ -107,8 +117,8 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
+	$rg = New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
+	$rgdeployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
 	
 	$uid = $params.userName
@@ -183,6 +193,35 @@ function Get-ElasticPoolName
 }
 
 <#
+.SYNOPSIS
+Gets the location for a provider, if not found return East US
+#>
+function Get-ProviderLocation($provider)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "East US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "East US"
+	}
+
+	return "East US"
+}
+
+<#
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
@@ -208,7 +247,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East", $server)
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
@@ -250,4 +289,54 @@ function Remove-ThreatDetectionTestEnvironment ($testSuffix)
 	catch
 	{
 	}
+}
+
+<#
+.SYNOPSIS
+Gets the parameters for import/export tests
+#>
+function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
+{
+    $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
+    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
+    #Fake storage account data. Used for playback mode
+    $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
+    $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
+    $storageKey = "StorageKey"
+
+    $testMode = [System.Environment]::GetEnvironmentVariable("AZURE_TEST_MODE")
+    if($testMode -eq "Record"){
+        $exportBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_EXPORT_BACPAC")
+        $importBacpacUri = [System.Environment]::GetEnvironmentVariable("TEST_IMPORT_BACPAC")
+        $storageKey = [System.Environment]::GetEnvironmentVariable("TEST_STORAGE_KEY")
+
+       if ([System.string]::IsNullOrEmpty($exportBacpacUri)){
+          throw "The TEST_EXPORT_BACPAC environment variable should point to a bacpac that has been uploaded to Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs/empty.bacpac)"
+       }
+       if ([System.string]::IsNullOrEmpty($importBacpacUri)){
+          throw "The  TEST_IMPORT_BACPAC environment variable should point to an Azure blob storage ('e.g.' https://test.blob.core.windows.net/bacpacs)"
+       }
+       if ([System.string]::IsNullOrEmpty($storageKey)){
+          throw "The  TEST_STORAGE_KEY environment variable should point to a valid storage key for an existing Azure storage account"
+       }
+    }
+    
+	return @{
+              rgname = "sql-ie-cmdlet-test-rg" +$testSuffix;
+              serverName = "sql-ie-cmdlet-server" +$testSuffix;
+              databaseName = $databaseName;
+              userName = "testuser";
+              firewallRuleName = "sql-ie-fwrule" +$testSuffix;
+              password = $password;
+              storageKeyType = "StorageAccessKey";
+              storageKey = $storageKey;
+              exportBacpacUri = $exportBacpacUri + "/" + $databaseName + ".bacpac";
+              importBacpacUri = $importBacpacUri;
+              location = "Australia East";
+              version = "12.0";
+              databaseEdition = "Standard";
+              serviceObjectiveName = "S0";
+              databaseMaxSizeBytes = "5000000";
+              authType = "Sql";
+             }
 }

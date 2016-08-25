@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public PSPublicIpAddress PublicIpAddress { get; set; }
-        
+
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 

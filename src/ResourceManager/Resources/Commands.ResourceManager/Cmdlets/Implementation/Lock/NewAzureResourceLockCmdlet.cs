@@ -14,21 +14,21 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// The new azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock), OutputType(typeof(PSObject))]
     public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
-        [Alias("ExtensionResourceName")]
+        [Alias("ExtensionResourceName", "Name")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
@@ -74,13 +74,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
                     var resourceBody = this.GetResourceBody();
 
                     var operationResult = this.GetResourcesClient()
                         .PutResource(
                             resourceId: resourceId,
-                            apiVersion: apiVersion,
+                            apiVersion: this.LockApiVersion,
                             resource: resourceBody,
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var managementUri = this.GetResourcesClient()
                       .GetResourceManagementRequestUri(
                           resourceId: resourceId,
-                          apiVersion: apiVersion);
+                          apiVersion: this.LockApiVersion);
 
                     var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)

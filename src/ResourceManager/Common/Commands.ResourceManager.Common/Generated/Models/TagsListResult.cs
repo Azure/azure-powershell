@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Collections.Generic;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class TagsListResult : AzureOperationResponse
     {
         private string _nextLink;
-        
+
         /// <summary>
         /// Required. Gets or sets the URL to get the next set of results.
         /// </summary>
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._nextLink; }
             set { this._nextLink = value; }
         }
-        
+
         private IList<TagDetails> _tags;
-        
+
         /// <summary>
         /// Optional. Gets or sets the list of tags.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._tags; }
             set { this._tags = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagsListResult class.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         {
             this.Tags = new LazyList<TagDetails>();
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the TagsListResult class with
         /// required arguments.

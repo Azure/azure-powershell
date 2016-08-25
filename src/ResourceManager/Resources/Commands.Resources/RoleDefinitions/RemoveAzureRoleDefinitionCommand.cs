@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using System;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", SupportsShouldProcess = true, 
+        DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
@@ -33,7 +34,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateGuidNotEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
             HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -74,19 +75,19 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
-            Action action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(options));
-
             ConfirmAction(
                 Force.IsPresent,
                 confirmMessage,
                 ProjectResources.RemoveRoleDefinition,
                 Id.ToString(),
-                action);
-
-            if (PassThru)
-            {
-                WriteObject(roleDefinition);
-            }
+                () =>
+                {
+                    roleDefinition = PoliciesClient.RemoveRoleDefinition(options);
+                    if (PassThru)
+                    {
+                        WriteObject(roleDefinition);
+                    }
+                });
         }
     }
 }

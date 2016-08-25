@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 WriteExceptionError(e);
             }
-            
+
             WriteObject(list);
         }
 
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     WriteExceptionError(e);
                 }
-                
+
                 progressRecord.CurrentOperation = string.Format(progressCurrentOperationFormat, rg);
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, resourceGroups.Length);
                 progressRecord.PercentComplete = (100 * (i + 1)) / resourceGroups.Length;
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     WriteExceptionError(e);
                 }
-                
+
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, sites.Length);
                 progressRecord.PercentComplete = (100 * (i + 1)) / sites.Length;
                 WriteProgress(progressRecord);

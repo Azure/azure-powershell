@@ -38,7 +38,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                var op = this.VirtualMachineClient.Start(this.ResourceGroupName, this.Name);
+                var op = this.VirtualMachineClient.StartWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.Name).GetAwaiter().GetResult();
                 var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });

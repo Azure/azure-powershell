@@ -12,26 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure.Common.Authentication;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class WindowsAzureSubscriptionExtensions
     {
-        private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
+        private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid, CloudStorageAccount>();
 
         /// <summary>
         /// Get storage account details from the current storage account
         /// </summary>
-        /// <param name="subscription">The subscription continign the account.</param>
-        /// <param name="profile">The profile continaing the subscription.</param>
+        /// <param name="subscription">The subscription containing the account.</param>
+        /// <param name="profile">The profile continuing the subscription.</param>
         /// <returns>Storage account details, usable with the windows azure storage data plane library.</returns>
         public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureSMProfile profile)
         {

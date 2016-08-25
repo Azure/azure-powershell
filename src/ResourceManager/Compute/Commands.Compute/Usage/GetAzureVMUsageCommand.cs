@@ -15,8 +15,8 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                ListUsagesResponse result = this.UsageClient.List(this.Location.Canonicalize());
+                AzureOperationResponse<IPage<Usage>> result = this.UsageClient.ListWithHttpMessagesAsync(this.Location.Canonicalize()).GetAwaiter().GetResult();
 
-                List<PSUsage> psResultList = new List<PSUsage>();
-                foreach (var item in result.Usages)
+                var psResultList = new List<PSUsage>();
+                foreach (var item in result.Body)
                 {
-                    var psItem = Mapper.Map<PSUsage>(item);
-                    psItem = Mapper.Map<AzureOperationResponse, PSUsage>(result, psItem);
+                    var psItem = Mapper.Map<PSUsage>(result);
+                    psItem = Mapper.Map(item, psItem);
                     psResultList.Add(psItem);
                 }
 

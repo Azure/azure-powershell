@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         #region Input Parameter Definitions
 
         [Parameter(HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
-        public string DefaultStorageAccountName {
+        public string DefaultStorageAccountName
+        {
             get { return _config.DefaultStorageAccountName; }
             set { _config.DefaultStorageAccountName = value; }
         }
@@ -80,11 +81,19 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "Gets or sets the flavor for a cluster.")]
-        public HDInsightClusterType ClusterType
+        public string ClusterType
         {
             get { return _config.ClusterType; }
             set { _config.ClusterType = value; }
         }
+
+        [Parameter(HelpMessage = "Gets or sets the cluster tier for this HDInsight cluster.")]
+        public Tier ClusterTier
+        {
+            get { return _config.ClusterTier; }
+            set { _config.ClusterTier = value; }
+        }
+
 
         [Parameter(HelpMessage = "Gets or sets the Service Principal Object Id for accessing Azure Data Lake.")]
         public Guid ObjectId
@@ -93,7 +102,14 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _config.ObjectId = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate for accessing Azure Data Lake.")]
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file contents for accessing Azure Data Lake.")]
+        public byte[] CertificateFileContents
+        {
+            get { return _config.CertificateFileContents; }
+            set { _config.CertificateFileContents = value; }
+        }
+
+        [Parameter(HelpMessage = "Gets or sets the Service Principal Certificate file path for accessing Azure Data Lake.")]
         public string CertificateFilePath
         {
             get { return _config.CertificateFilePath; }

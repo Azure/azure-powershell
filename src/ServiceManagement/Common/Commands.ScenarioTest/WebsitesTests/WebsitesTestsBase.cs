@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.WebSites;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 {
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement,
+                helper.SetupModules(AzureModule.AzureServiceManagement,
                     "Resources\\Websites\\Common.ps1",
                     "Resources\\Websites\\" + this.GetType().Name + ".ps1");
 

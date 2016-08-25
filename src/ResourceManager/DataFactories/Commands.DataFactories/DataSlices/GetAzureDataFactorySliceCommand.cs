@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 var dataSlices = DataFactoryClient.ListDataSlices(filterOptions);
                 totalDataSlices += dataSlices.Count;
-                WriteObject(dataSlices, true);    
+                WriteObject(dataSlices, true);
             } while (filterOptions.NextLink.IsNextPageLink());
 
             if (totalDataSlices == 0)

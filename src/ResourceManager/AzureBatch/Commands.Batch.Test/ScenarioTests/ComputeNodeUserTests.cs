@@ -12,26 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class ComputeNodeUserTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
-        
+
+        public ComputeNodeUserTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;
@@ -39,10 +35,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string userName = "createuser";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' '{3}' 0", accountName, poolId, computeNodeId, userName) }; },
+                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' 0", poolId, computeNodeId, userName) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                 },
                 null,
@@ -60,10 +56,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string userName = "createuser2";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' '{3}' 1", accountName, poolId, computeNodeId, userName) }; },
+                () => { return new string[] { string.Format("Test-CreateComputeNodeUser '{0}' '{1}' '{2}' 1", poolId, computeNodeId, userName) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                 },
                 null,
@@ -73,7 +69,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateComputeNodeUser()
         {
             BatchController controller = BatchController.NewInstance;
@@ -81,10 +76,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string userName = "updateuser";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-UpdateComputeNodeUser '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, userName) }; },
+                () => { return new string[] { string.Format("Test-UpdateComputeNodeUser '{0}' '{1}' '{2}'", poolId, computeNodeId, userName) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.CreateComputeNodeUser(controller, context, poolId, computeNodeId, userName);
                 },
@@ -105,10 +100,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string userName = "deleteuser";
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteComputeNodeUser '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, userName) }; },
+                () => { return new string[] { string.Format("Test-DeleteComputeNodeUser '{0}' '{1}' '{2}'", poolId, computeNodeId, userName) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
                     ScenarioTestHelpers.CreateComputeNodeUser(controller, context, poolId, computeNodeId, userName);
                 },

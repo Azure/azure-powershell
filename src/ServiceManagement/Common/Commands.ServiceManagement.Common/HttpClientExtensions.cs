@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
-using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -64,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             Action<string> logger,
             Func<string, string> formatter,
             Func<string, T> serializer)
-            where T: class, new()
+            where T : class, new()
         {
             AddUserAgent(client);
             LogRequest(
@@ -77,8 +77,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             string content = response.EnsureSuccessStatusCode().Content.ReadAsStringAsync().Result;
             LogResponse(response.StatusCode.ToString(), response.Headers, formatter(content), logger);
 
-            try 
-            {	        
+            try
+            {
                 return serializer(content);
             }
             catch (Exception)

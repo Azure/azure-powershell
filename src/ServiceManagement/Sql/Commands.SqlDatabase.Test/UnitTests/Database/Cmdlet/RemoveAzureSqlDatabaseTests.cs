@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 8)
                             {
                                 // Request 0-5: Remove database requests
@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
                 using (AsyncExceptionManager exceptionManager = new AsyncExceptionManager())
                 {
-                    // Create context with both ManageUrl and ServerName overriden
+                    // Create context with both ManageUrl and ServerName overridden
                     Collection<PSObject> databases;
                     using (new MockHttpServer(
                         exceptionManager,

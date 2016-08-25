@@ -31,11 +31,11 @@ function Test-VirtualMachineBootDiagnostics
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -47,12 +47,12 @@ function Test-VirtualMachineBootDiagnostics
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
@@ -73,26 +73,25 @@ function Test-VirtualMachineBootDiagnostics
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
         Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
         Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
         Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
         Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
@@ -114,7 +113,7 @@ function Test-VirtualMachineBootDiagnostics
         $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -123,17 +122,21 @@ function Test-VirtualMachineBootDiagnostics
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
-        Start-Sleep -s 600;
+        Wait-Seconds 600;
         $localpath = (Get-Item -Path ".\" -Verbose).FullName
         Get-AzureRmVMBootDiagnosticsData -Windows -ResourceGroupName $rgname -Name $vmname -LocalPath $localpath;
 
         # Remove VM
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+
+        # Create a Linux VM with boot diagnostics
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $osDiskName = 'linuxOsDisk';
 
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
@@ -150,7 +153,7 @@ function Test-VirtualMachineBootDiagnostics
         $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -159,12 +162,12 @@ function Test-VirtualMachineBootDiagnostics
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
 
-        Start-Sleep -s 600;
+        Wait-Seconds 600;
 
         $bddata = Get-AzureRmVMBootDiagnosticsData -Linux -ResourceGroupName $rgname -Name $vmname | Out-String;
 
@@ -197,11 +200,11 @@ function Test-VirtualMachineBootDiagnosticsPremium
         $vmsize = 'Standard_DS1';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -213,12 +216,12 @@ function Test-VirtualMachineBootDiagnosticsPremium
 
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
@@ -235,11 +238,11 @@ function Test-VirtualMachineBootDiagnosticsPremium
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -266,7 +269,7 @@ function Test-VirtualMachineBootDiagnosticsPremium
         $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -275,7 +278,7 @@ function Test-VirtualMachineBootDiagnosticsPremium
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreNotEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
@@ -306,11 +309,11 @@ function Test-LinuxVirtualMachineBootDiagnostics
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -322,7 +325,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
@@ -337,11 +340,11 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -368,7 +371,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
         $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -377,7 +380,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
@@ -411,11 +414,11 @@ function Test-VirtualMachineBootDiagnosticsSet
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
-        Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -427,12 +430,12 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         # Adding the same Nic but not set it Primary
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
@@ -454,11 +457,11 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-        Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+        Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -487,7 +490,7 @@ function Test-VirtualMachineBootDiagnosticsSet
         $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -496,7 +499,7 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount2.PrimaryEndpoints.Blob   $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
@@ -508,7 +511,7 @@ function Test-VirtualMachineBootDiagnosticsSet
         $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
-        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+        Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
@@ -517,7 +520,7 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
+        Assert-AreEqual $vm1.HardwareProfile.VmSize $vmsize;
 
         Assert-AreEqual $false $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
         Assert-AreEqual $stoaccount2.PrimaryEndpoints.Blob   $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;

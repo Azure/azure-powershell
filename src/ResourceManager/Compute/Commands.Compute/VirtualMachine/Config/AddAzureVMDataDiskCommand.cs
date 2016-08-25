@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -59,9 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCaching)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite, ValidateSetValues.None)]
-        public string Caching { get; set; }
+        public CachingTypes Caching { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -84,9 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(DiskCreateOptionTypes.Empty, DiskCreateOptionTypes.Attach, DiskCreateOptionTypes.FromImage)]
-        public string CreateOption { get; set; }
+        public DiskCreateOptionTypes CreateOption { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(
@@ -116,12 +111,12 @@ namespace Microsoft.Azure.Commands.Compute
                 Caching = this.Caching,
                 DiskSizeGB = this.DiskSizeInGB,
                 Lun = this.Lun.GetValueOrDefault(),
-                VirtualHardDisk = new VirtualHardDisk
+                Vhd = new VirtualHardDisk
                 {
                     Uri = this.VhdUri
                 },
                 CreateOption = this.CreateOption,
-                SourceImage = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
+                Image = string.IsNullOrEmpty(this.SourceImageUri) ? null : new VirtualHardDisk
                 {
                     Uri = this.SourceImageUri
                 }

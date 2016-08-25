@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
             HelpMessage = "Service Key associated with the Azure BGP Peering to be removed")]
         public Guid ServiceKey { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Bgp Peering Access Type: Public or Private")]
         [DefaultValue("Private")]
         public BgpPeeringAccessType AccessType { get; set; }
 

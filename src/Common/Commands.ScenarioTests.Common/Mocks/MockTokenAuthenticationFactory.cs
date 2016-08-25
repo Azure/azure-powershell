@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest;
 using System;
 using System.Security;
@@ -109,6 +109,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
             return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
+        }
+        
+        public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            throw new NotImplementedException();
         }
     }
 }

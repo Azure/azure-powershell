@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -31,8 +31,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchNodeFileContentCommandTests()
+        public GetBatchNodeFileContentCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchNodeFileContentCommand()
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakGetFileAndPropertiesResponseInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromTaskResponseInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "startup\\stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakGetFileAndPropertiesResponseInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeGetFileAndPropertiesFromComputeNodeResponseInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

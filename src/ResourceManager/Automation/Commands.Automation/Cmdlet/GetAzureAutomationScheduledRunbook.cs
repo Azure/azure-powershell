@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     var schedules = this.AutomationClient.ListJobSchedules(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
                     if (schedules != null)
-                    { 
+                    {
                         this.GenerateCmdletOutput(schedules.ToList().Where(js => String.Equals(js.RunbookName, this.RunbookName, StringComparison.OrdinalIgnoreCase)));
                     }
 

@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Compute.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -48,5 +45,10 @@ namespace Microsoft.Azure.Commands.Compute
         /// Auto-backup settings
         /// </summary>
         public AutoBackupSettings AutoBackupSettings;
+
+        /// <summary>
+        /// Key Vault Credential settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
     }
 }

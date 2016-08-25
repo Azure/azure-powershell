@@ -13,11 +13,11 @@
 //  limitations under the License.
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using System;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Management;
+    using System;
 
     public class ApiManagementTestsFixture : TestsFixture
     {

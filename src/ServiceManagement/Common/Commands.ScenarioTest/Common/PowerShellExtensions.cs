@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public static string CredentialImportFormat = "Import-AzurePublishSettingsFile '{0}'";
 
         /// <summary>
-        /// Gets a powershell varibale from the current session and convernts it back to it's original type.
+        /// Gets a powershell variable from the current session and converts it back to it's original type.
         /// </summary>
         /// <typeparam name="T">The powershell object original type</typeparam>
         /// <param name="powershell">The PowerShell instance</param>
@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         }
 
         /// <summary>
-        /// Gets a powershell enumerable collection from the current session and convernts it back to it's original type.
+        /// Gets a powershell enumerable collection from the current session and converts it back to it's original type.
         /// </summary>
         /// <typeparam name="T">The powershell object original type</typeparam>
         /// <param name="powershell">The PowerShell instance</param>

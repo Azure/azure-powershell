@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -32,14 +32,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The ExpressRouteCircuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             // Verify if the subnet exists in the VirtualNetwork
-            var peering = this.Circuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var peering = this.ExpressRouteCircuit.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (peering != null)
             {
@@ -69,9 +68,9 @@ namespace Microsoft.Azure.Commands.Network
                 peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
             }
 
-            this.Circuit.Peerings.Add(peering);
+            this.ExpressRouteCircuit.Peerings.Add(peering);
 
-            WriteObject(this.Circuit);
+            WriteObject(this.ExpressRouteCircuit);
         }
     }
 }

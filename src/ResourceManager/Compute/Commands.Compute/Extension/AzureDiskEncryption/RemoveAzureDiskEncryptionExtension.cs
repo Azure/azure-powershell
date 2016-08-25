@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Management.Automation;
-using System;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ProfileNouns.AzureDiskEncryptionExtension)]
+        ProfileNouns.AzureDiskEncryptionExtension,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(HelpMessage = "To force the removal.")]
+        [Parameter(HelpMessage = "To force the removal of the extension from the virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
@@ -61,23 +64,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
+                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
 
-                string currentOSType = virtualMachineResponse.StorageProfile.OSDisk.OperatingSystemType;
-                if (string.Equals(currentOSType, "Windows", StringComparison.InvariantCultureIgnoreCase))
+                var currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
+                if (OperatingSystemTypes.Windows.Equals(currentOSType))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultName;
                 }
-                else if (string.Equals(currentOSType, "Linux", StringComparison.InvariantCultureIgnoreCase))
+                else if (OperatingSystemTypes.Linux.Equals(currentOSType))
                 {
                     this.Name = this.Name ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultName;
                 }
 
-                if (this.Force.IsPresent
-             || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption))
+                if (this.ShouldProcess(VMName, Properties.Resources.RemoveDiskEncryptionAction)
+                    && (this.Force.IsPresent
+                    || this.ShouldContinue(Properties.Resources.VirtualMachineExtensionRemovalConfirmation, Properties.Resources.VirtualMachineExtensionRemovalCaption)))
                 {
-                    var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName, this.Name);
-                    WriteObject(op);
+                    var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
                 }
             });
         }

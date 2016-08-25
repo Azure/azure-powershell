@@ -14,6 +14,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Xunit;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -31,5 +32,6 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("C01CC766-EAA4-4CA3-A595-6C4681316532")]
 
-[assembly: AssemblyVersion("0.1.0")]
-[assembly: AssemblyFileVersion("0.1.0")]
+[assembly: AssemblyVersion("2.0.1")]
+[assembly: AssemblyFileVersion("2.0.1")]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

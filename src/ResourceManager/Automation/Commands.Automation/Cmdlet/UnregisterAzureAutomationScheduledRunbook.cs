@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Unregisters an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationScheduledRunbook", SupportsShouldProcess = true, 
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>

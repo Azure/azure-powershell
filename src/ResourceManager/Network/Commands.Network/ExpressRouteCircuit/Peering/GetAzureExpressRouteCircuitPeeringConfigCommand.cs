@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -30,16 +30,15 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The circuit")]
-        public PSExpressRouteCircuit Circuit { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-            
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var peering =
-                    this.Circuit.Peerings.First(
+                    this.ExpressRouteCircuit.Peerings.First(
                         resource =>
                             string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                var peerings = this.Circuit.Peerings;
+                var peerings = this.ExpressRouteCircuit.Peerings;
                 WriteObject(peerings, true);
             }
         }

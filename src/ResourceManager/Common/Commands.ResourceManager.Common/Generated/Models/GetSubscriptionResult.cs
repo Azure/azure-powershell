@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class GetSubscriptionResult : AzureOperationResponse
     {
         private Subscription _subscription;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._subscription; }
             set { this._subscription = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the GetSubscriptionResult class.
         /// </summary>

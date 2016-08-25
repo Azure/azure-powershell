@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile);
             if (CreateACSNamespace.HasValue)
             {
                 WriteObject(Client.CreateNamespace(Name, Location, NamespaceType, CreateACSNamespace.Value));

@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Commands.Common.Authentication;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using WindowsAzure.Commands.Common;
     using WindowsAzure.Commands.Utilities.Common;
     using WindowsAzure.Commands.Utilities.Profile;

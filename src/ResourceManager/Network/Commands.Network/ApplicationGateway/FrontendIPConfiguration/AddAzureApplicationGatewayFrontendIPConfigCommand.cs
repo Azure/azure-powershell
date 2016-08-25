@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The application gateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
             frontendIPConfig = base.NewObject();
 
             this.ApplicationGateway.FrontendIPConfigurations.Add(frontendIPConfig);
-            
+
             WriteObject(this.ApplicationGateway);
         }
     }

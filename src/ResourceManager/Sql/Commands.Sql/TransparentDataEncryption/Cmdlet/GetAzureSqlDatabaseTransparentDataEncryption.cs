@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {

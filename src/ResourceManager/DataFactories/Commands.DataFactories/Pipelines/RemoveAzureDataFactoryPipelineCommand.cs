@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataFactories.Properties;
-using System;
-using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
@@ -22,7 +20,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Pipeline, DefaultParameterSetName = ByFactoryName, 
+        SupportsShouldProcess = true)]
     public class RemoveAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ExecuteDelete);
 
             WriteObject(true);
-            
+
         }
 
         private void ExecuteDelete()

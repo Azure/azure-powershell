@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-        
+
         [Parameter(
             Position = 0,
             Mandatory = true,

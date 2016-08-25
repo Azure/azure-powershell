@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
 using System.Management.Automation;
@@ -24,20 +23,28 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchAutoScale)]
     public class EnableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool to enable automatic scaling on.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, 
-            HelpMessage = "The formula for the desired number of compute nodes in the pool.")]
+        [Parameter(Position = 1)]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
+        [Parameter(Position = 2)]
+        [ValidateNotNullOrEmpty]
+        public TimeSpan? AutoScaleEvaluationInterval { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            AutoScaleParameters parameters = new AutoScaleParameters(this.BatchContext, this.Id, null,
-                this.AutoScaleFormula, this.AdditionalBehaviors);
+            EnableAutoScaleParameters parameters = new EnableAutoScaleParameters(this.BatchContext, this.Id,
+                pool: null, additionalBehaviors: this.AdditionalBehaviors)
+            {
+                AutoScaleFormula = this.AutoScaleFormula,
+                AutoScaleEvaluationInterval = this.AutoScaleEvaluationInterval
+            };
+
             BatchClient.EnableAutoScale(parameters);
         }
     }

@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System;
 
     public class TrafficManagerEndpoint
     {
@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public string EndpointMonitorStatus { get; set; }
 
+        public uint? MinChildEndpoints { get; set; }
+
         public Endpoint ToSDKEndpoint()
         {
             return new Endpoint
@@ -58,7 +60,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     Weight = this.Weight,
                     Priority = this.Priority,
                     EndpointLocation = this.Location,
-                    TargetResourceId = this.TargetResourceId
+                    TargetResourceId = this.TargetResourceId,
+                    MinChildEndpoints = this.MinChildEndpoints,
                 }
             };
         }
@@ -66,8 +69,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public static string ToSDKEndpointType(string type)
         {
             return
-                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ? 
-                string.Format("{0}/{1}", Constants.ProfileType, type) : 
+                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ?
+                string.Format("{0}/{1}", Constants.ProfileType, type) :
                 type;
         }
     }

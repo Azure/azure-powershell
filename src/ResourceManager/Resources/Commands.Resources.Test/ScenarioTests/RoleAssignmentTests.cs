@@ -13,84 +13,91 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Linq;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Linq;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleAssignmentTests : RMTestBase
     {
-        [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
+        public RoleAssignmentTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact(Skip = "tenantID NullException")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
-
-        [Fact(Skip = "tenantID NullException")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
-
-        [Fact(Skip = "tenantID NullException")]
+        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
         }
 
-        [Fact(Skip = "Need to re-record test")]
+        [Fact(Skip = "Fix the flaky test and token error and then re-record the test.")]
         public void RaUserPermissions()
         {
             User newUser = null;
-            ResourceGroupExtended resourceGroup = null;
+            ResourceGroup resourceGroup = null;
             string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
             string userName = null;
             string userPass = null;
@@ -108,37 +115,36 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     userPass = TestUtilities.GenerateName("adpass") + "0#$";
 
                     var upn = userName + "@" + controllerAdmin.UserDomain;
-                    
+
                     var parameter = new UserCreateParameters
                     {
                         UserPrincipalName = upn,
                         DisplayName = userName,
                         AccountEnabled = true,
                         MailNickname = userName + "test",
-                        PasswordProfileSettings = new UserCreateParameters.PasswordProfile
+                        PasswordProfile= new PasswordProfile
                         {
                             ForceChangePasswordNextLogin = false,
                             Password = userPass
                         }
                     };
 
-                    newUser = controllerAdmin.GraphClient.User.Create(parameter).User;
+                    newUser = controllerAdmin.GraphClient.Users.Create(parameter);
 
                     resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List(new ResourceGroupListParameters())
-                                        .ResourceGroups
+                                        .List()
                                         .First();
 
                     // Wait to allow newly created object changes to propagate
                     TestMockSupport.Delay(20000);
 
-                    return new[] 
-                    { 
+                    return new[]
+                    {
                         string.Format(
-                            "CreateRoleAssignment '{0}' '{1}' '{2}' '{3}'", 
-                                roleAssignmentId, 
-                                newUser.ObjectId, 
-                                roleDefinitionName, 
+                            "CreateRoleAssignment '{0}' '{1}' '{2}' '{3}'",
+                                roleAssignmentId,
+                                newUser.ObjectId,
+                                roleDefinitionName,
                                 resourceGroup.Name)
                     };
                 },
@@ -155,12 +161,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 // scriptBuilder
                 () =>
                 {
-                    return new[] 
-                    { 
+                    return new[]
+                    {
                         string.Format(
-                            "Test-RaUserPermissions '{0}' '{1}'", 
-                            resourceGroup.Name, 
-                            userPermission) 
+                            "Test-RaUserPermissions '{0}' '{1}'",
+                            resourceGroup.Name,
+                            userPermission)
                     };
                 },
                 // initialize
@@ -189,7 +195,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     if (newUser != null)
                     {
-                        controllerAdmin.GraphClient.User.Delete(newUser.ObjectId);
+                        controllerAdmin.GraphClient.Users.Delete(newUser.ObjectId);
                     }
                     controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
                 },

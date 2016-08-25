@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Authorization;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Cmdlet to get existing resources from ARM cache.
@@ -203,7 +202,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.errors.Count != 0)
             {
-                foreach(var error in this.errors)
+                foreach (var error in this.errors)
                 {
                     this.WriteError(error);
                 }
@@ -257,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 tagValue: this.TagValue,
                 filter: this.ODataQuery,
                 resourceGroupNameContains: this.ResourceGroupNameContains,
-                nameContains: this.ResourceGroupNameContains);
+                nameContains: this.ResourceNameContains);
 
             return await this
                 .GetResourcesClient()
@@ -426,7 +425,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsResourceTypeCollectionGet()
         {
-            return (this.TenantLevel) && 
+            return (this.TenantLevel) &&
                 (this.IsResourceGroupLevelResourceTypeCollectionGet() ||
                 this.IsSubscriptionLevelResourceTypeCollectionGet() ||
                 this.IsTenantLevelResourceTypeCollectionGet());

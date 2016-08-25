@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string FilePath { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = RawDataParameterSet, Mandatory = true, ValueFromPipeline = true, 
+        [Parameter(Position = 0, ParameterSetName = RawDataParameterSet, Mandatory = true, ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The raw certificate data in either .cer or .pfx format.")]
         [ValidateNotNullOrEmpty]
         public byte[] RawData { get; set; }

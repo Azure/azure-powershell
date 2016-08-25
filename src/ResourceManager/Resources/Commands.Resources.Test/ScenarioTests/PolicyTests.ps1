@@ -22,13 +22,13 @@ function Test-PolicyDefinitionCRUD
 	$policyName = Get-ResourceName
 
 	# Test
-	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	$actual = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.PolicyDefinitionId $actual.PolicyDefinitionId
 	Assert-NotNull($actual.Properties.PolicyRule)
 
-	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription
+	$actual = Set-AzureRMPolicyDefinition -Name $policyName -DisplayName testDisplay -Description testDescription -Policy ".\SamplePolicyDefinition.json"
 	$expected = Get-AzureRMPolicyDefinition -Name $policyName
 	Assert-AreEqual $expected.Properties.DisplayName $actual.Properties.DisplayName
 	Assert-AreEqual $expected.Properties.Description $actual.Properties.Description
@@ -54,7 +54,7 @@ function Test-PolicyAssignmentCRUD
 
 	# Test
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location "west us"
-	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy "$TestOutputRoot\SamplePolicyDefinition.json"
 	$actual = New-AzureRMPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId
 	$expected = Get-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
 
@@ -74,7 +74,7 @@ function Test-PolicyAssignmentCRUD
 	$list = Get-AzureRMPolicyAssignment
 	Assert-AreEqual 2 @($list).Count
 
-	$remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId -Force
+	$remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId
 	Assert-AreEqual True $remove
 
 }

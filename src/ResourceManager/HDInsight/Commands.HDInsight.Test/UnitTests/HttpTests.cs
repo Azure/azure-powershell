@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Management.Automation;
+using System.Net;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -28,9 +28,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         private RevokeAzureHDInsightHttpServicesAccessCommand revokecmdlet;
 
         private readonly PSCredential _httpCred;
-        
-        public HttpTests()
+
+        public HttpTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
 

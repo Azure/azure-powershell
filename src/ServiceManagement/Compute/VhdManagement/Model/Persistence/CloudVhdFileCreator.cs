@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             var buffer = serializer.ToByteArray();
             destination.SetLength(virtualSize + VhdConstants.VHD_FOOTER_SIZE);
             destination.Seek(-VhdConstants.VHD_FOOTER_SIZE, SeekOrigin.End);
-            
+
             destination.BeginWrite(buffer, 0, buffer.Length, machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
             destination.EndWrite(machine.CompletionResult);

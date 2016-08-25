@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 
@@ -21,6 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class CmdletExtensions
     {
+        public static string AsAbsoluteLocation(this string realtivePath)
+        {
+            return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));
+        }
+
         public static string TryResolvePath(this PSCmdlet psCmdlet, string path)
         {
             try
@@ -51,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (result != null && result.Count > 0)
             {
-                fullPath = result[0].Path;
+                fullPath = result[0].ProviderPath;
             }
 
             return fullPath;

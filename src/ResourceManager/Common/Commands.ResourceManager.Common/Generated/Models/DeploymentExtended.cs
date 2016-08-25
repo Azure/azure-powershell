@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentExtended
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ID of the deployment.
         /// </summary>
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Required. Gets or sets the name of the deployment.
         /// </summary>
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private DeploymentPropertiesExtended _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets deployment properties.
         /// </summary>
@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentExtended class.
         /// </summary>
         public DeploymentExtended()
         {
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentExtended class with
         /// required arguments.

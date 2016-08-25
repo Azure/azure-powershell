@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Automation.Common;
 using System.Globalization;
+using System.IO;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Gets configuration script for given configuration name and account name.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscConfiguration", SupportsShouldProcess = true,
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
@@ -73,10 +71,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public override void ExecuteCmdlet()
         {
             bool? isDraft = this.IsDraft();
+            if (ShouldProcess(Name, VerbsData.Export))
+            {
+                var ret = this.AutomationClient.GetConfigurationContent(this.ResourceGroupName,
+                    this.AutomationAccountName, this.Name, isDraft, OutputFolder, this.Force);
 
-            var ret = this.AutomationClient.GetConfigurationContent(this.ResourceGroupName, this.AutomationAccountName, this.Name, isDraft, OutputFolder, this.Force);
-
-            this.WriteObject(ret, true);
+                this.WriteObject(ret, true);
+            }
         }
 
         /// <summary>

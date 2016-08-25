@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Json
 {
+    using Newtonsoft.Json;
     using System;
     using System.Xml;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The TimeSpan converter based on ISO 8601 format.

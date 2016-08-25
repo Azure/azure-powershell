@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentOperationsGetResult Get(this IDeploymentOperationOperations operations, string resourceGroupName, string deploymentName, string operationId)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperationOperations)s).GetAsync(resourceGroupName, deploymentName, operationId);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments operations.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceGroupName, deploymentName, operationId, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a list of deployments operations.
         /// </summary>
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentOperationsListResult List(this IDeploymentOperationOperations operations, string resourceGroupName, string deploymentName, DeploymentOperationsListParameters parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperationOperations)s).ListAsync(resourceGroupName, deploymentName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of deployments operations.
         /// </summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(resourceGroupName, deploymentName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a next list of deployments operations.
         /// </summary>
@@ -151,13 +151,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static DeploymentOperationsListResult ListNext(this IDeploymentOperationOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IDeploymentOperationOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a next list of deployments operations.
         /// </summary>

@@ -13,16 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
-using Microsoft.Azure.Commands.AzureBackup.Library;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Management.BackupServices.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -126,7 +122,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             List<CSMContainerResponse> containers = new List<CSMContainerResponse>();
             containers.AddRange(AzureBackupClient.ListContainers(resourceGroupName, resourceName, parameters));
-            WriteDebug(string.Format(Resources.FetchedContainer , containers.Count()));
+            WriteDebug(string.Format(Resources.FetchedContainer, containers.Count()));
 
             // When resource group name is specified, remove all containers whose resource group name
             // doesn't match the given resource group name

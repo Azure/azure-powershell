@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public IList<string> Arguments { get; private set; }
 
         /// <summary>
-        /// Gets the resources for the jobDetails.
+        /// Gets the files to be copied to the cluster
         /// </summary>
         public IList<string> Files { get; private set; }
 

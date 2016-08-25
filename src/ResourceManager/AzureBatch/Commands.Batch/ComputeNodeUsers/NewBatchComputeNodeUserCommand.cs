@@ -15,7 +15,6 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System;
-using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -24,17 +23,17 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchComputeNodeUser)]
     public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool containing the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, 
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet,
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }

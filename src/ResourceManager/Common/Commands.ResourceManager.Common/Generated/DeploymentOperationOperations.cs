@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +30,6 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private ResourceManagementClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Get a list of deployments operations.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("operationId");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("operationId", operationId);
                 TracingAdapter.Enter(invocationId, this, "GetAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -156,13 +156,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     DeploymentOperationsGetResult result = null;
                     // Deserialize Response
@@ -202,80 +202,80 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             DeploymentOperation operationInstance = new DeploymentOperation();
                             result.Operation = operationInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 operationInstance.Id = idInstance;
                             }
-                            
+
                             JToken operationIdValue = responseDoc["operationId"];
                             if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
                             {
                                 string operationIdInstance = ((string)operationIdValue);
                                 operationInstance.OperationId = operationIdInstance;
                             }
-                            
+
                             JToken propertiesValue = responseDoc["properties"];
                             if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                             {
                                 DeploymentOperationProperties propertiesInstance = new DeploymentOperationProperties();
                                 operationInstance.Properties = propertiesInstance;
-                                
+
                                 JToken provisioningStateValue = propertiesValue["provisioningState"];
                                 if (provisioningStateValue != null && provisioningStateValue.Type != JTokenType.Null)
                                 {
                                     string provisioningStateInstance = ((string)provisioningStateValue);
                                     propertiesInstance.ProvisioningState = provisioningStateInstance;
                                 }
-                                
+
                                 JToken timestampValue = propertiesValue["timestamp"];
                                 if (timestampValue != null && timestampValue.Type != JTokenType.Null)
                                 {
                                     DateTime timestampInstance = ((DateTime)timestampValue);
                                     propertiesInstance.Timestamp = timestampInstance;
                                 }
-                                
+
                                 JToken statusCodeValue = propertiesValue["statusCode"];
                                 if (statusCodeValue != null && statusCodeValue.Type != JTokenType.Null)
                                 {
                                     string statusCodeInstance = ((string)statusCodeValue);
                                     propertiesInstance.StatusCode = statusCodeInstance;
                                 }
-                                
+
                                 JToken statusMessageValue = propertiesValue["statusMessage"];
                                 if (statusMessageValue != null && statusMessageValue.Type != JTokenType.Null)
                                 {
                                     string statusMessageInstance = statusMessageValue.ToString(Newtonsoft.Json.Formatting.Indented);
                                     propertiesInstance.StatusMessage = statusMessageInstance;
                                 }
-                                
+
                                 JToken targetResourceValue = propertiesValue["targetResource"];
                                 if (targetResourceValue != null && targetResourceValue.Type != JTokenType.Null)
                                 {
                                     TargetResource targetResourceInstance = new TargetResource();
                                     propertiesInstance.TargetResource = targetResourceInstance;
-                                    
+
                                     JToken idValue2 = targetResourceValue["id"];
                                     if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                     {
                                         string idInstance2 = ((string)idValue2);
                                         targetResourceInstance.Id = idInstance2;
                                     }
-                                    
+
                                     JToken resourceNameValue = targetResourceValue["resourceName"];
                                     if (resourceNameValue != null && resourceNameValue.Type != JTokenType.Null)
                                     {
                                         string resourceNameInstance = ((string)resourceNameValue);
                                         targetResourceInstance.ResourceName = resourceNameInstance;
                                     }
-                                    
+
                                     JToken resourceTypeValue = targetResourceValue["resourceType"];
                                     if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                     {
@@ -285,14 +285,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a list of deployments operations.
         /// </summary>
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("deploymentName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -367,7 +367,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("parameters", parameters);
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -410,13 +410,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     DeploymentOperationsListResult result = null;
                     // Deserialize Response
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -466,75 +466,75 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     DeploymentOperation deploymentOperationInstance = new DeploymentOperation();
                                     result.Operations.Add(deploymentOperationInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         deploymentOperationInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken operationIdValue = valueValue["operationId"];
                                     if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
                                     {
                                         string operationIdInstance = ((string)operationIdValue);
                                         deploymentOperationInstance.OperationId = operationIdInstance;
                                     }
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         DeploymentOperationProperties propertiesInstance = new DeploymentOperationProperties();
                                         deploymentOperationInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken provisioningStateValue = propertiesValue["provisioningState"];
                                         if (provisioningStateValue != null && provisioningStateValue.Type != JTokenType.Null)
                                         {
                                             string provisioningStateInstance = ((string)provisioningStateValue);
                                             propertiesInstance.ProvisioningState = provisioningStateInstance;
                                         }
-                                        
+
                                         JToken timestampValue = propertiesValue["timestamp"];
                                         if (timestampValue != null && timestampValue.Type != JTokenType.Null)
                                         {
                                             DateTime timestampInstance = ((DateTime)timestampValue);
                                             propertiesInstance.Timestamp = timestampInstance;
                                         }
-                                        
+
                                         JToken statusCodeValue = propertiesValue["statusCode"];
                                         if (statusCodeValue != null && statusCodeValue.Type != JTokenType.Null)
                                         {
                                             string statusCodeInstance = ((string)statusCodeValue);
                                             propertiesInstance.StatusCode = statusCodeInstance;
                                         }
-                                        
+
                                         JToken statusMessageValue = propertiesValue["statusMessage"];
                                         if (statusMessageValue != null && statusMessageValue.Type != JTokenType.Null)
                                         {
                                             string statusMessageInstance = statusMessageValue.ToString(Newtonsoft.Json.Formatting.Indented);
                                             propertiesInstance.StatusMessage = statusMessageInstance;
                                         }
-                                        
+
                                         JToken targetResourceValue = propertiesValue["targetResource"];
                                         if (targetResourceValue != null && targetResourceValue.Type != JTokenType.Null)
                                         {
                                             TargetResource targetResourceInstance = new TargetResource();
                                             propertiesInstance.TargetResource = targetResourceInstance;
-                                            
+
                                             JToken idValue2 = targetResourceValue["id"];
                                             if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                             {
                                                 string idInstance2 = ((string)idValue2);
                                                 targetResourceInstance.Id = idInstance2;
                                             }
-                                            
+
                                             JToken resourceNameValue = targetResourceValue["resourceName"];
                                             if (resourceNameValue != null && resourceNameValue.Type != JTokenType.Null)
                                             {
                                                 string resourceNameInstance = ((string)resourceNameValue);
                                                 targetResourceInstance.ResourceName = resourceNameInstance;
                                             }
-                                            
+
                                             JToken resourceTypeValue = targetResourceValue["resourceType"];
                                             if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                             {
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -553,14 +553,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets a next list of deployments operations.
         /// </summary>
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("nextLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -615,12 +615,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("nextLink", nextLink);
                 TracingAdapter.Enter(invocationId, this, "ListNextAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + nextLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -628,13 +628,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     DeploymentOperationsListResult result = null;
                     // Deserialize Response
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -684,75 +684,75 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     DeploymentOperation deploymentOperationInstance = new DeploymentOperation();
                                     result.Operations.Add(deploymentOperationInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         deploymentOperationInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken operationIdValue = valueValue["operationId"];
                                     if (operationIdValue != null && operationIdValue.Type != JTokenType.Null)
                                     {
                                         string operationIdInstance = ((string)operationIdValue);
                                         deploymentOperationInstance.OperationId = operationIdInstance;
                                     }
-                                    
+
                                     JToken propertiesValue = valueValue["properties"];
                                     if (propertiesValue != null && propertiesValue.Type != JTokenType.Null)
                                     {
                                         DeploymentOperationProperties propertiesInstance = new DeploymentOperationProperties();
                                         deploymentOperationInstance.Properties = propertiesInstance;
-                                        
+
                                         JToken provisioningStateValue = propertiesValue["provisioningState"];
                                         if (provisioningStateValue != null && provisioningStateValue.Type != JTokenType.Null)
                                         {
                                             string provisioningStateInstance = ((string)provisioningStateValue);
                                             propertiesInstance.ProvisioningState = provisioningStateInstance;
                                         }
-                                        
+
                                         JToken timestampValue = propertiesValue["timestamp"];
                                         if (timestampValue != null && timestampValue.Type != JTokenType.Null)
                                         {
                                             DateTime timestampInstance = ((DateTime)timestampValue);
                                             propertiesInstance.Timestamp = timestampInstance;
                                         }
-                                        
+
                                         JToken statusCodeValue = propertiesValue["statusCode"];
                                         if (statusCodeValue != null && statusCodeValue.Type != JTokenType.Null)
                                         {
                                             string statusCodeInstance = ((string)statusCodeValue);
                                             propertiesInstance.StatusCode = statusCodeInstance;
                                         }
-                                        
+
                                         JToken statusMessageValue = propertiesValue["statusMessage"];
                                         if (statusMessageValue != null && statusMessageValue.Type != JTokenType.Null)
                                         {
                                             string statusMessageInstance = statusMessageValue.ToString(Newtonsoft.Json.Formatting.Indented);
                                             propertiesInstance.StatusMessage = statusMessageInstance;
                                         }
-                                        
+
                                         JToken targetResourceValue = propertiesValue["targetResource"];
                                         if (targetResourceValue != null && targetResourceValue.Type != JTokenType.Null)
                                         {
                                             TargetResource targetResourceInstance = new TargetResource();
                                             propertiesInstance.TargetResource = targetResourceInstance;
-                                            
+
                                             JToken idValue2 = targetResourceValue["id"];
                                             if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                             {
                                                 string idInstance2 = ((string)idValue2);
                                                 targetResourceInstance.Id = idInstance2;
                                             }
-                                            
+
                                             JToken resourceNameValue = targetResourceValue["resourceName"];
                                             if (resourceNameValue != null && resourceNameValue.Type != JTokenType.Null)
                                             {
                                                 string resourceNameInstance = ((string)resourceNameValue);
                                                 targetResourceInstance.ResourceName = resourceNameInstance;
                                             }
-                                            
+
                                             JToken resourceTypeValue = targetResourceValue["resourceType"];
                                             if (resourceTypeValue != null && resourceTypeValue.Type != JTokenType.Null)
                                             {
@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -771,14 +771,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

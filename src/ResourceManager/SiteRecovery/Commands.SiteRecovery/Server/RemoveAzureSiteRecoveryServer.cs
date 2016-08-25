@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRServer>))]
     public class RemoveAzureSiteRecoveryServer : SiteRecoveryCmdletBase
     {
@@ -36,21 +35,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRServer Server { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter Force { get; set; }
+
         #endregion Parameters
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
+            ConfirmAction(
+                VerbsCommon.Remove,
+                Server.FriendlyName,
+                () =>
             {
+                base.ExecuteSiteRecoveryCmdlet();
                 RemoveServer();
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            });
         }
 
         /// <summary>
@@ -63,19 +69,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 throw new PSInvalidOperationException(Properties.Resources.InvalidServerType);
             }
 
-            RecoveryServicesProviderDeletionInput input = new RecoveryServicesProviderDeletionInput()
-            {
-                Properties = new RecoveryServicesProviderDeletionInputProperties()
-            };
+            LongRunningOperationResponse response;
 
-            LongRunningOperationResponse response =
-                    RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name, input);
+            if (!this.Force.IsPresent)
+            {
+                response =
+                        RecoveryServicesClient.RemoveAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
+            }
+            else
+            {
+                response =
+                        RecoveryServicesClient.PurgeAzureSiteRecoveryProvider(Utilities.GetValueFromArmId(this.Server.ID, ARMResourceTypeConstants.ReplicationFabrics), this.Server.Name);
+            }
 
             JobResponse jobResponse =
                 RecoveryServicesClient
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));
-        }      
+        }
     }
 }

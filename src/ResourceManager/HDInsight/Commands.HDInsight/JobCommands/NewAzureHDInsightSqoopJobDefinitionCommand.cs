@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -30,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         private AzureHDInsightSqoopJobDefinition job;
 
         #region Input Parameter Definitions
-        
+
         [Parameter(HelpMessage = "The files for the jobDetails.")]
         public string[] Files { get; set; }
 
@@ -53,6 +51,13 @@ namespace Microsoft.Azure.Commands.HDInsight
         {
             get { return job.Command; }
             set { job.Command = value; }
+        }
+
+        [Parameter(HelpMessage = "The directory where the libjar can be found for the Sqoop job.")]
+        public string LibDir
+        {
+            get { return job.LibDir; }
+            set { job.LibDir = value; }
         }
 
         #endregion

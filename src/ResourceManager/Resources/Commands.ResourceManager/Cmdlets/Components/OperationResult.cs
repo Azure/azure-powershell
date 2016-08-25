@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using System;
     using System.Net;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A simple class that represents the result of an operation.

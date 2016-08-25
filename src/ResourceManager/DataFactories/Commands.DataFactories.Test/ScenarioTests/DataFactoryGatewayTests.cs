@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class DataFactoryGatewayTests : DataFactoriesScenarioTestsBase
     {
+        public DataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryGateway()

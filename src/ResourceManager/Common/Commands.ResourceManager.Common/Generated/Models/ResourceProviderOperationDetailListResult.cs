@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceProviderOperationDetailListResult : AzureOperationResponse
     {
         private IList<ResourceProviderOperationDefinition> _resourceProviderOperationDetails;
-        
+
         /// <summary>
         /// Optional. Gets or sets the list of resource provider operations.
         /// </summary>
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceProviderOperationDetails; }
             set { this._resourceProviderOperationDetails = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ResourceProviderOperationDetailListResult class.

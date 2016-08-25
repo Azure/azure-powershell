@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = ListVaultsByRGParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]        
+            HelpMessage = "Specifies the name of a resource group. This cmdlet gets key vault instances in the resource group that this parameter specifies.")]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 

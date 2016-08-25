@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.OperationalInsights;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Client
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
         public OperationalInsightsClient(AzureContext context)
         {
             OperationalInsightsManagementClient = AzureSession.ClientFactory.CreateClient<OperationalInsightsManagementClient>(
-                context, 
+                context,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 

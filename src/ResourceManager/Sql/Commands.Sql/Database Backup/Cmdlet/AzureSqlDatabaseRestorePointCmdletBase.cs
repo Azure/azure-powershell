@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    public abstract class AzureSqlDatabaseRestorePointCmdletBase 
+    public abstract class AzureSqlDatabaseRestorePointCmdletBase
         : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseRestorePointModel>, AzureSqlDatabaseBackupAdapter>
     {
         /// <summary>
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Database Server the database is in.")]
+            HelpMessage = "The name of the Azure SQL Server the database is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlDatabaseBackupAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlDatabaseBackupAdapter(DefaultProfile.Context);
         }

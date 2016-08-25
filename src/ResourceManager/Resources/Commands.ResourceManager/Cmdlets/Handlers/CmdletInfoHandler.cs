@@ -15,12 +15,9 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
-    using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// The cmdlet info handler.

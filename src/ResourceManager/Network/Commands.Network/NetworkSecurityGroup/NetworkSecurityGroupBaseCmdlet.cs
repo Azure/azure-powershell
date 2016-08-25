@@ -13,13 +13,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Commands.Resources.Models;
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -55,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network
             return true;
         }
 
-        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name)
+        public PSNetworkSecurityGroup GetNetworkSecurityGroup(string resourceGroupName, string name, string expandResource = null)
         {
-            var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name);
+            var nsg = this.NetworkSecurityGroupClient.Get(resourceGroupName, name, expandResource);
 
             var psNetworkSecurityGroup = Mapper.Map<PSNetworkSecurityGroup>(nsg);
             psNetworkSecurityGroup.ResourceGroupName = resourceGroupName;

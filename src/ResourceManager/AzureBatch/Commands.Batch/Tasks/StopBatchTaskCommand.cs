@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -22,17 +21,17 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchTask)]
     public class StopBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to terminate.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to terminate.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true,
             ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to terminate.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         {
             TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId,
                 this.Id, this.Task, this.AdditionalBehaviors);
-            BatchClient.TerminateTask(parameters); 
+            BatchClient.TerminateTask(parameters);
         }
     }
 }

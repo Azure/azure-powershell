@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             int startIndex = id.IndexOf(resourceName, StringComparison.OrdinalIgnoreCase) + resourceName.Length + 1;
             int endIndex = id.IndexOf("/", startIndex, StringComparison.OrdinalIgnoreCase);
-            
+
             // Replace the following string '/{value}/'
             startIndex--;
             string orignalString = id.Substring(startIndex, endIndex - startIndex + 1);
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 foreach (var gatewayIpConfig in applicationGateway.GatewayIPConfigurations)
                 {
-                    gatewayIpConfig.Id = string.Empty;                    
+                    gatewayIpConfig.Id = string.Empty;
                 }
             }
 
@@ -87,12 +86,21 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize AuthenticationCertificates
+            if (applicationGateway.AuthenticationCertificates != null)
+            {
+                foreach (var authCertificate in applicationGateway.AuthenticationCertificates)
+                {
+                    authCertificate.Id = string.Empty;
+                }
+            }
+
             // Normalize FrontendIpConfiguration
             if (applicationGateway.FrontendIPConfigurations != null)
             {
                 foreach (var frontendIpConfiguration in applicationGateway.FrontendIPConfigurations)
                 {
-                    frontendIpConfiguration.Id = string.Empty;                    
+                    frontendIpConfiguration.Id = string.Empty;
                 }
             }
 
@@ -114,12 +122,39 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize Probe
+            if (applicationGateway.Probes != null)
+            {
+                foreach (var probe in applicationGateway.Probes)
+                {
+                    probe.Id = string.Empty;
+                }
+            }
+
             // Normalize BackendHttpSettings
             if (applicationGateway.BackendHttpSettingsCollection != null)
             {
                 foreach (var backendHttpSettings in applicationGateway.BackendHttpSettingsCollection)
                 {
                     backendHttpSettings.Id = string.Empty;
+
+                    if (null != backendHttpSettings.Probe)
+                    {
+                        backendHttpSettings.Probe.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    backendHttpSettings.Probe.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                    }
+                    if (null != backendHttpSettings.AuthenticationCertificates)
+                    {
+                        foreach (var authCert in backendHttpSettings.AuthenticationCertificates)
+                        {
+                            authCert.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    authCert.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+                        }
+                    }
                 }
             }
 
@@ -144,11 +179,43 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     if (null != httpListener.SslCertificate)
-                    { 
+                    {
                         httpListener.SslCertificate.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                                         httpListener.SslCertificate.Id,
                                                                         applicationGateway.ResourceGroupName,
                                                                         applicationGateway.Name);
+                    }
+                }
+            }
+
+            // Normalize UrlPathMap
+            if (applicationGateway.UrlPathMaps != null)
+            {
+                foreach (var urlPathMap in applicationGateway.UrlPathMaps)
+                {
+                    urlPathMap.Id = string.Empty;
+
+                    urlPathMap.DefaultBackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendAddressPool.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+
+                    urlPathMap.DefaultBackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                    urlPathMap.DefaultBackendHttpSettings.Id,
+                                                    applicationGateway.ResourceGroupName,
+                                                    applicationGateway.Name);
+
+                    foreach (var pathRule in urlPathMap.PathRules)
+                    {
+                        pathRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                      pathRule.BackendAddressPool.Id,
+                                      applicationGateway.ResourceGroupName,
+                                      applicationGateway.Name);
+
+                        pathRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                        pathRule.BackendHttpSettings.Id,
+                                                        applicationGateway.ResourceGroupName,
+                                                        applicationGateway.Name);
                     }
                 }
             }
@@ -165,15 +232,29 @@ namespace Microsoft.Azure.Commands.Network
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
 
-                    requestRoutingRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
-                                                                    requestRoutingRule.BackendAddressPool.Id,
-                                                                    applicationGateway.ResourceGroupName,
-                                                                    applicationGateway.Name);
+                    if (null != requestRoutingRule.BackendAddressPool)
+                    {
+                        requestRoutingRule.BackendAddressPool.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                        requestRoutingRule.BackendAddressPool.Id,
+                                                                        applicationGateway.ResourceGroupName,
+                                                                        applicationGateway.Name);
+                    }
 
-                    requestRoutingRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                    if (null != requestRoutingRule.BackendHttpSettings)
+                    {
+                        requestRoutingRule.BackendHttpSettings.Id = NormalizeApplicationGatewayNameChildResourceIds(
                                                                     requestRoutingRule.BackendHttpSettings.Id,
                                                                     applicationGateway.ResourceGroupName,
                                                                     applicationGateway.Name);
+                    }
+
+                    if (null != requestRoutingRule.UrlPathMap)
+                    {
+                        requestRoutingRule.UrlPathMap.Id = NormalizeApplicationGatewayNameChildResourceIds(
+                                                                    requestRoutingRule.UrlPathMap.Id,
+                                                                    applicationGateway.ResourceGroupName,
+                                                                    applicationGateway.Name);
+                    }
                 }
             }
         }

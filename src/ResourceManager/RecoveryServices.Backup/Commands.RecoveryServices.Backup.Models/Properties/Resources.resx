@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AggregateException" xml:space="preserve">
+    <value>Handling aggregate exception</value>
+  </data>
+  <data name="ArgumentException" xml:space="preserve">
+    <value>Received ArgumentException</value>
+  </data>
+  <data name="RsVaultResNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.Name</value>
+  </data>
+  <data name="RsVaultRGNameNullOrEmpty" xml:space="preserve">
+    <value>RecoveryServicesBackupVault.ResourceGroupName</value>
+  </data>
+  <data name="CloudException" xml:space="preserve">
+    <value>Received CloudException, ErrorCode: {0}, Message: {1}</value>
+  </data>
+  <data name="CloudExceptionCodeNotFound" xml:space="preserve">
+    <value>Received CloudException, StatusCode: {0}</value>
+  </data>
+  <data name="ExceptionInExecution" xml:space="preserve">
+    <value>Caught exception, type: {0}</value>
+  </data>
+  <data name="ResourceNotFoundMessage" xml:space="preserve">
+    <value>The specified resource does not exist</value>
+  </data>
+  <data name="WebException" xml:space="preserve">
+    <value>Received WebException, Response: {0}, Status: {1}</value>
+  </data>
+  <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDaysOfWeekException" xml:space="preserve">
+    <value>The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule</value>
+  </data>
+  <data name="PolicyAlreadyExistException" xml:space="preserve">
+    <value>A backup policy with the specified name already exists: {0}</value>
+  </data>
+  <data name="PolicyNotFoundException" xml:space="preserve">
+    <value>Backup Policy not found with name: {0}</value>
+  </data>
+  <data name="ProtectionPolicyNameException" xml:space="preserve">
+    <value>Backup policy name should contain alphanumeric characters and cannot start with a number</value>
+  </data>
+  <data name="ProtectionPolicyNameLengthException" xml:space="preserve">
+    <value>Backup policy name must contain between 3 and 150 characters</value>
+  </data>
+  <data name="UnsupportedWorkloadBackupManagementTypeException" xml:space="preserve">
+    <value>Unsupported combination for WorkloadType: {0}, BackupManagementType:{1}</value>
+  </data>
+  <data name="UnsupportedWorkloadTypeException" xml:space="preserve">
+    <value>Unsupported WorkloadType: {0}</value>
+  </data>
+  <data name="WeeklyRetentionScheduleDaysOfWeekException" xml:space="preserve">
+    <value>For a weekly retention policy, DaysOfTheWeek is mandatory and should not contain duplicate entries</value>
+  </data>
+  <data name="WeeklyScheduleDaysOfWeekException" xml:space="preserve">
+    <value>For a weekly backup schedule, DaysOfWeek parameter is mandatory</value>
+  </data>
+  <data name="AzureVMUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty for WorkloadType AzureVM</value>
+  </data>
+  <data name="BothRetentionAndSchedulePoliciesEmpty" xml:space="preserve">
+    <value>Both RetentionPolicy and SchedulePolicy are empty, nothing to update</value>
+  </data>
+  <data name="EmptyServiceClientResponseException" xml:space="preserve">
+    <value>Empty response received from Service Client</value>
+  </data>
+  <data name="InvalidProtectionPolicyException" xml:space="preserve">
+    <value>Invalid ProtectionPolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="InvalidRetentionPolicyException" xml:space="preserve">
+    <value>Invalid RetentionPolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="InvalidSchedulePolicyException" xml:space="preserve">
+    <value>Invalid SchedulePolicy - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="UnExpectedWorkLoadTypeException" xml:space="preserve">
+    <value>Unexpected WorkloadType - expected:{0}, current:{1}</value>
+  </data>
+  <data name="UnExpectedContainerTypeException" xml:space="preserve">
+    <value>Unexpected ContainerType - expected:{0}, current:{1}</value>
+  </data>
+  <data name="AllRetentionSchedulesEmptyException" xml:space="preserve">
+    <value>All retention schedules are empty in RetentionPolicy. Alteast one is expected.</value>
+  </data>
+  <data name="BackupAndRetentionTimesMismatch" xml:space="preserve">
+    <value>RetentionTime in retention schedule should be same as backup time specified in SchedulePolicy</value>
+  </data>
+  <data name="DailyRetentionScheduleNullException" xml:space="preserve">
+    <value>Daily Retention Schedule can't be null (or) IsDailyScheduleEnabled should be 'true'  if Daily Backup Schedule is enabled</value>
+  </data>
+  <data name="DailyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsDailyScheduleEnabled=true but DailySchedule is NULL</value>
+  </data>
+  <data name="InvalidBackupTimesInSchedulePolicyException" xml:space="preserve">
+    <value>Only one BackupTime is Allowed in SchedulePolicy</value>
+  </data>
+  <data name="InvalidDurationTypeException" xml:space="preserve">
+    <value>InvalidDurationType - {0}</value>
+  </data>
+  <data name="InvalidRetentionTimesInPolicyException" xml:space="preserve">
+    <value>Only one RetentionTime is Allowed in RetentionSchedules</value>
+  </data>
+  <data name="MonthlyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsMonthlyScheduleEnabled=true but MonthlySchedule is NULL</value>
+  </data>
+  <data name="MonthlyYearlyInvalidDailyRetentionFormatTypeException" xml:space="preserve">
+    <value>In Monthly and Yearly retention schedules, RetentionFormatType cannot be 'Daily' if Weekly BackupSchedule is selected</value>
+  </data>
+  <data name="RetentionDurationCountInvalidException" xml:space="preserve">
+    <value>RetentionDuration in Days/Weeks/Months/Years should be from 1 - 9999</value>
+  </data>
+  <data name="WeeklyRetentionScheduleNullException" xml:space="preserve">
+    <value>If Weekly backup schedule is enabled, then IsDailyScheduleEnabled should be false and Weekly retention schedule should not be null, IsWeeklyScheduleEnabled should be true</value>
+  </data>
+  <data name="WeeklyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsWeeklyScheduleEnabled=true but WeeklySchedule is NULL</value>
+  </data>
+  <data name="YearlyScheduleEnabledButScheduleIsNullException" xml:space="preserve">
+    <value>RetentionPolicy: IsYearlyScheduleEnabled=true but YearlySchedule is NULL</value>
+  </data>
+  <data name="YearlyScheduleMonthsOfYearException" xml:space="preserve">
+    <value>MonthsOfYear list in YearlyRetentionSchedule should not be NULL and not contain duplicate entires</value>
+  </data>
+  <data name="InvalidDayInDaysOfMonthOfMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, Day in DaysOfMonth should be 1-28 (or) IsLast=true set for one day only</value>
+  </data>
+  <data name="InvalidDaysOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidDaysOfWeekInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, DaysOfWeek is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="InvalidScheduleRunDaysInScheduleException" xml:space="preserve">
+    <value>In Schedule, if ScheduleRunFrequency is Weekly then ScheduleRunDays should not be empty and not contain duplicate entries</value>
+  </data>
+  <data name="InvalidScheduleTimeInScheduleException" xml:space="preserve">
+    <value>ScheduleTimes in Schedule should be in UTC Timezone, have ONE time and must be of multiples of 30 Mins with seconds and milliseconds set to 0</value>
+  </data>
+  <data name="InvalidWeeksOfMonthInMonthlyYearlyRetentionPolicyException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, WeeksOfMonth is NULL or empty or contains duplicate entires</value>
+  </data>
+  <data name="MonthlyYearlyRetentionDailySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Daily then RetentionScheduleDaily should NOT be null</value>
+  </data>
+  <data name="MonthlyYearlyRetentionWeeklySchedulePolicyNULLException" xml:space="preserve">
+    <value>In Monthly/Yearly retention schedule, if RetentionScheduleFormatType=Weekly then RetentionScheduleWeekly should NOT be null</value>
+  </data>
+  <data name="UpdateToNewAzurePowershellWarning" xml:space="preserve">
+    <value>Data truncated. Please upgrade to latest version of Azure Powershell</value>
+  </data>
+  <data name="JobAllowedDateTimeRangeExceeded" xml:space="preserve">
+    <value>To filter should not be more than 30 days away from From filter.</value>
+  </data>
+  <data name="JobCouldNotCancelJob" xml:space="preserve">
+    <value>Failed to cancel the job. Error code: {0}</value>
+  </data>
+  <data name="JobJobIdAndJobMismatch" xml:space="preserve">
+    <value>JobID and Job object provided don't match each other.</value>
+  </data>
+  <data name="JobRefineFilters" xml:space="preserve">
+    <value>There are more than 1000 jobs for the filter combination you have provided. Kindly refine your filters to fetch the job you want.</value>
+  </data>
+  <data name="JobTimeFiltersShouldBeSpecifiedInUtc" xml:space="preserve">
+    <value>Please specify From and To filter values in UTC. Other timezones are not supported.</value>
+  </data>
+  <data name="JobToShouldBeGreaterThanFrom" xml:space="preserve">
+    <value>To filter should not be less than From filter.</value>
+  </data>
+  <data name="JobWaitJobInvalidInput" xml:space="preserve">
+    <value>Please pass Job or List of Jobs as input. Your input is of type: {0}</value>
+  </data>
+  <data name="ScheduleTimeNotInUTCTimeZoneException" xml:space="preserve">
+    <value>ScheduleRunTimes in Schedule Policy should be in UTC Timezone</value>
+  </data>
+  <data name="InvalidProtectionItemException" xml:space="preserve">
+    <value>Invalid Item - either NULL or NOT of type: {0}</value>
+  </data>
+  <data name="DiscoveryFailure" xml:space="preserve">
+    <value>Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted"</value>
+  </data>
+  <data name="DiscoveryFailureErrorCode" xml:space="preserve">
+    <value>Discovery operation failed with ErrorCode: {0}</value>
+  </data>
+  <data name="DiscoveryFailureErrorMessage" xml:space="preserve">
+    <value>Going to retry Discovery if retry count is not exceeded"</value>
+  </data>
+  <data name="ContainerCountAfterFilter" xml:space="preserve">
+    <value>Count of containers after BackupManagementType and friendlyName filter = {0}</value>
+  </data>
+  <data name="ContainerNotDiscovered" xml:space="preserve">
+    <value>Container is not discovered</value>
+  </data>
+  <data name="VMNotDiscovered" xml:space="preserve">
+    <value>VM {0} is not yet discovered. Triggering Discovery</value>
+  </data>
+  <data name="AzureVMNotFound" xml:space="preserve">
+    <value>The specified Azure Virtual Machine Not Found. Possible causes are
+1. VM does not exist
+2. The VM name or the Service name needs to be case sensitive
+3. VM is already Protected with same or other Vault. Please Unprotect VM first and then try to protect it again.
+
+Please contact Microsoft for further assistant.</value>
+  </data>
+  <data name="InvalidAzureVMName" xml:space="preserve">
+    <value>Azure VM name can not be null or empty</value>
+  </data>
+  <data name="BothCloudServiceNameAndResourceGroupNameShouldNotEmpty" xml:space="preserve">
+    <value>For Azure VM, both cloud service name and resource group name can not be empty</value>
+  </data>
+  <data name="EnableProtectionOperation" xml:space="preserve">
+    <value>Enable Protection Operation</value>
+  </data>
+  <data name="RemoveProtectionPolicyMessage" xml:space="preserve">
+    <value>Removing the protection policy</value>
+  </data>
+  <data name="RemoveProtectionPolicyWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the protection policy '{0}'</value>
+  </data>
+  <data name="MakingClientCall" xml:space="preserve">
+    <value>Making client call</value>
+  </data>
+  <data name="ProtectionPolicyDeleted" xml:space="preserve">
+    <value>Successfully deleted policy</value>
+  </data>
+  <data name="DisableProtectionMessage" xml:space="preserve">
+    <value>Disabling protection for the item</value>
+  </data>
+  <data name="DisableProtectionWarning" xml:space="preserve">
+    <value>Are you sure you want to disable protection for the item '{0}'</value>
+  </data>
+  <data name="DisableProtectionOperation" xml:space="preserve">
+    <value>Disable Protection Operation</value>
+  </data>
+  <data name="FinalOperationStatus" xml:space="preserve">
+    <value>Final operation status:</value>
+  </data>
+  <data name="TrackingOperationStatusURLForCompletion" xml:space="preserve">
+    <value>Tracking operation status URL for completion:</value>
+  </data>
+  <data name="PolicyIdIsEmptyOrNull" xml:space="preserve">
+    <value>PolicyId is NULL or Empty. Please enter valid PolicyId</value>
+  </data>
+  <data name="PolicyNameIsEmptyOrNull" xml:space="preserve">
+    <value>PolicyName is NULL or Empty. Please enter valid PolicyName</value>
+  </data>
+  <data name="RecoveryPointEndDateShouldBeGreater" xml:space="preserve">
+    <value>End date should be greater than start date</value>
+  </data>
+  <data name="RecoveryPointUnsupportedParamet" xml:space="preserve">
+    <value>Unsupported Parameter set</value>
+  </data>
+  <data name="RecoveryPointItemTypeConversionError" xml:space="preserve">
+    <value>Cant convert input Item to AzureRmRecoveryServicesItemBase</value>
+  </data>
+  <data name="GetRPResponseIsNull" xml:space="preserve">
+    <value>GetRecoveryPointResponse is null</value>
+  </data>
+  <data name="RestoreAzureStorageNotFound" xml:space="preserve">
+    <value>Storage account not found</value>
+  </data>
+  <data name="RestoreDiskIncorrectRegion" xml:space="preserve">
+    <value>Storage account location should be same as vault location</value>
+  </data>
+  <data name="RestoreDiskMoreThanOneAccFound" xml:space="preserve">
+    <value>Found more than one StorageAccount with same name. Some thing went wrong</value>
+  </data>
+  <data name="RestoreDiskStorageTypeError" xml:space="preserve">
+    <value>Please provide {0} storage type to restore the vm</value>
+  </data>
+  <data name="RestoreDiskTimeRangeError" xml:space="preserve">
+    <value>Time difference should not be more than 30 days</value>
+  </data>
+  <data name="OperationFailed" xml:space="preserve">
+    <value>{0} failed. Error Code: {1}. Error Message: {2}</value>
+  </data>
+  <data name="TriggerBackupOperation" xml:space="preserve">
+    <value>Trigger Backup Operation</value>
+  </data>
+  <data name="URIValueNotFound" xml:space="preserve">
+    <value>{0} Uri value not found in Id {1}</value>
+  </data>
+  <data name="SetVaultContextFirst" xml:space="preserve">
+    <value>Set vault context first using cmdlet Set-AzureRmRecoveryServicesVaultContext</value>
+  </data>
+  <data name="VirtualMachineIdIsEmptyOrNull" xml:space="preserve">
+    <value>VirtualMachineId is NULL or Empty. Please enter valid VirtualMachineId</value>
+  </data>
+  <data name="JobFromNotProvided" xml:space="preserve">
+    <value>Please provide From filter along with To filter.</value>
+  </data>
+  <data name="RestoreOperation" xml:space="preserve">
+    <value>Restore Azure Backup Item Operation</value>
+  </data>
+  <data name="UnsupportedAzureRmBackupManagementServerException" xml:space="preserve">
+    <value>Please provide AzureRmBackupManagementServer of BackupEngineType as DpmEngine or DpmVenusEngine and provide BackupManagementType as SCDPM. Provided AzureRmBackupManagementServer has BackupEngineType {0} and backupManagementType {1} which is not valid.</value>
+  </data>
+  <data name="UnsupportedContainerException" xml:space="preserve">
+    <value>Please provide Container of containerType as Windows and backupManagementType as MARS or Container of containerType as AzureSQL and backupManagementType as AzureSQL. Provided Container has containerType {0} and backupManagementType {1} which is invalid.</value>
+  </data>
+  <data name="GetRPErrorInputDatesShouldBeInUTC" xml:space="preserve">
+    <value>Please specify startdate and enddate in UTC format</value>
+  </data>
+  <data name="BackupManagementTypeNotExpectedForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is not expected for WorkloadType: {0}</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForContainerType" xml:space="preserve">
+    <value>BackupManagementType needs to be specified for ContainerType {0}</value>
+  </data>
+  <data name="BackupManagementTypeRequiredForWorkloadType" xml:space="preserve">
+    <value>BackupManagementType is also required for WorkloadType: {0}</value>
+  </data>
+  <data name="UnsupportedContainerType" xml:space="preserve">
+    <value>Unsupported containerType: {0}</value>
+  </data>
+  <data name="UnExpectedBackupManagementTypeException" xml:space="preserve">
+    <value>Unexpected BackupManagementType - expected:{0}, current:{1}</value>
+  </data>
+  <data name="SchedulePolicyObjectNotRequiredForAzureSql" xml:space="preserve">
+    <value>SchedulePolicy Object is not required for WorkloadType AzureSql</value>
+  </data>
+  <data name="AzureSqlUnsupportedBackupManagementTypeException" xml:space="preserve">
+    <value>BackupManagementType value should be empty for WorkloadType AzureSql</value>
+  </data>
+  <data name="RetentionPolicyEmptyInAzureSql" xml:space="preserve">
+    <value>RetentionPolicy is empty, nothing to update</value>
+  </data>
+  <data name="AllowedSqlRetentionRange" xml:space="preserve">
+    <value>Retention count in Weeks should be in between 1-520, in Months should be in between 1-120 and Years should be in between 1-10</value>
+  </data>
+  <data name="BackupManagementTypeIncorrectForContainerType" xml:space="preserve">
+    <value>BackupManagementType provider for ContainerType {0} is incorrect.</value>
+  </data>
+  <data name="UnsupportedJobWarning" xml:space="preserve">
+    <value>Got some unsupported jobs</value>
+  </data>
+  <data name="ILRAnotherConnectionAlreadyAlive" xml:space="preserve">
+    <value>Another connection is already alive to this recovery point. You can either choose to terminate this or extend the deadline for access. Please run the appropriate command</value>
+  </data>
+  <data name="ILRConnectionNotAlive" xml:space="preserve">
+    <value>Please connect to the recovery point by running the connect command</value>
+  </data>
+  <data name="ILRConnectionExtensionSuccessful" xml:space="preserve">
+    <value>The connection has been extended for another 12 hours</value>
+  </data>
+  <data name="ILRConnectionDoesntExist" xml:space="preserve">
+    <value>No connection present to revoke</value>
+  </data>
+  <data name="ILRNoClientScriptsReturned" xml:space="preserve">
+    <value>Service didn't return any client scripts for this file / folder restore operation</value>
+  </data>
+  <data name="ILRTargetLocationInvalid" xml:space="preserve">
+    <value>Provided target location doesn't exist. Please provide a valid directory to download the script.</value>
+  </data>
+  <data name="ProtectionStateInvalidForAzureSqlItem" xml:space="preserve">
+    <value>Given Protection state is not valid for AzureSqlItem. Provided state : {0}</value>
+  </data>
+  <data name="ProtectionStatusNotAllowedForAzureSqlItem" xml:space="preserve">
+    <value>Protection Status is not allowed for AzureSqlItem. protectionStatus : {0}</value>
+  </data>
+  <data name="AzureSqlRetainDataException" xml:space="preserve">
+    <value>Azure Sql does not support disable protection with retain data</value>
+  </data>
+  <data name="UnsupportedStorageAccountException" xml:space="preserve">
+    <value>Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account.</value>
+  </data>
+  <data name="GetContainerNameParamDeprecated" xml:space="preserve">
+    <value>Name parameter will be deprecated. Please use FriendlyName instead for filtering by name.</value>
+  </data>
+</root>

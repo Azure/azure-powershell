@@ -13,32 +13,37 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.Resources.ResourceGroups;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Moq;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
     public class StopAzureResourceGroupDeploymentCommandTests
     {
-        private StopAzureResourceGroupDeploymentCommand cmdlet;
+        private StopAzureResourceGroupDeploymentCmdlet cmdlet;
 
-        private Mock<ResourcesClient> resourcesClientMock;
+        private Mock<ResourceManagerSdkClient> resourcesClientMock;
 
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
 
-        public StopAzureResourceGroupDeploymentCommandTests()
+        private string deploymentName = "myDeployment";
+
+        public StopAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
-            resourcesClientMock = new Mock<ResourcesClient>();
+            resourcesClientMock = new Mock<ResourceManagerSdkClient>();
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new StopAzureResourceGroupDeploymentCommand()
+            cmdlet = new StopAzureResourceGroupDeploymentCmdlet()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                ResourcesClient = resourcesClientMock.Object
+                ResourceManagerSdkClient = resourcesClientMock.Object
             };
         }
 
@@ -46,13 +51,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         public void StopsActiveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
-            
+            resourcesClientMock.Setup(f => f.CancelDeployment(resourceGroupName, deploymentName));
+
             cmdlet.ResourceGroupName = resourceGroupName;
-            cmdlet.Force = true;
+            cmdlet.Name = deploymentName;
 
             cmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Once());
+            resourcesClientMock.Verify(f => f.CancelDeployment(resourceGroupName, deploymentName), Times.Once());
         }
     }
 }

@@ -28,7 +28,7 @@ using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.ConfigDataInfo;
@@ -95,8 +95,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 }, retriableErrorMessages, 10, 30);
 
                 // Verify
-                Assert.AreEqual(newAzureQuickVMName1,
-                    vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
+                var vm = vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName);
+                Assert.AreEqual(newAzureQuickVMName1, vm.Name, true);
+                Assert.IsTrue(vm.VM.DebugSettings.BootDiagnosticsEnabled);
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
@@ -663,7 +664,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 VMs.Add(pervm);
                 Console.WriteLine("The VM, {0}, is imported.", pervm.RoleName);
             }
-
 
             for (int i = 0; i < 3; i++)
             {

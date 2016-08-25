@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Commands.Automation.Common;
+using System;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.ResourceGroupName = resourceGroupName;
             this.AutomationAccountName = automationAccountName;
             this.Name = node.Name;
-            this.Id = node.Id;
+            this.Id = node.NodeId.ToString("D");
             this.IpAddress = node.Ip;
             this.LastSeen = node.LastSeen.ToLocalTime();
             this.RegistrationTime = node.RegistrationTime.ToLocalTime();

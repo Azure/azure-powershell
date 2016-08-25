@@ -1,4 +1,9 @@
 ﻿extern alias MicrosoftAzureCommandsResources;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
+using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 // ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
@@ -15,18 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using Microsoft.Azure.Common.Authentication;
-using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
@@ -73,7 +67,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 }
                 return this._activeDirectoryClient;
             }
-            
+
             set { this._activeDirectoryClient = value; }
         }
 
@@ -196,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 // Only one group was found. Get the group display name and object id
                 var group = groupList.First();
-                
+
                 // Only support Security Groups
                 if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
                 {
@@ -270,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             string adTenant = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
             string graph = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
             var tenantIdGuid = Guid.Empty;
-            
+
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))
             {
                 throw new InvalidOperationException(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidTenantId);

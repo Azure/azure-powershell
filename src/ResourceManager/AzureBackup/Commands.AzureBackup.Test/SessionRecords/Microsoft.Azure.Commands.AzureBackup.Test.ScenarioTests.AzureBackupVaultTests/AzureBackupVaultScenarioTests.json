@@ -84,9 +84,6 @@
         "x-ms-client-request-id": [
           "ff97c9dd-5838-4ec9-802a-dc1f5f06a3bf-2015-08-16 19:16:03Z-PS"
         ],
-        "x-ms-version": [
-          "2013-03-01"
-        ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"
         ]
@@ -147,9 +144,6 @@
         ],
         "x-ms-client-request-id": [
           "fd70aa7c-a1db-42ed-8295-5cec7663d72d-2015-08-16 19:16:19Z-PS"
-        ],
-        "x-ms-version": [
-          "2013-03-01"
         ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"
@@ -501,6 +495,7 @@
       "RequestUri": "/Subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn/certificates/IdMgmtInternalCert?api-version=2015-03-15",
       "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZjUzMDNhMGItZmFlNC00Y2RiLWI0NGQtMGU0YzAzMmRkZTI2L3Jlc291cmNlR3JvdXBzL2JhY2t1cHJnL3Byb3ZpZGVycy9NaWNyb3NvZnQuQmFja3VwL0JhY2t1cFZhdWx0L2JhY2t1cHJuL2NlcnRpZmljYXRlcy9JZE1nbXRJbnRlcm5hbENlcnQ/YXBpLXZlcnNpb249MjAxNS0wMy0xNQ==",
       "RequestMethod": "PUT",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQHIbfGvFylpdMv1odbf2pAzANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE1MDgxNjE5MDYxNVoXDTE1MDgxODE5MTYxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMvTUfRMRX4SHXTdAARMy94ZamGNvxNAyillUp4t/zaH4Ug0T8Hs3ahdhS/CLCdrocZwrOqcTwVslPHJNW3IN6/GEsYT+j8JjnHj78G4XEiTAah3hHczXRVfNF2tXYC2StuQ/8OnTA42kcArqBhKmS5oifbpxD0OVmWejwNf3NFf3/RJDWTOH8/6ifwCUA1zkKWjnEtM0w4T7iQGPc+1Os6N6ZAVfdjV++fcL2q+T/nMnwGpofkgtie1YKaqfwTdi57G2HCuU3nWfUg7/y+w0CL5mTkQMzyBz178Qcvb2CaBTmtPkUCbT3ixi2YiFX4p0To3OGzK4MYUWrBeQxNnqtMCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBALgUyJginWRLWq1gDsz8xp7Zps9SXNeFB94JKy9Qtz5Cr+KgrA0xvhcUAjXxHCnjsvrb6PHSFz5iT9CUrkFEO97sVDyRXOArUlAK5/tFUn6AAPkRSCI/RlhrNUHp/vKK+BgL6R694dJLc1kUbW/haULofDb+Fbh0+4M95EcNwqfvhuWf1nbr58icFEzkTuvHUH+QvmnC2kSyrC58OGShe+VwFyjAHCmPUEVSCWHKxi7v+NFktx/WDOYbeQjZn4K+UR5VmwYf95jArkZZZIUAf+zhRH52o3NZRcISp4H6ybFqp60wujqzzIUSosOm8jWLBaL0gt9HiWzANjTQicO/9Wc=\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -515,13 +510,11 @@
         "x-ms-client-request-id": [
           "43cf16e7-e7a0-4d56-8eb5-66f9ecee0ff4-2015-08-16 19:16:15Z-PS"
         ],
-        "x-ms-version": [
-          "2013-03-01"
-        ],
         "User-Agent": [
           "Microsoft.Azure.Management.BackupServices.BackupVaultServicesManagementClient/0.0.0.0"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"certificate\": \"MIIC3TCCAcWgAwIBAgIQHIbfGvFylpdMv1odbf2pAzANBgkqhkiG9w0BAQUFADAeMRwwGgYDVQQDExNXaW5kb3dzIEF6dXJlIFRvb2xzMB4XDTE1MDgxNjE5MDYxNVoXDTE1MDgxODE5MTYxNVowHjEcMBoGA1UEAxMTV2luZG93cyBBenVyZSBUb29sczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMvTUfRMRX4SHXTdAARMy94ZamGNvxNAyillUp4t/zaH4Ug0T8Hs3ahdhS/CLCdrocZwrOqcTwVslPHJNW3IN6/GEsYT+j8JjnHj78G4XEiTAah3hHczXRVfNF2tXYC2StuQ/8OnTA42kcArqBhKmS5oifbpxD0OVmWejwNf3NFf3/RJDWTOH8/6ifwCUA1zkKWjnEtM0w4T7iQGPc+1Os6N6ZAVfdjV++fcL2q+T/nMnwGpofkgtie1YKaqfwTdi57G2HCuU3nWfUg7/y+w0CL5mTkQMzyBz178Qcvb2CaBTmtPkUCbT3ixi2YiFX4p0To3OGzK4MYUWrBeQxNnqtMCAwEAAaMXMBUwEwYDVR0lBAwwCgYIKwYBBQUHAwIwDQYJKoZIhvcNAQEFBQADggEBALgUyJginWRLWq1gDsz8xp7Zps9SXNeFB94JKy9Qtz5Cr+KgrA0xvhcUAjXxHCnjsvrb6PHSFz5iT9CUrkFEO97sVDyRXOArUlAK5/tFUn6AAPkRSCI/RlhrNUHp/vKK+BgL6R694dJLc1kUbW/haULofDb+Fbh0+4M95EcNwqfvhuWf1nbr58icFEzkTuvHUH+QvmnC2kSyrC58OGShe+VwFyjAHCmPUEVSCWHKxi7v+NFktx/WDOYbeQjZn4K+UR5VmwYf95jArkZZZIUAf+zhRH52o3NZRcISp4H6ybFqp60wujqzzIUSosOm8jWLBaL0gt9HiWzANjTQicO/9Wc=\",\r\n    \"resourceId\": 768844042967475437,\r\n    \"globalAcsNamespace\": \"seabvtiaasrrp1users\",\r\n    \"globalAcsHostName\": \"accesscontrol.windows.net\",\r\n    \"globalAcsRPRealm\": \"http://windowscloudbackup/m3\",\r\n    \"subject\": \"CN=Windows Azure Tools\",\r\n    \"validFrom\": \"2015-08-17T00:36:15+05:30\",\r\n    \"validTo\": \"2015-08-19T00:46:15+05:30\",\r\n    \"thumbprint\": \"133E5FE93E6153F060B365F883BB7881724B9385\",\r\n    \"friendlyName\": \"\",\r\n    \"issuer\": \"CN=Windows Azure Tools\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [

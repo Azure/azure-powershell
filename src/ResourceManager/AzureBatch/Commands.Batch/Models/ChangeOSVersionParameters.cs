@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using System;
 using System.Collections.Generic;
 
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ChangeOSVersionParameters : PoolOperationParameters
     {
-        public ChangeOSVersionParameters(BatchAccountContext context, string poolId, PSCloudPool pool, string targetOSVersion, 
+        public ChangeOSVersionParameters(BatchAccountContext context, string poolId, PSCloudPool pool, string targetOSVersion,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, poolId, pool, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(targetOSVersion))

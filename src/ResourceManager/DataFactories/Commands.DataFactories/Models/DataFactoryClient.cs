@@ -12,16 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.DataFactories;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Commands.DataFactories.Properties;
-using System;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage;
-using System.Net;
-using Microsoft.Azure.Common.Authentication;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {

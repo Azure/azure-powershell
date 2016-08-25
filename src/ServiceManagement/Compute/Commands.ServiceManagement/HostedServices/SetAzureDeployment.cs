@@ -15,7 +15,7 @@
 using System;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -192,7 +192,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 InvokeInOperationContext(() => peerDeployment = func(peerSlottype));
 
                 ExtensionManager extensionMgr = new ExtensionManager(this, ServiceName);
-                extConfig = extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot);
+
+                extConfig = (ExtensionConfiguration[0].State == null)
+                    ? extensionMgr.Add(currentDeployment, peerDeployment, ExtensionConfiguration, this.Slot)
+                    : extensionMgr.UpdateExtensionState(ExtensionConfiguration[0]);
             }
 
             // Upgrade Parameter Set

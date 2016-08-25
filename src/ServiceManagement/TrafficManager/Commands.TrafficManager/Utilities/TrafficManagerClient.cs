@@ -16,11 +16,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.TrafficManager.Models;
 using Microsoft.WindowsAzure.Management.TrafficManager;
 using Microsoft.WindowsAzure.Management.TrafficManager.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 using Hyak.Common;
 

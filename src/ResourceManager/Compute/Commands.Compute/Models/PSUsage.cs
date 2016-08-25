@@ -20,36 +20,21 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
     public class PSUsage : PSOperation
     {
         // Gets or sets the current value of the usage.
-        public int CurrentValue { get; set; }
+        public int? CurrentValue { get; set; }
 
         // Gets or sets the limit of usage.
-        public uint Limit { get; set; }
+        public long? Limit { get; set; }
 
         // Gets or sets the name of the type of usage.
         public UsageName Name { get; set; }
 
-        [JsonIgnore]
-        public string NameText
-        {
-            get { return JsonConvert.SerializeObject(Name, Formatting.Indented); }
-        }
-
         // Gets or sets an enum describing the unit of measurement.
-        public UsageUnit Unit { get; set; }
-
-        [JsonIgnore]
-        public string UnitText
-        {
-            get { return JsonConvert.SerializeObject(Unit, Formatting.Indented); }
-        }
+        public string Unit { get; set; }
     }
 }

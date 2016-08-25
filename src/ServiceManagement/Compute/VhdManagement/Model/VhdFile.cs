@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
                 {
                     this.reader.Close();
                 }
-                if(Parent != null)
+                if (Parent != null)
                 {
                     Parent.Dispose();
                 }

@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
@@ -61,8 +58,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            return new List<Model.AzureReplicationLinkModel>() { 
-                ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName) 
+            return new List<Model.AzureReplicationLinkModel>() {
+                ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName)
             };
         }
 

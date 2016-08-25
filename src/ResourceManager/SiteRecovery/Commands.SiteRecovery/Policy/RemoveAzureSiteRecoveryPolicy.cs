@@ -12,20 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Creates Azure Site Recovery Policy object in memory.
+    /// Removes Azure Site Recovery Policy.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryPolicy")]
-    [Alias("Remove-AzureRmSiteRecoveryProtectionProfile")]
     public class RemoveAzureSiteRecoveryPolicy : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -33,7 +28,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name of the Policy.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = true, ValueFromPipeline = true)]
         public ASRPolicy Policy { get; set; }
 
         #endregion Parameters
@@ -41,22 +36,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                LongRunningOperationResponse responseBlue =  RecoveryServicesClient.DeletePolicy(this.Policy.Name);
-                
-                JobResponse jobResponseBlue =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+            base.ExecuteSiteRecoveryCmdlet();
 
-                WriteObject(new ASRJob(jobResponseBlue.Job));
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            LongRunningOperationResponse responseBlue = RecoveryServicesClient.DeletePolicy(this.Policy.Name);
+
+            JobResponse jobResponseBlue =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(responseBlue.Location));
+
+            WriteObject(new ASRJob(jobResponseBlue.Job));
         }
     }
 }

@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.IO;
 using System.Management.Automation;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private string GetDefaultFile()
         {
             var currentPath = CurrentPath();
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());           
+            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());
             return filename;
         }
 

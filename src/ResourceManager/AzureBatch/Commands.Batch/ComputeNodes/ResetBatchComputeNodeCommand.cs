@@ -15,7 +15,6 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -24,12 +23,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Reset, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet)]
     public class ResetBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the compute node to reimage.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }

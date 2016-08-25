@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -38,7 +37,9 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                var op = this.VirtualMachineClient.Restart(this.ResourceGroupName, this.Name);
+                var op = this.VirtualMachineClient.RestartWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.Name).GetAwaiter().GetResult();
                 var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });

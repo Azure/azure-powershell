@@ -16,13 +16,20 @@ using System;
 using System.IO;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class GeneralTests
     {
+        public GeneralTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidDirectoryPathReturnsTrueForExistingFolders()

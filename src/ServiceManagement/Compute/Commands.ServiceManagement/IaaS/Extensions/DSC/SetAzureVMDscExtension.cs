@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -137,24 +138,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         ///
         /// The DSC Azure Extension depends on DSC features that are only available in 
         /// the WMF updates. This parameter specifies which version of the update to 
-        /// install on the VM. The possible values are "4.0","latest" and "5.0PP".  
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1PP" and "latest".  
         /// 
-        /// A value of "4.0" will install KB3000850 
-        /// (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 
-        /// 2012 R2, or WMF 4.0 
-        /// (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other 
-        /// versions of Windows if a newer version isnt already installed.
+        /// A value of "4.0" will install WMF 4.0 Update packages 
+        /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
+        /// 2012 R2, or  
+        /// (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 
+        /// and on other versions of Windows if newer version is not already installed.
         /// 
-        /// A value of "5.0PP" will install the latest release of WMF 5.0PP 
-        /// (http://go.microsoft.com/fwlink/?LinkId=398175).
+        /// A value of "5.0" will install the latest release of WMF 5.0 
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=50395).
         /// 
-        /// A value of "latest" will install the latest WMF, currently WMF 5.0PP
+        /// A value of "5.1PP" will install the WMF 5.1 preview
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=53347).
+        /// 
+        /// A value of "latest" will install the latest WMF, currently WMF 5.0
         /// 
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1PP", "latest" })]
         public string WmfVersion { get; set; }
+
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
+            "The value is persisted in the extension between calls.")
+        ]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -381,7 +396,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
+            
 
             if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
@@ -389,6 +404,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+                
+                Hashtable privacySetting = new Hashtable();
+                privacySetting.Add("DataCollection",DataCollection);
+                publicSettings.Privacy = privacySetting;
+
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
@@ -400,6 +420,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 privateSettings.Items = settings.Item2;
 
                 privateSettings.DataBlobUri = configurationUris.DataBlobUri;
+
+                if (!string.IsNullOrEmpty(WmfVersion))
+                {
+                    publicSettings.WmfVersion = WmfVersion;        
+                }
             }
 
             //

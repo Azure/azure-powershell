@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ProviderOperationsMetadata
     {
         private string _displayName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider display name
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._displayName; }
             set { this._displayName = value; }
         }
-        
+
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider id.
         /// </summary>
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider name
         /// </summary>
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private IList<Operation> _operations;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider operations
         /// </summary>
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._operations; }
             set { this._operations = value; }
         }
-        
+
         private IList<ResourceType> _resourceTypes;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider resource types
         /// </summary>
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceTypes; }
             set { this._resourceTypes = value; }
         }
-        
+
         private string _type;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider type
         /// </summary>
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._type; }
             set { this._type = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ProviderOperationsMetadata class.
         /// </summary>

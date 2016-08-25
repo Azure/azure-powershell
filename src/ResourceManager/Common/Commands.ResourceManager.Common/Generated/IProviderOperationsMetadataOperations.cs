@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Provider operations metadata
         /// </returns>
         Task<ProviderOperationsMetadataGetResult> GetAsync(string resourceProviderNamespace, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets provider operations metadata list
         /// </summary>

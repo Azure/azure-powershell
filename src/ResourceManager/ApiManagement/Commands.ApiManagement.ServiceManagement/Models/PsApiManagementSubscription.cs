@@ -11,10 +11,11 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
+using System;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System;
-
     public class PsApiManagementSubscription
     {
         public string SubscriptionId { get; set; }

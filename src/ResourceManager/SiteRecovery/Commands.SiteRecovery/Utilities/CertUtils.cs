@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Security.Cryptography;
+using Security.Cryptography.X509Certificates;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using Security.Cryptography;
-using Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {

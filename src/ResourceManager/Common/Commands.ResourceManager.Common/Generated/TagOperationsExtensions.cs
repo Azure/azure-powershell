@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static TagCreateResult CreateOrUpdate(this ITagOperations operations, string tagName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).CreateOrUpdateAsync(tagName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create a subscription resource tag.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAsync(tagName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create a subscription resource tag value.
         /// </summary>
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static TagCreateValueResult CreateOrUpdateValue(this ITagOperations operations, string tagName, string tagValue)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).CreateOrUpdateValueAsync(tagName, tagValue);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create a subscription resource tag value.
         /// </summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateValueAsync(tagName, tagValue, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag.
         /// </summary>
@@ -129,13 +129,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse Delete(this ITagOperations operations, string tagName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).DeleteAsync(tagName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag.
         /// </summary>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAsync(tagName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag value.
         /// </summary>
@@ -174,13 +174,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse DeleteValue(this ITagOperations operations, string tagName, string tagValue)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).DeleteValueAsync(tagName, tagValue);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag value.
         /// </summary>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteValueAsync(tagName, tagValue, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of subscription resource tags.
         /// </summary>
@@ -215,13 +215,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static TagsListResult List(this ITagOperations operations)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).ListAsync();
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of subscription resource tags.
         /// </summary>
@@ -236,7 +236,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of tags under a subscription.
         /// </summary>
@@ -253,13 +253,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static TagsListResult ListNext(this ITagOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((ITagOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of tags under a subscription.
         /// </summary>

@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
+using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule, SupportsShouldProcess = true)]
     public class RemoveBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the job schedule to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }

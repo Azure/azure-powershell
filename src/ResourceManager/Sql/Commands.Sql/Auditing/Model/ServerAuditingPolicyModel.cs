@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Model
-{ 
+{
     /// <summary>
     /// A class representing A server's auditing policy
     /// </summary>
-    public class ServerAuditingPolicyModel : BaseAuditingPolicyModel
-    {  
+    public class ServerAuditingPolicyModel : BaseTableAuditingPolicyModel
+    {
     }
 }

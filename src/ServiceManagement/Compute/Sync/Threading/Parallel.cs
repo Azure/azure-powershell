@@ -22,12 +22,12 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Threading
     {
         public readonly static int MaxParallellism = Environment.ProcessorCount;
 
-        public static LoopResult ForEach<T, TA>(IEnumerable<T> source, Func<TA> argumentConstructor, Action<T,TA> body)
+        public static LoopResult ForEach<T, TA>(IEnumerable<T> source, Func<TA> argumentConstructor, Action<T, TA> body)
         {
             return ForEach(source, argumentConstructor, body, MaxParallellism);
         }
 
-        public static LoopResult ForEach<T, TA>(IEnumerable<T> source, Func<TA> argumentConstructor, Action<T,TA> body, int parallelism)
+        public static LoopResult ForEach<T, TA>(IEnumerable<T> source, Func<TA> argumentConstructor, Action<T, TA> body, int parallelism)
         {
             var loopResult = new InternalLoopResult();
             int numProcs = parallelism;
@@ -197,7 +197,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Threading
 
             public override bool IsCompleted
             {
-                get; protected set; 
+                get; protected set;
             }
 
             public override IList<Exception> Exceptions

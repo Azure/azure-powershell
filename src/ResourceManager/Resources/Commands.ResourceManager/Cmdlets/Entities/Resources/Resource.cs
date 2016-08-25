@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    using System;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Newtonsoft.Json;
+    using System;
 
     /// <summary>
     /// The resource definition object.
@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         /// <summary>  
         /// Gets or sets the resource <c>sku</c>.  
         /// </summary>  
-        [JsonProperty(Required = Required.Default)]  
-        public ResourceSku Sku { get; set; }  
+        [JsonProperty(Required = Required.Default)]
+        public ResourceSku Sku { get; set; }
 
 
         /// <summary>

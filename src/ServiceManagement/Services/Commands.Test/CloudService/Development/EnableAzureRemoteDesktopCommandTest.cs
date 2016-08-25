@@ -27,7 +27,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common.XmlSchema.ServiceDefiniti
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 {

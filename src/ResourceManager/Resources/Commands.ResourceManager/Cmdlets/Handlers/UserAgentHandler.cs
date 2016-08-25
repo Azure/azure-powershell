@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// The user agent handler.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers
                 .ToInsensitiveDictionary(header => header.Product.Name + header.Product.Version);
 
             var infosToAdd = this.headerValues
-                .Where(productInfo =>!currentRequestHeaders.ContainsKey(productInfo.Product.Name + productInfo.Product.Version));
+                .Where(productInfo => !currentRequestHeaders.ContainsKey(productInfo.Product.Name + productInfo.Product.Version));
 
             foreach (var infoToAdd in infosToAdd)
             {

@@ -19,16 +19,16 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Net.Http;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
     public partial class SubscriptionClient : ServiceClient<SubscriptionClient>, ISubscriptionClient
     {
         private string _apiVersion;
-        
+
         /// <summary>
         /// Gets the API version.
         /// </summary>
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._apiVersion; }
         }
-        
+
         private Uri _baseUri;
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._baseUri; }
         }
-        
+
         private CloudCredentials _credentials;
-        
+
         /// <summary>
         /// Credentials used to authenticate requests.
         /// </summary>
@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
             get { return this._credentials; }
             set { this._credentials = value; }
         }
-        
+
         private int _longRunningOperationInitialTimeout;
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
@@ -68,9 +68,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
             get { return this._longRunningOperationInitialTimeout; }
             set { this._longRunningOperationInitialTimeout = value; }
         }
-        
+
         private int _longRunningOperationRetryTimeout;
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
             get { return this._longRunningOperationRetryTimeout; }
             set { this._longRunningOperationRetryTimeout = value; }
         }
-        
+
         private ISubscriptionOperations _subscriptions;
-        
+
         /// <summary>
         /// Operations for managing subscriptions.
         /// </summary>
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._subscriptions; }
         }
-        
+
         private ITenantOperations _tenants;
-        
+
         /// <summary>
         /// Operations for managing tenants.
         /// </summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
         {
             get { return this._tenants; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -156,10 +156,10 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Internal.Subscriptions
             this._longRunningOperationRetryTimeout = -1;
             this.HttpClient.Timeout = TimeSpan.FromSeconds(300);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -203,10 +203,10 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             this._credentials = credentials;
             this._baseUri = baseUri;
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the SubscriptionClient class.
         /// </summary>
@@ -225,10 +225,10 @@ namespace Microsoft.Azure.Internal.Subscriptions
             }
             this._credentials = credentials;
             this._baseUri = new Uri("https://management.azure.com/");
-            
+
             this.Credentials.InitializeServiceClient(this);
         }
-        
+
         /// <summary>
         /// Clones properties from current instance to another
         /// SubscriptionClient instance
@@ -239,17 +239,17 @@ namespace Microsoft.Azure.Internal.Subscriptions
         protected override void Clone(ServiceClient<SubscriptionClient> client)
         {
             base.Clone(client);
-            
+
             if (client is SubscriptionClient)
             {
                 SubscriptionClient clonedClient = ((SubscriptionClient)client);
-                
+
                 clonedClient._credentials = this._credentials;
                 clonedClient._baseUri = this._baseUri;
                 clonedClient._apiVersion = this._apiVersion;
                 clonedClient._longRunningOperationInitialTimeout = this._longRunningOperationInitialTimeout;
                 clonedClient._longRunningOperationRetryTimeout = this._longRunningOperationRetryTimeout;
-                
+
                 clonedClient.Credentials.InitializeServiceClient(clonedClient);
             }
         }

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{68384B59-BA0C-4B7B-B3F6-9C7988296C16}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StaticAnalysis</RootNamespace>
+    <AssemblyName>StaticAnalysis</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\src\Package</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\src\Package</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\src\packages\System.Management.Automation_PowerShell_3.0.6.3.9600.17400\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalysisLogger.cs" />
+    <Compile Include="EnvironmentHelpers.cs" />
+    <Compile Include="DependencyAnalyzer\AssemblyLoader.cs" />
+    <Compile Include="DependencyAnalyzer\AssemblyNameComparer.cs" />
+    <Compile Include="DependencyAnalyzer\AssemblyRecord.cs" />
+    <Compile Include="DependencyAnalyzer\AssemblyMetadata.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="Decorator.cs" />
+    <Compile Include="DependencyAnalyzer\AssemblyVersionConflict.cs" />
+    <Compile Include="DependencyAnalyzer\DependencyAnalyzer.cs" />
+    <Compile Include="DependencyAnalyzer\MissingAssembly.cs" />
+    <Compile Include="DependencyAnalyzer\ExtraAssembly.cs" />
+    <Compile Include="DependencyAnalyzer\SharedAssemblyConflict.cs" />
+    <Compile Include="HelpAnalyzer\CmdletHelpParser.cs" />
+    <Compile Include="HelpAnalyzer\CmdletLoader.cs" />
+    <Compile Include="HelpAnalyzer\HelpAnalyzer.cs" />
+    <Compile Include="HelpAnalyzer\HelpIssue.cs" />
+    <Compile Include="HelpAnalyzer\CmdletHelpMetadata.cs" />
+    <Compile Include="HelpAnalyzer\ReflectionExtensions.cs" />
+    <Compile Include="HelpAnalyzer\XmlExtensions.cs" />
+    <Compile Include="IStaticAnalyzer.cs" />
+    <Compile Include="ReportLogger.cs" />
+    <Compile Include="IReportRecord.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureLoader.cs" />
+    <Compile Include="SignatureVerifier\CmdletSignatureMetadata.cs" />
+    <Compile Include="SignatureVerifier\OutputMetadata.cs" />
+    <Compile Include="SignatureVerifier\ParameterMetadata.cs" />
+    <Compile Include="SignatureVerifier\SignatureIssue.cs" />
+    <Compile Include="SignatureVerifier\SignatureVerifier.cs" />
+    <Compile Include="SignatureVerifier\TypeMetadata.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Exceptions\AssemblyVersionConflict.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Exceptions\ExtraAssemblies.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Exceptions\HelpIssues.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Exceptions\MissingAssemblies.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

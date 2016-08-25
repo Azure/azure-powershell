@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
     public partial class Subscription
     {
         private string _displayName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the subscription display name
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._displayName; }
             set { this._displayName = value; }
         }
-        
+
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ID of the resource
         /// (/subscriptions/SubscriptionId).
@@ -49,9 +49,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _state;
-        
+
         /// <summary>
         /// Optional. Gets or sets the subscription state
         /// </summary>
@@ -60,9 +60,9 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._state; }
             set { this._state = value; }
         }
-        
+
         private string _subscriptionId;
-        
+
         /// <summary>
         /// Optional. Gets or sets the subscription Id.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Internal.Subscriptions.Models
             get { return this._subscriptionId; }
             set { this._subscriptionId = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the Subscription class.
         /// </summary>

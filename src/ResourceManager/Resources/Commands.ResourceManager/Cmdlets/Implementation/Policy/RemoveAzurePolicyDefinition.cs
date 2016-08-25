@@ -14,13 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using System.Management.Automation;
 
     /// <summary>
     /// Removes the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPolicyDefinition", SupportsShouldProcess = true,
+        DefaultParameterSetName = RemoveAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), 
+        OutputType(typeof(bool))]
     public class RemoveAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>
@@ -71,6 +73,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             string resourceId = this.Id ?? this.GetResourceId();
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
+
             this.ConfirmAction(
                 this.Force,
                 string.Format("Are you sure you want to delete the following policy definition: {0}", resourceId),
@@ -78,8 +82,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceId,
                 () =>
                 {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
-
                     var operationResult = this.GetResourcesClient()
                         .DeleteResource(
                             resourceId: resourceId,

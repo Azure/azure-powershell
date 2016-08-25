@@ -13,14 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ResourceTests : RMTestBase
     {
+        public ResourceTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewSimpleResource()
@@ -49,7 +56,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesFromEmptyGroup");
         }
 
-        [Fact (Skip = "TODO: Re-record")]
+        [Fact(Skip = "TODO: Re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourcesFromNonExisingGroup()
         {
@@ -86,6 +93,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMoveResourceFailed()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-MoveResourceFailed");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
@@ -110,6 +124,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestGetResourceWithExpandProperties()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceWithCollection()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceWithCollection");
         }
     }
 }

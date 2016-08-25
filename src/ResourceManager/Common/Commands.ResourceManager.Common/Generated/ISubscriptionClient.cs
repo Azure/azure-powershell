@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System;
 using Hyak.Common;
+using System;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {
@@ -31,55 +31,55 @@ namespace Microsoft.Azure.Internal.Subscriptions
         /// </summary>
         string ApiVersion
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Gets the URI used as the base for all cloud service requests.
         /// </summary>
         Uri BaseUri
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Credentials used to authenticate requests.
         /// </summary>
         CloudCredentials Credentials
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Gets or sets the initial timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationInitialTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Gets or sets the retry timeout for Long Running Operations.
         /// </summary>
         int LongRunningOperationRetryTimeout
         {
-            get; set; 
+            get; set;
         }
-        
+
         /// <summary>
         /// Operations for managing subscriptions.
         /// </summary>
         ISubscriptionOperations Subscriptions
         {
-            get; 
+            get;
         }
-        
+
         /// <summary>
         /// Operations for managing tenants.
         /// </summary>
         ITenantOperations Tenants
         {
-            get; 
+            get;
         }
     }
 }

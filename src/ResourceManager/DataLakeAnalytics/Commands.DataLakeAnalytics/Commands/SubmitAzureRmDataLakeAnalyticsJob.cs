@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.IO;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
-using Microsoft.Azure.Management.DataLake.AnalyticsJob.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof (JobInformation))]
+    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         // internal const string HiveJobWithScriptPath = "Submit job with script path for Hive";
@@ -120,14 +121,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 6,
             Mandatory = false,
             HelpMessage =
-                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time. Valid range is between 1 and 50, inclusive."
+                "The degree of parallelism to use for this job. Typically, a higher degree of parallelism dedicated to a script results in faster script execution time."
             )]
-        [ValidateRange(1, 50)]
         public int DegreeOfParallelism
         {
             get { return _degreeOfParallelism; }
@@ -151,15 +151,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             set { _priority = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 8,
-            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 8,
-            Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = false, HelpMessage = "Name of resource group under which the job will be submitted.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             // error handling for not passing or passing both script and script path
@@ -182,20 +173,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Script = File.ReadAllText(powerShellDestinationPath);
             }
 
-            string jobType;
+            JobType jobType;
             JobProperties properties;
             if (USql)
             {
                 jobType = JobType.USql;
-                var sqlIpProperties = new USqlProperties
+                var sqlIpProperties = new USqlJobProperties
                 {
-                    Type = jobType,
                     Script = Script
                 };
 
                 if (!string.IsNullOrEmpty(CompileMode))
                 {
-                    sqlIpProperties.CompileMode = CompileMode;
+                    CompileMode toUse;
+                    if (Enum.TryParse(CompileMode, out toUse))
+                    {
+                        sqlIpProperties.CompileMode = toUse;
+                    }
                 }
 
                 if (!string.IsNullOrEmpty(Runtime))
@@ -208,10 +202,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             else if (Hive)
             {
                 jobType = JobType.Hive;
-                properties = new HiveProperties
+                properties = new HiveJobProperties
                 {
-                    Script = Script,
-                    Type = jobType
+                    Script = Script
                 };
             }
             else
@@ -221,7 +214,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var jobInfo = new JobInformation
             {
-                JobId = Guid.NewGuid(),
+                JobId = DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
                 Name = Name,
                 Properties = properties,
                 Type = jobType,
@@ -230,8 +223,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             };
 
             WriteObject(CompileOnly
-                ? DataLakeAnalyticsClient.BuildJob(ResourceGroupName, Account, jobInfo)
-                : DataLakeAnalyticsClient.SubmitJob(ResourceGroupName, Account, jobInfo));
+                ? DataLakeAnalyticsClient.BuildJob(Account, jobInfo)
+                : DataLakeAnalyticsClient.SubmitJob(Account, jobInfo));
         }
     }
 }

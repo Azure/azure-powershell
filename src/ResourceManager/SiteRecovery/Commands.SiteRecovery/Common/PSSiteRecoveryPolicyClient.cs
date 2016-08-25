@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public LongRunningOperationResponse CreatePolicy(string policyName,
             CreatePolicyInput Policy)
         {
-            return this.GetSiteRecoveryClient().Policies.BeginCreating(policyName, 
+            return this.GetSiteRecoveryClient().Policies.BeginCreating(policyName,
                 Policy,
                 this.GetRequestHeaders());
         }

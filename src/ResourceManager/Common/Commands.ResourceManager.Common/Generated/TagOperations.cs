@@ -19,6 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,9 +29,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Management.Internal.Resources.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             this._client = client;
         }
-        
+
         private ResourceManagementClient _client;
-        
+
         /// <summary>
         /// Gets a reference to the
         /// Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient.
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             get { return this._client; }
         }
-        
+
         /// <summary>
         /// Create a subscription resource tag.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("tagName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("tagName", tagName);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -125,13 +125,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     TagCreateResult result = null;
                     // Deserialize Response
@@ -171,39 +171,39 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             TagDetails tagInstance = new TagDetails();
                             result.Tag = tagInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 tagInstance.Id = idInstance;
                             }
-                            
+
                             JToken tagNameValue = responseDoc["tagName"];
                             if (tagNameValue != null && tagNameValue.Type != JTokenType.Null)
                             {
                                 string tagNameInstance = ((string)tagNameValue);
                                 tagInstance.Name = tagNameInstance;
                             }
-                            
+
                             JToken countValue = responseDoc["count"];
                             if (countValue != null && countValue.Type != JTokenType.Null)
                             {
                                 TagCount countInstance = new TagCount();
                                 tagInstance.Count = countInstance;
-                                
+
                                 JToken typeValue = countValue["type"];
                                 if (typeValue != null && typeValue.Type != JTokenType.Null)
                                 {
                                     string typeInstance = ((string)typeValue);
                                     countInstance.Type = typeInstance;
                                 }
-                                
+
                                 JToken valueValue = countValue["value"];
                                 if (valueValue != null && valueValue.Type != JTokenType.Null)
                                 {
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     countInstance.Value = valueInstance;
                                 }
                             }
-                            
+
                             JToken valuesArray = responseDoc["values"];
                             if (valuesArray != null && valuesArray.Type != JTokenType.Null)
                             {
@@ -219,34 +219,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     TagValue tagValueInstance = new TagValue();
                                     tagInstance.Values.Add(tagValueInstance);
-                                    
+
                                     JToken idValue2 = valuesValue["id"];
                                     if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                     {
                                         string idInstance2 = ((string)idValue2);
                                         tagValueInstance.Id = idInstance2;
                                     }
-                                    
+
                                     JToken tagValueValue = valuesValue["tagValue"];
                                     if (tagValueValue != null && tagValueValue.Type != JTokenType.Null)
                                     {
                                         string tagValueInstance2 = ((string)tagValueValue);
                                         tagValueInstance.Value = tagValueInstance2;
                                     }
-                                    
+
                                     JToken countValue2 = valuesValue["count"];
                                     if (countValue2 != null && countValue2.Type != JTokenType.Null)
                                     {
                                         TagCount countInstance2 = new TagCount();
                                         tagValueInstance.Count = countInstance2;
-                                        
+
                                         JToken typeValue2 = countValue2["type"];
                                         if (typeValue2 != null && typeValue2.Type != JTokenType.Null)
                                         {
                                             string typeInstance2 = ((string)typeValue2);
                                             countInstance2.Type = typeInstance2;
                                         }
-                                        
+
                                         JToken valueValue2 = countValue2["value"];
                                         if (valueValue2 != null && valueValue2.Type != JTokenType.Null)
                                         {
@@ -257,14 +257,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Create a subscription resource tag value.
         /// </summary>
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("tagValue");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("tagValue", tagValue);
                 TracingAdapter.Enter(invocationId, this, "CreateOrUpdateValueAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -364,13 +364,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Put;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     TagCreateValueResult result = null;
                     // Deserialize Response
@@ -410,39 +410,39 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             TagValue valueInstance = new TagValue();
                             result.Value = valueInstance;
-                            
+
                             JToken idValue = responseDoc["id"];
                             if (idValue != null && idValue.Type != JTokenType.Null)
                             {
                                 string idInstance = ((string)idValue);
                                 valueInstance.Id = idInstance;
                             }
-                            
+
                             JToken tagValueValue = responseDoc["tagValue"];
                             if (tagValueValue != null && tagValueValue.Type != JTokenType.Null)
                             {
                                 string tagValueInstance = ((string)tagValueValue);
                                 valueInstance.Value = tagValueInstance;
                             }
-                            
+
                             JToken countValue = responseDoc["count"];
                             if (countValue != null && countValue.Type != JTokenType.Null)
                             {
                                 TagCount countInstance = new TagCount();
                                 valueInstance.Count = countInstance;
-                                
+
                                 JToken typeValue = countValue["type"];
                                 if (typeValue != null && typeValue.Type != JTokenType.Null)
                                 {
                                     string typeInstance = ((string)typeValue);
                                     countInstance.Type = typeInstance;
                                 }
-                                
+
                                 JToken valueValue = countValue["value"];
                                 if (valueValue != null && valueValue.Type != JTokenType.Null)
                                 {
@@ -451,14 +451,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 }
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag.
         /// </summary>
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("tagName");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("tagName", tagName);
                 TracingAdapter.Enter(invocationId, this, "DeleteAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -541,7 +541,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -549,13 +549,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     AzureOperationResponse result = null;
                     // Deserialize Response
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -614,7 +614,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Delete a subscription resource tag value.
         /// </summary>
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("tagValue");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -654,7 +654,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("tagValue", tagValue);
                 TracingAdapter.Enter(invocationId, this, "DeleteValueAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -684,7 +684,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -692,13 +692,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Delete;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     AzureOperationResponse result = null;
                     // Deserialize Response
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -757,7 +757,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Get a list of subscription resource tags.
         /// </summary>
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         public async Task<TagsListResult> ListAsync(CancellationToken cancellationToken)
         {
             // Validate
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 TracingAdapter.Enter(invocationId, this, "ListAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + "/subscriptions/";
@@ -807,7 +807,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             }
             url = baseUrl + "/" + url;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -815,13 +815,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     TagsListResult result = null;
                     // Deserialize Response
@@ -861,7 +861,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -871,34 +871,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     TagDetails tagDetailsInstance = new TagDetails();
                                     result.Tags.Add(tagDetailsInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         tagDetailsInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken tagNameValue = valueValue["tagName"];
                                     if (tagNameValue != null && tagNameValue.Type != JTokenType.Null)
                                     {
                                         string tagNameInstance = ((string)tagNameValue);
                                         tagDetailsInstance.Name = tagNameInstance;
                                     }
-                                    
+
                                     JToken countValue = valueValue["count"];
                                     if (countValue != null && countValue.Type != JTokenType.Null)
                                     {
                                         TagCount countInstance = new TagCount();
                                         tagDetailsInstance.Count = countInstance;
-                                        
+
                                         JToken typeValue = countValue["type"];
                                         if (typeValue != null && typeValue.Type != JTokenType.Null)
                                         {
                                             string typeInstance = ((string)typeValue);
                                             countInstance.Type = typeInstance;
                                         }
-                                        
+
                                         JToken valueValue2 = countValue["value"];
                                         if (valueValue2 != null && valueValue2.Type != JTokenType.Null)
                                         {
@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             countInstance.Value = valueInstance;
                                         }
                                     }
-                                    
+
                                     JToken valuesArray = valueValue["values"];
                                     if (valuesArray != null && valuesArray.Type != JTokenType.Null)
                                     {
@@ -914,34 +914,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             TagValue tagValueInstance = new TagValue();
                                             tagDetailsInstance.Values.Add(tagValueInstance);
-                                            
+
                                             JToken idValue2 = valuesValue["id"];
                                             if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                             {
                                                 string idInstance2 = ((string)idValue2);
                                                 tagValueInstance.Id = idInstance2;
                                             }
-                                            
+
                                             JToken tagValueValue = valuesValue["tagValue"];
                                             if (tagValueValue != null && tagValueValue.Type != JTokenType.Null)
                                             {
                                                 string tagValueInstance2 = ((string)tagValueValue);
                                                 tagValueInstance.Value = tagValueInstance2;
                                             }
-                                            
+
                                             JToken countValue2 = valuesValue["count"];
                                             if (countValue2 != null && countValue2.Type != JTokenType.Null)
                                             {
                                                 TagCount countInstance2 = new TagCount();
                                                 tagValueInstance.Count = countInstance2;
-                                                
+
                                                 JToken typeValue2 = countValue2["type"];
                                                 if (typeValue2 != null && typeValue2.Type != JTokenType.Null)
                                                 {
                                                     string typeInstance2 = ((string)typeValue2);
                                                     countInstance2.Type = typeInstance2;
                                                 }
-                                                
+
                                                 JToken valueValue3 = countValue2["value"];
                                                 if (valueValue3 != null && valueValue3.Type != JTokenType.Null)
                                                 {
@@ -953,7 +953,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -961,14 +961,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);
@@ -991,7 +991,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 }
             }
         }
-        
+
         /// <summary>
         /// Get a list of tags under a subscription.
         /// </summary>
@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
             {
                 throw new ArgumentNullException("nextLink");
             }
-            
+
             // Tracing
             bool shouldTrace = TracingAdapter.IsEnabled;
             string invocationId = null;
@@ -1023,12 +1023,12 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 tracingParameters.Add("nextLink", nextLink);
                 TracingAdapter.Enter(invocationId, this, "ListNextAsync", tracingParameters);
             }
-            
+
             // Construct URL
             string url = "";
             url = url + nextLink;
             url = url.Replace(" ", "%20");
-            
+
             // Create HTTP transport objects
             HttpRequestMessage httpRequest = null;
             try
@@ -1036,13 +1036,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
                 httpRequest = new HttpRequestMessage();
                 httpRequest.Method = HttpMethod.Get;
                 httpRequest.RequestUri = new Uri(url);
-                
+
                 // Set Headers
-                
+
                 // Set Credentials
                 cancellationToken.ThrowIfCancellationRequested();
                 await this.Client.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-                
+
                 // Send Request
                 HttpResponseMessage httpResponse = null;
                 try
@@ -1068,7 +1068,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         }
                         throw ex;
                     }
-                    
+
                     // Create Result
                     TagsListResult result = null;
                     // Deserialize Response
@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                         {
                             responseDoc = JToken.Parse(responseContent);
                         }
-                        
+
                         if (responseDoc != null && responseDoc.Type != JTokenType.Null)
                         {
                             JToken valueArray = responseDoc["value"];
@@ -1092,34 +1092,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 {
                                     TagDetails tagDetailsInstance = new TagDetails();
                                     result.Tags.Add(tagDetailsInstance);
-                                    
+
                                     JToken idValue = valueValue["id"];
                                     if (idValue != null && idValue.Type != JTokenType.Null)
                                     {
                                         string idInstance = ((string)idValue);
                                         tagDetailsInstance.Id = idInstance;
                                     }
-                                    
+
                                     JToken tagNameValue = valueValue["tagName"];
                                     if (tagNameValue != null && tagNameValue.Type != JTokenType.Null)
                                     {
                                         string tagNameInstance = ((string)tagNameValue);
                                         tagDetailsInstance.Name = tagNameInstance;
                                     }
-                                    
+
                                     JToken countValue = valueValue["count"];
                                     if (countValue != null && countValue.Type != JTokenType.Null)
                                     {
                                         TagCount countInstance = new TagCount();
                                         tagDetailsInstance.Count = countInstance;
-                                        
+
                                         JToken typeValue = countValue["type"];
                                         if (typeValue != null && typeValue.Type != JTokenType.Null)
                                         {
                                             string typeInstance = ((string)typeValue);
                                             countInstance.Type = typeInstance;
                                         }
-                                        
+
                                         JToken valueValue2 = countValue["value"];
                                         if (valueValue2 != null && valueValue2.Type != JTokenType.Null)
                                         {
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                             countInstance.Value = valueInstance;
                                         }
                                     }
-                                    
+
                                     JToken valuesArray = valueValue["values"];
                                     if (valuesArray != null && valuesArray.Type != JTokenType.Null)
                                     {
@@ -1135,34 +1135,34 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                         {
                                             TagValue tagValueInstance = new TagValue();
                                             tagDetailsInstance.Values.Add(tagValueInstance);
-                                            
+
                                             JToken idValue2 = valuesValue["id"];
                                             if (idValue2 != null && idValue2.Type != JTokenType.Null)
                                             {
                                                 string idInstance2 = ((string)idValue2);
                                                 tagValueInstance.Id = idInstance2;
                                             }
-                                            
+
                                             JToken tagValueValue = valuesValue["tagValue"];
                                             if (tagValueValue != null && tagValueValue.Type != JTokenType.Null)
                                             {
                                                 string tagValueInstance2 = ((string)tagValueValue);
                                                 tagValueInstance.Value = tagValueInstance2;
                                             }
-                                            
+
                                             JToken countValue2 = valuesValue["count"];
                                             if (countValue2 != null && countValue2.Type != JTokenType.Null)
                                             {
                                                 TagCount countInstance2 = new TagCount();
                                                 tagValueInstance.Count = countInstance2;
-                                                
+
                                                 JToken typeValue2 = countValue2["type"];
                                                 if (typeValue2 != null && typeValue2.Type != JTokenType.Null)
                                                 {
                                                     string typeInstance2 = ((string)typeValue2);
                                                     countInstance2.Type = typeInstance2;
                                                 }
-                                                
+
                                                 JToken valueValue3 = countValue2["value"];
                                                 if (valueValue3 != null && valueValue3.Type != JTokenType.Null)
                                                 {
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                     }
                                 }
                             }
-                            
+
                             JToken nextLinkValue = responseDoc["nextLink"];
                             if (nextLinkValue != null && nextLinkValue.Type != JTokenType.Null)
                             {
@@ -1182,14 +1182,14 @@ namespace Microsoft.Azure.Management.Internal.Resources
                                 result.NextLink = nextLinkInstance;
                             }
                         }
-                        
+
                     }
                     result.StatusCode = statusCode;
                     if (httpResponse.Headers.Contains("x-ms-request-id"))
                     {
                         result.RequestId = httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
                     }
-                    
+
                     if (shouldTrace)
                     {
                         TracingAdapter.Exit(invocationId, result);

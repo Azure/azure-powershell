@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.StreamAnalytics.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string PropertiesInJson
         {
-            get { return transformation.Properties.ToFormattedString(); }
+            get { return transformation.ToFormattedString(); }
         }
     }
 }

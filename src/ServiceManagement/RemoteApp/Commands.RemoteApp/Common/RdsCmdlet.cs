@@ -14,8 +14,8 @@
 
 using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.RemoteApp;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.RemoteApp;
 using Microsoft.WindowsAzure.Management.RemoteApp.Models;

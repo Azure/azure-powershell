@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Commands.Compute
     {
         public string storageAccountName;
         public string storageAccountKey;
+        public string commandToExecute;
     }
 }

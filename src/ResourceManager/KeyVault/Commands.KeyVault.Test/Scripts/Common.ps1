@@ -26,15 +26,7 @@ function Get-KeyVault([bool] $haspermission=$true)
     if ($global:testVault -ne "" -and $haspermission)
     {
         return $global:testVault
-    }
-    elseif ($global:testEnv -eq 'BVT' -and $haspermission)
-    {        
-        return 'powershellbvt'
-    }
-    elseif ($global:testEnv -eq 'BVT')
-    {
-        return 'azkmstestbvteu2'
-    }
+    }   
     elseif ($haspermission)
     {
         return 'azkmspsprodeus'    
@@ -117,11 +109,15 @@ function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
 
 <#
 .SYNOPSIS
-Remove log file under a folder
+Remove log files under the given folder.
 #>
-function Cleanup-Log([string]$rootfolder)
-{    
-    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse | where {$_.mode -match "a"} | Remove-Item -Force     
+function Cleanup-LogFiles([string]$rootfolder)
+{
+    Write-Host "Cleaning up log files from $rootfolder..."
+    
+    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse |
+        where {$_.mode -match "a"} |
+        Remove-Item -Force     
 }
 
 <#
@@ -133,7 +129,7 @@ function Move-Log([string]$rootfolder)
     $logfolder = Join-Path $rootfolder ("$global:testEnv"+"$global:testns"+"log")
     if (Test-Path $logfolder)
     {
-        Cleanup-Log $logfolder
+        Cleanup-LogFiles $logfolder
     }
     else
     {
@@ -146,24 +142,32 @@ function Move-Log([string]$rootfolder)
 
 <#
 .SYNOPSIS
-Removes all keys starting with the prefix
+Remove all old keys starting with the given prefix.
 #>
-function Initialize-KeyTest
+function Cleanup-OldKeys
 {
+    Write-Host "Cleaning up old keys..."
+
     $keyVault = Get-KeyVault
     $keyPattern = Get-KeyName '*'
-    Get-AzureKeyVaultKey $keyVault  | Where-Object {$_.KeyName -like $keyPattern}  | Remove-AzureKeyVaultKey -Force -Confirm:$false
+    Get-AzureKeyVaultKey $keyVault |
+        Where-Object {$_.KeyName -like $keyPattern} |
+        Remove-AzureKeyVaultKey -Force -Confirm:$false
 }
 
 <#
 .SYNOPSIS
-Removes all secrets starting with the prefix
+Remove all old secrets starting with the given prefix.
 #>
-function Initialize-SecretTest
+function Cleanup-OldSecrets
 {
+    Write-Host "Cleaning up old secrets..."
+
     $keyVault = Get-KeyVault
     $secretPattern = Get-SecretName '*'
-    Get-AzureKeyVaultSecret $keyVault  | Where-Object {$_.SecretName -like $secretPattern}  | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+    Get-AzureKeyVaultSecret $keyVault |
+        Where-Object {$_.SecretName -like $secretPattern} |
+        Remove-AzureKeyVaultSecret -Force -Confirm:$false
 }
 
 

@@ -12,25 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-using System.Net;
 using Microsoft.Azure.Commands.HDInsight.Models;
-using Microsoft.Azure.Management.HDInsight.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using Moq.Protected;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
     public class ConfigurationTests : HDInsightTestBase
     {
-        public ConfigurationTests()
+        public ConfigurationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
         }
 
@@ -42,7 +35,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 HDInsightManagementClient = hdinsightManagementMock.Object,
-                ClusterType = HDInsightClusterType.Hadoop
+                ClusterType = ClusterType
             };
 
             newconfigcmdlet.ExecuteCmdlet();
@@ -51,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     f.WriteObject(
                         It.Is<AzureHDInsightConfig>(
                             c =>
-                                c.ClusterType == HDInsightClusterType.Hadoop &&
+                                c.ClusterType == ClusterType &&
                                 c.AdditionalStorageAccounts.Count == 0 &&
                                 c.Configurations.Count == 0 &&
                                 string.IsNullOrEmpty(c.WorkerNodeSize) &&

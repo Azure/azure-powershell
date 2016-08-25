@@ -458,15 +458,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property..
-        /// </summary>
-        public static string DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet {
-            get {
-                return ResourceManager.GetString("DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter..
         /// </summary>
         public static string DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet {
@@ -481,6 +472,132 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string DeprovisioningVM {
             get {
                 return ResourceManager.GetString("DeprovisioningVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No DiagnosticMonitorConfiguration element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionDiagnosticMonitorConfigurationElementNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg, WadCfgBlob or xmlCfg element defined in the json configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInJson {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the xml configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionIaaSConfigElementNotDefinedInXml {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionIaaSConfigElementNotDefinedInXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid diagnostics configuration file. It should be in xml or json format..
+        /// </summary>
+        public static string DiagnosticsExtensionInvalidConfigFileFormat {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionInvalidConfigFileFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resourceId defined in the config file does not match the actual resource&apos;s id..
+        /// </summary>
+        public static string DiagnosticsExtensionMetricsResourceIdNotMatch {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionMetricsResourceIdNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element StorageAccount in PrivateConfig doesn&apos;t match. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
+        /// </summary>
+        public static string DiagnosticsExtensionNoMatchPrivateStorageAccount {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNoMatchPrivateStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element StorageAccount doesn&apos;t match the storage account name provided in the cmdlet arguments. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
+        /// </summary>
+        public static string DiagnosticsExtensionNoMatchStorageAccount {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNoMatchStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The config file doesn&apos;t have the PublicConfig element..
+        /// </summary>
+        public static string DiagnosticsExtensionNullPublicConfig {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullPublicConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccount {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account endpoint is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountEndpoint {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account key is not specified or can not be retrieved automatically..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountKey {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account name is not specified..
+        /// </summary>
+        public static string DiagnosticsExtensionNullStorageAccountName {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WadCfg or WadCfgBlob element defined in the configuration file..
+        /// </summary>
+        public static string DiagnosticsExtensionPaaSConfigElementNotDefined {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionPaaSConfigElementNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your xml configuration file doesn&apos;t start with the required header &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;.
+        /// </summary>
+        public static string DiagnosticsExtensionWrongHeader {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionWrongHeader", resourceCulture);
             }
         }
         
@@ -755,6 +872,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performing migration action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessAction {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you should you want to perform migrate action: {0} on resource {1}.
+        /// </summary>
+        public static string MigrateResourceShoudlProcessTarget {
+            get {
+                return ResourceManager.GetString("MigrateResourceShoudlProcessTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The file to load the role does not exist.
         /// </summary>
         public static string MissingPersistentVMFile {
@@ -967,33 +1102,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string OSDiskNotDefinedForVM {
             get {
                 return ResourceManager.GetString("OSDiskNotDefinedForVM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The element StorageAccount cannot be empty. It is recommended to not use this element in the config. It will be set automatically by the cmdlet..
-        /// </summary>
-        public static string PaaSDiagnosticsNullStorageAccount {
-            get {
-                return ResourceManager.GetString("PaaSDiagnosticsNullStorageAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your xml configuration file doesn&apos;t start with the required header &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;.
-        /// </summary>
-        public static string PaaSDiagnosticsWrongHeader {
-            get {
-                return ResourceManager.GetString("PaaSDiagnosticsWrongHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The element StorageAccount doesn&apos;t match the storage account name provided in the cmdlet arguments. It is recommended to not use the element StorageAccount as it is automatically set by the cmdlet..
-        /// </summary>
-        public static string PassDiagnosticsNoMatchStorageAccount {
-            get {
-                return ResourceManager.GetString("PassDiagnosticsNoMatchStorageAccount", resourceCulture);
             }
         }
         
@@ -1687,6 +1795,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string ServiceExtensionCannotFindStorageAccountName {
             get {
                 return ResourceManager.GetString("ServiceExtensionCannotFindStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No existing {0}.{1} extensions enabled on role: {2}..
+        /// </summary>
+        public static string ServiceExtensionNoExistingExtensionsEnabledOnRole {
+            get {
+                return ResourceManager.GetString("ServiceExtensionNoExistingExtensionsEnabledOnRole", resourceCulture);
             }
         }
         

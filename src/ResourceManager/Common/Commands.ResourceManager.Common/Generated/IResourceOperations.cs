@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// A standard service response for long running operations.
         /// </returns>
         Task<LongRunningOperationResponse> BeginMovingAsync(string sourceResourceGroupName, ResourcesMoveInfo parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Checks whether resource exists.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource group information.
         /// </returns>
         Task<ResourceExistsResult> CheckExistenceAsync(string resourceGroupName, ResourceIdentity identity, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create a resource.
         /// </summary>
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource information.
         /// </returns>
         Task<ResourceCreateOrUpdateResult> CreateOrUpdateAsync(string resourceGroupName, ResourceIdentity identity, GenericResource parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Delete resource and all of its resources.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAsync(string resourceGroupName, ResourceIdentity identity, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Returns a resource belonging to a resource group.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource information.
         /// </returns>
         Task<ResourceGetResult> GetAsync(string resourceGroupName, ResourceIdentity identity, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get all of the resources under a subscription.
         /// </summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource groups.
         /// </returns>
         Task<ResourceListResult> ListAsync(ResourceListParameters parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource groups.
         /// </returns>
         Task<ResourceListResult> ListNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Move resources within or across subscriptions.
         /// </summary>

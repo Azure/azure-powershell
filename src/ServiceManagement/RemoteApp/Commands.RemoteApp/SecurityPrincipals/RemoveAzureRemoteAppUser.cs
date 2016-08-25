@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
     {
         public override void ExecuteCmdlet()
         {
-            RemoveUsers(CollectionName, UserUpn, Type);
+            RemoveUsers(CollectionName, UserUpn, Type, Alias);
         }
     }
 }

@@ -25,6 +25,8 @@ using Moq;
 using Newtonsoft.Json;
 using Xunit;
 using Microsoft.Azure.Commands.Intune.Flagged;
+using Xunit.Abstractions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Intune.Test.UnitTests
 {
@@ -34,12 +36,13 @@ namespace Commands.Intune.Test.UnitTests
         private Mock<ICommandRuntime> commandRuntimeMock;
         private GetIntuneMAMUserFlaggedEnrolledAppsCmdlet cmdlet;
         private Location expectedLocation;
-
+        
         /// <summary>
         ///  C'tor for GetIntuneMAMUserFlaggedEnrolledAppsCmdlet class.
         /// </summary>
-        public GetIntuneMAMFlaggedEnrolledAppsCmdletTests()
+        public GetIntuneMAMFlaggedEnrolledAppsCmdletTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             intuneClientMock = new Mock<IIntuneResourceManagementClient>();
 

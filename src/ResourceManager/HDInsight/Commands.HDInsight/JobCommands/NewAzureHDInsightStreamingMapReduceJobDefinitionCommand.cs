@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -30,16 +30,19 @@ namespace Microsoft.Azure.Commands.HDInsight
         private AzureHDInsightStreamingMapReduceJobDefinition job;
 
         #region Input Parameter Definitions
-        
-        [Parameter(HelpMessage = "The hive arguments for the jobDetails.")]
+
+        [Parameter(HelpMessage = "The arguments for the jobDetails.")]
         public string[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "The file for the jobDetails.")]
+        [Parameter(HelpMessage = "Local file to be made available to tasks")]
         public string File
         {
             get { return job.File; }
-            set { job.File = value; } 
+            set { job.File = value; }
         }
+
+        [Parameter(HelpMessage = "List of files to be copied to the cluster.")]
+        public string[] Files { get; set; }
 
         [Parameter(HelpMessage = "The output location to use for the job.")]
         public string StatusFolder
@@ -49,8 +52,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(HelpMessage = "The command line environment for the mappers or the reducers.")]
-        public string[] CommandEnvironment { get; set; }
-        
+        public Hashtable CommandEnvironment { get; set; }
+
         [Parameter(HelpMessage = "The parameters for the jobDetails.")]
         public Hashtable Defines { get; set; }
 
@@ -87,8 +90,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public NewAzureHDInsightStreamingMapReduceJobDefinitionCommand()
         {
-            Arguments = new string[] {};
-            CommandEnvironment = new string[] {};
+            Arguments = new string[] { };
+            Files = new string[] { };
+            CommandEnvironment = new Hashtable();
             Defines = new Hashtable();
             job = new AzureHDInsightStreamingMapReduceJobDefinition();
         }
@@ -100,15 +104,21 @@ namespace Microsoft.Azure.Commands.HDInsight
                 job.Arguments.Add(arg);
             }
 
-            foreach (var cmdenv in CommandEnvironment)
+            var cmdEnvDic = CommandEnvironment.ToDictionary(false);
+            foreach (var cmdEnv in cmdEnvDic)
             {
-                job.CommandEnvironment.Add(cmdenv);
+                job.CommandEnvironment.Add(cmdEnv.Key, cmdEnv.Value.ToString());
             }
 
             var defineDic = Defines.ToDictionary(false);
             foreach (var define in defineDic)
             {
                 job.Defines.Add(define.Key, define.Value.ToString());
+            }
+
+            foreach (var file in Files)
+            {
+                job.Files.Add(file);
             }
 
             WriteObject(job);

@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSSubnet : PSChildResource
     {
@@ -51,6 +50,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RouteTableText
         {
             get { return JsonConvert.SerializeObject(RouteTable, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        public bool ShouldSerializeIpConfigurations()
+        {
+            return !string.IsNullOrEmpty(this.Name);
         }
     }
 }

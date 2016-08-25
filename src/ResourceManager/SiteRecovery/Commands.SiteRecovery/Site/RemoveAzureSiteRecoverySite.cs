@@ -12,24 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
-       
+
         /// <summary>
         /// Gets or sets the site name
         /// </summary>
@@ -37,42 +33,53 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [ValidateNotNullOrEmpty]
         public ASRSite Site { get; set; }
 
+        /// <summary>
+        /// Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        /// </summary>
+        [Parameter]
+        public SwitchParameter Force { get; set; }
+
         #endregion
 
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+            base.ExecuteSiteRecoveryCmdlet();
+            ConfirmAction(VerbsCommon.Remove, Site.FriendlyName,
+                () =>
+                {
+                    RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryProvider(
-                        this.Site.Name);
+                            this.Site.Name);
 
-                if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
-                {
-                    throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
-                }
+                    if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+                    {
+                        throw new PSInvalidOperationException(
+                            Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
+                    }
 
-                FabricDeletionInput input = new FabricDeletionInput()
-                {
-                    Properties = new FabricDeletionInputProperties()
-                };
+                    LongRunningOperationResponse response;
 
-                LongRunningOperationResponse response =
-                 RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name, input);
+                    if (!this.Force.IsPresent)
+                    {
+                        response =
+                            RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
+                    }
+                    else
+                    {
+                        response =
+                            RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
+                    }
 
-                JobResponse jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    JobResponse jobResponse =
+                        RecoveryServicesClient
+                            .GetAzureSiteRecoveryJobDetails(
+                                PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
-                WriteObject(new ASRJob(jobResponse.Job));
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+                    WriteObject(new ASRJob(jobResponse.Job));
+                });
         }
     }
 }

@@ -15,12 +15,13 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
-    [Cmdlet(VerbsCommon.Set, "AzureOSDisk"), OutputType(typeof(IPersistentVM))]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.OsDisk), OutputType(typeof(IPersistentVM))]
     public class SetAzureOSDiskCommand : VirtualMachineConfigurationCmdletBase
     {
         private const string ResizeParameterSet = "Resize";

@@ -218,7 +218,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -303,7 +303,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -347,7 +347,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -391,7 +391,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -435,7 +435,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -479,7 +479,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -523,7 +523,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -655,7 +655,7 @@
           "277"
         ],
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -705,7 +705,7 @@
           "2509"
         ],
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -746,7 +746,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -790,7 +790,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -834,7 +834,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -878,7 +878,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -928,7 +928,7 @@
           "254"
         ],
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -969,7 +969,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -1013,7 +1013,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -1057,7 +1057,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -1142,7 +1142,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1186,7 +1186,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1230,7 +1230,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1274,7 +1274,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1315,7 +1315,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1359,7 +1359,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1403,7 +1403,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1447,7 +1447,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1491,7 +1491,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1535,7 +1535,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1576,7 +1576,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1620,7 +1620,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-03-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Compute.ComputeManagementClient/12.0.0.0"
@@ -1664,7 +1664,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -1705,7 +1705,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
@@ -1749,7 +1749,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-version": [
-          "2015-04-01"
+          "2016-07-01"
         ],
         "User-Agent": [
           "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"

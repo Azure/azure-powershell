@@ -15,8 +15,8 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Add, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
@@ -29,15 +29,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public PsApiManagement ApiManagement { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = false, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = true,
             HelpMessage = "Location of the new deployment region.")]
 
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            "North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
-            "Australia Southeast", IgnoreCase = false)]
         public string Location { get; set; }
 
         [Parameter(

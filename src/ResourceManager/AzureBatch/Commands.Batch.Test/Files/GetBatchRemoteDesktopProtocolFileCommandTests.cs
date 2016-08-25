@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -32,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchRemoteDesktopProtocolFileCommandTests()
+        public GetBatchRemoteDesktopProtocolFileCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetBatchRemoteDesktopProtocolFileCommand()
@@ -55,8 +57,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.ComputeNode = null;
             cmdlet.DestinationPath = null;
 
+            AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders> response = BatchTestHelpers.CreateGetRemoteDesktOperationResponse();
+
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ComputeNodeGetRemoteDesktopOptions,
+                AzureOperationResponse<Stream, ComputeNodeGetRemoteDesktopHeaders>>(response);
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

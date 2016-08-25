@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Newtonsoft.Json;
-using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -35,5 +32,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         [JsonProperty(PropertyName = "enableAzureDataCollection")]
         public bool? EnableAzureDataCollection { get; set; }
+
     }
 }

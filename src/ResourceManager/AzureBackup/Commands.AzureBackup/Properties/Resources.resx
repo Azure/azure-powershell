@@ -505,4 +505,17 @@ Please contact Microsoft for further assistant.</value>
   <data name="RemoveProtectionPolicyWarning" xml:space="preserve">
     <value>Are you sure you want to remove the protection policy '{0}'</value>
   </data>
+  <data name="DeleteVaultCaption" xml:space="preserve">
+    <value>Delete Vault</value>
+  </data>
+  <data name="DeleteVaultMessage" xml:space="preserve">
+    <value>This operation will delete the vault. Are you sure you want to delete the vault?</value>
+  </data>
+  <data name="UnregisterContainerAction" xml:space="preserve">
+    <value>Unregister</value>
+  </data>
+  <data name="UnregisterContainerTarget" xml:space="preserve">
+    <value>Azure Backup Container '{0}' in resource group '{1}'</value>
+    <comment>{0} = name, {1} = resource group name</comment>
+  </data>
 </root>

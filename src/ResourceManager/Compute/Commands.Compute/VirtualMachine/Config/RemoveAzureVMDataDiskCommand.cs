@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
 
             this.VM.StorageProfile = storageProfile;
-            
+
             WriteObject(this.VM);
         }
     }

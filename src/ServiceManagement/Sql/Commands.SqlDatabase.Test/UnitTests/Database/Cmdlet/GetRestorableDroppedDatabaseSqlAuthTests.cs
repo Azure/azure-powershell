@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 3)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);
@@ -162,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 5)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);
@@ -270,7 +270,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         (expected, actual) =>
                         {
                             Assert.AreEqual(expected.RequestInfo.Method, actual.Method);
-                            Assert.AreEqual(expected.RequestInfo.UserAgent, actual.UserAgent);
+                            Assert.IsNotNull(actual.UserAgent);
                             if (expected.Index < 1)
                             {
                                 DatabaseTestHelper.ValidateHeadersForODataRequest(expected.RequestInfo, actual);

@@ -1,0 +1,161 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/system/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/storageaccounts/1?action=undelete&api-version=2015-12-01-preview",
+            "RequestMethod": "POST",
+            "RequestBody": "{\"newAccountName\":\"acc_new_name\",\"tags\":{}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/system/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/storageaccounts?api-version=2015-12-01-preview&$filter=%7Bversionedaccountname%20eq%20%271%27%7D&summary=true",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/system/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/storageaccounts/1\",\"type\":\"Microsoft.Storage.Admin/storageaccounts\",\"name\":\"1\",\"location\":\"redmond\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"primaryEndpoints\":{\"blob\":\"https://host:11100/demo007\",\"queue\":\"https://host:11101/demo007\",\"table\":\"https://host:11102/demo007\"},\"primaryLocation\":\"redmond\",\"statusOfPrimary\":\"Available\",\"tenantViewId\":\"/subscriptions/177fbbce-fd6a-4f11-bfa4-52c2f3a21918/resourcegroups/system/providers/Microsoft.Storage/storageaccounts/demo007\",\"tenantSubscriptionId\":\"177fbbce-fd6a-4f11-bfa4-52c2f3a21918\",\"tenantStorageAccountName\":\"demo007\",\"tenantResourceGroupName\":\"system\",\"currentOperation\":\"None\",\"acquisitionOperationCount\":0,\"accountStatus\":\"Active\",\"recoveredTime\":\"2015-10-13T05:44:29.743\",\"accountType\":\"Standard_GRS\",\"creationTime\":\"Tue, 13 Oct 2015 05:42:48 GMT\"}}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Resources.Admin/subscriptions/177fbbce-fd6a-4f11-bfa4-52c2f3a21918/resourceGroups/system/SynchronizeResources?api-version=1.0",
+            "RequestMethod": "POST",
+            "RequestBody": "{\"apiVersion\":\"2015-06-15\",\"resourceLocation\":\"redmond\",\"targetOperation\":\"Create\",\"id\":\"subscriptions/177FBBCE-FD6A-4F11-BFA4-52C2F3A21918/resourceGroups/system/providers/Microsoft.Storage/StorageAccounts/acc_new_name\",\"tags\":{}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "{\"correlationId\":\"4ec418ca-5acd-47da-83bb-0aefbe8f365e\",\"frontdoorLocation\":\"redmond\",\"timestamp\":\"2015-10-19T05:51:43.9138942Z\",\"message\":\"Resource group synchronization jobs started successfully.\",\"data\":{\"targetNamespaces\":[\"Microsoft.Authorization\",\"Microsoft.Insights\",\"Microsoft.Gallery\",\"Microsoft.Sql\",\"Microsoft.Sql.Admin\",\"Microsoft.Subscriptions\",\"Microsoft.Subscriptions.Admin\",\"Microsoft.Commerce\",\"Microsoft.Storage\",\"Microsoft.Storage.Admin\"]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

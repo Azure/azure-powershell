@@ -12,18 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Management.Compute;
-using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Remove,
         ProfileNouns.VirtualMachineDiagnosticsExtension)]
+    [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
@@ -59,11 +63,12 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    var virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName).VirtualMachine;
-                    var diagnosticsExtension = virtualMachine.Extensions != null
-                            ? virtualMachine.Extensions.FirstOrDefault(extension =>
+                    VirtualMachine virtualMachine = ComputeClient.ComputeManagementClient.VirtualMachines.Get(
+                        this.ResourceGroupName, this.VMName);
+                    var diagnosticsExtension = virtualMachine.Resources != null
+                            ? virtualMachine.Resources.FirstOrDefault(extension =>
                                 extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
-                                extension.ExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
+                                extension.VirtualMachineExtensionType.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase))
                             : null;
 
                     if (diagnosticsExtension == null)
@@ -77,9 +82,12 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
-                var op = this.VirtualMachineExtensionClient.Delete(this.ResourceGroupName, this.VMName,
-                    this.Name);
-                WriteObject(op);
+                var op = this.VirtualMachineExtensionClient.DeleteWithHttpMessagesAsync(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    this.Name).GetAwaiter().GetResult();
+                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                WriteObject(result);
             });
         }
     }

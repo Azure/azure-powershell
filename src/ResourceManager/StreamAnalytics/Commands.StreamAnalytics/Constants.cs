@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -25,6 +24,10 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public const string StreamAnalyticsOutput = "AzureRmStreamAnalyticsOutput";
 
         public const string StreamAnalyticsTransformation = "AzureRmStreamAnalyticsTransformation";
+
+        public const string StreamAnalyticsFunction = "AzureRmStreamAnalyticsFunction";
+
+        public const string StreamAnalyticsDefaultFunctionDefinition = "AzureRmStreamAnalyticsDefaultFunctionDefinition";
 
         public const string StreamAnalyticsQuota = "AzureRmStreamAnalyticsQuota";
     }

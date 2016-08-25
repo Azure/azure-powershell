@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -102,11 +101,11 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (!this.Primary.IsPresent)
                 {
-                    if (! networkProfile.NetworkInterfaces.Any(e => e.ReferenceUri.Equals(this.Id)))
+                    if (!networkProfile.NetworkInterfaces.Any(e => e.Id.Equals(this.Id)))
                     {
                         networkProfile.NetworkInterfaces.Add(new NetworkInterfaceReference
                         {
-                            ReferenceUri = this.Id,
+                            Id = this.Id,
                         });
                     }
 
@@ -126,13 +125,13 @@ namespace Microsoft.Azure.Commands.Compute
                         networkInterfaceReference.Primary = false;
                     }
 
-                    var existingNic = networkProfile.NetworkInterfaces.Where(e => e.ReferenceUri.Equals(this.Id)).FirstOrDefault();
+                    var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(this.Id));
                     if (existingNic == null)
                     {
                         networkProfile.NetworkInterfaces.Add(
                             new NetworkInterfaceReference
                             {
-                                ReferenceUri = this.Id,
+                                Id = this.Id,
                                 Primary = true
                             });
                     }
@@ -146,20 +145,20 @@ namespace Microsoft.Azure.Commands.Compute
             { // Nic Object Parameter Set
                 foreach (var nic in this.NetworkInterface)
                 {
-                    var existingNic = networkProfile.NetworkInterfaces.Where(e => e.ReferenceUri.Equals(nic.Id)).FirstOrDefault();
+                    var existingNic = networkProfile.NetworkInterfaces.FirstOrDefault(e => e.Id.Equals(nic.Id));
 
                     if (existingNic == null)
                     {
                         networkProfile.NetworkInterfaces.Add(
                             new NetworkInterfaceReference
                             {
-                                ReferenceUri = nic.Id,
+                                Id = nic.Id,
                                 Primary = nic.Primary
                             });
                     }
                     else
                     {
-                       existingNic.Primary = nic.Primary;
+                        existingNic.Primary = nic.Primary;
                     }
                 }
             }

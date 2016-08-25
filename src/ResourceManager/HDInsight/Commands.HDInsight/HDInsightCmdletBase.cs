@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.HDInsight;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
 {
@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
 
         public AzureHdInsightManagementClient HDInsightManagementClient
         {
-            get {
+            get
+            {
                 return _hdInsightManagementClient ??
                        (_hdInsightManagementClient = new AzureHdInsightManagementClient(DefaultContext));
             }
@@ -99,5 +100,28 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
         }
 
+        protected AzureHDInsightDefaultStorageAccount GetDefaultStorageAccount(string resourceGroupName, string clusterName)
+        {
+            var result = HDInsightManagementClient.GetCluster(resourceGroupName, clusterName);
+
+            if (result == null || result.Count == 0)
+            {
+                throw new CloudException(string.Format("Couldn't find cluster {0}", clusterName));
+            }
+
+            var cluster = result.FirstOrDefault();
+            var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, cluster.Name, ConfigurationKey.CoreSite);
+
+            var DefaultStorageAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
+                                    configuration,
+                                    cluster.Properties.ClusterVersion);
+
+            if (DefaultStorageAccount == null)
+            {
+                throw new CloudException(string.Format("Couldn't find storage information for cluster {0}", clusterName));
+            }
+
+            return DefaultStorageAccount;
+        }
     }
 }

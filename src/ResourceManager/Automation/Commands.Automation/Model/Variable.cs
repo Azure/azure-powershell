@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
-using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {

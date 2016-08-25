@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
                 job.Properties.ProvisioningState = value;
             }
         }
-        
+
         public string JobState
         {
             get
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 
         public string PropertiesInJson
         {
-            get { return job.Properties.ToFormattedString(); }
+            get { return job.ToFormattedString(); }
         }
     }
 }

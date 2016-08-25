@@ -36,8 +36,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string ComputeRole { get; set; }
 
-        public bool SupportsMultipleExtensions { get; set; }
+        public bool? SupportsMultipleExtensions { get; set; }
 
-        public bool VMScaleSetEnabled { get; set; }
+        public bool? VMScaleSetEnabled { get; set; }
     }
 }

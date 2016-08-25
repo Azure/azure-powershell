@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModelExpanded(string resourceGroup, string serverName, Management.Sql.Models.Database database) : base(resourceGroup, serverName, database)
         {
-            if (database.Properties.ServiceTierAdvisors != null 
+            if (database.Properties.ServiceTierAdvisors != null
                 && database.Properties.ServiceTierAdvisors.Count > 0)
             {
                 ServiceTierAdvisor = database.Properties.ServiceTierAdvisors[0].Properties;

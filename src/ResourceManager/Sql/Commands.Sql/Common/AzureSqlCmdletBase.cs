@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -41,8 +40,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             M updatedModel = this.ApplyUserInputToModel(model);
             M responseModel = this.PersistChanges(updatedModel);
 
-            if(responseModel != null)
+            if (responseModel != null)
             {
                 if (WriteResult())
                 {

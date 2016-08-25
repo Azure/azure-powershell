@@ -15,7 +15,6 @@
 using System;
 using System.IO;
 using System.Net.Http.Headers;
-using Microsoft.Azure.Common.Authentication.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -27,9 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
-        public const string AssemblyVersion = "1.0.0";
+        public const string AssemblyVersion = "2.0.1";
 
-        public const string AssemblyFileVersion = "1.0.1";
+        public const string AssemblyFileVersion = "2.0.1";
 
         public const string ProfileFile = "AzureProfile.json";
 
@@ -45,6 +44,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static string ProfileDirectory = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            Resources.AzureDirectoryName);
+            "Windows Azure PowerShell");
     }
 }

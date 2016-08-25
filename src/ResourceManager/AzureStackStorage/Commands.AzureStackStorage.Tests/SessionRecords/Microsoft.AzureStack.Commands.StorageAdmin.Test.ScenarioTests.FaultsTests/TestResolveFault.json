@@ -1,0 +1,59 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/faults/D64F6195-93FE-40AF-B0A7-D8EA10506028/dismiss?api-version=2015-12-01-preview",
+            "RequestMethod": "POST",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [
+                    "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+                ]
+            },
+            "ResponseBody": "",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Vary": [
+                    "Accept-Encoding"
+                ],
+                "Content-Length": [
+                    "8232"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "31998"
+                ],
+                "x-ms-request-id": [
+                    "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+                ],
+                "x-ms-correlation-request-id": [
+                    "45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 204
+        }
+    ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

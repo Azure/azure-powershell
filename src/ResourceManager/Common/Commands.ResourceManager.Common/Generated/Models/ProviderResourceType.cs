@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ProviderResourceType
     {
         private IList<string> _apiVersions;
-        
+
         /// <summary>
         /// Optional. Gets or sets the api version.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._apiVersions; }
             set { this._apiVersions = value; }
         }
-        
+
         private IList<string> _locations;
-        
+
         /// <summary>
         /// Optional. Gets or sets the collection of locations where this
         /// resource type can be created in.
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._locations; }
             set { this._locations = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource type.
         /// </summary>
@@ -62,9 +62,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private IDictionary<string, string> _properties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the properties.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._properties; }
             set { this._properties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ProviderResourceType class.
         /// </summary>

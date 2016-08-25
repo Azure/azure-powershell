@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
     {
         public override void ExecuteCmdlet()
         {
-            AddUsers(CollectionName, UserUpn, Type);
+            AddUsers(CollectionName, UserUpn, Type, Alias);
         }
     }
 }

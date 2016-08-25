@@ -14,14 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using Newtonsoft.Json.Linq;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// A helper class that handles common tasks that deal with the <see cref="Resource{JToken}"/> class.
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "ResourceGroupName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id) },
                 { "Location", resource.Location },
                 { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
-                { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
+                { "Tags", TagsHelper.GetTagsHashtable(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject() },
                 { "Properties", ResourceExtensions.GetProperties(resource) },
                 { "CreatedTime", resource.CreatedTime },

@@ -146,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
 
     }
 
-#region HttpUtility port from .Net 4.0
+    #region HttpUtility port from .Net 4.0
 
     class HttpUtility
     {
@@ -206,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
                         continue;
                     }
                 }
-            Label_0106:
+                Label_0106:
                 if ((ch & 0xff80) == 0)
                 {
                     decoder.AddByte((byte)ch);
@@ -565,6 +565,6 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             return builder.ToString();
         }
     }
-#endregion
+    #endregion
 
 }

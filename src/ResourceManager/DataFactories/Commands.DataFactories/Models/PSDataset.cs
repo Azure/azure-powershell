@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.DataFactories.Common.Models;
 using Microsoft.Azure.Management.DataFactories.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.DataFactories.Models
 {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
                 this.dataset.Name = value;
             }
         }
-        
+
         public string ResourceGroupName { get; set; }
 
         public string DataFactoryName { get; set; }

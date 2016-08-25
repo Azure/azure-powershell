@@ -27,8 +27,8 @@ using Microsoft.WindowsAzure.Management.RecoveryServices;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         {
             if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH")))
             {
-                Environment.SetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH", "ScenarioTests\\vaultSettings.vaultcredentials");
+                Environment.SetEnvironmentVariable(
+                    "VAULT_SETTINGS_FILE_PATH", 
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ScenarioTests\\vaultSettings.vaultcredentials"));
             }
 
             this.vaultSettingsFilePath = Environment.GetEnvironmentVariable("VAULT_SETTINGS_FILE_PATH");

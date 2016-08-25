@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseExpanded", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseExpanded",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
@@ -43,13 +44,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The name of the Azure SQL Database to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
-        
+
         /// <summary>
         /// Initializes the adapter
         /// </summary>
         /// <param name="subscription"></param>
         /// <returns></returns>
-        protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
+        protected override AzureSqlDatabaseAdapter InitModelAdapter(AzureSubscription subscription)
         {
             return new AzureSqlDatabaseAdapter(DefaultProfile.Context);
         }
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseModelExpanded> results;
 
-            if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
                 results = new List<AzureSqlDatabaseModelExpanded>();
                 results.Add(ModelAdapter.GetDatabaseExpanded(this.ResourceGroupName, this.ServerName, this.DatabaseName));

@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
-        [ValidateSet("Http", IgnoreCase = true)]
+        [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
@@ -47,6 +46,39 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string CookieBasedAffinity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Request Timeout. Default value 30 seconds.")]
+        [ValidateNotNullOrEmpty]
+        public uint RequestTimeout { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "ID of the application gateway Probe")]
+        [ValidateNotNullOrEmpty]
+        public string ProbeId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application gateway Probe")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayProbe Probe { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application gateway Authentication Certificates")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+
+            if (Probe != null)
+            {
+                this.ProbeId = this.Probe.Id;
+            }
+        }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {
             var backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
@@ -54,6 +86,31 @@ namespace Microsoft.Azure.Commands.Network
             backendHttpSettings.Port = this.Port;
             backendHttpSettings.Protocol = this.Protocol;
             backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
+            if (0 == this.RequestTimeout)
+            {
+                backendHttpSettings.RequestTimeout = 30;
+            }
+            else
+            {
+                backendHttpSettings.RequestTimeout = this.RequestTimeout;
+            }
+            if (!string.IsNullOrEmpty(this.ProbeId))
+            {
+                backendHttpSettings.Probe = new PSResourceId();
+                backendHttpSettings.Probe.Id = this.ProbeId;
+            }
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
+            {
+                backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
+                foreach (var authcert in this.AuthenticationCertificates)
+                {
+                    backendHttpSettings.AuthenticationCertificates.Add(
+                        new PSResourceId()
+                        {
+                            Id = authcert.Id
+                        });
+                }
+            }
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,
                                     Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,

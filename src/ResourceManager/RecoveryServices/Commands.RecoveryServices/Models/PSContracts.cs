@@ -19,6 +19,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Azure.Commands.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -86,63 +87,107 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
+    /// ARM specified Error
     /// </summary>
-    [SuppressMessage(
-        "Microsoft.StyleCop.CSharp.MaintainabilityRules",
-        "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract]
-    public class ErrorInException : Error
+    public class ARMError
     {
+        /// <summary>
+        /// Gets ARM formatted exception.
+        /// </summary>
+        [JsonProperty(PropertyName = "error")]
+        public ARMException Error { get; private set; }
     }
 
     /// <summary>
-    /// Error contract returned when some exception occurs in ASR REST API.
+    /// ARM exception class.
     /// </summary>
-    [SuppressMessage(
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
         "SA1402:FileMayOnlyContainASingleClass",
-        Justification = "Keeping all contracts together.")]
-    [DataContract(Namespace = "http://schemas.microsoft.com/windowsazure")]
-    public class Error
+        Justification = "Keeping all related classes together.")]
+    public class ARMException
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Error" /> class.
+        /// Gets HTTP status code for the error.
         /// </summary>
-        public Error()
-        {
-        }
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
 
         /// <summary>
-        /// Gets or sets error code.
+        /// Gets exception message.
         /// </summary>
-        [DataMember]
-        public string Code { get; set; }
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
 
         /// <summary>
-        /// Gets or sets error message.
+        /// Gets exception target.
         /// </summary>
-        [DataMember]
-        public string Message { get; set; }
+        [JsonProperty(PropertyName = "target",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
 
         /// <summary>
-        /// Gets or sets possible causes of error.
+        /// Gets service based error details.
         /// </summary>
-        [DataMember]
-        public string PossibleCauses { get; set; }
+        [JsonProperty(PropertyName = "details")]
+        public List<ARMExceptionDetails> Details { get; private set; }
+    }
+
+    /// <summary>
+    /// Service based exception details.
+    /// </summary>
+    public class ARMExceptionDetails
+    {
+        /// <summary>
+        /// Gets service error code.
+        /// </summary>
+        [JsonProperty(PropertyName = "code")]
+        public string ErrorCode { get; private set; }
 
         /// <summary>
-        /// Gets or sets recommended action to resolve error.
+        /// Gets error message.
         /// </summary>
-        [DataMember]
-        public string RecommendedAction { get; set; }
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; private set; }
 
         /// <summary>
-        /// Gets or sets client request Id.
+        /// Gets possible cause for error.
         /// </summary>
-        [DataMember(Name = "ActivityId")]
-        public string ClientRequestId { get; set; }
+        [JsonProperty(PropertyName = "possibleCauses",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string PossibleCauses { get; private set; }
+
+        /// <summary>
+        /// Gets recommended action for the error.
+        /// </summary>
+        [JsonProperty(PropertyName = "recommendedAction",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string RecommendedAction { get; private set; }
+
+        /// <summary>
+        /// Gets the client request Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "clientRequestId",
+        NullValueHandling = NullValueHandling.Ignore,
+        DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string ClientRequestId { get; private set; }
+
+                /// <summary>
+        /// Gets the activity Id for the session.
+        /// </summary>
+        [JsonProperty(PropertyName = "activityId")]
+        public string ActivityId { get; private set; }
+
+        /// <summary>
+        /// Gets exception target.
+        /// </summary>
+        [JsonProperty(PropertyName = "target",
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Target { get; private set; }
     }
 
     /// <summary>
@@ -265,10 +310,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        /// <param name="resourceType">resource type backup vault or ASR vault</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = Constants.ASRVaultType;
+            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.VaultType : resourceType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
@@ -311,7 +357,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
     }
 
     /// <summary>
-    /// Class to define ASR Vault credentials
+    /// Class to define ARS Vault credentials
     /// </summary>
     [SuppressMessage(
         "Microsoft.StyleCop.CSharp.MaintainabilityRules",
@@ -349,7 +395,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string siteId,
             string siteName,
             string resourceNamespace,
-            string resourceType)
+            string resourceType,
+            string location)
             : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
@@ -361,6 +408,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 
             this.ResourceNamespace = resourceNamespace;
             this.ARMResourceType = resourceType;
+            this.Location = location;
         }
 
         #endregion
@@ -407,6 +455,62 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 6)]
         public string ARMResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vault location
+        /// </summary>
+        [DataMember(Order = 7)]
+        public string Location { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define backup vault credentials
+    /// </summary>
+    [DataContract]
+    public class BackupVaultCreds : VaultCreds
+    {
+        /// <summary>
+        /// Gets or sets the agent links
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string AgentLinks { get; set; }
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        public BackupVaultCreds() { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace, Constants.BackupVaultType) { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="agentLinks">agent links</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace, string agentLinks)
+            : this(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            AgentLinks = agentLinks;
+        }
 
         #endregion
     }

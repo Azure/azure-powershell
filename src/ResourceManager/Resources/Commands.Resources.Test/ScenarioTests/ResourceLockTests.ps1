@@ -41,4 +41,17 @@ function Test-ResourceLockCRUD
 	$removed = Remove-AzureRMResourceLock -LockId $expectedSet.LockId -Force
 	Assert-AreEqual True $removed
 
+	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel CanNotDelete -Force -Scope $rg.ResourceId
+	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
+	Assert-AreEqual True $removed
+
+	#ReadOnly lock
+	$actual = New-AzureRMResourceLock -LockName $rname -LockLevel ReadOnly -Force -Scope $rg.ResourceId
+	Assert-AreEqual $expected.Name $actual.Name
+
+	$expected = Get-AzureRMResourceLock -LockName $rname -Scope $rg.ResourceId
+	Assert-AreEqual $expected.Properties.Level "ReadOnly"
+
+	$removed = Remove-AzureRMResourceLock -ResourceId $actual.ResourceId -Force
+	Assert-AreEqual True $removed
 }

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hyak.Common;
-using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -55,19 +54,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         switch (character)
                         {
                             case 'r':
-                                eachPermission += (int) DataLakeStoreEnums.Permission.Read;
+                                eachPermission += (int)DataLakeStoreEnums.Permission.Read;
                                 break;
                             case 'w':
-                                eachPermission += (int) DataLakeStoreEnums.Permission.Write;
+                                eachPermission += (int)DataLakeStoreEnums.Permission.Write;
                                 break;
                             case 'x':
-                                eachPermission += (int) DataLakeStoreEnums.Permission.Execute;
+                                eachPermission += (int)DataLakeStoreEnums.Permission.Execute;
                                 break;
                         }
 
                         charsRead++;
 
-                        if (charsRead%3 == 0)
+                        if (charsRead % 3 == 0)
                         {
                             convertedPermissions += eachPermission;
                             eachPermission = 0;

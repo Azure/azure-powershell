@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commerce.UsageAggregates;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
-    using WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
     using System;
     using System.Management.Automation;
-    using ResourceManager.Common;
 
     [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
     public class GetUsageAggregatesCommand : AzureRMCmdlet
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         private UsageAggregationManagementClient _theClient;
         private AggregationGranularity _aggregationGranularity = AggregationGranularity.Daily;
         private bool _showDetails = true;
-     
+
         [Parameter(Mandatory = true, HelpMessage = "The start of the time range to retrieve data for.")]
         public DateTime ReportedStartTime { get; set; }
 
@@ -39,13 +38,15 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         public DateTime ReportedEndTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Value is either daily (default) or hourly to tell the API how to return the results grouped by day or hour.")]
-        public AggregationGranularity AggregationGranularity { 
-            get { return _aggregationGranularity; } 
-            set { _aggregationGranularity = value;}
+        public AggregationGranularity AggregationGranularity
+        {
+            get { return _aggregationGranularity; }
+            set { _aggregationGranularity = value; }
         }
 
         [Parameter(Mandatory = false, HelpMessage = "When set to true (default), the aggregates are broken down into the instance metadata which is more granular.")]
-        public bool ShowDetails {
+        public bool ShowDetails
+        {
             get { return _showDetails; }
             set { _showDetails = value; }
         }

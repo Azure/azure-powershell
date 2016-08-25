@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Storage</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Package\Debug\Storage\Azure.Storage</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <OutputPath>..\..\Package\Release\Storage\Azure.Storage</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Management">
+      <HintPath>..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\WindowsAzure.Storage.6.1.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage.DataMovement">
+      <HintPath>..\..\packages\Microsoft.Azure.Storage.DataMovement.0.2.0\lib\net45\Microsoft.WindowsAzure.Storage.DataMovement.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.Net.Http.2.2.28\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Channels" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Blob\Cmdlet\GetAzureStorageBlob.cs" />
+    <Compile Include="Blob\Cmdlet\GetAzureStorageBlobContent.cs" />
+    <Compile Include="Blob\Cmdlet\GetAzureStorageBlobCopyState.cs" />
+    <Compile Include="Blob\Cmdlet\GetAzureStorageContainer.cs" />
+    <Compile Include="Blob\Cmdlet\GetAzureStorageContainerStoredAccessPolicy.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageBlobSasToken.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageContainer.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageContainerSasToken.cs" />
+    <Compile Include="Blob\Cmdlet\NewAzureStorageContainerStoredAccessPolicy.cs" />
+    <Compile Include="Blob\Cmdlet\RemoveAzureStorageBlob.cs" />
+    <Compile Include="Blob\Cmdlet\RemoveAzureStorageContainer.cs" />
+    <Compile Include="Blob\Cmdlet\RemoveAzureStorageContainerStoredAccessPolicy.cs" />
+    <Compile Include="Blob\Cmdlet\SetAzureStorageBlobContent.cs" />
+    <Compile Include="Blob\Cmdlet\SetAzureStorageContainerAcl.cs" />
+    <Compile Include="Blob\Cmdlet\SetAzureStorageContainerStoredAccessPolicy.cs" />
+    <Compile Include="Blob\DataMovementUserData.cs" />
+    <Compile Include="Common\AccessPolicyHelper.cs" />
+    <Compile Include="Common\BlobToAzureFileNameResolver.cs" />
+    <Compile Include="Common\BlobToFileNameResolver.cs" />
+    <Compile Include="Common\BlobUploadRequestQueue.cs" />
+    <Compile Include="Common\CmdletOperationContext.cs" />
+    <Compile Include="Blob\StorageDataMovementCmdletBase.cs" />
+    <Compile Include="Common\BlobToFileSystemNameResolver.cs" />
+    <Compile Include="Blob\Cmdlet\StartAzureStorageBlobCopy.cs" />
+    <Compile Include="Blob\Cmdlet\StopAzureStorageBlobCopy.cs" />
+    <Compile Include="Common\Cmdlet\NewAzureStorageAccountSasToken.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageCORSRule.cs" />
+    <Compile Include="Common\Cmdlet\GetAzureStorageCORSRule.cs" />
+    <Compile Include="Common\Cmdlet\GetAzureStorageServiceLogging.cs" />
+    <Compile Include="Common\Cmdlet\GetAzureStorageServiceMetrics.cs" />
+    <Compile Include="Common\Cmdlet\RemoveAzureStorageCORSRule.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageServiceLogging.cs" />
+    <Compile Include="Common\Cmdlet\SetAzureStorageServiceMetrics.cs" />
+    <Compile Include="Common\ConfirmTaskCompletionSource.cs" />
+    <Compile Include="Common\DataManagementWrapper.cs" />
+    <Compile Include="Common\DataMovementTransferHelper.cs" />
+    <Compile Include="Common\ITransferManager.cs" />
+    <Compile Include="Common\LimitedConcurrencyTaskScheduler.cs" />
+    <Compile Include="Common\NameUtil.cs" />
+    <Compile Include="Common\Cmdlet\NewAzureStorageContext.cs" />
+    <Compile Include="Common\TransferProgressHandler.cs" />
+    <Compile Include="Common\ResourceAlreadyExistException.cs" />
+    <Compile Include="Common\ResourceNotFoundException.cs" />
+    <Compile Include="Common\SasTokenHelper.cs" />
+    <Compile Include="Common\ServiceMetricsType.cs" />
+    <Compile Include="Common\ServicePropertiesExtension.cs" />
+    <Compile Include="Common\StorageCloudCmdletBase.cs" />
+    <Compile Include="Blob\StorageCloudBlobCmdletBase.cs" />
+    <Compile Include="Common\StorageExceptionUtil.cs" />
+    <Compile Include="Common\StorageExtensions.cs" />
+    <Compile Include="Common\StorageNouns.cs" />
+    <Compile Include="Common\TaskOutputStream.cs" />
+    <Compile Include="Common\TransferManagerFactory.cs" />
+    <Compile Include="Common\Util.cs" />
+    <Compile Include="File\AzureStorageFileCmdletBase.cs" />
+    <Compile Include="File\AzureStorageFileException.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFile.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFileContent.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageFileCopyState.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageShare.cs" />
+    <Compile Include="File\Cmdlet\GetAzureStorageShareStoredAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageDirectory.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageFileSasToken.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageShare.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageShareSasToken.cs" />
+    <Compile Include="File\Cmdlet\NewAzureStorageShareStoredAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageDirectory.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageFile.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageShare.cs" />
+    <Compile Include="File\Cmdlet\RemoveAzureStorageShareStoredAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\SetAzureStorageFileContent.cs" />
+    <Compile Include="File\Cmdlet\SetAzureStorageShareQuota.cs" />
+    <Compile Include="File\Cmdlet\SetAzureStorageShareStoredAccessPolicy.cs" />
+    <Compile Include="File\Cmdlet\StartAzureStorageFileCopy.cs" />
+    <Compile Include="File\Cmdlet\StopAzureStorageFileCopy.cs" />
+    <Compile Include="File\Constants.cs" />
+    <Compile Include="File\ErrorIdConstants.cs" />
+    <Compile Include="File\NamingUtil.cs" />
+    <Compile Include="File\StorageClientExtensions.cs" />
+    <Compile Include="File\StorageFileDataManagementCmdletBase.cs" />
+    <Compile Include="Model\Contract\IStorageFileManagement.cs" />
+    <Compile Include="Model\Contract\IStorageManagement.cs" />
+    <Compile Include="Common\StorageServiceType.cs" />
+    <Compile Include="Model\Contract\IStorageQueueManagement.cs" />
+    <Compile Include="Model\Contract\IStorageTableManagement.cs" />
+    <Compile Include="Model\Contract\StorageFileManagement.cs" />
+    <Compile Include="Model\Contract\StorageQueueManagement.cs" />
+    <Compile Include="Model\Contract\StorageTableManagement.cs" />
+    <Compile Include="Model\ResourceModel\PSCorsRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\Contract\IStorageBlobManagement.cs" />
+    <Compile Include="Model\Contract\StorageBlobManagement.cs" />
+    <Compile Include="Queue\Cmdlet\GetAzureStorageQueue.cs" />
+    <Compile Include="Queue\Cmdlet\GetAzureStorageQueueStoredAccessPolicy.cs" />
+    <Compile Include="Queue\Cmdlet\NewAzureStorageQueue.cs" />
+    <Compile Include="Queue\Cmdlet\NewAzureStorageQueueSasToken.cs" />
+    <Compile Include="Queue\Cmdlet\NewAzureStorageQueueStoredAccessPolicy.cs" />
+    <Compile Include="Queue\Cmdlet\RemoveAzureStorageQueue.cs" />
+    <Compile Include="Queue\Cmdlet\RemoveAzureStorageQueueStoredAccessPolicy.cs" />
+    <Compile Include="Queue\Cmdlet\SetAzureStorageQueueStoredAccessPolicy.cs" />
+    <Compile Include="Queue\StorageQueueBaseCmdlet.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Table\Cmdlet\GetStorageAzureTable.cs" />
+    <Compile Include="Table\Cmdlet\NewAzureStorageTableSasToken.cs" />
+    <Compile Include="Table\Cmdlet\NewAzureStorageTableStoredAccessPolicy.cs" />
+    <Compile Include="Table\Cmdlet\NewStorageAzureTable.cs" />
+    <Compile Include="Table\Cmdlet\RemoveAzureStorageTableStoredAccessPolicy.cs" />
+    <Compile Include="Table\Cmdlet\RemoveStorageAzureTable.cs" />
+    <Compile Include="Table\Cmdlet\GetAzureStorageTableStoredAccessPolicy.cs" />
+    <Compile Include="Table\Cmdlet\SetAzureStorageTableStoredAccessPolicy.cs" />
+    <Compile Include="Table\StorageCloudTableCmdletBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
+      <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
+      <Name>Commands.Common.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+      <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
+      <Name>Commands.ServiceManagement.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Azure.Storage.psd1">
+      <Link>Azure.Storage.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureStorageStartup.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Microsoft.WindowsAzure.Commands.Storage.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Microsoft.WindowsAzure.Commands.Storage.types.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+</Project>

@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static LongRunningOperationResponse BeginDeleting(this IResourceGroupOperations operations, string resourceGroupName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).BeginDeletingAsync(resourceGroupName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Begin deleting resource group.To determine whether the operation
         /// has finished processing the request, call
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.BeginDeletingAsync(resourceGroupName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Checks whether resource group exists.
         /// </summary>
@@ -89,13 +89,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupExistsResult CheckExistence(this IResourceGroupOperations operations, string resourceGroupName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).CheckExistenceAsync(resourceGroupName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Checks whether resource group exists.
         /// </summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CheckExistenceAsync(resourceGroupName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create a resource group.
         /// </summary>
@@ -134,13 +134,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupCreateOrUpdateResult CreateOrUpdate(this IResourceGroupOperations operations, string resourceGroupName, ResourceGroup parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).CreateOrUpdateAsync(resourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create a resource group.
         /// </summary>
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAsync(resourceGroupName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Delete resource group and all of its resources.
         /// </summary>
@@ -180,13 +180,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse Delete(this IResourceGroupOperations operations, string resourceGroupName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).DeleteAsync(resourceGroupName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Delete resource group and all of its resources.
         /// </summary>
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAsync(resourceGroupName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a resource group.
         /// </summary>
@@ -223,13 +223,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupGetResult Get(this IResourceGroupOperations operations, string resourceGroupName)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).GetAsync(resourceGroupName);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a resource group.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceGroupName, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Gets a collection of resource groups.
         /// </summary>
@@ -265,13 +265,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupListResult List(this IResourceGroupOperations operations, ResourceGroupListParameters parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).ListAsync(parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a collection of resource groups.
         /// </summary>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -307,13 +307,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupListResult ListNext(this IResourceGroupOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Resource groups can be updated through a simple PATCH operation to
         /// a group address. The format of the request is the same as that for
@@ -356,13 +356,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGroupPatchResult Patch(this IResourceGroupOperations operations, string resourceGroupName, ResourceGroup parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceGroupOperations)s).PatchAsync(resourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Resource groups can be updated through a simple PATCH operation to
         /// a group address. The format of the request is the same as that for

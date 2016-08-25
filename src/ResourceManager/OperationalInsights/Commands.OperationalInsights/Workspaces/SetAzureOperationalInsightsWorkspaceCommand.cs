@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNull]
         public PSWorkspace Workspace { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 1, ParameterSetName = ByName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }

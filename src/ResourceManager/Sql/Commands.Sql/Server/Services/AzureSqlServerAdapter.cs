@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Server.Model;
+using Microsoft.Azure.Commands.Sql.Server.Services;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Server.Model;
-using Microsoft.Azure.Commands.Sql.Server.Services;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Adapter
 {
@@ -46,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure profile</param>
         public AzureSqlServerAdapter(AzureContext context)
         {
             Context = context;
@@ -139,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>
         /// <returns>The plain-text string representation.</returns>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        private static string Decrypt(SecureString secureString)
+        internal static string Decrypt(SecureString secureString)
         {
             IntPtr unmanagedString = IntPtr.Zero;
             try

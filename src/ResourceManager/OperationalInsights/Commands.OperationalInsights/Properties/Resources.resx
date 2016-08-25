@@ -117,6 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AzureAuditLogResourceFormat" xml:space="preserve">
+    <value>/subscriptions/{0}/providers/microsoft.insights/eventtypes/management</value>
+  </data>
+  <data name="DataSourceCustomLogInvalidSchema" xml:space="preserve">
+    <value>Make sure you have right json input for CustomLog data source.</value>
+  </data>
+  <data name="DataSourceDeleteConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove data source '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="DataSourceEnableNotSupported" xml:space="preserve">
+    <value>Cannot enable data source for kind '{0}'.</value>
+  </data>
+  <data name="DataSourceExists" xml:space="preserve">
+    <value>A dataSource with name '{0}' in workspace '{1}' exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="DataSourceKindCannotBeEmpty" xml:space="preserve">
+    <value>Kind cannot be null.</value>
+  </data>
+  <data name="DataSourceNotFound" xml:space="preserve">
+    <value>DataSource '{0}' does not exist in workspace '{1}'.</value>
+  </data>
+  <data name="DataSourceRemoving" xml:space="preserve">
+    <value>Removing data source '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="DataSourceSingletonMultipleRecord" xml:space="preserve">
+    <value>We've hit a internal error, please contact support with workspaceId. SingletonDataSourceHaveMultipleValues.</value>
+  </data>
+  <data name="DataSourceSyslogNoSeveritySelected" xml:space="preserve">
+    <value>Please atleast have one severity level to enable log collection.</value>
+  </data>
+  <data name="DataSourceUpdateCannotModifyKind" xml:space="preserve">
+    <value>Cannot modify Kind while updating data source.</value>
+  </data>
+  <data name="DataSourceUpdateCannotModifyName" xml:space="preserve">
+    <value>Cannot modify Name while updating data source, you might want delete and recreate.</value>
+  </data>
+  <data name="DataSourceWindowsEventNoEventTypeSelected" xml:space="preserve">
+    <value>Please at least select one type of event to collect by using -CollectErrors -CollectWarnings -CollectInformation</value>
+  </data>
   <data name="FormattedCloudExceptionMessageTemplate" xml:space="preserve">
     <value>HTTP Status Code: {0}
 Error Code: {1}
@@ -126,6 +167,35 @@ Timestamp (Utc):{4}</value>
   </data>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
+  </data>
+  <data name="SavedSearchCreating" xml:space="preserve">
+    <value>Creating saved search '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SavedSearchDeleteConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove saved search '{0}' in workspace '{1}'?</value>
+  </data>
+  <data name="SavedSearchExists" xml:space="preserve">
+    <value>A saved search with the id '{0}' in workspace '{1}' exists. 
+Continuing execution may overwrite the exisiting one. 
+Are you sure you want to continue?</value>
+  </data>
+  <data name="SavedSearchNotFound" xml:space="preserve">
+    <value>Saved search '{0}' does not exist in workspace '{1}'.</value>
+  </data>
+  <data name="SavedSearchRemoving" xml:space="preserve">
+    <value>Removing saved search '{0}' in workspace '{1}'.</value>
+  </data>
+  <data name="SingletonDataSourceCustomLogCollectionDefaultName" xml:space="preserve">
+    <value>DataSource_CustomLogCollection</value>
+  </data>
+  <data name="SingletonDataSourceIISLogDefaultName" xml:space="preserve">
+    <value>DataSource_IISLogs</value>
+  </data>
+  <data name="SingletonDataSourceLinuxPerformanceCollectionDefaultName" xml:space="preserve">
+    <value>DataSource_LinuxPerformanceCollection</value>
+  </data>
+  <data name="SingletonDataSourceLinuxSyslogCollectionDefaultName" xml:space="preserve">
+    <value>DataSource_LinuxSyslogCollection</value>
   </data>
   <data name="StorageInsightCreating" xml:space="preserve">
     <value>Creating storage insight '{0}' in workspace '{1}'.</value>

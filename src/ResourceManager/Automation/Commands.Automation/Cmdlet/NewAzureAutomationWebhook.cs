@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
 using System.Management.Automation;
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutomationWebhook")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationWebhook", SupportsShouldProcess = true)]
     [OutputType(typeof(Webhook))]
     public class NewAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the Runbook parameters
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false,
             HelpMessage = "The Runbook parameters name/value.")]
         public IDictionary Parameters { get; set; }
 

@@ -15,7 +15,6 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -49,13 +48,13 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (string.IsNullOrEmpty(this.Name))
                 {
-                    var result = this.AvailabilitySetClient.List(this.ResourceGroupName);
+                    var result = this.AvailabilitySetClient.ListWithHttpMessagesAsync(this.ResourceGroupName).GetAwaiter().GetResult();
 
-                    List<PSAvailabilitySet> psResultList = new List<PSAvailabilitySet>();
-                    foreach (var item in result.AvailabilitySets)
+                    var psResultList = new List<PSAvailabilitySet>();
+                    foreach (var item in result.Body)
                     {
-                        var psItem = Mapper.Map<PSAvailabilitySet>(item);
-                        psItem = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psItem);
+                        var psItem = Mapper.Map<PSAvailabilitySet>(result);
+                        psItem = Mapper.Map(item, psItem);
                         psResultList.Add(psItem);
                     }
 
@@ -63,9 +62,12 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var result = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
-                    var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-                    psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
+                    var result = this.AvailabilitySetClient.GetWithHttpMessagesAsync(this.ResourceGroupName, this.Name).GetAwaiter().GetResult();
+                    var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                    if (result.Body != null)
+                    {
+                        psResult = Mapper.Map(result.Body, psResult);
+                    }
                     WriteObject(psResult);
                 }
             });

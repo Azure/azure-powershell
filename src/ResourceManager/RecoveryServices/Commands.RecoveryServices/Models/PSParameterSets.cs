@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
    /// <summary>
     /// Parameter Sets used for Azure Site Recovery commands.
     /// </summary>
-    internal static class ASRParameterSets
+    internal static class ARSParameterSets
     {
         /// <summary>
         /// For default parameter set
@@ -20,5 +20,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// When excution has to be done for site
         /// </summary>
         internal const string ForSite = "ForSite";
+
+        internal const string ForBackupVaultType = "ForBackupVaultType";
     }
 }

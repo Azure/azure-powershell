@@ -19,13 +19,20 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class AutomationTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
+
+        public AutomationTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact(Skip = "Fix to make x86 compatible.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -96,8 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 SetupManagementClients();
 
-                List<string> modules = Directory.GetFiles("Resources\\Automation", "*.ps1").ToList();
-                modules.Add("Common.ps1");
+                List<string> modules = Directory.GetFiles("Resources\\Automation".AsAbsoluteLocation(), "*.ps1").ToList();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement, modules.ToArray());

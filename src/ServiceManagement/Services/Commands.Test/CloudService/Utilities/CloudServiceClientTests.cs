@@ -19,7 +19,7 @@ using System.Net;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -32,7 +32,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Moq;
 using MockStorageService = Microsoft.WindowsAzure.Commands.Test.Utilities.Common.MockStorageService;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             a.QueueEndpoint = "http://awesome.queue.core.windows.net/";
             a.TableEndpoint = "http://awesome.table.core.windows.net/";
             a.PrimaryKey =
-                "MNao3bm7t7B/x+g2/ssh9HnG0mEh1QV5EHpcna8CetYn+TSRoA8/SBoH6B3Ufwtnz3jZLSw9GEUuCTr3VooBWq==";
+                "MNao3bm7t7B/x+g2/ssh9HnG0mEh1QV5EHpcna8CetYn+TSRoA8/SBoH6B3Ufwtnz3jZLSw9GEUuCTr3VooBWq==";// [SuppressMessage("Microsoft.Security", "CS001:SecretInline")]
             a.SecondaryKey = "secondaryKey";
         }
 

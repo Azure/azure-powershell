@@ -14,46 +14,40 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApiManagementOperation")]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOperation, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of API operation. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String OperationId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
-            HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -63,8 +57,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.OperationRemoveWarning, OperationId, ApiId);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))

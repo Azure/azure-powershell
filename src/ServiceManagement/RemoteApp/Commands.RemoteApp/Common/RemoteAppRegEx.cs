@@ -48,20 +48,11 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         // explicit key name for OU element
         protected const string ouKeyRegexPattern = @"OU";
 
-        // all normal non quoted string chars, which includes all ASCII values in the range 0x20-0x126 except for escaped character for non quoted string,  , \ <CR> = < > " # ; or +
-        protected const string normalCharRegexPattern = @"[A-Za-z0-9 !\$%&'()\*\-\.\/\:\?@\[\]\^_`{\|}~]";
-
-        // valid escape characters for non quoted string, , \ <CR> = < > " # ; or +, or an 8 bit value encoded as a hex pair
-        protected const string escapedCharRegexPattern = @"\\([ ,\\\r=<>""#;+]|[0-9A-Fa-f]{2})";
-
-        // ASCII code in hex, e.g. #ff
-        protected const string asciiCodeRegexPattern = @"#([0-9A-Fa-f]{2})+";
-
         // used to separate entities, , or + followed by 0 or more spaces
         protected const string delimiterRegexPattern = @"[\+,]\s*";
 
-        // an entity value, consists of normal chars, escape codes and hex codes
-        protected const string entityRegexPattern = @"(" + normalCharRegexPattern + @"|" + escapedCharRegexPattern + @"|" + asciiCodeRegexPattern + @")+";
+        // an entity value, consists of characters other than , <CR> < > " # ; + =
+        protected const string entityRegexPattern = @"([^,<>""#;+=\r\n])+";
 
         // a key/entity pair, e.g DC=foo-bar.com
         protected const string keyEntityRegexPattern = @"(" + keyRegexPattern + @"=" + entityRegexPattern + @")";
@@ -84,17 +75,10 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
          * The entity begins with a key which must begin with a letter and contains letters, digits, or hyphens
          *          [A-Z][A-Z0-9\-]*=
          *          (
-         * The entity value contains any char except for the special chars , \ <CR> = < > " # ; or +
-         *              ([A-Za-z0-9 !\$%&'()\*\-\.\/\:\?@\[\]\^_`{\|}~])
-         *              |
-         * Or an escaped special char , \ <CR> = < > " # ; + or a space, or an 8 bit ASCII code in hex
-         *              (\\([ ,\\\r=<>""#;+]|[0-9A-Fa-f]{2}))
-         *              |
-         * Or a # followed by a sequence of 8 bit ASCII codes in hex
-         *              (#([0-9A-Fa-f]{2})+)
+         * The entity value contains one or more characters except for the special chars , \ <CR> = < > " # ; or +
+         *              [^,<>""#;\+=\r\n]
          * There will be 1 or more characters matching this pattern
          *          )+
-         *      )
          * Followed by a delimeter, either , or +
          *      [\+,]\s*
          * There may be 0 or more entities matching this pattern
@@ -107,14 +91,8 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
          * The entity key must match OU exactly.  This guarantees the overall pattern contains at least oen OU element
          *      OU=
          *      (
-         * The entity value contains any char except for the special chars , \ <CR> = < > " # ; or +
-         *          ([A-Za-z0-9 !\$%&'()\*\-\.\/\:\?@\[\]\^_`{\|}~])
-         *          |
-         * Or an escaped special char , \ <CR> = < > " # ; + or a space, or an 8 bit ASCII code in hex
-         *          (\\([ ,\\\r=<>""#;+]|[0-9A-Fa-f]{2}))
-         *          |
-         * Or a # followed by a sequence of 8 bit ASCII codes in hex
-         *          (#([0-9A-Fa-f]{2})+)
+         * The entity value contains one or more characters except for the special chars , \ <CR> = < > " # ; or +
+         *              [^,<>""#;\+=\r\n]
          * There will be 1 or more characters matching this pattern
          *      )+
          *  )
@@ -128,14 +106,8 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
          * The entity begins with a key which must begin with a  letter and contains letters, digits, or hyphens
          *          [A-Z][A-Z0-9\-]*=
          *          (
-         * The entity value contains any char except for the special chars , \ <CR> = < > " # ; or +
-         *              ([A-Za-z0-9 !\$%&'()\*\-\.\/\:\?@\[\]\^_`{\|}~])
-         *              |
-         * Or an escaped special char , \ <CR> = < > " # ; + or a space, or an 8 bit ASCII code in hex
-         *              (\\([ ,\\\r=<>""#;+]|[0-9A-Fa-f]{2}))
-         *              |
-         * Or a # followed by a sequence of 8 bit ASCII codes in hex
-         *              (#([0-9A-Fa-f]{2})+)
+         * The entity value contains one or more characters except for the special chars , \ <CR> = < > " # ; or +
+         *              [^,<>""#;\+=\r\n]
          * There will be 1 or more characters matching this pattern
          *          )+
          *      )

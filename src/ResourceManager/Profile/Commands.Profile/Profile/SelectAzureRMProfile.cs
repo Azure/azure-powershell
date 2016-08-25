@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -46,6 +46,13 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrEmpty(Path))
             {
+                if(!Common.Authentication.AzureSession.DataStore.FileExists(Path))
+                {
+                    throw new PSArgumentException(string.Format(
+                        Microsoft.Azure.Commands.Profile.Properties.Resources.FileNotFound, 
+                        Path));
+                }
+
                 AzureRmProfileProvider.Instance.Profile = new AzureRMProfile(Path);
             }
             else
@@ -56,6 +63,18 @@ namespace Microsoft.Azure.Commands.Profile
             if (AzureRmProfileProvider.Instance.Profile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+            }
+
+            if (AzureRmProfileProvider.Instance.Profile.Context != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription != null &&
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription.State != null &&
+                !AzureRmProfileProvider.Instance.Profile.Context.Subscription.State.Equals(
+                "Enabled",
+                StringComparison.OrdinalIgnoreCase))
+            {
+                WriteWarning(string.Format(
+                               Microsoft.Azure.Commands.Profile.Properties.Resources.SelectedSubscriptionNotActive,
+                               AzureRmProfileProvider.Instance.Profile.Context.Subscription.State));
             }
 
             WriteObject((PSAzureProfile)AzureRmProfileProvider.Instance.Profile);

@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _clusterName = value; }
         }
 
-        [Parameter(Mandatory = true, 
-            Position = 1, 
+        [Parameter(Mandatory = true,
+            Position = 1,
             HelpMessage = "The jobDetails definition to start on the Azure HDInsight cluster.",
             ValueFromPipeline = true)]
         public AzureHDInsightJobDefinition JobDefinition { get; set; }
@@ -95,11 +95,6 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public JobSubmissionResponse SubmitJob()
         {
-            if (string.IsNullOrEmpty(JobDefinition.StatusFolder))
-            {
-                JobDefinition.StatusFolder = Guid.NewGuid().ToString();
-            }
-
             JobSubmissionResponse jobCreationResults;
 
             var azureMapReduceJobDefinition = JobDefinition as AzureHDInsightMapReduceJobDefinition;

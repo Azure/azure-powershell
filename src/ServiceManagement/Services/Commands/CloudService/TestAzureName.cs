@@ -14,12 +14,12 @@
 
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.ServiceBus;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using System.Reflection;
 
 namespace Microsoft.WindowsAzure.Commands.CloudService
@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
             }
             else
             {
-                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
+                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile);
                 IsServiceBusNamespaceAvailable(Profile.Context.Subscription.Id.ToString(), Name);
             }
         }

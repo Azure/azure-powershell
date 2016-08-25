@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Management.SiteRecoveryVault.Models;
 using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.SiteRecovery.Properties;
-using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -36,11 +33,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resouce group name
+        /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the location of the vault
@@ -54,28 +51,23 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        public override void ExecuteSiteRecoveryCmdlet()
         {
-            try
-            {
-                this.WriteWarningWithTimestamp(
-                    string.Format(
-                    Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
+            base.ExecuteSiteRecoveryCmdlet();
 
-                VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
-                vaultCreateArgs.Location = this.Location;
-                vaultCreateArgs.Properties = new VaultProperties();
-                vaultCreateArgs.Properties.Sku = new VaultSku();
-                vaultCreateArgs.Properties.Sku.Name = "standard";
+            this.WriteWarningWithTimestamp(
+                string.Format(
+                Properties.Resources.SiteRecoveryVaultTypeWillBeDeprecatedSoon));
 
-                VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResouceGroupName, this.Name, vaultCreateArgs);
+            VaultCreateArgs vaultCreateArgs = new VaultCreateArgs();
+            vaultCreateArgs.Location = this.Location;
+            vaultCreateArgs.Properties = new VaultProperties();
+            vaultCreateArgs.Properties.Sku = new VaultSku();
+            vaultCreateArgs.Properties.Sku.Name = "standard";
 
-                this.WriteObject(new ASRVault(response));
-            }
-            catch (Exception exception)
-            {
-                this.HandleException(exception);
-            }
+            VaultCreateResponse response = RecoveryServicesClient.CreateVault(this.ResourceGroupName, this.Name, vaultCreateArgs);
+
+            this.WriteObject(new ASRVault(response));
         }
     }
 }

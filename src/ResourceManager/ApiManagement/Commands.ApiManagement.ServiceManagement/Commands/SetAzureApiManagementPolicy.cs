@@ -14,13 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.IO;
     using System.Management.Automation;
     using System.Text;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementPolicy", DefaultParameterSetName = TenantLevel)]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(bool))]
     public class SetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
@@ -32,29 +32,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string OperationLevel = "Operation level";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Format of the policy. This parameter is optional. Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
         public String Format { get; set; }
 
         [Parameter(
             ParameterSetName = ProductLevel,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing product. If specified will set product-scope policy. This parameters is required.")]
         public String ProductId { get; set; }
 
         [Parameter(
             ParameterSetName = ApiLevel,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing API. If specified will set API-scope policy. This parameters is required.")]
         [Parameter(
             ParameterSetName = OperationLevel,
@@ -66,25 +66,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ParameterSetName = OperationLevel,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "Identifier of existing operation. If specified with ApiId will set operation-scope policy. This parameters is required.")]
         public String OperationId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Policy document as a string. This parameter is required if -PolicyFilePath not specified.")]
         public String Policy { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Policy document file path. This parameter is required if -Policy not specified.")]
         public String PolicyFilePath { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
         public SwitchParameter PassThru { get; set; }
 

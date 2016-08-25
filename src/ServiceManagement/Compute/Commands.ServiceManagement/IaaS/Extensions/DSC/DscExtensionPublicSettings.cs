@@ -45,8 +45,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
                 {
                     properties.Add(new Property
                     {
-                        Name = p.Key.ToString(), 
-                        TypeName = p.Value.GetType().ToString(), 
+                        Name = p.Key.ToString(),
+                        TypeName = p.Value.GetType().ToString(),
                         Value = p.Value
                     });
                 }
@@ -86,11 +86,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// Module can be a path to the root of the module or .ps1 file or .psm1 file.
         /// </summary>
         public string ConfigurationFunction { get; set; }
-        
+
         /// <summary>
         /// Configuration parameters
         /// </summary>
         public Property[] Properties { get; set; }
+
+        /// <summary>
+        /// Privacy parameters
+        /// </summary>
+        public Hashtable Privacy { get; set; }
 
         /// <summary>
         /// Version of the protocol (DscExtensionPublicSettings and DscExtensionPrivateSettings mostly).

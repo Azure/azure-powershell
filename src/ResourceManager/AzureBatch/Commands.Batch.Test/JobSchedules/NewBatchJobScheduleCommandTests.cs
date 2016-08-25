@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
@@ -31,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchJobScheduleCommandTests()
+        public NewBatchJobScheduleCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchJobScheduleCommand()
@@ -49,13 +51,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            
+
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testJobSchedule";
 
             // Don't go to the service on an Add CloudJobSchedule call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleAddParameters, CloudJobScheduleAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                JobScheduleAddParameter,
+                JobScheduleAddOptions,
+                AzureOperationHeaderResponse<JobScheduleAddHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

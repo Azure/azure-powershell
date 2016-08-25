@@ -12,29 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class FileTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string startTaskStdOutName = ScenarioTestHelpers.SharedPoolStartTaskStdOut;
         private const string startTaskStdOutContent = ScenarioTestHelpers.SharedPoolStartTaskStdOutContent;
 
+        public FileTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileByTaskByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -43,10 +38,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string nodeFileName = "stdout.txt";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetNodeFileByTaskByName '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId, nodeFileName) }; },
+                () => { return new string[] { string.Format("Test-GetNodeFileByTaskByName '{0}' '{1}' '{2}'", jobId, taskId, nodeFileName) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -60,7 +55,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -70,10 +64,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskByFilter '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, jobId, taskId, nodeFilePrefix, matches) }; },
+                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskByFilter '{0}' '{1}' '{2}' '{3}'", jobId, taskId, nodeFilePrefix, matches) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -87,7 +81,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -96,10 +89,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int maxCount = 1;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskWithMaxCount '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId, maxCount) }; },
+                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskWithMaxCount '{0}' '{1}' '{2}'", jobId, taskId, maxCount) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -113,7 +106,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllNodeFilesByTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -122,10 +114,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 4; // ProcessEnv, stdout, stderr, wd
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListAllNodeFilesByTask '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId, count) }; },
+                () => { return new string[] { string.Format("Test-ListAllNodeFilesByTask '{0}' '{1}' '{2}'", jobId, taskId, count) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -139,7 +131,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByTaskRecursive()
         {
             BatchController controller = BatchController.NewInstance;
@@ -148,10 +139,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string newFile = "testFile.txt";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskRecursive '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId, newFile) }; },
+                () => { return new string[] { string.Format("Test-ListNodeFilesByTaskRecursive '{0}' '{1}' '{2}'", jobId, taskId, newFile) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, string.Format("cmd /c echo \"test file\" > {0}", newFile));
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -165,7 +156,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFileByTaskPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -174,10 +164,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int count = 4; // ProcessEnv, stdout, stderr, wd
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListNodeFileByTaskPipeline '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId, count) }; },
+                () => { return new string[] { string.Format("Test-ListNodeFileByTaskPipeline '{0}' '{1}' '{2}'", jobId, taskId, count) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId);
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -191,7 +181,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByTaskByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -202,10 +191,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string fileContents = "test file contents";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetNodeFileContentByTaskByName '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, jobId, taskId, nodeFileName, fileContents) }; },
+                () => { return new string[] { string.Format("Test-GetNodeFileContentByTaskByName '{0}' '{1}' '{2}' '{3}'", jobId, taskId, nodeFileName, fileContents) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, string.Format("cmd /c echo {0} > {1}", fileContents, fileName));
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -219,7 +208,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByTaskPipeline()
         {
             BatchController controller = BatchController.NewInstance;
@@ -230,10 +218,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string fileContents = "test file contents";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetNodeFileContentByTaskPipeline '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, jobId, taskId, nodeFileName, fileContents) }; },
+                () => { return new string[] { string.Format("Test-GetNodeFileContentByTaskPipeline '{0}' '{1}' '{2}' '{3}'", jobId, taskId, nodeFileName, fileContents) }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, string.Format("cmd /c echo {0} > {1}", fileContents, fileName));
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -247,7 +235,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileByComputeNodeByName()
         {
             BatchController controller = BatchController.NewInstance;
@@ -255,10 +242,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string nodeFileName = "startup\\stdout.txt";
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-GetNodeFileByComputeNodeByName '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, nodeFileName) }; },
+            () => { return new string[] { string.Format("Test-GetNodeFileByComputeNodeByName '{0}' '{1}' '{2}'", poolId, computeNodeId, nodeFileName) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -267,7 +254,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeByFilter()
         {
             BatchController controller = BatchController.NewInstance;
@@ -276,10 +262,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string nodeFilePrefix = "s";
             int matches = 2;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeByFilter '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolId, computeNodeId, nodeFilePrefix, matches) }; },
+            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeByFilter '{0}' '{1}' '{2}' '{3}'", poolId, computeNodeId, nodeFilePrefix, matches) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -288,7 +274,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
@@ -296,10 +281,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             int maxCount = 1;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeWithMaxCount '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, maxCount) }; },
+            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeWithMaxCount '{0}' '{1}' '{2}'", poolId, computeNodeId, maxCount) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -308,18 +293,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllNodeFilesByComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
-            int count = 3; // shared, startup, workitems
+            int count = 4; // shared, startup, workitems, applications
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-ListAllNodeFilesByComputeNode '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, count) }; },
+            () => { return new string[] { string.Format("Test-ListAllNodeFilesByComputeNode '{0}' '{1}' '{2}'", poolId, computeNodeId, count) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -328,7 +312,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeFilesByComputeNodeRecursive()
         {
             BatchController controller = BatchController.NewInstance;
@@ -337,10 +320,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string startupFolder = "startup";
             int recursiveCount = 5; // dir itself, ProcessEnv, stdout, stderr, wd
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeRecursive '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolId, computeNodeId, startupFolder, recursiveCount) }; },
+            () => { return new string[] { string.Format("Test-ListNodeFilesByComputeNodeRecursive '{0}' '{1}' '{2}' '{3}'", poolId, computeNodeId, startupFolder, recursiveCount) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -355,12 +338,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
-            int count = 3; // shared, startup, workitems
+            int count = 4; // shared, startup, workitems, applications
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-ListNodeFileByComputeNodePipeline '{0}' '{1}' '{2}' '{3}'", accountName, poolId, computeNodeId, count) }; },
+            () => { return new string[] { string.Format("Test-ListNodeFileByComputeNodePipeline '{0}' '{1}' '{2}'", poolId, computeNodeId, count) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -369,17 +352,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByComputeNodeByName()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-GetNodeFileContentByComputeNodeByName '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolId, computeNodeId, startTaskStdOutName, startTaskStdOutContent) }; },
+            () => { return new string[] { string.Format("Test-GetNodeFileContentByComputeNodeByName '{0}' '{1}' '{2}' '{3}'", poolId, computeNodeId, startTaskStdOutName, startTaskStdOutContent) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -388,17 +370,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNodeFileContentByComputeNodeByPipeline()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-GetNodeFileContentByComputeNodePipeline '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolId, computeNodeId, startTaskStdOutName, startTaskStdOutContent) }; },
+            () => { return new string[] { string.Format("Test-GetNodeFileContentByComputeNodePipeline '{0}' '{1}' '{2}' '{3}'", poolId, computeNodeId, startTaskStdOutName, startTaskStdOutContent) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -407,17 +388,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoteDesktopProtocolFileById()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-GetRDPFileById '{0}' '{1}' '{2}'", accountName, poolId, computeNodeId) }; },
+            () => { return new string[] { string.Format("Test-GetRDPFileById '{0}' '{1}'", poolId, computeNodeId) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -426,17 +406,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRemoteDesktopProtocolFilePipeline()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
-            () => { return new string[] { string.Format("Test-GetRDPFilePipeline '{0}' '{1}' '{2}'", accountName, poolId, computeNodeId) }; },
+            () => { return new string[] { string.Format("Test-GetRDPFilePipeline '{0}' '{1}'", poolId, computeNodeId) }; },
             () =>
             {
-                context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                context = new ScenarioTestContext();
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
@@ -452,21 +431,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByTaskByPipeline()
         {
             TestDeleteNodeFileByTask(true, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByComputeNodeByName()
         {
             TestDeleteNodeFileByComputeNode(false, TestUtilities.GetCurrentMethodName());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteNodeFileByComputeNodeByPipeline()
         {
             TestDeleteNodeFileByComputeNode(true, TestUtilities.GetCurrentMethodName());
@@ -481,10 +457,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string fileName = "testFile.txt";
             string filePath = string.Format("wd\\{0}", fileName);
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteNodeFileByTask '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, jobId, taskId, filePath, usePipeline ? "1" : "0") }; },
+                () => { return new string[] { string.Format("Test-DeleteNodeFileByTask '{0}' '{1}' '{2}' '{3}'", jobId, taskId, filePath, usePipeline ? "1" : "0") }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, string.Format("cmd /c echo \"test\" > {0}", fileName));
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
@@ -507,10 +483,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string fileName = "testFile.txt";
             string filePath = string.Format("workitems\\{0}\\job-1\\{1}\\wd\\{2}", jobId, taskId, fileName);
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteNodeFileByComputeNode '{0}' '{1}' '{2}' '{3}' '{4}'", accountName, poolId, computeNodeId, filePath, usePipeline ? "1" : "0") }; },
+                () => { return new string[] { string.Format("Test-DeleteNodeFileByComputeNode '{0}' '{1}' '{2}' '{3}'", poolId, computeNodeId, filePath, usePipeline ? "1" : "0") }; },
                 () =>
                 {
-                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, string.Format("cmd /c echo \"test\" > {0}", fileName));
                     ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);

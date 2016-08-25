@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application with AppId &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ApplicationWithAppIdDoesntExist {
+            get {
+                return ResourceManager.GetString("ApplicationWithAppIdDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the active deployment of resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CancelResourceGroupDeployment {
@@ -84,6 +93,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string CancelResourceGroupDeploymentMessage {
             get {
                 return ResourceManager.GetString("CancelResourceGroupDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory..
+        /// </summary>
+        internal static string CreateApplicationNotAllowedGuestUser {
+            get {
+                return ResourceManager.GetString("CreateApplicationNotAllowedGuestUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create a service principal. Please contact the administrator of the directory..
+        /// </summary>
+        internal static string CreateServicePrincipalNotAllowedGuestUser {
+            get {
+                return ResourceManager.GetString("CreateServicePrincipalNotAllowedGuestUser", resourceCulture);
             }
         }
         
@@ -120,6 +147,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string DeploymentWithNameNotFound {
             get {
                 return ResourceManager.GetString("DeploymentWithNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caught exception, type: {0}.
+        /// </summary>
+        internal static string ExceptionInExecution {
+            get {
+                return ResourceManager.GetString("ExceptionInExecution", resourceCulture);
             }
         }
         
@@ -174,6 +210,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string FileAlreadyExists {
             get {
                 return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received exception from graph. ErrorCode: {0}, Message: {1}.
+        /// </summary>
+        internal static string GraphException {
+            get {
+                return ResourceManager.GetString("GraphException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group with object id &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string GroupDoesntExist {
+            get {
+                return ResourceManager.GetString("GroupDoesntExist", resourceCulture);
             }
         }
         
@@ -241,7 +295,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{tagName = $null} or @{tagName = &quot;tagValue&quot;}.
         /// </summary>
         internal static string InvalidTagFormat {
             get {
@@ -250,7 +304,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
+        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{tagName1 = &quot;tagValue1&quot;; tagName2 = &quot;tagValue2&quot;}.
         /// </summary>
         internal static string InvalidTagFormatNotUniqueName {
             get {
@@ -264,6 +318,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string InvalidTemplateIdentity {
             get {
                 return ResourceManager.GetString("InvalidTemplateIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KeyCredential object is not valid..
+        /// </summary>
+        internal static string KeyCredentialNotValid {
+            get {
+                return ResourceManager.GetString("KeyCredentialNotValid", resourceCulture);
             }
         }
         
@@ -385,6 +448,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PasswordCredential object is not valid..
+        /// </summary>
+        internal static string PasswordCredentialNotValid {
+            get {
+                return ResourceManager.GetString("PasswordCredentialNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find principal using the specified options.
         /// </summary>
         internal static string PrincipalNotFound {
@@ -457,6 +529,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing credential ....
+        /// </summary>
+        internal static string RemoveCredential {
+            get {
+                return ResourceManager.GetString("RemoveCredential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -502,6 +583,42 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove user with upn or object id &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveUserConfirmation {
+            get {
+                return ResourceManager.GetString("RemoveUserConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove all credentials for app objectId {0}..
+        /// </summary>
+        internal static string RemovingAllAppCredentials {
+            get {
+                return ResourceManager.GetString("RemovingAllAppCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove all credentials for service principal objectId {0}..
+        /// </summary>
+        internal static string RemovingAllSpCredentials {
+            get {
+                return ResourceManager.GetString("RemovingAllSpCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove credential with keyId &apos;{0}&apos; for app objectId &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingAppCredentialWithId {
+            get {
+                return ResourceManager.GetString("RemovingAppCredentialWithId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove application with object id &apos;{0}&apos;..
         /// </summary>
         internal static string RemovingApplication {
@@ -543,6 +660,24 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingServicePrincipal {
             get {
                 return ResourceManager.GetString("RemovingServicePrincipal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove credential with keyId &apos;{0}&apos; for service principal objectId &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemovingSpCredentialWithId {
+            get {
+                return ResourceManager.GetString("RemovingSpCredentialWithId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing user ....
+        /// </summary>
+        internal static string RemovingUser {
+            get {
+                return ResourceManager.GetString("RemovingUser", resourceCulture);
             }
         }
         
@@ -660,6 +795,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ServicePrincipalDoesntExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with SPN &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalWithSPNDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWithSPNDoesntExist", resourceCulture);
             }
         }
         

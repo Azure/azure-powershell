@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exportable = certificate.Properties.IsExportable;
         }
 
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="CertificateInfo"/> class.
         /// </summary>
         public CertificateInfo()

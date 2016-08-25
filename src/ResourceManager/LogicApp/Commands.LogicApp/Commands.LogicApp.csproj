@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FFE4E475-B32C-4F89-9D52-F7CEBF709C74}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.LogicApp</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.LogicApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.LogicApp</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.LogicApp</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.LogicApp.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hyak.Common">
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.Logic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Logic.1.0.0\lib\net45\Microsoft.Azure.Management.Logic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.WebSites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.1.1.0-preview\lib\net45\Microsoft.Azure.Management.WebSites.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\..\..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCallbackUrlCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCertificateCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountMapCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountPartnerCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\GetAzureIntegrationAccountSchemaCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountCertificateCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountMapCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountPartnerCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\NewAzureIntegrationAccountSchemaCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountCertificateCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountMapCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountPartnerCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\RemoveAzureIntegrationAccountSchemaCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountAgreementCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountCertificateCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountMapCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountPartnerCommand.cs" />
+    <Compile Include="Cmdlets\IntegrationAccount\UpdateAzureIntegrationAccountSchemaCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\CancelAzureLogicAppRunCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppRunActionCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppRunHistoryCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerCallbackUrlCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppTriggerHistoryCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\GetAzureLogicAppUpgradedDefinitionCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\NewAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\RemoveAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\RunAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\UpdateAzureLogicAppCommand.cs" />
+    <Compile Include="Cmdlets\LogicApp\ValidateAzureLogicAppCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CmdletHelper.cs" />
+    <Compile Include="Utilities\Constants.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\IntegrationAccountAgreementOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountCertificateOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountClient.cs" />
+    <Compile Include="Utilities\IntegrationAccountMapOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountPartnerOperations.cs" />
+    <Compile Include="Utilities\IntegrationAccountSchemaOperations.cs" />
+    <Compile Include="Utilities\LogicAppBaseCmdlet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Utilities\LogicAppClient.cs" />
+    <Compile Include="Utilities\LogicAppClientRunOperations.cs" />
+    <Compile Include="Utilities\LogicAppClientTriggerOperations.cs" />
+    <Compile Include="Utilities\ParameterSet.cs" />
+    <Compile Include="Utilities\WebsitesClient.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\AzureRM.LogicApp.psd1">
+      <Link>AzureRM.LogicApp.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.LogicApp.dll-Help.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.LogicApp.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

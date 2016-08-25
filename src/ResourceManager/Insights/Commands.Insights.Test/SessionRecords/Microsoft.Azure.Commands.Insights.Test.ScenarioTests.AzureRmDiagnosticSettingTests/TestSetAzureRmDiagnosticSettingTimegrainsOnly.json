@@ -1,0 +1,106 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/%2Fsubscriptions%2F1a66ce04-b633-4a0b-b2bc-a912ec8986a6%2Fresourcegroups%2Finsights-integration%2Fproviders%2Ftest.shoebox%2Ftestresources2%2Fpstest0000eastusR2/providers/microsoft.insights/diagnosticSettings/service?api-version=2015-07-01",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Insights.InsightsManagementClient/0.9.0.0 AzurePowershell/v0.9.9.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusr2/diagnosticSettings/service\",\"name\":\"service\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountName\":\"montest3470\",\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470\",\"serviceBusRuleId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1\",\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "441"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/%2Fsubscriptions%2F1a66ce04-b633-4a0b-b2bc-a912ec8986a6%2Fresourcegroups%2Finsights-integration%2Fproviders%2Ftest.shoebox%2Ftestresources2%2Fpstest0000eastusR2/providers/microsoft.insights/diagnosticSettings/service?api-version=2015-07-01",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\"properties\": {\"storageAccountId\": \"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470\",\"serviceBusRuleId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1\",\"metrics\": [{\"timeGrain\": \"PT1M\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}],\"logs\": [{\"category\": \"TestLog1\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}},{\"category\": \"TestLog2\",\"enabled\": false,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}]}}",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "User-Agent: Microsoft.Azure.Management.Insights.InsightsManagementClient/0.9.0.0 AzurePowershell/v0.9.9.0" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusr2/diagnosticSettings/service\",\"name\":\"service\",\"location\":null,\"tags\":null,\"properties\":{\"storageAccountName\":\"montest3470\",\"storageAccountId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470\",\"serviceBusRuleId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1\",\"metrics\":[{\"timeGrain\":\"PT1M\",\"enabled\":true,\"retentionPolicy\":{\"days\":0}}],\"logs\":[{\"category\":\"TestLog1\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}},{\"category\":\"TestLog2\",\"enabled\":false,\"retentionPolicy\":{\"days\":0}}]}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Mon, 03 Mar 2015 00:07:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "614"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+  "Names": {
+    "Test-AddAlertRule": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

@@ -20,27 +20,27 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class JobScheduleOperationParameters : BatchClientParametersBase
-{
+    {
         public JobScheduleOperationParameters(BatchAccountContext context, string jobScheduleId, PSCloudJobSchedule jobSchedule,
         IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
-    {
-        if (string.IsNullOrWhiteSpace(jobScheduleId) && jobSchedule == null)
         {
-            throw new ArgumentNullException(Resources.NoJobSchedule);
+            if (string.IsNullOrWhiteSpace(jobScheduleId) && jobSchedule == null)
+            {
+                throw new ArgumentNullException(Resources.NoJobSchedule);
+            }
+
+            this.JobScheduleId = jobScheduleId;
+            this.JobSchedule = jobSchedule;
         }
 
-        this.JobScheduleId = jobScheduleId;
-        this.JobSchedule = jobSchedule;
+        /// <summary>
+        /// The id of the job schedule.
+        /// </summary>
+        public string JobScheduleId { get; private set; }
+
+        /// <summary>
+        /// The PSCloudJobSchedule object representing the target job schedule.
+        /// </summary>
+        public PSCloudJobSchedule JobSchedule { get; private set; }
     }
-
-    /// <summary>
-    /// The id of the job schedule.
-    /// </summary>
-    public string JobScheduleId { get; private set; }
-
-    /// <summary>
-    /// The PSCloudJobSchedule object representing the target job schedule.
-    /// </summary>
-    public PSCloudJobSchedule JobSchedule { get; private set; }
-}
 }

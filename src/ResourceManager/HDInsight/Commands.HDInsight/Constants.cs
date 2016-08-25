@@ -15,6 +15,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     internal static class Constants
     {
+        public const string Hadoop = "Hadoop";
+
         public static class CommandNames
         {
             public const string AzureHDInsightCluster = "AzureRmHDInsightCluster";
@@ -25,13 +27,15 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightConfigValues = "AzureRmHDInsightConfigValues";
             public const string AzureHDInsightMetastore = "AzureRmHDInsightMetastore";
             public const string AzureHDInsightScriptAction = "AzureRmHDInsightScriptAction";
+            public const string AzureHDInsightScriptActionHistory = "AzureRmHDInsightScriptActionHistory";
+            public const string AzureHDInsightPersistedScriptAction = "AzureRmHDInsightPersistedScriptAction";
             public const string AzureHDInsightStorage = "AzureRmHDInsightStorage";
             public const string AzureHDInsightProperties = "AzureRmHDInsightProperties";
             public const string AzureHDInsightJob = "AzureRmHDInsightJob";
             public const string AzureHDInsightJobOutput = "AzureRmHDInsightJobOutput";
             public const string AzureHDInsightDefaultStorage = "AzureRmHDInsightDefaultStorage";
             public const string AzureHDInsightHiveJob = "AzureRmHDInsightHiveJob";
-            public const string AzureHDInsightClusterIdentity = "AzureHDInsightClusterIdentity";
+            public const string AzureHDInsightClusterIdentity = "AzureRmHDInsightClusterIdentity";
             public const string Hive = "Hive";
         }
 

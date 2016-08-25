@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
-using System.Linq;
-using System.Configuration;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Utilities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.CertificateThumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
             }
 
-           return result;
+            return result;
         }
 
         /// <summary>
@@ -89,11 +87,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.SetProperty(AzureAccount.Property.AccessToken, account.AccessToken);
             }
 
-            if (account.Tenants != null && 
+            if (account.Tenants != null &&
                 account.Tenants.Any(s => !string.IsNullOrWhiteSpace(s)))
             {
                 result.SetProperty(
-                    AzureAccount.Property.Tenants, 
+                    AzureAccount.Property.Tenants,
                     account.Tenants.Where(s => !string.IsNullOrWhiteSpace(s)).ToArray());
             }
 

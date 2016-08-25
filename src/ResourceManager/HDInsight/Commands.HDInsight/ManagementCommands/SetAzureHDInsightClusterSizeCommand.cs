@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         private ClusterResizeParameters resizeParams;
         #region Input Parameter Definitions
-        
+
         [Parameter(
             Position = 0,
             Mandatory = true,

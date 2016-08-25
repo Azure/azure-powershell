@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class BasicDependency
     {
         private string _id;
-        
+
         /// <summary>
         /// Optional. Gets or sets the ID of the dependency.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._id; }
             set { this._id = value; }
         }
-        
+
         private string _resourceName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the dependency resource name.
         /// </summary>
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceName; }
             set { this._resourceName = value; }
         }
-        
+
         private string _resourceType;
-        
+
         /// <summary>
         /// Optional. Gets or sets the dependency resource type.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceType; }
             set { this._resourceType = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the BasicDependency class.
         /// </summary>

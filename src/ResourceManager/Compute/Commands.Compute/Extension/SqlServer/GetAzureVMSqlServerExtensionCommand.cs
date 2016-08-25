@@ -15,10 +15,12 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using System;
-using System.Management.Automation;
+using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
+using System;
 using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -63,11 +65,24 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName;
+                VirtualMachine vm = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
+                if (vm != null)
+                {
+                    VirtualMachineExtension virtualMachineExtension = vm.Resources.Where(x => x.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace)).FirstOrDefault();
+                    if (virtualMachineExtension != null)
+                    {
+                        this.Name = virtualMachineExtension.Name;
+                    }
+                }
+
+                if (String.IsNullOrEmpty(Name))
+                {
+                    Name = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName;
+                }
             }
 
             var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-            var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
+            var extension = result.ToPSVirtualMachineExtension(this.ResourceGroupName, this.VMName);
 
             if (
                 extension.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
@@ -109,6 +124,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ProvisioningState = extension.ProvisioningState,
                     AutoBackupSettings = extensionPublicSettings.AutoBackupSettings,
                     AutoPatchingSettings = extensionPublicSettings.AutoPatchingSettings,
+                    KeyVaultCredentialSettings = extensionPublicSettings.KeyVaultCredentialSettings,
                     Statuses = extension.Statuses
                 };
 

@@ -106,7 +106,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string ToDateTime = "To";
 
         public const string AsmWarning =
-            "The Azure Service Management (ASM) cmdlets for HDInsight are deprecated and will be removed in a future release. " +
-            "Please use the ARM version of this cmdlet: {0}";
+            "The Azure Service Management (ASM) cmdlets for HDInsight are deprecated and will be removed in January 2017. " +
+            "Please use the ARM version of this cmdlet instead: {0}" +
+            "\nFor more information, go to http://go.microsoft.com/fwlink/p/?LinkID=785086";
     }
 }

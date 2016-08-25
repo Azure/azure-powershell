@@ -37,38 +37,34 @@
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
+      <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.4.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.1.0.1-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.SiteRecovery.1.0.3-preview\lib\net40\Microsoft.Azure.Management.SiteRecovery.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.1.4.1\lib\dotnet\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.11.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -85,7 +81,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Security.Cryptography">
       <HintPath>Utilities\Security.Cryptography.dll</HintPath>
@@ -120,11 +116,13 @@
     <Compile Include="Common\PSSiteRecoveryClientHelper.cs" />
     <Compile Include="Common\PSSiteRecoveryJobClient.cs" />
     <Compile Include="Common\PSSiteRecoveryProtectableItemsClient.cs" />
+    <Compile Include="Common\PSSiteRecoveryRecoveryPlanClient.cs" />
     <Compile Include="Common\PSSiteRecoveryReplicationProtectedItemsClient.cs" />
     <Compile Include="Common\PSSiteRecoveryProtectionContainerClient.cs" />
     <Compile Include="Common\PSSiteRecoveryPolicyClient.cs" />
     <Compile Include="Common\PSSiteRecoveryRecoveryServicesProviderClient.cs" />
     <Compile Include="Common\PSSiteRecoveryFabricClient.cs" />
+    <Compile Include="Common\PSSiteRecoveryStorageClassificationClient.cs" />
     <Compile Include="Common\PSSiteRecoveryVaultClient.cs" />
     <Compile Include="Common\PSSiteRecoveryVaultExtendedInfoClient.cs" />
     <Compile Include="Common\PSSiteRecoveryVMClient.cs" />
@@ -132,10 +130,17 @@
     <Compile Include="Job\StopAzureSiteRecoveryJob.cs" />
     <Compile Include="Models\PSConstants.cs" />
     <Compile Include="Models\PSNetworkObjects.cs" />
+    <Compile Include="Models\PSRecoveryPlanObjects.cs" />
     <Compile Include="Network\GetAzureRMSiteRecoveryNetwork.cs" />
     <Compile Include="Network\GetAzureRMSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="Server\UpdateAzureSiteRecoveryServer.cs" />
     <Compile Include="Network\NewAzureRMSiteRecoveryNetworkMapping.cs" />
     <Compile Include="Network\RemoveAzureRMSiteRecoveryNetworkMapping.cs" />
+    <Compile Include="RecoveryPlan\GetAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\NewAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\RemoveAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\EditAzureSiteRecoveryRecoveryPlan.cs" />
+    <Compile Include="RecoveryPlan\UpdateAzureSiteRecoveryRecoveryPlan.cs" />
     <Compile Include="Server\RemoveAzureSiteRecoveryServer.cs" />
     <Compile Include="Site\GetAzureSiteRecoverySite.cs" />
     <Compile Include="Site\NewAzureSiteRecoverySite.cs" />
@@ -166,6 +171,10 @@
     <Compile Include="Policy\StartAzureSiteRecoveryPolicyAssociationJob.cs" />
     <Compile Include="Policy\StartAzureSiteRecoveryPolicyDissociationJob.cs" />
     <Compile Include="Server\GetAzureSiteRecoveryServer.cs" />
+    <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassification.cs" />
+    <Compile Include="Storage\Classification\GetAzureSiteRecoveryStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\NewAzureSiteRecoveryStorageClassificationMapping.cs" />
+    <Compile Include="Storage\Classification\RemoveAzureSiteRecoveryStorageClassificationMapping.cs" />
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Vault\RemoveAzureSiteRecoveryVault.cs" />
@@ -199,6 +208,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -206,6 +219,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+      <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
+      <Name>Commands.RecoveryServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

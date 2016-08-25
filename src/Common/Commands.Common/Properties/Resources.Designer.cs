@@ -2010,6 +2010,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?.
+        /// </summary>
+        public static string NoSubscriptionFoundForTenant {
+            get {
+                return ResourceManager.GetString("NoSubscriptionFoundForTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; must be a cache worker role. Verify that it has proper cache worker role configuration..
         /// </summary>
         public static string NotCacheWorkerRole {

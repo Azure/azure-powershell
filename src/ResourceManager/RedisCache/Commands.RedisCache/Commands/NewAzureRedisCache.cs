@@ -17,12 +17,11 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
-    using Microsoft.WindowsAzure;
+    using Microsoft.Rest.Azure;
+    using System;
+    using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using Hyak.Common;
-    using System.Collections;
-    using System;
 
     [Cmdlet(VerbsCommon.New, "AzureRmRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -43,8 +42,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         public string RedisVersion { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Size of redis cache. Valid values: P1,P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB")]
-        [ValidateSet(SizeConverter.P1String, SizeConverter.P2String, SizeConverter.P3String, SizeConverter.P4String, 
-            SizeConverter.C0String, SizeConverter.C1String, SizeConverter.C2String, SizeConverter.C3String, SizeConverter.C4String, SizeConverter.C5String, SizeConverter.C6String, 
+        [ValidateSet(SizeConverter.P1String, SizeConverter.P2String, SizeConverter.P3String, SizeConverter.P4String,
+            SizeConverter.C0String, SizeConverter.C1String, SizeConverter.C2String, SizeConverter.C3String, SizeConverter.C4String, SizeConverter.C5String, SizeConverter.C6String,
             SizeConverter.MB250, SizeConverter.GB1, SizeConverter.GB2_5, SizeConverter.GB6, SizeConverter.GB13, SizeConverter.GB26, SizeConverter.GB53, IgnoreCase = false)]
         public string Size { get; set; }
 
@@ -67,20 +66,33 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
         public int? ShardCount { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "VirtualNetwork is deprecated. Please use SubnetId instead.")]
         public string VirtualNetwork { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Subnet is deprecated. Please use SubnetId instead.")]
         public string Subnet { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1")]
+        public string SubnetId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
         public string StaticIP { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(RedisVersion))
             {
                 WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
+            }
+
+            if (!string.IsNullOrEmpty(VirtualNetwork) || !string.IsNullOrEmpty(Subnet))
+            {
+                WriteWarning("Parameters 'VirtualNetwork' and 'Subnet' are deprecated. Please use SubnetId instead.");
+                if (string.IsNullOrEmpty(SubnetId))
+                {
+                    SubnetId = string.Format("{0}/subnets/{1}", VirtualNetwork, Subnet);
+                }
             }
 
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
@@ -93,7 +105,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                 Sku = SkuStrings.Standard;
             }
 
-            
+
             if (string.IsNullOrEmpty(Size))
             {
                 Size = SizeConverter.C1String;
@@ -112,7 +124,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             // If Force flag is not avaliable than check if cache is already available or not
             try
             {
-                RedisGetResponse availableCache = CacheClient.GetCache(ResourceGroupName, Name);
+                RedisResource availableCache = CacheClient.GetCache(ResourceGroupName, Name);
                 if (availableCache != null)
                 {
                     throw new CloudException(string.Format(Resources.RedisCacheExists, Name));
@@ -120,16 +132,16 @@ namespace Microsoft.Azure.Commands.RedisCache
             }
             catch (CloudException ex)
             {
-                if (ex.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                if (ex.Body.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
                 {
                     // cache does not exists so go ahead and create one
                 }
-                else if (ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Body.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }
                 else
-                { 
+                {
                     // all other exceptions should be thrown
                     throw;
                 }
@@ -137,7 +149,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             WriteObject(
                 new RedisCacheAttributesWithAccessKeys(
-                    CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, VirtualNetwork, Subnet, StaticIP), 
+                    CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, SubnetId, StaticIP),
                     ResourceGroupName
                 )
             );

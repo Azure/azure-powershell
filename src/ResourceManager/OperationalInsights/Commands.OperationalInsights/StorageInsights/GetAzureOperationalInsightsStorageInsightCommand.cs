@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.OperationalInsights.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The storage insight name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByWorkspaceObject)

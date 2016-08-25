@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Hyak.Common;
+using System.IO;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
+using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Rest.Azure;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
+    [Alias("Move-AdlStoreItem")]
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -50,21 +52,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            FileType fileType;
-            if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
-                    out fileType))
+            if (ShouldProcess(Destination.TransformedPath, VerbsCommon.Move))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
-            }
+                FileType fileType;
+                if (Force.IsPresent && DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.TransformedPath, Account,
+                        out fileType))
+                {
+                    DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.TransformedPath, Account, true);
+                }
 
-            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account, Destination.TransformedPath))
-            {
-                throw new CloudException(
-                    string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
-            }
+                if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.TransformedPath, Account,
+                        Destination.TransformedPath))
+                {
+                    throw new CloudException(
+                        string.Format(Resources.MoveFailed, Path.OriginalPath, Destination.OriginalPath));
+                }
 
-            WriteObject(Destination.OriginalPath);
+                WriteObject(Destination.OriginalPath);
+            }
         }
     }
 }

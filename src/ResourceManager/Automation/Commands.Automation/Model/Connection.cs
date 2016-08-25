@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Properties;
 using System;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
     public class Connection : BaseProperties
     {
-         /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="Connection"/> class.
         /// </summary>
         /// <param name="resourceGroupName">

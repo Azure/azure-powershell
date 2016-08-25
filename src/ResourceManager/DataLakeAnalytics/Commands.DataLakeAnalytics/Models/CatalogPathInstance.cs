@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Rest.Azure;
 using System;
 using System.Text.RegularExpressions;
-using Hyak.Common;
-using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public string DatabaseName { get; set; }
         public string SchemaAssemblyOrExternalDataSourceName { get; set; }
         public string TableOrTableValuedFunctionName { get; set; }
-        public string TableStatisticsName { get; set; }
+        public string TableStatisticsOrPartitionName { get; set; }
         public string FullCatalogItemPath { get; set; }
 
         public static CatalogPathInstance Parse(string path)
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var regex =
                 new Regex(
-                    @"^(?<firstPart>\w+|\[[a-zA-Z_0-9.]+\])(\.(?<secondPart>\w+|\[[a-zA-Z_0-9.]+\]))?(\.(?<thirdPart>\w+|\[[a-zA-Z_0-9.]+\]))?\.(?<fourthPart>\w+|\[[a-zA-Z_0-9.]+\])$");
+                    @"^(?<firstPart>\w+|\[.+\])(\.(?<secondPart>\w+|\[.+\]))?(\.(?<thirdPart>\w+|\[.+\]))?\.(?<fourthPart>\w+|\[.+\])$");
 
             if (!regex.IsMatch(path))
             {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 DatabaseName = firstPart,
                 SchemaAssemblyOrExternalDataSourceName = secondPart,
                 TableOrTableValuedFunctionName = thirdPart,
-                TableStatisticsName = fourthPart,
+                TableStatisticsOrPartitionName = fourthPart,
                 FullCatalogItemPath = path
             };
         }

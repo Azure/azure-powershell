@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Remove-AdlCatalogSecret")]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -38,36 +39,45 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
-            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false)]
+        [Parameter(Position = 4, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!Force.IsPresent)
+            if (string.IsNullOrEmpty(Name))
+            {
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecrets, DatabaseName),
+                string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecrets, DatabaseName),
+                DatabaseName,
+                    () =>
+                    {
+                        DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
+            }
+            else
             {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
                     string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
                     Name,
-                    () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
-            }
-            else
-            {
-                DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name);
-            }
-
-            if (PassThru)
-            {
-                WriteObject(true);
+                    () =>
+                    {
+                        DataLakeAnalyticsClient.DeleteSecret(Account, DatabaseName, Name);
+                        if (PassThru)
+                        {
+                            WriteObject(true);
+                        }
+                    });
             }
         }
     }

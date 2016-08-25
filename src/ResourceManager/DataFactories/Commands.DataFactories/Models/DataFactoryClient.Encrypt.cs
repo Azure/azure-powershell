@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Security;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.DataTransfer.Gateway.Encryption;
+using System;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual string OnPremisesEncryptString(SecureString value, 
-            string resourceGroupName, 
-            string dataFactoryName, 
-            string gatewayName, 
-            PSCredential credential, 
-            string type, 
-            string nonCredentialValue, 
-            string authenticationType, 
+        public virtual string OnPremisesEncryptString(SecureString value,
+            string resourceGroupName,
+            string dataFactoryName,
+            string gatewayName,
+            PSCredential credential,
+            string type,
+            string nonCredentialValue,
+            string authenticationType,
             string serverName, string databaseName)
         {
             LinkedServiceType linkedServiceType = type == null ? LinkedServiceType.OnPremisesSqlLinkedService : GetLinkedServiceType(type);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                             ServiceToken = response.ConnectionInfo.ServiceToken,
                             IdentityCertThumbprint = response.ConnectionInfo.IdentityCertThumbprint,
                             HostServiceUri = response.ConnectionInfo.HostServiceUri,
-                            InstanceVersionString = response.ConnectionInfo.Version 
+                            InstanceVersionString = response.ConnectionInfo.Version
                         }
                 };
 

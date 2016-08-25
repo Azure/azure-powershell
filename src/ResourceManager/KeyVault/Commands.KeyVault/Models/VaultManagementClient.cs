@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             get;
             set;
         }
-       
+
         /// <summary>
         /// Create a new vault
         /// </summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="adClient">the active directory client</param>
         /// <returns></returns>
         public PSVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
-        {            
+        {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
             if (string.IsNullOrWhiteSpace(parameters.VaultName))
@@ -67,9 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.SkuFamilyName");
             if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
                 throw new ArgumentException("parameters.TenantId");
-            if (parameters.ObjectId == null || parameters.ObjectId == Guid.Empty)
-                throw new ArgumentException("parameters.ObjectId");
-            
+
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: parameters.ResourceGroupName,
                 vaultName: parameters.VaultName,
@@ -90,19 +88,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         EnabledForDiskEncryption = parameters.EnabledForDiskEncryption,
                         TenantId = parameters.TenantId,
                         VaultUri = "",
-                        AccessPolicies = new []
-                        {
-                            new AccessPolicyEntry
-                            {
-                                TenantId = parameters.TenantId,
-                                ObjectId = parameters.ObjectId,
-                                PermissionsToKeys = parameters.PermissionsToKeys,                                    
-                                PermissionsToSecrets = parameters.PermissionsToSecrets
-                            }
-                        }
+                        AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { }
                     }
-                }
-                );
+                });
 
             return new PSVault(response.Vault, adClient);
         }
@@ -127,7 +115,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 return new PSVault(response.Vault, adClient);
             }
-            catch(CloudException ce)
+            catch (CloudException ce)
             {
                 if (ce.Response.StatusCode == HttpStatusCode.NotFound)
                     return null;
@@ -160,22 +148,22 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             properties.EnabledForDeployment = updatedEnabledForDeployment;
             properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
             properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
-            properties.AccessPolicies = (updatedPolicies == null) ? 
+            properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :
                 updatedPolicies.Select(a => new AccessPolicyEntry()
-                        {
-                            TenantId = a.TenantId,
-                            ObjectId = a.ObjectId,
-                            ApplicationId = a.ApplicationId,
-                            PermissionsToKeys = a.PermissionsToKeys.ToArray(),
-                            PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
-                        }).ToList();
+                {
+                    TenantId = a.TenantId,
+                    ObjectId = a.ObjectId,
+                    ApplicationId = a.ApplicationId,
+                    PermissionsToKeys = a.PermissionsToKeys.ToArray(),
+                    PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
+                }).ToList();
 
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: existingVault.ResourceGroupName,
-                vaultName: existingVault.VaultName,                
+                vaultName: existingVault.VaultName,
                 parameters: new VaultCreateOrUpdateParameters()
-                {                                       
+                {
                     Location = existingVault.Location,
                     Properties = properties
                 }
@@ -197,7 +185,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                this.KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);                
+                this.KeyVaultManagementClient.Vaults.Delete(resourceGroupName, vaultName);
             }
             catch (CloudException ce)
             {
@@ -206,7 +194,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw;
             }
         }
-       
+
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
     }
 }

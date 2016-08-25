@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.OperationalInsights;
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
-                operationalInsightsManagementClient, 
-                resourceManagementClient, 
+                operationalInsightsManagementClient,
+                resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,
                 authorizationManagementClient);
@@ -54,8 +54,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         protected void RunPowerShellTest(params string[] scripts)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             using (UndoContext context = UndoContext.Current)
             {
@@ -64,12 +68,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 helper.RunPowerShellTest(scripts);
             }

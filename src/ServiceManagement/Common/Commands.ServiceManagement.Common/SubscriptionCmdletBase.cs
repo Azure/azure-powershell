@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
     {
         private readonly bool _saveProfile;
 
-        protected SubscriptionCmdletBase(bool saveProfile) 
+        protected SubscriptionCmdletBase(bool saveProfile)
         {
             _saveProfile = saveProfile;
         }

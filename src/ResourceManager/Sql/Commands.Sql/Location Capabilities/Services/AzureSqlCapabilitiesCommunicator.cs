@@ -11,12 +11,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
 {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// Gets or sets the Azure profile
         /// </summary>
         public AzureContext Context { get; set; }
-        
+
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
 
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
-            
+
             return SqlClient;
         }
     }

@@ -14,18 +14,17 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you get a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlot")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlot")]
     public class GetAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         protected const string ParameterSet1Name = "S1";

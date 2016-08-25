@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static LongRunningOperationResponse BeginMoving(this IResourceOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).BeginMovingAsync(sourceResourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Begin moving resources.To determine whether the operation has
         /// finished processing the request, call
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.BeginMovingAsync(sourceResourceGroupName, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Checks whether resource exists.
         /// </summary>
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceExistsResult CheckExistence(this IResourceOperations operations, string resourceGroupName, ResourceIdentity identity)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).CheckExistenceAsync(resourceGroupName, identity);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Checks whether resource exists.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CheckExistenceAsync(resourceGroupName, identity, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Create a resource.
         /// </summary>
@@ -147,13 +147,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceCreateOrUpdateResult CreateOrUpdate(this IResourceOperations operations, string resourceGroupName, ResourceIdentity identity, GenericResource parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).CreateOrUpdateAsync(resourceGroupName, identity, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Create a resource.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.CreateOrUpdateAsync(resourceGroupName, identity, parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Delete resource and all of its resources.
         /// </summary>
@@ -199,13 +199,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse Delete(this IResourceOperations operations, string resourceGroupName, ResourceIdentity identity)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).DeleteAsync(resourceGroupName, identity);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Delete resource and all of its resources.
         /// </summary>
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.DeleteAsync(resourceGroupName, identity, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Returns a resource belonging to a resource group.
         /// </summary>
@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceGetResult Get(this IResourceOperations operations, string resourceGroupName, ResourceIdentity identity)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).GetAsync(resourceGroupName, identity);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Returns a resource belonging to a resource group.
         /// </summary>
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.GetAsync(resourceGroupName, identity, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get all of the resources under a subscription.
         /// </summary>
@@ -293,13 +293,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceListResult List(this IResourceOperations operations, ResourceListParameters parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).ListAsync(parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get all of the resources under a subscription.
         /// </summary>
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListAsync(parameters, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -335,13 +335,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceListResult ListNext(this IResourceOperations operations, string nextLink)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).ListNextAsync(nextLink);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         {
             return operations.ListNextAsync(nextLink, CancellationToken.None);
         }
-        
+
         /// <summary>
         /// Move resources within or across subscriptions.
         /// </summary>
@@ -380,13 +380,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static AzureOperationResponse MoveResources(this IResourceOperations operations, string sourceResourceGroupName, ResourcesMoveInfo parameters)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceOperations)s).MoveResourcesAsync(sourceResourceGroupName, parameters);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Move resources within or across subscriptions.
         /// </summary>

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Newtonsoft.Json;
 using System.Collections;
 using System.Management.Automation;
 
@@ -24,108 +23,66 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.VirtualMachineAccessExtension)]
-    public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
+        ProfileNouns.VirtualMachineAccessExtension,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSAzureOperationResponse))]
+    public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         private const string userNameKey = "UserName";
         private const string passwordKey = "Password";
 
         [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Alias("ResourceName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The virtual machine name.")]
-        [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
-
-        [Alias("ExtensionName")]
-        [Parameter(
-            Mandatory = true,
-            Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Alias("HandlerVersion", "Version")]
-        [Parameter(
-            Mandatory = false,
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The type handler version.")]
-        [ValidateNotNullOrEmpty]
-        public string TypeHandlerVersion { get; set; }
-
-        [Parameter(
            Mandatory = false,
-           Position = 4,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "New or Existing User Name")]
         public string UserName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "New or Existing User Password")]
         public string Password { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location.")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            ExecuteClientAction(() =>
+            if (ShouldProcess(VirtualMachineAccessExtensionContext.ExtensionDefaultName, VerbsCommon.Set))
             {
-                Hashtable publicSettings = new Hashtable();
-                publicSettings.Add(userNameKey, UserName ?? "");
-
-                Hashtable privateSettings = new Hashtable();
-                privateSettings.Add(passwordKey, Password ?? "");
-
-                var SettingString = JsonConvert.SerializeObject(publicSettings);
-                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
-
-                if (string.IsNullOrEmpty(this.Location))
+                ExecuteClientAction(() =>
                 {
-                    this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
-                }
+                    Hashtable publicSettings = new Hashtable();
+                    publicSettings.Add(userNameKey, UserName ?? "");
 
-                var parameters = new VirtualMachineExtension
-                {
-                    Location = this.Location,
-                    Name = this.Name,
-                    Type = VirtualMachineExtensionType,
-                    Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
-                    ExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
-                    TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
-                    Settings = SettingString,
-                    ProtectedSettings = ProtectedSettingString,
-                };
+                    Hashtable privateSettings = new Hashtable();
+                    privateSettings.Add(passwordKey, Password ?? "");
 
-                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
-                    this.ResourceGroupName,
-                    this.VMName,
-                    parameters);
+                    if (string.IsNullOrEmpty(this.Location))
+                    {
+                        this.Location = GetLocationFromVm(this.ResourceGroupName, this.VMName);
+                    }
 
-                WriteObject(op);
-            });
+                    var parameters = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        VirtualMachineExtensionType = VirtualMachineAccessExtensionContext.ExtensionDefaultName,
+                        Publisher = VirtualMachineAccessExtensionContext.ExtensionDefaultPublisher,
+                        TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineAccessExtensionContext.ExtensionDefaultVersion,
+                        Settings = publicSettings,
+                        ProtectedSettings = privateSettings,
+                        AutoUpgradeMinorVersion = !this.DisableAutoUpgradeMinorVersion.IsPresent,
+                        ForceUpdateTag = this.ForceRerun
+                    };
+
+                    var op = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        this.ResourceGroupName,
+                        this.VMName,
+                        this.Name,
+                        parameters).GetAwaiter().GetResult();
+                    var result = Mapper.Map<PSAzureOperationResponse>(op);
+                    WriteObject(result);
+                });
+            }
         }
     }
 }

@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
 using Microsoft.Azure.Batch;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the location of the Azure SQL Database
         /// </summary>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the tags associated with the Azure SQL Server.
         /// </summary>

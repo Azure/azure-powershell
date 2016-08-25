@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Commands.Tags.Properties;
 
@@ -22,7 +24,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTag"), OutputType(typeof(PSTag))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTag", SupportsShouldProcess = true), OutputType(typeof(PSTag))]
     public class RemoveAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]
@@ -33,9 +35,6 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [ValidateNotNullOrEmpty]
         public string[] Value { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "If not specified, will prompt for confirmation. If specified, won't prompt.")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -44,16 +43,17 @@ namespace Microsoft.Azure.Commands.Tags.Tag
             PSTag tag = null;
 
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingTag, Name),
                 Resources.RemoveTagMessage,
                 Name,
-                () => tag = TagsClient.DeleteTag(Name, Value != null ? Value.ToList() : null));
+                () =>
+                {
+                    tag = TagsClient.DeleteTag(Name, Value != null ? Value.ToList() : null);
+                    if (PassThru)
+                    {
+                        WriteObject(tag);
+                    }
+                });
 
-            if (PassThru)
-            {
-                WriteObject(tag);
-            }
         }
     }
 }

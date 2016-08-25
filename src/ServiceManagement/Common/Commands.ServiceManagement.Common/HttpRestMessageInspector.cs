@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.IO;
 using System.Net.Http;
@@ -58,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected override HttpResponseMessage ProcessResponse(HttpResponseMessage response, CancellationToken cancellationToken)
         {
             string body = String.Empty;
-            if(response.Content != null)
+            if (response.Content != null)
             {
                 var contentHeaders = response.Content.Headers;
                 var stream = new MemoryStream();
@@ -73,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 contentHeaders.ForEach(kv => response.Content.Headers.Add(kv.Key, kv.Value));
             }
             logger(GeneralUtilities.GetHttpResponseLog(response.StatusCode.ToString(), response.Headers, body));
-            
+
             return response;
         }
     }
@@ -92,14 +93,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public virtual void AfterReceiveReply(ref Message reply, object correlationState)
         {
             HttpResponseMessageProperty prop = (HttpResponseMessageProperty)reply.Properties[HttpResponseMessageProperty.Name];
-            string body = GeneralUtilities.ReadMessageBody(ref reply);
+            string body = ServiceManagementUtilities.ReadMessageBody(ref reply);
             logger(GeneralUtilities.GetHttpResponseLog(prop.StatusCode.ToString(), prop.Headers, body));
         }
 
         public virtual object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
             HttpRequestMessageProperty prop = (HttpRequestMessageProperty)request.Properties[HttpRequestMessageProperty.Name];
-            string body = GeneralUtilities.ReadMessageBody(ref request);
+            string body = ServiceManagementUtilities.ReadMessageBody(ref request);
             logger(GeneralUtilities.GetHttpRequestLog(prop.Method, request.Headers.To.AbsoluteUri, prop.Headers, body));
 
             return request;

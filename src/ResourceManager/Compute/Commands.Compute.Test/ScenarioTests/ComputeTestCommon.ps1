@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$PLACEHOLDER = "PLACEHOLDER1@"
+
 <#
 .SYNOPSIS
 Gets valid resource name for compute test
@@ -113,18 +115,19 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
     $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
     $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
+    Write-Host $vmname
 
     # Common
-    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
-    Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
+    Assert-AreEqual $p.HardwareProfile.VmSize $vmsize;
 
     # NRP
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
     $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
     $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -136,12 +139,12 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
 
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
-    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
+    Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $nicId;
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
     $stotype = 'Standard_GRS';
-    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $sa = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
     $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
@@ -159,22 +162,22 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
-    Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
-    Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
-    Assert-AreEqual $p.StorageProfile.OSDisk.VirtualHardDisk.Uri $osDiskVhdUri;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Caching $osDiskCaching;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Name $osDiskName;
+    Assert-AreEqual $p.StorageProfile.OsDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[0].DiskSizeGB 10;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Lun 1;
-    Assert-AreEqual $p.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+    Assert-AreEqual $p.StorageProfile.DataDisks[0].Vhd.Uri $dataDiskVhdUri1;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Caching 'ReadOnly';
     Assert-AreEqual $p.StorageProfile.DataDisks[1].DiskSizeGB 11;
     Assert-AreEqual $p.StorageProfile.DataDisks[1].Lun 2;
-    Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+    Assert-AreEqual $p.StorageProfile.DataDisks[1].Vhd.Uri $dataDiskVhdUri2;
 
     # OS & Image
     $user = "Foo12";
-    $password = 'BaR@123' + $rgname;
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
@@ -196,7 +199,7 @@ function Create-VirtualMachine($rgname, $vmname, $loc)
     Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
     # Virtual Machine
-    New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
     return $vm
@@ -341,7 +344,7 @@ Gets default CRP Image
 #>
 function Get-DefaultCRPImage
 {
-    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
+    param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server*')
 
     $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
@@ -478,17 +481,17 @@ function Get-SasUri
 {
     param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
 
-	$uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+    $uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
 
-	$destUri = New-Object -TypeName System.Uri($uri);
-	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
-	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
-	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
-	$policy.Permissions = $type;
-	$policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
-	$uri += $destBlob.GetSharedAccessSignature($policy);
+    $destUri = New-Object -TypeName System.Uri($uri);
+    $cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+    $destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+    $policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+    $policy.Permissions = $type;
+    $policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
+    $uri += $destBlob.GetSharedAccessSignature($policy);
 
-	return $uri;
+    return $uri;
 }
 
 # Get a Location according to resource provider.
@@ -563,13 +566,13 @@ function Get-SubscriptionIdFromResourceGroup
 {
       param ([string] $rgname)
 
-	  $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
+      $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
 
-	  $rgid = $rg.ResourceId;
+      $rgid = $rg.ResourceId;
 
-	  # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
-	  # So return the second part to get subscription Id
-	  $first = $rgid.IndexOf('/', 1);
-	  $last = $rgid.IndexOf('/', $first + 1);
-	  return $rgid.Substring($first + 1, $last - $first - 1);
+      # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
+      # So return the second part to get subscription Id
+      $first = $rgid.IndexOf('/', 1);
+      $last = $rgid.IndexOf('/', $first + 1);
+      return $rgid.Substring($first + 1, $last - $first - 1);
 }

@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Management lock information.
         /// </returns>
         Task<ManagementLockReturnResult> CreateOrUpdateAtResourceGroupLevelAsync(string resourceGroupName, string lockName, ManagementLockProperties parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create or update a management lock at the resource level or any
         /// level below resource.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Management lock information.
         /// </returns>
         Task<ManagementLockReturnResult> CreateOrUpdateAtResourceLevelAsync(string resourceGroupName, ResourceIdentity identity, string lockName, ManagementLockProperties parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create or update a management lock at the subscription level.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Management lock information.
         /// </returns>
         Task<ManagementLockReturnResult> CreateOrUpdateAtSubscriptionLevelAsync(string lockName, ManagementLockProperties parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Deletes the management lock of a resource group.
         /// </summary>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAtResourceGroupLevelAsync(string resourceGroup, string lockName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Deletes the management lock of a resource or any level below
         /// resource.
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAtResourceLevelAsync(string resourceGroupName, ResourceIdentity identity, string lockName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Deletes the management lock of a subscription.
         /// </summary>
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAtSubscriptionLevelAsync(string lockName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets the management lock of a scope.
         /// </summary>
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Management lock information.
         /// </returns>
         Task<ManagementLockReturnResult> GetAsync(string lockName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets all the management locks of a resource group.
         /// </summary>
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of management locks.
         /// </returns>
         Task<ManagementLockListResult> ListAtResourceGroupLevelAsync(string resourceGroupName, ManagementLockGetQueryParameter parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets all the management locks of a resource or any level below
         /// resource.
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of management locks.
         /// </returns>
         Task<ManagementLockListResult> ListAtResourceLevelAsync(string resourceGroupName, ResourceIdentity identity, ManagementLockGetQueryParameter parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets all the management locks of a subscription.
         /// </summary>
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of management locks.
         /// </returns>
         Task<ManagementLockListResult> ListAtSubscriptionLevelAsync(ManagementLockGetQueryParameter parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of management locks at resource level or below.
         /// </summary>
