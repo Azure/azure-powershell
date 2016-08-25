@@ -20,8 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerCommunicationLink",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class RemoveAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             return entity;
         }
 
-   /*     /// <summary>
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         protected override void ProcessRecord()
@@ -86,6 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
             }
 
             base.ProcessRecord();
-        }*/
+        }
     }
 }

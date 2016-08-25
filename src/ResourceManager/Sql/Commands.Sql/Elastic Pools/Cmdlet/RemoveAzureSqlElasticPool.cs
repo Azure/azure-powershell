@@ -20,8 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticPool",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true)]
     public class RemoveAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
@@ -34,11 +33,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 
-   /*     /// <summary>
+        /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }*/
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             return entity;
         }
 
-  /*      /// <summary>
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -86,6 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
 
             base.ExecuteCmdlet();
-        }*/
+        }
     }
 }

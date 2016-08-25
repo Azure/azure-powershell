@@ -185,7 +185,7 @@ function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$server = Create-ServerForTest $rg "12.0" "Japan East"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `

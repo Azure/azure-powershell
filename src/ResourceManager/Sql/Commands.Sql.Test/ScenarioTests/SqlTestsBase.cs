@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
             var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
             var authorizationClient = GetAuthorizationManagementClient();
-            var graphClient = GetGraphClient(context);
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
+          //  var graphClient = GetGraphClient(context);
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient/*, graphClient*/);
         }
         
         protected void RunPowerShellTest(params string[] scripts)
