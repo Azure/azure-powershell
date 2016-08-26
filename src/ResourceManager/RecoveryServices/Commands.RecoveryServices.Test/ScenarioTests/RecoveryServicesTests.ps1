@@ -48,14 +48,6 @@ function Test-RecoveryServicesVaultCRUDTests
 	Assert-NotNull($vaultToBeProcessed.ID)
 	Assert-NotNull($vaultToBeProcessed.Type)
 
-	# Download vault settings file
-	$vaultFile = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vaultToBeProcessed
-	Assert-NotNull($vaultFile.Filepath)
-
-	# Read file and check for data
-	[xml]$xmlDocument = Get-Content -Path $vaultFile.Filepath
-	Assert-NotNull($xmlDocument.ASRVaultCreds.Location)
-
 	# Remove Vault
 	Remove-AzureRmRecoveryServicesVault -Vault $vaultToBeProcessed
 	$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName RsvTestRG -Name rsv1
