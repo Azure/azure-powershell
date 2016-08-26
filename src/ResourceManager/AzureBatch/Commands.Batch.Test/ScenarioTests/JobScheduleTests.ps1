@@ -21,11 +21,11 @@ function Test-NewJobSchedule
     param([string]$accountName)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    
+
     $jsId1 = "simple"
     $jsId2 = "complex"
 
-    try 
+    try
     {
         # Create a simple job schedule
         $jobSpec1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobSpecification
@@ -46,7 +46,7 @@ function Test-NewJobSchedule
 
 		$osFamily = "4"
 		$targetOS = "*"
-		
+
 		$ApplicationId = "test"
 		$ApplicationVersion = "beta"
 
@@ -191,9 +191,9 @@ function Test-NewJobSchedule
         $displayName = "displayName"
 
         New-AzureBatchJobSchedule -Id $jsId2 -DisplayName $displayName -Schedule $schedule2 -JobSpecification $jobSpec2 -Metadata $metadata -BatchContext $context
-        
+
         $jobSchedule2 = Get-AzureBatchJobSchedule -Id $jsId2 -BatchContext $context
-        
+
         # Verify created job schedule matches expectations
         Assert-AreEqual $jsId2 $jobSchedule2.Id
         Assert-AreEqual $displayName $jobSchedule2.DisplayName
@@ -225,12 +225,9 @@ function Test-NewJobSchedule
         Assert-AreEqual $env2Value $jobSchedule2.JobSpecification.JobManagerTask.EnvironmentSettings[1].Value
         Assert-AreEqual $resourceFileCount $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles.Count
         Assert-AreEqual $blobSource $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles[0].BlobSource
-
 		Assert-AreEqual $ApplicationId $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences[0].ApplicationId
 		Assert-AreEqual $ApplicationVersion $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences[0].Version
-		Assert-AreEqual $envCount $jobSchedule2.JobSpecification.JobManagerTask.ApplicationPackageReferences.Count
-
-        Assert-AreEqual $filePath $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles[0].FilePath
+		Assert-AreEqual $filePath $jobSchedule2.JobSpecification.JobManagerTask.ResourceFiles[0].FilePath
         Assert-AreEqual $killOnCompletion $jobSchedule2.JobSpecification.JobManagerTask.KillJobOnCompletion
         Assert-AreEqual $jobMgrId $jobSchedule2.JobSpecification.JobManagerTask.Id
         Assert-AreEqual $jobMgrDisplay $jobSchedule2.JobSpecification.JobManagerTask.DisplayName
@@ -385,7 +382,7 @@ function Test-UpdateJobSchedule
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
     $jobSchedule = Get-AzureBatchJobSchedule $jobScheduleId -BatchContext $context
-    
+
     # Define new Schedule properties
     $schedule = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
     $schedule.DoNotRunUntil = $doNotRunUntil = New-Object DateTime -ArgumentList @(2020,01,01,12,0,0)
