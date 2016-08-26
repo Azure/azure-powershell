@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// Cmdlet to create a new Azure SQL Database Secondary and Replication Link
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseSecondary",
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>
