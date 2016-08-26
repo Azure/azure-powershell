@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsOther.Use, "AzureRmSqlServerAuditingPolicy"), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Use-AzureRmSqlDatabaseServerAuditingPolicy")]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
@@ -40,17 +40,21 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <summary>
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
-        /// <param name="model">A model object</param>
-        protected override DatabaseAuditingPolicyModel ApplyUserInputToModel(DatabaseAuditingPolicyModel model)
+        /// <param name="baseModel">A model object</param>
+        protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel baseModel)
         {
-            base.ApplyUserInputToModel(model);
-            if (model.AuditState == AuditStateType.New)
+            base.ApplyUserInputToModel(baseModel);
+            if (AuditType == AuditType.Table)
             {
-                model.AuditState = AuditStateType.Enabled;
+                DatabaseAuditingPolicyModel model = baseModel as DatabaseAuditingPolicyModel;
+                if (model.AuditState == AuditStateType.New)
+                {
+                    model.AuditState = AuditStateType.Enabled;
+                }
+                model.UseServerDefault = UseServerDefaultOptions.Enabled;
+                model.StorageAccountName = GetStorageAccountName();
             }
-            model.UseServerDefault = UseServerDefaultOptions.Enabled;
-            model.StorageAccountName = GetStorageAccountName();
-            return model;
+            return baseModel;
         }
 
         /// <summary>
@@ -59,10 +63,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <returns>A storage account name</returns>
         protected string GetStorageAccountName()
         {
-            string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
+            var storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.UseServerWithoutStorageAccount));
+                throw new Exception(string.Format(Properties.Resources.UseServerWithoutStorageAccount));
             }
             return storageAccountName;
         }

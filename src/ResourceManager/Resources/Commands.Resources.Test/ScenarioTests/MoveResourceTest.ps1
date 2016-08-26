@@ -31,9 +31,9 @@ function Test-MoveAzureResource
     New-AzureRmResourceGroup -Name $sourceResourceGroupName -Location $location -Force
     New-AzureRmResourceGroup -Name $destinationResourceGroupName -Location $location -Force
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $resource1 = New-AzureRmResource -Name $testResourceName1 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    $resource1 = New-AzureRmResource -Name $testResourceName1 -Location $location -Tags @{testtag = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
     #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
-    $resource2 = New-AzureRmResource -Name $testResourceName2 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    $resource2 = New-AzureRmResource -Name $testResourceName2 -Location $location -Tags @{testtag = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
 
     Get-AzureRmResource -ResourceGroupName $sourceResourceGroupName | Move-AzureRmResource -DestinationResourceGroupName $destinationResourceGroupName -Force
 

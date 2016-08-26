@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,18 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
@@ -88,15 +90,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database Server")]
-        public Dictionary<string, string> Tags { get; set; }
+        [Alias("Tag")]
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteWarning("The usability of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494"); 
-
             base.ExecuteCmdlet();
         }
 
@@ -149,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Edition = Edition,
                 MaxSizeBytes = MaxSizeBytes,
                 RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                Tags = Tags,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
             });
             return newEntity;

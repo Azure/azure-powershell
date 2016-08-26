@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,10 +32,6 @@ namespace Microsoft.Azure.Commands.Batch
             HelpMessage = "The thumbprint of the certificate to delete.")]
         [ValidateNotNullOrEmpty]
         public string Thumbprint { get; set; }
-
-        [Parameter]
-        [Obsolete("Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {

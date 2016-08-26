@@ -18,12 +18,13 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ThreatDetectionTests : SqlTestsBase
     {
-        protected override void SetupManagementClients()
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
@@ -42,9 +43,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
-        public void ThreatDetectionDatabaseGetDefualtPolicy()
+        public void ThreatDetectionGetDefualtPolicy()
         {
-            RunPowerShellTest("Test-ThreatDetectionDatabaseGetDefualtPolicy");
+            RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
         }
 
         [Fact]
@@ -53,6 +54,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void ThreatDetectionServerUpdatePolicy()
+        {
+            RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]

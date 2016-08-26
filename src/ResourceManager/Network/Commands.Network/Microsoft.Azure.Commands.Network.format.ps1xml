@@ -139,6 +139,10 @@
                 <PropertyName>VirtualNetworkName</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PeeringState</Label>
+                <PropertyName>PeeringState</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
@@ -421,6 +425,32 @@
               <ListItem>
                 <Label>PublicIpAddress</Label>
                 <PropertyName>PublicIpAddressText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSEffectiveNetworkSecurityGroup</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>NetworkSecurityGroup</Label>
+                <PropertyName>NetworkSecurityGroupText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Association</Label>
+                <PropertyName>AssociationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EffectiveSecurityRules</Label>
+                <PropertyName>EffectiveSecurityRulesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1110,6 +1140,10 @@
                 <Label>AllowClassicOperations</Label>
                 <PropertyName>AllowClassicOperations</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>                
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -1183,6 +1217,14 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>GatewayManagerEtag</Label>
+                <PropertyName>GatewayManagerEtag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>LastModifiedBy</Label>
+                <PropertyName>LastModifiedBy</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

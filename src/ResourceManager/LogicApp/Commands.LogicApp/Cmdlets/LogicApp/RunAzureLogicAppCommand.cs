@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -54,18 +55,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            if (string.IsNullOrEmpty(this.TriggerName))
-            {
-                this.WriteObject(
-                    LogicAppClient.RunWorkflow(this.ResourceGroupName, this.Name,
-                        new RunWorkflowParameters()), true);
-            }
-            else
-            {
-                LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
-            }
+            LogicAppClient.RunWorkflowTrigger(this.ResourceGroupName, this.Name, this.TriggerName);
         }
     }
 }

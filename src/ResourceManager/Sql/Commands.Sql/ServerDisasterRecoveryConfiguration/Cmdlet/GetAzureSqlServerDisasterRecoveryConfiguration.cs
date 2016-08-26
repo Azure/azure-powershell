@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerDisasterRecoveryConfiguration",
-        ConfirmImpact = ConfirmImpact.None)]
+        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
     {
         /// <summary>

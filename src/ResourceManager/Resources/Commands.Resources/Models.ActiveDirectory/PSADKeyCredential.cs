@@ -23,11 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public DateTime EndDate { get; set; }
 
         public Guid KeyId { get; set; }
-
-        public string Usage { get; set; }
-
-        public string Type { get; set; }
-
-        public string Value { get; set; }
+        
+        public string CertValue { get; set; }
     }
 }

@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -49,6 +51,47 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 Subscription = context.Subscription;
                 SqlClient = null;
             }
+        }
+
+        /// <summary>
+        /// Gets the server security alert policy for the given server in the given resource group
+        /// </summary>
+        public ServerSecurityAlertPolicy GetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId)
+        {
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            var response = operations.GetServerSecurityAlertPolicy(resourceGroupName, serverName);
+            return response.SecurityAlertPolicy;
+        }
+
+        /// <summary>
+        /// Calls the set security alert APIs for the server security alert policy in the given resource group
+        /// </summary>
+        public void SetServerSecurityAlertPolicy(string resourceGroupName, string serverName, string clientRequestId, ServerSecurityAlertPolicyCreateOrUpdateParameters parameters)
+        {
+            ISecurityAlertPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            var statusLink = operations.CreateOrUpdateServerSecurityAlertPolicy(resourceGroupName, serverName, parameters).OperationStatusLink;
+            if (string.IsNullOrEmpty(statusLink))
+            {
+                return;
+            }
+            for (var iterationCount = 0; iterationCount < 1800; iterationCount++) // wait for at most an hour
+            {
+                var status = GetServerCreateOrUpdateOperationStatus(statusLink, clientRequestId);
+                if (status == OperationStatus.Succeeded)
+                {
+                    break;
+                }
+                TestMockSupport.Delay(2000); // wait 2 seconds between each poll
+            }
+        }
+
+        /// <summary>
+        /// Returns the operation status of a server create or update operation
+        /// </summary>
+        public OperationStatus GetServerCreateOrUpdateOperationStatus(string operationStatusLink, string clientRequestId)
+        {
+            var operations = GetCurrentSqlClient(clientRequestId).SecurityAlertPolicy;
+            return operations.GetOperationStatus(operationStatusLink).OperationResult.Properties.State;
         }
 
         /// <summary>
