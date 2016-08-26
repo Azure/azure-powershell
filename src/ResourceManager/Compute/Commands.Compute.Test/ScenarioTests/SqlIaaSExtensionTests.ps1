@@ -62,7 +62,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
 
         # OS & Image
         $user = "localadmin";
-        $password = 'Bull_dog1';
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -169,7 +169,7 @@ function Test-SetAzureRmVMSqlServerExtension
 
         # OS & Image
         $user = "localadmin";
-        $password = 'Bull_dog1';
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';

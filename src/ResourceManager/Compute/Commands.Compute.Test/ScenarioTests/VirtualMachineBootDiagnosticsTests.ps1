@@ -35,7 +35,7 @@ function Test-VirtualMachineBootDiagnostics
 
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -86,13 +86,12 @@ function Test-VirtualMachineBootDiagnostics
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        # $p.StorageProfile.OSDisk = $null;
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
@@ -134,6 +133,10 @@ function Test-VirtualMachineBootDiagnostics
 
         # Remove VM
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
+
+        # Create a Linux VM with boot diagnostics
+        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/linuxos.vhd";
+        $osDiskName = 'linuxOsDisk';
 
         $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
@@ -201,7 +204,7 @@ function Test-VirtualMachineBootDiagnosticsPremium
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -239,7 +242,7 @@ function Test-VirtualMachineBootDiagnosticsPremium
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -310,7 +313,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -341,7 +344,7 @@ function Test-LinuxVirtualMachineBootDiagnostics
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
@@ -415,7 +418,7 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         # NRP
         $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
         $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -458,7 +461,7 @@ function Test-VirtualMachineBootDiagnosticsSet
 
         # OS & Image
         $user = "Foo12";
-        $password = 'BaR@123' + $rgname;
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';

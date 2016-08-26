@@ -16,8 +16,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 {
     public class PSADGroup : PSADObject
     {
-        public string Mail { get; set; }
-
         public bool? SecurityEnabled { get; set; }
     }
 }

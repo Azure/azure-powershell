@@ -789,4 +789,10 @@
   <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
     <value>The resourceId defined in the config file does not match the actual resource's id.</value>
   </data>
+  <data name="MigrateResourceShoudlProcessAction" xml:space="preserve">
+    <value>Performing migration action: {0} on resource {1}</value>
+  </data>
+  <data name="MigrateResourceShoudlProcessTarget" xml:space="preserve">
+    <value>Are you should you want to perform migrate action: {0} on resource {1}</value>
+  </data>
 </root>

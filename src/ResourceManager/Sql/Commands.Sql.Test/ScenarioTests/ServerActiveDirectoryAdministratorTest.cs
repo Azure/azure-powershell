@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "SQL team hould re-record this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {

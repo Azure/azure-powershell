@@ -51,6 +51,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Auditing\Cmdlet\AuditType.cs" />
+    <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\BaseBlobAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\BaseTableAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\AuditingPolicyModel.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
@@ -77,6 +83,10 @@
     <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SqlServerThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
@@ -119,8 +129,8 @@
     <Compile Include="Auditing\Cmdlet\SqlDatabaseAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
-    <Compile Include="Auditing\Model\BaseAuditingPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
+    <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />
     <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
@@ -316,7 +326,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.47.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.50.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -339,20 +349,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.5-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

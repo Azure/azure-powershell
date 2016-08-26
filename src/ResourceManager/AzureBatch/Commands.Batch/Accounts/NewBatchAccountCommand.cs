@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -42,13 +42,10 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Alias("Tags")]
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("WARNING: The usage of the Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags " +
-                "for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494 ");
-
             BatchAccountContext context = BatchClient.CreateAccount(this.ResourceGroupName, this.AccountName, this.Location, this.Tag, this.AutoStorageAccountId);
             WriteObject(context);
         }

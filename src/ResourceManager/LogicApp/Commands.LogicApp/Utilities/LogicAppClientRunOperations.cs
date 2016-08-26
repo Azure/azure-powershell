@@ -23,19 +23,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     public partial class LogicAppClient
     {
         /// <summary>
-        /// Starts the logic app
-        /// </summary>
-        /// <param name="resourceGroupName">Name of the resource group</param>
-        /// <param name="workflowName">Name of the logic app</param>
-        /// <param name="runWorkflowParameters">Run parameters</param>
-        /// <returns>Workflow run output</returns>
-        public WorkflowRun RunWorkflow(string resourceGroupName, string workflowName,
-            RunWorkflowParameters runWorkflowParameters)
-        {
-            return this.LogicManagementClient.Workflows.Run(resourceGroupName, workflowName, runWorkflowParameters);
-        }
-
-        /// <summary>
         /// Cancels the logic app run.
         /// </summary>
         /// <param name="resourceGroupName">Name of the resource group</param>

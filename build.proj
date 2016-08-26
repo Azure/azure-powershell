@@ -257,7 +257,9 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-        
+    
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckStrongNameSignature.ps1 &quot;"/>
+
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
       DestinationFolder="$(LibraryRoot)tools\AzureRM" />

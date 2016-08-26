@@ -74,7 +74,7 @@ function Test-PolicyAssignmentCRUD
 	$list = Get-AzureRMPolicyAssignment
 	Assert-AreEqual 2 @($list).Count
 
-	$remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId -Force
+	$remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId
 	Assert-AreEqual True $remove
 
 }

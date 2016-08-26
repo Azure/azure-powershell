@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
@@ -30,32 +31,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a tags dictionary from an enumerable of tags.
         /// </summary>
         /// <param name="tags">The enumerable of tags</param>
-        internal static InsensitiveDictionary<string> GetTagsDictionary(IEnumerable<Hashtable> tags)
+        internal static InsensitiveDictionary<string> GetTagsDictionary(Hashtable tags)
         {
-            return tags == null
-                ? null
-                : tags
-                    .CoalesceEnumerable()
-                    .Select(hashTable => hashTable.OfType<DictionaryEntry>()
-                        .ToInsensitiveDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value))
-                    .Where(tagDictionary => tagDictionary.ContainsKey("Name"))
-                    .Select(tagDictionary => Tuple
-                        .Create(
-                            tagDictionary["Name"].ToString(),
-                            tagDictionary.ContainsKey("Value") ? tagDictionary["Value"].ToString() : string.Empty))
-                    .Distinct(kvp => kvp.Item1)
-                    .ToInsensitiveDictionary(kvp => kvp.Item1, kvp => kvp.Item2);
+            if(tags == null)
+            {
+                return null;
+            }
+
+            var tagsDictionary = TagsConversionHelper.CreateTagDictionary(tags, true);
+            return tagsDictionary.Distinct(kvp => kvp.Key).ToInsensitiveDictionary(kvp => kvp.Key, kvp => kvp.Value);
         }
 
         /// <summary>
         /// Gets a tags hash table from a tags dictionary.
         /// </summary>
         /// <param name="tags">The tags dictionary.</param>
-        internal static List<Hashtable> GetTagsHashtables(InsensitiveDictionary<string> tags)
+        internal static Hashtable GetTagsHashtable(InsensitiveDictionary<string> tags)
         {
             return tags == null
                 ? null
-                : tags.Select(kvp => new Hashtable { { "Name", kvp.Key }, { "Value", kvp.Value } }).ToList();
+                : TagsConversionHelper.CreateTagHashtable(tags);
         }
     }
 }

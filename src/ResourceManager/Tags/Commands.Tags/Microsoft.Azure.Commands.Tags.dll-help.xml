@@ -421,7 +421,7 @@ Values:
         0001        0
 
 </dev:code>
-        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+        <dev:code>PS C:\&gt;Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{CostCenter="0001"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -446,7 +446,7 @@ Values:
         0001        1
 
 </dev:code>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
+        <dev:code>PS C:\&gt;Get-AzureRmResourceGroup -Tag @{CostCenter=$null}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -525,12 +525,6 @@ Tags:
           <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
           <maml:name>PassThru</maml:name>
           <maml:description>
             <maml:para>Returns an object that represents the deleted tag or the resulting tag with deleted valued.</maml:para>
@@ -539,18 +533,6 @@ Tags:
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named" aliases="none">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0" aliases="none">
         <maml:name>Name</maml:name>
         <maml:description>

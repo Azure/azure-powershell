@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,12 +32,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
             ConfirmAction(
               string.Format(Resources.RemoveRedisCacheDiagnostics, Name),
