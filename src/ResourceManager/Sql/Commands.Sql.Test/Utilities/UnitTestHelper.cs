@@ -47,17 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.Utilities
             // If the Cmdlet modifies data, SupportsShouldProcess should be set to true.
             object[] cmdletAttributes = cmdlet.GetCustomAttributes(typeof(CmdletAttribute), true);
             Assert.Equal(1, cmdletAttributes.Length);
-            CmdletAttribute attribute = (CmdletAttribute)cmdletAttributes[0];
-            Assert.Equal(supportsShouldProcess, attribute.SupportsShouldProcess);
-
-            if (supportsShouldProcess)
-            {
-                // If the Cmdlet modifies data, there needs to be a Force property to bypass
-                // ShouldProcess.
-                Assert.True(
-                    cmdlet.GetProperty("Force") != null,
-                    "Force property is expected for Cmdlets that modifies data.");
-            }
         }
 
         /// <summary>

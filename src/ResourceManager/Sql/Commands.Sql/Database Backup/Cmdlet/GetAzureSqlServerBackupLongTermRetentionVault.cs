@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerBackupLongTermRetentionVault", SupportsShouldProcess = true)]
     public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>

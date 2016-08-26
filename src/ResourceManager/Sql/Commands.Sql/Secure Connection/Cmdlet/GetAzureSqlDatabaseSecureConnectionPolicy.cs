@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
     /// <summary>
     /// Returns the secure connection policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseSecureConnectionPolicy"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
         /// <summary>
