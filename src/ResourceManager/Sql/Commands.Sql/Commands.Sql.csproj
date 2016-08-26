@@ -58,7 +58,7 @@
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlDatabaseRecommendedActions.cs" />
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlElasticPoolRecommendedActions.cs" />
     <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlServerRecommendedActions.cs" />
-    <Compile Include="RecommendedAction\Cmdlet\RecommendedActionStateValues.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\RecommendedActionState.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlDatabaseRecommendedActionState.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlElasticPoolRecommendedActionState.cs" />
     <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlServerRecommendedActionState.cs" />
