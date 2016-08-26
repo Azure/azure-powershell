@@ -27,7 +27,7 @@ function Test-RecoveryServicesVaultCRUDTests
 	Assert-NotNull($vaultCreationResponse.Type)
 
 	# Enumerate Vaults
-	$vaults = Get-AzureRmRecoveryServicesVault
+	$vaults = Get-AzureRmRecoveryServicesVault -Name rsv1 -ResourceGroupName RsvTestRG
 	Assert-True { $vaults.Count -gt 0 }
 	Assert-NotNull($vaults)
 	foreach($vault in $vaults)
