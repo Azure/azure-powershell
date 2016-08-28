@@ -1623,12 +1623,6 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>When the Force parameter is provided, diagnostics will be disables without any confirmation prompts.</maml:para>
-          </maml:description>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
@@ -1653,18 +1647,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>When the Force parameter is provided, diagnostics will be disables without any confirmation prompts.</maml:para>
-        </maml:description>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -1716,7 +1698,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName" -Force
+          PS C:\&gt;Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "resourceGroupName" -Name "cacheName"
         </dev:code>
         <dev:remarks>
           <maml:para>
