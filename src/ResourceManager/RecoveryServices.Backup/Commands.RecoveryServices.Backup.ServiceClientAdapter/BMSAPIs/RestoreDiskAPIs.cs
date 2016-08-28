@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
@@ -35,16 +37,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
-            string vaultLocation = BmsAdapter.GetResourceLocation();            
-            string containerName = rp.ContainerName;
-            string protectedItemName = rp.ItemName;
+            string vaultLocation = BmsAdapter.GetResourceLocation();
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
+
             string recoveryPointId = rp.RecoveryPointId;
             //validtion block
             if(storageAccountLocation != vaultLocation)
             {
                 throw new Exception(Resources.RestoreDiskIncorrectRegion);
             }
-            string vmType = containerName.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
+            string vmType = containerUri.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
                 ? "Classic" : "Compute";
             string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", 
                 StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
@@ -63,18 +68,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 SourceResourceId = rp.SourceResourceId,
             };
 
-            if (rp.EncryptionEnabled)
-            {
-                restoreRequest.EncryptionDetails = new EncryptionDetails()
-                {
-                    EncryptionEnabled = rp.EncryptionEnabled,
-                    KekUrl = rp.KeyAndSecretDetails.KeyUrl,
-                    KekVaultId = rp.KeyAndSecretDetails.KeyVaultId,
-                    SecretKeyUrl = rp.KeyAndSecretDetails.SecretUrl,
-                    SecretKeyVaultId = rp.KeyAndSecretDetails.SecretVaultId,
-                };              
-            }
-
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
             triggerRestoreRequest.Item = new RestoreRequestResource();
             triggerRestoreRequest.Item.Properties = new RestoreRequest();
@@ -85,8 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceName, 
                 BmsAdapter.GetCustomRequestHeaders(),
                 AzureFabricName, 
-                containerName, 
-                protectedItemName, 
+                containerUri, 
+                protectedItemUri, 
                 recoveryPointId, 
                 triggerRestoreRequest, 
                 BmsAdapter.CmdletCancellationToken).Result;
