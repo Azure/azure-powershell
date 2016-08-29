@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public const string enableEncryptionOperation = "EnableEncryption";
         public const string disableEncryptionOperation = "DisableEncryption";
         public const string queryEncryptionStatusOperation = "QueryEncryptionStatus";
+        public const string encryptionResultOsKey = "os";
+        public const string encryptionResultDataKey = "data";
         public const string aadClientIDKey = "AADClientID";
         public const string aadClientSecretKey = "AADClientSecret";
         public const string aadClientCertThumbprintKey = "AADClientCertThumbprint";
