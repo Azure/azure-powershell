@@ -52,7 +52,7 @@ function Test-DataLakeStoreAccount
 		Assert-True {Test-AzureRMDataLakeStoreAccount -Name $accountName}
 
 		# Updating Account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		$accountUpdated = Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
@@ -204,6 +204,18 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $($content.length*2) $result.Length
 	
+		# Preview content from the file
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile
+		Assert-AreEqual $($content.length*2) $previewContent.Length
+
+		# Preview a subset of the content
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2
+		Assert-AreEqual $(($content.length*2) - 2) $previewContent.Length
+
+		# Preview a subset with a specific length
+		$previewContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $concatFile -Offset 2 -Length $content.Length
+		Assert-AreEqual $content.length $previewContent.Length
+
 		# Import and get file
 		$localFileInfo = Get-ChildItem $fileToCopy
 		$result = Import-AzureRmDataLakeStoreItem -Account $accountName -Path $fileToCopy -Destination $importFile
@@ -309,29 +321,29 @@ function Test-DataLakeStoreFileSystemPermissions
 		Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
 		$currentCount = $result.UserAces.Count
 		$result.UserAces.Add($aceUserId, "rwx") 
-		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserACes.Count
 		$result.UserAces.Remove($aceUserId)
 		# remove the account
-		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result -Force
+		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 
 		# Set and get a specific permission with friendly sets
-		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All -Force
+		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with friendly remove
-		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Force
+		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 		# set and get a specific permission with the ACE string
-		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId)) -Force
+		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with the ACE string
-		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId)) -force
+		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-AreEqual $currentCount $result.UserAces.Count
 
@@ -403,7 +415,7 @@ function Test-NegativeDataLakeStoreAccount
 		Assert-Throws {New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 		# attempt to update a non-existent account
-		$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
 		Assert-Throws {Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 		# attempt to get a non-existent account

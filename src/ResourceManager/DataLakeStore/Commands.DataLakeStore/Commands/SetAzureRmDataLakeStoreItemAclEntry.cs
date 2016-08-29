@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true),
+        OutputType(typeof(bool))]
+    [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "Set ACL Entries using ACL object";
@@ -77,16 +79,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be set.")]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 5,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be set on the file with the specified ACL without prompting.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
@@ -94,22 +86,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 : string.Format("{0}{1}:{2}:{3}", Default ? "default:" : string.Empty, AceType, Id,
                     DataLakeStoreItemPermissionInstance.GetPermissionString(Permissions)).ToLowerInvariant();
 
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.OriginalPath),
-                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
-                    Path.OriginalPath,
-                    () =>
-                        DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
-                            aclSpec));
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
-                    aclSpec);
-            }
+            ConfirmAction(
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                Path.OriginalPath,
+                () =>
+                    DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
+                        aclSpec));
         }
     }
 }

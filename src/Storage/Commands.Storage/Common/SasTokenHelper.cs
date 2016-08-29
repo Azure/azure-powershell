@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,6 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
@@ -23,6 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Collections.Generic;
 
     internal class SasTokenHelper
     {
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
         }
-        
+
         /// <summary>
         /// Validate the file share access policy
         /// </summary>

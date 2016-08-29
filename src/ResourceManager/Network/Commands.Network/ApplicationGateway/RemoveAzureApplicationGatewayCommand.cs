@@ -14,13 +14,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Management.Network;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGateway")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmApplicationGateway", SupportsShouldProcess = true)]
     public class RemoveAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -56,14 +55,16 @@ namespace Microsoft.Azure.Commands.Network
                 string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, Name),
                 Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
                 Name,
-                () => this.ApplicationGatewayClient.Delete(this.ResourceGroupName, this.Name));
+                () =>
+                {
+                    this.ApplicationGatewayClient.Delete(this.ResourceGroupName, this.Name);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
 
-            if (PassThru)
-            {
-                WriteObject(true);
-            }
         }
     }
 }
 
- 

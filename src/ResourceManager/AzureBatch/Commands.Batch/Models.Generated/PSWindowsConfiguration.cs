@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSWindowsConfiguration
+    public partial class PSWindowsConfiguration
     {
         
         internal Microsoft.Azure.Batch.WindowsConfiguration omObject;

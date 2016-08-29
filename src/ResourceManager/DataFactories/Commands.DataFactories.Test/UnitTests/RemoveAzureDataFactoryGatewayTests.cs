@@ -24,8 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
     {
         private RemoveAzureDataFactoryGatewayCommand _cmdlet;
 
-        public RemoveAzureDataFactoryGatewayTests()
+        public RemoveAzureDataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             _cmdlet = new RemoveAzureDataFactoryGatewayCommand

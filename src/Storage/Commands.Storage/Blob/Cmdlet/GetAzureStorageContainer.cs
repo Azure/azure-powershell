@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// List azure storage container
@@ -230,9 +230,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 permissions = await localChannel.GetContainerPermissionsAsync(container, accessCondition,
                     requestOptions, OperationContext, CmdletCancellationToken);
             }
-            catch(StorageException e)
+            catch (StorageException e)
             {
-                if(!e.IsNotFoundException())
+                if (!e.IsNotFoundException())
                 {
                     throw;
                 }

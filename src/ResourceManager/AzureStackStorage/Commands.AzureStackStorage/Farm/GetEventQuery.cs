@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin;
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -134,7 +134,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                 }
             }
             string filter = filterList.Aggregate((current, next) => string.Format(CultureInfo.InvariantCulture, "{0} and {1}", current, next));
-            
+
             EventQuery eventQuery = Client.Farms.GetEventQuery(ResourceGroupName, FarmName, filter);
             WriteObject(eventQuery, true);
         }

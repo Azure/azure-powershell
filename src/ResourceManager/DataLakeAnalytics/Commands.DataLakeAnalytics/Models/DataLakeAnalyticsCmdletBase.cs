@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
+using System;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {

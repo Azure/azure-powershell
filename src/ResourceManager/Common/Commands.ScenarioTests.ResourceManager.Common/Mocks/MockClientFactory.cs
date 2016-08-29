@@ -12,24 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using Hyak.Common;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure;
-using System.IO;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -101,14 +100,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 {
                     throw new ArgumentException(
                         string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
-                            typeof (TClient).Name));
+                            typeof(TClient).Name));
                 }
                 else
                 {
                     var realClientFactory = new ClientFactory();
                     var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
-                    
+
                     realClient.Dispose();
                     return newRealClient;
                 }
@@ -225,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 {
                     throw new ArgumentException(
                         string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
-                            typeof (TClient).Name));
+                            typeof(TClient).Name));
                 }
                 else
                 {

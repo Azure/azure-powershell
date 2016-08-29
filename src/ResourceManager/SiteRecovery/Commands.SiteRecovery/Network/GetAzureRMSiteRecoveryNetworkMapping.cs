@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             foreach (NetworkMapping networkMapping in networkMappingsListResponse.NetworkMappingsList)
             {
-                string primaryFabricName = 
+                string primaryFabricName =
                     Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
 
                 // Skip azure cases 
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     Utilities.GetValueFromArmId(networkMapping.Id, ARMResourceTypeConstants.ReplicationFabrics);
 
                 if (0 == string.Compare(primaryFabricName, this.primaryServerName, true) &&
-                    ! networkMapping.Properties.RecoveryNetworkId.Contains(ARMResourceTypeConstants.ReplicationFabrics))
+                    !networkMapping.Properties.RecoveryNetworkId.Contains(ARMResourceTypeConstants.ReplicationFabrics))
                 {
                     this.WriteNetworkMapping(networkMapping);
                 }

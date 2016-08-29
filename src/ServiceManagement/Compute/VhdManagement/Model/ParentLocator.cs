@@ -14,7 +14,7 @@
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
-    
+
 
     [VhdEntity(Size = 24)]
     public class ParentLocator

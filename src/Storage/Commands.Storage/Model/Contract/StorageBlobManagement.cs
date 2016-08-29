@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,6 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Storage;
@@ -27,6 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Shared.Protocol;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Blob management
@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 CloudBlob blob = Util.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext);
                 return blob;
             }
-            catch(StorageException e)
+            catch (StorageException e)
             {
                 if (e.IsNotFoundException())
                 {
@@ -339,11 +339,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             switch (type)
             {
                 case StorageServiceType.Blob:
-                    return account.CreateCloudBlobClient().GetServiceProperties((BlobRequestOptions) options, operationContext);
+                    return account.CreateCloudBlobClient().GetServiceProperties((BlobRequestOptions)options, operationContext);
                 case StorageServiceType.Queue:
-                    return account.CreateCloudQueueClient().GetServiceProperties((QueueRequestOptions) options, operationContext);
+                    return account.CreateCloudQueueClient().GetServiceProperties((QueueRequestOptions)options, operationContext);
                 case StorageServiceType.Table:
-                    return account.CreateCloudTableClient().GetServiceProperties((TableRequestOptions) options, operationContext);
+                    return account.CreateCloudTableClient().GetServiceProperties((TableRequestOptions)options, operationContext);
                 case StorageServiceType.File:
                     FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServiceProperties((FileRequestOptions)options, operationContext);
                     ServiceProperties sp = new ServiceProperties();

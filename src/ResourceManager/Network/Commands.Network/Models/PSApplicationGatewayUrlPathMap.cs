@@ -15,10 +15,10 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     public class PSApplicationGatewayUrlPathMap : PSChildResource
-     {
+    {
         public PSResourceId DefaultBackendAddressPool { get; set; }
         public PSResourceId DefaultBackendHttpSettings { get; set; }
         public List<PSApplicationGatewayPathRule> PathRules { get; set; }
@@ -40,5 +40,5 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(PathRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-     }
+    }
 }

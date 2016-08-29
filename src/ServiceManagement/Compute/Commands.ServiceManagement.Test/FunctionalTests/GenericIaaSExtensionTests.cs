@@ -41,8 +41,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private VirtualMachineExtensionImageContext vmAccessExtension;
         private string version = "1.0";
         string rdpPath = @".\AzureVM.rdp";
-        string dns;
-        int port;
         private string referenceName;
         string localPath;
         private const string publisher = "Microsoft.Compute";

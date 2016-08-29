@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSEnvironmentSetting
+    public partial class PSEnvironmentSetting
     {
         
         internal Microsoft.Azure.Batch.EnvironmentSetting omObject;

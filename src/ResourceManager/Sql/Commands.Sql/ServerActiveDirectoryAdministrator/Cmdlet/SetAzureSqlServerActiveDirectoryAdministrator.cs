@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     /// Cmdlet to create a new Azure SQL Server Active Directory administrator
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerActiveDirectoryAdministrator",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
@@ -62,15 +62,15 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
                     ModelAdapter.GetServerActiveDirectoryAdministrator(this.ResourceGroupName, this.ServerName),
                 };
             }
-            catch(CloudException ex)
+            catch (CloudException ex)
             {
-                if(ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                if (ex.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     // Unexpected exception encountered
                     throw;
                 }
             }
-            
+
             return currentActiveDirectoryAdmins;
         }
 

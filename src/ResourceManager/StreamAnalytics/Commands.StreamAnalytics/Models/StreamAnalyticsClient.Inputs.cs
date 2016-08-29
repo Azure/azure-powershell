@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
-using Microsoft.Azure.Commands.StreamAnalytics.Properties;
-using Microsoft.Azure.Management.StreamAnalytics;
-using Microsoft.Azure.Management.StreamAnalytics.Models;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Models
 {
@@ -114,45 +114,34 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Models
             }
 
             PSInput input = null;
-            Action createInput = () =>
-            {
-                input = new PSInput(
-                    CreateOrUpdatePSInput(parameter.ResourceGroupName,
+            parameter.ConfirmAction(
+                    parameter.Force,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InputExists,
+                        parameter.InputName,
                         parameter.JobName,
+                        parameter.ResourceGroupName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InputCreating,
                         parameter.InputName,
-                        parameter.RawJsonContent))
+                        parameter.JobName,
+                        parameter.ResourceGroupName),
+                    parameter.InputName,
+                    () =>
                     {
-                        ResourceGroupName = parameter.ResourceGroupName,
-                        JobName = parameter.JobName
-                    };
-            };
-
-            if (parameter.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createInput();
-            }
-            else
-            {
-                bool inputExists = CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName);
-
-                parameter.ConfirmAction(
-                        !inputExists,
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.InputExists,
-                            parameter.InputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            Resources.InputCreating,
-                            parameter.InputName,
-                            parameter.JobName,
-                            parameter.ResourceGroupName),
-                        parameter.InputName,
-                        createInput);
-            }
+                        input = new PSInput(
+                            CreateOrUpdatePSInput(parameter.ResourceGroupName,
+                                parameter.JobName,
+                                parameter.InputName,
+                                parameter.RawJsonContent))
+                        {
+                            ResourceGroupName = parameter.ResourceGroupName,
+                            JobName = parameter.JobName
+                        };
+                    },
+                    () => CheckInputExists(parameter.ResourceGroupName, parameter.JobName, parameter.InputName));
 
             return input;
         }

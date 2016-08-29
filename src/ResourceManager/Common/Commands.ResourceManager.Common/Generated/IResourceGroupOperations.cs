@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// A standard service response for long running operations.
         /// </returns>
         Task<LongRunningOperationResponse> BeginDeletingAsync(string resourceGroupName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Checks whether resource group exists.
         /// </summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource group information.
         /// </returns>
         Task<ResourceGroupExistsResult> CheckExistenceAsync(string resourceGroupName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create a resource group.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource group information.
         /// </returns>
         Task<ResourceGroupCreateOrUpdateResult> CreateOrUpdateAsync(string resourceGroupName, ResourceGroup parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Delete resource group and all of its resources.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAsync(string resourceGroupName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a resource group.
         /// </summary>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Resource group information.
         /// </returns>
         Task<ResourceGroupGetResult> GetAsync(string resourceGroupName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Gets a collection of resource groups.
         /// </summary>
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource groups.
         /// </returns>
         Task<ResourceGroupListResult> ListAsync(ResourceGroupListParameters parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of resource groups.
         /// </returns>
         Task<ResourceGroupListResult> ListNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Resource groups can be updated through a simple PATCH operation to
         /// a group address. The format of the request is the same as that for

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         AutomationAccount UpdateAutomationAccount(string resourceGroupName, string automationAccountName, string plan, IDictionary tags);
 
         void DeleteAutomationAccount(string resourceGroupName, string automationAccountName);
-        
+
         #endregion
 
         #region Compilationjobs
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         #endregion
 
         #region DscNode Operations
-        
+
         DscNode GetDscNodeById(string resourceGroupName, string automationAccountName, Guid nodeId);
 
         IEnumerable<DscNode> ListDscNodes(string resourceGroupName, string automationAccountName, string status);
@@ -205,6 +205,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Job StartRunbook(string resourceGroupName, string automationAccountName, string runbookName, IDictionary parameters, string runOn);
 
+        #endregion
+
+        #region HybridrunbookWorker
+        HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
         #endregion
 
         #region Credentials

@@ -14,12 +14,12 @@
 
 namespace Microsoft.AzureStack.Commands
 {
-    using System;
-    using System.Linq;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using System.Management.Automation;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using System;
+    using System.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// New Plan cmdlet

@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
-using System.Management.Automation;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -84,6 +84,14 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Key Vault configurations")]
+        [ValidateNotNullOrEmpty]
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -133,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(ex.Response.Content);
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(ex.Response.Content);
                     if ("Failed".Equals(errorReturned.Status)
                         && errorReturned.Error != null && "InternalExecutionError".Equals(errorReturned.Error.Code))
                     {
@@ -159,6 +167,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 AutoPatchingSettings = this.AutoPatchingSettings,
                 AutoBackupSettings = this.AutoBackupSettings,
+                KeyVaultCredentialSettings = this.KeyVaultCredentialSettings,
                 AutoTelemetrySettings = new AutoTelemetrySettings() { Region = this.Location }
             };
         }
@@ -169,12 +178,25 @@ namespace Microsoft.Azure.Commands.Compute
         /// <returns></returns>
         private SqlServerPrivateSettings GetPrivateConfiguration()
         {
+            PrivateKeyVaultCredentialSettings akvPrivateSettings = null;
+
+            if (this.KeyVaultCredentialSettings != null)
+            {
+                akvPrivateSettings = new PrivateKeyVaultCredentialSettings
+                {
+                    AzureKeyVaultUrl = this.KeyVaultCredentialSettings.AzureKeyVaultUrl,
+                    ServicePrincipalName = this.KeyVaultCredentialSettings.ServicePrincipalName,
+                    ServicePrincipalSecret = this.KeyVaultCredentialSettings.ServicePrincipalSecret
+                };
+            }
+
             return new SqlServerPrivateSettings
             {
                 StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
                 StorageAccessKey =
                     (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
-                Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
+                Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password,
+                PrivateKeyVaultCredentialSettings = (akvPrivateSettings == null) ? null : akvPrivateSettings
             };
         }
     }

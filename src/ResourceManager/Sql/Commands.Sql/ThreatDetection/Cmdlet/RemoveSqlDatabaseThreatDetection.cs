@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy"), 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),
             OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-   
+
     public class AzureRmSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>

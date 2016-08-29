@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public ResetBatchComputeNodeCommandTests()
+        public ResetBatchComputeNodeCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new ResetBatchComputeNodeCommand()
@@ -64,8 +65,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ComputeNodeReimageOption?, 
-                ComputeNodeReimageOptions, 
+                ComputeNodeReimageOption?,
+                ComputeNodeReimageOptions,
                 AzureOperationHeaderResponse<ComputeNodeReimageHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Don't go to the service on a Reimage ComputeNode call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest) baseRequest;
+                ComputeNodeReimageBatchRequest request = (ComputeNodeReimageBatchRequest)baseRequest;
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {

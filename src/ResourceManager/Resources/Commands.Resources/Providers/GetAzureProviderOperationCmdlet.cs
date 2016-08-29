@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Resources
 {
+    using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.Resources.Models;
-    using Microsoft.Azure.Management.Resources.Models;
     using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Resources
             this.OperationSearchString = this.OperationSearchString.Trim();
 
             ValidateActionSearchString(this.OperationSearchString);
-           
-            List<PSResourceProviderOperation> operationsToDisplay;                  
+
+            List<PSResourceProviderOperation> operationsToDisplay;
 
             if (this.OperationSearchString.Contains(WildCardCharacter))
             {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Resources
                 throw new ArgumentException(ProjectResources.OperationSearchStringInvalidWildcard);
             }
 
-            if(parts.Length == 1 && parts[0] != WildCardCharacter)
+            if (parts.Length == 1 && parts[0] != WildCardCharacter)
             {
                 throw new ArgumentException(string.Format(ProjectResources.OperationSearchStringInvalidProviderName, parts[0]));
             }
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Resources
                 providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(provider));
             }
 
-            return providers.SelectMany(p => GetPSOperationsFromProviderOperationsMetadata(p)).Where(operation => wildcard.IsMatch(operation.Operation)).ToList();                        
+            return providers.SelectMany(p => GetPSOperationsFromProviderOperationsMetadata(p)).Where(operation => wildcard.IsMatch(operation.Operation)).ToList();
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
             IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
-            return flattenedProviderOperations.Where(op => string.Equals(op.Operation, operationString, StringComparison.OrdinalIgnoreCase)).ToList();          
+            return flattenedProviderOperations.Where(op => string.Equals(op.Operation, operationString, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
         private static IEnumerable<PSResourceProviderOperation> GetPSOperationsFromProviderOperationsMetadata(ProviderOperationsMetadata providerOperationsMetadata)

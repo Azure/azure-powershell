@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSResizeError
+    public partial class PSResizeError
     {
         
         internal Microsoft.Azure.Batch.ResizeError omObject;

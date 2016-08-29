@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string Name { get; set; }
 
         public string ResourceGroupName { get; set; }
-        
+
         public string NextLink { get; set; }
     }
 }

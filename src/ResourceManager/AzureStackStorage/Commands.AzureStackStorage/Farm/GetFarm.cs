@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -51,7 +50,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             {
                 FarmListResponse response = Client.Farms.List(ResourceGroupName);
 
-                WriteObject(response.Farms.Select(_=>new FarmResponse(_)), true);
+                WriteObject(response.Farms.Select(_ => new FarmResponse(_)), true);
             }
         }
     }

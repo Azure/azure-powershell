@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// A standard service response for long running operations.
         /// </returns>
         Task<LongRunningOperationResponse> BeginDeletingAsync(string resourceGroupName, string deploymentName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Cancel a currently running template deployment.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> CancelAsync(string resourceGroupName, string deploymentName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Checks whether deployment exists.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Deployment information.
         /// </returns>
         Task<DeploymentExistsResult> CheckExistenceAsync(string resourceGroupName, string deploymentName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Create a named template deployment using a template.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Template deployment operation create result.
         /// </returns>
         Task<DeploymentOperationsCreateResult> CreateOrUpdateAsync(string resourceGroupName, string deploymentName, Deployment parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Delete deployment and all of its resources.
         /// </summary>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// request ID.
         /// </returns>
         Task<AzureOperationResponse> DeleteAsync(string resourceGroupName, string deploymentName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a deployment.
         /// </summary>
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// Template deployment information.
         /// </returns>
         Task<DeploymentGetResult> GetAsync(string resourceGroupName, string deploymentName, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of deployments.
         /// </returns>
         Task<DeploymentListResult> ListAsync(string resourceGroupName, DeploymentListParameters parameters, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Get a list of deployments.
         /// </summary>
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// List of deployments.
         /// </returns>
         Task<DeploymentListResult> ListNextAsync(string nextLink, CancellationToken cancellationToken);
-        
+
         /// <summary>
         /// Validate a deployment template.
         /// </summary>

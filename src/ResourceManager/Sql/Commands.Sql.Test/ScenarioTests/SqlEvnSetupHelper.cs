@@ -12,24 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -94,7 +84,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                     var environment = AzureRmProfileProvider.Instance.Profile.Environments[AzureRmProfileProvider.Instance.Profile.Context.Subscription.Environment];
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
-                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = "core.windows.net"; 
+                    environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix] = "core.windows.net";
                     AzureRmProfileProvider.Instance.Profile.Save();
                 }
             }
@@ -147,7 +137,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 {
                     return null;
                 }
-                
+
             }
         }
 

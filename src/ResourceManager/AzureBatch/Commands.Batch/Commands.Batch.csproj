@@ -44,9 +44,8 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.4.0.1\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Batch, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Azure.Batch.5.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -58,8 +57,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Batch">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.1.5.0\lib\net40\Microsoft.Azure.Management.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Batch, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.2.0.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -77,24 +77,24 @@
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -114,8 +114,8 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.4.1.1\lib\net40\Microsoft.WindowsAzure.Management.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage, Version=6.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\WindowsAzure.Storage.6.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -127,7 +127,6 @@
     <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -156,6 +155,22 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
+    <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
+    <Compile Include="Models.Generated\PSExitCodeRangeMapping.cs" />
+    <Compile Include="Models.Generated\PSExitConditions.cs" />
+    <Compile Include="Models.Generated\PSExitOptions.cs" />
+    <Compile Include="Models.Generated\PSNetworkConfiguration.cs" />
+    <Compile Include="Models\NewBulkTaskParameters.cs" />
+    <Compile Include="Models\PSApplicationPackage.cs" />
+    <Compile Include="Models\PSApplication.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationCommand.cs" />
+    <Compile Include="Applications\RemoveBatchApplicationPackageCommand.cs" />
+    <Compile Include="Applications\GetBatchApplicationPackageCommand.cs" />
+    <Compile Include="Applications\GetBatchApplicationCommand.cs" />
+    <Compile Include="Applications\SetBatchApplicationCommand.cs" />
+    <Compile Include="Applications\NewBatchApplicationCommand.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
     <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
@@ -220,6 +235,7 @@
     <Compile Include="Models.Generated\PSWindowsConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\BatchClient.Applications.cs" />
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
     <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
@@ -249,6 +265,7 @@
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListNodeFileOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
+    <Compile Include="Models\ListPoolUsageOptions.cs" />
     <Compile Include="Models\ListSubtaskOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListComputeNodeOptions.cs" />
@@ -288,7 +305,6 @@
     <Compile Include="Models.Generated\PSResourceStatistics.cs" />
     <Compile Include="Models.Generated\PSStartTask.cs" />
     <Compile Include="Models.Generated\PSStartTaskInformation.cs" />
-    <Compile Include="Models\PSTagValuePair.cs" />
     <Compile Include="Models.Generated\PSTaskConstraints.cs" />
     <Compile Include="Models.Generated\PSTaskExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSTaskInformation.cs" />
@@ -307,6 +323,8 @@
     <Compile Include="Models\UpdateComputeNodeUserParameters.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Accounts\GetBatchAccountNodeAgentSkuCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
@@ -331,6 +349,7 @@
     <Compile Include="ComputeNodeUsers\RemoveBatchComputeNodeUserCommand.cs" />
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
+    <Compile Include="NewApplicationPackageException.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeCommand.cs" />
@@ -343,6 +362,7 @@
       <Link>AzureRM.Batch.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Microsoft.Azure.Commands.Batch.dll-Help.psd1" />
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -355,13 +375,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Batch.dll-Help.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

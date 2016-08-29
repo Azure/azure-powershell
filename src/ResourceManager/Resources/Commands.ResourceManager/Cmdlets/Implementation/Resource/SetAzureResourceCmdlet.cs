@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Collections;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
+    using System.Collections;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// A cmdlet that creates a new azure resource.
@@ -54,12 +54,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Plan { get; set; }
 
         /// <summary>  
-        /// Gets or sets the plan object.  
+        /// Gets or sets the Sku object.  
         /// </summary>  
-        [Alias("SkuObject")]  
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
-        [ValidateNotNullOrEmpty]  
-        public Hashtable Sku { get; set; }  
+        [Alias("SkuObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Sku { get; set; }
 
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets a value that indicates if an HTTP PATCH request needs to be made instead of PUT.
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
 
-            if(!string.IsNullOrEmpty(this.ODataQuery))
+            if (!string.IsNullOrEmpty(this.ODataQuery))
             {
                 this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRmResource cmdlet and will be removed in a future release.");
             }
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private JToken GetResourceBody()
         {
-            if(this.ShouldUsePatchSemantics())
+            if (this.ShouldUsePatchSemantics())
             {
                 var resourceBody = this.GetPatchResourceBody();
 
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.Plan != null)
             {
-                if(resourceBody != null)
+                if (resourceBody != null)
                 {
                     resourceBody.Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>();
                 }
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.Kind != null)
             {
-                if(resourceBody != null)
+                if (resourceBody != null)
                 {
                     resourceBody.Kind = this.Kind;
                 }
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.Sku != null)
             {
-                if(resourceBody != null)
+                if (resourceBody != null)
                 {
                     resourceBody.Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>();
                 }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.Tag != null)
             {
-                if(resourceBody != null)
+                if (resourceBody != null)
                 {
                     resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
                 }

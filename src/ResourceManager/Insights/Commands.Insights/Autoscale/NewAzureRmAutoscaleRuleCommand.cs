@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Insights.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {

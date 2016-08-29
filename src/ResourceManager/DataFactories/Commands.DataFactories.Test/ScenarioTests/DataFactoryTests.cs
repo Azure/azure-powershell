@@ -19,6 +19,11 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class DataFactoryTests : DataFactoriesScenarioTestsBase
     {
+        public DataFactoryTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactory()

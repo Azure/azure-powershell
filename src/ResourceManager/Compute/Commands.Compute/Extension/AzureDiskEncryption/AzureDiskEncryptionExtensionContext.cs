@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     /// </summary>
     public class AzureDiskEncryptionExtensionContext : PSVirtualMachineExtension
     {
-        public const string LinuxExtensionDefaultPublisher = "Microsoft.OSTCExtensions";
+        public const string LinuxExtensionDefaultPublisher = "Microsoft.Azure.Security";
         public const string LinuxExtensionDefaultName = "AzureDiskEncryptionForLinux";
         public const string LinuxExtensionDefaultVersion = "0.1";
 

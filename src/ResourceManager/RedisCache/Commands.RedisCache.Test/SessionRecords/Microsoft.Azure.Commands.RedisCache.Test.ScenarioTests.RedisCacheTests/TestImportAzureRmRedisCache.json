@@ -1,0 +1,287 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/resourceGroups/SunnyAAPT6/providers/Microsoft.Cache/Redis/sunny-importexport/import?api-version=2016-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjhmOGYxMzktMmZkNS00ZDg2LWFmY2EtMjFmMjFmMzU4MDZlL3Jlc291cmNlR3JvdXBzL1N1bm55QUFQVDYvcHJvdmlkZXJzL01pY3Jvc29mdC5DYWNoZS9SZWRpcy9zdW5ueS1pbXBvcnRleHBvcnQvaW1wb3J0P2FwaS12ZXJzaW9uPTIwMTYtMDQtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"files\": [\r\n    \"https://sunnystoragenew.blob.core.windows.net/sunny-importexport/sunny?sv=2015-04-05&sr=b&sig=caIwutG2uDa0NZ8mjdNJdgOY8%2F8mhwRuGNdICU%2B0pI4%3D&st=2016-05-27T00%3A00%3A00Z&se=2016-05-28T00%3A00%3A00Z&sp=rwd\"\r\n  ]\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "238"
+        ],
+        "x-ms-client-request-id": [
+          "ef1a7ef5-7fe6-41cc-bc13-1dd49cdff1b6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8b903d4c-ee57-4e8b-b2b1-05a382a5a207"
+        ],
+        "x-rp-server-mvid": [
+          "0efde996-c8d1-4dec-b71e-394eba9ff135"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "af5adc93-6ff3-4889-9e77-bdb774636323"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160527T020438Z:af5adc93-6ff3-4889-9e77-bdb774636323"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 May 2016 02:04:37 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjhmOGYxMzktMmZkNS00ZDg2LWFmY2EtMjFmMjFmMzU4MDZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25yZXN1bHRzLzhiOTAzZDRjLWVlNTctNGU4Yi1iMmIxLTA1YTM4MmE1YTIwNz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7cd0a5e5-091e-4112-915b-b286ebf4d2df"
+        ],
+        "x-rp-server-mvid": [
+          "0efde996-c8d1-4dec-b71e-394eba9ff135"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-correlation-request-id": [
+          "863fdb8a-19d8-4fa0-a0f1-f2437eed7c45"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160527T020508Z:863fdb8a-19d8-4fa0-a0f1-f2437eed7c45"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 May 2016 02:05:08 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjhmOGYxMzktMmZkNS00ZDg2LWFmY2EtMjFmMjFmMzU4MDZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25yZXN1bHRzLzhiOTAzZDRjLWVlNTctNGU4Yi1iMmIxLTA1YTM4MmE1YTIwNz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b5c55c56-b504-4171-979e-5474601628aa"
+        ],
+        "x-rp-server-mvid": [
+          "0efde996-c8d1-4dec-b71e-394eba9ff135"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-correlation-request-id": [
+          "e6ab54b4-26ec-42dd-854d-a06b9332c3d8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160527T020538Z:e6ab54b4-26ec-42dd-854d-a06b9332c3d8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 May 2016 02:05:37 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjhmOGYxMzktMmZkNS00ZDg2LWFmY2EtMjFmMjFmMzU4MDZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25yZXN1bHRzLzhiOTAzZDRjLWVlNTctNGU4Yi1iMmIxLTA1YTM4MmE1YTIwNz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "14bc017c-c646-4160-bb24-c697dfc6b31f"
+        ],
+        "x-rp-server-mvid": [
+          "0efde996-c8d1-4dec-b71e-394eba9ff135"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "63a8824e-4a2d-48b8-a388-e4c715b9e862"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160527T020608Z:63a8824e-4a2d-48b8-a388-e4c715b9e862"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 May 2016 02:06:08 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/f8f8f139-2fd5-4d86-afca-21f21f35806e/providers/Microsoft.Cache/locations/Central%20US/operationresults/8b903d4c-ee57-4e8b-b2b1-05a382a5a207?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZjhmOGYxMzktMmZkNS00ZDg2LWFmY2EtMjFmMjFmMzU4MDZlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2FjaGUvbG9jYXRpb25zL0NlbnRyYWwlMjBVUy9vcGVyYXRpb25yZXN1bHRzLzhiOTAzZDRjLWVlNTctNGU4Yi1iMmIxLTA1YTM4MmE1YTIwNz9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "22281a2f-93cc-4734-a4ea-8a1513c14856"
+        ],
+        "x-rp-server-mvid": [
+          "0efde996-c8d1-4dec-b71e-394eba9ff135"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "397f173d-198a-4193-b5c9-d6e71d79234a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20160527T020639Z:397f173d-198a-4193-b5c9-d6e71d79234a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 May 2016 02:06:38 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "f8f8f139-2fd5-4d86-afca-21f21f35806e"
+  }
+}

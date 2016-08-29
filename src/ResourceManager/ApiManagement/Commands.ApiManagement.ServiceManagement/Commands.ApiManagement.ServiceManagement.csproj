@@ -68,7 +68,8 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ApiManagement, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.2.0.1-preview\lib\net40\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ApiManagement.2.0.3-preview\lib\net40\Microsoft.Azure.Management.ApiManagement.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,11 +88,11 @@
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -150,49 +151,77 @@
     <Compile Include="Commands\GetAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\GetAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\GetAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\GetAzureApiManagementLogger.cs" />
+    <Compile Include="Commands\GetAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\GetAzureApiManagementOperation.cs" />
     <Compile Include="Commands\GetAzureApiManagementPolicy.cs" />
     <Compile Include="Commands\GetAzureApiManagementProduct.cs" />
+    <Compile Include="Commands\GetAzureApiManagementProperty.cs" />
     <Compile Include="Commands\GetAzureApiManagementSubscription.cs" />
+    <Compile Include="Commands\GetAzureApiManagementTenantSyncState.cs" />
     <Compile Include="Commands\GetAzureApiManagementUser.cs" />
     <Compile Include="Commands\GetAzureApiManagementUserSsoUrl.cs" />
+    <Compile Include="Commands\GetAzureRmApiManagementTenantAccess.cs" />
+    <Compile Include="Commands\GetAzureRmApiManagementTenantGitAccess.cs" />
     <Compile Include="Commands\ImportAzureApiManagementApi.cs" />
     <Compile Include="Commands\NewAzureApiManagementApi.cs" />
     <Compile Include="Commands\NewAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\NewAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\NewAzureApiManagementContext.cs" />
     <Compile Include="Commands\NewAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\NewAzureApiManagementLogger.cs" />
+    <Compile Include="Commands\NewAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\NewAzureApiManagementOperation.cs" />
     <Compile Include="Commands\NewAzureApiManagementProduct.cs" />
     <Compile Include="Commands\NewAzureApiManagementSubscription.cs" />
     <Compile Include="Commands\NewAzureApiManagementUser.cs" />
+    <Compile Include="Commands\NewAzureApiManagmentProperty.cs" />
+    <Compile Include="Commands\PublishAzureApiManagementTenantConfiguration.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementApi.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementApiFromProduct.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\RemoveAzureApiManagementLogger.cs" />
+    <Compile Include="Commands\RemoveAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementOperation.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementPolicy.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementProduct.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementProductFromGroup.cs" />
+    <Compile Include="Commands\RemoveAzureApiManagementProperty.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementSubscription.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementUser.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementUserFromGroup.cs" />
+    <Compile Include="Commands\SaveAzureApiManagementTenantConfiguration.cs" />
     <Compile Include="Commands\SetAzureApiManagementApi.cs" />
     <Compile Include="Commands\SetAzureApiManagementAuthorizationServer.cs" />
     <Compile Include="Commands\SetAzureApiManagementCertificate.cs" />
     <Compile Include="Commands\SetAzureApiManagementGroup.cs" />
+    <Compile Include="Commands\SetAzureApiManagementLogger.cs" />
+    <Compile Include="Commands\SetAzureApiManagementOpenIdConnectProvider.cs" />
     <Compile Include="Commands\SetAzureApiManagementOperation.cs" />
     <Compile Include="Commands\SetAzureApiManagementPolicy.cs" />
     <Compile Include="Commands\SetAzureApiManagementProduct.cs" />
+    <Compile Include="Commands\SetAzureApiManagementProperty.cs" />
     <Compile Include="Commands\SetAzureApiManagementSubscription.cs" />
     <Compile Include="Commands\SetAzureApiManagementUser.cs" />
-    <Compile Include="CommonConstants.cs" />
+    <Compile Include="Commands\SetAzureRmApiManagementTenantAccess.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Models\ErrorBody.cs" />
+    <Compile Include="Models\ErrorField.cs" />
+    <Compile Include="Models\PsApiManagementOperationResult.cs" />
+    <Compile Include="Models\PsApiManagementTenantConfigurationSyncState.cs" />
+    <Compile Include="Models\TenantConfigurationState.cs" />
+    <Compile Include="Models\PsApiManagementAccessInformation.cs" />
     <Compile Include="Models\PsApiManagementAccessTokenSendingMethod.cs" />
     <Compile Include="Models\PsApiManagementApi.cs" />
     <Compile Include="Models\PsApiManagementApiFormat.cs" />
     <Compile Include="Models\PsApiManagementAuthorizationRequestMethod.cs" />
     <Compile Include="Models\PsApiManagementClientAuthenticationMethod.cs" />
+    <Compile Include="Models\PsApiManagementLogger.cs" />
+    <Compile Include="Models\PsApiManagementLoggerType.cs" />
+    <Compile Include="Models\PsApiManagementOpenIdConnectProvider.cs" />
+    <Compile Include="Models\PsApiManagementProperty.cs" />
     <Compile Include="Models\PsApiManagementResponse.cs" />
     <Compile Include="Models\PsApiManagementCertificate.cs" />
     <Compile Include="Models\PsApiManagementContext.cs" />
@@ -209,8 +238,10 @@
     <Compile Include="Models\PsApiManagementSchema.cs" />
     <Compile Include="Models\PsApiManagementSubscription.cs" />
     <Compile Include="Models\PsApiManagementSubscriptionState.cs" />
+    <Compile Include="Models\PsApiManagementTenantConfiguration.cs" />
     <Compile Include="Models\PsApiManagementUser.cs" />
     <Compile Include="Models\PsApiManagementUserState.cs" />
+    <Compile Include="Models\TenantConfigurationLongRunningOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -222,6 +253,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

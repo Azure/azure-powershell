@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public DisableBatchJobCommandTests()
+        public DisableBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new DisableBatchJobCommand()
@@ -59,8 +60,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             // Don't go to the service on a Disable CloudJob call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.DisableJobOption, 
-                ProxyModels.JobDisableOptions, 
+                ProxyModels.DisableJobOption,
+                ProxyModels.JobDisableOptions,
                 AzureOperationHeaderResponse<ProxyModels.JobDisableHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

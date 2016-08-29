@@ -167,7 +167,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -179,7 +180,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-<maml:para />
+				<maml:para>
+</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -258,6 +260,34 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+				<maml:name>Recurse</maml:name>
+				<maml:description>
+					<maml:para>Indicates if the download should be recursive for folder downloads. The default is false.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Resume</maml:name>
+				<maml:description>
+					<maml:para>Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+				<maml:name>PerFileThreadCount</maml:name>
+				<maml:description>
+					<maml:para>Indicates the maximum number of threads to use per file. Default is 10</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+				<maml:name>ConcurrentFileCount</maml:name>
+				<maml:description>
+					<maml:para>Indicates the maximum number of files to download in parallel for a folder download. Default is 5</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
@@ -318,6 +348,54 @@
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+			<maml:name>Recurse</maml:name>
+			<maml:description>
+				<maml:para>Indicates if the download should be recursive for folder downloads. The default is false.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Resume</maml:name>
+			<maml:description>
+				<maml:para>Indicates that the file(s) being copied are a continuation of a previous download. This will cause the system to attempt to resume from the last file that was not fully downloaded.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+			<maml:name>PerFileThreadCount</maml:name>
+			<maml:description>
+				<maml:para>Indicates the maximum number of threads to use per file. Default is 10</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
+			<maml:name>ConcurrentFileCount</maml:name>
+			<maml:description>
+				<maml:para>Indicates the maximum number of files to download in parallel for a folder download. Default is 5</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
@@ -1748,13 +1826,20 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-				<maml:name>NumThreads</maml:name>
+				<maml:name>PerFileThreadCount</maml:name>
 				<maml:description>
-					<maml:para>Specifies the number of threads to use to upload the file or folder.</maml:para>
+					<maml:para>Indicates the maximum number of threads to use per file. Default is 10.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+				<maml:name>ConcurrentFileCount</maml:name>
+				<maml:description>
+					<maml:para>Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 				<maml:name>Force</maml:name>
 				<maml:description>
 					<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
@@ -1851,9 +1936,9 @@
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="6">
-			<maml:name>NumThreads</maml:name>
+			<maml:name>PerFileThreadCount</maml:name>
 			<maml:description>
-				<maml:para>Specifies the number of threads to use to upload the file or folder.</maml:para>
+				<maml:para>Indicates the maximum number of threads to use per file. Default is 10.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
@@ -1863,6 +1948,18 @@
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+			<maml:name>ConcurrentFileCount</maml:name>
+			<maml:description>
+				<maml:para>Indicates the maximum number of files to upload in parallel for a folder upload. Default is 5.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+			<dev:type>
+				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
 			<maml:name>Force</maml:name>
 			<maml:description>
 				<maml:para>Indicates that this operation can overwrite the destination file if it already exists.</maml:para>
@@ -2518,7 +2615,7 @@
 				<maml:description>
 					<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -2591,9 +2688,9 @@
 			<maml:description>
 				<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -3479,223 +3576,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
-		<command:name>Remove-AzureRmDataLakeStoreItemAcl</command:name>
-		<maml:description>
-			<maml:para>Clears the access control list (ACL) of a file or folder in Data Lake Store.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>Remove</command:verb>
-		<command:noun>AzureRmDataLakeStoreItemAcl</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>The Remove-AzureRmDataLakeStoreItemAcl cmdlet clears the access control list (ACL) of a file or folder in Data Lake Store.</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmDataLakeStoreItemAcl</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>Account</maml:name>
-				<maml:description>
-					<maml:para>Specifies the Data Lake Store account name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>Path</maml:name>
-				<maml:description>
-					<maml:para>Specifies the Data Lake Store path of the item, starting with the root directory (/).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>Default</maml:name>
-				<maml:description>
-					<maml:para>Indicates that this operation removes the default ACL for a file or a folder.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>Account</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Data Lake Store account name.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-			<maml:name>Path</maml:name>
-			<maml:description>
-				<maml:para>Specifies the Data Lake Store path of the item, starting with the root directory (/).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">DataLakeStorePathInstance</command:parameterValue>
-			<dev:type>
-				<maml:name>DataLakeStorePathInstance</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>Default</maml:name>
-			<maml:description>
-				<maml:para>Indicates that this operation removes the default ACL for a file or a folder.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
-			<maml:name>AccountName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of the Data Lake Store account.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-				<maml:para>
-</maml:para>
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Remove the ACL from a folder  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;Remove-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; -Path /</dev:code>
-			<dev:remarks>
-				<maml:para>This command removes the ACL for the root directory for the ContosoADL account.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText>Get-AzureRmDataLakeStoreItemAcl</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-		<maml:navigationLink>
-			<maml:linkText>Set-AzureRmDataLakeStoreItemAcl</maml:linkText>
-			<maml:uri></maml:uri>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
 		<command:name>Remove-AzureRmDataLakeStoreItemAclEntry</command:name>
 		<maml:description>
 			<maml:para>Removes an entry (ACE) from the access control list (ACL) of a file or folder in Data Lake Store.</maml:para>
@@ -3733,13 +3613,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 					<maml:para>Specifies the access control list (ACL) object that contains the entries to be removed.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -3797,13 +3670,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -3853,18 +3719,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
 			<dev:type>
 				<maml:name>DataLakeStoreItemAcl</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -4048,7 +3902,7 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				<maml:description>
 					<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ResourceGroupName</maml:name>
@@ -4103,9 +3957,9 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<maml:description>
 				<maml:para>Specifies tags as key-value pairs. You can use tags to identify a Data Lake Store account from other Azure resources.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -4263,13 +4117,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -4319,18 +4166,6 @@ PS C:\&gt; New-AzureRmDataLakeStoreItem -AccountName &quot;ContosoADL&quot; -Pat
 			<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
 			<dev:type>
 				<maml:name>DataLakeStoreItemAcl</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -4481,13 +4316,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -4559,13 +4387,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -4615,18 +4436,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 			<command:parameterValue required="true" variableLength="false">DataLakeStoreItemAcl</command:parameterValue>
 			<dev:type>
 				<maml:name>DataLakeStoreItemAcl</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -4839,13 +4648,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -4907,18 +4709,6 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			<dev:type>
 				<maml:name>Guid</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
@@ -5414,6 +5204,178 @@ PS C:\&gt; Set-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; Ã
 		</maml:navigationLink>
 		<maml:navigationLink>
 			<maml:linkText>Remove-AzureRmDataLakeStoreItem</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Remove-AzureRmDataLakeStoreItemAcl</command:name>
+		<maml:description>
+			<maml:para>Clears the access control list (ACL) of a file or folder in Data Lake Store.</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb></command:verb>
+		<command:noun></command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Remove-AzureRmDataLakeStoreItemAcl cmdlet clears the access control list (ACL) of a file or folder in Data Lake Store.</maml:para>
+	</maml:description>
+	<command:syntax>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="0">
+			<maml:name>Account</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Store account name.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>Path</maml:name>
+			<maml:description>
+				<maml:para>Specifies the Data Lake Store path of the item, starting with the root directory (/).</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">datalakestorepathinstance</command:parameterValue>
+			<dev:type>
+				<maml:name>datalakestorepathinstance</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+			<maml:name>Default</maml:name>
+			<maml:description>
+				<maml:para>Indicates that this operation removes the default ACL for a file or a folder.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
+			<dev:type>
+				<maml:name>switchparameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
+			<dev:type>
+				<maml:name>switchparameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">actionpreference</command:parameterValue>
+			<dev:type>
+				<maml:name>actionpreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
+			<maml:name>AccountName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the name of the Data Lake Store account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+			<dev:type>
+				<maml:name>string</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1: Remove the ACL from a folder  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Remove-AzureRmDataLakeStoreItemAcl -AccountName &quot;ContosoADL&quot; -Path /</dev:code>
+			<dev:remarks>
+				<maml:para>This command removes the ACL for the root directory for the ContosoADL account.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmDataLakeStoreItemAcl</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmDataLakeStoreItemAcl</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>

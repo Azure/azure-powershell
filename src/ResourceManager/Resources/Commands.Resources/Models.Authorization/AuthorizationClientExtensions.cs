@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
-            if(!string.IsNullOrEmpty(roleId))
+            if (!string.IsNullOrEmpty(roleId))
             {
                 return assignments.Where(a => a.Properties.RoleDefinitionId.GuidFromFullyQualifiedId() == roleId);
             }

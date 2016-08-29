@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Rest;
 using System;
 using System.Security;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
@@ -109,12 +109,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
         }
-        
+
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
             return new AccessTokenCredential(context.Subscription.Id, Token);
         }
-        
+
         public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
-            throw new NotImplementedException();
+            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
     }
 }

@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             Position = 5,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName="Vhd",
+            ParameterSetName = "Vhd",
             HelpMessage = "Delete the blob if already exists")]
         [ValidateNotNullOrEmpty]
         [Alias("o")]
@@ -138,6 +137,20 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
+            using (var vds = new VirtualDiskStream(filePath.FullName))
+            {
+                if (vds.DiskType == DiskType.Fixed)
+                {
+                    long divisor = Convert.ToInt64(Math.Pow(2, 9));
+                    long rem = 0;
+                    Math.DivRem(filePath.Length, divisor, out rem);
+                    if (rem != 0)
+                    {
+                        throw new ArgumentOutOfRangeException("LocalFilePath", "Given vhd file is a corrupted fixed vhd");
+                    }
+                }
+            }
+
             var parameters = new UploadParameters(
                 destinationUri, baseImageUri, filePath, OverWrite.IsPresent,
                 (NumberOfUploaderThreads) ?? DefaultNumberOfUploaderThreads)
@@ -153,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             StorageCredentialsFactory storageCredentialsFactory;
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))

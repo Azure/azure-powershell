@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using System;
     using Microsoft.WindowsAzure.Commands.Common.Storage.Properties;
     using Microsoft.WindowsAzure.Storage;
+    using System;
 
     /// <summary>
     /// Storage context
@@ -28,37 +28,42 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <summary>
         /// Storage account name used in this context
         /// </summary>
-        public string StorageAccountName { get; private set; }
+        public string StorageAccountName { get; protected set; }
 
         /// <summary>
         /// Blob end point of the storage context
         /// </summary>
-        public string BlobEndPoint { get; private set; }
+        public virtual string BlobEndPoint { get; protected set; }
 
         /// <summary>
         /// Table end point of the storage context
         /// </summary>
-        public string TableEndPoint { get; private set; }
+        public virtual string TableEndPoint { get; protected set; }
 
         /// <summary>
         /// Queue end point of the storage context
         /// </summary>
-        public string QueueEndPoint { get; private set; }
+        public virtual string QueueEndPoint { get; protected set; }
+
+        /// <summary>
+        /// File end point of the storage context
+        /// </summary>
+        public virtual string FileEndPoint { get; protected set; }
 
         /// <summary>
         /// Self reference, it could enable New-AzureStorageContext can be used in pipeline 
         /// </summary>
-        public AzureStorageContext Context { get; private set; }
+        public AzureStorageContext Context { get; protected set; }
 
         /// <summary>
         /// Name place holder, and force pipeline to ignore this property
         /// </summary>
-        public string Name { get; private set; }
+        public virtual string Name { get; protected set; }
 
         /// <summary>
         /// Storage account in context
         /// </summary>
-        public CloudStorageAccount StorageAccount { get; private set; }
+        public virtual CloudStorageAccount StorageAccount { get; protected set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")
@@ -70,41 +75,31 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         {
             get
             {
-                if (string.IsNullOrEmpty(BlobEndPoint) || string.IsNullOrEmpty(TableEndPoint))
+                if (!string.IsNullOrEmpty(BlobEndPoint))
                 {
-                    return string.Empty;
+                    string blobSpliter = "blob.";
+                    if (BlobEndPoint.LastIndexOf(blobSpliter) >= 0)
+                        return BlobEndPoint.Substring(BlobEndPoint.LastIndexOf(blobSpliter) + blobSpliter.Length);
                 }
-
-                string suffix;
-
-                if (StorageAccountName.EndsWith("blob", StringComparison.InvariantCultureIgnoreCase))
+                if (!string.IsNullOrEmpty(TableEndPoint))
                 {
-                    // Cannot use the blob endpoint if the account name ends with blob...
-                    // However it is OK if "blob" is in the account name but not as a suffix
-                    int tableIndex = TableEndPoint.IndexOf("table.", 0, StringComparison.InvariantCultureIgnoreCase);
-                    if (tableIndex <= 0)
-                    {
-                        suffix = string.Empty;
-                    }
-                    else
-                    {
-                        suffix = TableEndPoint.Substring(tableIndex + "table.".Length);
-                    }
+                    string tableSpliter = "table.";
+                    if (TableEndPoint.LastIndexOf(tableSpliter) >= 0)
+                        return TableEndPoint.Substring(TableEndPoint.LastIndexOf(tableSpliter) + tableSpliter.Length);
                 }
-                else
+                if (!string.IsNullOrEmpty(QueueEndPoint))
                 {
-                    int blobIndex = BlobEndPoint.IndexOf("blob.", 0, StringComparison.InvariantCultureIgnoreCase);
-                    if (blobIndex <= 0)
-                    {
-                        suffix = string.Empty;
-                    }
-                    else
-                    {
-                        suffix = BlobEndPoint.Substring(blobIndex + "blob.".Length);
-                    }
+                    string queueSpliter = "queue.";
+                    if (QueueEndPoint.LastIndexOf(queueSpliter) >= 0)
+                        return QueueEndPoint.Substring(QueueEndPoint.LastIndexOf(queueSpliter) + queueSpliter.Length);
                 }
-
-                return suffix;
+                if (!string.IsNullOrEmpty(FileEndPoint))
+                {
+                    string fileSpliter = "file.";
+                    if (FileEndPoint.LastIndexOf(fileSpliter) >= 0)
+                        return FileEndPoint.Substring(FileEndPoint.LastIndexOf(fileSpliter) + fileSpliter.Length);
+                }
+                return string.Empty;
             }
         }
 
@@ -131,6 +126,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 QueueEndPoint = account.QueueEndpoint.ToString();
             }
 
+            if (account.FileEndpoint != null)
+            {
+                FileEndPoint = account.FileEndpoint.ToString();
+            }
+
             StorageAccountName = account.Credentials.AccountName;
             Context = this;
             Name = String.Empty;
@@ -152,7 +152,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// Proivides a private constructor for building empty instance which
         /// contains no account information.
         /// </summary>
-        private AzureStorageContext()
+        protected AzureStorageContext()
         {
         }
 

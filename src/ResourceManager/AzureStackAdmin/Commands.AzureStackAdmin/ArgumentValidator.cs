@@ -17,7 +17,6 @@ namespace Microsoft.AzureStack.Commands
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Microsoft.WindowsAzure.Commands.Common.Properties;
 
     /// <summary>
     /// Argument Validation Methods
@@ -29,7 +28,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         /// <param name="paramName">Name of the property.</param>
         /// <param name="value">The value.</param>
-        public static void ValidateNotNull(string paramName,  object value)
+        public static void ValidateNotNull(string paramName, object value)
         {
             if (value == null)
             {

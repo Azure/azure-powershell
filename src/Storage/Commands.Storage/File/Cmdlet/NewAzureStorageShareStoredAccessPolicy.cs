@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Common;
+    using Microsoft.WindowsAzure.Storage.File;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Common;
-    using Microsoft.WindowsAzure.Storage.File;
 
     /// <summary>
     /// create a new stored access policy to a specific azure share.
@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Policy Identifier. Need to be unique in the Share")]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set; }
+        public string Policy { get; set; }
 
         [Parameter(HelpMessage = "Permissions for a share. Permissions can be any subset of \"rwdl\".")]
         public string Permission { get; set; }

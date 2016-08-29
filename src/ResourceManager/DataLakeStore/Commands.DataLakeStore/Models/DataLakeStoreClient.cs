@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         #region Account Related Operations
 
         public DataLakeStoreAccount CreateOrUpdateAccount(string resourceGroupName, string accountName,
-            string defaultGroup, string location, Hashtable[] customTags = null)
+            string defaultGroup, string location, Hashtable customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
 
             return accountExists
-                ? _client.Account.Update(resourceGroupName,accountName, parameters)
+                ? _client.Account.Update(resourceGroupName, accountName, parameters)
                 : _client.Account.Create(resourceGroupName, accountName, parameters);
         }
 
@@ -143,8 +143,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             };
 
             var accountList = new List<DataLakeStoreAccount>();
-            var response = string.IsNullOrEmpty(resourceGroupName) ? 
-                _client.Account.List(parameters) : 
+            var response = string.IsNullOrEmpty(resourceGroupName) ?
+                _client.Account.List(parameters) :
                 _client.Account.ListByResourceGroup(resourceGroupName, parameters);
 
             accountList.AddRange(response);

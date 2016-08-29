@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Management.Automation;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     {
 
         #region Parameters declarations
-        
+
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>

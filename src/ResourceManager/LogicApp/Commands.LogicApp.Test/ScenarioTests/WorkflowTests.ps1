@@ -12,6 +12,10 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Constants used in the tests.
+$SCHEMA_VERSION_20160601 = '2016-06-01'
+$WORKFLOW_LOCATION = 'westus'
+
 <#
 .SYNOPSIS
 Test New-AzureRmLogicApp with physical file paths
@@ -30,7 +34,7 @@ function Test-CreateAndRemoveLogicApp
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
 	#Case1 : Using physical file
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 	
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
@@ -43,7 +47,7 @@ function Test-CreateAndRemoveLogicApp
     $definition = [IO.File]::ReadAllText("$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json")
 
 	$workflowName = getAssetname	
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $definition -ParameterFilePath $parameterFilePath -Location $WORKFLOW_LOCATION
     
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
@@ -54,7 +58,7 @@ function Test-CreateAndRemoveLogicApp
 	#Case3 : Create using Piped input
 
 	$workflowName = getAssetname	
-	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath    
+	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath    
 	
 	Assert-NotNull $workflow
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force
@@ -77,16 +81,16 @@ function Test-CreateLogicAppWithDuplicateName
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
     
 	Assert-NotNull $workflow
 	try
 	{
-		$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+		$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
 	}
 	catch
 	{		
-		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$WorkflowName' under resource group '$resourceGroupName' already exists."		
+		Assert-AreEqual $_.Exception.Message "The Resource '$WorkflowName' under resource group '$resourceGroupName' already exists."		
 	}
 	
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $WorkflowName -Force	
@@ -109,8 +113,8 @@ function Test-CreateLogicAppUsingInputfromWorkflowObject
 	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json"
 	$parameterFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowParameter.json"
 
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath 
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $newWorkflowName -AppServicePlan $planName -Definition $workflow.Definition -Parameters $workflow.Parameters
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath 
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $newWorkflowName -Location $WORKFLOW_LOCATION -Definition $workflow.Definition -Parameters $workflow.Parameters
 		    
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Definition
@@ -137,7 +141,7 @@ function Test-CreateLogicAppUsingInputParameterAsHashTable
 	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json"	
 	$parameters = @{destinationUri="http://www.bing.com"}
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Parameters $parameters -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Parameters $parameters -Location $WORKFLOW_LOCATION
 		    
 	Assert-NotNull $workflow	
 	Assert-NotNull $workflow.Parameters
@@ -159,9 +163,15 @@ function Test-CreateLogicAppUsingDefinitionWithTriggers
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
 		    
 	Assert-NotNull $workflow
+	
+	[int]$counter = 0
+	do {
+		SleepInRecordMode 2000
+		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
+	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
 	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Force			
 }
@@ -169,7 +179,8 @@ function Test-CreateLogicAppUsingDefinitionWithTriggers
 <#
 .SYNOPSIS
 Test New-AzureRmLogicApp with only definition
-Test Get-AzureRmLogicApp 
+Test Get-AzureRmLogicApp
+Test Get-AzureRmLogicApp for a given version
 Test Get-AzureRmLogicApp for a non-existing logic app
 #>
 function Test-CreateAndGetLogicAppUsingDefinitionWithActions
@@ -181,15 +192,19 @@ function Test-CreateAndGetLogicAppUsingDefinitionWithActions
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 	
-	#Case1: Create logic app without parameters
-	$workflow1 = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
-	Assert-NotNull $workflow1	
+	# Test 1: Create logic app without parameters
+	$workflow1 = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -Location $WORKFLOW_LOCATION
+	Assert-NotNull $workflow1
 
-	#Case1: Get logic app using get cmdlet
+	# Test 2: Get logic app using get cmdlet
 	$workflow2 = Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	Assert-NotNull $workflow2
 
-	#Case1: Get non-existing logic app using get cmdlet
+	# Test 3: Get logic app using get cmdlet for a specific version
+	$workflow3 = Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Version $workflow1.Version
+	Assert-NotNull $workflow3
+
+	# Test 4: Get non-existing logic app using get cmdlet
 	try
 	{
 		Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name "InvalidWorkflow"
@@ -234,25 +249,25 @@ function Test-UpdateLogicApp
 
 	$simpleDefinitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json"
 	$simpleParameterFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowParameter.json"
-	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
+	$workflow = $resourceGroup | New-AzureRmLogicApp -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
 	
 	Assert-NotNull $workflow
 					
 	#Case1: Update definition with no parameters and disable
 	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowTriggerDefinition.json"
 
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Disabled" -DefinitionFilePath $definitionFilePath -Parameters $null -Force
 	
 	Assert-NotNull $UpdatedWorkflow
 	Assert-AreEqual $UpdatedWorkflow.State "Disabled"
 
 	#Case2: Update definition with parameters of logic app
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $simpleDefinitionFilePath -ParameterFilePath $simpleParameterFilePath -Force
 
 	Assert-NotNull $UpdatedWorkflow
 
 	#Case3: Enable the logic app
-	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Enabled"
+	$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -State "Enabled" -Force
 	
 	Assert-NotNull $UpdatedWorkflow
 	Assert-AreEqual $UpdatedWorkflow.State "Enabled"
@@ -260,7 +275,7 @@ function Test-UpdateLogicApp
 	#Case4: Test update command to set logic app with null definition
 	try
 	{
-		$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null
+		$UpdatedWorkflow = Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Definition $null -Force
 	}
 	catch
 	{		
@@ -273,12 +288,53 @@ function Test-UpdateLogicApp
 	{
 		$workflowName = "82D2D842-C312-445C-8A4D-E3EE9542436D"
 		$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowTriggerDefinition.json"
-		Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath
+		Set-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -AppServicePlan $planName -DefinitionFilePath $definitionFilePath -Force
 	}
 	catch
 	{		
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Logic/workflows/$workflowName' under resource group '$resourceGroupName' was not found."		
 	}
+}
+
+<#
+.SYNOPSIS
+Test Test-AzureRmLogicApp with physical file paths.
+Test Test-AzureRmLogicApp using definition object and parameter file.
+Test Test-AzureRmLogicApp for an invalid definition.
+#>
+function Test-ValidateLogicApp
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+	$locationName = 'northeurope'
+
+	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowParameter.json"
+
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+
+	# Test 1: Using physical file.
+	Test-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+	
+	# Test 2: Using definition object and parameter file.
+	$definition = [IO.File]::ReadAllText($definitionFilePath)
+	Test-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $locationName -Definition $definition -ParameterFilePath $parameterFilePath
+    
+	# Test 3: Failure for an invalid definition.
+	try
+	{
+		Test-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $locationName -Definition '{}'
+	}
+	catch
+	{		
+		Assert-AreEqual $_.Exception.Message "Operation returned an invalid status code 'BadRequest'"
+	}
+
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }
 
 <#
@@ -295,10 +351,37 @@ function Test-CreateLogicAppWithNonExistingAppServicePlan
 	$Plan = "B9F87338CAE4470F9116F3D685365748"
 	try
 	{
-		$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName	-AppServicePlan $Plan -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath	
+		$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath	
 	}
 	catch
 	{		
 		Assert-AreEqual $_.Exception.Message "The Resource 'Microsoft.Web/serverFarms/$Plan' under resource group '$resourceGroupName' was not found."
 	} 			
+}
+
+<#
+.SYNOPSIS
+Test Get-AzureRmLogicAppUpgradedDefinition to generate an upgraded definition for a workflow of older schema.
+#>
+function Test-GetUpgradedDefinitionForLogicApp
+{
+	$resourceGroup = TestSetup-CreateResourceGroup
+	$workflowName = getAssetname
+	$resourceGroupName = $resourceGroup.ResourceGroupName
+
+	$planName = "StandardServicePlan"
+	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
+
+	$definitionFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowDefinition.json"
+	$parameterFilePath = "$TestOutputRoot\Resources\TestSimpleWorkflowParameter.json"
+
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath -ParameterFilePath $parameterFilePath
+
+	# Generate the upgraded definition.
+	$upgradedDefinition = Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -TargetSchemaVersion $SCHEMA_VERSION_20160601
+	
+	# Update the workflow with the upgraded definition.
+	Set-AzureRmLogicApp -ResourceGroupName $resourceGroup.ResourceGroupName -Name $workflowName -Definition $upgradedDefinition.ToString() -Force
+
+	Remove-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Force	
 }

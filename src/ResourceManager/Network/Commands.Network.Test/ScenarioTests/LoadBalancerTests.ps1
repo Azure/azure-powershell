@@ -37,7 +37,7 @@ function Test-LoadBalancerCRUD-Public
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -129,7 +129,7 @@ function Test-LoadBalancerCRUD-InternalDynamic
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -220,7 +220,7 @@ function Test-LoadBalancerCRUD-InternalStatic
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -311,7 +311,7 @@ function Test-LoadBalancerCRUD-PublicNoInboundNATRule
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -397,7 +397,7 @@ function Test-LoadBalancerCRUD-InternalUsingId
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -486,7 +486,7 @@ function Test-LoadBalancerCRUD-PublicUsingId
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -575,7 +575,7 @@ function Test-LoadBalancerCRUD-PublicNoLbRule
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -661,7 +661,7 @@ function Test-LoadBalancerChildResource
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -847,7 +847,7 @@ function Test-LoadBalancerSet
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -910,7 +910,7 @@ function Test-CreateEmptyLoadBalancer
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
         
         # Create empty load balancer
         New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location
@@ -965,7 +965,7 @@ function Test-LoadBalancer-NicAssociation
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -1059,7 +1059,7 @@ function Test-LoadBalancer-NicAssociationDuringCreate
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -1140,7 +1140,7 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -1232,7 +1232,7 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the publicip
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
@@ -1292,6 +1292,399 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB
         Assert-AreEqual $inboundNatPoolName $lb.InboundNatPools[0].Name
 
         # Delete LB
+        $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+        $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a Multi vip public Load balancer.
+#>
+function Test-LoadBalancerMultiVip-Public
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $publicIp1Name = Get-ResourceName
+	$publicIp2Name = Get-ResourceName
+	$publicIp3Name = Get-ResourceName
+	$publicIp4Name = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontend1Name = Get-ResourceName
+	$frontend2Name = Get-ResourceName
+	$frontend3Name = Get-ResourceName
+	$frontend4Name = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create the publicips
+        $publicip1 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name -location $location -AllocationMethod Dynamic
+		$publicip2 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name -location $location -AllocationMethod Dynamic
+		$publicip3 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp3Name -location $location -AllocationMethod Dynamic
+		$publicip4 = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp4Name -location $location -AllocationMethod Dynamic
+
+        # Create LoadBalancer
+        $frontend1 = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontend1Name -PublicIpAddress $publicip1
+		$frontend2 = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontend2Name -PublicIpAddressId $publicip2.Id
+
+        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend1 -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend2 -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        $lb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend1,$frontend2  -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
+        
+        # Verification
+        Assert-AreEqual $rgname $lb.ResourceGroupName
+        Assert-AreEqual $lbName $lb.Name
+        Assert-NotNull $lb.Location
+        Assert-AreEqual "Succeeded" $lb.ProvisioningState
+        Assert-NotNull $lb.ResourceGuid
+        Assert-AreEqual 2 @($lb.FrontendIPConfigurations).Count
+        
+        Assert-AreEqual $frontend1Name $lb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicip1.Id $lb.FrontendIPConfigurations[0].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[0].Subnet
+		
+		Assert-AreEqual $frontend2Name $lb.FrontendIPConfigurations[1].Name
+        Assert-AreEqual $publicip2.Id $lb.FrontendIPConfigurations[1].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[1].Subnet
+		
+        Assert-AreEqual $backendAddressPoolName $lb.BackendAddressPools[0].Name
+		
+        Assert-AreEqual $probeName $lb.Probes[0].Name
+        Assert-NotNull $lb.Probes[0].RequestPath
+		
+        Assert-AreEqual $inboundNatRuleName $lb.InboundNatRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $lb.InboundNatRules[0].FrontendIPConfiguration.Id
+		
+        Assert-AreEqual $lbruleName $lb.LoadBalancingRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $lb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $lb.BackendAddressPools[0].Id $lb.LoadBalancingRules[0].BackendAddressPool.Id
+
+		# Verify public ip reference
+		$publicip1 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $publicip1.IpConfiguration.Id
+
+		$publicip2 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $publicip2.IpConfiguration.Id
+
+		# Add a new frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name -PublicIpAddress $publicip3 | Set-AzureRmLoadBalancer
+		Assert-AreEqual 3 @($lb.FrontendIPConfigurations).Count
+
+		Assert-AreEqual $frontend3Name $lb.FrontendIPConfigurations[2].Name
+        Assert-AreEqual $publicip3.Id $lb.FrontendIPConfigurations[2].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[2].Subnet
+		
+		$publicip3 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp3Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $publicip3.IpConfiguration.Id
+
+		# set a new frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name -PublicIpAddress $publicip4 | Set-AzureRmLoadBalancer
+
+		Assert-AreEqual 3 @($lb.FrontendIPConfigurations).Count
+
+		Assert-AreEqual $frontend3Name $lb.FrontendIPConfigurations[2].Name
+        Assert-AreEqual $publicip4.Id $lb.FrontendIPConfigurations[2].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[2].Subnet
+
+		$publicip3 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp3Name
+        Assert-Null $publicip3.IpConfiguration
+
+		$publicip4 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp4Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $publicip4.IpConfiguration.Id
+
+		# Get a frontendip config
+		$frontendip = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name
+
+		Assert-AreEqual $frontend3Name $frontendip.Name
+        Assert-AreEqual $publicip4.Id $frontendip.PublicIpAddress.Id
+		Assert-Null $frontendip.Subnet
+
+		# list all frontendip configs
+		$frontendips = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerFrontendIpConfig
+
+		Assert-AreEqual 3 @($frontendips).Count
+
+		# Remove a frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name | Set-AzureRmLoadBalancer
+		Assert-AreEqual 2 @($lb.FrontendIPConfigurations).Count
+
+		Assert-AreEqual $frontend1Name $lb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicip1.Id $lb.FrontendIPConfigurations[0].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[0].Subnet
+		
+		Assert-AreEqual $frontend2Name $lb.FrontendIPConfigurations[1].Name
+        Assert-AreEqual $publicip2.Id $lb.FrontendIPConfigurations[1].PublicIpAddress.Id
+		Assert-Null $lb.FrontendIPConfigurations[1].Subnet
+
+        # Delete
+        $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+		$list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+
+		# Verify public ip reference
+		$publicip1 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp1Name
+        Assert-Null $publicip1.IpConfiguration
+
+		$publicip2 = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIp2Name
+        Assert-Null $publicip2.IpConfiguration
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a Multi vip internal Load balancer.
+#>
+function Test-LoadBalancerMultiVip-Internal
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $subnet1Name = Get-ResourceName
+	$subnet2Name = Get-ResourceName
+	$vnetName = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontend1Name = Get-ResourceName
+	$frontend2Name = Get-ResourceName
+	$frontend3Name = Get-ResourceName
+	$frontend4Name = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+
+        # Create the Virtual Network
+        $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet1Name -AddressPrefix 10.0.0.0/24
+		$subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet1,$subnet2
+
+        # Create LoadBalancer
+        $frontend1 = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontend1Name -Subnet $vnet.Subnets[0]
+		$frontend2 = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontend2Name -SubnetId $vnet.Subnets[1].Id
+
+        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend1 -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend2 -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        $lb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend1,$frontend2  -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
+        
+        # Verification
+        Assert-AreEqual $rgname $lb.ResourceGroupName
+        Assert-AreEqual $lbName $lb.Name
+        Assert-NotNull $lb.Location
+        Assert-AreEqual "Succeeded" $lb.ProvisioningState
+        Assert-NotNull $lb.ResourceGuid
+        Assert-AreEqual 2 @($lb.FrontendIPConfigurations).Count
+        
+        Assert-AreEqual $frontend1Name $lb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $vnet.Subnets[0].Id $lb.FrontendIPConfigurations[0].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[0].PublicIpAddress
+		
+		Assert-AreEqual $frontend2Name $lb.FrontendIPConfigurations[1].Name
+		Assert-AreEqual $vnet.Subnets[1].Id $lb.FrontendIPConfigurations[1].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[1].PublicIpAddress
+				
+        Assert-AreEqual $backendAddressPoolName $lb.BackendAddressPools[0].Name
+		
+        Assert-AreEqual $probeName $lb.Probes[0].Name
+        Assert-NotNull $lb.Probes[0].RequestPath
+		
+        Assert-AreEqual $inboundNatRuleName $lb.InboundNatRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $lb.InboundNatRules[0].FrontendIPConfiguration.Id
+		
+        Assert-AreEqual $lbruleName $lb.LoadBalancingRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $lb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $lb.BackendAddressPools[0].Id $lb.LoadBalancingRules[0].BackendAddressPool.Id
+		
+		# Verify subnet reference
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		Assert-AreEqual 1 @($vnet.Subnets[0].IpConfigurations).Count
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+		Assert-AreEqual 1 @($vnet.Subnets[1].IpConfigurations).Count
+		Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $vnet.Subnets[1].IpConfigurations[0].Id
+
+		# Add a new frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name -Subnet $vnet.Subnets[1] | Set-AzureRmLoadBalancer
+		Assert-AreEqual 3 @($lb.FrontendIPConfigurations).Count
+		
+		Assert-AreEqual $frontend3Name $lb.FrontendIPConfigurations[2].Name
+		Assert-AreEqual $vnet.Subnets[1].Id $lb.FrontendIPConfigurations[2].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[2].PublicIpAddress
+
+		# Verify subnet reference
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		Assert-AreEqual 1 @($vnet.Subnets[0].IpConfigurations).Count
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+		Assert-AreEqual 2 @($vnet.Subnets[1].IpConfigurations).Count
+		Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $vnet.Subnets[1].IpConfigurations[0].Id
+		Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $vnet.Subnets[1].IpConfigurations[1].Id
+
+		# set a new frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name -SubnetId $vnet.Subnets[0].Id | Set-AzureRmLoadBalancer
+		
+		Assert-AreEqual 3 @($lb.FrontendIPConfigurations).Count
+		
+		Assert-AreEqual $frontend3Name $lb.FrontendIPConfigurations[2].Name
+		Assert-AreEqual $vnet.Subnets[0].Id $lb.FrontendIPConfigurations[2].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[2].PublicIpAddress
+		
+		# Verify subnet reference
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		Assert-AreEqual 2 @($vnet.Subnets[0].IpConfigurations).Count
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+		Assert-AreEqual $lb.FrontendIPConfigurations[2].Id $vnet.Subnets[0].IpConfigurations[1].Id
+		Assert-AreEqual 1 @($vnet.Subnets[1].IpConfigurations).Count
+		Assert-AreEqual $lb.FrontendIPConfigurations[1].Id $vnet.Subnets[1].IpConfigurations[0].Id
+		
+		# Get a frontendip config
+		$frontendip = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name
+		
+		Assert-AreEqual $frontend3Name $frontendip.Name
+		Assert-AreEqual $vnet.Subnets[0].Id $frontendip.Subnet.Id
+		Assert-Null $frontendip.PublicIpAddress
+		
+		# list all frontendip configs
+		$frontendips = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerFrontendIpConfig
+		
+		Assert-AreEqual 3 @($frontendips).Count
+		
+		# Remove a frontendip config
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRmLoadBalancerFrontendIpConfig -Name $frontend3Name | Set-AzureRmLoadBalancer
+		Assert-AreEqual 2 @($lb.FrontendIPConfigurations).Count
+		
+		Assert-AreEqual $frontend1Name $lb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $vnet.Subnets[0].Id $lb.FrontendIPConfigurations[0].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[0].PublicIpAddress
+		
+		Assert-AreEqual $frontend2Name $lb.FrontendIPConfigurations[1].Name
+		Assert-AreEqual $vnet.Subnets[1].Id $lb.FrontendIPConfigurations[1].Subnet.Id
+		Assert-Null $lb.FrontendIPConfigurations[1].PublicIpAddress
+
+        # Delete
+        $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        Assert-AreEqual true $deleteLb
+        
+		$list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+
+		# Verify subnet references
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		Assert-AreEqual 0 @($vnet.Subnets[0].IpConfigurations).Count
+		Assert-AreEqual 0 @($vnet.Subnets[1].IpConfigurations).Count
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a public Load balancer and set using object assignments
+#>
+function Test-SetLoadBalancerObjectAssignment
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $lbName = Get-ResourceName
+    $frontendName = Get-ResourceName
+    $backendAddressPoolName = Get-ResourceName
+    $probeName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $lbruleName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/loadBalancers"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the publicip
+        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create LoadBalancer
+        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
+        $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        $inboundNatRule = New-AzureRmLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        $lbrule = New-AzureRmLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        $lb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule -LoadBalancingRule $lbrule
+  
+        # Verification
+        Assert-AreEqual $rgname $lb.ResourceGroupName
+        Assert-AreEqual $lbName $lb.Name
+        Assert-NotNull $lb.Location
+        Assert-AreEqual "Succeeded" $lb.ProvisioningState
+        Assert-NotNull $lb.ResourceGuid
+        Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
+        
+        Assert-AreEqual $frontendName $lb.FrontendIPConfigurations[0].Name
+        Assert-AreEqual $publicip.Id $lb.FrontendIPConfigurations[0].PublicIpAddress.Id
+        Assert-Null $lb.FrontendIPConfigurations[0].PrivateIpAddress
+
+        Assert-AreEqual $backendAddressPoolName $lb.BackendAddressPools[0].Name
+
+        Assert-AreEqual $probeName $lb.Probes[0].Name
+        Assert-AreEqual $probe.RequestPath $lb.Probes[0].RequestPath
+
+        Assert-AreEqual $inboundNatRuleName $lb.InboundNatRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $lb.InboundNatRules[0].FrontendIPConfiguration.Id
+
+        Assert-AreEqual $lbruleName $lb.LoadBalancingRules[0].Name
+        Assert-AreEqual $lb.FrontendIPConfigurations[0].Id $lb.LoadBalancingRules[0].FrontendIPConfiguration.Id
+        Assert-AreEqual $lb.BackendAddressPools[0].Id $lb.LoadBalancingRules[0].BackendAddressPool.Id
+
+		# Assign Probe to the lb rule
+		Assert-Null  $lb.LoadBalancingRules[0].Probe
+
+		$lb.LoadBalancingRules[0].Probe = $lb.Probes[0]
+		$lb = $lb | Set-AzureRmLoadBalancer
+
+		Assert-NotNull $lb.LoadBalancingRules[0].Probe
+		Assert-AreEqual $lb.LoadBalancingRules[0].Probe.Id $lb.Probes[0].Id
+
+        # Delete
         $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
         Assert-AreEqual true $deleteLb
         

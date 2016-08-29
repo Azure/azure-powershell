@@ -61,31 +61,33 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Graph.RBAC">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.9.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.0.1-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -129,17 +131,34 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\GetAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="Models.ActiveDirectory\PSADCredential.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
+    <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
+    <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
+    <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
+    <Compile Include="Models.ResourceGroups\PSResource.cs" />
+    <Compile Include="Models.ResourceGroups\PSResourceGroupDeployment.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceProviderOperation.cs" />
     <Compile Include="Models.ResourceGroups\SubscriptionsClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -147,8 +166,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ProviderFeatures\AzureProviderFeatureCmdletsBase.cs" />
-    <Compile Include="ProviderFeatures\GetAzureProviderFeatureCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryBaseCmdlet.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClientExtensions.cs" />
     <Compile Include="Models.ActiveDirectory\ADObjectFilterOptions.cs" />
@@ -168,40 +185,18 @@
     <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
     <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
     <Compile Include="Models.Authorization\PSPermission.cs" />
-    <Compile Include="Models.ProviderFeatures\ProviderFeatureClient.cs" />
-    <Compile Include="Models.ProviderFeatures\FeatureResponseExtentions.cs" />
-    <Compile Include="Models.ProviderFeatures\PSProviderFeature.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProvider.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProviderResourceType.cs" />
-    <Compile Include="Models.ResourceGroups\TemplateValidationInfo.cs" />
     <Compile Include="Models.ResourceGroups\PSGalleryItem.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceManagerError.cs" />
     <Compile Include="Models.ResourceGroups\ResourceBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourceIdentifier.cs" />
     <Compile Include="Models.ResourceGroups\ResourcesBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourcesExtensions.cs" />
-    <Compile Include="Models.ResourceGroups\TemplateFileParameterV2.cs" />
     <Compile Include="Models.ResourceGroups\GetPSResourceGroupLogParameters.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataHttpRequest.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
-    <Compile Include="Models.ResourceGroups\FilterResourceGroupDeploymentOptions.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceProviderLocation.cs" />
-    <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
-    <Compile Include="Models.ResourceGroups\UpdatePSResourceGroupParameters.cs" />
-    <Compile Include="Models.ResourceGroups\UpdatePSResourceParameters.cs" />
-    <Compile Include="Models.ResourceGroups\TemplateFileResource.cs" />
-    <Compile Include="Models.ResourceGroups\ValidatePSResourceGroupDeploymentParameters.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
-    <Compile Include="ProviderFeatures\RegisterAzureProviderFeatureCmdlet.cs" />
-    <Compile Include="Providers\GetAzureLocationCmdlet.cs" />
-    <Compile Include="Providers\GetAzureProviderCmdlet.cs" />
     <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
-    <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
-    <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
-    <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
@@ -209,29 +204,11 @@
     <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\RemoveAzureRoleDefinitionCommand.cs" />
-    <Compile Include="ResourceGroupDeployments\TestAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="Models.ResourceGroups\CreatePSResourceParameters.cs" />
-    <Compile Include="Models.ResourceGroups\PSResource.cs" />
-    <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
     <Compile Include="Models.ResourceGroups\FilterPSGalleryTemplatesOptions.cs" />
-    <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
-    <Compile Include="Models.ResourceGroups\CreatePSDeploymentParameters.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceGroup.cs" />
-    <Compile Include="Models.ResourceGroups\CreatePSResourceGroupParameters.cs" />
     <Compile Include="Models.ResourceGroups\GalleryTemplatesClient.cs" />
     <Compile Include="Models.ResourceGroups\SetResourceMode.cs" />
-    <Compile Include="Models.ResourceGroups\TemplateFile.cs" />
-    <Compile Include="Models.ResourceGroups\TemplateFileParameterV1.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.ResourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceGroupDeployments\StopAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="ResourceGroupDeployments\GetAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="ResourceGroupDeployments\NewAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="Models.ResourceGroups\PSResourceGroupDeployment.cs" />
-    <Compile Include="ResourceGroups\RemoveAzureResourceGroupCommand.cs" />
-    <Compile Include="ResourceGroups\GetAzureResourceGroupCommand.cs" />
-    <Compile Include="ResourceGroups\NewAzureResourceGroupCommand.cs" />
-    <Compile Include="Models.ResourceGroups\ResourceWithParameterBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -265,9 +242,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="AzureResourceManager.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="..\AzureRM.Resources.psd1">
       <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -277,7 +251,6 @@
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="PostBuild.ps1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -288,7 +261,4 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>powershell.exe -ExecutionPolicy Unrestricted -File "$(ProjectDir)\PostBuild.ps1" "$(TargetDir)\"</PostBuildEvent>
-  </PropertyGroup>
 </Project>

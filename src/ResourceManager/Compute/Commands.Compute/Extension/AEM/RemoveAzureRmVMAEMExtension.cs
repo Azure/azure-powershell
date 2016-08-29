@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Commands.Compute.Extension.AEM;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
-                AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
                 this.DefaultContext.Subscription);
 
             base.ExecuteCmdlet();

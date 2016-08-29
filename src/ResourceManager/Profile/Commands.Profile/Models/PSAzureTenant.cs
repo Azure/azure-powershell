@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {

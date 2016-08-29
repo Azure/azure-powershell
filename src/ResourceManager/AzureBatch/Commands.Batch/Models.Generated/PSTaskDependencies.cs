@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSTaskDependencies
+    public partial class PSTaskDependencies
     {
         
         internal Microsoft.Azure.Batch.TaskDependencies omObject;

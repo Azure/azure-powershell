@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse response = 
+            LongRunningOperationResponse response =
                 RecoveryServicesClient
                 .RemoveAzureSiteRecoveryNetworkMapping(
                 Utilities.GetValueFromArmId(this.NetworkMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),

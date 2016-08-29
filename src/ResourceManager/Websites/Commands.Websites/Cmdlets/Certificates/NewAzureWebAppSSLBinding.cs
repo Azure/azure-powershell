@@ -13,17 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.Rest.Azure;
 using System;
+using System.IO;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.WebSites.Models;
-
 using System.Security.Cryptography.X509Certificates;
-using System.IO;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Commands.WebApps.Utilities;
-    
+
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var certificateBytes = File.ReadAllBytes(CertificateFilePath);
                     var certificateDetails = new X509Certificate2(certificateBytes, CertificatePassword);
 
-                    var certificateName = GenerateCertName(certificateDetails.Thumbprint, webapp.HostingEnvironmentProfile != null ? webapp.HostingEnvironmentProfile.Name : null , webapp.Location, resourceGroupName);
+                    var certificateName = GenerateCertName(certificateDetails.Thumbprint, webapp.HostingEnvironmentProfile != null ? webapp.HostingEnvironmentProfile.Name : null, webapp.Location, resourceGroupName);
                     var certificate = new Certificate
                     {
                         PfxBlob = Convert.ToBase64String(certificateBytes),

@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using System;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>

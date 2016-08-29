@@ -18,8 +18,13 @@ using Xunit;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
 {
-    public class BlobServicesTests:RMTestBase
+    public class BlobServicesTests : RMTestBase
     {
+        public BlobServicesTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBlobService()

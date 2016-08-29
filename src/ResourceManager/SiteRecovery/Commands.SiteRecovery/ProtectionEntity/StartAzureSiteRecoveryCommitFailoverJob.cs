@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Diagnostics;
-using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Management.SiteRecovery.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -66,7 +62,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
-	        base.ExecuteSiteRecoveryCmdlet();
+            base.ExecuteSiteRecoveryCmdlet();
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:

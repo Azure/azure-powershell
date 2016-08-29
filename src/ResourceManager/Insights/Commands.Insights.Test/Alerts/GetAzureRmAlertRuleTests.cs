@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Alerts;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -35,8 +37,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private string resourceGroup;
         private string ruleNameOrTargetUri;
 
-        public GetAzureRmAlertRuleTests()
+        public GetAzureRmAlertRuleTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

@@ -1,0 +1,218 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtc1NodXRkb3duP2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4171de26-71cc-4333-af1b-ad6f112e2291"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The resource 'LabVmsShutdown' under resource group 'onesdk72' was not found.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "126"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14945"
+        ],
+        "x-ms-request-id": [
+          "7a5782ce-ec58-4297-b9fe-96a269ebdcba"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a5782ce-ec58-4297-b9fe-96a269ebdcba"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014646Z:7a5782ce-ec58-4297-b9fe-96a269ebdcba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:46 GMT"
+        ],
+        "Set-Cookie": [
+          "ARRAffinity=8314fb771ca89de12894c3fc60da175f7ad72d091bac8fe6afdd429e8d2192a5;Path=/;Domain=westus.rp1.vsdth.visualstudio.com"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtc1NodXRkb3duP2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "162516cf-6c14-45b0-beec-c778c2dd17b2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsShutdownTask\",\r\n    \"dailyRecurrence\": {\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"2e7aeb2b-144d-4914-b34e-3241963af9e2\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmsshutdown\",\r\n  \"name\": \"LabVmsShutdown\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "452"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14944"
+        ],
+        "x-ms-request-id": [
+          "ccda87d0-c07a-4c41-b1f7-3d68b823130b"
+        ],
+        "x-ms-correlation-request-id": [
+          "ccda87d0-c07a-4c41-b1f7-3d68b823130b"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014647Z:ccda87d0-c07a-4c41-b1f7-3d68b823130b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:47 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYwNWEzYmMtZWU0ZS00YzdhLTk3MDktMTg2OGEyOGIxZDRkL3Jlc291cmNlR3JvdXBzL29uZXNkazcyL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL29uZXNkazU5MzEvc2NoZWR1bGVzL0xhYlZtc1NodXRkb3duP2FwaS12ZXJzaW9uPTIwMTUtMDUtMjEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsShutdownTask\",\r\n    \"dailyRecurrence\": {\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\"\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "192"
+        ],
+        "x-ms-client-request-id": [
+          "99852221-7a75-4b26-b492-2d2e64629c86"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLabs.DevTestLabsClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"taskType\": \"LabVmsShutdownTask\",\r\n    \"dailyRecurrence\": {\r\n      \"time\": \"1330\"\r\n    },\r\n    \"timeZoneId\": \"Pacific Standard Time\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"uniqueIdentifier\": \"2e7aeb2b-144d-4914-b34e-3241963af9e2\"\r\n  },\r\n  \"id\": \"/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourcegroups/onesdk72/providers/microsoft.devtestlab/labs/onesdk5931/schedules/labvmsshutdown\",\r\n  \"name\": \"LabVmsShutdown\",\r\n  \"type\": \"Microsoft.DevTestLab/labs/schedules\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "452"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-rp-requesturi": [
+          "https://westus.rp1.vsdth.visualstudio.com/subscriptions/e605a3bc-ee4e-4c7a-9709-1868a28b1d4d/resourceGroups/onesdk72/providers/Microsoft.DevTestLab/labs/onesdk5931/schedules/LabVmsShutdown?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1189"
+        ],
+        "x-ms-request-id": [
+          "848ffe0a-a171-40d2-8553-f2eb6b750f74"
+        ],
+        "x-ms-correlation-request-id": [
+          "848ffe0a-a171-40d2-8553-f2eb6b750f74"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20160524T014647Z:848ffe0a-a171-40d2-8553-f2eb6b750f74"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 24 May 2016 01:46:47 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e605a3bc-ee4e-4c7a-9709-1868a28b1d4d"
+  }
+}

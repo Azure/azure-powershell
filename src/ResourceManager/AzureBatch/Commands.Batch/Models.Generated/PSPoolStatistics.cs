@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSPoolStatistics
+    public partial class PSPoolStatistics
     {
         
         internal Microsoft.Azure.Batch.PoolStatistics omObject;

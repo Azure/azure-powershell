@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -38,6 +36,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
+
+        protected const string TagsAlias = "Tags";
 
         protected const string StorageAccountNameAvailabilityStr = "AzureRmStorageAccountNameAvailability";
 
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             internal const string Storage = "Storage";
             internal const string BlobStorage = "BlobStorage";
         }
-        protected struct AccountAccessTier 
+        protected struct AccountAccessTier
         {
             internal const string Hot = "Hot";
             internal const string Cool = "Cool";
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             Blob = 1
         }
-        
+
         public IStorageManagementClient StorageClient
         {
             get
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected static SkuName ParseSkuName(string skuName)
         {
             SkuName returnSkuName;
-            if(!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
+            if (!Enum.TryParse<SkuName>(skuName.Replace("_", ""), true, out returnSkuName))
             {
-                throw new ArgumentOutOfRangeException("SkuName");            
+                throw new ArgumentOutOfRangeException("SkuName");
             }
             return returnSkuName;
         }

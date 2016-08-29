@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagement.Common.XmlSchema;
 
 namespace Microsoft.Azure.ServiceManagemenet.Common
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
     /// </summary>
     public static class PublishSettingsImporter
     {
-        public static IEnumerable<AzureSubscription> ImportAzureSubscription(Stream stream, 
+        public static IEnumerable<AzureSubscription> ImportAzureSubscription(Stream stream,
             ProfileClient azureProfileClient, string environment)
         {
             var publishData = DeserializePublishData(stream);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
         }
 
         private static AzureSubscription PublishSubscriptionToAzureSubscription(
-            ProfileClient azureProfileClient, 
+            ProfileClient azureProfileClient,
             PublishDataPublishProfile profile,
             PublishDataPublishProfileSubscription s,
             string environment)
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
                     environment = EnvironmentName.AzureCloud;
                 }
             }
-            
+
             return new AzureSubscription
             {
                 Id = new Guid(s.Id),
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
 
             X509Certificate2 certificate = new X509Certificate2(Convert.FromBase64String(certificateString), string.Empty);
             AzureSession.DataStore.AddCertificate(certificate);
-            
+
             return certificate;
         }
     }

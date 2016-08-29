@@ -709,9 +709,6 @@
   <data name="DeprecationOfTheGeoReplicationEnabledParamInTheSetCmdlet" xml:space="preserve">
     <value>GeoReplicationEnabled parameter will be deprecated in a future release of Azure PowerShell. The functionality will be merged into the Type parameter.</value>
   </data>
-  <data name="DeprecationOfTheGeoReplicationEnabledParamInTheGetCmdlet" xml:space="preserve">
-    <value>GeoReplicationEnabled property will be deprecated in a future release of Azure PowerShell. The value will be merged into the AccountType property.</value>
-  </data>
   <data name="DuplicateNetworkInterfaceFound" xml:space="preserve">
     <value>Duplicate NetworkInterface found on the VM</value>
   </data>
@@ -791,5 +788,11 @@
   </data>
   <data name="DiagnosticsExtensionMetricsResourceIdNotMatch" xml:space="preserve">
     <value>The resourceId defined in the config file does not match the actual resource's id.</value>
+  </data>
+  <data name="MigrateResourceShoudlProcessAction" xml:space="preserve">
+    <value>Performing migration action: {0} on resource {1}</value>
+  </data>
+  <data name="MigrateResourceShoudlProcessTarget" xml:space="preserve">
+    <value>Are you should you want to perform migrate action: {0} on resource {1}</value>
   </data>
 </root>

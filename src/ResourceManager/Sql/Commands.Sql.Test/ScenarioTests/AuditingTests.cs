@@ -12,31 +12,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Xunit.Abstractions;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class AuditingTests : SqlTestsBase
     {
-        protected override void SetupManagementClients()
+        protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlCSMClient = GetSqlClient();
             var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
-            //TODO, Remove the MockDeploymentFactory call when the test is re-recorded
-            var resourcesClient = MockDeploymentClientFactory.GetResourceClient(GetResourcesClient());
+            var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
         }
-        
-        [Fact]        
+
+        public AuditingTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
@@ -50,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
-        [Fact]        
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
@@ -212,6 +215,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestBlobAuditingOnDatabase()
+        {
+            RunPowerShellTest("Test-BlobAuditingOnDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestBlobAuditingOnServer()
+        {
+            RunPowerShellTest("Test-BlobAuditingOnServer");
+        }
+
+        [Fact (Skip = "Waiting backend validation")]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {

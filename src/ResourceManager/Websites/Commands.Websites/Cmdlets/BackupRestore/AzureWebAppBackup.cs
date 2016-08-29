@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         /// The resource group of the web app
         /// </summary>
         public string ResourceGroupName { get; set; }
-        
+
         /// <summary>
         /// The name of the web app
         /// </summary>

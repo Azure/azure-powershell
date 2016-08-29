@@ -11,11 +11,12 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
+
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    using System;
-    using System.Collections.Generic;
-
     public class PsApiManagementUser
     {
         public string UserId { get; set; }

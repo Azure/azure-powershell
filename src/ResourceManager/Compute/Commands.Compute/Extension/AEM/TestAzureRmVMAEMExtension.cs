@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Extension.AEM;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Storage;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Commands.Compute.Extension.AEM;
-using Newtonsoft.Json;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json.Linq;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Compute.Models;
-using AutoMapper;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
-                AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager),
                 this.DefaultContext.Subscription);
 
             this._Helper.WriteVerbose("Starting TestAzureRmVMAEMExtension");
@@ -482,15 +482,15 @@ namespace Microsoft.Azure.Commands.Compute
 
                             if (this.OSType.Equals(AEMExtensionConstants.OSTypeLinux, StringComparison.InvariantCultureIgnoreCase))
                             {
-                                ok = this._Helper.CheckDiagnosticsTable(wadstorage, deploymentId, 
+                                ok = this._Helper.CheckDiagnosticsTable(wadstorage, deploymentId,
                                     selectedVM.OsProfile.ComputerName, ".", this.OSType, this.WaitTimeInMinutes);
                             }
                             else
                             {
-                                string filterMinute = "Role eq '" + AEMExtensionConstants.ROLECONTENT + "' and DeploymentId eq '" 
-                                    + deploymentId + "' and RoleInstance eq '" + roleName + "' and PartitionKey gt '0" 
+                                string filterMinute = "Role eq '" + AEMExtensionConstants.ROLECONTENT + "' and DeploymentId eq '"
+                                    + deploymentId + "' and RoleInstance eq '" + roleName + "' and PartitionKey gt '0"
                                     + DateTime.UtcNow.AddMinutes(AEMExtensionConstants.ContentAgeInMinutes * -1).Ticks + "'";
-                                ok = this._Helper.CheckTableAndContent(wadstorage, AEMExtensionConstants.WadTableName, 
+                                ok = this._Helper.CheckTableAndContent(wadstorage, AEMExtensionConstants.WadTableName,
                                     filterMinute, ".", false, this.WaitTimeInMinutes);
                             }
 

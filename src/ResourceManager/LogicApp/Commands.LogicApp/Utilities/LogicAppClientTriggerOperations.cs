@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Management.Logic;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// LogicApp client partial class for trigger operations
@@ -44,6 +44,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public WorkflowTrigger GetWorkflowTrigger(string resourceGroupName, string workflowName, string triggerName)
         {
             return this.LogicManagementClient.WorkflowTriggers.Get(resourceGroupName, workflowName, triggerName);
+        }
+
+        /// <summary>
+        /// Gets the specified trigger callback URL from the workflow
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Name of the workflow</param>
+        /// <param name="triggerName">Name of the trigger</param>
+        /// <returns>Workflow trigger</returns>
+        public WorkflowTriggerCallbackUrl GetWorkflowTriggerCallbackUrl(string resourceGroupName, string workflowName, string triggerName)
+        {
+            return this.LogicManagementClient.WorkflowTriggers.ListCallbackUrl(resourceGroupName, workflowName, triggerName);
         }
 
         /// <summary>

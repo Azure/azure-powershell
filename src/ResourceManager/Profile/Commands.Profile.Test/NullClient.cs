@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
 using Hyak.Common;
-using Microsoft.Azure;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -23,11 +22,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         public NullClient(SubscriptionCloudCredentials credentials) : base()
         {
-            
+
         }
         public NullClient(SubscriptionCloudCredentials credentials, Uri baseUri) : base()
         {
-            
+
         }
     }
 }

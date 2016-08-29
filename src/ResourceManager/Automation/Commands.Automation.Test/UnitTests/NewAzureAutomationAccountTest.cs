@@ -16,9 +16,8 @@ using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Moq; 
+using Moq;
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
@@ -36,10 +35,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
             this.cmdlet = new NewAzureAutomationAccount
-                              {
-                                  AutomationClient = this.mockAutomationClient.Object,
-                                  CommandRuntime = this.mockCommandRuntime
-                              };
+            {
+                AutomationClient = this.mockAutomationClient.Object,
+                CommandRuntime = this.mockCommandRuntime
+            };
         }
 
         [TestMethod]
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string location = "East US";
             string plan = "Free";
 
-            this.mockAutomationClient.Setup(f => f.CreateAutomationAccount(resourceGroupName, accountName, location, plan,null));
+            this.mockAutomationClient.Setup(f => f.CreateAutomationAccount(resourceGroupName, accountName, location, plan, null));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.CreateAutomationAccount(resourceGroupName, accountName, location,plan,null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.CreateAutomationAccount(resourceGroupName, accountName, location, plan, null), Times.Once());
         }
     }
 }

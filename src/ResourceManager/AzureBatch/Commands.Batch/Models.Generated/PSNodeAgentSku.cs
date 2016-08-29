@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSNodeAgentSku
+    public partial class PSNodeAgentSku
     {
         
         internal Microsoft.Azure.Batch.NodeAgentSku omObject;

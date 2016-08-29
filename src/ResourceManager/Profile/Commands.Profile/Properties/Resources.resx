@@ -132,14 +132,54 @@
   <data name="BothSubscriptionIdAndNameProvided" xml:space="preserve">
     <value>Please provide either a subscription ID or a subscription name.</value>
   </data>
+  <data name="ChangingContextSubscription" xml:space="preserve">
+    <value>Switching targeted subscription in the context to '{0}'</value>
+    <comment>{0} is subscription (name or id)</comment>
+  </data>
+  <data name="ChangingContextTenant" xml:space="preserve">
+    <value>Switching targeted tenant in the context to '{0}'</value>
+    <comment>{0} is tenant id or domain name</comment>
+  </data>
+  <data name="ChangingContextUsingPipeline" xml:space="preserve">
+    <value>Set current context using tenant: '{0}', subscription: '{1}'</value>
+    <comment>{0} is tenant, {1} is subscription</comment>
+  </data>
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
+  </data>
+  <data name="ContextChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets at a different tenant and subscription</value>
   </data>
   <data name="CurrentTenantInUse" xml:space="preserve">
     <value>Current tenant with Id '{0}' will be used.</value>
   </data>
+  <data name="DataCollectionDisabledWarning" xml:space="preserve">
+    <value>Data collection will be disabled permanently for the current user</value>
+  </data>
+  <data name="DataCollectionEnabledWarning" xml:space="preserve">
+    <value>Cmdlets will send data to Microsoft to help improve the customer experience</value>
+  </data>
+  <data name="DisableDataCollection" xml:space="preserve">
+    <value>Turn off data collection for Azure PowerShell cmdlets</value>
+  </data>
+  <data name="EnableDataCollection" xml:space="preserve">
+    <value>Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>Cannot find file '{0}'</value>
+  </data>
+  <data name="FileOverwriteCaption" xml:space="preserve">
+    <value>Overwrite File?</value>
+  </data>
+  <data name="FileOverwriteMessage" xml:space="preserve">
+    <value>Overwrite existing file at '{0}'?</value>
+    <comment>{0} is file path</comment>
+  </data>
   <data name="InvalidSubscriptionId" xml:space="preserve">
     <value>The provided subscription ID "{0}" is not a valid Guid.</value>
+  </data>
+  <data name="LoginTarget" xml:space="preserve">
+    <value>{0} account in environment '{1}'</value>
   </data>
   <data name="NoAccountProvided" xml:space="preserve">
     <value>(no account provided)</value>
@@ -147,11 +187,34 @@
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
   </data>
+  <data name="ProfileArgumentSaved" xml:space="preserve">
+    <value>The profile argument was saved to the file system at '{0}'. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls.</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileArgumentWrite" xml:space="preserve">
+    <value>save the profile argument to the file system at '{0}'</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileCurrentSaved" xml:space="preserve">
+    <value>The current profile was saved to the file system at '{0}'. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls.</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileCurrentWrite" xml:space="preserve">
+    <value>save the current profile to the file system at '{0}'</value>
+    <comment>{0} is file path</comment>
+  </data>
+  <data name="ProfileWriteWarning" xml:space="preserve">
+    <value>Personally identifiable information and secrets may be written to the file at '{0}'.  Please ensure that the saved file is assigned appropriate access controls</value>
+    <comment>{0} is file path</comment>
+  </data>
   <data name="SelectedSubscriptionNotActive" xml:space="preserve">
     <value>Selected subscription is in '{0}' state. </value>
   </data>
   <data name="SetAzureRmContextNoParameterSet" xml:space="preserve">
     <value>Please provide either a subscription ID, subscription name, tenant Id or domain.</value>
+  </data>
+  <data name="SubscriptionChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets in this session at a different subscription</value>
   </data>
   <data name="SubscriptionNameNotFoundError" xml:space="preserve">
     <value>Unable to find subscription with name '{0}'.</value>
@@ -161,6 +224,9 @@
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
+  </data>
+  <data name="TenantChangeWarning" xml:space="preserve">
+    <value>Targeting all subsequent cmdlets in this session at a different tenant</value>
   </data>
   <data name="TenantIdNotFound" xml:space="preserve">
     <value>Unable to find tenant '{0}'.</value>

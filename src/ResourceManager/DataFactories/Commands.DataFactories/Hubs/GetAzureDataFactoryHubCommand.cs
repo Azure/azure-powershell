@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 throw new PSArgumentNullException("Name");
             }
-            
+
             if (ParameterSetName == ByFactoryObject)
             {
                 if (DataFactory == null)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
                 return;
             }
-            
+
             // List hubs until all pages are fetched
             do
             {

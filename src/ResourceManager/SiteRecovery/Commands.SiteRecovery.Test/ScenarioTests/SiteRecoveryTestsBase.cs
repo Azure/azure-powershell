@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Net;
-using System.Net.Security;
-using System.Runtime.Serialization;
-using System.Xml;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.SiteRecovery;
+using Microsoft.Azure.Management.SiteRecoveryVault;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
-using System.Net.Http;
-using System.Reflection;
-using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Security;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
@@ -109,9 +110,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.SiteRecovery.psd1"));
                 helper.RunPowerShellTest(scripts);
             }
@@ -133,6 +134,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             var testEnvironment = factory.GetTestEnvironment();
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
+            var credentials = new SubscriptionCredentialsAdapter(
+                testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
+                testEnvironment.SubscriptionId);
 
             if (typeof(T) == typeof(SiteRecoveryVaultManagementClient))
             {
@@ -143,7 +147,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryVaultManagementClient(
                         "Microsoft.SiteRecoveryBVTD2",
                         "SiteRecoveryVault",
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
                 else
@@ -151,7 +155,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                     client = new SiteRecoveryVaultManagementClient(
                         "Microsoft.SiteRecovery",
                         "SiteRecoveryVault",
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
                 return GetRSMServiceClient<T>(factory, client);
             }
@@ -166,7 +170,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                         asrVaultCreds.ResourceGroupName,
                         "Microsoft.SiteRecoveryBVTD2",
                         "SiteRecoveryVault",
-                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        credentials,
                         testEnvironment.BaseUri);
                 }
 
@@ -177,7 +181,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                         asrVaultCreds.ResourceGroupName,
                         "Microsoft.SiteRecovery",
                         "vaults",
-                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                        credentials);
                 }
 
                 return GetSRMServiceClient<T>(factory, client);

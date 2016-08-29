@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         internal const string RemoveProtectedEntities = "RemoveProtectedEntities";
 
-	/// </summary>
+        /// </summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string ASRVault = "AzureSiteRecoveryVault";

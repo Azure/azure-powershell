@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceProviderOperationDefinition
     {
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the provider operation name.
         /// </summary>
@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private ResourceProviderOperationDisplayProperties _resourceProviderOperationDisplayProperties;
-        
+
         /// <summary>
         /// Optional. Gets or sets the display property of the provider
         /// operation.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceProviderOperationDisplayProperties; }
             set { this._resourceProviderOperationDisplayProperties = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the
         /// ResourceProviderOperationDefinition class.

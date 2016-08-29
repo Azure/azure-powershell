@@ -15,18 +15,17 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
     /// <summary>
     /// The remove azure resource lock cmdlet.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.LockIdParameterSet), OutputType(typeof(PSObject))]
-    public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase 
+    public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
-        [Alias("ExtensionResourceName")]
+        [Alias("ExtensionResourceName", "Name")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
 
-                    if(operationResult.HttpStatusCode == System.Net.HttpStatusCode.NoContent)
+                    if (operationResult.HttpStatusCode == System.Net.HttpStatusCode.NoContent)
                     {
                         throw new PSInvalidOperationException(string.Format("The resource lock '{0}' could not be found.", resourceId));
                     }

@@ -28,17 +28,18 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 
         private GetAzureDataFactoryHubCommand cmdlet;
 
-        public GetHubTests()
+        public GetHubTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             cmdlet = new GetAzureDataFactoryHubCommand()
-                         {
-                             CommandRuntime = commandRuntimeMock.Object,
-                             DataFactoryClient = dataFactoriesClientMock.Object,
-                             ResourceGroupName = ResourceGroupName,
-                             DataFactoryName = DataFactoryName
-                         };
+            {
+                CommandRuntime = commandRuntimeMock.Object,
+                DataFactoryClient = dataFactoriesClientMock.Object,
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName
+            };
         }
 
         [Fact]

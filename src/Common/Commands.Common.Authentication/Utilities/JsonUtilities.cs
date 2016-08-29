@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public static Dictionary<string, object> DeserializeJson(string jsonString, bool throwExceptionOnFailure = false)
         {
-            Dictionary<string, object> result = new Dictionary<string,object>();
+            Dictionary<string, object> result = new Dictionary<string, object>();
             if (jsonString == null)
             {
                 return null;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 return null;
             }
-            
+
             return jsonObject.Value;
         }
 

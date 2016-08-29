@@ -12,13 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class BatchAccountTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public BatchAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void TestGetNonExistingBatchAccount()
         {
@@ -29,12 +33,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestCreatesNewBatchAccount()
         {
             BatchController.NewInstance.RunPsTest("Test-CreatesNewBatchAccount");
-        }
-
-        [Fact]
-        public void TestCreateExistingBatchAccount()
-        {
-            BatchController.NewInstance.RunPsTest("Test-CreateExistingBatchAccount");
         }
 
         [Fact]

@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
 using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.ServiceManagemenet.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -351,14 +349,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     }
                 }
 
-                if(null == azureEnvironment)
+                if (null == azureEnvironment)
                 {
                     try
                     {
                         var profileClient = new ProfileClient(SMProfile);
                         azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
                     }
-                    catch(ArgumentException e)
+                    catch (ArgumentException e)
                     {
                         throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
                     }
@@ -382,7 +380,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     // the environment may not have value for StorageEndpointSuffix, in this case, we'll still use the default domain of "core.windows.net"
                 }
             }
-            
+
             return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, Resources.DefaultDomain);
         }
 

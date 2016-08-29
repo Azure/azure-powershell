@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TrafficManagerProfile
     {

@@ -50,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
         public void GetStorageAccountByNameAndKeyTest()
         {
             AssertThrows<FormatException>(()=>command.GetStorageAccountByNameAndKey("a", "key", false));
+            // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             command.GetStorageAccountByNameAndKey("a", "Xg+4nFQ832QfisuH/CkQwdQUmlqrZebQTJWpAQZ6klWjTVsIBVZy5xNdCDje4EWP0gdWK8vIFAX8LOmz85Wmcg==", false);
         }
 
@@ -108,6 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common.Cmdlet
         [TestMethod]
         public void GetStorageAccountByConnectionStringAndSasToken()
         {
+            // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
             string sasToken = "?st=2013-09-03T04%3A12%3A15Z&se=2013-09-03T05%3A12%3A15Z&sr=c&sp=r&sig=fN2NPxLK99tR2%2BWnk48L3lMjutEj7nOwBo7MXs2hEV8%3D";
             string endpoint = "http://storageaccountname.blob.core.windows.net";
             string connectionString = String.Format("BlobEndpoint={0};QueueEndpoint={0};TableEndpoint={0};SharedAccessSignature={1}", endpoint, sasToken);

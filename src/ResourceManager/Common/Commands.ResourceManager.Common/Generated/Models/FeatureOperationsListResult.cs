@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class FeatureOperationsListResult : AzureOperationResponse
     {
         private IList<FeatureResponse> _features;
-        
+
         /// <summary>
         /// Optional. Gets or sets the list of Features.
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._features; }
             set { this._features = value; }
         }
-        
+
         private string _nextLink;
-        
+
         /// <summary>
         /// Optional. Gets or sets the URL to get the next set of results.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._nextLink; }
             set { this._nextLink = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the FeatureOperationsListResult class.
         /// </summary>

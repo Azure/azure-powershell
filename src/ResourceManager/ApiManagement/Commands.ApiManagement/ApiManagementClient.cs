@@ -17,14 +17,14 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ApiManagement
 {
+    using AutoMapper;
+    using Management.ApiManagement;
+    using Management.ApiManagement.Models;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using AutoMapper;
-    using Models;
-    using Management.ApiManagement;
-    using Management.ApiManagement.Models;
 
     public class ApiManagementClient
     {
@@ -252,8 +252,8 @@ namespace Microsoft.Azure.Commands.ApiManagement
         }
 
         public ApiManagementLongRunningOperation BeginManageVirtualNetworks(
-            string resourceGroupName, 
-            string serviceName, 
+            string resourceGroupName,
+            string serviceName,
             IList<PsApiManagementVirtualNetwork> virtualNetworks)
         {
             var parameters = new ApiServiceManageVirtualNetworksParameters

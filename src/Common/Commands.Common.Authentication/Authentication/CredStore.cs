@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         internal enum CredentialType
         {
             Generic = 1,
-        } 
+        }
 
         internal static class NativeMethods
         {
@@ -69,7 +69,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 IntPtr pCredential
                 );
 
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable", Justification = "Wrapper for native struct")]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage(
+                "Microsoft.Design",
+                "CA1049:TypesThatOwnNativeResourcesShouldBeDisposable",
+                Justification = "Wrapper for native struct")]
             [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
             internal struct Credential
             {
@@ -108,7 +111,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 internal IntPtr attributes;
                 internal string targetAlias;
                 internal string userName;
-            }             
+            }
         }
     }
 }

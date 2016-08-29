@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSNameValuePair
+    public partial class PSNameValuePair
     {
         
         internal Microsoft.Azure.Batch.NameValuePair omObject;

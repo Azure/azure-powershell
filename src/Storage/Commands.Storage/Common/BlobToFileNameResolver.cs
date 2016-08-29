@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +30,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         private static readonly string[] reservedBaseFileNames = new string[]
             {
-                "CON", "PRN", "AUX", "NUL", 
-                "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9", 
+                "CON", "PRN", "AUX", "NUL",
+                "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
                 "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",
             };
 
@@ -47,7 +47,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Chars invalid for file name.
         /// </summary>
         private static char[] invalidFileNameChars = Path.GetInvalidFileNameChars();
-        
+
         /// <summary>
         /// Regular expression string format for replacing delimiters 
         /// that we consider as directory separators:
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <example>/folder1//folder2/ with '/' as delimiter gets translated to: /folder1\/folder2/ </example>.
         /// </summary>
         private Regex translateDelimitersRegex;
-        
+
         private Dictionary<string, string> resolvedFilesCache = new Dictionary<string, string>();
 
         private Func<int> getMaxFileNameLength;
@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             // Split into path + filename parts.
             int lastSlash = destinationRelativePath.LastIndexOf(this.DirSeparator, StringComparison.Ordinal);
-            
+
             string destinationFileName;
             string destinationPath;
 
@@ -225,7 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             return resolvedName;
         }
-        
+
         protected virtual string EscapeInvalidCharacters(string fileName)
         {
             if (null != this.InvalidPathChars)
@@ -246,12 +246,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             string fileNameNoExt = Path.GetFileNameWithoutExtension(fileName);
             string fileNameWithExt = Path.GetFileName(fileName);
 
-            if (Array.Exists<string>(reservedBaseFileNames, delegate(string s) { return fileNameNoExt.Equals(s, StringComparison.OrdinalIgnoreCase); }))
+            if (Array.Exists<string>(reservedBaseFileNames, delegate (string s) { return fileNameNoExt.Equals(s, StringComparison.OrdinalIgnoreCase); }))
             {
                 return true;
             }
 
-            if (Array.Exists<string>(reservedFileNames, delegate(string s) { return fileNameWithExt.Equals(s, StringComparison.OrdinalIgnoreCase); }))
+            if (Array.Exists<string>(reservedFileNames, delegate (string s) { return fileNameWithExt.Equals(s, StringComparison.OrdinalIgnoreCase); }))
             {
                 return true;
             }
@@ -284,14 +284,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             // TODO - MaxFileNameLength could be <= 0.
             int maxFileNameLength = this.getMaxFileNameLength();
 
-            Func<string, bool> conflict = delegate(string fileName)
+            Func<string, bool> conflict = delegate (string fileName)
             {
                 return this.resolvedFilesCache.ContainsKey(fileName.ToLowerInvariant()) ||
                        IsReservedFileName(fileName) ||
                        fileName.Length > maxFileNameLength;
             };
 
-            Func<string, string, int, string> construct = delegate(string fileName, string extension, int count)
+            Func<string, string, int, string> construct = delegate (string fileName, string extension, int count)
             {
                 string postfixString = string.Format(" ({0})", count);
 

@@ -15,8 +15,6 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -78,11 +76,12 @@ namespace Microsoft.Azure.Commands.Compute
 
             int i = 0;
 
-            for(; i <= this.VM.OSProfile.Secrets.Count; i++)
+            for (; i <= this.VM.OSProfile.Secrets.Count; i++)
             {
                 if (i == this.VM.OSProfile.Secrets.Count)
                 {
-                    var sourceVault = new SubResource {
+                    var sourceVault = new SubResource
+                    {
                         Id = this.SourceVaultId
                     };
 

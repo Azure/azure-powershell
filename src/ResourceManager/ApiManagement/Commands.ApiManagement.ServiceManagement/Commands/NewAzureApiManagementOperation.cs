@@ -14,75 +14,79 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementOperation")]
+    [Cmdlet(VerbsCommon.New, Constants.ApiManagementOperation)]
     [OutputType(typeof(PsApiManagementOperation))]
     public class NewAzureApiManagementOperation : AzureApiManagementCmdletBase
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
-            HelpMessage = "Identifier of new operation. This parameter is optional. If not specified will be generated.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of new operation. This parameter is optional." +
+                          " If not specified will be generated.")]
         public String OperationId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Display name of new operation. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Name { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "HTTP method of new operation. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String Method { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
-            HelpMessage = "URL template. Example: customers/{cid}/orders/{oid}/?date={date}. This parameter is required.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "URL template. Example: customers/{cid}/orders/{oid}/?date={date}. " +
+                          "This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String UrlTemplate { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Description of new operation. This parameter is optional.")]
         public String Description { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
-            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional. If not specified default value will be generated based on the UrlTemplate. Use the parameter to give more details on parameters like description, type, possible values.")]
+            Mandatory = false,
+            HelpMessage = "Array or parameters defined in UrlTemplate. This parameter is optional." +
+                          " If not specified default value will be generated based on the UrlTemplate." +
+                          " Use the parameter to give more details on parameters like description, type, possible values.")]
         public PsApiManagementParameter[] TemplateParameters { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
+            Mandatory = false,
             HelpMessage = "Operation request details. This parameter is optional.")]
         public PsApiManagementRequest Request { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Array of possible operation responses. This parameter is optional.")]
         public PsApiManagementResponse[] Responses { get; set; }

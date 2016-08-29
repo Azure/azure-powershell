@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.ServiceManagemenet.Common;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         {
             var hdinsightManagementClient = GetHdInsightManagementClient();
 
-            helper.SetupManagementClients(hdinsightManagementClient);
+            helper.SetupSomeOfManagementClients(hdinsightManagementClient);
         }
 
         protected HDInsightManagementClient GetHdInsightManagementClient()
@@ -53,6 +52,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             return TestBase.GetServiceClient<HDInsightManagementClient>(this.csmTestFactory);
         }
 
+        /// <summary>
+        /// Runs the PowerShell test
+        /// </summary>
+        /// <param name="scripts">script to be executed</param>
         public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
@@ -68,6 +71,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                 mockName);
         }
 
+        /// <summary>
+        /// Runs the PowerShell test under mock undo context based on the test mode setting (Record|Playback)
+        /// </summary>
+        /// <param name="scriptBuilder">Script builder delegate</param>
+        /// <param name="initialize">initialize action</param>
+        /// <param name="cleanup">cleanup action</param>
+        /// <param name="callingClassType">Calling class type</param>
+        /// <param name="mockName">Mock Name</param>
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<CSMTestEnvironmentFactory> initialize,

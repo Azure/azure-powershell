@@ -1,0 +1,18 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"appSku": {
+			"value": {
+				"code": "f2",
+				"name": "Shared"
+			}
+		},
+		"servicePlan": {
+			"value": "myplan"
+		},
+		"ranks": {
+			"value": [ "c", "d" ]
+		}
+	}
+}

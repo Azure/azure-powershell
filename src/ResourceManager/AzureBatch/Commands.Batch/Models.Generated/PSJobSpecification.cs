@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSJobSpecification
+    public partial class PSJobSpecification
     {
         
         internal Microsoft.Azure.Batch.JobSpecification omObject;
@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSJobSpecification()
         {
             this.omObject = new Microsoft.Azure.Batch.JobSpecification();
+        }
+        
+        public PSJobSpecification(PSPoolInformation poolInformation)
+        {
+            this.omObject = new Microsoft.Azure.Batch.JobSpecification(poolInformation.omObject);
         }
         
         internal PSJobSpecification(Microsoft.Azure.Batch.JobSpecification omObject)

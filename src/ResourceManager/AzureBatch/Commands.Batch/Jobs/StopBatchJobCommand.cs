@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchJob)]
     public class StopBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the job to terminate.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }

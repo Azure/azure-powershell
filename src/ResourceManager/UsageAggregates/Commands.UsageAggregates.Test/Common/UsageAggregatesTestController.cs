@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commerce.UsageAggregates;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Linq;
-using Microsoft.Azure.Commerce.UsageAggregates;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private readonly EnvironmentSetupHelper helper;
-        
-        public static UsageAggregatesTestController NewInstance 
-        { 
+
+        public static UsageAggregatesTestController NewInstance
+        {
             get
             {
                 return new UsageAggregatesTestController();
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
             RunPsTestWorkflow(
-                () => scripts, 
+                () => scripts,
                 // no custom initializer
-                null, 
+                null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
         }
 
         public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder, 
-            Action<CSMTestEnvironmentFactory> initialize, 
+            Func<string[]> scriptBuilder,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 
                 csmTestFactory = new CSMTestEnvironmentFactory();
 
-                if(initialize != null)
+                if (initialize != null)
                 {
                     initialize(csmTestFactory);
                 }
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                
+
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
-                    helper.RMProfileModule, 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    helper.RMProfileModule,
                     helper.GetRMModulePath(@"AzureRM.UsageAggregates.psd1"));
 
                 try
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
                 }
                 finally
                 {
-                    if(cleanup !=null)
+                    if (cleanup != null)
                     {
                         cleanup();
                     }
@@ -118,6 +118,6 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
             return TestBase.GetServiceClient<UsageAggregationManagementClient>(new CSMTestEnvironmentFactory());
         }
 
-      
+
     }
 }

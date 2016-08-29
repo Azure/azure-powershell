@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 2, 
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             ICollection<AzureSqlDatabaseModel> results;
 
-            if(MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
+            if (MyInvocation.BoundParameters.ContainsKey("DatabaseName"))
             {
                 results = new List<AzureSqlDatabaseModel>();
                 results.Add(ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName));

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             AdalTrace.TraceSource.Switch.Level = SourceLevels.All;
         }
 
-        public ConcurrentQueue<string> Messages; 
+        public ConcurrentQueue<string> Messages;
         public override void Write(string message)
         {
             Messages.CheckAndEnqueue(message);
@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public override void WriteLine(string message)
         {
-            Write(message +  "\n");
+            Write(message + "\n");
         }
 
         public static void RemoveAdalTracing(DebugStreamTraceListener listener)

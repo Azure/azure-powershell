@@ -14,17 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Authorization;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Cmdlet to get existing resources.
@@ -247,7 +246,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.errors.Count != 0)
             {
-                foreach(var error in this.errors)
+                foreach (var error in this.errors)
                 {
                     this.WriteError(error);
                 }
@@ -264,7 +263,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 var resource = await this.GetResource().ConfigureAwait(continueOnCapturedContext: false);
                 ResponseWithContinuation<JObject[]> retVal;
                 return resource.TryConvertTo(out retVal) && retVal.Value != null
-                    ? retVal 
+                    ? retVal
                     : new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
             }
 
@@ -531,7 +530,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool IsResourceTypeCollectionGet()
         {
-            return (this.IsCollection || this.TenantLevel) && 
+            return (this.IsCollection || this.TenantLevel) &&
                 (this.IsResourceGroupLevelResourceTypeCollectionGet() ||
                 this.IsSubscriptionLevelResourceTypeCollectionGet() ||
                 this.IsTenantLevelResourceTypeCollectionGet());

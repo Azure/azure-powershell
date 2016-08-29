@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSSubtaskInformation
+    public partial class PSSubtaskInformation
     {
         
         internal Microsoft.Azure.Batch.SubtaskInformation omObject;

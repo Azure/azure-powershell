@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Management.Internal.Resources
 {
@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Management.Internal.Resources
         /// </returns>
         public static ResourceProviderOperationDetailListResult List(this IResourceProviderOperationDetailsOperations operations, ResourceIdentity identity)
         {
-            return Task.Factory.StartNew((object s) => 
+            return Task.Factory.StartNew((object s) =>
             {
                 return ((IResourceProviderOperationDetailsOperations)s).ListAsync(identity);
             }
             , operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
         }
-        
+
         /// <summary>
         /// Gets a list of resource providers.
         /// </summary>

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
     {
         public AzureAccount()
         {
-            Properties = new Dictionary<Property,string>();
+            Properties = new Dictionary<Property, string>();
         }
 
         public string GetProperty(Property property)
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 subscriptions = Properties[Property.Subscriptions];
             }
 
-            foreach (var subscription in subscriptions.Split(new [] {','}, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var subscription in subscriptions.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 try
                 {

@@ -73,25 +73,25 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public VhdFooter CreateCopy()
         {
             return new VhdFooter
-                       {
-                           Cookie = this.Cookie.CreateCopy(),
-                           Features = this.Features,
-                           FileFormatVersion = this.FileFormatVersion,
-                           HeaderOffset = this.HeaderOffset,
-                           TimeStamp = this.TimeStamp,
-                           CreatorApplication = this.CreatorApplication,
-                           CreatorVersion = this.CreatorVersion,
-                           CreatorHostOsType = this.CreatorHostOsType,
-                           PhsyicalSize = this.PhsyicalSize,
-                           VirtualSize = this.VirtualSize,
-                           DiskGeometry = this.DiskGeometry.CreateCopy(),
-                           DiskType = this.DiskType,
-                           CheckSum = this.CheckSum,
-                           UniqueId = this.UniqueId,
-                           SavedState = this.SavedState,
-                           Reserved = CreateCopy(this.Reserved),
-                           RawData = CreateCopy(this.RawData),
-                       };
+            {
+                Cookie = this.Cookie.CreateCopy(),
+                Features = this.Features,
+                FileFormatVersion = this.FileFormatVersion,
+                HeaderOffset = this.HeaderOffset,
+                TimeStamp = this.TimeStamp,
+                CreatorApplication = this.CreatorApplication,
+                CreatorVersion = this.CreatorVersion,
+                CreatorHostOsType = this.CreatorHostOsType,
+                PhsyicalSize = this.PhsyicalSize,
+                VirtualSize = this.VirtualSize,
+                DiskGeometry = this.DiskGeometry.CreateCopy(),
+                DiskType = this.DiskType,
+                CheckSum = this.CheckSum,
+                UniqueId = this.UniqueId,
+                SavedState = this.SavedState,
+                Reserved = CreateCopy(this.Reserved),
+                RawData = CreateCopy(this.RawData),
+            };
         }
 
         static byte[] CreateCopy(byte[] data)
@@ -118,22 +118,22 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             unchecked
             {
                 int result = (Cookie != null ? Cookie.GetHashCode() : 0);
-                result = (result*397) ^ Features.GetHashCode();
-                result = (result*397) ^ (FileFormatVersion != null ? FileFormatVersion.GetHashCode() : 0);
-                result = (result*397) ^ HeaderOffset.GetHashCode();
-                result = (result*397) ^ TimeStamp.GetHashCode();
-                result = (result*397) ^ (CreatorApplication != null ? CreatorApplication.GetHashCode() : 0);
-                result = (result*397) ^ (CreatorVersion != null ? CreatorVersion.GetHashCode() : 0);
-                result = (result*397) ^ CreatorHostOsType.GetHashCode();
-                result = (result*397) ^ PhsyicalSize.GetHashCode();
-                result = (result*397) ^ VirtualSize.GetHashCode();
-                result = (result*397) ^ (DiskGeometry != null ? DiskGeometry.GetHashCode() : 0);
-                result = (result*397) ^ DiskType.GetHashCode();
-                result = (result*397) ^ CheckSum.GetHashCode();
-                result = (result*397) ^ UniqueId.GetHashCode();
-                result = (result*397) ^ SavedState.GetHashCode();
-                result = (result*397) ^ (Reserved != null ? Reserved.GetHashCode() : 0);
-                result = (result*397) ^ (RawData != null ? RawData.GetHashCode() : 0);
+                result = (result * 397) ^ Features.GetHashCode();
+                result = (result * 397) ^ (FileFormatVersion != null ? FileFormatVersion.GetHashCode() : 0);
+                result = (result * 397) ^ HeaderOffset.GetHashCode();
+                result = (result * 397) ^ TimeStamp.GetHashCode();
+                result = (result * 397) ^ (CreatorApplication != null ? CreatorApplication.GetHashCode() : 0);
+                result = (result * 397) ^ (CreatorVersion != null ? CreatorVersion.GetHashCode() : 0);
+                result = (result * 397) ^ CreatorHostOsType.GetHashCode();
+                result = (result * 397) ^ PhsyicalSize.GetHashCode();
+                result = (result * 397) ^ VirtualSize.GetHashCode();
+                result = (result * 397) ^ (DiskGeometry != null ? DiskGeometry.GetHashCode() : 0);
+                result = (result * 397) ^ DiskType.GetHashCode();
+                result = (result * 397) ^ CheckSum.GetHashCode();
+                result = (result * 397) ^ UniqueId.GetHashCode();
+                result = (result * 397) ^ SavedState.GetHashCode();
+                result = (result * 397) ^ (Reserved != null ? Reserved.GetHashCode() : 0);
+                result = (result * 397) ^ (RawData != null ? RawData.GetHashCode() : 0);
                 return result;
             }
         }

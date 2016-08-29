@@ -12,19 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.IO;
+using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
@@ -82,9 +79,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                                         .Last();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule, 
+                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"));
 
                 if (scripts != null)

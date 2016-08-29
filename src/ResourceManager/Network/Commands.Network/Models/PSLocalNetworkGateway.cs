@@ -14,13 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
 
     using Newtonsoft.Json;
 
     public class PSLocalNetworkGateway : PSTopLevelResource
     {
-        public string GatewayIpAddress  { get; set; }
+        public string GatewayIpAddress { get; set; }
 
         public PSAddressSpace LocalNetworkAddressSpace { get; set; }
 

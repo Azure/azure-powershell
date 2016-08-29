@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerActiveDirectoryAdministrator",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerActiveDirectoryAdministrator", SupportsShouldProcess = true)]
     public class RemoveAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
@@ -37,8 +34,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlServerActiveDirectoryAdministratorModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerActiveDirectoryAdministratorModel>() { 
-                ModelAdapter.GetServerActiveDirectoryAdministrator(this.ResourceGroupName, this.ServerName) 
+            return new List<Model.AzureSqlServerActiveDirectoryAdministratorModel>() {
+                ModelAdapter.GetServerActiveDirectoryAdministrator(this.ResourceGroupName, this.ServerName)
             };
         }
 

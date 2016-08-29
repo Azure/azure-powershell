@@ -12,169 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class CertificateTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddCertificate()
+        public CertificateTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            BatchController.NewInstance.RunPsTest("Test-AddCertificate");
-        }
-
-        [Fact]
-        public void TestGetCertificateByThumbprint()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string thumbprint = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetCertificateByThumbprint '{0}' '{1}'", BatchTestHelpers.TestCertificateAlgorithm, thumbprint) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        public void TestListCertificatesByFilter()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string state = "active";
-            string thumbprint1 = null;
-            string toDeleteThumbprint = null;
-            int matchCount = 1;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListCertificatesByFilter '{0}' '{1}' '{2}'", state, toDeleteThumbprint, matchCount) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint1 = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                    toDeleteThumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName2);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint1);
-                    // Other cert is deleted as the first part of the PowerShell test script, but we ensure it's gone.
-                    try
-                    {
-                        ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, toDeleteThumbprint);
-                    }
-                    catch { }
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetAndListCertificatesWithSelect()
+        public void TestCertificateCrudOperations()
         {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string thumbprint = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-GetAndListCertificatesWithSelect '{0}' '{1}'", BatchTestHelpers.TestCertificateAlgorithm, thumbprint) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        public void TestListCertificatesWithMaxCount()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            int maxCount = 1;
-            string thumbprint1 = null;
-            string thumbprint2 = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListCertificatesWithMaxCount '{0}'", maxCount) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint1 = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                    thumbprint2 = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName2);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint1);
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint2);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        public void TestListAllCertificates()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            int count = 2;
-            string thumbprint1 = null;
-            string thumbprint2 = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListAllCertificates '{0}'", count) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint1 = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                    thumbprint2 = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName2);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint1);
-                    ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint2);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteCertificate()
-        {
-            BatchController controller = BatchController.NewInstance;
-            BatchAccountContext context = null;
-            string thumbprint = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-DeleteCertificate '{0}' '{1}'", BatchTestHelpers.TestCertificateAlgorithm, thumbprint) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
-                },
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+            BatchController.NewInstance.RunPsTest("Test-CertificateCrudOperations");
         }
 
         [Fact]
@@ -189,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = new ScenarioTestContext();
-                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName1);
+                    thumbprint = ScenarioTestHelpers.AddTestCertificate(controller, context, BatchTestHelpers.TestCertificateFileName);
                     CertificateReference certRef = new CertificateReference();
                     certRef.StoreLocation = CertStoreLocation.CurrentUser;
                     certRef.StoreName = "My";

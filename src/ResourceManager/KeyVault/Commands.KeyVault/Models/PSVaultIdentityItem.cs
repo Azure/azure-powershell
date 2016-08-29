@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
-using Microsoft.Azure.Commands.Tags.Model;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using ResourceManagement = Microsoft.Azure.Management.Resources.Models;
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string Location { get; protected set; }
 
-        public Hashtable[] Tags { get; protected set; }
+        public Hashtable Tags { get; protected set; }
 
         public string TagsTable
         {

@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public static string GetCurrentStorageAccountName(this AzureContext context)
         {
             string result = null;
-            if (context != null && context.Subscription != null  
+            if (context != null && context.Subscription != null
                 && context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
                 result = context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);

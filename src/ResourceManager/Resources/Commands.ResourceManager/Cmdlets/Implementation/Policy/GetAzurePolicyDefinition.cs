@@ -14,11 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Gets the policy definition.
@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetResourceId()
         {
             var subscriptionId = DefaultContext.Subscription.Id;
-            if(string.IsNullOrEmpty(this.Name))
+            if (string.IsNullOrEmpty(this.Name))
             {
-                return string.Format("/subscriptions/{0}/providers/{1}", 
-                    subscriptionId.ToString(), 
+                return string.Format("/subscriptions/{0}/providers/{1}",
+                    subscriptionId.ToString(),
                     Constants.MicrosoftAuthorizationPolicyDefinitionType);
             }
             else

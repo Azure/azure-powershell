@@ -36,73 +36,67 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
-        public string ProvisioningState { get; set; }
+        public bool? OverProvision { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        public bool? OverProvision { get; set; }
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public string Location { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tag { get; set; }
+        public string SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuName { get; set; }
+        public string SkuTier { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true)]
-        public string SkuTier { get; set; }
+        public Int64? SkuCapacity { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true)]
-        public Int64? SkuCapacity { get; set; }
+        public UpgradeMode? UpgradePolicyMode { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public UpgradeMode? UpgradePolicyMode { get; set; }
+        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetOSProfile OsProfile { get; set; }
+        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetStorageProfile StorageProfile { get; set; }
+        public VirtualMachineScaleSetNetworkConfiguration[] NetworkInterfaceConfiguration { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetNetworkConfiguration [] NetworkInterfaceConfiguration { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 11,
-            ValueFromPipelineByPropertyName = true)]
-        public VirtualMachineScaleSetExtension [] Extension { get; set; }
+        public VirtualMachineScaleSetExtension[] Extension { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -198,7 +192,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vVirtualMachineScaleSet = new VirtualMachineScaleSet
             {
-                ProvisioningState = this.ProvisioningState,
                 OverProvision = this.OverProvision,
                 Location = this.Location,
                 Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),

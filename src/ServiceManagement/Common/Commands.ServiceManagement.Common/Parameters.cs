@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         public const string RootPath = "RootPath";
 
         public const string CacheWorkerRoleName = "CacheWorkerRoleName";
-     
+
         public const string Instances = "Instances";
 
         public const string RoleName = "RoleName";

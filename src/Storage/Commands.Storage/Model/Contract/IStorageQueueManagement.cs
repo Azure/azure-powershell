@@ -14,12 +14,12 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Storage queue management interface
@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Queue request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>An enumerable collection of the queues in the storage account.</returns>
-        IEnumerable<CloudQueue>  ListQueues(string prefix, QueueListingDetails queueListingDetails,
+        IEnumerable<CloudQueue> ListQueues(string prefix, QueueListingDetails queueListingDetails,
             QueueRequestOptions options, OperationContext operationContext);
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>QueuePermissions object</returns>
         QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options = null, OperationContext operationContext = null);
 
-       
+
         /// <summary>
         /// Get queue permission async
         /// </summary>

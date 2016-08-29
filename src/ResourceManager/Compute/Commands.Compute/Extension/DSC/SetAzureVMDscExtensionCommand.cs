@@ -1,22 +1,19 @@
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -61,8 +58,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         [Alias("ConfigurationArchiveBlob")]
         [Parameter(
-            Mandatory = true, 
-            Position = 5, 
+            Mandatory = true,
+            Position = 5,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureBlobDscExtensionParamSet,
             HelpMessage = "The name of the configuration file that was previously uploaded by Publish-AzureRmVMDSCConfiguration")]
@@ -190,36 +187,39 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ///
         /// The DSC Azure Extension depends on DSC features that are only available in 
         /// the WMF updates. This parameter specifies which version of the update to 
-        /// install on the VM. The possible values are "4.0","latest" and "5.0".  
+        /// install on the VM. The possible values are "4.0","5.0" ,"5.1PP" and "latest".  
         /// 
-        /// A value of "4.0" will install KB3000850 
-        /// (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 
-        /// 2012 R2, or WMF 4.0 
-        /// (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other 
-        /// versions of Windows if a newer version isnt already installed.
+        /// A value of "4.0" will install WMF 4.0 Update packages 
+        /// (https://support.microsoft.com/en-us/kb/3119938) on Windows 8.1 or Windows Server 
+        /// 2012 R2, or  
+        /// (https://support.microsoft.com/en-us/kb/3109118) on Windows Server 2008 R2 
+        /// and on other versions of Windows if newer version is not already installed.
         /// 
         /// A value of "5.0" will install the latest release of WMF 5.0 
         /// (https://www.microsoft.com/en-us/download/details.aspx?id=50395).
+        /// 
+        /// A value of "5.1PP" will install the WMF 5.1 preview
+        /// (https://www.microsoft.com/en-us/download/details.aspx?id=53347).
         /// 
         /// A value of "latest" will install the latest WMF, currently WMF 5.0
         /// 
         /// The default value is "latest"
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP", "5.0" })]
+        [ValidateSetAttribute(new[] { "4.0", "5.0", "5.1PP", "latest" })]
         public string WmfVersion { get; set; }
 
         /// <summary>
         /// The Extension Data Collection state
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " + 
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
             "The value is persisted in the extension between calls.")
         ]
         [ValidateSet("Enable", "Disable")]
         [AllowNull]
         public string DataCollection { get; set; }
-        
+
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -381,7 +381,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
                 catch (Rest.Azure.CloudException ex)
                 {
-                    var errorReturned = JsonConvert.DeserializeObject<ComputeLongRunningOperationError>(
+                    var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                         ex.Response.Content);
 
                     if ("Failed".Equals(errorReturned.Status)
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             //
             // Get a reference to the container in blob storage
             //
-            var storageAccount = new CloudStorageAccount(_storageCredentials, ArchiveStorageEndpointSuffix, true); 
+            var storageAccount = new CloudStorageAccount(_storageCredentials, ArchiveStorageEndpointSuffix, true);
 
             var blobClient = storageAccount.CreateCloudBlobClient();
 
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 var configurationDataBlobReference =
                     containerReference.GetBlockBlobReference(configurationDataBlobName);
-                
+
                 ConfirmAction(
                     true,
                     string.Empty,

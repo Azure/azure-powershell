@@ -17,11 +17,11 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
+    using System;
     using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    using System;
-        
+
     [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
                 throw new ArgumentException(Resources.MaxMemoryPolicyException);
@@ -98,11 +99,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 ShardCount = response.ShardCount;
             }
-            
-            
+
+
             WriteObject(new RedisCacheAttributesWithAccessKeys(
-                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort, 
-                    TenantSettings, ShardCount, response.VirtualNetwork, response.Subnet, response.StaticIP), 
+                CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, response.Location, skuFamily, skuCapacity, skuName, RedisConfiguration, EnableNonSslPort,
+                    TenantSettings, ShardCount, response.SubnetId, response.StaticIP, response.Tags),
                 ResourceGroupName));
         }
     }

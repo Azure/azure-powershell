@@ -12,20 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Xunit;
-using System;
-using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
     public class ClientFactoryTests
     {
+        public ClientFactoryTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifyUserAgentValuesAreTransmitted()

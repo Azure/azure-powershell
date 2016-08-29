@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 {
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Set, StorageNouns.QueueStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.QueueStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
     {
         [Alias("N", "Name")]
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Policy Identifier")]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set; }
+        public string Policy { get; set; }
 
         [Parameter(HelpMessage = "Permissions for a queue. Permissions can be any not-empty subset of \"arup\".")]
         public string Permission { get; set; }
@@ -111,7 +111,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
-            SetAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            if (ShouldProcess(Policy, "Set"))
+            {
+                SetAzureQueueStoredAccessPolicy(Channel, Queue, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            }
         }
     }
 }

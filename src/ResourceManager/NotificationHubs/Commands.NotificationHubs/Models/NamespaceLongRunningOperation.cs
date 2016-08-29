@@ -46,9 +46,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 OperationLink = longRunningResponse.OperationStatusLink,
                 RetryAfter = TimeSpan.FromSeconds(longRunningResponse.RetryAfter),
                 Status = longRunningResponse.Status,
-                Error = (longRunningResponse.Error != null ) ? longRunningResponse.Error.Message : null
+                Error = (longRunningResponse.Error != null) ? longRunningResponse.Error.Message : null
             };
-                        
+
             return result;
         }
 

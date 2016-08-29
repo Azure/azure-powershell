@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Network.Models;
-using System.Threading.Tasks;
-using System.Threading;
-using Microsoft.Rest.Azure;
-using System.Collections.Generic;
-using Microsoft.Rest;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Text;
-using System.Net.Http.Headers;
-using System.Net;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header received in response!"));
             }
 
-            if(string.IsNullOrEmpty(locationResultsUrl))
+            if (string.IsNullOrEmpty(locationResultsUrl))
             {
                 throw new Exception(string.Format("Get-AzureRmVpnClientPackage Operation Failed as no valid Location header value received in response!"));
             }

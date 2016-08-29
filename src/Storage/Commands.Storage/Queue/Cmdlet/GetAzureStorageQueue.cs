@@ -14,20 +14,20 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using System;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
     /// <summary>
     /// list azure queues
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, StorageNouns.Queue,DefaultParameterSetName = NameParameterSet),
+    [Cmdlet(VerbsCommon.Get, StorageNouns.Queue, DefaultParameterSetName = NameParameterSet),
         OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
     {
@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
             }
 
             QueueRequestOptions requestOptions = RequestOptions;
-            
+
             foreach (CloudQueue queue in queueList)
             {
                 //get message count

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public Management.Sql.Models.ImportExportResponse Export(string resourceGroupName, string serverName, string databaseName, ExportRequestParameters parameters, string clientRequestId)
         {
             return GetCurrentSqlClient(clientRequestId).ImportExport.Export(resourceGroupName, serverName, databaseName, parameters);
-        }       
+        }
 
         /// <summary>
         /// Creates new import request

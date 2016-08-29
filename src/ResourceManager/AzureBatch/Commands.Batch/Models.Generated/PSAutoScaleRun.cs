@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAutoScaleRun
+    public partial class PSAutoScaleRun
     {
         
         internal Microsoft.Azure.Batch.AutoScaleRun omObject;

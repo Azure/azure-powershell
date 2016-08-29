@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSStartTask
+    public partial class PSStartTask
     {
         
         internal Microsoft.Azure.Batch.StartTask omObject;
@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSStartTask()
         {
             this.omObject = new Microsoft.Azure.Batch.StartTask();
+        }
+        
+        public PSStartTask(string commandLine)
+        {
+            this.omObject = new Microsoft.Azure.Batch.StartTask(commandLine);
         }
         
         internal PSStartTask(Microsoft.Azure.Batch.StartTask omObject)

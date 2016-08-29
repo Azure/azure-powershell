@@ -14,15 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Text;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementPolicy", DefaultParameterSetName = TenantLevel)]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
@@ -33,35 +34,38 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string OperationLevel = "Operation level";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = false, 
-            HelpMessage = "Format of the policy. This parameter is optional. Default value is ‘application/vnd.ms-azure-apim.policy+xml’.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Format of the policy. Default value is ‘application/vnd.ms-azure-apim.policy+xml’." +
+                          " This parameter is optional.")]
         public String Format { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false, 
-            HelpMessage = "File path to save the result to. If not specified the result will be sent to pipeline as a sting. This parameter is optional.")]
+            Mandatory = false,
+            HelpMessage = "File path to save the result to. If not specified the result will be sent to pipeline as a sting." +
+                          " This parameter is optional.")]
         public String SaveAs { get; set; }
 
         [Parameter(
             ParameterSetName = ProductLevel,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
-            HelpMessage = "Identifier of existing product. If specified will return product-scope policy. This parameters is optional.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Identifier of existing product. If specified will return product-scope policy." +
+                          " This parameters is optional.")]
         public String ProductId { get; set; }
 
         [Parameter(
             ParameterSetName = ApiLevel,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of existing API. If specified will return API-scope policy. This parameters is required.")]
         [Parameter(
             ParameterSetName = OperationLevel,
@@ -72,15 +76,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ParameterSetName = OperationLevel,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
-            HelpMessage = "Identifier of existing operation. If specified with ApiId will return operation-scope policy. This parameters is required.")]
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Identifier of existing operation. If specified with ApiId will return operation-scope policy." +
+                          " This parameters is required.")]
         public String OperationId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Identifier of existing operation. If specified with ApiId will return operation-scope policy. This parameters is optional.")]
+            HelpMessage = "Identifier of existing operation. If specified with ApiId will return operation-scope policy." +
+                          " This parameters is optional.")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
@@ -120,12 +126,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.SavePolicyWarning, SaveAs);
 
                 // Do nothing if force is not specified and user cancelled the operation
-                if (File.Exists(SaveAs) &&
+                if (!ShouldProcess(ApiId, actionDescription) || (File.Exists(SaveAs) &&
                     !Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
+                    !ShouldContinue(
                         actionWarning,
-                        Resources.ShouldProcessCaption))
+                        Resources.ShouldProcessCaption)))
                 {
                     return;
                 }

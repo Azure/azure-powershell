@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
 
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
@@ -100,13 +100,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        [Alias(TagsAlias)]
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
-            CheckNameAvailabilityResult checkNameAvailabilityResult =this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
+            CheckNameAvailabilityResult checkNameAvailabilityResult = this.StorageClient.StorageAccounts.CheckNameAvailability(this.Name);
             if (!checkNameAvailabilityResult.NameAvailable.Value)
             {
                 throw new System.ArgumentException(checkNameAvailabilityResult.Message, "Name");
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 Location = this.Location,
                 Kind = ParseAccountKind(Kind),
                 Sku = new Sku(ParseSkuName(this.SkuName)),
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
 
             if (this.CustomDomainName != null)
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 createParameters.Encryption = ParseEncryption(EnableEncryptionService);
             }
 
-            if(this.AccessTier != null)
+            if (this.AccessTier != null)
             {
                 createParameters.AccessTier = ParseAccessTier(AccessTier);
             }

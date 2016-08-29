@@ -12,14 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -28,7 +23,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-4.27_201512-01"; 
+        private const string specificOSVersion = "WA-GUEST-OS-4.32_201605-01";
+
+        public PoolTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

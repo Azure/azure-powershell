@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Model

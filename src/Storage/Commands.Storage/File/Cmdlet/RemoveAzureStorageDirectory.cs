@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +14,14 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Storage.File;
 
     [Cmdlet(
         VerbsCommon.Remove,
         Constants.FileDirectoryCmdletName,
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
         DefaultParameterSetName = Constants.ShareNameParameterSetName)]
     public class RemoveAzureStorageDirectory : AzureStorageFileCmdletBase
     {
@@ -100,7 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             var directoryToBeRemoved = baseDirectory.GetDirectoryReferenceByPath(path);
             this.RunTask(async taskId =>
             {
-                if (this.ShouldProcess(directoryToBeRemoved.GetFullPath()))
+                if (this.ShouldProcess(directoryToBeRemoved.GetFullPath(), "Remove directory"))
                 {
                     await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 }

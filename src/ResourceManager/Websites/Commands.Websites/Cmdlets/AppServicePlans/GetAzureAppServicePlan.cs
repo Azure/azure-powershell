@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Models;
-using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        
+
         [Parameter(ParameterSetName = ParameterSet2, Position = 0, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 case ParameterSet2:
                     GetByLocation();
                     break;
-            }            
+            }
         }
 
         private void GetAppServicePlan()
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 {
                     WriteExceptionError(e);
                 }
-                
+
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, serverFarmResources.Length);
                 progressRecord.PercentComplete = (100 * (i + 1)) / serverFarmResources.Length;
                 WriteProgress(progressRecord);
@@ -132,13 +132,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
             WriteProgress(progressRecord);
 
             var resourceGroups = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
-                {
-                    ResourceType = "Microsoft.Web/ServerFarms"
-                }).Select(sf => sf.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+            {
+                ResourceType = "Microsoft.Web/ServerFarms"
+            }).Select(sf => sf.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 
             var list = new List<ServerFarmWithRichSku>();
-            
-            
+
+
             for (var i = 0; i < resourceGroups.Length; i++)
             {
                 var rg = resourceGroups[i];
@@ -154,10 +154,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 {
                     WriteExceptionError(e);
                 }
-                
+
                 progressRecord.CurrentOperation = string.Format(progressCurrentOperationFormat, rg);
-                progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i+1, resourceGroups.Length);
-                progressRecord.PercentComplete = (100*(i+1))/resourceGroups.Length; 
+                progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, resourceGroups.Length);
+                progressRecord.PercentComplete = (100 * (i + 1)) / resourceGroups.Length;
                 WriteProgress(progressRecord);
             }
 

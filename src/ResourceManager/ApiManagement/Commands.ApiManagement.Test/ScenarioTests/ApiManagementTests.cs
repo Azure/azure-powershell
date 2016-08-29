@@ -12,12 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ServiceManagemenet.Common;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
@@ -33,9 +32,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public ApiManagementTests()
+        public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _helper = new EnvironmentSetupHelper();
+            _helper.TracingInterceptor = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
         }
 
         protected void SetupManagementClients()
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
-                apiManagementManagementClient, 
+                apiManagementManagementClient,
                 resourceManagementClient,
                 galaryClient,
                 authorizationManagementClient,
@@ -170,14 +171,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                _helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + GetType().Name + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule, 
-                    _helper.RMStorageDataPlaneModule, 
+                    _helper.RMResourceModule,
+                    _helper.RMStorageDataPlaneModule,
                     _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"),
-                    "AzureRM.Storage.ps1");
+                    "AzureRM.Storage.ps1",
+                    "AzureRM.Resources.ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }

@@ -14,13 +14,13 @@
 
 namespace Microsoft.AzureStack.Commands
 {
+    using Microsoft.AzureStack.Management;
+    using Microsoft.AzureStack.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
     using System;
     using System.Globalization;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.AzureStack.Management;
-    using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
     /// New managed location cmdlet
@@ -78,15 +78,15 @@ namespace Microsoft.AzureStack.Commands
             {
                 this.WriteVerbose(Resources.CreatingNewManagedLocation.FormatArgs(this.Name));
                 var parameters = new ManagedLocationCreateOrUpdateParameters()
+                {
+                    Location = new Location()
                     {
-                        Location = new Location()
-                            {
-                                DisplayName = this.DisplayName,
-                                Latitude = this.Latitude.ToString(CultureInfo.InvariantCulture),
-                                Longitude = this.Longitude.ToString(CultureInfo.InvariantCulture),
-                                Name = this.Name
-                            }
-                    };
+                        DisplayName = this.DisplayName,
+                        Latitude = this.Latitude.ToString(CultureInfo.InvariantCulture),
+                        Longitude = this.Longitude.ToString(CultureInfo.InvariantCulture),
+                        Name = this.Name
+                    }
+                };
 
                 if (client.ManagedLocations.List()
                         .Locations.Any(location => location.Name.EqualsInsensitively(parameters.Location.Name)))

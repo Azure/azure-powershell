@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
-using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchJob)]
     public class NewBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the job to create.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
@@ -64,6 +63,9 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public int Priority { get; set; }
 
+        [Parameter]
+        public SwitchParameter UsesTaskDependencies { get; set; }
+
         public override void ExecuteCmdlet()
         {
             NewJobParameters parameters = new NewJobParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
@@ -76,7 +78,8 @@ namespace Microsoft.Azure.Commands.Batch
                 JobReleaseTask = this.JobReleaseTask,
                 Metadata = this.Metadata,
                 PoolInformation = this.PoolInformation,
-                Priority = this.Priority
+                Priority = this.Priority,
+                UsesTaskDependencies = this.UsesTaskDependencies.IsPresent,
             };
 
             BatchClient.CreateJob(parameters);

@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -131,10 +130,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetAll()
         {
-           PolicyListResponse policyListResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
+            PolicyListResponse policyListResponse =
+                 RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
 
-           this.WritePolicies(policyListResponse.Policies);
+            this.WritePolicies(policyListResponse.Policies);
         }
 
         /// <summary>

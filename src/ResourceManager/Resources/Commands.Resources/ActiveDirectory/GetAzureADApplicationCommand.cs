@@ -14,12 +14,11 @@
 
 using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System;
-using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Graph.RBAC.Models;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
         [ValidateGuidNotEmpty]
-        public Guid ApplicationObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         [ValidateGuidNotEmpty]
@@ -47,28 +46,33 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            if (ApplicationObjectId != Guid.Empty)
+            ExecutionBlock(() =>
             {
-                WriteObject(ActiveDirectoryClient.GetApplication(ApplicationObjectId.ToString()));
-            }
-            else
-            {
-                ApplicationFilterParameters parameters = new ApplicationFilterParameters();
-                if (ApplicationId != Guid.Empty)
+                if (ObjectId != Guid.Empty)
                 {
-                    parameters.AppId = ApplicationId;
+                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId.ToString()));
                 }
-                else if (!string.IsNullOrEmpty(DisplayNameStartWith))
+                else
                 {
-                    parameters.DisplayNameStartsWith = DisplayNameStartWith;
-                }
-                else if (!string.IsNullOrEmpty(IdentifierUri))
-                {
-                    parameters.IdentifierUri = IdentifierUri;
-                }
+                    Rest.Azure.OData.ODataQuery<Application> odataQueryFilter = null;
 
-                WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(parameters), enumerateCollection: true);
-            }
+                    if (ApplicationId != Guid.Empty)
+                    {
+                        string appId = ApplicationId.ToString();
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == appId);
+                    }
+                    else if (!string.IsNullOrEmpty(DisplayNameStartWith))
+                    {
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName.StartsWith(DisplayNameStartWith));
+                    }
+                    else if (!string.IsNullOrEmpty(IdentifierUri))
+                    {
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
+                    }
+
+                    WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
+                }
+            });
         }
     }
 }

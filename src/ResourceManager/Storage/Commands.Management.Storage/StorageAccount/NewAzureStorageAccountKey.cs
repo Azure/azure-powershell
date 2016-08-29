@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet(VerbsCommon.New, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKey))]
     public class NewAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
-        private const string Key1 = "Key1";
+        private const string Key1 = "key1";
 
-        private const string Key2 = "Key2";
+        private const string Key2 = "key2";
 
         [Parameter(
             Position = 0,
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Key.")]
-        [ValidateSet(Key1, Key2, IgnoreCase = true)]
+        [ValidateSet(Key1, Key2, IgnoreCase = false)]
         public string KeyName { get; set; }
 
         public override void ExecuteCmdlet()

@@ -12,18 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Commands.Sql.Database.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ImportExport.Model;
 using Microsoft.Azure.Commands.Sql.ImportExport.Service;
+using System;
+using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
 {
@@ -96,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         public AuthenticationType AuthenticationType
         {
             get; set;
-        }       
+        }
 
         /// <summary>
         /// Intializes the model adapter

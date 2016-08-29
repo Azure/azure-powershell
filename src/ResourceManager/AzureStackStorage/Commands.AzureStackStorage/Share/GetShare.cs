@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -56,7 +56,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
             {
                 var shares = Client.Shares.List(ResourceGroupName, FarmName);
 
-                WriteObject(shares.Shares.Select(_=>new ShareResponse(_)), true);
+                WriteObject(shares.Shares.Select(_ => new ShareResponse(_)), true);
             }
             else
             {

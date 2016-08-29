@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
                 ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 types.Add(obj.GetType());
             }
-            
+
             var constructor = typeof(TClient).GetConstructor(types.ToArray());
 
             if (constructor == null)
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context, endpoint);
             TClient client = CreateCustomClient<TClient>(creds, context.Environment.GetEndpointAsUri(endpoint));
-            foreach(DelegatingHandler handler in GetCustomHandlers())
+            foreach (DelegatingHandler handler in GetCustomHandlers())
             {
                 client.AddHandlerToPipeline(handler);
             }
@@ -258,7 +257,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
         }
 
-        public void AddHandler<T>(T handler) where T: DelegatingHandler, ICloneable
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
             if (handler != null)
             {

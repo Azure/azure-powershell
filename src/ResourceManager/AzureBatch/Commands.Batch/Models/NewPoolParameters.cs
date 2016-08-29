@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using System;
 using System.Collections;
-using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string VirtualMachineSize { get; set; }
 
         /// <summary>
-        /// The OS family of the compute nodes in the pool.
-        /// </summary>
-        public string OSFamily { get; set; }
-
-        /// <summary>
         /// Pool configuration settings for a pool on the virtual machines infrastructure
         /// </summary>
         public PSVirtualMachineConfiguration VirtualMachineConfiguration { get; set; }
@@ -61,11 +56,6 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Pool configuration settings for a pool based on the Azure cloud service platform
         /// </summary>
         public PSCloudServiceConfiguration CloudServiceConfiguration { get; set; }
-
-        /// <summary>
-        /// The target OS version of the compute nodes in the pool.
-        /// </summary>
-        public string TargetOSVersion { get; set; }
 
         /// <summary>
         /// The timeout for allocating compute nodes to the pool.
@@ -103,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public IDictionary Metadata { get; set; }
 
         /// <summary>
-        /// Specifies whether the pool permits direct communication between compute nodes. 
+        /// Specifies whether the pool permits direct communication between compute nodes.
         /// </summary>
         public bool InterComputeNodeCommunicationEnabled { get; set; }
 
@@ -116,5 +106,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Certificate references for the pool.
         /// </summary>
         public PSCertificateReference[] CertificateReferences { get; set; }
+
+        /// <summary>
+        /// Application package references for the pool.
+        /// </summary>
+        public PSApplicationPackageReference[] ApplicationPackageReferences { get; set; }
+
+        /// <summary>
+        /// The network configuration of the pool.
+        /// </summary>
+        public PSNetworkConfiguration NetworkConfiguration { get; set; }
     }
 }

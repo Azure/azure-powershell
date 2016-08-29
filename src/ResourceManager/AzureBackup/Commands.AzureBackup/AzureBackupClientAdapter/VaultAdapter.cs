@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         public bool DeleteVault(string resourceGroupName, string vaultName)
         {
             AzureBackupVaultGetResponse response = AzureBackupVaultClient.Vault.DeleteAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
-            
+
             // OneSDK will return only either OK or NoContent
             return response.StatusCode == System.Net.HttpStatusCode.OK;
         }

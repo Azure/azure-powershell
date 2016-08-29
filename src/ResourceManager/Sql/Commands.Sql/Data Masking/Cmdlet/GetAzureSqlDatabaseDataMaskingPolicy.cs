@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Returns the data masking policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseDataMaskingPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
     public class GetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseDataMaskingPolicyModel PersistChanges(DatabaseDataMaskingPolicyModel model) 
+        protected override DatabaseDataMaskingPolicyModel PersistChanges(DatabaseDataMaskingPolicyModel model)
         {
             return null;
         }

@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using System;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
 
     /// <summary>
     /// Azure storage blob object
@@ -50,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Blob snapshot time
         /// </summary>
-        public DateTimeOffset? SnapshotTime  { get; private set; }
+        public DateTimeOffset? SnapshotTime { get; private set; }
 
         /// <summary>
         /// Blob continuation token

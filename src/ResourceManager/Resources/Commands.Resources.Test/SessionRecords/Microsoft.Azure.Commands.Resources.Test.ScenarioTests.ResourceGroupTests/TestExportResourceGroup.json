@@ -202,6 +202,7 @@
       "RequestUri": "/subscriptions/a64c96dc-aa1f-4d6d-8072-77cbbf202311/resourceGroups/onesdk1831/providers/Providers.Test/statefulResources/onesdk4841?api-version=2014-04-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTY0Yzk2ZGMtYWExZi00ZDZkLTgwNzItNzdjYmJmMjAyMzExL3Jlc291cmNlR3JvdXBzL29uZXNkazE4MzEvcHJvdmlkZXJzL1Byb3ZpZGVycy5UZXN0L3N0YXRlZnVsUmVzb3VyY2VzL29uZXNkazQ4NDE/YXBpLXZlcnNpb249MjAxNC0wNC0wMQ==",
       "RequestMethod": "PUT",
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"centralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
@@ -220,6 +221,7 @@
           "New-AzureRmResource"
         ]
       },
+      //[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/a64c96dc-aa1f-4d6d-8072-77cbbf202311/resourceGroups/onesdk1831/providers/Providers.Test/statefulResources/onesdk4841\",\r\n  \"name\": \"onesdk4841\",\r\n  \"type\": \"Providers.Test/statefulResources\",\r\n  \"sku\": {\r\n    \"name\": \"A0\"\r\n  },\r\n  \"location\": \"Central US\",\r\n  \"tags\": {\r\n    \"testtag\": \"testval\"\r\n  },\r\n  \"properties\": {\r\n    \"administratorLoginPassword\": \"P@ssword1\",\r\n    \"administratorLogin\": \"adminuser\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [

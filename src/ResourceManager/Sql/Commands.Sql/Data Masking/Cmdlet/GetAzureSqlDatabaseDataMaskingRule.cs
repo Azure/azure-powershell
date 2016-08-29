@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Returns a data masking rule or all the rules for a given database
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseDataMaskingRule"), OutputType(typeof(IEnumerable<DatabaseDataMaskingRuleModel>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<DatabaseDataMaskingRuleModel>))]
     public class GetAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
-    {     
+    {
         /// <summary>
         /// Gets or sets the schema name
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,  HelpMessage = "The schema name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The schema name.")]
         [ValidateNotNullOrEmpty]
         public override string SchemaName { get; set; }
 
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
             Predicate<DatabaseDataMaskingRuleModel> schemaPred = (DatabaseDataMaskingRuleModel r) => { return string.IsNullOrEmpty(SchemaName) ? true : r.SchemaName == SchemaName; };
             return model.Where(r => { return colPred(r) && tablePred(r) && schemaPred(r); }).ToList();
         }
-        
-        
+
+
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> model) 
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> model)
         {
             return null;
         }

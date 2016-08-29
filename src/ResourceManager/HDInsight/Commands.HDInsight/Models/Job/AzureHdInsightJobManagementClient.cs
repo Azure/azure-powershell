@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -118,6 +119,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual JobGetResponse GetJob(string jobId)
         {
             return HdInsightJobManagementClient.JobManagement.GetJob(jobId);
+        }
+
+        public virtual JobGetResponse WaitForJobCompletion(string jobId, TimeSpan? duration = null, TimeSpan? waitInterval = null)
+        {
+            return HdInsightJobManagementClient.JobManagement.WaitForJobCompletion(jobId, duration, waitInterval);
         }
 
         public virtual JobListResponse ListJobs()

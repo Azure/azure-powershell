@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 {
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             }
             finally
             {
-                if(throwing)
+                if (throwing)
                 {
                     disposer();
                 }
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             }
             finally
             {
-                if(throwing)
+                if (throwing)
                 {
                     disposer();
                 }
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             }
             finally
             {
-                if(throwing)
+                if (throwing)
                 {
                     disposer();
                 }
@@ -137,9 +137,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         public IAsyncResult BeginCreate(string path, AsyncCallback callback, object state)
         {
-            var streamSource = new StreamSource 
-            { 
-                Stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1024), 
+            var streamSource = new StreamSource
+            {
+                Stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 1024),
                 VhdDirectory = Path.GetDirectoryName(path),
                 DisposeOnException = true
             };
@@ -148,7 +148,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         public IAsyncResult BeginCreate(Stream stream, AsyncCallback callback, object state)
         {
-            var streamSource = new StreamSource { Stream = stream};
+            var streamSource = new StreamSource { Stream = stream };
             return AsyncMachine<VhdFile>.BeginAsyncMachine(this.CreateAsync, streamSource, callback, state);
         }
 
@@ -206,7 +206,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
                     parent = TryCatch<VhdFile>(EndCreate, disposer, machine.CompletionResult);
                 }
             }
-            machine.ParameterValue =  new VhdFile(footer, header, blockAllocationTable, parent, streamSource.Stream);
+            machine.ParameterValue = new VhdFile(footer, header, blockAllocationTable, parent, streamSource.Stream);
         }
     }
 }

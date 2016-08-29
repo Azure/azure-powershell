@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
@@ -27,8 +26,9 @@ using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -54,18 +54,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
 
-        // MPI requires a special pool configuration. When recording, the Storage environment variables need to be
-        // set so we can upload the MPI installer for use as a start task resource file.
+        // MPI requires a special pool configuration, so a dedicated pool is used.
         internal const string MpiPoolId = "mpiPool";
-        internal const string MpiSetupFileContainer = "mpi";
-        internal const string MpiSetupFileName = "MSMpiSetup.exe";
-        internal const string MpiSetupFileLocalPath = "Resources\\MSMpiSetup.exe";
-        internal const string StorageAccountEnvVar = "AZURE_STORAGE_ACCOUNT";
-        internal const string StorageKeyEnvVar = "AZURE_STORAGE_ACCESS_KEY";
 
         internal const string BatchAccountName = "AZURE_BATCH_ACCOUNT";
         internal const string BatchAccountKey = "AZURE_BATCH_ACCESS_KEY";
         internal const string BatchAccountEndpoint = "AZURE_BATCH_ENDPOINT";
+        internal const string BatchAccountResourceGroup = "AZURE_BATCH_RESOURCE_GROUP";
 
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
@@ -73,11 +68,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public static BatchAccountContext CreateTestAccountAndResourceGroup(BatchController controller, string resourceGroupName, string accountName, string location)
         {
             controller.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
-            BatchAccountCreateResponse createResponse = controller.BatchManagementClient.Accounts.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
-            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse.Resource);
-            BatchAccountListKeyResponse response = controller.BatchManagementClient.Accounts.ListKeys(resourceGroupName, accountName);
-            context.PrimaryAccountKey = response.PrimaryKey;
-            context.SecondaryAccountKey = response.SecondaryKey;
+            AccountResource createResponse = controller.BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
+            BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse);
+            BatchAccountListKeyResult response = controller.BatchManagementClient.Account.ListKeys(resourceGroupName, accountName);
+            context.PrimaryAccountKey = response.Primary;
+            context.SecondaryAccountKey = response.Secondary;
             return context;
         }
 
@@ -86,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static void CleanupTestAccount(BatchController controller, string resourceGroupName, string accountName)
         {
-            controller.BatchManagementClient.Accounts.Delete(resourceGroupName, accountName);
+            controller.BatchManagementClient.Account.Delete(resourceGroupName, accountName);
             controller.ResourceManagementClient.ResourceGroups.Delete(resourceGroupName);
         }
 
@@ -98,9 +93,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
-            ListCertificateOptions getParameters = new ListCertificateOptions(context) 
-            { 
-                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+            ListCertificateOptions getParameters = new ListCertificateOptions(context)
+            {
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
                 Thumbprint = cert.Thumbprint,
                 Select = "thumbprint,state"
             };
@@ -181,7 +176,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, 
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated,
             CertificateReference certReference = null, StartTask startTask = null)
         {
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
@@ -198,7 +193,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             }
 
             PSCloudServiceConfiguration paasConfiguration = new PSCloudServiceConfiguration("4", "*");
-            
+
             NewPoolParameters parameters = new NewPoolParameters(context, poolId)
             {
                 VirtualMachineSize = "small",
@@ -228,27 +223,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 client.ListPools(listOptions);
                 return; // The call returned without throwing an exception, so the pool exists
             }
-            catch (AggregateException aex)
+            catch (BatchException ex)
             {
-                BatchException innerException = aex.InnerException as BatchException;
-                if (innerException == null || innerException.RequestInformation == null || innerException.RequestInformation.BatchError == null ||
-                    innerException.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
+                if (ex.RequestInformation == null || ex.RequestInformation.BatchError == null ||
+                    ex.RequestInformation.BatchError.Code != BatchErrorCodeStrings.PoolNotFound)
                 {
                     throw;
                 }
                 // We got the pool not found error, so continue and create the pool
             }
 
-            string blobUrl = UploadBlobAndGetUrl(MpiSetupFileContainer, MpiSetupFileName, MpiSetupFileLocalPath);
-
-            StartTask startTask = new StartTask();
-            startTask.CommandLine = string.Format("cmd /c set & {0} -unattend -force", MpiSetupFileName);
-            startTask.ResourceFiles = new List<ResourceFile>();
-            startTask.ResourceFiles.Add(new ResourceFile(blobUrl, MpiSetupFileName));
-            startTask.RunElevated = true;
-            startTask.WaitForSuccess = true;
-
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated, startTask: startTask);
+            CreateTestPool(controller, context, MpiPoolId, targetDedicated);
         }
 
 
@@ -461,7 +446,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MultiInstanceSettings = multiInstanceSettings,
                 RunElevated = numInstances <= 1
             };
-            
+
             client.CreateTask(parameters);
         }
 
@@ -602,40 +587,45 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Uploads a blob to Storage if it doesn't exist and gets the url
+        /// Uploads an application package to Storage
         /// </summary>
-        private static string UploadBlobAndGetUrl(string containerName, string blobName, string localFilePath)
+        public static AddApplicationPackageResult CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version, string filePath)
         {
-            string blobUrl = "https://defaultUrl.blob.core.windows.net/blobName";
+            AddApplicationPackageResult applicationPackage = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                // Create container and upload blob if they don't exist
-                string storageAccountName = Environment.GetEnvironmentVariable(StorageAccountEnvVar);
-                string storageKey = Environment.GetEnvironmentVariable(StorageKeyEnvVar);
-                StorageCredentials creds = new StorageCredentials(storageAccountName, storageKey);
-                CloudStorageAccount storageAccount = new CloudStorageAccount(creds, true);
+                applicationPackage = controller.BatchManagementClient.Application.AddApplicationPackage(
+                    context.ResourceGroupName,
+                    context.AccountName,
+                    applicationId,
+                    version);
 
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference(containerName);
-                container.CreateIfNotExists();
-
-                CloudBlockBlob blob = container.GetBlockBlobReference(blobName);
-                if (!blob.Exists())
-                {
-                    blob.UploadFromFile(localFilePath, System.IO.FileMode.Open);
-                }
-
-                // Get blob url with SAS string
-                SharedAccessBlobPolicy sasPolicy = new SharedAccessBlobPolicy();
-                sasPolicy.Permissions = SharedAccessBlobPermissions.Read;
-                sasPolicy.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(10);
-                string sasString = container.GetSharedAccessSignature(sasPolicy);
-
-                blobUrl = string.Format("{0}/{1}{2}", container.Uri, blobName, sasString);
+                CloudBlockBlob blob = new CloudBlockBlob(new Uri(applicationPackage.StorageUrl));
+                blob.UploadFromFile(filePath, FileMode.Open);
             }
 
-            return blobUrl;
+            return applicationPackage;
+        }
+
+        /// <summary>
+        /// Deletes an application used in a Scenario test.
+        /// </summary>
+        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationId);
+        }
+
+        /// <summary>
+        /// Deletes an application package used in a Scenario test.
+        /// </summary>
+        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationId, string version)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationId, version);
         }
 
         /// <summary>

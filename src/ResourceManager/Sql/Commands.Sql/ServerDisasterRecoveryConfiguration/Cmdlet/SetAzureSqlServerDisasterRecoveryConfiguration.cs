@@ -13,21 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Replication.Model;
-using System;
+using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
     /// <summary>
     /// Cmdlet to set a new Azure Sql Server Disaster Recovery Configuration (used for failover)
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerDisasterRecoveryConfiguration",
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true)]
     public class SetAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
     {
 

@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {
@@ -105,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
             PSLogProfile psResult = new PSLogProfile(
                 "/subscriptions/{0}/providers/microsoft.insights/logprofiles/{1}"
-                    .FormatInvariant(DefaultContext.Subscription, this.Name), 
+                    .FormatInvariant(DefaultContext.Subscription.Id.ToString(), this.Name), 
                 this.Name,
                 putParameters.Properties);
             WriteObject(psResult);

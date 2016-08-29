@@ -85,7 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             client = new ProfileClient(new AzureSMProfile(subscriptionDataFile));
             Assert.Equal(0, client.Profile.Subscriptions.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
-            Assert.Equal(3, client.Profile.Environments.Count); //only default environments
+            Assert.Equal(4, client.Profile.Environments.Count); //only default environments
         }
 
         [Fact]
@@ -979,6 +979,35 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             Assert.Equal(profile.Context.Subscription.Id, rdfeSubscription);
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddAzureAccountThrowsForEmptySubscriptions()
+        {
+            var cmdlet = new AddAzureAccount();
+            var csmSubscription = Guid.NewGuid();
+            var rdfeSubscription = Guid.NewGuid();
+            var credential = GenerateCredential("mySillyPassword");
+            var profile = new AzureSMProfile();
+            var client = new ProfileClient(profile);
+            cmdlet.Credential = credential;
+            cmdlet.Profile = profile;
+            cmdlet.SetParameterSet("User");
+
+            AzureSession.ClientFactory =
+            new MockClientFactory(
+               new List<object>
+                        {
+                            ProfileClientHelper.CreateRdfeSubscriptionClient(rdfeSubscription),
+                            ProfileClientHelper.CreateCsmSubscriptionClient(new List<string>(),
+                            new List<string>{csmSubscription.ToString(), rdfeSubscription.ToString()})
+                        }, true);
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(credential.UserName,
+                Guid.NewGuid().ToString());
+            cmdlet.CommandRuntime = commandRuntimeMock;
+            cmdlet.InvokeBeginProcessing();
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+        }
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateProfieWithSPAuth()

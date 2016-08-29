@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSDeleteCertificateError
+    public partial class PSDeleteCertificateError
     {
         
         internal Microsoft.Azure.Batch.DeleteCertificateError omObject;

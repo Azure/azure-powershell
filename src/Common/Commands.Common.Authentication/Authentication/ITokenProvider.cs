@@ -33,8 +33,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="password">Secure strings with password/service principal key.</param>
         /// <param name="credentialType">Credential type.</param>
         /// <returns>An access token.</returns>
-        IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId,
-            SecureString password, AzureAccount.AccountType credentialType);
+        IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            ShowDialog promptBehavior,
+            string userId,
+            SecureString password,
+            AzureAccount.AccountType credentialType);
 
         /// <summary>
         /// Get a new authentication token for the given environment
@@ -44,7 +48,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         /// <param name="certificateThumbprint">The certificate thumbprint for this user</param>
         /// <param name="credentialType">The account type</param>
         /// <returns>An access token, which can be renewed</returns>
-        IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, 
+        IAccessToken GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string principalId,
+            string certificateThumbprint,
             AzureAccount.AccountType credentialType);
     }
 }

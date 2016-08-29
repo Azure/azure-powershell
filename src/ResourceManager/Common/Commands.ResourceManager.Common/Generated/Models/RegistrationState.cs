@@ -31,17 +31,17 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
         /// The registration state is not specified.
         /// </summary>
         public const string NotSpecified = "NotSpecified";
-        
+
         /// <summary>
         /// The registration state is not registered.
         /// </summary>
         public const string NotRegistered = "NotRegistered";
-        
+
         /// <summary>
         /// The registration state is not Pending.
         /// </summary>
         public const string Pending = "Pending";
-        
+
         /// <summary>
         /// The registration state is Registered.
         /// </summary>

@@ -1,14 +1,19 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class RunnerTests
     {
+        public RunnerTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         public void ExecuteRunnerTests()
         {
@@ -52,12 +57,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 for (int i = 1; i < tokens.Length; i++)
                 {
                     var method = tokens[i];
-                    var testClassInstance = constructorInfo.Invoke(new object[] {});
+                    var testClassInstance = constructorInfo.Invoke(new object[] { });
                     var testMethod = type.GetMethod(method);
 
                     Console.WriteLine("Invoking method : " + testMethod);
 
-                    testMethod.Invoke(testClassInstance, new object[] {});
+                    testMethod.Invoke(testClassInstance, new object[] { });
 
                     Console.WriteLine("Method " + testMethod + " has finished");
                 }

@@ -20,6 +20,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class AutoscaleTests : RMTestBase
     {
+        public AutoscaleTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmAutoscaleSetting()

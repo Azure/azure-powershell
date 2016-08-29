@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
   <!-- Updatable Help Version 2.0.0.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -73,7 +73,7 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>KeyFilePassword</maml:name>
@@ -104,14 +104,14 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. If you do not specify this parameter, the key can be used immediately. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Tags</maml:name>
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>KeyFilePath</maml:name>
@@ -152,7 +152,7 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>KeyOps</maml:name>
@@ -176,14 +176,14 @@ Note: To import a key from your own hardware security module, you must first gen
           <maml:description>
             <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. If you do not specify this parameter, the key can be used immediately. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Tags</maml:name>
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Destination</maml:name>
@@ -237,9 +237,9 @@ Note: To import a key from your own hardware security module, you must first gen
         <maml:description>
           <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet adds. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. If you do not specify this parameter, the key does not expire.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -311,9 +311,9 @@ Note: To import a key from your own hardware security module, you must first gen
         <maml:description>
           <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. If you do not specify this parameter, the key can be used immediately. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -323,9 +323,9 @@ Note: To import a key from your own hardware security module, you must first gen
         <maml:description>
           <maml:para>Specifies a hash table that represents resource tags. For more information about resource tags, see <maml:navigationLink><maml:linkText>Using tags to organize your Azure resources</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (http://go.microsoft.com/fwlink/?LinkId=613624).</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">System.Collections.Hashtable</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>System.Collections.Hashtable</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1204,10 +1204,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$secret = Get-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret'
-
-</dev:code>
-        <dev:code>PS C:\&gt;Write-Host "Secret Value is: " $secret.SecretValueText
-
+PS C:\&gt;Write-Host "Secret Value is: " $secret.SecretValueText
 </dev:code>
         <dev:remarks>
           <maml:para>These commands get the current version of a secret named ITSecret, and then displays the plain text value of that secret.</maml:para>
@@ -1451,7 +1448,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
     </command:details>
     <maml:description>
       <maml:para>The New-AzureRmKeyVault cmdlet creates an Azure Key Vault instance in the specified resource group. This cmdlet also grants permissions to the currently logged on user to add, remove, or list keys and secrets in the vault.</maml:para>
-      <maml:para>Note: If you see the error The subscription is not registered to use namespace 'Microsoft.KeyVault' when you try to create your new key vault, run Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault" and then rerun your New-AzureRmKeyVault command. For more information, see <maml:navigationLink><maml:linkText>Register-AzureRmProvider</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://msdn.microsoft.com/library/mt679020.aspx).</maml:para>
+      <maml:para>Note: If you see the error The subscription is not registered to use namespace 'Microsoft.KeyVault' when you try to create your new key vault, run Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault" and then rerun your New-AzureRmKeyVault command. For more information, see Register-AzureRmResourceProvider.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1510,7 +1507,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:description>
             <maml:para>Specifies a hash table that represents resource tags.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="true">Hashtable</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1592,9 +1589,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>Specifies a hash table that represents resource tags.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="true">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1746,13 +1743,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>WhatIf</maml:name>
           <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -1809,7 +1806,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
         <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1821,7 +1818,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>WhatIf</maml:name>
         <maml:description>
-          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1990,13 +1987,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>WhatIf</maml:name>
           <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -2053,7 +2050,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
         <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2065,7 +2062,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>WhatIf</maml:name>
         <maml:description>
-          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2118,7 +2115,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <dev:code>PS C:\&gt;Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret'
 </dev:code>
         <dev:remarks>
-          <maml:para>This command removes the secret named FinanceSecret from the vault named Contoso.'</maml:para>
+          <maml:para>This command removes the secret named FinanceSecret from the vault named Contoso.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2202,7 +2199,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:description>
             <maml:para>For future use.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Guid]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Guid</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>PassThru</maml:name>
@@ -2250,7 +2247,6 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:name>EnabledForTemplateDeployment</maml:name>
           <maml:description>
             <maml:para>Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.</maml:para>
-            <maml:para>Note: This parameter is not currently implemented.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -2327,9 +2323,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>For future use.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Guid]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Guid</command:parameterValue>
         <dev:type>
-          <maml:name>Guid]</maml:name>
+          <maml:name>Guid</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -2362,7 +2358,6 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:name>EnabledForTemplateDeployment</maml:name>
         <maml:description>
           <maml:para>Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.</maml:para>
-          <maml:para>Note: This parameter is not currently implemented.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2607,13 +2602,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>Confirm</maml:name>
           <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
           <maml:name>WhatIf</maml:name>
           <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -2658,7 +2653,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
         <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2670,7 +2665,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>WhatIf</maml:name>
         <maml:description>
-          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -2954,14 +2949,14 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:description>
             <maml:para>Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False disables the key. If you do not specify this parameter, this cmdlet does not modify the status of the key.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Expires</maml:name>
           <maml:description>
             <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>KeyOps</maml:name>
@@ -2985,7 +2980,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
           <maml:description>
             <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. </maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>PassThru</maml:name>
@@ -3008,9 +3003,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False disables the key. If you do not specify this parameter, this cmdlet does not modify the status of the key.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3020,9 +3015,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>Specifies the expiration time, as a DateTime object, for the key that this cmdlet updates. This parameter uses Coordinated Universal Time (UTC). To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3066,9 +3061,9 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destina
         <maml:description>
           <maml:para>Specifies the time, as a DateTime object, before which the key cannot be used. This parameter uses UTC. To obtain a DateTime object, use the Get-Date cmdlet. </maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3271,21 +3266,21 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
           <maml:description>
             <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret’s enabled or disabled state.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Expires</maml:name>
           <maml:description>
             <maml:para>Specifies the date and time that a secret expires.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>NotBefore</maml:name>
           <maml:description>
             <maml:para>Specifies the Coordinated Universal Time (UTC) before which the secret can't be used. If you do not specify this parameter, there is no change to the current secret's NotBefore attribute.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>PassThru</maml:name>
@@ -3320,9 +3315,9 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
         <maml:description>
           <maml:para>Indicates whether to enable a secret. Specify $False to disable a secret, or $True to enable a secret. If you do not specify this parameter, there is no change to the current secret’s enabled or disabled state.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Boolean]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
-          <maml:name>Boolean]</maml:name>
+          <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3332,9 +3327,9 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
         <maml:description>
           <maml:para>Specifies the date and time that a secret expires.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3356,9 +3351,9 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware'
         <maml:description>
           <maml:para>Specifies the Coordinated Universal Time (UTC) before which the secret can't be used. If you do not specify this parameter, there is no change to the current secret's NotBefore attribute.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">DateTime]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
-          <maml:name>DateTime]</maml:name>
+          <maml:name>DateTime</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -3570,7 +3565,7 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureKeyVaultSecret cmdlet creates or updates a secret in a key vault in Azure Key Vault. If the secret does not exist, this cmdlet creates it. If the secret already exists, this cmdlet replaces it with the value that you specify.</maml:para>
+      <maml:para>The Set-AzureKeyVaultSecret cmdlet creates or updates a secret in a key vault in Azure Key Vault. If the secret does not exist, this cmdlet creates it. If the secret already exists, this cmdlet creates a new version of that secret.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -3875,7 +3870,13 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
           <maml:description>
             <maml:para>For future use.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">Guid]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Guid</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>BypassObjectIdValidation</maml:name>
+          <maml:description>
+            <maml:para>Enables you to specify an object ID without validating that the object exists in Azure Active Directory. Use this parameter only if you want to grant access to your key vault to an object ID that refers to a delegated security group from another Azure tenant.</maml:para>
+          </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>PassThru</maml:name>
@@ -4173,9 +4174,21 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -Secret
         <maml:description>
           <maml:para>For future use.</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="false">Guid]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Guid</command:parameterValue>
         <dev:type>
-          <maml:name>Guid]</maml:name>
+          <maml:name>Guid</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <maml:name>BypassObjectIdValidation</maml:name>
+        <maml:description>
+          <maml:para>Enables you to specify an object ID without validating that the object exists in Azure Active Directory. Use this parameter only if you want to grant access to your key vault to an object ID that refers to a delegated security group from another Azure tenant.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -4477,12 +4490,11 @@ DisplayName                    Type             
 group1                                                        96a0daa6-9841-4a9c-bdeb-e7062276c688
 group2                                                        b8a401eb-63ad-4a30-b0e1-a7461969fe54
 group3                                                        da07a6be-2c1e-4e42-934d-ceb57cf652b4
-</dev:code>
-        <dev:code>PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys All -PermissionsToSecrets All
-
+PS C:\&gt;Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys All -PermissionsToSecrets All
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. The second command then grants permissions to one of the groups (group2) for myownvault.</maml:para>
+          <maml:para>The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named group1, group2, and group3. Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use. </maml:para>
+          <maml:para>You then use the output of this command with Set-AzureRmKeyVaultAccessPolicy to grant permissions to group2 for your key vault, named myownvault. This example enumerates the groups named 'group2' inline in the same command line. There may be multiple groups in the returned list that are named 'group2'. This example picks the first one, indicated by index [0] in the returned list.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>

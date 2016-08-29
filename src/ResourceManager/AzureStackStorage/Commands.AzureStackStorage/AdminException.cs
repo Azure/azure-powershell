@@ -27,7 +27,8 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         /// <param name="message"></param>
         public AdminException(string message)
-            : base(message) { }
+            : base(message)
+        { }
 
         /// <summary>
         /// Constructor
@@ -35,6 +36,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// <param name="message"></param>
         /// <param name="innerException"></param>
         public AdminException(string message, Exception innerException)
-            : base(message, innerException) { }
+            : base(message, innerException)
+        { }
     }
 }

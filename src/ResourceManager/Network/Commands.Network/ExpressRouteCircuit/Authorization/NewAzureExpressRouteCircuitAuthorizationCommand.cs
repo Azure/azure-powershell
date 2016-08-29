@@ -12,10 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,10 +26,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        protected override void ProcessRecord()
+        public override void Execute()
         {
-            base.ProcessRecord();
-
+            base.Execute();
             var authorization = new PSExpressRouteCircuitAuthorization();
 
             authorization.Name = this.Name;

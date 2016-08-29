@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSMetadataItem
+    public partial class PSMetadataItem
     {
         
         internal Microsoft.Azure.Batch.MetadataItem omObject;

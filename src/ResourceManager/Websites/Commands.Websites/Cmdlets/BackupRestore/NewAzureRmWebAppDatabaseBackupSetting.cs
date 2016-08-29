@@ -12,21 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.WebSites.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
 {
     /// <summary>
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppDatabaseBackupSetting"), OutputType(typeof (DatabaseBackupSetting))]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebAppDatabaseBackupSetting"), OutputType(typeof(DatabaseBackupSetting))]
     public class NewAzureRmWebAppDatabaseBackupSetting : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the database.",

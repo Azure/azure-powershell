@@ -12,6 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$WORKFLOW_LOCATION = 'westus'
+
 <#
 .SYNOPSIS
 Test Start and Stop AzureLogicApp command for logic app workflow.
@@ -26,11 +28,11 @@ function Test-StartLogicApp
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
-		SleepInRecordMode 2000       
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -51,11 +53,11 @@ function Test-GetAzureLogicAppRunHistory
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
-		SleepInRecordMode 2000       
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -79,14 +81,14 @@ function Test-GetAzureLogicAppRunAction
 	$planName = "StandardServicePlan"
 	$Plan = TestSetup-CreateAppServicePlan $resourceGroup.ResourceGroupName $planName
 
-	$workflowName = getAssetname		
-	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinition.json"			
+	$workflowName = getAssetname	
+	$definitionFilePath = [System.IO.Path]::Combine($TestOutputRoot, "Resources\TestSimpleWorkflowTriggerDefinition.json")		
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
-	
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
+
 	[int]$counter = 0
 	do {
-		SleepInRecordMode 2000        
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -117,11 +119,11 @@ function Test-StopAzureRmLogicAppRun
 	$workflowName = getAssetname		
 	$definitionFilePath = "Resources\TestSimpleWorkflowTriggerDefinitionWithDelayAction.json"			
 		
-	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -DefinitionFilePath $definitionFilePath -AppServicePlan $planName
+	$workflow = New-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName -Location $WORKFLOW_LOCATION -DefinitionFilePath $definitionFilePath
 	
 	[int]$counter = 0
 	do {
-		SleepInRecordMode 2000       
+		SleepInRecordMode 2000
 		$workflow =  Get-AzureRmLogicApp -ResourceGroupName $resourceGroupName -Name $workflowName
 	} while ($workflow.State -ne "Enabled" -and $counter++ -lt 5)
 	
@@ -129,6 +131,6 @@ function Test-StopAzureRmLogicAppRun
 		
 	$runHistory = Get-AzureRmLogicAppRunHistory -ResourceGroupName $resourceGroupName -Name $workflowName
 
-	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name
+	Stop-AzureRmLogicAppRun -ResourceGroupName $resourceGroupName -Name $workflowName -RunName $runHistory[0].Name -Force
 
 }

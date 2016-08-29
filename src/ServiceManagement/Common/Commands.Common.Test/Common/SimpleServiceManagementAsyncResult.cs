@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 
         /// <summary>
         /// Gets a value indicating whether the async call completed
-        /// synchronousy.  It always returns true.
+        /// synchronously.  It always returns true.
         /// </summary>
         public bool CompletedSynchronously
         {

@@ -17,13 +17,19 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
+    using Xunit.Abstractions;
 
     /// <summary>
     /// Scenario tests for the Workflow trigger commands
     /// </summary>
     public class WorkflowTriggerTests : RMTestBase
     {
+        public WorkflowTriggerTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         /// <summary>
         /// Test Test-GetAzureLogicAppTrigger command to verify the trigger in the workflow.
@@ -33,7 +39,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppTrigger()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTrigger");
-        }        
+        }
 
         /// <summary>
         /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
@@ -43,7 +49,17 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         public void TestGetAzureLogicAppTriggerHistory()
         {
             WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerHistory");
-        }        
+        }
+
+        /// <summary>
+        /// Test Get-AzureLogicAppTriggerHistory command to verify the trigger history for the workflow.
+        /// </summary>
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureLogicAppTriggerCallbackUrl()
+        {
+            WorkflowController.NewInstance.RunPowerShellTest("Test-GetAzureLogicAppTriggerCallbackUrl");
+        }
 
         /// <summary>
         /// Test Start-AzureLogicAppTrigger command to run the trigger of the workflow.

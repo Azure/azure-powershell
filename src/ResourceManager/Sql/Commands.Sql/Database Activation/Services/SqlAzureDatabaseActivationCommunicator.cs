@@ -12,17 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Management.Sql;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
 {

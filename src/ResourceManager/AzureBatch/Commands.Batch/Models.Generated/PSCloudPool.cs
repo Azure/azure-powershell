@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSCloudPool
+    public partial class PSCloudPool
     {
         
         internal Microsoft.Azure.Batch.CloudPool omObject;
@@ -43,6 +43,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private PSCloudServiceConfiguration cloudServiceConfiguration;
         
         private IList<PSMetadataItem> metadata;
+        
+        private PSNetworkConfiguration networkConfiguration;
         
         private PSResizeError resizeError;
         
@@ -335,6 +337,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public PSNetworkConfiguration NetworkConfiguration
+        {
+            get
+            {
+                if (((this.networkConfiguration == null) 
+                            && (this.omObject.NetworkConfiguration != null)))
+                {
+                    this.networkConfiguration = new PSNetworkConfiguration(this.omObject.NetworkConfiguration);
+                }
+                return this.networkConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.NetworkConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.NetworkConfiguration = value.omObject;
+                }
+                this.networkConfiguration = value;
             }
         }
         

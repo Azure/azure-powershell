@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.AzureStack.Management.StorageAdmin;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -70,7 +70,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
                 switch (RoleType)
                 {
                     case RoleType.AccountContainerserver:
-                        resultObject = Client.AccountContainerServerInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_=>new AccountContainerRoleInstanceResponse(_));
+                        resultObject = Client.AccountContainerServerInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_ => new AccountContainerRoleInstanceResponse(_));
                         break;
                     case RoleType.BlobFrontend:
                         resultObject = Client.BlobFrontendInstances.List(ResourceGroupName, FarmName).RoleInstances.Select(_ => new BlobFrontEndRoleInstanceResponse(_));

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeError
+    public partial class PSComputeNodeError
     {
         
         internal Microsoft.Azure.Batch.ComputeNodeError omObject;

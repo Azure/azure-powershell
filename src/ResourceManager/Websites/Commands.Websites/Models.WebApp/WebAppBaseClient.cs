@@ -14,8 +14,8 @@
 
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Models
 {

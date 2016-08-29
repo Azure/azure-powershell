@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
+﻿using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             if (substatuses != null && substatuses.Count > 0)
             {
                 context.DscConfigurationLog = !string.Empty.Equals(substatuses[0].Message)
-                    ? substatuses[0].Message.Split(new[] {"\r\n", "\n"}, StringSplitOptions.None)
+                    ? substatuses[0].Message.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None)
                     : new List<String>().ToArray();
             }
 

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSCloudTask
+    public partial class PSCloudTask
     {
         
         internal Microsoft.Azure.Batch.CloudTask omObject;
@@ -45,6 +45,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private PSTaskExecutionInformation executionInformation;
+        
+        private PSExitConditions exitConditions;
         
         private PSMultiInstanceSettings multiInstanceSettings;
         
@@ -239,6 +241,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.executionInformation = new PSTaskExecutionInformation(this.omObject.ExecutionInformation);
                 }
                 return this.executionInformation;
+            }
+        }
+        
+        public PSExitConditions ExitConditions
+        {
+            get
+            {
+                if (((this.exitConditions == null) 
+                            && (this.omObject.ExitConditions != null)))
+                {
+                    this.exitConditions = new PSExitConditions(this.omObject.ExitConditions);
+                }
+                return this.exitConditions;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ExitConditions = null;
+                }
+                else
+                {
+                    this.omObject.ExitConditions = value.omObject;
+                }
+                this.exitConditions = value;
             }
         }
         

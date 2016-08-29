@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSJobManagerTask
+    public partial class PSJobManagerTask
     {
         
         internal Microsoft.Azure.Batch.JobManagerTask omObject;
@@ -43,6 +43,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSJobManagerTask()
         {
             this.omObject = new Microsoft.Azure.Batch.JobManagerTask();
+        }
+        
+        public PSJobManagerTask(string id, string commandLine)
+        {
+            this.omObject = new Microsoft.Azure.Batch.JobManagerTask(id, commandLine);
         }
         
         internal PSJobManagerTask(Microsoft.Azure.Batch.JobManagerTask omObject)

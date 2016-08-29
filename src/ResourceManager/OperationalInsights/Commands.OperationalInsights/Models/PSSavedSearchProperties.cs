@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
+using System.Collections;
 using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
@@ -32,11 +31,21 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
                 this.DisplayName = properties.DisplayName;
                 this.Query = properties.Query;
                 this.Version = properties.Version;
+                this.Tags = new Hashtable();
+
+                if (properties.Tags != null)
+                {
+                    foreach (Tag tag in properties.Tags)
+                    {
+                        this.Tags[tag.Name] = tag.Value;
+                    }
+                }
             }
         }
         public string Category { get; set; }
         public string DisplayName { get; set; }
         public string Query { get; set; }
-        public int? Version { get; set; }
+        public long? Version { get; set; }
+        public Hashtable Tags { get; set; }
     }
 }

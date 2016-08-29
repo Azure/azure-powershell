@@ -13,11 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Models.WebApp;
@@ -25,8 +20,11 @@ using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.PowerShell;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using System.Collections;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -102,7 +100,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     TrafficManagerProfileId = TrafficManagerProfileId,
                     TrafficManagerProfileName = TrafficManagerProfileName,
                     ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfileId) || !string.IsNullOrEmpty(TrafficManagerProfileName),
-                    AppSettingsOverrides = AppSettingsOverrides == null ? null: AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                    AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
             }
 

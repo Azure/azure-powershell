@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
+using System;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof (JobInformation))]
+    [Cmdlet(VerbsLifecycle.Submit, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         // internal const string HiveJobWithScriptPath = "Submit job with script path for Hive";
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 if (!string.IsNullOrEmpty(CompileMode))
                 {
                     CompileMode toUse;
-                    if(Enum.TryParse(CompileMode, out toUse))
+                    if (Enum.TryParse(CompileMode, out toUse))
                     {
                         sqlIpProperties.CompileMode = toUse;
                     }
@@ -213,7 +214,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var jobInfo = new JobInformation
             {
-                JobId = Guid.NewGuid(),
+                JobId = DataLakeAnalyticsClient.JobIdQueue.Count == 0 ? Guid.NewGuid() : DataLakeAnalyticsClient.JobIdQueue.Dequeue(),
                 Name = Name,
                 Properties = properties,
                 Type = jobType,

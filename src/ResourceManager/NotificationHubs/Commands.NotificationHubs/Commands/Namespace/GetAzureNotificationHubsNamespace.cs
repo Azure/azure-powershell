@@ -13,10 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.NotificationHubs.Models;
-using Microsoft.Azure.Management.NotificationHubs.Models;
 using System.Collections.Generic;
-using System.Management.Automation;
 using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             Position = 1,
             HelpMessage = "Namespace Name.")]
         public string Namespace { get; set; }
-        
+
         /// <summary>
         /// Gets a Namespace from the service.
         /// </summary>

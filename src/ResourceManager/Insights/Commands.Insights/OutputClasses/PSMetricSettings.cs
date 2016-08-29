@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Xml;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Xml;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// The storageAccount Id
         /// </summary>
-        public bool Enabled{ get; set; }
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// The timegrain

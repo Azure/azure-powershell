@@ -15,6 +15,7 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Runtime.InteropServices;
@@ -39,7 +40,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.parentWindow = parentWindow;
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
+        public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            ShowDialog promptBehavior,
+            string userId,
+            SecureString password,
             AzureAccount.AccountType credentialType)
         {
             if (credentialType != AzureAccount.AccountType.User)
@@ -70,13 +75,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void Renew(AdalAccessToken token)
         {
-            TracingAdapter.Information(Resources.UPNRenewTokenTrace, token.AuthResult.AccessTokenType, token.AuthResult.ExpiresOn,
-                token.AuthResult.IsMultipleResourceRefreshToken, token.AuthResult.TenantId, token.UserId);
+            TracingAdapter.Information(
+                Resources.UPNRenewTokenTrace,
+                token.AuthResult.AccessTokenType,
+                token.AuthResult.ExpiresOn,
+                token.AuthResult.IsMultipleResourceRefreshToken,
+                token.AuthResult.TenantId,
+                token.UserId);
+
             var user = token.AuthResult.UserInfo;
             if (user != null)
             {
-                TracingAdapter.Information(Resources.UPNRenewTokenUserInfoTrace, user.DisplayableId, user.FamilyName,
-                    user.GivenName, user.IdentityProvider, user.UniqueId);
+                TracingAdapter.Information(
+                    Resources.UPNRenewTokenUserInfoTrace,
+                    user.DisplayableId,
+                    user.FamilyName,
+                    user.GivenName,
+                    user.IdentityProvider,
+                    user.UniqueId);
             }
             if (IsExpired(token))
             {
@@ -189,33 +205,50 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return null;
         }
 
-        private AuthenticationResult DoAcquireToken(AdalConfiguration config, PromptBehavior promptBehavior, string userId,
+        private AuthenticationResult DoAcquireToken(
+            AdalConfiguration config,
+            PromptBehavior promptBehavior,
+            string userId,
             SecureString password)
         {
             AuthenticationResult result;
             var context = CreateContext(config);
 
-            TracingAdapter.Information(Resources.UPNAcquireTokenContextTrace, context.Authority, context.CorrelationId,
+            TracingAdapter.Information(
+                Resources.UPNAcquireTokenContextTrace,
+                context.Authority,
+                context.CorrelationId,
                 context.ValidateAuthority);
-            TracingAdapter.Information(Resources.UPNAcquireTokenConfigTrace, config.AdDomain, config.AdEndpoint,
-                config.ClientId, config.ClientRedirectUri);
+            TracingAdapter.Information(
+                Resources.UPNAcquireTokenConfigTrace,
+                config.AdDomain,
+                config.AdEndpoint,
+                config.ClientId,
+                config.ClientRedirectUri);
             if (string.IsNullOrEmpty(userId))
             {
                 if (promptBehavior != PromptBehavior.Never)
                 {
-                    ClearCookies();
+                    AdalTokenCache.ClearCookies();
                 }
 
-                result = context.AcquireToken(config.ResourceClientUri, config.ClientId,
-                        config.ClientRedirectUri, promptBehavior,
-                        UserIdentifier.AnyUser, AdalConfiguration.EnableEbdMagicCookie);
+                result = context.AcquireToken(
+                    config.ResourceClientUri,
+                    config.ClientId,
+                    config.ClientRedirectUri,
+                    promptBehavior,
+                    UserIdentifier.AnyUser,
+                    AdalConfiguration.EnableEbdMagicCookie);
             }
             else
             {
                 if (password == null)
                 {
-                    result = context.AcquireToken(config.ResourceClientUri, config.ClientId,
-                        config.ClientRedirectUri, promptBehavior,
+                    result = context.AcquireToken(
+                        config.ResourceClientUri,
+                        config.ClientId,
+                        config.ClientRedirectUri,
+                        promptBehavior,
                         new UserIdentifier(userId, UserIdentifierType.RequiredDisplayableId),
                         AdalConfiguration.EnableEbdMagicCookie);
                 }
@@ -237,6 +270,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
             return message;
         }
+
         /// <summary>
         /// Implementation of <see cref="IAccessToken"/> using data from ADAL
         /// </summary>
@@ -260,6 +294,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             public string AccessToken { get { return AuthResult.AccessToken; } }
+
             public string UserId { get { return AuthResult.UserInfo.DisplayableId; } }
 
             public string TenantId { get { return AuthResult.TenantId; } }
@@ -277,22 +312,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-
-        private void ClearCookies()
-        {
-            NativeMethods.InternetSetOption(IntPtr.Zero, NativeMethods.INTERNET_OPTION_END_BROWSER_SESSION, IntPtr.Zero, 0);
-        }
-
-        private static class NativeMethods
-        {
-            internal const int INTERNET_OPTION_END_BROWSER_SESSION = 42;
-
-            [DllImport("wininet.dll", SetLastError = true)]
-            internal static extern bool InternetSetOption(IntPtr hInternet, int dwOption, IntPtr lpBuffer,
-                int lpdwBufferLength);
-        }
-
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificate, AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string clientId,
+            string certificate,
+            AzureAccount.AccountType credentialType)
         {
             throw new NotImplementedException();
         }

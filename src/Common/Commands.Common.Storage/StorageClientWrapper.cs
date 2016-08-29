@@ -14,16 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
-    using System;
-    using System.Globalization;
-    using System.IO;
-    using Properties;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Management.Storage.Models;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Properties;
+    using System;
+    using System.Globalization;
+    using System.IO;
 
     /// <summary>
     /// Wrapper class that encapsulates Blob functionality from the StorageClient API
@@ -82,9 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             if (wasCreated && parameters.ContainerPublic)
             {
                 container.SetPermissions(new BlobContainerPermissions
-                    {
-                        PublicAccess = BlobContainerPublicAccessType.Blob
-                    });
+                {
+                    PublicAccess = BlobContainerPublicAccessType.Blob
+                });
             }
 
             CloudBlockBlob blob = container.GetBlockBlobReference(blobName);

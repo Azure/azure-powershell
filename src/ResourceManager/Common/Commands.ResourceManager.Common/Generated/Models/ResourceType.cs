@@ -19,8 +19,8 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using System.Collections.Generic;
 using Hyak.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceType
     {
         private string _displayName;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource type display name
         /// </summary>
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._displayName; }
             set { this._displayName = value; }
         }
-        
+
         private string _name;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource type name
         /// </summary>
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._name; }
             set { this._name = value; }
         }
-        
+
         private IList<Operation> _operations;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource type operations
         /// </summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._operations; }
             set { this._operations = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceType class.
         /// </summary>

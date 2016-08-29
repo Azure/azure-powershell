@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSNetworkInterface : PSTopLevelResource
     {
@@ -25,15 +24,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSNetworkInterfaceIPConfiguration> IpConfigurations { get; set; }
 
         public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
-        
+
         public string MacAddress { get; set; }
 
-        public bool Primary { get; set; }
+        public bool? Primary { get; set; }
 
-        public bool EnableIPForwarding { get; set; }
+        public bool? EnableIPForwarding { get; set; }
 
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
-        
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-        
+
         [JsonIgnore]
         public string NetworkSecurityGroupText
         {

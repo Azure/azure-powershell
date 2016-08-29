@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Update vault settings with the working vault to generate file
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
                 ARMResourceType = resourceType
@@ -126,6 +126,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
 
         /// <summary>
+        /// Upload cert to idmgmt
+        /// </summary>
+        /// <param name="managementCert">certificate to be uploaded</param>
+        /// <param name="vault">vault object</param>
+        /// <returns>Upload Certificate Response</returns>
+        public UploadCertificateResponse UploadCertificate(X509Certificate2 managementCert, ARSVault vault)
+        {
+            var certificateArgs = new CertificateArgs();
+            certificateArgs.Properties = new Dictionary<string, string>();
+            certificateArgs.Properties.Add("certificate", Convert.ToBase64String(managementCert.GetRawCertData()));
+
+            var response = this.recoveryServicesClient.VaultExtendedInfo.UploadCertificateAsync(
+                vault.ResourceGroupName,
+                vault.Name,
+                certificateArgs, managementCert.FriendlyName,
+                this.GetRequestHeaders());
+            response.Wait();
+            return response.Result;
+        }
+
+        /// <summary>
         /// Changes the Vault context
         /// </summary>
         /// <param name="vault">vault object</param>
@@ -137,7 +158,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             Utilities.GetResourceProviderNamespaceAndType(vault.ID, out resourceProviderNamespace, out resourceType);
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ResourceNamespace = resourceProviderNamespace,
                 ARMResourceType= resourceType
@@ -150,7 +171,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             // Update vault settings along with Channel integrity key
             Utilities.UpdateCurrentVaultContext(new ASRVaultCreds()
             {
-                ResourceGroupName = vault.ResouceGroupName,
+                ResourceGroupName = vault.ResourceGroupName,
                 ResourceName = vault.Name,
                 ChannelIntegrityKey = getChannelIntegrityKey.Result,
                 ResourceNamespace = resourceProviderNamespace,
@@ -268,11 +289,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                                             serializedCertifivate,
                                             acsNamespace,
                                             channelIntegrityKey,
-                                            vault.ResouceGroupName,
+                                            vault.ResourceGroupName,
                                             site.ID,
                                             site.Name,
                                             resourceProviderNamespace,
-                                            resourceType);
+                                            resourceType,
+                                            vault.Location);
 
             return vaultCreds;
         }

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Events;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Events
@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         private string filter;
         private string selected;
 
-        public GetAzureRmLogTests()
+        public GetAzureRmLogTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsEventOperationsMock = new Mock<IEventOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             cmdlet.ResourceProvider = null;
 
             Utilities.ExecuteVerifications(
-                cmdlet: cmdlet, 
+                cmdlet: cmdlet,
                 insinsightsEventOperationsMockightsClientMock: this.insightsEventOperationsMock,
                 requiredFieldName: "correlationId",
                 requiredFieldValue: Utilities.Correlation,

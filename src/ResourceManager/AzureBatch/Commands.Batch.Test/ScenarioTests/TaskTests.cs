@@ -12,20 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Xunit;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class TaskTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public TaskTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTask()
@@ -35,6 +34,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
                 () => { return new string[] { string.Format("Test-CreateTask '{0}'", jobId) }; },
+                () =>
+                {
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateTaskCollection()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobId = "createTaskCollectionJob";
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-CreateTaskCollection '{0}'", jobId) }; },
                 () =>
                 {
                     context = new ScenarioTestContext();
@@ -294,33 +315,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     // Make the tasks long running so they can be terminated before they finish execution
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1, "ping -t localhost -w 60");
                     ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2, "ping -t localhost -w 60");
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        public void TestListSubtasksWithMaxCount()
-        {
-            BatchController controller = BatchController.NewInstance;
-            string jobId = "maxCountSubtaskJob";
-            string taskId = "testTask";
-            int numInstances = 3;
-            int maxCount = 1;
-            BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListSubtasksWithMaxCount '{0}' '{1}' '{2}'", jobId, taskId, maxCount) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateMpiPoolIfNotExists(controller, context);
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId, ScenarioTestHelpers.MpiPoolId);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, "cmd /c hostname", numInstances);
-                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
                 },
                 () =>
                 {

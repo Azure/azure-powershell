@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using System;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
 
     /// <summary>
     /// azure storage container

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net.Http;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 this.dataServiceClient = value;
             }
-        }       
-        
+        }
+
 
         private IKeyVaultDataServiceClient dataServiceClient;
     }

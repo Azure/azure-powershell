@@ -26,6 +26,8 @@ using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
 using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Common.Authentication.Test
 {
@@ -55,8 +57,9 @@ namespace Common.Authentication.Test
         private CSMSubscription guestCsmSubscription;
         private AzureSMProfile currentProfile;
 
-        public ProfileClientTests()
+        public ProfileClientTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             SetMockData();
             currentProfile = new AzureSMProfile();
         }
@@ -204,7 +207,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(5, client.Profile.Environments.Count);
+            Assert.Equal(6, client.Profile.Environments.Count);
             Assert.Equal("Current", client.Profile.Environments["Current"].Name);
             Assert.Equal("Dogfood", client.Profile.Environments["Dogfood"].Name);
             Assert.Equal("https://login.windows-ppe.net/", client.Profile.Environments["Dogfood"].Endpoints[AzureEnvironment.Endpoint.AdTenant]);
@@ -263,7 +266,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
             Assert.Equal(3, client.Profile.Subscriptions.Count);
@@ -311,7 +314,7 @@ namespace Common.Authentication.Test
             ProfileClient client = new ProfileClient(currentProfile);
 
             // Verify Environment migration
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             // Verify subscriptions
             Assert.Equal(0, client.Profile.Subscriptions.Count);
@@ -341,6 +344,61 @@ namespace Common.Authentication.Test
             Assert.Equal(2, account.GetSubscriptions(client.Profile).Count);
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
+            Assert.False(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+        }
+
+        [Fact]
+        public void AddAzureAccountFiltersEmptyAdClientsInRdfeMode()
+        {
+            var emptyTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active,
+                ActiveDirectoryTenantId = ""
+            };
+
+            var disabledTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Disabled,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+            
+            var deletedTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Deleted,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+
+            var deletingTenantIdrdfeSubscription = new RDFESubscription
+            {
+                SubscriptionId = "16E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
+                SubscriptionName = "RdfeSub1",
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Deleting,
+                ActiveDirectoryTenantId = "B59BE059-5E3F-463B-8C1A-831A29819B52"
+            };
+
+            SetMocks(
+                new[] { rdfeSubscription1, emptyTenantIdrdfeSubscription, disabledTenantIdrdfeSubscription, deletedTenantIdrdfeSubscription, deletingTenantIdrdfeSubscription }.ToList(), 
+                new[] { csmSubscription1 }.ToList());
+            MemoryDataStore dataStore = new MemoryDataStore();
+            dataStore.VirtualStore[oldProfileDataPath] = oldProfileData;
+            AzureSession.DataStore = dataStore;
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            ProfileClient client = new ProfileClient(currentProfile);
+
+            var account = client.AddAccountAndLoadSubscriptions(
+                new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, 
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+                null);
+
+            Assert.Equal("test", account.Id);
+            Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
+            Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.False(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
         }
 
@@ -725,12 +783,12 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
             var env = client.AddOrSetEnvironment(azureEnvironment);
 
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.Environments.Count);
             Assert.Equal(env, azureEnvironment);
         }
 
@@ -744,7 +802,7 @@ namespace Common.Authentication.Test
 
             var env1 = client.ListEnvironments(null);
 
-            Assert.Equal(3, env1.Count);
+            Assert.Equal(4, env1.Count);
 
             var env2 = client.ListEnvironments("bad");
 
@@ -769,7 +827,7 @@ namespace Common.Authentication.Test
             client.Profile.Subscriptions[azureSubscription2.Id] = azureSubscription2;
 
             Assert.Equal(2, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(4, client.Profile.Environments.Count);
+            Assert.Equal(5, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.RemoveEnvironment(null));
@@ -779,7 +837,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(azureEnvironment.Name, env.Name);
             Assert.Equal(0, client.Profile.Subscriptions.Values.Count(s => s.Environment == "Test"));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(0, client.Profile.Accounts.Count);
         }
 
@@ -799,7 +857,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
 
             Assert.Throws<ArgumentException>(() => client.RemoveEnvironment(EnvironmentName.AzureCloud));
@@ -807,7 +865,7 @@ namespace Common.Authentication.Test
 
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureCloud));
             Assert.Equal(1, client.Profile.Subscriptions.Values.Count(s => s.Environment == EnvironmentName.AzureChinaCloud));
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
             Assert.Equal(1, client.Profile.Accounts.Count);
         }
 
@@ -819,7 +877,7 @@ namespace Common.Authentication.Test
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             ProfileClient client = new ProfileClient(currentProfile);
 
-            Assert.Equal(3, client.Profile.Environments.Count);
+            Assert.Equal(4, client.Profile.Environments.Count);
 
             Assert.Throws<ArgumentNullException>(() => client.AddOrSetEnvironment(null));
 
@@ -1388,7 +1446,7 @@ namespace Common.Authentication.Test
             {
                 SubscriptionId = "26E3F6FD-A3AA-439A-8FC4-1F5C41D2AD1E",
                 SubscriptionName = "RdfeSub2",
-                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Active,
+                SubscriptionStatus = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionStatus.Warned,
                 ActiveDirectoryTenantId = "Common"
             };
             guestRdfeSubscription = new RDFESubscription

@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
 {
     /// <summary>
     /// Cmdlet to resume a paused Azure SQL Data Warehouse database.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmSqlDatabase",
-        ConfirmImpact = ConfirmImpact.Medium)]
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmSqlDatabase", SupportsShouldProcess = true)]
     public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
     {
         /// <summary>

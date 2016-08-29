@@ -23,3 +23,14 @@ function Test-StorageAccountIsNotCleaned
     $subscription = Get-AzureSubscription -SubscriptionId 2c224e7e-3ef5-431d-a57b-e71f4662e3a6
     Assert-NotNull $($subscription.CurrentStorageAccountName)
 }
+
+<#
+.SYNOPSIS
+Tests creating new azure profile with access token
+#>
+function Test-GetSubscriptionPipeToSetSubscription
+{
+	Get-AzureSubscription -Current | Set-AzureSubscription -CurrentStorageAccount teststorage1220 
+    $subscription = Get-AzureSubscription -Current
+    Assert-NotNull $($subscription.CurrentStorageAccountName)
+}

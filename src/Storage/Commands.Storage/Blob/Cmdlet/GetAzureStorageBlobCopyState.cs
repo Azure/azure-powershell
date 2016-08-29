@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Commands.Common.Storage.ResourceModel;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     using System;
     using System.Collections.Concurrent;
     using System.Management.Automation;
     using System.Security.Permissions;
     using System.Threading;
     using System.Threading.Tasks;
-    using Commands.Common.Storage.ResourceModel;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.Blob;
 
     [Cmdlet(VerbsCommon.Get, StorageNouns.CopyBlobStatus, DefaultParameterSetName = NameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Wait for copy task complete")]
         public SwitchParameter WaitForComplete
         {
-            get { return waitForComplete;}
+            get { return waitForComplete; }
             set { waitForComplete = value; }
         }
         private bool waitForComplete;
@@ -175,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="progress">Progress record</param>
         internal void WriteCopyProgress(CloudBlob blob, ProgressRecord progress)
         {
-            if(blob.CopyState == null) return ;
+            if (blob.CopyState == null) return;
             long bytesCopied = blob.CopyState.BytesCopied ?? 0;
             long totalBytes = blob.CopyState.TotalBytes ?? 0;
             int percent = 0;
@@ -264,11 +264,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             AccessCondition accessCondition = null;
             OperationContext context = OperationContext;
 
-            while(!jobList.IsEmpty)
+            while (!jobList.IsEmpty)
             {
                 jobList.TryDequeue(out monitorRequest);
-                
-                if(monitorRequest != null)
+
+                if (monitorRequest != null)
                 {
                     long internalTaskId = monitorRequest.Item1;
                     CloudBlob blob = monitorRequest.Item2;

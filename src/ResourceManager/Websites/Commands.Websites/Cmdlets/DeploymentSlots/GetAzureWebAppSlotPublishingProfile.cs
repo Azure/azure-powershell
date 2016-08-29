@@ -14,8 +14,8 @@
 // ----------------------------------------------------------------------------------
 
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using System.Management.Automation;
 
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         public string OutputFile { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]
-        [ValidateSet("WebDeploy", "FileZilla3","Ftp", IgnoreCase = true)]
+        [ValidateSet("WebDeploy", "FileZilla3", "Ftp", IgnoreCase = true)]
         public string Format { get; set; }
 
         public GetAzureWebAppSlotPublishingProfileCmdlet()

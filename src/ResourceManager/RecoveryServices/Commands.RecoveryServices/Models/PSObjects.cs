@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public const string VaultType = "HyperVRecoveryManagerVault";
 
         /// <summary>
+        /// Backup vault type
+        /// </summary>
+        public const string BackupVaultType = "Vaults";
+
+        /// <summary>
         /// Vault Credential version.
         /// </summary>
         public const string VaultCredentialVersion = "1.0";
@@ -66,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -82,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -114,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Resouce group name.
         /// </summary>
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Subscription.
@@ -135,11 +140,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     public class ARSVaultProperties
     {
         #region Properties
-        
+
         /// <summary>
         /// Gets or sets Provisioning State.
         /// </summary>
         public string ProvisioningState { get; set; }
+
+        #endregion
+    }
+
+    public class ASRVaultBackupProperties
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets BackupStorageRedundancy type.
+        /// </summary>
+        public string BackupStorageRedundancy { get; set; }
 
         #endregion
     }
@@ -168,6 +185,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public string FilePath { get; set; }
 
         #endregion
+    }
+
+    /// <summary>
+    /// Class to define the vault BackupStorageRedundancy settings.
+    /// </summary>
+    public enum AzureRmRecoveryServicesBackupStorageRedundancyType
+    {
+        GeoRedundant = 1,
+        LocallyRedundant
     }
 
     /// <summary>

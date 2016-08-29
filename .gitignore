@@ -181,6 +181,10 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 
+# The Backup*/ rule will ignore the backup and restore cmdlets
+# for Azure web apps. Exclude that directory from being ignored here.
+!/src/ResourceManager/Websites/Commands.Websites/Cmdlets/BackupRestore
+
 # SQL Server files
 *.mdf
 *.ldf

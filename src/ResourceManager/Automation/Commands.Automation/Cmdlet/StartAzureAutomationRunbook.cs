@@ -12,21 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Management.Automation.Runspaces;
 using System.Security.Permissions;
 using System.Threading;
-using Microsoft.Azure.Commands.Automation.Common;
-using Microsoft.Azure.Commands.Automation.Model;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
-using JobStream = Microsoft.Azure.Commands.Automation.Model.JobStream;
-using Microsoft.Azure.Commands.Automation.Properties;
 
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -35,8 +29,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Starts an Azure automation runbook.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
-    [OutputType(typeof(Job), ParameterSetName = new []{ AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
-    [OutputType(typeof(PSObject), ParameterSetName = new []{ AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
+    [OutputType(typeof(Job), ParameterSetName = new[] { AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
+    [OutputType(typeof(PSObject), ParameterSetName = new[] { AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
     public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
@@ -98,7 +92,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             get { return this.timeout; }
             set { this.timeout = value; }
         }
-        
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -140,7 +134,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 Thread.Sleep(TimeSpan.FromSeconds(pollingIntervalInSeconds));
                 timeoutIncrement += pollingIntervalInSeconds;
- 
+
                 var job = this.AutomationClient.GetJob(this.ResourceGroupName, this.AutomationAccountName, jobId);
                 if (!IsJobTerminalState(job))
                 {

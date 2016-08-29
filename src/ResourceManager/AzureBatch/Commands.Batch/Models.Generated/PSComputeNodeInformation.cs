@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeInformation
+    public partial class PSComputeNodeInformation
     {
         
         internal Microsoft.Azure.Batch.ComputeNodeInformation omObject;

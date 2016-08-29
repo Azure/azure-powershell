@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
-    using System.Management.Automation;
-    using System;
     using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
+    using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics"), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRedisCacheDiagnostics", SupportsShouldProcess = true),
+        OutputType(typeof(void))]
     public class RemoveAzureRedisCacheDiagnostics : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
@@ -31,25 +32,14 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             RedisCacheAttributes cache = new RedisCacheAttributes(CacheClient.GetCache(ResourceGroupName, Name), ResourceGroupName);
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Resources.RemovingRedisCacheDiagnostics, Name),
-                string.Format(Resources.RemoveRedisCacheDiagnostics, Name),
-                Name,
-                () => CacheClient.SetDiagnostics(cache.Id, null));
-            }
-            else
-            {
-                CacheClient.SetDiagnostics(cache.Id, null);
-            }
+            ConfirmAction(
+              string.Format(Resources.RemoveRedisCacheDiagnostics, Name),
+              Name,
+              () => CacheClient.SetDiagnostics(cache.Id, null));
         }
     }
 }

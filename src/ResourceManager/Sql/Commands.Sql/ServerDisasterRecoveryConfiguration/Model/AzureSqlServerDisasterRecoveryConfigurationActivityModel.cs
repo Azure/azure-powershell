@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model
             /// Gets or sets the properties of the Server Disaster Recovery Configuration at the time of the start of the operation
             /// </summary>
             public IDictionary<string, string> Current { get; set; }
-            
+
             /// <summary>
             /// Gets or sets the requested properties for the Server Disaster Recovery Configuration
             /// </summary>

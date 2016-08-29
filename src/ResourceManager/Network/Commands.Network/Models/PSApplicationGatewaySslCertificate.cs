@@ -16,10 +16,10 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSApplicationGatewaySslCertificate : PSChildResource
-     {
-         public string Data { get; set; }
-         public string Password { get; set; }
-         public string PublicCertData { get; set; }
-         public string ProvisioningState { get; set; }
-     }
+    {
+        public string Data { get; set; }
+        public string Password { get; set; }
+        public string PublicCertData { get; set; }
+        public string ProvisioningState { get; set; }
+    }
 }

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 Id = account.Id,
                 Type = account.Type,
                 Subscriptions = subscriptionsList == null ? "" : subscriptionsList.Replace(",", "\r\n"),
-                Tenants = tenantsList == null ? null : new List<string>(tenantsList.Split(new [] {","}, StringSplitOptions.RemoveEmptyEntries))
+                Tenants = tenantsList == null ? null : new List<string>(tenantsList.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
             };
         }
     }

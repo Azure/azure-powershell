@@ -23,12 +23,19 @@ using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Xunit.Abstractions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
     public class DscExtensionTests
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
+
+        public DscExtensionTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

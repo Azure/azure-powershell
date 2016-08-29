@@ -14,15 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.IO;
-    using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using ServiceManagemenet.Common;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.Management.Automation;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -63,14 +59,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            if(this.PolicyDefinition.Properties["policyDefinitionId"] == null)
+            if (this.PolicyDefinition.Properties["policyDefinitionId"] == null)
             {
                 throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
             }
             string resourceId = GetResourceId();
 
             var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.PolicyApiVersion : this.ApiVersion;
-            
+
             var operationResult = this.GetResourcesClient()
                 .PutResource(
                     resourceId: resourceId,

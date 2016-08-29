@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(3, environments.Count);
+            Assert.Equal(4, environments.Count);
         }
 
         [Fact]

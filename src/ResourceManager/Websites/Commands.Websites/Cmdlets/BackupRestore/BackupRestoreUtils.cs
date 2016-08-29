@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.WebSites.Models;
 using System;
 using System.Linq;
-using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             FrequencyUnit freq;
             try
             {
-                freq = (FrequencyUnit) Enum.Parse(typeof (FrequencyUnit), frequencyUnit, true);
+                freq = (FrequencyUnit)Enum.Parse(typeof(FrequencyUnit), frequencyUnit, true);
             }
             catch (ArgumentException)
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 databases = configuration.Databases.ToArray();
             }
-            
+
             int? frequencyInterval = null;
             string frequencyUnit = null;
             int? retentionPeriodInDays = null;

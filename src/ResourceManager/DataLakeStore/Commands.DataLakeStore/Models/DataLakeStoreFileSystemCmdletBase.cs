@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 case FileSystemCmdletProviderEncoding.Default:
                     return Encoding.UTF8.GetBytes(content);
                 case FileSystemCmdletProviderEncoding.Oem:
-                {
-                    var oemCP = NativeMethods.GetOEMCP();
-                    return Encoding.GetEncoding((int) oemCP).GetBytes(content);
-                }
+                    {
+                        var oemCP = NativeMethods.GetOEMCP();
+                        return Encoding.GetEncoding((int)oemCP).GetBytes(content);
+                    }
                 default:
                     // Default to unicode encoding
                     return Encoding.UTF8.GetBytes(content);
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         throw new CloudException(Resources.InvalidEncoding);
                     }
 
-                    byteList.Add((byte) entry);
+                    byteList.Add((byte)entry);
                 }
 
                 return byteList.ToArray();
@@ -182,10 +182,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 case FileSystemCmdletProviderEncoding.Default:
                     return Encoding.UTF8.GetString(content);
                 case FileSystemCmdletProviderEncoding.Oem:
-                {
-                    var oemCP = NativeMethods.GetOEMCP();
-                    return Encoding.GetEncoding((int) oemCP).GetString(content);
-                }
+                    {
+                        var oemCP = NativeMethods.GetOEMCP();
+                        return Encoding.GetEncoding((int)oemCP).GetString(content);
+                    }
                 default:
                     // Default to unicode encoding
                     return Encoding.UTF8.GetString(content);

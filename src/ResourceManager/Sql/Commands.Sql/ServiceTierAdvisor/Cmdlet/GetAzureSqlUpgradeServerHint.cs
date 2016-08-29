@@ -12,17 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services;
 using Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Model;
 using Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             HelpMessage = "Exclude elastic pool recommendations")]
         [ValidateNotNullOrEmpty]
         public bool ExcludeElasticPools { get; set; }
-        
+
         /// <summary>
         /// Get the entities from the service
         /// </summary>

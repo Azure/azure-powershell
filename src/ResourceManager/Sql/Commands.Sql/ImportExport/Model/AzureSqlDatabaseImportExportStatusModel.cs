@@ -12,11 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
 {
@@ -37,47 +32,47 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Model
         /// <summary>
         /// Gets or sets the error message returned from the server.
         /// </summary>
-        public string ErrorMessage 
-        { 
+        public string ErrorMessage
+        {
             get;
-            set; 
+            set;
         }
-       
+
         /// <summary>
         /// Gets or sets the operation status last modified time.
         /// </summary>
-        public string LastModifiedTime 
-        { 
-            get; 
-            set; 
+        public string LastModifiedTime
+        {
+            get;
+            set;
         }
 
         /// <summary>
         /// Gets or sets the operation queue time.
         /// </summary>
-        public string QueuedTime 
-        { 
-            get; 
-            set; 
+        public string QueuedTime
+        {
+            get;
+            set;
         }
-      
-      
+
+
         /// <summary>
         /// Gets or sets the status message returned from the server.
         /// </summary>
-        public string StatusMessage 
-        { 
-            get; 
-            set; 
+        public string StatusMessage
+        {
+            get;
+            set;
         }
 
         /// <summary>
         /// Gets or sets the status message returned from the server.
         /// </summary>
-        public string Status 
-        { 
-            get; 
-            set; 
+        public string Status
+        {
+            get;
+            set;
         }
     }
 }

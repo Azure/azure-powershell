@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Disables auditing on a specific database server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerAuditing"), OutputType(typeof(ServerAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Alias("Remove-AzureRmSqlDatabaseServerAuditing")]
     public class RemoveSqlServerAuditing : SqlDatabaseServerAuditingCmdletBase
     {
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Updates the given model element with the cmdlet specific operation 
         /// </summary>
         /// <param name="model">A model object</param>
-        protected override ServerAuditingPolicyModel ApplyUserInputToModel(ServerAuditingPolicyModel model)
+        protected override AuditingPolicyModel ApplyUserInputToModel(AuditingPolicyModel model)
         {
             base.ApplyUserInputToModel(model);
             model.AuditState = AuditStateType.Disabled;
@@ -52,10 +52,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
             ModelAdapter.IgnoreStorage = true;
             base.PersistChanges(model);
+            AuditType = AuditType.Blob;
+            var blobModel = GetEntity();
+            blobModel.AuditState = AuditStateType.Disabled;
+            base.PersistChanges(blobModel);
             return null;
         }
     }

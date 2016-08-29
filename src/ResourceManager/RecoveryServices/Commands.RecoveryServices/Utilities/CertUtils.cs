@@ -221,5 +221,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
             return CngKey.Create(CngAlgorithm2.Rsa, null, keyCreationParameters);
         }
+
+        /// <summary>
+        /// Returns serialized certificate - Base64 encoded based on the content type
+        /// </summary>
+        /// <param name="cert">The certificate provided</param>
+        /// <param name="contentType">Cert content type</param>
+        /// <returns>The serialized cert value in string</returns>
+        public static string SerializeCert(X509Certificate2 cert, X509ContentType contentType)
+        {
+            return Convert.ToBase64String(cert.Export(contentType));
+        }
     }
 }

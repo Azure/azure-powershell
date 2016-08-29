@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -66,13 +65,21 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
-                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));          
+                    pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 
-        public PSPoolStatistics ListAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        /// <summary>
+        /// Gets all pools lifetime summary statistics
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public PSPoolStatistics GetAllPoolsLifetimeStatistics(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionBehaviors = null)
         {
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
+
+            WriteVerbose(string.Format(Resources.GetAllPoolsLifetimeStatistics));
+
             PoolStatistics poolStatistics = poolOperations.GetAllPoolsLifetimeStatistics(additionBehaviors);
             PSPoolStatistics psPoolStatistics = new PSPoolStatistics(poolStatistics);
             return psPoolStatistics;
@@ -98,7 +105,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             pool.ResizeTimeout = parameters.ResizeTimeout;
             pool.MaxTasksPerComputeNode = parameters.MaxTasksPerComputeNode;
             pool.InterComputeNodeCommunicationEnabled = parameters.InterComputeNodeCommunicationEnabled;
-            
+
             if (!string.IsNullOrEmpty(parameters.AutoScaleFormula))
             {
                 pool.AutoScaleEnabled = true;
@@ -139,6 +146,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
 
+            if (parameters.ApplicationPackageReferences != null)
+            {
+                pool.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
+            }
+
             if (parameters.CloudServiceConfiguration != null)
             {
                 pool.CloudServiceConfiguration = parameters.CloudServiceConfiguration.omObject;
@@ -147,6 +159,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             if (parameters.VirtualMachineConfiguration != null)
             {
                 pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
+            }
+
+            if (parameters.NetworkConfiguration != null)
+            {
+                pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
             }
 
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
@@ -240,7 +257,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             WriteVerbose(string.Format(Resources.EnableAutoScale, poolId, parameters.AutoScaleFormula));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
-            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval, 
+            poolOperations.EnableAutoScale(poolId, parameters.AutoScaleFormula, parameters.AutoScaleEvaluationInterval,
                 parameters.AdditionalBehaviors);
         }
 
@@ -297,6 +314,33 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(string.Format(Resources.ChangeOSVersion, poolId, parameters.TargetOSVersion));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
             poolOperations.ChangeOSVersion(poolId, parameters.TargetOSVersion, parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Lists the usage metrics, aggregated by pool across individual time intervals, for the specified account.
+        /// </summary>
+        /// <param name="options">The options to use when aggregating usage for pools.</param>
+        public IEnumerable<PSPoolUsageMetrics> ListPoolUsageMetrics(ListPoolUsageOptions options)
+        {
+            string verboseLogString = null;
+            ODATADetailLevel detailLevel = null;
+
+            if (!string.IsNullOrEmpty(options.Filter))
+            {
+                verboseLogString = Resources.GetPoolUsageMetricsByFilter;
+                detailLevel = new ODATADetailLevel(filterClause: options.Filter);
+            }
+            else
+            {
+                verboseLogString = Resources.GetPoolUsageMetricsByNoFilter;
+            }
+
+            PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+            IPagedEnumerable<PoolUsageMetrics> poolUsageMetrics =
+                poolOperations.ListPoolUsageMetrics(options.StartTime, options.EndTime, detailLevel, options.AdditionalBehaviors);
+
+            return PSPagedEnumerable<PSPoolUsageMetrics, PoolUsageMetrics>.CreateWithMaxCount(
+                poolUsageMetrics, p => new PSPoolUsageMetrics(p), Int32.MaxValue, () => WriteVerbose(verboseLogString));
         }
     }
 }

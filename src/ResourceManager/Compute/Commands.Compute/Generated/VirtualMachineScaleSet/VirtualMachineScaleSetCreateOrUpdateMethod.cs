@@ -24,9 +24,11 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -111,19 +113,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("New", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet("New", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class NewAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public NewAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetCreateOrUpdate";
-            base.ProcessRecord();
+
+            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsCommon.New))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()
@@ -172,19 +174,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Update", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet("Update", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class UpdateAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public UpdateAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetCreateOrUpdate";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsData.Update))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

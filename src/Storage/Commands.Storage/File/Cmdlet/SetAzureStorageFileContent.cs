@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,17 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Net;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Common;
-    using Microsoft.WindowsAzure.Storage;
-    using Microsoft.WindowsAzure.Storage.DataMovement;
-    using Microsoft.WindowsAzure.Storage.File;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
-    [Cmdlet(VerbsCommon.Set, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Set, LocalConstants.FileContentCmdletName, SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
@@ -81,37 +80,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
             }
 
-            // Step 2: Build the CloudFile object which pointed to the
-            // destination cloud file.
-            this.RunTask(async taskId =>
+            bool isDirectory;
+            string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
+            var cloudFileToBeUploaded =
+                BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory).ConfigureAwait(false).GetAwaiter().GetResult();
+            if (ShouldProcess(cloudFileToBeUploaded.Name, "Set file content"))
             {
-                bool isDirectory;
-                string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
-                var cloudFileToBeUploaded = await this.BuildCloudFileInstanceFromPathAsync(localFile.Name, path, isDirectory);
-
-                var progressRecord = new ProgressRecord(
-                    this.OutputStream.GetProgressId(taskId),
-                    string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name, cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
-                    Resources.PrepareUploadingFile);
-
-                await DataMovementTransferHelper.DoTransfer(() =>
-                    {
-                        return this.TransferManager.UploadAsync(
-                        localFile.FullName,
-                        cloudFileToBeUploaded,
-                        null,
-                        this.GetTransferContext(progressRecord, localFile.Length),
-                        this.CmdletCancellationToken);
-                    },
-                    progressRecord,
-                    this.OutputStream);
-
-
-                if (this.PassThru)
+                // Step 2: Build the CloudFile object which pointed to the
+                // destination cloud file.
+                this.RunTask(async taskId =>
                 {
-                    this.OutputStream.WriteObject(taskId, cloudFileToBeUploaded);
-                }
-            });
+                    var progressRecord = new ProgressRecord(
+                        this.OutputStream.GetProgressId(taskId),
+                        string.Format(CultureInfo.CurrentCulture, Resources.SendAzureFileActivity, localFile.Name,
+                            cloudFileToBeUploaded.GetFullPath(), cloudFileToBeUploaded.Share.Name),
+                        Resources.PrepareUploadingFile);
+
+                    await DataMovementTransferHelper.DoTransfer(() =>
+                    this.TransferManager.UploadAsync(
+                            localFile.FullName,
+                            cloudFileToBeUploaded,
+                            null,
+                            this.GetTransferContext(progressRecord, localFile.Length),
+                            this.CmdletCancellationToken),
+                        progressRecord,
+                        this.OutputStream);
+
+
+                    if (this.PassThru)
+                    {
+                        this.OutputStream.WriteObject(taskId, cloudFileToBeUploaded);
+                    }
+                });
+            }
         }
 
         private async Task<CloudFile> BuildCloudFileInstanceFromPathAsync(string defaultFileName, string[] path, bool pathIsDirectory)

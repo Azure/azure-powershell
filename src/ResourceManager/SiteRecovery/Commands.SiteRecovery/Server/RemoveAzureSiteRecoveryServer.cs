@@ -12,19 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Management.SiteRecovery.Models;
-using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryServer", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRServer>))]
     public class RemoveAzureSiteRecoveryServer : SiteRecoveryCmdletBase
     {
@@ -50,8 +49,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
-            base.ExecuteSiteRecoveryCmdlet();
-            RemoveServer();
+            ConfirmAction(
+                VerbsCommon.Remove,
+                Server.FriendlyName,
+                () =>
+            {
+                base.ExecuteSiteRecoveryCmdlet();
+                RemoveServer();
+            });
         }
 
         /// <summary>

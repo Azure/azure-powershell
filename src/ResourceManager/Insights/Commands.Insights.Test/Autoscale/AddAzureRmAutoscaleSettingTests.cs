@@ -12,12 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
@@ -25,6 +19,12 @@ using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -40,8 +40,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         private string settingName;
         private AutoscaleSettingCreateOrUpdateParameters createOrUpdatePrms;
 
-        public AddAzureRmAutoscaleSettingTests()
+        public AddAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -74,8 +75,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         public void AddAutoscaleSettingCommandParametersProcessing()
         {
             var spec = this.CreateCompleteSpec(location: "East US", name: "SettingName", profiles: null);
-            var autoscaleRules = new List<ScaleRule> {this.CreateAutoscaleRule("IncommingReq")};
-            var autoscaleProfile = new List<AutoscaleProfile> {this.CreateAutoscaleProfile(autoscaleRules: autoscaleRules, fixedDate: true)};
+            var autoscaleRules = new List<ScaleRule> { this.CreateAutoscaleRule("IncommingReq") };
+            var autoscaleProfile = new List<AutoscaleProfile> { this.CreateAutoscaleProfile(autoscaleRules: autoscaleRules, fixedDate: true) };
 
             // Testing with a complete spec as parameter (Update semantics)
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 ScaleActionValue = "1"
             };
 
-            return autocaseRuleCmd.CreateSettingRule();            
+            return autocaseRuleCmd.CreateSettingRule();
         }
 
         private AutoscaleProfile CreateAutoscaleProfile(List<ScaleRule> autoscaleRules = null, bool fixedDate = true)

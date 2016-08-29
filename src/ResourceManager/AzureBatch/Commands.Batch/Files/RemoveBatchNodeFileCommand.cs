@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
-using System;
+using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
-using Microsoft.Azure.Commands.Batch.Properties;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchNodeFile)]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchNodeFile, SupportsShouldProcess = true)]
     public class RemoveBatchNodeFileCommand : BatchObjectModelCmdletBase
     {
         internal const string TaskParameterSet = "Task";

@@ -4,14 +4,13 @@
 
 namespace Microsoft.AzureStack.Commands.Security
 {
+    using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System;
     using System.Collections.Generic;
     using System.Collections.Specialized;
-    using System.Globalization;
     using System.Reflection;
     using System.Text;
     using System.Threading.Tasks;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     /// <summary>
     /// Authentication context extension methods.

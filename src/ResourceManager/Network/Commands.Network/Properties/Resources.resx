@@ -207,6 +207,9 @@
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
   </data>
+  <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
+    <value>authenticationCertificates</value>
+  </data>
   <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
     <value>sslCertificates</value>
   </data>
@@ -216,7 +219,7 @@
   <data name="SetByIP" xml:space="preserve">
     <value>SetByIP</value>
   </data>
-  <data name="LoadBalancerInboundNatPoolsName" xml:space="preserve">
+  <data name="LoadBalancerInboundNatPoolName" xml:space="preserve">
     <value>inboundNatPools</value>
   </data>
   <data name="ApplicationGatewayProbeName" xml:space="preserve">
@@ -224,5 +227,23 @@
   </data>
   <data name="ApplicationGatewayUrlPathMapName" xml:space="preserve">
     <value>urlPathMaps</value>
+  </data>
+  <data name="SetByIpConfiguration" xml:space="preserve">
+    <value>SetByIpConfiguration</value>
+  </data>
+  <data name="SetByIpConfigurationResourceId" xml:space="preserve">
+    <value>SetByIpConfigurationResourceId</value>
+  </data>
+  <data name="CreatingResourceMessage" xml:space="preserve">
+    <value>Creating Resource</value>
+  </data>
+  <data name="MovingExpressRoutCircuitMessage" xml:space="preserve">
+    <value>Moving ExpressRoute Circuit</value>
+  </data>
+  <data name="ResettingResourceMessage" xml:space="preserve">
+    <value>Resetting Resource</value>
+  </data>
+  <data name="SettingResourceMessage" xml:space="preserve">
+    <value>Setting Resource</value>
   </data>
 </root>

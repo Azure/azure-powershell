@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -71,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     _defaultDiskTokenCache = new ProtectedFileTokenCache(
                         Path.Combine(AzureSession.ProfileDirectory,
                         AzureSession.TokenCacheFile));
-                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, 
+                    return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory,
                         AzureSession.ProfileFile));
                 }
                 catch

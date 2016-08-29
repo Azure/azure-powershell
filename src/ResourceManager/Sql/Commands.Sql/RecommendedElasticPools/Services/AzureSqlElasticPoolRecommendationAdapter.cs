@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
 {
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
             Context = context;
             RecommendationCommunicator = new AzureSqlElasticPoolRecommendationCommunicator(Context);
         }
-        
+
         /// <summary>
         /// Gets a list of Azure Sql Recommended Elastic Pool.
         /// </summary>

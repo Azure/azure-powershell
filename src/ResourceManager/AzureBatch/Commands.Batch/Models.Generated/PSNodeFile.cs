@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSNodeFile
+    public partial class PSNodeFile
     {
         
         internal Microsoft.Azure.Batch.NodeFile omObject;

@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
 {
@@ -37,8 +35,8 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
-        
+        private static AzureSubscription Subscription { get; set; }
+
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
@@ -99,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         {
             IDataMaskingOperations operations = GetCurrentSqlClient(clientRequestId).DataMasking;
             operations.Delete(resourceGroupName, serverName, databaseName, ruleId);
-       }
+        }
 
         /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request

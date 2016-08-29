@@ -310,10 +310,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        /// <param name="resourceType">resource type backup vault or ASR vault</param>
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceType = null)
         {
             this.SubscriptionId = subscriptionId;
-            this.ResourceType = Constants.VaultType;
+            this.ResourceType = string.IsNullOrEmpty(resourceType) ? Constants.VaultType : resourceType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
@@ -394,7 +395,8 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string siteId,
             string siteName,
             string resourceNamespace,
-            string resourceType)
+            string resourceType,
+            string location)
             : base(subscriptionId, resourceName, managementCert, acsNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
@@ -406,6 +408,7 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
 
             this.ResourceNamespace = resourceNamespace;
             this.ARMResourceType = resourceType;
+            this.Location = location;
         }
 
         #endregion
@@ -452,6 +455,62 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 6)]
         public string ARMResourceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vault location
+        /// </summary>
+        [DataMember(Order = 7)]
+        public string Location { get; set; }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Class to define backup vault credentials
+    /// </summary>
+    [DataContract]
+    public class BackupVaultCreds : VaultCreds
+    {
+        /// <summary>
+        /// Gets or sets the agent links
+        /// </summary>
+        [DataMember(Order = 0)]
+        public string AgentLinks { get; set; }
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        public BackupVaultCreds() { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace)
+            : base(subscriptionId, resourceName, managementCert, acsNamespace, Constants.BackupVaultType) { }
+
+        /// <summary>
+        /// Initializes a new instance of the BackupVaultCreds class
+        /// </summary>
+        /// <param name="subscriptionId">subscription Id</param>
+        /// <param name="resourceType">resource type</param>
+        /// <param name="resourceName">resource name</param>
+        /// <param name="managementCert">management cert</param>
+        /// <param name="acsNamespace">acs namespace</param>
+        /// <param name="agentLinks">agent links</param>
+        public BackupVaultCreds(string subscriptionId, string resourceName, string managementCert, 
+            AcsNamespace acsNamespace, string agentLinks)
+            : this(subscriptionId, resourceName, managementCert, acsNamespace)
+        {
+            AgentLinks = agentLinks;
+        }
 
         #endregion
     }

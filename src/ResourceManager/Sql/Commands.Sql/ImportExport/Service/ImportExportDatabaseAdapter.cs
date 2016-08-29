@@ -57,15 +57,15 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
                 AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(exportRequest.AdministratorLoginPassword),
                 StorageKey = exportRequest.StorageKey,
                 StorageKeyType = exportRequest.StorageKeyType.ToString(),
-                StorageUri = exportRequest.StorageUri              
+                StorageUri = exportRequest.StorageUri
             };
 
-            if(exportRequest.AuthenticationType != AuthenticationType.None)
+            if (exportRequest.AuthenticationType != AuthenticationType.None)
             {
                 parameters.AuthenticationType = exportRequest.AuthenticationType.ToString().ToLowerInvariant();
             }
 
-            ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName, 
+            ImportExportResponse response = Communicator.Export(exportRequest.ResourceGroupName, exportRequest.ServerName,
                 exportRequest.DatabaseName, parameters, Util.GenerateTracingId());
             return CreateImportExportResponse(response, exportRequest);
         }
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Service
             ImportRequestParameters parameters = new ImportRequestParameters()
             {
                 AdministratorLogin = importRequest.AdministratorLogin,
-                AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword),                
+                AdministratorLoginPassword = AzureSqlServerAdapter.Decrypt(importRequest.AdministratorLoginPassword),
                 StorageKey = importRequest.StorageKey,
                 StorageKeyType = importRequest.StorageKeyType.ToString(),
                 StorageUri = importRequest.StorageUri,

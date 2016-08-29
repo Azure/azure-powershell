@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             if (IsChannelRequired(destination.Uri))
             {
-                if(currentSubscription == null)
+                if (currentSubscription == null)
                 {
                     throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "SubscriptionId");
                 }
                 var storageKeys = this.client.StorageAccounts.ListKeys(this.resourceGroupName, destination.StorageAccountName);
-                return new StorageCredentials(destination.StorageAccountName, storageKeys.StorageAccountKeys.Key1);
+                return new StorageCredentials(destination.StorageAccountName, storageKeys.Key1);
             }
 
             return new StorageCredentials(destination.Uri.Query);

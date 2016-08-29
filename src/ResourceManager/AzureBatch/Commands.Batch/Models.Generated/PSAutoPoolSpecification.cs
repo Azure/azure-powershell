@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAutoPoolSpecification
+    public partial class PSAutoPoolSpecification
     {
         
         internal Microsoft.Azure.Batch.AutoPoolSpecification omObject;

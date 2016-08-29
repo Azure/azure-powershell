@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSCloudJob
+    public partial class PSCloudJob
     {
         
         internal Microsoft.Azure.Batch.CloudJob omObject;
@@ -289,6 +289,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.Metadata = new List<Microsoft.Azure.Batch.MetadataItem>();
                 }
                 this.metadata = value;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.OnAllTasksComplete? OnAllTasksComplete
+        {
+            get
+            {
+                return this.omObject.OnAllTasksComplete;
+            }
+            set
+            {
+                this.omObject.OnAllTasksComplete = value;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.OnTaskFailure? OnTaskFailure
+        {
+            get
+            {
+                return this.omObject.OnTaskFailure;
+            }
+            set
+            {
+                this.omObject.OnTaskFailure = value;
             }
         }
         

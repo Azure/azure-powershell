@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class ResourceGroupCreateOrUpdateResult : AzureOperationResponse
     {
         private ResourceGroupExtended _resourceGroup;
-        
+
         /// <summary>
         /// Optional. Gets or sets the resource group.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._resourceGroup; }
             set { this._resourceGroup = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the ResourceGroupCreateOrUpdateResult
         /// class.

@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             if (result != null && result.Count > 0)
             {
-                fullPath = result[0].Path;
+                fullPath = result[0].ProviderPath;
             }
 
             return fullPath;

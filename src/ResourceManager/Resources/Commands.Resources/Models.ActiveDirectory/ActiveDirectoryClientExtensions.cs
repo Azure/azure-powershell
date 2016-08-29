@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Graph.RBAC.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             };
         }
 
-        public static PSADObject ToPSADObject(this Group group)
+        public static PSADObject ToPSADObject(this ADGroup group)
         {
             return new PSADObject()
             {
@@ -50,19 +49,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = obj.DisplayName,
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
-                    UserPrincipalName = obj.UserPrincipalName,
-                    Mail = obj.Mail
+                    UserPrincipalName = obj.UserPrincipalName
                 };
             }
-            else if (obj.ObjectType == typeof(Group).Name)
+            else if (obj.ObjectType == "Group")
             {
                 return new PSADGroup()
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
                     Id = new Guid(obj.ObjectId),
-                    SecurityEnabled = obj.SecurityEnabled/*,
-                    Mail = group.Mail*/
+                    SecurityEnabled = obj.SecurityEnabled
                 };
 
             }
@@ -73,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     DisplayName = obj.DisplayName,
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
-                    ServicePrincipalName = obj.ServicePrincipalNames.FirstOrDefault()
+                    ServicePrincipalNames = obj.ServicePrincipalNames.ToArray()
                 };
             }
             else
@@ -103,18 +100,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.Mail 
+                Type = user.ObjectType
             };
         }
 
-        public static PSADGroup ToPSADGroup(this Group group)
+        public static PSADGroup ToPSADGroup(this ADGroup group)
         {
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
                 Id = new Guid(group.ObjectId),
-                SecurityEnabled = group.SecurityEnabled/*,
-                Mail = group.Mail*/
+                SecurityEnabled = group.SecurityEnabled,
+                Type = group.ObjectType
             };
         }
 
@@ -125,7 +122,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = servicePrincipal.DisplayName,
                 Id = new Guid(servicePrincipal.ObjectId),
                 ApplicationId = Guid.Parse(servicePrincipal.AppId),
-                ServicePrincipalName = servicePrincipal.ServicePrincipalNames.FirstOrDefault()
+                ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray(),
+                Type = servicePrincipal.ObjectType
             };
         }
 
@@ -135,14 +133,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 return new PSADApplication()
                 {
-                    ApplicationObjectId = Guid.Parse(application.ObjectId),
+                    ObjectId = Guid.Parse(application.ObjectId),
+                    DisplayName = application.DisplayName,
                     Type = application.ObjectType,
                     ApplicationId = Guid.Parse(application.AppId),
                     IdentifierUris = application.IdentifierUris,
-                    DisplayName= application.DisplayName,
+                    HomePage = application.Homepage,
                     ReplyUrls = application.ReplyUrls,
                     AppPermissions = application.AppPermissions,
-                    AvailableToOtherTenants = application.AvailableToOtherTenants
+                    AvailableToOtherTenants = application.AvailableToOtherTenants ?? false
                 };
             }
             else
@@ -157,10 +156,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             {
                 StartDate = PSKeyCredential.StartDate,
                 EndDate = PSKeyCredential.EndDate,
-                KeyId = PSKeyCredential.KeyId,
-                Type = PSKeyCredential.Type,
-                Usage = PSKeyCredential.Usage,
-                Value = PSKeyCredential.Value
+                KeyId = PSKeyCredential.KeyId.ToString(),
+                Value = PSKeyCredential.CertValue,
+                Type= "AsymmetricX509Cert",
+                Usage= "Verify"
             };
         }
 
@@ -168,10 +167,32 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         {
             return new PasswordCredential
             {
-                 StartDate = PSPasswordCredential.StartDate,
-                 EndDate = PSPasswordCredential.EndDate,
-                 KeyId = PSPasswordCredential.KeyId,
-                 Value = PSPasswordCredential.Value
+                StartDate = PSPasswordCredential.StartDate,
+                EndDate = PSPasswordCredential.EndDate,
+                KeyId = PSPasswordCredential.KeyId.ToString(),
+                Value = PSPasswordCredential.Password
+            };
+        }
+
+        public static PSADCredential ToPSADCredential(this KeyCredential credential)
+        {
+            return new PSADCredential
+            {
+                KeyId = credential.KeyId,
+                StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
+                EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
+                Type = credential.Type
+            };
+        }
+
+        public static PSADCredential ToPSADCredential(this PasswordCredential credential)
+        {
+            return new PSADCredential
+            {
+                KeyId = credential.KeyId,
+                StartDate = credential.StartDate == null ? string.Empty : credential.StartDate.ToString(),
+                EndDate = credential.EndDate == null ? string.Empty : credential.EndDate.ToString(),
+                Type = "Password"
             };
         }
     }

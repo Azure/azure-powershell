@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Text;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {

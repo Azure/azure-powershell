@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
     /// <summary>
     /// Returns the secure connection policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseSecureConnectionPolicy"), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
     public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model) 
+        protected override DatabaseSecureConnectionPolicyModel PersistChanges(DatabaseSecureConnectionPolicyModel model)
         {
             return null;
         }

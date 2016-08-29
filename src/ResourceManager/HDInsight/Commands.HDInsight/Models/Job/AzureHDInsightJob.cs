@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Gets the exit code for the jobDetails.
         /// </summary>
         public int? ExitValue { get; private set; }
-        
+
         /// <summary>
         /// Gets the user name of the job creator.
         /// </summary>

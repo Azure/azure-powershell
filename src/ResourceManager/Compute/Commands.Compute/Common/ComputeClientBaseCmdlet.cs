@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using Microsoft.Azure.Commands.Compute.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {

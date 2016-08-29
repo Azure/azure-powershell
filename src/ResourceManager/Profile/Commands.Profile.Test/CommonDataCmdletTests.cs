@@ -12,20 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Xunit;
-using System;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Xunit.Extensions;
+using System;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
     public class CommonDataCmdletTests
     {
+        public CommonDataCmdletTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         public static AzureRMProfile CreateAzureRMProfile(string storageAccount)
         {
             var tenantId = Guid.NewGuid();

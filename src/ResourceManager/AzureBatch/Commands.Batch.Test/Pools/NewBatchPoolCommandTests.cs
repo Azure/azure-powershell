@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Rest.Azure;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -32,8 +33,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchPoolCommandTests()
+        public NewBatchPoolCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new NewBatchPoolCommand()
@@ -58,14 +60,50 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Don't go to the service on an Add CloudPool call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                PoolAddParameter, 
-                PoolAddOptions, 
+                PoolAddParameter,
+                PoolAddOptions,
                 AzureOperationHeaderResponse<PoolAddHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchPoolNetworkConfigurationParameterTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            var networkConfiguration = new PSNetworkConfiguration();
+            networkConfiguration.SubnetId = "fakeSubnetId";
+
+            cmdlet.Id = "testPool";
+            cmdlet.VirtualMachineSize = "small";
+            cmdlet.NetworkConfiguration = networkConfiguration;
+
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>())).Returns(true);
+            
+            string subnetId = null;
+
+            Action<BatchRequest<
+                PoolAddParameter,
+                PoolAddOptions,
+                AzureOperationHeaderResponse<PoolAddHeaders>>> extractPoolAction =
+                (request) =>
+                {
+                    subnetId = request.Parameters.NetworkConfiguration.SubnetId;
+                };
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractPoolAction);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.NetworkConfiguration.SubnetId, subnetId);
         }
     }
 }

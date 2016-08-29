@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using Microsoft.Azure.Management.Redis.Models;
-    using System.Collections;
     using System.Collections.Generic;
 
     public class RedisCacheAttributes
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Name = cache.Name;
             Type = cache.Type;
             HostName = cache.HostName;
-            Port = cache.Port.HasValue? cache.Port.Value : 0;
+            Port = cache.Port.HasValue ? cache.Port.Value : 0;
             ProvisioningState = cache.ProvisioningState;
             SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
             RedisConfiguration = cache.RedisConfiguration;
@@ -35,9 +34,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             RedisVersion = cache.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
             Sku = cache.Sku.Name;
-            ResourceGroupName = resourceGroupName; 
-            VirtualNetwork = cache.VirtualNetwork;
-            Subnet = cache.Subnet;
+            ResourceGroupName = resourceGroupName;
+            SubnetId = cache.SubnetId;
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
@@ -46,7 +44,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public RedisCacheAttributes() { }
 
         private string _resourceGroupName;
-        public string ResourceGroupName 
+        public string ResourceGroupName
         {
             get
             {
@@ -60,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     _resourceGroupName = value;
                 }
                 else
-                { 
+                {
                     // if resource group name is null (when try to get all cache in given subscription it will be null) we have to fetch it from Id.
                     _resourceGroupName = Id.Split('/')[4];
                 }
@@ -97,9 +95,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 
         public int? ShardCount { get; protected set; }
 
-        public string VirtualNetwork { get; protected set; }
-
-        public string Subnet { get; protected set; }
+        public string SubnetId { get; protected set; }
 
         public string StaticIP { get; protected set; }
     }

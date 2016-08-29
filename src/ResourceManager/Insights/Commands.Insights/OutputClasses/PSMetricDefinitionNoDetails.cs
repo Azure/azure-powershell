@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Insights.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the list of MetricAvailability objects
         /// </summary>
-        protected internal new IList<MetricAvailability> MetricAvailabilities 
+        protected internal new IList<MetricAvailability> MetricAvailabilities
         {
             get { return base.MetricAvailabilities; }
             set { base.MetricAvailabilities = value; }

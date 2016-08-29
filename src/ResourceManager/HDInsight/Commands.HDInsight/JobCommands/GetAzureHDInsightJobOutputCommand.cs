@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models.Job;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Job.Models;
-using Microsoft.Azure.Management.HDInsight;
+using Microsoft.WindowsAzure.Commands.Common;
+using System.IO;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -111,7 +108,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             WriteObject(output);
         }
-        
+
         internal string GetJobOutput(IStorageAccess storageAccess)
         {
             var output = HDInsightJobClient.GetJobOutput(JobId, storageAccess);

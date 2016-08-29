@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -106,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 };
 
                 if (containerPrefix.EndsWith("-"))
-                { 
+                {
                     containerPrefix += "a";
                 }
 
@@ -144,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return IsValidBlobName(blobPrefix);
         }
 
-        
+
         /// <summary>
         /// Is valid table name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd179338.aspx"/>
         /// </summary>
@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return IsValidTableName(tablePrefix);
         }
 
-        
+
         /// <summary>
         /// Is valid queue name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd179349.aspx"/>
         /// </summary>
@@ -203,8 +203,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 queuePrefix = queuePrefix + "abc";
             };
-            
-            if(queuePrefix.EndsWith("-"))
+
+            if (queuePrefix.EndsWith("-"))
             {
                 queuePrefix += "a";
             }
@@ -235,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 //http://en.wikipedia.org/wiki/Filename
                 //In Windows and DOS utilities, some words might also be reserved and can not be used as filenames.
                 //However, "CLOCK$", "COM0", "LPT0" are not forbidden name since they can be used as file name in command line prompt.
-                string[] forbiddenList = { "CON", "PRN", "AUX", "NUL", 
+                string[] forbiddenList = { "CON", "PRN", "AUX", "NUL",
                     "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
                     "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9" };
                 bool forbidden = forbiddenList.Contains(realName);
@@ -269,9 +269,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             //replace dirctionary
             Dictionary<string, string> replaceRules = new Dictionary<string, string>()
-	            {
-	                {"/", "\\"}
-	            };
+                {
+                    {"/", "\\"}
+                };
 
             foreach (KeyValuePair<string, string> rule in replaceRules)
             {
@@ -287,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 string timeStamp = string.Format("{0:u}", snapshotTime.Value);
                 timeStamp = timeStamp.Replace(":", string.Empty).TrimEnd(new char[] { 'Z' });
 
-                if(index == -1)
+                if (index == -1)
                 {
                     prefix = fileName;
                     postfix = string.Empty;

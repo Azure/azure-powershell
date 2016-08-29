@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.OperationalInsights.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {

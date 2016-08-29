@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
@@ -28,8 +28,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public NewAzureRmAutoscaleNotificationCommand Cmdlet { get; set; }
 
-        public NewAzureRmAutoscaleNotificationTests()
+        public NewAzureRmAutoscaleNotificationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             commandRuntimeMock = new Mock<ICommandRuntime>();
             Cmdlet = new NewAzureRmAutoscaleNotificationCommand()
             {
@@ -54,10 +55,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.CustomEmails = new string[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
-            Cmdlet.CustomEmails = new string[] {"gu@ms.com"};
+            Cmdlet.CustomEmails = new string[] { "gu@ms.com" };
             Cmdlet.ExecuteCmdlet();
 
-            Cmdlet.CustomEmails = new string[] {"gu@ms.com", "ga@sm.net"};
+            Cmdlet.CustomEmails = new string[] { "gu@ms.com", "ga@sm.net" };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.CustomEmails = null;

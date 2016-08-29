@@ -14,7 +14,6 @@
 
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest.Azure.Authentication;
-using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             this._certificateThumbprint = certificateThumbprint;
         }
-        
+
         /// <summary>
         /// Authenticate using certificate thumbprint from the datastore 
         /// </summary>
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             var task = new Task<X509Certificate2>(() =>
             {
-                return  AzureSession.DataStore.GetCertificate(this._certificateThumbprint);
+                return AzureSession.DataStore.GetCertificate(this._certificateThumbprint);
             });
             task.Start();
             var certificate = await task.ConfigureAwait(false);

@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Threading;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
-using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Management.Automation;
+using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Wait, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof (JobInformation))]
+    [Cmdlet(VerbsLifecycle.Wait, "AzureRmDataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
+    [Alias("Wait-AdlJob")]
     public class WaitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
         private int _waitIntervalInSeconds = 5;
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
 
                 WriteVerboseWithTimestamp(string.Format(Resources.WaitJobState, jobInfo.State));
-                TestMockSupport.Delay(WaitIntervalInSeconds*1000);
+                TestMockSupport.Delay(WaitIntervalInSeconds * 1000);
                 timeWaitedInSeconds += WaitIntervalInSeconds;
                 jobInfo = DataLakeAnalyticsClient.GetJob(Account, JobId);
             }

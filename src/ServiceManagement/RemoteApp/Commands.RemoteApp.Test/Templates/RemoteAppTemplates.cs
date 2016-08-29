@@ -24,7 +24,6 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
     using Xunit;
 
     // Get-AzureRemoteAppResetVpnSharedKey, Get-AzureRemoteAppVpnDeviceConfigScript, Reset-AzureRemoteAppVpnSharedKey
-
     public class NewAzureRemoteAppTemplateImageTest : NewAzureRemoteAppTemplateImage
     {
         /// <summary>

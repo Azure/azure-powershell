@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -26,8 +24,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
     {
         private GetAzureHDInsightPropertiesCommand cmdlet;
 
-        public GetPropertiesTests()
+        public GetPropertiesTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
 
             cmdlet = new GetAzureHDInsightPropertiesCommand
@@ -42,10 +41,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGetProperties()
         {
-            var features = new string[] {"feature1", "feature2"};
-            var versions = new Dictionary<string, VersionsCapability> {{"key", new VersionsCapability()}};
-            var vm = new Dictionary<string, VmSizesCapability> {{"key1", new VmSizesCapability()}};
-            var regions = new Dictionary<string, RegionsCapability> {{"eastus", new RegionsCapability()}};
+            var features = new string[] { "feature1", "feature2" };
+            var versions = new Dictionary<string, VersionsCapability> { { "key", new VersionsCapability() } };
+            var vm = new Dictionary<string, VmSizesCapability> { { "key1", new VmSizesCapability() } };
+            var regions = new Dictionary<string, RegionsCapability> { { "eastus", new RegionsCapability() } };
             var propertiesResponse = new CapabilitiesResponse
             {
                 Features = features,
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             hdinsightManagementMock.Setup(c => c.GetCapabilities(Location))
                 .Returns(propertiesResponse)
                 .Verifiable();
-            
+
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();

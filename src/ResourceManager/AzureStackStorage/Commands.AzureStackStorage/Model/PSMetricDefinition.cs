@@ -28,7 +28,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// Initializes an new instance of the PSMetricDefinition class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
-        public PSMetricDefinition(MetricDefinition metricDefinition): base(metricDefinition)
+        public PSMetricDefinition(MetricDefinition metricDefinition) : base(metricDefinition)
         {
             this.MetricAvailabilities = new PSAvailabilityCollection(metricDefinition.MetricAvailabilities);
         }

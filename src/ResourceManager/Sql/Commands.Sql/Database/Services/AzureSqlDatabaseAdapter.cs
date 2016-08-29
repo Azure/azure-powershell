@@ -12,18 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Services;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
-using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -199,40 +197,40 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
 
         internal IEnumerable<AzureSqlDatabaseActivityModel> ListDatabaseActivity(string resourceGroupName, string serverName, string elasticPoolName, string databaseName, Guid? operationId)
         {
-            if(!string.IsNullOrEmpty(elasticPoolName))
+            if (!string.IsNullOrEmpty(elasticPoolName))
             {
                 var response = ElasticPoolCommunicator.ListDatabaseActivity(resourceGroupName, serverName, elasticPoolName, Util.GenerateTracingId());
-                IEnumerable< AzureSqlDatabaseActivityModel> list = response.Select((r) =>
-                    {
-                        return new AzureSqlDatabaseActivityModel()
-                        {
-                            DatabaseName = r.Properties.DatabaseName,
-                            EndTime = r.Properties.EndTime,
-                            ErrorCode = r.Properties.ErrorCode,
-                            ErrorMessage = r.Properties.ErrorMessage,
-                            ErrorSeverity = r.Properties.ErrorSeverity,
-                            Operation = r.Properties.Operation,
-                            OperationId = r.Properties.OperationId,
-                            PercentComplete = r.Properties.PercentComplete,
-                            ServerName = r.Properties.ServerName,
-                            StartTime = r.Properties.StartTime,
-                            State = r.Properties.State,
-                            Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
-                            {
-                                Current = new Dictionary<string, string>()
-                                {
+                IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
+                   {
+                       return new AzureSqlDatabaseActivityModel()
+                       {
+                           DatabaseName = r.Properties.DatabaseName,
+                           EndTime = r.Properties.EndTime,
+                           ErrorCode = r.Properties.ErrorCode,
+                           ErrorMessage = r.Properties.ErrorMessage,
+                           ErrorSeverity = r.Properties.ErrorSeverity,
+                           Operation = r.Properties.Operation,
+                           OperationId = r.Properties.OperationId,
+                           PercentComplete = r.Properties.PercentComplete,
+                           ServerName = r.Properties.ServerName,
+                           StartTime = r.Properties.StartTime,
+                           State = r.Properties.State,
+                           Properties = new AzureSqlDatabaseActivityModel.DatabaseState()
+                           {
+                               Current = new Dictionary<string, string>()
+                               {
                                     {"CurrentElasticPoolName", r.Properties.CurrentElasticPoolName},
                                     {"CurrentServiceObjectiveName", r.Properties.CurrentServiceObjectiveName},
-                                },
-                                Requested = new Dictionary<string, string>()
-                                {
+                               },
+                               Requested = new Dictionary<string, string>()
+                               {
                                     {"RequestedElasticPoolName", r.Properties.RequestedElasticPoolName},
                                     {"RequestedServiceObjectiveName", r.Properties.RequestedServiceObjectiveName},
-                                }
-                            }
-                        };
-                    });
-                
+                               }
+                           }
+                       };
+                   });
+
                 // Check if we have a database name constraint
                 if (!string.IsNullOrEmpty(databaseName))
                 {

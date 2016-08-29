@@ -61,7 +61,7 @@ FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Websites\Microsoft.Azure.Commands.Websites.dll'
+    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.Azure.Commands.Websites.dll'
 )
 
 # Functions to export from this module

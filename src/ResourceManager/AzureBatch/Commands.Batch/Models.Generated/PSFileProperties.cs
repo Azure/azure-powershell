@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSFileProperties
+    public partial class PSFileProperties
     {
         
         internal Microsoft.Azure.Batch.FileProperties omObject;

@@ -652,7 +652,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Common.General
 
         protected virtual void Dispose(bool isDisposing)
         {
-            if(isDisposing)
+            if (isDisposing)
             {
                 if (this.waitHandle != null)
                 {

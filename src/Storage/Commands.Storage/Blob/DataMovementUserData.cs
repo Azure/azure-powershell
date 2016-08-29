@@ -14,9 +14,9 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 
     /// <summary>
     /// User data for data movement library
@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         public TaskCompletionSource<bool> taskSource;
         public IStorageBlobManagement Channel;
         public long TotalSize;
-        
+
         public DataMovementUserData()
         {
             taskSource = new TaskCompletionSource<bool>();

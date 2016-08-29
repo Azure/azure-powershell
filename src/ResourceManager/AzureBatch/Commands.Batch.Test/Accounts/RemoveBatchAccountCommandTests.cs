@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Management.Automation;
@@ -27,8 +26,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchAccountCommandTests()
+        public RemoveBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveBatchAccountCommand()
@@ -44,9 +44,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-
-            AzureOperationResponse deleteResponse = new AzureOperationResponse();
-            batchClientMock.Setup(b => b.DeleteAccount(resourceGroup, accountName)).Returns(deleteResponse);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;

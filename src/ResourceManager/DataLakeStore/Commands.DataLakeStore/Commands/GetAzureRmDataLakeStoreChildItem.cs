@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.DataLakeStore.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof (IEnumerable<DataLakeStoreItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof(IEnumerable<DataLakeStoreItem>))]
+    [Alias("Get-AdlStoreChildItem")]
     public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             List<DataLakeStoreItem> toReturn =
                 DataLakeStoreFileSystemClient.GetFileStatuses(Path.TransformedPath, Account)
-                    .FileStatus.Select(element => new DataLakeStoreItem(element))
+                    .FileStatus.Select(element => new DataLakeStoreItem(element, optionalPath: "/" + Path.TransformedPath))
                     .ToList();
 
             WriteObject(toReturn, true);

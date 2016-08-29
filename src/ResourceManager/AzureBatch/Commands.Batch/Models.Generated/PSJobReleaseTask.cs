@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSJobReleaseTask
+    public partial class PSJobReleaseTask
     {
         
         internal Microsoft.Azure.Batch.JobReleaseTask omObject;
@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSJobReleaseTask()
         {
             this.omObject = new Microsoft.Azure.Batch.JobReleaseTask();
+        }
+        
+        public PSJobReleaseTask(string commandLine)
+        {
+            this.omObject = new Microsoft.Azure.Batch.JobReleaseTask(commandLine);
         }
         
         internal PSJobReleaseTask(Microsoft.Azure.Batch.JobReleaseTask omObject)

@@ -42,6 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
 
         public const string VMBootDiagnosticsEnable = "Enable boot diagnostics of the virtual machine";
         public const string VMBootDiagnosticsDisable = "Disable boot diagnostics of the virtual machine";
+
+        public const string VMLicenseType = "Specifies that the image or disk that is being used was licensed on-premises.";
     }
 
     public static class ValidateSetValues
@@ -55,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
     {
         public const string DataDisk = "AzureDataDisk";
         public const string OsDisk = "AzureOSDisk";
-        public const string BootDiagnostics = "AzureBootDiagnostics";
+        public const string BootDiagnostics = "AzureVMBootDiagnostics";
        
         public const string VirtualMachine = "AzureVM";
         public const string VirtualMachineExtension = "AzureVMExtension";

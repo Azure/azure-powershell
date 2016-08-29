@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.HDInsight;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
 {
@@ -31,7 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
 
         public AzureHdInsightManagementClient HDInsightManagementClient
         {
-            get {
+            get
+            {
                 return _hdInsightManagementClient ??
                        (_hdInsightManagementClient = new AzureHdInsightManagementClient(DefaultContext));
             }

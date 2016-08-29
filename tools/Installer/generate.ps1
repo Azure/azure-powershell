@@ -41,6 +41,7 @@ Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\AzureRM.Tags.psd1 
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.dll-Help.xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.DataLakeStore\Microsoft.Azure.Commands.Tags.format.ps1xml -ErrorAction SilentlyContinue
 Remove-Item -Force $resourceManagerPath\AzureRM.Intune\AzureRM.Intune.psd1 -ErrorAction SilentlyContinue
+Remove-Item -Force $resourceManagerPath\AzureRM.RecoveryServices.Backup\AzureRM.RecoveryServices.psd1 -ErrorAction SilentlyContinue
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
@@ -55,6 +56,11 @@ Write-Verbose "Removing XML help files for helper dlls from $output"
 $exclude = @("*.dll-Help.xml", "Scaffold.xml", "RoleSettings.xml", "WebRole.xml", "WorkerRole.xml")
 $include = @("*.xml", "*.lastcodeanalysissucceeded", "*.dll.config", "*.pdb")
 Get-ChildItem -Include $include -Exclude $exclude -Recurse -Path $output | Remove-Item -Force -Recurse
+Get-ChildItem -Recurse -Path $output -Include *.dll-Help.psd1 | Remove-Item -Force
+
+Write-Verbose "Removing unneeded web deployment dependencies"
+$webdependencies = @("Microsoft.Web.Hosting.dll", "Microsoft.Web.Delegation.dll", "Microsoft.Web.Administration.dll", "Microsoft.Web.Deployment.Tracing.dll")
+Get-ChildItem -Include $webdependencies -Recurse -Path $output | Remove-Item -Force
 
 if (Get-Command "heat.exe" -ErrorAction SilentlyContinue)
 {

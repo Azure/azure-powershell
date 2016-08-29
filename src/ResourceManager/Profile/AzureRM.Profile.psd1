@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.0.7' 
+ModuleVersion = '2.0.1' 
   
 # ID used to uniquely identify this module  
 GUID = '342714fc-4009-4863-8afb-a9067e3db04b'  
@@ -51,7 +51,7 @@ RequiredModules = @()
 RequiredAssemblies = @()  
   
 # Script files (.ps1) that are run in the caller's environment prior to importing this module  
-ScriptsToProcess = @('CheckVersions.ps1')  
+ScriptsToProcess = @()  
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @()

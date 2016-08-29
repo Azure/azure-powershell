@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSJobConstraints
+    public partial class PSJobConstraints
     {
         
         internal Microsoft.Azure.Batch.JobConstraints omObject;

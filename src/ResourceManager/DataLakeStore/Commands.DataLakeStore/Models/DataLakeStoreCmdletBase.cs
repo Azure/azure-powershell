@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest;
+using System;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -28,6 +28,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         private DataLakeStoreClient dataLakeClient;
 
+        /// <summary>
+        /// The filesystem request timeout in minutes, which is used for long running upload/download operations
+        /// </summary>
+        private const int filesystemRequestTimeoutInMinutes = 5;
         public DataLakeStoreClient DataLakeStoreClient
         {
             get
@@ -64,8 +68,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 client = (newHandlers == null || newHandlers.Length == 0)
                     // string.Empty ensures that we hit the constructors that set the assembly version properly
-                    ? clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint))
-                    : clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), clientFactory.GetCustomHandlers());
+                    ? clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), filesystemRequestTimeoutInMinutes)
+                    : clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), filesystemRequestTimeoutInMinutes, clientFactory.GetCustomHandlers());
             }
 
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");

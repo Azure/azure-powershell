@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
-using MBS = Microsoft.Azure.Management.BackupServices;
-using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Management.BackupServices.Models;
+using System;
+using System.Linq;
+using System.Management.Automation;
+using System.Web.Script.Serialization;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -69,9 +66,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug(string.Format(Resources.TriggeringRestore, operationId));
 
                 var operationStatus = TrackOperation(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, operationId);
-                WriteObject(GetCreatedJobs(RecoveryPoint.ResourceGroupName, 
-                    RecoveryPoint.ResourceName, 
-                    new Models.AzureRMBackupVault(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.Location), 
+                WriteObject(GetCreatedJobs(RecoveryPoint.ResourceGroupName,
+                    RecoveryPoint.ResourceName,
+                    new Models.AzureRMBackupVault(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.Location),
                     operationStatus.JobList).FirstOrDefault());
 
             });

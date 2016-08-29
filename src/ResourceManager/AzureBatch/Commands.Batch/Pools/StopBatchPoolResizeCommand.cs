@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchPoolResize)]
     public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, 
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }

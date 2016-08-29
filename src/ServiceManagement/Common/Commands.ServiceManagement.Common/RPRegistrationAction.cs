@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.WindowsAzure.Management;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Net;
 
 namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 {
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// Registers resource providers for Sparta.
         /// </summary>
         /// <typeparam name="T">The client type</typeparam>
-        private void RegisterResourceManagerProviders<T>(IAzureProfile profile) 
+        private void RegisterResourceManagerProviders<T>(IAzureProfile profile)
         {
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForResourceManager<T>();
             var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             if (unregisteredProviders.Count > 0)
             {
                 using (var client = ClientFactory.CreateCustomClient<ResourceManagementClient>(
-                                                        creds, 
+                                                        creds,
                                                         profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
                 {
                     foreach (string provider in unregisteredProviders)
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
         /// Registers resource providers for RDFE.
         /// </summary>
         /// <typeparam name="T">The client type</typeparam>
-        private void RegisterServiceManagementProviders<T>(AzureSMProfile profile) 
+        private void RegisterServiceManagementProviders<T>(AzureSMProfile profile)
         {
             var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
             if (unregisteredProviders.Count > 0)
             {
                 using (var client = new ManagementClient(
-                                            credentials, 
+                                            credentials,
                                             profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
                 {
                     foreach (var provider in unregisteredProviders)

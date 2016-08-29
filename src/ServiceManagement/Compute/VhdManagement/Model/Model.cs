@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Tools.Common.General;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using Microsoft.WindowsAzure.Commands.Tools.Common.General;
-using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 
 namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
 {
@@ -73,9 +73,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             if ((validation & VhdValidationType.IsVhd) == VhdValidationType.IsVhd)
             {
                 var validationResult = new VhdValidationResult
-                                           {
-                                               ValidationType = VhdValidationType.IsVhd
-                                           };
+                {
+                    ValidationType = VhdValidationType.IsVhd
+                };
                 if (vhdFile == null)
                 {
                     validationResult.ErrorCode = 1000;
@@ -87,9 +87,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             if ((validation & VhdValidationType.FixedDisk) == VhdValidationType.FixedDisk)
             {
                 var validationResult = new VhdValidationResult
-                                           {
-                                               ValidationType = VhdValidationType.FixedDisk
-                                           };
+                {
+                    ValidationType = VhdValidationType.FixedDisk
+                };
                 if (vhdFile == null || vhdFile.Footer.DiskType != DiskType.Fixed)
                 {
                     validationResult.ErrorCode = 1001;
@@ -114,10 +114,10 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
             var result = new List<VhdValidationResult>();
 
             var fileFactory = new VhdFileFactory();
-            
+
             fileFactory.BeginCreate(vhdStream, machine.CompletionCallback, null);
             yield return CompletionPort.SingleOperation;
-            
+
             VhdFile vhdFile = null;
             Exception exception = null;
             try
@@ -136,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
     public class VhdValidationResult
     {
         public int ErrorCode { get; set; }
-        public VhdValidationType ValidationType{ get; set; }
+        public VhdValidationType ValidationType { get; set; }
         public Exception Error { get; set; }
     }
 
@@ -146,7 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model
         public VhdParsingException()
         {
         }
-        
+
         public VhdParsingException(string message) : base(message)
         {
         }

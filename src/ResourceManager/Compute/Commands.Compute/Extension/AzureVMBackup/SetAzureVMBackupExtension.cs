@@ -16,23 +16,7 @@
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Compute.StorageServices;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Storage;
-using Microsoft.WindowsAzure.Commands.Sync.Download;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -40,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         VerbsCommon.Set,
         ProfileNouns.AzureVMBackupExtension)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMBackupExtension: VirtualMachineExtensionBaseCmdlet
+    public class SetAzureVMBackupExtension : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -87,7 +71,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             vmConfig.ExtensionName = this.Name;
             vmConfig.VirtualMachineExtensionType = VirtualMachineExtensionType;
 
-            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig,Tag, this);
+            azureBackupExtensionUtil.CreateSnapshotForDisks(vmConfig, Tag, this);
         }
     }
 }

@@ -12,17 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDisasterRecoveryConfiguration",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true)]
     public class RemoveAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
     {
         /// <summary>
@@ -47,8 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlServerDisasterRecoveryConfigurationModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerDisasterRecoveryConfigurationModel>() { 
-                ModelAdapter.GetServerDisasterRecoveryConfiguration(this.ResourceGroupName, this.ServerName, this.VirtualEndpointName) 
+            return new List<Model.AzureSqlServerDisasterRecoveryConfigurationModel>() {
+                ModelAdapter.GetServerDisasterRecoveryConfiguration(this.ResourceGroupName, this.ServerName, this.VirtualEndpointName)
             };
         }
 

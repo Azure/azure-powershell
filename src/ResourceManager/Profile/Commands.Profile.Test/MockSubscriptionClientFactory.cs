@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Subscriptions.Models;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Subscriptions.Models;
-using Moq;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         {
                             return Task.FromResult(_listAsyncQueue.Dequeue().Invoke());
                         }
-                        
+
                         SubscriptionListResult result = null;
                         if (_subscriptions.Count > 0)
                         {

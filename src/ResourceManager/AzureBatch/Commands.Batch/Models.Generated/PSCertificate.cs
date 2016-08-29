@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSCertificate
+    public partial class PSCertificate
     {
         
         internal Microsoft.Azure.Batch.Certificate omObject;

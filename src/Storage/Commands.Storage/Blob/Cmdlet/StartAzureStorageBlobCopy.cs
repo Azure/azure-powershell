@@ -16,12 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
-    using System;
-    using System.IO;
-    using System.Management.Automation;
-    using System.Reflection;
-    using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
@@ -30,8 +24,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.File;
+    using System;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Reflection;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
 
-    [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
+    [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
     public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
     {
@@ -261,65 +261,82 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             IStorageBlobManagement destChannel = GetDestinationChannel();
             IStorageBlobManagement srcChannel = Channel;
 
+            string target = string.Empty;
+            Action copyAction = null;
             switch (ParameterSetName)
             {
                 case ContainerNameParameterSet:
-                    StartCopyBlob(srcChannel, destChannel, SrcContainer, SrcBlob, DestContainer, DestBlob);
+                    copyAction = () => StartCopyBlob(srcChannel, destChannel, SrcContainer, SrcBlob, DestContainer, DestBlob);
+                    target = SrcBlob;
                     break;
 
                 case UriParameterSet:
-                    StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context);
+                    copyAction = () => StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context);
+                    target = AbsoluteUri;
                     break;
 
                 case BlobParameterSet:
-                    StartCopyBlob(destChannel, CloudBlob, DestContainer, DestBlob);
+                    copyAction = () => StartCopyBlob(destChannel, CloudBlob, DestContainer, DestBlob);
+                    target = CloudBlob.Name;
                     break;
 
                 case ContainerParameterSet:
-                    StartCopyBlob(srcChannel, destChannel, CloudBlobContainer.Name, SrcBlob, DestContainer, DestBlob);
+                    copyAction = () => StartCopyBlob(srcChannel, destChannel, CloudBlobContainer.Name, SrcBlob, DestContainer, DestBlob);
+                    target = SrcBlob;
                     break;
 
                 case BlobToBlobParameterSet:
-                    StartCopyBlob(destChannel, CloudBlob, DestCloudBlob);
+                    copyAction = () => StartCopyBlob(destChannel, CloudBlob, DestCloudBlob);
+                    target = CloudBlob.Name;
                     break;
                 case ShareNameParameterSet:
-                    this.StartCopyFromFile(
+                    copyAction = () => StartCopyFromFile(
                         this.GetFileChannel(),
                         destChannel,
                         this.SrcShareName,
                         this.SrcFilePath,
                         this.DestContainer,
                         this.DestBlob);
+                    target = SrcFilePath;
                     break;
                 case ShareParameterSet:
-                    this.StartCopyFromFile(
+                    copyAction = () => StartCopyFromFile(
                         destChannel,
                         this.SrcShare.GetRootDirectoryReference(),
                         this.SrcFilePath,
                         this.DestContainer,
                         this.DestBlob);
+                    target = SrcFilePath;
                     break;
                 case DirParameterSet:
-                    StartCopyFromFile(
+                    copyAction = () => StartCopyFromFile(
                         destChannel,
                         this.SrcDir,
                         this.SrcFilePath,
                         this.DestContainer,
                         this.DestBlob);
+                    target = SrcFilePath;
                     break;
                 case FileParameterSet:
-                    StartCopyFromFile(
+                    copyAction = () => StartCopyFromFile(
                         destChannel,
                         this.SrcFile,
                         this.DestContainer,
                         this.DestBlob);
+                    target = SrcFile.Name;
                     break;
                 case FileToBlobParameterSet:
-                    StartCopyFromFile(
+                    copyAction = () => StartCopyFromFile(
                         destChannel,
                         this.SrcFile,
                         this.DestCloudBlob);
+                    target = SrcFile.Name;
                     break;
+            }
+
+            if (copyAction != null && ShouldProcess(target, VerbsCommon.Copy))
+            {
+                copyAction();
             }
         }
 

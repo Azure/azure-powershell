@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,12 +14,11 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.IO;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
 
     internal class BlobUploadRequestQueue
     {
@@ -82,7 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
 
             Requests.Enqueue(absoluteFilePath);
-            
+
             return true;
         }
 

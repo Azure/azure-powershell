@@ -13,9 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using ClientModel = Microsoft.Azure.Management.BackupServices.Models;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
@@ -55,7 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         }
 
         // NOTE: Commenting code which will be used in a later sprint, but not right now.
-        
+
         /// <summary>
         /// Extension to convert enumerable Hashtable into a dictionary
         /// </summary>

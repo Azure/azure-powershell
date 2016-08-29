@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 return new List<PSRoleDefinition> { GetRoleDefinition(options.RoleDefinitionId, options.Scope) };
             }
-            else if(options.CustomOnly)
+            else if (options.CustomOnly)
             {
                 // Special case - if custom only flag is specified then you don't need to lookup on a specific id or name since it will be a bit redundant
                 return FilterRoleDefinitionsByCustom(options.Scope, options.ScopeAndBelow);
@@ -278,8 +278,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                     var userObject = adObject as PSADUser;
                     classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
-                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
-                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase)).ToList();
+                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase)).ToList();
                 }
 
                 result.AddRange(classicAdministratorsAssignments);
@@ -382,7 +381,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 return this.RemoveRoleDefinition(options.RoleDefinitionId, options.Scope);
             }
-            else if(!string.IsNullOrEmpty(options.RoleDefinitionName))
+            else if (!string.IsNullOrEmpty(options.RoleDefinitionName))
             {
                 return this.RemoveRoleDefinition(options.RoleDefinitionName, options.Scope);
             }

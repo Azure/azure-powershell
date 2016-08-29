@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,18 +14,18 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Common;
+    using Microsoft.WindowsAzure.Storage.File;
+    using Model.Contract;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Common;
-    using Microsoft.WindowsAzure.Storage.File;
-    using Model.Contract;
 
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareStoredAccessPolicy), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(String))]
     public class SetAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(HelpMessage = "Set ExpiryTime as null for the policy")]
         public SwitchParameter NoExpiryTime { get; set; }
-        
+
         internal string SetAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime, bool noExpiryTime)
         {
             //Get existing permissions
@@ -96,7 +96,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new ArgumentException(Resources.ExpiryTimeParameterConflict);
             }
 
-            SetAzureShareStoredAccessPolicy(Channel, ShareName, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            if (ShouldProcess(Policy, "Set"))
+            {
+                SetAzureShareStoredAccessPolicy(Channel, ShareName, Policy, StartTime, ExpiryTime, Permission, NoStartTime, NoExpiryTime);
+            }
         }
     }
 }

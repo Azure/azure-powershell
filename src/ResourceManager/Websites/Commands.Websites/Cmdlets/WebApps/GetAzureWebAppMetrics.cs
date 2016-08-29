@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 5, Mandatory = true, HelpMessage = "Metric granularity. Allowed values: [PT1M|PT1H|P1D]")]
         [ValidateSet("PT1M", "PT1H", "P1D", IgnoreCase = true)]
         public string Granularity { get; set; }
-        
+
         [Parameter(Position = 6, Mandatory = false, HelpMessage = "Whether or not to include instance details")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter InstanceDetails { get; set; }

@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.ServiceManagemenet.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
@@ -26,8 +25,6 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -160,21 +157,21 @@ namespace Microsoft.Azure.Commands.Compute
         private void DownloadFromBlobUri(Uri sourceUri, string localFileInfo)
         {
             BlobUri blobUri;
-            string storagekey="";
+            string storagekey = "";
             if (!BlobUri.TryParseUri(sourceUri, out blobUri))
             {
                 throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
             }
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
 
             var storageService = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, blobUri.StorageAccountName);
             if (storageService != null)
             {
-                var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.StorageAccount.Name);
-                storagekey = storageKeys.StorageAccountKeys.Key1;
+                var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.Name);
+                storagekey = storageKeys.Key1;
             }
 
             StorageCredentials storagecred = new StorageCredentials(blobUri.StorageAccountName, storagekey);

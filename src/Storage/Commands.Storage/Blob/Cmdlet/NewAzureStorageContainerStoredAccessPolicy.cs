@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Common;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Model.Contract;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Common;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Model.Contract;
 
     /// <summary>
     /// create a new azure container
@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class NewAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
-        [Parameter(Position = 0, Mandatory = true, 
+        [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Container name",
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Policy Identifier. Need to be unique in the Container")]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set; }
+        public string Policy { get; set; }
 
         [Parameter(HelpMessage = "Permissions for a container. Permissions can be any subset of \"rwdl\".")]
         public string Permission { get; set; }
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// Initializes a new instance of the NewAzureStorageContainerStoredAccessPolicyCommand class.
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
-        public NewAzureStorageContainerStoredAccessPolicyCommand(IStorageBlobManagement channel):
+        public NewAzureStorageContainerStoredAccessPolicyCommand(IStorageBlobManagement channel) :
             base(channel)
         {
             EnableMultiThread = false;

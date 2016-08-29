@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Model;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Services;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
+using System.Management.Automation;
 using System.Text;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability",
         ConfirmImpact = ConfirmImpact.None,
-        DefaultParameterSetName = _filtered)]
+        DefaultParameterSetName = _filtered, SupportsShouldProcess = true)]
     public class GetAzureSqlCapability : AzureRMCmdlet
     {
         /// <summary>
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 
-            switch(ParameterSetName)
+            switch (ParameterSetName)
             {
                 case _default:
                     {
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
                     break;
             }
 
-            if(depth > 0)
+            if (depth > 0)
             {
                 model.ExpandedDetails = CreateExpandedDetails(model, depth);
             }
@@ -141,11 +140,11 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         {
             StringBuilder builder = new StringBuilder();
 
-            foreach(var version in model.SupportedServerVersions)
+            foreach (var version in model.SupportedServerVersions)
             {
                 string versionInfo = GetVersionInformation(version);
 
-                if(depth > 1)
+                if (depth > 1)
                 {
                     ExpandEdition(depth, builder, version, versionInfo);
                 }
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         private void FilterByDefaults(LocationCapabilityModel model)
         {
             model.SupportedServerVersions = model.SupportedServerVersions.Where(v => { return v.Status == "Default"; }).ToList();
-            
+
             // Get all defaults
             var defaultVersion = model.SupportedServerVersions;
             defaultVersion[0].SupportedEditions = defaultVersion[0].SupportedEditions.Where(v => { return v.Status == "Default"; }).ToList();
@@ -265,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
                 foreach (var edition in version.SupportedEditions)
                 {
                     // Remove all service objectives with a name that does not match the desired value
-                    edition.SupportedServiceObjectives = 
+                    edition.SupportedServiceObjectives =
                         edition.SupportedServiceObjectives
                             .Where(slo => { return slo.ServiceObjectiveName == this.ServiceObjectiveName; })
                             .ToList();
@@ -285,10 +284,10 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// <param name="model">The model to filter</param>
         private void FilterByEditionName(LocationCapabilityModel model)
         {
-            foreach(var version in model.SupportedServerVersions)
+            foreach (var version in model.SupportedServerVersions)
             {
                 // Remove all editions that do not match the desired edition name
-                version.SupportedEditions = 
+                version.SupportedEditions =
                     version.SupportedEditions
                         .Where(e => { return e.EditionName == this.EditionName; })
                         .ToList();
@@ -305,7 +304,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         private void FilterByServerVersion(LocationCapabilityModel model)
         {
             // Remove all server versions that don't match the desired name
-            model.SupportedServerVersions = 
+            model.SupportedServerVersions =
                 model.SupportedServerVersions
                     .Where(obj => { return obj.ServerVersionName == this.ServerVersionName; })
                     .ToList();

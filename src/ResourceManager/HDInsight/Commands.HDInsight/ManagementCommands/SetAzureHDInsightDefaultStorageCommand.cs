@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Commands.HDInsight
         public AzureHDInsightConfig Config { get; set; }
 
         [Parameter(Position = 1,
-            Mandatory = true, 
+            Mandatory = true,
             HelpMessage = "The storage account name for the storage account to be added to the new cluster.")]
         public string StorageAccountName { get; set; }
-        
-        [Parameter(Position = 2, 
-            Mandatory = true, 
+
+        [Parameter(Position = 2,
+            Mandatory = true,
             HelpMessage = "The storage account key for the storage account to be added to the new cluster.")]
         public string StorageAccountKey { get; set; }
-        
+
         #endregion
-        
+
         public override void ExecuteCmdlet()
         {
             Config.DefaultStorageAccountName = StorageAccountName;

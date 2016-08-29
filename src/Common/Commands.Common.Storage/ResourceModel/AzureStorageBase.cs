@@ -14,8 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using System;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using System;
 
     /// <summary>
     /// Base class for all azure storage object

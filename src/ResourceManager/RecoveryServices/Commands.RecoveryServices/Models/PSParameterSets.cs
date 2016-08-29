@@ -20,5 +20,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// When excution has to be done for site
         /// </summary>
         internal const string ForSite = "ForSite";
+
+        internal const string ForBackupVaultType = "ForBackupVaultType";
     }
 }

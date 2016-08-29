@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void RemoveAction(Type actionType);
 
-        void AddHandler<T>(T handler) where T: DelegatingHandler, ICloneable;
+        void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable;
 
         void RemoveHandler(Type handlerType);
 

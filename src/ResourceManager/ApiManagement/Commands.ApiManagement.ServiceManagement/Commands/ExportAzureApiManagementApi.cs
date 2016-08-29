@@ -14,15 +14,16 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.IO;
     using System.Management.Automation;
     using System.Text;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
 
-    [Cmdlet(VerbsData.Export, "AzureRmApiManagementApi", DefaultParameterSetName = ExportContentToPipeline)]
+    [Cmdlet(VerbsData.Export, Constants.ApiManagementApi, DefaultParameterSetName = ExportContentToPipeline, 
+        SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class ExportAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -30,30 +31,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         private const string ExportToFile = "Export to File";
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Identifier of exporting API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Specification format (Wadl or Swagger). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
         [Parameter(
             ParameterSetName = ExportToFile,
-            ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, 
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "File path where to save the exporting specification to. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String SaveAs { get; set; }
@@ -93,12 +94,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportWarning, SaveAs);
 
                 // Do nothing if force is not specified and user cancelled the operation
-                if (File.Exists(SaveAs) &&
-                    !Force.IsPresent &&
-                    !ShouldProcess(
-                        actionDescription,
-                        actionWarning,
-                        Resources.ShouldProcessCaption))
+                if (!ShouldProcess(ApiId,
+                        actionDescription) || (File.Exists(SaveAs) &&
+                    !Force.IsPresent && !ShouldContinue(actionWarning, Resources.ShouldProcessCaption)))
                 {
                     if (PassThru)
                     {

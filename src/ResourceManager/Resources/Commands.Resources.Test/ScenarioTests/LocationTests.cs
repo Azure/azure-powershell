@@ -12,13 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+using Xunit.Abstractions;
+
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Xunit;
 
     public class LocationTests
     {
+        public LocationTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureLocation()

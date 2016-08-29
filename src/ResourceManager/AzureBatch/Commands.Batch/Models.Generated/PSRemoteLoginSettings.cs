@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSRemoteLoginSettings
+    public partial class PSRemoteLoginSettings
     {
         
         internal Microsoft.Azure.Batch.RemoteLoginSettings omObject;

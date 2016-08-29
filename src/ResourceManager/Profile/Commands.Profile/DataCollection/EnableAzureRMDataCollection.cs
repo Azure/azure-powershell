@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System.Security.Permissions;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataCollection")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataCollection", SupportsShouldProcess = true)]
     [Alias("Enable-AzureDataCollection")]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
@@ -30,7 +29,12 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
-            SetDataCollectionProfile(true);
+            if (ShouldProcess(Resources.EnableDataCollection, Resources.DataCollectionEnabledWarning, 
+                string.Empty))
+            {
+
+                SetDataCollectionProfile(true);
+            }
         }
 
         protected void SetDataCollectionProfile(bool enable)

@@ -14,6 +14,7 @@
 
 namespace Microsoft.AzureStack.Commands.Admin.Test
 {
+    using Azure.ServiceManagemenet.Common.Models;
     using Microsoft.AzureStack.Commands.Admin.Test.Common;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
@@ -24,6 +25,11 @@ namespace Microsoft.AzureStack.Commands.Admin.Test
     /// </summary>
     public class AzureStackTests
     {
+        public AzureStackTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroup()

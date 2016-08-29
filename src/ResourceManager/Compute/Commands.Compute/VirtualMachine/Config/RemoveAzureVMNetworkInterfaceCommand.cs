@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
-using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -64,11 +63,6 @@ namespace Microsoft.Azure.Commands.Compute
                     var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.Id, id, StringComparison.OrdinalIgnoreCase));
                     networkProfile.NetworkInterfaces.Remove(nicReference);
                 }
-            }
-
-            if (!networkProfile.NetworkInterfaces.Any())
-            {
-                networkProfile = null;
             }
 
             this.VM.NetworkProfile = networkProfile;

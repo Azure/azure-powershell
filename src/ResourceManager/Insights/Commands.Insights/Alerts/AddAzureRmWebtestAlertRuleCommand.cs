@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         {
             RuleCondition condition = this.CreateRuleCondition();
 
-            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object")); 
+            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
             return new RuleCreateOrUpdateParameters()
             {
                 Location = this.Location,

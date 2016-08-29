@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = true,
                HelpMessage = "Protocol")]
-        [ValidateSet("Http", IgnoreCase = true)]
+        [ValidateSet("Http", "Https", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Protocol { get; set; }
 
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Request Timeout. Default value 30 seconds.")]        
+            HelpMessage = "Request Timeout. Default value 30 seconds.")]
         [ValidateNotNullOrEmpty]
         public uint RequestTimeout { get; set; }
 
@@ -65,6 +64,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayProbe Probe { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Application gateway Authentication Certificates")]
+        [ValidateNotNullOrEmpty]
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -72,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             if (Probe != null)
             {
                 this.ProbeId = this.Probe.Id;
-            }                
+            }
         }
         public PSApplicationGatewayBackendHttpSettings NewObject()
         {
@@ -93,6 +98,18 @@ namespace Microsoft.Azure.Commands.Network
             {
                 backendHttpSettings.Probe = new PSResourceId();
                 backendHttpSettings.Probe.Id = this.ProbeId;
+            }
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
+            {
+                backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
+                foreach (var authcert in this.AuthenticationCertificates)
+                {
+                    backendHttpSettings.AuthenticationCertificates.Add(
+                        new PSResourceId()
+                        {
+                            Id = authcert.Id
+                        });
+                }
             }
             backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
                                     this.NetworkClient.NetworkManagementClient.SubscriptionId,

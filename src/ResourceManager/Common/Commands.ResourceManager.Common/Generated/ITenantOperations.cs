@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Internal.Subscriptions.Models;
 
 namespace Microsoft.Azure.Internal.Subscriptions
 {

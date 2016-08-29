@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSTaskSchedulingError
+    public partial class PSTaskSchedulingError
     {
         
         internal Microsoft.Azure.Batch.TaskSchedulingError omObject;

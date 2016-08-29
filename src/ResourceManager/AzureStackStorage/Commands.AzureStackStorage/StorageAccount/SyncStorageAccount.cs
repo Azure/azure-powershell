@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System.Globalization;
+using System.Management.Automation;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -61,7 +61,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         /// </summary>
         [Parameter(Mandatory = false, Position = 8)]
         public string StorageAccountApiVersion { get; set; }
-        
+
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";
         internal static string SyncTargetOperation = "Create";

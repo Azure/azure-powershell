@@ -24,9 +24,11 @@ using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -114,10 +116,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get", "AzureRmVmss", DefaultParameterSetName = "InvokeByDynamicParameters")]
     public partial class GetAzureRmVmss : InvokeAzureComputeMethodCmdlet
     {
-        public GetAzureRmVmss()
-        {
-        }
-
         public override string MethodName { get; set; }
 
         protected override void ProcessRecord()

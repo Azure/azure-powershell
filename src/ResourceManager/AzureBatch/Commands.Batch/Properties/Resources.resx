@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountAlreadyExists" xml:space="preserve">
-    <value>AccountAlreadyExists: Account already exists.</value>
-  </data>
   <data name="AccountAndKeyInUse" xml:space="preserve">
     <value>Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext.</value>
   </data>
@@ -438,5 +435,47 @@
   </data>
   <data name="UpdatingTask" xml:space="preserve">
     <value>Updating task {0}.</value>
+  </data>
+  <data name="FileNotFound" xml:space="preserve">
+    <value>File not found {0}.</value>
+  </data>
+  <data name="NewApplicationPackageNoPathSpecified" xml:space="preserve">
+    <value>When uploading a new application package, you must specify a value for the FilePath parameter.</value>
+  </data>
+  <data name="FailedToUpload" xml:space="preserve">
+    <value>Failed to upload {0} to Azure Storage. {1}.</value>
+  </data>
+  <data name="FailedToUploadAndDelete" xml:space="preserve">
+    <value>Failed to upload {0} to Azure Storage and the attempt to delete the application package record afterwards failed. Remove the application package record with the Remove-AzureRmBatchApplicationPackage cmdlet and retry. {1}.</value>
+  </data>
+  <data name="UploadedApplicationButFailedToActivate" xml:space="preserve">
+    <value>Application package {0} version {1} successfully uploaded but failed to activate. Activate the application package using the New-AzureRmBatchApplicationPackage cmdlet with the -ActivateOnly parameter. {2}.</value>
+  </data>
+  <data name="FailedToActivate" xml:space="preserve">
+    <value>Failed to activate application package {0} version {1}. {2}.</value>
+  </data>
+  <data name="FailedToGetApplicationPackage" xml:space="preserve">
+    <value>Failed to create application package {0} version {1}.  Unable to determine whether the application package already exists. {2}.</value>
+  </data>
+  <data name="FailedToAddApplicationPackage" xml:space="preserve">
+    <value>Failed to add application package {0} version {1}. {2}.</value>
+  </data>
+  <data name="ApplicationDoesNotAllowUpdates" xml:space="preserve">
+    <value>Failed to create application package {0} version {1}. The package already exists, and the application does not allow existing packages to be updated. You must upload your package using a new version number.</value>
+  </data>
+  <data name="FailedToCheckApplication" xml:space="preserve">
+    <value>Failed to create application package {0} version {1}. The package already exists, and an error occurred when checking if the application allows existing packages to be updated. {2}.</value>
+  </data>
+  <data name="GetAllJobsLifetimeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the jobs.</value>
+  </data>
+  <data name="GetAllPoolsLifetimeStatistics" xml:space="preserve">
+    <value>Getting lifetime statistics for all of the pools.</value>
+  </data>
+  <data name="GetPoolUsageMetricsByNoFilter" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools.</value>
+  </data>
+  <data name="GetPoolUsageMetricsByFilter" xml:space="preserve">
+    <value>Getting usage metrics, aggregated for pools with the filter {0}.</value>
   </data>
 </root>

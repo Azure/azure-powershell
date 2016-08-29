@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -37,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                HelpMessage = "FQDNs of application gateway backend servers")]
         [ValidateNotNullOrEmpty]
-        public List<string> BackendFqdns { get; set; }         
+        public List<string> BackendFqdns { get; set; }
 
         public PSApplicationGatewayBackendAddressPool NewObject()
         {
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
                     var backendAddress = new PSApplicationGatewayBackendAddress();
                     backendAddress.Fqdn = fqdn;
                     backendAddressPool.BackendAddresses.Add(backendAddress);
-                }                
+                }
             }
 
             backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(

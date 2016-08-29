@@ -37,10 +37,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public AdalTokenProvider(IWin32Window parentWindow)
         {
             this.userTokenProvider = new UserTokenProvider(parentWindow);
-            servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
+            this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, ShowDialog promptBehavior, string userId, SecureString password,
+        public IAccessToken GetAccessToken(
+            AdalConfiguration config,
+            ShowDialog promptBehavior,
+            string userId,
+            SecureString password,
             AzureAccount.AccountType credentialType)
         {
             switch (credentialType)
@@ -54,7 +58,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificate, AzureAccount.AccountType credentialType)
+        public IAccessToken GetAccessTokenWithCertificate(
+            AdalConfiguration config,
+            string clientId,
+            string certificate,
+            AzureAccount.AccountType credentialType)
         {
             switch (credentialType)
             {

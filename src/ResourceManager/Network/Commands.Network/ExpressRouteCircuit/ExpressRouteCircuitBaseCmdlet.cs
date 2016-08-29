@@ -13,17 +13,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Net;
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Hyak.Common;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Management.Network.Models;
-
     public abstract class ExpressRouteCircuitBaseCmdlet : NetworkBaseCmdlet
     {
         public IExpressRouteCircuitsOperations ExpressRouteCircuitClient
@@ -63,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
 
             psExpressRouteCircuit.Tag =
                 TagsConversionHelper.CreateTagHashtable(circuit.Tags);
-            
+
             return psExpressRouteCircuit;
         }
 

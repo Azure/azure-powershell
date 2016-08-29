@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.OperationalInsights;
@@ -22,7 +23,6 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             var authorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
-                operationalInsightsManagementClient, 
-                resourceManagementClient, 
+                operationalInsightsManagementClient,
+                resourceManagementClient,
                 subscriptionsClient,
                 galleryClient,
                 authorizationManagementClient);
@@ -68,12 +68,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"));
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
+                    "AzureRM.Resources.ps1");
 
                 helper.RunPowerShellTest(scripts);
             }

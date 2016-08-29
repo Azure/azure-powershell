@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using System;
-using System.Linq;
-using System.Security;
-using Hyak.Common;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
 using Microsoft.Rest.Azure.Authentication;
+using System;
+using System.Linq;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
@@ -44,11 +44,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
+            IAccessToken token;
             var configuration = GetAdalConfiguration(environment, tenant, resourceId, tokenCache);
 
-            TracingAdapter.Information(Resources.AdalAuthConfigurationTrace, configuration.AdDomain, configuration.AdEndpoint,
-                configuration.ClientId, configuration.ClientRedirectUri, configuration.ResourceClientUri, configuration.ValidateAuthority);
-            IAccessToken token;
+            TracingAdapter.Information(
+                Resources.AdalAuthConfigurationTrace,
+                configuration.AdDomain,
+                configuration.AdEndpoint,
+                configuration.ClientId,
+                configuration.ClientRedirectUri,
+                configuration.ResourceClientUri,
+                configuration.ValidateAuthority);
             if (account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
             {
                 var thumbprint = account.GetProperty(AzureAccount.Property.CertificateThumbprint);
@@ -56,7 +62,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             else
             {
-
                 token = TokenProvider.GetAccessToken(configuration, promptBehavior, account.Id, password, account.Type);
             }
 
@@ -133,24 +138,37 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             try
             {
-                TracingAdapter.Information(Resources.UPNAuthenticationTrace,
-                    context.Account.Id, context.Environment.Name, tenant);
                 var tokenCache = AzureSession.TokenCache;
+                TracingAdapter.Information(
+                    Resources.UPNAuthenticationTrace,
+                    context.Account.Id,
+                    context.Environment.Name,
+                    tenant);
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
                     tokenCache = new TokenCache(context.TokenCache);
                 }
 
-                var token = Authenticate(context.Account, context.Environment,
-                        tenant, null, ShowDialog.Never, tokenCache, context.Environment.GetTokenAudience(targetEndpoint));
+                var token = Authenticate(
+                                context.Account,
+                                context.Environment,
+                                tenant,
+                                null,
+                                ShowDialog.Never,
+                                tokenCache,
+                                context.Environment.GetTokenAudience(targetEndpoint));
 
                 if (context.TokenCache != null && context.TokenCache.Length > 0)
                 {
                     context.TokenCache = tokenCache.Serialize();
                 }
 
-                TracingAdapter.Information(Resources.UPNAuthenticationTokenTrace,
-                    token.LoginType, token.TenantId, token.UserId);
+                TracingAdapter.Information(
+                    Resources.UPNAuthenticationTokenTrace,
+                    token.LoginType,
+                    token.TenantId,
+                    token.UserId);
+
                 return new AccessTokenCredential(context.Subscription.Id, token);
             }
             catch (Exception ex)
@@ -291,7 +309,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             var adEndpoint = environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory];
             if (string.IsNullOrWhiteSpace(adEndpoint))
             {
-                throw new ArgumentOutOfRangeException("environment", string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
+                throw new ArgumentOutOfRangeException(
+                    "environment",
+                    string.Format("No Active Directory endpoint specified for environment '{0}'", environment.Name));
             }
 
             var audience = environment.Endpoints[resourceId];

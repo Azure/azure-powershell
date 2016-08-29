@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                     ResourceProviderName = this.TargetResourceProvider,
                     ResourceUri = this.TargetResourceId,
                     Status = this.Status,
-                    SubStatus = this.SubStatus ,
+                    SubStatus = this.SubStatus,
                 },
             };
         }
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         {
             RuleCondition condition = this.CreateRuleCondition();
 
-            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object")); 
+            WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
             var rule = new RuleCreateOrUpdateParameters()
             {
                 Location = this.Location,
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
             if (!string.IsNullOrEmpty(this.TargetResourceId))
             {
-                rule.Tags.Add("$type" , "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage");
+                rule.Tags.Add("$type", "Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage");
                 rule.Tags.Add("hidden-link:" + this.TargetResourceId, "Resource");
             }
 

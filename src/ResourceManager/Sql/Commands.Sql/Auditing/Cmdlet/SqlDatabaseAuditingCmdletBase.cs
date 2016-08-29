@@ -13,25 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.Auditing.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
 {
     /// <summary>
     /// The base class for all Azure Sql Database security Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseAuditingCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseAuditingCmdletBase : AzureSqlDatabaseCmdletBase<AuditingPolicyModel, SqlAuditAdapter>
     {
+        public virtual AuditType AuditType { get; set; }
+
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseAuditingPolicyModel GetEntity()
+        protected override AuditingPolicyModel GetEntity()
         {
-            return ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            if (AuditType == AuditType.Table)
+            {
+                DatabaseAuditingPolicyModel model;
+                ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out model);
+                return model;
+            }
+            DatabaseBlobAuditingPolicyModel blobModel;
+            ModelAdapter.GetDatabaseAuditingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId, out blobModel);
+            return blobModel;
         }
 
         /// <summary>
@@ -49,9 +58,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override DatabaseAuditingPolicyModel PersistChanges(DatabaseAuditingPolicyModel model)
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
         {
-            ModelAdapter.SetDatabaseAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            if (AuditType == AuditType.Table)
+            {
+                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseAuditingPolicyModel, clientRequestId, 
+                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            }
+            if (AuditType == AuditType.Blob)
+            {
+                ModelAdapter.SetDatabaseAuditingPolicy(model as DatabaseBlobAuditingPolicyModel, clientRequestId,
+                    DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
+            }
             return null;
         }
     }

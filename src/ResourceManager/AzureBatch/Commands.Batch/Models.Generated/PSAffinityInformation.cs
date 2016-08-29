@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSAffinityInformation
+    public partial class PSAffinityInformation
     {
         
         internal Microsoft.Azure.Batch.AffinityInformation omObject;

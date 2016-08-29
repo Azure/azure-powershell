@@ -19,9 +19,9 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
+using Hyak.Common;
 using System;
 using System.Collections.Generic;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Management.Internal.Resources.Models
 {
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
     public partial class DeploymentPropertiesExtended : DeploymentProperties
     {
         private string _correlationId;
-        
+
         /// <summary>
         /// Optional. Gets or sets the correlation ID of the deployment.
         /// </summary>
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._correlationId; }
             set { this._correlationId = value; }
         }
-        
+
         private IList<Dependency> _dependencies;
-        
+
         /// <summary>
         /// Optional. Gets the list of deployment dependencies.
         /// </summary>
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._dependencies; }
             set { this._dependencies = value; }
         }
-        
+
         private string _outputs;
-        
+
         /// <summary>
         /// Optional. Gets or sets key/value pairs that represent
         /// deploymentoutput.
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._outputs; }
             set { this._outputs = value; }
         }
-        
+
         private IList<Provider> _providers;
-        
+
         /// <summary>
         /// Optional. Gets the list of resource providers needed for the
         /// deployment.
@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._providers; }
             set { this._providers = value; }
         }
-        
+
         private string _provisioningState;
-        
+
         /// <summary>
         /// Optional. Gets or sets the state of the provisioning.
         /// </summary>
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._provisioningState; }
             set { this._provisioningState = value; }
         }
-        
+
         private DateTime _timestamp;
-        
+
         /// <summary>
         /// Optional. Gets or sets the timestamp of the template deployment.
         /// </summary>
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.Internal.Resources.Models
             get { return this._timestamp; }
             set { this._timestamp = value; }
         }
-        
+
         /// <summary>
         /// Initializes a new instance of the DeploymentPropertiesExtended
         /// class.

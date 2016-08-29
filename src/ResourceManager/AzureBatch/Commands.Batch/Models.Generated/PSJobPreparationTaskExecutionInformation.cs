@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSJobPreparationTaskExecutionInformation
+    public partial class PSJobPreparationTaskExecutionInformation
     {
         
         internal Microsoft.Azure.Batch.JobPreparationTaskExecutionInformation omObject;

@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Insights.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// The storage account id.
         /// </summary>
         public string StorageAccountId { get; set; }
+
+        /// <summary>
+        /// The service bus rule id.
+        /// </summary>
+        public string ServiceBusRuleId { get; set; }
 
         /// <summary>
         /// The storage account name.
@@ -48,6 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public PSServiceDiagnosticSettings(ServiceDiagnosticSettings serviceDiagnosticSettings)
         {
             this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
+            this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
             this.Metrics = new List<PSMetricSettings>();
             foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
             {

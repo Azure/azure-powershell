@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 {
     public static class ConversionUtilities
     {
-        public static Dictionary<string, object> ToDictionary(this Hashtable hashtable, 
+        public static Dictionary<string, object> ToDictionary(this Hashtable hashtable,
             bool addValueLayer)
         {
             if (hashtable == null)
@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
                     if (valueAsHashtable != null)
                     {
-                        dictionary[(string)entry.Key] = 
+                        dictionary[(string)entry.Key] =
                             valueAsHashtable.ToDictionary(addValueLayer);
                     }
                     else
@@ -87,8 +87,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <returns>The array into string representation</returns>
         public static string ArrayToString<T>(this T[] array, string delimiter)
         {
-            return (array == null) ? null : (array.Length == 0) ? String.Empty 
-                : array.Skip(1).Aggregate(new StringBuilder(array[0].ToString()), 
+            return (array == null) ? null : (array.Length == 0) ? String.Empty
+                : array.Skip(1).Aggregate(new StringBuilder(array[0].ToString()),
                 (s, i) => s.Append(delimiter).Append(i), s => s.ToString());
         }
 

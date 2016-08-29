@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.OperationalInsights.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -26,19 +26,17 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
 
         public PSSearchListSavedSearchResponse(SearchListSavedSearchResponse searchResponse)
         {
-            if (searchResponse != null)
+            if (searchResponse == null)
             {
-                if (searchResponse == null)
-                {
-                    throw new ArgumentNullException("saved search response");
-                }
-                SearchMetadata m = searchResponse.Metadata;
-                this.Metadata = new PSSearchMetadata(searchResponse.Metadata);
-                this.Value = new List<PSSavedSearchValue>();
-                foreach (SavedSearchValue v in searchResponse.Value)
-                {
-                    this.Value.Add(new PSSavedSearchValue(v));
-                }
+                throw new ArgumentNullException("saved search response");
+            }
+
+            SearchMetadata m = searchResponse.Metadata;
+            this.Metadata = new PSSearchMetadata(searchResponse.Metadata);
+            this.Value = new List<PSSavedSearchValue>();
+            foreach (SavedSearchValue v in searchResponse.Value)
+            {
+                this.Value.Add(new PSSavedSearchValue(v));
             }
         }
 

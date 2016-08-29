@@ -15,13 +15,13 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using System;
-    using System.Management.Automation;
-    using System.Globalization;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Management.Logic.Models;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
 
     /// <summary>
     /// LogicApp client class
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public LogicAppClient(AzureContext context)
         {
             this.LogicManagementClient = AzureSession.ClientFactory.CreateArmClient<LogicManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);            
-            this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();            
+            this.LogicManagementClient.SubscriptionId = context.Subscription.Id.ToString();
         }
 
         /// <summary>
@@ -61,8 +61,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="client">client reference</param>
         public LogicAppClient(ILogicManagementClient client)
         {
-            this.LogicManagementClient = client;
-        }
+            this.LogicManagementClient = client;        }
 
         /// <summary>
         /// Gets or sets the Logic client instance
@@ -108,8 +107,35 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="workflowName">Workflow name</param>
         /// <returns>Workflow object</returns>
         public Workflow GetWorkflow(string resourceGroupName, string workflowName)
-        {            
+        {
             return this.LogicManagementClient.Workflows.Get(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Gets the given version of a workflow by name from given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="versionId">Version of the workflow</param>
+        /// <returns>Workflow object</returns>
+        public WorkflowVersion GetWorkflowVersion(string resourceGroupName, string workflowName, string versionId)
+        {
+            return this.LogicManagementClient.WorkflowVersions.Get(resourceGroupName, workflowName, versionId);
+        }
+
+        /// <summary>
+        /// Gets the upgraded definition for a workflow.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="targetSchemaVersion">Target schema version of the definition</param>
+        /// <returns>Workflow object</returns>
+        public object GetWorkflowUpgradedDefinition(string resourceGroupName, string workflowName, string targetSchemaVersion)
+        {
+            return this.LogicManagementClient.Workflows.GenerateUpgradedDefinition(
+                resourceGroupName,
+                workflowName,
+                targetSchemaVersion);
         }
 
         /// <summary>
@@ -120,6 +146,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         public void RemoveWorkflow(string resourceGroupName, string workflowName)
         {
             this.LogicManagementClient.Workflows.Delete(resourceGroupName, workflowName);
+        }
+
+        /// <summary>
+        /// Validates the specified workflow from the given resource group.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group</param>
+        /// <param name="location">The workflow location.</param>
+        /// <param name="workflowName">Workflow name</param>
+        /// <param name="workflow">The Workflow object.</param>
+        public void ValidateWorkflow(string resourceGroupName, string location, string workflowName, Workflow workflow)
+        {
+            this.LogicManagementClient.Workflows.Validate(resourceGroupName, location, workflowName, workflow);
         }
 
         /// <summary>

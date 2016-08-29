@@ -18,7 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
 
     public class BlobUploadParameters
     {
-        public string StorageName {get; set;}
+        public string StorageName { get; set; }
         public string FileLocalPath { get; set; }
         public string FileRemoteName { get; set; }
         public string ContainerName { get; set; }

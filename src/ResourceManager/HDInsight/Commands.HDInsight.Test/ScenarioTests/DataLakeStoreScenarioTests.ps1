@@ -34,7 +34,7 @@ function Test-DataLakeStoreClusterCreate{
 	$workernodeSize = "Standard_D3"
 	$username = "admin"
 	$passwd = " "
-	$certPasswd = " "
+	$certPasswd = ""
 	$certPath = " "
 	$certFile = "sp.pfx"
 	$servPrincipal = "sp"
@@ -48,7 +48,11 @@ function Test-DataLakeStoreClusterCreate{
 	$sshCred=New-Object System.Management.Automation.PSCredential($sshUser,$sshPasswd)
 
 	#execute
-	$cluster = New-AzureRmHDInsightCluster -Location $locName -ResourceGroupName $rmGroup -ClusterType Hadoop -ClusterName $clusterName -ClusterSizeInNodes $clusterNodes -HttpCredential $credential -DefaultStorageAccountName "ypseastus.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $clusterName -Version $version -SshCredential $sshCred -OSType Linux -ObjectId $objectId -CertificateFilePath $certFilePath -CertificatePassword $certPasswd
+	$cluster = New-AzureRmHDInsightCluster -Location $locName -ResourceGroupName $rmGroup -ClusterType Hadoop `
+				-ClusterName $clusterName -ClusterSizeInNodes $clusterNodes -HttpCredential $credential `
+				-DefaultStorageAccountName "$saName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey `
+				-DefaultStorageContainer $clusterName -Version $version -SshCredential $sshCred -OSType Linux `
+				-ObjectId $objectId -CertificateFilePath $certFilePath -CertificatePassword $certPasswd
 
 	#assert
 	Assert-NotNull $cluster

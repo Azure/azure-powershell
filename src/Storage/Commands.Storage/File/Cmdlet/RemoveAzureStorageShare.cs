@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,15 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
-    using Microsoft.WindowsAzure.Storage.File;
 
     [Cmdlet(
         VerbsCommon.Remove,
         Constants.ShareCmdletName,
         DefaultParameterSetName = Constants.ShareNameParameterSetName,
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true)]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -45,8 +44,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
 
+        [Parameter(HelpMessage = "Force to remove the share and all content in it")]
+        public SwitchParameter Force
+        {
+            get { return force; }
+            set { force = value; }
+        }
+
         [Parameter(HelpMessage = "Returns an object representing the removed file share. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
+
+        private bool force;
 
         public override void ExecuteCmdlet()
         {
@@ -65,18 +73,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "Invalid parameter set name: {0}", this.ParameterSetName));
             }
 
-            this.RunTask(async taskId =>
+            if (ShouldProcess(share.Name, "Remove share"))
             {
-                if (this.ShouldProcess(share.Name))
+                this.RunTask(async taskId =>
                 {
-                    await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
-                }
+                    if (force || ShareIsEmpty(share) || ShouldContinue(string.Format("Remove share and all content in it: {0}", share.Name), ""))
+                    {
+                        await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                    }
 
-                if (this.PassThru)
-                {
-                    this.OutputStream.WriteObject(taskId, share);
-                }
-            });
+                    if (this.PassThru)
+                    {
+                        this.OutputStream.WriteObject(taskId, share);
+                    }
+                });
+            }
         }
     }
 }

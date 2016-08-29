@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticPool",
-        SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.High)]
+        SupportsShouldProcess = true)]
     public class RemoveAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
@@ -47,8 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlElasticPoolModel> GetEntity()
         {
-            return new List<AzureSqlElasticPoolModel>() { 
-                ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName) 
+            return new List<AzureSqlElasticPoolModel>() {
+                ModelAdapter.GetElasticPool(this.ResourceGroupName, this.ServerName, this.ElasticPoolName)
             };
         }
 

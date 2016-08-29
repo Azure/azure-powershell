@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.WebSites.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Utilities
 {
@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 "HandlerMappings",
                 "ManagedPipelineMode",
                 "WebSocketsEnabled",
-                "Use32BitWorkerProcess"
+                "Use32BitWorkerProcess",
+                "AutoSwapSlotName"
             };
 
         private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)\((?<slotName>[^\)]+)\)$");
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 .ToDictionary(
                 kvp => kvp.Key.ToString(), kvp =>
                 {
-                    var typeValuePair = new Hashtable((Hashtable) kvp.Value, StringComparer.OrdinalIgnoreCase);
-                    var type = (DatabaseServerType?)Enum.Parse(typeof (DatabaseServerType), typeValuePair["Type"].ToString(), true);
+                    var typeValuePair = new Hashtable((Hashtable)kvp.Value, StringComparer.OrdinalIgnoreCase);
+                    var type = (DatabaseServerType?)Enum.Parse(typeof(DatabaseServerType), typeValuePair["Type"].ToString(), true);
                     return new ConnStringValueTypePair
                     {
                         Type = type,

@@ -14,13 +14,13 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 {
-    using System;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.Queue;
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
     [Cmdlet(VerbsCommon.New, "AzureStorageQueue"),
         OutputType(typeof(AzureStorageQueue))]
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         /// <param name="name">queue name</param>
         /// <returns>an AzureStorageQueue object</returns>
         internal AzureStorageQueue CreateAzureQueue(string name)
-        { 
+        {
             if (!NameUtil.IsValidQueueName(name))
             {
                 throw new ArgumentException(String.Format(Resources.InvalidQueueName, name));

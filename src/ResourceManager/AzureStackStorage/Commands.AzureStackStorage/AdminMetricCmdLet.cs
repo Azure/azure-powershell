@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
     /// <summary>
     /// 
     /// </summary>
-    public abstract class AdminMetricCmdlet: AdminCmdlet
+    public abstract class AdminMetricCmdlet : AdminCmdlet
     {
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet

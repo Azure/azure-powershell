@@ -31,10 +31,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.token = token;
             this.TenantID = token.TenantId;
         }
-        
+
         public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            token.AuthorizeRequest((tokenType, tokenValue) => {
+            token.AuthorizeRequest((tokenType, tokenValue) =>
+            {
                 request.Headers.Authorization = new AuthenticationHeaderValue(tokenType, tokenValue);
             });
             return base.ProcessHttpRequestAsync(request, cancellationToken);

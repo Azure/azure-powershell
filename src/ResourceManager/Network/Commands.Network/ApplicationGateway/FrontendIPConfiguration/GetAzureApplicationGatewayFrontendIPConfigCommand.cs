@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
+
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var frontendIpConfiguration =
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
                 var frontendIpConfigurations = this.ApplicationGateway.FrontendIPConfigurations;
                 WriteObject(frontendIpConfigurations, true);
             }
-            
+
         }
     }
 }

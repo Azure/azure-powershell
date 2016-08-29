@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
     {
         private readonly bool _saveProfile;
 
-        protected SubscriptionCmdletBase(bool saveProfile) 
+        protected SubscriptionCmdletBase(bool saveProfile)
         {
             _saveProfile = saveProfile;
         }

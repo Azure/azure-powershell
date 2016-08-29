@@ -13,8 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {

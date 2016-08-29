@@ -12,17 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Commands.Sql.Server.Cmdlet;
 using Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
     public class AzureSqlServerUpgradeAttributeTests
     {
+        public AzureSqlServerUpgradeAttributeTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartAzureSqlServerUpgradeAttributes()
@@ -41,7 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(StopAzureSqlServerUpgrade);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
         }

@@ -15,16 +15,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer", SupportsShouldProcess = true)]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
@@ -49,8 +46,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The entity going to be deleted</returns>
         protected override IEnumerable<Model.AzureSqlServerModel> GetEntity()
         {
-            return new List<Model.AzureSqlServerModel>() { 
-                ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName) 
+            return new List<Model.AzureSqlServerModel>() {
+                ModelAdapter.GetServer(this.ResourceGroupName, this.ServerName)
             };
         }
 

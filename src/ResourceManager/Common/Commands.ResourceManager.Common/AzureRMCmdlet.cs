@@ -12,22 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Management.Automation.Host;
 using System.Threading;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using System.Globalization;
-using System.Net.Http.Headers;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.DataStore = new DiskDataStore();
-            }          
+            }
         }
 
         /// <summary>
@@ -84,6 +83,85 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 return DefaultProfile.Context;
             }
+        }
+
+        /// <summary>
+        /// Guards execution of the given action using ShouldProcess and ShouldContinue.  The optional 
+        /// useSHouldContinue predicate determines whether SHouldContinue should be called for this 
+        /// particular action (e.g. a resource is being overwritten). By default, both 
+        /// ShouldProcess and ShouldContinue will be executed.  Cmdlets that use this method overload 
+        /// must have a force parameter.
+        /// </summary>
+        /// <param name="force">Do not ask for confirmation</param>
+        /// <param name="continueMessage">Message to describe the action</param>
+        /// <param name="processMessage">Message to prompt after the active is performed.</param>
+        /// <param name="target">The target name.</param>
+        /// <param name="action">The action code</param>
+        protected override void ConfirmAction(bool force, string continueMessage, string processMessage, string target,
+            Action action)
+        {
+            ConfirmAction(force, continueMessage, processMessage, target, action, () => true);
+        }
+        
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceType">The resource type</param>
+        /// <param name="resourceName">The resource name for the changed reource</param>
+        /// <param name="resourceGroupName">The resource group containign the changed resource</param>
+        /// <param name="processMessage">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
+            string processMessage, Action action)
+        {
+            ConfirmAction(processMessage, string.Format(Resources.ResourceConfirmTarget,
+                resourceType, resourceName, resourceGroupName), action);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceType">The resource type</param>
+        /// <param name="resourceName">The resource name for the changed reource</param>
+        /// <param name="resourceGroupName">The resource group containign the changed resource</param>
+        /// <param name="force">True if Force parameter was passed</param>
+        /// <param name="continueMessage">The message to display in a ShouldContinue prompt, if offered</param>
+        /// <param name="processMessage">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
+        protected void ConfirmResourceAction(string resourceType, string resourceName, string resourceGroupName,
+            bool force, string continueMessage, string processMessage, Action action, Func<bool> promptForContinuation = null )
+        {
+            ConfirmAction(force, continueMessage, processMessage, string.Format(Resources.ResourceConfirmTarget,
+                resourceType, resourceName, resourceGroupName), action, promptForContinuation);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceId">The identity of the resource to be changed</param>
+        /// <param name="actionName">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        protected void ConfirmResourceAction(string resourceId, string actionName, Action action)
+        {
+            ConfirmAction(actionName, string.Format(Resources.ResourceIdConfirmTarget,
+                resourceId), action);
+        }
+
+        /// <summary>
+        /// Prompt for confirmation for the specified change to the specified ARM resource
+        /// </summary>
+        /// <param name="resourceId">The identity of the resource to be changed</param>
+        /// <param name="force">True if Force parameter was passed</param>
+        /// <param name="continueMessage">The message to display in a ShouldContinue prompt, if offered</param>
+        /// <param name="actionName">A description of the change to the resource</param>
+        /// <param name="action">The code action to perform if confirmation is successful</param>
+        /// <param name="promptForContinuation">Predicate to determine whether a ShouldContinue prompt is necessary</param>
+        protected void ConfirmResourceAction(string resourceId, bool force, string continueMessage, string actionName, 
+            Action action, Func<bool> promptForContinuation = null)
+        {
+            ConfirmAction(force, continueMessage, actionName, string.Format(Resources.ResourceIdConfirmTarget,
+                resourceId), action, promptForContinuation);
         }
 
         protected override void SaveDataCollectionProfile()
@@ -147,8 +225,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         protected override void InitializeQosEvent()
         {
-            var commandAlias = this.GetType().Name; 
-            if(this.MyInvocation != null && this.MyInvocation.MyCommand != null)
+            var commandAlias = this.GetType().Name;
+            if (this.MyInvocation != null && this.MyInvocation.MyCommand != null)
             {
                 commandAlias = this.MyInvocation.MyCommand.Name;
             }
@@ -165,12 +243,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null)
             {
-                _qosEvent.Parameters = string.Join(" ", 
+                _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
-            if (this.DefaultProfile != null && 
+            if (this.DefaultProfile != null &&
                 this.DefaultProfile.Context != null &&
                 this.DefaultProfile.Context.Account != null &&
                 this.DefaultProfile.Context.Account.Id != null)
@@ -187,10 +265,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         protected override void LogCmdletStartInvocationInfo()
         {
             base.LogCmdletStartInvocationInfo();
-            if (DefaultContext != null && DefaultContext.Account != null 
+            if (DefaultContext != null && DefaultContext.Account != null
                 && DefaultContext.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", 
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...",
                     DefaultContext.Account.Id));
             }
         }
@@ -206,9 +284,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             ServiceClientTracing.IsEnabled = true;
             base.SetupDebuggingTraces();
-            _serviceClientTracingInterceptor = _serviceClientTracingInterceptor 
+            _serviceClientTracingInterceptor = _serviceClientTracingInterceptor
                 ?? new ServiceClientTracingInterceptor(DebugMessages);
-             ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
+            ServiceClientTracing.AddTracingInterceptor(_serviceClientTracingInterceptor);
         }
 
         protected override void TearDownDebuggingTraces()

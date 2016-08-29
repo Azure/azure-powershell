@@ -14,16 +14,23 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
 using Xunit;
+using Xunit.Abstractions;
 using Assert = Xunit.Assert;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class ServicePrincipalStoreTests
     {
+        public ServicePrincipalStoreTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanStoreAndRetrieveSingleKeyCorrectly()

@@ -12,16 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
+using Microsoft.Azure.Commands.Sql.Backup.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseGeoBackup",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup", SupportsShouldProcess = true)]
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
     {
         /// <summary>

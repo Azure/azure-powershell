@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSTaskSchedulingPolicy
+    public partial class PSTaskSchedulingPolicy
     {
         
         internal Microsoft.Azure.Batch.TaskSchedulingPolicy omObject;

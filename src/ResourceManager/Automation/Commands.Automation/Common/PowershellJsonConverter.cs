@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Properties;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -19,7 +20,6 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
-using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             parameters.Add(Constants.PsCommandParamInputObject, inputObject);
             parameters.Add(Constants.PsCommandParamDepth, Constants.PsCommandValueDepth);
             var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertToJson, parameters);
-            
+
             if (result.Count != 1)
             {
                 return null;

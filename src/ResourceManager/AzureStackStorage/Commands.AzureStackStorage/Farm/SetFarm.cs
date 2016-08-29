@@ -12,10 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
 using Microsoft.AzureStack.Management.StorageAdmin;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
+using System.Management.Automation;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -85,7 +84,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
 
                 FarmUpdateParameters parameters = new FarmUpdateParameters
                 {
-                    Farm = new FarmBase {Settings = settings}
+                    Farm = new FarmBase { Settings = settings }
                 };
 
                 FarmGetResponse response = Client.Farms.Update(ResourceGroupName, FarmName, parameters);

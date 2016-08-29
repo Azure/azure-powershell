@@ -16,14 +16,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using System.IO;
-    using System.Management.Automation;
-    using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Sets the policy definition.
@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResource(string resourceId, string apiVersion)
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
-            
+
             var policyDefinitionObject = new PolicyDefinition
             {
                 Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
                 Properties = new PolicyDefinitionProperties
                 {
-                    Description = this.Description ?? (resource.Properties["description"] != null 
+                    Description = this.Description ?? (resource.Properties["description"] != null
                         ? resource.Properties["description"].ToString()
                         : null),
                     DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         : null)
                 }
             };
-            if(!string.IsNullOrEmpty(this.Policy))
+            if (!string.IsNullOrEmpty(this.Policy))
             {
                 policyDefinitionObject.Properties.PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString());
             }

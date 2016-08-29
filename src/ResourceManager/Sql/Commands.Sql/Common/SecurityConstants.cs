@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -52,28 +52,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {TransactionManagement_Success, AuditEventType.TransactionManagement_Success},
             {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
         };
-        
+
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
 
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
 
-        // Threat Detection disabled types:
-        public const string Sql_Injection = "Sql_Injection";
-        public const string Sql_Injection_Vulnerability = "Sql_Injection_Vulnerability";
-        public const string Access_Anomaly = "Access_Anomaly";
-        public const string Usage_Anomaly = "Usage_Anomaly";
-
-        public static readonly Dictionary<string, DetectionType> ExcludedDetectionToExcludedDetectionTypes = new Dictionary
-            <string, DetectionType>
-        {
-            {Sql_Injection, DetectionType.Sql_Injection},
-            {Sql_Injection_Vulnerability, DetectionType.Sql_Injection_Vulnerability},
-            {Access_Anomaly, DetectionType.Access_Anomaly},
-            {Usage_Anomaly, DetectionType.Usage_Anomaly}
-        };
-        
         // Masking functions
         public const string NoMasking = "NoMasking";
         public const string Default = "Default";
@@ -137,14 +122,5 @@ namespace Microsoft.Azure.Commands.Sql.Common
             public const string Optional = "Optional";
         }
 
-        /// <summary>
-        /// The values that are sent and received by the threat detection endpoint
-        /// </summary>
-        public class ThreatDetectionEndpoint
-        {
-            public const string New = "New";
-            public const string Enabled = "Enabled";
-            public const string Disabled = "Disabled";
-        }
     }
 }

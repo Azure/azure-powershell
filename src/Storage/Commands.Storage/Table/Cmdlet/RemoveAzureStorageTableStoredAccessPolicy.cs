@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,16 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
-    using System;
-    using System.Globalization;
-    using System.Management.Automation;
-    using System.Security.Permissions;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Storage.Table;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
@@ -37,10 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set; }
-
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
+        public string Policy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
@@ -62,17 +59,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
             Channel = channel;
             EnableMultiThread = false;
         }
-        
-        internal virtual bool ConfirmRemove(string message)
-        {
-            return ShouldProcess(message);
-        }
 
         internal bool RemoveAzureTableStoredAccessPolicy(IStorageTableManagement localChannel, string tableName, string policyName)
         {
             bool success = false;
             string result = string.Empty;
-            
+
             //Get existing permissions
             CloudTable table = localChannel.GetTableReference(tableName);
             TablePermissions tablePermissions = localChannel.GetTablePermissions(table);
@@ -83,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ShouldProcess(policyName, "Remove policy"))
             {
                 tablePermissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetTablePermissions(table, tablePermissions);
@@ -101,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         {
             if (String.IsNullOrEmpty(Table) || String.IsNullOrEmpty(Policy)) return;
             bool success = RemoveAzureTableStoredAccessPolicy(Channel, Table, Policy);
-            string result = string.Empty;          
+            string result = string.Empty;
 
             if (success)
             {

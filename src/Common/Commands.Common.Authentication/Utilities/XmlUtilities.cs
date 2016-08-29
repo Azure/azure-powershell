@@ -110,12 +110,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 doc.LoadXml(unformattedXml);
                 StringBuilder stringBuilder = new StringBuilder();
                 XmlWriterSettings settings = new XmlWriterSettings()
-                    {
-                        Indent = true,
-                        IndentChars = "\t",
-                        NewLineChars = Environment.NewLine,
-                        NewLineHandling = NewLineHandling.Replace
-                    };
+                {
+                    Indent = true,
+                    IndentChars = "\t",
+                    NewLineChars = Environment.NewLine,
+                    NewLineHandling = NewLineHandling.Replace
+                };
                 using (XmlWriter writer = XmlWriter.Create(stringBuilder, settings))
                 {
                     doc.Save(writer);

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNodeUser
+    public partial class PSComputeNodeUser
     {
         
         internal Microsoft.Azure.Batch.ComputeNodeUser omObject;

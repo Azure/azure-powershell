@@ -14,14 +14,14 @@
 
 namespace Microsoft.AzureStack.Commands
 {
+    using Microsoft.Azure;
+    using Microsoft.AzureStack.Management;
+    using Microsoft.AzureStack.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Management.Automation;
-    using Microsoft.Azure;
-    using Microsoft.WindowsAzure.Commands.Common;
-    using Microsoft.AzureStack.Management;
-    using Microsoft.AzureStack.Management.Models;
 
     /// <summary>
     /// Gallery Item Cmdlet
@@ -87,7 +87,7 @@ namespace Microsoft.AzureStack.Commands
                         ? Guid.NewGuid()
                         : AddGalleryItem.GalleryPackageIds.Dequeue()).ToString(),
                     filestream);
-                var uploadParameters = new GalleryItemCreateOrUpdateParameters() {Manifest = manifest.Manifest};
+                var uploadParameters = new GalleryItemCreateOrUpdateParameters() { Manifest = manifest.Manifest };
                 return client.GalleryItem.CreateOrUpdate(this.ResourceGroup, this.Name, uploadParameters);
             }
         }

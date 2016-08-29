@@ -8,14 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-
 namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,27 +19,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
-        private static System.Resources.ResourceManager resourceMan;
+        private static global::System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static global::System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static System.Resources.ResourceManager ResourceManager {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if (ReferenceEquals(resourceMan, null)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeStore.Properties.Resources", typeof(Resources).Assembly);
+                if (object.ReferenceEquals(resourceMan, null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.DataLakeStore.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -54,8 +50,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -88,6 +84,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string DefaultAclWord {
             get {
                 return ResourceManager.GetString("DefaultAclWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download file data.
+        /// </summary>
+        internal static string DownloadFileDataMessage {
+            get {
+                return ResourceManager.GetString("DownloadFileDataMessage", resourceCulture);
             }
         }
         
@@ -146,7 +151,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not a file. This cmdlet can only export individual files that exist in ADL.
+        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not accessible. Please check the path and permission..
         /// </summary>
         internal static string InvalidExportPathType {
             get {
@@ -227,6 +232,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download a very large amount of data.
+        /// </summary>
+        internal static string LargeDownloadWarning {
+            get {
+                return ResourceManager.GetString("LargeDownloadWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists. Please set overwrite to true or use the force switch in order to overwrite this file.
         /// </summary>
         internal static string LocalFileAlreadyExists {
@@ -250,6 +264,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string MoveFailed {
             get {
                 return ResourceManager.GetString("MoveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
+        /// </summary>
+        internal static string OffsetOutOfRange {
+            get {
+                return ResourceManager.GetString("OffsetOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite existing file &apos;{0}&apos;?.
+        /// </summary>
+        internal static string OverwriteFileMessage {
+            get {
+                return ResourceManager.GetString("OverwriteFileMessage", resourceCulture);
             }
         }
         
@@ -367,6 +399,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string TaskCancelledMessage {
             get {
                 return ResourceManager.GetString("TaskCancelledMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Upload operation failed due to the following underlying error: {0}. You can try to resume the upload by specifying the &quot;Resume&quot; option. If the error persists, please contact Microsoft support.&quot;.
+        /// </summary>
+        internal static string UploadFailedMessage {
+            get {
+                return ResourceManager.GetString("UploadFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload file or directory.
+        /// </summary>
+        internal static string UploadFileMessage {
+            get {
+                return ResourceManager.GetString("UploadFileMessage", resourceCulture);
             }
         }
     }

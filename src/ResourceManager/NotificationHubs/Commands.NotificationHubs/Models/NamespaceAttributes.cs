@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
     public class NamespaceAttributes
     {
         private static readonly Regex ResourceGroupRegex = new Regex(@"/resourceGroups/(?<resourceGroupName>.+)/providers/", RegexOptions.Compiled);
-        
+
         public NamespaceAttributes(string resourceGroup, NamespaceResource nsResource)
-            :this(nsResource)
+            : this(nsResource)
         {
             if (nsResource != null)
             {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         /// Gets or sets the location the Namespace is in
         /// </summary>
         public string Location { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the tags associated with the Namespace.
         /// </summary>

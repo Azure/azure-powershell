@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
-    internal class ShareResponse:ResponseBase
+    internal class ShareResponse : ResponseBase
     {
         public ShareResponse(ShareModel resource) : base(resource)
         {

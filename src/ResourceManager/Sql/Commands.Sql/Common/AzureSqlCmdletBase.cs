@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
@@ -39,11 +39,34 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.clientRequestId = Util.GenerateTracingId();
         }
 
+        protected virtual string GetResourceId(M model)
+        {
+            var serverProperty = model.GetType().GetProperty("ServerName");
+            var serverName = (serverProperty == null)? string.Empty: serverProperty.GetValue(model).ToString();
+
+            var databaseProperty = model.GetType().GetProperty("DatabaseName");
+            var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(model).ToString();
+
+            if (!string.IsNullOrEmpty(serverName))
+            {
+                if (!string.IsNullOrEmpty(databaseName))
+                {
+                    return string.Format("{0}.{1}", serverName, databaseName);
+                }
+                return serverName;
+            }
+            if (!string.IsNullOrEmpty(databaseName))
+            {
+                return databaseName;
+            }
+            return string.Empty;
+        }
+
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
@@ -96,28 +119,37 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return model;
         }
 
+        protected virtual string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.BaseConfirmActionProcessMessage;
+        }
+
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
             ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
-            M model = this.GetEntity();
-            M updatedModel = this.ApplyUserInputToModel(model);
-            M responseModel = this.PersistChanges(updatedModel);
+            M model = GetEntity();
+            M updatedModel = ApplyUserInputToModel(model);
+            M responseModel = default(M);
+            ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
+            {
+                responseModel = PersistChanges(updatedModel);
+            });
 
-            if(responseModel != null)
+            if (responseModel != null)
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(TransformModelToOutputObject(responseModel), true);
+                    WriteObject(TransformModelToOutputObject(responseModel), true);
                 }
             }
             else
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(TransformModelToOutputObject(updatedModel));
+                    WriteObject(TransformModelToOutputObject(updatedModel));
                 }
             }
         }

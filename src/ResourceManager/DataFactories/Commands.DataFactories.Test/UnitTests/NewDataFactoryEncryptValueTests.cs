@@ -26,8 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
 {
     public class NewDataFactoryEncryptValueTests : DataFactoryUnitTestBase
     {
-        public NewDataFactoryEncryptValueTests()
+        public NewDataFactoryEncryptValueTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
         }
 

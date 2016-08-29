@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,35 +14,32 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using Common;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Model.Contract;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using Common;
-    using Microsoft.WindowsAzure.Storage.Blob;
-    using Model.Contract;
 
     /// <summary>
     /// create a new azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.ContainerStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
+    [Cmdlet(VerbsCommon.Remove, StorageNouns.ContainerStoredAccessPolicy, SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
-        [Parameter(Position = 0, Mandatory = true, 
+        [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Container name",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Container { get; set; }
 
         [Parameter(Position = 1, Mandatory = true,
-            HelpMessage = "Policy Identifier", 
+            HelpMessage = "Policy Identifier",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Policy {get; set; }
-
-        [Parameter(HelpMessage = "Force to remove the policy without confirm")]
-        public SwitchParameter Force { get; set; }
+        public string Policy { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
@@ -60,22 +57,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="channel">IStorageBlobManagement channel</param>
         public RemoveAzureStorageContainerStoredAccessPolicyCommand(IStorageBlobManagement channel)
-            :base(channel)
+            : base(channel)
         {
             EnableMultiThread = false;
-        }
-
-        internal virtual bool ConfirmRemove(string message)
-        {
-            return ShouldProcess(message);
         }
 
         internal bool RemoveAzureContainerStoredAccessPolicy(IStorageBlobManagement localChannel, string containerName, string policyName)
         {
             bool success = false;
             string result = string.Empty;
-            
-             //Get existing permissions
+
+            //Get existing permissions
             CloudBlobContainer container = localChannel.GetContainerReference(containerName);
             BlobContainerPermissions blobContainerPermissions = localChannel.GetContainerPermissions(container);
 
@@ -85,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
-            if (this.Force || ConfirmRemove(policyName))
+            if (ShouldProcess(policyName, "Remove policy"))
             {
                 blobContainerPermissions.SharedAccessPolicies.Remove(policyName);
                 localChannel.SetContainerPermissions(container, blobContainerPermissions);
@@ -101,9 +93,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-             if (String.IsNullOrEmpty(Container) || String.IsNullOrEmpty(Policy)) return;
+            if (String.IsNullOrEmpty(Container) || String.IsNullOrEmpty(Policy)) return;
             bool success = RemoveAzureContainerStoredAccessPolicy(Channel, Container, Policy);
-            string result = string.Empty;          
+            string result = string.Empty;
 
             if (success)
             {
@@ -119,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             if (PassThru)
             {
                 WriteObject(success);
-            }    
+            }
         }
     }
 }

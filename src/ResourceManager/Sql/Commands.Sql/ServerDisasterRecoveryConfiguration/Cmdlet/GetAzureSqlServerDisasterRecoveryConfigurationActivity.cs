@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerDisasterRecoveryConfigurationActivity",
-        ConfirmImpact = ConfirmImpact.None)]
+        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     public class GetAzureSqlServerDisasterRecoveryConfigurationActivity : AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase
     {
         /// <summary>

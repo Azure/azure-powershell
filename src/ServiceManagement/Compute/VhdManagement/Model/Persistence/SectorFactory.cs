@@ -45,12 +45,12 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             vhdFile.DataReader.SetPosition(currentAddress + (int)VhdConstants.VHD_SECTOR_LENGTH * sector);
 
             var result = new Sector
-                             {
-                                 BlockIndex = block,
-                                 SectorIndex = sector,
-                                 GlobalSectorIndex = this.blockFactory.GetBlockSize() * block + sector,
-                                 Data = vhdFile.DataReader.ReadBytes((int)VhdConstants.VHD_SECTOR_LENGTH)
-                             };
+            {
+                BlockIndex = block,
+                SectorIndex = sector,
+                GlobalSectorIndex = this.blockFactory.GetBlockSize() * block + sector,
+                Data = vhdFile.DataReader.ReadBytes((int)VhdConstants.VHD_SECTOR_LENGTH)
+            };
             return result;
         }
 
@@ -59,12 +59,12 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             var buffer = new byte[((int)VhdConstants.VHD_SECTOR_LENGTH)];
             Array.Clear(buffer, 0, buffer.Length);
             var emptySector = new Sector
-                                  {
-                                      BlockIndex = block,
-                                      SectorIndex = sector,
-                                      GlobalSectorIndex = this.blockFactory.GetBlockSize() * block + sector,
-                                      Data = buffer
-                                  };
+            {
+                BlockIndex = block,
+                SectorIndex = sector,
+                GlobalSectorIndex = this.blockFactory.GetBlockSize() * block + sector,
+                Data = buffer
+            };
             return emptySector;
         }
     }

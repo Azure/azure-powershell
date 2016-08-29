@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-        
+
         [Parameter(
             Position = 0,
             Mandatory = true,
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
             }
-            
+
             HDInsightManagementClient.ConfigureHttp(ResourceGroupName, ClusterName, httpParams);
             WriteObject(HDInsightManagementClient.GetConnectivitySettings(ResourceGroupName, ClusterName));
         }

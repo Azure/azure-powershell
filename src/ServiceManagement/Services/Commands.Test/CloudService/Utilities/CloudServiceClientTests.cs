@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
             a.QueueEndpoint = "http://awesome.queue.core.windows.net/";
             a.TableEndpoint = "http://awesome.table.core.windows.net/";
             a.PrimaryKey =
-                "MNao3bm7t7B/x+g2/ssh9HnG0mEh1QV5EHpcna8CetYn+TSRoA8/SBoH6B3Ufwtnz3jZLSw9GEUuCTr3VooBWq==";
+                "MNao3bm7t7B/x+g2/ssh9HnG0mEh1QV5EHpcna8CetYn+TSRoA8/SBoH6B3Ufwtnz3jZLSw9GEUuCTr3VooBWq==";// [SuppressMessage("Microsoft.Security", "CS001:SecretInline")]
             a.SecondaryKey = "secondaryKey";
         }
 

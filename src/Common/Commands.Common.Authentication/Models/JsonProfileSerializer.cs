@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Environments[(string) env["Name"]] =
+                        profile.Environments[(string)env["Name"]] =
                             JsonConvert.DeserializeObject<AzureEnvironment>(env.ToString());
                     }
                     catch (Exception ex)
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Subscriptions[new Guid((string) subscription["Id"])] =
+                        profile.Subscriptions[new Guid((string)subscription["Id"])] =
                             JsonConvert.DeserializeObject<AzureSubscription>(subscription.ToString());
                     }
                     catch (Exception ex)
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 {
                     try
                     {
-                        profile.Accounts[(string) account["Id"]] =
+                        profile.Accounts[(string)account["Id"]] =
                             JsonConvert.DeserializeObject<AzureAccount>(account.ToString());
                     }
                     catch (Exception ex)

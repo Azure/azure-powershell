@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
-using Microsoft.Azure.Commands.Sql.Server.Adapter;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
@@ -27,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
     /// Cmdlet to create a new Azure Sql server communication link
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlServerCommunicationLink",
-        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class NewAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
@@ -91,13 +88,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 
             List<AzureSqlServerCommunicationLinkModel> newEntity = new List<AzureSqlServerCommunicationLinkModel>();
             newEntity.Add(new AzureSqlServerCommunicationLinkModel()
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    Location = location,
-                    Name = LinkName,
-                    PartnerServer = PartnerServer,
-                });
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                Location = location,
+                Name = LinkName,
+                PartnerServer = PartnerServer,
+            });
             return newEntity;
         }
 

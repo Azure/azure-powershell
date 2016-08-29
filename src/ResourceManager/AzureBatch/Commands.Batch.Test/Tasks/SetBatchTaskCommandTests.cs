@@ -32,8 +32,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchTaskCommandTests()
+        public SetBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new SetBatchTaskCommand()
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Task = new PSCloudTask(BatchTestHelpers.CreateFakeBoundTask(context));
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.TaskConstraints, 
-                ProxyModels.TaskUpdateOptions, 
+                ProxyModels.TaskConstraints,
+                ProxyModels.TaskUpdateOptions,
                 AzureOperationHeaderResponse<ProxyModels.TaskUpdateHeaders>>();
 
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };

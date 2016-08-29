@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Management.WebSites.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.Azure.Management.SiteRecovery.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             base.ExecuteSiteRecoveryCmdlet();
 
             List<StorageClassificationMapping> mappings = new List<StorageClassificationMapping>();
-            Task mappingTask = 
+            Task mappingTask =
                 RecoveryServicesClient.EnumerateStorageClassificationMappingsAsync((entities) =>
                 {
                     mappings.AddRange(entities);
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     Id = item.Id,
                     Name = item.Name,
                     PrimaryClassificationId = item.GetPrimaryStorageClassificationId(),
-                    RecoveryClassificationId =  item.Properties.TargetStorageClassificationId
+                    RecoveryClassificationId = item.Properties.TargetStorageClassificationId
                 };
             });
 

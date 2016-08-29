@@ -14,32 +14,14 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.Azure.Management.Logic;
+    using Microsoft.Azure.Management.Logic.Models;
 
     /// <summary>
     /// LogicApp client partial class for run operations
     /// </summary>
     public partial class LogicAppClient
     {
-        /// <summary>
-        /// Starts the logic app
-        /// </summary>
-        /// <param name="resourceGroupName">Name of the resource group</param>
-        /// <param name="workflowName">Name of the logic app</param>
-        /// <param name="runWorkflowParameters">Run parameters</param>
-        /// <returns>Workflow run output</returns>
-        public WorkflowRun RunWorkflow(string resourceGroupName, string workflowName,
-            RunWorkflowParameters runWorkflowParameters)
-        {
-            return this.LogicManagementClient.Workflows.Run(resourceGroupName, workflowName, runWorkflowParameters);
-        }
-
         /// <summary>
         /// Cancels the logic app run.
         /// </summary>

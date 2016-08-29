@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // These constants define the default values to use for AD authentication
         // against RDFE
         //
-        public const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";          
+        public const string PowerShellClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
 
         public static readonly Uri PowerShellRedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         // login window. Also adding popup flag to handle overly large login windows.
         public const string EnableEbdMagicCookie = "site_id=501358&display=popup";
 
-        public string AdEndpoint { get;set; }
+        public string AdEndpoint { get; set; }
 
         public bool ValidateAuthority { get; set; }
 

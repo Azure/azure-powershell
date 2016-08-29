@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using System;
 using System.Collections;
-using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewTaskParameters : JobOperationParameters
     {
-        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, jobId, job, additionalBehaviors)
         {
             if (string.IsNullOrWhiteSpace(taskId))
@@ -76,5 +76,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Information about how to run the multi-instance task.
         /// </summary>
         public PSMultiInstanceSettings MultiInstanceSettings { get; set; }
+
+        /// <summary>
+        /// Tasks that this task depends on. The task will not be scheduled until all depended-on tasks have completed successfully.
+        /// </summary>
+        public TaskDependencies DependsOn { get; set; }
     }
 }

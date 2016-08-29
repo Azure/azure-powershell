@@ -3738,7 +3738,7 @@
 				Set-AzureRmSiteRecoveryVaultSettings
 			</command:name>
 			<maml:description>
-				<maml:para>The Set-AzureRmSiteRecoveryVaultSettings cmdlet sets the site recovery vault context for further operations(not applicable to Recovery Services vaults)</maml:para>
+				<maml:para>The Set-AzureRmSiteRecoveryVaultSettings cmdlet sets the Classic or ARM vault context for further operations.</maml:para>
 			</maml:description>
 			<maml:copyright>
 				<maml:para></maml:para>
@@ -3757,9 +3757,9 @@
 				<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 					<maml:name>Vault</maml:name>
 					<maml:description>
-						<maml:para>Azure Site Recovery Vault object</maml:para>
+						<maml:para>Classic or ARM Vault object</maml:para>
 					</maml:description>
-					<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+					<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 				</command:parameter>
 			</command:syntaxItem>
 		</command:syntax>
@@ -3768,12 +3768,12 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>Vault</maml:name>
 				<maml:description>
-					<maml:para>Azure Site Recovery Vault object</maml:para>
+					<maml:para>Classic or ARM Vault object</maml:para>
 
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ASRVault</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
 				<dev:type>
-					<maml:name>ASRVault</maml:name>
+					<maml:name>Object</maml:name>
 					<maml:uri/>
 				</dev:type>
 				<dev:defaultValue></dev:defaultValue>

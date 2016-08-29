@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
         private readonly PSCredential _httpCred;
 
-        public PremiumClusterTests()
+        public PremiumClusterTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTestsForManagement();
             _httpCred = new PSCredential("hadoopuser", string.Format("Password1!").ConvertToSecureString());
             cmdlet = new NewAzureHDInsightClusterCommand
@@ -103,10 +104,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             var serializedConfig = JsonConvert.SerializeObject(configurations);
             cluster.Properties.ClusterDefinition.Configurations = serializedConfig;
 
-            var getresponse = new ClusterGetResponse {Cluster = cluster};
-            
+            var getresponse = new ClusterGetResponse { Cluster = cluster };
+
             hdinsightManagementMock.Setup(c => c.CreateNewCluster(ResourceGroupName, ClusterName, It.Is<ClusterCreateParameters>(
-                parameters => 
+                parameters =>
                     parameters.ClusterSizeInNodes == ClusterSize &&
                     parameters.DefaultStorageAccountName == StorageName &&
                     parameters.DefaultStorageAccountKey == StorageKey &&
@@ -119,8 +120,8 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     parameters.OSType == OSType.Linux &&
                     parameters.ClusterTier == Tier.Premium)))
             .Returns(getresponse)
-            .Verifiable();    
-            
+            .Verifiable();
+
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.VerifyAll();
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     clusterout.Location == Location &&
                     clusterout.Name == ClusterName &&
                     clusterout.OperatingSystemType == OSType.Linux &&
-                    clusterout.ClusterTier == Tier.Premium)), 
+                    clusterout.ClusterTier == Tier.Premium)),
                     Times.Once);
         }
     }

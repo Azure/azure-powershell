@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Linq;
+using Microsoft.Azure.Commands.Sql.Services;
+
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
 {
-   /// <summary>
+    /// <summary>
     /// The possible states in which an auditing policy may be in
     /// </summary>
     public enum ThreatDetectionStateType { Enabled, Disabled, New };
@@ -28,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         Sql_Injection_Vulnerability,
         Access_Anomaly,
         Usage_Anomaly,
+        None
     };
 
     /// <summary>
@@ -64,5 +69,52 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Model
         /// Gets or sets the detection types to filter 
         /// </summary>
         public DetectionType[] ExcludedDetectionTypes { get; internal set; }
+
+        /// <summary>
+        /// In cases where the user decided to use the shortcut NONE, this method sets the value of the ExcludedDetectionType property to reflect the correct values.
+        /// </summary>
+        public static DetectionType[] ProcessExcludedDetectionTypes(DetectionType[] excludedDetectionTypes)
+        {
+            if (excludedDetectionTypes == null || excludedDetectionTypes.Length == 0)
+            {
+                return excludedDetectionTypes;
+            }
+
+            if (excludedDetectionTypes.Length == 1)
+            {
+                if (excludedDetectionTypes[0] == DetectionType.None)
+                {
+                    return new DetectionType[] { };
+                }
+            }
+            else
+            {
+                if (excludedDetectionTypes.Contains(DetectionType.None))
+                {
+                    throw new Exception(string.Format(Properties.Resources.InvalidExcludedDetectionTypeSet, DetectionType.None));
+                }
+            }
+            return excludedDetectionTypes;
+        }
+
+        /// <summary>
+        /// Preforms validity checks
+        /// </summary>
+        public void ValidateContent()
+        {
+            // Validity checks:
+            // 1. Check that EmailAddresses are in correct format 
+            bool areEmailAddressesInCorrectFormat = Util.AreEmailAddressesInCorrectFormat(NotificationRecipientsEmails, ';');
+            if (!areEmailAddressesInCorrectFormat)
+            {
+                throw new Exception(Properties.Resources.EmailsAreNotValid);
+            }
+
+            // 2. check that EmailAdmins is not False and NotificationRecipientsEmails is not empty
+            if (!EmailAdmins && string.IsNullOrEmpty(NotificationRecipientsEmails))
+            {
+                throw new Exception(Properties.Resources.NeedToProvideEmail);
+            }
+        }
     }
 }

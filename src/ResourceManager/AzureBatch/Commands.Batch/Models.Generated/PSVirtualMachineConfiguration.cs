@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSVirtualMachineConfiguration
+    public partial class PSVirtualMachineConfiguration
     {
         
         internal Microsoft.Azure.Batch.VirtualMachineConfiguration omObject;

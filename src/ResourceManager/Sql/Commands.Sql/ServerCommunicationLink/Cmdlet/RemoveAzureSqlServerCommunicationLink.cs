@@ -12,17 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerCommunicationLink",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class RemoveAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
@@ -47,8 +45,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlServerCommunicationLinkModel> GetEntity()
         {
-            return new List<AzureSqlServerCommunicationLinkModel>() { 
-                ModelAdapter.GetServerCommunicationLink(this.ResourceGroupName, this.ServerName, this.LinkName) 
+            return new List<AzureSqlServerCommunicationLinkModel>() {
+                ModelAdapter.GetServerCommunicationLink(this.ResourceGroupName, this.ServerName, this.LinkName)
             };
         }
 

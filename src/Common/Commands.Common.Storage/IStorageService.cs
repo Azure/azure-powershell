@@ -42,11 +42,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
         /// <summary>
         /// The storage account name
         /// </summary>
-        string Name { get;}
+        string Name { get; }
 
         /// <summary>
         /// Authentication keys for the storage account
         /// </summary>
-        List<string> AuthenticationKeys { get; } 
+        List<string> AuthenticationKeys { get; }
     }
 }

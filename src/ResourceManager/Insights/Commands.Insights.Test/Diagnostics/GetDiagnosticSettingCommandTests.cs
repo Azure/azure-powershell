@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.Diagnostics;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
@@ -37,8 +37,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         private const string resourceId = "/subscriptions/123/resourcegroups/rg/providers/rp/resource/myresource";
         private string calledResourceId;
 
-        public GetDiagnosticSettingCommandTests()
+        public GetDiagnosticSettingCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();

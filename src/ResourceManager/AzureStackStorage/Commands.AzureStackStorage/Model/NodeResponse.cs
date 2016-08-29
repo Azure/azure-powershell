@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.AzureStack.Management.StorageAdmin.Models;
 using System;
 using System.Collections.Generic;
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin
 {
@@ -29,10 +29,10 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin
         public string ConfigVersion { get; set; }
 
         public Uri FaultDomain { get; set; }
- 
+
         public HealthStatus HealthState { get; set; }
 
- 
+
         public string IpAddressOrFqdn { get; set; }
 
         public bool IsSeedNode { get; set; }

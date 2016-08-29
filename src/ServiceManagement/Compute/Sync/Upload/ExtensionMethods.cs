@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
@@ -94,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         {
             var listBlobItems = blob.Container.ListBlobs();
             var blobToUpload = listBlobItems.FirstOrDefault(b => b.Uri == blob.Uri);
-            if(blobToUpload is CloudBlockBlob)
+            if (blobToUpload is CloudBlockBlob)
             {
                 var message = String.Format(" CsUpload is expecting a page blob, however a block blob was found: '{0}'.", blob.Uri);
                 throw new InvalidOperationException(message);
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 
         public static bool Exists(this CloudPageBlob blob, BlobRequestOptions options)
         {
-            var listBlobItems = blob.Container.ListBlobs(null,false, BlobListingDetails.UncommittedBlobs, options);
+            var listBlobItems = blob.Container.ListBlobs(null, false, BlobListingDetails.UncommittedBlobs, options);
             var blobToUpload = listBlobItems.FirstOrDefault(b => b.Uri == blob.Uri);
             if (blobToUpload is CloudBlockBlob)
             {
@@ -119,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
     {
         public static string ToString<T>(this IEnumerable<T> source, string separator)
         {
-            return "[" + string.Join(",", source.Select(s=>s.ToString()).ToArray()) + "]";
+            return "[" + string.Join(",", source.Select(s => s.ToString()).ToArray()) + "]";
         }
     }
 
@@ -205,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
     {
         public static string DumpStorageExceptionErrorDetails(StorageException storageException)
         {
-            if(storageException == null)
+            if (storageException == null)
             {
                 return string.Empty;
             }

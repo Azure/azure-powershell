@@ -15,11 +15,15 @@
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Test;
     using Xunit;
 
     public class AdlsTests : AdlsTestsBase
     {
+        public AdlsTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAdlsAccount()

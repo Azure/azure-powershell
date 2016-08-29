@@ -12,16 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDeletedDatabaseBackup",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDeletedDatabaseBackup", SupportsShouldProcess = true)]
     public class GetAzureRMSqlDeletedDatabaseBackup : AzureSqlDeletedDatabaseBackupCmdletBase
     {
         /// <summary>

@@ -12,18 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Management.Insights;
-using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 {
@@ -37,8 +39,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         private string resourceGroup;
         private RuleCreateOrUpdateParameters createOrUpdatePrms;
 
-        public AddAzureRmWebtestAlertRuleTests()
+        public AddAzureRmWebtestAlertRuleTests(ITestOutputHelper output)
         {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
             insightsAlertRuleOperationsMock = new Mock<IAlertOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -167,11 +170,11 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             cmdlet.ExecuteCmdlet();
 
             this.AssertResults(
-                location: "East US", 
-                tagsKey: "hidden-link:", 
+                location: "East US",
+                tagsKey: "hidden-link:",
                 isEnabled: true,
                 actionsNull: false,
-                actionsCount: 2, 
+                actionsCount: 2,
                 failedLocationCount: 10,
                 totalMinutes: 300);
         }
@@ -206,7 +209,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             var dataSource = condition.DataSource as RuleMetricDataSource;
             Assert.Null(dataSource.MetricName);
             Assert.Null(dataSource.ResourceUri);
-            Assert.Null(dataSource.MetricNamespace);            
+            Assert.Null(dataSource.MetricNamespace);
         }
     }
 }

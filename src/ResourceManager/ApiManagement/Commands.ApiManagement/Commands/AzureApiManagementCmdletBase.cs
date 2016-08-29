@@ -15,13 +15,12 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using System;
-    using System.Management.Automation;
-    using System.Threading;
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
-    using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
+    using ResourceManager.Common;
+    using System;
+    using System.Management.Automation;
 
     public class AzureApiManagementCmdletBase : AzureRMCmdlet
     {

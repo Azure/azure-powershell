@@ -32,9 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
         public override Block Create(uint block)
         {
-            if(!vhdFile.BlockAllocationTable.HasData(block))
+            if (!vhdFile.BlockAllocationTable.HasData(block))
             {
-                if(cachedBlock == null || cachedBlock.BlockIndex != block)
+                if (cachedBlock == null || cachedBlock.BlockIndex != block)
                 {
                     cachedBlock = parentBlockFactory.Create(block);
                 }
@@ -44,25 +44,25 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
             if (cachedBlock == null || cachedBlock.BlockIndex != block)
             {
                 cachedBlock = new Block(this)
-                                  {
-                                      BlockIndex = block,
-                                      VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                                      LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
-                                      BitMap = bitMapFactory.Create(block),
-                                      Empty = false
-                                  };
+                {
+                    BlockIndex = block,
+                    VhdUniqueId = this.vhdFile.Footer.UniqueId,
+                    LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
+                    BitMap = bitMapFactory.Create(block),
+                    Empty = false
+                };
             }
             return cachedBlock;
         }
 
         public override Sector GetSector(Block block, uint sector)
         {
-            if(block.Empty)
+            if (block.Empty)
             {
                 return this.sectorFactory.CreateEmptySector(block.BlockIndex, sector);
             }
-            
-            if(block.BitMap != null && block.BitMap.Data[(int) sector])
+
+            if (block.BitMap != null && block.BitMap.Data[(int)sector])
             {
                 return this.sectorFactory.Create(block, sector);
             }

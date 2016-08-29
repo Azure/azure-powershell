@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         public const string AuthorizationHeaderName = "Authorization";
         public const string BasicAuthorization = "Basic";
         public const string UserAgentHeaderName = "User-Agent";
-        public const string UserAgentHeaderValue = "AzurePowershell/v" 
+        public const string UserAgentHeaderValue = "AzurePowershell/v"
             + AzurePowerShell.AssemblyVersion;
         public const string VSDebuggerCausalityDataHeaderName = "VSDebuggerCausalityData";
         public const string OperationTrackingIdHeader = "x-ms-request-id";

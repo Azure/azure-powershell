@@ -12,15 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Backup.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-using Microsoft.Azure.Commands.Sql.Backup.Model;
-using Microsoft.Azure.Commands.Sql.Database.Model;
-
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseRestorePoints",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseRestorePoints", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
     {

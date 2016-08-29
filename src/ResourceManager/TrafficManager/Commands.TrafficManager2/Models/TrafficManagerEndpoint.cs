@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.TrafficManager.Models
 {
-    using System;
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Azure.Management.TrafficManager.Models;
+    using System;
 
     public class TrafficManagerEndpoint
     {
@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         public static string ToSDKEndpointType(string type)
         {
             return
-                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ? 
-                string.Format("{0}/{1}", Constants.ProfileType, type) : 
+                !type.StartsWith(Constants.ProfileType, StringComparison.OrdinalIgnoreCase) ?
+                string.Format("{0}/{1}", Constants.ProfileType, type) :
                 type;
         }
     }

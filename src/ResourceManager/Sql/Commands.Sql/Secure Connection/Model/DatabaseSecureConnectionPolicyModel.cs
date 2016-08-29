@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Model
         /// <summary>
         /// The internal ConnectionString field
         /// </summary>
-        private ConnectionStrings m_ConnectionStrings;  
-       
+        private ConnectionStrings m_ConnectionStrings;
+
         /// <summary>
         /// Gets or sets the database name
         /// </summary>
@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Model
         /// <summary>
         /// Lazy set of the connection string object
         /// </summary>
-        public ConnectionStrings ConnectionStrings 
-        { 
+        public ConnectionStrings ConnectionStrings
+        {
             get
             {
-                if(m_ConnectionStrings == null)
+                if (m_ConnectionStrings == null)
                 {
                     if (ProxyDnsName != null && ProxyPort != null && ServerName != null && DatabaseName != null)
                     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Model
                     }
                 }
                 return m_ConnectionStrings;
-            } 
+            }
         }
     }
 }

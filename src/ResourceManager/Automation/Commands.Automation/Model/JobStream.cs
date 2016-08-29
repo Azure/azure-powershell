@@ -12,11 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Automation.Common;
-
+using System;
 using AutomationManagement = Microsoft.Azure.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
@@ -43,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         /// <exception cref="System.ArgumentException">
         /// </exception>
-        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId )
+        public JobStream(AutomationManagement.Models.JobStream jobStream, string resourceGroupName, string automationAccountName, Guid jobId)
         {
             Requires.Argument("jobStream", jobStream).NotNull();
 

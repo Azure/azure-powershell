@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSComputeNode
+    public partial class PSComputeNode
     {
         
         internal Microsoft.Azure.Batch.ComputeNode omObject;
@@ -162,6 +162,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public System.Int32? RunningTasksCount
+        {
+            get
+            {
+                return this.omObject.RunningTasksCount;
+            }
+        }
+        
         public Microsoft.Azure.Batch.Common.SchedulingState? SchedulingState
         {
             get
@@ -217,6 +225,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.TotalTasksRun;
+            }
+        }
+        
+        public System.Int32? TotalTasksSucceeded
+        {
+            get
+            {
+                return this.omObject.TotalTasksSucceeded;
             }
         }
         

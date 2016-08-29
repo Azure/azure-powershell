@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.Logic;
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
@@ -52,6 +53,135 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
             }
 
             return definition;
+        }
+
+        /// <summary>
+        /// Get file content.
+        /// </summary>
+        /// <param name="filePath">The File path.</param>
+        /// <returns>String content</returns>
+        internal static string GetContentFromFile(string filePath)
+        {
+            string content = string.Empty;
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                if (!(new FileInfo(filePath)).Exists)
+                {
+                    throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resource.FileDoesNotExist, filePath));
+                }
+
+                content = File.ReadAllText(filePath);
+            }
+
+            return content;
+        }
+
+        /// <summary>
+        /// Check if file exists
+        /// </summary>
+        /// <param name="filePath">File path</param>
+        /// <returns>Boolean result indicating whether file exists.</returns>
+        internal static bool FileExists(string filePath)
+        {
+            if (!(new FileInfo(filePath)).Exists)
+            {
+                throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resource.FileDoesNotExist, filePath));
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Convert string content to AgreementContent object.
+        /// </summary>
+        /// <param name="content">The agreement content.</param>
+        /// <returns>AgreementContent object.</returns>
+        internal static AgreementContent ConvertToAgreementContent(string content)
+        {
+            AgreementContent agreementContent = null;
+
+            if (!string.IsNullOrEmpty(content))
+            {
+                agreementContent = JsonConvert.DeserializeObject<AgreementContent>(content);
+            }
+
+            return agreementContent;
+        }
+
+        /// <summary>
+        /// Build App service plan id using plan name and resourcegroup name
+        /// Null check for parameter not needed as both these parameters are required parameters.
+        /// </summary>
+        /// <param name="planName">App service plan name</param>
+        /// <param name="resourceGroupName">Resource group name</param>
+        /// <param name="subscriptionId">Subscription id</param>
+        /// <returns>App service plan id</returns>
+        internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
+        {
+            return string.Format(CultureInfo.InvariantCulture,
+                Properties.Resource.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
+        }
+
+        /// <summary>
+        /// Converts IEnumerator to IEnumerable
+        /// </summary>
+        /// <typeparam name="T">Generic Type</typeparam>
+        /// <param name="enumerator">Enumerator to be converted</param>
+        /// <returns>IEnumerable collection</returns>
+        public static IEnumerable<T> ToIEnumerable<T>(this IEnumerator<T> enumerator)
+        {
+            while (enumerator.MoveNext())
+            {
+                yield return enumerator.Current;
+            }
+        }
+
+        /// <summary>
+        /// Convert object to business identity list.
+        /// </summary>
+        /// <param name="businessIdentityObject">business identity object.</param>
+        /// <returns>List of business identity.</returns>
+        internal static IList<BusinessIdentity> ConvertToBusinessIdentityList(object businessIdentityObject)
+        {
+            IList<BusinessIdentity> identities = null;
+            if (businessIdentityObject is Hashtable)
+            {
+                var collection = businessIdentityObject as Hashtable;
+                identities = new List<BusinessIdentity>();
+
+                foreach (var key in collection.Keys)
+                {
+                    identities.Add(new BusinessIdentity()
+                    {
+                        Qualifier = key.ToString(),
+                        Value = collection[key].ToString()
+                    });
+                }
+            }
+
+            return identities;
+        }
+
+        /// <summary>
+        /// Convert the valid metadata object.
+        /// </summary>
+        /// <param name="metadata">The metadata object.</param>
+        /// <returns>Json object</returns>
+        internal static JObject ConvertToMetadataJObject(object metadata)
+        {
+            try
+            {
+                return JObject.Parse(metadata.ToString());                
+            }
+            catch 
+            {
+                throw new PSArgumentException(Properties.Resource.InvalidMetadata);
+            }
         }
 
         /// <summary>
@@ -113,34 +243,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
                 workflowParameters = parametersObject as Dictionary<string, WorkflowParameter>;
             }
             return workflowParameters;
-        }
-
-        /// <summary>
-        /// Build App service plan id using plan name and resourcegroup name
-        /// Null check for parameter not needed as both these parameters are required parameters.
-        /// </summary>
-        /// <param name="planName">App service plan name</param>
-        /// <param name="resourceGroupName">Resource group name</param>
-        /// <param name="subscriptionId">Subscription id</param>
-        /// <returns>App service plan id</returns>
-        internal static string BuildAppServicePlanId(string planName, string resourceGroupName, string subscriptionId)
-        {
-            return string.Format(CultureInfo.InvariantCulture,
-                Properties.Resource.ApplicationServicePlanIdFormat, subscriptionId, resourceGroupName, planName);
-        }
-
-        /// <summary>
-        /// Converts IEnumerator to IEnumerable
-        /// </summary>
-        /// <typeparam name="T">Generic Type</typeparam>
-        /// <param name="enumerator">Enumerator to be converted</param>
-        /// <returns>IEnumerable collection</returns>
-        public static IEnumerable<T> ToIEnumerable<T>(this IEnumerator<T> enumerator)
-        {
-            while (enumerator.MoveNext())
-            {
-                yield return enumerator.Current;
-            }
         }
     }
 }

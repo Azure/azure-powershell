@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         string UserId { get; }
 
         string TenantId { get; }
-        
+
         LoginType LoginType { get; }
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public class PSMultiInstanceSettings
+    public partial class PSMultiInstanceSettings
     {
         
         internal Microsoft.Azure.Batch.MultiInstanceSettings omObject;

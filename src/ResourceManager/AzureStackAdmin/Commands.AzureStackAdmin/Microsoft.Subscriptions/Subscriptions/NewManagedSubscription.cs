@@ -16,11 +16,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.AzureStack.Commands
 {
-    using System;
-    using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.AzureStack.Management;
     using Microsoft.AzureStack.Management.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using System;
+    using System.Management.Automation;
 
     /// <summary>
     /// New Subscription Cmdlet
@@ -34,7 +34,7 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false)]
         [ValidateGuidNotEmpty]
-        public Guid SubscriptionId { get; set; } 
+        public Guid SubscriptionId { get; set; }
 
         /// <summary>
         /// Gets or sets the owner.
@@ -77,16 +77,16 @@ namespace Microsoft.AzureStack.Commands
         protected SubscriptionDefinition GetSubscriptionDefinition()
         {
             return new SubscriptionDefinition()
-                   {
-                       SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
+            {
+                SubscriptionId = (NewManagedSubscription.SubscriptionIds.Count == 0
                            ? Guid.NewGuid()
                            : NewManagedSubscription.SubscriptionIds.Dequeue()).ToString(),
-                       DisplayName = this.DisplayName,
-                       OfferId = this.OfferId,
-                       OfferName = GetAndValidateOfferName(this.OfferId),
-                       Owner = this.Owner,
-                       State = SubscriptionState.Enabled,
-                   };
+                DisplayName = this.DisplayName,
+                OfferId = this.OfferId,
+                OfferName = GetAndValidateOfferName(this.OfferId),
+                Owner = this.Owner,
+                State = SubscriptionState.Enabled,
+            };
         }
 
         /// <summary>

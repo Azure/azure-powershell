@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,8 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Removes a data masking rule from a given database
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true)]
     public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
         /// <summary>
@@ -39,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Confirmation when a data masking rule is removed")]
         public SwitchParameter Force { get; set; }
-        
+
         /// <summary>
         /// Calls the data masking removal API with the rule that this cmdlet operated on
         /// </summary>
@@ -47,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleDescription, 
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleDescription,
                                     ColumnName, TableName, SchemaName, DatabaseName),
                 string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleWarning,
                                     ColumnName, TableName, SchemaName, DatabaseName),

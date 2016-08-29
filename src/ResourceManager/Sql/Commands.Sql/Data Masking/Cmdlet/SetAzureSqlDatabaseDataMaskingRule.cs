@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.DataMasking.Model;
-using Microsoft.Azure.Commands.Sql.DataMasking.Services;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 {
     /// <summary>
     /// Sets properties for a data masking rule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingRule")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true)]
     public class SetAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>
@@ -67,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="rule">The rule that this cmdlet operated on</param>
         /// <returns>The updated list of data masking rules</returns>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> UpdateRuleList(IEnumerable<DatabaseDataMaskingRuleModel> rules, DatabaseDataMaskingRuleModel rule)
-        { 
+        {
             return rules;
         }
     }

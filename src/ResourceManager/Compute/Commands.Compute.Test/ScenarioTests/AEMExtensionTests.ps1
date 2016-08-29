@@ -255,7 +255,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
     $nicCount = if ([string]::IsNullOrEmpty($nicCount)) { 1 } else { [int]$nicCount }
 
     # Common
-    New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
+    $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
     # VM Profile & Hardware
     $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
@@ -290,7 +290,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     # Storage Account (SA)
     $stoname = 'sto' + $rgname;
-    New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $s = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
     Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
     $stokey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
@@ -323,7 +323,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     # OS & Image
     $user = "Foo12";
-    $password = 'BaR@123' + $rgname;
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = 'test';
@@ -359,7 +359,7 @@ function Create-AdvancedVM($rgname, $vmname, $loc, $vmsize, $stotype, $nicCount,
 
     # Virtual Machine
     $p = Set-AzureRmVMBootDiagnostics -VM $p -Disable
-    New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
+    $v = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
     $vm = Get-AzureRmVM -ResourceGroupName $rgname -VMName $vmname
     return $vm

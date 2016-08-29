@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.RetryPolicies;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Sync.Download
 {
@@ -44,10 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
             this.container.FetchAttributes();
             this.pageBlob = this.container.GetPageBlobReference(blobUri.BlobName);
             this.blobRequestOptions = new BlobRequestOptions
-                                          {
-                                              ServerTimeout = TimeSpan.FromMinutes(5),
-                                              RetryPolicy = new LinearRetry(TimeSpan.FromMinutes(1), 3)
-                                          };
+            {
+                ServerTimeout = TimeSpan.FromMinutes(5),
+                RetryPolicy = new LinearRetry(TimeSpan.FromMinutes(1), 3)
+            };
             this.pageBlob.FetchAttributes(new AccessCondition(), blobRequestOptions);
         }
 
@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
 
         public IEnumerable<IndexRange> GetEmptyRanges()
         {
-            var blobRange = new List<IndexRange> {IndexRange.FromLength(0, this.Length)};
+            var blobRange = new List<IndexRange> { IndexRange.FromLength(0, this.Length) };
             return IndexRange.SubstractRanges(blobRange, GetPageRanges());
         }
 
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
         {
             pageBlob.FetchAttributes(new AccessCondition(), blobRequestOptions);
             IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges(null, null, new AccessCondition(), blobRequestOptions);
-            pageRanges.OrderBy(range => range.StartOffset);
+            pageRanges = pageRanges.OrderBy(range => range.StartOffset);
             return pageRanges.Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
         }
 

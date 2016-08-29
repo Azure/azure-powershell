@@ -83,10 +83,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 TestContext.WriteLine(format, args);
             }
-            else
-            {
-                Console.WriteLine(format, args);
-            }
         }
     }
 }

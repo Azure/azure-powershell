@@ -12,16 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Extensibility;
-using Microsoft.ApplicationInsights.DataContracts;
-using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -122,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
         private void LogExceptionEvent(AzurePSQoSEvent qos)
         {
-            if(qos == null || qos.Exception == null)
+            if (qos == null || qos.Exception == null)
             {
                 return;
             }

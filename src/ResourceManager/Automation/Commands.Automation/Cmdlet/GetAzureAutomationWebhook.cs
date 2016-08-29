@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook name.")]
         public string RunbookName { get; set; }
-     
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 {
                     webhooks = this.AutomationClient.ListWebhooks(this.ResourceGroupName, this.AutomationAccountName, null, ref nextLink);
                     this.GenerateCmdletOutput(webhooks);
-                } 
+                }
                 while (!string.IsNullOrEmpty(nextLink));
-                
+
             }
             else if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
             {

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            var result =  new PSAzureProfile
+            var result = new PSAzureProfile
             {
                 Context = profile.Context
             };
@@ -47,23 +47,23 @@ namespace Microsoft.Azure.Commands.Profile.Models
             return result;
         }
 
-       /// <summary>
-       /// Convert between implementations of AzureProfile.
-       /// </summary>
-       /// <param name="profile">The profile to convert.</param>
-       /// <returns>The converted profile.</returns>
-       public static implicit operator AzureRMProfile(PSAzureProfile profile)
+        /// <summary>
+        /// Convert between implementations of AzureProfile.
+        /// </summary>
+        /// <param name="profile">The profile to convert.</param>
+        /// <returns>The converted profile.</returns>
+        public static implicit operator AzureRMProfile(PSAzureProfile profile)
         {
-           if (profile == null)
-           {
-               return null;
-           }
+            if (profile == null)
+            {
+                return null;
+            }
 
             var result = new AzureRMProfile
             {
                 Context = profile.Context
             };
-            profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment) e.Value);
+            profile.Environments.ForEach((e) => result.Environments[e.Key] = (AzureEnvironment)e.Value);
             return result;
         }
 
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override string ToString()
         {
-            return Context!= null? Context.ToString() : null;
+            return Context != null ? Context.ToString() : null;
         }
     }
 }

@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Insights.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         {
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
-            var dictionary = this.Properties == null 
+            var dictionary = this.Properties == null
                 ? new Dictionary<string, string>()
                 : this.Properties.Keys.Cast<object>().ToDictionary(key => (string)key, key => (string)this.Properties[key]);
 

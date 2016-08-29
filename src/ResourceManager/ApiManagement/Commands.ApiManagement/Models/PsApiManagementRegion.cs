@@ -14,10 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using System;
-    using System.Linq;
     using AutoMapper;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using System;
+    using System.Linq;
 
     public class PsApiManagementRegion
     {

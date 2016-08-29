@@ -14,9 +14,8 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PSVirtualNetwork : PSTopLevelResource
     {
@@ -25,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSDhcpOptions DhcpOptions { get; set; }
 
         public List<PSSubnet> Subnets { get; set; }
+
+        public List<PSVirtualNetworkPeering> VirtualNetworkPeerings { get; set; }
 
         public string ProvisioningState { get; set; }
 
@@ -44,6 +45,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SubnetsText
         {
             get { return JsonConvert.SerializeObject(Subnets, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VirtualNetworkPeeringsText
+        {
+            get { return JsonConvert.SerializeObject(VirtualNetworkPeerings, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

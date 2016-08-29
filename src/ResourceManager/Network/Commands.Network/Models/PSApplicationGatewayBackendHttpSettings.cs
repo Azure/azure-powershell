@@ -13,16 +13,19 @@
 // limitations under the License.
 //
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
     public class PSApplicationGatewayBackendHttpSettings : PSChildResource
-     {
+    {
         public int Port { get; set; }
         public string Protocol { get; set; }
         public string CookieBasedAffinity { get; set; }
         public uint RequestTimeout { get; set; }
         public PSResourceId Probe { get; set; }
+        public List<PSResourceId> AuthenticationCertificates { get; set; }
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -30,5 +33,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(Probe, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
-     }
+
+        [JsonIgnore]
+        public string AuthenticationCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(AuthenticationCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+    }
 }

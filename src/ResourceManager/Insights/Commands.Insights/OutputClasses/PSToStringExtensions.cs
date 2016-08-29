@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Hyak.Common;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             return output.ToString();
         }
 
-        
+
         /// <summary>
         /// A string representation of the RuleMetricDataSource including indentation
         /// </summary>
@@ -196,8 +195,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("Default : " + scaleCapacity.Default);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Minimum : " + scaleCapacity.Maximum);
-                output.AddSpacesInFront(indentationTabs).Append("Maximum : " + scaleCapacity.Minimum);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Minimum : " + scaleCapacity.Minimum);
+                output.AddSpacesInFront(indentationTabs).Append("Maximum : " + scaleCapacity.Maximum);
             }
 
             return output.ToString();

@@ -16,11 +16,17 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using Microsoft.Azure.Test;
+    using ServiceManagemenet.Common.Models;
     using Xunit;
-    
+    using Xunit.Abstractions;
+
     public class RedisCacheTests : RMTestBase
     {
+        public RedisCacheTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCache()
@@ -75,6 +81,34 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         public void TestRemoveAzureRedisCacheDiagnostics()
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-RemoveAzureRedisCacheDiagnostics");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResetAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ResetAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ExportAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestImportAzureRmRedisCache()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-ImportAzureRmRedisCache");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRedisCachePatchSchedules()
+        {
+            RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCachePatchSchedules");
         }
     }
 }

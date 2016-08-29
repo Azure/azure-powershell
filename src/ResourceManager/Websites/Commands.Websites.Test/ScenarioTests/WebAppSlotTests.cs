@@ -13,14 +13,21 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppSlotTests : RMTestBase
     {
+        public WebAppSlotTests(ITestOutputHelper output)
+        {
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSlot()
@@ -42,7 +49,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
         }
 
-        [Fact(Skip= "Needs investigation. Fails running playback")]
+        [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlotMetrics()
         {
@@ -82,6 +89,34 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestSetWebAppSlot()
         {
             WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSlotSlotConfigName()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppRegularSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppSwapWithPreviewResetSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewResetSlotSwap");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestWebAppSwapWithPreviewCompleteSlotSwap()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewCompleteSlotSwap");
         }
     }
 }

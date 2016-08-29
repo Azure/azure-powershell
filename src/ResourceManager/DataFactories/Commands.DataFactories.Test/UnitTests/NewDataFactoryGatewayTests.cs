@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Net;
-using System.Net.Http;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataFactories;
 using Microsoft.Azure.Commands.DataFactories.Models;
 using Microsoft.Azure.Commands.DataFactories.Test;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
+using System.Management.Automation;
+using System.Net;
+using System.Net.Http;
 using Xunit;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 {
@@ -31,8 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
     {
         private NewAzureDataFactoryGatewayCommand _cmdlet;
 
-        public NewAzureDataFactoryGatewayTests()
+        public NewAzureDataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             base.SetupTest();
 
             _cmdlet = new NewAzureDataFactoryGatewayCommand
@@ -95,9 +96,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Gateway
 
             _cmdlet.Name = GatewayName;
             _cmdlet.DataFactoryName = DataFactoryName;
-            
+
             Assert.Throws<PSInvalidOperationException>(() => _cmdlet.ExecuteCmdlet());
-            
+
             dataFactoriesClientMock.Verify(f => f.CreateOrUpdateGateway(ResourceGroupName, DataFactoryName, It.IsAny<PSDataFactoryGateway>()),
                                            Times.Never());
         }
