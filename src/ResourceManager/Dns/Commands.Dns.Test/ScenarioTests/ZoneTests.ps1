@@ -316,7 +316,7 @@ function Test-ZoneListWithEndsWith
 .SYNOPSIS
 Add and Remove RecordSet from Zone and test NumberOfRecordSets
 #>
-function Test-AddRemoveRecordFromZone
+function Test-AddRemoveRecordSet
 {
 	$zoneName = Get-RandomZoneName
 	$recordName = getAssetname
@@ -327,7 +327,7 @@ function Test-AddRemoveRecordFromZone
 	$updatedZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
 	Assert-AreEqual 3 $updatedZone.NumberOfRecordSets
 
-	$removeRecord = $updatedZone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType A | Remove-AzureRmDnsRecordSet -Name $recordName -RecordType A -PassThru -Force
+	$removeRecord = $updatedZone | Get-AzureRmDnsRecordSet -Name $recordName -RecordType A | Remove-AzureRmDnsRecordSet -Name $recordName -RecordType A -PassThru -Confirm:$false
 	$finalZone = Get-AzureRmDnsZone -ResourceGroupName $resourceGroup.ResourceGroupName -Name $zoneName
 	Assert-AreEqual 2 $finalZone.NumberOfRecordSets
 
