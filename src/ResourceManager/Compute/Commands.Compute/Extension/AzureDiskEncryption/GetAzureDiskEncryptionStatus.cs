@@ -162,7 +162,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 if (returnSubstatusMessage)
                 {
-                    return context.SubStatuses[0].Message;
+                    if(context.SubStatuses != null)
+                    {
+                        return context.SubStatuses[0].Message;
+                    }
+                    else
+                    {
+                        throw new KeyNotFoundException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension substatus"));
+                    }
                 }
 
                 return context.Statuses[0].Message;
@@ -367,13 +374,25 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             this.Name,
                             parameters).GetAwaiter().GetResult();
 
-                        string encryptionStatusJson = GetExtensionStatusMessage(osType, returnSubstatusMessage: true);
-                        Dictionary<string, string> encryptionStatusParsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(encryptionStatusJson);
+                        Dictionary<string, string> encryptionStatusParsed = null;
+                        try
+                        {
+                            string encryptionStatusJson = GetExtensionStatusMessage(osType, returnSubstatusMessage: true);
+                            encryptionStatusParsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(encryptionStatusJson);
+                        }
+                        catch(KeyNotFoundException)
+                        {
+                            encryptionStatusParsed = new Dictionary<string, string>()
+                            {
+                                { AzureDiskEncryptionExtensionConstants.encryptionResultOsKey, EncryptionStatus.Unknown.ToString() },
+                                { AzureDiskEncryptionExtensionConstants.encryptionResultDataKey, EncryptionStatus.Unknown.ToString() }
+                            };
+                        }
 
                         encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
-                            OsVolumeEncrypted = (EncryptionStatus) Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed["os"]),
-                            DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed["data"]),
+                            OsVolumeEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultOsKey]),
+                            DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultDataKey]),
                             OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
                             ProgressMessage = GetExtensionStatusMessage(osType)
                         };
