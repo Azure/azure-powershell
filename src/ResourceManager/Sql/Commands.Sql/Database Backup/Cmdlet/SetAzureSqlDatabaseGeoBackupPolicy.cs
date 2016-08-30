@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseGeoBackupPolicy",
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
     {
         /// <summary>
