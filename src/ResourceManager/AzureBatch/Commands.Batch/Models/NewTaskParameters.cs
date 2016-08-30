@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public TaskDependencies DependsOn { get; set; }
 
         /// <summary>
-        /// A list of individual task exit codes and how the Batch service should respond to them.
+        /// How the Batch service should respond when the task completes.
         /// </summary>
         public PSExitConditions ExitConditions { get; set; }
     }

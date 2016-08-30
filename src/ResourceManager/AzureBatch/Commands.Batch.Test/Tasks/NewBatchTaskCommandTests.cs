@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using JobAction = Microsoft.Azure.Batch.Common.JobAction;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
@@ -73,6 +74,53 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskWithExitConditions()
+        {
+            // Setup cmdlet without the required parameters
+            string ApplicationId = "foo";
+            string ApplicationVersion = "beta";
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.JobId = "job-1";
+            cmdlet.Id = "testTask";
+
+            PSExitOptions none = new PSExitOptions() { JobAction = JobAction.None };
+            PSExitOptions terminate = new PSExitOptions() { JobAction = JobAction.Terminate };
+
+            cmdlet.ExitConditions = new PSExitConditions()
+            {
+                Default = none,
+                ExitCodeRanges = new []
+                {
+                    new PSExitCodeRangeMapping(2, 5, none),
+                },
+                ExitCodes = new[] { new PSExitCodeMapping(4, terminate) },
+                SchedulingError = terminate
+            };
+
+            // Don't go to the service on an Add CloudTask call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskAddParameter,
+                ProxyModels.TaskAddOptions,
+                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(none, cmdlet.ExitConditions.Default);
+            Assert.Equal(terminate, cmdlet.ExitConditions.SchedulingError);
+            Assert.Equal(2, cmdlet.ExitConditions.ExitCodeRanges.First().Start);
+            Assert.Equal(5, cmdlet.ExitConditions.ExitCodeRanges.First().End);
+            Assert.Equal(4, cmdlet.ExitConditions.ExitCodes.First().Code);
+            Assert.Equal(terminate.JobAction, cmdlet.ExitConditions.ExitCodes.First().ExitOptions.JobAction);
+        }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

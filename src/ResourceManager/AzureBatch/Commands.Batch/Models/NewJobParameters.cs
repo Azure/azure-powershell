@@ -13,11 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-using Microsoft.Azure.Batch.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public bool? UsesTaskDependencies { get; set; }
 
         /// <summary>
-        /// The action the Batch service should take when any task in the job fails. A task is considered to have failed if it completes with a non-zero exit code and has exhausted its retry count, or if it had a scheduling error.",
+        /// The action the Batch service should take when any task in the job fails. A task is considered to have failed if it completes with a non-zero exit code and has exhausted its retry count, or if it had a scheduling error.
         /// </summary>
         public OnTaskFailure? OnTaskFailure { get; set; }
 

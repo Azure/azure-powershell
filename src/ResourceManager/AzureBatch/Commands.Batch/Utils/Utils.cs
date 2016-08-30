@@ -394,25 +394,20 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (exitConditions != null)
             {
-                exitConditions.omObject.ExitCodeRanges = CreateSyncedList(exitConditions.ExitCodeRanges,
+                exitConditions.omObject.ExitCodeRanges = CreateSyncedList(
+                    exitConditions.ExitCodeRanges,
                     (e) =>
                     {
-                        ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, ConvertExitOptions(e.ExitOptions));
-                        return exitCodeRangeMapping;
+                            ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
+                            return exitCodeRangeMapping;
                     });
-
                 exitConditions.omObject.ExitCodes = CreateSyncedList(exitConditions.ExitCodes,
                     (e) =>
                     {
-                        ExitCodeMapping exitCodeMapping = new ExitCodeMapping(e.Code, ConvertExitOptions(e.ExitOptions));
+                        ExitCodeMapping exitCodeMapping = new ExitCodeMapping(e.Code, e.omObject.ExitOptions);
                         return exitCodeMapping;
                     });
             }
-        }
-
-        private static ExitOptions ConvertExitOptions(PSExitOptions exitOptions)
-        {
-            return new ExitOptions() { JobAction = exitOptions.JobAction };
         }
     }
 }

@@ -563,6 +563,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestNewJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSpecifiesTerminateOnFailure_ItCompletesWhenAnyTaskFails.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestTerminateJobById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

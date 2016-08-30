@@ -307,14 +307,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestJobWithExitConditionsAreBeingRoundTrippedCorrectly()
-        {
-            BatchController.NewInstance.RunPsTest("Test-JobExitConditionsAreBeingRoundTrippedCorrectly");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewJobCompletesWhenAnyTaskFails()
+        public void IfJobSpecifiesTerminateOnFailure_ItCompletesWhenAnyTaskFails()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -322,20 +315,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "taskId-1";
             PSCloudJob completedJob = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-JobCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
+                () => { return new string[] { string.Format("IfJobSpecifiesTerminateOnFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
                 null,
                 () =>
                 {
                     context = new ScenarioTestContext();
                     completedJob = ScenarioTestHelpers.WaitForJobCompletion(controller, context, jobId, taskId);
-                    CheckJobIsComplete(completedJob);
+                    AssertJobIsCompleteDueToTaskFailure(completedJob);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
 
-        private void CheckJobIsComplete(PSCloudJob job)
+        private void AssertJobIsCompleteDueToTaskFailure(PSCloudJob job)
         {
             Assert.Equal(Azure.Batch.Common.JobState.Completed, job.State);
             Assert.Equal("TaskFailed", job.ExecutionInformation.TerminateReason);

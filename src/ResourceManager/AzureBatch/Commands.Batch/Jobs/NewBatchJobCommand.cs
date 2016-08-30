@@ -69,11 +69,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public OnTaskFailure OnTaskFailure { get; set; }
+        public OnTaskFailure? OnTaskFailure { get; set; }
 
         [Parameter]
         [ValidateNotNullOrEmpty]
-        public OnAllTasksComplete OnAllTasksComplete { get; set; }
+        public OnAllTasksComplete? OnAllTasksComplete { get; set; }
 
         public override void ExecuteCmdlet()
         {

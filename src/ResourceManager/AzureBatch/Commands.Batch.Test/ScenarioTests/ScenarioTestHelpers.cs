@@ -479,16 +479,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             PSCloudJob job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
-            
-            while (job.State != JobState.Completed)
+
+            DateTime timeout = DateTime.Now.AddMinutes(10);
+
+            while (job.State != JobState.Completed || DateTime.Now > timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
+
                 // Save time by not waiting during playback scenarios
-                if (HttpMockServer.Mode == HttpRecorderMode.Record)
-                {
-                    Sleep(20000);
-                }
+                Sleep(20000);
             }
+            
+
             return job;
         }
 
