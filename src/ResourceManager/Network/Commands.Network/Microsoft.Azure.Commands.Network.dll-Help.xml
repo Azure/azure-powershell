@@ -403,8 +403,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -11172,11 +11171,9 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;
-</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>This command lists all the effective network security rules associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot; </maml:para>
-				<maml:para>Note that a network interface must be created and connected to a virtual machine before this cmdlet can be run successfully.</maml:para>
+				<maml:para>This command lists all the effective network security rules associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot;</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -11333,54 +11330,12 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Get-AzureRmEffectiveRouteTable -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;
-</dev:code>
+			<dev:code>PS C:\&gt; Get-AzureRmEffectiveRouteTable -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;</dev:code>
 			<dev:remarks>
-				<maml:para>This command lists all the effective route table associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot; </maml:para>
-				<maml:para>Note that a network interface must be created and connected to a virtual machine before this cmdlet can be run successfully.</maml:para>
+				<maml:para>This command lists all the effective route table associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot;</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para>Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : VnetLocal
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : Internet
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : None
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : None
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : None
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : None
-NextHopIpAddress : {}
-
-Name             : 
-State            : Active
-AddressPrefix    : {X.X.X.X/X}
-NextHopType      : None
-NextHopIpAddress : {}</maml:para>
+				<maml:para></maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
