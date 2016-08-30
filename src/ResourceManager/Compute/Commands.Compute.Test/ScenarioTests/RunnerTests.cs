@@ -17,36 +17,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Fact]
         public void ExecuteRunnerTests()
         {
-            var mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
-            var csmAuth = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
-
-            if (mode == null || csmAuth == null || mode.ToLower() != "record")
-            {
-                return;
-            }
-
-            Assert.False(string.IsNullOrEmpty(csmAuth));
-            Assert.True(csmAuth.Contains("AADTenant"));
-
-            var envDictionary = TestUtilities.ParseConnectionString(csmAuth);
-            var testEnv = new TestEnvironment(envDictionary);
-            Assert.NotNull(testEnv.Tenant);
-            Assert.NotNull(testEnv.SubscriptionId);
-            Assert.NotNull(testEnv.ClientId);
-            Assert.True(envDictionary.ContainsKey("ApplicationSecret"));
-
-            var authenticationContext = new AuthenticationContext("https://login.windows.net/" + testEnv.Tenant);
-            var credential = new ClientCredential(testEnv.ClientId, envDictionary["ApplicationSecret"]);
-
-            var result = authenticationContext.AcquireToken("https://management.core.windows.net/", clientCredential: credential);
-
-            Assert.NotNull(result.AccessToken);
-            envDictionary["RawToken"] = result.AccessToken;
-
-            FixCSMAuthEnvVariable(envDictionary);
-
-            Console.WriteLine(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
-
             var testFile = File.ReadAllLines("ScenarioTests\\RunnerTests.csv");
             foreach (var line in testFile)
             {
