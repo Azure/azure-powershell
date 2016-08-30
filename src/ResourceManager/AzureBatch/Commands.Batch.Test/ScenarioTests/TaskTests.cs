@@ -49,28 +49,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWithApplicationPackagesCreateTask()
-        {
-            BatchController controller = BatchController.NewInstance;
-            string jobId = "CreateTaskWithAppPack";
-            BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-CreateTaskWithApplicationPackages '{0}'", jobId) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTaskCollection()
         {
             BatchController controller = BatchController.NewInstance;

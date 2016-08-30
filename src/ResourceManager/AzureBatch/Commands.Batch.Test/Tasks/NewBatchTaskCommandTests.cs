@@ -76,6 +76,40 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchTaskWithApplicationPackagesTest()
+        {
+            // Setup cmdlet without the required parameters
+            string ApplicationId = "foo";
+            string ApplicationVersion = "beta";
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            cmdlet.JobId = "job-1";
+                        cmdlet.Id = "testTask";
+
+            cmdlet.ApplicationPackageReferences = new[]
+            {
+                new PSApplicationPackageReference() { ApplicationId = "foo", Version = "beta" },
+            };
+
+            // Don't go to the service on an Add CloudTask call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.TaskAddParameter,
+                ProxyModels.TaskAddOptions,
+                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(ApplicationId, cmdlet.ApplicationPackageReferences.First().ApplicationId);
+            Assert.Equal(ApplicationVersion, cmdlet.ApplicationPackageReferences.First().Version);
+
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewBatchTaskCollectionParametersTest()
         {
             string commandLine = "cmd /c dir /s";

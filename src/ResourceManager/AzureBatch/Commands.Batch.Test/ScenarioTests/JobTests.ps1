@@ -19,11 +19,11 @@ Tests creating Batch jobs
 function Test-NewJob
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    
+
     $jobId1 = "simple"
     $jobId2 = "complex"
 
-    try 
+    try
     {
         # Create a simple job
         $poolInformation1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
@@ -149,9 +149,9 @@ function Test-NewJob
         $priority = 1
 
         New-AzureBatchJob -Id $jobId2 -DisplayName $displayName -CommonEnvironmentSettings $commonEnvSettings -Constraints $jobConstraints -JobManagerTask $jobMgr -JobPreparationTask $jobPrep -JobReleaseTask $jobRelease -PoolInformation $poolInformation2 -Metadata $metadata -Priority $priority -BatchContext $context
-        
+
         $job2 = Get-AzureBatchJob -Id $jobId2 -BatchContext $context
-        
+
         # Verify created job matches expectations
         Assert-AreEqual $jobId2 $job2.Id
         Assert-AreEqual $displayName $job2.DisplayName
@@ -224,60 +224,6 @@ function Test-NewJob
     {
         Remove-AzureBatchJob -Id $jobId1 -Force -BatchContext $context
         Remove-AzureBatchJob -Id $jobId2 -Force -BatchContext $context
-    }
-}
-
-<#
-.SYNOPSIS
-Tests creating Batch jobs
-#>
-function Test-JobManagerWithApplicationPackageReference
-{
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-
-    $jobId1 = "JobManagerWithApplicationPackageReference"
-
-    try
-    {
-        # Create a simple job
-        $poolInformation1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
-        $poolInformation1.PoolId = $poolId = "testPool"
-
-		$jobMgr = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobManagerTask
-        $jobMgr.CommandLine = $jobMgrCmd = "cmd /c dir /s"
-
-        $jobMgr.KillJobOnCompletion = $false
-        $jobMgr.Id = "jobManager"
-		$ApplicationId = "test1"
-		$ApplicationVersion = "foo"
-		$apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
-
-		$jobMgr = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobManagerTask
-        $jobMgr.CommandLine = $jobMgrCmd = "cmd /c dir /s"
-        $resourceFileCount = $jobMgr.ResourceFiles.Count
-
-        $jobMgr.Id = "jobManager"
-		$ApplicationId = "foo"
-		$ApplicationVersion = "beta"
-		$apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
-		$apr1.ApplicationId = $ApplicationId
-		$apr1.Version = $ApplicationVersion
-		$jobMgr.ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
-
-        New-AzureBatchJob -Id $jobId1 -PoolInformation $poolInformation1 -BatchContext $context -JobManagerTask $jobMgr
-        $job1 = Get-AzureBatchJob -Id $jobId1 -BatchContext $context
-
-        # Verify created job matches expectations
-        Assert-AreEqual $jobId1 $job1.Id
-        Assert-AreEqual $poolId $job1.PoolInformation.PoolId
-		Assert-AreEqual "jobManager" $job1.JobManagerTask.Id
-		Assert-AreEqual  $ApplicationId $job1.JobManagerTask.ApplicationPackageReferences[0].ApplicationId
-		Assert-AreEqual  $ApplicationVersion $job1.JobManagerTask.ApplicationPackageReferences[0].Version
-
-    }
-    finally
-    {
-        Remove-AzureBatchJob -Id $jobId1 -Force -BatchContext $context
     }
 }
 
@@ -399,7 +345,7 @@ function Test-ListJobsUnderSchedule
 
     # Verify that pipelining also works
     $scheduleJobs = $jobSchedule | Get-AzureBatchJob -BatchContext $context
-        
+
     Assert-AreEqual $count $scheduleJobs.Count
     Assert-True { $scheduleJobs.Count -lt $allJobs.Count }
 

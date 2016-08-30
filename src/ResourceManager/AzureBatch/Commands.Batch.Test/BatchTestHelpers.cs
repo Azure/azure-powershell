@@ -583,6 +583,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudJobGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> CreateCloudJobGetResponse(ProxyModels.CloudJob job)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = job
+            };
+            return response;
+        }
+
+        /// <summary>
         /// Builds a CloudJobListResponse object
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> CreateCloudJobListResponse(IEnumerable<string> jobIds)

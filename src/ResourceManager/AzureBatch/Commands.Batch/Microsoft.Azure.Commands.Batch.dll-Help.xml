@@ -7733,8 +7733,7 @@
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApplicationPackageReferences</maml:name>
 				<maml:description>
-					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.&lt;/maml:para&gt;
-</maml:para>
+					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
 			</command:parameter>

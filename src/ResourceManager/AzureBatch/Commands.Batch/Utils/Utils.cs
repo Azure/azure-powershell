@@ -166,7 +166,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                     {
                         ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
                         {
-                            ApplicationId = r.ApplicationId,Version = r.Version
+                            ApplicationId = r.ApplicationId,
+                            Version = r.Version
                         };
                         return applicationPackageReference;
                     });

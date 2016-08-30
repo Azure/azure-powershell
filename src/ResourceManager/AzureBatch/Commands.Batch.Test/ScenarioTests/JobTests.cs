@@ -34,13 +34,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestJobManagerWithApplicationPackageReference()
-        {
-            BatchController.NewInstance.RunPsTest("Test-JobManagerWithApplicationPackageReference");
-        }
-
-        [Fact]
         public void TestGetJobById()
         {
             BatchController controller = BatchController.NewInstance;
