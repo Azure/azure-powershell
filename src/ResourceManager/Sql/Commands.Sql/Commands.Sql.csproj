@@ -97,7 +97,11 @@
     <Compile Include="Auditing\Model\BaseBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\BaseTableAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\AuditingPolicyModel.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseGeoBackupPolicyCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseGeoBackupPolicy.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureSqlDatabaseGeoBackupPolicy.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupPolicyModel.cs" />
     <Compile Include="ImportExport\Cmdlet\GetAzureSqlDatabaseImportExportStatus.cs" />
     <Compile Include="ImportExport\Model\AzureSqlDatabaseImportExportStatusModel.cs" />
     <Compile Include="ImportExport\Cmdlet\ImportExportCmdletBase.cs" />
