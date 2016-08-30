@@ -161,8 +161,6 @@
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
-	<Copy SourceFiles="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll" DestinationFiles="$(LibrarySourceFolder)\Package\$(Configuration)\Microsoft.Azure.Commands.Build.Tasks.dll" />
-	<DebugTask/>
     <MSBuild
       Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
@@ -224,7 +222,7 @@
     
     <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
              Condition="'@(DelaySignedAssembliesToSign)' == ''" />
-             
+		
     <ValidateStrongNameSignatureTask
       WindowsSdkPath="$(WindowsSdkPath)"
       Assembly="%(DelaySignedAssembliesToSign.Identity)"
@@ -254,7 +252,7 @@
       SigningLogPath="$(LibraryRoot)\signing-scripts.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/> 
-
+	  
     <ValidateStrongNameSignatureTask
         WindowsSdkPath="$(WindowsSdkPath)"
         Assembly="%(DelaySignedAssembliesToSign.Identity)"
@@ -262,12 +260,12 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-	
+		
 	<VerifyAuthenticodeSignatureTask
-        Assembly="%(DelaySignedAssembliesToSign.Identity)"
-        ContinueOnError="false" 
-        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
-	
+		Assembly="%(DelaySignedAssembliesToSign.Identity)"
+		ContinueOnError="false" 
+		Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+		
     <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckStrongNameSignature.ps1 &quot;"/>
 
     <!-- Copying signed shortcut back -->
