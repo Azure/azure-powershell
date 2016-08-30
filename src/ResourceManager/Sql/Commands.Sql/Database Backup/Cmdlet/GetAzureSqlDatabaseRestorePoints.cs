@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseRestorePoints",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseRestorePoints", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
     {
