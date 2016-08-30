@@ -99,8 +99,6 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             ConfirmAction(
-                true,
-                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
                 ProjectResources.Progress_CreatingRecordSet,
                 this.Name,
                 () =>
@@ -115,8 +113,7 @@ namespace Microsoft.Azure.Commands.Dns
                     }
 
                     WriteObject(result);
-                },
-                () => Overwrite.IsPresent);
+                });
         }
     }
 }

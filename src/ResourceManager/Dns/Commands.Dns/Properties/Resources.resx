@@ -117,23 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Confirm_CreateNewZone" xml:space="preserve">
-    <value>Are you sure you want to create new zone '{0}'?</value>
-  </data>
   <data name="Confirm_OverwriteRecord" xml:space="preserve">
     <value>Are you sure you want to overwrite any existing record set '{0}' of type {1} in zone '{2}'? You will lose any existing records in that record set.</value>
-  </data>
-  <data name="Confirm_OverwriteZone" xml:space="preserve">
-    <value>Are you sure you want to overwrite the existing zone '{0}'?</value>
   </data>
   <data name="Confirm_RemoveRecordSet" xml:space="preserve">
     <value>Are you sure you want to permanently remove record set '{0}' from zone '{1}'?</value>
   </data>
   <data name="Confirm_RemoveZone" xml:space="preserve">
     <value>Are you sure you want to permanently remove zone '{0}'?</value>
-  </data>
-  <data name="Confirm_SetRecordSet" xml:space="preserve">
-    <value>Are you sure you want to make changes to record set '{0}'?</value>
   </data>
   <data name="Error_AddRecordMultipleCnames" xml:space="preserve">
     <value>There already exists a CNAME record in this set. A CNAME record set can only contain one record.</value>

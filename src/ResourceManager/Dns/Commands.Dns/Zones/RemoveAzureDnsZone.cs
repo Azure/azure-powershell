@@ -76,8 +76,6 @@ namespace Microsoft.Azure.Commands.Dns
                 }
 
                 ConfirmAction(
-                    true,
-                    string.Format(ProjectResources.Confirm_RemoveZone, zoneToDelete.Name),
                     ProjectResources.Progress_RemovingZone,
                     zoneToDelete.Name,
                 () =>
@@ -99,8 +97,7 @@ namespace Microsoft.Azure.Commands.Dns
                     {
                         WriteObject(deleted);
                     }
-                },
-                () => true);
+                });
             }
         }
     }
