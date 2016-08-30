@@ -9253,13 +9253,6 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
 				<maml:description>
 					<maml:para />
@@ -9296,13 +9289,6 @@
 					<maml:para>The fully qualified resource Id for the policy assignment</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ApiVersion</maml:name>
@@ -9355,18 +9341,6 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Do not ask for confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -9471,7 +9445,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
-Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -Force</dev:code>
+Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId</dev:code>
 			<dev:remarks>
 				<maml:para>Removes the policy assignment &#39;myPolicyAssignment&#39; assigned at the specified resource group level scope</maml:para>
 				<maml:para />
@@ -9493,7 +9467,7 @@ Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -F
 			</maml:introduction>
 			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
 $policyAssignment = Get-AzureRmPolicyAssignment -Name &apos;myAssignment&apos; -Scope $rg.ResourceId
-Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code>
+Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId</dev:code>
 			<dev:remarks>
 				<maml:para>Removes the policy assignment identified by the Id</maml:para>
 				<maml:para />
@@ -12322,13 +12296,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para />
@@ -12346,19 +12313,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -12483,13 +12437,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para />
@@ -12520,19 +12467,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -13056,7 +12990,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Stop-AzureRmResourceGroupDeployment cmdlet cancels an Azure resource group deployment that is started, but not completed. To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.An Azure resource is a user-managed entity, such as a website, database, or database server. A resource group is a collection of resources that are deployed as a unit. To deploy a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.This cmdlet stops only one running deployment. Use the Name parameter to stop a particular deployment. If you omit the Name parameter, Stop-AzureRmResourceGroupDeployment searches for a running deployment and stops it, but if it finds more than one running deployment, the command fails.By default, Stop-AzureRmResourceGroupDeployment prompts you for confirmation. To suppress the prompt, use the Force parameter.</maml:para>
+      <maml:para>The Stop-AzureRmResourceGroupDeployment cmdlet cancels an Azure resource group deployment that is started, but not completed. To stop a deployment, the deployment must have an incomplete provisioning state, such as Provisioning, and not a completed state, such as Provisioned or Failed.An Azure resource is a user-managed entity, such as a website, database, or database server. A resource group is a collection of resources that are deployed as a unit. To deploy a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. The New-AzureRmResource cmdlet creates a new resource, but it does not trigger a resource group deployment operation that this cmdlet can stop.This cmdlet stops only one running deployment. Use the Name parameter to stop a particular deployment. If you omit the Name parameter, Stop-AzureRmResourceGroupDeployment searches for a running deployment and stops it, but if it finds more than one running deployment, the command fails.</maml:para>
       <maml:para>If you find an issue with this cmdlet, please create an issue on https://github.com/Azure/azure-powershell/issues, with a lable "ResourceManager".</maml:para>
     </maml:description>
     <command:syntax>
@@ -13075,13 +13009,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
             <maml:para>Stops the specified deployment. Enter the deployment name. This parameter is optional.Without this parameter, Stop-AzureRmResourceGroupDeployment searches for a running deployment in the resource group and stops it, but if it finds more than one running deployment, the command fails.You can use -Name or its alias, -DeploymentName.To find the deployment name, use the Get-AzureRmResourceGroupDeployment cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Suppresses the confirmation prompt. By default, Stop-AzureRmResourceGroupDeployment prompts you before stopping a deployment.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
@@ -13114,19 +13041,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Suppresses the confirmation prompt. By default, Stop-AzureRmResourceGroupDeployment prompts you before stopping a deployment.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -13651,13 +13565,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para />
@@ -13675,19 +13582,6 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -14983,13 +14877,6 @@ Tags:
           <maml:para>Specifies the name of the resource group under which the deployment exists. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Do not ask for confirmation</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>

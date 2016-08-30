@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy"),
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),
             OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {

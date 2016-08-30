@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolActivity",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolActivity", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
     {

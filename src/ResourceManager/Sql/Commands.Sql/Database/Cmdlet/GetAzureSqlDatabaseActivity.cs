@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseActivity",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseActivity", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
     {

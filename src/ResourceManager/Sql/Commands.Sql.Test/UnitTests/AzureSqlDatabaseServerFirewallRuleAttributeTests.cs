@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(RemoveAzureSqlServerFirewallRule);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "FirewallRuleName", isMandatory: true, valueFromPipelineByName: true);
