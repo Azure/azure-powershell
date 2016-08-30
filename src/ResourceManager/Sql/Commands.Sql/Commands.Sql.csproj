@@ -51,6 +51,46 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlDatabaseRecommendedActions.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlElasticPoolRecommendedActions.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\GetAzureSqlServerRecommendedActions.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\RecommendedActionState.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlDatabaseRecommendedActionState.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlElasticPoolRecommendedActionState.cs" />
+    <Compile Include="RecommendedAction\Cmdlet\SetAzureSqlServerRecommendedActionState.cs" />
+    <Compile Include="RecommendedAction\Model\AzureSqlDatabaseRecommendedActionModel.cs" />
+    <Compile Include="RecommendedAction\Model\AzureSqlElasticPoolRecommendedActionModel.cs" />
+    <Compile Include="RecommendedAction\Model\AzureSqlServerRecommendedActionModel.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlRecommendedActionCommunicatorBase.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlDatabaseRecommendedActionAdapter.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlDatabaseRecommendedActionCommunicator.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlElasticPoolRecommendedActionAdapter.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlElasticPoolRecommendedActionCommunicator.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlServerRecommendedActionAdapter.cs" />
+    <Compile Include="RecommendedAction\Service\AzureSqlServerRecommendedActionCommunicator.cs" />
+    <Compile Include="Advisor\Cmdlet\AzureSqlElasticPoolAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\AzureSqlServerAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlElasticPoolAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlServerAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlElasticPoolAdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlServerAdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Advisor\Model\AzureSqlElasticPoolAdvisorModel.cs" />
+    <Compile Include="Advisor\Model\AzureSqlDatabaseAdvisorModel.cs" />
+    <Compile Include="Advisor\Cmdlet\AzureSqlDatabaseAdvisorCmdletBase.cs" />
+    <Compile Include="Advisor\Cmdlet\GetAzureSqlDatabaseAdvisors.cs" />
+    <Compile Include="Advisor\Cmdlet\SetAzureSqlDatabaseAdvisorAutoExecuteStatus.cs" />
+    <Compile Include="Advisor\Model\AzureSqlServerAdvisorModel.cs" />
+    <Compile Include="Advisor\Service\AzureSqlAdvisorCommunicatorBase.cs" />
+    <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlServerAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorAdapter.cs" />
+    <Compile Include="Advisor\Service\AzureSqlElasticPoolAdvisorCommunicator.cs" />
+    <Compile Include="Advisor\Service\AzureSqlServerAdvisorCommunicator.cs" />
+    <Compile Include="Advisor\Service\AzureSqlDatabaseAdvisorCommunicator.cs" />
     <Compile Include="Auditing\Cmdlet\AuditType.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingPolicyModel.cs" />
@@ -83,6 +123,10 @@
     <Compile Include="Database Backup\Model\AzureSqlServerBackupLongTermRetentionVaultModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDeletedDatabaseBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseGeoBackupModel.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
+    <Compile Include="ThreatDetection\Cmdlet\SqlServerThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SqlDatabaseThreatDetectionCmdletBase.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlDatabaseThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlDatabaseThreatDetection.cs" />
@@ -126,6 +170,7 @@
     <Compile Include="Auditing\Cmdlet\SqlDatabaseServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
+    <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />
     <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
@@ -321,7 +366,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.48.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.50.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
