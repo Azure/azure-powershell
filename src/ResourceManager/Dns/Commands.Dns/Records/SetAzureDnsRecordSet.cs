@@ -46,8 +46,6 @@ namespace Microsoft.Azure.Commands.Dns
                     }
 
             ConfirmAction(
-                true,
-                string.Format(ProjectResources.Confirm_SetRecordSet, recordSetToUpdate.Name),
                 ProjectResources.Progress_Modifying,
                 recordSetToUpdate.Name,
             () =>
@@ -57,8 +55,7 @@ namespace Microsoft.Azure.Commands.Dns
                 WriteVerbose(ProjectResources.Success);
 
                 WriteObject(result);
-            },
-            () => true);
+            });
             }
     }
     }

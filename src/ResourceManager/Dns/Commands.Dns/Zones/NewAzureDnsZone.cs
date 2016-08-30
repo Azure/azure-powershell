@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Commands.Dns
             }
 
             ConfirmAction(
-                true,
-                string.Format(ProjectResources.Confirm_CreateNewZone, this.Name),
                 ProjectResources.Progress_CreatingNewZone,
                 this.Name,
             () =>
@@ -58,8 +56,7 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteVerbose(ProjectResources.Success);
                 this.WriteVerbose(string.Format(ProjectResources.Success_NewZone, this.Name, this.ResourceGroupName));
                 this.WriteObject(result);
-            },
-            () => true);
+            });
         }
     }
 }

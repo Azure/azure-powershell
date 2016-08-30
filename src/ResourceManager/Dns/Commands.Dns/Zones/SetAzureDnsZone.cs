@@ -77,20 +77,16 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneToUpdate.Name));
             }
             ConfirmAction(
-                true,
-                string.Format(ProjectResources.Confirm_OverwriteZone, zoneToUpdate.Name),
                 ProjectResources.Progress_Modifying,
                 zoneToUpdate.Name,
                 () =>
                 {
-
                     bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
                     result = this.DnsClient.UpdateDnsZone(zoneToUpdate, overwrite);
 
                     WriteVerbose(ProjectResources.Success);
                     WriteObject(result);
-                },
-                () => this.Overwrite.IsPresent);
+                });
         }
     }
 }

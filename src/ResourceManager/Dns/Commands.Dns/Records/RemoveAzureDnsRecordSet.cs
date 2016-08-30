@@ -116,8 +116,6 @@ namespace Microsoft.Azure.Commands.Dns
             bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
 
             ConfirmAction(
-                true,
-                string.Format(ProjectResources.Confirm_RemoveRecordSet, recordSetToDelete.Name, recordSetToDelete.ZoneName),
                 ProjectResources.Progress_RemovingRecordSet,
                 this.Name,
                 () =>
@@ -133,8 +131,7 @@ namespace Microsoft.Azure.Commands.Dns
                     {
                         WriteObject(deleted);
                     }
-                },
-                () => true);
+                });
         }
     }
 }
