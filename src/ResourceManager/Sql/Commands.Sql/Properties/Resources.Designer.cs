@@ -502,6 +502,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        internal static string SetAdvisorAutoExecuteStatusDescription {
+            get {
+                return ResourceManager.GetString("SetAdvisorAutoExecuteStatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;?.
+        /// </summary>
+        internal static string SetAdvisorAutoExecuteStatusWarning {
+            get {
+                return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for the column does not exist.
         /// </summary>
         internal static string SetDataMaskingRuleIdDoesNotExistError {
@@ -516,6 +534,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating state of recommended action &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        internal static string SetRecommendedActionStateDescription {
+            get {
+                return ResourceManager.GetString("SetRecommendedActionStateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update state of the recommended action &apos;{0}&apos; to &apos;{1}&apos;.
+        /// </summary>
+        internal static string SetRecommendedActionStateWarning {
+            get {
+                return ResourceManager.GetString("SetRecommendedActionStateWarning", resourceCulture);
             }
         }
         
