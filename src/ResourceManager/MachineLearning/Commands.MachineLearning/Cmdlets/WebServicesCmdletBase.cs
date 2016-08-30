@@ -71,9 +71,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void BeginProcessing()
         {
-            var versionInfo = typeof(WebServicesCmdletBase).Assembly.GetName().Version;
-            this.WriteVerbose(Resources.VersionInfo.FormatInvariant(versionInfo.ToString(3)));
-
             try
             {
                 if (this.cancellationSource == null)
@@ -85,6 +82,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToVerboseChannel();
                 if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(
@@ -108,6 +106,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToVerboseChannel();
                 if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(
@@ -141,6 +140,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToVerboseChannel();
                 if (this.IsFatalException(ex))
                 {
                     throw;
@@ -172,6 +172,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+               this.WriteVersionInfoToVerboseChannel();
+
                 if (this.IsFatalException(ex))
                 {
                     throw;
@@ -332,5 +334,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 ex is SEHException;
         }
 
+        private void WriteVersionInfoToVerboseChannel()
+        {
+            var versionInfo = typeof(WebServicesCmdletBase).Assembly.GetName().Version;
+            this.WriteVerbose(Resources.VersionInfo.FormatInvariant(versionInfo.ToString(3)));
+        }
     }
 }

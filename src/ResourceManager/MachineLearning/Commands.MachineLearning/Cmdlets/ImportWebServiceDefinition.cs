@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JsonString { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void RunCmdlet()
         {
             string jsonDefinition = this.JsonString;
             if (string.Equals(

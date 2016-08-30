@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
             HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void RunCmdlet()
         {
             string serializedDefinition = 
                 ModelsSerializationUtil.GetAzureMLWebServiceDefinitionJsonFromObject(this.WebService);
