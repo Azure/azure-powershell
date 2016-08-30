@@ -17,9 +17,9 @@ It can be difficult to follow the changes in a pull request when the number of c
 
 ### Rebasing
 
-Sometimes a pull request can be based on a much earlier commit in the branch that you are trying to merge into it, causing a large amount of commits and file changes to litter the pull request. In this case, it would be better to **rebase** (move branches around by changing the commit that they are based on). After rebasing, you will want to close the pull request and open a new one, which will now have less commits.
+Sometimes a pull request can be based on a much earlier commit in the branch that you are trying to merge into it, causing a large amount of commits and file changes to litter the pull request. In this case, it would be better to **rebase** (move branches around by changing the commit that they are based on). After rebasing, you will want to close the pull request and open a new one, which will now have fewer commits.
 
-For example, if you're working off of the branch **feature** and are trying to rebase with **master**, you may run one of the following commands:
+For example, if you're working from the branch **feature** and are trying to rebase with **master**, you may run one of the following commands:
 > `git rebase master`
 > `git rebase master feature`
 
