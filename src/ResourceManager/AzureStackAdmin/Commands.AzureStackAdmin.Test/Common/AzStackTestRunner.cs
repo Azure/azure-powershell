@@ -81,12 +81,6 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
             modules = new List<string>();
             bool aadEnvironement = Convert.ToBoolean(ReadAppSettings("AadEnvironment"), CultureInfo.InvariantCulture);
 
-            string azStackAdminModulePath = Path.Combine(
-                this.helper.PackageDirectory,
-                @"ResourceManager\AzureResourceManager\AzureRM.AzureStackAdmin\AzureRM.AzureStackAdmin.psd1");
-
-            // The modules are deployed to the test run directory with the test settings file
-            modules.Add(azStackAdminModulePath);
             modules.Add(@"AssertResources.psm1");
             modules.Add(@"GlobalVariables.psm1");
             modules.Add(@"AuthOperations.psm1");
@@ -184,6 +178,7 @@ namespace Microsoft.AzureStack.Commands.Admin.Test.Common
                 modules.Add(callingClassName + ".ps1");
                 modules.Add(helper.RMProfileModule);
                 modules.Add(helper.RMResourceModule);
+                modules.Add(helper.GetRMModulePath("AzureRM.AzurestackAdmin.psd1"));
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
 
                 try
