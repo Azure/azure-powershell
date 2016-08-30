@@ -84,7 +84,7 @@
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\NotificationHubs\Commands.NotificationHubs.Test\bin\Debug\Microsoft.Azure.Commands.NotificationHubs.Test.dll"/>
       <XUnitTests Include=".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll"/>
-	  <XUnitTests Include=".\src\ResourceManager\AzureStackStorage\Commands.AzureStackStorage.Tests\bin\Debug\Microsoft.AzureStack.Commands.StorageAdmin.Test.dll"/> 
+	  <XUnitTests Include=".\src\ResourceManager\AzureStackStorage\Commands.AzureStackStorage.Tests\bin\Debug\Microsoft.AzureStack.Commands.StorageAdmin.Test.dll"/>
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
