@@ -162,13 +162,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 if (returnSubstatusMessage)
                 {
-                    if(context.SubStatuses != null)
+                    if((context == null) ||
+                       (context.SubStatuses == null) ||
+                       (context.SubStatuses.Count < 1))
                     {
-                        return context.SubStatuses[0].Message;
+                        throw new KeyNotFoundException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension substatus"));
                     }
                     else
                     {
-                        throw new KeyNotFoundException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension substatus"));
+                        return context.SubStatuses[0].Message;
                     }
                 }
 
