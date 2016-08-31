@@ -265,5 +265,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
                 subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
+
+        public void ReactiveTask(BatchAccountContext batchContext, PSCloudTask task, IEnumerable<BatchClientBehavior> additionalBehaviors)
+        {
+            WriteVerbose(string.Format(Resources.TerminateTask, task.Id));
+        }
     }
 }
