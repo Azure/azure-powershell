@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(item.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, item.Id);
-            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
+
+            string containerName = IdUtils.GetNameFromUri(containerUri);
+            string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
             List<RecoveryPointBase> result = new List<RecoveryPointBase>();
             foreach (ServiceClientModel.RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
@@ -61,7 +64,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         RecoveryPointId = rp.Name,
                         BackupManagementType = item.BackupManagementType,
                         ItemName = protectedItemName,
-                        ContainerName = containerUri,
+                        ContainerName = containerName,
                         ContainerType = item.ContainerType,
                         RecoveryPointTime = recPointTime,
                         RecoveryPointType = recPoint.RecoveryPointType,
@@ -74,19 +77,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                             recPoint.IsSourceVMEncrypted.Value : false,
                         IlrSessionActive = recPoint.IsInstantILRSessionActive,
                     };
-
-                    if (rpBase.EncryptionEnabled)
-                    {
-                        rpBase.KeyAndSecretDetails = new KeyAndSecretDetails()
-                        {
-                            SecretUrl = recPoint.KeyAndSecret.BekDetails.SecretUrl,
-                            KeyUrl = recPoint.KeyAndSecret.KekDetails.KeyUrl,
-                            SecretData = recPoint.KeyAndSecret.BekDetails.SecretData,
-                            KeyBackupData = recPoint.KeyAndSecret.KekDetails.KeyBackupData,
-                            KeyVaultId = recPoint.KeyAndSecret.KekDetails.KeyVaultId,
-                            SecretVaultId = recPoint.KeyAndSecret.BekDetails.SecretVaultId,
-                        };
-                    }
 
                     result.Add(rpBase);
                 }
@@ -169,9 +159,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                         recPoint.IsSourceVMEncrypted.Value : false,
                     IlrSessionActive = recPoint.IsInstantILRSessionActive,
+                    SourceResourceId = item.SourceResourceId,
+                    SourceVMStorageType = recPoint.SourceVMStorageType,
                 };
 
-                if (vmResult.EncryptionEnabled)
+                if (vmResult.EncryptionEnabled && recPoint.KeyAndSecret != null)
                 {
                     vmResult.KeyAndSecretDetails = new KeyAndSecretDetails()
                     {
