@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.WindowsAzure.Commands.Common;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>

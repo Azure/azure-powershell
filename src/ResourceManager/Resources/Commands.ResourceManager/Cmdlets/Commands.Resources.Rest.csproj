@@ -103,11 +103,9 @@
     <Compile Include="Components\HttpMethodExt.cs" />
     <Compile Include="Components\HttpStatusCodeExt.cs" />
     <Compile Include="Components\OperationResult.cs" />
-    <Compile Include="Components\PaginatedResponseHelper.cs" />
     <Compile Include="Components\QueryFilterBuilder.cs" />
     <Compile Include="Components\ResourceIdUtility.cs" />
     <Compile Include="Components\ResourceManagerClientHelper.cs" />
-    <Compile Include="Components\ResponseWithContinuation.cs" />
     <Compile Include="Components\TagsHelper.cs" />
     <Compile Include="Entities\Authorization\Permission.cs" />
     <Compile Include="Entities\ErrorResponses\ErrorResponseMessage.cs" />

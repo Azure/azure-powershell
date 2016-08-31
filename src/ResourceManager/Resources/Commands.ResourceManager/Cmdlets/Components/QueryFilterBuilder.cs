@@ -14,10 +14,11 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Linq;
     using System.Text;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// A class that builds query filters.
