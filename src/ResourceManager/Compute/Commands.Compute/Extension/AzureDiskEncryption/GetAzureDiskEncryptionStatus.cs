@@ -154,10 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     (context.Statuses.Count < 1) ||
                     (string.IsNullOrWhiteSpace(context.Statuses[0].Message)))
                 {
-                    ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status")),
-                                                          "InvalidResult",
-                                                          ErrorCategory.InvalidResult,
-                                                          null));
+                    throw new KeyNotFoundException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status"));
                 }
 
                 if (returnSubstatusMessage)
@@ -351,17 +348,27 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 DiskEncryptionSettings osVolumeEncryptionSettings = GetOsVolumeEncryptionSettings(vmParameters);
                 EncryptionStatus dataVolumesEncrypted = AreDataVolumesEncrypted(vmParameters);
                 AzureDiskEncryptionStatusContext encryptionStatus = null;
+                string progressMessage = null;
 
                 OSType osType = GetOSType(vmParameters);
                 switch (osType)
                 {
                     case OSType.Windows:
+                        try
+                        {
+                            progressMessage = GetExtensionStatusMessage(osType);
+                        }
+                        catch(KeyNotFoundException)
+                        {
+                            progressMessage = string.Format(CultureInfo.CurrentUICulture, "Extension status not available on the VM");
+                        }
+                        
                         encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
                             DataVolumesEncrypted = dataVolumesEncrypted,
                             OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
-                            ProgressMessage = GetExtensionStatusMessage(osType)
+                            ProgressMessage = progressMessage
                         };
                         WriteObject(encryptionStatus);
                         break;
@@ -391,12 +398,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             };
                         }
 
+                        try
+                        {
+                            progressMessage = GetExtensionStatusMessage(osType);
+                        }
+                        catch(KeyNotFoundException)
+                        {
+                            progressMessage = string.Format(CultureInfo.CurrentUICulture, "Extension status not available on the VM");
+                        }
+
                         encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
                             OsVolumeEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultOsKey]),
                             DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultDataKey]),
                             OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
-                            ProgressMessage = GetExtensionStatusMessage(osType)
+                            ProgressMessage = progressMessage
                         };
                         WriteObject(encryptionStatus);
                         break;
