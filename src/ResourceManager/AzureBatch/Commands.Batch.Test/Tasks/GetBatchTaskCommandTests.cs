@@ -271,7 +271,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetBatchTaskWithExitConditions()
         {
-            // Setup cmdlet to get a Job by name
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Id = "task-1";
@@ -305,7 +304,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the job returned from the OM to the pipeline
+            // Verify that the cmdlet wrote the task returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
             PSExitConditions psExitConditions = pipeline[0].ExitConditions;
