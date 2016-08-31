@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
         internal static Task<string> DetermineApiVersion(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null, Dictionary<string, string> cmdletHeaderValues = null)
         {
-            var cacheKey = ApiVersionCache.GetCacheKey(providerNamespace: providerNamespace, resourceType: resourceType);
+            var cacheKey = ApiVersionCache.GetCacheKey(context.Environment.Name, providerNamespace: providerNamespace, resourceType: resourceType);
             var apiVersions = ApiVersionCache.Instance
                 .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => ApiVersionHelper.GetApiVersionsForResourceType(
                     context,
@@ -206,11 +206,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <summary>
             /// Gets the cache key.
             /// </summary>
+            /// <param name="environmentName">The environment name.</param>
             /// <param name="providerNamespace">The provider namespace.</param>
             /// <param name="resourceType">The resource type.</param>
-            internal static string GetCacheKey(string providerNamespace, string resourceType)
+            internal static string GetCacheKey(string environmentName, string providerNamespace, string resourceType)
             {
-                return string.Format("{0}/{1}", providerNamespace.CoalesceString(), resourceType.CoalesceString()).ToUpperInvariant();
+                return string.Format("{0}/{1}/{2}", environmentName.CoalesceEnumerable(), providerNamespace.CoalesceString(), resourceType.CoalesceString()).ToUpperInvariant();
             }
         }
     }
