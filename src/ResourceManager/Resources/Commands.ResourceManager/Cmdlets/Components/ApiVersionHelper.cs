@@ -12,12 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
-    using Entities.Providers;
-    using Extensions;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -25,6 +21,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Runtime.Caching;
     using System.Threading;
     using System.Threading.Tasks;
+
+    using Entities.Providers;
+    using Extensions;
+    using Microsoft.Azure.Commands.Common.Authentication.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Helper class for determining the API version
@@ -108,7 +109,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 ? "/providers"
                 : string.Format("/subscriptions/{0}/providers", defaultSubscription.Id);
 
-            var providers = PaginatedResponseHelper.Enumerate(
+            ResourceProviderDefinition[] providers = PaginatedResponseHelper.Enumerate(
                 getFirstPage: () => resourceManagerClient
                     .ListObjectColleciton<ResourceProviderDefinition>(
                         resourceCollectionId: resourceCollectionId,

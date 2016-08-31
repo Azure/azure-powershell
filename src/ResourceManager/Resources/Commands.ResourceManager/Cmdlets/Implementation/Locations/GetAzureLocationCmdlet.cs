@@ -14,19 +14,20 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-    using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// Get all locations with the supported providers.
     /// </summary>
-     [Cmdlet(VerbsCommon.Get, "AzureRmLocation"), OutputType(typeof(List<PSResourceProviderLocation>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLocation"), OutputType(typeof(List<PSResourceProviderLocation>))]
     public class GetAzureLocationCmdlet: ResourceManagerCmdletBase
     {
         /// <summary>

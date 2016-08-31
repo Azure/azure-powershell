@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
+namespace Microsoft.WindowsAzure.Commands.Common
 {
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -89,6 +89,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             }
 
             return result.ToArray();
+        }
+
+        /// <summary>
+        /// Coalesces the enumerable.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <param name="source">The source.</param>
+        public static IEnumerable<TSource> CoalesceEnumerable<TSource>(this IEnumerable<TSource> source)
+        {
+            return source ?? Enumerable.Empty<TSource>();
         }
     }
 }
