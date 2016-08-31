@@ -1,0 +1,225 @@
+# PlatyPS Help
+
+- [Description](#description)
+- [How it Works](#how-it-works)
+    - [Creating markdown](#creating-markdown)
+    - [Updating markdown](#updating-markdown)
+    - [Updating MAML](#updating-maml)
+    - [Previewing MAML](#previewing-maml)
+- [Getting Started](#getting-started)
+    - [Running the GenerateHelp.ps1 script](#running-the-generatehelpps1-script)
+    - [Steps for creating help](#steps-for-creating-help)
+- [Changes to Cmdlets](#changes-to-cmdlets)
+- [Markdown Format](#markdown-format)
+- [Validating Help](#validating-help)
+
+## Description
+
+PlatyPS is used to create PowerShell external help in markdown rather than MAML. Where as MAML can be difficult to edit by hand or read, markdown is designed to be human-readable and easy to edit. This will allow service teams to quickly and easily edit any help documentation they have for their cmdlets.
+
+Install (and read more about) platyPS from the README, located [here](https://github.com/PowerShell/platyPS/blob/master/README.md).
+
+## How it Works
+
+### Creating markdown
+
+Using the `New-MarkdownHelp` cmdlet, platyPS generates a markdown file for each cmdlet in a MAML file and/or module, depending on the parameters of the call.
+
+For instance, if the following command is called
+```powershell
+New-MarkdownHelp -OutputFolder $output -MamlFile $maml
+```
+then the markdown files will be generated from the information in the MAML file.
+
+However, if the following command is called
+```powershell
+New-MarkdownHelp -OutputFolder $output -Module $module -WithModulePage
+```
+then the markdown files will be generated from the information in the MAML file (found in the module) **and** using reflection on the cmdlet implementation in the module.
+
+### Updating markdown
+
+Once you have created the markdown files for each cmdlet, you must make sure to keep them up to date based on changes to the cmdlets.
+
+If any changes are made to a cmdlet (*i.e.,* add/remove parameters, add/remove parameter sets, etc.), the corresponding markdown can be updated through reflection by using the following command
+```powershell
+Update-MarkdownHelp -Path $path
+```
+where `$path` is the path to the folder containing all of the markdown help.
+
+If a cmdlet is added to your module, then the above command will not work; you must first add the corresponding markdown file by running the following command (also used in the previous section):
+```powershell
+New-MarkdownHelp -OutputFolder $output -Module $module -WithModulePage
+```
+
+However, an easier way to update the markdown files to handle **both** changes to cmdlets and new cmdlets is to use the following command:
+```powershell
+Update-MarkdownHelpModule -Path $path
+```
+where `$path` is the path to the folder containing all of the markdown help.
+
+This is the **recommended** command because it updates all the files in the specified folder based on the cmdlets as loaded into your current session.
+
+#### Note
+
+Currently the cmdlets `New-MarkdownHelp`, `Update-MarkdownHelp`, and `Update-MarkdownHelpModule` produce markdown that do not have correct spacing between examples. When viewed as markdown, there will be no problem, but when viewed in PowerShell with `Get-Help` or `Get-HelpPreview` (mentioned below), the examples will bundle together and be hard to read.
+
+For example, the expected view in PowerShell should be as follows:
+
+```
+Example 1: Foo
+
+This command does foo.
+
+Example 2: Bar
+
+This command does bar.
+
+Example 3: Temp
+
+This command does temp.
+```
+
+However, the actual view in PowerShell will be as follows:
+
+```
+Example 1: Foo
+
+This command does foo.
+Example 2: Bar
+
+This command does bar.
+Example 3: Temp
+
+This command does temp.
+```
+
+### Updating MAML
+
+After you have created or updated your markdown for the cmdlets, you need to update the MAML so it can be used with `Get-Help` in PowerShell. 
+
+Updating MAML can be done with the following command:
+```powershell
+New-ExternalPath -Path $path -OutputPath $outputPath -Force
+```
+where `$path` is the path to the folder containing all of the markdown help, and `$outputPath` is the path to the folder containing the existing MAML which will be replaced.
+
+This command generates the MAML based solely on the markdown files. All the information from the cmdlets (thru reflection) are already incorporated into the markdown thru New-MarkdownHelp and Update-MarkdownHelp (or Update-MarkdownHelpModule). This means that you won't need to build/install/import modules to generate help for them.
+
+### Previewing MAML
+
+After you have created or updated your markdown for the cmdlets, you can preview what the corresponding MAML will look like in PowerShell with the `Get-HelpPreview` cmdlet. This cmdlet will generate the MAML from the markdown files and display it in PowerShell so you can see if the help looks correct.
+
+Running the following command will display the help for **all** of your cmdlets:
+```powershell
+Get-HelpPreview -Path $path
+```
+where $path is the path to the MAML help file you generated.
+
+To get the help for a single cmdlet, run the following command:
+```powershell
+$help = Get-HelpPreview -Path $path
+$help | Where-Object {  $_.Name -eq $cmdlet }
+```
+
+## Getting Started
+
+If your service does not currently have any markdown help, follow the below steps to get started.
+
+### Running the `GenerateHelp.ps1` script
+
+If you want to automate this process, run the `tools\platyPS\GenerateHelp.ps1` script with the following command:
+```powershell
+.\GenerateHelp.ps1 -Service $service -PathToRepo $pathToRepo
+```
+where `$service` is the name of your service (*e.g.,* Profile, Compute, Network, etc.) and `$pathToRepo` is the path to the **azure-powershell** repo locally on your machine.
+
+This script can be used for new services looking to create markdown files, or services looking to update their existing markdown files.
+
+### Steps for creating help
+
+**1: Create a folder for your service**
+
+In the `azure-powershell` repository, navigate to the `help` folder in the root, and, if your service does not already have one, create a new folder that will hold the markdown files for your service
+
+**2: Import your module**
+
+Run the following command in PowerShell:
+
+```powershell
+Import-Module "PATH_TO_REPO\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.SERVICE\AzureRM.SERVICE.psd1"
+```
+
+**3: Generate the markdown files**
+
+Run the following command in PowerShell:
+
+```powershell
+New-MarkdownHelp -Module AzureRM.SERVICE -OutputFolder "PATH_TO_REPO\help\SERVICE" -WithModulePage
+```
+
+This will generate a markdown file for each cmdlet in your MAML file. Make sure that all of the cmdlets that you have help for in the MAML file have a corresponding markdown file in the folder.
+
+**4: Generate the MAML file**
+
+Run the following command in PowerShell:
+
+```powershell
+New-ExternalHelp -Path "PATH_TO_REPO\help\SERVICE" -OutputPath "PATH_TO_REPO\src\ResourceManager\SERVICE\Commands.SERVICE -Force"
+```
+
+This will generate a MAML file based off of the markdown files that you created in the previous step and replace the old MAML file.
+
+## Changes to Cmdlets
+
+The following changes to a cmdlet require that the corresponding markdown help file be updated:
+
+- Adding/removing parameters or parameter sets
+- Adding/removing cmdlets
+- Changing metadata of the cmdlet, parameters, or parameter sets
+
+In order to update the markdown help file with the corresponding changes, build the project containing your changes (you may have to close your current PowerShell session to build).
+
+Once your project successfully builds, open up a new PowerShell window and import your module again. Finally, run the following command:
+
+```powershell
+Update-MarkdownHelpModule "PATH_TO_REPO\help\SERVICE"
+```
+
+This will automatically update your markdown files with the changes that you have made in your cmdlets.
+
+**Note**: check to make sure that the changes you made to the cmdlets are reflected in their corresponding markdown files
+
+After generating the updated markdown files, make sure to generate the updated MAML file by running the following command:
+
+```powershell
+New-ExternalHelp -Path "PATH_TO_REPO\help\SERVICE" -OutputPath "PATH_TO_REPO\src\ResourceManager\SERVICE\Commands.SERVICE -Force"
+```
+
+In addition to the above steps, you can also run the `GenerateHelp.ps1` script from the previous section to update your markdown files. Before using the script, make sure to build the project containing your changes so the module will be updated when imported.
+
+## Markdown Format
+
+If you want to edit the markdown files to add or remove your own help, there is a specified format that they need to follow in order to generate the corresponding MAML help. A full guide for how the markdown file should be formatted can be found [here](https://github.com/PowerShell/platyPS/blob/master/platyPS.schema.md#version-200).
+
+The following sections should be filled out for each cmdlet:
+- SYNOPSIS
+    - Gives a short overview of what the cmdlet does
+- DESCRIPTION
+    - An in-depth overview of what the cmdlet does
+- EXAMPLES
+    - Shows how to use the cmdlet with different parameter sets and describes how they function differently
+- OUTPUTS
+    - Defines what the output of the cmdlet is (what is sent out to the pipeline)
+
+## Validating Help
+
+It is important that **all** of the sections listed above are filled out to completion so there is no missing help when a user uses the `Get-Help` command.
+
+To quickly see what sections your cmdlets are missing help for, run the `tools\platyPS\ValidateHelp.ps1` script with the following command:
+
+```powershell
+.\ValidateHelp.ps1 -service SERVICE -pathToRepo PATH_TO_REPO
+```
+
+This will notify you which sections of each markdown file are missing help.
