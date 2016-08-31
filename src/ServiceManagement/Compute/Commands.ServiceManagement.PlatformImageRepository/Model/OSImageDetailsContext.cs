@@ -21,5 +21,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
     {
         public bool? IsCorrupted { get; set; }
         public List<ReplicationProgressContext> ReplicationProgress { get; set; }
+        public string Offer { get; set; }
+        public string Sku { get; set; }
+        public string Version { get; set; }
     }
 }
