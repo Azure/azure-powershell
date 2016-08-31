@@ -64,12 +64,15 @@ function Test-AzureProvider
 function Test-AzureProvider-WithZoneMappings
 {
     $testProvider = Get-AzureRmResourceProvider -ProviderNamespace "Providers.Test"
+	Assert-True { $testProvider.Count -gt 0 }
 
-	Assert-True {$testProvider.Count -gt 0}
-	Assert-NotNull {$testProvider[1].ZoneMappings}
+	$statefulResources = $testProvider | where-object {$_.ResourceTypes.ResourceTypeName -contains "statefulResources"}
 
-	Assert-True {$testProvider[1].ZoneMappings.Count -eq 2}
-	Assert-True {$testProvider[1].ZoneMappings["West Europe"] -contains "3"}
+	Assert-NotNull { $statefulResources }
+	Assert-NotNull { $statefulResources.ZoneMappings }
+
+	Assert-True { $statefulResources.ZoneMappings.Count -eq 2 }
+	Assert-True { $statefulResources.ZoneMappings["West Europe"] -contains "3"}
 }
 
 <#
