@@ -191,7 +191,7 @@ function Test-GetAzureVMRecoveryPointsScenario
 {
 	# 1. Create / update and get vault
     $vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
+    $vault = New-AzureRmRecoveryServicesVault `
 		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
 	
 	# 2. Set vault context
@@ -236,9 +236,17 @@ function Test-GetAzureVMRecoveryPointsScenario
 	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 	$recoveryPoint = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
 		-StartDate $backupStartTime -EndDate $backupEndTime -Item $item;
-
+	
 	Assert-NotNull $recoveryPoint;
 	Assert-True { $recoveryPoint.ContainerName -match $vmUniqueName };
+
+	#Action get Recovery point detail
+	$recoveryPointDetail = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
+		-RecoveryPointId $recoveryPoint[0].RecoveryPointId -Item $item;
+	
+	Assert-NotNull $recoveryPointDetail;
+	
+
 }
 
 function Test-RestoreAzureVMRItemScenario
