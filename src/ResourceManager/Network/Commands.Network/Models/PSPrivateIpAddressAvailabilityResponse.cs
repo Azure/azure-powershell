@@ -20,6 +20,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public bool Available { get; set; }
 
-        public List<string> AddressPrefixes { get; set; }
+        public List<string> AvailableIpAddresses { get; set; }
     }
 }
