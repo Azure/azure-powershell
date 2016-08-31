@@ -97,14 +97,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             if (testEnvironment.UsesCustomUri())
             {
                 client = new RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServicesBVTD",
+                    "Microsoft.RecoveryServicesBVTD2",
                     credentials,
                     testEnvironment.BaseUri);
             }
             else
             {
                 client = new RecoveryServicesManagementClient(
-                    "Microsoft.RecoveryServicesBVTD",
+                    "Microsoft.RecoveryServicesBVTD2",
                     credentials);
             }
             return GetServiceClient<T>(factory, client);

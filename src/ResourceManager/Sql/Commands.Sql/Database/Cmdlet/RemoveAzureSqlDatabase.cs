@@ -19,9 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabase",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabase", SupportsShouldProcess = true)]
     public class RemoveAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
         /// <summary>

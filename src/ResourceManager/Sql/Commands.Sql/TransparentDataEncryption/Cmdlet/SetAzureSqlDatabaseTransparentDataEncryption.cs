@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseTransparentDataEncryption cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class SetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
     {
         /// <summary>

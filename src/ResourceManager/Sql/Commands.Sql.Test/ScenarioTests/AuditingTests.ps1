@@ -19,7 +19,7 @@ Tests that when setting the storage account property's value in a database's aud
 function Test-AuditingDatabaseUpdatePolicyWithStorageV2
 {
 	# Setup
-	$testSuffix = 103020
+	$testSuffix = 103222
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -118,7 +118,7 @@ Tests that when setting the storage account property's value in a server's audit
 function Test-AuditingServerUpdatePolicyWithStorage
 {
 	# Setup
-	$testSuffix = 261607
+	$testSuffix = 261883
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -147,7 +147,7 @@ storage account, you don't need to provide it.
 function Test-AuditingDatabaseUpdatePolicyKeepPreviousStorage
 {
 	# Setup
-	$testSuffix = 30251
+	$testSuffix = 30567
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -180,7 +180,7 @@ storage account, you don't need to provide it.
 function Test-AuditingServerUpdatePolicyKeepPreviousStorage
 {
 	# Setup
-	$testSuffix = 425607
+	$testSuffix = 425777
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -360,7 +360,7 @@ Tests the modification of a server's auditing policy event types with the 'All' 
 function Test-AuditingServerUpdatePolicyWithEventTypeShortcuts
 {
 	# Setup
-	$testSuffix = 8015
+	$testSuffix = 8077
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -540,7 +540,7 @@ Tests that after marking a database as using its server's policy, when fetching 
 function Test-AuditingUseServerDefault
 {
     # Setup
-	$testSuffix = 172497
+	$testSuffix = 172777
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -770,7 +770,7 @@ Tests that when setting the retention values of server policy, that values is la
 function Test-AuditingServerUpdatePolicyWithRetention
 {
 	# Setup
-	$testSuffix = 2022
+	$testSuffix = 2033
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -799,7 +799,7 @@ Tests that when setting the retention values of database policy, that values is 
 function Test-AuditingDatabaseUpdatePolicyWithRetention
 {
 	# Setup
-	$testSuffix = 2035
+	$testSuffix = 2645
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -828,7 +828,7 @@ Tests that after setting the retention values to a server auditing policy, this 
 function Test-AuditingServerRetentionKeepProperties
 {
 	# Setup
-	$testSuffix = 2045
+	$testSuffix = 2077
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -868,7 +868,7 @@ Tests that after setting the retention values to a database auditing policy, thi
 function Test-AuditingDatabaseRetentionKeepProperties
 {
 	# Setup
-	$testSuffix = 20551
+	$testSuffix = 20555
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -950,7 +950,7 @@ Tests that when modifying properties of a server's blob auditing policy, these p
 function Test-BlobAuditingOnServer
 {
 	# Setup
-	$testSuffix = 8822
+	$testSuffix = 881277
 	Create-TestEnvironment $testSuffix "Japan East"
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
