@@ -1,30 +1,49 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/onesdk3874?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk8078?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazgwNzg/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
       "RequestMethod": "HEAD",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7c5f6182-658f-4824-a625-31e1e22740e7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.1.5-preview"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
+        "Content-Length": [
+          "102"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "31985"
+          "14999"
         ],
         "x-ms-request-id": [
-          "e517579c-4aa8-4d84-9edd-86b0aa72c869"
+          "3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
         ],
         "x-ms-correlation-request-id": [
-          "e517579c-4aa8-4d84-9edd-86b0aa72c869"
+          "3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140911T080208Z:e517579c-4aa8-4d84-9edd-86b0aa72c869"
+          "WESTUS2:20160826T210610Z:3ad39e58-5de6-40e9-ab0c-f3331eb93dd0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -33,36 +52,61 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 11 Sep 2014 08:02:08 GMT"
+          "Fri, 26 Aug 2016 21:06:10 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resourcegroups/onesdk3874?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/fb3a3d6b-44c8-44f5-88c9-b20917c9b96b/resourcegroups/onesdk8078?api-version=2016-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIzYTNkNmItNDRjOC00NGY1LTg4YzktYjIwOTE3YzliOTZiL3Jlc291cmNlZ3JvdXBzL29uZXNkazgwNzg/YXBpLXZlcnNpb249MjAxNi0wNy0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"non-existing\",\r\n  \"tags\": {}\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"non-existing\"\r\n}",
       "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "34"
+        ],
+        "x-ms-client-request-id": [
+          "9c217ae7-2e84-43b8-94dd-31257314e408"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.1.5-preview"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"DisallowedLocation\",\r\n    \"message\": \"The provided location 'non-existing' is not permitted for subscription. List of permitted regions is ',eastasia,southeastasia,eastus,westus,northcentralus,southcentralus,centralus,northeurope,westeurope'. Please contact support to change your supported regions.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceLocation\",\r\n    \"message\": \"The specified location 'non-existing' is invalid. A location must consist of characters, whitespace, digit, or following symbols '(,)'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "192"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1199"
         ],
         "x-ms-request-id": [
-          "2ee12605-8299-4047-abad-226667ec8fc4"
+          "c78a5b5c-9d89-462e-872f-c45824c0f5a6"
         ],
         "x-ms-correlation-request-id": [
-          "2ee12605-8299-4047-abad-226667ec8fc4"
+          "c78a5b5c-9d89-462e-872f-c45824c0f5a6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20140911T080208Z:2ee12605-8299-4047-abad-226667ec8fc4"
+          "WESTUS2:20160826T210610Z:c78a5b5c-9d89-462e-872f-c45824c0f5a6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -71,7 +115,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 11 Sep 2014 08:02:08 GMT"
+          "Fri, 26 Aug 2016 21:06:10 GMT"
         ]
       },
       "StatusCode": 400
@@ -79,11 +123,12 @@
   ],
   "Names": {
     "Test-NewResourceGroupInNonExistingLocation": [
-      "onesdk3874"
+      "onesdk8078"
     ]
   },
   "Variables": {
-    "SubscriptionId": "db1ab6f0-4769-4b27-930e-01e2ef9c123c",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    "SubscriptionId": "fb3a3d6b-44c8-44f5-88c9-b20917c9b96b",
+    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "Domain": "microsoft.com"
   }
 }

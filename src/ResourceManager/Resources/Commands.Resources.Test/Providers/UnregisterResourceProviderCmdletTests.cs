@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = unregistrationResult }));
 
             this.providerOperationsMock
-              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, It.IsAny<CancellationToken>()))
+              .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
               .Returns(() => Task.FromResult(new AzureOperationResponse<Provider>() { Body = provider }));
             
             this.cmdlet.ProviderNamespace = ProviderName;
