@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAcl))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Get-AdlStoreItemAcl")]
     public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
@@ -37,9 +37,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
-            WriteObject(toReturn);
+            var toReturn = DataLakeStoreItemAce.GetAclFromStatus(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
+            WriteObject(toReturn, true);
         }
     }
 }

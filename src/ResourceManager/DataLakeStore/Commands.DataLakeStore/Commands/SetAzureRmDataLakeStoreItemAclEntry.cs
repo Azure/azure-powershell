@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "The ACL spec containing the entries to set. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
-        public DataLakeStoreItemAcl Acl { get; set; }
+        public DataLakeStoreItemAce[] Acl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 2,
             Mandatory = true, HelpMessage = "Indicates the type of ACE to set (user, group, mask, other)")]
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
-                ? Acl.GetAclSpec()
+                ? DataLakeStoreItemAce.GetAclSpec(Acl)
                 : string.Format("{0}{1}:{2}:{3}", Default ? "default:" : string.Empty, AceType, Id,
                     DataLakeStoreItemPermissionInstance.GetPermissionString(Permissions)).ToLowerInvariant();
 
