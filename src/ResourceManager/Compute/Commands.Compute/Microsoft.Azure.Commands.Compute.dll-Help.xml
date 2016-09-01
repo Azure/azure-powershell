@@ -5648,7 +5648,7 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 	</command:details>
 	<maml:description>
 		<maml:para>The Get-AzureRmVMDiskEncryptionStatus cmdlet gets the encryption status of the virtual machine. It displays the encryption status of the operating system and data volumes. In addition to encryption status, it also displays the encryption secret URL, key encryption key URL, resource IDs of the KeyVaults where the encryption key and key encryption key for operating system volume are present. </maml:para>
-		<maml:para>The OS disk encryption status reporting is not supported for Linux VMs in the preview release. Currently it is reported as &quot;Unknown&quot;.</maml:para>
+		<maml:para>For more details on the encryption status, refer to https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5764,7 +5764,7 @@ PS C:\&gt; Disable-AzureRMVMDiskEncryption -ResourceGroupName &quot;Group002&quo
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>On some versions of Linux, the encryption status is reported as &quot;Unknown&quot;. This is caused by an issue in Linux Agent. The correct status shall be shown once the Linux distribution consumes the updated Linux Agent. Refer to https://github.com/Azure/WALinuxAgent/issues/388 for technical details.</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
