@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void IfJobSpecifiesTerminateOnFailure_ItCompletesWhenAnyTaskFails()
+        public void IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "taskId-1";
             PSCloudJob completedJob = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("IfJobSpecifiesTerminateOnFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
+                () => { return new string[] { string.Format("IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
                 null,
                 () =>
                 {

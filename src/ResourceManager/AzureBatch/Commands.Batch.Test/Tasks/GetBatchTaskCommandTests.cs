@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchTaskWithExitConditions()
+        public void WhenGettingATaskFromTheService_ExitConditionsAreMapped()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;

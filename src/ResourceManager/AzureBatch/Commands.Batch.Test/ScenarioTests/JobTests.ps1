@@ -579,7 +579,7 @@ function Test-JobWithTaskDependencies
 .SYNOPSIS
 Tests create job completes when any task fails
 #>
-function IfJobSpecifiesTerminateOnFailure-ItCompletesWhenAnyTaskFails
+function IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails
 {
     param([string]$jobId, [string]$taskId)
 

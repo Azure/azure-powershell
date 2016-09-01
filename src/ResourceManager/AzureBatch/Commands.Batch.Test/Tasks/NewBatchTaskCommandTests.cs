@@ -77,11 +77,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskWithExitConditions()
+        public void GettingExitConditionsReturnsTheSameValueThatWasSet()
         {
             // Setup cmdlet without the required parameters
-            string ApplicationId = "foo";
-            string ApplicationVersion = "beta";
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
@@ -104,13 +102,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Don't go to the service on an Add CloudTask call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.TaskAddParameter,
-                ProxyModels.TaskAddOptions,
-                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
+                TaskAddParameter,
+                TaskAddOptions,
+                AzureOperationHeaderResponse<TaskAddHeaders>>();
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(none, cmdlet.ExitConditions.Default);
