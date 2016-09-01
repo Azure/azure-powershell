@@ -3084,6 +3084,7 @@ PS C:\&gt; Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol 
 	</command:details>
 	<maml:description>
 		<maml:para>The Disable-AzureRmVMDiskEncryption cmdlet disables encryption on an infrastructure as a service (IaaS) virtual machine. This cmdlet installs an extension on the virtual machine to disable encryption. If the Name parameter is not specified, extension with the name &quot;AzureDiskEncryption/AzureDiskEncryptionForLinux&quot; (depending on the OS) is used. Caution: This cmdlet reboots the virtual machine.</maml:para>
+		<maml:para>On Linux IaaS VMs, Disable-AzureRMVMDiskEncryption is not supported for VolumeType &quot;OS&quot;.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
