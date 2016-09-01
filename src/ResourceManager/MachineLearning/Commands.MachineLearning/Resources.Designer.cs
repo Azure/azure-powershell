@@ -113,5 +113,14 @@ namespace Microsoft.Azure.Commands.MachineLearning {
                 return ResourceManager.GetString("UpdateServiceWarning", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Machine Learning Module Version: &quot;{0}&quot;.
+        /// </summary>
+        internal static string VersionInfo {
+            get {
+                return ResourceManager.GetString("VersionInfo", resourceCulture);
+            }
+        }
     }
 }

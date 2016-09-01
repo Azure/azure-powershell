@@ -157,7 +157,7 @@
     <value>The Active Directory Group '{0}' is not security enabled. Only Azure Active Directory Security Enabled Groups are supported.</value>
   </data>
   <data name="InvalidEventTypeSet" xml:space="preserve">
-    <value>Cannot use the '{0}' option with other event types.</value>
+    <value>Cannot use the None option with other event types.</value>
   </data>
   <data name="InvalidGraphEndpoint" xml:space="preserve">
     <value>Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment.</value>
@@ -287,5 +287,23 @@
   </data>
   <data name="InvalidExcludedDetectionTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other excluded detection types.</value>
+  </data>
+  <data name="InvalidDetectionTypeList" xml:space="preserve">
+    <value>Cannot use the 'None' option with other detection types</value>
+  </data>
+  <data name="BaseConfirmActionProcessMessage" xml:space="preserve">
+    <value>About to process resource</value>
+  </data>
+  <data name="SetAdvisorAutoExecuteStatusDescription" xml:space="preserve">
+    <value>Updating auto execute status of the advisor '{0}' to '{1}'.</value>
+  </data>
+  <data name="SetAdvisorAutoExecuteStatusWarning" xml:space="preserve">
+    <value>Are you sure you want to update auto execute status of the advisor '{0}' to '{1}'?</value>
+  </data>
+  <data name="SetRecommendedActionStateDescription" xml:space="preserve">
+    <value>Updating state of recommended action '{0}' to '{1}'.</value>
+  </data>
+  <data name="SetRecommendedActionStateWarning" xml:space="preserve">
+    <value>Are you sure you want to update state of the recommended action '{0}' to '{1}'</value>
   </data>
 </root>
