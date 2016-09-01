@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// <summary>
     /// Defines the AzureRmSqlDatabaseImportExportStatus cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseImportExportStatus")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseImportExportStatus", SupportsShouldProcess = true)]
     public class GetAzureSqlDatabaseImportExportStatus : AzureRMCmdlet
     {
         /// <summary>

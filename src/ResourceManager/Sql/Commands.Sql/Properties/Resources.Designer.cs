@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About to process resource.
+        /// </summary>
+        internal static string BaseConfirmActionProcessMessage {
+            get {
+                return ResourceManager.GetString("BaseConfirmActionProcessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -187,7 +196,16 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
+        ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
+        /// </summary>
+        internal static string InvalidDetectionTypeList {
+            get {
+                return ResourceManager.GetString("InvalidDetectionTypeList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot use the None option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
             get {
@@ -427,8 +445,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             get {
                 return ResourceManager.GetString("ServerCommunicationLinkNameExists", resourceCulture);
             }
-        }        
-
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Server Disaster Recovery Configuration already exists in server &apos;{1}&apos;..
         /// </summary>
@@ -484,6 +502,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updating auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        internal static string SetAdvisorAutoExecuteStatusDescription {
+            get {
+                return ResourceManager.GetString("SetAdvisorAutoExecuteStatusDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update auto execute status of the advisor &apos;{0}&apos; to &apos;{1}&apos;?.
+        /// </summary>
+        internal static string SetAdvisorAutoExecuteStatusWarning {
+            get {
+                return ResourceManager.GetString("SetAdvisorAutoExecuteStatusWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for the column does not exist.
         /// </summary>
         internal static string SetDataMaskingRuleIdDoesNotExistError {
@@ -495,13 +531,30 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>
-        internal static string SetDisasterRecoveryConfigurationNoOptionProvided
-        {
+        internal static string SetDisasterRecoveryConfigurationNoOptionProvided {
             get {
                 return ResourceManager.GetString("SetDisasterRecoveryConfigurationNoOptionProvided", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating state of recommended action &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        internal static string SetRecommendedActionStateDescription {
+            get {
+                return ResourceManager.GetString("SetRecommendedActionStateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update state of the recommended action &apos;{0}&apos; to &apos;{1}&apos;.
+        /// </summary>
+        internal static string SetRecommendedActionStateWarning {
+            get {
+                return ResourceManager.GetString("SetRecommendedActionStateWarning", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to No Set Options were provided.
         /// </summary>

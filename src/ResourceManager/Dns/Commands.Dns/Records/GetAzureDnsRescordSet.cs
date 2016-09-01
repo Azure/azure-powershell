@@ -92,7 +92,10 @@ namespace Microsoft.Azure.Commands.Dns
                     result = this.DnsClient.ListRecordSets(zoneName, resourceGroupName, this.RecordType.Value);
                 }
 
-                this.WriteObject(result);
+                foreach (var r in result)
+                {
+                    this.WriteObject(r);
+                }
             }
 
         }
