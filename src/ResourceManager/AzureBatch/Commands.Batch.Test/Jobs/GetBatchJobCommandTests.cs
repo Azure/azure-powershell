@@ -232,9 +232,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchJobManagerWithApplicationPackageReferencesTest()
+        public void CheckingApplicationPackageReferenceAreBeingSent()
         {
-            // Setup cmdlet to get a Job by name
+            // Setup cmdlet to get a Job by id
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
             cmdlet.Id = "job-1";
@@ -244,14 +244,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string applicationId = "foo";
             string applicationVersion = "beta";
 
-            ProxyModels.CloudJob jobManagerTask = new ProxyModels.CloudJob()
+            ProxyModels.CloudJob jobManagerTask = new ProxyModels.CloudJob
             {
                 Id = cmdlet.Id,
-                JobManagerTask = new ProxyModels.JobManagerTask(){
+                JobManagerTask = new ProxyModels.JobManagerTask {
                 ApplicationPackageReferences =
                     new[]
                         {
-                            new ProxyModels.ApplicationPackageReference()
+                            new ProxyModels.ApplicationPackageReference
                                 {
                                     ApplicationId = applicationId,
                                     Version = applicationVersion
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
 
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
             List<PSCloudJob> pipeline = new List<PSCloudJob>();

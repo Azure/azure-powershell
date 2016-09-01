@@ -162,12 +162,12 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         return resourceFile;
                     });
                 jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
-                    (r) =>
+                    a =>
                     {
                         ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
                         {
-                            ApplicationId = r.ApplicationId,
-                            Version = r.Version
+                            ApplicationId = a.ApplicationId,
+                            Version = a.Version
                         };
                         return applicationPackageReference;
                     });

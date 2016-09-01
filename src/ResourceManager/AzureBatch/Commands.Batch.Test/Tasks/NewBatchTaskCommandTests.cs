@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -21,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
@@ -76,36 +78,47 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskWithApplicationPackagesTest()
+        public void NewBatchTaskWithApplicationPackagesRequestBodyTest()
         {
             // Setup cmdlet without the required parameters
             string ApplicationId = "foo";
             string ApplicationVersion = "beta";
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-
             cmdlet.JobId = "job-1";
-                        cmdlet.Id = "testTask";
+            cmdlet.Id = "testTask";
 
-            cmdlet.ApplicationPackageReferences = new[]
+            PSApplicationPackageReference[] applicationPackageReferences  =
             {
-                new PSApplicationPackageReference() { ApplicationId = "foo", Version = "beta" },
+                new PSApplicationPackageReference
+                {
+                    ApplicationId = "foo",
+                    Version = "beta"
+                },
             };
 
-            // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.TaskAddParameter,
-                ProxyModels.TaskAddOptions,
-                AzureOperationHeaderResponse<ProxyModels.TaskAddHeaders>>();
+            TaskAddParameter requestParameters = null;
 
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                TaskAddBatchRequest request = (TaskAddBatchRequest)baseRequest;
 
-            // Verify no exceptions when required parameters are set
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    requestParameters = request.Parameters;
+
+                    var response = new AzureOperationHeaderResponse<TaskAddHeaders>();
+                    Task<AzureOperationHeaderResponse<TaskAddHeaders>> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
+            cmdlet.ApplicationPackageReferences = applicationPackageReferences;
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(ApplicationId, cmdlet.ApplicationPackageReferences.First().ApplicationId);
-            Assert.Equal(ApplicationVersion, cmdlet.ApplicationPackageReferences.First().Version);
-
+            Assert.Equal(ApplicationId, requestParameters.ApplicationPackageReferences.First().ApplicationId);
+            Assert.Equal(ApplicationVersion, requestParameters.ApplicationPackageReferences.First().Version);
         }
 
         [Fact]
