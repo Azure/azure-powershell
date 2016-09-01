@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Updates an existing zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(DnsZone))]
     public class SetAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
@@ -76,12 +76,17 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneToUpdate.Name = zoneToUpdate.Name.TrimEnd('.');
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneToUpdate.Name));
             }
+            ConfirmAction(
+                ProjectResources.Progress_Modifying,
+                zoneToUpdate.Name,
+                () =>
+                {
+                    bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
+                    result = this.DnsClient.UpdateDnsZone(zoneToUpdate, overwrite);
 
-            bool overwrite = this.Overwrite.IsPresent || this.ParameterSetName != "Object";
-            result = this.DnsClient.UpdateDnsZone(zoneToUpdate, overwrite);
-
-            WriteVerbose(ProjectResources.Success);
-            WriteObject(result);
+                    WriteVerbose(ProjectResources.Success);
+                    WriteObject(result);
+                });
         }
     }
 }
