@@ -17,6 +17,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Fact]
         public void ExecuteRunnerTests()
         {
+            var mode = Environment.GetEnvironmentVariable("AZURE_TEST_MODE");
+            var csmAuth = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+
+            if (mode == null || csmAuth == null || mode.ToLower() != "record")
+            {
+                return;
+            }
+
             var testFile = File.ReadAllLines("ScenarioTests\\RunnerTests.csv");
             foreach (var line in testFile)
             {
