@@ -76,7 +76,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
         public string ResourceAdminApiVersion { get; set; }
 
         internal static string DefaultStorageAccountApiVersion = "2015-06-15";
-        internal static string DefaultResourceAdminApiVersion = "2015-11-01";
+        internal static string DefaultResourceAdminApiVersion = "2015-01-01";
         internal static string SyncTargetOperation = "Create";
 
         internal static string BuildSyncTargetId(string tenantSubscriptionId, string resourceGroupName, string accountName)
