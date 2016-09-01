@@ -152,7 +152,7 @@
     <Compile Include="Models\DataLakeStoreFileSystemClient.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreItem.cs" />
-    <Compile Include="Models\DataLakeStoreItemAcl.cs" />
+    <Compile Include="Models\DataLakeStoreItemAce.cs" />
     <Compile Include="Models\DataLakeStoreItemPermissionInstance.cs" />
     <Compile Include="Models\DataLakeStorePathInstance.cs" />
     <Compile Include="Models\GlobalMembers.cs" />

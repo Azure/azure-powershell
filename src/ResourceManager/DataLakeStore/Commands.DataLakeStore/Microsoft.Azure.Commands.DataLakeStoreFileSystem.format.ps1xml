@@ -54,5 +54,51 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Scope</Label>
+            <Width>7</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+            <Alignment>Left</Alignment>
+            <Width>5</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Id</Label>
+            <Width>36</Width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Permission</Label>
+            <Width>3</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Scope</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Permission</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                 // Now do the conversion into a short
                 const short minSize = 0;
-                const short maxSize = 777;
+                const short maxSize = 1777;
 
                 var parsedShort = short.Parse(convertedPermissions);
 

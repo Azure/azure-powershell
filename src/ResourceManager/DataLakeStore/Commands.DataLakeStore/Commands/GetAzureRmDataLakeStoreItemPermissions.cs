@@ -17,8 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    // [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemPermissions"), OutputType(typeof(DataLakeStoreItemPermissionInstance))]
-    // [Alias("Get-AdlStoreItemPermissions")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemPermissions"), OutputType(typeof(string))]
+    [Alias("Get-AdlStoreItemPermissions")]
     public class GetAzureDataLakeStoreItemPermissions : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -37,9 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            WriteObject(
-                DataLakeStoreItemPermissionInstance.Parse(
-                    DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Permission));
+            WriteObject(DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Permission);
         }
     }
 }

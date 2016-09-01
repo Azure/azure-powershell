@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    //[Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
-    //[Alias("Remove-AdlStoreItemAcl")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
+    [Alias("Remove-AdlStoreItemAcl")]
     public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
