@@ -12,6 +12,101 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+
+function Make-StrictModuleDependencies
+{
+  [CmdletBinding()]
+  param(
+  [string] $Path)
+
+  PROCESS 
+  {
+    $manifest = Test-ModuleManifest -Path $Path
+    $newModules = @()
+    foreach ($module in $manifest.RequiredModules)
+    {
+       $newModules += (@{ModuleName = $module.Name; RequiredVersion= $module.Version})
+    }
+
+    Update-ModuleManifest -Path $Path -RequiredModules $newModules
+    
+  }
+
+}
+
+function Remove-ModuleDependencies
+{
+  [CmdletBinding()]
+  param(
+  [string] $Path)
+
+  PROCESS 
+  {
+    (Get-Content -Path $Path) -replace "RequiredModules\s*=\s*@\([^\)]+\)", "RequiredModules = @()" | Out-File -FilePath $Path
+    
+  }
+
+}
+
+function Publish-RMModule 
+{
+	[CmdletBinding()]
+	param(
+		[string]$Path,
+		[string]$ApiKey,
+		[string]$RepoLocation,
+		[string]$TempRepo,
+		[string]$TempRepoPath,
+		[string]$nugetExe
+		
+	)
+
+	PROCESS
+	{
+		$moduleName = (Get-Item -Path $Path).Name
+		$moduleManifest = $moduleName + ".psd1"
+		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+		$manifest = Make-StrictModuleDependencies $moduleSourcePath
+		$manifest = Test-ModuleManifest -Path $moduleSourcePath
+		$toss = Publish-Module -Path $Path -Repository $TempRepo
+	    Write-Output "Changing to directory for module modifications $TempRepoPath"
+		pushd $TempRepoPath
+		try
+		{
+		  $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+		  $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
+		  $dirPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString())
+		  $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
+
+		  if (!(Test-Path -Path $nupkgPath))
+		  {
+			  throw "Module at $nupkgPath in $TempRepoPath does not exist"
+		  }
+		  Write-Output "Renaming package $nupkgPath to nsip archive $zipPath"
+		  ren $nupkgPath $zipPath
+		  Write-Output "Expanding $zipPath"
+		  Expand-Archive $zipPath
+		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
+		  Remove-ModuleDependencies -Path $unzippedManifest
+		  Write-Output "Compressing $zipPath"
+		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
+		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
+		  ren $zipPath $nupkgPath
+		  if (-not (Test-Path $RepoLocation))
+		  {
+			Write-Output "Pushing package $moduleName to nuget source $RepoLocation"
+		    &$nugetExe push $nupkgPath $ApiKey -s $RepoLocation
+			Write-Output "Pushed package $moduleName to nuget source $RepoLocation"
+		  }
+		  
+	    }
+		finally 
+		{
+			popd
+		}
+	}
+}
+
 param(
     [Parameter(Mandatory = $false, Position = 0)]
     [string] $buildConfig,
@@ -20,7 +115,9 @@ param(
     [Parameter(Mandatory = $false, Position = 2)]
     [string] $apiKey,
     [Parameter(Mandatory = $false, Position = 3)]
-    [string] $repositoryLocation
+    [string] $repositoryLocation,
+    [Parameter(Mandatory = $false, Position = 4)]
+    [string] $nugetExe
 )
 
 if ([string]::IsNullOrEmpty($buildConfig))
@@ -41,6 +138,12 @@ if ([string]::IsNullOrEmpty($scope))
     $scope = 'All'  
 }
 
+if ([string]::IsNullOrEmpty($nugetExe))
+{
+    Write-Verbose "Use default nuget path"
+    $nugetExe =  "$PSScriptRoot\nuget.exe"
+}
+
 Write-Host "Publishing $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
@@ -55,10 +158,19 @@ if ($repo -ne $null) {
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
+[string]$tempRepoPath = "$PSScriptRoot\..\src\package"
+if ($publishToLocal)
+{
+	$tempRepoPath = (Join-Path $repositoryLocation -ChildPath "package")
+}
+$tempRepoName = ([System.Guid]::NewGuid()).ToString()
+Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
+
+try {
 if (($scope -eq 'All') -or $publishToLocal ) {
     # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Publishing profile module"
-    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+    Publish-RMModule -Path "$resourceManagerRootFolder\AzureRM.Profile" -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
     Write-Host "Published profile module"
 }
 
@@ -66,14 +178,14 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage"
     # Publish AzureStorage module
     Write-Host "Publishing AzureStorage module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
 } 
 
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
     Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
 } 
 
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
@@ -84,7 +196,7 @@ if ($scope -eq 'All') {
         if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Publishing $module module from $modulePath"
-            Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+            Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
             Write-Host "Published $module module"
         }
     }
@@ -92,7 +204,7 @@ if ($scope -eq 'All') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Publishing $scope module from $modulePath"
-        Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+        Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
         Write-Host "Published $scope module"        
     } else {
         Write-Error "Can not find module with name $scope to publish"
@@ -103,6 +215,11 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Publish AzureRM module    
     $modulePath = "$PSScriptRoot\AzureRM"
     Write-Host "Publishing AzureRM module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure")
+    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
     Write-Host "Published Azure module"
 } 
+}
+finally 
+{
+	Unregister-PSRepository -Name $tempRepoName
+}
