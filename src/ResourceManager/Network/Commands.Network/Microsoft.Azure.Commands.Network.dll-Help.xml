@@ -16866,7 +16866,7 @@ Subnets           : [
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This comdlet is a good way to check if a peering was successfully created.</maml:para>
+		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This cmdlet is a good way to check if a peering was successfully created.</maml:para>
 		<maml:para>Look into Add-AzureRmVirtualNetworkPeering to create this peering if you have not created a peering already.</maml:para>
 	</maml:description>
 	<command:syntax>
