@@ -41,7 +41,6 @@ function Create-ModulePsm1
      Write-Host "Writing psm1 manifest to $templateOutputPath"
      $template | Out-File -FilePath $templateOutputPath -Force
      $file = Get-Item -Path $templateOutputPath
-     Update-ModuleManifest -Path $manifestPath -RootModule  $file.Name
   }
 }
 
