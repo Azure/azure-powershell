@@ -12,6 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+param(
+    [Parameter(Mandatory = $false, Position = 0)]
+    [string] $buildConfig,
+    [Parameter(Mandatory = $false, Position = 1)]
+    [string] $scope,
+    [Parameter(Mandatory = $false, Position = 2)]
+    [string] $apiKey,
+    [Parameter(Mandatory = $false, Position = 3)]
+    [string] $repositoryLocation,
+    [Parameter(Mandatory = $false, Position = 4)]
+    [string] $nugetExe
+)
+
 function Get-TargetModules
 {
 	[CmdletBinding()]
@@ -81,7 +94,10 @@ function Make-StrictModuleDependencies
        $newModules += (@{ModuleName = $module.Name; RequiredVersion= $module.Version})
     }
 
-    Update-ModuleManifest -Path $Path -RequiredModules $newModules
+	  if ($newModules.Count -gt 0)
+	  {
+        Update-ModuleManifest -Path $Path -RequiredModules $newModules
+      }
     
   }
 
@@ -95,7 +111,10 @@ function Remove-ModuleDependencies
 
   PROCESS 
   {
-    (Get-Content -Path $Path) -replace "RequiredModules\s*=\s*@\([^\)]+\)", "RequiredModules = @()" | Out-File -FilePath $Path
+	$regex = New-Object System.Text.RegularExpressions.Regex "RequiredModules\s*=\s*@\([^\)]+\)"
+	$content = (Get-Content -Path $Path) -join "`r`n"
+	$text = $regex.Replace($content, "RequiredModules = @()")
+    $text | Out-File -FilePath $Path
     
   }
 
@@ -138,6 +157,7 @@ function Change-RMModule
 		  Expand-Archive $zipPath
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
 		  Remove-ModuleDependencies -Path $unzippedManifest
+		  Remove-Item -Path $zipPath -Force
 		  Write-Output "Compressing $zipPath"
 		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
 		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
@@ -180,18 +200,6 @@ function Publish-RMModule
 }
 
 
-param(
-    [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig,
-    [Parameter(Mandatory = $false, Position = 1)]
-    [string] $scope,
-    [Parameter(Mandatory = $false, Position = 2)]
-    [string] $apiKey,
-    [Parameter(Mandatory = $false, Position = 3)]
-    [string] $repositoryLocation,
-    [Parameter(Mandatory = $false, Position = 4)]
-    [string] $nugetExe
-)
 
 if ([string]::IsNullOrEmpty($buildConfig))
 {
