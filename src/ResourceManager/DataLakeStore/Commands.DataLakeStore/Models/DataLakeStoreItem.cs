@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="optionalName">The optional name of the file or folder</param>
         /// <param name="optionalPath">The optional full path to the file or folder, excluding the file or folder name itself.</param>
         public DataLakeStoreItem(FileStatusProperties property, string optionalName = "", string optionalPath = "") :
-            base(property.AccessTime, property.BlockSize, property.ChildrenNum, property.Group, property.Length, property.ModificationTime, property.Owner, string.IsNullOrEmpty(optionalName) ? property.PathSuffix : optionalName, property.Permission, property.Type)
+            base(property.AccessTime, property.BlockSize, property.ChildrenNum, property.ExpirationTime, property.Group, property.Length, property.ModificationTime, property.Owner, string.IsNullOrEmpty(optionalName) ? property.PathSuffix : optionalName, property.Permission, property.Type)
         {
             // create two new properties
             try

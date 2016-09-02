@@ -113,8 +113,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void RemoveDefaultAcl(string path, string accountName)
         {
-            // _client.FileSystem.RemoveDefaultAcl(accountName, path);
-            throw new NotImplementedException();
+            _client.FileSystem.RemoveDefaultAcl(accountName, path);
         }
 
         public void RemoveAclEntries(string path, string accountName, string aclsToRemove)
@@ -124,8 +123,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void RemoveAcl(string path, string accountName)
         {
-            throw new NotImplementedException();
-            // _client.FileSystem.RemoveAcl(accountName, path);
+            _client.FileSystem.RemoveAcl(accountName, path);
         }
 
         public void UpdateAclEntries(string path, string accountName, string newAclSpec)

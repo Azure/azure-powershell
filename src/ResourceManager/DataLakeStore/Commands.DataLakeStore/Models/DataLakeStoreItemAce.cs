@@ -19,7 +19,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using static Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
@@ -28,19 +27,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     /// </summary>
     public class DataLakeStoreItemAce
     {
-        public DataLakeStoreItemAce(ScopeType scope, AceType type, string id, string permission)
+        public DataLakeStoreItemAce(DataLakeStoreEnums.ScopeType scope, DataLakeStoreEnums.AceType type, string id, string permission)
         {
             Scope = scope;
             Type = type;
             Id = id;
             Permission = permission;
 
-            Entry = string.Format("{0}{1}:{2}:{3}", Scope == ScopeType.Default ? "default:" : string.Empty, Type, Id, permission);
-            NoPermissionEntry = string.Format("{0}{1}:{2}", Scope == ScopeType.Default ? "default:" : string.Empty, Type, Id);
+            Entry = string.Format("{0}{1}:{2}:{3}", Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty, Type, Id, permission);
+            NoPermissionEntry = string.Format("{0}{1}:{2}", Scope == DataLakeStoreEnums.ScopeType.Default ? "default:" : string.Empty, Type, Id);
         }
 
-        public ScopeType Scope { get; set; }
-        public AceType Type { get; set; }
+        public DataLakeStoreEnums.ScopeType Scope { get; set; }
+        public DataLakeStoreEnums.AceType Type { get; set; }
 
         public string Id { get; set; }
 
@@ -57,13 +56,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 throw new InvalidOperationException(string.Format(Resources.InvalidAce, aceString));
             }
-            
-            ScopeType scope = ScopeType.Access;
+
+            var scope = DataLakeStoreEnums.ScopeType.Access;
             var typeIndex = 0;
             var singleSpec = aceString.Split(':');
             if (singleSpec.Length == 4 && singleSpec[0].ToLowerInvariant().Equals("default"))
             {
-                scope = ScopeType.Default;
+                scope = DataLakeStoreEnums.ScopeType.Default;
                 typeIndex = 1;
             }
             else if (singleSpec.Length != 3)
@@ -77,12 +76,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     if (!string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                     {
                         // default group and regular group case
-                        return new DataLakeStoreItemAce(scope, AceType.Group, singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
+                        return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.Group, singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
                     }
                     else if (string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                     {
                         // default owning group and regular owning group case
-                        return new DataLakeStoreItemAce(scope, AceType.Group, string.Empty, singleSpec[typeIndex + 2]);
+                        return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.Group, string.Empty, singleSpec[typeIndex + 2]);
                     }
 
                     throw new InvalidOperationException(string.Format(Resources.InvalidAce, aceString));
@@ -90,19 +89,19 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     if (!string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                     {
                         // default user and regular user case
-                        return new DataLakeStoreItemAce(scope, AceType.User, singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
+                        return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.User, singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
                     }
                     else if (string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                     {
                         // default owner and owner case
-                        return new DataLakeStoreItemAce(scope, AceType.User, string.Empty, singleSpec[typeIndex + 2]);
+                        return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.User, string.Empty, singleSpec[typeIndex + 2]);
                     }
 
                     throw new InvalidOperationException(string.Format(Resources.InvalidAce, aceString));
                 case "mask":
-                    return new DataLakeStoreItemAce(scope, AceType.Mask, string.Empty, singleSpec[typeIndex + 2]);
+                    return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.Mask, string.Empty, singleSpec[typeIndex + 2]);
                 case "other":
-                    return new DataLakeStoreItemAce(scope, AceType.Other, string.Empty, singleSpec[typeIndex + 2]);
+                    return new DataLakeStoreItemAce(scope, DataLakeStoreEnums.AceType.Other, string.Empty, singleSpec[typeIndex + 2]);
                 default:
                     throw new CloudException(string.Format(Resources.InvalidParseAce, aceString));
             }
