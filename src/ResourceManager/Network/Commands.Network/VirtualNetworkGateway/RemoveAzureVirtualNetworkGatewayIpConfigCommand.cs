@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGatewayIpConfig"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGatewayIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class RemoveAzureVirtualNetworkGatewayIpConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -39,24 +39,27 @@ namespace Microsoft.Azure.Commands.Network
 
             base.Execute();
 
-            if (this.VirtualNetworkGateway.IpConfigurations != null)
+            if (ShouldProcess(Name, Properties.Resources.RemoveResourceMessage + Properties.Resources.VirtualNetworkGatewayIpConfigName))
             {
-                PSVirtualNetworkGatewayIpConfiguration configToRemove = this.VirtualNetworkGateway.IpConfigurations.Find(config => config.Name.Equals(Name));
-                if (configToRemove == null)
+                if (this.VirtualNetworkGateway.IpConfigurations != null)
                 {
-                    throw new ArgumentException("Virtual Network Gateway object does not have any Gateway IpConfiguration with Name=" + Name + " specified.");
+                    PSVirtualNetworkGatewayIpConfiguration configToRemove = this.VirtualNetworkGateway.IpConfigurations.Find(config => config.Name.Equals(Name));
+                    if (configToRemove == null)
+                    {
+                        throw new ArgumentException("Virtual Network Gateway object does not have any Gateway IpConfiguration with Name=" + Name + " specified.");
+                    }
+                    else
+                    {
+                        this.VirtualNetworkGateway.IpConfigurations.Remove(configToRemove);
+                    }
                 }
                 else
                 {
-                    this.VirtualNetworkGateway.IpConfigurations.Remove(configToRemove);
+                    throw new ArgumentException("Virtual Network Gateway object does not have any Gateway IpConfigurations specified.");
                 }
-            }
-            else
-            {
-                throw new ArgumentException("Virtual Network Gateway object does not have any Gateway IpConfigurations specified.");
-            }
 
-            WriteObject(this.VirtualNetworkGateway);
+                WriteObject(this.VirtualNetworkGateway);
+            }
         }
     }
 }
