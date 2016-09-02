@@ -77,7 +77,7 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Permission</Label>
-            <Width>3</Width>
+            <Width>10</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
