@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authenticat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache", "..\RedisCache\Commands.RedisCache\Commands.RedisCache.csproj", "{C972E3EF-4461-4758-BA31-93E0947B1253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights", "..\Insights\Commands.Insights\Commands.Insights.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
