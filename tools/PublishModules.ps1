@@ -27,20 +27,20 @@ function Get-TargetModules
 		$targets = @()
 		$packageFolder = "$PSScriptRoot\..\src\Package"
         $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-		if (($scope -eq 'All') -or $publishToLocal ) {
+		if (($Scope -eq 'All') -or $PublishLocal ) {
           $targets += "$resourceManagerRootFolder\AzureRM.Profile" 
         }
 
-        if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
+        if (($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) {
           $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
         } 
 
-        if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
+        if (($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) {
           $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
         } 
 
         $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-        if ($scope -eq 'All') {  
+        if ($Scope -eq 'All') {  
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
@@ -48,7 +48,7 @@ function Get-TargetModules
               $targets += $module.FullName
             }
           }
-        } elseif ($scope -ne 'AzureRM') {
+        } elseif (($Scope -ne 'AzureRM') -and ($Scope -ne "ServiceManagement") -and ($Scope -ne "AzureStorage")) {
           $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
           if (Test-Path $modulePath) {
             $targets += $modulePath      
@@ -57,7 +57,7 @@ function Get-TargetModules
           }
         }
 
-        if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
+        if (($Scope -eq 'All') -or ($Scope -eq 'AzureRM')) {
             # Publish AzureRM module    
             $targets += "$PSScriptRoot\AzureRM"
         } 
