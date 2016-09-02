@@ -24,8 +24,8 @@ function Create-ModulePsm1
 	 $manifestDir = Get-Item -Path $ModulePath
 	 $moduleName = $manifestDir.Name + ".psd1"
 	 $manifestPath = Join-Path -Path $ModulePath -ChildPath $moduleName
-     $module = Test-ModuleManifest -Path $ModulePath
-     $templateOutputPath = $ModulePath -replace ".psd1", ".psm1"
+     $module = Test-ModuleManifest -Path $manifestPath
+     $templateOutputPath = $manifestPath -replace ".psd1", ".psm1"
      [string]$strict
      [string]$loose
      foreach ($mod in $module.RequiredModules)

@@ -12,6 +12,59 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Get-TargetModules
+{
+	[CmdletBinding()]
+	param
+	(
+      [string]$buildConfig,
+	  [string]$Scope,
+	  [bool]$PublishLocal
+	)
+
+	PROCESS 
+	{
+		$targets = @()
+		$packageFolder = "$PSScriptRoot\..\src\Package"
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+		if (($scope -eq 'All') -or $publishToLocal ) {
+          $targets += "$resourceManagerRootFolder\AzureRM.Profile" 
+        }
+
+        if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
+          $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+        } 
+
+        if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
+          $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
+        } 
+
+        $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
+        if ($scope -eq 'All') {  
+          foreach ($module in $resourceManagerModules) {
+            # filter out AzureRM.Profile which always gets published first 
+            # And "Azure.Storage" which is built out as test dependencies  
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
+              $targets += $module.FullName
+            }
+          }
+        } elseif ($scope -ne 'AzureRM') {
+          $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
+          if (Test-Path $modulePath) {
+            $targets += $modulePath      
+          } else {
+            Write-Error "Can not find module with name $scope to publish"
+          }
+        }
+
+        if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
+            # Publish AzureRM module    
+            $targets += "$PSScriptRoot\AzureRM"
+        } 
+
+		Write-Output -InputObject $targets
+	}
+}
 
 function Make-StrictModuleDependencies
 {
@@ -48,17 +101,14 @@ function Remove-ModuleDependencies
 
 }
 
-function Publish-RMModule 
+function Change-RMModule 
 {
 	[CmdletBinding()]
 	param(
 		[string]$Path,
-		[string]$ApiKey,
 		[string]$RepoLocation,
 		[string]$TempRepo,
-		[string]$TempRepoPath,
-		[string]$nugetExe
-		
+		[string]$TempRepoPath
 	)
 
 	PROCESS
@@ -92,13 +142,6 @@ function Publish-RMModule
 		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
 		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
 		  ren $zipPath $nupkgPath
-		  if (-not (Test-Path $RepoLocation))
-		  {
-			Write-Output "Pushing package $moduleName to nuget source $RepoLocation"
-		    &$nugetExe push $nupkgPath $ApiKey -s $RepoLocation
-			Write-Output "Pushed package $moduleName to nuget source $RepoLocation"
-		  }
-		  
 	    }
 		finally 
 		{
@@ -106,6 +149,36 @@ function Publish-RMModule
 		}
 	}
 }
+
+function Publish-RMModule 
+{
+	[CmdletBinding()]
+	param(
+		[string]$Path,
+		[string]$ApiKey,
+		[string]$TempRepoPath,
+		[string]$RepoLocation,
+		[string]$nugetExe
+	)
+
+	PROCESS
+	{
+		$moduleName = (Get-Item -Path $Path).Name
+		$moduleManifest = $moduleName + ".psd1"
+		$moduleSourcePath = Join-Path -Path $Path -ChildPath $moduleManifest
+		$manifest = Test-ModuleManifest -Path $moduleSourcePath
+		$nupkgPath = Join-Path -Path $TempRepoPath -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
+		if (!(Test-Path -Path $nupkgPath))
+		{
+			throw "Module at $nupkgPath in $TempRepoPath does not exist"
+		}
+
+		Write-Output "Pushing package $moduleName to nuget source $RepoLocation"
+		&$nugetExe push $nupkgPath $ApiKey -s $RepoLocation
+	    Write-Output "Pushed package $moduleName to nuget source $RepoLocation"		  
+	}
+}
+
 
 param(
     [Parameter(Mandatory = $false, Position = 0)]
@@ -156,7 +229,6 @@ if ($repo -ne $null) {
     Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
 }
 
-$resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $publishToLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$PSScriptRoot\..\src\package"
 if ($publishToLocal)
@@ -167,57 +239,28 @@ $tempRepoName = ([System.Guid]::NewGuid()).ToString()
 Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 
 try {
-if (($scope -eq 'All') -or $publishToLocal ) {
-    # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
-    Write-Host "Publishing profile module"
-    Publish-RMModule -Path "$resourceManagerRootFolder\AzureRM.Profile" -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-    Write-Host "Published profile module"
-}
-
-if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
-    $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage"
-    # Publish AzureStorage module
-    Write-Host "Publishing AzureStorage module from $modulePath"
-    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-} 
-
-if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
-    $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
-    # Publish Azure module
-    Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
-    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-} 
-
-$resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {  
-    foreach ($module in $resourceManagerModules) {
+	$modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal
+    foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  
-        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
-            $modulePath = $module.FullName
-            Write-Host "Publishing $module module from $modulePath"
-            Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-            Write-Host "Published $module module"
-        }
-    }
-} elseif ($scope -ne 'AzureRM') {
-    $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
-    if (Test-Path $modulePath) {
-        Write-Host "Publishing $scope module from $modulePath"
-        Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-        Write-Host "Published $scope module"        
-    } else {
-        Write-Error "Can not find module with name $scope to publish"
-    }
-}
+		$module = Get-Item -Path $modulePath
+        Write-Host "Changing $module module from $modulePath"
+        Change-RMModule -Path $modulePath -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath
+        Write-Host "Changed $module module"
+	}
 
-if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
-    # Publish AzureRM module    
-    $modulePath = "$PSScriptRoot\AzureRM"
-    Write-Host "Publishing AzureRM module from $modulePath"
-    Publish-RMModule -Path $modulePath -ApiKey $apiKey -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
-    Write-Host "Published Azure module"
-} 
+	if (!$publishToLocal)
+	{
+      foreach ($modulePath in $modulesInScope) {
+        # filter out AzureRM.Profile which always gets published first 
+        # And "Azure.Storage" which is built out as test dependencies  
+		$module = Get-Item -Path $modulePath
+        Write-Host "Pushing $module module from $modulePath"
+        Publish-RMModule -Path $modulePath -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -nugetExe $nugetExe
+        Write-Host "Pushed $module module"
+	  }
+	}
+
 }
 finally 
 {
