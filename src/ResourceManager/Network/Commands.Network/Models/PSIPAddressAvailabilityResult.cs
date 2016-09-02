@@ -12,14 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSPrivateIpAddressAvailabilityResponse
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+
+    public class PSIPAddressAvailabilityResult
     {
         public bool Available { get; set; }
 
-        public List<string> AvailableIpAddresses { get; set; }
+        public List<string> AvailableIPAddresses { get; set; }
+
+        [JsonIgnore]
+        public string AvailableIPAddressesText
+        {
+            get { return JsonConvert.SerializeObject(AvailableIPAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 }

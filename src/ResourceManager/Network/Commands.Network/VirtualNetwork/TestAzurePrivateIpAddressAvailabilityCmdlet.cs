@@ -12,32 +12,69 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmPrivateIpAddressAvailability"), OutputType(typeof(PSPrivateIpAddressAvailabilityResponse))]
-    public class TestAzurePrivateIpAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmPrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
+    public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
+            ParameterSetName = "TestByResource",
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
         [Parameter(
             Mandatory = true,
+            ValueFromPipeline = false,
+            ParameterSetName = "TestByResourceId",
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = false,
+            ParameterSetName = "TestByResourceId",
+            HelpMessage = "The virtualNetwork name")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualNetworkName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "The Private Ip Address")]
         [ValidateNotNullOrEmpty]
-        public string IpAddress { get; set; }
+        public string IPAddress { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            var result = this.NetworkClient.NetworkManagementClient.VirtualNetworks.CheckIPAddressAvailability(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.IpAddress);
+
+            PSIPAddressAvailabilityResult result;
+
+            if (string.Equals(ParameterSetName, "TestByResource"))
+            {
+                result = this.TestIpAddressAvailability(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.IPAddress);
+            }
+            else
+            {
+                result = this.TestIpAddressAvailability(this.ResourceGroupName, this.VirtualNetworkName, this.IPAddress);
+            }
+
             WriteObject(result);
+        }
+
+        public PSIPAddressAvailabilityResult TestIpAddressAvailability(string resourceGroupName, string vnetName, string ipAddress)
+        {
+            var result = this.NetworkClient.NetworkManagementClient.VirtualNetworks.CheckIPAddressAvailability(resourceGroupName, vnetName, ipAddress);
+            var psResult = Mapper.Map<PSIPAddressAvailabilityResult>(result);
+
+            return psResult;
         }
     }
 }
