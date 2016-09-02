@@ -12,7 +12,7 @@
 ModuleToProcess = 'Microsoft.AzureStack.Commands.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.9'
+ModuleVersion = '0.9.11'
 
 # ID used to uniquely identify this module
 GUID = '0e691e0a-ce16-40f2-af84-86fb0d82fb29'
