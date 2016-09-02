@@ -45,7 +45,7 @@ function Get-TargetModules
         }
 
         if (($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) {
-          $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+          $targets += "$resourceManagerRootFolder\Azure.Storage"
         } 
 
         if (($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) {
