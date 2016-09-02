@@ -84,6 +84,13 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
             Mapper.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
 
+            // TestPrivateIpAddressAvailability
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSIPAddressAvailabilityResult, MNM.IPAddressAvailabilityResult>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
+
             // VirtualNetwork Peering
             Mapper.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
 
