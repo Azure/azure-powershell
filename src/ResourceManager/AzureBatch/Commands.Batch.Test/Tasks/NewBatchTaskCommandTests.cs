@@ -21,6 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Protocol.BatchRequests;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
@@ -86,11 +88,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.JobId = "job-1";
             cmdlet.Id = "testTask";
 
-            PSExitOptions none = new PSExitOptions() { JobAction = JobAction.None };
-            PSExitOptions terminate = new PSExitOptions() { JobAction = JobAction.Terminate };
+            PSExitOptions none = new PSExitOptions { JobAction = JobAction.None };
+            PSExitOptions terminate = new PSExitOptions { JobAction = JobAction.Terminate };
 
-            cmdlet.ExitConditions = new PSExitConditions()
-            {
+            cmdlet.ExitConditions = new PSExitConditions {
                 Default = none,
                 ExitCodeRanges = new []
                 {
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 TaskAddOptions,
                 AzureOperationHeaderResponse<TaskAddHeaders>>();
 
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
 
             cmdlet.ExecuteCmdlet();
 
@@ -116,6 +117,57 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(5, cmdlet.ExitConditions.ExitCodeRanges.First().End);
             Assert.Equal(4, cmdlet.ExitConditions.ExitCodes.First().Code);
             Assert.Equal(terminate.JobAction, cmdlet.ExitConditions.ExitCodes.First().ExitOptions.JobAction);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchExitConditionsRequestBodyTest()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            TaskAddParameter requestParameters = null;
+
+            // Don't go to the service on an Add Certificate call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                TaskAddBatchRequest request = (TaskAddBatchRequest)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    requestParameters = request.Parameters;
+
+                    var response = new AzureOperationHeaderResponse<TaskAddHeaders>();
+                    Task<AzureOperationHeaderResponse<TaskAddHeaders>> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
+
+            var none = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = JobAction.None } };
+            var terminate = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = JobAction.Terminate } };
+
+            cmdlet.ExitConditions = new PSExitConditions
+            {
+                ExitCodes = new List<PSExitCodeMapping> { new PSExitCodeMapping(0, none) },
+                SchedulingError = terminate,
+                ExitCodeRanges = new List<PSExitCodeRangeMapping> { new PSExitCodeRangeMapping(1, 5, terminate) },
+                Default = none,
+            };
+
+            cmdlet.JobId = "job-Id";
+            cmdlet.Id = "task-id";
+            cmdlet.ExecuteCmdlet();
+
+            var exitConditions = requestParameters.ExitConditions;
+            Assert.Equal(1, exitConditions.ExitCodeRanges.First().Start);
+            Assert.Equal(5, exitConditions.ExitCodeRanges.First().End);
+            Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.ExitCodeRanges.First().ExitOptions.JobAction);
+            Assert.Equal(ProxyModels.JobAction.None, exitConditions.ExitCodes.First().ExitOptions.JobAction);
+            Assert.Equal(ProxyModels.JobAction.Terminate, exitConditions.SchedulingError.JobAction);
+            Assert.Equal(ProxyModels.JobAction.None, exitConditions.DefaultProperty.JobAction);
         }
 
 
