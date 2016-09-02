@@ -125,7 +125,7 @@ function Test_SetRemoveAccessPolicyBySPN
     {
         if (-not $global:noADCmdLetMode)
         {
-            Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+            Remove-AzureRmADApplication -ObjectId $app.ObjectId -Force
         }
     }
 }
@@ -335,6 +335,7 @@ function Initialize-TemporaryState
                 "permissions" = @{
                     "keys" = @("all")
                     "secrets" = @("all")
+                    "certificates" = @("all")
                 }
             }
         )

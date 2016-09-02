@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow the forwarded traffic from the VMs in the remote virtual network")]
         public SwitchParameter AllowForwardedTraffic { get; set; }
 
+        [Alias("AllowGatewayTransit")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network")]

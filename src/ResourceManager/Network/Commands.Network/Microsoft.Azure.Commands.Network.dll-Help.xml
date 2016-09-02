@@ -7523,7 +7523,7 @@ Subnets           : []</dev:code>
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -7592,6 +7592,18 @@ RemoteVirtualNetworkAddressSpace : null</maml:para>
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -16853,7 +16865,7 @@ Subnets           : [
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This comdlet is a good way to check if a peering was successfully created.</maml:para>
+		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This cmdlet is a good way to check if a peering was successfully created.</maml:para>
 		<maml:para>Look into Add-AzureRmVirtualNetworkPeering to create this peering if you have not created a peering already.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -16989,7 +17001,7 @@ Subnets           : [
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -17015,6 +17027,18 @@ Subnets           : [
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -38536,7 +38560,7 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -38562,6 +38586,18 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -49659,6 +49695,18 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">

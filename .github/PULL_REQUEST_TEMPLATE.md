@@ -1,6 +1,12 @@
+## Comments
+
+---
+
 This checklist is used to make sure that common issues in a pull request are covered by the creator. You can find a more complete discussion of PowerShell cmdlet best practices [here](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx).
 
-Below in **Overall Changes**, check off the boxes that apply to your PR. Within each of the categories that you select, make sure that you can check off **all** of the boxes.
+Below in **Overall Changes**, check off the boxes that apply to your PR. For the categories that you did not check off, you can remove them from this body. Within each of the categories that you did select, make sure that you can check off **all** of the boxes. 
+
+For information on cleaning up the commits in your pull request, click [here](../documentation/cleaning-up-commits.md).
 
 ## Overall Changes 
 - [ ] [**MANDATORY** - General changes](#general)
