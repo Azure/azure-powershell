@@ -41,7 +41,6 @@ namespace Microsoft.AzureStack.Commands
         /// <summary>
         /// Gets or sets the resource manager location.
         /// </summary>
-        [Parameter(Mandatory = true)]
         [ValidateNotNull]
         public string ArmLocation { get; set; } // TODO - use API to get CSM location?
 
@@ -61,6 +60,11 @@ namespace Microsoft.AzureStack.Commands
         /// </summary>
         protected override object ExecuteCore()
         {
+            if (!string.IsNullOrEmpty(this.ArmLocation))
+            {
+                WriteWarning("ArmLocation parameter will be removed in a future release of AzureStackAdmin module.");
+            }
+
             using (var client = this.GetAzureStackClient(this.SubscriptionId))
             {
                 var galleryItemUriPayload = new GalleryItemUriPayload()
