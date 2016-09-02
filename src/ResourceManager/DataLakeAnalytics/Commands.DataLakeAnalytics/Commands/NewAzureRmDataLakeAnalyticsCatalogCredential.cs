@@ -20,8 +20,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogCredential"), OutputType(typeof(USqlCredential))]
-    [Alias("New-AdlCatalogCredential")]
+    // TODO: Uncomment this in the next release when credential CRUD is supported.     
+    //[Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogCredential"), OutputType(typeof(USqlCredential))]
+    //[Alias("New-AdlCatalogCredential")]
     public class NewAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";

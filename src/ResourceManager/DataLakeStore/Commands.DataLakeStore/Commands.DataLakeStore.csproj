@@ -127,7 +127,7 @@
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemContent.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemOwner.cs" />
-    <Compile Include="Commands\GetAzureRmDataLakeStoreItemPermissions.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreItemPermission.cs" />
     <Compile Include="Commands\ImportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\JoinAzureRmDataLakeStoreItem.cs" />
@@ -142,7 +142,7 @@
     <Compile Include="Commands\SetAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemOwner.cs" />
-    <Compile Include="Commands\SetAzureRmDataLakeStoreItemPermissions.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreItemPermission.cs" />
     <Compile Include="Commands\TestAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\TestAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Models\DataLakeStoreClient.cs" />

@@ -18,8 +18,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Remove-AdlCatalogCredential")]
+    // TODO: Uncomment this in the next release when credential CRUD is supported.
+    //[Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    //[Alias("Remove-AdlCatalogCredential")]
     public class RemoveAzureDataLakeAnalyticsCredential : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

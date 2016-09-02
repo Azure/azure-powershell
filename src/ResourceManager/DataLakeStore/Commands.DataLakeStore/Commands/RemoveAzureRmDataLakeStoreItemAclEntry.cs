@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {   
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? DataLakeStoreItemAce.GetAclSpec(Acl, false)
-                : string.Format("{1}:{2}", AceType, Id.ToString()).ToLowerInvariant();
+                : string.Format("{0}:{1}", AceType, Id.ToString()).ToLowerInvariant();
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,

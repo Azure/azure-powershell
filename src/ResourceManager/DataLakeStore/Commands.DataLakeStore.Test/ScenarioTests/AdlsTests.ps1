@@ -315,43 +315,64 @@ function Test-DataLakeStoreFileSystemPermissions
 		# define the permissions to add/remove
 		$aceUserId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
 
-		# Set and get all the permissions
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-NotNull $result "Did not get any result from ACL get" 
 		Assert-True {$result.Count -ge 0} "UserAces is negative or null"
 		$currentCount = $result.Count
-		$result.Add($aceUserId, "rwx") 
+		$result.Add("user:$aceUserId`:rwx")
+		$toRemove = $result[$result.Count -1]
+		Assert-AreEqual $aceUserId $toRemove.Id
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Length
-		$result.UserAces.Remove($aceUserId)
+		Assert-AreEqual $($currentCount+1) $result.Count
+		$found = $false
+		for($i = 0; $i -lt $result.Count; $i++)
+		{
+			if($result[$i].Id -like $aceUserId)
+			{
+				$found = $true
+				$result.RemoveAt($i)
+				break
+			}
+		}
+
+		Assert-True { $found } "Failed to remove the element: $($toRemove.Entry)"
 		# remove the account
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Assert-AreEqual $currentCount $result.Count
 
 		# Set and get a specific permission with friendly sets
-		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
+		Set-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+		Assert-AreEqual $($currentCount+1) $result.Count
 		# remove a specific permission with friendly remove
-		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
+		Remove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Assert-AreEqual $currentCount $result.Count
 		# set and get a specific permission with the ACE string
-		Set-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
+		Set-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
+		Assert-AreEqual $($currentCount+1) $result.Count
 		# remove a specific permission with the ACE string
-		Remove-AzureRmDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
+		Remove-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.UserAces.Count
+		Assert-AreEqual $currentCount $result.Count
 
 		# verify that removal of full acl and default acl fail
-		# NOTE: commenting these tests out as these cmdlets have been temporarily removed until
-		# They are actually supported. This avoids confusion for our customers who might try to use them.
-		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force }
-		# Assert-Throws {Remove-AzureRmDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default }
+		Remove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path "/" -Force -Default
+		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+		Assert-AreEqual 4 $result.Count
+		Remove-AzureRMDataLakeStoreItemAcl -Account $accountName -Path "/" -Force
+		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
+		Assert-AreEqual 3 $result.Count
+
+		# validate permissions
+		$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path "/"
+		Assert-AreEqual 770 $permission
+		Set-AzureRMDataLakeStoreItemPermission -Account $accountName -path "/" -Permission 777 | Out-Null
+		$permission = Get-AzureRMDataLakeStoreItemPermission -Account $accountName -path "/"
+		Assert-AreEqual 777 $permission
 
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
