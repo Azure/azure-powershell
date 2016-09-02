@@ -318,12 +318,12 @@ function Test-DataLakeStoreFileSystemPermissions
 		# Set and get all the permissions
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
 		Assert-NotNull $result "Did not get any result from ACL get" 
-		Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
-		$currentCount = $result.UserAces.Count
-		$result.UserAces.Add($aceUserId, "rwx") 
+		Assert-True {$result.Count -ge 0} "UserAces is negative or null"
+		$currentCount = $result.Count
+		$result.Add($aceUserId, "rwx") 
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.UserACes.Count
+		Assert-AreEqual $($currentCount+1) $result.Length
 		$result.UserAces.Remove($aceUserId)
 		# remove the account
 		Set-AzureRMDataLakeStoreItemAcl -Account $accountName -path "/" -Acl $result

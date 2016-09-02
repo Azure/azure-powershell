@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAce))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(List<DataLakeStoreItemAce>))]
     [Alias("Get-AdlStoreItemAcl")]
     public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = DataLakeStoreItemAce.GetAclFromStatus(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
+            var toReturn = new List<DataLakeStoreItemAce>(DataLakeStoreItemAce.GetAclFromStatus(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account)));
             WriteObject(toReturn, true);
         }
     }

@@ -462,6 +462,39 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
         }
 
+        public void CreateCredential(string accountName, string databaseName,
+            string credentialName, string userId, string password, string hostUri)
+        {
+            _catalogClient.Catalog.CreateCredential(accountName, databaseName, credentialName,
+                new DataLakeAnalyticsCatalogCredentialCreateParameters
+                {
+                    Password = password,
+                    Uri = hostUri,
+                    UserId = userId
+                });
+        }
+
+        public void UpdateCredentialPassword(string accountName, string databaseName,
+            string credentialName, string userId, string password, string newPassword, string hostUri)
+        {
+            _catalogClient.Catalog.UpdateCredential(accountName, databaseName, credentialName,
+                new DataLakeAnalyticsCatalogCredentialUpdateParameters
+                {
+                    Password = password,
+                    NewPassword = newPassword,
+                    Uri = hostUri,
+                    UserId = userId
+                });
+        }
+
+        public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
+        {
+            _catalogClient.Catalog.DeleteCredential(accountName,
+                databaseName,
+                credentialName,
+                string.IsNullOrEmpty(password) ? null : new DataLakeAnalyticsCatalogCredentialDeleteParameters(password));
+        }
+
         public IList<CatalogItem> GetCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
         {
@@ -521,7 +554,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 case DataLakeAnalyticsEnums.CatalogItemType.Credential:
                     if (isList)
                     {
-                        toReturn.AddRange(GetCredentials(accountName, path.DatabaseName));
+                        throw new InvalidOperationException(Properties.Resources.InvalidUSqlSecretRequest);
+                        // TODO: re-enable when list credentials is supported.
+                        // toReturn.AddRange(GetCredentials(accountName, path.DatabaseName));
                     }
                     else
                     {
@@ -710,6 +745,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     credName);
         }
 
+        /*
+         * TODO: re-enable support when list credentials is available.
         private IList<USqlCredential> GetCredentials(string accountName,
             string databaseName)
         {
@@ -724,6 +761,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return toReturn;
         }
+        */
 
         private USqlSchema GetSchema(string accountName, string databaseName,
             string schemaName)

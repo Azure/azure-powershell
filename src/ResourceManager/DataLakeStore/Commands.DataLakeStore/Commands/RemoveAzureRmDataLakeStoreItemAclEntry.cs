@@ -71,15 +71,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4,
-            Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
-        public SwitchParameter Default { get; set; }
-
         public override void ExecuteCmdlet()
         {   
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? DataLakeStoreItemAce.GetAclSpec(Acl, false)
-                : string.Format("{0}{1}{2}", Default ? "default:" : string.Empty, AceType + ":", !Default ?  Id.ToString() : string.Empty).ToLowerInvariant();
+                : string.Format("{1}:{2}", AceType, Id.ToString()).ToLowerInvariant();
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,
