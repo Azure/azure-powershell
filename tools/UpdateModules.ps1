@@ -31,7 +31,7 @@ function Create-ModulePsm1
      foreach ($mod in $module.RequiredModules)
      {
         $strict += "  Import-Module " + $mod.Name + " -RequiredVersion " + [string]$mod.Version + "`r`n"
-        $loose += "  Import-Module $mod.Name`r`n"
+        $loose += "  Import-Module " + $mod.Name + "`r`n"
      }
      $template = Get-Content -Path $TemplatePath
      $template = $template -replace "%MODULE-NAME%", $module.Name
