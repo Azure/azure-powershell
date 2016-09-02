@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is out of date. Need to fix and record. ")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
