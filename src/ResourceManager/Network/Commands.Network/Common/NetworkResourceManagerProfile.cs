@@ -76,11 +76,13 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
             Mapper.CreateMap<CNM.PSSubnet, MNM.Subnet>();
             Mapper.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
+            Mapper.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
             Mapper.CreateMap<MNM.Subnet, CNM.PSSubnet>();
             Mapper.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
+            Mapper.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
 
             // VirtualNetwork Peering
             Mapper.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();

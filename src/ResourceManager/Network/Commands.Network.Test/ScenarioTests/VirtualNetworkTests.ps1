@@ -275,3 +275,72 @@ function Test-VirtualNetworkPeeringCRUD
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Tests on CRUD for resource navigation links on subnets.
+#>
+function Test-ResourceNavigationLinksCRUD
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+	$subnetName = Get-ResourceName
+	$cacheName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworks"
+    $location = Get-ProviderLocation $resourceTypeParent
+    
+    try 
+    {
+        # Create the resource group
+		$rglocation = "westus"
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+                
+        Assert-AreEqual $vnet.ResourceGroupName $rgname	
+        Assert-AreEqual $vnet.Name $vnetName	
+        Assert-AreEqual $vnet.Location $rglocation
+        Assert-AreEqual "Succeeded" $vnet.ProvisioningState
+
+		$subnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName
+		Assert-AreEqual 0 @($subnet.ResourceNavigationLinks).Count
+
+		# Create redis-cache
+		$cacheCreated = New-AzureRmRedisCache -ResourceGroupName $rgname -Name $cacheName -Location $location -Size P1 -Sku Premium -SubnetId $subnet.Id
+
+		# In loop to check if cache exists
+		for ($i = 0; $i -le 60; $i++)
+		{
+		    Start-TestSleep 30000
+		    $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $rgname -Name $cacheName
+		    if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
+		    {
+		        break
+		    }
+		    Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
+		}
+
+	    # Get redis-cache
+		$cache = Get-AzureRmRedisCache -ResourceGroupName $rgname -Name $cacheName
+
+		# Get subnet and check resource navigation links
+		$subnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Get-AzureRmVirtualNetworkSubnetConfig -Name $subnetName
+		Assert-AreEqual 1 @($subnet.ResourceNavigationLinks).Count
+        Assert-AreEqual $cache.Id $subnet.ResourceNavigationLinks[0].Link
+		Assert-AreEqual "Microsoft.Cache/redis" $subnet.ResourceNavigationLinks[0].LinkedResourceType
+
+        # Delete VirtualNetwork
+        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $delete
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

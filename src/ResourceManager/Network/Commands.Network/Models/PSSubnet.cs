@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSIPConfiguration> IpConfigurations { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<PSIPConfiguration> ResourceNavigationLinks { get; set; }
+        public List<PSResourceNavigationLink> ResourceNavigationLinks { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSNetworkSecurityGroup NetworkSecurityGroup { get; set; }
