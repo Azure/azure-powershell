@@ -266,9 +266,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
 
-        public void ReactiveTask(BatchAccountContext batchContext, PSCloudTask task, IEnumerable<BatchClientBehavior> additionalBehaviors)
+        public void ReactivateTask(BatchAccountContext batchContext, string jobId, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors)
         {
-            WriteVerbose(string.Format(Resources.TerminateTask, task.Id));
+            if (jobId == null)
+            {
+                throw new ArgumentNullException(nameof(jobId));
+            }
+
+            if (taskId == null)
+            {
+                throw new ArgumentNullException(nameof(taskId));
+            }
+
+            WriteVerbose(string.Format(Resources.ReactivateTask, jobId, taskId));
         }
     }
 }
