@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<string> ExtendedSourceAddressPrefix { get; set; }
+        public List<string> ExpandedSourceAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public List<string> ExtendedDestinationAddressPrefix { get; set; }
+        public List<string> ExpandedDestinationAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public string Access { get; set; }
