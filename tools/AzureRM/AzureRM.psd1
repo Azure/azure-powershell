@@ -9,10 +9,10 @@
 @{  
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.psm1'
+
   
 # Version number of this module.  
-ModuleVersion = '1.2.0'  
+ModuleVersion = '1.2.6'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -48,7 +48,36 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @() 
+RequiredModules = @(@{ModuleName="AzureRM.Profile"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="Azure.Storage"; RequiredVersion="1.0.4.1"}  
+  @{ModuleName="AzureRM.ApiManagement"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Automation"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Automation"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.AzureStackAdmin"; RequiredVersion="0.9.11"},
+  @{ModuleName="AzureRM.AzureStackStorage"; RequiredVersion="0.10.1"},
+  @{ModuleName="AzureRM.Batch"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Compute"; RequiredVersion="1.2.2.1"},
+  @{ModuleName="AzureRM.DataFactories"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.DataLakeAnalytics"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.DataLakeStore"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Dns"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.HDInsight"; RequiredVersion="1.0.5.1"},
+  @{ModuleName="AzureRM.Insights"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.KeyVault"; RequiredVersion="1.1.3.1"},
+  @{ModuleName="AzureRM.Network"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.NotificationHubs"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.OperationalInsights"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.RecoveryServices"; RequiredVersion="1.0.5.1"},
+  @{ModuleName="AzureRM.RedisCache"; RequiredVersion="1.1.2.1"},
+  @{ModuleName="AzureRM.Resources"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.SiteRecovery"; RequiredVersion="1.1.3.1"},
+  @{ModuleName="AzureRM.Sql"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Storage"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.StreamAnalytics"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Tags"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.TrafficManager"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.UsageAggregates"; RequiredVersion="1.0.4.1"},
+  @{ModuleName="AzureRM.Websites"; RequiredVersion="1.0.4.1"}) 
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -78,7 +107,7 @@ CmdletsToExport = '*'
 VariablesToExport = '*'  
   
 # Aliases to export from this module  
-AliasesToExport = @('Install-AzureRM')  
+AliasesToExport = @()  
   
 # List of all modules packaged with this module  
 ModuleList = @()  
