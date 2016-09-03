@@ -342,10 +342,6 @@ function Test-ResourceNavigationLinksCRUD
         Assert-AreEqual 1 @($subnet.ResourceNavigationLinks).Count
         Assert-AreEqual $cache.Id $subnet.ResourceNavigationLinks[0].Link
         Assert-AreEqual "Microsoft.Cache/redis" $subnet.ResourceNavigationLinks[0].LinkedResourceType
-
-        # Delete VirtualNetwork
-        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
-        Assert-AreEqual true $delete
     }
     finally
     {
