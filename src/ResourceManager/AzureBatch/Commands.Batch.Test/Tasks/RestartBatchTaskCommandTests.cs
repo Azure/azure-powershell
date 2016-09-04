@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.TaskId = "testTask";
 
             // Don't go to the service on a Restart CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskTerminateOptions, AzureOperationHeaderResponse<TaskTerminateHeaders>>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskReactivateOptions, AzureOperationHeaderResponse<TaskReactivateHeaders>>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

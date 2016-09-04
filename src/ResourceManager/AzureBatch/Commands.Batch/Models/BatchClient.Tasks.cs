@@ -266,7 +266,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
 
-        public void ReactivateTask(BatchAccountContext batchContext, string jobId, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors)
+        /// <summary>
+        /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobId">The Job id.</param>
+        /// <param name="taskId">The task we want to reactivate.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void ReactivateTask(BatchAccountContext context, string jobId, string taskId, IEnumerable<BatchClientBehavior> additionBehaviors)
         {
             if (jobId == null)
             {
@@ -279,6 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             WriteVerbose(string.Format(Resources.ReactivateTask, jobId, taskId));
+            context.BatchOMClient.JobOperations.ReactivateTask(jobId, taskId, additionBehaviors);
         }
     }
 }
