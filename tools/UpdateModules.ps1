@@ -83,7 +83,7 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage"
     # Publish AzureStorage module
     Write-Host "Updating AzureStorage module from $modulePath"
-    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation
+    Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\Azure.Storage" -TemplatePath $templateLocation
 } 
 
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
