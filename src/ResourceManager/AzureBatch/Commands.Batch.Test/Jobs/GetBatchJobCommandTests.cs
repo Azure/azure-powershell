@@ -232,7 +232,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CheckingApplicationPackageReferenceAreBeingSent()
+        public void WhenGettingAJobFromTheService_JobManagerApplicationPackageReferencesAreMapped()
         {
             // Setup cmdlet to get a Job by id
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

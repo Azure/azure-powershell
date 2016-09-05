@@ -86,9 +86,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.JobId = "job-1";
             cmdlet.Id = "task1";
             cmdlet.Filter = null;
+            string applicationId = "foo";
+            string applicationVersion = "beta";
 
             // Build a CloudTask instead of querying the service on a Get CloudTask call
-            AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
+            var cloudTask = new ProxyModels.CloudTask()
+            {
+                Id = cmdlet.Id,
+                ApplicationPackageReferences = new[] { new ProxyModels.ApplicationPackageReference(applicationId, applicationVersion), }
+            };
+
+            AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cloudTask);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.TaskGetOptions,
                 AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>>(response);
@@ -104,6 +112,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             // Verify that the cmdlet wrote the task returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
+            Assert.Equal(applicationId, pipeline[0].ApplicationPackageReferences.First().ApplicationId);
+            Assert.Equal(applicationVersion, pipeline[0].ApplicationPackageReferences.First().Version);
         }
 
         [Fact]

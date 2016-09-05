@@ -15,11 +15,13 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -53,11 +55,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.BatchContext = context;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            string applicationId = "beta";
+            string applicationVersion = "foo";
 
             cmdlet.Id = "testJob";
 
+            cmdlet.JobManagerTask = new PSJobManagerTask()
+            {
+                ApplicationPackageReferences = new[] { new PSApplicationPackageReference() { ApplicationId = applicationId, Version = applicationVersion } },
+            };
+
             // Don't go to the service on an Add CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>();
+            RequestInterceptor interceptor =
+                BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(new AzureOperationHeaderResponse<JobAddHeaders>(),
+                    request =>
+                        {
+                            Assert.Equal(cmdlet.Id, request.Parameters.Id);
+                            Assert.Equal(applicationId, request.Parameters.JobManagerTask.ApplicationPackageReferences.First().ApplicationId);
+                            Assert.Equal(applicationVersion, request.Parameters.JobManagerTask.ApplicationPackageReferences.First().Version);
+                        });
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

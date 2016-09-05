@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskWithApplicationPackagesRequestBodyTest()
+        public void ApplicationPackageReferencesAreSentOnATask()
         {
             // Setup cmdlet without the required parameters
             string ApplicationId = "foo";

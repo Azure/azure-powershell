@@ -632,6 +632,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             return response;
         }
+        /// <summary>
+        /// Builds a CloudTaskGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> CreateCloudTaskGetResponse(ProxyModels.CloudTask cloudTask)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = cloudTask
+            };
+
+            return response;
+        }
 
         /// <summary>
         /// Builds a CloudTaskListResponse object
