@@ -124,6 +124,7 @@
     <Compile Include="Commands\ExportAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreChildItem.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItem.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeStoreItemAclEntry.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemContent.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeStoreItemOwner.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Models\DataLakeStoreFileSystemClient.cs" />
     <Compile Include="Models\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreItem.cs" />
+    <Compile Include="Models\DataLakeStoreItemAcl.cs" />
     <Compile Include="Models\DataLakeStoreItemAce.cs" />
     <Compile Include="Models\DataLakeStoreItemPermissionInstance.cs" />
     <Compile Include="Models\DataLakeStorePathInstance.cs" />

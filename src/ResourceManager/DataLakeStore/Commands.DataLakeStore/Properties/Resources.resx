@@ -186,6 +186,9 @@
   <data name="MoveFailed" xml:space="preserve">
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
   </data>
+  <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
+    <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>
+  </data>
   <data name="OffsetOutOfRange" xml:space="preserve">
     <value>The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero.</value>
   </data>

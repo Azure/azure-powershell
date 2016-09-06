@@ -13,16 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAcl))]
-    [Alias("Get-AdlStoreItemAcl")]
-    [Obsolete("This cmdlet will be removed in a future release. Use Get-AzureRMDataLakeStoreItemAclEntry to experience the new behavior.")]
-    public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAclEntry"), OutputType(typeof(IEnumerable<DataLakeStoreItemAce>))]
+    [Alias("Get-AdlStoreItemAclEntry")]
+    public class GetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -40,8 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
+            var toReturn = new List<DataLakeStoreItemAce>(DataLakeStoreItemAce.GetAclFromStatus(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account)));
             WriteObject(toReturn);
         }
     }

@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry.
+        /// </summary>
+        internal static string ObsoleteWarningForAclObjects {
+            get {
+                return ResourceManager.GetString("ObsoleteWarningForAclObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
         /// </summary>
         internal static string OffsetOutOfRange {
