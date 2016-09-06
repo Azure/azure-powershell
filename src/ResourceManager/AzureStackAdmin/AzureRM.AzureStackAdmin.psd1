@@ -8,9 +8,6 @@
 
 @{
 
-# Script module or binary module file associated with this manifest
-ModuleToProcess = 'Microsoft.AzureStack.Commands.dll'
-
 # Version number of this module.
 ModuleVersion = '0.9.11'
 
@@ -60,7 +57,7 @@ TypesToProcess = @()
 # FormatsToProcess = @('AzureStackAdmin.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = @()
+NestedModules = @('.\Microsoft.AzureStack.Commands.dll')
 
 # Functions to export from this module
 FunctionsToExport = '*'
