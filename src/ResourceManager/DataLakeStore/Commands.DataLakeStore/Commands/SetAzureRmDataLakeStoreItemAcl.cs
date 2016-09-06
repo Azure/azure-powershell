@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
-        public DataLakeStoreItemAce[] Acl { get; set; }
+        public DataLakeStoreItemAcl Acl { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                     DataLakeStoreFileSystemClient.SetAcl(Path.TransformedPath, Account,
-                        DataLakeStoreItemAce.GetAclSpec(Acl)));
+                        Acl.GetAclSpec()));
         }
     }
 }

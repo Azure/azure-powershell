@@ -318,54 +318,45 @@ function Test-DataLakeStoreFileSystemPermissions
 		# Set and get all the permissions
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
 		Assert-NotNull $result "Did not get any result from ACL get" 
-		Assert-True {$result.Count -ge 0} "UserAces is negative or null"
-		$currentCount = $result.Count
-		$result.Add("user:$aceUserId`:rwx")
-		$toRemove = $result[$result.Count -1]
-		Assert-AreEqual $aceUserId $toRemove.Id
+		Assert-True {$result.UserAces.count -ge 0} "UserAces is negative or null"
+		$currentCount = $result.UserAces.Count
+		
+		# use the new cmdlet and ensure the count is the same or large than the old count
+		Assert-True {(Get-AdlStoreItemAclEntry -Account $accountName -path "/").Count -ge $result.UserAces.Count} "Get-AdlStoreItemAclEntry returned fewer results than Get-AdlStoreItemAcl"
+
+		$result.UserAces.Add($aceUserId, "rwx") 
 		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Count
-		$found = $false
-		for($i = 0; $i -lt $result.Count; $i++)
-		{
-			if($result[$i].Id -like $aceUserId)
-			{
-				$found = $true
-				$result.RemoveAt($i)
-				break
-			}
-		}
-
-		Assert-True { $found } "Failed to remove the element: $($toRemove.Entry)"
+		Assert-AreEqual $($currentCount+1) $result.UserACes.Count
+		$result.UserAces.Remove($aceUserId)
 		# remove the account
 		Set-AdlStoreItemAcl -Account $accountName -path "/" -Acl $result
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.Count
+		Assert-AreEqual $currentCount $result.UserAces.Count
 
 		# Set and get a specific permission with friendly sets
 		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Count
+		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with friendly remove
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.Count
+		Assert-AreEqual $currentCount $result.UserAces.Count
 		# set and get a specific permission with the ACE string
 		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $($currentCount+1) $result.Count
+		Assert-AreEqual $($currentCount+1) $result.UserAces.Count
 		# remove a specific permission with the ACE string
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
-		Assert-AreEqual $currentCount $result.Count
+		Assert-AreEqual $currentCount $result.UserAces.Count
 
-		# verify that removal of full acl and default acl fail
+		# Validate full ACL removal
 		Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force -Default
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual 4 $result.Count
 		Remove-AdlStoreItemAcl -Account $accountName -Path "/" -Force
-		$result = Get-AdlStoreItemAcl -Account $accountName -path "/"
+		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual 3 $result.Count
 
 		# validate permissions
