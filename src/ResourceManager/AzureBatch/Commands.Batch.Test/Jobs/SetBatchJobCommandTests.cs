@@ -54,12 +54,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
+            var cloudJob = new Azure.Batch.Protocol.Models.CloudJob(
+                id: "job-id",
+                poolInfo: new Azure.Batch.Protocol.Models.PoolInformation(),
+                onAllTasksComplete: OnAllTasksComplete.TerminateJob);
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                JobUpdateParameter,
-                JobUpdateOptions,
-                AzureOperationHeaderResponse<JobUpdateHeaders>>();
+            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, cloudJob));
+
+            RequestInterceptor interceptor =
+                BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobUpdateParameter, JobUpdateOptions, AzureOperationHeaderResponse<JobUpdateHeaders>>(
+                    new AzureOperationHeaderResponse<JobUpdateHeaders>(),
+                    request =>
+                        {
+                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+                        });
 
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 

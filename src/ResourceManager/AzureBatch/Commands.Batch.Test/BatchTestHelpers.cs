@@ -820,7 +820,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <summary>
         /// Fabricates a CloudJob that's in the bound state
         /// </summary>
-        public static CloudJob CreateFakeBoundJob(BatchAccountContext context)
+        public static CloudJob CreateFakeBoundJob(BatchAccountContext context, ProxyModels.CloudJob cloudJob)
         {
             string jobId = "testJob";
 
@@ -830,8 +830,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>();
-                    response.Body = new ProxyModels.CloudJob(id: jobId, poolInfo: new ProxyModels.PoolInformation());
+                    var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> { Body = cloudJob };
 
                     Task<AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>> task = Task.FromResult(response);
                     return task;
