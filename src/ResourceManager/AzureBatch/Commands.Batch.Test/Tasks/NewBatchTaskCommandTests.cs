@@ -81,44 +81,39 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         public void ApplicationPackageReferencesAreSentOnATask()
         {
             // Setup cmdlet without the required parameters
-            string ApplicationId = "foo";
-            string ApplicationVersion = "beta";
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.JobId = "job-1";
-            cmdlet.Id = "testTask";
 
-            PSApplicationPackageReference[] applicationPackageReferences  =
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.Id = "task-id";
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            
+            cmdlet.JobId = "job-id";
+
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+
+            cmdlet.ApplicationPackageReferences = new[]
             {
-                new PSApplicationPackageReference
-                {
-                    ApplicationId = "foo",
-                    Version = "beta"
-                },
+                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
             };
 
-            TaskAddParameter requestParameters = null;
-
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                TaskAddBatchRequest request = (TaskAddBatchRequest)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
+            // Don't go to the service on an Add CloudJob call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
+                new AzureOperationHeaderResponse<TaskAddHeaders>(),
+                request =>
                 {
-                    requestParameters = request.Parameters;
+                    var applicationPackageReference = request.Parameters.ApplicationPackageReferences.First();
+                    Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                    Assert.Equal(applicationVersion, applicationPackageReference.Version);
+                });
 
-                    var response = new AzureOperationHeaderResponse<TaskAddHeaders>();
-                    Task<AzureOperationHeaderResponse<TaskAddHeaders>> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
-            cmdlet.ApplicationPackageReferences = applicationPackageReferences;
+            // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(ApplicationId, requestParameters.ApplicationPackageReferences.First().ApplicationId);
-            Assert.Equal(ApplicationVersion, requestParameters.ApplicationPackageReferences.First().Version);
         }
 
         [Fact]
@@ -170,6 +165,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             {
                 Assert.True(taskIds.Contains(task.Id));
             }
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApplicationPackageRefererncesAreSentToService()
+        {
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+
+            cmdlet.ApplicationPackageReferences = new[]
+            {
+                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion}
+            };
+
+            cmdlet.Id = "task-id";
+
+            cmdlet.JobId = "job-id";
+
+            // Don't go to the service on an Add CloudTask call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
+                new AzureOperationHeaderResponse<TaskAddHeaders>(),
+                request =>
+                {
+                    var applicationPackageReference = request.Parameters.ApplicationPackageReferences.First();
+                    Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                    Assert.Equal(applicationVersion, applicationPackageReference.Version);
+                });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
         }
     }
 }

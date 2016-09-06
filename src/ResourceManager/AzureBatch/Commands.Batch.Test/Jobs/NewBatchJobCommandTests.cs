@@ -55,25 +55,45 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.BatchContext = context;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-            string applicationId = "beta";
-            string applicationVersion = "foo";
 
             cmdlet.Id = "testJob";
 
-            cmdlet.JobManagerTask = new PSJobManagerTask()
+            // Don't go to the service on an Add CloudJob call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>();
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApplicationPackageRefererncesAreSentToService()
+        {
+            // Setup cmdlet without the required parameters
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+
+            cmdlet.JobManagerTask = new PSJobManagerTask { ApplicationPackageReferences = new[] 
             {
-                ApplicationPackageReferences = new[] { new PSApplicationPackageReference() { ApplicationId = applicationId, Version = applicationVersion } },
-            };
+                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
+            }};
+
+            cmdlet.Id = "task-id";
 
             // Don't go to the service on an Add CloudJob call
-            RequestInterceptor interceptor =
-                BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(new AzureOperationHeaderResponse<JobAddHeaders>(),
-                    request =>
-                        {
-                            Assert.Equal(cmdlet.Id, request.Parameters.Id);
-                            Assert.Equal(applicationId, request.Parameters.JobManagerTask.ApplicationPackageReferences.First().ApplicationId);
-                            Assert.Equal(applicationVersion, request.Parameters.JobManagerTask.ApplicationPackageReferences.First().Version);
-                        });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(
+                new AzureOperationHeaderResponse<JobAddHeaders>(),
+                request =>
+                    {
+                        var applicationPackageReference = request.Parameters.JobManagerTask.ApplicationPackageReferences.First();
+                        Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                        Assert.Equal(applicationVersion, applicationPackageReference.Version);
+                    });
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
