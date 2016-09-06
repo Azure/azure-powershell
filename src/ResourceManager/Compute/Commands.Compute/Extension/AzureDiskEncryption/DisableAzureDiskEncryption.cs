@@ -257,17 +257,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    if (string.IsNullOrWhiteSpace(VolumeType) ||
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.InvariantCultureIgnoreCase) ||
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeOS, StringComparison.InvariantCultureIgnoreCase))
+                    if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
+                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var opVm = UpdateVmEncryptionSettings();
-                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
+                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
                     }
                     else
                     {
-                        var result = Mapper.Map<PSAzureOperationResponse>(opExt);
+                        var opVm = UpdateVmEncryptionSettings();
+                        var result = Mapper.Map<PSAzureOperationResponse>(opVm);
                         WriteObject(result);
                     }
                 }
