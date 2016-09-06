@@ -228,6 +228,20 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-BlobAuditingOnServer");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestDatatabaseAuditingTypeMigration()
+        {
+            RunPowerShellTest("Test-DatatabaseAuditingTypeMigration");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Sql)]
+        public void TestServerAuditingTypeMigration()
+        {
+            RunPowerShellTest("Test-ServerAuditingTypeMigration");
+        }
+
         [Fact (Skip = "Waiting backend validation")]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
