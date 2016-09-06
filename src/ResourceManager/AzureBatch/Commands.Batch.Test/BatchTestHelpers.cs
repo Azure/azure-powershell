@@ -632,6 +632,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
 
             return response;
         }
+
         /// <summary>
         /// Builds a CloudTaskGetResponse object
         /// </summary>
