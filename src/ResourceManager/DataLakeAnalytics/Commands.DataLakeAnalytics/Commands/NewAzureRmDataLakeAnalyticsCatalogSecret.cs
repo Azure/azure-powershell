@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
             Mandatory = true, HelpMessage = "The host of the database to connect to in the format 'myhost.dns.com'.")]
+        [Alias("Host")]
         public string DatabaseHost { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4,
