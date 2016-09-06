@@ -28,7 +28,6 @@ using Microsoft.Azure.Commands.Batch.Models;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using JobAction = Microsoft.Azure.Batch.Common.JobAction;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchTaskParametersTest()
+        public void NewBatchTaskShouldHaveExpectedMandatoryProperties()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -79,57 +78,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GettingExitConditionsReturnsTheSameValueThatWasSet()
-        {
-            // Setup cmdlet without the required parameters
-            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
-            cmdlet.BatchContext = context;
-
-            cmdlet.JobId = "job-1";
-            cmdlet.Id = "testTask";
-
-            PSExitOptions none = new PSExitOptions { JobAction = JobAction.None };
-            PSExitOptions terminate = new PSExitOptions { JobAction = JobAction.Terminate };
-
-            cmdlet.ExitConditions = new PSExitConditions {
-                Default = none,
-                ExitCodeRanges = new []
-                {
-                    new PSExitCodeRangeMapping(2, 5, none),
-                },
-                ExitCodes = new[] { new PSExitCodeMapping(4, terminate) },
-                SchedulingError = terminate
-            };
-
-            // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                TaskAddParameter,
-                TaskAddOptions,
-                AzureOperationHeaderResponse<TaskAddHeaders>>();
-
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
-
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(none, cmdlet.ExitConditions.Default);
-            Assert.Equal(terminate, cmdlet.ExitConditions.SchedulingError);
-            Assert.Equal(2, cmdlet.ExitConditions.ExitCodeRanges.First().Start);
-            Assert.Equal(5, cmdlet.ExitConditions.ExitCodeRanges.First().End);
-            Assert.Equal(4, cmdlet.ExitConditions.ExitCodes.First().Code);
-            Assert.Equal(terminate.JobAction, cmdlet.ExitConditions.ExitCodes.First().ExitOptions.JobAction);
-        }
-
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchExitConditionsRequestBodyTest()
+        public void ExitConditionsAreSentToService()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
             TaskAddParameter requestParameters = null;
 
-            // Don't go to the service on an Add Certificate call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
                 TaskAddBatchRequest request = (TaskAddBatchRequest)baseRequest;
@@ -146,8 +101,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
 
-            var none = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = JobAction.None } };
-            var terminate = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = JobAction.Terminate } };
+            var none = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.None } };
+            var terminate = new PSExitOptions { omObject = new Azure.Batch.ExitOptions { JobAction = Azure.Batch.Common.JobAction.Terminate } };
 
             cmdlet.ExitConditions = new PSExitConditions
             {

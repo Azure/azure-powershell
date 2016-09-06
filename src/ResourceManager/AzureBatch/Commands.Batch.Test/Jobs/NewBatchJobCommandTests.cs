@@ -55,9 +55,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testJob";
+            cmdlet.OnAllTasksComplete = Azure.Batch.Common.OnAllTasksComplete.TerminateJob;
+            cmdlet.OnTaskFailure = Azure.Batch.Common.OnTaskFailure.PerformExitOptionsJobAction;
 
             // Don't go to the service on an Add CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>();
+            var interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(
+                    new AzureOperationHeaderResponse<JobAddHeaders>(),
+                    request =>
+                        {
+                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+                            Assert.Equal(request.Parameters.OnTaskFailure, OnTaskFailure.PerformExitOptionsJobAction);
+                        });
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

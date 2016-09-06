@@ -485,8 +485,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             while (job.State != JobState.Completed || DateTime.Now > timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
-
-                // Save time by not waiting during playback scenarios
+                
                 Sleep(20000);
             }
             

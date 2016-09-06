@@ -822,8 +822,6 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// </summary>
         public static CloudJob CreateFakeBoundJob(BatchAccountContext context, ProxyModels.CloudJob cloudJob)
         {
-            string jobId = "testJob";
-
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
                 JobGetBatchRequest request = (JobGetBatchRequest)baseRequest;
@@ -837,7 +835,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 };
             });
 
-            return context.BatchOMClient.JobOperations.GetJob(jobId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+            return context.BatchOMClient.JobOperations.GetJob(cloudJob.Id, additionalBehaviors: new BatchClientBehavior[] { interceptor });
         }
 
         /// <summary>
