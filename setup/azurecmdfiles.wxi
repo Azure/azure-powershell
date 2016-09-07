@@ -1524,9 +1524,6 @@
                         <Component Id="cmpC5EBF1A0F318B8E0497711394E31D7DC" Guid="*">
                             <File Id="fil6B6CE7A0C0502A4424D2CED2C58DC788" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.KeyVault.dll" />
                         </Component>
-                        <Component Id="cmp235180430FB6DE5147EE62ABC86D7E0E" Guid="*">
-                            <File Id="fil1AAF345120F9C35A80C5EE4E28CB8AB1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.KeyVault.WebKey.dll" />
-                        </Component>
                         <Component Id="cmpD1A5B61C7046E3D9D8256C632EED70EF" Guid="*">
                             <File Id="fil667D148658CD08848B6941417EDD954F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.Management.Authorization.dll" />
                         </Component>
@@ -6082,7 +6079,6 @@
             <ComponentRef Id="cmpEBDBD8D91E1BFC6B12826CC430FAE403" />
             <ComponentRef Id="cmpDB8EED2921062193540743B6260AB9F1" />
             <ComponentRef Id="cmpC5EBF1A0F318B8E0497711394E31D7DC" />
-            <ComponentRef Id="cmp235180430FB6DE5147EE62ABC86D7E0E" />
             <ComponentRef Id="cmpD1A5B61C7046E3D9D8256C632EED70EF" />
             <ComponentRef Id="cmpFD1FF637F9EDD0BF88DE235BB7C878F2" />
             <ComponentRef Id="cmp4C36F13520E00A5CB5295B30590FB763" />

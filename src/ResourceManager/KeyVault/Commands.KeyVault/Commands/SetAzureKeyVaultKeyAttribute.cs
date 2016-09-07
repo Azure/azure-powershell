@@ -23,9 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update attribute of a key vault key.
     /// </summary>
     [Alias("Set-AzureKeyVaultKey")]
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
-        SupportsShouldProcess = true, 
-        HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.KeyName)]
+        [Alias("KeyName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+            HelpMessage = "key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
         [Alias("KeyVersion")]
         public string Version { get; set; }
 
@@ -98,8 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
-        [Alias(Constants.TagsAlias)]
-        public Hashtable Tag { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
@@ -109,18 +106,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
-            {
-                var keyBundle = DataServiceClient.UpdateKey(
+            var keyBundle = DataServiceClient.UpdateKey(
                 VaultName,
                 Name,
-                Version ?? string.Empty,
-                new KeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                Version,
+                new KeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tags));
 
-                if (PassThru)
-                {
-                    WriteObject(keyBundle);
-                }
+            if (PassThru)
+            {
+                WriteObject(keyBundle);
             }
         }
     }

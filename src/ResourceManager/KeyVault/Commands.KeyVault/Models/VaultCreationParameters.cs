@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections;
 
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public string ResourceGroupName { get; set; }
         public string Location { get; set; }
         public Hashtable Tags { get; set; }
-        public SkuName SkuName { get; set; }
+        public string SkuName { get; set; }
         public string SkuFamilyName { get; set; }
         public bool EnabledForDeployment { get; set; }
         public bool EnabledForTemplateDeployment { get; set; }

@@ -241,11 +241,7 @@
               <ListItem>
                 <Label>Permissions to Secrets</Label>
                 <PropertyName>PermissionsToSecrets</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Permissions to Certificates</Label>
-                <PropertyName>PermissionsToCertificates</PropertyName>
-              </ListItem>
+              </ListItem>              
             </ListItems>
           </ListEntry>
         </ListEntries>

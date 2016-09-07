@@ -15,6 +15,20 @@ $contenttype="contenttype"
 $newcontenttype="newcontenttype"
 $emptycontenttype=""
 
+function Equal-String($left, $right)
+{
+    if (([string]::IsNullOrEmpty($left)) -and ([string]::IsNullOrEmpty($right)))
+    {
+        return $true
+    }
+    if (([string]::IsNullOrEmpty($left)) -or ([string]::IsNullOrEmpty($right)))
+    {
+        return $false
+    }    
+    
+    return $left.Equals($right)
+}
+
 function Assert-SecretAttributes($secretAttr, $secenable, $secexp, $secnbf, $seccontenttype, $sectags)
 {
     Assert-NotNull $secretAttr, "secretAttr is null."
@@ -72,7 +86,7 @@ function Test_CreateSecretWithCustomAttributes
 {
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'attr'    
-    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tags $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
     Assert-AreEqual $sec.SecretValueText $data
@@ -109,7 +123,7 @@ function Test_SetSecretPositionalParameter
 {
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'positional'  
-    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
+    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tags $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
     Assert-AreEqual $sec.SecretValueText $data    
@@ -124,7 +138,7 @@ function Test_SetSecretAliasParameter
 {
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'alias'   
-    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -SecretName $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -SecretName $secretname -SecretValue $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tags $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
     Assert-AreEqual $sec.SecretValueText $data
@@ -162,7 +176,7 @@ function Test_UpdateIndividualSecretAttributes
     # Create a secret for updating
     $keyVault = Get-KeyVault
     $secretname=Get-SecretName 'updateattr'
-    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
+    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tags $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
     Assert-AreEqual $sec.SecretValueText $data
@@ -190,12 +204,12 @@ function Test_UpdateIndividualSecretAttributes
     Assert-SecretAttributes $sec.Attributes $true $newexpires $newnbf $newcontenttype $tags
     
     # Update Tags
-    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Tag $newtags -PassThru
+    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Tags $newtags -PassThru
     Assert-NotNull $sec
     Assert-SecretAttributes $sec.Attributes $true $newexpires $newnbf $newcontenttype $newtags
     
     # Clean Tags
-    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Tag $emptytags -PassThru   
+    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Tags $emptytags -PassThru   
     Assert-NotNull $sec
     Assert-SecretAttributes $sec.Attributes $true $newexpires $newnbf $newcontenttype $emptytags
 }
@@ -209,7 +223,7 @@ function Test_UpdateSecretWithNoChange
     # Create a secret for updating
     $keyVault = Get-KeyVault
     $secretname=Get-SecretName 'updatenochange'
-    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tag $tags
+    $sec=Set-AzureKeyVaultSecret $keyVault $secretname $securedata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Disable -Tags $tags
     Assert-NotNull $sec
     $global:createdSecrets += $secretname
     Assert-AreEqual $sec.SecretValueText $data
@@ -237,7 +251,7 @@ function Test_UpdateAllEditableSecretAttributes
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
     # Update all attributes  
-    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tag $tags -PassThru
+    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -Name $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tags $tags -PassThru
     Assert-NotNull $sec
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags
 }
@@ -256,7 +270,7 @@ function Test_SetSecretAttributePositionalParameter
     Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
-    $sec=Set-AzureKeyVaultSecretAttribute $keyVault $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tag $tags -PassThru
+    $sec=Set-AzureKeyVaultSecretAttribute $keyVault $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tags $tags -PassThru
     Assert-NotNull $sec
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags    
 }
@@ -275,7 +289,7 @@ function Test_SetSecretAttributeAliasParameter
     Assert-AreEqual $sec.SecretValueText $data
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
   
-    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -SecretName $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tag $tags -PassThru
+    $sec=Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -SecretName $secretname -Expires $expires -NotBefore $nbf -ContentType $contenttype -Enable $false -Tags $tags -PassThru
     Assert-NotNull $sec
     Assert-SecretAttributes $sec.Attributes $false $expires $nbf $contenttype $tags    
 }
@@ -302,7 +316,7 @@ function Test_SetSecretVersion
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
     
     # Update old version
-    Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -SecretName $secretname -Version $v1 -Enable $true -Expires $expires -NotBefore $nbf -ContentType $contenttype -Tag $tags -PassThru
+    Set-AzureKeyVaultSecretAttribute -VaultName $keyVault -SecretName $secretname -Version $v1 -Enable $true -Expires $expires -NotBefore $nbf -ContentType $contenttype -Tags $tags -PassThru
     
     # Verify old Version changed
     $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $secretname -Version $v1
@@ -320,7 +334,7 @@ function Test_SetSecretVersion
     Assert-SecretAttributes $sec.Attributes $true $null $null $null $null
     
     # Update old version using positional parameters
-    # Set-AzureKeyVaultSecretAttribute $keyVault $secretname $v1 -Enable $true -Expires $newexpires -NotBefore $newnbf -ContentType $newcontenttype -Tag $newtags
+    # Set-AzureKeyVaultSecretAttribute $keyVault $secretname $v1 -Enable $true -Expires $newexpires -NotBefore $newnbf -ContentType $newcontenttype -Tags $newtags
     
     # Verify old Version changed
     #$sec=Get-AzureKeyVaultSecret -VaultName $keyVault -SecretName $secretname -Version $v1
@@ -328,16 +342,6 @@ function Test_SetSecretVersion
     #Assert-SecretAttributes $sec.Attributes $true $newexpires $newnbf $newcontenttype $newtags      
  }                  
     
-<#
-.SYNOPSIS
-Get a secret in a syntactically bad vault name
-#>
-
-function Test_GetSecretInABadVault
-{
-    $secretname = Get-SecretName 'nonexist'   
-    Assert-Throws { Get-AzureKeyVaultSecret '$vaultName' $secretname }
-}
 
 <#
 .SYNOPSIS
@@ -443,7 +447,7 @@ function Test_GetPreviousVersionOfSecret
     Assert-SecretAttributes $sec1.Attributes $true $null $null $null $null
     
     # set the same secret with new values and atrributes
-    $sec2=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $newsecuredata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Tag $tags
+    $sec2=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname -SecretValue $newsecuredata -Expires $expires -NotBefore $nbf -ContentType $contenttype -Tags $tags
     Assert-NotNull $sec2  
     Assert-AreEqual $sec2.SecretValueText $newdata    
     Assert-SecretAttributes $sec2.Attributes $true $expires $nbf $contenttype $tags
@@ -680,7 +684,7 @@ function Test_PipelineUpdateSecretAttributes
     Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Set-AzureKeyVaultSecretAttribute -ContentType $newcontenttype
     Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | ForEach-Object { Assert-True { Equal-String $newcontenttype  $_.ContentType }}
     
-    Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Set-AzureKeyVaultSecretAttribute -Tag $newtags
+    Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | Set-AzureKeyVaultSecretAttribute -Tags $newtags
     Get-AzureKeyVaultSecret $keyVault |  Where-Object {$_.SecretName -like $secretpartialname+'*'}  | ForEach-Object { Assert-True { Equal-Hashtable $newtags $_.Tags }}
 }
 
@@ -699,7 +703,7 @@ function Test_PipelineUpdateSecretVersions
     Get-AzureKeyVaultSecret $keyVault $secretname -IncludeVersions | Set-AzureKeyVaultSecretAttribute -Expires $newexpires
     Get-AzureKeyVaultSecret $keyVault $secretname -IncludeVersions |  ForEach-Object { Assert-True { Equal-DateTime $newexpires  $_.Expires }}
     
-    Get-AzureKeyVaultSecret $keyVault $secretname -IncludeVersions | Set-AzureKeyVaultSecretAttribute -Tag $newtags
+    Get-AzureKeyVaultSecret $keyVault $secretname -IncludeVersions | Set-AzureKeyVaultSecretAttribute -Tags $newtags
     Get-AzureKeyVaultSecret $keyVault $secretname -IncludeVersions | ForEach-Object { Assert-True { Equal-Hashtable $newtags $_.Tags }}
  }
  
