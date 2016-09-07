@@ -403,7 +403,8 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>System.String</maml:para>
+				<maml:para>
+System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -36506,13 +36507,14 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Deleting a network security group  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmNetworkSecurityGroup -Name &quot;NSG-FrontEnd&quot; -ResourceGroupName &quot;TestRG&quot;</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>This command removes the network security group called &quot;NSG-Frontend&quot; within the resource group &quot;TestRG.&quot;</maml:para>
+				<maml:para>Note that a network security group must exist before it can be deleted.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -36689,13 +36691,20 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Deleting a network security rule configuration  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule  -Description &quot;Allow RDP&quot; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+PS C:\&gt; $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name &quot;NSG-FrontEnd&quot; -SecurityRules $rule1
+
+PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg
+
+</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command creates a network security rule called rdp-rule. The second command assigns this rule to a network security group. Finally, the third command removes this network security rule associated with the network security group stored in the variable $nsg.</maml:para>
+				<maml:para>Note that a rule must be associated with a network security group in order to sucessfully delete it.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -47992,7 +48001,12 @@ DnsSettings              : {
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Set-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-Name              : routetable01
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the route table named routetable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
 Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
@@ -48022,12 +48036,7 @@ Routes            : [
                         &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
                       }
                     ]
-Subnets           : []</dev:code>
-			<dev:remarks>
-				<maml:para>This command gets the route table named routetable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+Subnets           : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -48199,7 +48208,12 @@ Subnets           : []</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Add-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-Name              : routetable01
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the route table named routetable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
 Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
@@ -48238,12 +48252,7 @@ Routes            : [
                         &quot;ProvisioningState&quot;: null
                       }
                     ]
-Subnets           : []</dev:code>
-			<dev:remarks>
-				<maml:para>This command gets the route table named routetable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+Subnets           : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
