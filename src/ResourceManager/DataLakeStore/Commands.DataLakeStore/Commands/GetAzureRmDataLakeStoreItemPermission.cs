@@ -13,16 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAcl))]
-    [Alias("Get-AdlStoreItemAcl")]
-    [Obsolete("This cmdlet will be removed in a future release. Use Get-AzureRMDataLakeStoreItemAclEntry to experience the new behavior.")]
-    public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemPermission"), OutputType(typeof(string))]
+    [Alias("Get-AdlStoreItemPermission")]
+    public class GetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -32,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             HelpMessage =
-                "The path in the specified Data Lake account that should have its ACL retrieved. Can be a file or folder " +
+                "The path in the specified Data Lake account that should have its permissions retrieved. Can be a file or folder " +
                 "In the format '/folder/file.txt', " +
                 "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
@@ -40,9 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account));
-            WriteObject(toReturn);
+            WriteObject(DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Permission);
         }
     }
 }

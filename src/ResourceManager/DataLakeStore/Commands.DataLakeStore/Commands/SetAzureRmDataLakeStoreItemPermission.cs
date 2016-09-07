@@ -13,13 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    // [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemPermissions"), OutputType(typeof(DataLakeStoreItemPermissionInstance))]
-    // [Alias("Get-AdlStoreItemPermissions")]
-    public class GetAzureDataLakeStoreItemPermissions : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemPermission", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Set-AdlStoreItemPermission")]
+    public class SetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -29,17 +30,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             HelpMessage =
-                "The path in the specified Data Lake account that should have its permissions retrieved. Can be a file or folder " +
+                "The path in the specified Data Lake account that should have its permissions set. Can be a file or folder " +
                 "In the format '/folder/file.txt', " +
                 "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage =
+                "The permissions to set for the file or folder. This can be expressed as an octal (e.g. '777') or as a friendly string (e.g. 'rwxrwxrwx')"
+            )]
+        [ValidateRange(0, 1777)]
+        public int Permission { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(
-                DataLakeStoreItemPermissionInstance.Parse(
-                    DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Permission));
+            ConfirmAction(
+                string.Format(Resources.SetDataLakeStoreItemPermissions, Path.OriginalPath),
+                Path.OriginalPath,
+                () =>
+                {
+                    DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permission.ToString());
+                    WriteObject(true);
+                });
         }
     }
 }
