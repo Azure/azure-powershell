@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemPermission"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemPermission", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemPermission")]
     public class SetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
     {
@@ -44,8 +45,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permission.ToString());
-            WriteObject(true);
+            ConfirmAction(
+                string.Format(Resources.SetDataLakeStoreItemPermissions, Path.OriginalPath),
+                Path.OriginalPath,
+                () =>
+                {
+                    DataLakeStoreFileSystemClient.SetPermission(Path.TransformedPath, Account, Permission.ToString());
+                    WriteObject(true);
+                });
         }
     }
 }
