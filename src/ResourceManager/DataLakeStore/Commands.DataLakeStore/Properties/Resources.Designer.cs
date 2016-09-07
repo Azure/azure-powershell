@@ -385,6 +385,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder permissions at path: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeStoreItemPermissions {
+            get {
+                return ResourceManager.GetString("SetDataLakeStoreItemPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {

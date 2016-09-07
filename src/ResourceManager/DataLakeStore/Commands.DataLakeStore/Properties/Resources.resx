@@ -226,6 +226,9 @@
   <data name="SetDataLakeStoreItemOwner" xml:space="preserve">
     <value>Setting the Data Lake file or folder owning group or user at path: '{0}' ...</value>
   </data>
+  <data name="SetDataLakeStoreItemPermissions" xml:space="preserve">
+    <value>Setting the Data Lake file or folder permissions at path: '{0}' ...</value>
+  </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
   </data>
