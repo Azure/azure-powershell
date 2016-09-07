@@ -61,33 +61,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add certificate.
-        /// </summary>
-        internal static string AddCertificate {
-            get {
-                return ResourceManager.GetString("AddCertificate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add certificate contact.
-        /// </summary>
-        internal static string AddCertificateContact {
-            get {
-                return ResourceManager.GetString("AddCertificateContact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Add key.
-        /// </summary>
-        internal static string AddKey {
-            get {
-                return ResourceManager.GetString("AddKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Retrieving object ID from Azure Active Directory failed. {0}
         ///
         ///Please provide object ID for the user or service principle to set a vault access policy.
@@ -114,15 +87,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string ArmAccountNotFound {
             get {
                 return ResourceManager.GetString("ArmAccountNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Backup key.
-        /// </summary>
-        internal static string BackupKey {
-            get {
-                return ResourceManager.GetString("BackupKey", resourceCulture);
             }
         }
         
@@ -154,65 +118,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find certificate file &apos;{0}&apos;..
-        /// </summary>
-        internal static string CertificateFileNotFound {
-            get {
-                return ResourceManager.GetString("CertificateFileNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create certificate administrator.
-        /// </summary>
-        internal static string CreateCertificateAdministrator {
-            get {
-                return ResourceManager.GetString("CreateCertificateAdministrator", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create certificate organization.
-        /// </summary>
-        internal static string CreateCertificateOrganization {
-            get {
-                return ResourceManager.GetString("CreateCertificateOrganization", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create certificate policy.
-        /// </summary>
-        internal static string CreateCertificatePolicy {
-            get {
-                return ResourceManager.GetString("CreateCertificatePolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create key vault.
-        /// </summary>
-        internal static string CreateKeyVault {
-            get {
-                return ResourceManager.GetString("CreateKeyVault", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
         internal static string ImportByokAsSoftkeyError {
             get {
                 return ResourceManager.GetString("ImportByokAsSoftkeyError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Import certificate.
-        /// </summary>
-        internal static string ImportCertificate {
-            get {
-                return ResourceManager.GetString("ImportCertificate", resourceCulture);
             }
         }
         
@@ -303,15 +213,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyUri {
             get {
                 return ResourceManager.GetString("InvalidKeyUri", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid number of certificates..
-        /// </summary>
-        internal static string InvalidNumberOfCertificates {
-            get {
-                return ResourceManager.GetString("InvalidNumberOfCertificates", resourceCulture);
             }
         }
         
@@ -442,51 +343,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove certificate contact.
-        /// </summary>
-        internal static string RemoveCertificateContact {
-            get {
-                return ResourceManager.GetString("RemoveCertificateContact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove certificate issuer.
-        /// </summary>
-        internal static string RemoveCertificateIssuer {
-            get {
-                return ResourceManager.GetString("RemoveCertificateIssuer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove certificate operation.
-        /// </summary>
-        internal static string RemoveCertificateOperation {
-            get {
-                return ResourceManager.GetString("RemoveCertificateOperation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
-        /// </summary>
-        internal static string RemoveCertWarning {
-            get {
-                return ResourceManager.GetString("RemoveCertWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Remove certificate.
-        /// </summary>
-        internal static string RemoveCertWhatIfMessage {
-            get {
-                return ResourceManager.GetString("RemoveCertWhatIfMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveKeyWarning {
@@ -523,15 +379,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove vault access policy.
-        /// </summary>
-        internal static string RemoveVaultAccessPolicy {
-            get {
-                return ResourceManager.GetString("RemoveVaultAccessPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove vault &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveVaultWarning {
@@ -546,87 +393,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string RemoveVaultWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveVaultWhatIfMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Restore key.
-        /// </summary>
-        internal static string RestoreKey {
-            get {
-                return ResourceManager.GetString("RestoreKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set certificate attribute.
-        /// </summary>
-        internal static string SetCertificateAttributes {
-            get {
-                return ResourceManager.GetString("SetCertificateAttributes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set certificate issuer.
-        /// </summary>
-        internal static string SetCertificateIssuer {
-            get {
-                return ResourceManager.GetString("SetCertificateIssuer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set certificate policy.
-        /// </summary>
-        internal static string SetCertificatePolicy {
-            get {
-                return ResourceManager.GetString("SetCertificatePolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set key attribute.
-        /// </summary>
-        internal static string SetKeyAttribute {
-            get {
-                return ResourceManager.GetString("SetKeyAttribute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set secret.
-        /// </summary>
-        internal static string SetSecret {
-            get {
-                return ResourceManager.GetString("SetSecret", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set  secret attribute.
-        /// </summary>
-        internal static string SetSecretAttribute {
-            get {
-                return ResourceManager.GetString("SetSecretAttribute", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Set vault access policy.
-        /// </summary>
-        internal static string SetVaultAccessPolicy {
-            get {
-                return ResourceManager.GetString("SetVaultAccessPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stop certificate operation.
-        /// </summary>
-        internal static string StopCertificateOperation {
-            get {
-                return ResourceManager.GetString("StopCertificateOperation", resourceCulture);
             }
         }
         

@@ -90,9 +90,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CannotRemoveSecretWithoutShouldProcessOrForceConfirmationTest()
         {
-            // Should process but without force
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
-
             Secret expected = null;
 
             cmdlet.Name = SecretName;
@@ -101,6 +98,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             // Write object should be called with null input
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+
+            // Should process but without force
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
             // Write object should be called with null input
