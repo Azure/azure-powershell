@@ -246,7 +246,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             string applicationVersion = "beta";
             ProxyModels.CloudJob cloudTask = new ProxyModels.CloudJob
             {
-                Id = "task-1",
+                Id = "job-1",
                 JobManagerTask = new ProxyModels.JobManagerTask
                 {
                     ApplicationPackageReferences = new[]
