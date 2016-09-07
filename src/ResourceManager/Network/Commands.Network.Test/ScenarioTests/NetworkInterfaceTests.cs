@@ -95,5 +95,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
         }
+
+        [Fact(Skip = "manifest not rolled out yet to register subscription, tested end to end until the call reaches NRP")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNetworkInterfaceWithAcceleratedNetworking()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithAcceleratedNetworking");
+        }
     }
 }

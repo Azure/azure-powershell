@@ -204,6 +204,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
+		
+		[Parameter(
+            Mandatory = false,
+            HelpMessage = "AcceleratedNetworkingEnabled")]
+        public SwitchParameter AcceleratedNetworkingEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -219,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {           
-            base.Execute();
+          base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsNetworkInterfacePresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
@@ -244,8 +249,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
-            networkInterface.Location = this.Location;
+            if (this.AcceleratedNetworkingEnabled != null && this.AcceleratedNetworkingEnabled == true)
+            {
+                networkInterface.Location = "WestCentralUS";
+            }
+            else
+            {
+                networkInterface.Location = this.Location;
+            }
+
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
+			networkInterface.AcceleratedNetworkingEnabled = this.AcceleratedNetworkingEnabled.IsPresent;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
@@ -377,12 +391,12 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+            MNM.NetworkInterface networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             this.NetworkInterfaceClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkInterfaceModel);
-
+             
             var getNetworkInterface = this.GetNetworkInterface(this.ResourceGroupName, this.Name);
 
             return getNetworkInterface;

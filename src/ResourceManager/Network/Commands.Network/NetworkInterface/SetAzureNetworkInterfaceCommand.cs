@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-
+                    
             // Verify if PublicIpAddress is empty
             foreach (var ipconfig in NetworkInterface.IpConfigurations)
             {

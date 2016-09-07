@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string MacAddress { get; set; }
 
         public bool? Primary { get; set; }
+		
+		public bool? AcceleratedNetworkingEnabled {get; set;}
 
         public bool? EnableIPForwarding { get; set; }
 

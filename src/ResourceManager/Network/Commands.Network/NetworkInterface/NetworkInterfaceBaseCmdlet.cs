@@ -60,8 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             var psNetworkInterface = Mapper.Map<PSNetworkInterface>(nic);
             psNetworkInterface.ResourceGroupName = resourceGroupName;
             psNetworkInterface.Tag =
-                TagsConversionHelper.CreateTagHashtable(nic.Tags);
-
+                TagsConversionHelper.CreateTagHashtable(nic.Tags);            
             return psNetworkInterface;
         }
 
@@ -81,6 +80,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var psNic = Mapper.Map<PSNetworkInterface>(nic);
 
+            psNic.AcceleratedNetworkingEnabled = nic.AcceleratedNetworkingEnabled;
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
             foreach (var ipconfig in psNic.IpConfigurations)
