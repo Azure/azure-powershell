@@ -465,46 +465,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateCredential(string accountName, string databaseName,
             string credentialName, string userId, string password, string hostUri)
         {
-            /*
-            * TODO: Uncomment this in the next release when credential CRUD is supported.
-            _catalogClient.Catalog.CreateCredential(accountName, databaseName, credentialName,
-                new DataLakeAnalyticsCatalogCredentialCreateParameters
-                {
-                    Password = password,
-                    Uri = hostUri,
-                    UserId = userId
-                });
-            */
-
             throw new NotImplementedException();
         }
 
         public void UpdateCredentialPassword(string accountName, string databaseName,
             string credentialName, string userId, string password, string newPassword, string hostUri)
         {
-            /*
-            * TODO: Uncomment this in the next release when credential CRUD is supported.
-            _catalogClient.Catalog.UpdateCredential(accountName, databaseName, credentialName,
-                new DataLakeAnalyticsCatalogCredentialUpdateParameters
-                {
-                    Password = password,
-                    NewPassword = newPassword,
-                    Uri = hostUri,
-                    UserId = userId
-                });
-            */
             throw new NotImplementedException();
         }
 
         public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
         {
-            /*
-            * TODO: Uncomment this in the next release when credential CRUD is supported.
-            _catalogClient.Catalog.DeleteCredential(accountName,
-                databaseName,
-                credentialName,
-                string.IsNullOrEmpty(password) ? null : new DataLakeAnalyticsCatalogCredentialDeleteParameters(password));
-            */
             throw new NotImplementedException();
         }
         
