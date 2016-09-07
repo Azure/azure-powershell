@@ -36703,8 +36703,8 @@ PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecuri
 
 </dev:code>
 			<dev:remarks>
-				<maml:para>The first command creates a network security rule called rdp-rule. The second command assigns this rule to a network security group. Finally, the third command removes this network security rule associated with the network security group stored in the variable $nsg.</maml:para>
-				<maml:para>Note that a rule must be associated with a network security group in order to sucessfully delete it.</maml:para>
+				<maml:para>The first command creates a network security rule called rdp-rule. The second command assigns this rule to a newly created network security group called &quot;NSG-FrontEnd&quot;. Finally, the third command removes this network security rule associated with the network security group stored in the variable $nsg.</maml:para>
+				<maml:para>Note that a rule must be associated with a network security group in order to successfully delete it.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -47477,13 +47477,17 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Changing the Access configuration in a network security rule  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $nsg = Get-AzureRmNetworkSecurityGroup -Name  NSG-FrontEnd -ResourceGroupName TestRG
+
+PS C:\&gt; $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name &quot;rdp-rule&quot;
+
+PS C:\&gt; Set-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg -Access Deny</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command gets the network security group &quot;NSG-FrontEnd&quot; associated with the rule configuration you want to update and stores it in the variable $nsg. The second command gets the security rule configuration &quot;rdp-rule. The third command changes the Access configuration that was previously Allow to Deny.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
