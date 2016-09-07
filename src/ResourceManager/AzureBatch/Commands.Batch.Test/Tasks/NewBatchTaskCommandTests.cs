@@ -171,11 +171,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ApplicationPackageRefererncesAreSentToService()
         {
-            // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
+            cmdlet.Id = "task-id";
+            cmdlet.JobId = "job-id";
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
             string applicationId = "foo";
             string applicationVersion = "beta";
 
@@ -183,11 +183,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             {
                 new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion}
             };
-
-            cmdlet.Id = "task-id";
-
-            cmdlet.JobId = "job-id";
-
+            
             // Don't go to the service on an Add CloudTask call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
                 new AzureOperationHeaderResponse<TaskAddHeaders>(),
