@@ -156,7 +156,6 @@
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest.pfx</string>
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest1024.pfx</string>
         <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest1024.pfx</string>
-        <string>ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\commondata\\importpfx01.pfx</string>
         <string>ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\SessionRecords\\Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests.RecoveryServicesTests\\VaultCRUDTests.json</string>
         <string>ServiceManagement\\Common\\Commands.Common.Test\\Resources\\InvalidProfile.PublishSettings</string>
         <string>ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\RdfeTestDummy.publishsettings</string>

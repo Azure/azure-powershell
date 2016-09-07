@@ -21,6 +21,7 @@ using System.Management.Automation;
 using System.Security;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
+
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
@@ -34,7 +35,6 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// attributes
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = CreateParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = CreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Specifies the name of the vault to which this cmdlet adds the key.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Specifies the name of the vault to which this cmdlet adds the key.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = CreateParameterSet,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies the name of the key to add to the key vault.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies the name of the key to add to the key vault.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.KeyName)]
+        [Alias("KeyName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -176,43 +176,39 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing key tags.")]
-        [Alias(Constants.TagsAlias)]
-        public Hashtable Tag { get; set; }
+        public Hashtable Tags { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(Name, Properties.Resources.AddKey))
+            KeyBundle keyBundle;
+            switch (ParameterSetName)
             {
-                Models.KeyBundle keyBundle;
-                switch (ParameterSetName)
-                {
-                    case CreateParameterSet:
-                        keyBundle = this.DataServiceClient.CreateKey(
-                            VaultName,
-                            Name,
-                            CreateKeyAttributes());
-                        break;
+                case CreateParameterSet:
+                    keyBundle = this.DataServiceClient.CreateKey(
+                        VaultName,
+                        Name,
+                        CreateKeyAttributes());
+                    break;
 
-                    case ImportParameterSet:
-                        bool? importToHsm = null;
-                        keyBundle = this.DataServiceClient.ImportKey(
-                            VaultName, Name,
-                            CreateKeyAttributes(),
-                            CreateWebKeyFromFile(),
-                            string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
-                        break;
+                case ImportParameterSet:
+                    bool? importToHsm = null;
+                    keyBundle = this.DataServiceClient.ImportKey(
+                        VaultName, Name,
+                        CreateKeyAttributes(),
+                        CreateWebKeyFromFile(),
+                        string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
+                    break;
 
-                    default:
-                        throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
-                }
-
-                this.WriteObject(keyBundle);
+                default:
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
+
+            this.WriteObject(keyBundle);
         }
 
-        internal Models.KeyAttributes CreateKeyAttributes()
+        internal KeyAttributes CreateKeyAttributes()
         {
             string keyType = string.Empty;
 
@@ -221,13 +217,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
             }
 
-            return new Models.KeyAttributes(
+            return new KeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,
                 keyType,
                 KeyOps,
-                Tag);
+                Tags);
         }
 
         internal JsonWebKey CreateWebKeyFromFile()

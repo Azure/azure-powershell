@@ -235,7 +235,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         };
 
         protected readonly string[] DefaultPermissionsToSecrets = { "all" };
-        protected readonly string[] DefaultPermissionsToCertificates = { "all" };
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

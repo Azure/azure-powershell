@@ -21,7 +21,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle))]
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.KeyName)]
+        [Alias("KeyName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -100,12 +100,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             KeyBundle keyBundle;
             switch (ParameterSetName)
             {
-                case ByKeyNameParameterSet:                    
-                    keyBundle = DataServiceClient.GetKey(VaultName, Name, Version ?? string.Empty);
+                case ByKeyNameParameterSet:
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, Version);
                     WriteObject(keyBundle);
                     break;
                 case ByKeyVersionsParameterSet:
-                    keyBundle = DataServiceClient.GetKey(VaultName, Name, string.Empty);
+                    keyBundle = DataServiceClient.GetKey(VaultName, Name, null);
                     if (keyBundle != null)
                     {
                         WriteObject(new KeyIdentityItem(keyBundle));

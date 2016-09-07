@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
-                        DefaultContext);
+                        DefaultContext,
+                        new HttpClient());
                 }
 
                 return this.dataServiceClient;

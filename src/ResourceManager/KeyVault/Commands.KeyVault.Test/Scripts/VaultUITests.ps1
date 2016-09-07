@@ -2,20 +2,7 @@
 $securepfxpwd=$pfxpwd | ConvertTo-SecureString -AsPlainText -Force
 $data=123
 $securedata=$data | ConvertTo-SecureString -AsPlainText -Force	
-$pfxPassword = "123"
   
-function CreateAKVCertificate(
-    [string] $keyVault,
-    [string] $certificateName)
-{
-    $pfxPath = Get-FilePathFromCommonData 'importpfx01.pfx'
-    $securePfxPassword = ConvertTo-SecureString $pfxPassword -AsPlainText -Force
-    $createdCert = Import-AzureKeyVaultCertificate $keyVault $certificateName -FilePath $pfxPath -Password $securePfxPassword
-    $global:createdCertificates += $certificateName
-
-    return $createdCert
-}
-
 <#
 .SYNOPSIS
 Tests remove a key with two confirmations
@@ -190,88 +177,5 @@ function Test_ConfirmThenCancelSecretRemoval
     Assert-NotNull $sec
 }
 
-<#
-.SYNOPSIS
-Tests remove a certificate with two confirmations
-#>
-function Test_RemoveCertificateWithTwoConfirmations
-{
-    Write-Host -ForegroundColor Yellow "Type 'Yes' twice"
-    $keyVault = Get-KeyVault
-    $certificateName = Get-CertificateName 'removeWithTwo'
-    $cert = CreateAKVCertificate $keyVault $certificateName
-    Assert-NotNull $cert
-    $global:createdCertificates += $certificateName
 
-    $cr=$global:ConfirmPreference
-    $global:ConfirmPreference="High"
-    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName }
-}
-
-<#
-.SYNOPSIS
-Tests remove a certificate with one confirmations
-#>
-function Test_RemoveCertificateWithOneConfirmations
-{
-    Write-Host -ForegroundColor Yellow "Type 'Yes' once"
-    $keyVault = Get-KeyVault
-    $certificateName = Get-CertificateName 'removeWithOne'
-    $cert = CreateAKVCertificate $keyVault $certificateName
-    Assert-NotNull $cert
-    $global:createdCertificates += $certificateName
-
-    $cr=$global:ConfirmPreference
-    $global:ConfirmPreference="High"
-    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName -Force
-    $global:ConfirmPreference=$cr
-
-    Assert-Throws { Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName }
-}
-
-<#
-.SYNOPSIS
-Tests cancel removing a certificate with once
-#>
-function Test_CancelCertificateRemovalOnce
-{
-    Write-Host -ForegroundColor Yellow "Type 'No' once"
-    $keyVault = Get-KeyVault
-    $certificateName = Get-CertificateName 'removeAgainstOne'
-    $cert = CreateAKVCertificate $keyVault $certificateName
-    Assert-NotNull $cert
-    $global:createdCertificates += $certificateName
-
-    $cr=$global:ConfirmPreference
-    $global:ConfirmPreference="High"
-    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    $global:ConfirmPreference=$cr
-
-    $sec=Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    Assert-NotNull $sec
-}
-
-<#
-.SYNOPSIS
-Tests cancel removing a certificate with two prompts
-#>
-function Test_ConfirmThenCancelCertificateRemoval
-{
-    Write-Host -ForegroundColor Yellow "Type 'Yes' first. Then type 'No'"
-    $keyVault = Get-KeyVault
-    $certificateName = Get-CertificateName 'removeAgainstTwo'
-    $cert = CreateAKVCertificate $keyVault $certificateName
-    Assert-NotNull $cert
-    $global:createdCertificates += $certificateName
-
-    $cr=$global:ConfirmPreference
-    $global:ConfirmPreference="High"
-    Remove-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    $global:ConfirmPreference=$cr
-
-    $sec=Get-AzureKeyVaultCertificate -VaultName $keyVault -Name $certificateName
-    Assert-NotNull $sec
-}

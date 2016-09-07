@@ -23,7 +23,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Management.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         public VaultManagementClient(AzureContext context)
         {
-            KeyVaultManagementClient = AzureSession.ClientFactory.CreateArmClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            KeyVaultManagementClient = AzureSession.ClientFactory.CreateClient<KeyVaultManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>
@@ -62,6 +61,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException("parameters.ResourceGroupName");
             if (string.IsNullOrWhiteSpace(parameters.Location))
                 throw new ArgumentNullException("parameters.Location");
+            if (string.IsNullOrWhiteSpace(parameters.SkuName))
+                throw new ArgumentNullException("parameters.SkuName");
             if (string.IsNullOrWhiteSpace(parameters.SkuFamilyName))
                 throw new ArgumentNullException("parameters.SkuFamilyName");
             if (parameters.TenantId == null || parameters.TenantId == Guid.Empty)
@@ -78,8 +79,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Properties = new VaultProperties
                     {
                         Sku = new Sku
-                        {                            
-                            Name = parameters.SkuName,
+                        {
+                            Family = parameters.SkuFamilyName,
+                            Name = parameters.SkuName
                         },
                         EnabledForDeployment = parameters.EnabledForDeployment,
                         EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment,
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     }
                 });
 
-            return new PSVault(response, adClient);
+            return new PSVault(response.Vault, adClient);
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 var response = this.KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
 
-                return new PSVault(response, adClient);
+                return new PSVault(response.Vault, adClient);
             }
             catch (CloudException ce)
             {
@@ -132,7 +134,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="updatedEnabledForDiskEncryption">enabled for disk encryption</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the updated vault</returns>
-        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool? updatedEnabledForDeployment,
+        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool updatedEnabledForDeployment,
             bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
@@ -149,17 +151,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :
                 updatedPolicies.Select(a => new AccessPolicyEntry()
-                        {
-                            TenantId = a.TenantId,
-                            ObjectId = a.ObjectId,
-                            ApplicationId = a.ApplicationId,
-                            Permissions = new Permissions
-                            {
-                                Keys = a.PermissionsToKeys.ToArray(),
-                                Secrets = a.PermissionsToSecrets.ToArray(),
-                                Certificates = a.PermissionsToCertificates.ToArray()
-                            }
-                        }).ToList();
+                {
+                    TenantId = a.TenantId,
+                    ObjectId = a.ObjectId,
+                    ApplicationId = a.ApplicationId,
+                    PermissionsToKeys = a.PermissionsToKeys.ToArray(),
+                    PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
+                }).ToList();
 
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(
                 resourceGroupName: existingVault.ResourceGroupName,
@@ -170,7 +168,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Properties = properties
                 }
                 );
-            return new PSVault(response, adClient);
+            return new PSVault(response.Vault, adClient);
         }
 
         /// <summary>
