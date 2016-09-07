@@ -18,17 +18,15 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -40,11 +38,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
     public class KeyVaultManagementController
     {
 
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
+        private CSMTestEnvironmentFactory csmTestFactory;
         private KeyVaultEnvSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
-        private const string SubscriptionIdKey = "SubscriptionId";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -73,13 +70,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             helper = new KeyVaultEnvSetupHelper();
         }
 
-        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
-            helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -88,13 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 null,
                 callingClassType,
                 mockName);
-            logger.Information(string.Format("Test method finished: {0}.{1}", callingClassType, mockName));
         }
 
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
+            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -110,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
+                this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
                 {
@@ -126,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.KeyVault.psd1"));
@@ -160,7 +154,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient(context);
-            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
+            KeyVaultManagementClient = GetKeyVaultManagementClient();
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 KeyVaultManagementClient,
@@ -173,26 +167,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
         }
 
-        private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
+        private KeyVaultManagementClient GetKeyVaultManagementClient()
         {
-            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return TestBase.GetServiceClient<KeyVaultManagementClient>(this.csmTestFactory);
         }
         private SubscriptionClient GetSubscriptionClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
         private GraphRbacManagementClient GetGraphClient(MockContext context)
@@ -213,27 +207,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
                 }
-                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
-                {
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
-                }
+
             }
 
             var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
             client.TenantID = tenantId;
-            if (AzureRmProfileProvider.Instance != null &&
-                AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.Context != null &&
-                AzureRmProfileProvider.Instance.Profile.Context.Tenant != null)
-            {
-                AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = Guid.Parse(client.TenantID);
-            }
-            return client;            
+            return client;
         }
 
     }

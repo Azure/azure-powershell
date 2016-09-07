@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-         ConfirmImpact = ConfirmImpact.High,
+        ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class RemoveAzureKeyVaultSecret : KeyVaultCmdletBase
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.SecretName)]
+        [Alias("SecretName")]
         public string Name { get; set; }
 
         /// <summary>

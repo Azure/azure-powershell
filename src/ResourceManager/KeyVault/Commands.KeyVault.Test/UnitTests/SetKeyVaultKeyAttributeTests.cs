@@ -53,11 +53,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSetKeyAttributeTest()
         {
-            // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
-
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
@@ -76,11 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorSetKeyTest()
         {
-            // Mock the should process to return true
-            commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
-
             KeyBundle expected = keyBundle;
-            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
+            keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, null,
                 It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore

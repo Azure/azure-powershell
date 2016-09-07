@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class SecretIdentityItem : ObjectIdentifier
     {
-        internal SecretIdentityItem(Azure.KeyVault.Models.SecretItem secretItem, VaultUriHelper vaultUriHelper)
+        internal SecretIdentityItem(Azure.KeyVault.SecretItem secretItem, VaultUriHelper vaultUriHelper)
         {
             if (secretItem == null)
                 throw new ArgumentNullException("secretItem");

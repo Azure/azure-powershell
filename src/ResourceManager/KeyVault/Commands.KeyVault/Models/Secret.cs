@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="secret">secret returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal Secret(Azure.KeyVault.Models.SecretBundle secret, VaultUriHelper vaultUriHelper)
+        internal Secret(Azure.KeyVault.Secret secret, VaultUriHelper vaultUriHelper)
         {
             if (secret == null)
                 throw new ArgumentNullException("secret");

@@ -1,8 +1,6 @@
 ﻿Param(
-    [Parameter(Mandatory=$true, Position=0)]
-    [string] $TestRunNameSpace,
-    [Parameter(Mandatory=$false, Position=1)]
-    [string] $Vault = ""
+  [Parameter(Mandatory=$True,Position=0)]
+  [string]$testns
 )
 
 . (Join-Path $PSScriptRoot "..\..\..\..\Common\Commands.ScenarioTests.Common\Common.ps1")
@@ -15,8 +13,7 @@ $global:passedCount = 0;
 $global:passedTests = @()
 $global:failedTests = @()
 $global:times = @{}
-$global:testns = $TestRunNameSpace+"UI"
-$global:testVault = $Vault
+$global:testns = $testns+"UI"
 
 function Run-TestProtected
 {
@@ -62,8 +59,6 @@ Cleanup-LogFiles $invocationPath
 
 $testkeyVault = Get-KeyVault
 Write-Host Test key vault is $testKeyVault
-Write-Host Initializing Certificate Tests
-Cleanup-OldCertificates
 Write-Host Initializing Key Tests
 Cleanup-OldKeys
 Write-Host Initializing Secret Tests
@@ -83,12 +78,6 @@ Run-TestProtected { Run-SecretTest {Test_RemoveSecretWithTwoConfirmations} "Test
 Run-TestProtected { Run-SecretTest {Test_RemoveSecretWithOneConfirmations} "Test_RemoveSecretWithOneConfirmations" } "Test_RemoveSecretWithOneConfirmations"
 Run-TestProtected { Run-SecretTest {Test_CancelSecretRemovalOnce} "Test_CancelSecretRemovalOnce" } "Test_CancelSecretRemovalOnce"
 Run-TestProtected { Run-SecretTest {Test_ConfirmThenCancelSecretRemoval} "Test_ConfirmThenCancelSecretRemoval" } "Test_ConfirmThenCancelSecretRemoval"
-
-# Run certificate tests
-Run-TestProtected { Run-CertificateTest {Test_RemoveCertificateWithTwoConfirmations} "Test_RemoveCertificateWithTwoConfirmations" } "Test_RemoveCertificateWithTwoConfirmations"
-Run-TestProtected { Run-CertificateTest {Test_RemoveCertificateWithOneConfirmations} "Test_RemoveCertificateWithOneConfirmations" } "Test_RemoveCertificateWithOneConfirmations"
-Run-TestProtected { Run-CertificateTest {Test_CancelCertificateRemovalOnce} "Test_CancelCertificateRemovalOnce" } "Test_CancelCertificateRemovalOnce"
-Run-TestProtected { Run-CertificateTest {Test_ConfirmThenCancelCertificateRemoval} "Test_ConfirmThenCancelCertificateRemoval" } "Test_ConfirmThenCancelCertificateRemoval"
 
 
 $global:endTime = Get-Date
