@@ -73,46 +73,49 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            this.targetNameOrId = this.ReplicationProtectedItem.FriendlyName;
-
-            if (!Force.IsPresent)
+            if (ShouldProcess(this.ReplicationProtectedItem.FriendlyName, VerbsCommon.Remove))
             {
-                DisableProtectionInput input = new DisableProtectionInput();
-                input.Properties = new DisableProtectionInputProperties()
+                this.targetNameOrId = this.ReplicationProtectedItem.FriendlyName;
+
+                if (!Force.IsPresent)
                 {
-                    ProviderSettings = new DisableProtectionProviderSpecificInput()
-                };
-                this.response =
-                    RecoveryServicesClient.DisableProtection(
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    ReplicationProtectedItem.Name,
-                    input);
-            }
-            else
-            {
-                this.response =
-                    RecoveryServicesClient.PurgeProtection(
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    ReplicationProtectedItem.Name);
-            }
-
-            jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
-
-            if (this.WaitForCompletion.IsPresent)
-            {
-                this.WaitForJobCompletion(this.jobResponse.Job.Name);
+                    DisableProtectionInput input = new DisableProtectionInput();
+                    input.Properties = new DisableProtectionInputProperties()
+                    {
+                        ProviderSettings = new DisableProtectionProviderSpecificInput()
+                    };
+                    this.response =
+                        RecoveryServicesClient.DisableProtection(
+                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        ReplicationProtectedItem.Name,
+                        input);
+                }
+                else
+                {
+                    this.response =
+                        RecoveryServicesClient.PurgeProtection(
+                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        ReplicationProtectedItem.Name);
+                }
 
                 jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
                 WriteObject(new ASRJob(jobResponse.Job));
+
+                if (this.WaitForCompletion.IsPresent)
+                {
+                    this.WaitForJobCompletion(this.jobResponse.Job.Name);
+
+                    jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                    WriteObject(new ASRJob(jobResponse.Job));
+                }
             }
         }
 

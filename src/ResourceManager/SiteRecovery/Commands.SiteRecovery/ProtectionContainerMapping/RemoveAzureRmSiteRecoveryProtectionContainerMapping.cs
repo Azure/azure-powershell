@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Adds Azure Site Recovery Policy settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryProtectionContainerMapping", DefaultParameterSetName = ASRParameterSets.ByObject, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmSiteRecoveryProtectionContainerMapping : SiteRecoveryCmdletBase
     {
@@ -52,39 +52,42 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse response = null;
-
-            if (!this.Force.IsPresent)
+            if (ShouldProcess(this.ProtectionContainerMapping.Name, VerbsCommon.Remove))
             {
-                RemoveProtectionContainerMappingInputProperties inputProperties = new RemoveProtectionContainerMappingInputProperties()
+                LongRunningOperationResponse response = null;
+
+                if (!this.Force.IsPresent)
                 {
-                    ProviderSpecificInput = new ReplicationProviderContainerUnmappingInput()
-                };
+                    RemoveProtectionContainerMappingInputProperties inputProperties = new RemoveProtectionContainerMappingInputProperties()
+                    {
+                        ProviderSpecificInput = new ReplicationProviderContainerUnmappingInput()
+                    };
 
-                RemoveProtectionContainerMappingInput input = new RemoveProtectionContainerMappingInput()
+                    RemoveProtectionContainerMappingInput input = new RemoveProtectionContainerMappingInput()
+                    {
+                        Properties = inputProperties
+                    };
+
+                    response = RecoveryServicesClient.UnConfigureProtection(
+                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        this.ProtectionContainerMapping.Name,
+                        input);
+                }
+                else
                 {
-                    Properties = inputProperties
-                };
+                    response = RecoveryServicesClient.PurgeCloudMapping(
+                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        this.ProtectionContainerMapping.Name);
+                }
 
-                response = RecoveryServicesClient.UnConfigureProtection(
-                    Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.ProtectionContainerMapping.Name,
-                    input);
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                this.WriteObject(new ASRJob(jobResponse.Job));
             }
-            else
-            {
-                response = RecoveryServicesClient.PurgeCloudMapping(
-                    Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                    Utilities.GetValueFromArmId(this.ProtectionContainerMapping.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                    this.ProtectionContainerMapping.Name);
-            }
-
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            this.WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }
