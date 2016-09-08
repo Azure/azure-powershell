@@ -18,9 +18,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
-    using Microsoft.WindowsAzure.Commands.Common;
 
     /// <summary>
     /// Factory class for creating <see cref="HttpClient"/> objects with custom headers.
