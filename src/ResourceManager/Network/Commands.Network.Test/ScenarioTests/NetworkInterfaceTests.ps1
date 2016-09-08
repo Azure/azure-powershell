@@ -835,7 +835,7 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
+        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AcceleratedNetworkingEnabled
         $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
 		$setNic = $actualNic | Set-AzureRmNetworkInterface

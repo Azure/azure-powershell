@@ -204,11 +204,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
-		
-		[Parameter(
+        
+        [Parameter(
             Mandatory = false,
             HelpMessage = "AcceleratedNetworkingEnabled")]
-        public SwitchParameter EnableAcceleratedNetworking { get; set; }
+        public SwitchParameter AcceleratedNetworkingEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -249,17 +249,11 @@ namespace Microsoft.Azure.Commands.Network
         {
             var networkInterface = new PSNetworkInterface();
             networkInterface.Name = this.Name;
-            if (this.EnableAcceleratedNetworking != null && this.EnableAcceleratedNetworking == true)
-            {
-                networkInterface.Location = "WestCentralUS";
-            }
-            else
-            {
-                networkInterface.Location = this.Location;
-            }
+
+            networkInterface.Location = this.Location;
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-			networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
+            networkInterface.AcceleratedNetworkingEnabled = this.AcceleratedNetworkingEnabled.IsPresent;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
@@ -391,7 +385,7 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
 
-            MNM.NetworkInterface networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
+            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(networkInterface);
 
             networkInterfaceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 

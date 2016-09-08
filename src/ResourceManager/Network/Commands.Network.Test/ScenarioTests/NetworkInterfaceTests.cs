@@ -96,7 +96,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
         }
 
-        [Fact(Skip ="Feature not registered yet")]
+        [Fact(Skip ="subscription not registered")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
