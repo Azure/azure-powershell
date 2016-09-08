@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             ConfirmAction(VerbsCommon.Remove, Site.FriendlyName,
                 () =>
                 {
+            	    this.WriteWarningWithTimestamp(
+                      string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                      this.MyInvocation.MyCommand.Name,
+                      "Remove-AzureRmSiteRecoveryFabric"));
+
                     RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
                         RecoveryServicesClient.GetAzureSiteRecoveryProvider(
                             this.Site.Name);
