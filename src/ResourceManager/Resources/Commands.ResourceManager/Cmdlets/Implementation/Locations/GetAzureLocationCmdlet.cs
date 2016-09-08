@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using Microsoft.Azure.Management.ResourceManager.Models;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>

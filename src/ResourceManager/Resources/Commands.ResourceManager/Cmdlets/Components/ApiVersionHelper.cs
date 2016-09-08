@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using Entities.Providers;
     using Extensions;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
-    using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
 
     /// <summary>
     /// Helper class for determining the API version

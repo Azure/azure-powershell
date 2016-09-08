@@ -133,8 +133,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PaginatedResponseHelper.cs" />
-    <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
