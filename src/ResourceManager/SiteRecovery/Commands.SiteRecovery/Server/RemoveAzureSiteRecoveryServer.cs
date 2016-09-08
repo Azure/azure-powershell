@@ -49,21 +49,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteSiteRecoveryCmdlet()
         {
-            ConfirmAction(
-                VerbsCommon.Remove,
-                Server.FriendlyName,
-                () =>
+            if (ShouldProcess(this.Server.FriendlyName, VerbsCommon.Remove))
             {
                 base.ExecuteSiteRecoveryCmdlet();
 
-            	this.WriteWarningWithTimestamp(
-                	string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
-                    	this.MyInvocation.MyCommand.Name,
-                    	"Remove-AzureRmSiteRecoveryServicesProvider"));
+                this.WriteWarningWithTimestamp(
+                    string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                        this.MyInvocation.MyCommand.Name,
+                        "Remove-AzureRmSiteRecoveryServicesProvider"));
 
                 RemoveServer();
-            });
-
+            }
         }
 
         /// <summary>

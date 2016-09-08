@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmSiteRecoveryFabric : SiteRecoveryCmdletBase
     {
@@ -53,22 +53,25 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            LongRunningOperationResponse response;
-
-            if (!this.Force.IsPresent)
+            if (ShouldProcess(this.Fabric.FriendlyName, VerbsCommon.Remove))
             {
-                response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Fabric.Name);
-            }
-            else
-            {
-                response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Fabric.Name);
-            }
-           
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                LongRunningOperationResponse response;
 
-            WriteObject(new ASRJob(jobResponse.Job));
+                if (!this.Force.IsPresent)
+                {
+                    response = RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Fabric.Name);
+                }
+                else
+                {
+                    response = RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Fabric.Name);
+                }
+
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                WriteObject(new ASRJob(jobResponse.Job));
+            }
         }
     }
 }
