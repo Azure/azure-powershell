@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkInterface ToPsNetworkInterface(NetworkInterface nic)
         {
             var psNic = Mapper.Map<PSNetworkInterface>(nic);
-
-            psNic.AcceleratedNetworkingEnabled = nic.AcceleratedNetworkingEnabled;
+            
             psNic.Tag = TagsConversionHelper.CreateTagHashtable(nic.Tags);
 
             foreach (var ipconfig in psNic.IpConfigurations)

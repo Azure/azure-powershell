@@ -718,8 +718,6 @@ function Test-NetworkInterfaceIpv6
     }
 }
 
-
-
 <#
 .SYNOPSIS
 Tests creating new networkinterface with multiple ipconfigurations.
@@ -837,7 +835,7 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AcceleratedNetworkingEnabled
+        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
         $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
 		$setNic = $actualNic | Set-AzureRmNetworkInterface
