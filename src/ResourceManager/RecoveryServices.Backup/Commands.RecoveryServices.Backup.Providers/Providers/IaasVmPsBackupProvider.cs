@@ -272,17 +272,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
                 containerUri, protectedItemName, recoveryPointId);
 
-            var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
+            var rp = RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item) as AzureVmRecoveryPoint;
 
-            string keyFileDownloadLocation =
-                (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
-            string keyFileContent = ((AzureVmRecoveryPoint)rp).KeyAndSecretDetails.KeyBackupData;
-            if (!string.IsNullOrEmpty(keyFileDownloadLocation))
+            if (rp.EncryptionEnabled)
             {
-                string absoluteFilePath = Path.Combine(keyFileDownloadLocation, "key.blob");
-                File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(keyFileContent));
-        }
-
+                string keyFileDownloadLocation =
+                    (string)ProviderData[RecoveryPointParams.KeyFileDownloadLocation];
+                string keyFileContent = rp.KeyAndSecretDetails.KeyBackupData;
+                if (!string.IsNullOrEmpty(keyFileDownloadLocation))
+                {
+                    string absoluteFilePath = Path.Combine(keyFileDownloadLocation, "key.blob");
+                    File.WriteAllBytes(absoluteFilePath, Convert.FromBase64String(keyFileContent));
+                }
+            }
             return rp;
         }
 

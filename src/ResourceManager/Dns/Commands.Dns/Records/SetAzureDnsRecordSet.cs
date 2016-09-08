@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Updates an existing record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDnsRecordSet", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(DnsRecordSet))]
     public class SetAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
@@ -38,20 +38,24 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new PSArgumentException(string.Format(ProjectResources.Error_EtagNotSpecified, typeof(DnsRecordSet).Name));
             }
 
-
             DnsRecordSet recordSetToUpdate = (DnsRecordSet)this.RecordSet.Clone();
+                    if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
+                    {
+                        recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
+                        this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
+                    }
 
-            if (recordSetToUpdate.ZoneName != null && recordSetToUpdate.ZoneName.EndsWith("."))
+            ConfirmAction(
+                ProjectResources.Progress_Modifying,
+                recordSetToUpdate.Name,
+            () =>
             {
-                recordSetToUpdate.ZoneName = recordSetToUpdate.ZoneName.TrimEnd('.');
-                this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", recordSetToUpdate.ZoneName));
+                DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
+
+                WriteVerbose(ProjectResources.Success);
+
+                WriteObject(result);
+            });
             }
-
-            DnsRecordSet result = this.DnsClient.UpdateDnsRecordSet(recordSetToUpdate, this.Overwrite.IsPresent);
-
-            WriteVerbose(ProjectResources.Success);
-
-            WriteObject(result);
-        }
     }
-}
+    }

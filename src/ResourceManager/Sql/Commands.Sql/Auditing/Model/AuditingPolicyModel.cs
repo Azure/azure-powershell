@@ -40,14 +40,19 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         public string ServerName { get; set; }
 
         /// <summary>
+        /// Gets or sets the audit state
+        /// </summary>
+        public AuditStateType AuditState { get; set; }
+
+        /// <summary>
         /// Gets or sets the storage account name
         /// </summary>
         public string StorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the audit state
+        /// Gets or sets the storage key type
         /// </summary>
-        public AuditStateType AuditState { get; set; }
+        public StorageKeyKind StorageKeyType { get; set; }
 
         /// <summary>
         /// Gets or sets the retention days
