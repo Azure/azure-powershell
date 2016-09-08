@@ -102,5 +102,12 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         {
             this.RunPowerShellTest("Test-SiteRecoveryVaultCRUDTests");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FabricTests()
+        {
+            this.RunPowerShellTest("Test-SiteRecoveryFabricTest");
+        }
     }
 }

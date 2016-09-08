@@ -360,3 +360,46 @@ function Test-SiteRecoveryVaultCRUDTests
 	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName rg1 -Name v2
 	Assert-True { $vaults.Count -eq 0 }
 }
+
+
+<#
+.SYNOPSIS
+Site Recovery Fabric Tests New model
+#>
+function Test-SiteRecoveryFabricTest
+{
+	# Enumerate vaults and set Azure Site Recovery Vault Settings
+	$vault = Get-AzureRmSiteRecoveryVault -ResourceGroupName ReleaseResourceGroup -Name ReleaseVault
+	Assert-NotNull($vault)
+	Assert-True { $vault.Count -gt 0 }
+	Assert-NotNull($vault.Name)
+	Assert-NotNull($vault.ID)
+	Set-AzureRmSiteRecoveryVaultSettings -ASRVault $vault
+
+	# Create Fabric
+	$job = New-AzureRmSiteRecoveryFabric -Name ReleaseFabric -Type HyperVSite
+	Assert-NotNull($job)
+
+	# Enumerate Fabrics
+	$fabrics =  Get-AzureRmSiteRecoveryFabric 
+	Assert-True { $fabrics.Count -gt 0 }
+	Assert-NotNull($fabrics)
+	foreach($fabric in $fabrics)
+	{
+		Assert-NotNull($fabrics.Name)
+		Assert-NotNull($fabrics.ID)
+	}
+
+	# Enumerate specific Fabric
+	$fabric =  Get-AzureRmSiteRecoveryFabric -Name ReleaseFabric
+	Assert-NotNull($fabric)
+	Assert-NotNull($fabrics.Name)
+	Assert-NotNull($fabrics.ID)
+
+	# Remove specific fabric
+	$job = Remove-AzureRmSiteRecoveryFabric -Fabric $fabric
+	Assert-NotNull($job)
+	WaitForJobCompletion -JobId $job.Name
+	$fabric =  Get-AzureRmSiteRecoveryFabric | Where-Object {$_.Name -eq "ReleaseFabric"}
+	Assert-Null($fabric)
+}

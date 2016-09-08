@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
     public abstract class SiteRecoveryTestsBase : RMTestBase
     {
-        private CSMTestEnvironmentFactory armTestFactory;
         private EnvironmentSetupHelper helper;
         protected string vaultSettingsFilePath;
         private ASRVaultCreds asrVaultCreds = null;
@@ -104,8 +103,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
-
-                this.armTestFactory = new CSMTestEnvironmentFactory();
 
                 SetupManagementClients();
 
