@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-			networkInterface.AcceleratedNetworkingEnabled = this.EnableAcceleratedNetworking.IsPresent;
+			networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
