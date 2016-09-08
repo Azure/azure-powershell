@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.3.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.7.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -170,12 +170,15 @@
     <Compile Include="Hubs\HubContextBaseCmdlet.cs" />
     <Compile Include="Hubs\NewAzureDataFactoryHubCommand.cs" />
     <Compile Include="Hubs\RemoveAzureDataFactoryHubCommand.cs" />
+    <Compile Include="Models\ActivityWindowFilterOptions.cs" />
     <Compile Include="Models\CreatePSHubParameters.cs" />
     <Compile Include="Models\BlobDownloadParameters.cs" />
     <Compile Include="Models\CreatePSLinkedServiceParameters.cs" />
     <Compile Include="LinkedServices\GetAzureDataFactoryLinkedServiceCommand.cs" />
     <Compile Include="LinkedServices\LinkedServiceContextBaseCmdlet.cs" />
+    <Compile Include="ActivityWindows\GetAzureDataFactoryActivityWindowsCommand.cs" />
     <Compile Include="Models\CreatePSPipelineParameters.cs" />
+    <Compile Include="Models\DataFactoryClient.ActivityWindows.cs" />
     <Compile Include="Models\DataFactoryClient.DataSlices.cs" />
     <Compile Include="Models\DataFactoryClient.Encrypt.cs" />
     <Compile Include="Models\DataFactoryClient.Gateway.cs" />
@@ -188,6 +191,7 @@
     <Compile Include="Models\PatchPSDataFactoryParameters.cs" />
     <Compile Include="Models\PipelineFilterOptions.cs" />
     <Compile Include="Models\DataSliceFilterOptions.cs" />
+    <Compile Include="Models\PSActivityWindow.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
     <Compile Include="Models\PSDataSlice.cs" />
     <Compile Include="Models\PSDataSliceRun.cs" />
@@ -241,6 +245,7 @@
       <Link>AzureRM.DataFactories.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="DataFactoryPowershellChangelog.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

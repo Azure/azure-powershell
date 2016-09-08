@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, Position = 2, Mandatory = true,
             HelpMessage =
                 "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 () =>
                     DataLakeStoreFileSystemClient.SetAcl(Path.TransformedPath, Account,
                         Acl.GetAclSpec()));
-
         }
     }
 }

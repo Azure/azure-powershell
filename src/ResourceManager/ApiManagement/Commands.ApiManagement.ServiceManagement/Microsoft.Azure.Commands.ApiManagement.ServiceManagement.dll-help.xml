@@ -6795,13 +6795,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>If specified will write true in case operation succeeds. This parameter is optional.</maml:para>
@@ -6845,18 +6838,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7581,13 +7562,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -7633,18 +7607,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -7716,7 +7678,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementGroup –Context $apimContext –GroupId 0123456789 –Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementGroup –Context $apimContext –GroupId 0123456789</dev:code>
 			<dev:remarks>
 				<maml:para>Delete existing group.</maml:para>
 				<maml:para />
@@ -7777,13 +7739,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>If specified will write true in case operation succeeds. This parameter is optional.</maml:para>
@@ -7839,18 +7794,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -7930,7 +7873,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementOperation –Context $apimContext –ApiId 0123456789 –OperationId 9876543210 –Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementOperation –Context $apimContext –ApiId 0123456789 –OperationId 9876543210</dev:code>
 			<dev:remarks>
 				<maml:para>Remove existing API Operation.</maml:para>
 				<maml:para />
@@ -7983,13 +7926,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -8028,13 +7964,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -8070,13 +7999,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -8125,13 +8047,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -8165,18 +8080,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -8405,13 +8308,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>If specified will write true in case operation succeeds. This parameter is optional.</maml:para>
@@ -8463,18 +8359,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:name>DeleteSubscriptions</maml:name>
 			<maml:description>
 				<maml:para>Whether to delete subscriptions to the product or not. If not set and subscriptions exists exception will be thrown. This parameter is optional.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -8558,7 +8442,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementProduct –Context $apimContext –Id 0123456789 -DeleteSubscriptions –Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementProduct –Context $apimContext –Id 0123456789 -DeleteSubscriptions</dev:code>
 			<dev:remarks>
 				<maml:para>Remove existing Product with all subscriptions.</maml:para>
 				<maml:para />
@@ -8813,13 +8697,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -8865,18 +8742,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -8948,7 +8813,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementSubscription –Context $apimContext –SubscriptionId 0123456789 -Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementSubscription –Context $apimContext –SubscriptionId 0123456789</dev:code>
 			<dev:remarks>
 				<maml:para>Delete existing subscription.</maml:para>
 				<maml:para />
@@ -9012,13 +8877,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 				<maml:name>PassThru</maml:name>
 				<maml:description>
 					<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9087,18 +8945,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
@@ -9162,7 +9008,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementUser –Context $apimContext –UserId 0123456789 –Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementUser –Context $apimContext –UserId 0123456789</dev:code>
 			<dev:remarks>
 				<maml:para>Delete existing user.</maml:para>
 				<maml:para />
@@ -13482,13 +13328,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -13534,18 +13373,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -13617,7 +13444,7 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Remove-AzureRmApiManagementLogger -Context $apimContext -LoggerId 123 -Force</dev:code>
+			<dev:code>Remove-AzureRmApiManagementLogger -Context $apimContext -LoggerId 123</dev:code>
 			<dev:remarks>
 				<maml:para>Removes Logger.</maml:para>
 				<maml:para />
@@ -13677,13 +13504,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -13729,18 +13549,6 @@ New-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Name pro
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -14923,13 +14731,6 @@ Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Tags $ta
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -14975,18 +14776,6 @@ Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId 123 -Tags $ta
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified will write true in case operation succeeds. This parameter is optional. Default value is false.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
