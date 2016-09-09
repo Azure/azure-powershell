@@ -353,22 +353,13 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 OSType osType = GetOSType(vmParameters);
                 switch (osType)
                 {
-                    case OSType.Windows:
-                        try
-                        {
-                            progressMessage = GetExtensionStatusMessage(osType);
-                        }
-                        catch(KeyNotFoundException)
-                        {
-                            progressMessage = string.Format(CultureInfo.CurrentUICulture, "Extension status not available on the VM");
-                        }
-                        
+                    case OSType.Windows:                        
                         encryptionStatus = new AzureDiskEncryptionStatusContext
                         {
                             OsVolumeEncrypted = osVolumeEncrypted,
                             DataVolumesEncrypted = dataVolumesEncrypted,
                             OsVolumeEncryptionSettings = osVolumeEncryptionSettings,
-                            ProgressMessage = progressMessage
+                            ProgressMessage = string.Format(CultureInfo.CurrentUICulture, "OsVolume: {0}, DataVolumes: {1}", osVolumeEncrypted, dataVolumesEncrypted)
                         };
                         WriteObject(encryptionStatus);
                         break;
