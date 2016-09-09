@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             NotBefore = certBundle.Attributes.NotBefore;
             Created = certBundle.Attributes.Created;
             Updated = certBundle.Attributes.Updated;
-            Tags = certBundle.Tags.ConvertToHashtable();
+            Tags = (certBundle.Tags == null) ? null : certBundle.Tags.ConvertToHashtable();
         }
 
         public bool? Enabled { get; set; }
