@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
@@ -43,6 +45,10 @@ namespace Commands.Network.Test
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public InsightsManagementClient InsightsManagementClient { get; private set; }
+
+        public RedisManagementClient RedisManagementClient { get; private set; }
 
         public static NetworkResourcesController NewInstance
         {
@@ -109,6 +115,8 @@ namespace Commands.Network.Test
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Insights.psd1"),
+                    helper.GetRMModulePath("AzureRM.RedisCache.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -141,13 +149,17 @@ namespace Commands.Network.Test
             this.GalleryClient = this.GetGalleryClient();
             this.NetworkManagementClient = this.GetNetworkManagementClient(context);
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
+            this.InsightsManagementClient = this.GetInsightsManagementClient();
+            this.RedisManagementClient = this.GetRedisManagementClient(context);
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
-                this.NetworkManagementClient);
+                this.NetworkManagementClient,
+                this.InsightsManagementClient,
+                this.RedisManagementClient);
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
@@ -169,9 +181,20 @@ namespace Commands.Network.Test
         {
             return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
+
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+        }
+        
+        private InsightsManagementClient GetInsightsManagementClient()
+        {
+            return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+        }
+
+        private RedisManagementClient GetRedisManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<RedisManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
