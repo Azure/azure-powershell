@@ -7,32 +7,32 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c6e303a3-d1c5-4372-8e9b-8dbd2fa6ae5e"
+          "ad4290aa-1f7a-4ecc-a553-1f35cd485d97"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:15:19 GMT"
+          "Fri, 09 Sep 2016 03:37:14 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testPool\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool\",\r\n  \"eTag\": \"0x8D3D61CD5D4FC71\",\r\n  \"lastModified\": \"2016-09-06T06:12:52.4305521Z\",\r\n  \"creationTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-06T06:13:31.6522871Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"resizeError\": {\r\n    \"code\": \"ResizeStopped\",\r\n    \"message\": \"Desired number of dedicated nodes could not be allocated due to a StopPoolResize operation\"\r\n  },\r\n  \"currentDedicated\": 1,\r\n  \"targetDedicated\": 3,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"2\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testPool\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool\",\r\n  \"eTag\": \"0x8D3D8627438CB62\",\r\n  \"lastModified\": \"2016-09-09T03:36:15.7645666Z\",\r\n  \"creationTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-09T03:36:19.9863971Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"resizeError\": {\r\n    \"code\": \"ResizeStopped\",\r\n    \"message\": \"Desired number of dedicated nodes could not be allocated due to a StopPoolResize operation\"\r\n  },\r\n  \"currentDedicated\": 1,\r\n  \"targetDedicated\": 3,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"2\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 06 Sep 2016 06:12:52 GMT"
+          "Fri, 09 Sep 2016 03:36:15 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "79956091-616b-4383-851f-214d805fe40f"
+          "d04ec94e-de4e-41e5-a445-711a458413c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -41,10 +41,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:15:20 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "ETag": [
-          "0x8D3D61CD5D4FC71"
+          "0x8D3D8627438CB62"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -59,13 +59,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f80c7ef9-1109-4ab5-9535-76ab9aa46d6a"
+          "e02a2cd2-ba60-4e75-aba6-e41724af3651"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:15:21 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -78,13 +78,13 @@
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 06 Sep 2016 06:12:52 GMT"
+          "Fri, 09 Sep 2016 03:36:15 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "8b23b4aa-a303-47c9-b2c4-68e086740cfe"
+          "a4a7870d-c18d-4aa9-a2a9-08adcf759d88"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -93,10 +93,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:15:20 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "ETag": [
-          "0x8D3D61CD5D4FC71"
+          "0x8D3D8627438CB62"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -111,20 +111,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "89a143ec-8a4a-49da-9f92-e264d88b8005"
+          "bce8cff7-43a0-4fa3-885b-f69f63987ff4"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:15:21 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8D3D61CD5D4FC71\",\r\n      \"lastModified\": \"2016-09-06T06:12:52.4305521Z\",\r\n      \"creationTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2016-09-06T06:13:31.6522871Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"resizeError\": {\r\n        \"code\": \"ResizeStopped\",\r\n        \"message\": \"Desired number of dedicated nodes could not be allocated due to a StopPoolResize operation\"\r\n      },\r\n      \"currentDedicated\": 1,\r\n      \"targetDedicated\": 3,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"2\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testPool\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool\",\r\n      \"eTag\": \"0x8D3D8627438CB62\",\r\n      \"lastModified\": \"2016-09-09T03:36:15.7645666Z\",\r\n      \"creationTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-08-01T22:55:59.1687932Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2016-09-09T03:36:19.9863971Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"resizeError\": {\r\n        \"code\": \"ResizeStopped\",\r\n        \"message\": \"Desired number of dedicated nodes could not be allocated due to a StopPoolResize operation\"\r\n      },\r\n      \"currentDedicated\": 1,\r\n      \"targetDedicated\": 3,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"2\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -133,7 +133,7 @@
           "chunked"
         ],
         "request-id": [
-          "ff2e9dc5-e838-4adb-b524-93daef3f861c"
+          "2f7e8dae-6654-4eb9-abf8-35f24e2e258b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -142,7 +142,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:15:21 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -157,13 +157,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9cd2c489-c379-4550-a036-d6d3d02e0395"
+          "8f5ffc7b-0ccd-41da-8a04-5ff762b44644"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:15:21 GMT"
+          "Fri, 09 Sep 2016 03:37:15 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -179,7 +179,7 @@
           "chunked"
         ],
         "request-id": [
-          "2fd09f93-115e-477b-8800-b27d2bde8067"
+          "c4a6198f-3b5f-4d24-88bb-849e9cab6fd5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -188,7 +188,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:15:21 GMT"
+          "Fri, 09 Sep 2016 03:37:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

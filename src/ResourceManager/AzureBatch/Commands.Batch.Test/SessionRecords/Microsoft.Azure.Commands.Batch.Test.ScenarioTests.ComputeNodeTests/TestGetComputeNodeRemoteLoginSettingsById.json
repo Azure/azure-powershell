@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "bd39c1fb-ca46-4a99-ab8e-293007e960af"
+          "c21ee9e1-0bdb-4c14-b1aa-4379962c2882"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 05:45:27 GMT"
+          "Thu, 08 Sep 2016 23:06:16 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -29,7 +29,7 @@
           "chunked"
         ],
         "request-id": [
-          "82ebe906-5f20-4e33-839d-fd4cc52f8717"
+          "8f788f70-c081-407c-a321-0821ac2f798f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -38,7 +38,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 05:45:28 GMT"
+          "Thu, 08 Sep 2016 23:06:19 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -53,13 +53,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "f80d77e3-de0c-43f5-9d1a-80d017c3471c"
+          "dcb0424f-ed26-48e9-9b4a-e5a1718aded0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 05:45:28 GMT"
+          "Thu, 08 Sep 2016 23:06:18 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -75,7 +75,7 @@
           "chunked"
         ],
         "request-id": [
-          "7b00c5cf-3556-435b-8c3b-d847e89cd362"
+          "daf87cd1-e1de-422f-8cf0-14661c646de7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -87,7 +87,7 @@
           "https://pstestaccount.centralus.batch.azure.com/pools/testIaasPool/nodes/tvm-3637016216_1-20160412t214237z/remoteloginsettings"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 05:45:29 GMT"
+          "Thu, 08 Sep 2016 23:06:19 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

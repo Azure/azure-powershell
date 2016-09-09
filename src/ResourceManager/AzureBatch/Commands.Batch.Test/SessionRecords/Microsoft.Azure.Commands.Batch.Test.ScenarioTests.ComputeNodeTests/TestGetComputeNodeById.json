@@ -7,20 +7,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "847efdf3-419c-42d9-96fd-d3eb01669241"
+          "18a09d3d-fa49-4d1a-8856-f46b6e5cd413"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 05:45:59 GMT"
+          "Thu, 08 Sep 2016 23:06:47 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-2544493925_5-20160905t041414z\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z\",\r\n      \"state\": \"offline\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-09-05T22:50:37.9616101Z\",\r\n      \"lastBootTime\": \"2016-09-05T04:17:00.7667735Z\",\r\n      \"allocationTime\": \"2016-09-05T04:14:14.3302937Z\",\r\n      \"ipAddress\": \"100.111.160.164\",\r\n      \"affinityId\": \"TVM:tvm-2544493925_5-20160905t041414z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 23,\r\n      \"totalTasksSucceeded\": 21,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-09-05T04:17:03.025418Z\",\r\n        \"endTime\": \"2016-09-05T04:17:03.0830315Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-2544493925_22-20160908t224728z\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_22-20160908t224728z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n      \"lastBootTime\": \"2016-09-08T23:05:47.9458565Z\",\r\n      \"allocationTime\": \"2016-09-08T22:47:28.156106Z\",\r\n      \"ipAddress\": \"100.111.176.98\",\r\n      \"affinityId\": \"TVM:tvm-2544493925_22-20160908t224728z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-09-08T23:05:50.091227Z\",\r\n        \"endTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-2544493925_23-20160908t224902z\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_23-20160908t224902z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-09-08T23:05:50.5768105Z\",\r\n      \"lastBootTime\": \"2016-09-08T23:05:48.210751Z\",\r\n      \"allocationTime\": \"2016-09-08T22:49:02.2314793Z\",\r\n      \"ipAddress\": \"100.111.164.148\",\r\n      \"affinityId\": \"TVM:tvm-2544493925_23-20160908t224902z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-09-08T23:05:50.4908785Z\",\r\n        \"endTime\": \"2016-09-08T23:05:50.5768105Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"tvm-2544493925_5-20160905t041414z\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z\",\r\n      \"state\": \"offline\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2016-09-08T22:46:31.1537161Z\",\r\n      \"lastBootTime\": \"2016-09-08T22:43:14.2076533Z\",\r\n      \"allocationTime\": \"2016-09-05T04:14:14.3302937Z\",\r\n      \"ipAddress\": \"100.111.160.164\",\r\n      \"affinityId\": \"TVM:tvm-2544493925_5-20160905t041414z\",\r\n      \"vmSize\": \"small\",\r\n      \"totalTasksRun\": 28,\r\n      \"totalTasksSucceeded\": 25,\r\n      \"runningTasksCount\": 0,\r\n      \"startTask\": {\r\n        \"commandLine\": \"cmd /c echo hello\",\r\n        \"resourceFiles\": [],\r\n        \"runElevated\": false,\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": true\r\n      },\r\n      \"startTaskInfo\": {\r\n        \"state\": \"completed\",\r\n        \"startTime\": \"2016-09-08T22:43:17.0925297Z\",\r\n        \"endTime\": \"2016-09-08T22:43:17.1521023Z\",\r\n        \"exitCode\": 0,\r\n        \"retryCount\": 0\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -29,7 +29,7 @@
           "chunked"
         ],
         "request-id": [
-          "aee55d73-c372-4c61-aa0f-ca6c60768eb7"
+          "1a4a19df-c9db-47c0-b96c-cb883eb8fcc1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -38,7 +38,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 05:46:00 GMT"
+          "Thu, 08 Sep 2016 23:06:48 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -47,26 +47,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0yNTQ0NDkzOTI1XzUtMjAxNjA5MDV0MDQxNDE0ej9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestUri": "/pools/testPool/nodes/tvm-2544493925_22-20160908t224728z?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0yNTQ0NDkzOTI1XzIyLTIwMTYwOTA4dDIyNDcyOHo/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "fbf8a1cd-9f35-4462-aaab-189ec679600f"
+          "00e60e99-8b9a-4d86-b2e5-3ea0336c8176"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 05:46:00 GMT"
+          "Thu, 08 Sep 2016 23:06:48 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-2544493925_5-20160905t041414z\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z\",\r\n  \"state\": \"offline\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-09-05T22:50:37.9616101Z\",\r\n  \"lastBootTime\": \"2016-09-05T04:17:00.7667735Z\",\r\n  \"allocationTime\": \"2016-09-05T04:14:14.3302937Z\",\r\n  \"ipAddress\": \"100.111.160.164\",\r\n  \"affinityId\": \"TVM:tvm-2544493925_5-20160905t041414z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 23,\r\n  \"totalTasksSucceeded\": 21,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-09-05T04:17:03.025418Z\",\r\n    \"endTime\": \"2016-09-05T04:17:03.0830315Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-2544493925_22-20160908t224728z\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_22-20160908t224728z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n  \"lastBootTime\": \"2016-09-08T23:05:47.9458565Z\",\r\n  \"allocationTime\": \"2016-09-08T22:47:28.156106Z\",\r\n  \"ipAddress\": \"100.111.176.98\",\r\n  \"affinityId\": \"TVM:tvm-2544493925_22-20160908t224728z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-09-08T23:05:50.091227Z\",\r\n    \"endTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -75,7 +75,7 @@
           "chunked"
         ],
         "request-id": [
-          "8cfbf2a6-e388-4c04-b187-cf6f241ab988"
+          "a1fd3239-4a37-47ed-afbf-8aa59467ea1a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -84,7 +84,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 05:46:00 GMT"
+          "Thu, 08 Sep 2016 23:06:48 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -93,26 +93,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z?api-version=2016-07-01.3.1",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0yNTQ0NDkzOTI1XzUtMjAxNjA5MDV0MDQxNDE0ej9hcGktdmVyc2lvbj0yMDE2LTA3LTAxLjMuMQ==",
+      "RequestUri": "/pools/testPool/nodes/tvm-2544493925_22-20160908t224728z?api-version=2016-07-01.3.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS0yNTQ0NDkzOTI1XzIyLTIwMTYwOTA4dDIyNDcyOHo/YXBpLXZlcnNpb249MjAxNi0wNy0wMS4zLjE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0cd91e39-9f1a-43a3-9c2a-3b28c08ff493"
+          "879805c5-b02f-4bfa-bd81-4058aed95a8a"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 05:46:00 GMT"
+          "Thu, 08 Sep 2016 23:06:48 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-2544493925_5-20160905t041414z\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_5-20160905t041414z\",\r\n  \"state\": \"offline\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-09-05T22:50:37.9616101Z\",\r\n  \"lastBootTime\": \"2016-09-05T04:17:00.7667735Z\",\r\n  \"allocationTime\": \"2016-09-05T04:14:14.3302937Z\",\r\n  \"ipAddress\": \"100.111.160.164\",\r\n  \"affinityId\": \"TVM:tvm-2544493925_5-20160905t041414z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 23,\r\n  \"totalTasksSucceeded\": 21,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-09-05T04:17:03.025418Z\",\r\n    \"endTime\": \"2016-09-05T04:17:03.0830315Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-2544493925_22-20160908t224728z\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testPool/nodes/tvm-2544493925_22-20160908t224728z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n  \"lastBootTime\": \"2016-09-08T23:05:47.9458565Z\",\r\n  \"allocationTime\": \"2016-09-08T22:47:28.156106Z\",\r\n  \"ipAddress\": \"100.111.176.98\",\r\n  \"affinityId\": \"TVM:tvm-2544493925_22-20160908t224728z\",\r\n  \"vmSize\": \"small\",\r\n  \"totalTasksRun\": 0,\r\n  \"totalTasksSucceeded\": 0,\r\n  \"runningTasksCount\": 0,\r\n  \"startTask\": {\r\n    \"commandLine\": \"cmd /c echo hello\",\r\n    \"resourceFiles\": [],\r\n    \"runElevated\": false,\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": true\r\n  },\r\n  \"startTaskInfo\": {\r\n    \"state\": \"completed\",\r\n    \"startTime\": \"2016-09-08T23:05:50.091227Z\",\r\n    \"endTime\": \"2016-09-08T23:05:50.2250075Z\",\r\n    \"exitCode\": 0,\r\n    \"retryCount\": 0\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -121,7 +121,7 @@
           "chunked"
         ],
         "request-id": [
-          "ab59fb3f-9b34-4b8f-af60-bad8526e3536"
+          "cf5978fa-9dd4-4f4b-bac2-d0479271ef27"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -130,7 +130,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 05:46:00 GMT"
+          "Thu, 08 Sep 2016 23:06:48 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

@@ -13,13 +13,13 @@
           "208"
         ],
         "client-request-id": [
-          "d561827f-1a11-4a8a-9934-8930d6cfc3a7"
+          "0b70da2f-f55e-4986-83c3-5941b70693f4"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:13:51 GMT"
+          "Fri, 09 Sep 2016 03:35:41 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -29,13 +29,13 @@
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "914f4d8b-e044-494a-98ac-dd68a320ab5b"
+          "86acb7fd-8bdc-4581-8be7-bdf6d6e7b2e7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -47,10 +47,10 @@
           "https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:13:52 GMT"
+          "Fri, 09 Sep 2016 03:35:42 GMT"
         ],
         "ETag": [
-          "0x8D3D61CF9FDD87C"
+          "0x8D3D86260BD0B44"
         ],
         "Location": [
           "https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe"
@@ -68,32 +68,32 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "1576f521-77ad-4c2f-a8b8-07ef11d97d01"
+          "fa4f4242-2afd-4f0e-96c9-81df049c4fa8"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:13:52 GMT"
+          "Fri, 09 Sep 2016 03:35:42 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testDeletePipe\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe\",\r\n  \"eTag\": \"0x8D3D61CF9FDD87C\",\r\n  \"lastModified\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"creationTime\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-06T06:13:53.3923926Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testDeletePipe\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe\",\r\n  \"eTag\": \"0x8D3D86260BD0B44\",\r\n  \"lastModified\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"creationTime\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-09T03:35:43.2255278Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "ea06fd42-fb3d-44f8-be59-2aafe3b7f868"
+          "15eeceb8-4ba6-456d-a30f-423fbb226ff7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -102,10 +102,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "ETag": [
-          "0x8D3D61CF9FDD87C"
+          "0x8D3D86260BD0B44"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -120,32 +120,32 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "459da49e-95a9-4b24-aabc-2b2a64bdbc18"
+          "7eacd608-e3e1-4b45-8e1e-5c61e34ce713"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testDeletePipe\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe\",\r\n  \"eTag\": \"0x8D3D61CF9FDD87C\",\r\n  \"lastModified\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"creationTime\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-09-06T06:13:53.0963068Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-06T06:13:53.3923926Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testDeletePipe\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/pools/testDeletePipe\",\r\n  \"eTag\": \"0x8D3D86260BD0B44\",\r\n  \"lastModified\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"creationTime\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-09-09T03:35:43.0768452Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2016-09-09T03:35:43.2255278Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicated\": 0,\r\n  \"targetDedicated\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\",\r\n    \"currentOSVersion\": \"*\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "4cd0f7b8-6c3f-4017-a76d-bd30905097bb"
+          "87981b9c-64da-4bc7-9192-44256edea649"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -154,10 +154,10 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:13:53 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "ETag": [
-          "0x8D3D61CF9FDD87C"
+          "0x8D3D86260BD0B44"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -172,13 +172,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0a13e73f-94db-4f37-aab1-503b8a5f562b"
+          "56cb4598-2cb1-4f1d-a265-d1c381a0f072"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:13:54 GMT"
+          "Fri, 09 Sep 2016 03:35:43 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -191,7 +191,7 @@
           "chunked"
         ],
         "request-id": [
-          "76405a7d-fdfc-4ae2-b938-1c6daf9b9103"
+          "42a9539f-78c0-4098-9ce3-65ee2fd06298"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -200,7 +200,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:13:54 GMT"
+          "Fri, 09 Sep 2016 03:35:44 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -215,13 +215,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ef9a9155-c509-4bae-82b8-0d4c74708974"
+          "ef3259c1-def5-48ef-8fd6-87580f254831"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 06 Sep 2016 06:13:54 GMT"
+          "Fri, 09 Sep 2016 03:35:44 GMT"
         ],
         "User-Agent": [
           "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
@@ -237,7 +237,7 @@
           "chunked"
         ],
         "request-id": [
-          "a6e8e15a-9691-4fcd-a626-119d0a448e70"
+          "e2c0c189-b933-42d8-ad55-c18ef62eb6f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -246,7 +246,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 06 Sep 2016 06:13:54 GMT"
+          "Fri, 09 Sep 2016 03:35:44 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
