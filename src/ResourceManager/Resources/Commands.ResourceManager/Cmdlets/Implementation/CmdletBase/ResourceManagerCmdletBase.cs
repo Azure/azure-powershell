@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-    using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
