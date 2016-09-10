@@ -199,7 +199,7 @@
     <Compile Include="Search\SetAzureOperationalInsightsSavedSearch.cs" />
     <Compile Include="Search\RemoveAzureOperationalInsightsSavedSearchCommand.cs" />
     <Compile Include="DataSources\GetAzureOperationalInsightsDataSourceCommand.cs" />
-    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureAuditDataSourceCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureActivityDataSourceCommand.cs" />
     <Compile Include="DataSources\RemoveAzureOperationalInsightsDataSourceCommand.cs" />
     <Compile Include="DataSources\SetAzureOperationalInsightsDataSourceCommand.cs" />
     <Compile Include="StorageInsights\GetAzureOperationalInsightsStorageInsightCommand.cs" />

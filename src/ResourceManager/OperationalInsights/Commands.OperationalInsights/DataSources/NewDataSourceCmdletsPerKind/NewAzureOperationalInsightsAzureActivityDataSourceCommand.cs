@@ -20,9 +20,9 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureAuditDataSource", SupportsShouldProcess = true, 
+    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureActivityDataSource", SupportsShouldProcess = true, 
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
-    public class NewAzureOperationalInsightsAzureAuditDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+    public class NewAzureOperationalInsightsAzureActivityDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The azure subscription Id.")]
