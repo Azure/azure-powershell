@@ -1385,6 +1385,9 @@
                         <Component Id="cmpC5EBF1A0F318B8E0497711394E31D7DC" Guid="*">
                             <File Id="fil6B6CE7A0C0502A4424D2CED2C58DC788" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.KeyVault.dll" />
                         </Component>
+                        <Component Id="cmp235180430FB6DE5147EE62ABC86D7E0E" Guid="*">
+                            <File Id="fil1AAF345120F9C35A80C5EE4E28CB8AB1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.KeyVault.WebKey.dll" />
+                        </Component>
                         <Component Id="cmpD1A5B61C7046E3D9D8256C632EED70EF" Guid="*">
                             <File Id="fil667D148658CD08848B6941417EDD954F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Azure.Management.Authorization.dll" />
                         </Component>
@@ -2485,9 +2488,6 @@
                         </Component>
                         <Component Id="cmp44074831AFB81C156E7ED6A30C9965D5" Guid="*">
                             <File Id="fil243D872BC193D82929CE3811BE0B4014" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\ResourceManagerStartup.ps1" />
-                        </Component>
-                        <Component Id="cmp3BB1527FA803EB75EB5EC78C281B3212" Guid="*">
-                            <File Id="filED67D901F43D8291F2243E5C1373D449" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\System.Management.Automation.dll" />
                         </Component>
                         <Component Id="cmpA534986DA2E43D7E50E9A6E219478266" Guid="*">
                             <File Id="filE2D02576DA0A4EEF0E8E1E2CFB76279A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\System.Net.Http.Extensions.dll" />
@@ -5898,6 +5898,7 @@
             <ComponentRef Id="cmpEBDBD8D91E1BFC6B12826CC430FAE403" />
             <ComponentRef Id="cmpDB8EED2921062193540743B6260AB9F1" />
             <ComponentRef Id="cmpC5EBF1A0F318B8E0497711394E31D7DC" />
+            <ComponentRef Id="cmp235180430FB6DE5147EE62ABC86D7E0E" />
             <ComponentRef Id="cmpD1A5B61C7046E3D9D8256C632EED70EF" />
             <ComponentRef Id="cmpFD1FF637F9EDD0BF88DE235BB7C878F2" />
             <ComponentRef Id="cmp4C36F13520E00A5CB5295B30590FB763" />
@@ -6257,7 +6258,6 @@
             <ComponentRef Id="cmpD80193A27EAF0B72702BBA3F066DD099" />
             <ComponentRef Id="cmp2BE59FD587F7E44466F41BF3189A9262" />
             <ComponentRef Id="cmp44074831AFB81C156E7ED6A30C9965D5" />
-            <ComponentRef Id="cmp3BB1527FA803EB75EB5EC78C281B3212" />
             <ComponentRef Id="cmpA534986DA2E43D7E50E9A6E219478266" />
             <ComponentRef Id="cmp6D34FB8F9A9678D4511D4BB8E0800104" />
             <ComponentRef Id="cmp890B1E2923E26CE2A15A652293EA92BE" />
