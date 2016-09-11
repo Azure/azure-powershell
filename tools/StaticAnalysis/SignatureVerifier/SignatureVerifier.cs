@@ -48,6 +48,7 @@ namespace StaticAnalysis.SignatureVerifier
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
             var issueLogger = Logger.CreateLogger<SignatureIssue>(signatureIssueReportLoggerName);
+            
             List<string> probingDirectories = new List<string>();
 
             if (directoryFilter != null)
@@ -147,7 +148,7 @@ namespace StaticAnalysis.SignatureVerifier
                                             string.Format(
                                                 "{0} does not have a Force parameter but the cmdlet verb '{1}' " +
                                                 "indicates that it may perform destrucvie actions under certain " +
-                                                "circumstances. Consider wehtehr the cmdlet should have a Force " +
+                                                "circumstances. Consider whether the cmdlet should have a Force " +
                                                 "parameter anduse ShouldContinue under some circumstances. ",
                                                 cmdlet.Name, cmdlet.VerbName),
                                         remediation: "Consider wehtehr the cmdlet should have a Force " +
