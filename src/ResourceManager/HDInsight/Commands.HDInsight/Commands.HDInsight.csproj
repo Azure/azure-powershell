@@ -69,6 +69,7 @@
     <Compile Include="ManagementCommands\RemoveAzureHDInsightPersistedScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\SetAzureHDInsightPersistedScriptActionCommand.cs" />
     <Compile Include="ManagementCommands\SubmitAzureHDInsightScriptActionCommand.cs" />
+    <Compile Include="Models\Management\AzureHDInsightDataLakeDefaultStorageAccount.cs" />
     <Compile Include="Models\Management\AzureHDInsightRuntimeScriptAction.cs" />
     <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionDetail.cs" />
     <Compile Include="Models\Management\AzureHDInsightRuntimeScriptActionOperationResource.cs" />
@@ -93,7 +94,9 @@
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="ClusterConfigurationUtils.cs" />
     <Compile Include="Models\Management\AzureHDInsightScriptAction.cs" />
+    <Compile Include="Models\Management\AzureHDInsightWASBDefaultStorageAccount.cs" />
     <Compile Include="Models\Management\RuntimeScriptActionClusterNodeType.cs" />
+    <Compile Include="Models\Management\StorageAccountType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +125,9 @@
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.9.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.HDInsight">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.14-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.2.0.0\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>

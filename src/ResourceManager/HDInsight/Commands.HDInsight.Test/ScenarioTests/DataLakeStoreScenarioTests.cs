@@ -10,11 +10,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact (Skip = "Test requires fixing GraphAPI by upgrading to latest test framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataLakeStoreClusterCreate()
         {
             NewInstance.RunPsTest("Test-DataLakeStoreClusterCreate");
+        }
+
+        [Fact (Skip = "Test requires fixing GraphAPI by upgrading to latest test framework")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDataLakeStoreDefaultFSClusterCreate()
+        {
+            NewInstance.RunPsTest("Test-DataLakeStoreDefaultFSClusterCreate");
         }
     }
 }

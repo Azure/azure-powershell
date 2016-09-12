@@ -39,19 +39,40 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
         }
 
-        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration, IDictionary<string, string> clusterIdentity)
             : this(cluster)
         {
             if (clusterConfiguration != null)
             {
                 var defaultAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
-                clusterConfiguration,
-                cluster.Properties.ClusterVersion);
+                    cluster.Properties.ClusterVersion,
+                    clusterConfiguration, 
+                    clusterIdentity
+                );
 
-                DefaultStorageAccount = defaultAccount.StorageAccountName;
-                DefaultStorageContainer = defaultAccount.StorageContainerName;
+                if (defaultAccount != null)
+                {
+                    DefaultStorageAccount = defaultAccount.StorageAccountName;
 
-                AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+                    var wasbAccount = defaultAccount as AzureHDInsightWASBDefaultStorageAccount;
+                    var adlAccount = defaultAccount as AzureHDInsightDataLakeDefaultStorageAccount;
+
+                    if (wasbAccount != null)
+                    {
+                        DefaultStorageContainer =  wasbAccount.StorageContainerName;
+                    }
+                    else if(adlAccount != null)
+                    {
+                        DefaultStorageRootPath = adlAccount.StorageRootPath;
+                    }
+                    else
+                    {
+                        DefaultStorageContainer = string.Empty;
+                    }
+
+
+                    AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+                }
             }
         }
 
@@ -119,6 +140,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// Default storage container for this cluster.
         /// </summary>
         public string DefaultStorageContainer { get; set; }
+
+        /// <summary>
+        /// Default storage path where this Azure Data Lake Cluster is rooted
+        /// </summary>
+        public string DefaultStorageRootPath { get; set; }
 
         /// <summary>
         /// Default storage container for this cluster.
