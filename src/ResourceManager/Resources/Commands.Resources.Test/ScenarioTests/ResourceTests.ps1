@@ -401,3 +401,48 @@ function Test-GetResourceWithCollection
 	# Assert
 	Assert-AreEqual $resourceGet.ResourceType "Microsoft.Web/serverFarms"
 }
+
+<#
+.SYNOPSIS
+Tests managing resource with zones.
+#>
+function Test-ManageResourceWithZones
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$location = "Central US"
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+
+	# Test
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    $created = New-AzureRmResource -Name $rname -Location $location -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("2") -Force
+	
+	# Assert
+	Assert-NotNull $created
+	Assert-AreEqual $created.Zones.Length 1
+	Assert-AreEqual $created.Zones[0] "2"
+
+	$resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+	
+	# Assert
+	Assert-NotNull $resourceGet
+	Assert-AreEqual $resourceGet.Zones.Length 1
+	Assert-AreEqual $resourceGet.Zones[0] "2"
+
+	$resourceSet = set-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -Zones @("3") -Force
+	
+	# Assert
+	Assert-NotNull $resourceSet
+	Assert-AreEqual $resourceSet.Zones.Length 1
+	Assert-AreEqual $resourceSet.Zones[0] "3"
+
+	$resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+	
+	# Assert
+	Assert-NotNull $resourceGet
+	Assert-AreEqual $resourceGet.Zones.Length 1
+	Assert-AreEqual $resourceGet.Zones[0] "3"
+}

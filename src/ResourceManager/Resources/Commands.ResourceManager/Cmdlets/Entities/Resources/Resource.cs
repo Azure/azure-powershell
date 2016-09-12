@@ -91,6 +91,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         public DateTime? ChangedTime { get; set; }
 
         /// <summary>
+        /// Gets or sets the zones.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string[] Zones { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
