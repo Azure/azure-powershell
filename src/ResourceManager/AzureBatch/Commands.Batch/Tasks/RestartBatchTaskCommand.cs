@@ -22,17 +22,26 @@ namespace Microsoft.Azure.Commands.Batch
     [Alias("Reactivate-AzureBatchTask")]
     public class RestartBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The id of the task to reactivate.")]
-        [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The id of the job containing the task to reactivate.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to reactivate.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to reactivate.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true,
+            ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to reactivate.")]
+        [ValidateNotNullOrEmpty]
+        public PSCloudTask Task { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            this.BatchClient.ReactivateTask(this.BatchContext, this.JobId, this.Id,  this.AdditionalBehaviors);
+            RestartOperationParameters parameters = new RestartOperationParameters(this.BatchContext, this.JobId, this.Id, this.Task, this.AdditionalBehaviors);
+
+            this.BatchClient.ReactivateTask(parameters);
         }
     }
 }

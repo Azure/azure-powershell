@@ -318,6 +318,7 @@
     <Compile Include="Models\RebootComputeNodeParameters.cs" />
     <Compile Include="Models\ReimageComputeNodeParameters.cs" />
     <Compile Include="Models\RemoveComputeNodeParameters.cs" />
+    <Compile Include="Models\RestartOperationParameters.cs" />
     <Compile Include="Models\TaskOperationParameters.cs" />
     <Compile Include="Models\ComputeNodeOperationParameters.cs" />
     <Compile Include="Models\JobScheduleOperationParameters.cs" />

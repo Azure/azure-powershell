@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ParametersTestForReactivatingAnAzureBatchTask()
+        public void OmittingMandatoryParametersCausesException()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();

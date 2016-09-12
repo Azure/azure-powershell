@@ -269,24 +269,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
         /// </summary>
-        /// <param name="context">The account to use.</param>
-        /// <param name="jobId">The id of the job containing the task to reactivate.</param>
-        /// <param name="id">The id of the task to reactivate.</param>
-        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
-        public void ReactivateTask(BatchAccountContext context, string jobId, string id, IEnumerable<BatchClientBehavior> additionBehaviors)
+        /// <param name="parameters">The parameters indicating which task to Reactivate.</param>
+        public void ReactivateTask(RestartOperationParameters parameters)
         {
-            if (jobId == null)
+            if (parameters == null)
             {
-                throw new ArgumentNullException("jobId");
+                throw new ArgumentNullException("parameters");
             }
 
-            if (id == null)
-            {
-                throw new ArgumentNullException("id");
-            }
+            WriteVerbose(string.Format(Resources.TerminateTask, parameters.Task == null ? parameters.TaskId : parameters.Task.Id));
 
-            WriteVerbose(string.Format(Resources.ReactivateTask, jobId, id));
-            context.BatchOMClient.JobOperations.ReactivateTask(jobId, id, additionBehaviors);
+            if (parameters.Task != null)
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.JobId, parameters.TaskId));
+                parameters.Task.omObject.Reactivate(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.JobId, parameters.Task));
+                JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                jobOperations.ReactivateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
+            }
         }
     }
 }
