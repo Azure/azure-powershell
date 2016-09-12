@@ -11642,7 +11642,7 @@
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Restart-AzureBatchTask -JobId &quot;Job7&quot; -Id &quot;Task2&quot; -BatchContext $Context</dev:code>
 			<dev:remarks>
-				<maml:para>TThis command reactivates the task 'Task2' in job 'Job7'.</maml:para>
+				<maml:para>This command reactivates the task Task2 in job Job7.</maml:para>
 				<maml:para />
 				<maml:para></maml:para>
 			</dev:remarks>
