@@ -11554,7 +11554,7 @@
 	<command:details>
 		<command:name>Restart-AzureBatchTask</command:name>
 		<maml:description>
-			<maml:para>Reactivates this task allowing it to run again even if its retry count has been exhausted.</maml:para>
+			<maml:para>Reactivates a task, allowing it to run again even if its retry count has been exhausted.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11564,7 +11564,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Restart-AzureBatchTask cmdlet reactivates this task allowing it to run again even if its retry count has been exhausted.</maml:para>
+		<maml:para>The Restart-AzureBatchTask cmdlet reactivates a task, allowing it to run again even if its retry count has been exhausted.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11579,14 +11579,14 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 				<maml:name>JobId</maml:name>
 				<maml:description>
-					<maml:para>The ID of the job containing the task.</maml:para>
+					<maml:para>Specifies the ID of the job containing the task.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 				<maml:name>TaskId</maml:name>
 				<maml:description>
-					<maml:para>The ID of the task to reactivate.</maml:para>
+					<maml:para>Specifies The ID of the task to reactivate.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -11608,7 +11608,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 			<maml:name>JobId</maml:name>
 			<maml:description>
-				<maml:para>The ID of the job containing the task.</maml:para>
+				<maml:para>Specifies the ID of the job containing the task.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11620,7 +11620,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 			<maml:name>TaskId</maml:name>
 			<maml:description>
-				<maml:para>The ID of the task to reactivate.</maml:para>
+				<maml:para>Specifies the ID of the task to reactivate.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -11635,6 +11635,25 @@
 	<command:returnValues>
 	</command:returnValues>
 	<command:examples>
+		<command:example>
+			<maml:title>--- Example 1: Reactivates a task, allowing it to run again even if its retry count has been exhausted ---</maml:title>
+			<maml:introduction>
+			<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Restart-AzureBatchTask -JobId &quot;Job16&quot; -Id &quot;Task22&quot; -BatchContext $Context</dev:code>
+			<dev:remarks>
+				<maml:para>This command will reactivate a task, allowing it to run again even if its retry count has been exhausted. </maml:para>
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>

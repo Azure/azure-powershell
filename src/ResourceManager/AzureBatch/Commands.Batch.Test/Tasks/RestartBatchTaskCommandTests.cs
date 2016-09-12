@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RestartBatchTaskParametersTest()
+        public void ParametersTestForReactivatingAnAzureBatchTask()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.TaskId = "testTask";
+            cmdlet.Id = "testTask";
 
             // Don't go to the service on a Restart CloudTask call
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskReactivateOptions, AzureOperationHeaderResponse<TaskReactivateHeaders>>();

@@ -270,23 +270,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
         /// </summary>
         /// <param name="context">The account to use.</param>
-        /// <param name="jobId">The Job id.</param>
-        /// <param name="taskId">The task we want to reactivate.</param>
+        /// <param name="jobId">The id of the job containing the task to reactivate.</param>
+        /// <param name="id">The id of the task to reactivate.</param>
         /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
-        public void ReactivateTask(BatchAccountContext context, string jobId, string taskId, IEnumerable<BatchClientBehavior> additionBehaviors)
+        public void ReactivateTask(BatchAccountContext context, string jobId, string id, IEnumerable<BatchClientBehavior> additionBehaviors)
         {
             if (jobId == null)
             {
-                throw new ArgumentNullException(nameof(jobId));
+                throw new ArgumentNullException("jobId");
             }
 
-            if (taskId == null)
+            if (id == null)
             {
-                throw new ArgumentNullException(nameof(taskId));
+                throw new ArgumentNullException("id");
             }
 
-            WriteVerbose(string.Format(Resources.ReactivateTask, jobId, taskId));
-            context.BatchOMClient.JobOperations.ReactivateTask(jobId, taskId, additionBehaviors);
+            WriteVerbose(string.Format(Resources.ReactivateTask, jobId, id));
+            context.BatchOMClient.JobOperations.ReactivateTask(jobId, id, additionBehaviors);
         }
     }
 }

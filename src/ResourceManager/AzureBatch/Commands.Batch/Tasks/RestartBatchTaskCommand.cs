@@ -19,19 +19,20 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsLifecycle.Restart, Constants.AzureBatchTask)]
+    [Alias("Reactivate-AzureBatchTask")]
     public class RestartBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudTask object with changes to commit to the Batch Service.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The id of the task to reactivate.")]
         [ValidateNotNullOrEmpty]
-        public string TaskId { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudTask object with changes to commit to the Batch Service.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The id of the job containing the task to reactivate.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            this.BatchClient.ReactivateTask(this.BatchContext, this.JobId, this.TaskId,  this.AdditionalBehaviors);
+            this.BatchClient.ReactivateTask(this.BatchContext, this.JobId, this.Id,  this.AdditionalBehaviors);
         }
     }
 }
