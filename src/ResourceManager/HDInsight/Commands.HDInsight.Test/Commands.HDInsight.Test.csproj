@@ -50,9 +50,8 @@
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.18.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.14-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.HDInsight">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.2.0.0\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job">
       <SpecificVersion>False</SpecificVersion>
@@ -162,6 +161,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLakeStoreDefaultFilesystemTests.cs" />
     <Compile Include="HDInsightTestBase.cs" />
     <Compile Include="UnitTests\PremiumClusterTests.cs" />
     <Compile Include="UnitTests\ScriptActionTests.cs" />
@@ -184,6 +184,10 @@
     <Compile Include="UnitTests\DataLakeStoreTests.cs" />
     <Compile Include="UnitTests\NewClusterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.HDInsight.Test.DataLakeStoreScenarioTests\test.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.HDInsight.Test.DataLakeStoreScenarioTests\TestDataLakeStoreDefaultFsClusterCreate.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
@@ -219,9 +223,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SessionRecords\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

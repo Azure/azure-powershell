@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using System;
 using System.Management.Automation;
@@ -31,19 +32,23 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #region Input Parameter Definitions
 
-        [Parameter(HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the account name for the default storage account.")]
         public string DefaultStorageAccountName
         {
             get { return _config.DefaultStorageAccountName; }
             set { _config.DefaultStorageAccountName = value; }
         }
 
-        [Parameter(HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the storage key for the default Azure Storage Account.")]
         public string DefaultStorageAccountKey
         {
             get { return _config.DefaultStorageAccountKey; }
             set { _config.DefaultStorageAccountKey = value; }
         }
+
+        [Parameter(
+            HelpMessage = "Gets or sets the type of the default storage account.")]
+        public StorageType DefaultStorageAccountType { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the database to store the metadata for Oozie.")]
         public AzureHDInsightMetastore OozieMetastore

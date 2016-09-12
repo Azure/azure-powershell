@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         private const string CertificateFileContentsSet = "CertificateFileContents";
         private const string DefaultParameterSet = "Default";
 
+        #region These fields are marked obsolete in ClusterCreateParameters
+        private string _defaultStorageAccountName;
+        private string _defaultStorageAccountKey;
+        private string _defaultStorageContainer;
+        #endregion
+
         #region Input Parameter Definitions
 
         [Parameter(
@@ -86,11 +92,11 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         [Parameter(
             Position = 5,
-            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account.")]
+            HelpMessage = "Gets or sets the StorageName for the default Azure Storage Account or the default Data Lake Store Account.")]
         public string DefaultStorageAccountName
         {
-            get { return parameters.DefaultStorageAccountName; }
-            set { parameters.DefaultStorageAccountName = value; }
+            get { return _defaultStorageAccountName; }
+            set { _defaultStorageAccountName = value; }
         }
 
         [Parameter(
@@ -98,9 +104,13 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "Gets or sets the StorageKey for the default Azure Storage Account.")]
         public string DefaultStorageAccountKey
         {
-            get { return parameters.DefaultStorageAccountKey; }
-            set { parameters.DefaultStorageAccountKey = value; }
+            get { return _defaultStorageAccountKey; }
+            set { _defaultStorageAccountKey = value; }
         }
+
+        [Parameter(
+            HelpMessage = "Gets or sets the type of the default storage account.")]
+        public StorageType? DefaultStorageAccountType { get; set; }
 
         [Parameter(ValueFromPipeline = true,
             HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
@@ -112,8 +122,9 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     ClusterType = parameters.ClusterType,
                     ClusterTier = parameters.ClusterTier,
-                    DefaultStorageAccountName = parameters.DefaultStorageAccountName,
-                    DefaultStorageAccountKey = parameters.DefaultStorageAccountKey,
+                    DefaultStorageAccountType = DefaultStorageAccountType ?? StorageType.AzureStorage,
+                    DefaultStorageAccountName = _defaultStorageAccountName,
+                    DefaultStorageAccountKey = _defaultStorageAccountKey,
                     WorkerNodeSize = parameters.WorkerNodeSize,
                     HeadNodeSize = parameters.HeadNodeSize,
                     ZookeeperNodeSize = parameters.ZookeeperNodeSize,
@@ -146,13 +157,17 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 parameters.ClusterType = value.ClusterType;
                 parameters.ClusterTier = value.ClusterTier;
-                if (parameters.DefaultStorageAccountName == null)
+                if (DefaultStorageAccountType == null)
                 {
-                    parameters.DefaultStorageAccountName = value.DefaultStorageAccountName;
+                    DefaultStorageAccountType = value.DefaultStorageAccountType;
                 }
-                if (parameters.DefaultStorageAccountKey == null)
+                if (string.IsNullOrWhiteSpace(_defaultStorageAccountName))
                 {
-                    parameters.DefaultStorageAccountKey = value.DefaultStorageAccountKey;
+                    _defaultStorageAccountName = value.DefaultStorageAccountName;
+                }
+                if (string.IsNullOrWhiteSpace(_defaultStorageAccountKey))
+                {
+                    _defaultStorageAccountKey = value.DefaultStorageAccountKey;
                 }
                 parameters.WorkerNodeSize = value.WorkerNodeSize;
                 parameters.HeadNodeSize = value.HeadNodeSize;
@@ -198,12 +213,15 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
         public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
-        [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
+        [Parameter(HelpMessage = "Gets or sets the StorageContainer name for the default Azure Storage Account")]
         public string DefaultStorageContainer
         {
-            get { return parameters.DefaultStorageContainer; }
-            set { parameters.DefaultStorageContainer = value; }
+            get { return _defaultStorageContainer; }
+            set { _defaultStorageContainer = value; }
         }
+
+        [Parameter(HelpMessage = "Gets or sets the path to the root of the cluster in the default Data Lake Store Account.")]
+        public string DefaultStorageRootPath { get; set; }
 
         [Parameter(HelpMessage = "Gets or sets the version of the HDInsight cluster.")]
         public string Version
@@ -334,6 +352,15 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     parameters.SshPublicKey = SshPublicKey;
                 }
+            }
+
+            if (DefaultStorageAccountType==null || DefaultStorageAccountType == StorageType.AzureStorage)
+            {
+                parameters.DefaultStorageInfo = new AzureStorageInfo(DefaultStorageAccountName, DefaultStorageAccountKey, DefaultStorageContainer);
+            }
+            else
+            {
+                parameters.DefaultStorageInfo = new AzureDataLakeStoreInfo(DefaultStorageAccountName, DefaultStorageRootPath);
             }
 
             foreach (
