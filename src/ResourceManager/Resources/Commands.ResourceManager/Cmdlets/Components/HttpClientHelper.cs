@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
 
     /// <summary>
     /// Factory class for creating <see cref="HttpClient"/> objects with custom headers.
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 new AuthenticationHandler(cloudCredentials: credentials),
                 new UserAgentHandler(headerValues: headerValues),
-                new Handlers.CmdletInfoHandler(cmdletHeaderValues: cmdletHeaderValues),
+                new CmdletInfoHandler(cmdletHeaderValues: cmdletHeaderValues),
                 new TracingHandler(),
                 new RetryHandler(),
             };
