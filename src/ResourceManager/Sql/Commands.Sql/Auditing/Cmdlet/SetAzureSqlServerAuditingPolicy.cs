@@ -181,5 +181,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
         }
+
+        protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)
+        {
+            base.PersistChanges(model);
+            ModelAdapter.IgnoreStorage = true;
+            Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
+            swapAuditType();
+            var otherAuditingTypePolicyModel = GetEntity();
+            otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+            base.PersistChanges(otherAuditingTypePolicyModel);
+            swapAuditType();
+            return model;
+        }
     }
 }
