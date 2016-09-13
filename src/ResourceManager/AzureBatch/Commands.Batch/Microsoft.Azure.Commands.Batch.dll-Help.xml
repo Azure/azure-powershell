@@ -3490,11 +3490,11 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestinationPath</maml:name>
+				<maml:name>DestinationStream</maml:name>
 				<maml:description>
-					<maml:para>Specifies the file path where this cmdlet saves the node file.</maml:para>
+					<maml:para>Specifies the stream into which this cmdlet writes the node file contents. This cmdlet does not close or rewind this stream.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
@@ -3528,11 +3528,11 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestinationStream</maml:name>
+				<maml:name>DestinationPath</maml:name>
 				<maml:description>
-					<maml:para>Specifies the stream into which this cmdlet writes the node file contents. This cmdlet does not close or rewind this stream.</maml:para>
+					<maml:para>Specifies the file path where this cmdlet saves the node file.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
@@ -6759,6 +6759,20 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OnAllTasksComplete</maml:name>
+				<maml:description>
+					<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;OnAllTasksComplete&gt;</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>OnTaskFailure</maml:name>
+				<maml:description>
+					<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;OnTaskFailure&gt;</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>PoolInformation</maml:name>
 				<maml:description>
@@ -6890,6 +6904,30 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>OnAllTasksComplete</maml:name>
+			<maml:description>
+				<maml:para>Specifies an action the Batch service should take when all tasks in the job are in the completed state.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">System.Nullable&lt;OnAllTasksComplete&gt;</command:parameterValue>
+			<dev:type>
+				<maml:name>System.Nullable&lt;OnAllTasksComplete&gt;</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>OnTaskFailure</maml:name>
+			<maml:description>
+				<maml:para>Specifies an action the Batch service should take when any task in the job fails.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">System.Nullable&lt;OnTaskFailure&gt;</command:parameterValue>
+			<dev:type>
+				<maml:name>System.Nullable&lt;OnTaskFailure&gt;</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>PoolInformation</maml:name>
@@ -8007,6 +8045,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ExitConditions</maml:name>
+				<maml:description>
+					<maml:para>Specifies how the Batch service should respond when the task completes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Id</maml:name>
 				<maml:description>
@@ -8149,6 +8194,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">IDictionary</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ExitConditions</maml:name>
+				<maml:description>
+					<maml:para>Specifies how the Batch service should respond when the task completes.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Id</maml:name>
 				<maml:description>
@@ -8282,6 +8334,18 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ExitConditions</maml:name>
+			<maml:description>
+				<maml:para>Specifies how the Batch service should respond when the task completes.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSExitConditions</command:parameterValue>
+			<dev:type>
+				<maml:name>PSExitConditions</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Id</maml:name>
