@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            RestartOperationParameters parameters = new RestartOperationParameters(this.BatchContext, this.JobId, this.Id, this.Task, this.AdditionalBehaviors);
+            TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId, this.Id, this.Task, this.AdditionalBehaviors);
 
             this.BatchClient.ReactivateTask(parameters);
         }

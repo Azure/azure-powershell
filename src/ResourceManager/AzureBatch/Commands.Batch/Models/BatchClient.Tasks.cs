@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
         /// </summary>
         /// <param name="parameters">The parameters indicating which task to reactivate.</param>
-        public void ReactivateTask(RestartOperationParameters parameters)
+        public void ReactivateTask(TaskOperationParameters parameters)
         {
             if (parameters == null)
             {
