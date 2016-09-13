@@ -257,6 +257,17 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
+                    // +---------+---------------+----------------------------+
+                    // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
+                    // +---------+---------------+----------------------------+
+                    // | Windows | OS            | Yes                        |
+                    // | Windows | Data          | No                         |
+                    // | Windows | Not Specified | Yes                        |
+                    // | Linux   | OS            | N/A                        |
+                    // | Linux   | Data          | Yes                        |
+                    // | Linux   | Not Specified | N/A                        |
+                    // +---------+---------------+----------------------------+
+
                     if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
                         VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
                     {
