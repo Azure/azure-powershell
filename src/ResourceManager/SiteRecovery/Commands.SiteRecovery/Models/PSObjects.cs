@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRVaultSettings(ASRVaultCreds asrVaultCreds)
         {
             this.ResourceName = asrVaultCreds.ResourceName;
-            this.ResouceGroupName = asrVaultCreds.ResourceGroupName;
+            this.ResourceGroupName = asrVaultCreds.ResourceGroupName;
             this.ResourceNamespace = asrVaultCreds.ResourceNamespace;
             this.ResouceType = asrVaultCreds.ARMResourceType;
         }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Resource Group Name.
         /// </summary>
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Resource Provider Namespace.
@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ASRVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ASRVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -1163,9 +1163,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public string Location { get; set; }
 
         /// <summary>
-        /// Gets or sets Resouce group name.
+        /// Gets or sets Resource group name.
         /// </summary>
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Subscription.

@@ -147,7 +147,7 @@ storage account, you don't need to provide it.
 function Test-AuditingDatabaseUpdatePolicyKeepPreviousStorage
 {
 	# Setup
-	$testSuffix = 30567
+	$testSuffix = 30561
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -418,7 +418,7 @@ Tests that when asking to disable auditing of a database, later when fetching th
 function Test-AuditingDisableDatabaseAuditing
 {
 	# Setup
-	$testSuffix = 9015
+	$testSuffix = 9025
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -431,7 +431,6 @@ function Test-AuditingDisableDatabaseAuditing
 	
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 	}
 	finally
 	{
@@ -475,7 +474,7 @@ Tests that when disabling an already existing auditing policy on a database and 
 function Test-AuditingDatabaseDisableEnableKeepProperties
 {
 	# Setup
-		$testSuffix = 12683
+		$testSuffix = 12584
 		Create-TestEnvironment $testSuffix
 		$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -868,7 +867,7 @@ Tests that after setting the retention values to a database auditing policy, thi
 function Test-AuditingDatabaseRetentionKeepProperties
 {
 	# Setup
-	$testSuffix = 20555
+	$testSuffix = 21538
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -911,12 +910,12 @@ function Test-BlobAuditingOnDatabase
 	$testSuffix = 7122
 	Create-TestEnvironment $testSuffix "Japan East"
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	$dbName = $params.databaseName
 
 	try
 	{
-		# Test
-		$dbName = $params.databaseName
-		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 #-AuditAction "SELECT ON database::[$dbName] BY [public]"
+		# Test	
+		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 
 		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
@@ -956,9 +955,8 @@ function Test-BlobAuditingOnServer
 
 	try
 	{
-		# Test
-		$dbName = $params.databaseName
-		Set-AzureRmSqlServerAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8 #-AuditAction "SELECT ON database::[$dbName] BY [public]"
+		# Test	
+		Set-AzureRmSqlServerAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP", "FAILED_DATABASE_AUTHENTICATION_GROUP" -RetentionInDays 8
 		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
 		# Assert
@@ -969,7 +967,6 @@ function Test-BlobAuditingOnServer
 		Assert-AreEqual $policy.AuditAction.Length 0
 		Assert-AreEqual $policy.RetentionInDays 8
 
-
 		# Test
 		Remove-AzureRmSqlServerAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName
 		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
@@ -977,6 +974,126 @@ function Test-BlobAuditingOnServer
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
 		Assert-AreEqual $policy.AuditAction.Length 0
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that after migrating between database audit types the returned policy is of the migrated-to audit type
+#>
+function Test-DatatabaseAuditingTypeMigration
+{
+	# Setup
+	$testSuffix = 554477
+	Create-TestEnvironment $testSuffix "Japan East"
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	$dbName = $params.databaseName
+
+	try
+	{		
+		# Test
+		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType PlainSQL_Success
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.EventType.Length 1
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::PlainSQL_Success)}
+
+		# Test
+		$selectAuditAction = "SELECT ON database::[$dbName] BY [public]"
+		$UpdateAuditAction = "UPDATE ON database::[$dbName] BY [public]"
+		Set-AzureRmSqlDatabaseAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -AuditActionGroup FAILED_DATABASE_AUTHENTICATION_GROUP -RetentionInDays 4 -AuditAction $selectAuditAction, $updateAuditAction
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.AuditActionGroup.Length 1
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual $policy.AuditAction.Length 2
+		Assert-AreEqual $policy.RetentionInDays 4
+
+		# Test
+		Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.EventType.Length 1
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Failure)}
+
+		# Test
+		Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.AuditAction.Length 0
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-TestEnvironment $testSuffix
+	}
+}
+
+<#
+.SYNOPSIS
+Tests that after migrating between server audit types the returned policy is of the migrated-to audit type
+#>
+function Test-ServerAuditingTypeMigration
+{
+	# Setup
+	$testSuffix = 554412
+	Create-TestEnvironment $testSuffix "Japan East"
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
+	$dbName = $params.databaseName
+
+	try
+	{		
+		# Test
+		Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType PlainSQL_Success
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.EventType.Length 1
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::PlainSQL_Success)}
+
+		# Test
+		$UpdateAuditAction = "UPDATE ON schema::[dbo] BY [public]"
+		Set-AzureRmSqlServerAuditingPolicy -AuditType Blob -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -AuditActionGroup FAILED_DATABASE_AUTHENTICATION_GROUP -RetentionInDays 4 -AuditAction $updateAuditAction
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.AuditActionGroup.Length 1
+		Assert-True {$policy.AuditActionGroup.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups]::FAILED_DATABASE_AUTHENTICATION_GROUP)}
+		Assert-AreEqual $policy.AuditAction.Length 1
+		Assert-AreEqual $policy.AuditAction[0] $UpdateAuditAction
+		Assert-AreEqual $policy.RetentionInDays 4
+
+		# Test
+		Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount -EventType ParameterizedSQL_Failure
+		$policy = Get-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Enabled"
+		Assert-AreEqual $policy.EventType.Length 1
+		Assert-True {$policy.EventType.Contains([Microsoft.Azure.Commands.Sql.Auditing.Model.AuditEventType]::ParameterizedSQL_Failure)}
+
+		# Test
+		Remove-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+		$policy = Get-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditState "Disabled"
+		Assert-AreEqual $policy.AuditAction.Length 0
+
 	}
 	finally
 	{

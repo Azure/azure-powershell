@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         private string GetTenantId(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenantId;
                 return environment.AuthorizationContext.TenantId;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         private string GetUser(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
                 return environment.AuthorizationContext.UserId;
