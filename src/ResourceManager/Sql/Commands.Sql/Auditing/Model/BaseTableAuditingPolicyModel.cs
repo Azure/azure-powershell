@@ -39,16 +39,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the full name of audit logs table 
         /// </summary>
         public string FullAuditLogsTableName { get; internal set; }
-
-        public override bool IsInUse()
-        {
-            if (AuditState == AuditStateType.New)
-            {
-                return false;
-            }
-            return (AuditState == AuditStateType.Enabled ||
-                    !string.IsNullOrEmpty(StorageAccountName) ||
-                    RetentionInDays > 0);
-        }
     }
 }

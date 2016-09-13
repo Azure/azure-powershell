@@ -135,4 +135,7 @@
   <data name="UpdateServiceWarning" xml:space="preserve">
     <value>Are you sure you want to update the machine learning web service "{0}" ?</value>
   </data>
+  <data name="VersionInfo" xml:space="preserve">
+    <value>Azure Machine Learning Module Version: "{0}"</value>
+  </data>
 </root>
