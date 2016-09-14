@@ -23,6 +23,12 @@ else
 
     foreach ($file in $files)
     {
+        # Ignore the module page
+        if ($file.Name -eq "AzureRM.$Service.md")
+        {
+            continue
+        }
+
         $fileErrors = @()
 
         # For each help file, check to see if they are missing help in any section
@@ -35,34 +41,79 @@ else
             {
                 "## SYNOPSIS"
                 {
-                    # Check for a synopsis of the cmdlet
-                    if ([string]::IsNullOrWhiteSpace("$($content[$idx+1])"))
+                    $foundSynopsis = $False
+                    $idx++
+
+                    # Check each line between SYNOPSIS and SYNTAX for any text
+                    for (;;)
                     {
-                        $fileErrors += "`tNo snyopsis found"
+                        $foundSynopsis = $foundSynopsis -or (!([string]::IsNullOrWhiteSpace("$($content[$idx])")))
+
+                        if ($content[$idx+1] -notcontains "## SYNTAX")
+                        {
+                            $idx++
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+
+                    if (!($foundSynopsis))
+                    {
+                        $fileErrors += "`tNo synopsis found"
                     }
                 }
                 "## DESCRIPTION"
                 {
-                    # Check for a description of the cmdlet
-                    if ([string]::IsNullOrWhiteSpace("$($content[$idx+1])"))
+                    $foundDescription = $False
+                    $idx++
+
+                    # Check each line between DESCRIPTION and EXAMPLES for any text
+                    for (;;)
+                    {
+                        $foundDescription = $foundDescription -or (!([string]::IsNullOrWhiteSpace("$($content[$idx])")))
+
+                        if ($content[$idx+1] -notcontains "## EXAMPLES")
+                        {
+                            $idx++
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+
+                    if (!($foundDescription))
                     {
                         $fileErrors += "`tNo description found"
                     }
                 }
                 "## EXAMPLES"
                 {
+                    # Move the index to the start of the PowerShell code
                     while ($content[$idx] -notcontains "``````")
                     {
                         $idx++
                     }
 
                     # Check for the platyPS example template
+                    # 
+                    # ```
+                    # PS C:\> {{ Add example code here }}
+                    # ```
+                    # 
                     if ($content[$idx+1] -contains "PS C:\> {{ Add example code here }}")
                     {
                         $fileErrors += "`tNo examples found"
                     }
 
-                    # Check for other missing example formats
+                    # Check for other missing example formats (such as empty)
+                    # 
+                    # ```
+                    # 
+                    # ```
+                    # 
                     if ([string]::IsNullOrWhiteSpace("$($content[$idx+1])"))
                     {
                         $fileErrors += "`tNo examples found"
@@ -76,8 +127,25 @@ else
                 }
                 "## OUTPUTS"
                 {
-                    # Check for a description of the output from the cmdlet
-                    if ($content[$idx+2] -notlike "###*")
+                    $foundOutput = $False
+                    $idx++
+
+                    # Check each line between OUTPUTS and NOTES for any text
+                    for (;;)
+                    {
+                        $foundOutput = $foundOutput -or (!([string]::IsNullOrWhiteSpace("$($content[$idx])")))
+
+                        if ($content[$idx+1] -notcontains "## NOTES")
+                        {
+                            $idx++
+                        }
+                        else
+                        {
+                            break
+                        }
+                    }
+
+                    if (!($foundOutput))
                     {
                         $fileErrors += "`tNo output description found"
                     }
