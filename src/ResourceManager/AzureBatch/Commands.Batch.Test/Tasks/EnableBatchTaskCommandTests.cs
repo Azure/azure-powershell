@@ -26,18 +26,18 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class RestartBatchTaskCommandTests
+    public class EnableBatchTaskCommandTests
     {
-        private RestartBatchTaskCommand cmdlet;
+        private EnableBatchTaskCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RestartBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public EnableBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new RestartBatchTaskCommand()
+            cmdlet = new EnableBatchTaskCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,

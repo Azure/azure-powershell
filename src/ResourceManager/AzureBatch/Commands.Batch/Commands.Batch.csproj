@@ -349,7 +349,7 @@
     <Compile Include="Tasks\RemoveBatchTaskCommand.cs" />
     <Compile Include="ComputeNodeUsers\NewBatchComputeNodeUserCommand.cs" />
     <Compile Include="ComputeNodeUsers\RemoveBatchComputeNodeUserCommand.cs" />
-    <Compile Include="Tasks\RestartBatchTaskCommand.cs" />
+    <Compile Include="Tasks\EnableBatchTaskCommand.cs" />
     <Compile Include="Tasks\SetBatchTaskCommand.cs" />
     <Compile Include="Tasks\StopBatchTaskCommand.cs" />
     <Compile Include="NewApplicationPackageException.cs" />

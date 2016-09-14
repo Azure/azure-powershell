@@ -18,9 +18,9 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Restart, Constants.AzureBatchTask)]
+    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchTask)]
     [Alias("Reactivate-AzureBatchTask")]
-    public class RestartBatchTaskCommand : BatchObjectModelCmdletBase
+    public class EnableBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to reactivate.")]
