@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     using Newtonsoft.Json;
     using System.Collections;
