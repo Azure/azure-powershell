@@ -276,6 +276,7 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewaySslPolicy.cs" />
     <Compile Include="Models\PSBgpSettings.cs" />
@@ -300,6 +301,7 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSResourceNavigationLink.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSNetworkLongRunningOperation.cs" />
     <Compile Include="Models\PSEffectiveNetworkSecurityGroup.cs" />
@@ -325,6 +327,7 @@
     <Compile Include="NetworkInterface\IpConfiguration\RemoveAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\SetAzureNetworkInterfaceIpConfigCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
+    <Compile Include="VirtualNetwork\TestAzurePrivateIPAddressAvailabilityCmdlet.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\PublicIpAddressBaseCmdlet.cs" />
@@ -361,6 +364,8 @@
     <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayVpnClientConfig.cs" />
     <Compile Include="VirtualNetworkGateway\GenerateAzureVpnClientPackage.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\AddAzureVirtualNetworkGatewayIpConfigCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ResetAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayDefaultSiteCommand.cs" />

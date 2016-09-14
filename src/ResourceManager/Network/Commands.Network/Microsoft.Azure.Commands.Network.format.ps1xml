@@ -97,6 +97,10 @@
                 <PropertyName>IpConfigurationsText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ResourceNavigationLinks</Label>
+                <PropertyName>ResourceNavigationLinksText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
               </ListItem>
@@ -1305,6 +1309,54 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSResourceNavigationLink</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>LinkedResourceType</Label>
+                <PropertyName>LinkedResourceType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Link</Label>
+                <PropertyName>Link</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSIPAddressAvailabilityResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSIPAddressAvailabilityResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Available</Label>
+                <PropertyName>Available</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AvailableIPAddresses</Label>
+                <PropertyName>AvailableIPAddressesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

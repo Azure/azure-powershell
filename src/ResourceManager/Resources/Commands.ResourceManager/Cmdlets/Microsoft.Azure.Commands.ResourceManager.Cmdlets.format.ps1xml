@@ -282,6 +282,36 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceTypeName</Label>
+                <PropertyName>ResourceTypeName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Locations</Label>
+                <PropertyName>Locations</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ApiVersions</Label>
+                <PropertyName>ApiVersions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ZoneMappings</Label>
+                <PropertyName>ZoneMappings</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider</TypeName>
@@ -305,6 +335,13 @@
               <ListItem>
                 <Label>Locations</Label>
                 <PropertyName>Locations</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ZoneMappings</Label>
+                <PropertyName>ZoneMappings</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ZoneMappings</ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
             </ListItems>
           </ListEntry>
