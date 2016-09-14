@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.applicationPackageReferences = value;
             }
         }
-
+        
         public string CommandLine
         {
             get
