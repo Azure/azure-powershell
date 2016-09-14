@@ -1,0 +1,482 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/snapshots?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vc25hcHNob3RzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68e63f9a-1771-4b23-b11e-c075c1e05ce8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/15/2016 10:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-15T22:48:51.0728055\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 4:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T04:48:51.2597886\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 10:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T10:48:51.4115525\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 4:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T16:48:51.7115829\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 10:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T22:48:51.8623462\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 4:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T04:48:51.9466854\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 10:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T10:48:52.1957477\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 4:48:52 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T16:48:52.2999012\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 10:48:52 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T22:48:52.3070174\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 4:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T04:48:52.5180474\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 10:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T10:48:52.857605\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 4:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T16:48:53.0434572\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 10:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T22:48:53.3133246\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 4:48:53 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T04:48:53.3574359\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 10:48:53 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T10:48:53.5248524\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 4:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T16:48:53.792142\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 10:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T22:48:53.9123843\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 4:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T04:48:54.1150029\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 10:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T10:48:54.3430874\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 4:48:54 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T16:48:54.4322316\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 10:48:54 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T22:48:54.6797267\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 4:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T04:48:54.8389158\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 10:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T10:48:54.9621612\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 4:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T16:48:55.2181924\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 10:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T22:48:55.3737734\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 4:48:55 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T04:48:55.4709987\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 10:48:55 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T10:48:55.763744\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 4:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T16:48:55.8375772\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 10:48:56 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T22:48:56.0528466\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 2:11:23 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T02:11:23.1596352\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 6:43:32 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T06:43:32.8612101\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T12:43:33.0155699\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T18:43:33.0416679\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T00:43:33.0651699\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T06:43:33.2702199\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T12:43:33.4384224\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T18:43:33.4621833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T00:43:33.4094085\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T06:43:33.4013157\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T12:43:33.5395496\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T18:43:33.8367888\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T00:43:33.9018353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T06:43:33.6734015\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T12:43:33.6404907\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 6:43:32 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T18:43:32.7325886\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 12:43:32 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T00:43:32.706022\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T06:43:33.9715811\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T12:43:33.6664718\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 6:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T18:43:34.2231702\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 12:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T00:43:34.6110455\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 6:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T06:43:34.6542442\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 12:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T12:43:34.792903\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 6:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T18:43:34.8749674\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 12:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T00:43:34.9626502\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T06:43:35.6109861\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 12:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T12:43:35.2190462\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T18:43:35.9073439\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 12:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T00:43:35.5939481\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T06:43:35.6689799\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 12:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T12:43:36.1261616\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T18:43:35.7125548\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 12:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T00:43:35.2857993\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T06:43:35.6786761\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 12:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T12:43:35.792538\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T18:43:35.9851325\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 12:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T00:43:36.4027739\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 6:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T06:43:36.2995701\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T12:43:37.1276704\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 6:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T18:43:36.8129112\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T00:43:37.0298695\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 6:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T06:43:37.093786\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T12:43:37.1641338\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 6:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T18:43:37.2053277\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T00:43:37.4206643\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 6:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T06:43:36.6776167\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T12:43:37.0192213\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 6:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T18:43:36.8962685\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T00:43:37.5527875\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 6:43:38 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T06:43:38.0575143\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 12:43:38 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T12:43:38.5559542\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T18:43:39.0656746\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 12:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T00:43:39.2021022\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 6:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T06:43:39.4759244\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 12:43:38 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T12:43:38.8247562\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T18:43:39.0847284\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 12:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T00:43:39.2559297\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 6:43:38 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T06:43:38.9874683\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 12:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T12:43:39.2096568\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T18:43:39.1476386\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 8:18:14 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T20:18:14.9303901\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 12:11:46 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T00:11:46.9109664\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 5:28:00 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T05:28:00.922168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 11:28:00 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T11:28:00.9573218\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 5:28:01 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T17:28:01.0127063\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 11:28:01 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T23:28:01.5983949\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 5:28:01 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T05:28:01.4237467\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 11:28:01 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T11:28:01.565841\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 5:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T17:28:02.0741799\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 11:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T23:28:02.0327073\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 5:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T05:28:02.1207559\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 11:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T11:28:02.6902223\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 5:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T17:28:02.5186068\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 11:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T23:28:02.791099\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 5:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T05:28:03.2198969\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 11:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T11:28:02.8206838\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 5:28:03 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T17:28:03.2147043\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 11:28:03 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T23:28:03.61571\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 5:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T05:28:03.5704411\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 11:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T11:28:03.7286895\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 5:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T17:28:04.1235423\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 11:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T23:28:04.080816\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 5:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T05:28:04.3668436\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T11:28:04.6735034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 5:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T17:28:04.6224936\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T23:28:05.0572456\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T05:28:05.3175004\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T11:28:04.9864543\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T17:28:05.0400648\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T23:28:05.0860464\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T05:28:05.4497656\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 11:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T11:28:05.9574575\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:06 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T17:28:06.1588339\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "19566"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b3721150-b993-4b41-89aa-fd8fb4ecab94"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14875"
+        ],
+        "x-ms-correlation-request-id": [
+          "f492f1db-5b20-4c7d-af63-d2e22ed9e5a0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213830Z:f492f1db-5b20-4c7d-af63-d2e22ed9e5a0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:29 GMT"
+        ],
+        "ETag": [
+          "\"1D20EBF28960B30\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/snapshots?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vc25hcHNob3RzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1271b0a4-6d40-4899-9991-27d84216974e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/15/2016 10:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-15T22:48:51.0728055\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 4:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T04:48:51.2597886\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 10:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T10:48:51.4115525\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 4:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T16:48:51.7115829\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/16/2016 10:48:51 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-16T22:48:51.8623462\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 4:48:51 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T04:48:51.9466854\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 10:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T10:48:52.1957477\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 4:48:52 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T16:48:52.2999012\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/17/2016 10:48:52 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-17T22:48:52.3070174\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 4:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T04:48:52.5180474\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 10:48:52 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T10:48:52.857605\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 4:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T16:48:53.0434572\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/18/2016 10:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-18T22:48:53.3133246\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 4:48:53 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T04:48:53.3574359\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 10:48:53 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T10:48:53.5248524\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 4:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T16:48:53.792142\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/19/2016 10:48:53 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-19T22:48:53.9123843\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 4:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T04:48:54.1150029\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 10:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T10:48:54.3430874\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 4:48:54 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T16:48:54.4322316\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/20/2016 10:48:54 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-20T22:48:54.6797267\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 4:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T04:48:54.8389158\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 10:48:54 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T10:48:54.9621612\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 4:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T16:48:55.2181924\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/21/2016 10:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-21T22:48:55.3737734\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 4:48:55 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T04:48:55.4709987\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 10:48:55 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T10:48:55.763744\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 4:48:55 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T16:48:55.8375772\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/22/2016 10:48:56 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-22T22:48:56.0528466\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 2:11:23 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T02:11:23.1596352\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 6:43:32 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T06:43:32.8612101\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T12:43:33.0155699\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/23/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-23T18:43:33.0416679\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T00:43:33.0651699\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T06:43:33.2702199\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T12:43:33.4384224\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/24/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-24T18:43:33.4621833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T00:43:33.4094085\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T06:43:33.4013157\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T12:43:33.5395496\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/25/2016 6:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-25T18:43:33.8367888\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 12:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T00:43:33.9018353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T06:43:33.6734015\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T12:43:33.6404907\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/26/2016 6:43:32 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-26T18:43:32.7325886\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 12:43:32 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T00:43:32.706022\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 6:43:33 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T06:43:33.9715811\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 12:43:33 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T12:43:33.6664718\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/27/2016 6:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-27T18:43:34.2231702\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 12:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T00:43:34.6110455\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 6:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T06:43:34.6542442\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 12:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T12:43:34.792903\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/28/2016 6:43:34 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-28T18:43:34.8749674\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 12:43:34 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T00:43:34.9626502\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T06:43:35.6109861\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 12:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T12:43:35.2190462\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/29/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-29T18:43:35.9073439\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 12:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T00:43:35.5939481\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T06:43:35.6689799\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 12:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T12:43:36.1261616\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/30/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-30T18:43:35.7125548\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 12:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T00:43:35.2857993\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 6:43:35 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T06:43:35.6786761\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 12:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T12:43:35.792538\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"8/31/2016 6:43:35 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-08-31T18:43:35.9851325\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 12:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T00:43:36.4027739\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 6:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T06:43:36.2995701\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T12:43:37.1276704\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/1/2016 6:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-01T18:43:36.8129112\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T00:43:37.0298695\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 6:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T06:43:37.093786\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T12:43:37.1641338\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/2/2016 6:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-02T18:43:37.2053277\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T00:43:37.4206643\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 6:43:36 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T06:43:36.6776167\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 12:43:37 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T12:43:37.0192213\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/3/2016 6:43:36 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-03T18:43:36.8962685\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 12:43:37 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T00:43:37.5527875\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 6:43:38 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T06:43:38.0575143\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 12:43:38 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T12:43:38.5559542\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/4/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-04T18:43:39.0656746\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 12:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T00:43:39.2021022\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 6:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T06:43:39.4759244\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 12:43:38 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T12:43:38.8247562\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/5/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-05T18:43:39.0847284\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 12:43:39 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T00:43:39.2559297\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 6:43:38 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T06:43:38.9874683\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 12:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T12:43:39.2096568\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 6:43:39 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T18:43:39.1476386\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/6/2016 8:18:14 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-06T20:18:14.9303901\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 12:11:46 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T00:11:46.9109664\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 5:28:00 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T05:28:00.922168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 11:28:00 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T11:28:00.9573218\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 5:28:01 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T17:28:01.0127063\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/7/2016 11:28:01 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-07T23:28:01.5983949\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 5:28:01 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T05:28:01.4237467\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 11:28:01 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T11:28:01.565841\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 5:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T17:28:02.0741799\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/8/2016 11:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-08T23:28:02.0327073\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 5:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T05:28:02.1207559\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 11:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T11:28:02.6902223\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 5:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T17:28:02.5186068\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/9/2016 11:28:02 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-09T23:28:02.791099\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 5:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T05:28:03.2198969\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 11:28:02 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T11:28:02.8206838\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 5:28:03 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T17:28:03.2147043\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/10/2016 11:28:03 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-10T23:28:03.61571\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 5:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T05:28:03.5704411\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 11:28:03 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T11:28:03.7286895\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 5:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T17:28:04.1235423\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/11/2016 11:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-11T23:28:04.080816\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 5:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T05:28:04.3668436\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T11:28:04.6735034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 5:28:04 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T17:28:04.6224936\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T23:28:05.0572456\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T05:28:05.3175004\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T11:28:04.9864543\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T17:28:05.0400648\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T23:28:05.0860464\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T05:28:05.4497656\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 11:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T11:28:05.9574575\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:06 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T17:28:06.1588339\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "19566"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6107b044-4aa5-410c-8d1a-b8febccdc3bf"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14871"
+        ],
+        "x-ms-correlation-request-id": [
+          "f87cf1cd-dc2f-4231-b79c-277cd89953ac"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213833Z:f87cf1cd-dc2f-4231-b79c-277cd89953ac"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:32 GMT"
+        ],
+        "ETag": [
+          "\"1D20EBF28960B30\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/slots/staging1/snapshots?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vc2xvdHMvc3RhZ2luZzEvc25hcHNob3RzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4451acee-19e3-4564-a0f4-51e0032846c7"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T23:28:05.0572456\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T05:28:05.3175004\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T11:28:04.9864543\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T17:28:05.0400648\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T23:28:05.0860464\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T05:28:05.4497656\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 11:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T11:28:05.9574575\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:06 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T17:28:06.1588339\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1321"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "87ce5b53-44b9-4879-ab13-0c5e40bfce7e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14874"
+        ],
+        "x-ms-correlation-request-id": [
+          "0fbcaa4f-9934-460a-ad58-482bd3b6f02b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213831Z:0fbcaa4f-9934-460a-ad58-482bd3b6f02b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:31 GMT"
+        ],
+        "ETag": [
+          "\"1D20ECD8DBE28E0\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "be133376-cc47-4fbe-a890-107df5c073eb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium\",\r\n  \"name\": \"nickingpremium\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"nickingpremium\",\r\n    \"state\": \"Stopped\",\r\n    \"hostNames\": [\r\n      \"nickingpremium.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"nicking-WestUSwebspace\",\r\n    \"selfLink\": \"https://waws-prod-bay-055.api.azurewebsites.windows.net:454/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/webspaces/nicking-WestUSwebspace/sites/nickingpremium\",\r\n    \"repositorySiteName\": \"nickingpremium\",\r\n    \"owner\": null,\r\n    \"usageState\": 0,\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"nickingpremium.azurewebsites.net\",\r\n      \"nickingpremium.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": 0,\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"nickingpremium.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 0\r\n      },\r\n      {\r\n        \"name\": \"nickingpremium.scm.azurewebsites.net\",\r\n        \"sslState\": 0,\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": 0,\r\n        \"hostType\": 1\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\",\r\n    \"reserved\": false,\r\n    \"lastModifiedTimeUtc\": \"2016-09-14T19:35:32.963\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": 0,\r\n    \"runtimeAvailabilityState\": 0,\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"nickingpremium\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"premiumAppDeployed\": null,\r\n    \"scmSiteAlsoStopped\": true,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"microService\": \"WebSites\",\r\n    \"gatewaySiteName\": null,\r\n    \"clientAffinityEnabled\": false,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": null,\r\n    \"outboundIpAddresses\": \"104.42.185.131,104.42.184.178,104.42.185.60,104.42.188.171\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-bay-055\",\r\n    \"cloningInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {\r\n      \"hidden-related:/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\": \"Resource\"\r\n    },\r\n    \"resourceGroup\": \"nicking\",\r\n    \"defaultHostName\": \"nickingpremium.azurewebsites.net\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2747"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "5a3c44cd-9958-4d7a-9080-74d797a7ebae"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14873"
+        ],
+        "x-ms-correlation-request-id": [
+          "2228296d-fc2f-4535-a317-9b685edd78a2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213831Z:2228296d-fc2f-4535-a317-9b685edd78a2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:31 GMT"
+        ],
+        "ETag": [
+          "\"1D20EBF28960B30\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/web?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vY29uZmlnL3dlYj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d0523f5b-31eb-436d-89b3-101acfa2b23c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/web\",\r\n  \"name\": \"nickingpremium\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.4\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": \"VS2013\",\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$nickingpremium\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": 0,\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": 1,\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": {\r\n      \"triggers\": null,\r\n      \"actions\": null\r\n    },\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"httpApiPrefixPath\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"ipSecurityRestrictions\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2482"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b140c67f-0ecc-41be-ac28-6920053ef8dc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14872"
+        ],
+        "x-ms-correlation-request-id": [
+          "5127bc48-a99d-4999-9652-4f2681fd0e3a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213832Z:5127bc48-a99d-4999-9652-4f2681fd0e3a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:31 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/appsettings/list?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vY29uZmlnL2FwcHNldHRpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4dccd999-e97c-4f6a-9043-155016e5d860"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\": \"Resource\"\r\n  },\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"4.2.3\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "442"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ce4e9ac9-85f0-4c23-8c1b-012f4ecca39d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ed4b7aa-d2ea-4da2-8393-349280bfa64b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213832Z:3ed4b7aa-d2ea-4da2-8393-349280bfa64b"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/connectionstrings/list?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vY29uZmlnL2Nvbm5lY3Rpb25zdHJpbmdzL2xpc3Q/YXBpLXZlcnNpb249MjAxNS0wOC0wMQ==",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f06cb535-ea4a-4063-9924-85d28ccee15c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/serverfarms/WestUSPremium1\": \"Resource\"\r\n  },\r\n  \"properties\": {}\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "416"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "109b9708-b561-4643-8a8d-61a52de43b52"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "4693fbb6-24eb-43d5-8e18-28dde433e815"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T213832Z:4693fbb6-24eb-43d5-8e18-28dde433e815"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:38:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "fb2c25dc-6bab-45c4-8cc9-cece7c42a95a"
+  }
+}

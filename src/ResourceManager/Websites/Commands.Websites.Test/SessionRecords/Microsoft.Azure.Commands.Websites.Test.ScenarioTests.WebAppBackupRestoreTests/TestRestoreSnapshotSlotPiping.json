@@ -1,0 +1,152 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/slots/staging1/snapshots?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vc2xvdHMvc3RhZ2luZzEvc25hcHNob3RzP2FwaS12ZXJzaW9uPTIwMTUtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "135aa4a1-dbc7-4f58-a291-6c27a3b707ad"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/12/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-12T23:28:05.0572456\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T05:28:05.3175004\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:04 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T11:28:04.9864543\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 5:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T17:28:05.0400648\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/13/2016 11:28:05 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-13T23:28:05.0860464\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T05:28:05.4497656\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 11:28:05 AM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T11:28:05.9574575\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": null,\r\n      \"name\": \"9/14/2016 5:28:06 PM\",\r\n      \"type\": \"Microsoft.Web/sites/snapshot\",\r\n      \"location\": null,\r\n      \"tags\": null,\r\n      \"properties\": {\r\n        \"time\": \"2016-09-14T17:28:06.1588339\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1321"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ba4d3ef8-304b-465e-98f8-aafbaa11c884"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14927"
+        ],
+        "x-ms-correlation-request-id": [
+          "d21e4511-98f5-47fa-90ce-93c601028cc2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T211833Z:d21e4511-98f5-47fa-90ce-93c601028cc2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:18:32 GMT"
+        ],
+        "ETag": [
+          "\"1D20EBF9EDEA720\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/slots/staging1/recover?api-version=2015-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmIyYzI1ZGMtNmJhYi00NWM0LThjYzktY2VjZTdjNDJhOTVhL3Jlc291cmNlR3JvdXBzL25pY2tpbmcvcHJvdmlkZXJzL01pY3Jvc29mdC5XZWIvc2l0ZXMvbmlja2luZ3ByZW1pdW0vc2xvdHMvc3RhZ2luZzEvcmVjb3Zlcj9hcGktdmVyc2lvbj0yMDE1LTA4LTAx",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"snapshotTime\": \"2016-09-12T23:28:05.0572456Z\",\r\n  \"recoverConfig\": false\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "81"
+        ],
+        "x-ms-client-request-id": [
+          "b120d2d2-13c9-44a9-8db1-022f76b886d8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.3.3-preview"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fb2c25dc-6bab-45c4-8cc9-cece7c42a95a/resourceGroups/nicking/providers/Microsoft.Web/sites/nickingpremium/slots/staging1\",\r\n  \"name\": \"nickingpremium/staging1\",\r\n  \"type\": \"Microsoft.Web/sites/slots\",\r\n  \"location\": \"West US\",\r\n  \"tags\": null,\r\n  \"properties\": {\r\n    \"operationId\": \"06a38e79-3428-40f2-a97a-2cd99e7bee19\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "312"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "7ddbf17e-5e6e-4e10-9d23-9aca4bb979bd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "dc7f2a95-f19e-48f3-b76f-798ed2c30fad"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20160914T211838Z:dc7f2a95-f19e-48f3-b76f-798ed2c30fad"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Sep 2016 21:18:38 GMT"
+        ],
+        "ETag": [
+          "\"1D20EBF9EDEA720\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "fb2c25dc-6bab-45c4-8cc9-cece7c42a95a"
+  }
+}

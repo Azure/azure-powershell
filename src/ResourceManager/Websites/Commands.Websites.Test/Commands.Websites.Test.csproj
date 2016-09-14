@@ -64,8 +64,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.3.0.0\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.2.0-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Websites.1.3.3-preview\lib\net45\Microsoft.Azure.Management.Websites.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -94,7 +94,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.1.0\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -158,6 +158,7 @@
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
       <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
     </None>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -225,10 +226,25 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestEditAndGetWebAppBackupConfigurationPiping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetSnapshotList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppBackup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppBackupList.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestRestoreSnapshot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestRestoreSnapshotPiping.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestRestoreSnapshotSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestRestoreSnapshotSlotPiping.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json">

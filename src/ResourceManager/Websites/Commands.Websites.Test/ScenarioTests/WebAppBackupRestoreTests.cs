@@ -68,5 +68,40 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetSnapshotList()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-GetSnapshotList");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreSnapshot()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreSnapshotPiping()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshotPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreSnapshotSlot()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshotSlot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreSnapshotSlotPiping()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshotSlotPiping");
+        }
     }
 }
