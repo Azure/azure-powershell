@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     return result.ToArray();
                 }
 
-                result.AddRange(batch.Value.CoalesceEnumerable());
+                result.AddRange(batch.Value.Coalesce());
             }
 
             return result.ToArray();
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         /// <typeparam name="TSource">The type of the source.</typeparam>
         /// <param name="source">The source.</param>
-        public static IEnumerable<TSource> CoalesceEnumerable<TSource>(this IEnumerable<TSource> source)
+        public static IEnumerable<TSource> Coalesce<TSource>(this IEnumerable<TSource> source)
         {
             return source ?? Enumerable.Empty<TSource>();
         }

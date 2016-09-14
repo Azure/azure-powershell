@@ -14,8 +14,8 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Handlers;
-    using Microsoft.Azure.Commands.ResourceManager.Common;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;

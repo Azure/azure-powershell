@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Entities.Providers;
     using Extensions;
-    using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common;
     using System;
     using System.Collections.Generic;
