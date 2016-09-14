@@ -73,13 +73,51 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             if (mockCmdlet.runTime().ErrorStream.Count != 0)
             {
                 Assert.True(false,
-                    String.Format("Copy-AzureRemoteAppTemplate returned the following error {0}",
+                    String.Format("Copy-AzureRemoteAppUserDisk returned the following error {0}",
                         mockCmdlet.runTime().ErrorStream[0].Exception.Message
                     )
                 );
             }
 
-            Log("The test for Copy-AzureRemoteAppTemplate completed successfully");
+            Log("The test for Copy-AzureRemoteAppUserDisk completed successfully");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ExportUserDisk()
+        {
+            List<TrackingResult> trackingIds = null;
+            ExportAzureRemoteAppUserDisk mockCmdlet = SetUpTestCommon<ExportAzureRemoteAppUserDisk>();
+
+            // Required parameters for this test
+            mockCmdlet.CollectionName = collectionName;
+            mockCmdlet.DestinationStorageAccountName = storageAccountName;
+            mockCmdlet.DestinationStorageAccountKey = storageAccountKey;
+            mockCmdlet.DestinationStorageAccountContainerName = containerName;
+
+            MockObject.SetUpDefaultRemoteAppExportUserDisk(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.DestinationStorageAccountName, mockCmdlet.DestinationStorageAccountKey, mockCmdlet.DestinationStorageAccountContainerName);
+            mockCmdlet.ResetPipelines();
+
+            Log("Calling Export-AzureRemoteAppUserDisk");
+
+            mockCmdlet.ExecuteCmdlet();
+            if (mockCmdlet.runTime().ErrorStream.Count != 0)
+            {
+                Assert.True(false,
+                    String.Format("Export-AzureRemoteAppUserDisk returned the following error {0}",
+                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
+                    )
+                );
+            }
+
+            trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
+            Assert.NotNull(trackingIds);
+
+            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
+               "The actual result does not match the expected."
+            );
+
+            Log("The test for Export-AzureRemoteAppUserDisk completed successfully");
         }
     }
 }
