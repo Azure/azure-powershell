@@ -27,7 +27,6 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
