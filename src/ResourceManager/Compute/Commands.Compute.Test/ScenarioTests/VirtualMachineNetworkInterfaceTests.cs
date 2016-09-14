@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-EffectiveRoutesAndNsg");
         }
 
-        [Fact]
+        [Fact(Skip = "NRP not deployed")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterfaceWithAcceleratedNetworking()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
         }
 
-        [Fact]
+        [Fact(Skip ="NRP not deployed")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMNicWithAcceleratedNetworkingValidations()
         {
