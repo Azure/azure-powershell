@@ -59,5 +59,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-EffectiveRoutesAndNsg");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSingleNetworkInterfaceWithAcceleratedNetworking()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMNicWithAcceleratedNetworkingValidations()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VMNicWithAcceleratedNetworkingValidations");
+        }
     }
 }

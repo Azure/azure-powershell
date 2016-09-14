@@ -207,8 +207,8 @@ namespace Microsoft.Azure.Commands.Network
         
         [Parameter(
             Mandatory = false,
-            HelpMessage = "AcceleratedNetworkingEnabled")]
-        public SwitchParameter AcceleratedNetworkingEnabled { get; set; }
+            HelpMessage = "EnableAcceleratedNetworking")]
+        public SwitchParameter EnableAcceleratedNetworking { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Network
             networkInterface.Location = this.Location;
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            networkInterface.AcceleratedNetworkingEnabled = this.AcceleratedNetworkingEnabled.IsPresent;
+            networkInterface.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
 
             // Get the subnetId and publicIpAddressId from the object if specified
             if (ParameterSetName.Contains(Microsoft.Azure.Commands.Network.Properties.Resources.SetByIpConfiguration))
