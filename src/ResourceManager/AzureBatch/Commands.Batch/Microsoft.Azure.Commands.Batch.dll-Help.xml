@@ -1186,7 +1186,7 @@
 	<command:details>
 		<command:name>Enable-AzureBatchTask</command:name>
 		<maml:description>
-			<maml:para>Reactivates this task allowing it to run again even if its retry count has been exhausted.</maml:para>
+			<maml:para>Reactivates a task, allowing it to run again even if its retry count has been exhausted.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1235,7 +1235,7 @@
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 				<maml:name>Task</maml:name>
 				<maml:description>
-					<maml:para>Specifies the PSCloudTask to which this cmdlet updates the Batch service.</maml:para>
+					<maml:para>Specifies the task that this cmdlet reactivates. To obtain a PSCloudTask object, use the Get-AzureBatchTask cmdlet.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
 			</command:parameter>
@@ -1281,7 +1281,7 @@
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
 			<maml:name>Task</maml:name>
 			<maml:description>
-				<maml:para>Specifies the PSCloudTask to which this cmdlet updates the Batch service.</maml:para>
+				<maml:para>Specifies the task that this cmdlet reactivates. To obtain a PSCloudTask object, use the Get-AzureBatchTask cmdlet.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
 			<dev:type>
@@ -1301,9 +1301,29 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Restart-AzureBatchTask -JobId Job7 -Id Task2 -BatchContext $Context</dev:code>
+			<dev:code>PS C:\&gt;Enable-AzureBatchTask -JobId &quot;Job7&quot; -Id &quot;Task2&quot; -BatchContext $Context</dev:code>
 			<dev:remarks>
 				<maml:para>This command reactivates the task Task2 in job Job7.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2: Reactivate a task by using the pipeline --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Get-AzureBatchTask -JobId &quot;Job8&quot; -Id &quot;Task3&quot; -BatchContext $Context | Enable-AzureBatchTask -BatchContext $Context</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the Batch task that has the ID Task3 in the job that has the ID Job8 by using the Get-AzureBatchTask cmdlet. The command passes that task to the current cmdlet by using the pipeline operator. The command reactivates that task.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
