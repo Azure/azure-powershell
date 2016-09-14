@@ -276,5 +276,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
                 subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
         }
+
+        /// <summary>
+        /// Reactivates a task, allowing it to run again even if its retry count has been exhausted.
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which task to reactivate.</param>
+        public void ReactivateTask(TaskOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            if (parameters.Task != null)
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.Task.Id));
+                parameters.Task.omObject.Reactivate(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                WriteVerbose(string.Format(Resources.ReactivateTask, parameters.TaskId));
+                JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                jobOperations.ReactivateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
+            }
+        }
     }
 }

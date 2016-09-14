@@ -272,6 +272,7 @@
     <Compile Include="JobSchedules\NewBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommandTests.cs" />
     <Compile Include="Tasks\SetBatchTaskCommandTests.cs" />
+    <Compile Include="Tasks\EnableBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
