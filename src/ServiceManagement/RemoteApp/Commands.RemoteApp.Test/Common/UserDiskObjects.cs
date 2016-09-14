@@ -15,6 +15,7 @@
 namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
 {
     using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.Azure;
     using Moq;
     using Moq.Language.Flow;
@@ -47,6 +48,19 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
 
             ISetup<IRemoteAppManagementClient, Task<AzureOperationResponse>> setup =
                 clientMock.Setup(c => c.UserDisks.CopyAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()));
+            setup.Returns(Task.Factory.StartNew(() => response));
+        }
+
+        public static void SetUpDefaultRemoteAppExportUserDisk(Mock<IRemoteAppManagementClient> clientMock, string sourceCollectionName, string DestinationStorageAccountName, string DestinationStorageAccountKey, string DestinationStorageAccountContainerName)
+        {
+            OperationResultWithTrackingId response = new OperationResultWithTrackingId()
+            {
+                RequestId = "12345",
+                StatusCode = System.Net.HttpStatusCode.Accepted
+            };
+
+            ISetup<IRemoteAppManagementClient, Task<OperationResultWithTrackingId>> setup =
+                clientMock.Setup(c => c.UserDisks.MigrateAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<CancellationToken>()));
             setup.Returns(Task.Factory.StartNew(() => response));
         }
     }
