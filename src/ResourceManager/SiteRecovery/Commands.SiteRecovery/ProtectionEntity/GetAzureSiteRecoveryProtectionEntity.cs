@@ -59,6 +59,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            this.WriteWarningWithTimestamp(
+                string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name,
+                    "Get-AzureRmSiteRecoveryProtectableItem or Get-AzureRmSiteRecoveryReplicationProtectedItem"));
+
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByObject:

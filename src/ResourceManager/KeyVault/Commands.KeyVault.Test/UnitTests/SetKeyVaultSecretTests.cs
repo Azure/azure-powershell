@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Expires = secretAttributes.Expires,
                 NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
-                Tags = secretAttributes.Tags
+                Tag = secretAttributes.Tags
             };
         }
 
@@ -64,6 +64,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                         && st.ContentType == secretAttributes.ContentType
                         && st.Tags == secretAttributes.Tags))).Returns(expected).Verifiable();
 
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
+
             cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -75,6 +78,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ErrorSetSecretTest()
         {
+            // Mock the should process to return true
+            commandRuntimeMock.Setup(cr => cr.ShouldProcess(SecretName, It.IsAny<string>())).Returns(true);
+
             keyVaultClientMock.Setup(kv => kv.SetSecret(VaultName, SecretName, secureSecretValue,
                 It.Is<SecretAttributes>(st => st.Enabled == secretAttributes.Enabled
                         && st.Expires == secretAttributes.Expires

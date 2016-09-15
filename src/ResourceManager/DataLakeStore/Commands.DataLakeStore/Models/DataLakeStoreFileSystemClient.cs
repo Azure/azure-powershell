@@ -113,8 +113,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void RemoveDefaultAcl(string path, string accountName)
         {
-            // _client.FileSystem.RemoveDefaultAcl(accountName, path);
-            throw new NotImplementedException();
+            _client.FileSystem.RemoveDefaultAcl(accountName, path);
         }
 
         public void RemoveAclEntries(string path, string accountName, string aclsToRemove)
@@ -124,8 +123,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public void RemoveAcl(string path, string accountName)
         {
-            throw new NotImplementedException();
-            // _client.FileSystem.RemoveAcl(accountName, path);
+            _client.FileSystem.RemoveAcl(accountName, path);
         }
 
         public void UpdateAclEntries(string path, string accountName, string newAclSpec)
@@ -516,9 +514,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 {
                     lock (ConsoleOutputLock)
                     {
-                        progress.PercentComplete = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        var toSet = (int)(1.0 * e.UploadedByteCount / e.TotalFileLength * 100);
+                        // powershell defect protection. If, through some defect in
+                        // our progress tracking, the number is outside of 0 - 100,
+                        // powershell will crash if it is set to that value. Instead
+                        // just keep the value unchanged in that case.
+                        if (toSet < 0 || toSet > 100)
+                        {
+                            progress.PercentComplete = progress.PercentComplete;
+                        }
+                        else
+                        {
+                            progress.PercentComplete = toSet;
+                        }
                         progress.Activity = string.Format("Copying Folder: {0}{1}. Total bytes remaining: {2}. Total files remaining: {3}",
-                    sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.UploadedByteCount, e.TotalFileCount - e.UploadedFileCount);
+                            sourceFolderPath, recursive ? " recursively" : string.Empty, e.TotalFileLength - e.UploadedByteCount, e.TotalFileCount - e.UploadedFileCount);
                     }
                 };
 
