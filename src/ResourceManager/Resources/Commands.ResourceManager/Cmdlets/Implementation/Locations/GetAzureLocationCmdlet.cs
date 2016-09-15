@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Get all locations with the supported providers.
     /// </summary>
-     [Cmdlet(VerbsCommon.Get, "AzureRmLocation"), OutputType(typeof(List<PSResourceProviderLocation>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLocation"), OutputType(typeof(List<PSResourceProviderLocation>))]
     public class GetAzureLocationCmdlet: ResourceManagerCmdletBase
     {
         /// <summary>
