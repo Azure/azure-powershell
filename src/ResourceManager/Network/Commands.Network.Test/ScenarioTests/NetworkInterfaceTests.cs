@@ -96,7 +96,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkInterfaceWithIpConfiguration");
         }
 
-        [Fact(Skip = "NRP not deployed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkInterfaceWithAcceleratedNetworking()
         {
