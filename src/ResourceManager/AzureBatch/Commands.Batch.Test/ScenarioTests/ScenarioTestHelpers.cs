@@ -472,6 +472,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Waits for the job to complete
+        /// </summary>
+        public static PSCloudJob WaitForJobCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PSCloudJob job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
+
+            DateTime timeout = DateTime.Now.AddMinutes(10);
+
+            while (job.State != JobState.Completed || DateTime.Now > timeout)
+            {
+                job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
+
+                Sleep(20000);
+            }
+
+            return job;
+        }
+
+        /// <summary>
         /// Gets the id of the compute node that the specified task completed on. Returns null if the task isn't complete.
         /// </summary>
         public static string GetTaskComputeNodeId(BatchController controller, BatchAccountContext context, string jobId, string taskId)

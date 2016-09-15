@@ -44,8 +44,10 @@
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.3\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Batch, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.5.0.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Batch, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Azure.Batch.5.1.0\lib\net45\Microsoft.Azure.Batch.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -270,12 +272,14 @@
     <Compile Include="JobSchedules\NewBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommandTests.cs" />
     <Compile Include="Tasks\SetBatchTaskCommandTests.cs" />
+    <Compile Include="Tasks\EnableBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
       <Link>ScenarioTests\AzureRM.Resources.ps1</Link>
     </None>
+    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -559,6 +563,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestNewJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSpecifiesTerminateOnFailure_ItCompletesWhenAnyTaskFails.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestTerminateJobById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
