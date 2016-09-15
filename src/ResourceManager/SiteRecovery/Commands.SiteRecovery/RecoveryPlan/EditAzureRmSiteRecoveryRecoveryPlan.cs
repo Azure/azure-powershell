@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Updates Azure Site Recovery Recovery Plan object in memory.
     /// </summary>
     [Cmdlet(VerbsData.Edit, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.AppendGroup)]
-    public class EditAzureSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
+    public class EditAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -52,7 +52,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AddProtectedEntities, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.RemoveProtectedEntities, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems, Mandatory = true)]
         public ASRRecoveryPlanGroup Group { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AddReplicationProtectedItems, Mandatory = true)]
+        public ASRReplicationProtectedItem [] AddProtectedItems { get; set; }
+
+        /// <summary>
+        /// Gets or sets switch parameter
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.RemoveReplicationProtectedItems, Mandatory = true)]
+        public ASRReplicationProtectedItem [] RemoveProtectedItems { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter
@@ -104,7 +118,71 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
 
                     break;
+                case ASRParameterSets.AddReplicationProtectedItems:
+                    foreach (ASRReplicationProtectedItem rpi in AddProtectedItems)
+                    {
+                        string fabricName = Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationFabrics);
+
+                        ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(fabricName,
+                        Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationProtectionContainers), 
+                        rpi.Name);
+
+                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
+
+                        if (tempGroup != null)
+                        {
+                            foreach (ASRRecoveryPlanGroup gp in this.RecoveryPlan.Groups)
+                            {
+                                if (gp.ReplicationProtectedItems == null)
+                                    continue;
+
+                                if (gp.ReplicationProtectedItems.Any(pi => 
+                                    String.Compare(pi.Id, replicationProtectedItemResponse.ReplicationProtectedItem.Id, StringComparison.OrdinalIgnoreCase) == 0))
+                                {
+                                    throw new PSArgumentException(string.Format(Properties.Resources.VMAlreadyPartOfGroup, rpi.FriendlyName, gp.Name, this.RecoveryPlan.FriendlyName));
+                                }
+                            }
+
+                            this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Add(replicationProtectedItemResponse.ReplicationProtectedItem);
+                        }
+                        else
+                        {
+                            throw new PSArgumentException(string.Format(Properties.Resources.GroupNotFoundInRecoveryPlan, this.Group.Name, this.RecoveryPlan.FriendlyName));
+                        }
+                    }
+                    break;
+                case ASRParameterSets.RemoveReplicationProtectedItems:
+                    foreach (ASRReplicationProtectedItem rpi in RemoveProtectedItems)
+                    {
+                        string fabricName = Utilities.GetValueFromArmId(rpi.ID, ARMResourceTypeConstants.ReplicationFabrics);
+
+                        tempGroup = this.RecoveryPlan.Groups.FirstOrDefault(g => String.Compare(g.Name, Group.Name, StringComparison.OrdinalIgnoreCase) == 0);
+
+                        if (tempGroup != null)
+                        {
+                            var ReplicationProtectedItem =
+                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].
+                                ReplicationProtectedItems.
+                                FirstOrDefault(pi => String.Compare(pi.Id, rpi.ID, StringComparison.OrdinalIgnoreCase) == 0);
+
+                            if (ReplicationProtectedItem != null)
+                            {
+                                this.RecoveryPlan.Groups[RecoveryPlan.Groups.IndexOf(tempGroup)].ReplicationProtectedItems.Remove(ReplicationProtectedItem);
+                            }
+                            else
+                            {
+                                throw new PSArgumentException(string.Format(Properties.Resources.VMNotFoundInGroup, rpi.FriendlyName, this.Group.Name, this.RecoveryPlan.FriendlyName));
+                            }
+                        }
+                        else
+                        {
+                            throw new PSArgumentException(string.Format(Properties.Resources.GroupNotFoundInRecoveryPlan, this.Group.Name, this.RecoveryPlan.FriendlyName));
+                        }
+                    }
+                    break;
                 case ASRParameterSets.AddProtectedEntities:
+                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     foreach (ASRProtectionEntity pe in AddProtectedEntities)
                     {
                         string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
@@ -142,6 +220,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
                     break;
                 case ASRParameterSets.RemoveProtectedEntities:
+                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     foreach (ASRProtectionEntity pe in RemoveProtectedEntities)
                     {
                         string fabricName = Utilities.GetValueFromArmId(pe.ID, ARMResourceTypeConstants.ReplicationFabrics);
