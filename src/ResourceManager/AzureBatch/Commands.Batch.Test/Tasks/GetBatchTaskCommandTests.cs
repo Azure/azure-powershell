@@ -320,6 +320,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             Assert.Equal(JobAction.None, psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction);
         }
 
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WhenGettingATaskFromTheService_ApplicationPackageReferencesAreMapped()
