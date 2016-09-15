@@ -167,7 +167,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 parameters: new VaultCreateOrUpdateParameters()
                 {
                     Location = existingVault.Location,
-                    Properties = properties
+                    Properties = properties,
+                    Tags = TagsConversionHelper.CreateTagDictionary(existingVault.Tags, validate: true)
                 }
                 );
             return new PSVault(response, adClient);
