@@ -61,7 +61,6 @@
   <!-- Tasks -->
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
   <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
   <UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
   
   <!--
