@@ -20,6 +20,8 @@ web app's information.
 $snapshotAppResourceGroup = "nicking"
 $snapshotAppName = "nickingpremium"
 $snapshotAppSlot = "staging1"
+$snapshotTargetName = "nickingrestored"
+$snapshotTargetSlot = "slot1"
 
 function Test-CreateNewWebAppBackup
 {
@@ -387,6 +389,16 @@ function Test-RestoreSnapshotSlotPiping
     Assert-NotNull $snapshot
 
     $response = $snapshot | Restore-AzureRmWebAppSnapshot
+    Assert-NotNull $response.OperationId
+}
+
+function Test-RestoreSnapshotToTargetSite
+{
+    $snapshot = (Get-AzureRmWebAppSnapshotList -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName -Slot $snapshotAppSlot)[0]
+    Assert-NotNull $snapshot
+
+    $response = Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotAppResourceGroup -Name $snapshotAppName `
+        -SnapshotTime $snapshot.SnapshotTime -TargetSite $snapshotTargetName -TargetSlot $snapshotTargetSlot
     Assert-NotNull $response.OperationId
 }
 

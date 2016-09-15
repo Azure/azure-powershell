@@ -103,5 +103,12 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         {
             WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshotSlotPiping");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreSnapshotToTargetSite()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreSnapshotToTargetSite");
+        }
     }
 }
