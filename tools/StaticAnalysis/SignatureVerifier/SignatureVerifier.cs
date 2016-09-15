@@ -89,6 +89,7 @@ namespace StaticAnalysis.SignatureVerifier
 
                                 foreach (var cmdlet in cmdlets)
                                 {
+                                    Logger.WriteMessage("Processing cmdlet '{0}'", cmdlet.ClassName);
                                     string defaultRemediation = "Determine if the cmdlet should implement ShouldProcess and " +
                                                           "if so determine if it should implement Force / ShouldContinue";
                                     if (!cmdlet.SupportsShouldProcess && cmdlet.HasForceSwitch)
@@ -147,11 +148,11 @@ namespace StaticAnalysis.SignatureVerifier
                                         description:
                                             string.Format(
                                                 "{0} does not have a Force parameter but the cmdlet verb '{1}' " +
-                                                "indicates that it may perform destrucvie actions under certain " +
+                                                "indicates that it may perform destructive actions under certain " +
                                                 "circumstances. Consider whether the cmdlet should have a Force " +
                                                 "parameter anduse ShouldContinue under some circumstances. ",
                                                 cmdlet.Name, cmdlet.VerbName),
-                                        remediation: "Consider wehtehr the cmdlet should have a Force " +
+                                        remediation: "Consider wether the cmdlet should have a Force " +
                                                       "parameter and use ShouldContinue under some circumstances. ");
                                     }
                                 }
