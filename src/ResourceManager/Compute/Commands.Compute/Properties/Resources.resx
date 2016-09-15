@@ -511,9 +511,6 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Error occurred when choosing existing standard storage account for boot diagnostics: {0}</value>
     <comment>{0} = an error message</comment>
   </data>
-  <data name="TagFixWarningMessage" xml:space="preserve">
-    <value>The  usability of Tag parameter in this cmdlet will be modified in a future release.  This will impact creating, updating and appending tags for Azure resources.  For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
-  </data>
   <data name="DisableDiskEncryptionAction" xml:space="preserve">
     <value>Disable disk encryption</value>
   </data>
@@ -531,5 +528,9 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   </data>
   <data name="RemoveScriptExtensionAction" xml:space="preserve">
     <value>Remove custom script extension</value>
+  </data>
+  <data name="ChefExtensionNotFound" xml:space="preserve">
+    <value>No chef extension found under resource group '{0}', virtual machine '{1}'.</value>
+    <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
 </root>

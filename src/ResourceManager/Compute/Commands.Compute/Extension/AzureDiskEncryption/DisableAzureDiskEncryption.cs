@@ -231,6 +231,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
+                if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
+                    !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ThrowTerminatingError(
+                        new ErrorRecord(
+                            new ArgumentException(
+                                string.Format(
+                                    CultureInfo.CurrentUICulture,
+                                    "Disabling encryption is only allowed on Data volumes for Linux VMs.")),
+                            "InvalidType",
+                            ErrorCategory.NotImplemented,
+                            null));
+                }
+
                 if (this.ShouldProcess(VMName, Properties.Resources.DisableDiskEncryptionAction)
                     && (this.Force.IsPresent ||
                     this.ShouldContinue(Properties.Resources.DisableAzureDiskEncryptionConfirmation, Properties.Resources.DisableAzureDiskEncryptionCaption)))

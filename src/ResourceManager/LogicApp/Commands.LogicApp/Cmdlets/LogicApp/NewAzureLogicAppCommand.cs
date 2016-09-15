@@ -45,14 +45,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The name of the workflow.")]
+        [Alias("ResourceName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "App service plan name.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string AppServicePlan { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The location of the workflow.", ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, HelpMessage = "The location of the workflow.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -65,16 +62,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             set { this._status = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "The URI link to the workflow definition.",
-            ParameterSetName = ParameterSet.LogicAppWithDefinitionLink)]
-        [ValidateNotNullOrEmpty]
-        public string DefinitionLinkUri { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The content version of the definition link.",
-            ParameterSetName = ParameterSet.LogicAppWithDefinitionLink)]
-        [ValidateNotNullOrEmpty]
-        public string DefinitionLinkContentVersion { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.",
             ParameterSetName = ParameterSet.LogicAppWithDefinition)]
         [ValidateNotNullOrEmpty]
@@ -85,13 +72,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string DefinitionFilePath { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The parameters link Uri.")]
+        [Parameter(Mandatory = false, HelpMessage = "The integration account id of the workflow.")]
         [ValidateNotNullOrEmpty]
-        public string ParameterLinkUri { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The parameters link Uri content version.")]
-        [ValidateNotNullOrEmpty]
-        public string ParameterLinkContentVersion { get; set; }
+        public string IntegrationAccountId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The parameters parameter for the logic app.")]
         [ValidateNotNullOrEmpty]
@@ -130,41 +113,15 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
                 this.Parameters = CmdletHelper.GetParametersFromFile(this.TryResolvePath(this.ParameterFilePath));
             }
 
-            var servicePlan = WebsitesClient.GetAppServicePlan(this.ResourceGroupName, this.AppServicePlan);
-
-            if (string.IsNullOrEmpty(this.Location))
-            {
-                this.Location = servicePlan.GeoRegion;
-            }
-
             this.WriteObject(LogicAppClient.CreateWorkflow(this.ResourceGroupName, this.Name, new Workflow
             {
                 Location = this.Location,
                 Definition = this.Definition,
                 Parameters = this.Parameters as Dictionary<string, WorkflowParameter>,
-                DefinitionLink = string.IsNullOrEmpty(this.DefinitionLinkUri)
+                IntegrationAccount = string.IsNullOrEmpty(this.IntegrationAccountId)
                     ? null
-                    : new ContentLink
-                    {
-                        Uri = this.DefinitionLinkUri,
-                        ContentVersion = this.DefinitionLinkContentVersion
-                    },
-                ParametersLink = string.IsNullOrEmpty(this.ParameterLinkUri)
-                    ? null
-                    : new ContentLink
-                    {
-                        Uri = this.ParameterLinkUri,
-                        ContentVersion = this.ParameterLinkContentVersion
-                    },
-                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State),
-                Sku = new Sku
-                {
-                    Name = (SkuName)Enum.Parse(typeof(SkuName), servicePlan.Sku.Tier),
-                    Plan = new ResourceReference
-                    {
-                        Id = servicePlan.Id
-                    }
-                }
+                    : new ResourceReference(this.IntegrationAccountId),
+                State = (WorkflowState)Enum.Parse(typeof(WorkflowState), this.State)
             }), true);
         }
     }

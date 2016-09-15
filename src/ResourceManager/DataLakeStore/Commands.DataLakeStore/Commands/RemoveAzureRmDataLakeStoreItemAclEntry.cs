@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 2,
+        [Parameter(ValueFromPipelineByPropertyName = true, ValueFromPipeline = true, ParameterSetName = BaseParameterSetName, Position = 2,
             Mandatory = true,
             HelpMessage =
                 "The ACL spec containing the entries to remove. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
@@ -71,28 +71,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4,
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4, 
             Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
-            )]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 5,
-            Mandatory = false,
-            HelpMessage =
-                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
-            )]
-        [Obsolete("Force prameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
-                ? Acl.GetAclSpec(false)
-                : string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
+            string aclSpec = string.Empty;
+            if(ParameterSetName.Equals(BaseParameterSetName))
+            {
+                WriteWarning(Resources.ObsoleteWarningForAclObjects);
+                aclSpec = Acl.GetAclSpec(false);
+            }
+            else
+            {
+                aclSpec = string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
+            }
+            
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,

@@ -57,28 +57,27 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.14.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.16.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.16.0-preview\lib\net40\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.0.725, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.0\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.1\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.1.0\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.5-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.8-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management">
@@ -122,12 +121,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\OperationalInsightsClient.Search.cs" />
+    <Compile Include="Client\OperationalInsightsClient.DataSources.cs" />
     <Compile Include="Client\OperationalInsightsClient.StorageInsights.cs" />
     <Compile Include="Client\OperationalInsightsClient.Workspaces.cs" />
     <Compile Include="Client\OperationalInsightsClient.cs" />
     <Compile Include="CloudExceptionExtensions.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="DataSources\AzureOperationalInsightsDataSourceBaseCmdlet.cs" />
+    <Compile Include="DataSources\NewAzureOperationalInsightsDataSourceBaseCmdlet.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsCustomLogDataSourceCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxCustomLogCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsIISLogCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\EnableAzureOperationalInsightsLinuxCustomLogCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\EnableAzureOperationalInsightsIISLogCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\EnableAzureOperationalInsightsLinuxSyslogCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\EnableAzureOperationalInsightsLinuxPerformanceCollectionCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxPerformanceCollectionCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsWindowsPerformanceObjectDataSourceCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsLinuxPerformanceObjectDataSourceCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsLinuxSyslogDataSourceCommand.cs" />
+    <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxSyslogCollectionCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsWindowsEventDataSourceCommand.cs" />
+    <Compile Include="Models\CreatePSDataSourceParameters.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogCollectionDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSIISLogsDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxPerformanceCollectionDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSWindowsPerformanceCounterDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxPerformanceObjectDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxSyslogDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSLinuxSyslogCollectionDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSWindowsEventDataSourceProperties.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSAzureAuditLogDataSourceProperties.cs" />
     <Compile Include="Models\PSCoreSummary.cs" />
+    <Compile Include="Models\PSDataSource.cs" />
     <Compile Include="Models\PSSearchError.cs" />
     <Compile Include="Models\PSHighlight.cs" />
     <Compile Include="Models\PSIntelligencePack.cs" />
@@ -146,6 +173,7 @@
     <Compile Include="Models\PSManagementGroup.cs" />
     <Compile Include="Models\PSAccount.cs" />
     <Compile Include="Models\PSWorkspaceKeys.cs" />
+    <Compile Include="Models\UpdatePSDataSourceParameters.cs" />
     <Compile Include="Models\UpdatePSWorkspaceParameters.cs" />
     <Compile Include="Models\UpdatePSStorageInsightParameters.cs" />
     <Compile Include="Models\CreatePSStorageInsightParameters.cs" />
@@ -170,6 +198,10 @@
     <Compile Include="Search\SearchCommandHelper.cs" />
     <Compile Include="Search\SetAzureOperationalInsightsSavedSearch.cs" />
     <Compile Include="Search\RemoveAzureOperationalInsightsSavedSearchCommand.cs" />
+    <Compile Include="DataSources\GetAzureOperationalInsightsDataSourceCommand.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureAuditDataSourceCommand.cs" />
+    <Compile Include="DataSources\RemoveAzureOperationalInsightsDataSourceCommand.cs" />
+    <Compile Include="DataSources\SetAzureOperationalInsightsDataSourceCommand.cs" />
     <Compile Include="StorageInsights\GetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\SetAzureOperationalInsightsStorageInsightCommand.cs" />
     <Compile Include="StorageInsights\NewAzureOperationalInsightsStorageInsightCommand.cs" />
@@ -199,6 +231,7 @@
     </Content>
     <Content Include="Microsoft.Azure.Commands.OperationalInsights.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
@@ -226,5 +259,6 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

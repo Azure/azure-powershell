@@ -33,25 +33,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = false)]
-        [Obsolete("The Force parameter will be removed in a future release.", false)]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
+        
+        [Parameter(Mandatory = false)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSADServicePrincipal servicePrincipal = null;
-
-            ConfirmAction(
-              ProjectResources.RemoveServicePrincipal,
-              null,
-              () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
-
-            if (PassThru)
+            ExecutionBlock(() =>
             {
-                WriteObject(servicePrincipal);
-            }
+                PSADServicePrincipal servicePrincipal = null;
+
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(ProjectResources.RemovingServicePrincipal, ObjectId.ToString()),
+                    ProjectResources.RemoveServicePrincipal,
+                    ObjectId.ToString(),
+                    () => servicePrincipal = ActiveDirectoryClient.RemoveServicePrincipal(ObjectId.ToString()));
+
+                if (PassThru)
+                {
+                    WriteObject(servicePrincipal);
+                }
+            });
         }
     }
 }

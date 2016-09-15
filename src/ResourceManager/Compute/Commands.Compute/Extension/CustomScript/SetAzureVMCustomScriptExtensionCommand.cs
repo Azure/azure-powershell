@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using AutoMapper;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -200,16 +201,17 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(storageName))
             {
-                var storageClient = new StorageManagementClient();
+                var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
 
                 var storageAccount = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageName);
 
                 if (storageAccount != null)
                 {
                     var keys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageName);
-                    if (keys != null && keys.StorageAccountKeys != null)
+                    if (keys != null)
                     {
-                        storageKey = !string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ? keys.StorageAccountKeys.Key1 : keys.StorageAccountKeys.Key2;
+                        storageKey = !string.IsNullOrEmpty(keys.Key1) ? keys.Key1 : keys.Key2;
                     }
                 }
             }
@@ -219,7 +221,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetSasUrlStr(string storageName, string storageKey, string containerName, string blobName)
         {
-            var storageClient = new StorageManagementClient();
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
             var cred = new StorageCredentials(storageName, storageKey);
             var storageAccount = string.IsNullOrEmpty(this.StorageEndpointSuffix)
                                ? new CloudStorageAccount(cred, true)

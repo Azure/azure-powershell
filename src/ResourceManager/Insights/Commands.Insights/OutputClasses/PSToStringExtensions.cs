@@ -195,8 +195,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("Default : " + scaleCapacity.Default);
-                output.AddSpacesInFront(indentationTabs).AppendLine("Minimum : " + scaleCapacity.Maximum);
-                output.AddSpacesInFront(indentationTabs).Append("Maximum : " + scaleCapacity.Minimum);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Minimum : " + scaleCapacity.Minimum);
+                output.AddSpacesInFront(indentationTabs).Append("Maximum : " + scaleCapacity.Maximum);
             }
 
             return output.ToString();

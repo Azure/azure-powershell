@@ -52,15 +52,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
-            }
-
             try
             {
                 if (DataLakeAnalyticsClient.GetAccount(ResourceGroupName, Name) != null)

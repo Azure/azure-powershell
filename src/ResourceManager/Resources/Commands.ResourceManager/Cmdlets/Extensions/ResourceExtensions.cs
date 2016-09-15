@@ -53,13 +53,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "ResourceGroupName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id) },
                 { "Location", resource.Location },
                 { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
-                { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
+                { "Tags", TagsHelper.GetTagsHashtable(resource.Tags) },
                 { "Plan", resource.Plan.ToJToken().ToPsObject() },
                 { "Properties", ResourceExtensions.GetProperties(resource) },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
                 { "Sku", resource.Sku.ToJToken().ToPsObject() },
+                { "Zones", resource.Zones },
             };
 
             var resourceTypeName = resourceType == null && extensionResourceType == null

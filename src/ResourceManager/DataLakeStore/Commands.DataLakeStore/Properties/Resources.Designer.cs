@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry.
+        /// </summary>
+        internal static string ObsoleteWarningForAclObjects {
+            get {
+                return ResourceManager.GetString("ObsoleteWarningForAclObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
         /// </summary>
         internal static string OffsetOutOfRange {
@@ -376,6 +385,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder permissions at path: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeStoreItemPermissions {
+            get {
+                return ResourceManager.GetString("SetDataLakeStoreItemPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {
@@ -390,15 +408,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string SettingDataLakeStoreItemOwner {
             get {
                 return ResourceManager.GetString("SettingDataLakeStoreItemOwner", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string TagsWarning {
-            get {
-                return ResourceManager.GetString("TagsWarning", resourceCulture);
             }
         }
         

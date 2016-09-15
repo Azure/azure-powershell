@@ -186,6 +186,9 @@
   <data name="MoveFailed" xml:space="preserve">
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
   </data>
+  <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
+    <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>
+  </data>
   <data name="OffsetOutOfRange" xml:space="preserve">
     <value>The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero.</value>
   </data>
@@ -223,14 +226,14 @@
   <data name="SetDataLakeStoreItemOwner" xml:space="preserve">
     <value>Setting the Data Lake file or folder owning group or user at path: '{0}' ...</value>
   </data>
+  <data name="SetDataLakeStoreItemPermissions" xml:space="preserve">
+    <value>Setting the Data Lake file or folder permissions at path: '{0}' ...</value>
+  </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
   </data>
   <data name="SettingDataLakeStoreItemOwner" xml:space="preserve">
     <value>Are you sure you want to replace the existing owning group or user at the Data Lake item at path: '{0}'?</value>
-  </data>
-  <data name="TagsWarning" xml:space="preserve">
-    <value>The usage of 'Tags' parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494</value>
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>

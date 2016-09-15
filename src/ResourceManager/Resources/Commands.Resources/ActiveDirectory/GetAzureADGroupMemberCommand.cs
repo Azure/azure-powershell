@@ -16,7 +16,9 @@ using Microsoft.Azure.Commands.ActiveDirectory.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
@@ -32,16 +34,25 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
+            ExecutionBlock(() =>
             {
-                Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
-                Paging = true
-            };
+                ADObjectFilterOptions options = new ADObjectFilterOptions
+                {
+                    Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
+                    Paging = true
+                };
 
-            do
-            {
-                WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
-            } while (!string.IsNullOrEmpty(options.NextLink));
+                PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
+                if (group == null)
+                {
+                    throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
+                }
+
+                do
+                {
+                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
+                } while (!string.IsNullOrEmpty(options.NextLink));
+            });
         }
     }
 }

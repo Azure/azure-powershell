@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private Hashtable[] tags;
+        private Hashtable tags;
 
         public NewAzureResourceGroupCommandTests(ITestOutputHelper output)
         {
@@ -57,14 +57,10 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceManagerSdkClient = resourcesClientMock.Object
             };
 
-            tags = new[]
-            {
-                new Hashtable
+            tags = new Hashtable
                 {
-                    {"Name", "value1"},
-                    {"Value", ""}
-                }
-            };
+                    {"value1", ""}
+                };
         }
 
         [Fact]
