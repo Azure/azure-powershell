@@ -2861,6 +2861,37 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>JobId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the job that contains the target task.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para>Specifies the name of the node file for which this cmdlet retrieves properties. You cannot specify wildcard characters.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>TaskId</maml:name>
+				<maml:description>
+					<maml:para>Specifies the ID of the task for which this cmdlet gets properties of node files.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Get-AzureBatchNodeFile</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>BatchContext</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Filter</maml:name>
 				<maml:description>
@@ -2888,37 +2919,6 @@
 					<maml:para>Indicates that this cmdlet returns a recursive list of files. Otherwise, it returns only the files in the root folder.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TaskId</maml:name>
-				<maml:description>
-					<maml:para>Specifies the ID of the task for which this cmdlet gets properties of node files.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Get-AzureBatchNodeFile</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>BatchContext</maml:name>
-				<maml:description>
-					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>JobId</maml:name>
-				<maml:description>
-					<maml:para>Specifies the ID of the job that contains the target task.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the node file for which this cmdlet retrieves properties. You cannot specify wildcard characters.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>TaskId</maml:name>
@@ -7958,6 +7958,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>BatchContext</maml:name>
 				<maml:description>
@@ -8051,6 +8058,30 @@
 					<maml:para>Specifies the ID of the job under which this cmdlet creates the task.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Tasks</maml:name>
+				<maml:description>
+					<maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>New-AzureBatchTask</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>BatchContext</maml:name>
+				<maml:description>
+					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>Job</maml:name>
+				<maml:description>
+					<maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Tasks</maml:name>
@@ -8069,6 +8100,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">PSAffinityInformation</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ApplicationPackageReferences</maml:name>
+				<maml:description>
+					<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 				<maml:name>BatchContext</maml:name>
 				<maml:description>
@@ -8147,30 +8185,6 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureBatchTask</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>BatchContext</maml:name>
-				<maml:description>
-					<maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
-				<maml:name>Job</maml:name>
-				<maml:description>
-					<maml:para>Specifies the job under which this cmdlet creates the task. To obtain a PSCloudJob object, use the Get-AzureBatchJob cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">PSCloudJob</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Tasks</maml:name>
-				<maml:description>
-					<maml:para>Specifies the collection of tasks to be added. Each task must have a unique id.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">PSCloudTask[]</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
@@ -8184,6 +8198,18 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ApplicationPackageReferences</maml:name>
+			<maml:description>
+				<maml:para>Specifies a list of application packages that the Batch service will deploy to the compute node before running the command line.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">PSApplicationPackageReference[]</command:parameterValue>
+			<dev:type>
+				<maml:name>PSApplicationPackageReference[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
 			<maml:name>BatchContext</maml:name>
@@ -8426,6 +8452,31 @@
           PS C:\&gt; New-AzureBatchTask -JobId &quot;Job-000001&quot; -Tasks @($task1, $task2) -BatchContext $context</dev:code>
 			<dev:remarks>
 				<maml:para>This command adds a task with the ID Task1 and a task with the ID Task2 under the job that has the ID &quot;Job-000001&quot;.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 5: Create a Batch task with Application Package References  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; $taskId2 = &quot;Task1&quot;
+	       PS C:\&gt; $apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
+    	   PS C:\&gt; $apr1.ApplicationId = &quot;Foo&quot;
+    	   PS C:\&gt; $apr1.Version = &quot;Beta&quot;
+		   PS C:\&gt; $ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
+		   PS C:\&gt;Get-AzureBatchJob -Id &quot;Job-000001&quot; -BatchContext $Context | New-AzureBatchTask -Id &quot;Task23&quot; -CommandLine &quot;cmd /c echo hello &gt; newFile.txt&quot; -ApplicationPackageReferences $ApplicationPackageReferences -BatchContext $Context</dev:code>
+			<dev:remarks>
+				<maml:para>This command adds a task with a reference to an application package that will deploy to the compute node before running the command line.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>

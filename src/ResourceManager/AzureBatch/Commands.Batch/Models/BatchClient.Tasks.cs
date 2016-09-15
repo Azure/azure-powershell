@@ -134,6 +134,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.MultiInstanceSettings = parameters.MultiInstanceSettings.omObject;
             }
 
+            if (parameters.ApplicationPackageReferences != null)
+            {
+                task.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {
