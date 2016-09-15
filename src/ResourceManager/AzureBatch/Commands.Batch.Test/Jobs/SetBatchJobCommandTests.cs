@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SetBatchJobParametersTest()
+        public void AutoCompletionSettingIsSentToService()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -55,18 +55,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
-            cmdlet.Job.OnAllTasksComplete = OnAllTasksComplete.NoAction;
-            
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                JobUpdateParameter,
-                JobUpdateOptions,
-                AzureOperationHeaderResponse<JobUpdateHeaders>>();
+            CloudJob cloudJob = new Azure.Batch.Protocol.Models.CloudJob(
+                id: "job-id",
+                poolInfo: new Azure.Batch.Protocol.Models.PoolInformation(),
+                onAllTasksComplete: (Azure.Batch.Protocol.Models.OnAllTasksComplete?)OnAllTasksComplete.TerminateJob);
+
+            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, cloudJob));
+            cmdlet.Job.OnAllTasksComplete = OnAllTasksComplete.TerminateJob;
+
+            RequestInterceptor interceptor =
+                BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobUpdateParameter, JobUpdateOptions, AzureOperationHeaderResponse<JobUpdateHeaders>>(
+                    new AzureOperationHeaderResponse<JobUpdateHeaders>(),
+                    request =>
+                        {
+                            Assert.Equal((OnAllTasksComplete)request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+                        });
 
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur
             cmdlet.ExecuteCmdlet();
-        }
     }
 }

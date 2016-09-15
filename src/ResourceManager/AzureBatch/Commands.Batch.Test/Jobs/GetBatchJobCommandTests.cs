@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -58,7 +59,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Filter = null;
 
             // Build a CloudJob instead of querying the service on a Get CloudJob call
-            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+            ProxyModels.CloudJob job = new ProxyModels.CloudJob
+            {
+                Id = cmdlet.Id,
+                OnAllTasksComplete = ProxyModels.OnAllTasksComplete.TerminateJob,
+                OnTaskFailure = ProxyModels.OnTaskFailure.PerformExitOptionsJobAction
+            };
+
+            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(job);
+
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.JobGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
@@ -74,6 +83,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Verify that the cmdlet wrote the job returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
+            Assert.Equal(OnTaskFailure.PerformExitOptionsJobAction, pipeline[0].OnTaskFailure);
+            Assert.Equal(OnAllTasksComplete.TerminateJob, pipeline[0].OnAllTasksComplete);
         }
 
         [Fact]

@@ -139,6 +139,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.ApplicationPackageReferences = parameters.ApplicationPackageReferences.ToList().ConvertAll(apr => apr.omObject);
             }
 
+            if (parameters.ExitConditions != null)
+            {
+                Utils.Utils.ExitConditionsSyncCollections(parameters.ExitConditions);
+                task.ExitConditions = parameters.ExitConditions.omObject;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {

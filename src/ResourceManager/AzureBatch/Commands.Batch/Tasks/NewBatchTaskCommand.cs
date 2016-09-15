@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudTask[] Tasks { get; set; }
 
+        [Parameter(ParameterSetName = JobIdAndSingleAddParameterSet)]
+        [Parameter(ParameterSetName = JobObjectAndSingleAddParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSExitConditions ExitConditions { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (Tasks != null)
@@ -125,6 +130,7 @@ namespace Microsoft.Azure.Commands.Batch
                     MultiInstanceSettings = this.MultiInstanceSettings,
                     DependsOn = this.DependsOn,
                     ApplicationPackageReferences = this.ApplicationPackageReferences,
+                    ExitConditions = this.ExitConditions,
                 };
 
                 BatchClient.CreateTask(parameters);
