@@ -137,3 +137,20 @@ function Test-RestoreLongTermRetentionBackup
 
     Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
 }
+
+function Test-DatabaseGeoBackupPolicy
+{
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName alazad-rg
+	$server = Get-AzureRmSqlServer -ServerName testsvr-alazad -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName testdwdb -ResourceGroupName $rg.ResourceGroupName
+
+	# Enable and verify
+	Set-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State Enabled
+	$result = Get-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	Assert-True { $result.State -eq "Enabled" }
+
+	# Disable and verify
+	Set-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State Disabled
+	$result = Get-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	Assert-True { $result.State -eq "Disabled" }
+}

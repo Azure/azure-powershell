@@ -306,6 +306,76 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Get a geo backup policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A geo backup policy</returns>
+        internal AzureSqlDatabaseGeoBackupPolicyModel GetDatabaseGeoBackupPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName)
+        {
+            var geoBackupPolicy = Communicator.GetDatabaseGeoBackupPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId());
+            return new AzureSqlDatabaseGeoBackupPolicyModel()
+            {
+                Location = geoBackupPolicy.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                State = (AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState) Enum.Parse(
+                    typeof(AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState),
+                    geoBackupPolicy.Properties.State),
+            };
+        }
+
+        /// <summary>
+        /// Create or update a geo backup policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A geo backup policy</returns>
+        internal AzureSqlDatabaseGeoBackupPolicyModel SetDatabaseGeoBackupPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            AzureSqlDatabaseGeoBackupPolicyModel model)
+        {
+            var geoBackupPolicy = Communicator.SetDatabaseGeoBackupPolicy(
+                resourceGroup,
+                serverName,
+                databaseName,
+                "Default",
+                Util.GenerateTracingId(),
+                new GeoBackupPolicyCreateOrUpdateParameters()
+                {
+                    Location = model.Location,
+                    Properties = new GeoBackupPolicyProperties()
+                    {
+                        State = model.State.ToString(),
+                    }
+                });
+
+            return new AzureSqlDatabaseGeoBackupPolicyModel()
+            {
+                Location = geoBackupPolicy.Location,
+                ResourceGroupName = resourceGroup,
+                ServerName = serverName,
+                DatabaseName = databaseName,
+                State = (AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState) Enum.Parse(
+                    typeof(AzureSqlDatabaseGeoBackupPolicyModel.GeoBackupPolicyState),
+                    geoBackupPolicy.Properties.State),
+            };
+        }
+
+        /// <summary>
         /// Restore a given Sql Azure Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>

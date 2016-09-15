@@ -22,7 +22,9 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup key into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey",
+        SupportsShouldProcess = true,
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -51,11 +53,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            var filePath = ResolvePath(InputFile);
+            if (ShouldProcess(VaultName, Properties.Resources.RestoreKey))
+            {
+                var filePath = ResolvePath(InputFile);
 
             var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
             this.WriteObject(restoredKeyBundle);
+            }
         }
 
         private string ResolvePath(string filePath)
