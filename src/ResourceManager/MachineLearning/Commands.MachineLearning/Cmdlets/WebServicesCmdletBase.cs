@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToDebugChannel();
                 if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToDebugChannel();
                 if (this.IsFatalException(ex))
                 {
                     ThrowTerminatingError(
@@ -138,6 +140,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+                this.WriteVersionInfoToDebugChannel();
                 if (this.IsFatalException(ex))
                 {
                     throw;
@@ -169,6 +172,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             catch (Exception ex)
             {
+               this.WriteVersionInfoToDebugChannel();
+
                 if (this.IsFatalException(ex))
                 {
                     throw;
@@ -329,5 +334,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 ex is SEHException;
         }
 
+        private void WriteVersionInfoToDebugChannel()
+        {
+            var versionInfo = this.MyInvocation.MyCommand.Module.Version;
+            this.WriteDebug(Resources.VersionInfo.FormatInvariant(versionInfo.ToString(3)));
+        }
     }
 }

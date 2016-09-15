@@ -19,6 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VMDynamicTests
     {
+        public VMDynamicTests() { }
+
         public VMDynamicTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));

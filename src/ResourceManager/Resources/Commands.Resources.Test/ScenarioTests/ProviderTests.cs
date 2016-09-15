@@ -34,6 +34,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureProvider_WithZoneMappings()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-AzureProvider-WithZoneMappings");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperation()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureProviderOperation");

@@ -64,6 +64,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         IsCorrupted = imageDetails.IsCorrupted,
                         SmallIconUri = imageDetails.SmallIconUri,
                         PublisherName = imageDetails.PublisherName,
+                        Offer = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Offer,
+                        Sku = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Sku,
+                        Version = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Version,
                         ReplicationProgress = imageDetails.ReplicationProgress.Select(
                                                detail => new ReplicationProgressContext
                                                {
