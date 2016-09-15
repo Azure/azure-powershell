@@ -161,6 +161,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
                         return resourceFile;
                     });
+                jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
+                    a =>
+                    {
+                        ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
+                        {
+                            ApplicationId = a.ApplicationId,
+                            Version = a.Version
+                        };
+                        return applicationPackageReference;
+                    });
             }
         }
 

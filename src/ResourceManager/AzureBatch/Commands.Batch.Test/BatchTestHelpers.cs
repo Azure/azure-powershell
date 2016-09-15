@@ -584,6 +584,19 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a CloudJobGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> CreateCloudJobGetResponse(ProxyModels.CloudJob job)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = job
+            };
+            return response;
+        }
+
+        /// <summary>
         /// Builds a CloudJobListResponse object
         /// </summary>
         public static AzureOperationResponse<IPage<ProxyModels.CloudJob>, ProxyModels.JobListHeaders> CreateCloudJobListResponse(IEnumerable<string> jobIds)
@@ -617,6 +630,20 @@ namespace Microsoft.Azure.Commands.Batch.Test
             task.Id = taskId;
 
             response.Body = task;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudTaskGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> CreateCloudTaskGetResponse(ProxyModels.CloudTask cloudTask)
+        {
+            var response = new AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders>
+            {
+                Response = new HttpResponseMessage(HttpStatusCode.OK),
+                Body = cloudTask
+            };
 
             return response;
         }
