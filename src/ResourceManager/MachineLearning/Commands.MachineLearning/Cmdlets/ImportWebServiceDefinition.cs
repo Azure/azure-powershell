@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
     [Cmdlet(VerbsData.Import, WebServicesCmdletBase.CommandletSuffix)]
     [OutputType(typeof(WebService))]
-    public class ImportWebServiceDefinition : AzureRMCmdlet
+    public class ImportWebServiceDefinition : WebServicesCmdletBase
     {
         private const string ImportFromFileParamSet = "Import from JSON file.";
         private const string ImportFromStringParamSet = "Import from JSON string.";
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         [ValidateNotNullOrEmpty]
         public string JsonString { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void RunCmdlet()
         {
             string jsonDefinition = this.JsonString;
             if (string.Equals(
