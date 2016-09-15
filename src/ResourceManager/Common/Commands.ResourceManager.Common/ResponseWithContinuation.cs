@@ -12,28 +12,35 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.AzureStack.Management.StorageAdmin.Models;
-
-namespace Microsoft.AzureStack.Commands.StorageAdmin
+namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
+    using Newtonsoft.Json;
+    using System.Collections;
+
     /// <summary>
-    /// Wrapps around the Metric and exposes a summary of the properties properties
+    /// Response with next link signifying continuation.
     /// </summary>
-    internal class PSMetric : PSMetricNoDetails
+    /// <typeparam name="T">Type of response.</typeparam>
+    public class ResponseWithContinuation<T> where T : IEnumerable
     {
         /// <summary>
-        /// Gets or sets the MetricValues collection of the metric
+        /// Gets or sets the value of response.
         /// </summary>
-        public new PSMetricValuesCollection MetricValues { get; set; }
+        [JsonProperty]
+        public T Value
+        {
+            get;
+            set;
+        }
 
         /// <summary>
-        /// Initializes a new instance of the PSMetric class.
+        /// Gets or sets the next link to query to get the remaining results.
         /// </summary>
-        /// <param name="metric">The input Metric object</param>
-        public PSMetric(Metric metric) : base(metric)
+        [JsonProperty]
+        public string NextLink
         {
-            this.MetricValues = new PSMetricValuesCollection(metric.MetricValues);
+            get;
+            set;
         }
     }
 }
