@@ -9707,7 +9707,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9759,7 +9759,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Force</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
@@ -9812,7 +9812,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Force</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>

@@ -213,38 +213,5 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
                 Assert.True(taskIds.Contains(task.Id));
             }
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ApplicationPackageReferencesAreSentToService()
-        {
-            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
-            cmdlet.BatchContext = context;
-            cmdlet.Id = "task-id";
-            cmdlet.JobId = "job-id";
-
-            string applicationId = "foo";
-            string applicationVersion = "beta";
-
-            cmdlet.ApplicationPackageReferences = new[]
-            {
-                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion}
-            };
-
-            // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskAddParameter, TaskAddOptions, AzureOperationHeaderResponse<TaskAddHeaders>>(
-                new AzureOperationHeaderResponse<TaskAddHeaders>(),
-                request =>
-                {
-                    var applicationPackageReference = request.Parameters.ApplicationPackageReferences.First();
-                    Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
-                    Assert.Equal(applicationVersion, applicationPackageReference.Version);
-                });
-
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
-
-            // Verify no exceptions when required parameters are set
-            cmdlet.ExecuteCmdlet();
-        }
     }
 }
