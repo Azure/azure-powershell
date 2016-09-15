@@ -55,6 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
+<<<<<<< HEAD
             CloudJob cloudJob = new Azure.Batch.Protocol.Models.CloudJob(
                 id: "job-id",
                 poolInfo: new Azure.Batch.Protocol.Models.PoolInformation(),
@@ -62,13 +63,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, cloudJob));
             cmdlet.Job.OnAllTasksComplete = OnAllTasksComplete.TerminateJob;
+=======
+            var cloudJob = new Azure.Batch.Protocol.Models.CloudJob(
+                id: "job-id",
+                poolInfo: new Azure.Batch.Protocol.Models.PoolInformation(),
+                onAllTasksComplete: OnAllTasksComplete.TerminateJob);
+
+            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, cloudJob));
+>>>>>>> hotfix/batch-tests-fixup
 
             RequestInterceptor interceptor =
                 BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobUpdateParameter, JobUpdateOptions, AzureOperationHeaderResponse<JobUpdateHeaders>>(
                     new AzureOperationHeaderResponse<JobUpdateHeaders>(),
                     request =>
                         {
+<<<<<<< HEAD
                             Assert.Equal((OnAllTasksComplete)request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+=======
+                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+>>>>>>> hotfix/batch-tests-fixup
                         });
 
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
