@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryStorageClassificationMapping", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRStorageClassificationMapping>))]
-    public class GetAzureSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
+    public class GetAzureRmSiteRecoveryStorageClassificationMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
         /// <summary>
@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
         #endregion
 
         /// <summary>
@@ -29,6 +30,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public override void ExecuteSiteRecoveryCmdlet()
         {
             base.ExecuteSiteRecoveryCmdlet();
+
+            this.WriteWarningWithTimestamp(
+                string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name,
+                    ""));
 
             List<StorageClassificationMapping> mappings = new List<StorageClassificationMapping>();
             Task mappingTask =
