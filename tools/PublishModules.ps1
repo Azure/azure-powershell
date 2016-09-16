@@ -138,6 +138,35 @@ function Remove-ModuleDependencies
 
 }
 
+function Update-NugetPackage
+{
+	[CmdletBinding()]
+	param(
+	    [string]$BasePath,
+	    [string]$ModuleName,
+		[string]$DirPath,
+		[string]$NugetExe
+	)
+
+	PROCESS
+	{
+        $regex = New-Object -Type System.Text.RegularExpressions.Regex -ArgumentList  "([0-9\.]+)nupkg$"
+		$regex2 = "<requireLicenseAcceptance>false</requireLicenseAcceptance>"
+		
+		$relDir = Join-Path $DirPath -ChildPath "_rels"
+		$contentPath = Join-Path $DirPath -ChildPath '`[Content_Types`].xml'
+		$packPath = Join-Path $DirPath -ChildPath "package"
+		$modulePath = Join-Path $DirPath -ChildPath ($ModuleName + ".nuspec")
+		Remove-Item -Recurse -Path $relDir -Force
+		Remove-Item -Recurse -Path $packPath -Force
+		Remove-Item -Path $contentPath -Force
+		$content = (Get-Content -Path $modulePath) -join "`r`n"
+		$content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+		$content | Out-File -FilePath $modulePath -Force
+		&$NugetExe pack $modulePath -OutputDirectory $BasePath
+	}
+}
+
 function Change-RMModule 
 {
 	[CmdletBinding()]
@@ -145,7 +174,8 @@ function Change-RMModule
 		[string]$Path,
 		[string]$RepoLocation,
 		[string]$TempRepo,
-		[string]$TempRepoPath
+		[string]$TempRepoPath,
+		[string]$NugetExe
 	)
 
 	PROCESS
@@ -162,25 +192,25 @@ function Change-RMModule
 		{
 		  $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".nupkg")
 		  $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString() + ".zip")
-		  $dirPath = Join-Path -Path . -ChildPath ($moduleName + "." + $manifest.Version.ToString())
+		  $dirPath = Join-Path -Path . -ChildPath $moduleName
 		  $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
 		  if (!(Test-Path -Path $nupkgPath))
 		  {
 			  throw "Module at $nupkgPath in $TempRepoPath does not exist"
 		  }
-		  Write-Output "Renaming package $nupkgPath to nsip archive $zipPath"
+		  Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
 		  ren $nupkgPath $zipPath
 		  Write-Output "Expanding $zipPath"
-		  Expand-Archive $zipPath
+		  Expand-Archive $zipPath -DestinationPath $dirPath
 		  Write-Output "Adding PSM1 dependency to $unzippedManifest"
 		  Add-PSM1Dependency -Path $unzippedManifest
 		  Write-Output "Removing module manifest dependencies for $unzippedManifest"
 		  Remove-ModuleDependencies -Path $unzippedManifest
 
 		  Remove-Item -Path $zipPath -Force
-		  Write-Output "Compressing $zipPath"
-		  Compress-Archive (Join-Path -Path $dirPath -ChildPath "*") -DestinationPath $zipPath
+		  Write-Output "Repackaging $dirPath"
+		  Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
 		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
 		  ren $zipPath $nupkgPath
 	    }
@@ -274,7 +304,7 @@ try {
         # And "Azure.Storage" which is built out as test dependencies  
 		$module = Get-Item -Path $modulePath
         Write-Host "Changing $module module from $modulePath"
-        Change-RMModule -Path $modulePath -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath
+        Change-RMModule -Path $modulePath -RepoLocation $repositoryLocation -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -nugetExe $nugetExe
         Write-Host "Changed $module module"
 	}
 
