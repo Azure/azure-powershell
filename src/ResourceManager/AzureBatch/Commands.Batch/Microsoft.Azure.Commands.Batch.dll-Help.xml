@@ -1317,7 +1317,7 @@
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2: Reactivate a task by using the pipeline --------------------------</maml:title>
+			<maml:title>--------------------------  Example 2: Reactivate a task by using the pipeline  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -3665,11 +3665,11 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestinationStream</maml:name>
+				<maml:name>DestinationPath</maml:name>
 				<maml:description>
-					<maml:para>Specifies the stream into which this cmdlet writes the node file contents. This cmdlet does not close or rewind this stream.</maml:para>
+					<maml:para>Specifies the file path where this cmdlet saves the node file.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
@@ -3703,11 +3703,11 @@
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>DestinationPath</maml:name>
+				<maml:name>DestinationStream</maml:name>
 				<maml:description>
-					<maml:para>Specifies the file path where this cmdlet saves the node file.</maml:para>
+					<maml:para>Specifies the stream into which this cmdlet writes the node file contents. This cmdlet does not close or rewind this stream.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">Stream</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Name</maml:name>
@@ -8809,12 +8809,12 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -8868,12 +8868,12 @@
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			<dev:type>
 				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
@@ -9704,6 +9704,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;ComputeNodeDeallocationOption&gt;</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="1">
 				<maml:name>Ids</maml:name>
 				<maml:description>
@@ -9750,6 +9757,13 @@
 				<command:parameterValue required="true" variableLength="false">System.Nullable&lt;ComputeNodeDeallocationOption&gt;</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Forces the command to run without asking for user confirmation.</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>ResizeTimeout</maml:name>
 				<maml:description>
 					<maml:para>Specifies the time-out interval for removal of the compute nodes from the pool. The default value is 10 minutes. The minimum value is 5 minutes.</maml:para>
@@ -9794,6 +9808,18 @@
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="false" position="1">
 			<maml:name>Ids</maml:name>
@@ -12652,12 +12678,12 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Specifies a hash table of tags for the account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
+				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -12698,12 +12724,12 @@
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Specifies a hash table of tags for the account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
+			<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			<dev:type>
 				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
