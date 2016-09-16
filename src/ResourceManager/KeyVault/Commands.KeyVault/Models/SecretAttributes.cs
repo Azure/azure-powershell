@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             this.Tags = tags;
         }
 
-        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore,
-            DateTime? created, DateTime? updated, string contentType, Dictionary<string, string> tags)
+        internal SecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
+            DateTime? created, DateTime? updated, string contentType, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Azure.KeyVault.SecretAttributes(SecretAttributes attr)
+        public static explicit operator Azure.KeyVault.Models.SecretAttributes(SecretAttributes attr)
         {
-            return new Azure.KeyVault.SecretAttributes
+            return new Azure.KeyVault.Models.SecretAttributes
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,

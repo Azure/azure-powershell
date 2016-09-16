@@ -430,20 +430,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
 
-                    if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
-                        !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        ThrowTerminatingError(
-                            new ErrorRecord(
-                                new ArgumentException(
-                                    string.Format(
-                                        CultureInfo.CurrentUICulture,
-                                        "Enabling encryption is only allowed on Data volumes for Linux VMs.")),
-                                "InvalidType",
-                                ErrorCategory.NotImplemented,
-                                null));
-                    }
-
                     if (OperatingSystemTypes.Linux.Equals(currentOSType))
                     {
                         CreateVMBackupForLinx();

@@ -80,6 +80,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
         public int PeerWeight { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "ActiveActive feature flag")]
+        public bool ActiveActive { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -89,11 +95,38 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if(!string.IsNullOrEmpty(GatewaySku))
+            this.VirtualNetworkGateway.ActiveActive = this.ActiveActive;
+
+            if (this.VirtualNetworkGateway.ActiveActive)
+            {
+                bool activeActiveSkuCriteria = !string.IsNullOrEmpty(this.GatewaySku) ? !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance) : !this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance);
+               
+                if(activeActiveSkuCriteria)
+                {
+                    throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
+                }              
+            }
+
+            if (!string.IsNullOrEmpty(GatewaySku))
             {
                 this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
                 this.VirtualNetworkGateway.Sku.Tier = this.GatewaySku;
                 this.VirtualNetworkGateway.Sku.Name = this.GatewaySku;
+            }
+
+            if (this.VirtualNetworkGateway.ActiveActive && !this.VirtualNetworkGateway.VpnType.Equals(MNM.VpnType.RouteBased))
+            {
+                throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
+            }
+
+            if (this.VirtualNetworkGateway.ActiveActive && this.VirtualNetworkGateway.IpConfigurations.Count != 2)
+            {
+                throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
+            }
+
+            if (!this.VirtualNetworkGateway.ActiveActive && this.VirtualNetworkGateway.IpConfigurations.Count == 2)
+            {
+                throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
             }
 
             if (this.GatewayDefaultSite != null)
@@ -107,13 +140,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
             }
 
-            if(this.VpnClientAddressPool != null)
+            if (this.VpnClientAddressPool != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
             }
 
-            if(this.VpnClientRootCertificates != null)
+            if (this.VpnClientRootCertificates != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates;
             }

@@ -14,6 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
+    using System;
+    using System.Collections;
+    using System.Linq;
+
     public class PSResourceProviderResourceType
     {
         /// <summary>
@@ -30,5 +34,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         /// Gets or sets the api versions that this resource is supported in.
         /// </summary>
         public string[] ApiVersions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the zone mappings that this resource supports.
+        /// </summary>
+        public Hashtable ZoneMappings { get; set; }
     }
 }

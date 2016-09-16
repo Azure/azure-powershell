@@ -474,6 +474,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 Etag = zone.Etag,
                 Tags = TagsConversionHelper.CreateTagHashtable(zone.Tags),
                 NameServers = zone.NameServers != null ? zone.NameServers.ToList() : new List<string>(),
+                NumberOfRecordSets = zone.NumberOfRecordSets,
+                MaxNumberOfRecordSets = zone.MaxNumberOfRecordSets,
             };
         }
 
