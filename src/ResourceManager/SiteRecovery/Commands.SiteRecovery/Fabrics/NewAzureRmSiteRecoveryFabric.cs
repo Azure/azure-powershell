@@ -12,31 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SiteRecovery.Models;
 using System;
+using System.ComponentModel;
 using System.Management.Automation;
+using Microsoft.Azure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
     /// <summary>
-    /// Remove Azure Site Recovery Recovery Plan.
+    /// Creates Azure Site Recovery Fabric object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByObject)]
-    public class RemoveAzureSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryFabric", DefaultParameterSetName = ASRParameterSets.Default)]
+    [OutputType(typeof(ASRJob))]
+    public class NewAzureRmSiteRecoveryFabric : SiteRecoveryCmdletBase
     {
         #region Parameters
 
         /// <summary>
-        /// Gets or sets Name of the Recovery Plan.
+        /// Gets or sets the name of the fabric to be created
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByName)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true, HelpMessage = "Name of the fabric to be created")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets Name of the Recovery Plan.
+        /// Gets or Sets the Fabric type
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = ASRParameterSets.ByObject, ValueFromPipeline = true)]
-        public ASRRecoveryPlan RecoveryPlan { get; set; }
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.HyperVSite)]
+        public string Type { get; set; }
 
         #endregion Parameters
 
@@ -47,12 +56,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            if (string.Compare(this.ParameterSetName, ASRParameterSets.ByObject, StringComparison.OrdinalIgnoreCase) == 0)
-            {
-                this.Name = this.RecoveryPlan.Name;
-            }
+            string fabricType = string.IsNullOrEmpty(this.Type)? FabricProviders.HyperVSite : this.Type;
 
-            LongRunningOperationResponse response = RecoveryServicesClient.RemoveAzureSiteRecoveryRecoveryPlan(this.Name);
+            LongRunningOperationResponse response =
+             RecoveryServicesClient.CreateAzureSiteRecoveryFabric(this.Name, fabricType);
 
             JobResponse jobResponse =
                 RecoveryServicesClient

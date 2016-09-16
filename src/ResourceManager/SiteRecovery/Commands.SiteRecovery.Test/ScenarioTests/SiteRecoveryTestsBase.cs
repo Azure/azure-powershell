@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
     public abstract class SiteRecoveryTestsBase : RMTestBase
     {
-        private CSMTestEnvironmentFactory armTestFactory;
         private EnvironmentSetupHelper helper;
         protected string vaultSettingsFilePath;
         private ASRVaultCreds asrVaultCreds = null;
@@ -83,15 +82,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(String scenario)
         {
-            RecoveryServicesMgmtClient = GetSiteRecoveryVaultManagementClient();
-            SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
+            RecoveryServicesMgmtClient = GetSiteRecoveryVaultManagementClient(scenario);
+            SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient(scenario);
 
             helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(String scenario, params string[] scripts)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -105,9 +104,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
-                this.armTestFactory = new CSMTestEnvironmentFactory();
-
-                SetupManagementClients();
+                SetupManagementClients(scenario);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
@@ -118,17 +115,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
-        private SiteRecoveryVaultManagementClient GetSiteRecoveryVaultManagementClient()
+        private SiteRecoveryVaultManagementClient GetSiteRecoveryVaultManagementClient(String scenario)
         {
-            return GetServiceClient<SiteRecoveryVaultManagementClient>();
+            return GetServiceClient<SiteRecoveryVaultManagementClient>(scenario);
         }
 
-        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient()
+        private SiteRecoveryManagementClient GetSiteRecoveryManagementClient(String scenario)
         {
-            return GetServiceClient<SiteRecoveryManagementClient>();
+            return GetServiceClient<SiteRecoveryManagementClient>(scenario);
         }
 
-        public T GetServiceClient<T>() where T : class
+        public T GetServiceClient<T>(String scenario) where T : class
         {
             var factory = (TestEnvironmentFactory)new CSMTestEnvironmentFactory();
             var testEnvironment = factory.GetTestEnvironment();
@@ -137,6 +134,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             var credentials = new SubscriptionCredentialsAdapter(
                 testEnvironment.AuthorizationContext.TokenCredentials[TokenAudience.Management],
                 testEnvironment.SubscriptionId);
+            var resourceNamespace = "";
+            var resourceType = "";
+            var resourceName = "";
+            var resourceGroupName = "";
+
+            switch (scenario)
+            {
+                case Constants.NewModel:
+                    resourceNamespace = "Microsoft.SiteRecovery";
+                    resourceType = "SiteRecoveryVault";
+                    resourceName = "ReleaseVault";
+                    resourceGroupName = "ReleaseResourceGroup";
+                    break;
+
+                default:
+                    resourceNamespace = "Microsoft.SiteRecoveryBVTD2";
+                    resourceType = "SiteRecoveryVault";
+                    resourceName = asrVaultCreds.ResourceName;
+                    resourceGroupName = asrVaultCreds.ResourceGroupName;
+                    break;
+
+            };
 
             if (typeof(T) == typeof(SiteRecoveryVaultManagementClient))
             {
@@ -145,16 +164,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new SiteRecoveryVaultManagementClient(
-                        "Microsoft.SiteRecoveryBVTD2",
-                        "SiteRecoveryVault",
+                        resourceNamespace,
+                        resourceType,
                         credentials,
                         testEnvironment.BaseUri);
                 }
                 else
                 {
                     client = new SiteRecoveryVaultManagementClient(
-                        "Microsoft.SiteRecovery",
-                        "SiteRecoveryVault",
+                        resourceNamespace,
+                        resourceType,
                         credentials);
                 }
                 return GetRSMServiceClient<T>(factory, client);
@@ -166,10 +185,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new SiteRecoveryManagementClient(
-                        asrVaultCreds.ResourceName,
-                        asrVaultCreds.ResourceGroupName,
-                        "Microsoft.SiteRecoveryBVTD2",
-                        "SiteRecoveryVault",
+                        resourceName,
+                        resourceGroupName,
+                        resourceNamespace,
+                        resourceType,
                         credentials,
                         testEnvironment.BaseUri);
                 }
@@ -177,10 +196,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
                 else
                 {
                     client = new SiteRecoveryManagementClient(
-                        asrVaultCreds.ResourceName,
-                        asrVaultCreds.ResourceGroupName,
-                        "Microsoft.SiteRecovery",
-                        "vaults",
+                        resourceName,
+                        resourceGroupName,
+                        resourceNamespace,
+                        resourceType,
                         credentials);
                 }
 
