@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(20);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.CloudServiceConfiguration.CurrentOSVersion != pool.CloudServiceConfiguration.TargetOSVersion)
             {
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     throw new TimeoutException("Timed out waiting for active state pool");
                 }
-                Sleep(15000);
+                Sleep(5000);
                 pool = client.ListPools(options).First();
             }
 
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(15);
+            DateTime timeout = DateTime.Now.AddMinutes(5);
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.AllocationState != AllocationState.Steady)
             {
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     throw new TimeoutException("Timed out waiting for steady allocation state");
                 }
-                Sleep(10000);
+                Sleep(5000);
                 pool = client.ListPools(options).First();
             }
         }
