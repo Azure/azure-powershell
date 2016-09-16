@@ -116,12 +116,18 @@ for ($idx = 0; $idx -lt $content.Length; $idx++)
 
         # Change the buffer size to include the three lines just added
         $buffer = 3
+
+        # Flag that we are no longer in the VSFeed entry
+        $VSFeedSeen = $False
     }
 
     # Check if we are looking at the entry for DH_WindowsAzurePowerShellGet
     if ($PSGetSeen -and $content[$idx] -like "*msiProductCode*")
     {
         $content[$idx] = "   <msiProductCode>$ProductCode</msiProductCode>"
+
+        # Flag that we are no longer in the PSGet entry
+        $PSGetSeen = $False
     }
 
     $newContent[$idx + $buffer] = $content[$idx]
@@ -171,6 +177,11 @@ for ($idx = 0; $idx -lt $content.Length; $idx++)
         if ($content[$idx] -like "*<trackingURL>*")
         {
             $content[$idx] = "        <trackingURL>http://www.microsoft.com/web/handlers/webpi.ashx?command=incrementproddownloadcount&amp;prodid=WindowsAzurePowershell&amp;version=$PSVersion&amp;prodlang=en</trackingURL>"
+        }
+
+        if ($content[$idx] -like "*</entry>*")
+        {
+            $PSGetSeen = $False
         }
     }
 
