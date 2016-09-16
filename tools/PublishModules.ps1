@@ -211,8 +211,6 @@ function Change-RMModule
 		  Remove-Item -Path $zipPath -Force
 		  Write-Output "Repackaging $dirPath"
 		  Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
-		  Write-Output "Renaming package $zipPath to zip archive $nupkgPath"
-		  ren $zipPath $nupkgPath
 	    }
 		finally 
 		{
