@@ -368,11 +368,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                             this.ResourceGroupName, VMName).Body;
                         VirtualMachineExtension parameters = GetVmExtensionParameters(virtualMachineResponse, osType);
 
-                        this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
+                        var httpTask = this.VirtualMachineExtensionClient.CreateOrUpdateWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.VMName,
                             this.Name,
-                            parameters).GetAwaiter().GetResult();
+                            parameters);
+
+                        if (!httpTask.Wait(new TimeSpan(0, AzureDiskEncryptionExtensionConstants.httpTimeoutMinutes, 0)))
+                        {
+                            string errorMessage = string.Format(CultureInfo.CurrentUICulture, "Extension operation timed out");
+                            ThrowTerminatingError(new ErrorRecord(new ApplicationException(errorMessage),
+                                                                  errorMessage,
+                                                                  ErrorCategory.InvalidResult,
+                                                                  null));
+                        }
 
                         Dictionary<string, string> encryptionStatusParsed = null;
                         try
