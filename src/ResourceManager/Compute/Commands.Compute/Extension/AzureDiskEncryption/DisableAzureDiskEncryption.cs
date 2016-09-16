@@ -22,6 +22,7 @@ using System;
 using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -199,10 +200,21 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 Tags = vmParameters.Tags
             };
 
-            return this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
+            var httpTask = this.ComputeClient.ComputeManagementClient.VirtualMachines.CreateOrUpdateWithHttpMessagesAsync(
                 this.ResourceGroupName,
                 vmParameters.Name,
-                parameters).GetAwaiter().GetResult();
+                parameters);
+
+            if (!httpTask.Wait(new TimeSpan(0, AzureDiskEncryptionExtensionConstants.httpTimeoutMinutes, 0)))
+            {
+                string errorMessage = string.Format(CultureInfo.CurrentUICulture, "Extension operation timed out");
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(errorMessage),
+                                                      errorMessage,
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+
+            return httpTask.Result;
         }
 
         public override void ExecuteCmdlet()
