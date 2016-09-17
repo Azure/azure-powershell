@@ -24,6 +24,26 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         DefaultParameterSetName = ByWorkspaceName)]
     public class RemoveAzureOperationalInsightsDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
+        [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The workspace that will contain the data source.")]
+        [ValidateNotNull]
+        public override PSWorkspace Workspace { get; set; }
+
+        [Parameter(Position = 1, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 2, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the workspace that will contain the data source.")]
+        [ValidateNotNullOrEmpty]
+        public override string WorkspaceName { get; set; }
+
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The data source name.")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
 
