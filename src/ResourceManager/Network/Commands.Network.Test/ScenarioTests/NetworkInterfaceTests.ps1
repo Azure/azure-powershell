@@ -113,7 +113,6 @@ function Test-NetworkInterfaceCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -811,22 +810,21 @@ Tests creating new simple public networkinterface.
 #>
 function Test-NetworkInterfaceWithAcceleratedNetworking
 {
-    # Setup
+   # Setup
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = "WestCentralUS"
+    $rglocation = "westcentralus"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = "WestCentralUS"
+    $location = "westcentralus"
     
     try 
     {
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-        
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -835,10 +833,8 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AcceleratedNetworkingEnabled
+        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
         $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
-
-		$setNic = $actualNic | Set-AzureRmNetworkInterface
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
@@ -849,8 +845,9 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+		Assert-AreEqual $expectedNic.EnableAcceleratedNetworking $true
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
-		Assert-AreEqual $expectedNic.AcceleratedNetworkingEnabled $true
+
         
         # Check publicIp address reference
         $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
