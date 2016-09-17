@@ -15,15 +15,14 @@
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsWindowsEventDataSource", SupportsShouldProcess = true, 
+    [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, 
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
-    public class NewAzureOperationalInsightsWindowsEventDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+    public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -46,46 +45,25 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public override string Name { get; set; }
 
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of Windows EventLog.")]
+        HelpMessage = "The azure subscription Id.")]
         [ValidateNotNullOrEmpty]
-        public string EventLogName { get; set; }
+        public string SubscriptionId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Collect error events.")]
-        public SwitchParameter CollectErrors { get; set; }
-        [Parameter(Mandatory = false, HelpMessage = "Collect warning events.")]
-        public SwitchParameter CollectWarnings { get; set; }
-        [Parameter(Mandatory = false, HelpMessage = "Collect information events.")]
-        public SwitchParameter CollectInformation { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "You can choose to backfill logs from a week ago.")]
+        [ValidateNotNullOrEmpty]
+        public DateTimeOffset BackfillStartTime { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public override SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            List<WindowsEventTypeIdentifier> eventTypeInstances = new List<WindowsEventTypeIdentifier>();
-            if (CollectErrors.IsPresent) {
-                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Error });
-            }
-            if (CollectWarnings.IsPresent)
+            var auditLogProperties = new PSAzureActivityLogDataSourceProperties
             {
-                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Warning });
-            }
-            if (CollectInformation.IsPresent)
-            {
-                eventTypeInstances.Add(new WindowsEventTypeIdentifier { eventType = WindowsEventType.Information });
-            }
-
-            if (eventTypeInstances.Count == 0)
-            {
-                throw new ArgumentException(Resources.DataSourceWindowsEventNoEventTypeSelected);
-            }
-
-            var auditLogProperties = new PSWindowsEventDataSourceProperties
-            {
-                EventLogName = this.EventLogName,
-                EventTypes = eventTypeInstances
+                SubscriptionId = this.SubscriptionId,
+                BackfillStartTime = this.BackfillStartTime
             };
-
 
             CreatePSDataSourceWithProperties(auditLogProperties);
         }

@@ -129,6 +129,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="DataSources\AzureOperationalInsightsDataSourceBaseCmdlet.cs" />
     <Compile Include="DataSources\NewAzureOperationalInsightsDataSourceBaseCmdlet.cs" />
+    <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsAzureActivityLogDataSourceCommand.cs" />
     <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsCustomLogDataSourceCommand.cs" />
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxCustomLogCollectionCommand.cs" />
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsIISLogCollectionCommand.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="DataSources\SingletonDataSourceCmdlets\DisableAzureOperationalInsightsLinuxSyslogCollectionCommand.cs" />
     <Compile Include="DataSources\NewDataSourceCmdletsPerKind\NewAzureOperationalInsightsWindowsEventDataSourceCommand.cs" />
     <Compile Include="Models\CreatePSDataSourceParameters.cs" />
+    <Compile Include="Models\DataSourcePropertiesPerKind\PSAzureActivityLogDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogCollectionDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSIISLogsDataSourceProperties.cs" />
     <Compile Include="Models\DataSourcePropertiesPerKind\PSCustomLogDataSourceProperties.cs" />
