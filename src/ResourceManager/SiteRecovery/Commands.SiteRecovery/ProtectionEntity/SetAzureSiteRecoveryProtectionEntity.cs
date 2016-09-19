@@ -32,11 +32,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private LongRunningOperationResponse response = null;
 
         /// <summary>
-        /// Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
-        /// </summary>
-        private string targetNameOrId = string.Empty;
-
-        /// <summary>
         /// Gets or sets Protection Entity Object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.DisableDR, Mandatory = true, ValueFromPipeline = true)]
@@ -116,155 +111,155 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            this.targetNameOrId = this.ProtectionEntity.FriendlyName;
-            this.ConfirmAction(
-                this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection),
-                string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
-                string.Format(Properties.Resources.DisableProtectionWhatIfMessage, this.Protection),
-                this.targetNameOrId,
-                () =>
+            this.WriteWarningWithTimestamp(
+                string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name,
+                    "New-AzureRmSiteRecoveryReplicationProtectedItem or Remove-AzureRmSiteRecoveryReplicationProtectedItem"));
+
+            if (0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection) || ShouldProcess(this.ProtectionEntity.FriendlyName, "Disable Protection"))
+            {
+                if (this.Protection == Constants.EnableProtection)
                 {
-                    if (this.Protection == Constants.EnableProtection)
+                    if (string.Compare(this.ParameterSetName, ASRParameterSets.DisableDR, StringComparison.OrdinalIgnoreCase) == 0)
                     {
-                        if (string.Compare(this.ParameterSetName, ASRParameterSets.DisableDR, StringComparison.OrdinalIgnoreCase) == 0)
+                        throw new PSArgumentException(Properties.Resources.PassingPolicyMandatoryForEnablingDR);
+                    }
+
+                    EnableProtectionProviderSpecificInput enableProtectionProviderSpecificInput = new EnableProtectionProviderSpecificInput();
+
+                    EnableProtectionInputProperties inputProperties = new EnableProtectionInputProperties()
+                    {
+                        PolicyId = this.Policy.ID,
+                        ProtectableItemId = this.ProtectionEntity.ID,
+                        ProviderSpecificDetails = enableProtectionProviderSpecificInput
+                    };
+
+                    EnableProtectionInput input = new EnableProtectionInput()
+                    {
+                        Properties = inputProperties
+                    };
+
+                    // Process if block only if policy is not null, policy is created for E2A or B2A and parameter set is for enable DR of E2A or B2A 
+                    if (this.Policy != null &&
+                        0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
+                        (0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToAzure, StringComparison.OrdinalIgnoreCase) ||
+                        0 == string.Compare(this.ParameterSetName, ASRParameterSets.HyperVSiteToAzure, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        HyperVReplicaAzureEnableProtectionInput providerSettings = new HyperVReplicaAzureEnableProtectionInput();
+                        providerSettings.HvHostVmId = this.ProtectionEntity.FabricObjectId;
+                        providerSettings.VmName = this.ProtectionEntity.FriendlyName;
+
+                        // Id disk details are missing in input PE object, get the latest PE.
+                        if (string.IsNullOrEmpty(this.ProtectionEntity.OS))
                         {
-                            throw new PSArgumentException(Properties.Resources.PassingPolicyMandatoryForEnablingDR);
+                            // Just checked for OS to see whether the disk details got filled up or not
+                            ProtectableItemResponse protectableItemResponse =
+                                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
+                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                                this.ProtectionEntity.ProtectionContainerId,
+                                this.ProtectionEntity.Name);
+
+                            this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem);
                         }
 
-                        EnableProtectionProviderSpecificInput enableProtectionProviderSpecificInput = new EnableProtectionProviderSpecificInput();
-
-                        EnableProtectionInputProperties inputProperties = new EnableProtectionInputProperties()
+                        if (string.IsNullOrWhiteSpace(this.OS))
                         {
-                            PolicyId = this.Policy.ID,
-                            ProtectableItemId = this.ProtectionEntity.ID,
-                            ProviderSpecificDetails = enableProtectionProviderSpecificInput
-                        };
-
-                        EnableProtectionInput input = new EnableProtectionInput()
+                            providerSettings.OSType = ((string.Compare(this.ProtectionEntity.OS, Constants.OSWindows) == 0) || (string.Compare(this.ProtectionEntity.OS, Constants.OSLinux) == 0)) ? this.ProtectionEntity.OS : Constants.OSWindows;
+                        }
+                        else
                         {
-                            Properties = inputProperties
-                        };
+                            providerSettings.OSType = this.OS;
+                        }
 
-                        // Process if block only if policy is not null, policy is created for E2A or B2A and parameter set is for enable DR of E2A or B2A 
-                        if (this.Policy != null &&
-                            0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
-                            (0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToAzure, StringComparison.OrdinalIgnoreCase) ||
-                            0 == string.Compare(this.ParameterSetName, ASRParameterSets.HyperVSiteToAzure, StringComparison.OrdinalIgnoreCase)))
+                        if (string.IsNullOrWhiteSpace(this.OSDiskName))
                         {
-                            HyperVReplicaAzureEnableProtectionInput providerSettings = new HyperVReplicaAzureEnableProtectionInput();
-                            providerSettings.HvHostVmId = this.ProtectionEntity.FabricObjectId;
-                            providerSettings.VmName = this.ProtectionEntity.FriendlyName;
-
-                            // Id disk details are missing in input PE object, get the latest PE.
-                            if (string.IsNullOrEmpty(this.ProtectionEntity.OS))
+                            providerSettings.VhdId = this.ProtectionEntity.OSDiskId;
+                        }
+                        else
+                        {
+                            foreach (var disk in this.ProtectionEntity.Disks)
                             {
-                                // Just checked for OS to see whether the disk details got filled up or not
-                                ProtectableItemResponse protectableItemResponse =
-                                    RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(
-                                    Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                    this.ProtectionEntity.ProtectionContainerId,
-                                    this.ProtectionEntity.Name);
-
-                                this.ProtectionEntity = new ASRProtectionEntity(protectableItemResponse.ProtectableItem);
-                            }
-
-                            if (string.IsNullOrWhiteSpace(this.OS))
-                            {
-                                providerSettings.OSType = ((string.Compare(this.ProtectionEntity.OS, Constants.OSWindows) == 0) || (string.Compare(this.ProtectionEntity.OS, Constants.OSLinux) == 0)) ? this.ProtectionEntity.OS : Constants.OSWindows;
-                            }
-                            else
-                            {
-                                providerSettings.OSType = this.OS;
-                            }
-
-                            if (string.IsNullOrWhiteSpace(this.OSDiskName))
-                            {
-                                providerSettings.VhdId = this.ProtectionEntity.OSDiskId;
-                            }
-                            else
-                            {
-                                foreach (var disk in this.ProtectionEntity.Disks)
+                                if (0 == string.Compare(disk.Name, this.OSDiskName, true))
                                 {
-                                    if (0 == string.Compare(disk.Name, this.OSDiskName, true))
-                                    {
-                                        providerSettings.VhdId = disk.Id;
-                                        break;
-                                    }
+                                    providerSettings.VhdId = disk.Id;
+                                    break;
                                 }
                             }
-
-                            if (RecoveryAzureStorageAccountId != null)
-                            {
-                                providerSettings.TargetStorageAccountId = RecoveryAzureStorageAccountId;
-                            }
-
-                            input.Properties.ProviderSpecificDetails = providerSettings;
                         }
-                        else if (this.Policy != null &&
-                            0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
-                            0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToEnterprise, StringComparison.OrdinalIgnoreCase))
+
+                        if (RecoveryAzureStorageAccountId != null)
                         {
-                            throw new PSArgumentException(Properties.Resources.PassingStorageMandatoryForEnablingDRInAzureScenarios);
+                            providerSettings.TargetStorageAccountId = RecoveryAzureStorageAccountId;
                         }
+
+                        input.Properties.ProviderSpecificDetails = providerSettings;
+                    }
+                    else if (this.Policy != null &&
+                        0 == string.Compare(this.Policy.ReplicationProvider, Constants.HyperVReplicaAzure, StringComparison.OrdinalIgnoreCase) &&
+                        0 == string.Compare(this.ParameterSetName, ASRParameterSets.EnterpriseToEnterprise, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new PSArgumentException(Properties.Resources.PassingStorageMandatoryForEnablingDRInAzureScenarios);
+                    }
+
+                    this.response =
+                        RecoveryServicesClient.EnableProtection(
+                        Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                        Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                        this.ProtectionEntity.Name,
+                        input);
+                }
+                else
+                {
+                    // fetch the latest PE object
+                    ProtectableItemResponse protectableItemResponse =
+                                                RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                                                this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
+                    ProtectableItem protectableItem = protectableItemResponse.ProtectableItem;
+
+                    if (!this.Force.IsPresent)
+                    {
+                        DisableProtectionInput input = new DisableProtectionInput();
+                        input.Properties = new DisableProtectionInputProperties()
+                        {
+                            ProviderSettings = new DisableProtectionProviderSpecificInput()
+                        };
 
                         this.response =
-                            RecoveryServicesClient.EnableProtection(
+                            RecoveryServicesClient.DisableProtection(
                             Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
                             Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                            this.ProtectionEntity.Name,
+                            Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems),
                             input);
                     }
                     else
                     {
-                        // fetch the latest PE object
-                        ProtectableItemResponse protectableItemResponse =
-                                                    RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                                    this.ProtectionEntity.ProtectionContainerId, this.ProtectionEntity.Name);
-                        ProtectableItem protectableItem = protectableItemResponse.ProtectableItem;
 
-                        if (!this.Force.IsPresent)
-                        {
-                            DisableProtectionInput input = new DisableProtectionInput();
-                            input.Properties = new DisableProtectionInputProperties()
-                            {
-                                ProviderSettings = new DisableProtectionProviderSpecificInput()
-                            };
-
-                            this.response =
-                                RecoveryServicesClient.DisableProtection(
-                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                                Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems),
-                                input);
-                        }
-                        else
-                        {
-                            this.response =
-                                RecoveryServicesClient.PurgeProtection(
-                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
-                                Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
-                                Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems)
-                                );
-                        }
+                        this.response =
+                            RecoveryServicesClient.PurgeProtection(
+                            Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics),
+                            Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationProtectionContainers),
+                            Utilities.GetValueFromArmId(protectableItem.Properties.ReplicationProtectedItemId, ARMResourceTypeConstants.ReplicationProtectedItems)
+                            );
                     }
+                }
+
+                jobResponse =
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                WriteObject(new ASRJob(jobResponse.Job));
+
+                if (this.WaitForCompletion.IsPresent)
+                {
+                    this.WaitForJobCompletion(this.jobResponse.Job.Name);
 
                     jobResponse =
-                        RecoveryServicesClient
-                        .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+                    RecoveryServicesClient
+                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
                     WriteObject(new ASRJob(jobResponse.Job));
-
-                    if (this.WaitForCompletion.IsPresent)
-                    {
-                        this.WaitForJobCompletion(this.jobResponse.Job.Name);
-
-                        jobResponse =
-                        RecoveryServicesClient
-                        .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-                        WriteObject(new ASRJob(jobResponse.Job));
-                    }
-                });
+                }
+            }
         }
 
         /// <summary>

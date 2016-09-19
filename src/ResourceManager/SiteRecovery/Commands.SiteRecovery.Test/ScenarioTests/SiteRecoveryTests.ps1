@@ -360,3 +360,134 @@ function Test-SiteRecoveryVaultCRUDTests
 	$vaults = Get-AzureRmSiteRecoveryVault -ResourceGroupName rg1 -Name v2
 	Assert-True { $vaults.Count -eq 0 }
 }
+
+
+<#
+.SYNOPSIS
+Site Recovery Fabric Tests New model
+#>
+function Test-SiteRecoveryFabricTest
+{
+	# Enumerate vaults and set Azure Site Recovery Vault Settings
+	$vault = Get-AzureRmSiteRecoveryVault -ResourceGroupName ReleaseResourceGroup -Name ReleaseVault
+	Assert-NotNull($vault)
+	Assert-True { $vault.Count -gt 0 }
+	Assert-NotNull($vault.Name)
+	Assert-NotNull($vault.ID)
+	Set-AzureRmSiteRecoveryVaultSettings -ASRVault $vault
+
+	# Create Fabric
+	$job = New-AzureRmSiteRecoveryFabric -Name ReleaseFabric -Type HyperVSite
+	Assert-NotNull($job)
+
+	# Enumerate Fabrics
+	$fabrics =  Get-AzureRmSiteRecoveryFabric 
+	Assert-True { $fabrics.Count -gt 0 }
+	Assert-NotNull($fabrics)
+	foreach($fabric in $fabrics)
+	{
+		Assert-NotNull($fabrics.Name)
+		Assert-NotNull($fabrics.ID)
+	}
+
+	# Enumerate specific Fabric
+	$fabric =  Get-AzureRmSiteRecoveryFabric -Name ReleaseFabric
+	Assert-NotNull($fabric)
+	Assert-NotNull($fabrics.Name)
+	Assert-NotNull($fabrics.ID)
+
+	# Remove specific fabric
+	$job = Remove-AzureRmSiteRecoveryFabric -Fabric $fabric
+	Assert-NotNull($job)
+	WaitForJobCompletion -JobId $job.Name
+	$fabric =  Get-AzureRmSiteRecoveryFabric | Where-Object {$_.Name -eq "ReleaseFabric"}
+	Assert-Null($fabric)
+}
+
+
+<#
+.SYNOPSIS
+Site Recovery New model End to End
+#>
+function Test-SiteRecoveryNewModelE2ETest
+{
+	$JobQueryWaitTimeInSeconds = 30
+
+	# Enumerate vaults and set Azure Site Recovery Vault Settings
+	$vault = Get-AzureRmSiteRecoveryVault -ResourceGroupName ReleaseResourceGroup -Name ReleaseVault
+	Assert-NotNull($vault)
+	Assert-True { $vault.Count -eq 1 }
+	Assert-NotNull($vault.Name)
+	Assert-NotNull($vault.ID)
+	Set-AzureRmSiteRecoveryVaultSettings -ASRVault $vault
+
+	# Enumerate Fabrics
+	$fabrics =  Get-AzureRmSiteRecoveryFabric 
+	Assert-True { $fabrics.Count -gt 0 }
+	Assert-NotNull($fabrics)
+	foreach($fabric in $fabrics)
+	{
+		Assert-NotNull($fabrics.Name)
+		Assert-NotNull($fabrics.ID)
+	}
+
+	# Enumerate RSPs
+	$rsps = Get-AzureRmSiteRecoveryFabric | Get-AzureRmSiteRecoveryServicesProvider
+	Assert-True { $rsps.Count -gt 0 }
+	Assert-NotNull($rsps)
+	foreach($rsp in $rsps)
+	{
+		Assert-NotNull($rsp.Name)
+	}
+
+	$StorageAccountID = "/subscriptions/19b823e2-d1f3-4805-93d7-401c5d8230d5/resourceGroups/releaseresourcegroup/providers/Microsoft.Storage/storageAccounts/releasestorageav" 
+
+	# Create Policy
+	$currentJob = New-AzureRmSiteRecoveryPolicy -Name "PP1" -ReplicationProvider HyperVReplicaAzure -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -Encryption Disable -RecoveryAzureStorageAccountId $StorageAccountID 
+    $ProtectionProfile = Get-AzureRMSiteRecoveryPolicy -Name "PP1"
+	Assert-NotNull($ProtectionProfile)
+	Assert-NotNull($ProtectionProfile.Name)
+
+	# Get conatiners
+	$ProtectionContainers = Get-AzureRmSiteRecoveryFabric | Get-AzureRmSiteRecoveryProtectionContainer
+	$PrimaryContainer = $ProtectionContainers | where { $_.FriendlyName -eq "hark-123" }
+	Assert-NotNull($PrimaryContainer)
+	Assert-NotNull($PrimaryContainer.Name)
+
+	# Create new Conatiner mapping 
+	$currentJob = New-AzureRmSiteRecoveryProtectionContainerMapping -Name $("hark123" + "PP1") -Policy $ProtectionProfile -PrimaryProtectionContainer $PrimaryContainer
+
+	# Get container mapping
+	$ProtectionContainerMapping = Get-AzureRmSiteRecoveryProtectionContainerMapping -Name $("hark123" + "PP1") -ProtectionContainer $PrimaryContainer
+	Assert-NotNull($ProtectionContainerMapping)
+	Assert-NotNull($ProtectionContainerMapping.Name)
+
+	# Get protectable item
+	$protectable = Get-AzureRmSiteRecoveryProtectableItem -ProtectionContainer $PrimaryContainer -FriendlyName "vm3"
+	Assert-NotNull($protectable)
+	Assert-NotNull($protectable.Name)
+
+	# New replication protected item
+	$currentJob = New-AzureRmSiteRecoveryReplicationProtectedItem -ProtectableItem $protectable -Name $protectable.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID
+	Assert-NotNull($currentJob)
+
+	# Get replication protected item
+	$protected = Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectionContainer $PrimaryContainer -Name $protectable.Name
+	Assert-NotNull($protected)
+	Assert-NotNull($protected.Name)
+
+	# Remove protected item
+	$currentJob = Remove-AzureRmSiteRecoveryReplicationProtectedItem -ReplicationProtectedItem $protected -Force -Confirm:$false
+	$protected = Get-AzureRmSiteRecoveryReplicationProtectedItem -ProtectionContainer $PrimaryContainer | Where-Object {$_.Name -eq $protectable.Name} 
+	Assert-Null($protected)
+
+	# Remove conatiner mapping
+	$currentJob = Remove-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainerMapping $ProtectionContainerMapping
+	$ProtectionContainerMapping = Get-AzureRmSiteRecoveryProtectionContainerMapping -ProtectionContainer $PrimaryContainer | Where-Object {$_.Name -eq $("hark123" + "PP1")}
+	Assert-Null($ProtectionContainerMapping)
+
+	# Remove Policy
+	$currentJob = Remove-AzureRMSiteRecoveryPolicy -Policy $ProtectionProfile
+	$ProtectionProfile = Get-AzureRMSiteRecoveryPolicy | Where-Object {$_.Name -eq "PP1"}
+	Assert-Null($ProtectionProfile)
+}
