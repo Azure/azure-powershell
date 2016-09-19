@@ -462,6 +462,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
         }
 
+        public void CreateCredential(string accountName, string databaseName,
+            string credentialName, string userId, string password, string hostUri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCredentialPassword(string accountName, string databaseName,
+            string credentialName, string userId, string password, string newPassword, string hostUri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
+        {
+            throw new NotImplementedException();
+        }
+        
+
         public IList<CatalogItem> GetCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
         {

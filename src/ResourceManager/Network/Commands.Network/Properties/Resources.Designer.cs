@@ -185,7 +185,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("CreatingResourceMessage", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adding Resource.
+        /// </summary>
+        public static string AddingResourceMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("AddingResourceMessage", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>

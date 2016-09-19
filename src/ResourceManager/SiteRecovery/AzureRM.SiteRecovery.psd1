@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '2.1.0'
+ModuleVersion = '3.0.0'
   
 # ID used to uniquely identify this module  
 GUID = 'd1de7560-48e1-48f3-bc8c-4eea3af2bbe1'  
@@ -88,7 +88,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @("Azure", "ResourceManager", "ARM", "SiteRecovery")
 
         # A URL to the license for this module.
         LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
