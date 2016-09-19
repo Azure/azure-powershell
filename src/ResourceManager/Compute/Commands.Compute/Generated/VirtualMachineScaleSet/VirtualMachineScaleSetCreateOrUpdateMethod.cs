@@ -121,7 +121,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetCreateOrUpdate";
-
             if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsCommon.New))
             {
                 base.ProcessRecord();
