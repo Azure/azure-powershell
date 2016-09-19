@@ -1,3 +1,7 @@
+﻿## 2016.09.16 version 2.2.0
+* Network
+  - New switch parameter added for network interface to enable/Disable accelerated networking -New-AzureRmNetworkInterface -EnableAcceleratedNetworking
+
 ## 2016.09.08 version 2.1.0
 * Data Factory
   - New cmdlet added to retrieve activity windows: Get-AzureRmDataFactoryActivityWindow
