@@ -129,7 +129,7 @@ Tests that when turning off auditing or marking it as "use server default" , thr
 function Test-DisablingThreatDetection
 {
 	# Setup
-	$testSuffix = 7011
+	$testSuffix = 7019
 	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -207,13 +207,13 @@ function Test-InvalidArgumentsThreatDetection
 
 <#
 .SYNOPSIS
-Tests that thread detection doesn't work on 0.2 servers
+Tests that thread detection doesn't work on 2.0 servers
 #>
 function Test-ThreatDetectionOnV2Server
 {
 	# Setup
-	$testSuffix = 5007
-	Create-TestEnvironment $testSuffix "Japan East" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
+	$testSuffix = 5023
+	Create-TestEnvironment $testSuffix "West Europe" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
@@ -224,7 +224,7 @@ function Test-ThreatDetectionOnV2Server
 
 		 Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
 		 Assert-Throws {Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName} 
-		 Assert-Throws {Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName} 
+		 Assert-Throws {Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName} 
 
 	}
 	finally

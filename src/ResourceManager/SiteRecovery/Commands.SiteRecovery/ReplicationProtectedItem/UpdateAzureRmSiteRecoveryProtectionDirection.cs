@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureSiteRecoveryProtection : SiteRecoveryCmdletBase
+    public class UpdateAzureRmSiteRecoveryProtection : SiteRecoveryCmdletBase
     {
         /// <summary>
         /// Gets or sets Name of the PE.
@@ -57,10 +57,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
+        /// Gets or sets Replication Protected Item.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
+
+        /// <summary>
         /// Gets or sets Failover direction for the recovery plan.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByRPObject, Mandatory = true)]
         [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject, Mandatory = true)]
         [ValidateSet(
             Constants.PrimaryToRecovery,
             Constants.RecoveryToPrimary)]
@@ -78,10 +86,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             switch (this.ParameterSetName)
             {
                 case ASRParameterSets.ByPEObject:
+                    this.WriteWarningWithTimestamp(Properties.Resources.ParameterSetWillBeDeprecatedSoon);
                     this.protectionEntityName = this.ProtectionEntity.Name;
                     this.protectionContainerName = this.ProtectionEntity.ProtectionContainerId;
                     this.fabricName = Utilities.GetValueFromArmId(this.ProtectionEntity.ID, ARMResourceTypeConstants.ReplicationFabrics);
                     this.SetPEReprotect();
+                    break;
+                case ASRParameterSets.ByRPIObject:
+                    this.protectionContainerName = 
+                        Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationProtectionContainers);
+                    this.fabricName = Utilities.GetValueFromArmId(this.ReplicationProtectedItem.ID, ARMResourceTypeConstants.ReplicationFabrics);
+                    this.SetRPIReprotect();
                     break;
                 case ASRParameterSets.ByRPObject:
                     this.SetRPReprotect();
@@ -147,6 +162,73 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 this.fabricName,
                 this.protectionContainerName,
                 Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Id, ARMResourceTypeConstants.ReplicationProtectedItems),
+                input);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
+        }
+
+        /// <summary>
+        /// RPI Reprotect.
+        /// </summary>
+        private void SetRPIReprotect()
+        {
+            ReverseReplicationInputProperties plannedFailoverInputProperties = new ReverseReplicationInputProperties()
+            {
+                FailoverDirection = this.Direction,
+                ProviderSpecificDetails = new ReverseReplicationProviderSpecificInput()
+            };
+
+            ReverseReplicationInput input = new ReverseReplicationInput()
+            {
+                Properties = plannedFailoverInputProperties
+            };
+
+            // fetch the latest Protectable item objects
+            ReplicationProtectedItemResponse replicationProtectedItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryReplicationProtectedItem(this.fabricName,
+                        this.protectionContainerName, this.ReplicationProtectedItem.Name);
+
+            ProtectableItemResponse protectableItemResponse =
+                        RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(this.fabricName, this.protectionContainerName,
+                        Utilities.GetValueFromArmId(replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProtectableItemId, 
+                        ARMResourceTypeConstants.ProtectableItems));
+
+            var aSRProtectableItem = new ASRProtectableItem(protectableItemResponse.ProtectableItem);
+
+            if (0 == string.Compare(
+                this.ReplicationProtectedItem.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    HyperVReplicaAzureReprotectInput reprotectInput = new HyperVReplicaAzureReprotectInput()
+                    {
+                        HvHostVmId = aSRProtectableItem.FabricObjectId,
+                        VmName = aSRProtectableItem.FriendlyName,
+                        OSType = ((string.Compare(aSRProtectableItem.OS, "Windows") == 0) || 
+                                    (string.Compare(aSRProtectableItem.OS, "Linux") == 0)) ? aSRProtectableItem.OS : "Windows",
+                        VHDId = aSRProtectableItem.OSDiskId
+                    };
+
+                    HyperVReplicaAzureReplicationDetails providerSpecificDetails =
+                           (HyperVReplicaAzureReplicationDetails)replicationProtectedItemResponse.ReplicationProtectedItem.Properties.ProviderSpecificDetails;
+
+                    reprotectInput.StorageAccountId = providerSpecificDetails.RecoveryAzureStorageAccount;
+
+                    input.Properties.ProviderSpecificDetails = reprotectInput;
+                }
+            }
+
+            LongRunningOperationResponse response =
+                RecoveryServicesClient.StartAzureSiteRecoveryReprotection(
+                this.fabricName,
+                this.protectionContainerName,
+                this.ReplicationProtectedItem.Name,
                 input);
 
             JobResponse jobResponse =
