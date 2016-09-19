@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoveryNetworkMapping")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRMSiteRecoveryNetworkMapping : SiteRecoveryCmdletBase
+    public class RemoveAzureRmSiteRecoveryNetworkMapping : SiteRecoveryCmdletBase
     {
         #region Parameters
         /// <summary>
