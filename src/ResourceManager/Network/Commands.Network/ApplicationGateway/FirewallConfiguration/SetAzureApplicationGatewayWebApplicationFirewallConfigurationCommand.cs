@@ -12,34 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    public class SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", "WAF", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Tier { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway instance count")]
-        [ValidateNotNullOrEmpty]
-        public int Capacity { get; set; }
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The application gateway")]
+        public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.Enabled = this.Enabled;
+            this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
+
+            WriteObject(this.ApplicationGateway);
         }
     }
 }

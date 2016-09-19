@@ -16,27 +16,21 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayWebApplicationFirewallConfigurationBase : NetworkBaseCmdlet
     {
         [Parameter(
                Mandatory = true,
-               HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", IgnoreCase = true)]
+               HelpMessage = "Whether web application firewall functionality is enabled")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public bool Enabled { get; set; }
 
         [Parameter(
                Mandatory = true,
-               HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", "WAF", IgnoreCase = true)]
+               HelpMessage = "Web application firewall mode")]
+        [ValidateSet("Detection", "Prevention", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string Tier { get; set; }
+        public string FirewallMode { get; set; }
 
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway instance count")]
-        [ValidateNotNullOrEmpty]
-        public int Capacity { get; set; }
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
