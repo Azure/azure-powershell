@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -195,8 +196,15 @@ namespace Microsoft.Azure.Commands.Compute.Common
             var wadCfgProperty = properties.FirstOrDefault(p => p.Equals(WadCfg, StringComparison.OrdinalIgnoreCase));
             var wadCfgBlobProperty = properties.FirstOrDefault(p => p.Equals(WadCfgBlob, StringComparison.OrdinalIgnoreCase));
             var xmlCfgProperty = properties.FirstOrDefault(p => p.Equals(EncodedXmlCfg, StringComparison.OrdinalIgnoreCase));
+            var storageAccountProperty = properties.FirstOrDefault(p => p.Equals(StorageAccount, StringComparison.OrdinalIgnoreCase));
 
             var hashTable = new Hashtable();
+
+            if (string.IsNullOrEmpty(storageAccountName) && storageAccountProperty != null)
+            {
+                storageAccountName = (string)publicConfig[storageAccountProperty];
+            }
+
             hashTable.Add(StorageAccount, storageAccountName);
 
             if (wadCfgProperty != null && publicConfig[wadCfgProperty] is JObject)
@@ -577,6 +585,80 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             var scheme = context.BlobEndPoint.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ? "https://" : "http://";
             return scheme + context.EndPointSuffix;
+        }
+
+        /// <summary>
+        /// Parse public and private configurations, and automatically resolve storage key for private configuration.
+        /// </summary>
+        /// <param name="publicConfigPath">Public configuration file path</param>
+        /// <param name="privateConfigPath">Private configuration file path, can be empty</param>
+        /// <param name="storageClient">Storage client</param>
+        /// <returns>A tuple with public configuration as first element and private configuration as second element</returns>
+        public static Tuple<Hashtable, Hashtable> GetConfigurationsFromFiles(string publicConfigPath, string privateConfigPath, string resourceId, Cmdlet cmdlet, IStorageManagementClient storageClient)
+        {
+            var publicConfig = GetPublicConfigFromJsonFile(publicConfigPath, null, resourceId, cmdlet);
+            var privateConfig = string.IsNullOrEmpty(privateConfigPath) ? new Hashtable() :
+                JsonConvert.DeserializeObject<Hashtable>(File.ReadAllText(privateConfigPath));
+
+            // Resolve storage account name
+            // Storage account name must be provided in public config
+            var storageAccountName = publicConfig[StorageAccount] as string;
+            if (string.IsNullOrEmpty(storageAccountName))
+            {
+                throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountName);
+            }
+
+            privateConfig[StorageAccountNameTag] = storageAccountName;
+
+            // Resolve storage account key
+            var storageAccountKey = InitializeStorageAccountKey(storageClient, storageAccountName, privateConfigPath);
+            if (string.IsNullOrEmpty(storageAccountKey))
+            {
+                storageAccountKey = privateConfig[StorageAccountKeyTag] as string;
+
+                if (string.IsNullOrEmpty(storageAccountKey))
+                {
+                    // Throw exception if no storage key provided in private config and cannot retrieve it from server
+                    throw new ArgumentException(Properties.Resources.DiagnosticsExtensionNullStorageAccountKey);
+                }
+            }
+            else
+            {
+                // If storage key can be retrieved, use that one.
+                privateConfig[StorageAccountKeyTag] = storageAccountKey;
+            }
+
+
+            // Resolve storage account endpoint
+            var storageAccountEndpoint = InitializeStorageAccountEndpoint(storageAccountName, storageAccountKey, storageClient);
+            if (string.IsNullOrEmpty(storageAccountEndpoint))
+            {
+                storageAccountEndpoint = privateConfig[StorageAccountEndPointTag] as string;
+
+                if (string.IsNullOrEmpty(storageAccountEndpoint))
+                {
+                    // Throw exception if no storage endpoint provided in private config and cannot retrieve it from server
+                    throw new ArgumentNullException(Properties.Resources.DiagnosticsExtensionNullStorageAccountEndpoint);
+                }
+            }
+            else
+            {
+                // If storage account endpoint can be retrieved, use that one.
+                privateConfig[StorageAccountEndPointTag] = storageAccountEndpoint;
+            }
+
+            return new Tuple<Hashtable, Hashtable>(publicConfig, privateConfig);
+        }
+
+        /// <summary>
+        /// Check if a VMSS extension is diagnostics extension.
+        /// </summary>
+        /// <param name="extension">VMSS extension</param>
+        /// <returns>Whether the VMSS extension is diagnostics extension</returns>
+        public static bool IsDiagnosticsExtension(VirtualMachineScaleSetExtension extension)
+        {
+            return extension.Publisher.Equals(DiagnosticsExtensionConstants.ExtensionPublisher, StringComparison.InvariantCultureIgnoreCase) &&
+                extension.Type.Equals(DiagnosticsExtensionConstants.ExtensionType, StringComparison.InvariantCultureIgnoreCase);
         }
     }
 }

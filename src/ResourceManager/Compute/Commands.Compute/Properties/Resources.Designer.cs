@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("ChefExtensionNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
@@ -351,6 +351,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No matching diagnostics extension found..
+        /// </summary>
+        public static string DiagnosticsExtensionNotFoundForVMSS {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionNotFoundForVMSS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account endpoint is not defined or can not be retrieved automatically..
         /// </summary>
         public static string DiagnosticsExtensionNullStorageAccountEndpoint {
@@ -374,6 +383,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionNullStorageAccountName {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionNullStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwriting existing diagnostics extension..
+        /// </summary>
+        public static string DiagnosticsExtensionOverwriting {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
             }
         }
         
