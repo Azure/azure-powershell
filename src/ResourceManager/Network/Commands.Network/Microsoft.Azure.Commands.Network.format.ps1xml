@@ -310,6 +310,10 @@
                 <Label>EnableIPForwarding</Label>
                 <PropertyName>EnableIPForwarding</PropertyName>
               </ListItem>
+			        <ListItem>
+                <Label>AcceleratedNetworkingEnabled</Label>
+                <PropertyName>AcceleratedNetworkingEnabled</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>NetworkSecurityGroup</Label>
                 <PropertyName>NetworkSecurityGroupText</PropertyName>
