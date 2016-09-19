@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceCreateOrUpdate";
-            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsCommon.New))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsCommon.New))
             {
                 base.ProcessRecord();
             }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "ContainerServiceCreateOrUpdate";
-            if (ShouldProcess(this.dynamicParameters["Name"].Value.ToString(), VerbsData.Update))
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.Update))
             {
                 base.ProcessRecord();
             }
