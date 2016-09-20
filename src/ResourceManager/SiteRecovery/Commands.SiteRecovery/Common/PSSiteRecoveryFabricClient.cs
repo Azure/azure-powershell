@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             FabricCreationInputProperties fabricCreationInputProperties = new FabricCreationInputProperties()
             {
-                FabricType = fabricType,
+                CustomDetails = new FabricSpecificCreationSettings()
             };
 
             FabricCreationInput fabricCreationInput = new FabricCreationInput()
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Purge Azure Site Recovery Fabric.
         /// </summary>
-        /// <param name="PurgeAzureSiteRecoveryFabric">Policy Input</param>
+        /// <param name="fabricName">Fabric name</param>
         /// <returns>Long operation response</returns>
         public LongRunningOperationResponse PurgeAzureSiteRecoveryFabric(string fabricName)
         {

@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         #region Parameters
 
         /// <summary>
+        /// Gets or sets Name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets primary storage classification.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
@@ -49,12 +56,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            string armName = string.Format(
-                    "StrgMap_{0}_{1}_{2}",
-                    PrimaryStorageClassification.Name,
-                    RecoveryStorageClassification.Name,
-                    Guid.NewGuid());
-
             var props = new StorageClassificationMappingInputProperties()
             {
                 TargetStorageClassificationId = RecoveryStorageClassification.Id
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
                 input,
-                armName);
+                this.Name);
 
             JobResponse jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
