@@ -44,12 +44,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             Id = apiServiceResource.Id;
             Name = apiServiceResource.Name;
             Location = apiServiceResource.Location;
-            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.Properties.SkuProperties.SkuType);
-            Capacity = apiServiceResource.Properties.SkuProperties.Capacity ?? 1;
+            Sku = Mapper.Map<SkuType, PsApiManagementSku>(apiServiceResource.SkuProperties.SkuType);
+            Capacity = apiServiceResource.SkuProperties.Capacity ?? 1;
             ProvisioningState = apiServiceResource.Properties.ProvisioningState;
             RuntimeUrl = apiServiceResource.Properties.ProxyEndpoint;
             PortalUrl = apiServiceResource.Properties.ManagementPortalEndpoint;
             StaticIPs = apiServiceResource.Properties.StaticIPs.ToArray();
+            VpnType = Mapper.Map<VirtualNetworkType, PsApiManagementVpnType>(apiServiceResource.Properties.VpnType);
 
             if (apiServiceResource.Properties.AdditionalRegions != null)
             {
@@ -76,6 +77,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 if (proxyHostnameResource != null)
                 {
                     ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                }
+
+                var managementHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
+                if (managementHostnameResource != null)
+                {
+                    ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
+                }
+
+                var scmHostnameResource = apiServiceResource.Properties.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Kudu);
+                if (scmHostnameResource != null)
+                {
+                    ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
                 }
             }
 
@@ -105,9 +118,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        public PsApiManagementVpnType VpnType { get; set; }
+
         public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
         public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
+
+        public PsApiManagementHostnameConfiguration ManagementHostnameConfiguration { get; set; }
+
+        public PsApiManagementHostnameConfiguration ScmHostnameConfiguration { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
