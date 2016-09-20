@@ -54,7 +54,12 @@ namespace Microsoft.Azure.Commands.Network
             var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
             if (getvirtualnetGateway.Sku.Tier.Equals(this.GatewaySku))
             {
-                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:{0} requested. No need to resize!", this.GatewaySku);
+                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:"+ this.GatewaySku + " requested. No need to resize!");
+            }
+
+            if (this.VirtualNetworkGateway.ActiveActive && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            {
+                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature is already enabled on gateway.");
             }
 
             this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();

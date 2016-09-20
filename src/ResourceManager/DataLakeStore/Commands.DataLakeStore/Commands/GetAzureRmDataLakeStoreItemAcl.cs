@@ -13,12 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAcl))]
     [Alias("Get-AdlStoreItemAcl")]
+    [Obsolete("This cmdlet will be removed in a future release. Use Get-AzureRMDataLakeStoreItemAclEntry to experience the new behavior.")]
     public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,

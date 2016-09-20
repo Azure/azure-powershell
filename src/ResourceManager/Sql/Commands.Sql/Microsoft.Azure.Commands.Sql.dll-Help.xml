@@ -16071,14 +16071,35 @@ RecommendedActions             : {}</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AuditActionGroup</maml:name>
 				<maml:description>
-					<maml:para />
-				</maml:description>
+          <maml:para>A list of AuditActionGroup, this parameter is relevant only if the AuditType is 'Blob'. Valid values are:</maml:para>
+          <maml:para>-- BATCH_STARTED_GROUP</maml:para>
+          <maml:para>-- BATCH_COMPLETED_GROUP</maml:para>
+          <maml:para>-- APPLICATION_ROLE_CHANGE_PASSWORD_GROUP</maml:para>
+          <maml:para>-- AUDIT_CHANGE_GROUP</maml:para>
+          <maml:para>-- BACKUP_RESTORE_GROUP</maml:para>
+          <maml:para>-- DATABASE_LOGOUT_GROUP</maml:para>
+          <maml:para>-- DATABASE_OBJECT_CHANGE_GROUP</maml:para>
+          <maml:para>-- DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP</maml:para>
+          <maml:para>-- DATABASE_OBJECT_PERMISSION_CHANGE_GROUP</maml:para>
+          <maml:para>-- DATABASE_OPERATION_GROUP</maml:para>
+          <maml:para>-- DATABASE_PERMISSION_CHANGE_GROUP</maml:para>
+          <maml:para>-- DATABASE_PRINCIPAL_CHANGE_GROUP</maml:para>
+          <maml:para>-- DATABASE_PRINCIPAL_IMPERSONATION_GROUP</maml:para>
+          <maml:para>-- DATABASE_ROLE_MEMBER_CHANGE_GROUP</maml:para>
+          <maml:para>-- FAILED_DATABASE_AUTHENTICATION_GROUP</maml:para>
+          <maml:para>-- SCHEMA_OBJECT_ACCESS_GROUP</maml:para>
+          <maml:para>-- SCHEMA_OBJECT_CHANGE_GROUP</maml:para>
+          <maml:para>-- SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP</maml:para>
+          <maml:para>-- SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP</maml:para>
+          <maml:para>-- SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP</maml:para>
+          <maml:para>-- USER_CHANGE_PASSWORD_GROUP</maml:para>
+        </maml:description>
 				<command:parameterValue required="true" variableLength="true">AuditActionGroups[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>AuditAction</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>A list of AuditAction specifications. This parameter is relevant only when the AuditType is 'Blob'.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
@@ -16098,7 +16119,7 @@ RecommendedActions             : {}</maml:para>
 					<maml:para>-- TransactionManagement_Failure</maml:para>
 					<maml:para>-- All</maml:para>
 					<maml:para>-- None</maml:para>
-					<maml:para>You can specify several event types. You can specify All to audit all of the event types or None to specify that no events will be audited. If you specify All or None at the same time, the cmdlet fails to run.</maml:para>
+					<maml:para>You can specify several event types. You can specify All to audit all of the event types or None to specify that no events will be audited. If you specify All or None at the same time, the cmdlet fails to run. This parameter is relevant only when the AuditType is 'Table'.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			</command:parameter>
@@ -16129,7 +16150,7 @@ RecommendedActions             : {}</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>TableIdentifier</maml:name>
 				<maml:description>
-					<maml:para>Specifies the name of the audit logs table. Specify this value if you specify a value greater than zero for the RetentionInDays parameter.</maml:para>
+					<maml:para>Specifies the name of the audit logs table. Specify this value if you specify a value greater than zero for the RetentionInDays parameter. This parameter is relevant only when the AuditType is 'Table'.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -16184,7 +16205,28 @@ RecommendedActions             : {}</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AuditActionGroup</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>A list of AuditActionGroup, this parameter is relevant only if the AuditType is 'Blob'. Valid values are:</maml:para>
+        <maml:para>-- BATCH_STARTED_GROUP</maml:para>
+				<maml:para>-- BATCH_COMPLETED_GROUP</maml:para>
+				<maml:para>-- APPLICATION_ROLE_CHANGE_PASSWORD_GROUP</maml:para>
+        <maml:para>-- AUDIT_CHANGE_GROUP</maml:para>
+        <maml:para>-- BACKUP_RESTORE_GROUP</maml:para>
+        <maml:para>-- DATABASE_LOGOUT_GROUP</maml:para>
+        <maml:para>-- DATABASE_OBJECT_CHANGE_GROUP</maml:para>
+        <maml:para>-- DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP</maml:para>
+        <maml:para>-- DATABASE_OBJECT_PERMISSION_CHANGE_GROUP</maml:para>
+        <maml:para>-- DATABASE_OPERATION_GROUP</maml:para>
+        <maml:para>-- DATABASE_PERMISSION_CHANGE_GROUP</maml:para>
+        <maml:para>-- DATABASE_PRINCIPAL_CHANGE_GROUP</maml:para>
+        <maml:para>-- DATABASE_PRINCIPAL_IMPERSONATION_GROUP</maml:para>
+        <maml:para>-- DATABASE_ROLE_MEMBER_CHANGE_GROUP</maml:para>
+        <maml:para>-- FAILED_DATABASE_AUTHENTICATION_GROUP</maml:para>
+        <maml:para>-- SCHEMA_OBJECT_ACCESS_GROUP</maml:para>
+        <maml:para>-- SCHEMA_OBJECT_CHANGE_GROUP</maml:para>
+        <maml:para>-- SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP</maml:para>
+        <maml:para>-- SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP</maml:para>
+        <maml:para>-- SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP</maml:para>
+        <maml:para>-- USER_CHANGE_PASSWORD_GROUP</maml:para>       
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">AuditActionGroups[]</command:parameterValue>
 			<dev:type>
@@ -16196,8 +16238,8 @@ RecommendedActions             : {}</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>AuditAction</maml:name>
 			<maml:description>
-				<maml:para />
-			</maml:description>
+        <maml:para>A list of AuditAction specifications. This parameter is relevant only when the AuditType is 'Blob'.</maml:para>
+      </maml:description>
 			<command:parameterValue required="true" variableLength="true">String[]</command:parameterValue>
 			<dev:type>
 				<maml:name>String[]</maml:name>

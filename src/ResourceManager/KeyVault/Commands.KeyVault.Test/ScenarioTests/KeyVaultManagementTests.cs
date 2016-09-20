@@ -15,6 +15,7 @@
 
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -22,6 +23,7 @@ using System;
 using System.IO;
 using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         private void Initialize()
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["ResourceGroupName"] = _data.resourceGroupName;
                 HttpMockServer.Variables["Location"] = _data.location;
@@ -631,7 +633,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #region Helper Methods
         private string GetUser(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
                 return environment.AuthorizationContext.UserId;
@@ -644,7 +646,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 var user = controllerAdmin.GraphClient.Users.Get(upn);
                 HttpMockServer.Variables["ObjectId"] = user.ObjectId;
@@ -661,7 +663,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             if (appNum < 0)
                 throw new ArgumentException("Invalid appNum");
             string variableName = "AppId" + appNum;
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 Guid appId = Guid.NewGuid();
                 HttpMockServer.Variables[variableName] = appId.ToString();

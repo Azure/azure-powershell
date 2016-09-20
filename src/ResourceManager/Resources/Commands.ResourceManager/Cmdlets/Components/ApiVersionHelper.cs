@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 {
     using Entities.Providers;
     using Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 getFirstPage: () => resourceManagerClient
                     .ListObjectColleciton<ResourceProviderDefinition>(
                         resourceCollectionId: resourceCollectionId,
-                        apiVersion: Constants.DefaultApiVersion,
+                        apiVersion: Constants.ProvidersApiVersion,
                         cancellationToken: cancellationToken),
                 getNextPage: nextLink => resourceManagerClient
                     .ListNextBatch<ResourceProviderDefinition>(
