@@ -24,6 +24,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -485,8 +486,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             while (job.State != JobState.Completed || DateTime.Now > timeout)
             {
                 job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
-                
-                Sleep(20000);
+
+                TestMockSupport.Delay(20000);
             }
             
             return job;
