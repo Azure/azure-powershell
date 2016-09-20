@@ -17,6 +17,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Hyak.Common;
+using Microsoft.Azure.Management.SiteRecovery.Models;
+using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -100,28 +103,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            PolicyListResponse profileListResponse =
-                 RecoveryServicesClient.GetAzureSiteRecoveryPolicy();
-            bool found = false;
-
-            foreach (Policy policy in profileListResponse.Policies)
+            try
             {
-                if (0 == string.Compare(this.Name, policy.Name, true))
-                {
-                    var policyByName = RecoveryServicesClient.GetAzureSiteRecoveryPolicy(policy.Name).Policy;
-                    this.WritePolicy(policyByName);
+                var policyResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryPolicy(this.Name);
 
-                    found = true;
+                if (policyResponse.Policy != null)
+                {
+                    this.WritePolicy(policyResponse.Policy);
                 }
             }
-
-            if (!found)
+            catch (CloudException ex)
             {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.PolicyNotFound,
-                    this.Name,
-                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+                if (string.Compare(ex.Error.Code, "NotFound", StringComparison.OrdinalIgnoreCase) == 0)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(
+                        Properties.Resources.PolicyNotFound,
+                        this.Name,
+                        PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
 
