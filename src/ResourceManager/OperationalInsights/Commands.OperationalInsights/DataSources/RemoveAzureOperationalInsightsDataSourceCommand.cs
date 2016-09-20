@@ -44,6 +44,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public override SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
 
