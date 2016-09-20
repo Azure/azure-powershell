@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            string mappingName = string.IsNullOrEmpty(this.Name) ?
+                string.Format("StrgMap_{0}_{1}_{2}", PrimaryStorageClassification.Name, RecoveryStorageClassification.Name, Guid.NewGuid()) :
+                this.Name;
+
             var props = new StorageClassificationMappingInputProperties()
             {
                 TargetStorageClassificationId = RecoveryStorageClassification.Id
@@ -70,7 +74,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 RecoveryServicesClient.MapStorageClassification(
                 PrimaryStorageClassification,
                 input,
-                this.Name);
+                mappingName);
 
             JobResponse jobResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryJobDetails(
