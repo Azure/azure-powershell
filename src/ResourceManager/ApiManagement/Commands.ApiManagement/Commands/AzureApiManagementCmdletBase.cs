@@ -13,6 +13,8 @@
 //  limitations under the License.
 //
 
+using System.Threading;
+
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;

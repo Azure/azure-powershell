@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Specification format (Wadl, Swagger). This parameter is required.")]
+            HelpMessage = "Specification format (Wadl, Swagger, Wsdl). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
@@ -67,15 +67,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Web API Path. Last part of the API's public URL. This URL will be used by API consumers for sending requests to the web service. Must be 1 to 400 characters long. This parameter is optional. Default value is $null.")]
         public String Path { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Local name of WSDL Service to be imported. Must be 1 to 400 characters long." +
+                          " This parameter is optional and only required for importing Wsdl . Default value is $null.")]
+        public String WsdlServiceName { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false, 
+            HelpMessage = "Local name of WSDL Endpoint (port) to be imported." +
+            " Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.")]
+        public String WsdlEndpointName { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             if (ParameterSetName.Equals(FromLocalFile))
             {
-                Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path);
+                Client.ApiImportFromFile(Context, ApiId, SpecificationFormat, SpecificationPath, Path, WsdlServiceName, WsdlEndpointName);
             }
             else if (ParameterSetName.Equals(FromUrl))
             {
-                Client.ApiImportFromUrl(Context, ApiId, SpecificationFormat, SpecificationUrl, Path);
+                Client.ApiImportFromUrl(Context, ApiId, SpecificationFormat, SpecificationUrl, Path, WsdlServiceName, WsdlEndpointName);
             }
             else
             {
