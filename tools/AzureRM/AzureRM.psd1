@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.psm1'
 
 # Version number of this module.  
-ModuleVersion = '2.1.0'  
+ModuleVersion = '2.2.0'  
   
 # ID used to uniquely identify this module  
 GUID = 'B433E830-B479-4F7F-9C80-9CC6C28E1B51'  
@@ -69,7 +69,7 @@ RequiredModules = @(
     @{ ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '2.1.0'},
     @{ ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.10.0'},
     @{ ModuleName = 'AzureRM.Media'; RequiredVersion = '0.2.0'},
-    @{ ModuleName = 'AzureRM.Network'; RequiredVersion = '2.1.0'},
+    @{ ModuleName = 'AzureRM.Network'; RequiredVersion = '2.2.0'},
     @{ ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '2.1.0'},
     @{ ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '2.1.0'},
     @{ ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '2.1.0'},
