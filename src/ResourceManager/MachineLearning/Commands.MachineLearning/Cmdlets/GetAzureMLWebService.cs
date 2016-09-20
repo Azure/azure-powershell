@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -48,25 +49,27 @@ namespace Microsoft.Azure.Commands.MachineLearning
             }
             else
             {
-                IList<WebService> services;
-                if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                // This is a collection of web services get call, so determine which flavor it is
+                Func<Task<ResponseWithContinuation<WebService[]>>> getFirstServicesPageCall = () => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAsync(null, this.CancellationToken);
+                Func<string, Task<ResponseWithContinuation<WebService[]>>> getNextPageCall = nextLink => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAsync(nextLink, this.CancellationToken);
+                if (this.ResourceGroupName != null)
                 {
-                    services = this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAndGroupAsync(
-                                                        this.ResourceGroupName,
-                                                        null,
-                                                        this.CancellationToken).Result;
-                }
-                else
-                {
-                    services = this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAsync(
-                                                        null,
-                                                        this.CancellationToken).Result;
+                    // This is a call for resource retrieval within a resource group
+                    getFirstServicesPageCall = () => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAndGroupAsync(this.ResourceGroupName, null, this.CancellationToken);
+                    getNextPageCall = nextLink => this.WebServicesClient.GetAzureMlWebServicesBySubscriptionAndGroupAsync(this.ResourceGroupName, nextLink, this.CancellationToken);
                 }
 
-                foreach (var service in services)
-                {
-                    this.WriteObject(service, true);
-                }
+                PaginatedResponseHelper.ForEach<WebService>(
+                    getFirstPage: getFirstServicesPageCall,
+                    getNextPage: getNextPageCall,
+                    cancellationToken: this.CancellationToken,
+                    action: webServices =>
+                    {
+                        foreach (var service in webServices)
+                        {
+                            this.WriteObject(service, true);
+                        }
+                    });
             }
         }
     }
