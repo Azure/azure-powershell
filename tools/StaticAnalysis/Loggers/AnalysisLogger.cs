@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace StaticAnalysis
@@ -23,10 +24,54 @@ namespace StaticAnalysis
     /// <summary>
     /// Abstract class to implement the report logging structure
     /// </summary>
-    public abstract class AnalysisLogger
+    public class AnalysisLogger
     {
         string _baseDirectory;
         string _exceptionsDirectory;
+        private static string _defaultLogName;
+        private static Dictionary<string, AnalysisLogger> _logDictionary;
+
+        private log4net.ILog Log4NetLogger { get; set; }
+
+        private static Dictionary<string, AnalysisLogger> LogDictionary
+        {
+            get
+            {
+                if(_logDictionary == null)
+                {
+                    _logDictionary = new Dictionary<string, AnalysisLogger>();
+                }
+
+                return _logDictionary;
+            }
+        }
+            
+        /// <summary>
+        /// Factory to get logger
+        /// </summary>
+        /// <param name="loggerName">Name of logger that was either created earlier or needs to be created</param>
+        /// <returns>AnalysisLogger</returns>
+        private static AnalysisLogger GetLogger(string loggerName)
+        {
+            //TODO: Once logger is simplified throughout application, factory method can be enabled
+            AnalysisLogger log;
+            if (!string.IsNullOrEmpty(loggerName))
+            {
+                if (!LogDictionary.TryGetValue(loggerName, out log))
+                {
+                    _defaultLogName = loggerName;
+                    log = new AnalysisLogger(Assembly.GetEntryAssembly().Location);
+                    LogDictionary.Add(loggerName, log);
+                }
+            }
+            else
+            {
+                LogDictionary.TryGetValue(_defaultLogName, out log);
+            }
+
+            return log;
+        }
+
 
         /// <summary>
         /// Create an analysis logger that will write reports to the given directory
@@ -37,60 +82,30 @@ namespace StaticAnalysis
         {
             _baseDirectory = baseDirectory;
             _exceptionsDirectory = exceptionsDirectory;
+            _defaultLogName = Assembly.GetExecutingAssembly().GetName().Name;
+            Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
         }
 
         /// <summary>
         /// Create an analysis logger without exceptions
         /// </summary>
         /// <param name="baseDirectory">The base directory for reports</param>
-        public AnalysisLogger(string baseDirectory)
-        {
-            _baseDirectory = baseDirectory;
-            _exceptionsDirectory = null;
-        }
+        public AnalysisLogger(string baseDirectory) : this(baseDirectory, null)
+        { }
 
         IList<ReportLogger> _loggers = new List<ReportLogger>();
         protected virtual IList<ReportLogger> Loggers { get { return _loggers; } }
-
-        /// <summary>
-        /// Write an error report.
-        /// </summary>
-        /// <param name="error">The message to write</param>
-        public abstract void WriteError(string error);
-
-        public virtual void WriteError(string format, params object[] args)
-        {
-            WriteError(string.Format(format, args));
-        }
-
-        /// <summary>
-        /// Write an informational message.
-        /// </summary>
-        /// <param name="message">The message to write</param>
-        public abstract void WriteMessage(string message);
-
-        public virtual void WriteMessage(string format, params object[] args)
-        {
-            WriteMessage(string.Format(format, args));
-        }
-
-        /// <summary>
-        /// Write a warning.
-        /// </summary>
-        /// <param name="message">The warning text</param>
-        public abstract void WriteWarning(string message);
-
-        public virtual void WriteWarning(string format, params object[] args)
-        {
-            WriteWarning(string.Format(format, args));
-        }
+        
 
         /// <summary>
         /// Write a report file to the given file, using the given file contents.
         /// </summary>
         /// <param name="name">The path to the file</param>
         /// <param name="contents">The contents of the report</param>
-        public abstract void WriteReport(string name, string contents);
+        public virtual void WriteReport(string name, string contents)
+        {
+            File.WriteAllText(name, contents);
+        }
 
         /// <summary>
         /// Create a logger for a particular report
@@ -122,6 +137,11 @@ namespace StaticAnalysis
 
             Loggers.Add(logger);
             return logger;
+        }
+
+        public ReportLogger GetReportLogger(string loggerFileName) 
+        {
+            return Loggers.Where<ReportLogger>((log) => Path.GetFileName(log.FileName).Equals(loggerFileName, StringComparison.OrdinalIgnoreCase)).SingleOrDefault<ReportLogger>();
         }
 
         /// <summary>
@@ -167,5 +187,100 @@ namespace StaticAnalysis
                     _baseDirectory));
             }
         }
+
+        #region Write Methods
+        /// <summary>
+        /// Write an error report.
+        /// </summary>
+        /// <param name="error">The message to write</param>
+        public virtual void WriteError(string error)
+        {
+            Error(error);
+        }
+
+        public virtual void WriteError(string format, params object[] args)
+        {
+            WriteError(string.Format(format, args));
+        }
+
+        /// <summary>
+        /// Write an informational message.
+        /// </summary>
+        /// <param name="message">The message to write</param>
+        public virtual void WriteMessage(string message)
+        {
+            Info(message);
+        }
+
+        public virtual void WriteMessage(string format, params object[] args)
+        {
+            WriteMessage(string.Format(format, args));
+        }
+
+        /// <summary>
+        /// Write a warning.
+        /// </summary>
+        /// <param name="message">The warning text</param>
+        public virtual void WriteWarning(string message)
+        {
+            Warning(message);
+        }
+
+        public virtual void WriteWarning(string format, params object[] args)
+        {
+            WriteWarning(string.Format(format, args));
+        }
+
+
+        #region Info methods
+        public void Info(string info)
+        {
+            Log4NetLogger.Info(info);
+        }
+
+        public void Info<T>(string info, IEnumerable<T> infoCollection)
+        {
+            Info(info, infoCollection, (t) => t.ToString());
+        }
+
+        public void Info<T>(string info, IEnumerable<T> infoCollection, Func<T, string> infoItemPrintDelegate)
+        {
+            Info(info, "{0},", infoCollection, infoItemPrintDelegate);
+        }
+
+        public void Info<T>(string info, string infoFormat, IEnumerable<T> infoCollection)
+        {
+            Info(info, infoFormat, infoCollection, (t) => t.ToString());
+        }
+
+        public void Info<T>(string info, string infoFormat, IEnumerable<T> infoCollection, Func<T, string> infoItemPrintDelegate)
+        {
+            Info(info);
+            StringBuilder sb = new StringBuilder();
+            foreach (T t in infoCollection)
+            {
+                sb.AppendLine(string.Format(infoFormat, infoItemPrintDelegate(t)));
+            }
+
+            Info(sb.ToString());
+        }
+        #endregion
+
+        private void Error(string errorInfo)
+        {
+            Log4NetLogger.Error(errorInfo);
+        }
+
+        public void DebugInfo(string debugInfo)
+        {
+            Log4NetLogger.Debug(debugInfo);
+        }
+
+        private void Warning(string warningInfo)
+        {
+            Log4NetLogger.Warn(warningInfo);
+        }
+
+        #endregion
     }
 }
