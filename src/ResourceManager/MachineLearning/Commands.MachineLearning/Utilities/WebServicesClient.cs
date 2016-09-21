@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.MachineLearning.WebServices;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using APIClient = Microsoft.Azure.Management.MachineLearning.
                     WebServices.AzureMLWebServicesManagementClient;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Utilities
 {
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
             return this.apiClient.WebServices.ListKeys(resourceGroupName, webServiceName);
         }
 
-        public async Task<IList<WebService>>
+        public async Task<ResponseWithContinuation<WebService[]>> 
                         GetAzureMlWebServicesBySubscriptionAndGroupAsync(
                                                     string resourceGroupName,
                                                     string nextLink,
@@ -99,10 +100,14 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                                                                         skipToken,
                                                                         cancellationTokenParam).ConfigureAwait(false);
 
-            return paginatedResponse.Value;
+            return new ResponseWithContinuation<WebService[]>
+            {
+                Value = paginatedResponse.Value.ToArray(),
+                NextLink = paginatedResponse.NextLink
+            };
         }
 
-        public async Task<IList<WebService>>
+        public async Task<ResponseWithContinuation<WebService[]>> 
                         GetAzureMlWebServicesBySubscriptionAsync(
                                                     string nextLink,
                                                     CancellationToken? cancellationToken)
@@ -115,7 +120,11 @@ namespace Microsoft.Azure.Commands.MachineLearning.Utilities
                                                         skipToken,
                                                         cancellationTokenParam).ConfigureAwait(false);
 
-            return paginatedResponse.Value;
+            return new ResponseWithContinuation<WebService[]>
+            {
+                Value = paginatedResponse.Value.ToArray(),
+                NextLink = paginatedResponse.NextLink
+            };
         }
     }
 }
