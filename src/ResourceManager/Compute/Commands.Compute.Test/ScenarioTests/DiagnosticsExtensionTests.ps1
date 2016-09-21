@@ -245,7 +245,7 @@ function Test-VmssDiagnosticsExtension
         $publicSettingFilePath = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPublicConfig.json";
         $privateSettingFilePath = "$TestOutputRoot\ConfigFiles\DiagnosticsExtensionPrivateConfig.json";
         $vmss = Add-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -SettingFilePath $publicSettingFilePath `
-            -ProtectedSettingFilePath $privateSettingFilePath -TypeHandlerVersion $version -AutoUpgradeMinorVersion $false;
+            -ProtectedSettingFilePath $privateSettingFilePath -TypeHandlerVersion $version -AutoUpgradeMinorVersion $false -Force;
 
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
         Assert-AreEqual 1 $vmssDiagExtensions.Count;
@@ -261,7 +261,7 @@ function Test-VmssDiagnosticsExtension
         Assert-AreNotEqual '' $storageAccountKey;
 
         # Remove without specifying extension name, diagnostic extension is expected to be removed.
-        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss;
+        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Force;
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;
@@ -280,7 +280,7 @@ function Test-VmssDiagnosticsExtension
         $settings = $vmssDiagExtension.Settings;
         Assert-AreEqual $storagename $settings.storageAccount.Value;
 
-        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
+        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -Force;
         Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;

@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add diagnostics extension to the VM scale set.
+        /// </summary>
+        public static string AddVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("AddVmssDiagnosticsExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Azure Enhanced Monitoring extension found under resource group &apos;{0}&apos;, virtual machine &apos;{1}&apos;..
         /// </summary>
         public static string AEMExtensionNotFound {
@@ -392,6 +401,42 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DiagnosticsExtensionOverwriting {
             get {
                 return ResourceManager.GetString("DiagnosticsExtensionOverwriting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnostics extension overwritting operation .
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingCaption {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will overwrite existing diagnostics extension. Do you want to continue?.
+        /// </summary>
+        public static string DiagnosticsExtensionOverwrittingConfirmation {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionOverwrittingConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnostics extension removal operation.
+        /// </summary>
+        public static string DiagnosticsExtensionRemovalCaption {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove existing diagnostics extension. Do you want to continue?.
+        /// </summary>
+        public static string DiagnosticsExtensionRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("DiagnosticsExtensionRemovalConfirmation", resourceCulture);
             }
         }
         
@@ -1036,6 +1081,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string RemoveScriptExtensionAction {
             get {
                 return ResourceManager.GetString("RemoveScriptExtensionAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove diagnostics extension from the VM scale set.
+        /// </summary>
+        public static string RemoveVmssDiagnosticsExtensionAction {
+            get {
+                return ResourceManager.GetString("RemoveVmssDiagnosticsExtensionAction", resourceCulture);
             }
         }
         
