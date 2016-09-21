@@ -15,31 +15,29 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using CloudJob = Microsoft.Azure.Batch.Protocol.Models.CloudJob;
-using OnAllTasksComplete = Microsoft.Azure.Batch.Common.OnAllTasksComplete;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Jobs
+namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class SetBatchJobCommandTests
+    public class EnableBatchTaskCommandTests
     {
-        private SetBatchJobCommand cmdlet;
+        private EnableBatchTaskCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchJobCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public EnableBatchTaskCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new SetBatchJobCommand()
+            cmdlet = new EnableBatchTaskCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -48,7 +46,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AutoCompletionSettingIsSentToService()
+        public void OmittingMandatoryParametersCausesException()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -56,27 +54,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            CloudJob cloudJob = new Azure.Batch.Protocol.Models.CloudJob(
-                id: "job-id",
-                poolInfo: new Azure.Batch.Protocol.Models.PoolInformation(),
-                onAllTasksComplete: (Azure.Batch.Protocol.Models.OnAllTasksComplete?)OnAllTasksComplete.TerminateJob);
+            cmdlet.JobId = "job-1";
 
-            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context, cloudJob));
-            cmdlet.Job.OnAllTasksComplete = OnAllTasksComplete.TerminateJob;
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            RequestInterceptor interceptor =
-                BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobUpdateParameter, JobUpdateOptions, AzureOperationHeaderResponse<JobUpdateHeaders>>(
-                    new AzureOperationHeaderResponse<JobUpdateHeaders>(),
-                    request =>
-                    {
-                        Assert.Equal((OnAllTasksComplete)request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
-                    });
+            cmdlet.Id = "testTask";
 
-            cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
+            // Don't go to the service on a Restart CloudTask call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<TaskReactivateOptions, AzureOperationHeaderResponse<TaskReactivateHeaders>>();
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            // Verify that no exceptions occur
+            // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
         }
     }
 }
-

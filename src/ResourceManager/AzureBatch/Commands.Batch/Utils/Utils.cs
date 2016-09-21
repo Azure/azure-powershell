@@ -161,6 +161,16 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                         ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
                         return resourceFile;
                     });
+                jobManager.omObject.ApplicationPackageReferences = CreateSyncedList(jobManager.ApplicationPackageReferences,
+                    a =>
+                    {
+                        ApplicationPackageReference applicationPackageReference = new ApplicationPackageReference
+                        {
+                            ApplicationId = a.ApplicationId,
+                            Version = a.Version
+                        };
+                        return applicationPackageReference;
+                    });
             }
         }
 
@@ -388,6 +398,26 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 Version = psApr.Version
             };
             return applicationPackageReference;
+        }
+
+        public static void ExitConditionsSyncCollections(PSExitConditions exitConditions)
+        {
+            if (exitConditions != null)
+            {
+                exitConditions.omObject.ExitCodeRanges = CreateSyncedList(
+                    exitConditions.ExitCodeRanges,
+                    (e) =>
+                    {
+                            ExitCodeRangeMapping exitCodeRangeMapping = new ExitCodeRangeMapping(e.Start, e.End, e.omObject.ExitOptions);
+                            return exitCodeRangeMapping;
+                    });
+                exitConditions.omObject.ExitCodes = CreateSyncedList(exitConditions.ExitCodes,
+                    (e) =>
+                    {
+                        ExitCodeMapping exitCodeMapping = new ExitCodeMapping(e.Code, e.omObject.ExitOptions);
+                        return exitCodeMapping;
+                    });
+            }
         }
     }
 }
