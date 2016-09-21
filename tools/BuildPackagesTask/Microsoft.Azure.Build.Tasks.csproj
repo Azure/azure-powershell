@@ -35,6 +35,7 @@
     <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FilterOutAutoRestLibraries.cs" />
     <Compile Include="RegexReplacementTask.cs" />
