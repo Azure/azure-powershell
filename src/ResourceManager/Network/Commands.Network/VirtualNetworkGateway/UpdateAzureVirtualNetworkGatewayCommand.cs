@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            if(this.EnableActiveActiveFeature.IsPresent && this.DisableActiveActiveFeature.IsPresent)
+            if (this.EnableActiveActiveFeature.IsPresent && this.DisableActiveActiveFeature.IsPresent)
             {
                 throw new ArgumentException("Both EnableActiveActiveFeature and DisableActiveActiveFeature Parameters can not be passed.");
             }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.VirtualNetworkGateway.ActiveActive = true;
             }
-                
+
             if (this.DisableActiveActiveFeature.IsPresent)
             {
                 this.VirtualNetworkGateway.ActiveActive = false;
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VirtualNetworkGateway.ActiveActive)
             {
                 bool activeActiveSkuCriteria = !string.IsNullOrEmpty(this.GatewaySku) ? !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance) : !this.VirtualNetworkGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance);
-               
-                if(activeActiveSkuCriteria)
+
+                if (activeActiveSkuCriteria)
                 {
                     throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
-                }              
+                }
             }
 
             if (!string.IsNullOrEmpty(GatewaySku))
