@@ -302,13 +302,6 @@
                 <Label>ApiVersions</Label>
                 <PropertyName>ApiVersions</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>ZoneMappings</Label>
-                <PropertyName>ZoneMappings</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ZoneMappings</ScriptBlock>
-                </ItemSelectionCondition>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -338,13 +331,6 @@
               <ListItem>
                 <Label>Locations</Label>
                 <PropertyName>Locations</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ZoneMappings</Label>
-                <PropertyName>ZoneMappings</PropertyName>
-                <ItemSelectionCondition>
-                  <ScriptBlock>$_.ZoneMappings</ScriptBlock>
-                </ItemSelectionCondition>
               </ListItem>
             </ListItems>
           </ListEntry>
