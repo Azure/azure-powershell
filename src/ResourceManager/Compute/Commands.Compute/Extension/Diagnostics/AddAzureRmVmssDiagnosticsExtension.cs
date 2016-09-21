@@ -27,8 +27,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
     [Cmdlet(
         VerbsCommon.Add,
-        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension),
-    OutputType(typeof(VirtualMachineScaleSet))]
+        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension,
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(VirtualMachineScaleSet))]
     public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private string extensionName = DiagnosticsExtensionConstants.ExtensionDefaultName;
@@ -110,51 +111,72 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
             }
         }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "To force the overwritting of the diagnostics extension to the VM scale set.")]
+        public SwitchParameter Force { get; set; }
+
         protected override void ProcessRecord()
         {
-            // VirtualMachineProfile
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+            if (ShouldProcess(this.VirtualMachineScaleSet.Name, Properties.Resources.AddVmssDiagnosticsExtensionAction))
             {
-                this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetVMProfile();
+                }
+
+                // ExtensionProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
+                }
+
+                // Extensions
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
+                }
+
+                bool shouldContinue = true;
+
+                // Warning if there's already a diagnostics extension.
+                var extensions = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions;
+                if (extensions.Any(DiagnosticsHelper.IsDiagnosticsExtension))
+                {
+                    if (Force.IsPresent
+                        || ShouldContinue(Properties.Resources.DiagnosticsExtensionOverwrittingConfirmation, Properties.Resources.DiagnosticsExtensionOverwrittingCaption))
+                    {
+                        WriteWarning(Properties.Resources.DiagnosticsExtensionOverwriting);
+
+                        // Remove all existing diagnostics extensions
+                        this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = extensions.Where(extension => !DiagnosticsHelper.IsDiagnosticsExtension(extension)).ToList();
+                    }
+                    else
+                    {
+                        shouldContinue = false;
+                    }
+                }
+
+                if (shouldContinue)
+                {
+                    var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+
+                    // Parse configs, and auto fill incomplete parts
+                    Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);
+
+                    var newDiagnosticsExtension = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
+
+                    newDiagnosticsExtension.Name = this.Name;
+                    newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;
+                    newDiagnosticsExtension.Type = DiagnosticsExtensionConstants.ExtensionType;
+                    newDiagnosticsExtension.TypeHandlerVersion = this.TypeHandlerVersion;
+                    newDiagnosticsExtension.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
+                    newDiagnosticsExtension.Settings = settings.Item1;
+                    newDiagnosticsExtension.ProtectedSettings = settings.Item2;
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(newDiagnosticsExtension);
+                }
             }
 
-            // ExtensionProfile
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile == null)
-            {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtensionProfile();
-            }
-
-            // Extensions
-            if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions == null)
-            {
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension>();
-            }
-
-            // Warning if there's already a diagnostics extension.
-            var extensions = this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions;
-            if (extensions.Any(DiagnosticsHelper.IsDiagnosticsExtension))
-            {
-                WriteWarning(Properties.Resources.DiagnosticsExtensionOverwriting);
-
-                // Remove all existing diagnostics extensions
-                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = extensions.Where(extension => !DiagnosticsHelper.IsDiagnosticsExtension(extension)).ToList();
-            }
-
-            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
-
-            // Parse configs, and auto fill incomplete parts
-            Tuple<Hashtable, Hashtable> settings = DiagnosticsHelper.GetConfigurationsFromFiles(this.SettingFilePath, this.ProtectedSettingFilePath, this.VirtualMachineScaleSet.Id, this, storageClient);
-
-            var newDiagnosticsExtension = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
-
-            newDiagnosticsExtension.Name = this.Name;
-            newDiagnosticsExtension.Publisher = DiagnosticsExtensionConstants.ExtensionPublisher;
-            newDiagnosticsExtension.Type = DiagnosticsExtensionConstants.ExtensionType;
-            newDiagnosticsExtension.TypeHandlerVersion = this.TypeHandlerVersion;
-            newDiagnosticsExtension.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
-            newDiagnosticsExtension.Settings = settings.Item1;
-            newDiagnosticsExtension.ProtectedSettings = settings.Item2;
-            this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(newDiagnosticsExtension);
             WriteObject(this.VirtualMachineScaleSet);
         }
     }
