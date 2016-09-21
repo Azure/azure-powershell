@@ -291,8 +291,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string resourceGroupName, string automationAccountName, string runbookName);
 
         IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string resourceGroupName, string automationAccountName, string scheduleName);
-
-        JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters);
+                
+        JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters, string RunOn);
 
         void UnregisterScheduledRunbook(string resourceGroupName, string automationAccountName, Guid jobScheduleId);
 
