@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.MachineLearning {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource group name is missing..
+        /// </summary>
+        internal static string MissingResourceGroupName {
+            get {
+                return ResourceManager.GetString("MissingResourceGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to create a new machine learning web service &quot;{0}&quot; ?.
         /// </summary>
         internal static string NewServiceWarning {

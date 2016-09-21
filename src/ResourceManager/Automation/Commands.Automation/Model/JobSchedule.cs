@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.RunbookName = jobSchedule.Properties.Runbook.Name;
             this.ScheduleName = jobSchedule.Properties.Schedule.Name;
             this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
+            this.RunOn = jobSchedule.Properties.RunOn;
             foreach (var kvp in jobSchedule.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
                 CompareOptions.IgnoreCase)))
             {
@@ -64,6 +65,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the resource group name.
         /// </summary>
         public string ResourceGroupName { get; set; }
+
+        public string RunOn { get; set; }
 
         /// <summary>
         /// Gets or sets the automation account name.
