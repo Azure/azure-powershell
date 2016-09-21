@@ -397,7 +397,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestVirtualMachineSingleNetworkInterface.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestVirtualMachineSingleNetworkInterfaceWithAcceleratedNetworking.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestSingleNetworkInterfaceWithAcceleratedNetworking.json">
 	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
 	<None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineNetworkInterfaceTests\TestVMNicWithAcceleratedNetworkingValidations.json">
