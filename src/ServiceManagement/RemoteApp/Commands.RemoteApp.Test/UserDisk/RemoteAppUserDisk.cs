@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
             mockCmdlet.DestinationStorageAccountKey = storageAccountKey;
             mockCmdlet.DestinationStorageAccountContainerName = containerName;
 
-            MockObject.SetUpDefaultRemoteAppExportUserDisk(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.DestinationStorageAccountName, mockCmdlet.DestinationStorageAccountKey, mockCmdlet.DestinationStorageAccountContainerName);
+            MockObject.SetUpDefaultRemoteAppExportUserDisk(remoteAppManagementClientMock, mockCmdlet.CollectionName, mockCmdlet.DestinationStorageAccountName, mockCmdlet.DestinationStorageAccountKey, mockCmdlet.DestinationStorageAccountContainerName, trackingId);
             mockCmdlet.ResetPipelines();
 
             Log("Calling Export-AzureRemoteAppUserDisk");
@@ -112,10 +112,6 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             trackingIds = MockObject.ConvertList<TrackingResult>(mockCmdlet.runTime().OutputPipeline);
             Assert.NotNull(trackingIds);
-
-            Assert.True(MockObject.HasExpectedResults<TrackingResult>(trackingIds, MockObject.ContainsExpectedTrackingId),
-               "The actual result does not match the expected."
-            );
 
             Log("The test for Export-AzureRemoteAppUserDisk completed successfully");
         }
