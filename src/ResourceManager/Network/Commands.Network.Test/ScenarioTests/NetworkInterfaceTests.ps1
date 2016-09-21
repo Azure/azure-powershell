@@ -113,7 +113,6 @@ function Test-NetworkInterfaceCRUD
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
@@ -790,6 +789,84 @@ function Test-NetworkInterfaceWithIpConfiguration
         Assert-Null $nic.IpConfigurations[1].PublicIpAddress
         Assert-Null $nic.IpConfigurations[1].Subnet
         Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
+
+        # Delete NetworkInterface
+        $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzureRmNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating new simple public networkinterface.
+#>
+function Test-NetworkInterfaceWithAcceleratedNetworking
+{
+   # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = "westcentralus"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = "westcentralus"
+    
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+        # Create the Virtual Network
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
+        $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $expectedNic.Name $actualNic.Name	
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+		Assert-AreEqual $expectedNic.EnableAcceleratedNetworking $true
+        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+
+        
+        # Check publicIp address reference
+        $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
+
+        # Check Subnet address reference
+        $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+
+        # list
+        $list = Get-AzureRmNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $list[0].Name $actualNic.Name	
+        Assert-AreEqual $list[0].Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+        Assert-AreEqual $actualNic.Etag $list[0].Etag
 
         # Delete NetworkInterface
         $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
