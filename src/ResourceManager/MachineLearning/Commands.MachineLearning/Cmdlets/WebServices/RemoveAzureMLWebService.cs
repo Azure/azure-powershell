@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                                 StringComparison.OrdinalIgnoreCase))
                 {
                     string subscriptionId, resourceGroup, webServiceName;
-                    if (!CmdletHelpers.TryParseMlWebServiceMetadataFromResourceId(
+                    if (!CmdletHelpers.TryParseMlResourceMetadataFromResourceId(
                                         this.MlWebService.Id,
                                         out subscriptionId,
                                         out resourceGroup,
