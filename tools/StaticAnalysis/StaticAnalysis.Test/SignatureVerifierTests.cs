@@ -38,7 +38,7 @@ namespace StaticAnalysis.Test
         /// <summary>
         /// 
         /// </summary>
-        [Fact(Skip = "Failing on-demand build, unable to repo locally")]
+        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
         public void AddVerbWithoutSupportsShouldProcessParameter()
         {
             cmdletSignatureVerifier.Analyze(
@@ -68,7 +68,7 @@ namespace StaticAnalysis.Test
 
         #region ForceSwitch and SupportsShouldProcess
 
-        [Fact(Skip = "Failing on-demand build, unable to repo locally")]
+        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
         public void ForceParameterWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
@@ -108,7 +108,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
 
-        [Fact(Skip = "Failing on-demand build, unable to repo locally")]
+        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
         public void ConfirmImpactWithoutSupportsShouldProcess()
         {
             cmdletSignatureVerifier.Analyze(
@@ -136,7 +136,7 @@ namespace StaticAnalysis.Test
             Assert.True(testReport.ProblemIdList.Count == 0);
         }
 
-        [Fact(Skip = "Failing on-demand build, unable to repo locally")]
+        [Fact(Skip = "See Azure PowerShell issue #2987 - https://github.com/Azure/azure-powershell/issues/2987")]
         public void ShouldContinueVerbWithoutForceSwitch()
         {
             cmdletSignatureVerifier.Analyze(
