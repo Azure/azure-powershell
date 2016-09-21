@@ -50,9 +50,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             string scheduleName = "schedule";
+            string runOn = "hybridWorkerGroup";
 
             this.mockAutomationClient.Setup(
-                f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null));
+                f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null, runOn));
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null, runOn), Times.Once());
         }
     }
 }
