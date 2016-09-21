@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// Creates Azure Site Recovery Recovery Plan object.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryRecoveryPlan", DefaultParameterSetName = ASRParameterSets.ByRPObject)]
-    public class UpdateAzureSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
+    public class UpdateAzureRmSiteRecoveryRecoveryPlan : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
 
                     string filePath = this.Path;
+
                     RecoveryPlan recoveryPlan = null;
 
                     using (System.IO.StreamReader file = new System.IO.StreamReader(filePath))
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     }
 
                     UpdateRecoveryPlan(recoveryPlan);
+
                     break;
             }
         }
