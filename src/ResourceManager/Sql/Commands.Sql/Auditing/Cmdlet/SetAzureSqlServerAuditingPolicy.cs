@@ -189,8 +189,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             Action swapAuditType = () => { AuditType = AuditType == AuditType.Blob ? AuditType.Table : AuditType.Blob; };
             swapAuditType();
             var otherAuditingTypePolicyModel = GetEntity();
-            otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
-            base.PersistChanges(otherAuditingTypePolicyModel);
+            if (otherAuditingTypePolicyModel != null)
+            {
+                otherAuditingTypePolicyModel.AuditState = AuditStateType.Disabled;
+                base.PersistChanges(otherAuditingTypePolicyModel);
+            }
             swapAuditType();
             return model;
         }
