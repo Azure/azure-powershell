@@ -123,6 +123,9 @@
   <data name="MissingDefinitionFile" xml:space="preserve">
     <value>The specified web service definition file path does not exist.</value>
   </data>
+  <data name="MissingResourceGroupName" xml:space="preserve">
+    <value>The resource group name is missing.</value>
+  </data>
   <data name="NewServiceWarning" xml:space="preserve">
     <value>Are you sure you want to create a new machine learning web service "{0}" ?</value>
   </data>
