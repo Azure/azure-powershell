@@ -80,11 +80,21 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
         public int PeerWeight { get; set; }
 
+        //[Parameter(
+        //    Mandatory = false,
+        //    ValueFromPipelineByPropertyName = true,
+        //    HelpMessage = "ActiveActive feature flag")]
+        //public bool ActiveActive { get; set; }
+
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ActiveActive feature flag")]
-        public bool ActiveActive { get; set; }
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public SwitchParameter EnableActiveActiveFeature { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to disable Active Active feature on virtual network gateway")]
+        public SwitchParameter DisableActiveActiveFeature { get; set; }
 
         public override void Execute()
         {
@@ -95,7 +105,20 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
-            this.VirtualNetworkGateway.ActiveActive = this.ActiveActive;
+            if(this.EnableActiveActiveFeature.IsPresent && this.DisableActiveActiveFeature.IsPresent)
+            {
+                throw new ArgumentException("Both EnableActiveActiveFeature and DisableActiveActiveFeature Parameters can not be passed.");
+            }
+
+            if (this.EnableActiveActiveFeature.IsPresent)
+            {
+                this.VirtualNetworkGateway.ActiveActive = true;
+            }
+                
+            if (this.DisableActiveActiveFeature.IsPresent)
+            {
+                this.VirtualNetworkGateway.ActiveActive = false;
+            }
 
             if (this.VirtualNetworkGateway.ActiveActive)
             {
