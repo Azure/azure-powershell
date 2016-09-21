@@ -17,7 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
+        OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         [Parameter(
@@ -27,12 +28,15 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            if (ShouldProcess("AzureApplicationGatewayWebApplicationFirewallConfiguration", Microsoft.Azure.Commands.Network.Properties.Resources.OverwritingResourceMessage))
+            {
+                base.ExecuteCmdlet();
 
-            this.ApplicationGateway.WebApplicationFirewallConfiguration.Enabled = this.Enabled;
-            this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.Enabled = this.Enabled;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
 
-            WriteObject(this.ApplicationGateway);
+                WriteObject(this.ApplicationGateway);
+            }
         }
     }
 }

@@ -17,20 +17,24 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"), OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),
+        OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
     public class NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            PSApplicationGatewayWebApplicationFirewallConfiguration firewallConfiguration = new PSApplicationGatewayWebApplicationFirewallConfiguration()
+            if (ShouldProcess("AzureApplicationGatewayWebApplicationFirewallConfiguration", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
             {
-                Enabled = this.Enabled,
-                FirewallMode = this.FirewallMode,
-            };
+                base.ExecuteCmdlet();
 
-            WriteObject(firewallConfiguration);
+                PSApplicationGatewayWebApplicationFirewallConfiguration firewallConfiguration = new PSApplicationGatewayWebApplicationFirewallConfiguration()
+                {
+                    Enabled = this.Enabled,
+                    FirewallMode = this.FirewallMode,
+                };
+
+                WriteObject(firewallConfiguration);
+            }
         }
     }
 }

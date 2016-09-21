@@ -17,7 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"), OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayWebApplicationFirewallConfiguration"),
+        OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
     public class GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
