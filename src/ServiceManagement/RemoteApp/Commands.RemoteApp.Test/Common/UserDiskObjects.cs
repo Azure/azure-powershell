@@ -51,12 +51,18 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test.Common
             setup.Returns(Task.Factory.StartNew(() => response));
         }
 
-        public static void SetUpDefaultRemoteAppExportUserDisk(Mock<IRemoteAppManagementClient> clientMock, string sourceCollectionName, string DestinationStorageAccountName, string DestinationStorageAccountKey, string DestinationStorageAccountContainerName)
+        public static void SetUpDefaultRemoteAppExportUserDisk(Mock<IRemoteAppManagementClient> clientMock, string sourceCollectionName, string DestinationStorageAccountName, string DestinationStorageAccountKey, string DestinationStorageAccountContainerName, string trackingId)
         {
             OperationResultWithTrackingId response = new OperationResultWithTrackingId()
             {
-                RequestId = "12345",
-                StatusCode = System.Net.HttpStatusCode.Accepted
+                StatusCode = System.Net.HttpStatusCode.Accepted,
+                TrackingId = trackingId,
+                RequestId = "02111-222-3456"
+            };
+
+            mockTrackingId = new List<TrackingResult>()
+            {
+                new TrackingResult(response)
             };
 
             ISetup<IRemoteAppManagementClient, Task<OperationResultWithTrackingId>> setup =
