@@ -47,7 +47,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.3-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
+    <Reference Include="..\..\..\packages\Microsoft.Azure.Management.MachineLearning.0.9.4-preview\lib\net45\Microsoft.Azure.Management.MachineLearning.dll">
       <Name>Microsoft.Azure.Management.MachineLearning</Name>
       <Private>True</Private>
     </Reference>
@@ -103,14 +103,23 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\ExportWebServiceDefinition.cs" />
-    <Compile Include="Cmdlets\GetAzureMLWebServiceKeys.cs" />
-    <Compile Include="Cmdlets\ImportWebServiceDefinition.cs" />
-    <Compile Include="Cmdlets\RemoveAzureMLWebService.cs" />
-    <Compile Include="Cmdlets\GetAzureMLWebService.cs" />
-    <Compile Include="Cmdlets\NewAzureMLWebService.cs" />
-    <Compile Include="Cmdlets\UpdateAzureMLWebService.cs" />
-    <Compile Include="Cmdlets\WebServicesCmdletBase.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\CommitmentPlansCmdletBase.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\MoveAzureMLCommitmentAssociation.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\GetAzureMLCommitmentAssociation.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\GetAzureMLCommitmentPlanUsageHistory.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\RemoveAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\UpdateAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\ExportWebServiceDefinition.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\GetAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\GetAzureMLWebServiceKeys.cs" />
+    <Compile Include="Cmdlets\WebServices\ImportWebServiceDefinition.cs" />
+    <Compile Include="Cmdlets\MachineLearningCmdletBase.cs" />
+    <Compile Include="Cmdlets\CommitmentPlans\NewAzureMLCommitmentPlan.cs" />
+    <Compile Include="Cmdlets\WebServices\RemoveAzureMLWebService.cs" />
+    <Compile Include="Cmdlets\WebServices\GetAzureMLWebService.cs" />
+    <Compile Include="Cmdlets\WebServices\NewAzureMLWebService.cs" />
+    <Compile Include="Cmdlets\WebServices\UpdateAzureMLWebService.cs" />
+    <Compile Include="Cmdlets\WebServices\WebServicesCmdletBase.cs" />
     <Compile Include="Exception\ErrorResponseMessage.cs" />
     <Compile Include="Exception\ErrorResponseMessageException.cs" />
     <Compile Include="Exception\ExtendedErrorInfo.cs" />
@@ -121,6 +130,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CmdletHelpers.cs" />
+    <Compile Include="Utilities\CommitmentPlansClient.cs" />
+    <Compile Include="Utilities\MachineLearningClientBase.cs" />
     <Compile Include="Utilities\WebServicesClient.cs" />
   </ItemGroup>
   <ItemGroup>

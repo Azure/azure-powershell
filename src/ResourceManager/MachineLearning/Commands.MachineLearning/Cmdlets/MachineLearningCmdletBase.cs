@@ -22,7 +22,6 @@ using System.Security;
 using System.Text;
 using System.Threading;
 
-using Microsoft.Azure.Commands.MachineLearning.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Rest.Azure;
 
@@ -30,41 +29,19 @@ using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    public abstract class WebServicesCmdletBase : AzureRMCmdlet
+    public abstract class MachineLearningCmdletBase : AzureRMCmdlet
     {
-        public const string CommandletSuffix = "AzureRmMlWebService";
-
-        private WebServicesClient webServicesClient;
-
         /// <summary>
         /// The cancellation source.
         /// </summary>
         private CancellationTokenSource cancellationSource;
-        
+
         protected CancellationToken? CancellationToken
         {
             get
             {
                 return this.cancellationSource == null ? null : (CancellationToken?)this.cancellationSource.Token;
             }
-        }
-
-        public WebServicesClient WebServicesClient
-        {
-            get
-            {
-                if (this.webServicesClient == null)
-                {
-                    this.webServicesClient = new WebServicesClient(DefaultProfile.Context)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return this.webServicesClient;
-            }
-            set { this.webServicesClient = value; }
         }
 
         #region Processing life cycle
@@ -86,12 +63,12 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 {
                     ThrowTerminatingError(
                         new ErrorRecord(
-                                ex, 
-                                string.Empty, 
-                                ErrorCategory.InvalidOperation, 
+                                ex,
+                                string.Empty,
+                                ErrorCategory.InvalidOperation,
                                 this));
                 }
-                
+
                 var capturedException = ExceptionDispatchInfo.Capture(ex);
                 this.HandleException(capturedException: capturedException);
             }
@@ -109,9 +86,9 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 {
                     ThrowTerminatingError(
                             new ErrorRecord(
-                                    ex, 
-                                    string.Empty, 
-                                    ErrorCategory.InvalidOperation, 
+                                    ex,
+                                    string.Empty,
+                                    ErrorCategory.InvalidOperation,
                                     this));
                 }
 
@@ -128,7 +105,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
         {
             try
             {
-                if (this.cancellationSource != null && 
+                if (this.cancellationSource != null &&
                     !this.cancellationSource.IsCancellationRequested)
                 {
                     this.cancellationSource.Cancel();
@@ -207,7 +184,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 var cloudException = capturedException.SourceException as CloudException;
                 if (cloudException != null)
                 {
-                    errorRecord = this.CreateErrorRecordForCloudException(cloudException); 
+                    errorRecord = this.CreateErrorRecordForCloudException(cloudException);
                 }
                 else
                 {
@@ -219,7 +196,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                     }
                     else
                     {
-                        var aggregateException = 
+                        var aggregateException =
                                 capturedException.SourceException as AggregateException;
                         if (aggregateException != null)
                         {
@@ -232,23 +209,23 @@ namespace Microsoft.Azure.Commands.MachineLearning
                             else
                             {
                                 errorRecord = new ErrorRecord(
-                                                    aggregateException.InnerException, 
-                                                    aggregateException.InnerException.Message, 
-                                                    ErrorCategory.CloseError, 
-                                                    null);  
+                                                    aggregateException.InnerException,
+                                                    aggregateException.InnerException.Message,
+                                                    ErrorCategory.CloseError,
+                                                    null);
                             }
                         }
                         else
                         {
                             errorRecord = new ErrorRecord(
-                                                    capturedException.SourceException, 
-                                                    capturedException.SourceException.Message, 
-                                                    ErrorCategory.CloseError, 
+                                                    capturedException.SourceException,
+                                                    capturedException.SourceException.Message,
+                                                    ErrorCategory.CloseError,
                                                     null);
                         }
                     }
                 }
-                
+
                 this.WriteError(errorRecord);
             }
             finally
@@ -290,7 +267,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
                 {
                     errorReport.AppendLine(
                                     "\t[Code={0}, Message={1}]".FormatInvariant(
-                                                                    errorDetail.Code, 
+                                                                    errorDetail.Code,
                                                                     errorDetail.Message));
                 }
             }
