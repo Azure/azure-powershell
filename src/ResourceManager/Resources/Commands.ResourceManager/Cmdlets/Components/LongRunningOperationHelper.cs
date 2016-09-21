@@ -342,6 +342,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// Logs the fact that the operation has progressed.
             /// </summary>
             /// <param name="result">The operation result</param>
+            /// <param name="isResourceCreateOrUpdate">Is Create or Update operation, other option include Move etc.</param>
             internal void UpdateProgress(TrackingOperationResult result, bool isResourceCreateOrUpdate)
             {
                 if (isResourceCreateOrUpdate)
