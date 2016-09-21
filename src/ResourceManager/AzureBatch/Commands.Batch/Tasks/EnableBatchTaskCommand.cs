@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchTask)]
+    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchTask, SupportsShouldProcess = true)]
     [Alias("Reactivate-AzureBatchTask")]
     public class EnableBatchTaskCommand : BatchObjectModelCmdletBase
     {
@@ -41,7 +41,10 @@ namespace Microsoft.Azure.Commands.Batch
         {
             TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId, this.Id, this.Task, this.AdditionalBehaviors);
 
-            this.BatchClient.ReactivateTask(parameters);
+            if (ShouldProcess(Constants.AzureBatchTask))
+            {
+                this.BatchClient.ReactivateTask(parameters);
+            }            
         }
     }
 }
