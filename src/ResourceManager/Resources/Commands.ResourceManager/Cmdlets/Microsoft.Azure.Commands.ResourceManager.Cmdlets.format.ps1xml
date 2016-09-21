@@ -305,6 +305,9 @@
               <ListItem>
                 <Label>ZoneMappings</Label>
                 <PropertyName>ZoneMappings</PropertyName>
+                <ItemSelectionCondition>
+                  <ScriptBlock>$_.ZoneMappings</ScriptBlock>
+                </ItemSelectionCondition>
               </ListItem>
             </ListItems>
           </ListEntry>
