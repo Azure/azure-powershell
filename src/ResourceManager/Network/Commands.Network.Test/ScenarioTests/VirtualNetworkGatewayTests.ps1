@@ -25,9 +25,9 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
     $vnetName = Get-ResourceName
     $publicIpName = Get-ResourceName
     $vnetGatewayConfigName = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement
+    $rglocation = "eastus"
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "eastus"
     
     try 
      {
@@ -47,7 +47,7 @@ function Test-VirtualNetworkExpressRouteGatewayCRUD
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute 
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType ExpressRoute -GatewaySku UltraPerformance -Force 
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
