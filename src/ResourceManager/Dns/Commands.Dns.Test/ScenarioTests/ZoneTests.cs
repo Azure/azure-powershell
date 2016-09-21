@@ -100,5 +100,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneRemoveNonExisting");
         }
+
+        [Fact()]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestZoneAddRemoveRecordSet()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-AddRemoveRecordSet");
+        }
     }
 }

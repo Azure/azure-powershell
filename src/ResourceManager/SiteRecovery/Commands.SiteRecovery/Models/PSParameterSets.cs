@@ -50,6 +50,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         internal const string ByPEObject = "ByPEObject";
 
         /// <summary>
+        /// When only RPI Object is passed to the command.
+        /// </summary>
+        internal const string ByRPIObject = "ByRPIObject";
+
+        /// <summary>
         /// When only RP Object with E2A provider is passed to the command.
         /// </summary>
         internal const string ByRPObjectE2A = "ByRPObjectE2A";
@@ -110,6 +115,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         internal const string ByPEObjectWithVMNetwork = "ByPEObjectWithVMNetwork";
 
         /// <summary>
+        /// When only RPI Object is passed along with VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithVMNetwork = "ByRPIObjectWithVMNetwork";
+
+        /// <summary>
         /// When only PE Object is passed along with Logical VM network to the command.
         /// </summary>
         internal const string ByPEObjectWithLogicalVMNetwork = "ByPEObjectWithLogicalVMNetwork";
@@ -118,6 +128,16 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// When only PE Object is passed along with Logical VM network to the command.
         /// </summary>
         internal const string ByPEObjectWithAzureVMNetworkId = "ByPEObjectWithAzureVMNetworkId";
+
+        /// <summary>
+        /// When only RPI Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithLogicalVMNetwork = "ByRPIObjectWithLogicalVMNetwork";
+
+        /// <summary>
+        /// When only RPI Object is passed along with Logical VM network to the command.
+        /// </summary>
+        internal const string ByRPIObjectWithAzureVMNetworkId = "ByRPIObjectWithAzureVMNetworkId";
 
         /// <summary>
         /// When only PC and PE ids are passed to the command.
@@ -170,6 +190,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         internal const string ByFriendlyName = "ByFriendlyName";
 
         /// <summary>
+        /// When only Name is passed to the command Legacy.
+        /// </summary>
+        internal const string ByNameLegacy = "ByNameLegacy";
+
+        /// <summary>
+        /// When only Friendly Name is passed to the command Legacy.
+        /// </summary>
+        internal const string ByFriendlyNameLegacy = "ByFriendlyNameLegacy";
+
+        /// <summary>
+        /// When only Name is passed to the command.
+        /// </summary>
+        internal const string ByFabricObject = "ByFabricObject";
+
+        /// <summary>
         /// When nothing is passed to the command.
         /// </summary>
         internal const string Default = "Default";
@@ -193,6 +228,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// When Object and Name are passed to the command.
         /// </summary>
         internal const string ByObjectWithFriendlyName = "ByObjectWithFriendlyName";
+
+        /// <summary>
+        /// When Object and Name are passed to the command Legacy.
+        /// </summary>
+        internal const string ByObjectWithNameLegacy = "ByObjectWithNameLegacy";
+
+        /// <summary>
+        /// When Object and Name are passed to the command Legacy.
+        /// </summary>
+        internal const string ByObjectWithFriendlyNameLegacy = "ByObjectWithFriendlyNameLegacy";
+
+        /// <summary>
+        /// When Object and Name are passed to the command.
+        /// </summary>
+        internal const string ByProtectableItemObject = "ByProtectableItemObject";
 
         /// <summary>
         /// When group of IDs and ID are passed to the command.
@@ -223,6 +273,21 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Mapping between HyperV Site to Azure.
         /// </summary>
         internal const string HyperVSiteToAzure = "HyperVSiteToAzure";
+
+        /// <summary>
+        /// Mapping between Enterprise to Enterprise Legacy.
+        /// </summary>
+        internal const string EnterpriseToEnterpriseLegacy = "EnterpriseToEnterpriseLegacy";
+
+        /// <summary>
+        /// Mapping between Enterprise to Azure Legacy.
+        /// </summary>
+        internal const string EnterpriseToAzureLegacy = "EnterpriseToAzureLegacy";
+
+        /// <summary>
+        /// Mapping between HyperV Site to Azure Legacy.
+        /// </summary>
+        internal const string HyperVSiteToAzureLegacy = "HyperVSiteToAzureLegacy";
 
         /// <summary>
         /// Disable DR
@@ -264,7 +329,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         internal const string RemoveProtectedEntities = "RemoveProtectedEntities";
 
+        /// <summary>
+        /// Add  replication protected items to RP
         /// </summary>
+        internal const string AddReplicationProtectedItems = "AddReplicationProtectedItems";
+
+        /// <summary>
+        /// Remove replication protected items from RP
+        /// </summary>
+        internal const string RemoveReplicationProtectedItems = "RemoveReplicationProtectedItems";
+
+	/// </summary>
         /// Handle ASR Vault.
         /// </summary>
         internal const string ASRVault = "AzureSiteRecoveryVault";

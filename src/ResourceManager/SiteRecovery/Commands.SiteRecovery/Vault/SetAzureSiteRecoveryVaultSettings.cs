@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             // Validate the Vault
             RecoveryServicesClient.ValidateVaultSettings(
                 asrVault.Name,
-                asrVault.ResouceGroupName);
+                asrVault.ResourceGroupName);
 
             this.WriteObject(new ASRVaultSettings(PSRecoveryServicesClient.asrVaultCreds));
         }
