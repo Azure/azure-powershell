@@ -113,7 +113,10 @@ function Test-AddAzureRmLogAlertRule
     try 
     {
         # Test
-        $actual = Add-AzureRmLogAlertRule -Name "chiricutin" -Location "East US" -ResourceGroup "Default-Web-EastUS" -OperationName "Create" -TargetResourceId "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo" -Description "Pura Vida"
+        $resourceGroup = "Rac46PostSwapRG"
+        $resourceId = "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest"
+
+        $actual = Add-AzureRmLogAlertRule -Name chiricutin -Location "West US" -ResourceGroup $resourceGroup -TargetResourceId $resourceId -OperationName "microsoft.web/sites/stop/action" -Status "Succeeded"
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Name 'chiricutin'
@@ -157,10 +160,12 @@ function Test-GetAzureRmAlertRule
 
     try 
     {
-	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -detailedOutput
-
-        # Assert TODO add more asserts
+	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname 
+		Assert-NotNull $actual
 		Assert-AreEqual $actual.Count 1
+
+        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name '{ruleName}'
+		Assert-NotNull $actual
     }
     finally
     {
