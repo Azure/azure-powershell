@@ -149,6 +149,9 @@
   <data name="OverwritingResource" xml:space="preserve">
     <value>Are you sure you want to overwriteresource '{0}'</value>
   </data>
+  <data name="UltraPerformaceGatewayWarning" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
+  </data>
   <data name="OverwritingResourceMessage" xml:space="preserve">
     <value>Overwriting resource ...</value>
   </data>
@@ -248,5 +251,8 @@
   </data>
   <data name="SettingResourceMessage" xml:space="preserve">
     <value>Setting Resource</value>
+  </data>
+  <data name="UltraPerformanceGatewayWarningMessage" xml:space="preserve">
+    <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
   </data>
 </root>
