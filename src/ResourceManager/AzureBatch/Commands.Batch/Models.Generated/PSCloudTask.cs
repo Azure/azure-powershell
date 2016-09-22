@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSAffinityInformation affinityInformation;
         
+        private IList<PSApplicationPackageReference> applicationPackageReferences;
+        
         private PSComputeNodeInformation computeNodeInformation;
         
         private PSTaskConstraints constraints;
@@ -90,6 +92,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     this.omObject.AffinityInformation = value.omObject;
                 }
                 this.affinityInformation = value;
+            }
+        }
+        
+        public IList<PSApplicationPackageReference> ApplicationPackageReferences
+        {
+            get
+            {
+                if (((this.applicationPackageReferences == null) 
+                            && (this.omObject.ApplicationPackageReferences != null)))
+                {
+                    List<PSApplicationPackageReference> list;
+                    list = new List<PSApplicationPackageReference>();
+                    IEnumerator<Microsoft.Azure.Batch.ApplicationPackageReference> enumerator;
+                    enumerator = this.omObject.ApplicationPackageReferences.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        list.Add(new PSApplicationPackageReference(enumerator.Current));
+                    }
+                    this.applicationPackageReferences = list;
+                }
+                return this.applicationPackageReferences;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ApplicationPackageReferences = null;
+                }
+                else
+                {
+                    this.omObject.ApplicationPackageReferences = new List<Microsoft.Azure.Batch.ApplicationPackageReference>();
+                }
+                this.applicationPackageReferences = value;
             }
         }
         

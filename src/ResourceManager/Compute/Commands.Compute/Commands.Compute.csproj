@@ -247,9 +247,11 @@
     <Compile Include="Extension\CustomScript\RemoveAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\SetAzureVMCustomScriptExtensionCommand.cs" />
     <Compile Include="Extension\CustomScript\VirtualMachineCustomScriptExtensionContext.cs" />
+    <Compile Include="Extension\Diagnostics\AddAzureRmVmssDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\DiagnosticsExtensionConstants.cs" />
     <Compile Include="Extension\Diagnostics\GetAzureRmVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureRmVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\Diagnostics\RemoveAzureRmVmssDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureRmVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\WADPrivateConfigSchema.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionStatusCommand.cs" />
