@@ -27,6 +27,7 @@ namespace StaticAnalysis.SignatureVerifier
         private IList<OutputMetadata> _outputTypes = new List<OutputMetadata>();
         private IList<ParameterMetadata> _parameters = new List<ParameterMetadata>();
 
+        #region ShouldContinueVerbs
         private static readonly List<string> ShouldContinueVerbs = new List<string>
         {
              VerbsCommon.Clear,
@@ -51,7 +52,9 @@ namespace StaticAnalysis.SignatureVerifier
              VerbsData.Update,
              VerbsCommunications.Write
       };
+        #endregion
 
+        #region ShouldProcessVerbs
         private static readonly List<string> ShouldProcessVerbs = new List<string>
         {
             VerbsCommon.Close,
@@ -112,6 +115,12 @@ namespace StaticAnalysis.SignatureVerifier
             VerbsSecurity.Revoke,
             VerbsSecurity.Unblock
         };
+        #endregion
+        
+        /// <summary>
+        /// The name of the assembly containing cmdlet
+        /// </summary>
+        public string AssemblyName { get; set; }
 
         /// <summary>
         /// The verb portion of the cmdlet name

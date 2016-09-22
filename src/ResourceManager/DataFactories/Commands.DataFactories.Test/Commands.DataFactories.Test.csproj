@@ -65,7 +65,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactories">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.3.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactories.4.7.0\lib\net45\Microsoft.Azure.Management.DataFactories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ScenarioTests\HubTests.cs" />
+    <Compile Include="UnitTests\GetActivityWindowTests.cs" />
     <Compile Include="UnitTests\GetHubTests.cs" />
     <Compile Include="ScenarioTests\DataFactoryGatewayTests.cs" />
     <Compile Include="ScenarioTests\LinkedServiceTests.cs" />

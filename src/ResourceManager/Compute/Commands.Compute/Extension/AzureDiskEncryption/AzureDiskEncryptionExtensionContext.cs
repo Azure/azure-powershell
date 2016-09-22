@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             ProtectedSettings = psExt.ProtectedSettings;
             ProvisioningState = psExt.ProvisioningState;
             Statuses = psExt.Statuses;
+            SubStatuses = psExt.SubStatuses;
 
             InitializeAzureDiskEncryptionMembers(psExt);
         }

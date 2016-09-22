@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var dbPolicyModel = new DatabaseBlobAuditingPolicyModel();
             var properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint);
+            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
             ModelizeAuditActionsAndGroupsInfo(dbPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays);
             return dbPolicyModel;
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint)
+        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool isSecondary)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {
@@ -230,6 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var accountNameStartIndex = storageEndpoint.StartsWith("https://", StringComparison.InvariantCultureIgnoreCase)? 8 : 7; // https:// or http://
             var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
             model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex- accountNameStartIndex);
+            model.StorageKeyType = (isSecondary) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
         }
 
         /// <summary>
@@ -254,7 +255,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var serverPolicyModel = new ServerBlobAuditingPolicyModel();
             var properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint);
+            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
             ModelizeAuditActionsAndGroupsInfo(serverPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays);
             return serverPolicyModel;
@@ -419,6 +420,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
                 properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName);
+                properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
+                properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(model.StorageAccountName);
             }
             properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
             properties.RetentionDays = (int) model.RetentionInDays;
@@ -507,13 +510,18 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return null;
             }
 
-            var events = new StringBuilder();
-            model.EventType.ToList().ForEach(e => events.Append(e.ToString()).Append(","));
-            if (events.Length != 0)
+            if (model.EventType.Any(t => t == AuditEventType.None))
             {
-                events.Remove(events.Length - 1, 1); // remove trailing comma
+                if (model.EventType.Count() == 1)
+                {
+                    return string.Empty;
+                }
+                if (model.EventType.Any(t => t != AuditEventType.None))
+                {
+                    throw new Exception(Properties.Resources.InvalidEventTypeSet);
+                }
             }
-            return events.ToString();
+            return string.Join(";", model.EventType.Select(t => t.ToString()));
         }
 
         /// <summary>

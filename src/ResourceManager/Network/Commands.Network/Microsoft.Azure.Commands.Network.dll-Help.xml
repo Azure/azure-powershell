@@ -3835,7 +3835,7 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Add-AzureRmLoadBalancerBackend cmdlet adds a backend address pool to an Azure load balancer.</maml:para>
+		<maml:para>The Add-AzureRmLoadBalancerBackend cmdlet adds a backend address pool to an Azure load balancer. This backend address pool contains network interfaces for the virtual machine to receive network traffic from the load balancer.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4026,7 +4026,7 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Add-AzureRmLoadBalancerFrontendIpConifg cmdlet adds a front-end IP configuration to an Azure load balancer.</maml:para>
+		<maml:para>The Add-AzureRmLoadBalancerFrontendIpConifg cmdlet adds a front-end IP configuration to an Azure load balancer. This frontend IP configuration contains public IP addresses for incoming network traffic.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4835,7 +4835,7 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name &quot;myLB&quot; -ResourceGroupName &qu
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Add-AzureRmLoadBalancerInboundNatRuleConfig cmdlet adds an inbound network address translation (NAT) rule configuration to an Azure load balancer.</maml:para>
+		<maml:para>The Add-AzureRmLoadBalancerInboundNatRuleConfig cmdlet adds an inbound network address translation rule configuration to an Azure load balancer. This configuration contains rules mapping a public port on the load balancer to a port for a specific virtual machine in the backend address pool.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5171,13 +5171,45 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name &quot;myLB&quot; -ResourceGroupName &qu
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;$Lb = Get-AzureRmLoadBalancer -Name &quot;myLb&quot; -ResourceGroupName &quot;myRg&quot;
-PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;natRule&quot; -FrontendIPConfiguration$lb.Properties.FrontendIPConfigurations[0] -BackendIpConfiguration $Nic.Properties.IpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350 -IdleTimeoutInSeconds 17 -EnableFloatingIP | Set-AzureRmLoadBalancer</dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP</dev:code>
 			<dev:remarks>
-				<maml:para>The first command gets the load balancer named myLb, and then stores it in the $Lb variable.</maml:para>
+				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a varibale called $slb. The second command then adds an Inbound NAT rule configuration with appropriate details. Note that these are chosen as an example and these may change based on one&#39;s loadbalancer.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                     : MyLoadBalancer
+ResourceGroupName        : MyResourceGroup
+Location                 : westus
+Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer
+Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ProvisioningState        : Succeeded
+Tags                     : 
+FrontendIpConfigurations : []
+BackendAddressPools      : []
+LoadBalancingRules       : []
+Probes                   : []
+InboundNatRules          : [
+                             
+                             {
+                               &quot;Name&quot;: &quot;NewNatRule&quot;,
+                               &quot;Etag&quot;: &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
+                               &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/inbo
+                           undNatRules/NewRule&quot;,
+                               &quot;FrontendPort&quot;: 81,
+                               &quot;IdleTimeoutInMinutes&quot;: 4,
+                               &quot;EnableFloatingIP&quot;: true,
+                               &quot;FrontendIPConfiguration&quot;: {
+                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLoadBalancer/fr
+                           ontendIPConfigurations/MyFrontEnd&quot;
+                               },
+                               &quot;BackendPort&quot;: 8181,
+                               &quot;Protocol&quot;: &quot;Tcp&quot;,
+                               &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
+                             }
+                           ]
+InboundNatPools          : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -5230,7 +5262,7 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;natRule
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Add-AzureRmLoadBalancerProbeConfig cmdlet adds a probe configuration to an Azure load balancer.</maml:para>
+		<maml:para>The Add-AzureRmLoadBalancerProbeConfig cmdlet adds a probe configuration to an Azure load balancer. This contains health probes used to check availability of virtual machines instances in the backend address pool.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5516,7 +5548,7 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;natRule
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Add-AzureRmLoadBalancerRuleConfig cmdlet adds a rule configuration to an Azure load balancer.</maml:para>
+		<maml:para>The Add-AzureRmLoadBalancerRuleConfig cmdlet adds a rule configuration to an Azure load balancer. This rule configuration contains rules mapping a public port on the load balancer to a port in the back end address pool.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -5954,10 +5986,11 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;natRule
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;$LoadBalancer = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
-PS C:\&gt; $LoadBalancer | Add-AzureRmLoadBalancerRuleConfig -Name &quot;LbRuleConfig&quot; -FrontendIPConfiguration $LoadBalancer.Properties.FrontendIPConfigurations[0] -BackendAddressPool $LoadBalancer.Properties.BackendAddressPools[0] -Probe $LoadBalancer.Properties.Probes[0] -Protocol &quot;Tcp&quot; -FrontendPort 80 -BackendPort 80 -IdleTimeoutInSeconds 15 -EnableFloatingIP | Set-AzureRmLoadBalancer</dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP</dev:code>
 			<dev:remarks>
-				<maml:para>The first command gets an existing load balancer named MyLoadBalancer, and then stores it in the $LoadBalancer variable. The second command adds a newly created rule configuration to this load balancer called &quot;LbRuleConfig&quot; with</maml:para>
+				<maml:para>The first command stores the existing load balancer called &quot;MyLoadBalancer&quot; in variable $slb. The second command then adds the rule called &quot;NewRule&quot; with certain specifications.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -7268,6 +7301,350 @@ Subnets           : []</dev:code>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Add-AzureRmVirtualNetworkGatewayIpConfig</command:name>
+		<maml:description>
+			<maml:para />
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Add</command:verb>
+		<command:noun>AzureRmVirtualNetworkGatewayIpConfig</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para />
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Add-AzureRmVirtualNetworkGatewayIpConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>VirtualNetworkGateway</maml:name>
+				<maml:description>
+					<maml:para>The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrivateIpAddress</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>SubnetId</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PublicIpAddressId</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Add-AzureRmVirtualNetworkGatewayIpConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>VirtualNetworkGateway</maml:name>
+				<maml:description>
+					<maml:para>The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PrivateIpAddress</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Subnet</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSSubnet</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>PublicIpAddress</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSPublicIpAddress</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>VirtualNetworkGateway</maml:name>
+			<maml:description>
+				<maml:para>The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
+			<dev:type>
+				<maml:name>PSVirtualNetworkGateway</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PrivateIpAddress</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>SubnetId</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PublicIpAddressId</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Subnet</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSSubnet</command:parameterValue>
+			<dev:type>
+				<maml:name>PSSubnet</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>PublicIpAddress</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSPublicIpAddress</command:parameterValue>
+			<dev:type>
+				<maml:name>PSPublicIpAddress</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Add-AzureRmVirtualNetworkPeering</command:name>
 		<maml:description>
 			<maml:para>Creates a peering between 2 virtual networks</maml:para>
@@ -7491,7 +7868,7 @@ Subnets           : []</dev:code>
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -7560,6 +7937,18 @@ RemoteVirtualNetworkAddressSpace : null</maml:para>
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -11004,7 +11393,7 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 	<command:details>
 		<command:name>Get-AzureRmEffectiveNetworkSecurityGroup</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Gets the effective network security group applied on a network interface</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11014,7 +11403,7 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>The Get-AzureRmEffectiveNetworkSecurityGroup cmdlet lists all the effective security rules that have been applied on a network interface</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11134,6 +11523,26 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Getting the effective network security group on a network interface  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command lists all the effective network security rules associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot;</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -11143,7 +11552,7 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 	<command:details>
 		<command:name>Get-AzureRmEffectiveRouteTable</command:name>
 		<maml:description>
-			<maml:para />
+			<maml:para>Gets the effective route table applied on a network interface</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -11153,7 +11562,7 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para />
+		<maml:para>The Get-AzureRmEffectiveNetworkSecurityGroup lists the effective routes on  a network interface</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -11273,6 +11682,26 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1 Getting the effective route table on a network interface  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt; Get-AzureRmEffectiveRouteTable -NetworkInterfaceName &quot;MyNetworkInterface&quot; -ResourceGroupName &quot;myResourceGroup&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command lists all the effective route table associated with network interface called &quot;MyNetworkInterface&quot; within resource group &quot;MyResourceGroup.&quot;</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 	</maml:relatedLinks>
@@ -13234,16 +13663,44 @@ PS C:\&gt; Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name &quot;BackendAd
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Getting the frontend IP Configuration of an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
+
+PS C:\&gt; Get-AzureRmLoadBalancerFrontendIpConfig -Name &quot;MyFrontEnd&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
+				<maml:para>The first command gets the existing load balancer and stores it within the variable $slb. The second command then gets the front end IP configuration associated with that load balancer.</maml:para>
 				<maml:para />
 				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+				<maml:para>Name                      : MyFrontEnd
+Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/Microsoft.
+                            Network/loadBalancers/MyLoadBalancer/frontendIPConfigurations/MyFrontEnd
+Etag                      : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
+ProvisioningState         : Succeeded
+PrivateIpAddress          : 
+PrivateIpAllocationMethod : Dynamic
+Subnet                    : null
+PublicIpAddress           : {
+                              &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers/M
+                            icrosoft.Network/publicIPAddresses/MyPublicIP&quot;
+                            }
+InboundNatRules           : [
+                              {
+                                &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers
+                            /Microsoft.Network/loadBalancers/MyLoadBalancer/inboundNatRules/MyinboundNatRule1&quot;
+                              },
+                              
+                              }
+                            ]
+LoadBalancingRules        : [
+                              {
+                                &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers
+                            /Microsoft.Network/loadBalancers/MyLoadBalancer/loadBalancingRules/MyLBruleName&quot;
+                              }
+                            ]
+InboundNatPools           : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -13564,9 +14021,11 @@ PS C:\&gt; Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name &quot;BackendAd
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
+
+PS C:\&gt; Get-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;MyinboundNatRule1&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command gets the existing load balancer for which the inbound NAT rule is wanted and stores it in the variable slb. The second command then gets the accodiated NAT rule called MyinboundNatRule1.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -13747,13 +14206,15 @@ PS C:\&gt; Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name &quot;BackendAd
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Getting probe configuration of an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; Get-AzureRmLoadBalancerProbeConfig -Name &quot;MyProbe&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command gets the load balancer called &quot;MyLoadBalancer&quot; and stores it in the variable $slb. The second command then gets the associated probe configuration called MyProbe.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -13934,13 +14395,15 @@ PS C:\&gt; Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name &quot;BackendAd
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Gets the rule configuration of an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
+
+PS C:\&gt; Get-AzureRmLoadBalancerRuleConfig -Name &quot;MyLBrulename&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command gets the load balancer and stores it in the variable $slb. The second command gets the associated rule configuration called MyLBrulename.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -16747,7 +17210,7 @@ Subnets           : [
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This comdlet is a good way to check if a peering was successfully created.</maml:para>
+		<maml:para>This cmdlet gets the virtual network peering specified by the user in the cmdlet. Note that there must be an existing peering in order to get it via this cmdlet. This cmdlet is a good way to check if a peering was successfully created.</maml:para>
 		<maml:para>Look into Add-AzureRmVirtualNetworkPeering to create this peering if you have not created a peering already.</maml:para>
 	</maml:description>
 	<command:syntax>
@@ -16883,7 +17346,7 @@ Subnets           : [
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -16909,6 +17372,18 @@ Subnets           : [
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -29521,6 +29996,13 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ActiveActive</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>GatewaySku</maml:name>
 				<maml:description>
 					<maml:para />
@@ -29697,6 +30179,18 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ActiveActive</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<dev:type>
+				<maml:name>Boolean</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>GatewaySku</maml:name>
@@ -36376,13 +36870,14 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Deleting a network security group  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmNetworkSecurityGroup -Name &quot;NSG-FrontEnd&quot; -ResourceGroupName &quot;TestRG&quot;</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>This command removes the network security group called &quot;NSG-Frontend&quot; within the resource group &quot;TestRG.&quot;</maml:para>
+				<maml:para>Note that a network security group must exist before it can be deleted.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -36559,13 +37054,20 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Deleting a network security rule configuration  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule  -Description &quot;Allow RDP&quot; -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+PS C:\&gt; $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name &quot;NSG-FrontEnd&quot; -SecurityRules $rule1
+
+PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg
+
+</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command creates a network security rule called rdp-rule. The second command assigns this rule to a newly created network security group called &quot;NSG-FrontEnd&quot;. Finally, the third command removes this network security rule associated with the network security group stored in the variable $nsg.</maml:para>
+				<maml:para>Note that a rule must be associated with a network security group in order to successfully delete it.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -38207,6 +38709,203 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
+		<command:name>Remove-AzureRmVirtualNetworkGatewayIpConfig</command:name>
+		<maml:description>
+			<maml:para />
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Remove</command:verb>
+		<command:noun>AzureRmVirtualNetworkGatewayIpConfig</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para />
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Remove-AzureRmVirtualNetworkGatewayIpConfig</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>VirtualNetworkGateway</maml:name>
+				<maml:description>
+					<maml:para>The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Name</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>WhatIf</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>VirtualNetworkGateway</maml:name>
+			<maml:description>
+				<maml:para>The virtual network gateway object to base modifications off of. This can be retrieved using Get-AzureRmVirtualNetworkGateway</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSVirtualNetworkGateway</command:parameterValue>
+			<dev:type>
+				<maml:name>PSVirtualNetworkGateway</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Name</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue>none</dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>WhatIf</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+				<maml:para>
+</maml:para>
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;</dev:code>
+			<dev:remarks>
+				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
 		<command:name>Remove-AzureRmVirtualNetworkPeering</command:name>
 		<maml:description>
 			<maml:para>Deletes a Virtual network Peering that has been previously created</maml:para>
@@ -38430,7 +39129,7 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 	<maml:alertSet>
 		<maml:title></maml:title>
 		<maml:alert>
-			<maml:para />
+			<maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking, peering</maml:para>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
@@ -38456,6 +39155,18 @@ Remove-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResou
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Set-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -45151,13 +45862,17 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name &quot;NewFronten
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Updating the inbound NAT rule configuration on an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+
+PS C:\&gt; $slb | Set-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a varibale called $slb. The second command then adds an Inbound NAT rule configuration with certain properties. One of these is enablibling floating IP. However once added, lets assume one no longer wants this properly enabled, then the third command is used to update this for the load balancer using the Set-AzureRmLoadBalancerInboundNatRuleConfig.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -45925,13 +46640,18 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerProbeConfig -Name &quot;NewProbe&quot; 
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1 Updating a load balancing rule on an existing load balancer  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name &quot;MyLoadBalancer&quot; -ResourceGroupName &quot;MyResourceGroup&quot;
+
+PS C:\&gt; $slb | $slb | Add-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP
+
+
+PS C:\&gt; $slb | Set-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command stores an existing load balancer called MyLoadBalancer in the variable $slb. The second command adds a load balancing rule called NewRule with certain specifications. One of these is enabling floating IP to be true. However once added, lets assume one no longer wants this properly enabled, then the third command is used to update this for the load balancer using the Set-AzureRmLoadBalancerRuleConfig.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -47317,13 +48037,17 @@ Set-AzureRmNetworkInterface -NetworkInterface $nic</dev:code>
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  1:  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Changing the Access configuration in a network security rule  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code></dev:code>
+			<dev:code>PS C:\&gt; $nsg = Get-AzureRmNetworkSecurityGroup -Name  NSG-FrontEnd -ResourceGroupName TestRG
+
+PS C:\&gt; $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name &quot;rdp-rule&quot;
+
+PS C:\&gt; Set-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg -Access Deny</dev:code>
 			<dev:remarks>
-				<maml:para />
+				<maml:para>The first command gets the network security group &quot;NSG-FrontEnd&quot; associated with the rule configuration you want to update and stores it in the variable $nsg. The second command gets the security rule configuration &quot;rdp-rule. The third command changes the Access configuration that was previously Allow to Deny.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -47841,7 +48565,12 @@ DnsSettings              : {
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Set-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-Name              : routetable01
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the route table named routetable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
 Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
@@ -47871,12 +48600,7 @@ Routes            : [
                         &quot;ProvisioningState&quot;: &quot;Succeeded&quot;
                       }
                     ]
-Subnets           : []</dev:code>
-			<dev:remarks>
-				<maml:para>This command gets the route table named routetable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+Subnets           : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -48048,7 +48772,12 @@ Subnets           : []</dev:code>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Add-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-Name              : routetable01
+</dev:code>
+			<dev:remarks>
+				<maml:para>This command gets the route table named routetable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>Name              : routetable01
 ResourceGroupName : ResourceGroup11
 Location          : eastus
 Id                : /subscriptions/xxxx-xxxx-xxxx-xxxx/resourceGroups/ResourceGroup11/providers/Microsoft.Networ
@@ -48087,12 +48816,7 @@ Routes            : [
                         &quot;ProvisioningState&quot;: null
                       }
                     ]
-Subnets           : []</dev:code>
-			<dev:remarks>
-				<maml:para>This command gets the route table named routetable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
+Subnets           : []</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
@@ -48367,6 +49091,13 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+				<maml:name>ActiveActive</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
@@ -48476,6 +49207,18 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
 			<dev:type>
 				<maml:name>Int32</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+			<maml:name>ActiveActive</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<dev:type>
+				<maml:name>Boolean</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -49544,6 +50287,18 @@ PS C:\&gt; Set-AzureRmVirtualNetworkPeering -VirtualNetworkPeering $LinkToVNet2<
 		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
+		<maml:navigationLink>
+			<maml:linkText>Get-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Remove-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
+		<maml:navigationLink>
+			<maml:linkText>Add-AzureRmVirtualNetworkPeering</maml:linkText>
+			<maml:uri></maml:uri>
+		</maml:navigationLink>
 	</maml:relatedLinks>
 </command:command>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -50397,6 +51152,246 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 			<dev:code>PS C:\&gt;</dev:code>
 			<dev:remarks>
 				<maml:para />
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+	</command:examples>
+	<maml:relatedLinks>
+	</maml:relatedLinks>
+</command:command>
+<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+<!--Generated by PS Cmdlet Help Editor-->
+	<command:details>
+		<command:name>Test-AzureRmPrivateIPAddressAvailability</command:name>
+		<maml:description>
+			<maml:para>Test availability of a private IP address in a virtual network</maml:para>
+		</maml:description>
+		<maml:copyright>
+			<maml:para />
+		</maml:copyright>
+		<command:verb>Test</command:verb>
+		<command:noun>AzureRmPrivateIPAddressAvailability</command:noun>
+		<dev:version />
+	</command:details>
+	<maml:description>
+		<maml:para>The Test-AzureRmPrivateIPAddressAvailability cmdlet tests if a private IP address in a virtual network is available to use or not. Return list of available private IP addresses if the requested private IP is taken.</maml:para>
+	</maml:description>
+	<command:syntax>
+		<command:syntaxItem>
+			<maml:name>Test-AzureRmPrivateIPAddressAvailability</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+				<maml:name>VirtualNetwork</maml:name>
+				<maml:description>
+					<maml:para>Specifies the virtual network to check availability for.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">PSVirtualNetwork</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>IPAddress</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP address to check availability for.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+		<command:syntaxItem>
+			<maml:name>Test-AzureRmPrivateIPAddressAvailability</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>ResourceGroupName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the resource group name of the virtual network to check availability for.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>VirtualNetworkName</maml:name>
+				<maml:description>
+					<maml:para>Specifies the virtual network name to check availability for.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>IPAddress</maml:name>
+				<maml:description>
+					<maml:para>Specifies the IP address to check availability for.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationAction</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>InformationVariable</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+		</command:syntaxItem>
+	</command:syntax>
+	<command:parameters>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
+			<maml:name>VirtualNetwork</maml:name>
+			<maml:description>
+				<maml:para>Specifies the virtual network to check availability for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">PSVirtualNetwork</command:parameterValue>
+			<dev:type>
+				<maml:name>PSVirtualNetwork</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>IPAddress</maml:name>
+			<maml:description>
+				<maml:para>Specifies the IP address to check availability for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationAction</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+			<dev:type>
+				<maml:name>ActionPreference</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>InformationVariable</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>ResourceGroupName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the resource group name of the virtual network to check availability for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>VirtualNetworkName</maml:name>
+			<maml:description>
+				<maml:para>Specifies the virtual network name to check availability for.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			<dev:type>
+				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+	</command:parameters>
+	<command:inputTypes>
+		<command:inputType>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:inputType>
+	</command:inputTypes>
+	<command:returnValues>
+		<command:returnValue>
+			<dev:type>
+				<maml:name></maml:name>
+				<maml:uri></maml:uri>
+				<maml:description/>
+			</dev:type>
+			<maml:description>
+<maml:para />
+			</maml:description>
+		</command:returnValue>
+	</command:returnValues>
+	<command:terminatingErrors></command:terminatingErrors>
+	<command:nonTerminatingErrors></command:nonTerminatingErrors>
+	<maml:alertSet>
+		<maml:title></maml:title>
+		<maml:alert>
+			<maml:para />
+		</maml:alert>
+	</maml:alertSet>
+	<command:examples>
+		<command:example>
+			<maml:title>--------------------------  Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Test-AzureRmPrivateIPAddressAvailability -IPAddress &quot;10.0.1.10&quot;
+</dev:code>
+			<dev:remarks>
+				<maml:para>Test private IP address availability of a piped virtual network</maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para></maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Example 2  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>Test private IP address availability of a virtual network given its name and resource group name</dev:code>
+			<dev:remarks>
+				<maml:para>Test private IP address availability of a virtual network given its name and resource group name</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
