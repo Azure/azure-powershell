@@ -29995,13 +29995,13 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ActiveActive</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>EnableActiveActiveFeature</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Flag to enable Active Active feature on virtual network gateway. </maml:para>
 				</maml:description>
-				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
-			</command:parameter>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>														
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>GatewaySku</maml:name>
 				<maml:description>
@@ -30179,15 +30179,15 @@ New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResource
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue>none</dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ActiveActive</maml:name>
+		</command:parameter>	
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>EnableActiveActiveFeature</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Flag to enable Active Active feature on virtual network gateway. </maml:para>
 			</maml:description>
-			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
-				<maml:name>Boolean</maml:name>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -49090,13 +49090,20 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 					<maml:para>The weight added to routes learned over BGP from this virtual network gateway</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ActiveActive</maml:name>
+			</command:parameter>			
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>EnableActiveActiveFeature</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Flag to enable Active Active feature on virtual network gateway. </maml:para>
 				</maml:description>
-				<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>DisableActiveActiveFeature</maml:name>
+				<maml:description>
+					<maml:para>Flag to disable Active Active feature on virtual network gateway. </maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -49210,15 +49217,27 @@ $virtualNetwork | Set-AzureRmVirtualNetwork</dev:code>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ActiveActive</maml:name>
+		</command:parameter>		
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>EnableActiveActiveFeature</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Flag to enable Active Active feature on virtual network gateway. </maml:para>
 			</maml:description>
-			<command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
-				<maml:name>Boolean</maml:name>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>DisableActiveActiveFeature</maml:name>
+			<maml:description>
+				<maml:para>Flag to disable Active Active feature on virtual network gateway. </maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
