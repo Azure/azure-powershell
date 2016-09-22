@@ -4817,7 +4817,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>OverwriteExistingUserDisk</maml:name>
           <maml:description>
-            <maml:para>Overwrite the existing user disk.</maml:para>
+            <maml:para>Overwrite existing user disk.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -4866,7 +4866,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>OverwriteExistingUserDisk</maml:name>
         <maml:description>
-          <maml:para>Overwrite the existing user disk</maml:para>
+          <maml:para>Overwrite existing user disk</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -5019,6 +5019,12 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OverwriteExistingUserDisk</maml:name>
+          <maml:description>
+            <maml:para>Overwrite existing user disk.</maml:para>
+          </maml:description>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -5070,6 +5076,19 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OverwriteExistingUserDisk</maml:name>
+        <maml:description>
+          <maml:para>Overwrite existing user disk</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5134,7 +5153,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Export-AzureRemoteAppUserDisk -CollectionName Contoso -DestinationStorageAccountName accountname -DestinationStorageAccountKey accountkey -DestinationStorageAccountContainerName containername
+          Export-AzureRemoteAppUserDisk -CollectionName Contoso -DestinationStorageAccountName accountname -DestinationStorageAccountKey accountkey -DestinationStorageAccountContainerName containername -OverwriteExistingUserDisk
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -5218,6 +5237,12 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           </maml:description>
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OverwriteExistingTemplateImage</maml:name>
+          <maml:description>
+            <maml:para>Overwrite existing template image.</maml:para>
+          </maml:description>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -5269,6 +5294,19 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OverwriteExistingTemplateImage</maml:name>
+        <maml:description>
+          <maml:para>Overwrite existing template image</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5333,7 +5371,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Export-AzureRemoteAppTemplateImage -CollectionName Contoso -DestinationStorageAccountName accountname -DestinationStorageAccountKey accountkey -DestinationStorageAccountContainerName containername
+          Export-AzureRemoteAppTemplateImage -CollectionName Contoso -DestinationStorageAccountName accountname -DestinationStorageAccountKey accountkey -DestinationStorageAccountContainerName containername -OverwriteExistingTemplateImage
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>

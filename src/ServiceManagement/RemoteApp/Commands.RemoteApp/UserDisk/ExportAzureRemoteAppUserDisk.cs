@@ -46,16 +46,17 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             HelpMessage = "Destination azure storage account container name")]
         public string DestinationStorageAccountContainerName { get; set; }
 
+        [Parameter(Mandatory = false,
+             HelpMessage = "Overwrite existing user disks")]
+        public SwitchParameter OverwriteExistingUserDisk { get; set; }
+
         public override void ExecuteCmdlet()
         {
             OperationResultWithTrackingId response = null;
 
-            if (ShouldProcess(CollectionName, "Migrate user disks of collection"))
+            if (ShouldProcess(CollectionName, "Export user disks of collection"))
             {
-                if (ShouldContinue(DestinationStorageAccountContainerName, "Overwrite existing migration records in the destination container"))
-                {
-                    response = CallClient(() => Client.UserDisks.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.UserDisks);
-                }
+                response = CallClient(() => Client.UserDisks.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, OverwriteExistingUserDisk.IsPresent), Client.UserDisks);
 
                 if (response != null)
                 {
