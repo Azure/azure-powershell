@@ -155,30 +155,22 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
+            string warningMsg = string.Empty;
+            string continueMsg = Properties.Resources.CreatingResourceMessage;
             if (!string.IsNullOrEmpty(GatewaySku)
-                && GatewaySku.Equals(
-                    MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
-                    StringComparison.InvariantCultureIgnoreCase)
-                )
+                && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,StringComparison.InvariantCultureIgnoreCase))
             {
-                ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.UltraPerformaceGatewayWarning, Name),
-                Properties.Resources.CreatingResourceMessage,
-                Name,
-                () =>
-                {
-                    var virtualNetworkGateway = CreateVirtualNetworkGateway();
-                    WriteObject(virtualNetworkGateway);
-                },
-                () => present);
+                warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning,this.Name);
             }
             else
             {
-                ConfirmAction(
+                warningMsg = string.Format(Properties.Resources.OverwritingResource, this.Name);
+            }
+
+            ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
+                warningMsg,
+                continueMsg,
                 Name,
                 () =>
                 {
@@ -186,7 +178,6 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(virtualNetworkGateway);
                 },
                 () => present);
-            }
             
         }
 
