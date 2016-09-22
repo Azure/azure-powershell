@@ -46,23 +46,24 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             HelpMessage = "Destination azure storage account container name")]
         public string DestinationStorageAccountContainerName { get; set; }
 
+        [Parameter(Mandatory = false,
+             HelpMessage = "Overwrite existing template image")]
+        public SwitchParameter OverwriteExistingTemplateImage { get; set; }
+
         public override void ExecuteCmdlet()
         {
             OperationResultWithTrackingId response = null;
 
-            if (ShouldProcess(CollectionName, "Migrate the template image of collection"))
+            if (ShouldProcess(CollectionName, "Export template image of collection"))
             {
-                if (ShouldContinue(DestinationStorageAccountContainerName, "Overwrite existing migration records in the destination container"))
-                {
-                    response = CallClient(() => Client.TemplateImages.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.TemplateImages);
-                }
-                
+                response = CallClient(() => Client.TemplateImages.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, OverwriteExistingTemplateImage.IsPresent), Client.TemplateImages);
+
                 if (response != null)
                 {
                     WriteTrackingId(response);
-                }   
+                }
             }
-    
+
         }
     }
 }
