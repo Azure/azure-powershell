@@ -50,19 +50,19 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         {
             OperationResultWithTrackingId response = null;
 
-            if (ShouldProcess(CollectionName, "Overwrite existing template image while exporting the template image of collection"))
+            if (ShouldProcess(CollectionName, "Migrate the template image of collection"))
             {
-                response = CallClient(() => Client.TemplateImages.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.TemplateImages);
+                if (ShouldContinue(DestinationStorageAccountContainerName, "Overwrite existing migration records in the destination container"))
+                {
+                    response = CallClient(() => Client.TemplateImages.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.TemplateImages);
+                }
+                
+                if (response != null)
+                {
+                    WriteTrackingId(response);
+                }   
             }
-            else
-            {
-                response = CallClient(() => Client.TemplateImages.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, false), Client.TemplateImages);
-            }
-
-            if (response != null)
-            {
-                WriteTrackingId(response);
-            }       
+    
         }
     }
 }
