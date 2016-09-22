@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using System.Threading;
+using Microsoft.Azure.Management.Insights;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            this.InsightsManagementClient.LogProfilesOperations.DeleteAsync(this.Name, CancellationToken.None).Wait();
+            this.InsightsManagementClient.LogProfiles.DeleteAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Wait();
             WriteObject(true);
         }
     }

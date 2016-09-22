@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using System.Collections.Generic;
@@ -75,16 +76,17 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            RuleCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            AlertRuleResource parameters = this.CreateSdkCallParameters();
 
-            var result = this.InsightsManagementClient.AlertOperations.CreateOrUpdateRuleAsync(resourceGroupName: this.ResourceGroup, parameters: parameters).Result;
-            WriteObject(result);
+            Task<AlertRuleResource> task = this.InsightsManagementClient.AlertRules.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName);
+            task.Wait();
+            WriteObject(task.Result);
         }
 
         /// <summary>
         /// When overriden by a descendant class this method creates the set of parameters for the call to the sdk
         /// </summary>
         /// <returns>The set of parameters for the call to the sdk</returns>
-        protected abstract RuleCreateOrUpdateParameters CreateSdkCallParameters();
+        protected abstract AlertRuleResource CreateSdkCallParameters();
     }
 }

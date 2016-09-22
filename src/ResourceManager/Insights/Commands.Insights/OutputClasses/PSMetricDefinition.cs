@@ -30,40 +30,16 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the Name of the metric
         /// </summary>
-        public new string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of Dimension objects
-        /// </summary>
-        protected internal new IList<Dimension> Dimensions
-        {
-            get { return base.Dimensions; }
-            set { base.Dimensions = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the Proterties of the metric
-        /// </summary>
-        public new PSDictionaryElement Properties { get; set; }
+        public new PSLocalizableString Name { get; set; }
 
         /// <summary>
         /// Initializes an new instance of the PSMetricDefinition class
         /// </summary>
         /// <param name="metricDefinition">The MetricDefinition</param>
-        public PSMetricDefinition(MetricDefinition metricDefinition)
+        public PSMetricDefinition(MetricDefinition metricDefinition) : base(name: metricDefinition.Name, metricAvailabilities: metricDefinition.MetricAvailabilities, primaryAggregationType: metricDefinition.PrimaryAggregationType, resourceId: metricDefinition.ResourceId, unit: metricDefinition.Unit, id: metricDefinition.Id)
         {
-            // Keep the original value (localized string, Dictionary, List) in the base
-            base.Dimensions = metricDefinition.Dimensions;
-            base.MetricAvailabilities = metricDefinition.MetricAvailabilities;
-            base.Name = metricDefinition.Name;
-            base.Properties = metricDefinition.Properties;
-
             this.MetricAvailabilities = new PSAvailabilityCollection(metricDefinition.MetricAvailabilities);
-            this.Name = metricDefinition.Name.ToString(localizedValue: false);
-            this.PrimaryAggregationType = metricDefinition.PrimaryAggregationType;
-            this.Properties = new PSDictionaryElement(metricDefinition.Properties);
-            this.ResourceId = metricDefinition.ResourceId;
-            this.Unit = metricDefinition.Unit;
+            this.Name = new PSLocalizableString(metricDefinition.Name);
         }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.Insights;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets based on the InsightsManagementClient
     /// </summary>
-    public abstract class ManagementCmdletBase : InsightsCmdletBase
+    public abstract class ManagementCmdletBase : InsightsCmdletBase, IDisposable
     {
         #region General declarations
 
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.insightsManagementClient == null)
                 {
-                    this.insightsManagementClient = AzureSession.ClientFactory.CreateClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    this.insightsManagementClient = AzureSession.ClientFactory.CreateArmClient<InsightsManagementClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.insightsManagementClient;

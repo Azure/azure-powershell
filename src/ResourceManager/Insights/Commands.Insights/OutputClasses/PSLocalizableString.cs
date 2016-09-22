@@ -12,30 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights.Models;
+using Microsoft.Azure.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Conversion extensions
+    /// Wraps around a list of Dimension objects to display them with indentation
     /// </summary>
-    public static class ConversionExtensions
+    public class PSLocalizableString
     {
+        private LocalizableString localizableString;
+
         /// <summary>
-        /// Converts an AutoscaleSettingGetResponse object into an AutoscaleSettingResource
+        /// Initializes a new instance of the PSLocalizableString class
         /// </summary>
-        /// <param name="autoscaleSettingSpec">The AutoscaleSettingGetResponse</param>
-        /// <returns>An AutoscaleSettingResource created from an AutoscaleSettingGetResponse object</returns>
-        public static AutoscaleSettingResource ToAutoscaleSettingGetResponse(this AutoscaleSettingGetResponse autoscaleSettingSpec)
+        /// <param name="localizableString">The input LocalizableString object</param>
+        public PSLocalizableString(LocalizableString localizableString)
         {
-            return new AutoscaleSettingResource
-            {
-                Id = autoscaleSettingSpec.Id,
-                Location = autoscaleSettingSpec.Location,
-                Name = autoscaleSettingSpec.Name,
-                Properties = autoscaleSettingSpec.Properties,
-                Tags = autoscaleSettingSpec.Tags
-            };
+            this.localizableString = localizableString;
+        }
+
+        /// <summary>
+        /// A string representation of the list LocalizableString objects including indentation
+        /// </summary>
+        /// <returns>A string representation of the LocalizableString object including indentation</returns>
+        public override string ToString()
+        {
+            return this.localizableString.ToString(indentationTabs: 1);
         }
     }
 }

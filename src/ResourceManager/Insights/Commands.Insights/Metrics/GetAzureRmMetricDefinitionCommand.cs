@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
@@ -70,14 +74,14 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            string queryFilter = this.ProcessParameters();
+            var queryFilter = new ODataQuery<MetricDefinition>(this.ProcessParameters());
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
-            MetricDefinitionListResponse response = this.InsightsClient.MetricDefinitionOperations.GetMetricDefinitionsAsync(resourceUri: this.ResourceId, filterString: queryFilter, cancellationToken: CancellationToken.None).Result;
+            IEnumerable<MetricDefinition> response = this.InsightsClient.MetricDefinitions.ListAsync(resourceUri: this.ResourceId, odataQuery: queryFilter, cancellationToken: CancellationToken.None).Result;
 
-            var records = response.MetricDefinitionCollection.Value.Select(e => fullDetails ? (MetricDefinition)new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
+            var records = response.Select(e => fullDetails ? (MetricDefinition)new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
 
             WriteObject(sendToPipeline: records);
         }

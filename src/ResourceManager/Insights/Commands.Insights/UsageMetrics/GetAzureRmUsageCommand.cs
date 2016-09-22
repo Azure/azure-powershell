@@ -12,13 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Insights.UsageMetrics
 {
@@ -116,23 +120,33 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             return queryFilter.Trim();
         }
 
+        private static IEnumerable<PSUsageMetric> ExtractCollectionFromResult(IEnumerator<UsageMetric> enumerator)
+        {
+            var records = new List<PSUsageMetric>();
+            while (enumerator.MoveNext())
+            {
+                var current = enumerator.Current;
+                records.Add(new PSUsageMetric(current));
+            }
+
+            return records;
+        }
+
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            string queryFilter = this.ProcessParameters();
+            var queryFilter = new ODataQuery<UsageMetric>(this.ProcessParameters());
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;
 
             // Call the proper API methods to return a list of raw records.
             // If fullDetails is present full details of the records displayed, otherwise only a summary of the values is displayed
-            UsageMetricListResponse response = this.InsightsClient.UsageMetricOperations
-                .ListAsync(resourceUri: this.ResourceId, filterString: queryFilter, apiVersion: apiVersion, cancellationToken: CancellationToken.None)
+            IEnumerable<UsageMetric> response = this.InsightsClient.UsageMetrics
+                .ListAsync(resourceUri: this.ResourceId, apiVersion: apiVersion, odataQuery: queryFilter, cancellationToken: CancellationToken.None)
                 .Result;
 
-            var records = response.UsageMetricCollection.Value
-                .Select(e => new PSUsageMetric(e))
-                .ToArray();
+            var records = ExtractCollectionFromResult(response.GetEnumerator()).ToArray();
 
             WriteObject(sendToPipeline: records);
         }
