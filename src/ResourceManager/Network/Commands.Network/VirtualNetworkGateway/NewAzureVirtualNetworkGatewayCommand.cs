@@ -157,18 +157,24 @@ namespace Microsoft.Azure.Commands.Network
             var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
             string warningMsg = string.Empty;
             string continueMsg = Properties.Resources.CreatingResourceMessage;
+            bool force = true;
             if (!string.IsNullOrEmpty(GatewaySku)
                 && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,StringComparison.InvariantCultureIgnoreCase))
             {
                 warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning,this.Name);
+                force = false;
             }
             else
             {
                 warningMsg = string.Format(Properties.Resources.OverwritingResource, this.Name);
             }
+            if (this.Force.IsPresent)
+            {
+                force = true;
+            }
 
             ConfirmAction(
-                Force.IsPresent,
+                force,
                 warningMsg,
                 continueMsg,
                 Name,
