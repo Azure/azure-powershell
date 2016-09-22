@@ -576,3 +576,8 @@ function Get-SubscriptionIdFromResourceGroup
       $last = $rgid.IndexOf('/', $first + 1);
       return $rgid.Substring($first + 1, $last - $first - 1);
 }
+
+function Get-ComputeVmssLocation
+{
+      Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
+}
