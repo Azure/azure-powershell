@@ -50,19 +50,19 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         {
             OperationResultWithTrackingId response = null;
 
-            if (ShouldProcess(CollectionName, "Overwrite existing user disks while exporting user disks of collection"))
+            if (ShouldProcess(CollectionName, "Migrate user disks of collection"))
             {
-                response = CallClient(() => Client.UserDisks.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.UserDisks);
-            }
-            else
-            {
-                response = CallClient(() => Client.UserDisks.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, false), Client.UserDisks);
+                if (ShouldContinue(DestinationStorageAccountContainerName, "Overwrite existing migration records in the destination container"))
+                {
+                    response = CallClient(() => Client.UserDisks.Migrate(CollectionName, DestinationStorageAccountName, DestinationStorageAccountKey, DestinationStorageAccountContainerName, true), Client.UserDisks);
+                }
+
+                if (response != null)
+                {
+                    WriteTrackingId(response);
+                }
             }
 
-            if (response != null)
-            {
-                WriteTrackingId(response);
-            }
         }
     }
 }
