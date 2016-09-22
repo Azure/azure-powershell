@@ -835,6 +835,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reactivating task {0}..
+        /// </summary>
+        internal static string ReactivateTask {
+            get {
+                return ResourceManager.GetString("ReactivateTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rebooting compute node {0}..
         /// </summary>
         internal static string RebootComputeNode {
