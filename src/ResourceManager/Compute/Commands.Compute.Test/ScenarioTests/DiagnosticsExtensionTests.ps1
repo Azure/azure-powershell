@@ -261,7 +261,7 @@ function Test-VmssDiagnosticsExtension
         Assert-AreNotEqual '' $storageAccountKey;
 
         # Remove without specifying extension name, diagnostic extension is expected to be removed.
-        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Force;
+        $vmss = Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss;
         $vmssDiagExtensions = $vmss.VirtualMachineProfile.ExtensionProfile.Extensions | Where-Object {$_.Publisher -eq $diagExtPublisher -and $_.Type -eq $diagExtType};
 
         Assert-Null $vmssDiagExtensions;
@@ -280,7 +280,7 @@ function Test-VmssDiagnosticsExtension
         $settings = $vmssDiagExtension.Settings;
         Assert-AreEqual $storagename $settings.storageAccount.Value;
 
-        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname -Force;
+        Remove-AzureRmVmssDiagnosticsExtension -VirtualMachineScaleSet $vmss -Name $extname;
         Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;

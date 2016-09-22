@@ -43,10 +43,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The extension name.")]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            HelpMessage = "To force the removal of the diagnostics extension from the VM scale set.")]
-        public SwitchParameter Force { get; set; }
-
         protected override void ProcessRecord()
         {
             if (ShouldProcess(this.VirtualMachineScaleSet.Name, Properties.Resources.RemoveVmssDiagnosticsExtensionAction))
@@ -68,15 +64,11 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (diagnosticsExtensions.Any())
                     {
-                        if (Force.IsPresent ||
-                            ShouldContinue(Properties.Resources.DiagnosticsExtensionRemovalConfirmation, Properties.Resources.DiagnosticsExtensionRemovalCaption))
-                        {
-                            this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = extensions.Except(diagnosticsExtensions).ToList();
+                        this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = extensions.Except(diagnosticsExtensions).ToList();
 
-                            if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Count == 0)
-                            {
-                                this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = null;
-                            }
+                        if (this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Count == 0)
+                        {
+                            this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions = null;
                         }
 
                         WriteObject(this.VirtualMachineScaleSet);

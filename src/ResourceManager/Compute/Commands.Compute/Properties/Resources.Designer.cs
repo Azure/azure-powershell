@@ -423,24 +423,6 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagnostics extension removal operation.
-        /// </summary>
-        public static string DiagnosticsExtensionRemovalCaption {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionRemovalCaption", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to This cmdlet will remove existing diagnostics extension. Do you want to continue?.
-        /// </summary>
-        public static string DiagnosticsExtensionRemovalConfirmation {
-            get {
-                return ResourceManager.GetString("DiagnosticsExtensionRemovalConfirmation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Disable AzureDiskEncryption on the VM.
         /// </summary>
         public static string DisableAzureDiskEncryptionCaption {
