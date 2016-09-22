@@ -13,29 +13,29 @@
           "141"
         ],
         "client-request-id": [
-          "c0a35cd1-96d6-4413-a884-c53fc74ad967"
+          "6bc0753d-5894-4d1c-9085-f269025c7f8f"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:49:11 GMT"
+          "Tue, 06 Sep 2016 06:40:04 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Mon, 01 Aug 2016 20:49:10 GMT"
+          "Tue, 06 Sep 2016 06:40:05 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "392fb73a-8c98-4a9a-9e1b-1e346522ec6c"
+          "e15072dc-89cb-49d7-8f4f-045c347aa363"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -47,10 +47,10 @@
           "https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:49:10 GMT"
+          "Tue, 06 Sep 2016 06:40:04 GMT"
         ],
         "ETag": [
-          "0x8D3BA4D4A06E279"
+          "0x8D3D620A32577A8"
         ],
         "Location": [
           "https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule"
@@ -68,20 +68,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "1e55d420-9651-4072-8572-6e71b04db6a5"
+          "7195a5db-95cf-4ded-b0a8-7eba087ebe0e"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:49:12 GMT"
+          "Tue, 06 Sep 2016 06:40:05 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDeleteJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule\",\r\n      \"eTag\": \"0x8D3BA4D4A06E279\",\r\n      \"lastModified\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"creationTime\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testDeleteJobSchedule:job-1\",\r\n          \"id\": \"testDeleteJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDeleteJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule\",\r\n      \"eTag\": \"0x8D3D620A32577A8\",\r\n      \"lastModified\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"creationTime\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testDeleteJobSchedule:job-1\",\r\n          \"id\": \"testDeleteJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -90,7 +90,7 @@
           "chunked"
         ],
         "request-id": [
-          "3222adbf-4e54-4b2b-8993-982183b69366"
+          "6ecfa87a-b86c-4a6a-b217-6336c68da31a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -99,7 +99,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:49:11 GMT"
+          "Tue, 06 Sep 2016 06:40:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -114,20 +114,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "77877d32-822c-46ba-a1a5-d751ee319dc7"
+          "d416f213-30d2-459b-bd56-3fd0b1dc6b4d"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:49:13 GMT"
+          "Tue, 06 Sep 2016 06:40:07 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDeleteJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule\",\r\n      \"eTag\": \"0x8D3BA4D4A06E279\",\r\n      \"lastModified\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"creationTime\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2016-08-01T20:49:11.4774471Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2016-08-01T20:49:10.6585209Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testDeleteJobSchedule:job-1\",\r\n          \"id\": \"testDeleteJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDeleteJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testDeleteJobSchedule\",\r\n      \"eTag\": \"0x8D3D620A32577A8\",\r\n      \"lastModified\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"creationTime\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2016-09-06T06:40:06.869553Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2016-09-06T06:40:05.3811112Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testDeleteJobSchedule:job-1\",\r\n          \"id\": \"testDeleteJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -136,7 +136,7 @@
           "chunked"
         ],
         "request-id": [
-          "0359f1ef-f558-47b8-8127-68538f676928"
+          "b32b8fc6-78dd-44ae-9fad-3009445080b5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -145,7 +145,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:49:11 GMT"
+          "Tue, 06 Sep 2016 06:40:07 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -160,16 +160,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ce549197-6fd9-4808-9220-e5d6bfb4132a"
+          "72d613db-9e23-4123-824d-9eecd5c9d6cc"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:49:13 GMT"
+          "Tue, 06 Sep 2016 06:40:06 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
@@ -179,7 +179,7 @@
           "chunked"
         ],
         "request-id": [
-          "6b340463-2b38-4c1f-b751-0cc8c6bf775a"
+          "f00e0168-1fec-4aac-8045-568178760b89"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -188,7 +188,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:49:11 GMT"
+          "Tue, 06 Sep 2016 06:40:06 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -202,6 +202,6 @@
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
     "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
   }
 }

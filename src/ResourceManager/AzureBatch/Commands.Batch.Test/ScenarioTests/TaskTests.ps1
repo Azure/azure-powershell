@@ -35,7 +35,7 @@ function Test-CreateTask
     Assert-AreEqual $cmd $task1.CommandLine
 
     # Create a complicated task
-	$affinityId = "affinityId"
+    $affinityId = "affinityId"
     $affinityInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSAffinityInformation -ArgumentList @($affinityId)
 
     $taskConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(1),[TimeSpan]::FromDays(2),5)
@@ -46,6 +46,8 @@ function Test-CreateTask
     $resourceFiles = @{"file1"="https://testacct.blob.core.windows.net/"}
 
     $envSettings = @{"env1"="value1";"env2"="value2"}
+    $ApplicationId = "test"
+    $Version = "beta"
 
     $numInstances = 3
     $multiInstanceSettings = New-Object Microsoft.Azure.Commands.Batch.Models.PSMultiInstanceSettings -ArgumentList @($numInstances)
@@ -55,11 +57,14 @@ function Test-CreateTask
     $commonResourceFile = "common.exe"
     $commonResource = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($commonResourceBlob,$commonResourceFile)
     $multiInstanceSettings.CommonResourceFiles.Add($commonResource)
+    $apr1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
+    $apr1.ApplicationId = $ApplicationId
+    $apr1.Version = $Version
+    $ApplicationPackageReferences = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
+    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -MultiInstanceSettings $multiInstanceSettings -ApplicationPackageReferences $ApplicationPackageReferences -BatchContext $context
 
-    New-AzureBatchTask -JobId $jobId -Id $taskId2 -CommandLine $cmd -EnvironmentSettings $envSettings -ResourceFiles $resourceFiles -AffinityInformation $affinityInfo -Constraints $taskConstraints -MultiInstanceSettings $multiInstanceSettings -BatchContext $context
-        
     $task2 = Get-AzureBatchTask -JobId $jobId -Id $taskId2 -BatchContext $context
-        
+
     # Verify created task matches expectations
     Assert-AreEqual $taskId2 $task2.Id
     Assert-AreEqual $cmd $task2.CommandLine
@@ -83,7 +88,10 @@ function Test-CreateTask
     Assert-AreEqual 1 $task2.MultiInstanceSettings.CommonResourceFiles.Count
     Assert-AreEqual $commonResourceBlob $task2.MultiInstanceSettings.CommonResourceFiles[0].BlobSource
     Assert-AreEqual $commonResourceFile $task2.MultiInstanceSettings.CommonResourceFiles[0].FilePath
+    Assert-AreEqual $ApplicationId $task2.ApplicationPackageReferences[0].ApplicationId
+    Assert-AreEqual $Version $task2.ApplicationPackageReferences[0].Version
 }
+
 <#
 .SYNOPSIS
 Tests creating a collection of tasks

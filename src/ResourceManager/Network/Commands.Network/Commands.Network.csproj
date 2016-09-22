@@ -181,6 +181,10 @@
     <Compile Include="ApplicationGateway\BackendHttpSettings\NewAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
     <Compile Include="ApplicationGateway\BackendHttpSettings\RemoveAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
     <Compile Include="ApplicationGateway\BackendHttpSettings\SetAzureApplicationGatewayBackendHttpSettingsCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallConfiguration\AzureApplicationGatewayWebApplicationFirewallConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\FirewallConfiguration\GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallConfiguration\NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\FirewallConfiguration\SetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AddAzureApplicationGatewayFrontendIPConfigCommand.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\AzureApplicationGatewayFrontendIPConfigBase.cs" />
     <Compile Include="ApplicationGateway\FrontendIPConfiguration\GetAzureApplicationGatewayFrontendIPConfigCommand.cs" />
@@ -283,6 +287,7 @@
     <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
+    <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewaySslPolicy.cs" />
     <Compile Include="Models\PSBgpSettings.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
