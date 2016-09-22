@@ -15,9 +15,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    public enum PsApiManagementHostnameType
+    public enum PsApiManagementVpnType
     {
-        Proxy = 1,
-        Portal = 2
+         None = 0,
+         External = 1,
+         Internal = 2
     }
 }
