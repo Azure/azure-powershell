@@ -82,6 +82,64 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</TypeName>
       </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NumberOfCores</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MemoryInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaxDataDiskCount</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OSDiskSizeInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceDiskSizeInMB</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>NumberOfCores</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MemoryInMB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>MaxDataDiskCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>OSDiskSizeInMB</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceDiskSizeInMB</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineSize</TypeName>
+      </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
