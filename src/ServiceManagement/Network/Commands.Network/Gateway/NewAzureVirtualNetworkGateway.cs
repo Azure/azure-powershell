@@ -60,41 +60,40 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Gateway
         public override void ExecuteCmdlet()
         {
             string gatewayType = "UltraPerformance";
+            string warningMsg = string.Empty;
+            string continueMsg = string.Empty;
+            bool force = true;
             if (GatewaySKU.Trim().Replace(" ", "").Equals(gatewayType, StringComparison.InvariantCultureIgnoreCase))
             {
-                
-                ConfirmAction(
-               Force.IsPresent,
-               Resources.UltraPerformanceGatewayWarning,
-               Resources.UltraPerformanceGatewayContinue,
+
+                warningMsg = Resources.UltraPerformanceGatewayWarning;
+                continueMsg = Resources.UltraPerformanceGatewayContinue;
+                 force = false;
+            }
+            if (this.Force.IsPresent)
+            {
+                force = true;
+            }
+
+            ConfirmAction(
+               force,
+               warningMsg,
+               continueMsg,
                GatewaySKU + " " + GatewayType,
                () =>
-                   {
-                       var gateway = Client.CreateVirtualNetworkGateway(
-                           VNetName,
-                           GatewayName,
-                           GatewayType,
-                           GatewaySKU,
-                           Location,
-                           VnetId,
-                           Asn,
-                           PeerWeight);
-                       WriteVerboseWithTimestamp(Resources.UltraPerformanceGatewaySucceed);
+               {
+                   var gateway = Client.CreateVirtualNetworkGateway(
+                       VNetName,
+                       GatewayName,
+                       GatewayType,
+                       GatewaySKU,
+                       Location,
+                       VnetId,
+                       Asn,
+                       PeerWeight);
+                   WriteVerboseWithTimestamp(Resources.UltraPerformanceGatewaySucceed);
                    WriteObject(gateway);
                });
-            }
-            else
-            {
-                WriteObject(Client.CreateVirtualNetworkGateway(
-                           VNetName,
-                           GatewayName,
-                           GatewayType,
-                           GatewaySKU,
-                           Location,
-                           VnetId,
-                           Asn,
-                           PeerWeight));
-            }
         }
     }
 }
