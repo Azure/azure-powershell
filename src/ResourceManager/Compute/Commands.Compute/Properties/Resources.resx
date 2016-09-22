@@ -551,10 +551,4 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="RemoveVmssDiagnosticsExtensionAction" xml:space="preserve">
     <value>Remove diagnostics extension from the VM scale set</value>
   </data>
-  <data name="DiagnosticsExtensionRemovalCaption" xml:space="preserve">
-    <value>Diagnostics extension removal operation</value>
-  </data>
-  <data name="DiagnosticsExtensionRemovalConfirmation" xml:space="preserve">
-    <value>This cmdlet will remove existing diagnostics extension. Do you want to continue?</value>
-  </data>
 </root>
