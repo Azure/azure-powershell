@@ -22,6 +22,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
+using System.Linq.Expressions;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -168,6 +169,18 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             }
 
             return dictionary[key];
+        }
+
+        /// <summary>
+        /// Get the name of the member for memberExpression.
+        /// </summary>
+        /// <typeparam name="T">Generic type.</typeparam>
+        /// <param name="memberExpression">Member Expression.</param>
+        /// <returns>Name of the member.</returns>
+        public static string GetMemberName<T>(Expression<Func<T>> memberExpression)
+        {
+            MemberExpression expressionBody = (MemberExpression)memberExpression.Body;
+            return expressionBody.Member.Name;
         }
 
         public static void GetResourceProviderNamespaceAndType(

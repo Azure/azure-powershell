@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Returns the auditing policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy"), OutputType(typeof (AuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof (AuditingPolicyModel))]
     public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -40,17 +40,15 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         {
             AuditType = AuditType.Table;
             var tablePolicy = base.GetEntity();
-            if (tablePolicy.IsInUse())
+            AuditType = AuditType.Blob;
+            var blobPolicy = base.GetEntity();
+            if (tablePolicy.AuditState == AuditStateType.Enabled && blobPolicy.AuditState == AuditStateType.Disabled)
             {
+                AuditType = AuditType.Table;
                 return tablePolicy;
             }
             AuditType = AuditType.Blob;
-            var blobPolicy = base.GetEntity();
-            if (blobPolicy.IsInUse())
-            {
-                return blobPolicy;
-            }
-            return tablePolicy;
+            return blobPolicy;
         }
     }
 }

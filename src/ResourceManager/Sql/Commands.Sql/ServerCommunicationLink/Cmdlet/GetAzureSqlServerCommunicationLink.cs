@@ -19,7 +19,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerCommunicationLink",
-        ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
+        ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true), 
+        OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class GetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
