@@ -116,6 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VaultSecretGroup = "AzureRmVMSecret";
         public const string RemoteDesktopFile = "AzureRmRemoteDesktopFile";
 
+        public const string VirtualMachineScaleSetDiagnosticsExtension = "AzureRmVmssDiagnosticsExtension";
+
         //DSC
         public const string VirtualMachineDscExtension = "AzureRmVMDscExtension";
         public const string VirtualMachineDscConfiguration = "AzureRmVMDscConfiguration";

@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <helpItems xmlns="http://msh" schema="maml">
-  <!-- Updatable Help Version 2.0.3.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Add-AzureRmDnsRecordConfig</command:name>
       <maml:description>
-        <maml:para>Adds a DNS record to a record set.</maml:para>
+        <maml:para>Adds a DNS record to a local record set object.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -347,8 +347,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -362,8 +361,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -379,8 +377,7 @@
       <command:example>
         <maml:title>Example 1: Add an A record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name www -RecordType A -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -405,8 +402,7 @@
       <command:example>
         <maml:title>Example 2: Add an AAAA record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name www -RecordType AAAA -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -431,8 +427,7 @@
       <command:example>
         <maml:title>Example 3: Add a CNAME record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name www -RecordType CNAME -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -457,8 +452,7 @@
       <command:example>
         <maml:title>Example 4: Add an MX record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType MX -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -483,8 +477,7 @@
       <command:example>
         <maml:title>Example 5: Add an NS record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name abc -RecordType NS -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -509,8 +502,7 @@
       <command:example>
         <maml:title>Example 6: Add a PTR record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name 4 -RecordType PTR -ResouceGroupName MyResourceGroup -ZoneName 3.2.1.in-addr.arpa
@@ -536,8 +528,7 @@
       <command:example>
         <maml:title>Example 7: Add an SRV record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name _sip._tcp -RecordType SRV -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -562,8 +553,7 @@
       <command:example>
         <maml:title>Example 8: Add a TXT record to a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name text -RecordType TXT -ResouceGroupName MyResourceGroup -ZoneName myzone.com
@@ -600,8 +590,15 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">This topic displays help topics for the Azure DNS Cmdlets. </maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    Azure PowerShell is a command-line shell and scripting language designed to help information technology (IT) professionals automate system administration tasks. To install the latest Azure PowerShell version and associate it with your Azure subscription, see <maml:navigationLink>
+      <maml:linkText>How to install and configure Azure PowerShell</maml:linkText>
+      <maml:uri></maml:uri>
+    </maml:navigationLink>. For more information about Azure Resource Manager cmdlets, see <maml:navigationLink>
+      <maml:linkText>Using Azure PowerShell with Azure Resource Manager</maml:linkText>
+      <maml:uri></maml:uri>
+    </maml:navigationLink>.
+  </maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">The following table contains links to the topics for the Azure DNS Cmdlets:</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">cmdlet</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Description</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Add-AzureRmDnsRecordConfig</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Adds a DNS record to a local record set object.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRmDnsRecordSet</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets a DNS record set.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRmDnsZone</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets a DNS zone.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRmDnsRecordConfig</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new DNS record local object.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRmDnsRecordSet</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a DNS record set.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRmDnsZone</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new DNS zone.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRmDnsRecordConfig</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Removes a DNS record from a local record set object.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRmDnsRecordSet</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes a DNS record set.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRmDnsZone</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Removes a DNS zone.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Set-AzureRmDnsRecordSet</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Updates a DNS record set.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Set-AzureRmDnsZone</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Updates the properties of a DNS zone.</maml:para><maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">For more information about, or for the syntax of, any of the cmdlets, use the Get-Help &lt;cmdlet name&gt; cmdlet, where &lt;cmdlet name&gt; is the name of the cmdlet that you want to research. For more detailed information, you can run any of the following cmdlets:   â— Get-Help &lt;cmdlet name&gt; -Detailed  â— Get-Help &lt;cmdlet name&gt; -Examples  â— Get-Help &lt;cmdlet name&gt; -Full </maml:para>Azure Resource Manager Cmdlets<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmDnsRecordSet</command:name>
       <maml:description>
@@ -788,8 +785,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -803,8 +799,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -820,8 +815,7 @@
       <command:example>
         <maml:title>Example 1: Get record sets with a specified name and type</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "www" -RecordType A
@@ -840,8 +834,7 @@
       <command:example>
         <maml:title>Example 2: Get record sets of a specified type</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -RecordType A
@@ -860,8 +853,7 @@
       <command:example>
         <maml:title>Example 3: Get all record sets in a zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSets = Get-AzureRmDnsRecordSet -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -880,12 +872,11 @@
       <command:example>
         <maml:title>Example 4: Get all record sets in a zone, using a DnsZone object</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
-          PS C:\&gt; $RecordSets = Get-AzureRmDnsRecordSet –Zone $Zone
+          PS C:\&gt; $RecordSets = Get-AzureRmDnsRecordSet â€“Zone $Zone
         </dev:code>
         <dev:remarks>
           <maml:para>This example is equivalent to Example 3 above. This time, the zone is specified using a zone object.</maml:para>
@@ -913,8 +904,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmDnsZone</command:name>
       <maml:description>
@@ -945,9 +935,9 @@
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the resource group that contains the DNS zone to get.</maml:para>
-            <maml:para>If you do not specify the ResourceGroupName, then you mus also omit the Name parameter. In this case, this cmdlet gets all DNS zones in the current Azure subscription.</maml:para>
+            <maml:para>If you do not specify the ResourceGroupName, then you must also omit the Name parameter. In this case, this cmdlet gets all DNS zones in the current Azure subscription.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -969,9 +959,9 @@
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>Specifies the name of the resource group that contains the DNS zone to get.</maml:para>
-          <maml:para>If you do not specify the ResourceGroupName, then you mus also omit the Name parameter. In this case, this cmdlet gets all DNS zones in the current Azure subscription.</maml:para>
+          <maml:para>If you do not specify the ResourceGroupName, then you must also omit the Name parameter. In this case, this cmdlet gets all DNS zones in the current Azure subscription.</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
           <maml:uri />
@@ -983,8 +973,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -998,8 +987,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -1015,8 +1003,7 @@
       <command:example>
         <maml:title>Example 1: Get a zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Zone = Get-AzureRmDnsZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com"
@@ -1035,8 +1022,7 @@
       <command:example>
         <maml:title>Example 2: Get all of the zones in a resource group</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Zones = Get-AzureRmDnsZone -ResourceGroupName "MyResourceGroup"
@@ -1055,8 +1041,7 @@
       <command:example>
         <maml:title>Example 3: Get all of the zones in a subscription</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Zones = Get-AzureRmDnsZone
@@ -1087,12 +1072,11 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmDnsRecordConfig</command:name>
       <maml:description>
-        <maml:para>Creates a new DNS record local object. This cmdlet is used in conjunction with New-AzureRmDnsRecordSet. </maml:para>
+        <maml:para>Creates a new DNS record local object. </maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1364,29 +1348,24 @@
       <command:inputType>
         <dev:type>
           <maml:name>None.</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
         </dev:type>
-        <maml:description>
-        </maml:description>
+        <maml:description></maml:description>
       </command:inputType>
     </command:inputTypes>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>
-          </maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
         </dev:type>
-        <maml:description>
-        </maml:description>
+        <maml:description></maml:description>
       </command:returnValue>
     </command:returnValues>
     <command:terminatingErrors />
@@ -1395,17 +1374,16 @@
       <command:example>
         <maml:title>Example 1: Create a RecordSet of type A</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
 
           # When creating a RecordSet containing a single record, the above sequence can also be condensed into a single line:
 
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4)
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4)
 
           # To create a record set containing multiple records, use New-AzureRmDnsRecordConfig to add each record to the $Records array,
           # then call New-AzureRmDnsRecordSet, as follows:
@@ -1413,7 +1391,7 @@
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 5.6.7.8
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1429,13 +1407,12 @@
       <command:example>
         <maml:title>Example 2: Create a RecordSet of type AAAA</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Ipv6Address 2001:db8::1
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type AAAA and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1452,13 +1429,12 @@
       <command:example>
         <maml:title>Example 3: Create a RecordSet of type CNAME</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Cname www.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type CNAME and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1475,13 +1451,12 @@
       <command:example>
         <maml:title>Example 4: Create a RecordSet of type MX</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named www in the zone myzone.com. The record set is of type MX and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1498,13 +1473,12 @@
       <command:example>
         <maml:title>Example 5: Create a RecordSet of type NS</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Nsdname ns1-01.azure-dns.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named ns1 in the zone myzone.com. The record set is of type NS and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1521,13 +1495,12 @@
       <command:example>
         <maml:title>Example 6: Create a RecordSet of type PTR</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
-          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig –Ptrdname www.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" –DnsRecords $Records
+          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig â€“Ptrdname www.contoso.com
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named 4 in the zone 3.2.1.in-addr.arpa. The record set is of type PTR and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1544,13 +1517,12 @@
       <command:example>
         <maml:title>Example 7: Create a RecordSet of type SRV</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target sipservice.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named _sip._tcp in the zone myzone.com. The record set is of type SRV and has a TTL of 1 hour (3600 seconds). It contains a single DNS record, pointing to the IP address 2001.2.3.4.</maml:para>
@@ -1568,13 +1540,12 @@
       <command:example>
         <maml:title>Example 8: Create a RecordSet of type TXT</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Value "This is a TXT Record"
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named text in the zone myzone.com. The record set is of type TXT and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -1603,8 +1574,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmDnsRecordSet</command:name>
       <maml:description>
@@ -1621,8 +1591,8 @@
       <maml:para>The New-AzureRmDnsRecordSet cmdlet creates a new Domain Name System (DNS) record set with the specified name and type in the specified zone. A RecordSet object is a set of DNS records with the same name and type. Note that the name is relative to the zone and not the fully qualified name. </maml:para>
       <maml:para>The DnsRecords parameter specifies the records in the record set. This parameter takes an array of DNS records, constructed using New-AzureRmDnsRecordConfig. </maml:para>
       <maml:para>You can use the pipeline operator to pass a DnsZone object to this cmdlet, or you can pass a DnsZone object as the Zone parameter, or alternatively you can specify the zone by name. </maml:para>
-      <maml:para>You can use the Confirm parameter and $ConfirmPreference PowerShell variable to control the standard PowerShell confirmation behavior.</maml:para>
-      <maml:para>If a matching RecordSet already exists (same name and record type), you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet . Because this has the potential to overwrite an existing, in-use DNS record, an overwrite confirmation prompt will be shown. You can suppress the confirmation prompt by using the Force parameter. This overwrite confirmation prompt is separate from the standard PowerShell confirmation behavior controlled via the Confirm parameter and $ConfirmPreference PowerShell variable as described above.</maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
+      <maml:para>If a matching RecordSet already exists (same name and record type), you must specify the Overwrite parameter, otherwise the cmdlet will not create a new RecordSet . </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
@@ -1637,24 +1607,22 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>When used with the Overwrite parameter, forces the command to run without asking for user confirmation before overwriting any existing DNS records with the same name and type.</maml:para>
-            <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
           <maml:description>
             <maml:para>Specifies an array of metadata to associate with the RecordSet. Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
-            <maml:para>
-            </maml:para>
+            <maml:para></maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. You will be prompted to confirm the operation unless you also specify the Force parameter.</maml:para>
-            <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -1742,24 +1710,22 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>When used with the Overwrite parameter, forces the command to run without asking for user confirmation before overwriting any existing DNS records with the same name and type.</maml:para>
-            <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Metadata</maml:name>
           <maml:description>
             <maml:para>Specifies an array of metadata to associate with the RecordSet. Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
-            <maml:para>
-            </maml:para>
+            <maml:para></maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Overwrite</maml:name>
           <maml:description>
-            <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. You will be prompted to confirm the operation unless you also specify the Force parameter.</maml:para>
-            <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
@@ -1843,8 +1809,8 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>When used with the Overwrite parameter, forces the command to run without asking for user confirmation before overwriting any existing DNS records with the same name and type.</maml:para>
-          <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+          <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+          <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1853,16 +1819,15 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
         <maml:name>Metadata</maml:name>
         <maml:description>
           <maml:para>Specifies an array of metadata to associate with the RecordSet. Metadata is specified using name-value pairs that are represented as hash tables, for example @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"}).</maml:para>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -1882,8 +1847,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Overwrite</maml:name>
         <maml:description>
-          <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. You will be prompted to confirm the operation unless you also specify the Force parameter.</maml:para>
-          <maml:para>This overwrite confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+          <maml:para>Indicates that this cmdlet overwrites the specified RecordSet if it already exists. </maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -1996,8 +1960,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2011,8 +1974,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2024,21 +1986,27 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>You can use the Confirm parameter to control whether this cmdlet prompts you for confirmation. By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Create a RecordSet of type A</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
 
           # When creating a RecordSet containing a single record, the above sequence can also be condensed into a single line:
 
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4)
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4)
 
           # To create a record set containing multiple records, use New-AzureRmDnsRecordConfig to add each record to the $Records array,
           # then call New-AzureRmDnsRecordSet, as follows:
@@ -2046,7 +2014,7 @@
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 1.2.3.4
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -IPv4Address 5.6.7.8
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2062,13 +2030,12 @@
       <command:example>
         <maml:title>Example 2: Create a RecordSet of type AAAA</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Ipv6Address 2001:db8::1
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type AAAA and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2085,13 +2052,12 @@
       <command:example>
         <maml:title>Example 3: Create a RecordSet of type CNAME</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Cname www.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This example creates a RecordSet named www in the zone myzone.com. The record set is of type CNAME and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2108,13 +2074,12 @@
       <command:example>
         <maml:title>Example 4: Create a RecordSet of type MX</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Exchange "mail.microsoft.com" -Preference 5
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named www in the zone myzone.com. The record set is of type MX and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2131,13 +2096,12 @@
       <command:example>
         <maml:title>Example 5: Create a RecordSet of type NS</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Nsdname ns1-01.azure-dns.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named ns1 in the zone myzone.com. The record set is of type NS and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2154,13 +2118,12 @@
       <command:example>
         <maml:title>Example 6: Create a RecordSet of type PTR</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
-          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig –Ptrdname www.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" –DnsRecords $Records
+          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig â€“Ptrdname www.contoso.com
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "3.2.1.in-addr.arpa" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named 4 in the zone 3.2.1.in-addr.arpa. The record set is of type PTR and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2177,13 +2140,12 @@
       <command:example>
         <maml:title>Example 7: Create a RecordSet of type SRV</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target sipservice.contoso.com
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named _sip._tcp in the zone myzone.com. The record set is of type SRV and has a TTL of 1 hour (3600 seconds). It contains a single DNS record, pointing to the IP address 2001.2.3.4.</maml:para>
@@ -2201,13 +2163,12 @@
       <command:example>
         <maml:title>Example 8: Create a RecordSet of type TXT</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
           PS C:\&gt; $Records += New-AzureRmDnsRecordConfig -Value "This is a TXT Record"
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named text in the zone myzone.com. The record set is of type TXT and has a TTL of 1 hour (3600 seconds). It contains a single DNS record.</maml:para>
@@ -2224,13 +2185,12 @@
       <command:example>
         <maml:title>Example 9: Create a RecordSet at the zone apex</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
-          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig –Ipv4Address 1.2.3.4
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "@" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig â€“Ipv4Address 1.2.3.4
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "@" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet at the apex (or root) of the zone myzone.com. To do this, the record set name is specified as "@" (including the double-quotes).</maml:para>
@@ -2248,13 +2208,12 @@
       <command:example>
         <maml:title>Example 10: Create a wildcard Record Set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $Records = @()
-          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig –Ipv4Address 1.2.3.4
-          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "*" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords $Records
+          PS C:\&gt; $Records += New-AzureRmDnsRecordConfig â€“Ipv4Address 1.2.3.4
+          PS C:\&gt; $RecordSet = New-AzureRmDnsRecordSet -Name "*" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords $Records
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named * in the zone myzone.com. This is a wildcard record set.</maml:para>
@@ -2271,11 +2230,10 @@
       <command:example>
         <maml:title>Example 11: Create an empty record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords @()
+          PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords @()
         </dev:code>
         <dev:remarks>
           <maml:para>This command creates a RecordSet named www in the zone myzone.com. The record set is of type A and has a TTL of 1 hour (3600 seconds). This is an empty record set, which acts as a placeholder to which you can later add records.</maml:para>
@@ -2291,14 +2249,13 @@
       <command:example>
         <maml:title>Example 12: Create a record set and suppress all confirmation</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" –DnsRecords (New-AzureRmDnsRecordConfig –Ipv4Address 1.2.3.4) –Confirm:$False –Overwrite -Force
+          PS C:\&gt;$RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType A -ResourceGroupName "MyResourceGroup" -TTL 3600 -ZoneName "myzone.com" â€“DnsRecords (New-AzureRmDnsRecordConfig â€“Ipv4Address 1.2.3.4) â€“Confirm:$False â€“Overwrite
         </dev:code>
         <dev:remarks>
-          <maml:para>This command creates a RecordSet. The Overwrite parameter ensures that this record set overwrites any pre-existing record set with the same name and type (existing records in that record set are lost). The Force parameter suppresses the overwrite confirmation prompt, and the Confirm parameter with a value of $False suppresses the normal PowerShell confirmation prompt.</maml:para>
+          <maml:para>This command creates a RecordSet. The Overwrite parameter ensures that this record set overwrites any pre-existing record set with the same name and type (existing records in that record set are lost). The Confirm parameter with a value of $False suppresses the confirmation prompt.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2331,8 +2288,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmDnsZone</command:name>
       <maml:description>
@@ -2347,16 +2303,17 @@
     </command:details>
     <maml:description>
       <maml:para>The New-AzureRmDnsZone cmdlet creates a new Domain Name System (DNS) zone in the specified resource group. You must specify a unique DNS zone name for the Name parameter or the cmdlet will return an error. After the zone is created, use the New-AzureRmDnsRecordSet cmdlet to create record sets in the zone.</maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>New-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
             <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Name</maml:name>
@@ -2371,6 +2328,18 @@
             <maml:para>Specifies the resource group in which to create the zone.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2399,25 +2368,48 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
         <maml:name>Tag</maml:name>
         <maml:description>
           <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs represented as hash tables, for example, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
           <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2431,8 +2423,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2444,12 +2435,18 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>You can use the Confirm parameter to control whether this cmdlet prompts you for confirmation. By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Create a DNS zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Zone = New-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
@@ -2480,12 +2477,11 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsRecordConfig</command:name>
       <maml:description>
-        <maml:para>Removes a DNS record from a record set.</maml:para>
+        <maml:para>Removes a DNS record from a local record set object.</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2827,8 +2823,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2842,8 +2837,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -2859,8 +2853,7 @@
       <command:example>
         <maml:title>Example 1: Remove an A record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -RecordType A -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -2885,8 +2878,7 @@
       <command:example>
         <maml:title>Example 2: Remove an AAAA record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -2912,8 +2904,7 @@
       <command:example>
         <maml:title>Example 3: Remove a CNAME record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -2938,8 +2929,7 @@
       <command:example>
         <maml:title>Example 4: Remove an MX record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType MX -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -2964,8 +2954,7 @@
       <command:example>
         <maml:title>Example 5: Remove an NS record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "abc" -RecordType NS -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -2990,8 +2979,7 @@
       <command:example>
         <maml:title>Example 6: Remove a PTR record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "4" -RecordType PTR -ResouceGroupName "MyResourceGroup" -ZoneName 3.2.1.in-addr.arpa
@@ -3016,8 +3004,7 @@
       <command:example>
         <maml:title>Example 7: Remove an SRV record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -3042,8 +3029,7 @@
       <command:example>
         <maml:title>Example 8: Remove a TXT record from a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "text" -RecordType TXT -ResouceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -3080,8 +3066,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsRecordSet</command:name>
       <maml:description>
@@ -3097,8 +3082,7 @@
     <maml:description>
       <maml:para>The Remove-AzureRmDnsRecordSet cmdlet deletes the specified record set from the specified zone. You cannot delete SOA or name server (NS) records that are automatically created at the zone apex.</maml:para>
       <maml:para>You can pass a RecordSet object to this cmdlet by using the pipeline operator or as a parameter. To identify a record set by name and type without using a RecordSet object, you must pass the zone as a DnsZone object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the ZoneName and ResourceGroupName parameters.</maml:para>
-      <maml:para>The Confirm parameter and $ConfirmPreference PowerShell variable can be used to control the standard PowerShell confirmation behavior.</maml:para>
-      <maml:para>Because of the potential impact of deleting an in-use zone, a second level of confirmation is used in addition to the standard PowerShell behavior. This can be suppressed using the Force parameter.</maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
       <maml:para>When specifying the record set using a RecordSet object, the record set is not deleted if it has been changed in Azure DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this by using the Overwrite parameter, which deletes the record set regardless of concurrent changes.</maml:para>
     </maml:description>
     <command:syntax>
@@ -3107,8 +3091,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-            <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -3181,8 +3165,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-            <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -3263,8 +3247,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-            <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -3305,8 +3289,8 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-          <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+          <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+          <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -3458,8 +3442,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3473,8 +3456,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3486,12 +3468,18 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>You can use the Confirm parameter to control whether this cmdlet prompts you for confirmation. By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Remove a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
@@ -3511,18 +3499,17 @@
       <command:example>
         <maml:title>Example 2: Remove a record set and suppress all confirmation</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt; $RecordSet = Get-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
-          PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet –Confirm:$False –Force –Overwrite
+          PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet â€“Confirm:$False â€“Overwrite
 
           # Alternatively, the record set can be removed as follows.  In this case,
           # because the record set is specified by name rather than by object, the
           # Overwrite parameter is not applicable.
 
-          PS C:\&gt; Remove-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" –Confirm:$False -Force
+          PS C:\&gt; Remove-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" â€“Confirm:$False
         </dev:code>
         <dev:remarks>
           <maml:para>The first command gets the specified record set.</maml:para>
@@ -3551,8 +3538,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsZone</command:name>
       <maml:description>
@@ -3568,8 +3554,7 @@
     <maml:description>
       <maml:para>The Remove-AzureRmDnsZone cmdlet permanently deletes a Domain Name System (DNS) zone from a specified resource group. All record sets contained in the zone are also deleted.</maml:para>
       <maml:para>You can pass a DnsZone object using the Name parameter or by using the pipeline operator, or alternatively you can specify the ZoneName and ResourceGroupName parameters.</maml:para>
-      <maml:para>The Confirm parameter and $ConfirmPreference PowerShell variable can be used to control the standard PowerShell confirmation behavior.</maml:para>
-      <maml:para>Because of the potential impact of deleting an in-use zone, a second level of confirmation is used in addition to the standard PowerShell behavior described above. This is controlled using the Force parameter.</maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
       <maml:para>When specifying the zone using a DnsZone object (passed via the pipeline or Zone parameter), the zone is not deleted if it has been changed in Azure DNS since the local DnsZone object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not). This provides protection for concurrent zone changes. This can be suppressed using the Overwrite parameter, which deletes the zone regardless of concurrent changes.</maml:para>
     </maml:description>
     <command:syntax>
@@ -3578,8 +3563,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-            <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -3622,8 +3607,8 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-            <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+            <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+            <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
           </maml:description>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
@@ -3665,8 +3650,8 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
         <maml:name>Force</maml:name>
         <maml:description>
-          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-          <maml:para>This confirmation is in addition to the standard PowerShell confirmation controlled via the Confirm parameter and $ConfirmPreference PowerShell variable.</maml:para>
+          <maml:para>This parameter is deprecated for this cmdlet. It will be removed in a future release. </maml:para>
+          <maml:para>To control whether this cmdlet prompts you for confirmation, use the Confirm parameter. </maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -3768,8 +3753,7 @@
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3783,8 +3767,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3796,12 +3779,18 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>Due to the potentially high impact of deleting a DNS zone, by default, this cmdlet prompts for confirmation if the $ConfirmPreference Windows PowerShell variable has any value other than None. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Remove a zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Remove-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
@@ -3832,8 +3821,7 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmDnsRecordSet</command:name>
       <maml:description>
@@ -3849,6 +3837,7 @@
     <maml:description>
       <maml:para>The Set-AzureRmDnsRecordSet cmdlet updates a record set in the Azure DNS service from a local RecordSet object. </maml:para>
       <maml:para>You can pass a RecordSet object as a parameter or by using the pipeline operator. </maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
       <maml:para>The record set is not updated if it has been changed in Azure DNS since the local RecordSet object was retrieved. This provides protection for concurrent changes. You can suppress this behavior using the Overwrite parameter, which updates the record set regardless of concurrent changes.</maml:para>
     </maml:description>
     <command:syntax>
@@ -3867,6 +3856,18 @@
             <maml:para>Specifies the RecordSet to update.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsRecordSet</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3896,13 +3897,36 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3916,8 +3940,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsRecordSet</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -3929,18 +3952,24 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>You can use the Confirm parameter to control whether this cmdlet prompts you for confirmation. By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Update a record set</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -ResourceGroupName MyResourceGroup -ZoneName myzone.com -Name www -RecordType A
-          PS C:\&gt; Add-AzureRmDnsRecordConfig –RecordSet $RecordSet -Ipv4Address 172.16.0.0
-          PS C:\&gt; Add-AzureRmDnsRecordConfig –RecordSet $RecordSet -Ipv4Address 172.31.255.255
-          PS C:\&gt; Set-AzureRmDnsRecordSet –RecordSet $RecordSet
+          PS C:\&gt; Add-AzureRmDnsRecordConfig â€“RecordSet $RecordSet -Ipv4Address 172.16.0.0
+          PS C:\&gt; Add-AzureRmDnsRecordConfig â€“RecordSet $RecordSet -Ipv4Address 172.31.255.255
+          PS C:\&gt; Set-AzureRmDnsRecordSet â€“RecordSet $RecordSet
 
           # These cmdlets can also be piped:
 
@@ -3962,8 +3991,7 @@
       <command:example>
         <maml:title>Example 2: Update an SOA record</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$RecordSet = Get-AzureRmDnsRecordSet -Name "@" -RecordType SOA -Zone $Zone
@@ -3998,12 +4026,11 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  </command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmDnsZone</command:name>
       <maml:description>
-        <maml:para>Updates the properties of a DNS zone. Does not update DNS records within the zone.</maml:para>
+        <maml:para>Updates the properties of a DNS zone. </maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4015,17 +4042,18 @@
     <maml:description>
       <maml:para>The Set-AzureRmDnsZone cmdlet updates the specified DNS zone in the Azure DNS service. This cmdlet does not update the record sets in the zone. </maml:para>
       <maml:para>You can pass a DnsZone object as a parameter or by using the pipeline operator, or alternatively you can specify the ZoneName and ResourceGroupName parameters.</maml:para>
+      <maml:para>You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.</maml:para>
       <maml:para>When passing a DNS zone as an object (using the Zone object or via the pipeline), it is not updated if it has been changed in Azure DNS since the local DnsZone object was retrieved. This provides protection for concurrent changes. You can suppress this behavior with the Overwrite parameter, which updates the zone regardless of concurrent changes.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Set-AzureRmDnsZone</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
           <maml:name>Tag</maml:name>
           <maml:description>
             <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+          <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>Name</maml:name>
@@ -4041,6 +4069,18 @@
             <maml:para>Alternatively, you can specify the zone using a DnsZone object with the Zone parameter or the pipeline.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -4058,6 +4098,18 @@
             <maml:para>Alternatively, you can specify the zone using the ZoneName and ResourceGroupName parameters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">DnsZone</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4099,14 +4151,14 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="Tags">
         <maml:name>Tag</maml:name>
         <maml:description>
           <maml:para>Specifies an array of tags to associate with the DNS zone. Tags are name-value pairs that are represented as hashtables, for instance, @(@{"Name"="dept"; "Value"="shopping"}, @{"Name"="env"; "Value"="production"})</maml:para>
         </maml:description>
-        <command:parameterValue required="false" variableLength="true">Hashtable[]</command:parameterValue>
+        <command:parameterValue required="false" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
-          <maml:name>Hashtable[]</maml:name>
+          <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
@@ -4124,13 +4176,36 @@
         </dev:type>
         <dev:defaultValue>none</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -4144,8 +4219,7 @@
       <command:returnValue>
         <dev:type>
           <maml:name>Microsoft.Azure.Commands.Dns.DnsZone</maml:name>
-          <maml:uri>
-          </maml:uri>
+          <maml:uri></maml:uri>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -4157,12 +4231,18 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
+    <maml:alertSet>
+      <maml:title />
+      <maml:alert>
+        <maml:para>You can use the Confirm parameter to control whether this cmdlet prompts you for confirmation. By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower. </maml:para>
+        <maml:para>If you specify Confirm or Confirm:$True, this cmdlet prompts you for confirmation before it runs. If you specify Confirm:$False, the cmdlet does not prompt you for confirmation. </maml:para>
+      </maml:alert>
+    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Update a DNS zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;$Zone = Get-AzureRmDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
@@ -4185,8 +4265,7 @@
       <command:example>
         <maml:title>Example 2: Update tags for a zone</maml:title>
         <maml:introduction>
-          <maml:para>
-          </maml:para>
+          <maml:para></maml:para>
         </maml:introduction>
         <dev:code>
           PS C:\&gt;Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com" -Tag @(@{"Name"="Dept"; "Value"="Electrical"})
@@ -4218,5 +4297,4 @@
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-
 </helpItems>
