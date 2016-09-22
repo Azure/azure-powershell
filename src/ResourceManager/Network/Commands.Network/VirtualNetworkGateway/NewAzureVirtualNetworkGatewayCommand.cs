@@ -85,9 +85,8 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Active-Active feature flag")]
-        public bool ActiveActive { get; set; }
+            HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
+        public SwitchParameter EnableActiveActiveFeature { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -174,22 +173,45 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
 
-            if (this.ActiveActive && !this.GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            if (this.GatewaySku != null)
+            {
+                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                vnetGateway.Sku.Tier = this.GatewaySku;
+                vnetGateway.Sku.Name = this.GatewaySku;
+            }
+            else
+            {
+                // If gateway sku param value is not passed, set gateway sku to Standard if VpnType is RouteBased and Basic if VpnType is PolicyBased
+                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Standard;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Standard;
+                }
+                else
+                {
+                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
+                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
+                }
+            }
+
+            if (this.EnableActiveActiveFeature.IsPresent && !vnetGateway.Sku.Tier.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
             {
                 throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature flag is set to True.");
             }
 
-            if (this.ActiveActive && !this.VpnType.Equals(MNM.VpnType.RouteBased))
+            if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
             {
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
             }
 
-            if (this.ActiveActive && this.IpConfigurations.Count != 2)
+            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
             }
 
-            if (!this.ActiveActive && this.IpConfigurations.Count == 2)
+            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
             }
@@ -202,7 +224,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;
-            vnetGateway.ActiveActive = this.ActiveActive;
+            vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
 
             if (this.GatewayDefaultSite != null)
             {
@@ -212,17 +234,6 @@ namespace Microsoft.Azure.Commands.Network
             else
             {
                 vnetGateway.GatewayDefaultSite = null;
-            }
-
-            if (this.GatewaySku != null)
-            {
-                vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                vnetGateway.Sku.Tier = this.GatewaySku;
-                vnetGateway.Sku.Name = this.GatewaySku;
-            }
-            else
-            {
-                vnetGateway.Sku = null;
             }
 
             if (this.VpnClientAddressPool != null || this.VpnClientRootCertificates != null || this.VpnClientRevokedCertificates != null)

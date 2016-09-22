@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
+        public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
+
         public string OperationalState { get; private set; }
 
         public string ProvisioningState { get; set; }
