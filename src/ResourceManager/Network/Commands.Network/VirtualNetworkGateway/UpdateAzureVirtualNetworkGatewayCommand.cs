@@ -80,12 +80,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The weight added to routes learned over BGP from this virtual network gateway")]
         public int PeerWeight { get; set; }
 
-        //[Parameter(
-        //    Mandatory = false,
-        //    ValueFromPipelineByPropertyName = true,
-        //    HelpMessage = "ActiveActive feature flag")]
-        //public bool ActiveActive { get; set; }
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to enable Active Active feature on virtual network gateway")]
