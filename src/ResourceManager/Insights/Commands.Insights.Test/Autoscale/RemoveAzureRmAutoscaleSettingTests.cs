@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Management.Insights;
+using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -29,16 +31,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     {
         private readonly RemoveAzureRmAutoscaleSettingCommand cmdlet;
         private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
-        private readonly Mock<IAutoscaleOperations> insightsAutoscaleOperationsMock;
+        private readonly Mock<IAutoscaleSettingsOperations> insightsAutoscaleOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private AzureOperationResponse response;
         private string resourceGroup;
         private string settingName;
 
         public RemoveAzureRmAutoscaleSettingTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
-            insightsAutoscaleOperationsMock = new Mock<IAutoscaleOperations>();
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            insightsAutoscaleOperationsMock = new Mock<IAutoscaleSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new RemoveAzureRmAutoscaleSettingCommand()
@@ -47,21 +48,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 InsightsManagementClient = insightsManagementClientMock.Object
             };
 
-            response = new AzureOperationResponse()
-            {
-                RequestId = Guid.NewGuid().ToString(),
-                StatusCode = HttpStatusCode.OK,
-            };
-
-            insightsAutoscaleOperationsMock.Setup(f => f.DeleteSettingAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<AzureOperationResponse>(response))
-                .Callback((string resourceGrp, string settingNm, CancellationToken t) =>
+            insightsAutoscaleOperationsMock.Setup(f => f.DeleteWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse>(new Microsoft.Rest.Azure.AzureOperationResponse()))
+                .Callback((string resourceGrp, string settingNm, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
                     resourceGroup = resourceGrp;
                     settingName = settingNm;
                 });
 
-            insightsManagementClientMock.SetupGet(f => f.AutoscaleOperations).Returns(this.insightsAutoscaleOperationsMock.Object);
+            insightsManagementClientMock.SetupGet(f => f.AutoscaleSettings).Returns(this.insightsAutoscaleOperationsMock.Object);
         }
 
         [Fact]

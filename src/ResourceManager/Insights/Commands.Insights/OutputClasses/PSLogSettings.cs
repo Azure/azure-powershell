@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Text;
+using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -19,23 +21,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the LogSettings
     /// </summary>
-    public class PSLogSettings
+    public class PSLogSettings : LogSettings
     {
-        /// <summary>
-        /// A value indicating whether the logs are enabled for this category.
-        /// </summary>
-        public bool Enabled { get; set; }
-
-        /// <summary>
-        /// The category of the log. Use Categories to selectively enabling and desabling logs.
-        /// </summary>
-        public string Category { get; set; }
-
-        /// <summary>
-        /// The retention policy
-        /// </summary>
-        public PSRetentionPolicy RetentionPolicy { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
         /// </summary>
@@ -43,7 +30,21 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         {
             this.Enabled = logSettings.Enabled;
             this.Category = logSettings.Category;
-            this.RetentionPolicy = new PSRetentionPolicy(logSettings.RetentionPolicy);
+            this.RetentionPolicy = logSettings.RetentionPolicy;
+        }
+
+        /// <summary>
+        /// A string representation of the PSLogSettings
+        /// </summary>
+        /// <returns>A string representation of the PSLogSettings</returns>
+        public override string ToString()
+        {
+            StringBuilder output = new StringBuilder();
+            output.AppendLine();
+            output.AppendLine("Enabled         : " + Enabled);
+            output.AppendLine("Category        : " + Category);
+            output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
+            return output.ToString();
         }
     }
 }

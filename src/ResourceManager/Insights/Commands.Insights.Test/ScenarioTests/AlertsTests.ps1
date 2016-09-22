@@ -95,8 +95,7 @@ function Test-AddAzureRmMetricAlertRule
         $actual = Add-AzureRmMetricAlertRule -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -TargetResourceId /subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo -MetricName Requests -Description "Pura Vida" -TimeAggre Total
 
         # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
+		Assert-AreEqual $actual.Name 'chiricutin'
     }
     finally
     {
@@ -117,8 +116,7 @@ function Test-AddAzureRmLogAlertRule
         $actual = Add-AzureRmLogAlertRule -Name "chiricutin" -Location "East US" -ResourceGroup "Default-Web-EastUS" -OperationName "Create" -TargetResourceId "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo" -Description "Pura Vida"
 
         # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
+		Assert-AreEqual $actual.Name 'chiricutin'
     }
     finally
     {
@@ -139,8 +137,7 @@ function Test-AddAzureRmWebtestAlertRule
         $actual = Add-AzureRmWebtestAlertRule -Name chiricutin -Location "East US" -ResourceGroup Default-Web-EastUS -WindowSize 00:05:00 -Failed 3 -MetricName Requests -TargetResourceUri /subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Default-Web-EastUS/providers/Microsoft.Insights/components/misitiooeltuyo -Description "Pura Vida" 
 
         # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '47af504c-88a1-49c5-9766-e397d54e490b'
-		Assert-AreEqual $actual.StatusCode 'Created'
+		Assert-AreEqual $actual.Name 'chiricutin'
     }
     finally
     {
@@ -183,11 +180,7 @@ function Test-RemoveAzureRmAlertRule
 
     try 
     {
-		$actual = Remove-AzureRmAlertRule -ResourceGroup $rgname -name chiricutin
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.RequestId '93550c06-54b2-4e11-8c29-a3bd7b37b1dc'
-		Assert-AreEqual $actual.StatusCode 'OK'
+		Remove-AzureRmAlertRule -ResourceGroup $rgname -name chiricutin
     }
     finally
     {

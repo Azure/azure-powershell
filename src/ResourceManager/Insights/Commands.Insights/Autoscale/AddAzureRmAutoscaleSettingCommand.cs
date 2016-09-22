@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Insights;
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create or update an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAutoscaleSetting))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics";
@@ -101,14 +101,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AutoscaleSettingCreateOrUpdateParameters parameters = this.CreateSdkCallParameters();
+            AutoscaleSettingResource parameters = this.CreateSdkCallParameters();
 
-            var result = this.InsightsManagementClient.AutoscaleOperations.CreateOrUpdateSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
+            Task<AutoscaleSettingResource> task = this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters);
+            task.Wait();
 
-            WriteObject(result);
+            WriteObject(task.Result);
         }
 
-        private AutoscaleSettingCreateOrUpdateParameters CreateSdkCallParameters()
+        private AutoscaleSettingResource CreateSdkCallParameters()
         {
             bool enableSetting = !this.DisableSetting.IsPresent || !this.DisableSetting;
 
@@ -116,7 +117,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
 
                 // Receiving a single parameter with the whole spec for an autoscale setting
-                var property = this.SettingSpec.Properties;
+                var property = this.SettingSpec;
 
                 if (property == null)
                 {
@@ -124,30 +125,28 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 }
 
                 this.Location = this.SettingSpec.Location;
-                this.Name = this.SettingSpec.Name;
+                this.Name = this.SettingSpec.AutoscaleSettingResourceName;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
                 this.AutoscaleProfiles = this.AutoscaleProfiles ?? property.Profiles.ToList();
                 this.TargetResourceId = property.TargetResourceUri;
 
-                enableSetting = !this.DisableSetting.IsPresent && property.Enabled;
+                enableSetting = !this.DisableSetting.IsPresent && property.Enabled.HasValue && property.Enabled.Value;
 
                 // The semantics is if Notifications is given it will replace the existing ones
-                this.Notifications = this.Notifications ?? this.SettingSpec.Properties.Notifications.ToList();
+                this.Notifications = this.Notifications ?? (this.SettingSpec.Notifications != null ? this.SettingSpec.Notifications.ToList() : null);
             }
 
-            return new AutoscaleSettingCreateOrUpdateParameters()
+            return new AutoscaleSettingResource()
             {
                 Location = this.Location,
-                Properties = new AutoscaleSetting()
-                {
-                    Name = this.Name,
-                    Enabled = enableSetting,
-                    Profiles = this.AutoscaleProfiles,
-                    TargetResourceUri = this.TargetResourceId,
-                    Notifications = this.Notifications
-                },
-                Tags = this.SettingSpec != null ? new LazyDictionary<string, string>(this.SettingSpec.Tags.Content) : new LazyDictionary<string, string>()
+                Name = this.Name,
+                AutoscaleSettingResourceName = this.Name,
+                Enabled = enableSetting,
+                Profiles = this.AutoscaleProfiles,
+                TargetResourceUri = this.TargetResourceId,
+                Notifications = this.Notifications,
+                Tags = this.SettingSpec != null ? new Dictionary<string, string>(this.SettingSpec.Tags.Content) : new Dictionary<string, string>()
             };
         }
     }

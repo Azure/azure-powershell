@@ -15,13 +15,14 @@
 using Microsoft.Azure.Management.Insights;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
     /// <summary>
     /// Remove an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule"), OutputType(typeof(List<AzureOperationResponse>))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule"), OutputType(typeof(PSObject))]
     public class RemoveAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAlertRuleParamGroup = "Parameters for Remove-AzureRmAlertRule cmdlet";
@@ -49,8 +50,8 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AzureOperationResponse result = this.InsightsManagementClient.AlertOperations.DeleteRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
-            WriteObject(result);
+            this.InsightsManagementClient.AlertRules.DeleteAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Wait();
+            WriteObject("");
         }
     }
 }

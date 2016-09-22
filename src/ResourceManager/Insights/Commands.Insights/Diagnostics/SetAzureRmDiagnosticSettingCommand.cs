@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
 using System;
 using System.Collections.Generic;
@@ -21,13 +23,14 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSObject))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         #region Parameters declarations
@@ -82,6 +85,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public bool? RetentionEnabled { get; set; }
 
         /// <summary>
+        /// Gets or sets the OMS workspace Id
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The OMS workspace Id")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the retention in days
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
@@ -91,11 +101,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            var putParameters = new ServiceDiagnosticSettingsPutParameters();
+            var putParameters = new ServiceDiagnosticSettingsCreateOrUpdateParameters();
 
-            ServiceDiagnosticSettingsGetResponse getResponse = this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.GetAsync(this.ResourceId, CancellationToken.None).Result;
+            ServiceDiagnosticSettingsResource getResponse = this.InsightsManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
 
-            ServiceDiagnosticSettings properties = getResponse.Properties;
+            ServiceDiagnosticSettingsResource properties = getResponse;
 
             if (!string.IsNullOrWhiteSpace(this.StorageAccountId))
             {
@@ -105,6 +115,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             if (!string.IsNullOrWhiteSpace(this.ServiceBusRuleId))
             {
                 properties.ServiceBusRuleId = this.ServiceBusRuleId;
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.WorkspaceId))
+            {
+                properties.WorkspaceId = this.WorkspaceId;
             }
 
             if (this.Categories == null && this.Timegrains == null)
@@ -177,11 +192,15 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
             }
 
-            putParameters.Properties = properties;
+            putParameters.Logs = properties.Logs;
+            putParameters.Metrics = properties.Metrics;
+            putParameters.ServiceBusRuleId = properties.ServiceBusRuleId;
+            putParameters.StorageAccountId = properties.StorageAccountId;
+            putParameters.WorkspaceId = properties.WorkspaceId;
 
-            this.InsightsManagementClient.ServiceDiagnosticSettingsOperations.PutAsync(this.ResourceId, putParameters, CancellationToken.None).Wait();
-            PSServiceDiagnosticSettings psResult = new PSServiceDiagnosticSettings(putParameters.Properties);
-            WriteObject(psResult);
+            Task<AzureOperationResponse<ServiceDiagnosticSettingsResource>> task = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateWithHttpMessagesAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None);
+            task.Wait();
+            WriteObject(task.Result);
         }
     }
 }

@@ -94,12 +94,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public ScaleDirection ScaleActionDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the scale action type
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale action type for the setting")]
-        public ScaleType ScaleActionScaleType { get; set; }
-
-        /// <summary>
         /// Gets or sets the scale action value
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale action value for the setting")]
@@ -137,7 +131,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 MetricName = this.MetricName,
                 MetricResourceUri = this.MetricResourceId,
-                Operator = this.Operator,
+                OperatorProperty = this.Operator,
                 Statistic = this.MetricStatistic,
                 Threshold = this.Threshold,
                 TimeAggregation = this.TimeAggregationOperator,
@@ -149,8 +143,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 Cooldown = this.ScaleActionCooldown,
                 Direction = this.ScaleActionDirection,
-                Type = this.ScaleActionScaleType,
-                Value = this.ScaleActionValue,
+                Value = this.ScaleActionValue
             };
 
             return new ScaleRule()

@@ -14,13 +14,14 @@
 
 using Microsoft.Azure.Management.Insights;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Remove an autoscale setting.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(PSObject))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAutoscaleSettingParamGroup = "Parameters for Remove-AzureRmAutoscaleSetting cmdlet";
@@ -48,8 +49,8 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
-            WriteObject(result);
+            this.InsightsManagementClient.AutoscaleSettings.DeleteAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Wait();
+            WriteObject("");
         }
     }
 }

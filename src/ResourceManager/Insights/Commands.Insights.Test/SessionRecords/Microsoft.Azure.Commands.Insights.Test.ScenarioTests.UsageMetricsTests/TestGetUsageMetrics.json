@@ -1,12 +1,12 @@
 {
     "Entries": [
         {
-            "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/usages?api-version=2014-04-01&$filter=startTime%20eq%202015-04-07T15%3A31%3A28.4590754-07%3A00%20and%20endTime%20eq%202015-04-07T16%3A31%3A28.4590754-07%3A00",
+            "RequestUri": "//subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1/usages?$filter=startTime%20eq%202015-04-07T15:31:28.4590754-07:00%20and%20endTime%20eq%202015-04-07T16:31:28.4590754-07:00&api-version=2014-04-01",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
                 "Accept": [ "application/json" ],
-                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.14.0.0 AzurePowershell/v0.14.0" ],
                 "x-ms-version": [ "2014-04-01" ],
                 "Connection": [ "Keep-Alive" ]
             },

@@ -1,12 +1,12 @@
 {
     "Entries": [
         {
-            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS?api-version=2014-04-01",
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS?api-version=2015-04-01",
             "RequestMethod": "DELETE",
             "RequestBody": "",
             "RequestHeaders": {
                 "Accept": [ "application/json" ],
-                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.14.0.0 AzurePowershell/v0.14.0" ],
                 "Content-Length": [ "0" ]
             },
             "ResponseBody": "",

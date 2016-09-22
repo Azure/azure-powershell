@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Insights.UsageMetrics;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Insights.Models;
+using Microsoft.Rest.Azure.OData;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -31,14 +33,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         private readonly Mock<InsightsClient> insightsClientMock;
         private readonly Mock<IUsageMetricsOperations> insightsUsageMetricOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
-        private UsageMetricListResponse response;
+        private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<Microsoft.Azure.Insights.Models.UsageMetric>> response;
         private string resourceId;
-        private string filter;
+        private ODataQuery<UsageMetric> filter;
         private string apiVersion;
 
         public GetAzureRmUsageTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsUsageMetricOperationsMock = new Mock<IUsageMetricsOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -48,20 +50,23 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
                 InsightsClient = insightsClientMock.Object
             };
 
-            response = Utilities.InitializeUsageMetricResponse();
+            response = new Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<UsageMetric>>()
+            {
+                Body = new List<UsageMetric>()
+            };
 
             insightsUsageMetricOperationsMock
-                .Setup(f => f.ListAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult<UsageMetricListResponse>(response))
-                .Callback((string f, string s, string a, CancellationToken t) =>
+                .Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<ODataQuery<UsageMetric>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<UsageMetric>>>(response))
+                .Callback((string r, string api, ODataQuery<UsageMetric> q, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
-                    resourceId = f;
-                    filter = s;
-                    apiVersion = a;
+                    resourceId = r;
+                    filter = q;
+                    apiVersion = api;
                 });
 
             insightsClientMock
-                .SetupGet(f => f.UsageMetricOperations)
+                .SetupGet(f => f.UsageMetrics)
                 .Returns(this.insightsUsageMetricOperationsMock.Object);
         }
 
@@ -80,7 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.ResourceId = Utilities.ResourceUri;
 
             cmdlet.ExecuteCmdlet();
-            Assert.True(filter != null && filter.Contains("startTime eq ") && filter.Contains(" and endTime eq "));
+            Assert.True(filter != null && filter.Filter.Contains("startTime eq ") && filter.Filter.Contains(" and endTime eq "));
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal(GetAzureRmUsageCommand.DefaultApiVersion, apiVersion);
 
@@ -98,7 +103,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.StartTime = default(DateTime);
 
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter);
+            Assert.Equal(expected, filter != null ? filter.Filter : "");
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal(GetAzureRmUsageCommand.DefaultApiVersion, apiVersion);
 
@@ -110,7 +115,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             expected = "startTime eq " + startTime + " and endTime eq " + endTime;
 
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter);
+            Assert.Equal(expected, filter != null ? filter.Filter : "");
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal(GetAzureRmUsageCommand.DefaultApiVersion, apiVersion);
 
@@ -120,14 +125,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             expected = "(name.value eq 'n1' or name.value eq 'n2') and " + expected;
 
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter);
+            Assert.Equal(expected, filter != null ? filter.Filter : "");
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal(GetAzureRmUsageCommand.DefaultApiVersion, apiVersion);
 
             // Testing with another api version
             cmdlet.ApiVersion = "2015-01-01";
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter);
+            Assert.Equal(expected, filter != null ? filter.Filter : "");
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal("2015-01-01", apiVersion);
         }

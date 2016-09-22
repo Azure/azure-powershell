@@ -16,8 +16,11 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.Authentication;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Linq;
 
@@ -46,6 +49,22 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
+        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
+            RunPsTestWorkflow(
+                () => scripts,
+                // no custom initializer
+                null,
+                // no custom cleanup 
+                null,
+                callingClassType,
+                mockName);
+        }
+
         public void RunPsTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
@@ -68,10 +87,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
+                //context.Start(callingClassType, mockName);
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if (initialize != null)
@@ -79,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
@@ -87,10 +105,10 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.Insights.psd1"));
+                    helper.GetRMModulePath("AzureRM.Insights.psd1"),
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
                 {
@@ -114,22 +132,24 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            this.InsightsClient = this.GetInsightsClient();
-            this.InsightsManagementClient = this.GetInsightsManagementClient();
+            this.InsightsClient = this.GetInsightsClient(context);
+            this.InsightsManagementClient = this.GetInsightsManagementClient(context);
 
             helper.SetupManagementClients(this.InsightsClient, this.InsightsManagementClient);
         }
 
-        private IInsightsClient GetInsightsClient()
+        private IInsightsClient GetInsightsClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
+            // return TestBase.GetServiceClient<InsightsClient>(RestTestFramework.  this.csmTestFactory);
+            return context.GetServiceClient<InsightsClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IInsightsManagementClient GetInsightsManagementClient()
+        private IInsightsManagementClient GetInsightsManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            //return TestBase.GetServiceClient<InsightsManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<InsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
