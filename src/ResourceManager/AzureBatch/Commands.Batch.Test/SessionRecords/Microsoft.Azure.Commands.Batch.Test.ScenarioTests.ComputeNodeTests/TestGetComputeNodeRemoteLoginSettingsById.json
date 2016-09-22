@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "2f579207-2d56-41f6-b605-c15bfe6ab094"
+          "c21ee9e1-0bdb-4c14-b1aa-4379962c2882"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 19:46:44 GMT"
+          "Thu, 08 Sep 2016 23:06:16 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
@@ -29,7 +29,7 @@
           "chunked"
         ],
         "request-id": [
-          "d14e8d7e-bfa0-4572-9b80-e098468844d0"
+          "8f788f70-c081-407c-a321-0821ac2f798f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -38,7 +38,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 19:46:43 GMT"
+          "Thu, 08 Sep 2016 23:06:19 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -53,16 +53,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "d103e8ca-4a58-4d0b-8987-7e849f204655"
+          "dcb0424f-ed26-48e9-9b4a-e5a1718aded0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 19:46:45 GMT"
+          "Thu, 08 Sep 2016 23:06:18 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
@@ -75,7 +75,7 @@
           "chunked"
         ],
         "request-id": [
-          "b2824549-f2f7-4393-b03c-ef3eaf2b5e8b"
+          "daf87cd1-e1de-422f-8cf0-14661c646de7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -87,7 +87,7 @@
           "https://pstestaccount.centralus.batch.azure.com/pools/testIaasPool/nodes/tvm-3637016216_1-20160412t214237z/remoteloginsettings"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 19:46:43 GMT"
+          "Thu, 08 Sep 2016 23:06:19 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -101,6 +101,6 @@
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
     "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
   }
 }

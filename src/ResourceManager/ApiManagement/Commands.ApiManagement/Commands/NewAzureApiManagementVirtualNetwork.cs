@@ -34,16 +34,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Name of the sub network.")]
+            HelpMessage = "Subnet Resource Id.")]
         [ValidateNotNullOrEmpty]
-        public string SubnetName { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = true,
-            HelpMessage = "Identifier of the virtual network.")]
-        [ValidateNotNullOrEmpty]
-        public Guid VnetId { get; set; }
+        public string SubnetResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,8 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 new PsApiManagementVirtualNetwork
                 {
                     Location = Location,
-                    SubnetName = SubnetName,
-                    VnetId = VnetId
+                    SubnetResourceId = SubnetResourceId
                 });
         }
     }
