@@ -85,7 +85,7 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
 
                 // get recovered account to set parameters for resource sync
                 WriteVerbose(Resources.RetrieveUndeletedStorageAccount);
-                StorageAccountListResponse accounts = Client.StorageAccounts.List(ResourceGroupName, FarmName, "{versionedaccountname eq '" + AccountId + "'}", true);
+                StorageAccountListResponse accounts = Client.StorageAccounts.List(ResourceGroupName, FarmName, "{accountid eq '" + AccountId + "'}", true);
                 if (accounts.StatusCode != System.Net.HttpStatusCode.OK ||
                     accounts.StorageAccounts.Count == 0 ||
                     accounts.StorageAccounts[0].Properties == null ||

@@ -8,11 +8,9 @@
 
 @{
 
-# Script module or binary module file associated with this manifest
-ModuleToProcess = 'Microsoft.AzureStack.Commands.dll'
-
 # Version number of this module.
-ModuleVersion = '0.10.1'
+
+ModuleVersion = '0.10.2'
 
 # ID used to uniquely identify this module
 GUID = '0e691e0a-ce16-40f2-af84-86fb0d82fb29'
@@ -60,7 +58,7 @@ TypesToProcess = @()
 # FormatsToProcess = @('AzureStackAdmin.format.ps1xml')
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = @()
+NestedModules = @('.\Microsoft.AzureStack.Commands.dll')
 
 # Functions to export from this module
 FunctionsToExport = '*'

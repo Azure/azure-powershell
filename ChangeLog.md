@@ -1,3 +1,14 @@
+## 2016.09.08 version 1.2.6
+* Side-by-side execution in PowerShell 5 using the following command in a new PowerShell session:```Import-Module -Name AzureRM -RequiredVersion 1.2.6```
+* AzureStackAdmin Cmdlets
+  * Changes to Registration, Plan, Offer, Add-RP, Gallery, and Quota cmdlets
+* AzureStackStorage Cmdlets
+  * Added cmdlets for managing Quota, Acquisition, And Queue
+ * Azure Compute Cmdlets
+   * Support for BYOL, PLan, and secure custom script extension execution
+ * Azure ResourceManager cmdlets
+   * Augment api-version cache to support hybrid scenarios
+  
 ## 2016.02.04 version 1.2.1
 * Fix installer issue - remove PSGallery modules on install
 

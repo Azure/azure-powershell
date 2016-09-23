@@ -182,6 +182,9 @@ namespace Microsoft.AzureStack.AzureConsistentStorage.Commands
                 case StorageAccountSearchFilterParameter.StorageAccountStatus:
                     filterKey = "properties/accountStatus";
                     break;
+                case StorageAccountSearchFilterParameter.VersionedAccountName:
+                    filterKey = "accountid";
+                    break;
                 default:
                     filterKey = filter.ToString();
                     break;
