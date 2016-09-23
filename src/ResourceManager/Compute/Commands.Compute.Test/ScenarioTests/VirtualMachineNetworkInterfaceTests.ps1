@@ -583,15 +583,7 @@ function Test-EffectiveRoutesAndNsg
 		Assert-NotNull $effectiveRoute[0].Source
 
         # Get Effective NSG by name
-        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name
-
-		# Get Effective route by object
-        $effectiveRoute = Get-AzureRmEffectiveRouteTable -NetworkInterface $getnic
-		Assert-NotNull $effectiveRoute[0].Source
-
-        # Get Effective NSG by object
-        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterface $getnic
-        
+        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name       
     }
     finally
     {
