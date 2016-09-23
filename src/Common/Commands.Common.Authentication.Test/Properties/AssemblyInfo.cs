@@ -28,6 +28,6 @@ using Xunit;
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
-[assembly: AssemblyVersion("2.1.0")]
-[assembly: AssemblyFileVersion("2.1.0")]
+[assembly: AssemblyVersion("3.0.0")]
+[assembly: AssemblyFileVersion("3.0.0")]
 [assembly: CollectionBehavior(DisableTestParallelization = true)]
