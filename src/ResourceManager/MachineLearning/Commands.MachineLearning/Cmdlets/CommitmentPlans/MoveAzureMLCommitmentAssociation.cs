@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
-    [Cmdlet(VerbsCommon.Move, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix)]
+    [Cmdlet(VerbsCommon.Move, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix, SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan), typeof(CommitmentPlan[]))]
     public class MoveAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {
@@ -40,6 +40,11 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         protected override void RunCmdlet()
         {
+            if (!ShouldProcess(this.Name, @"Moving Azure ML commitment association."))
+            {
+                return;
+            }
+
             CommitmentAssociation commitmentAssociation =
                 this.CommitmentPlansClient.MoveCommitmentAssociationAsync(
                     this.ResourceGroupName,
