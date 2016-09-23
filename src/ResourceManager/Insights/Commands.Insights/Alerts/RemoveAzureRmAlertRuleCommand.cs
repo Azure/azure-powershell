@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Insights;
 using System.Collections.Generic;
+using System.Net;
+using Microsoft.Azure.Management.Insights;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
 {
     /// <summary>
     /// Remove an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAlertRule"), OutputType(typeof(List<AzureOperationResponse>))]
     public class RemoveAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAlertRuleParamGroup = "Parameters for Remove-AzureRmAlertRule cmdlet";
@@ -51,7 +51,20 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         protected override void ProcessRecordInternal()
         {
             this.InsightsManagementClient.AlertRules.DeleteAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Wait();
-            WriteObject("");
+
+            // Keep this response for backwards compatibility.
+            // Note: Delete operations return nothing in the new specification.
+            var response = new List<AzureOperationResponse>
+            {
+                new AzureOperationResponse()
+                {
+                    // There is no data about the request Id in the new SDK .Net.
+                    RequestId = string.Empty,
+                    StatusCode = HttpStatusCode.OK
+                }
+            };
+
+            WriteObject(response);
         }
     }
 }

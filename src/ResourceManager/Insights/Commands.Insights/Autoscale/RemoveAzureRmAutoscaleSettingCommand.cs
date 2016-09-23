@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Net;
 using Microsoft.Azure.Management.Insights;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Insights.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Remove an autoscale setting.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string RemoveAzureRmAutoscaleSettingParamGroup = "Parameters for Remove-AzureRmAutoscaleSetting cmdlet";
@@ -50,7 +50,17 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         protected override void ProcessRecordInternal()
         {
             this.InsightsManagementClient.AutoscaleSettings.DeleteAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Wait();
-            WriteObject("");
+
+            // Keep this response for backwards compatibility.
+            // Note: Delete operations return nothing in the new specification.
+            var response = new AzureOperationResponse
+            {
+                // There is no data about the request Id in the new SDK .Net.
+                RequestId = string.Empty,
+                StatusCode = HttpStatusCode.OK
+            };
+
+            WriteObject(response);
         }
     }
 }

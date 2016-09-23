@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create or update an Autoscale setting
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(PSAutoscaleSetting))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmAutoscaleSetting"), OutputType(typeof(AzureOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "Parameters for Add-AzureRmAutoscaleSetting cmdlet in the create semantics";
@@ -101,15 +102,27 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            AutoscaleSettingResource parameters = this.CreateSdkCallParameters();
+            AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
-            Task<AutoscaleSettingResource> task = this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters);
-            task.Wait();
+            // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
+            this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Wait();
 
-            WriteObject(task.Result);
+            // Keep this response for backwards compatibility.
+            // Note: Delete operations return nothing in the new specification.
+            var response = new List<AzureOperationResponse>
+            {
+                new AzureOperationResponse()
+                {
+                    // There is no data about the request Id in the new SDK .Net.
+                    RequestId = string.Empty,
+                    StatusCode = HttpStatusCode.OK
+                }
+            };
+
+            WriteObject(response);
         }
 
-        private AutoscaleSettingResource CreateSdkCallParameters()
+        private AutoscaleSettingResource CreateAutoscaleSettingResource()
         {
             bool enableSetting = !this.DisableSetting.IsPresent || !this.DisableSetting;
 

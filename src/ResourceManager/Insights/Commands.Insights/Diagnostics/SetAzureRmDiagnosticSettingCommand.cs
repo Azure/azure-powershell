@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
@@ -23,14 +22,13 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 using System.Xml;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         #region Parameters declarations
@@ -198,9 +196,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             putParameters.StorageAccountId = properties.StorageAccountId;
             putParameters.WorkspaceId = properties.WorkspaceId;
 
-            Task<AzureOperationResponse<ServiceDiagnosticSettingsResource>> task = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateWithHttpMessagesAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None);
-            task.Wait();
-            WriteObject(task.Result);
+            ServiceDiagnosticSettingsResource result = this.InsightsManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            WriteObject(result);
         }
     }
 }

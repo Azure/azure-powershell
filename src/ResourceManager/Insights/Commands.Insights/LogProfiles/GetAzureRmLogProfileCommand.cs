@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
             }
             else
             {
-                LogProfileResource logProfiles = this.InsightsManagementClient.LogProfiles.GetAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
-                result.Add(new PSLogProfile(logProfile: logProfiles));
+                LogProfileResource logProfile = this.InsightsManagementClient.LogProfiles.GetAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Result;
+                result.Add(new PSLogProfile(logProfile: logProfile));
             }
 
             WriteObject(result);
