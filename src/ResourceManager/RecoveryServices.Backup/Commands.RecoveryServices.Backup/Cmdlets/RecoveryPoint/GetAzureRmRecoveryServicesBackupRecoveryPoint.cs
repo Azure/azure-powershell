@@ -147,6 +147,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         throw new ArgumentException(Resources.GetRPErrorInputDatesShouldBeInUTC);
                     }
 
+                    if(rangeStart > DateTime.UtcNow)
+                    {
+                        throw new ArgumentException(Resources.GetRPErrorStartTimeShouldBeLessThanUTCNow);
+                    }
+
                     parameter.Add(RecoveryPointParams.StartDate, rangeStart);
                     parameter.Add(RecoveryPointParams.EndDate, rangeEnd);
                     PsBackupProviderManager providerManager = 
