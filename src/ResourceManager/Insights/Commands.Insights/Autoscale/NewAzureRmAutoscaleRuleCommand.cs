@@ -29,6 +29,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);
 
+        /// <summary>
+        /// Scale type enum.
+        /// Keep this enum for backwards compatibility. The only value supported is ChangeCount
+        /// </summary>
+        public enum ScaleType
+        {
+            ChangeCount
+        }
+
         #region Cmdlet parameters
 
         /// <summary>
@@ -92,6 +101,13 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The acale action direction for the setting")]
         public ScaleDirection ScaleActionDirection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scale action value
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It defaults to ChangeCount, only value supported.")]
+        [ValidateNotNullOrEmpty]
+        public ScaleType ScaleActionScaleType { get; set; }
 
         /// <summary>
         /// Gets or sets the scale action value

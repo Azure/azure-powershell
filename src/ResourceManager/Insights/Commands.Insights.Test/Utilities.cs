@@ -107,6 +107,27 @@ namespace Microsoft.Azure.Commands.Insights.Test
             };
         }
 
+        public static AzureOperationResponse<LogProfileResource> InitializeLogProfileResponse()
+        {
+            // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet
+            EventData eventData = Utilities.CreateFakeEvent();
+            var x = JsonConvert.SerializeObject(eventData);
+
+            return new AzureOperationResponse<LogProfileResource>()
+            {
+                Body = new LogProfileResource(location: "East US", id: "MyLogProfileId")
+                {
+                    Categories = new List<string>() { "cat2" },
+                    ServiceBusRuleId = "myBusId",
+                    StorageAccountId = "myStorageAccId",
+                    Locations = new string[] { "EastUs" },
+                    Name = Utilities.Name,
+                    RetentionPolicy = new RetentionPolicy(enabled: true, days: 10),
+                    Tags = null
+                }
+            };
+        }
+
         public static IEnumerable<Microsoft.Azure.Insights.Models.MetricDefinition> InitializeMetricDefinitionResponse()
         {
             // This is effectively testing the conversion EventData -> PSEventData internally in the execution of the cmdlet

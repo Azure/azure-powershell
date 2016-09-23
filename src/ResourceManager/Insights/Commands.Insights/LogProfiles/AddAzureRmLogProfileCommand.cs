@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
-using Microsoft.WindowsAzure.Commands.Common;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading;
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// <summary>
     /// Get the log profiles.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLogProfile"), OutputType(typeof(PSLogProfile))]
     public class AddAzureRmLogProfileCommand : ManagementCmdletBase
     {
         private static readonly List<string> ValidCategories = new List<string> { "Delete", "Write", "Action" };
@@ -95,9 +94,8 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
             putParameters.ServiceBusRuleId = this.ServiceBusRuleId;
             putParameters.StorageAccountId = this.StorageAccountId;
 
-            Task<LogProfileResource> task = this.InsightsManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None);
-            task.Wait();
-            WriteObject(task.Result);
+            LogProfileResource result = this.InsightsManagementClient.LogProfiles.CreateOrUpdateAsync(logProfileName: this.Name, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+            WriteObject(new PSLogProfile(result));
         }
     }
 }

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Management.Insights;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.LogProfiles
 {
