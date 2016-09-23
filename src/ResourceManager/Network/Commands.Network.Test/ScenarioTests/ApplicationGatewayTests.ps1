@@ -109,6 +109,14 @@ function Test-ApplicationGatewayCRUD
 		# Get Application Gateway
 		$getgw =  Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 
+		# Get Application Gateway backend health with expanded resource
+		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource"
+		Assert-NotNull $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
+
+		# Get Application Gateway backend health without expanded resource
+		$backendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname
+		Assert-Null $backendHealth.BackendAddressPools[0].BackendAddressPool.Name
+
 		# add nics to application gateway backend address pool
 		$nicPool = Get-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $getgw -Name $nicPoolName
         $nic01.IpConfigurations[0].ApplicationGatewayBackendAddressPools.Add($nicPool);
