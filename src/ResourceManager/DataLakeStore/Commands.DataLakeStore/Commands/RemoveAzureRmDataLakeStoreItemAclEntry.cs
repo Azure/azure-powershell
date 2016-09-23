@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "The ACL spec containing the entries to remove. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
                 " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
                 "This cmdlet is not to be used for setting the owner or owning group.")]
-        public DataLakeStoreItemAcl Acl { get; set; }
+        public DataLakeStoreItemAce[] Acl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 2,
             Mandatory = true, HelpMessage = "Indicates the type of ACE to remove (user, group, mask, other)")]
@@ -72,22 +72,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public Guid Id { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4, 
-            Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
+            Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed. Only named default entries can be removed this way.")]
         public SwitchParameter Default { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string aclSpec = string.Empty;
-            if(ParameterSetName.Equals(BaseParameterSetName))
-            {
-                WriteWarning(Resources.ObsoleteWarningForAclObjects);
-                aclSpec = Acl.GetAclSpec(false);
-            }
-            else
-            {
-                aclSpec = string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
-            }
-            
+            var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
+                 ? DataLakeStoreItemAce.GetAclSpec(Acl, false)
+                 : string.Format("{0}:{1}", AceType, Id.ToString()).ToLowerInvariant();
+
             ConfirmAction(
                 string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.OriginalPath),
                 Path.OriginalPath,

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = true,
-            HelpMessage = "Certificagte thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.")]
+            HelpMessage = "Certificate thumbprint. The certificate must be first imported with Import-ApiManagementCertificate command.")]
         [ValidateNotNullOrEmpty]
         public string CertificateThumbprint { get; set; }
 

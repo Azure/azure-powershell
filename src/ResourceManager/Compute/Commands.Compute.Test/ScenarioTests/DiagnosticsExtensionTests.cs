@@ -51,5 +51,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionSupportJsonConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVmssDiagnosticsExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VmssDiagnosticsExtension");
+        }
     }
 }
