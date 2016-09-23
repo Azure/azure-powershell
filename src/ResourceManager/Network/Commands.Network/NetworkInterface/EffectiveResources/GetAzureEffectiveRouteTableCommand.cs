@@ -26,15 +26,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           ParameterSetName = "GetByResourceObject",
-           HelpMessage = "The network interface.")]
-        [ValidateNotNullOrEmpty]
-        public PSNetworkInterface NetworkInterface { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           ParameterSetName = "GetByResourceName",
            HelpMessage = "The network interface name.")]
         [ValidateNotNullOrEmpty]
         public string NetworkInterfaceName { get; set; }
@@ -42,7 +33,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "GetByResourceName",
             HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -50,12 +40,6 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-
-            if (ParameterSetName.Contains("GetByResourceObject"))
-            {
-                this.NetworkInterfaceName = this.NetworkInterface.Name;
-                this.ResourceGroupName = this.NetworkInterface.ResourceGroupName;
-            }
 
             var getEffectiveRouteTable = this.NetworkInterfaceClient.GetEffectiveRouteTable(this.ResourceGroupName, this.NetworkInterfaceName);
 
