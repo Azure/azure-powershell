@@ -221,7 +221,7 @@ function Test-GetAzureRmAlertHistory
 {
     try 
     {
-		$actual = Get-AzureRmAlertHistory -endTime 2015-02-11T12:00:00 -detailedOutput
+		$actual = Get-AzureRmAlertHistory -endTime 2015-02-11T20:00:00Z -detailedOutput
 
         # Assert
 		Assert-AreEqual $actual.Count 2
