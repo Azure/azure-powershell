@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
             }
 
             buffer.Append(" and startTime eq ");
-            buffer.Append(this.StartTime.ToString("O"));
+            buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
             buffer.Append(" and endTime eq ");
-            buffer.Append(this.EndTime.ToString("O"));
+            buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
 
             string queryFilter = buffer.ToString();
             if (queryFilter.StartsWith(" and "))
