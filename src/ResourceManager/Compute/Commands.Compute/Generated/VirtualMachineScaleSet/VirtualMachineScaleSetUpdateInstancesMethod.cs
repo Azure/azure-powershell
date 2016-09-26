@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 
-    [Cmdlet("Update", "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters")]
+    [Cmdlet("Update", "AzureRmVmssInstance", DefaultParameterSetName = "InvokeByDynamicParameters", SupportsShouldProcess = true)]
     public partial class UpdateAzureRmVmssInstance : InvokeAzureComputeMethodCmdlet
     {
         public override string MethodName { get; set; }
@@ -125,7 +125,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         protected override void ProcessRecord()
         {
             this.MethodName = "VirtualMachineScaleSetUpdateInstances";
-            base.ProcessRecord();
+            if (ShouldProcess(this.dynamicParameters["ResourceGroupName"].Value.ToString(), VerbsData.Update))
+            {
+                base.ProcessRecord();
+            }
         }
 
         public override object GetDynamicParameters()

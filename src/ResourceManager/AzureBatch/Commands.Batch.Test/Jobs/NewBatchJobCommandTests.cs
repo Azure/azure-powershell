@@ -15,11 +15,13 @@
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
@@ -55,9 +57,49 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.Id = "testJob";
+            cmdlet.OnAllTasksComplete = Azure.Batch.Common.OnAllTasksComplete.TerminateJob;
+            cmdlet.OnTaskFailure = Azure.Batch.Common.OnTaskFailure.PerformExitOptionsJobAction;
 
             // Don't go to the service on an Add CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>();
+            var interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(
+                    new AzureOperationHeaderResponse<JobAddHeaders>(),
+                    request =>
+                        {
+                            Assert.Equal(request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+                            Assert.Equal(request.Parameters.OnTaskFailure, OnTaskFailure.PerformExitOptionsJobAction);
+                        });
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            // Verify no exceptions when required parameters are set
+            cmdlet.ExecuteCmdlet();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApplicationPackageReferencesAreSentToService()
+        {
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "job-id";
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+
+            cmdlet.JobManagerTask = new PSJobManagerTask { ApplicationPackageReferences = new[] 
+            {
+                new PSApplicationPackageReference { ApplicationId = applicationId, Version = applicationVersion} ,
+            }};
+            
+            // Don't go to the service on an Add CloudJob call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<JobAddParameter, JobAddOptions, AzureOperationHeaderResponse<JobAddHeaders>>(
+                new AzureOperationHeaderResponse<JobAddHeaders>(),
+                request =>
+                    {
+                        var applicationPackageReference = request.Parameters.JobManagerTask.ApplicationPackageReferences.First();
+                        Assert.Equal(applicationId, applicationPackageReference.ApplicationId);
+                        Assert.Equal(applicationVersion, applicationPackageReference.Version);
+                    });
+
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

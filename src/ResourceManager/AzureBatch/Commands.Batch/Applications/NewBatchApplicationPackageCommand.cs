@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class NewBatchApplicationPackageCommand : BatchCmdletBase
     {
         internal const string ActivateOnlySet = "ActivateOnly";
-        internal const string UploadAndActivateSet = "UpdateAndActivate";
+        internal const string UploadAndActivateSet = "UploadAndActivate";
 
         [Parameter(Position = 0, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [Parameter(Position = 0, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
