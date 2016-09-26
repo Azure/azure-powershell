@@ -37,6 +37,42 @@ New-MarkdownHelp -OutputFolder $output -Module $module -WithModulePage
 ```
 then the markdown files will be generated from the information in the MAML file (found in the module) **and** using reflection on the cmdlet implementation in the module.
 
+#### NOTE
+
+Some cmdlets have examples containing rows and columns of information after the PowerShell commands and remarks. For example:
+
+    ### --------------------------  Example 1: Get capabilities for the current subscription for a region  --------------------------
+    @{paragraph=PS C:\\\>}
+    
+    ```
+    PS C:\> Get-AzureRmSqlCapability -LocationName "Central US"
+    ```
+
+    This command returns the capabilities for SQL Database on the current subscription for the Central US region.
+
+    Location                : Central US
+    Status                  : Available
+    SupportedServerVersions : {12.0, 2.0}
+
+However, the format of these rows and columns are not preserved when platyPS generates the MAML. In order to avoid this issue, please move the rows and columns into the code block of the example; this is how help for core PowerShell modules is written.
+
+After making these changes, the resulting markdown would look like the following:
+
+    ### --------------------------  Example 1: Get capabilities for the current subscription for a region  --------------------------
+    @{paragraph=PS C:\\\>}
+    
+    ```
+    PS C:\> Get-AzureRmSqlCapability -LocationName "Central US"
+    
+    Location                : Central US
+    Status                  : Available
+    SupportedServerVersions : {12.0, 2.0}
+    ```
+
+    This command returns the capabilities for SQL Database on the current subscription for the Central US region.
+
+Making these changes will allow the table to preserve the format when the MAML is displayed in the PowerShell window.
+
 ### Updating markdown
 
 Once you have created the markdown files for each cmdlet, you must make sure to keep them up to date based on changes to the cmdlets.
