@@ -60,14 +60,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmWebtestAlertRule");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAlertRule()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAlertRule");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAlertRuleByName()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAlertRuleByName");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAlertRule()
         {

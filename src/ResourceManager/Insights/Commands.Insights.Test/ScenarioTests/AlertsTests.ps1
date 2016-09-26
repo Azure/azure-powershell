@@ -163,8 +163,26 @@ function Test-GetAzureRmAlertRule
 	    $actual = Get-AzureRmAlertRule -ResourceGroup $rgname 
 		Assert-NotNull $actual
 		Assert-AreEqual $actual.Count 1
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
 
-        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name 'MyruleName}'
+<#
+.SYNOPSIS
+Tests getting the alert rules associated to a resource group.
+#>
+function Test-GetAzureRmAlertRuleByName
+{
+    # Setup
+    $rgname = 'Default-Web-EastUS'
+
+    try 
+    {
+        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name 'MyruleName'
 		Assert-NotNull $actual
     }
     finally
@@ -173,6 +191,7 @@ function Test-GetAzureRmAlertRule
         # No cleanup needed for now
     }
 }
+
 
 <#
 .SYNOPSIS

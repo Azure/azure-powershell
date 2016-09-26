@@ -32,11 +32,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmAutoscaleSetting");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureRmAutoscaleSettingByName()
+        {
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSettingByName");
         }
 
         [Fact]
