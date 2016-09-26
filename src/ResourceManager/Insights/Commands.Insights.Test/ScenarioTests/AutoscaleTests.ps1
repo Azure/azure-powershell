@@ -116,7 +116,7 @@ function Test-GetAzureRmAutoscaleHistory
 {
     try 
     {
-		$actual = Get-AzureRmAutoscaleHistory -StartTime 2015-02-09T18:35:00 -endTime 2015-02-09T18:40:00 -detailedOutput
+		$actual = Get-AzureRmAutoscaleHistory -StartTime 2015-02-10T02:35:00Z -endTime 2015-02-10T02:40:00Z -detailedOutput
 
         # Assert
 		Assert-AreEqual $actual.Count 2
