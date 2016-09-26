@@ -2,6 +2,7 @@
     "Entries": [
         {
             "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/microsoft.insights/eventtypes/management/values?$filter=eventTimestamp%20ge%20'2015-02-10T02:35:00.0000000Z'%20and%20eventTimestamp%20le%20'2015-02-10T02:40:00.0000000Z'%20and%20resourceType%20eq%20'microsoft.insights/autoscalesettings'&api-version=2015-04-01",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Byb3ZpZGVycy9taWNyb3NvZnQuaW5zaWdodHMvZXZlbnR0eXBlcy9tYW5hZ2VtZW50L3ZhbHVlcz8kZmlsdGVyPWV2ZW50VGltZXN0YW1wJTIwZ2UlMjAnMjAxNS0wMi0xMFQwMjozNTowMC4wMDAwMDAwWiclMjBhbmQlMjBldmVudFRpbWVzdGFtcCUyMGxlJTIwJzIwMTUtMDItMTBUMDI6NDA6MDAuMDAwMDAwMFonJTIwYW5kJTIwcmVzb3VyY2VUeXBlJTIwZXElMjAnbWljcm9zb2Z0Lmluc2lnaHRzL2F1dG9zY2FsZXNldHRpbmdzJyZhcGktdmVyc2lvbj0yMDE1LTA0LTAx",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
@@ -52,7 +53,7 @@
         }
     ],
   "Names": {
-    "Test-GetAutoscaleHistory": [
+    "Test-GetAzureRmAutoscaleHistory": [
       ""
     ]
   },

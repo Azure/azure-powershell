@@ -2,6 +2,7 @@
     "Entries": [
         {
             "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/DefaultServerFarm-Default-Web-EastUS?api-version=2015-04-01",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlZ3JvdXBzL0RlZmF1bHQtV2ViLUVhc3RVUy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2F1dG9zY2FsZXNldHRpbmdzL0RlZmF1bHRTZXJ2ZXJGYXJtLURlZmF1bHQtV2ViLUVhc3RVUz9hcGktdmVyc2lvbj0yMDE1LTA0LTAx",
             "RequestMethod": "DELETE",
             "RequestBody": "",
             "RequestHeaders": {
@@ -43,9 +44,7 @@
         }
     ],
   "Names": {
-    "Test-RemoveAutoscaleSetting": [
-      ""
-    ]
+    "Test-RemoveAzureRmAutoscaleSetting": [ "" ]
   },
   "Variables": {
     "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"

@@ -2,6 +2,7 @@
     "Entries": [
         {
             "RequestUri": "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourcegroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin?api-version=2016-03-01",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjY3ZjdmZWMtNjlmYy00OTc0LTkwOTktYTI2YmQ2ZmZlZGEzL3Jlc291cmNlZ3JvdXBzL1JhYzQ2UG9zdFN3YXBSRy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hpcmljdXRpbj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
             "RequestMethod": "DELETE",
             "RequestBody": "",
             "RequestHeaders": {

@@ -25,35 +25,35 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureCorrelationIdLog()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureCorrelationIdLog");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureResourceGroupLog()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureResourceGroupLog");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureResourceLog()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureResourceLog");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureResourceProviderLog()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureResourceProviderLog");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureSubscriptionIdLog()
         {

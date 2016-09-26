@@ -33,10 +33,7 @@ function Test-AddAzureRmAutoscaleSetting
     try 
     {
         # Test
-		$actual = Add-AzureRmAutoscaleSetting -Location "East US" -Name MySetting -ResourceGroup $resourceGroup -TargetResourceId $resourceId -AutoscaleProfiles $profile1, $profile2
-
-        # Assert TODO add more asserts
-		Assert-AreEqual $actual.Name 'MySetting'
+		Add-AzureRmAutoscaleSetting -Location "East US" -Name MySetting -ResourceGroup $resourceGroup -TargetResourceId $resourceId -AutoscaleProfiles $profile1, $profile2
     }
     finally
     {
