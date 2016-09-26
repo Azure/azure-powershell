@@ -47,6 +47,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         private readonly AzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
+        private readonly JsonSerializerSettings _jsonSerializerSetting = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
         static ApiManagementClient()
         {
             ConfugureMappings();
@@ -355,7 +357,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 Description = description,
                 ServiceUrl = serviceUrl,
                 Path = urlSuffix,
-                Protocols = Mapper.Map<IList<ApiProtocolContract>>(urlSchema),
+                Protocols = Mapper.Map<IList<ApiProtocolContract>>(urlSchema)
             };
 
             if (!string.IsNullOrWhiteSpace(authorizationServerId))
@@ -379,7 +381,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 };
             }
 
-            Client.Apis.CreateOrUpdate(context.ResourceGroupName, context.ServiceName, id, new ApiCreateOrUpdateParameters(api), "*");
+            // fix for issue https://github.com/Azure/azure-powershell/issues/2606
+            var apiPatchContract = JsonConvert.SerializeObject(api, _jsonSerializerSetting);
+
+            Client.Apis.Patch(
+                context.ResourceGroupName, 
+                context.ServiceName,
+                id, 
+                new PatchParameters
+                {
+                    RawJson = apiPatchContract
+                },
+                "*");
         }
 
         public void ApiImportFromFile(
@@ -387,24 +400,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationPath,
-            string urlSuffix)
+            string urlSuffix,
+            string wsdlServiceName,
+            string wsdlEndpointName)
         {
-            string contentType;
-            switch (specificationFormat)
-            {
-                case PsApiManagementApiFormat.Wadl:
-                    contentType = "application/vnd.sun.wadl+xml";
-                    break;
-                case PsApiManagementApiFormat.Swagger:
-                    contentType = "application/vnd.swagger.doc+json";
-                    break;
-                default:
-                    throw new ArgumentException(string.Format("Format '{0}' is not supported.", specificationFormat));
-            }
+            string contentType = GetHeaderValue(specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
             using (var fileStream = File.OpenRead(specificationPath))
             {
-                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, urlSuffix);
+                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, urlSuffix, wsdlServiceName, wsdlEndpointName);
             }
         }
 
@@ -413,20 +417,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationUrl,
-            string urlSuffix)
+            string urlSuffix,
+            string wsdlServiceName,
+            string wsdlEndpointName)
         {
-            string contentType;
-            switch (specificationFormat)
-            {
-                case PsApiManagementApiFormat.Wadl:
-                    contentType = "application/vnd.sun.wadl.link+json";
-                    break;
-                case PsApiManagementApiFormat.Swagger:
-                    contentType = "application/vnd.swagger.link+json";
-                    break;
-                default:
-                    throw new ArgumentException(string.Format("Format '{0}' is not supported.", specificationFormat));
-            }
+            string contentType = GetHeaderValue(specificationFormat, wsdlServiceName, wsdlEndpointName, true);
 
             var jobj = JObject.FromObject(
                 new
@@ -436,7 +431,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             using (var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(jobj.ToString(Formatting.None))))
             {
-                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, memoryStream, urlSuffix);
+                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, memoryStream, urlSuffix, wsdlServiceName, wsdlEndpointName);
             }
         }
 
@@ -446,21 +441,44 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             PsApiManagementApiFormat specificationFormat,
             string saveAs)
         {
-            string contentType;
-            switch (specificationFormat)
+            string acceptType = GetHeaderValue(specificationFormat, string.Empty, string.Empty, false);
+
+            var response = Client.Apis.Export(context.ResourceGroupName, context.ServiceName, apiId, acceptType);
+            return response.Content;
+        }
+
+        private string GetHeaderValue(
+            PsApiManagementApiFormat specificationApiFormat, 
+            string wsdlServiceName,
+            string wsdlEndpointName,
+            bool validateWsdlParams)
+        {
+            string headerValue;
+            switch (specificationApiFormat)
             {
                 case PsApiManagementApiFormat.Wadl:
-                    contentType = "application/vnd.sun.wadl+xml";
+                    headerValue = "application/vnd.sun.wadl+xml";
                     break;
                 case PsApiManagementApiFormat.Swagger:
-                    contentType = "application/vnd.swagger.doc+json";
+                    headerValue = "application/vnd.swagger.doc+json";
+                    break;
+                case PsApiManagementApiFormat.Wsdl:
+                    headerValue = "application/wsdl+xml";
+                    if (validateWsdlParams && string.IsNullOrEmpty(wsdlServiceName))
+                    {
+                        throw new ArgumentException(string.Format("WsdlServiceName cannot be Empty for Format : {0}", specificationApiFormat));
+                    }
+
+                    if (validateWsdlParams && string.IsNullOrEmpty(wsdlEndpointName))
+                    {
+                        throw new ArgumentException(string.Format("WsdlEndpointName cannot be Empty for Format : {0}", specificationApiFormat));
+                    }
                     break;
                 default:
-                    throw new ArgumentException(string.Format("Format '{0}' is not supported.", specificationFormat));
+                    throw new ArgumentException(string.Format("Format '{0}' is not supported.", specificationApiFormat));
             }
 
-            var response = Client.Apis.Export(context.ResourceGroupName, context.ServiceName, apiId, contentType);
-            return response.Content;
+            return headerValue;
         }
 
         public void ApiAddToProduct(PsApiManagementContext context, string productId, string apiId)
@@ -573,12 +591,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 operationContract.Responses = Mapper.Map<IList<ResponseContract>>(responses);
             }
 
-            Client.ApiOperations.Update(
+            var operationPatchContract = JsonConvert.SerializeObject(operationContract, _jsonSerializerSetting);
+
+            Client.ApiOperations.Patch(
                 context.ResourceGroupName,
                 context.ServiceName,
                 apiId,
                 operationId,
-                new OperationCreateOrUpdateParameters(operationContract),
+                new PatchParameters
+                {
+                    RawJson = operationPatchContract
+                },
                 "*");
         }
 
@@ -864,6 +887,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (state.HasValue)
             {
                 userUpdateParameters.State = Mapper.Map<UserStateContract>(state.Value);
+            }
+            else
+            {
+                // if state not specified, fetch state.
+                // fix for issue https://github.com/Azure/azure-powershell/issues/2622
+                var currentUser = Client.Users.Get(context.ResourceGroupName, context.ServiceName, userId);
+                userUpdateParameters.State = currentUser.Value.State;
             }
 
             Client.Users.Update(context.ResourceGroupName, context.ServiceName, userId, userUpdateParameters, "*");
