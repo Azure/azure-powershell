@@ -5,6 +5,7 @@ schema: 2.0.0
 ---
 
 # Add-AzureRmAccount
+
 ## SYNOPSIS
 Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 
@@ -13,41 +14,41 @@ Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
 ### User (Default)
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
- [-TenantId <String>] [-WhatIf] [-Confirm]
-```
-
-### ServicePrincipal
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] -Credential <PSCredential>
- [-ServicePrincipal] -TenantId <String> [-SubscriptionId <String>] [-SubscriptionName <String>] [-WhatIf]
- [-Confirm]
+ [-TenantId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionId
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
  [-CertificateThumbprint <String>] [-ApplicationId <String>] [-TenantId <String>] [-AccessToken <String>]
- [-AccountId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm]
+ [-AccountId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipal
+```
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] -Credential <PSCredential>
+ [-ServicePrincipal] -TenantId <String> [-SubscriptionId <String>] [-SubscriptionName <String>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionName
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
  [-CertificateThumbprint <String>] [-ApplicationId <String>] [-TenantId <String>] [-AccessToken <String>]
- [-AccountId <String>] [-SubscriptionName <String>] [-WhatIf] [-Confirm]
+ [-AccountId <String>] [-SubscriptionName <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificate
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>]
  -CertificateThumbprint <String> -ApplicationId <String> [-ServicePrincipal] -TenantId <String> [-WhatIf]
- [-Confirm]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### AccessToken
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-TenantId <String>]
- -AccessToken <String> -AccountId <String> [-WhatIf] [-Confirm]
+ -AccessToken <String> -AccountId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -309,7 +310,7 @@ If you do not specify this parameter, the first subscription from the subscripti
 
 ```yaml
 Type: String
-Parameter Sets: ServicePrincipal, SubscriptionId
+Parameter Sets: SubscriptionId, ServicePrincipal
 Aliases: 
 
 Required: False
@@ -362,7 +363,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-{{Fill Confirm Description}}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -377,7 +378,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-{{Fill WhatIf Description}}
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -390,6 +391,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

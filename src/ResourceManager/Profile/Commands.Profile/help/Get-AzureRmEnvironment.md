@@ -5,13 +5,14 @@ schema: 2.0.0
 ---
 
 # Get-AzureRmEnvironment
+
 ## SYNOPSIS
 Get endpoints and metadata for an instance of Azure services.
 
 ## SYNTAX
 
 ```
-Get-AzureRmEnvironment [[-Name] <String>]
+Get-AzureRmEnvironment [[-Name] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

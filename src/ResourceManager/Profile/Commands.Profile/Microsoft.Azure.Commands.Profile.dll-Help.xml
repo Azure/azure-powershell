@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <helpItems schema="maml">
 
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -99,7 +99,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -107,7 +107,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -200,7 +200,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -208,7 +208,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -263,7 +263,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -271,7 +271,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -334,7 +334,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -342,7 +342,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -390,7 +390,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -398,7 +398,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -472,7 +472,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -480,7 +480,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -591,7 +591,7 @@
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -600,7 +600,7 @@
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -627,6 +627,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:para>
 <maml:para>If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Add an account that authenticates with organizational ID credentials</maml:title>
@@ -642,6 +644,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:para>
 <maml:para>This account authenticates with Azure Resource Manager using organizational ID credentials. You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example3: Add an account that authenticates with service principal credentials</maml:title>
@@ -655,6 +659,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:para>
 <maml:para>The second command adds an Azure Resource Manager account with the credentials stored in $Credential for the specified Tenant. The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Add an account for a specific tenant and subscription</maml:title>
@@ -665,6 +671,8 @@ Subscription: yyyy-yyyy-yyyy-yyyy
 Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:remarks><maml:para>This command adds an Azure Resource Manager account to run cmdlets for the specified tenant and subscription by default.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -853,7 +861,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -861,7 +869,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1042,7 +1050,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1051,7 +1059,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1076,6 +1084,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1107,7 +1117,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Disable-AzureRmDataCollection</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1115,7 +1125,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1125,7 +1135,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1134,7 +1144,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1153,6 +1163,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1178,7 +1190,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Enable-AzureRmDataCollection</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1186,7 +1198,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1196,7 +1208,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1205,7 +1217,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1224,6 +1236,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
 <dev:remarks><maml:para>{{ Add example description here }}
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1265,6 +1279,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1316,6 +1332,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1423,6 +1441,8 @@ TenantId: yyyy-yyyy-yyyy-yyyy
 Subscription Name: Contoso Subscription 1</dev:code>
 <dev:remarks><maml:para>This command gets all subscriptions in all tenants that are authorized for the current account.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 2: Get all subscriptions for a specific tenant</maml:title>
@@ -1437,6 +1457,8 @@ TenantId: xxxx-xxxx-xxxx-xxxx
 Subscription Name: Contoso Subscription 2</dev:code>
 <dev:remarks><maml:para>List all subscriptions in the given tenant that are authorized for the current account.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 3: Get all subscriptions in the current tenant</maml:title>
@@ -1451,6 +1473,8 @@ TenantId: xxxx-xxxx-xxxx-xxxx
 Subscription Name: Contoso Subscription 2</dev:code>
 <dev:remarks><maml:para>This command gets all subscriptions in the current tenant that are authorized for the current user.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>Example 4: Change the current context to use a specific subscription</maml:title>
@@ -1460,6 +1484,8 @@ TenantId: yyyy-yyyy-yyyy-yyyy
 Subscription Name: Contoso Subscription 1</dev:code>
 <dev:remarks><maml:para>This command gets the specified subscription, and then sets the current context to use it. All subsequent cmdlets in this session use the new subscription (Contoso Subscription 1) by default.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1514,6 +1540,8 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1541,7 +1569,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1549,7 +1577,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1568,7 +1596,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1577,7 +1605,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1596,6 +1624,8 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1649,7 +1679,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1657,7 +1687,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1694,7 +1724,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1703,7 +1733,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1722,6 +1752,8 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1793,6 +1825,8 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -1823,7 +1857,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1831,7 +1865,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1859,7 +1893,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1867,7 +1901,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1895,7 +1929,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1903,7 +1937,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -1949,7 +1983,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1958,7 +1992,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -1984,6 +2018,8 @@ Subscription: xxxx-xxxx-xxxx-xxxx
 Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:remarks><maml:para>This command sets the context to use the specified subscription.
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>
@@ -2175,7 +2211,7 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -2183,7 +2219,7 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <dev:type><maml:name>SwitchParameter</maml:name>
@@ -2364,7 +2400,7 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>{{Fill Confirm Description}}
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -2373,7 +2409,7 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>{{Fill WhatIf Description}}
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
@@ -2392,6 +2428,8 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:code></dev:code>
 <dev:remarks><maml:para>
 </maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
 </dev:remarks>
 </command:example>
 </command:examples>

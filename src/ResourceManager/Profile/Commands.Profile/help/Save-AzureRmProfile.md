@@ -5,6 +5,7 @@ schema: 2.0.0
 ---
 
 # Save-AzureRmProfile
+
 ## SYNOPSIS
 Saves the current authentication information for use in other PowerShell sessions.
 
@@ -12,6 +13,7 @@ Saves the current authentication information for use in other PowerShell session
 
 ```
 Save-AzureRmProfile [[-Profile] <AzureRMProfile>] [-Path] <String> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-{{Fill Confirm Description}}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -88,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-{{Fill WhatIf Description}}
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -101,6 +103,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

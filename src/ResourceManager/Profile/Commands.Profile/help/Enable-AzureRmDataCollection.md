@@ -5,6 +5,7 @@ schema: 2.0.0
 ---
 
 # Enable-AzureRmDataCollection
+
 ## SYNOPSIS
 Enables Azure PowerShell to collect data to improve the user experience with AzurePowerShell cmdlets.
 Executing this cmdlet opts in to data collection for the current user on the current machine.
@@ -13,7 +14,7 @@ No data is collected unless you explicitly opt in.
 ## SYNTAX
 
 ```
-Enable-AzureRmDataCollection [-WhatIf] [-Confirm]
+Enable-AzureRmDataCollection [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Confirm
-{{Fill Confirm Description}}
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
@@ -54,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-{{Fill WhatIf Description}}
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -67,6 +68,9 @@ Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

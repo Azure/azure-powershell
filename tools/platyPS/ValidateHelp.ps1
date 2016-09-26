@@ -125,14 +125,6 @@ else
                     $parameter = $content[$idx-1].Substring(5)
                     $fileErrors += "`tNo description found for parameter $parameter"
                 }
-                "{{Fill Confirm Description}}"
-                {
-                    $fileErrors += "`tNo description found for parameter Confirm"
-                }
-                "{{Fill WhatIf Description}}"
-                {
-                    $fileErrors += "`tNo description found for parameter WhatIf"
-                }
                 "## OUTPUTS"
                 {
                     $foundOutput = $False
