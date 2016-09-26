@@ -4493,7 +4493,7 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureSubscription cmdlet establishes and changes the properties of an Azure subscription. You can use this cmdlet to create a new subscription or change the properties of an existing subscription.</maml:para>
+      <maml:para>The Set-AzureSubscription cmdlet establishes and changes the properties of an Azure subscription object. You can use this cmdlet to work in an Azure subscription that is not your default subscription or to change your current storage account</maml:para>
       <maml:para>To create a new subscription, select a unique name for the value of the SubscriptionName parameter. To change an existing subscription, use the SubscriptionName parameter to identify the subscription.</maml:para>
       <maml:para>This cmdlet changes the data in the subscription data file that you create when you use the Add-AzureAccount or Import-AzurePublishSettingsFile cmdlet to add an Azure account to Windows PowerShell.</maml:para>
     </maml:description>

@@ -107,6 +107,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cmdlet &quot;{0}&quot; will be deprecated soon. Please use use cmdlet(s) &quot;{1}&quot; instead..
+        /// </summary>
+        internal static string CmdletWillBeDeprecatedSoon {
+            get {
+                return ResourceManager.GetString("CmdletWillBeDeprecatedSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is a mismatch in the chosen parameter set and passed container mapping &quot;{0}&quot; with provider type &quot;{1}&quot;..
+        /// </summary>
+        internal static string ContainerMappingParameterSetMismatch {
+            get {
+                return ResourceManager.GetString("ContainerMappingParameterSetMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Directory {0} Not Found.
         /// </summary>
         internal static string DirectoryNotFound {
@@ -116,7 +134,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure want to disable protection on {0}.
+        ///   Looks up a localized string similar to Are you sure want to disable protection on &apos;{0}&apos;.
         /// </summary>
         internal static string DisableProtectionWarning {
             get {
@@ -130,6 +148,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string DisableProtectionWhatIfMessage {
             get {
                 return ResourceManager.GetString("DisableProtectionWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fabric {0} is not associated with the Vault {1}.
+        /// </summary>
+        internal static string FabricNotFound {
+            get {
+                return ResourceManager.GetString("FabricNotFound", resourceCulture);
             }
         }
         
@@ -270,6 +297,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location is not specified for creating Azure fabric..
+        /// </summary>
+        internal static string LocationNotSpecifiedForAzureFabric {
+            get {
+                return ResourceManager.GetString("LocationNotSpecifiedForAzureFabric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
         /// </summary>
         internal static string MandatoryParamFromNextRelease {
@@ -338,6 +374,13 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string ParameterWillBeDeprecatedSoon {
             get {
                 return ResourceManager.GetString("ParameterWillBeDeprecatedSoon", resourceCulture);
+	    }
+	}
+        ///   Looks up a localized string similar to This parameter set will be deprecated soon. Please use other suitable parameter set..
+        /// </summary>
+        internal static string ParameterSetWillBeDeprecatedSoon {
+            get {
+                return ResourceManager.GetString("ParameterSetWillBeDeprecatedSoon", resourceCulture);
             }
         }
         
@@ -365,6 +408,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string PolicyNotFound {
             get {
                 return ResourceManager.GetString("PolicyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protectectable Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ProtectableItemNotFound {
+            get {
+                return ResourceManager.GetString("ProtectableItemNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Container Mapping &quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ProtectionConatinerMappingNotFound {
+            get {
+                return ResourceManager.GetString("ProtectionConatinerMappingNotFound", resourceCulture);
             }
         }
         
@@ -432,6 +493,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recovery Point &apos;{0}&apos; is not associated with the Replication Protected Item &apos;{1}&apos;.
+        /// </summary>
+        internal static string RecoveryPointNotFound {
+            get {
+                return ResourceManager.GetString("RecoveryPointNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure want to remove Recovery Plan {0}.
         /// </summary>
         internal static string RemoveRPWarning {
@@ -486,6 +556,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Protected Item&quot;{0}&quot; is not associated with Protection Container &quot;{1}&quot;.
+        /// </summary>
+        internal static string ReplicationProtectedItemNotFound {
+            get {
+                return ResourceManager.GetString("ReplicationProtectedItemNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
         /// </summary>
         internal static string ReplicationStartTimeInvalid {
@@ -518,6 +597,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         internal static string ServerNotFound {
             get {
                 return ResourceManager.GetString("ServerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ServicesProvider {0} is not associated with the Vault {1}.
+        /// </summary>
+        internal static string ServicesProviderNotFound {
+            get {
+                return ResourceManager.GetString("ServicesProviderNotFound", resourceCulture);
             }
         }
         

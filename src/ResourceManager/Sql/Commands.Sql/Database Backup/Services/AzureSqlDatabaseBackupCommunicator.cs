@@ -192,6 +192,46 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Get a geo backup policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A geo backup policy</returns>
+        public Management.Sql.Models.GeoBackupPolicy GetDatabaseGeoBackupPolicy(
+            string resourceGroupName,
+            string serverName,
+            string databaseName,
+            string policyName,
+            string clientRequestId)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.GetGeoBackupPolicy(
+                resourceGroupName,
+                serverName,
+                databaseName,
+                policyName).GeoBackupPolicy;
+        }
+
+        /// <summary>
+        /// Creates or updates a geo backup policy
+        /// </summary>
+        public Management.Sql.Models.GeoBackupPolicy SetDatabaseGeoBackupPolicy(
+            string resourceGroupName,
+            string serverName,
+            string databaseName,
+            string policyName,
+            string clientRequestId,
+            GeoBackupPolicyCreateOrUpdateParameters parameters)
+        {
+            return GetCurrentSqlClient(clientRequestId).DatabaseBackup.CreateOrUpdateGeoBackupPolicy(
+                resourceGroupName,
+                serverName,
+                databaseName,
+                policyName,
+                parameters).GeoBackupPolicy;
+        }
+
+        /// <summary>
         /// Restore a given Sql Azure Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>

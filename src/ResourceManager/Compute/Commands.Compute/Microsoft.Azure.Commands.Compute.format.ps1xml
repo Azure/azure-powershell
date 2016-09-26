@@ -556,6 +556,10 @@
                 <Label>OsVolumeEncryptionSettings</Label>
                 <PropertyName>OsVolumeEncryptionSettings</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>ProgressMessage</Label>
+                <PropertyName>ProgressMessage</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
