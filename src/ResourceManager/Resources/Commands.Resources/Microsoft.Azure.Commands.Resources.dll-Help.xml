@@ -8002,14 +8002,6 @@ PS E:\&gt; New-AzureRmADSpCredential -ServicePrincipalName &quot;http://test123&
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>If specified, deletes the service principal without a confirmation. 
-</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
@@ -8056,19 +8048,6 @@ PS E:\&gt; New-AzureRmADSpCredential -ServicePrincipalName &quot;http://test123&
 			<maml:name>PassThru</maml:name>
 			<maml:description>
 				<maml:para>If specified, returns the deleted service principal.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If specified, deletes the service principal without a confirmation. 
-</maml:para>
 			</maml:description>
 			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			<dev:type>
@@ -8178,7 +8157,7 @@ PS E:\&gt; New-AzureRmADSpCredential -ServicePrincipalName &quot;http://test123&
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45 -Force</dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmADServicePrincipal -ObjectId 61b5d8ea-fdc6-40a2-8d5b-ad447c678d45</dev:code>
 			<dev:remarks>
 				<maml:para>Deletes the given azure active directory service principal.</maml:para>
 				<maml:para />
@@ -9752,18 +9731,6 @@ PS E:\&gt; New-AzureRmADSpCredential -ServicePrincipalName &quot;http://test123&
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>If specified, the command does not prompt for a confirmation before deleting the role assignment.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">switchparameter</command:parameterValue>
-			<dev:type>
-				<maml:name>switchparameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>

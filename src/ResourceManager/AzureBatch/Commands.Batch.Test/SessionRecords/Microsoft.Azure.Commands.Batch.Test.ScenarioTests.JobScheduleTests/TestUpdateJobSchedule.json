@@ -13,29 +13,29 @@
           "141"
         ],
         "client-request-id": [
-          "b75567b7-524f-4f53-bad6-4bbdc4aaff88"
+          "ef4da0b9-858b-4514-aaab-4fb4fd95eccc"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:46:48 GMT"
+          "Tue, 06 Sep 2016 06:35:07 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Mon, 01 Aug 2016 20:46:47 GMT"
+          "Tue, 06 Sep 2016 06:35:08 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "bd9f5305-e77b-4107-95e4-ace0dbbdd703"
+          "2d87d1b2-b896-4e59-ba8d-0ef5eacbfe6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -47,10 +47,10 @@
           "https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:46:47 GMT"
+          "Tue, 06 Sep 2016 06:35:08 GMT"
         ],
         "ETag": [
-          "0x8D3BA4CF472998E"
+          "0x8D3D61FF23DF492"
         ],
         "Location": [
           "https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule"
@@ -68,32 +68,32 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "641135c7-422b-4b97-a949-648f16841ac4"
+          "fe00879b-20bb-4b3b-8410-502867b7404b"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:46:51 GMT"
+          "Tue, 06 Sep 2016 06:35:09 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testUpdateJobSchedule\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n  \"eTag\": \"0x8D3BA4CF472998E\",\r\n  \"lastModified\": \"2016-08-01T20:46:47.0803854Z\",\r\n  \"creationTime\": \"2016-08-01T20:46:47.0803854Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-08-01T20:46:47.0803854Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n      \"id\": \"testUpdateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testUpdateJobSchedule\",\r\n  \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n  \"eTag\": \"0x8D3D61FF23DF492\",\r\n  \"lastModified\": \"2016-09-06T06:35:08.5848722Z\",\r\n  \"creationTime\": \"2016-09-06T06:35:08.5848722Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2016-09-06T06:35:08.5848722Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n      \"id\": \"testUpdateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Mon, 01 Aug 2016 20:46:47 GMT"
+          "Tue, 06 Sep 2016 06:35:08 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "b9e77d33-fc58-4a9e-bb3a-b35b812c93f9"
+          "28fa0833-4794-44f0-abd3-27ae4700c0cf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -102,10 +102,10 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:46:49 GMT"
+          "Tue, 06 Sep 2016 06:35:10 GMT"
         ],
         "ETag": [
-          "0x8D3BA4CF472998E"
+          "0x8D3D61FF23DF492"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -126,29 +126,29 @@
           "3477"
         ],
         "client-request-id": [
-          "d3a428af-e8dd-4d8a-8a42-68c027026896"
+          "ad21d554-0b36-4079-b735-5c9ba2a89baa"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:46:52 GMT"
+          "Tue, 06 Sep 2016 06:35:10 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Mon, 01 Aug 2016 20:46:50 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "a58c188c-c377-4f73-b28d-ef580d09dcc3"
+          "44dfee9b-9308-45b2-b816-c553b39590ae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -160,10 +160,10 @@
           "https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:46:51 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "ETag": [
-          "0x8D3BA4CF6A774FF"
+          "0x8D3D61FF3B4AC83"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -178,20 +178,20 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "72883d8e-5add-4042-bfeb-39a31717853d"
+          "d7a2382b-9691-4ba9-b9aa-aea1dc043bc0"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:46:52 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D3BA4CF6A774FF\",\r\n      \"lastModified\": \"2016-08-01T20:46:50.7822335Z\",\r\n      \"creationTime\": \"2016-08-01T20:46:47.0803854Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-08-01T20:46:47.0803854Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT15M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": [\r\n                    \"starttask\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"cloudServiceConfiguration\": {\r\n                \"osFamily\": \"4\",\r\n                \"targetOSVersion\": \"*\"\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2016-08-03T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://pstestaccount.centralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testUpdateJobSchedule\",\r\n      \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobschedules/testUpdateJobSchedule\",\r\n      \"eTag\": \"0x8D3D61FF3B4AC83\",\r\n      \"lastModified\": \"2016-09-06T06:35:11.0406275Z\",\r\n      \"creationTime\": \"2016-09-06T06:35:08.5848722Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2016-09-06T06:35:08.5848722Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2020-01-01T12:00:00Z\",\r\n        \"doNotRunAfter\": \"2025-01-01T12:00:00Z\",\r\n        \"startWindow\": \"PT1H\",\r\n        \"recurrenceInterval\": \"P1D\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"displayName\": \"jobSpecDisplayName\",\r\n        \"priority\": 1,\r\n        \"usesTaskDependencies\": false,\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P1D\",\r\n          \"maxTaskRetryCount\": 5\r\n        },\r\n        \"jobManagerTask\": {\r\n          \"id\": \"jobManager\",\r\n          \"displayName\": \"jobManagerDisplay\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"filePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"name1\",\r\n              \"value\": \"value1\"\r\n            },\r\n            {\r\n              \"name\": \"name2\",\r\n              \"value\": \"value2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"PT1H\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 5\r\n          },\r\n          \"runElevated\": false,\r\n          \"runExclusive\": true,\r\n          \"killJobOnCompletion\": false\r\n        },\r\n        \"jobPreparationTask\": {\r\n          \"id\": \"jobPrep\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobPrepFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobPrepName1\",\r\n              \"value\": \"jobPrepValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobPrepName2\",\r\n              \"value\": \"jobPrepValue2\"\r\n            }\r\n          ],\r\n          \"constraints\": {\r\n            \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n            \"maxTaskRetryCount\": 2\r\n          },\r\n          \"runElevated\": false,\r\n          \"waitForSuccess\": true,\r\n          \"rerunOnNodeRebootAfterSuccess\": true\r\n        },\r\n        \"jobReleaseTask\": {\r\n          \"id\": \"jobRelease\",\r\n          \"commandLine\": \"cmd /c dir /s\",\r\n          \"resourceFiles\": [\r\n            {\r\n              \"blobSource\": \"https://testacct.blob.core.windows.net/\",\r\n              \"filePath\": \"jobReleaseFilePath\"\r\n            }\r\n          ],\r\n          \"environmentSettings\": [\r\n            {\r\n              \"name\": \"jobReleaseName1\",\r\n              \"value\": \"jobReleaseValue1\"\r\n            },\r\n            {\r\n              \"name\": \"jobReleaseName2\",\r\n              \"value\": \"jobReleaseValue2\"\r\n            }\r\n          ],\r\n          \"maxWallClockTime\": \"PT15M\",\r\n          \"retentionTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"runElevated\": false\r\n        },\r\n        \"commonEnvironmentSettings\": [\r\n          {\r\n            \"name\": \"commonName1\",\r\n            \"value\": \"commonValue1\"\r\n          },\r\n          {\r\n            \"name\": \"commonName2\",\r\n            \"value\": \"commonValue2\"\r\n          }\r\n        ],\r\n        \"poolInfo\": {\r\n          \"autoPoolSpecification\": {\r\n            \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n            \"poolLifetimeOption\": \"jobschedule\",\r\n            \"keepAlive\": false,\r\n            \"pool\": {\r\n              \"vmSize\": \"small\",\r\n              \"maxTasksPerNode\": 1,\r\n              \"taskSchedulingPolicy\": {\r\n                \"nodeFillType\": \"Spread\"\r\n              },\r\n              \"resizeTimeout\": \"PT15M\",\r\n              \"targetDedicated\": 3,\r\n              \"enableAutoScale\": false,\r\n              \"enableInterNodeCommunication\": false,\r\n              \"startTask\": {\r\n                \"commandLine\": \"cmd /c dir /s\",\r\n                \"runElevated\": false,\r\n                \"maxTaskRetryCount\": 0,\r\n                \"waitForSuccess\": false\r\n              },\r\n              \"certificateReferences\": [\r\n                {\r\n                  \"thumbprint\": \"0123456789abcdef\",\r\n                  \"thumbprintAlgorithm\": \"sha1\",\r\n                  \"storeLocation\": \"LocalMachine\",\r\n                  \"storeName\": \"certStore\",\r\n                  \"visibility\": [\r\n                    \"starttask\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"cloudServiceConfiguration\": {\r\n                \"osFamily\": \"4\",\r\n                \"targetOSVersion\": \"*\"\r\n              }\r\n            }\r\n          }\r\n        },\r\n        \"metadata\": [\r\n          {\r\n            \"name\": \"specMeta1\",\r\n            \"value\": \"specMetaValue1\"\r\n          },\r\n          {\r\n            \"name\": \"specMeta2\",\r\n            \"value\": \"specMetaValue2\"\r\n          }\r\n        ]\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2016-09-07T12:00:00Z\",\r\n        \"recentJob\": {\r\n          \"url\": \"https://pstestaccount.centralus.batch.azure.com/jobs/testUpdateJobSchedule:job-1\",\r\n          \"id\": \"testUpdateJobSchedule:job-1\"\r\n        }\r\n      },\r\n      \"metadata\": [\r\n        {\r\n          \"name\": \"jobScheduleMeta1\",\r\n          \"value\": \"jobScheduleValue1\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -200,7 +200,7 @@
           "chunked"
         ],
         "request-id": [
-          "0dfab454-9037-48f2-96b1-7ad9ad86d95b"
+          "27b979dc-0e7f-400c-a7b5-ef8f7e32000c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -209,7 +209,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:46:51 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -224,16 +224,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e441d7d9-07f4-4f3e-a2f3-3d664d2c4025"
+          "9a0ec109-a675-4f28-9d6d-5f9092263756"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Mon, 01 Aug 2016 20:46:52 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.0.0.0",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/5.1.0.0",
           "AzurePowershell/v1.6.0"
         ]
       },
@@ -243,7 +243,7 @@
           "chunked"
         ],
         "request-id": [
-          "a04885e0-48bc-4f63-9ac8-df47ed45fec6"
+          "e1960c87-1bb1-4acc-ab48-8742e0267d58"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -252,7 +252,7 @@
           "3.0"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:46:51 GMT"
+          "Tue, 06 Sep 2016 06:35:11 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -266,6 +266,6 @@
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
     "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
   }
 }

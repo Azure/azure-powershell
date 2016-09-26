@@ -14,14 +14,15 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Common;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections;
     using System.Management.Automation;
     using System.Threading.Tasks;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-    using Newtonsoft.Json.Linq;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
@@ -62,9 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var resourceGroupsId = string.Format("/subscriptions/{0}/resourceGroups", Uri.EscapeDataString(this.DefaultContext.Subscription.Id.ToString()));
 
-            var apiVersion = await this
-                .DetermineApiVersion(resourceId: resourceGroupsId)
-                .ConfigureAwait(continueOnCapturedContext: false);
+            var apiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
 
             string queryString = null;
 
