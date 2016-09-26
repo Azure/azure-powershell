@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             Assert.Equal(GetAzureRmUsageCommand.DefaultApiVersion, apiVersion);
 
             this.CleanParamVariables();
-            var endDate = DateTime.Now.AddMinutes(-1);
+            var endDate = DateTime.UtcNow.AddMinutes(-1);
             cmdlet.EndTime = endDate;
 
             var startTime = endDate
