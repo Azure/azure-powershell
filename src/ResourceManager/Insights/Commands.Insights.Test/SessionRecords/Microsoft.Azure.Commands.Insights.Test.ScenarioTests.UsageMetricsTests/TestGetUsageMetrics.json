@@ -25,7 +25,7 @@
                 "x-ms-routing-request-id": [ "WESTUS:20150323T205747Z:4e8d2e93-0895-4cf1-aa40-5af880c3fb52" ],
                 "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ]
             },
-            "StatusCode": 200
+            "StatusCode": "200"
         },
         {
             "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/usages?api-version=2014-04-01&$filter=",
@@ -52,7 +52,7 @@
                 "x-ms-routing-request-id": [ "WESTUS:20150323T223347Z:095a4225-2fcb-4f72-87a8-0ea4e11bfb7a" ],
                 "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ]
             },
-            "StatusCode": 200
+            "StatusCode": "200"
         }
     ],
     "Names": {

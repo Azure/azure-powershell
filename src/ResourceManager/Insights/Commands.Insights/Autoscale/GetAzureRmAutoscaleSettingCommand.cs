@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Insights.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             if (string.IsNullOrWhiteSpace(this.Name))
             {
                 // Retrieve all the Autoscale settings for a resource group
-                IEnumerable<AutoscaleSettingResource> result = this.InsightsManagementClient.AutoscaleSettings.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroup).Result;
+                IPage<AutoscaleSettingResource> result = this.InsightsManagementClient.AutoscaleSettings.ListByResourceGroupAsync(resourceGroupName: this.ResourceGroup).Result;
 
                 var records = result.Select(e => this.DetailedOutput.IsPresent ? new PSAutoscaleSetting(e) : e);
                 WriteObject(sendToPipeline: records, enumerateCollection: true);

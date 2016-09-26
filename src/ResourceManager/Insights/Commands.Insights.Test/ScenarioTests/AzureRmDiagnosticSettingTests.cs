@@ -39,21 +39,21 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingWithRetention()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSettingWithRetention");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
         {
             TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
         {

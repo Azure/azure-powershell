@@ -53,15 +53,33 @@ function Test-GetAzureRmAutoscaleSetting
 
     try 
     {
-		$actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -Name "MySetting" -detailedOutput
-
-		# Assert TODO add more asserts
-		Assert-NotNull $actual "Result is null"
-
 	    $actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -detailedOutput
 
         # Assert TODO add more asserts
 		Assert-AreEqual $actual.Count 1
+    }
+    finally
+    {
+        # Cleanup
+        # No cleanup needed for now
+    }
+}
+
+<#
+.SYNOPSIS
+Tests getting the autoscale setting associated to a resource group.
+#>
+function Test-GetAzureRmAutoscaleSettingByName
+{
+    # Setup
+    $rgname = 'TestingMetricsScaleSet'
+
+    try 
+    {
+		$actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -Name "MySetting" -detailedOutput
+
+		# Assert TODO add more asserts
+		Assert-NotNull $actual "Result is null"
     }
     finally
     {

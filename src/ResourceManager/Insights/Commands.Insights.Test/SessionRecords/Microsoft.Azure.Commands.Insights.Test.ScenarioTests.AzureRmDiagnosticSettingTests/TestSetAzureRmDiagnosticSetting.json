@@ -1,7 +1,8 @@
 {
     "Entries": [
-        { 
+        {
             "RequestUri": "/%2Fsubscriptions%2F1a66ce04-b633-4a0b-b2bc-a912ec8986a6%2Fresourcegroups%2Finsights-integration%2Fproviders%2Ftest.shoebox%2Ftestresources2%2Fpstest0000eastusR2/providers/microsoft.insights/diagnosticSettings/service?api-version=2015-07-01",
+            "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkYxYTY2Y2UwNC1iNjMzLTRhMGItYjJiYy1hOTEyZWM4OTg2YTYlMkZyZXNvdXJjZWdyb3VwcyUyRmluc2lnaHRzLWludGVncmF0aW9uJTJGcHJvdmlkZXJzJTJGdGVzdC5zaG9lYm94JTJGdGVzdHJlc291cmNlczIlMkZwc3Rlc3QwMDAwZWFzdHVzUjIvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3Mvc2VydmljZT9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
@@ -45,10 +46,11 @@
                     "max-age=31536000; includeSubDomains"
                 ]
             },
-            "StatusCode": 200
+            "StatusCode": "200"
         },
         {
             "RequestUri": "/%2Fsubscriptions%2F1a66ce04-b633-4a0b-b2bc-a912ec8986a6%2Fresourcegroups%2Finsights-integration%2Fproviders%2Ftest.shoebox%2Ftestresources2%2Fpstest0000eastusR2/providers/microsoft.insights/diagnosticSettings/service?api-version=2015-07-01",
+            "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkYxYTY2Y2UwNC1iNjMzLTRhMGItYjJiYy1hOTEyZWM4OTg2YTYlMkZyZXNvdXJjZWdyb3VwcyUyRmluc2lnaHRzLWludGVncmF0aW9uJTJGcHJvdmlkZXJzJTJGdGVzdC5zaG9lYm94JTJGdGVzdHJlc291cmNlczIlMkZwc3Rlc3QwMDAwZWFzdHVzUjIvcHJvdmlkZXJzL21pY3Jvc29mdC5pbnNpZ2h0cy9kaWFnbm9zdGljU2V0dGluZ3Mvc2VydmljZT9hcGktdmVyc2lvbj0yMDE1LTA3LTAx",
             "RequestMethod": "PUT",
             "RequestBody": "{\"properties\": {\"storageAccountId\": \"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470\",\"serviceBusRuleId\":\"/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1\",\"metrics\": [{\"timeGrain\": \"PT1M\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}],\"logs\": [{\"category\": \"TestLog1\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}},{\"category\": \"TestLog2\",\"enabled\": true,\"retentionPolicy\": {\"enabled\": false,\"days\": 0}}]}}",
             "RequestHeaders": {
@@ -92,15 +94,13 @@
                     "max-age=31536000; includeSubDomains"
                 ]
             },
-            "StatusCode": 200
+            "StatusCode": "200"
         }
     ],
   "Names": {
-    "Test-AddAlertRule": [
-      ""
-    ]
+    "Test-SetAzureRmDiagnosticSetting": [ "" ]
   },
   "Variables": {
-    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+    "SubscriptionId": "1a66ce04-b633-4a0b-b2bc-a912ec8986a6"
   }
 }
