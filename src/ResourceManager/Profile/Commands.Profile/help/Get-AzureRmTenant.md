@@ -5,13 +5,14 @@ schema: 2.0.0
 ---
 
 # Get-AzureRmTenant
+
 ## SYNOPSIS
 Gets tenants that are authorized for the current user.
 
 ## SYNTAX
 
 ```
-Get-AzureRmTenant [-TenantId <String>]
+Get-AzureRmTenant [-TenantId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,11 +42,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### 
+###  
 This cmdlet returns the tenant ID and associated domain information for tenants authorized for the current account.
 
 ## NOTES

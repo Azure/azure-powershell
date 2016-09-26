@@ -5,13 +5,14 @@ schema: 2.0.0
 ---
 
 # Get-AzureRmContext
+
 ## SYNOPSIS
 Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ## SYNTAX
 
 ```
-Get-AzureRmContext
+Get-AzureRmContext [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,11 +30,14 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 
 ## PARAMETERS
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ## OUTPUTS
 
-### 
+###  
 This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 
 ## NOTES

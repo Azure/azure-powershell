@@ -5,6 +5,7 @@ schema: 2.0.0
 ---
 
 # Select-AzureRmProfile
+
 ## SYNOPSIS
 Loads Azure authentication information from a file.
 
@@ -12,12 +13,12 @@ Loads Azure authentication information from a file.
 
 ### InMemoryProfile
 ```
-Select-AzureRmProfile [-Profile] <AzureRMProfile>
+Select-AzureRmProfile [-Profile] <AzureRMProfile> [<CommonParameters>]
 ```
 
 ### ProfileFromDisk
 ```
-Select-AzureRmProfile [-Path] <String>
+Select-AzureRmProfile [-Path] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +64,9 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
