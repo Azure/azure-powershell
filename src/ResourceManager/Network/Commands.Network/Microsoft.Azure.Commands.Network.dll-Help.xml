@@ -403,8 +403,7 @@
 				<maml:description/>
 			</dev:type>
 			<maml:description>
-				<maml:para>
-System.String</maml:para>
+				<maml:para>System.String</maml:para>
 			</maml:description>
 		</command:inputType>
 	</command:inputTypes>
@@ -5175,7 +5174,7 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name &quot;myLB&quot; -ResourceGroupName &qu
 
 PS C:\&gt; $slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNatRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP</dev:code>
 			<dev:remarks>
-				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a varibale called $slb. The second command then adds an Inbound NAT rule configuration with appropriate details. Note that these are chosen as an example and these may change based on one&#39;s loadbalancer.</maml:para>
+				<maml:para>The first command stores the existing load balancer called &quot;MyloadBalancer&quot; into a variable called $slb. The second command then adds an Inbound NAT rule configuration with appropriate details. Note that these are chosen as an example and these may change based on one&#39;s loadbalancer.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>Name                     : MyLoadBalancer
@@ -5185,13 +5184,13 @@ Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 Etag                     : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
 ResourceGuid             : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ProvisioningState        : Succeeded
-Tags                     : 
+Tags                     :
 FrontendIpConfigurations : []
 BackendAddressPools      : []
 LoadBalancingRules       : []
 Probes                   : []
 InboundNatRules          : [
-                             
+
                              {
                                &quot;Name&quot;: &quot;NewNatRule&quot;,
                                &quot;Etag&quot;: &quot;W/\&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\&quot;&quot;,
@@ -5990,7 +5989,7 @@ InboundNatPools          : []</maml:para>
 
 PS C:\&gt; $slb | Add-AzureRmLoadBalancerRuleConfig -Name &quot;NewRule&quot; -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol &quot;Tcp&quot; -FrontendPort 3350 -BackendPort 3350  -EnableFloatingIP</dev:code>
 			<dev:remarks>
-				<maml:para>The first command stores the existing load balancer called &quot;MyLoadBalancer&quot; in variable $slb. The second command then adds the rule called &quot;NewRule&quot; with certain specifications.</maml:para>
+				<maml:para>The first command stores the existing load balancer called &quot;MyLoadBalancer&quot; in variable $slb. The second command then adds the rule called &quot;NewRule&quot; with certain specifications as shown.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -7354,7 +7353,7 @@ Subnets           : []</dev:code>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>AlloowGatewayTransit</maml:name>
+				<maml:name>AllowGatewayTransit</maml:name>
 				<maml:description>
 					<maml:para>Flag to allow gatewayLinks be used in remote virtual network’s link to this virtual network</maml:para>
 				</maml:description>
@@ -7445,7 +7444,7 @@ Subnets           : []</dev:code>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>AlloowGatewayTransit</maml:name>
+			<maml:name>AllowGatewayTransit</maml:name>
 			<maml:description>
 				<maml:para>Flag to allow gatewayLinks be used in remote virtual network’s link to this virtual network</maml:para>
 			</maml:description>
@@ -13335,7 +13334,7 @@ Id                        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/
                             Network/loadBalancers/MyLoadBalancer/frontendIPConfigurations/MyFrontEnd
 Etag                      : W/&quot;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&quot;
 ProvisioningState         : Succeeded
-PrivateIpAddress          : 
+PrivateIpAddress          :
 PrivateIpAllocationMethod : Dynamic
 Subnet                    : null
 PublicIpAddress           : {
@@ -13347,7 +13346,7 @@ InboundNatRules           : [
                                 &quot;Id&quot;: &quot;/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/MyResourceGroup/providers
                             /Microsoft.Network/loadBalancers/MyLoadBalancer/inboundNatRules/MyinboundNatRule1&quot;
                               },
-                              
+
                               }
                             ]
 LoadBalancingRules        : [
@@ -13681,7 +13680,7 @@ InboundNatPools           : []</maml:para>
 
 PS C:\&gt; Get-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;MyinboundNatRule1&quot; -LoadBalancer $slb</dev:code>
 			<dev:remarks>
-				<maml:para>The first command gets the existing load balancer for which the inbound NAT rule is wanted and stores it in the variable slb. The second command then gets the accodiated NAT rule called MyinboundNatRule1.</maml:para>
+				<maml:para>The first command gets the existing load balancer for which the inbound NAT rule is wanted and stores it in the variable slb. The second command then gets the associated NAT rule called MyinboundNatRule1.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -23401,7 +23400,7 @@ PS C:\&gt; $lbrule = New-AzureRmLoadBalancerRuleConfig -Name MyLBruleName -Front
 PS C:\&gt; $lb = New-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup -Location &apos;West US&apos; -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -InboundNatRule $inboundNatRule1,$inboundNatRule2 -LoadBalancingRule $lbrule
 PS C:\&gt; Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup</dev:code>
 			<dev:remarks>
-				<maml:para>Since deploying a load balancer requires certain objects to be created, this examples shows you how to create them. The second to last command creates a load balancer called MyLoadBalancer within resource group MyResourceGroup. And the last command is a get to ensure it was successfully created. Note that thios example only shows how to create a load balancer and it must be configured using Add-AzureRmVirtualNetworkInterface to assign the NICs to different VMs.</maml:para>
+				<maml:para>Since deploying a load balancer requires certain objects to be created, this examples shows you how to create them. The second to last command creates a load balancer called MyLoadBalancer within resource group MyResourceGroup. And the last command is a get to ensure it was successfully created. Note that this example only shows how to create a load balancer and it must be configured using Add-AzureRmVirtualNetworkInterface to assign the NICs to different VMs.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>Name                     : MyLoadBalancer
@@ -36514,7 +36513,6 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 			<dev:code>PS C:\&gt; Remove-AzureRmNetworkSecurityGroup -Name &quot;NSG-FrontEnd&quot; -ResourceGroupName &quot;TestRG&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>This command removes the network security group called &quot;NSG-Frontend&quot; within the resource group &quot;TestRG.&quot;</maml:para>
-				<maml:para>Note that a network security group must exist before it can be deleted.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -36699,12 +36697,9 @@ PS C:&gt; Remove-AzureRmLoadBalancerRuleConfig -Name  &quot;MyLBruleName&quot; -
 
 PS C:\&gt; $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Name &quot;NSG-FrontEnd&quot; -SecurityRules $rule1
 
-PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg
-
-</dev:code>
+PS C:\&gt; Remove-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -NetworkSecurityGroup $nsg</dev:code>
 			<dev:remarks>
 				<maml:para>The first command creates a network security rule called rdp-rule. The second command assigns this rule to a newly created network security group called &quot;NSG-FrontEnd&quot;. Finally, the third command removes this network security rule associated with the network security group stored in the variable $nsg.</maml:para>
-				<maml:para>Note that a rule must be associated with a network security group in order to successfully delete it.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -45594,7 +45589,7 @@ PS C:\&gt; $slb | Set-AzureRmLoadBalancerInboundNatRuleConfig -Name &quot;NewNat
 			</maml:introduction>
 			<dev:code>PS C:\&gt; $slb = Get-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName MyResourceGroup
 
-PS C:\&gt; $slb | Add-AzureRmLoadBalancerProbeConfig -Name &quot;NewProbe&quot; -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx 
+PS C:\&gt; $slb | Add-AzureRmLoadBalancerProbeConfig -Name &quot;NewProbe&quot; -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
 
 PS C:\&gt; $slb | Set-AzureRmLoadBalancerProbeConfig -Name &quot;NewProbe&quot; -Port 80 -IntervalInSeconds 15 -ProbeCount 2</dev:code>
 			<dev:remarks>
@@ -48004,8 +47999,7 @@ DnsSettings              : {
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Set-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-</dev:code>
+			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Set-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.4.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets the route table named routetable01 by using the Get-AzureRmRouteTable cmdlet. The command passes that table to the current cmdlet by using the pipeline operator.</maml:para>
 				<maml:para />
@@ -48211,8 +48205,7 @@ Subnets           : []</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Add-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable
-</dev:code>
+			<dev:code>PS C:\&gt;Get-AzureRmRouteTable -ResourceGroupName &quot;ResourceGroup11&quot; -Name &quot;routetable01&quot; | Add-AzureRmRouteConfig -Name &quot;route02&quot; -AddressPrefix 10.2.0.0/16 -NextHopType VnetLocal | Set-AzureRmRouteTable</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets the route table named routetable01 by using Get-AzureRmRouteTable cmdlet. The command passes that table to the Add-AzureRmRouteConfig cmdlet by using the pipeline operator.</maml:para>
 				<maml:para />
