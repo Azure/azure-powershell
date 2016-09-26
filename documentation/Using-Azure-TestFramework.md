@@ -70,17 +70,17 @@ In order to Record/Playback a test, you need to setup a connection string that c
 ----------
 
 	Environment.Dogfood
-		AADAuthUri = new Uri("https://login.windows-ppe.net");
-        GalleryUri = new Uri("https://df.gallery.azure-test.net/");
-        GraphUri = new Uri("https://graph.ppe.windows.net/");
-        IbizaPortalUri = new Uri("http://df.onecloud.azure-test.net");
-        RdfePortalUri = new Uri("https://windows.azure-test.net");
-        ResourceManagementUri = new Uri("https://api-dogfood.resources.windows-int.net/");
-        ServiceManagementUri = new Uri("https://management-preview.core.windows-int.net");
-        AADTokenAudienceUri = new Uri("https://management.core.windows.net");
-        GraphTokenAudienceUri = new Uri("https://graph.ppe.windows.net/");
-        DataLakeStoreServiceUri = new Uri("https://caboaccountdogfood.net");
-        DataLakeAnalyticsJobAndCatalogServiceUri = new Uri("https://konaaccountdogfood.net");
+		AADAuthUri = "https://login.windows-ppe.net";
+        GalleryUri = "https://df.gallery.azure-test.net/";
+        GraphUri = "https://graph.ppe.windows.net/";
+        IbizaPortalUri = "http://df.onecloud.azure-test.net";
+        RdfePortalUri = "https://windows.azure-test.net";
+        ResourceManagementUri = "https://api-dogfood.resources.windows-int.net/";
+        ServiceManagementUri = "https://management-preview.core.windows-int.net";
+        AADTokenAudienceUri = "https://management.core.windows.net";
+        GraphTokenAudienceUri = "https://graph.ppe.windows.net/";
+        DataLakeStoreServiceUri = "https://caboaccountdogfood.net";
+        DataLakeAnalyticsJobAndCatalogServiceUri = "https://konaaccountdogfood.net";
 
 ----------
 
