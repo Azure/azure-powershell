@@ -2,6 +2,7 @@
     "Entries": [
         {
             "RequestUri": "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/Rac46PostSwapRG/providers/microsoft.insights/alertrules/chiricutin?api-version=2016-03-01",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWE2NmNlMDQtYjYzMy00YTBiLWIyYmMtYTkxMmVjODk4NmE2L3Jlc291cmNlZ3JvdXBzL1JhYzQ2UG9zdFN3YXBSRy9wcm92aWRlcnMvbWljcm9zb2Z0Lmluc2lnaHRzL2FsZXJ0cnVsZXMvY2hpcmljdXRpbj9hcGktdmVyc2lvbj0yMDE2LTAzLTAx",
             "RequestMethod": "PUT",
             "RequestBody": "{ \"properties\": { \"name\": \"chiricutin\", \"description\": \"This log alert rule was created from Powershell version: 2.1.0\", \"isEnabled\": true, \"condition\": { \"odata.type\": \"Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition\", \"dataSource\": { \"odata.type\": \"Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource\", \"operationName\": \"microsoft.web/sites/stop/action\", \"resourceUri\": \"/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest\", \"status\": \"Succeeded\" }}}, \"location\": \"West US\", \"tags\": { \"$type\": \"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary,Microsoft.WindowsAzure.Management.Common.Storage\", \"hidden-link:/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/Rac46PostSwapRG/providers/Microsoft.Web/sites/leoalerttest\": \"Resource\" }}",
             "RequestHeaders": {

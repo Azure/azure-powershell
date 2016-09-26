@@ -164,7 +164,7 @@ function Test-GetAzureRmAlertRule
 		Assert-NotNull $actual
 		Assert-AreEqual $actual.Count 1
 
-        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name '{ruleName}'
+        $actual = Get-AzureRmAlertRule -ResourceGroup $rgname -Name 'MyruleName}'
 		Assert-NotNull $actual
     }
     finally

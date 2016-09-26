@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmAutoscaleSetting()
         {
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAutoscaleSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAutoscaleHistory()
         {

@@ -2,6 +2,7 @@
     "Entries": [
         {
             "RequestUri": "//subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1/usages?$filter=startTime%20eq%202015-04-07T15:31:28.4590754-07:00%20and%20endTime%20eq%202015-04-07T16:31:28.4590754-07:00&api-version=2014-04-01",
+            "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2E5M2ZiMDdjLTZjOTMtNDBiZS1iZjNiLTRmMGRlYmExMGY0Yi9yZXNvdXJjZUdyb3Vwcy9EZWZhdWx0LVdlYi1FYXN0VVMvcHJvdmlkZXJzL21pY3Jvc29mdC53ZWIvc2l0ZXMvZ2FyeXlhbmcxL3VzYWdlcz8kZmlsdGVyPXN0YXJ0VGltZSUyMGVxJTIwMjAxNS0wNC0wN1QxNTozMToyOC40NTkwNzU0LTA3OjAwJTIwYW5kJTIwZW5kVGltZSUyMGVxJTIwMjAxNS0wNC0wN1QxNjozMToyOC40NTkwNzU0LTA3OjAwJmFwaS12ZXJzaW9uPTIwMTQtMDQtMDE=",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
@@ -28,6 +29,7 @@
         },
         {
             "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/usages?api-version=2014-04-01&$filter=",
+            "EncodedRequestUri": "LyUyRnN1YnNjcmlwdGlvbnMlMkZhOTNmYjA3Yy02YzkzLTQwYmUtYmYzYi00ZjBkZWJhMTBmNGIlMkZyZXNvdXJjZUdyb3VwcyUyRkRlZmF1bHQtV2ViLUVhc3RVUyUyRnByb3ZpZGVycyUyRm1pY3Jvc29mdC53ZWIlMkZzaXRlcyUyRmdhcnl5YW5nMS91c2FnZXM/YXBpLXZlcnNpb249MjAxNC0wNC0wMSYkZmlsdGVyPQ==",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
@@ -54,9 +56,7 @@
         }
     ],
     "Names": {
-        "Test-GetAzureCorrelationIdLog": [
-            ""
-        ]
+        "Test-GetUsageMetrics": [ "" ]
     },
     "Variables": {
         "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"

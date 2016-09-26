@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmDiagnosticSetting()
         {
             TestsController.NewInstance.RunPsTest("Test-GetAzureRmDiagnosticSetting");
         }
 
-        [Fact(Skip = "TODO: fixing this test after introducing Swagger specs")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSetting()
         {
