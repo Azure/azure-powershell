@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         public override void ExecuteCmdlet()
         {
             // Create a new namespace 
-            var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
+            var nsAttribute = Client.CreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
             WriteObject(nsAttribute);
         }
     }

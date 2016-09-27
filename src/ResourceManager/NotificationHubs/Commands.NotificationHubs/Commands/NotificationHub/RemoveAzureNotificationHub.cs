@@ -43,8 +43,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         public override void ExecuteCmdlet()
         {
             // delete a notificationHub 
-            var deleteHub = Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
-            WriteObject(deleteHub);
+            Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
         }
     }
 }

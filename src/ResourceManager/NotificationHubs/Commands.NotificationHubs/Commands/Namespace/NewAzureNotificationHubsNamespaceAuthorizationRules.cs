@@ -62,8 +62,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             }
 
             // Create a new namespace authorizationRule
-            var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule.Rights,
-                sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
+            var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, sasRule.Location, Namespace, sasRule.Name, sasRule.Rights);
             WriteObject(authRule);
         }
     }

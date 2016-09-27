@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Management.NotificationHubs.Models;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
-    public class NewAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubKey"), OutputType(typeof(ResourceListKeys))]
+    public class NewAzureNotificationHubKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -42,35 +41,22 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string NotificationHub { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 3,
-            ParameterSetName = InputFileParameterSetName,
-            HelpMessage = "File name containing a single AuthorizationRule definition.")]
-        [ValidateNotNullOrEmpty]
-        public string InputFile { get; set; }
+            HelpMessage = "NotificationHub AuthorizationRule Name.")]
+        public string AuthorizationRule { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
-            ParameterSetName = SASRuleParameterSetName,
-            HelpMessage = "NotificationHub AuthorizationRule Object.")]
-        [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
+            Position = 4,
+            HelpMessage = "Namespace Authorization Rule Key Name.")]
+        [ValidateSet(PrimaryKey, SecondaryKey, IgnoreCase = true)]
+        public string PolicyKey { get; set; }
 
         public override void ExecuteCmdlet()
-        {
-            SharedAccessAuthorizationRuleAttributes sasRule = null;
-            if (!string.IsNullOrEmpty(InputFile))
-            {
-                sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
-            }
-            else
-            {
-                sasRule = SASRule;
-            }
-
-            // Create a new notificationHub authorizationRule
-            var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, sasRule.Location, Namespace, NotificationHub,
-                                                    sasRule.Name, sasRule.Rights);
+        { 
+            // Regenerate the NotificationHub authorizationRule key
+            var authRule = Client.RegenerateNotificationHubKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule, PolicyKey);
             WriteObject(authRule);
         }
     }

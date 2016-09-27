@@ -34,16 +34,12 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 Name = authRuleResource.Name;
                 Type = authRuleResource.Type;
                 Location = authRuleResource.Location;
-                Tags = new Dictionary<string, string>(authRuleResource.Tags);
-                PrimaryKey = authRuleResource.Properties.PrimaryKey;
-                SecondaryKey = authRuleResource.Properties.SecondaryKey;
-                ClaimType = authRuleResource.Properties.ClaimType;
-                ClaimValue = authRuleResource.Properties.ClaimValue;
-                CreatedTime = authRuleResource.Properties.CreatedTime;
-                KeyName = authRuleResource.Properties.KeyName;
-                ModifiedTime = authRuleResource.Properties.ModifiedTime;
-                Revision = authRuleResource.Properties.Revision;
-                Rights = authRuleResource.Properties.Rights.ToList();
+                if (authRuleResource.Tags != null && authRuleResource.Tags.Count > 0)
+                {
+                    Tags = new Dictionary<string, string>(authRuleResource.Tags);
+                }
+
+                Rights = authRuleResource.Rights.ToList();
             }
         }
 
@@ -73,48 +69,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// The primary key that was used.
-        /// </summary>
-        public string PrimaryKey { get; set; }
-
-        /// <summary>
-        /// The secondary key that was used.
-        /// </summary>
-        public string SecondaryKey { get; set; }
-
-        /// <summary>
-        /// The type of the claim.
-        /// </summary>
-        public string ClaimType { get; set; }
-
-        /// <summary>
-        /// The value of the claim.
-        /// </summary>
-        public string ClaimValue { get; set; }
-
-        /// <summary>
-        /// The time at which the authorization rule was created.
-        /// </summary>
-        public DateTime CreatedTime { get; set; }
-
-        /// <summary>
-        /// The name of the key that was used.
-        /// </summary>
-        public string KeyName { get; set; }
-
-        /// <summary>
-        /// The most recent time the rule was updated.
-        /// </summary>
-        public DateTime ModifiedTime { get; set; }
-
-        /// <summary>
-        /// The revision number for the rule.
-        /// </summary>
-        public int Revision { get; set; }
-
-        /// <summary>
         /// The rights associated with the rule.
         /// </summary>
-        public List<AccessRights> Rights { get; set; }
+        public List<AccessRights?> Rights { get; set; }
     }
 }

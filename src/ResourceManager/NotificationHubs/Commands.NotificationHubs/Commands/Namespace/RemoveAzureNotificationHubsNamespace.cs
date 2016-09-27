@@ -37,8 +37,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         public override void ExecuteCmdlet()
         {
             // delete a namespace 
-            ExecuteLongRunningCmdletWrap(
-            () => Client.BeginDeleteNamespace(ResourceGroup, Namespace));
+            Client.DeleteNamespace(ResourceGroup, Namespace);
         }
     }
 }
