@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-            throw new NotSupportedException("This data source is obsoleted, Please use AzureRmOperationalInsightsAzureActivityLogDataSource instead.");
+            throw new NotSupportedException("This data source is obsoleted, Please use New-AzureRmOperationalInsightsAzureActivityLogDataSource instead.");
         }
     }
 }
