@@ -50,29 +50,35 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the timegrain parameter of the cmdlet
         /// Gets or sets the aggregation type parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The aggregation type of the query")]
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
+        public TimeSpan TimeGrain { get; set; }
+
+        /// <summary>
+        /// Gets or sets the aggregation type parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The aggregation type of the query")]
         [ValidateNotNullOrEmpty]
-        public AggregationType AggregationType { get; set; }
+        public AggregationType? AggregationType { get; set; }
 
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
         public DateTime StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
         public DateTime EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
-        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
+        [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
         [ValidateNotNullOrEmpty]
         public string[] MetricNames { get; set; }
 
@@ -97,6 +103,13 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 buffer.Append(metrics);
                 buffer.Append(")");
 
+                if (this.TimeGrain != default(TimeSpan))
+                {
+                    buffer.Append(" and timeGrain eq duration'");
+                    buffer.Append(XmlConvert.ToString(this.TimeGrain));
+                    buffer.Append("'");
+                }
+
                 if (this.EndTime == default(DateTime))
                 {
                     this.EndTime = DateTime.Now;
@@ -104,17 +117,20 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
 
                 if (this.StartTime == default(DateTime))
                 {
-                    this.StartTime = this.EndTime.Add(-DefaultTimeRange);
+                    this.StartTime = this.EndTime.Subtract(DefaultTimeRange);
                 }
 
-                buffer.Append(" and aggregationType eq '");
-                buffer.Append(this.AggregationType);
-                buffer.Append("'");
-
                 buffer.Append(" and startTime eq ");
-                buffer.Append(this.StartTime.ToString("O"));
+                buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
                 buffer.Append(" and endTime eq ");
-                buffer.Append(this.EndTime.ToString("O"));
+                buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
+
+                if (this.AggregationType.HasValue)
+                {
+                    buffer.Append(" and aggregationType eq '");
+                    buffer.Append(this.AggregationType.Value);
+                    buffer.Append("'");
+                }
             }
 
             string queryFilter = buffer.ToString();
@@ -131,6 +147,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("The Metrics API has change significantly. The objects returned by this cmdlet have a new structure and some parameters have changed or were removed.");
             var queryFilter = new ODataQuery<Metric>(this.ProcessParameters());
             bool fullDetails = this.DetailedOutput.IsPresent;
 

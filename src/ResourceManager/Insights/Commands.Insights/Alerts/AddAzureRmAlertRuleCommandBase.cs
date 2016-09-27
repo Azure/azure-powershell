@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This output of this cmdlet will change in the next release to return the newly created object");
             AlertRuleResource parameters = this.CreateSdkCallParameters();
 
             Task<AlertRuleResource> task = this.InsightsManagementClient.AlertRules.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName);
