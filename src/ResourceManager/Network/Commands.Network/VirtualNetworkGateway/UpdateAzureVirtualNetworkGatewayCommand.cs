@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
         MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
