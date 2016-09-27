@@ -6,33 +6,40 @@
   </PropertyGroup>
   <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
   <UsingTask TaskName="DebugTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
-  <Target Name="VerifyAssemblyWithoutAuthCodeSigned">
-    <Message Text="Executing Test 'VerifyAssemblyWithoutAuthCodeSigned'" />
-    <VerifyAuthenticodeSignatureTask SignedFilePath="..\..\Microsoft.Azure.Build.Tasks.dll" ContinueOnError="true">
-      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
-    </VerifyAuthenticodeSignatureTask>
-    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="Test Passed !!!!!!!!!!"/>
-    <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="!!!!!!!!!! Test Failed !!!!!!!!!!"/>
-    <Message Text="'VerifyAssemblyWithoutAuthCodeSigned' finished executing" />
-  </Target>
-  <Target Name="VerifyAssemblyWithAuthCodeSigned">
-    <Message Text="Executing Test 'VerifyAssemblyWithAuthCodeSigned'" />
-    <VerifyAuthenticodeSignatureTask SignedFilePath="$(FrameworkDir)$(FrameworkVersion)\Microsoft.Build.dll">
+  
+  <Target Name="VerifyOneFile">
+    <Message Text="Executing Test 'VerifyOneFile'" />
+    <VerifyAuthenticodeSignatureTask FilesToCheckAuthCodeSignature="$(FrameworkDir)$(FrameworkVersion)\Microsoft.Build.dll">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
     <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="Test Passed !!!!!!!!!!"/>
-    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="!!!!!!!!!! Test Failed !!!!!!!!!!"/>
-    <Message Text="'VerifyAssemblyWithAuthCodeSigned' finished executing" />
+    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="!!!!!!!!!! Not expecting errors Test Failed !!!!!!!!!!"/>
+    <Message Text="'VerifyOneFile' finished executing" />
   </Target>
-  <Target Name="FileDoesNotExistForCodeSign">
-    <Message Text="Executing Test 'FileDoesNotExistForCodeSign'" />
-    <VerifyAuthenticodeSignatureTask SignedFilePath="$(FrameworkDir)$(FrameworkVersion)\Microsoft.foo.dll" ContinueOnError="true">
+
+  <Target Name="AllFilesUnderDirectory">
+    <Message Text="Executing Test 'AllFilesUnderDirectory'" />
+    <VerifyAuthenticodeSignatureTask ProbingDirectory="C:\Windows\Microsoft.NET\Framework\v4.0.30319\NativeImages">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
-    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="Test Passed !!!!!!!!!!"/>
-    <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="!!!!!!!!!! Test Failed !!!!!!!!!!"/>
-    <Message Text="'FileDoesNotExistForCodeSign' finished executing" />
+    <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="Test Passed !!!!!!!!!!"/>
+    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="!!!!!!!!!! Not expecting errors Test Failed !!!!!!!!!!"/>
+
+    <Message Text="'AllFilesUnderDirectory' finished executing" />
   </Target>
+
+  <Target Name="FilesWithFileFilter">
+    <Message Text="Executing Test 'FilesWithFileFilter'" />    
+    <VerifyAuthenticodeSignatureTask ProbingDirectory="C:\Windows\Microsoft.NET\Framework\v4.0.30319" 
+                                     FileFilterPattern="microsoft.build.*.dll;*.rsp;*.exe">
+      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
+    </VerifyAuthenticodeSignatureTask>
+    <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="Test Passed !!!!!!!!!!"/>
+    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="!!!!!!!!!! Not expecting errors Test Failed !!!!!!!!!!"/>
+
+    <Message Text="'FilesWithFileFilter' finished executing" />
+  </Target>
+  
   <Target Name="FileCollectionVerification">
     <Message Text="Executing Test 'FileCollectionVerification'" />
     <ItemGroup>
@@ -41,20 +48,15 @@
       <FilesToSign Include="$(FrameworkDir)$(FrameworkVersion)\Microsoft.Common.targets"/>
       <FilesToSign Include="$(MSBuildProgramFiles32)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRmProfileStartup.ps1"/>
     </ItemGroup>
-    <VerifyAuthenticodeSignatureTask SignedFiles="@(FilesToSign)"  ContinueOnError="true">
+    <VerifyAuthenticodeSignatureTask FilesToCheckAuthCodeSignature="@(FilesToSign)"  ContinueOnError="true">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
     <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="Expecting Errors Test Passed !!!!!!!!!!"/>
     <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="!!!!!!!!!! Test Failed !!!!!!!!!!"/>
-  
-    <VerifyAuthenticodeSignatureTask SignedFilePath="$(FrameworkDir)$(FrameworkVersion)\Microsoft.VisualBasic.Activities.Compiler.dll">
-      <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
-    </VerifyAuthenticodeSignatureTask>
-    <Message Condition="'$(AuthTaskFailed)' == 'false'" Text="Test Passed !!!!!!!!!!"/>
-    <Message Condition="'$(AuthTaskFailed)' == 'true'" Text="!!!!!!!!!! Not Expecting Errors Test Failed !!!!!!!!!!"/>  
-  <Message Text="'FileCollectionVerification' finished executing" />
+    
+    <Message Text="'FileCollectionVerification' finished executing" />
   </Target>
-  <Target Name="RunTest" DependsOnTargets="VerifyAssemblyWithoutAuthCodeSigned;VerifyAssemblyWithAuthCodeSigned;FileDoesNotExistForCodeSign;FileCollectionVerification">
+  <Target Name="RunTest" DependsOnTargets="VerifyOneFile;AllFilesUnderDirectory;FilesWithFileFilter;FileCollectionVerification">
     <Message Text="Test Suite completed"/>
   </Target>
 </Project>

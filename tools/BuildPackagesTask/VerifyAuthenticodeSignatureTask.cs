@@ -3,25 +3,50 @@
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
     using System;
-    using System.IO;
-    using System.Security.Cryptography.X509Certificates;
-    using System.Management.Automation;
-    using System.Management.Automation.Runspaces;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Management.Automation;
     using System.Text;
 
+    /// <summary>
+    /// Authenticode Signature task
+    /// Flow:
+    ///         FilesToCheckAuthCodeSignature:
+    ///             Support 1 or many files provided
+    ///         ProbingDirectory:
+    ///             When provided value to this property, we will ignore FilesToCheckAuthCodeSignature property
+    ///         FileFilterPattern:
+    ///             This is applicable when probingDirectory is specified and you want to filter selected group of files from contents of the directory (recurrsively searched)
+    ///             E.g. if FileFilterPattern specified = "microsoft.*.dll;system.*.dll;*.exe"
+    ///             We will first find all the files microsoft*.dll, then system.*.dll and finally *.exe
+    ///             All three set of search results will be combined and will then be verified for Authenticode Signature
+    /// </summary>
     public class VerifyAuthenticodeSignatureTask : Task
     {
         /// <summary>
         /// Gets or sets the assembly on which authenticode signature verification is performed.
         /// </summary>        
-        public ITaskItem SignedFilePath { get; set; }
-        
+        //public ITaskItem SignedFilePath { get; set; }
+
         /// <summary>
         /// Gets or sets list of files/assemblies for which authenticode signature verification is performed
+        /// If ProbingDirectory is specified, FilesToCheckAuthCodeSignature collection is ignored
         /// </summary>
-        public ITaskItem[] SignedFiles { get; set; }
+        public ITaskItem[] FilesToCheckAuthCodeSignature { get; set; }
 
+        /// <summary>
+        /// Specify Directory path under which all the files will be verified for Authenticode Signature
+        /// 
+        /// </summary>
+        public string ProbingDirectory { get; set; }
+
+        /// <summary>
+        /// Specifiy file filter pattern (e.g. *.dll,*.ps1)
+        /// In above example, we will first find all dll files, then combine with all the ps1 files that are found
+        /// </summary>
+        public string FileFilterPattern { get; set; }
+        
         /// <summary>
         /// Returns True if any error occurs, False if no AutheticodeSignature occured
         /// </summary>
@@ -32,22 +57,18 @@
         private List<string> ErrorList { get; set; }
         private bool IsFileSigned { get; set; }
 
-
+        /// <summary>
+        /// Execute VerifyAuthenticodeSignature task
+        /// </summary>
+        /// <returns>True: if files are authenticode signed, False: if any of the files provided are not authenticode signed</returns>
         public override bool Execute()
         {
             ErrorList = new List<string>();
             AuthCodeSignTaskErrorsDetected = false;
             IsFileSigned = true;
 
-            if (SignedFilePath != null)
-            {
-                IsFileSigned = VerifyAuthenticodeSignature(SignedFilePath.ItemSpec);
-            }
-
-            if(SignedFiles != null)
-            {
-                IsFileSigned = VerifyAllFiles(SignedFiles);
-            }
+            string[] filesToCheck = GetFilesToVerifyAuthCodeSignature();
+            IsFileSigned = VerifyAllFiles(filesToCheck);
 
             if (ErrorList.Count > 0)
             {
@@ -65,10 +86,72 @@
         }
 
         /// <summary>
+        /// Get set of files that will ultimately be verified for AuthCode Signature
+        /// If we find user has sepcified a probing directory, we will give priority to it and will ignore FilesToCheckAuthCodeSignature collection
+        /// </summary>
+        /// <returns></returns>
+        private string[] GetFilesToVerifyAuthCodeSignature()
+        {
+            bool isProbingDirValid = false;
+            string[] filesToCheck = null;
+
+            //First priority to probing directory
+            if (!string.IsNullOrEmpty(ProbingDirectory))
+            {
+                if (Directory.Exists(ProbingDirectory))
+                {
+                    isProbingDirValid = true;
+                    filesToCheck = ApplyFileFilter(ProbingDirectory);
+                }
+            }
+
+            //if Probing directory is not specified then we honor all the files provided
+            if ((isProbingDirValid == false) && (FilesToCheckAuthCodeSignature != null))
+            {
+                if (FilesToCheckAuthCodeSignature.Length > 0)
+                {
+                    filesToCheck = FilesToCheckAuthCodeSignature.Select<ITaskItem, string>((item) => item.ItemSpec).ToArray<string>();
+                }
+            }
+
+            return filesToCheck;
+        }
+
+        /// <summary>
+        /// Apply filters to filter list of files that will be checked for authenticode signed
+        /// </summary>
+        /// <param name="dirToProbeForFiles"></param>
+        /// <returns></returns>
+        private string[] ApplyFileFilter(string dirToProbeForFiles)
+        {
+            string[] filteredFiles = null;
+            IEnumerable<string> startupCollection = new string[] { "" };
+            IEnumerable<string> files = startupCollection.Except<string>(new string[] { "" });  //we do this to construct an empty IEnumerable (TODO: is there a better way)
+
+            if (string.IsNullOrEmpty(FileFilterPattern))
+            {
+                files = Directory.EnumerateFiles(dirToProbeForFiles, "*", SearchOption.AllDirectories);
+            }
+            else
+            {
+                string[] listOfFilters = FileFilterPattern.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string filter in listOfFilters)
+                {
+                    files = files.Concat<string>(Directory.EnumerateFiles(dirToProbeForFiles, filter, SearchOption.AllDirectories));
+                }
+            }
+
+            if (files.Any<string>() || files != null)
+                filteredFiles = files.ToArray<string>();
+
+            return filteredFiles;
+        }
+
+        /// <summary>
         /// Verify if file is Authenticode Signed using PS cmdLet Get-AuthenticodeSignature
         /// </summary>
         /// <returns>True: If signature status is Valid, False: if signature status is other than Valid</returns>
-        private bool VerifyAllFiles(ITaskItem[] signedFilesArray)
+        private bool VerifyAllFiles(string[] signedFilesArray)
         {
             bool isSigned = true;
             if (signedFilesArray.Length > 0)
@@ -76,7 +159,7 @@
                 bool authSigned = false;
                 for (int i = 0; i <= signedFilesArray.Length - 1; i++)
                 {
-                    authSigned = VerifyAuthenticodeSignature(signedFilesArray[i].ItemSpec);
+                    authSigned = VerifyAuthenticodeSignature(signedFilesArray[i]);
                     isSigned = isSigned && authSigned;
                 }
             }
@@ -84,14 +167,17 @@
             return isSigned;
         }
 
+        /// <summary>
+        /// Check for Authenticode Signature
+        /// </summary>
+        /// <param name="providedFilePath"></param>
+        /// <returns></returns>
         private bool VerifyAuthenticodeSignature(string providedFilePath)
         {
             bool isSigned = true;
             string fileName = Path.GetFileName(providedFilePath);
             string calculatedFullPath = Path.GetFullPath(providedFilePath);
-
-            //if (IsMicrosoftShippedFile(fileName))
-            //{
+            
             if (File.Exists(calculatedFullPath))
             {
                 Log.LogMessage(string.Format("Verifying file '{0}'", calculatedFullPath));
@@ -122,62 +208,8 @@
                 ErrorList.Add(string.Format("File '{0}' does not exist. Unable to verify AuthenticodeSignature", calculatedFullPath));
                 isSigned = false;
             }
-            //}
 
             return isSigned;
-        }
-
-        /// <summary>
-        /// This function will check validity of Digital Signature
-        /// </summary>
-        /// <returns>True: If Certificate is valid, False:If Certificate is invalid or expired</returns>
-        private bool CheckCertificate()
-        {
-            string assemblyPath = SignedFilePath.ItemSpec;
-            string assemblyFullPath = Path.GetFileName(assemblyPath);
-            string assemblyName = Path.GetFileName(assemblyFullPath);
-
-            AuthCodeSignTaskErrorsDetected = false;
-            try
-            {
-                Log.LogMessage("Verifying Authenticode Signature for '{0}' - '{1}'", assemblyFullPath, assemblyPath);
-                X509Certificate cert = X509Certificate.CreateFromSignedFile(assemblyPath);
-                if ((assemblyFullPath.ToLower().StartsWith("microsoft")) || (assemblyFullPath.ToLower().StartsWith("system")))
-                {
-                    if (cert.Issuer.ToLower().Contains("microsoft"))
-                    {
-                        // Verify if the certificate by which it was signed is not expired
-                        DateTime notAfter = DateTime.Parse(cert.GetExpirationDateString());
-                        if (notAfter < DateTime.Today)
-                            throw new System.Security.Cryptography.CryptographicException("'{0}' has been signed with an expired certificate", assemblyPath);
-
-                        Log.LogMessage("Verified: '{0}' has been signed using valid cerificate issued by Microsoft", assemblyFullPath);
-                    }
-                    else
-                    {
-                        throw new System.Security.Cryptography.CryptographicUnexpectedOperationException(string.Format("'{0}' - '{1}' assembly is not signed using Microsoft certificate", assemblyFullPath, assemblyPath));
-                    }
-                }
-
-                return true;
-            }
-            catch (System.Security.Cryptography.CryptographicException)
-            {
-                Log.LogError(string.Format("'{0}' is not authenticode signed..... exiting build", assemblyPath));
-                AuthCodeSignTaskErrorsDetected = true;
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Log.LogErrorFromException(ex);
-                AuthCodeSignTaskErrorsDetected = true;
-                return false;
-            }
-        }
-
-        private bool IsMicrosoftShippedFile(string fileName)
-        {
-            return ((fileName.ToLower().StartsWith("microsoft")) || (fileName.ToLower().StartsWith("system")));
         }
     }
 }
