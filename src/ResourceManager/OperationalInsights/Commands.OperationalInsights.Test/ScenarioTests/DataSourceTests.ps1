@@ -65,7 +65,6 @@ function Test-DataSourceCreateUpdateDelete
 
     # Delete one of the data sources
     Remove-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $daNametwo -Force
-    # Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $daNametwo } "NotFound"
     $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog
     Assert-AreEqual 1 $dataSources.Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
@@ -80,7 +79,6 @@ function Test-DataSourceCreateUpdateDelete
 
     # Delete the remaining data source via piping
     Remove-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName -Force
-    # Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName } "NotFound"
     $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog
     Assert-AreEqual 0 $dataSources.Count
 }
