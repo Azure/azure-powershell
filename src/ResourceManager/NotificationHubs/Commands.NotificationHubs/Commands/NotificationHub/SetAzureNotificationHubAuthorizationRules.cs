@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             }
 
             // Update a notificationHub authorizationRule
-            var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub,
-                                                    sasRule.Name, sasRule.Rights, sasRule.PrimaryKey, sasRule.SecondaryKey);
+            var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, sasRule.Location, Namespace, NotificationHub,
+                                                    sasRule.Name, sasRule.Rights);
             WriteObject(authRule);
         }
     }

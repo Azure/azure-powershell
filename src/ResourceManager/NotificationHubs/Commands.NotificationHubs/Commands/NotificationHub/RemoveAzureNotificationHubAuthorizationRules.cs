@@ -51,8 +51,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         public override void ExecuteCmdlet()
         {
             // Delete notificationHub authorizationRule
-            var deleteAuthRule = Client.DeleteNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
-            WriteObject(deleteAuthRule);
+            Client.DeleteNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
         }
     }
 }
