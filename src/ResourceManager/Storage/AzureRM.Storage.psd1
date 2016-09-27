@@ -93,7 +93,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @("Azure", "ResourceManager", "ARM", "Storage", "Storage Account")
+        Tags = @("Azure", "ResourceManager", "ARM", "Storage", "StorageAccount")
 
         # A URL to the license for this module.
         LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
