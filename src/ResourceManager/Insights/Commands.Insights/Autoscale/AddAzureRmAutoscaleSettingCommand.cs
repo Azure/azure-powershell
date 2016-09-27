@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("This output of this cmdlet will change in the next release to return the newly created object");
             AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
             // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility

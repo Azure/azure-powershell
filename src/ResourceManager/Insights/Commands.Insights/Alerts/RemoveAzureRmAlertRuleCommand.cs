@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            WriteWarning("The output of this cmdlet has changed and will change again in the future. The current request Id is empty. In the future the cmdlet will not return anything.");
             this.InsightsManagementClient.AlertRules.DeleteAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Wait();
 
             // Keep this response for backwards compatibility.

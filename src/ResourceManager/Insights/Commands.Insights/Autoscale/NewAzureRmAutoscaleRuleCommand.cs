@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Gets or sets the scale action value
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It defaults to ChangeCount, only value supported.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It defaults to ChangeCount, only value supported. Warning: This parameter has no effect.")]
         [ValidateNotNullOrEmpty]
         public ScaleType ScaleActionScaleType { get; set; }
 
@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The parameter ScaleActionType has no effect. It was kept here for backwards compatibility, but it could be removed in the future.");
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
         }
