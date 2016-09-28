@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 StorageAccountId = autoStorageAccountId
             };
 
-            var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
+            var response = BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
                 Location = location,
                 Tags = tagDictionary,
@@ -78,14 +78,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
             
             // need to the location in order to call
-            var getResponse = BatchManagementClient.Account.Get(resourceGroupName, accountName);
+            var getResponse = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
 
             AutoStorageBaseProperties autoStorage = (autoStorageAccountId == null) ? null : new AutoStorageBaseProperties
             {
                 StorageAccountId = autoStorageAccountId
             };
 
-            var response = BatchManagementClient.Account.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
+            var response = BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters()
             {
                 Location = getResponse.Location,
                 Tags = tagDictionary,
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 resourceGroupName = GetGroupForAccount(accountName);
             }
-            var response = BatchManagementClient.Account.Get(resourceGroupName, accountName);
+            var response = BatchManagementClient.BatchAccount.Get(resourceGroupName, accountName);
 
             return BatchAccountContext.ConvertAccountResourceToNewAccountContext(response);
         }
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="resourceGroupName">The name of the resource group the account is under. If unspecified, it will be looked up.</param>
         /// <param name="accountName">The account name</param>
         /// <returns>A BatchAccountContext object with the account keys</returns>
-        public virtual BatchAccountContext ListKeys(string resourceGroupName, string accountName)
+        public virtual BatchAccountContext GetKeys(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             var context = GetAccount(resourceGroupName, accountName);
-            var keysResponse = BatchManagementClient.Account.ListKeys(resourceGroupName, accountName);
+            var keysResponse = BatchManagementClient.BatchAccount.GetKeys(resourceGroupName, accountName);
             context.PrimaryAccountKey = keysResponse.Primary;
             context.SecondaryAccountKey = keysResponse.Secondary;
 
@@ -148,8 +148,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // no account name so we're doing some sort of list. If no resource group, then list all accounts under the
             // subscription otherwise all accounts in the resource group.
             var response = string.IsNullOrEmpty(resourceGroupName)
-                ? BatchManagementClient.Account.List()
-                : BatchManagementClient.Account.ListByResourceGroup(resourceGroupName);
+                ? BatchManagementClient.BatchAccount.List()
+                : BatchManagementClient.BatchAccount.ListByResourceGroup(resourceGroupName);
 
             var batchAccountContexts =
                 ListAllAccounts(response).
@@ -174,10 +174,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            var regenResponse = BatchManagementClient.Account.RegenerateKey(resourceGroupName, accountName, new BatchAccountRegenerateKeyParameters
-            {
-                KeyName = keyType
-            });
+            var regenResponse = BatchManagementClient.BatchAccount.RegenerateKey(resourceGroupName, accountName, keyType);
 
             var context = GetAccount(resourceGroupName, accountName);
             context.PrimaryAccountKey = regenResponse.Primary;
@@ -202,7 +199,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             try
             {
-                BatchManagementClient.Account.Delete(resourceGroupName, accountName);
+                BatchManagementClient.BatchAccount.Delete(resourceGroupName, accountName);
             }
             catch (Rest.Azure.CloudException ex)
             {
@@ -249,9 +246,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="response">The list of accounts.</param>
         /// <returns>All accounts for the response</returns>
-        internal IEnumerable<AccountResource> ListAllAccounts(IPage<AccountResource> response)
+        internal IEnumerable<BatchAccount> ListAllAccounts(IPage<BatchAccount> response)
         {
-            var accountResources = new List<AccountResource>();
+            var accountResources = new List<BatchAccount>();
             accountResources.AddRange(response);
 
             var nextLink = response.NextPageLink;
@@ -270,9 +267,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// </summary>
         /// <param name="NextLink">Next link to use when querying for accounts</param>
         /// <returns>The status of list operation</returns>
-        internal IPage<AccountResource> ListNextAccounts(string NextLink)
+        internal IPage<BatchAccount> ListNextAccounts(string NextLink)
         {
-            return BatchManagementClient.Account.ListNext(NextLink);
+            return BatchManagementClient.BatchAccount.ListNext(NextLink);
         }
 
         internal string GetGroupForAccountNoThrow(string accountName)

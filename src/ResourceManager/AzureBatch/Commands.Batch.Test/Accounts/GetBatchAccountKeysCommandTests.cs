@@ -48,12 +48,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
             expected.PrimaryAccountKey = primaryKey;
             expected.SecondaryAccountKey = secondaryKey;
 
-            batchClientMock.Setup(b => b.ListKeys(resourceGroup, accountName)).Returns(expected);
+            batchClientMock.Setup(b => b.GetKeys(resourceGroup, accountName)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
