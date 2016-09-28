@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// <param name="account">The account to filter on.</param>
         /// <param name="tag">The tag to filter on.</param>
         /// <returns>Whether or not the account's tags match with the given tag</returns>
-        public static bool MatchesTag(AccountResource account, Hashtable tag)
+        public static bool MatchesTag(BatchAccount account, Hashtable tag)
         {
             if (tag != null && tag.Count >= 1)
             {

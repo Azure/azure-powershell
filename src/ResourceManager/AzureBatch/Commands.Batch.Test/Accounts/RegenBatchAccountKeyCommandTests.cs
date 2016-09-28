@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             AccountKeyType keyType = AccountKeyType.Primary;
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
             expected.PrimaryAccountKey = newPrimaryKey;
             expected.SecondaryAccountKey = newSecondaryKey;

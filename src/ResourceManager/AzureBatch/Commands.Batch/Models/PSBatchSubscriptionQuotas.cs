@@ -22,20 +22,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
     /// </summary>
     public class PSBatchSubscriptionQuotas
     {
-        public PSBatchSubscriptionQuotas(string location, SubscriptionQuotasGetResult subscriptionQuotasResponse)
+        public PSBatchSubscriptionQuotas(string location, BatchLocationQuota locationQuotasResponse)
         {
             if (string.IsNullOrEmpty(location))
             {
                 throw new ArgumentNullException("location");
             }
 
-            if (subscriptionQuotasResponse == null)
+            if (locationQuotasResponse == null)
             {
-                throw new ArgumentNullException("subscriptionQuotasResponse");
+                throw new ArgumentNullException("locationQuotasResponse");
             }
 
             this.Location = location;
-            this.AccountQuota = subscriptionQuotasResponse.AccountQuota.GetValueOrDefault();
+            this.AccountQuota = locationQuotasResponse.AccountQuota.GetValueOrDefault();
         }
 
         /// <summary>

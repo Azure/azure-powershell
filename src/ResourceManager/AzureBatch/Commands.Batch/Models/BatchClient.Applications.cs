@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 AllowUpdates = allowUpdates
             };
 
-             var response = BatchManagementClient.Application.AddApplication(
+             var response = BatchManagementClient.Application.Create(
                 resourceGroupName,
                 accountName,
                 applicationId,
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            BatchManagementClient.Application.DeleteApplication(resourceGroupName, accountName, applicationId);
+            BatchManagementClient.Application.Delete(resourceGroupName, accountName, applicationId);
         }
 
         public virtual void DeleteApplicationPackage(string resourceGroupName, string accountName, string applicationId, string version)
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            BatchManagementClient.Application.DeleteApplicationPackage(resourceGroupName, accountName, applicationId, version);
+            BatchManagementClient.ApplicationPackage.Delete(resourceGroupName, accountName, applicationId, version);
         }
 
         public virtual PSApplication GetApplication(string resourceGroupName, string accountName, string applicationId)
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            Application response = BatchManagementClient.Application.GetApplication(resourceGroupName, accountName, applicationId);
+            Application response = BatchManagementClient.Application.Get(resourceGroupName, accountName, applicationId);
 
             return ConvertApplicationToPSApplication(response);
         }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            GetApplicationPackageResult response = BatchManagementClient.Application.GetApplicationPackage(
+            ApplicationPackage response = BatchManagementClient.ApplicationPackage.Get(
                 resourceGroupName,
                 accountName,
                 applicationId,
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 uap.DisplayName = displayName;
             }
 
-            BatchManagementClient.Application.UpdateApplication(
+            BatchManagementClient.Application.Update(
                 resourceGroupName,
                 accountName,
                 applicationId,
@@ -273,12 +273,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         {
             try
             {
-                BatchManagementClient.Application.ActivateApplicationPackage(
+                BatchManagementClient.ApplicationPackage.Activate(
                     resourceGroupName,
                     accountName,
                     applicationId,
                     version,
-                    new ActivateApplicationPackageParameters { Format = format });
+                    format);
             }
             catch (Exception exception)
             {
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             try
             {
                 // Checks to see if the package exists
-                GetApplicationPackageResult response = BatchManagementClient.Application.GetApplicationPackage(
+                ApplicationPackage response = BatchManagementClient.ApplicationPackage.Get(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             try
             {
-                AddApplicationPackageResult addResponse = BatchManagementClient.Application.AddApplicationPackage(
+                ApplicationPackage addResponse = BatchManagementClient.ApplicationPackage.Create(
                     resourceGroupName,
                     accountName,
                     applicationId,
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
 
-        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(GetApplicationPackageResult response)
+        private PSApplicationPackage ConvertGetApplicationPackageResponseToApplicationPackage(ApplicationPackage response)
         {
             return new PSApplicationPackage()
             {
