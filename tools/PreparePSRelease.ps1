@@ -16,6 +16,7 @@ Param(
 [Switch]$Patch
 )
 
+$ErrorActionPreference = "Stop"
 .\ASMIncrementVersion.ps1 $Folder -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
 .\ARMIncrementVersion.ps1 $Folder -Major $Major.IsPresent -Minor $Minor.IsPresent -Patch $Patch.IsPresent
 .\ARMSyncVersion.ps1 $Folder

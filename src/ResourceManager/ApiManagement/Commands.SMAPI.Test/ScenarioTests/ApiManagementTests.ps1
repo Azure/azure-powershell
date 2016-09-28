@@ -157,16 +157,16 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $newApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $newApiId -PassThru 
         Assert-True {$removed}
     }
 }
 
 <#
 .SYNOPSIS
-Tests API import/export.
+Tests API import/export for Wadl Type Api.
 #>
-function Api-ImportExportTest
+function Api-ImportExportWadlTest
 {
 Param($resourceGroupName, $serviceName)
 
@@ -192,7 +192,80 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -PassThru 
+        Assert-True {$removed}
+    }
+}
+
+<#
+.SYNOPSIS
+Tests API import/export for Swagger Type Api.
+#>
+function Api-ImportExportSwaggerTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    $swaggerPath = "./Resources/SwaggerPetStoreV2.json"
+    $path = "swaggerapi"
+    $swaggerApiId = getAssetName
+
+    try
+    {
+        # import api from file
+        $api = Import-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId -SpecificationPath $swaggerPath -SpecificationFormat Swagger -Path $path
+
+        Assert-AreEqual $swaggerApiId $api.ApiId
+        Assert-AreEqual $path $api.Path
+
+        # export api to pipeline
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId -SpecificationFormat Swagger		
+		Assert-NotNull $result
+		Assert-True {$result -like '*"title": "Swagger Petstore Extensive"*'}
+    }
+    finally
+    {
+        # remove created api
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId -PassThru 
+        Assert-True {$removed}
+    }
+}
+
+
+<#
+.SYNOPSIS
+Tests API import/export for Wsdl Type Api.
+#>
+function Api-ImportExportWsdlTest
+{
+Param($resourceGroupName, $serviceName)
+
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+
+    $wsdlPath = "./Resources/Weather.wsdl"
+    $path = "soapapi"
+    $wsdlApiId = getAssetName
+	$wsdlServiceName = "Weather" # from file Weather.wsdl
+	$wsdlEndpointName = "WeatherSoap" # from file Weather.wsdl
+	
+    try
+    {
+        # import api from file
+        $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId -SpecificationPath $wsdlPath -SpecificationFormat Wsdl -Path $path -WsdlServiceName $wsdlServiceName -WsdlEndpointName $wsdlEndpointName
+
+        Assert-AreEqual $wsdlApiId $api.ApiId
+        Assert-AreEqual $path $api.Path
+
+        # export api to pipeline
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId -SpecificationFormat Wsdl		
+		Assert-NotNull $result
+		Assert-True {$result -like '*<wsdl:service name="Weather"*'}
+    }
+    finally
+    {
+        # remove created api
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId -PassThru 
         Assert-True {$removed}
     }
 }
@@ -483,7 +556,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         #remove created operation
-        $removed = Remove-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId  -PassThru
         Assert-True {$removed}
 
         $operation = $null
@@ -600,7 +673,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created product
-        $removed = Remove-AzureRmApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru -Force
+        $removed = Remove-AzureRmApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru 
         Assert-True {$removed}
     }
 }
@@ -683,7 +756,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created subscription
-        $removed = Remove-AzureRmApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId  -PassThru
         Assert-True {$removed}
 
         $sub = $null
@@ -779,7 +852,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created user
-        $removed = Remove-AzureRmApiManagementUser -Context $context -UserId $userId -DeleteSubscriptions -Force -PassThru
+        $removed = Remove-AzureRmApiManagementUser -Context $context -UserId $userId -DeleteSubscriptions  -PassThru
         Assert-True {$removed}
 
         $user = $null
@@ -885,7 +958,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created group
-        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId  -PassThru
         Assert-True {$removed}
 
         $group = $null
@@ -931,7 +1004,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context 
@@ -951,7 +1024,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
@@ -971,7 +1044,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
@@ -993,7 +1066,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
@@ -1016,7 +1089,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context 
@@ -1031,14 +1104,14 @@ Param($resourceGroupName, $serviceName)
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs 'ProductPolicy.xml' -Force
+        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs 'ProductPolicy.xml' -Force 
         $exists = [System.IO.File]::Exists('ProductPolicy.xml')
         $policy = gc 'ProductPolicy.xml'
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
@@ -1059,14 +1132,14 @@ Param($resourceGroupName, $serviceName)
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs 'ApiPolicy.xml'
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs 'ApiPolicy.xml' -Force
         $exists = [System.IO.File]::Exists('ApiPolicy.xml')
         $policy = gc 'ApiPolicy.xml'
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
@@ -1090,14 +1163,14 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $true $set
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
-            -SaveAs 'OperationPolicy.xml'
+            -SaveAs 'OperationPolicy.xml' -Force
         $exists = [System.IO.File]::Exists('OperationPolicy.xml')
         $policy = gc 'OperationPolicy.xml'
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru 
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
@@ -1127,9 +1200,9 @@ Param($resourceGroupName, $serviceName)
     Assert-AreEqual 0 $certificates.Count
 
     $certPath = "$TestOutputRoot\Resources\testcertificate.pfx"
-    $certPassword = 'powershelltest'
-    $certThumbprint = '51A702569BADEDB90A75141B070F2D4B5DDFA447'
-    $certSubject = 'CN=ailn.redmond.corp.microsoft.com'
+    $certPassword = 'g0BdrCRORWI2ctk_g5Wdf5QpTsI9vxnw'
+    $certThumbprint = 'E861A19B22EE98AC71F84AC00C5A05E2E7206820'
+    $certSubject = 'CN=*.powershelltest.net'
 
     $certId = getAssetName
     try
@@ -1166,7 +1239,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove uploaded certificate
-        $removed = Remove-AzureRmApiManagementCertificate -Context $context -CertificateId $certId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementCertificate -Context $context -CertificateId $certId  -PassThru
         Assert-True {$removed}
 
         $cert = $null
@@ -1357,7 +1430,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created server
-        $removed = Remove-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId  -PassThru
         Assert-True {$removed}
 
         $server = $null
@@ -1428,7 +1501,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created logger
-        $removed = Remove-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId  -PassThru
         Assert-True {$removed}
 
         $logger = $null
@@ -1521,7 +1594,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru 
 		Assert-True {$removed}
         
 		$openIdConectProvider = $null
@@ -1655,7 +1728,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-		$removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -PassThru -Force
+		$removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -PassThru 
 		Assert-True {$removed}
         
 		$property = $null
@@ -1673,7 +1746,7 @@ Param($resourceGroupName, $serviceName)
 		# cleanup other Property
 		try
 		{
-			Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru -Force
+			Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru 
 		}
 		catch
 		{
@@ -1696,15 +1769,8 @@ Param($resourceGroupName, $serviceName)
         $tenantGitAccess = Get-AzureRmApiManagementTenantGitAccess -Context $context
 
 		Assert-NotNull $tenantGitAccess
-        Assert-AreEqual $false $tenantGitAccess.Enabled        
+        Assert-AreEqual $true $tenantGitAccess.Enabled        
 		
-		#enable Tenant Git Access
-		$tenantGitAccess = $null
-        $tenantGitAccess = Set-AzureRmApiManagementTenantGitAccess -Context $context -Enabled $true -PassThru
-
-		Assert-NotNull $tenantGitAccess
-		Assert-AreEqual $true $tenantGitAccess.Enabled
-
 		#get Tenant Sync state
 		$tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
 		Assert-NotNull $tenantSyncState
@@ -1748,7 +1814,7 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-		Set-AzureRmApiManagementTenantGitAccess -Context $context -Enabled $false -PassThru		
+		
     }
 }
 

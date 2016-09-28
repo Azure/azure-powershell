@@ -66,7 +66,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption, out ShouldProcessReason shouldProcessReason)
         {
-            throw new System.NotImplementedException();
+            shouldProcessReason = ShouldProcessReason.None;
+            return true;
         }
 
         public bool ShouldProcess(string verboseDescription, string verboseWarning, string caption)

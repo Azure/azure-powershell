@@ -12,24 +12,16 @@
     using System.Linq;
     using System.Net;
     using System.Xml.Linq;
+    using Microsoft.Azure.Test.HttpRecorder;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
-    public class TestsFixture : TestBase
+
+    public class TestsFixture : RMTestBase
     {
         public TestsFixture()
         {
-            // place any initialization like environment settings here
-#if DEBUG
-            //Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_CSM_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=Prod");
-
-            //Environment.SetEnvironmentVariable(
-            //    "TEST_ORGID_AUTHENTICATION",
-            //    "SubscriptionId=;Environment=Prod");
-#endif
-
+            // Initialize has bug which causes null reference exception
+            HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
             TestUtilities.StartTest();
             try
             {
@@ -168,15 +160,15 @@
                     Location = location,
                     Properties = new ApiServiceProperties
                     {
-                        SkuProperties = new ApiServiceSkuProperties
-                        {
-                            Capacity = 1,
-                            SkuType = skuType
-                        },
                         AddresserEmail = "foo@live.com",
                         PublisherEmail = "foo@live.com",
                         PublisherName = "apimgmt"
-                    }
+                    },
+                    SkuProperties = new ApiServiceSkuProperties
+                    {
+                        Capacity = 1,
+                        SkuType = skuType
+                    },
                 });
 
             var response = client.ResourceProvider.Get(resourceGroupName, apiServiceName);

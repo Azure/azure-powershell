@@ -22,7 +22,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public PSApplicationGatewaySku Sku { get; set; }
 
+        public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
+
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
+
+        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
 
         public List<PSApplicationGatewaySslCertificate> SslCertificates { get; set; }
 
@@ -42,6 +46,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSApplicationGatewayRequestRoutingRule> RequestRoutingRules { get; set; }
 
+        public PSApplicationGatewayWebApplicationFirewallConfiguration WebApplicationFirewallConfiguration { get; set; }
+
         public string OperationalState { get; private set; }
 
         public string ProvisioningState { get; set; }
@@ -50,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string GatewayIpConfigurationsText
         {
             get { return JsonConvert.SerializeObject(GatewayIPConfigurations, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AuthenticationCertificatesText
+        {
+            get { return JsonConvert.SerializeObject(AuthenticationCertificates, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]

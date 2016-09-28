@@ -19,7 +19,8 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true), 
+        OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
@@ -71,15 +72,17 @@ namespace Microsoft.Azure.Commands.TrafficManager
                 string.Format(ProjectResources.Confirm_DisableEndpoint, endpointToDisable.Name, endpointToDisable.ProfileName),
                 ProjectResources.Progress_DisablingEndpoint,
                 this.Name,
-                () => { disabled = this.TrafficManagerClient.EnableDisableTrafficManagerEndpoint(endpointToDisable, shouldEnableEndpointStatus: false); });
+                () =>
+                {
+                    disabled = this.TrafficManagerClient.EnableDisableTrafficManagerEndpoint(endpointToDisable, shouldEnableEndpointStatus: false);
+                    if (disabled)
+                    {
+                        this.WriteVerbose(ProjectResources.Success);
+                        this.WriteVerbose(string.Format(ProjectResources.Success_DisableEndpoint, endpointToDisable.Name, endpointToDisable.Name, endpointToDisable.ResourceGroupName));
+                    }
 
-            if (disabled)
-            {
-                this.WriteVerbose(ProjectResources.Success);
-                this.WriteVerbose(string.Format(ProjectResources.Success_DisableEndpoint, endpointToDisable.Name, endpointToDisable.Name, endpointToDisable.ResourceGroupName));
-            }
-
-            this.WriteObject(disabled);
+                    this.WriteObject(disabled);
+                });
         }
     }
 }

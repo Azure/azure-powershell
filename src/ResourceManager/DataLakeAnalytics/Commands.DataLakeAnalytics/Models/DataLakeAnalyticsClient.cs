@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.DataLake.Analytics;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
@@ -33,6 +33,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
         private readonly Guid _subscriptionId;
+        private static Queue<Guid> jobIdQueue;
+
+
+        /// <summary>
+        /// Gets or sets the job identifier queue, which is used exclusively as a test hook.
+        /// </summary>
+        /// <value>
+        /// The job identifier queue.
+        /// </value>
+        public static Queue<Guid> JobIdQueue
+        {
+            get
+            {
+                if (jobIdQueue == null)
+                {
+                    jobIdQueue = new Queue<Guid>();
+                }
+
+                return jobIdQueue;
+            }
+            set { jobIdQueue = value; }
+        }
 
         public DataLakeAnalyticsClient(AzureContext context)
         {
@@ -40,7 +62,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
-
+            
             _accountClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsAccountManagementClient>(context,
                 AzureEnvironment.Endpoint.ResourceManager);
             _subscriptionId = context.Subscription.Id;
@@ -59,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             DataLakeStoreAccountInfo defaultDataLakeStoreAccount = null,
             IList<DataLakeStoreAccountInfo> additionalDataLakeStoreAccounts = null,
             IList<StorageAccountInfo> additionalStorageAccounts = null,
-            Hashtable[] customTags = null)
+            Hashtable customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -351,6 +373,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             _accountClient.Account.Update(resourceGroupName, accountName, account);
         }
 
+        public IEnumerable<AdlDataSource> GetAllDataSources(string resourceGroupName, string accountName)
+        {
+            var toReturn = new List<AdlDataSource>();
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByAccountName(accountName);
+            }
+
+            var defaultAdls = GetAccount(resourceGroupName, accountName).Properties.DefaultDataLakeStoreAccount;
+            foreach(var adlsAcct in ListDataLakeStoreAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(adlsAcct, adlsAcct.Name.Equals(defaultAdls, StringComparison.OrdinalIgnoreCase)));
+            }
+
+            foreach (var storageAcct in ListStorageAccounts(resourceGroupName, accountName))
+            {
+                toReturn.Add(new AdlDataSource(storageAcct));
+            }
+
+            return toReturn;
+        }
+
         private IPage<DataLakeAnalyticsAccount> ListAccountsWithNextLink(string nextLink)
         {
             return _accountClient.Account.ListNext(nextLink);
@@ -417,6 +461,24 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw;
             }
         }
+
+        public void CreateCredential(string accountName, string databaseName,
+            string credentialName, string userId, string password, string hostUri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateCredentialPassword(string accountName, string databaseName,
+            string credentialName, string userId, string password, string newPassword, string hostUri)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteCredential(string accountName, string databaseName, string credentialName, string password = null)
+        {
+            throw new NotImplementedException();
+        }
+        
 
         public IList<CatalogItem> GetCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
@@ -499,6 +561,19 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     }
 
                     break;
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
+                    if (isList)
+                    {
+                        toReturn.AddRange(GetTablePartitions(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName));
+                    }
+                    else
+                    {
+                        toReturn.Add(GetTablePartition(accountName, path.DatabaseName,
+                            path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName, path.TableStatisticsOrPartitionName));
+                    }
+
+                    break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableValuedFunction:
                     if (isList)
                     {
@@ -522,7 +597,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     {
                         toReturn.Add(GetTableStatistic(accountName, path.DatabaseName,
                             path.SchemaAssemblyOrExternalDataSourceName, path.TableOrTableValuedFunctionName,
-                            path.TableStatisticsName));
+                            path.TableStatisticsOrPartitionName));
                     }
 
                     break;
@@ -704,6 +779,28 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             while (!string.IsNullOrEmpty(response.NextPageLink))
             {
                 response = _catalogClient.Catalog.ListTablesNext(response.NextPageLink);
+                toReturn.AddRange(response);
+            }
+
+            return toReturn;
+        }
+
+        private USqlTablePartition GetTablePartition(string accountName, string databaseName, string schemaName,
+            string tableName, string partitionName)
+        {
+            return
+                _catalogClient.Catalog.GetTablePartition(accountName, databaseName, schemaName, tableName, partitionName);
+        }
+
+        private IList<USqlTablePartition> GetTablePartitions(string accountName, string databaseName,
+            string schemaName, string tableName)
+        {
+            List<USqlTablePartition> toReturn = new List<USqlTablePartition>();
+            var response = _catalogClient.Catalog.ListTablePartitions(accountName, databaseName, schemaName, tableName);
+            toReturn.AddRange(response);
+            while (!string.IsNullOrEmpty(response.NextPageLink))
+            {
+                response = _catalogClient.Catalog.ListTablePartitionsNext(response.NextPageLink);
                 toReturn.AddRange(response);
             }
 
@@ -958,6 +1055,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
                     break;
                 case DataLakeAnalyticsEnums.CatalogItemType.TableStatistics:
+                case DataLakeAnalyticsEnums.CatalogItemType.TablePartition:
                     if (string.IsNullOrEmpty(path.DatabaseName) ||
                         string.IsNullOrEmpty(path.SchemaAssemblyOrExternalDataSourceName) ||
                         string.IsNullOrEmpty(path.TableOrTableValuedFunctionName))
@@ -966,7 +1064,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                             path.FullCatalogItemPath));
                     }
 
-                    if (string.IsNullOrEmpty(path.TableStatisticsName))
+                    if (string.IsNullOrEmpty(path.TableStatisticsOrPartitionName))
                     {
                         isList = true;
                     }

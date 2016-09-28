@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Dns.Models;
 using Microsoft.Azure.Management.Dns.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Dns.Properties.Resources;
@@ -23,7 +24,8 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
+        OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -50,14 +52,18 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
 
-        [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
-        public Hashtable[] Tag { get; set; }
+        public Hashtable Metadata { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipeline = true, HelpMessage = "The dns records that are part of this record set.")]
+        [ValidateNotNull]
+        public DnsRecordBase[] DnsRecords { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        [Obsolete("This parameter is obsolete; use Confirm instead")]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -65,6 +71,11 @@ namespace Microsoft.Azure.Commands.Dns
             string zoneName = null;
             string resourceGroupname = null;
             DnsRecordSet result = null;
+
+            if (RecordType == RecordType.SOA)
+            {
+                throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
+            }
 
             if (ParameterSetName == "Fields")
             {
@@ -76,6 +87,10 @@ namespace Microsoft.Azure.Commands.Dns
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
+            if(this.Name.EndsWith(zoneName.ToString()))
+            {   
+                this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
+            }
 
             if (zoneName != null && zoneName.EndsWith("."))
             {
@@ -83,21 +98,27 @@ namespace Microsoft.Azure.Commands.Dns
                 this.WriteWarning(string.Format("Modifying zone name to remove terminating '.'.  Zone name used is \"{0}\".", zoneName));
             }
 
-            ConfirmAction(
-                !Overwrite.IsPresent || Force.IsPresent,
-                string.Format(ProjectResources.Confirm_OverwriteRecord, this.Name, this.RecordType, zoneName),
-                ProjectResources.Progress_CreatingEmptyRecordSet,
-                this.Name,
-                () => { result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Tag, this.Overwrite); });
-
-            if (result != null)
+            if (this.DnsRecords == null)
             {
-                WriteVerbose(ProjectResources.Success);
-                WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
-                WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+                this.WriteWarning(ProjectResources.Warning_DnsRecordsParamNeedsToBeSpecified);
             }
 
-            WriteObject(result);
+            ConfirmAction(
+                ProjectResources.Progress_CreatingRecordSet,
+                this.Name,
+                () =>
+                {
+                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
+
+                    if (result != null)
+                    {
+                        WriteVerbose(ProjectResources.Success);
+                        WriteVerbose(string.Format(ProjectResources.Success_NewRecordSet, this.Name, zoneName, this.RecordType));
+                        WriteVerbose(string.Format(ProjectResources.Success_RecordSetFqdn, this.Name, zoneName, this.RecordType));
+                    }
+
+                    WriteObject(result);
+                });
         }
     }
 }

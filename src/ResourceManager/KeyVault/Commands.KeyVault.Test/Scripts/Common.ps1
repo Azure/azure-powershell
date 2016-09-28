@@ -14,6 +14,7 @@
 
 $global:createdKeys = @()
 $global:createdSecrets = @()
+$global:createdCertificates = @()
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
 
@@ -55,6 +56,14 @@ function Get-SecretName([string]$suffix)
     return 'pshts-' + $global:testns + '-' + $suffix
 }
 
+<#
+.SYNOPSIS
+Get test certificate name
+#>
+function Get-CertificateName([string]$suffix)
+{
+    return 'pshtc-' + $global:testns + '-' + $suffix
+}
 
 <#
 .SYNOPSIS
@@ -107,13 +116,27 @@ function Get-ImportKeyFile1024([string]$filesuffix, [bool] $exists=$true)
     }
 }
 
+
 <#
 .SYNOPSIS
-Remove log file under a folder
+Get file path from common data directory
 #>
-function Cleanup-Log([string]$rootfolder)
-{    
-    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse | where {$_.mode -match "a"} | Remove-Item -Force     
+function Get-FilePathFromCommonData([string]$fileName)
+{
+    return Join-Path $invocationPath "commondata\$fileName"
+}
+
+<#
+.SYNOPSIS
+Remove log files under the given folder.
+#>
+function Cleanup-LogFiles([string]$rootfolder)
+{
+    Write-Host "Cleaning up log files from $rootfolder..."
+    
+    Get-ChildItem –Path $rootfolder -Include *.debug_log -Recurse |
+        where {$_.mode -match "a"} |
+        Remove-Item -Force     
 }
 
 <#
@@ -125,7 +148,7 @@ function Move-Log([string]$rootfolder)
     $logfolder = Join-Path $rootfolder ("$global:testEnv"+"$global:testns"+"log")
     if (Test-Path $logfolder)
     {
-        Cleanup-Log $logfolder
+        Cleanup-LogFiles $logfolder
     }
     else
     {
@@ -138,27 +161,60 @@ function Move-Log([string]$rootfolder)
 
 <#
 .SYNOPSIS
-Removes all keys starting with the prefix
+Remove all old certificates starting with the given prefix.
 #>
-function Initialize-KeyTest
+function Cleanup-OldCertificates
 {
+    Write-Host "Cleaning up old certificates..."
+
     $keyVault = Get-KeyVault
-    $keyPattern = Get-KeyName '*'
-    Get-AzureKeyVaultKey $keyVault  | Where-Object {$_.KeyName -like $keyPattern}  | Remove-AzureKeyVaultKey -Force -Confirm:$false
+    $certificatePattern = Get-CertificateName '*'
+    Get-AzureKeyVaultCertificate $keyVault |
+        Where-Object {$_.Name -like $certificatePattern} |
+        Remove-AzureKeyVaultCertificate -Force -Confirm:$false
 }
 
 <#
 .SYNOPSIS
-Removes all secrets starting with the prefix
+Remove all old keys starting with the given prefix.
 #>
-function Initialize-SecretTest
+function Cleanup-OldKeys
 {
+    Write-Host "Cleaning up old keys..."
+
+    $keyVault = Get-KeyVault
+    $keyPattern = Get-KeyName '*'
+    Get-AzureKeyVaultKey $keyVault |
+        Where-Object {$_.KeyName -like $keyPattern} |
+        Remove-AzureKeyVaultKey -Force -Confirm:$false
+}
+
+<#
+.SYNOPSIS
+Remove all old secrets starting with the given prefix.
+#>
+function Cleanup-OldSecrets
+{
+    Write-Host "Cleaning up old secrets..."
+
     $keyVault = Get-KeyVault
     $secretPattern = Get-SecretName '*'
-    Get-AzureKeyVaultSecret $keyVault  | Where-Object {$_.SecretName -like $secretPattern}  | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+    Get-AzureKeyVaultSecret $keyVault |
+        Where-Object {$_.SecretName -like $secretPattern} |
+        Remove-AzureKeyVaultSecret -Force -Confirm:$false
 }
 
 
+<#
+.SYNOPSIS
+Removes all certificates starting with the prefix
+#>
+function Initialize-CertificateTest
+{
+    $keyVault = Get-KeyVault
+    $certificatePattern = Get-CertificateName '*'
+    Get-AzureKeyVaultCertificate $keyVault  | Where-Object {$_.Name -like $certificatePattern}  | Remove-AzureKeyVaultCertificate -Force
+}
 
 <#
 .SYNOPSIS
@@ -210,6 +266,30 @@ function Cleanup-SingleSecretTest
 
 <#
 .SYNOPSIS
+Removes all created certificates.
+#>
+function Cleanup-SingleCertificateTest
+{
+    $global:createdCertificates | % {
+       if ($_ -ne $null)
+       {
+         try
+         {
+            $keyVault = Get-KeyVault
+            Write-Debug "Removing certificate with name $_ in vault $keyVault"
+            $catch = Remove-AzureKeyVaultCertificate $keyVault $_ -Force -Confirm:$false
+         }
+         catch 
+         {
+         }
+      }
+    }
+
+    $global:createdCertificates.Clear()    
+}
+
+<#
+.SYNOPSIS
 Run a key test, with cleanup.
 #>
 function Run-KeyTest ([ScriptBlock] $test, [string] $testName)
@@ -233,6 +313,18 @@ function Run-SecretTest ([ScriptBlock] $test, [string] $testName)
    finally 
    {
      Cleanup-SingleSecretTest *>> "$testName.debug_log"
+   }
+}
+
+function Run-CertificateTest ([ScriptBlock] $test, [string] $testName)
+{   
+   try 
+   {
+     Run-Test $test $testName *>> "$testName.debug_log"
+   }
+   finally 
+   {
+     Cleanup-SingleCertificateTest *>> "$testName.debug_log"
    }
 }
 
@@ -347,4 +439,18 @@ function Equal-OperationList($left, $right)
     $diff = Compare-Object -ReferenceObject $left -DifferenceObject $right -PassThru
     
     return (-not $diff)
+}
+
+function Equal-String($left, $right)
+{
+    if (([string]::IsNullOrEmpty($left)) -and ([string]::IsNullOrEmpty($right)))
+    {
+        return $true
+    }
+    if (([string]::IsNullOrEmpty($left)) -or ([string]::IsNullOrEmpty($right)))
+    {
+        return $false
+    }    
+    
+    return $left.Equals($right)
 }

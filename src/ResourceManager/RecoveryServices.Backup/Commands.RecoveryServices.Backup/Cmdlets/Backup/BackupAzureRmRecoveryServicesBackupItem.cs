@@ -40,6 +40,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public ItemBase Item { get; set; }
 
+        /// <summary>
+        /// The protected item on which backup has to be triggered.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.ExpiryDateTimeUTC,
+            ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public DateTime? ExpiryDateTimeUTC { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -48,6 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                 {
                     {ItemParams.Item, Item},
+                    {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
                 }, ServiceClientAdapter);
 
             IPsBackupProvider psBackupProvider =

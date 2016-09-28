@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     /// Cmdlet to create a new Azure SQL Server Active Directory administrator
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerActiveDirectoryAdministrator",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>

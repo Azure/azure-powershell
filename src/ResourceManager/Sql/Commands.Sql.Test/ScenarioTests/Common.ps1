@@ -62,20 +62,30 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironment ($testSuffix)
+function Create-TestEnvironment ($testSuffix, $location = "West US", $serverVersion = "12.0")
 {
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Create-TestEnvironmentWithParams ($params)
+	Create-TestEnvironmentWithParams $params  $location $serverVersion
 }
 
 <#
 .SYNOPSIS
 Creates the test environment needed to perform the Sql auditing tests
 #>
-function Create-TestEnvironmentWithParams ($params)
+function Create-TestEnvironmentWithParams ($params, $location, $serverVersion)
 {
-	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup-classic-storage.json" -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount  -Force
+	New-AzureRmResourceGroup -Name $params.rgname -Location $location
+
+	New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $params.rgname  -Location $location  -Type Standard_GRS 
+	
+	$serverName = $params.serverName
+	$serverLogin = "audittestusername"
+	$serverPassword = "t357ingP@s5w0rd!Audit"
+	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
+	New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	New-AzureRmSqlDatabase -DatabaseName $params.databaseName  -ResourceGroupName $params.rgname -ServerName $params.serverName -Edition Basic
+
+#	$res = New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile sql_audit_test_env_setup_classic_storage.json -serverName $params.serverName -databaseName $params.databaseName -storageName $params.storageAccount
 }
 
 <#
@@ -180,6 +190,35 @@ Gets valid elastic pool name
 function Get-ElasticPoolName
 {
     return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets the location for a provider, if not found return East US
+#>
+function Get-ProviderLocation($provider)
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "East US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "East US"
+	}
+
+	return "East US"
 }
 
 <#

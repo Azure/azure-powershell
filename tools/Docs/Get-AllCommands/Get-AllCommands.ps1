@@ -388,7 +388,6 @@ function Get-AllBuildServerCommands {
 
 	#TestValues
 	#$OutputPath = ".\Output";
-	#$ManifestFullName = "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
 
 	#Clean Output Path Trailing \ if exists
 	if($OutputPath.Substring(($OutputPath.Length - 1),1) -eq '\') 
@@ -693,6 +692,7 @@ rm .\Output -Recurse -Force -ErrorAction SilentlyContinue
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Release\ServiceManagement\Azure\Azure.psd1"
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\AzureRM\AzureRM.psd1"
 
-$modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
+$modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1", "AzureRM.Tags.psd1") | sort -Unique -Property Name
+$modules += (Get-Item "..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1")
 $modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
 

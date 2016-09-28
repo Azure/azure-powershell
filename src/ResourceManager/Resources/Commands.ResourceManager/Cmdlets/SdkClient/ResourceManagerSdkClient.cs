@@ -12,21 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
-using Microsoft.Azure.Commands.Tags.Model;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,6 +19,22 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
         public static List<string> KnownLocations = new List<string>
         {
-            "East Asia", "South East Asia", "East US", "West US", "North Central US", 
+            "East Asia", "South East Asia", "East US", "West US", "North Central US",
             "South Central US", "Central US", "North Europe", "West Europe"
         };
 
@@ -165,7 +166,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return template;
         }
 
-        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable[] tags)
+        private ResourceGroup CreateOrUpdateResourceGroup(string name, string location, Hashtable tags)
         {
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(tags, validate: true);
 
@@ -350,21 +351,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     Enum.TryParse<HttpStatusCode>(operation.Properties.StatusCode, out statusCode);
                     if (!statusCode.IsClientFailureRequest())
                     {
-                        List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
+                        var resourceGroupName = ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id);
+                        var deploymentName = operation.Properties.TargetResource.ResourceName;
 
-                        var result = ResourceManagementClient.DeploymentOperations.List(
-                            resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
-                            deploymentName: operation.Properties.TargetResource.ResourceName);
-
-                        newNestedOperations = GetNewOperations(operations, result);
-
-                        foreach (DeploymentOperation op in newNestedOperations)
+                        if (ResourceManagementClient.Deployments.CheckExistence(resourceGroupName, deploymentName) == true)
                         {
-                            DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+                            List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
 
-                            if (nestedOperationWithSameIdAndProvisioningState == null)
+                            var result = ResourceManagementClient.DeploymentOperations.List(
+                                resourceGroupName: resourceGroupName,
+                                deploymentName: deploymentName);
+
+                            newNestedOperations = GetNewOperations(operations, result);
+
+                            foreach (DeploymentOperation op in newNestedOperations)
                             {
-                                newOperations.Add(op);
+                                DeploymentOperation nestedOperationWithSameIdAndProvisioningState = newOperations.Find(o => o.OperationId.Equals(op.OperationId) && o.Properties.ProvisioningState.Equals(op.Properties.ProvisioningState));
+
+                                if (nestedOperationWithSameIdAndProvisioningState == null)
+                                {
+                                    newOperations.Add(op);
+                                }
                             }
                         }
                     }
@@ -430,30 +437,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return new TemplateValidationInfo(validationResult);
         }
 
-        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null, bool listAvailable = false, string location = null)
-        {
-            var providers = this.ListResourceProviders(providerName: providerName, listAvailable: listAvailable);
-
-            if (string.IsNullOrEmpty(location))
-            {
-                return providers
-                    .Select(provider => provider.ToPSResourceProvider())
-                    .ToArray();
-            }
-
-            foreach (var provider in providers)
-            {
-                provider.ResourceTypes = provider.ResourceTypes
-                    .Where(type => !type.Locations.Any() || this.ContainsNormalizedLocation(type.Locations.ToArray(), location))
-                    .ToList();
-            }
-
-            return providers
-                .Where(provider => provider.ResourceTypes.Any())
-                .Select(provider => provider.ToPSResourceProvider())
-                .ToArray();
-        }
-
         public virtual List<Provider> ListResourceProviders(string providerName = null, bool listAvailable = true)
         {
             if (!string.IsNullOrEmpty(providerName))
@@ -485,14 +468,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             }
         }
 
-        private bool ContainsNormalizedLocation(string[] locations, string location)
+        public List<Provider> GetRegisteredProviders(List<Provider> providers)
         {
-            return locations.Any(existingLocation => this.NormalizeLetterOrDigitToUpperInvariant(existingLocation).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location)));
-        }
-
-        private string NormalizeLetterOrDigitToUpperInvariant(string value)
-        {
-            return value != null ? new string(value.Where(c => char.IsLetterOrDigit(c)).ToArray()).ToUpperInvariant() : null;
+            return providers.CoalesceEnumerable().Where(this.IsProviderRegistered).ToList();
         }
 
         private bool IsProviderRegistered(Provider provider)
@@ -541,64 +519,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
-        /// Get a mapping of Resource providers that support the operations API (/operations) to the operations api-version supported for that RP 
-        /// (Current logic is to prefer the latest "non-test' api-version. If there are no such version, choose the latest one)
-        /// </summary>
-        public Dictionary<string, string> GetResourceProvidersWithOperationsSupport()
-        {
-            PSResourceProvider[] allProviders = this.ListPSResourceProviders(listAvailable: true);
-
-            Dictionary<string, string> providersSupportingOperations = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            PSResourceProviderResourceType[] providerResourceTypes = null;
-
-            foreach (PSResourceProvider provider in allProviders)
-            {
-                providerResourceTypes = provider.ResourceTypes;
-                if (providerResourceTypes != null && providerResourceTypes.Any())
-                {
-                    PSResourceProviderResourceType operationsResourceType = providerResourceTypes.Where(r => r != null && r.ResourceTypeName == ResourceManagerSdkClient.Operations).FirstOrDefault();
-                    if (operationsResourceType != null &&
-                        operationsResourceType.ApiVersions != null &&
-                        operationsResourceType.ApiVersions.Any())
-                    {
-                        string[] allowedTestPrefixes = new[] { "-preview", "-alpha", "-beta", "-rc", "-privatepreview" };
-                        List<string> nonTestApiVersions = new List<string>();
-
-                        foreach (string apiVersion in operationsResourceType.ApiVersions)
-                        {
-                            bool isTestApiVersion = false;
-                            foreach (string testPrefix in allowedTestPrefixes)
-                            {
-                                if (apiVersion.EndsWith(testPrefix, StringComparison.InvariantCultureIgnoreCase))
-                                {
-                                    isTestApiVersion = true;
-                                    break;
-                                }
-                            }
-
-                            if (isTestApiVersion == false && !nonTestApiVersions.Contains(apiVersion))
-                            {
-                                nonTestApiVersions.Add(apiVersion);
-                            }
-                        }
-
-                        if (nonTestApiVersions.Any())
-                        {
-                            string latestNonTestApiVersion = nonTestApiVersions.OrderBy(o => o).Last();
-                            providersSupportingOperations.Add(provider.ProviderNamespace, latestNonTestApiVersion);
-                        }
-                        else
-                        {
-                            providersSupportingOperations.Add(provider.ProviderNamespace, operationsResourceType.ApiVersions.OrderBy(o => o).Last());
-                        }
-                    }
-                }
-            }
-
-            return providersSupportingOperations;
-        }
-
-        /// <summary>
         /// Creates a new resource group
         /// </summary>
         /// <param name="parameters">The create parameters</param>
@@ -607,27 +527,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value;
 
             ResourceGroup resourceGroup = null;
-            Action createOrUpdateResourceGroup = () =>
-            {
-                resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
-                WriteVerbose(string.Format(ProjectResources.CreatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
-            };
+            parameters.ConfirmAction(parameters.Force,
+                ProjectResources.ResourceGroupAlreadyExists,
+                ProjectResources.NewResourceGroupMessage,
+                parameters.DeploymentName,
+                () =>
+                {
+                    resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
+                    WriteVerbose(string.Format(ProjectResources.CreatedResourceGroup, resourceGroup.Name, resourceGroup.Location));
+                },
+                () => resourceExists);
 
-            if (resourceExists && !parameters.Force)
-            {
-                parameters.ConfirmAction(parameters.Force,
-                    ProjectResources.ResourceGroupAlreadyExists,
-                    ProjectResources.NewResourceGroupMessage,
-                    parameters.DeploymentName,
-                    createOrUpdateResourceGroup);
-                resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
-            }
-            else
-            {
-                createOrUpdateResourceGroup();
-            }
-
-            return resourceGroup.ToPSResourceGroup();
+            return  resourceGroup !=  null? resourceGroup.ToPSResourceGroup() : null;
         }
 
         /// <summary>
@@ -636,6 +547,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         /// <param name="parameters">The create parameters</param>
         public virtual PSResourceGroup UpdatePSResourceGroup(PSUpdateResourceGroupParameters parameters)
         {
+            if (!ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Value)
+            {
+                WriteError(ProjectResources.ResourceGroupDoesntExists);
+                return null;
+            }
+
             ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName);
 
             resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
@@ -658,16 +575,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 
             if (string.IsNullOrEmpty(name))
             {
-                var response = ResourceManagementClient.ResourceGroups.List(null);
-                List<ResourceGroup> resourceGroups = ResourceManagementClient.ResourceGroups.List(null).ToList();
+                List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
-                while (!string.IsNullOrEmpty(response.NextPageLink))
+                var listResult = ResourceManagementClient.ResourceGroups.List(null);
+                resourceGroups.AddRange(listResult);
+
+                while (!string.IsNullOrEmpty(listResult.NextPageLink))
                 {
-                    resourceGroups.AddRange(response);
+                    listResult = ResourceManagementClient.ResourceGroups.ListNext(listResult.NextPageLink);
+                    resourceGroups.AddRange(listResult);
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
-                    ? resourceGroups.Where(resourceGroup => this.NormalizeLetterOrDigitToUpperInvariant(resourceGroup.Location).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location))).ToList()
+                    ? resourceGroups.Where(resourceGroup => resourceGroup.Location.EqualsAsLocation(location)).ToList()
                     : resourceGroups;
 
                 // TODO: Replace with server side filtering when available
@@ -706,7 +626,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
                 catch (CloudException)
                 {
-                    throw new ArgumentException(ProjectResources.ResourceGroupDoesntExists);
+                    WriteError(ProjectResources.ResourceGroupDoesntExists);
                 }
             }
 
@@ -721,10 +641,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             if (!ResourceManagementClient.ResourceGroups.CheckExistence(name).Value)
             {
-                throw new ArgumentException(ProjectResources.ResourceGroupDoesntExists);
+                WriteError(ProjectResources.ResourceGroupDoesntExists);
             }
-
-            ResourceManagementClient.ResourceGroups.Delete(name);
+            else
+            {
+                ResourceManagementClient.ResourceGroups.Delete(name);
+            }
         }
 
         /// <summary>
@@ -785,7 +707,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     WriteError(string.Format(ErrorFormat, error.Code, error.Message));
                     if (error.Details != null && error.Details.Count > 0)
                     {
-                        foreach(var innerError in error.Details)
+                        foreach (var innerError in error.Details)
                         {
                             DisplayInnerDetailErrorMessage(innerError);
                         }
@@ -798,7 +720,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
 
-            ResourceManagementClient.Deployments.CreateOrUpdateAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format(ProjectResources.CreatedDeployment, parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 

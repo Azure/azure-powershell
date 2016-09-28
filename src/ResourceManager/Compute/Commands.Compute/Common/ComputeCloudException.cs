@@ -14,12 +14,9 @@
 
 
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
-using System;
 using System.Net;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Common
 {
@@ -36,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         {
             if (cloudException == null)
             {
-                throw new ArgumentNullException("cloudException");
+                return "No information in the cloud exception.";
             }
 
             var sb = new StringBuilder();
@@ -51,25 +48,44 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 return sb.ToString();
             }
 
-            if (cloudException.Response.StatusCode.Equals(HttpStatusCode.OK)
-                && cloudException.Response.Content != null)
+            if (cloudException.Response.Content != null)
             {
                 var errorReturned = JsonConvert.DeserializeObject<PSComputeLongRunningOperation>(
                     cloudException.Response.Content);
 
-                sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
-                sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
-                sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
-                sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
-                if (errorReturned.Error == null)
+                if (errorReturned.Error != null)
                 {
-                    return sb.ToString();
+                    sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
+                    sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
                 }
 
-                sb.AppendLine().AppendFormat("ErrorCode: {0}", errorReturned.Error.Code);
-                sb.AppendLine().AppendFormat("ErrorMessage: {0}", errorReturned.Error.Message);
+                if (errorReturned.StartTime != null)
+                {
+                    sb.AppendLine().AppendFormat("StartTime: {0}", errorReturned.StartTime);
+                }
+
+                if (errorReturned.EndTime != null)
+                {
+                    sb.AppendLine().AppendFormat("EndTime: {0}", errorReturned.EndTime);
+                }
+
+                if (string.IsNullOrWhiteSpace(errorReturned.OperationId) &&
+                    !string.IsNullOrWhiteSpace(errorReturned.Name))
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.Name);
+                }
+                else if (!string.IsNullOrWhiteSpace(errorReturned.OperationId))
+                {
+                    sb.AppendLine().AppendFormat("OperationID: {0}", errorReturned.OperationId);
+                }
+
+                if (!string.IsNullOrWhiteSpace(errorReturned.Status))
+                {
+                    sb.AppendLine().AppendFormat("Status: {0}", errorReturned.Status);
+                }
             }
-            else
+
+            if (!cloudException.Response.StatusCode.Equals(HttpStatusCode.OK))
             {
                 sb.AppendLine().AppendFormat("StatusCode: {0}", cloudException.Response.StatusCode.GetHashCode());
                 sb.AppendLine().AppendFormat("ReasonPhrase: {0}", cloudException.Response.ReasonPhrase);
@@ -82,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
                 string operationId = cloudException.RequestId;
 
                 sb.AppendLine().AppendFormat(
-                    "OperationID : '{0}'",
+                    "OperationID : {0}",
                     operationId);
             }
             return sb.ToString();

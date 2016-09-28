@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             RedisListKeysResult keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
             WriteObject(new RedisAccessKeys()
             {

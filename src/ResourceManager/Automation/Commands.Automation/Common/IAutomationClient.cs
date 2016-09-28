@@ -207,6 +207,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region HybridrunbookWorker
+        HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<HybridRunbookWorkerGroup> ListHybridRunbookWorkerGroups(string resourceGroupName, string automationAccountName, ref string nextLink);
+        #endregion
+
         #region Credentials
 
         CredentialInfo CreateCredential(string resourceGroupName, string automationAccountName, string name, string userName, string password, string description);
@@ -285,8 +291,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<JobSchedule> ListJobSchedulesByRunbookName(string resourceGroupName, string automationAccountName, string runbookName);
 
         IEnumerable<JobSchedule> ListJobSchedulesByScheduleName(string resourceGroupName, string automationAccountName, string scheduleName);
-
-        JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters);
+                
+        JobSchedule RegisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName, IDictionary parameters, string RunOn);
 
         void UnregisterScheduledRunbook(string resourceGroupName, string automationAccountName, Guid jobScheduleId);
 

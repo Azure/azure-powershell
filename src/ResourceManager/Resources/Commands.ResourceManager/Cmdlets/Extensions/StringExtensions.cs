@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Linq;
 
     /// <summary>
     /// String extension methods
@@ -93,6 +94,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         {
             DateTime parsedDateTime;
             return DateTime.TryParseExact(s: source, format: format, provider: null, style: styles, result: out parsedDateTime);
+        }
+
+        /// <summary>
+        /// Normalize a location string. 
+        /// </summary>
+        /// <param name="location">The location string.</param>
+        public static string ToNormalizedLocation(this string location)
+        {
+            return location == null ? null : new string(location.Where(c => char.IsLetterOrDigit(c)).ToArray());
+        }
+
+        /// <summary>
+        /// Compare two location strings. 
+        /// </summary>
+        /// <param name="location1">The first location string.</param>
+        /// <param name="location2">The second location string.</param>
+        public static bool EqualsAsLocation(this string location1, string location2)
+        {
+            return location1.ToNormalizedLocation().EqualsInsensitively(location2.ToNormalizedLocation());
         }
     }
 }

@@ -44,16 +44,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, Position = 2, 
             HelpMessage = ParamHelpMsgs.Container.BackupManagementType)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("AzureVM", "MARS")]
+        [ValidateSet("AzureVM", "MARS", "AzureSQL")]
         public string BackupManagementType { get; set; }
 
         /// <summary>
-        /// Friendly name of the container(s) to be fetched.
+        /// Friendly name of the container(s) to be fetched. This will be deprecated.
         /// </summary>
         [Parameter(Mandatory = false, Position = 3, 
             HelpMessage = ParamHelpMsgs.Container.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Friendly name of the container(s) to be fetched.
+        /// </summary>
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.Container.FriendlyName)]
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// Resource group name of the container(s) to be fetched.
@@ -91,6 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {ContainerParams.ContainerType, ContainerType},
                     {ContainerParams.BackupManagementType, backupManagementTypeNullable},
                     {ContainerParams.Name, Name},
+                    {ContainerParams.FriendlyName, FriendlyName},
                     {ContainerParams.ResourceGroupName, ResourceGroupName},
                     {ContainerParams.Status, Status},
                 }, ServiceClientAdapter);

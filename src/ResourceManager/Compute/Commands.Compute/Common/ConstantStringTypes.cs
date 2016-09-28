@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
         public const string VirtualMachine = "AzureRmVM";
         public const string VirtualMachineExtension = "AzureRmVMExtension";
+        public const string VirtualMachineADDomainExtension = "AzureRmVMADDomainExtension";
         public const string VirtualMachineCustomScriptExtension = "AzureRmVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureRmVMAccessExtension";
         public const string VirtualMachineDiagnosticsExtension = "AzureRmVMDiagnosticsExtension";
@@ -114,6 +115,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string AdditionalUnattendContent = "AzureRmVMAdditionalUnattendContent";
         public const string VaultSecretGroup = "AzureRmVMSecret";
         public const string RemoteDesktopFile = "AzureRmRemoteDesktopFile";
+
+        public const string VirtualMachineScaleSetDiagnosticsExtension = "AzureRmVmssDiagnosticsExtension";
 
         //DSC
         public const string VirtualMachineDscExtension = "AzureRmVMDscExtension";

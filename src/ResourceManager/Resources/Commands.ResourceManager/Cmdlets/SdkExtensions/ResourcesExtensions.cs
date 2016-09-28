@@ -16,15 +16,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
-using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 {
@@ -90,55 +88,58 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                                 ResourceTypeName = resourceType.ResourceType,
                                 Locations = resourceType.Locations != null ? resourceType.Locations.ToArray() : null,
                                 ApiVersions = resourceType.ApiVersions != null ? resourceType.ApiVersions.ToArray() : null,
+                                ZoneMappings = ResourcesExtensions.BuildZoneMappings(resourceType.ZoneMappings)
                             }).ToArray(),
             };
         }
 
-        public static string ConstructTagsTable(Hashtable[] tags)
+        public static Hashtable BuildZoneMappings(IList<ZoneMappingType> zoneMappings)
         {
-            if (tags == null)
+            if (zoneMappings == null)
             {
                 return null;
             }
 
-            Hashtable emptyHashtable = new Hashtable
-                {
-                    {"Name", string.Empty},
-                    {"Value", string.Empty}
-                };
-            StringBuilder resourcesTable = new StringBuilder();
-
-            if (tags.Length > 0)
+            Hashtable zonesHash = new Hashtable();
+            foreach (var zoneMapping in zoneMappings)
             {
-                int maxNameLength = Math.Max("Name".Length, tags.Where(ht => ht.ContainsKey("Name")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Name"].ToString().Length));
-                int maxValueLength = Math.Max("Value".Length, tags.Where(ht => ht.ContainsKey("Value")).DefaultIfEmpty(emptyHashtable).Max(ht => ht["Value"].ToString().Length));
-
-                string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
-                resourcesTable.AppendLine();
-                resourcesTable.AppendFormat(rowFormat, "Name", "Value");
-                resourcesTable.AppendFormat(rowFormat,
-                    GeneralUtilities.GenerateSeparator(maxNameLength, "="),
-                    GeneralUtilities.GenerateSeparator(maxValueLength, "="));
-
-                foreach (Hashtable tag in tags)
-                {
-                    PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                    if (tagValuePair != null)
-                    {
-                        if (tagValuePair.Name.StartsWith(TagsClient.ExecludedTagPrefix))
-                        {
-                            continue;
-                        }
-
-                        if (tagValuePair.Value == null)
-                        {
-                            tagValuePair.Value = string.Empty;
-                        }
-                        resourcesTable.AppendFormat(rowFormat, tagValuePair.Name, tagValuePair.Value);
-                    }
-                }
+                zonesHash[zoneMapping.Location] = zoneMapping.Zones.ToArray();
             }
 
+            return zonesHash;
+        }
+
+        public static string ConstructTagsTable(Hashtable tags)
+        {
+            if (tags == null || tags.Count == 0)
+            {
+                return null;
+            }
+
+            StringBuilder resourcesTable = new StringBuilder();
+
+            var tagsDictionary = TagsConversionHelper.CreateTagDictionary(tags, false);
+
+            int maxNameLength = Math.Max("Name".Length, tagsDictionary.Max(tag => tag.Key.Length));
+            int maxValueLength = Math.Max("Value".Length, tagsDictionary.Max(tag => tag.Value.Length));
+
+            string rowFormat = "{0, -" + maxNameLength + "}  {1, -" + maxValueLength + "}\r\n";
+            resourcesTable.AppendLine();
+            resourcesTable.AppendFormat(rowFormat, "Name", "Value");
+            resourcesTable.AppendFormat(rowFormat,
+                GeneralUtilities.GenerateSeparator(maxNameLength, "="),
+                GeneralUtilities.GenerateSeparator(maxValueLength, "="));
+
+            foreach (var tag in tagsDictionary)
+            {
+                if (tag.Key.StartsWith(TagsClient.ExecludedTagPrefix))
+                {
+                    continue;
+                }
+
+                resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
+            }
+            
             return resourcesTable.ToString();
         }
 

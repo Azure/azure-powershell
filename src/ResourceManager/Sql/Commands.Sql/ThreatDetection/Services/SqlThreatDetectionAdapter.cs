@@ -23,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 {
@@ -85,9 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
             }
 
-            DatabaseSecurityAlertPolicy threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetDatabaseSecurityAlertPolicy(resourceGroup, serverName, databaseName, requestId);
 
-            DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = ModelizeDatabaseThreatDetectionPolicy(threatDetectionPolicy);
+            var databaseThreatDetectionPolicyModel = ModelizeThreatDetectionPolicy(threatDetectionPolicy.Properties, new DatabaseThreatDetectionPolicyModel()) as DatabaseThreatDetectionPolicyModel;
             databaseThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
             databaseThreatDetectionPolicyModel.ServerName = serverName;
             databaseThreatDetectionPolicyModel.DatabaseName = databaseName;
@@ -95,73 +96,79 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         }
 
         /// <summary>
+        /// Provides a database threat detection policy model for the given database
+        /// </summary>
+        public ServerThreatDetectionPolicyModel GetServerThreatDetectionPolicy(string resourceGroup, string serverName, string requestId)
+        {
+            if (!IsRightServerVersionForThreatDetection(resourceGroup, serverName, requestId))
+            {
+                throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
+            }
+
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(resourceGroup, serverName, requestId);
+
+            var serverThreatDetectionPolicyModel = ModelizeThreatDetectionPolicy(threatDetectionPolicy.Properties, new ServerThreatDetectionPolicyModel()) as ServerThreatDetectionPolicyModel;
+            serverThreatDetectionPolicyModel.ResourceGroupName = resourceGroup;
+            serverThreatDetectionPolicyModel.ServerName = serverName;
+            return serverThreatDetectionPolicyModel;
+        }
+
+
+        /// <summary>
         /// Transforms the given database policy object to its cmdlet model representation
         /// </summary>
-        private DatabaseThreatDetectionPolicyModel ModelizeDatabaseThreatDetectionPolicy(DatabaseSecurityAlertPolicy threatDetectionPolicy)
-        {
-            DatabaseThreatDetectionPolicyModel databaseThreatDetectionPolicyModel = new DatabaseThreatDetectionPolicyModel();
-            DatabaseSecurityAlertPolicyProperties threatDetectionProperties = threatDetectionPolicy.Properties;
-            databaseThreatDetectionPolicyModel.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
-            databaseThreatDetectionPolicyModel.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
-            databaseThreatDetectionPolicyModel.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
-            ModelizeDisabledAlerts(databaseThreatDetectionPolicyModel, threatDetectionProperties.DisabledAlerts);
-            return databaseThreatDetectionPolicyModel;
+        private BaseThreatDetectionPolicyModel ModelizeThreatDetectionPolicy(BaseSecurityAlertPolicyProperties threatDetectionProperties, BaseThreatDetectionPolicyModel model)
+        {  
+            model.ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionProperties.State);
+            model.NotificationRecipientsEmails = threatDetectionProperties.EmailAddresses;
+            model.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
+            ModelizeDisabledAlerts(model, threatDetectionProperties.DisabledAlerts);
+            return model;
         }
 
         /// <summary>
         /// Transforms the given policy state in a string form to its cmdlet model representation
         /// </summary>
-        private ThreatDetectionStateType ModelizeThreatDetectionState(string threatDetectionState)
+        private static ThreatDetectionStateType ModelizeThreatDetectionState(string threatDetectionState)
         {
-            if (threatDetectionState == SecurityConstants.ThreatDetectionEndpoint.New) return ThreatDetectionStateType.New;
-            if (threatDetectionState == SecurityConstants.ThreatDetectionEndpoint.Enabled) return ThreatDetectionStateType.Enabled;
-            return ThreatDetectionStateType.Disabled;
+            ThreatDetectionStateType value;
+            Enum.TryParse(threatDetectionState, true, out value);
+            return value;
         }
 
         /// <summary>
         /// Transforms the given policy EmailAccountAdmins in a boolean form to its cmdlet model representation
         /// </summary>
-        private bool ModelizeThreatDetectionEmailAdmins(string emailAccountAdminsState)
+        private static bool ModelizeThreatDetectionEmailAdmins(string emailAccountAdminsState)
         {
-            if (emailAccountAdminsState == SecurityConstants.ThreatDetectionEndpoint.Enabled) return true;
-            return false;
+            return emailAccountAdminsState.Equals(ThreatDetectionStateType.Enabled.ToString(), StringComparison.InvariantCulture);
         }
 
         /// <summary>
         /// Updates the given model with all the disabled alerts information
         /// </summary>
-        private void ModelizeDisabledAlerts(DatabaseThreatDetectionPolicyModel model, string disabledAlerts)
+        private static void ModelizeDisabledAlerts(BaseThreatDetectionPolicyModel model, string disabledAlerts)
         {
-            List<string> disabledAlertsArray = disabledAlerts.Split(';').Select(p => p.Trim()).ToList();
-
-            HashSet<DetectionType> detectionTypes = new HashSet<DetectionType>();
-            if (disabledAlertsArray.Contains(SecurityConstants.Sql_Injection)) detectionTypes.Add(DetectionType.Sql_Injection);
-            if (disabledAlertsArray.Contains(SecurityConstants.Sql_Injection_Vulnerability)) detectionTypes.Add(DetectionType.Sql_Injection_Vulnerability);
-            if (disabledAlertsArray.Contains(SecurityConstants.Access_Anomaly)) detectionTypes.Add(DetectionType.Access_Anomaly);
-            if (disabledAlertsArray.Contains(SecurityConstants.Usage_Anomaly)) detectionTypes.Add(DetectionType.Usage_Anomaly);
-            model.ExcludedDetectionTypes = detectionTypes.ToArray();
-        }
-
-        /// <summary>
-        /// Transforms the given policy state into a string representation
-        /// </summary>
-        private string PolicizeThreatDetectionState(ThreatDetectionStateType threatDetectionState)
-        {
-            switch (threatDetectionState)
+            Func<string, DetectionType> toDetectionType = (s) =>
             {
-                case ThreatDetectionStateType.Enabled:
-                    return SecurityConstants.ThreatDetectionEndpoint.Enabled;
-                case ThreatDetectionStateType.New:
-                    return SecurityConstants.ThreatDetectionEndpoint.New;
-                default:
-                    return SecurityConstants.ThreatDetectionEndpoint.Disabled;
+                DetectionType value;
+                Enum.TryParse(s.Trim(), true, out value);
+                return value;
+            };
+            if (string.IsNullOrEmpty(disabledAlerts))
+            {
+                model.ExcludedDetectionTypes = new DetectionType[] {};
             }
+            else
+            {
+                model.ExcludedDetectionTypes = disabledAlerts.Split(';').Select(toDetectionType).ToArray();
+            }        
         }
 
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseThreatDetectionPolicy(DatabaseThreatDetectionPolicyModel model, String clientId)
+        public void SetDatabaseThreatDetectionPolicy(DatabaseThreatDetectionPolicyModel model, string clientId)
         {
             if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             {
@@ -171,11 +178,13 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 }
 
                 // Check that auditing is turned on:
-                DatabaseAuditingPolicyModel databaseAuditingPolicyModel = AuditingAdapter.GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+                DatabaseAuditingPolicyModel databaseAuditingPolicyModel;
+                AuditingAdapter.GetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, out databaseAuditingPolicyModel);
                 AuditStateType auditingState = databaseAuditingPolicyModel.AuditState;
                 if (databaseAuditingPolicyModel.UseServerDefault == UseServerDefaultOptions.Enabled)
                 {
-                    ServerAuditingPolicyModel serverAuditingPolicyModel = AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId);
+                    ServerAuditingPolicyModel serverAuditingPolicyModel;
+                    AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, out serverAuditingPolicyModel);
                     auditingState = serverAuditingPolicyModel.AuditState;
                 }
                 if (auditingState != AuditStateType.Enabled)
@@ -184,9 +193,35 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                 }
             }
 
-            DatabaseSecurityAlertPolicyCreateOrUpdateParameters databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
+            var databaseSecurityAlertPolicyParameters = PolicizeDatabaseSecurityAlertModel(model);
             ThreatDetectionCommunicator.SetDatabaseSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, databaseSecurityAlertPolicyParameters);
         }
+
+        /// <summary>
+        /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
+        /// </summary>
+        public void SetServerThreatDetectionPolicy(ServerThreatDetectionPolicyModel model, string clientId)
+        {
+            if (model.ThreatDetectionState == ThreatDetectionStateType.Enabled)
+            {
+                if (!IsRightServerVersionForThreatDetection(model.ResourceGroupName, model.ServerName, clientId))
+                {
+                    throw new Exception(Properties.Resources.ServerNotApplicableForThreatDetection);
+                }
+
+                // Check that auditing is turned on:
+                ServerAuditingPolicyModel serverAuditingPolicyModel;
+                AuditingAdapter.GetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, out serverAuditingPolicyModel);
+                if (serverAuditingPolicyModel.AuditState != AuditStateType.Enabled)
+                {
+                    throw new Exception(Properties.Resources.AuditingIsTurnedOff);
+                }
+            }
+
+            var serverSecurityAlertPolicyParameters = PolicizeServerSecurityAlertModel(model);
+            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, clientId, serverSecurityAlertPolicyParameters);
+        }
+
 
         /// <summary>
         /// Checks whether the given alert type was used
@@ -209,29 +244,31 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             {
                 return null;
             }
+            if (model.ExcludedDetectionTypes.Any(t => t == DetectionType.None))
+            {
+                if (model.ExcludedDetectionTypes.Count() == 1)
+                {
+                    return string.Empty;
+                }
+                if (model.ExcludedDetectionTypes.Any(t => t != DetectionType.None))
+                {
+                    throw new Exception(Properties.Resources.InvalidDetectionTypeList);
+                }  
+            }
+            return string.Join(";", model.ExcludedDetectionTypes.Select(t => t.ToString()));
+        }
 
-            StringBuilder detectionTypes = new StringBuilder();
-            if (IsDetectionTypeOn(DetectionType.Sql_Injection, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Sql_Injection).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Sql_Injection_Vulnerability, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Sql_Injection_Vulnerability).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Access_Anomaly, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Access_Anomaly).Append(";");
-            }
-            if (IsDetectionTypeOn(DetectionType.Usage_Anomaly, model.ExcludedDetectionTypes))
-            {
-                detectionTypes.Append(SecurityConstants.Usage_Anomaly).Append(";");
-            }
-            if (detectionTypes.Length != 0)
-            {
-                detectionTypes.Remove(detectionTypes.Length - 1, 1); // remove trailing semi-colon
-            }
-            return detectionTypes.ToString();
+        /// <summary>
+        /// Takes the cmdlets model object and transform it to the policy as expected by the endpoint
+        /// </summary>
+        /// <param name="model">The SecurityAlert model object</param>
+        /// <returns>The communication model object</returns>
+        private ServerSecurityAlertPolicyCreateOrUpdateParameters PolicizeServerSecurityAlertModel(ServerThreatDetectionPolicyModel model)
+        {
+            var updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
+            var properties = PopulatePolicyProperties(model, new ServerSecurityAlertPolicyProperties()) as ServerSecurityAlertPolicyProperties;
+            updateParameters.Properties = properties;
+            return updateParameters;
         }
 
         /// <summary>
@@ -241,16 +278,23 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// <returns>The communication model object</returns>
         private DatabaseSecurityAlertPolicyCreateOrUpdateParameters PolicizeDatabaseSecurityAlertModel(DatabaseThreatDetectionPolicyModel model)
         {
-            DatabaseSecurityAlertPolicyCreateOrUpdateParameters updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
-            DatabaseSecurityAlertPolicyProperties properties = new DatabaseSecurityAlertPolicyProperties();
+            var updateParameters = new DatabaseSecurityAlertPolicyCreateOrUpdateParameters();
+            var properties = PopulatePolicyProperties(model, new DatabaseSecurityAlertPolicyProperties()) as DatabaseSecurityAlertPolicyProperties;
             updateParameters.Properties = properties;
-            properties.State = PolicizeThreatDetectionState(model.ThreatDetectionState);
-            properties.EmailAddresses = model.NotificationRecipientsEmails ?? "";
-            properties.EmailAccountAdmins = model.EmailAdmins
-                ? SecurityConstants.ThreatDetectionEndpoint.Enabled
-                : SecurityConstants.ThreatDetectionEndpoint.Disabled;
-            properties.DisabledAlerts = ExtractExcludedDetectionType(model);
             return updateParameters;
         }
+
+        private BaseSecurityAlertPolicyProperties PopulatePolicyProperties(BaseThreatDetectionPolicyModel model, BaseSecurityAlertPolicyProperties properties)
+        {
+            properties.State = model.ThreatDetectionState.ToString();
+            properties.EmailAddresses = model.NotificationRecipientsEmails ?? "";
+            properties.EmailAccountAdmins = model.EmailAdmins ?
+                ThreatDetectionStateType.Enabled.ToString() :
+                ThreatDetectionStateType.Disabled.ToString();
+            properties.DisabledAlerts = ExtractExcludedDetectionType(model);
+            return properties;
+        }
     }
+
+
 }

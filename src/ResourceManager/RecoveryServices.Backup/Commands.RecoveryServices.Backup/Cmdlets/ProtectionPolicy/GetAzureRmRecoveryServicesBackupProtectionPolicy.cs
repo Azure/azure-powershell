@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets the list of protection policies associated with this recovery services vault
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),
             OutputType(typeof(PolicyBase), typeof(IList<PolicyBase>))]
     public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Name of the policy to be fetched.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1, 
+        [Parameter(ParameterSetName = PolicyNameParamSet, Position = 1,
             Mandatory = true, HelpMessage = ParamHelpMsgs.Policy.Name)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -50,9 +50,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Workload type of the policy to be fetched
         /// </summary>
-        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2, 
+        [Parameter(ParameterSetName = WorkloadParamSet, Position = 2,
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2, 
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 2,
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
         [ValidateNotNullOrEmpty]
         public WorkloadType? WorkloadType { get; set; }
@@ -60,97 +60,112 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Backup management type of the policy to be fetched
         /// </summary>
-        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3, 
+        [Parameter(ParameterSetName = WorkloadBackupMangementTypeParamSet, Position = 3,
             Mandatory = true, HelpMessage = ParamHelpMsgs.Common.BackupManagementType)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType? BackupManagementType { get; set; }
 
         public override void ExecuteCmdlet()
         {
-           ExecutionBlock(() =>
-           {
-               base.ExecuteCmdlet();
+            ExecutionBlock(() =>
+            {
+                base.ExecuteCmdlet();
 
-               WriteDebug(string.Format("Input params - Name:{0}, " +
-                                     "WorkloadType: {1}, BackupManagementType:{2}, " +
-                                     "ParameterSetName: {3}",
-                                     Name == null ? "NULL" : Name,
-                                     WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
-                                     BackupManagementType.HasValue ? 
-                                     BackupManagementType.ToString() : "NULL",
-                                     this.ParameterSetName));
-               
-               if (this.ParameterSetName == PolicyNameParamSet)
-               {                   
-                   // validate policyName
-                   PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
+                WriteDebug(string.Format("Input params - Name:{0}, " +
+                                      "WorkloadType: {1}, BackupManagementType:{2}, " +
+                                      "ParameterSetName: {3}",
+                                      Name == null ? "NULL" : Name,
+                                      WorkloadType.HasValue ? WorkloadType.ToString() : "NULL",
+                                      BackupManagementType.HasValue ?
+                                      BackupManagementType.ToString() : "NULL",
+                                      this.ParameterSetName));
 
-                   // query service
-                   ServiceClientModel.ProtectionPolicyResponse policy = 
-                       PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                     Name,
-                                                     ServiceClientAdapter);
-                   if (policy == null)
-                   {
-                       throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
-                   }
+                if (this.ParameterSetName == PolicyNameParamSet)
+                {
+                    // validate policyName
+                    PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
-                   WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
-               }
-               else
-               {
-                   List<PolicyBase> policyList = new List<PolicyBase>();
-                   string serviceClientProviderType = null;                   
+                    // query service
+                    ServiceClientModel.ProtectionPolicyResponse policy =
+                        PolicyCmdletHelpers.GetProtectionPolicyByName(
+                                                      Name,
+                                                      ServiceClientAdapter);
+                    if (policy == null)
+                    {
+                        throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
+                    }
 
-                   switch (this.ParameterSetName)
-                   {
-                       case WorkloadParamSet:
-                           if (WorkloadType == Models.WorkloadType.AzureVM)
-                           {
-                               serviceClientProviderType = 
-                                   ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
-                           }
-                           break;
+                    WriteObject(ConversionHelpers.GetPolicyModel(policy.Item));
+                }
+                else
+                {
+                    List<PolicyBase> policyList = new List<PolicyBase>();
+                    string serviceClientProviderType = null;
 
-                       case WorkloadBackupMangementTypeParamSet:
-                           if (WorkloadType == Models.WorkloadType.AzureVM)
-                           {
-                               if (BackupManagementType != Models.BackupManagementType.AzureVM)
-                               {
-                                   throw new ArgumentException(
-                                       Resources.AzureVMUnsupportedBackupManagementTypeException);
-                               }
-                               serviceClientProviderType = ServiceClientHelpers.
-                                   GetServiceClientProviderType(Models.WorkloadType.AzureVM);
-                           }
-                           else
-                           {
-                               throw new ArgumentException(string.Format(
-                                           Resources.UnsupportedWorkloadBackupManagementTypeException,       
-                                           WorkloadType.ToString(),
-                                           BackupManagementType.ToString()));
-                           }
-                           break;
+                    switch (this.ParameterSetName)
+                    {
+                        case WorkloadParamSet:
+                            if (WorkloadType == Models.WorkloadType.AzureVM)
+                            {
+                                serviceClientProviderType =
+                                    ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureVM);
+                            }
+                            else if (WorkloadType == Models.WorkloadType.AzureSQLDatabase)
+                            {
+                                serviceClientProviderType = ServiceClientHelpers.GetServiceClientProviderType(Models.WorkloadType.AzureSQLDatabase);
+                            }
+                            break;
 
-                       default:
-                           break;
-                   }
+                        case WorkloadBackupMangementTypeParamSet:
+                            if (WorkloadType == Models.WorkloadType.AzureVM)
+                            {
+                                if (BackupManagementType != Models.BackupManagementType.AzureVM)
+                                {
+                                    throw new ArgumentException(
+                                        Resources.AzureVMUnsupportedBackupManagementTypeException);
+                                }
+                                serviceClientProviderType = ServiceClientHelpers.
+                                    GetServiceClientProviderType(Models.WorkloadType.AzureVM);
+                            }
+                            else if (WorkloadType == Models.WorkloadType.AzureSQLDatabase)
+                            {
+                                if (BackupManagementType != Models.BackupManagementType.AzureSQL)
+                                {
+                                    throw new ArgumentException(
+                                        Resources.AzureSqlUnsupportedBackupManagementTypeException);
+                                }
+                                serviceClientProviderType =
+                                    ServiceClientHelpers.GetServiceClientProviderType(
+                                        Models.WorkloadType.AzureSQLDatabase);
+                            }
+                            else
+                            {
+                                throw new ArgumentException(string.Format(
+                                    Resources.UnsupportedWorkloadBackupManagementTypeException,
+                                    WorkloadType.ToString(),
+                                    BackupManagementType.ToString()));
+                            }
+                            break;
 
-                   ServiceClientModel.ProtectionPolicyQueryParameters queryParams = 
-                       new ServiceClientModel.ProtectionPolicyQueryParameters()
-                   {
-                       BackupManagementType = serviceClientProviderType
-                   };
+                        default:
+                            break;
+                    }
 
-                   WriteDebug("going to query service to get list of policies");
-                   ServiceClientModel.ProtectionPolicyListResponse respList = 
-                       ServiceClientAdapter.ListProtectionPolicy(queryParams);
-                   WriteDebug("Successfully got response from service");
+                    ServiceClientModel.ProtectionPolicyQueryParameters queryParams =
+                        new ServiceClientModel.ProtectionPolicyQueryParameters()
+                    {
+                        BackupManagementType = serviceClientProviderType
+                    };
 
-                   policyList = ConversionHelpers.GetPolicyModelList(respList);
-                   WriteObject(policyList, enumerateCollection: true);
-               }
-           });
+                    WriteDebug("going to query service to get list of policies");
+                    ServiceClientModel.ProtectionPolicyListResponse respList =
+                        ServiceClientAdapter.ListProtectionPolicy(queryParams);
+                    WriteDebug("Successfully got response from service");
+
+                    policyList = ConversionHelpers.GetPolicyModelList(respList);
+                    WriteObject(policyList, enumerateCollection: true);
+                }
+            });
         }
     }
 }

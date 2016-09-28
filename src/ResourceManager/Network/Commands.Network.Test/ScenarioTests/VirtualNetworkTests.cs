@@ -39,5 +39,19 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-subnetCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualNetworkPeeringCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkPeeringCRUD");
+        }
+
+        [Fact(Skip = "test is timing out , ahmed salma to fix")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceNavigationLinksOnSubnetCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ResourceNavigationLinksCRUD");
+        }
     }
 }

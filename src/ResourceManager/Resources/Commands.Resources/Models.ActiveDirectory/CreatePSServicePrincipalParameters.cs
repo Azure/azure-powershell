@@ -21,5 +21,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public Guid ApplicationId { get; set; }
 
         public bool AccountEnabled { get; set; }
+
+        public PSADKeyCredential[] KeyCredentials { get; set; }
+
+        public PSADPasswordCredential[] PasswordCredentials { get; set; }
     }
 }

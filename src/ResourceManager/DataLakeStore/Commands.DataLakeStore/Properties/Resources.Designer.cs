@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download file data.
+        /// </summary>
+        internal static string DownloadFileDataMessage {
+            get {
+                return ResourceManager.GetString("DownloadFileDataMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find account: &apos;{0}&apos; in any resource group in the currently selected subscription: {1}. Please ensure this account exists and that the current user has access to it..
         /// </summary>
         internal static string FailedToDiscoverResourceGroup {
@@ -142,7 +151,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not a file. This cmdlet can only export individual files that exist in ADL.
+        ///   Looks up a localized string similar to The path &apos;{0}&apos; either does not exist or is not accessible. Please check the path and permission..
         /// </summary>
         internal static string InvalidExportPathType {
             get {
@@ -223,6 +232,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download a very large amount of data.
+        /// </summary>
+        internal static string LargeDownloadWarning {
+            get {
+                return ResourceManager.GetString("LargeDownloadWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The destination path &apos;{0}&apos; already exists. Please set overwrite to true or use the force switch in order to overwrite this file.
         /// </summary>
         internal static string LocalFileAlreadyExists {
@@ -250,11 +268,29 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry.
+        /// </summary>
+        internal static string ObsoleteWarningForAclObjects {
+            get {
+                return ResourceManager.GetString("ObsoleteWarningForAclObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified offset: {0} is greater than the length of the file to preview. Please select an offset less than: {1} and greater than or equal to zero..
         /// </summary>
         internal static string OffsetOutOfRange {
             get {
                 return ResourceManager.GetString("OffsetOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite existing file &apos;{0}&apos;?.
+        /// </summary>
+        internal static string OverwriteFileMessage {
+            get {
+                return ResourceManager.GetString("OverwriteFileMessage", resourceCulture);
             }
         }
         
@@ -349,6 +385,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder permissions at path: &apos;{0}&apos; ....
+        /// </summary>
+        internal static string SetDataLakeStoreItemPermissions {
+            get {
+                return ResourceManager.GetString("SetDataLakeStoreItemPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {
@@ -367,15 +412,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The usage of &apos;Tags&apos; parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494.
-        /// </summary>
-        internal static string TagsWarning {
-            get {
-                return ResourceManager.GetString("TagsWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The operation is being cancelled, please wait....
         /// </summary>
         internal static string TaskCancelledMessage {
@@ -390,6 +426,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string UploadFailedMessage {
             get {
                 return ResourceManager.GetString("UploadFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload file or directory.
+        /// </summary>
+        internal static string UploadFileMessage {
+            get {
+                return ResourceManager.GetString("UploadFileMessage", resourceCulture);
             }
         }
     }

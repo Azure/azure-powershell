@@ -19,7 +19,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.Workspace)]
+    [Cmdlet(VerbsCommon.Remove, Constants.Workspace, SupportsShouldProcess = true)]
     public class RemoveAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

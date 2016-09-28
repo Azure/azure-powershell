@@ -931,6 +931,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unregister.
+        /// </summary>
+        internal static string UnregisterContainerAction {
+            get {
+                return ResourceManager.GetString("UnregisterContainerAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Backup Container &apos;{0}&apos; in resource group &apos;{1}&apos;.
+        /// </summary>
+        internal static string UnregisterContainerTarget {
+            get {
+                return ResourceManager.GetString("UnregisterContainerTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unregister Server.
         /// </summary>
         internal static string UnregisterServerCaption {

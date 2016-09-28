@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable[] Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         public override void ExecuteCmdlet()
         {
-            if (Tags != null && Tags.Length > 0)
-            {
-                WriteWarningWithTimestamp(Properties.Resources.TagsWarning);
-            }
-
             DataLakeStoreAccountInfo defaultAccount = null;
             if (!string.IsNullOrEmpty(DefaultDataLakeStore))
             {

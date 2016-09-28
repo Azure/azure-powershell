@@ -109,3 +109,58 @@ function Test-AzureServiceDiagnosticsExtensionConfigurationArray
         Cleanup-CloudService $svcName
     }
 }
+
+<#
+.SYNOPSIS
+Test Set command can accept diagnostics configuration array and update multiple roles with differen configuration.
+This test also include some other usage of the command:
+    1) Can accept both .xml config and .wadcfgx as config file
+    2) The Get command can accept -Role parameter and filter the result accordingly
+#>
+function Test-AzureServiceDiagnosticsExtensionWrongServiceName
+{
+    Set-StrictMode -Version latest; $ErrorActionPreference = 'Stop'
+
+    # Setup
+    $location = Get-DefaultLocation
+    $svcName = Get-CloudServiceName
+    $storageName = getAssetName
+    $svcName = "onesdk5266"
+    $storageName = "onesdk383"
+
+    try
+    {
+        # Initialize
+        New-AzureStorageAccount -StorageAccountName $storageName -Location $location
+        Set-CurrentStorageAccountName $storageName
+
+        $testMode = Get-ComputeTestMode;
+        if ($testMode.ToLower() -ne 'playback')
+        {
+            $cscpkg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg";
+        }
+        else
+        {
+            $cscpkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
+        }
+        $cscfg = "$TestOutputRoot\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg"
+        New-AzureService -ServiceName $svcName -Location $location
+        New-AzureDeployment -ServiceName $svcName -Slot Production -Package $cscpkg -Configuration $cscfg
+
+        $xmlConfig = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\CloudServiceConfig.xml"
+        $workerRoleConfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WorkerRole1" -StorageAccountName $storageName -DiagnosticsConfigurationPath $xmlConfig
+
+        $wadcfgxConfig = "$TestOutputRoot\Resources\DiagnosticsExtension\Files\diagnostics.wadcfgx"
+        $webRoleConfig = New-AzureServiceDiagnosticsExtensionConfig -Role "WebRole1" -StorageAccountName $storageName -DiagnosticsConfigurationPath $wadcfgxConfig
+
+        Assert-ThrowsContains `
+            { Set-AzureServiceDiagnosticsExtension -ServiceName "ab" -DiagnosticsConfiguration @($workerRoleConfig, $webRoleConfig) } `
+            "Cannot find cloud service";
+    }
+    finally
+    {
+        # Cleanup
+        Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+        Cleanup-CloudService $svcName
+    }
+}

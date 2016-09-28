@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.1.7'
+ModuleVersion = '2.1.0'
   
 # ID used to uniquely identify this module  
 GUID = 'fa236c1f-6464-4d6a-a48d-db47c0e7923d'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.8'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.1.0'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -90,7 +90,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+       Tags = @("Azure", "ResourceManager", "ARM", "KeyVault")
 
         # A URL to the license for this module.
         LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'

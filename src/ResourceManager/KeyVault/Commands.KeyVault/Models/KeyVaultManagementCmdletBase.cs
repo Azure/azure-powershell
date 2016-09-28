@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using System;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     _dataServiceCredential = new DataServiceCredential(AzureSession.AuthenticationFactory, DefaultProfile.Context, AzureEnvironment.Endpoint.Graph);
                     _activeDirectoryClient = new ActiveDirectoryClient(new Uri(string.Format("{0}/{1}",
                         DefaultProfile.Context.Environment.Endpoints[AzureEnvironment.Endpoint.Graph], _dataServiceCredential.TenantId)),
-                        () => Task.FromResult(_dataServiceCredential.AccessToken));
+                        () => Task.FromResult(_dataServiceCredential.GetToken()));
                 }
                 return this._activeDirectoryClient;
             }
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             IResourceManagementClient armClient = this.ResourcesClient.ResourceManagementClient;
 
             PSTagValuePair tagValuePair = new PSTagValuePair();
-            if (tag != null)
+            if (tag != null && tag.Count > 0)
             {
                 tagValuePair = TagsConversionHelper.Create(tag);
                 if (tagValuePair == null)
@@ -235,6 +235,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         };
 
         protected readonly string[] DefaultPermissionsToSecrets = { "all" };
+        protected readonly string[] DefaultPermissionsToCertificates = { "all" };
         protected readonly string DefaultSkuFamily = "A";
         protected readonly string DefaultSkuName = "Standard";
     }

@@ -696,8 +696,8 @@
 				<maml:name>Kind</maml:name>
 				<maml:description>
 					<maml:para>Kind of Storage Account. Valid values are:
-• Storage (Supports Blob, Table, Queue, and File data)
-• BlobStorage (Supports Blob data only)
+• Storage (General-purpose storage account which supports storing Blobs, Tables, Queues, Files and Disks)
+• BlobStorage (Blob storage account which supports storing Blobs only)
 Default is Storage.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -705,7 +705,8 @@ Default is Storage.</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 				<maml:name>AccessTier</maml:name>
 				<maml:description>
-					<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+					<maml:para>Access Tier for Blob Storage Accounts. This is mandatory when Storage Account Kind is equal to BlobStorage. Setting this will fail if Storage Account Kind is equal to Storage.
+
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -741,11 +742,11 @@ Valid values are:
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -809,8 +810,8 @@ Valid values are:
 			<maml:name>Kind</maml:name>
 			<maml:description>
 				<maml:para>Kind of Storage Account. Valid values are:
-• Storage (Supports Blob, Table, Queue, and File data)
-• BlobStorage (Supports Blob data only)
+• Storage (General-purpose storage account which supports storing Blobs, Tables, Queues, Files and Disks)
+• BlobStorage (Blob storage account which supports storing Blobs only)
 Default is Storage.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -823,7 +824,7 @@ Default is Storage.</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
 			<maml:name>AccessTier</maml:name>
 			<maml:description>
-				<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+				<maml:para>Access Tier for Blob Storage Accounts. This is mandatory when Storage Account Kind is equal to BlobStorage. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -884,13 +885,13 @@ Valid values are:
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="9">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -960,7 +961,7 @@ Valid values are:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Location &quot;US West&quot; -SkuName &quot;Standard_GRS&quot; -Kind &quot;Storage&quot;</dev:code>
+			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Location &quot;US West&quot; -SkuName &quot;Standard_GRS&quot; -Kind &quot;Storage&quot; -Tag @{tag0=&quot;value0&quot;;tag1=&quot;value1&quot;}</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -1217,6 +1218,13 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountNam
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Force to Delete the Account</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
 				<maml:description>
 					<maml:para />
@@ -1229,6 +1237,13 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountNam
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1258,6 +1273,18 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountNam
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Force to Delete the Account</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>InformationAction</maml:name>
 			<maml:description>
 				<maml:para />
@@ -1277,6 +1304,18 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountNam
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1550,6 +1589,13 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountNam
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Force</maml:name>
+				<maml:description>
+					<maml:para>Force to Set the Account</maml:para>
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>SkuName</maml:name>
 				<maml:description>
@@ -1567,7 +1613,7 @@ Note that Standard_ZRS, Premium_LRS accounts cannot be changed to other account 
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>AccessTier</maml:name>
 				<maml:description>
-					<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+					<maml:para>Access Tier for Blob Storage Accounts. Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -1603,11 +1649,11 @@ Valid values are:
 				<command:parameterValue required="true" variableLength="true">[EncryptionSupportServiceEnum?]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
-				<maml:name>Tags</maml:name>
+				<maml:name>Tag</maml:name>
 				<maml:description>
 					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>InformationAction</maml:name>
@@ -1622,6 +1668,13 @@ Valid values are:
 					<maml:para />
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+				<maml:name>Confirm</maml:name>
+				<maml:description>
+					<maml:para />
+				</maml:description>
+				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 		</command:syntaxItem>
 	</command:syntax>
@@ -1650,6 +1703,18 @@ Valid values are:
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Force</maml:name>
+			<maml:description>
+				<maml:para>Force to Set the Account</maml:para>
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>SkuName</maml:name>
 			<maml:description>
@@ -1672,7 +1737,7 @@ Note that Standard_ZRS, Premium_LRS accounts cannot be changed to other account 
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>AccessTier</maml:name>
 			<maml:description>
-				<maml:para>Access Tier of the Storage Account. This is mandatory when Kind is equal to BlobStorage. Setting this will fail if Kind is equal to Storage.
+				<maml:para>Access Tier for Blob Storage Accounts. Changing the access tier may result in additional charges. See (http://go.microsoft.com/fwlink/?LinkId=786482) to learn more. Setting this will fail if Storage Account Kind is equal to Storage.
 Valid values are:
 • Hot
 • Cool</maml:para>
@@ -1733,13 +1798,13 @@ Valid values are:
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="8">
-			<maml:name>Tags</maml:name>
+			<maml:name>Tag</maml:name>
 			<maml:description>
 				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">Hashtable</command:parameterValue>
 			<dev:type>
-				<maml:name>Hashtable[]</maml:name>
+				<maml:name>Hashtable</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1764,6 +1829,18 @@ Valid values are:
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+			<maml:name>Confirm</maml:name>
+			<maml:description>
+				<maml:para />
+			</maml:description>
+			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+			<dev:type>
+				<maml:name>SwitchParameter</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1809,7 +1886,7 @@ Valid values are:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; # Set account type
+			<dev:code>PS C:\&gt; # Set SkuName
               Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; - SkuName &quot;Standard_RAGRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
@@ -1826,12 +1903,12 @@ Valid values are:
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Set Custom Domain  --------------------------</maml:title>
+			<maml:title>--------------------------  Set Custom Domain and Tags  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; #Set custom domain
-          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -CustomDomainName &quot;www.domainname.com&quot; –UseSubDomain $true</dev:code>
+			<dev:code>PS C:\&gt; #Set custom domain and Tags
+          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -CustomDomainName &quot;www.domainname.com&quot; –UseSubDomain $true -Tag @{tag0=&quot;value0&quot;;tag1=&quot;value1&quot;;tag2=&quot;value2&quot;}</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />

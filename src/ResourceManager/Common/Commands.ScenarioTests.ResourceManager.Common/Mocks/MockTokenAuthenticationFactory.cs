@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public ServiceClientCredentials GetServiceClientCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
-            throw new NotImplementedException();
+            return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
     }
 }

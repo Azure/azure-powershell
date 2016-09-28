@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.AzureDiskEncryptionExtension,
+        SupportsShouldProcess = true,
         DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
@@ -311,10 +312,23 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.aadClientCertThumbprintKey, AadClientCertThumbprint ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? String.Empty);
-            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionAlgorithmKey, KeyEncryptionAlgorithm ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.volumeTypeKey, VolumeType ?? String.Empty);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.encryptionOperationKey, AzureDiskEncryptionExtensionConstants.enableEncryptionOperation);
             publicSettings.Add(AzureDiskEncryptionExtensionConstants.sequenceVersionKey, SequenceVersion ?? String.Empty);
+
+            string keyEncryptAlgorithm = string.Empty;
+            if (!string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
+            {
+                if(!string.IsNullOrEmpty(KeyEncryptionAlgorithm))
+                {
+                    keyEncryptAlgorithm = KeyEncryptionAlgorithm;
+                }
+                else
+                {
+                    keyEncryptAlgorithm = AzureDiskEncryptionExtensionConstants.defaultKeyEncryptionAlgorithm;
+                }
+            }
+            publicSettings.Add(AzureDiskEncryptionExtensionConstants.keyEncryptionAlgorithmKey, keyEncryptAlgorithm);
 
             return publicSettings;
         }
@@ -407,27 +421,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent ||
-                this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))
+                if (this.ShouldProcess(VMName, Properties.Resources.EnableDiskEncryptionAction)
+                && (this.Force.IsPresent ||
+                this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption)))
                 {
                     VirtualMachine virtualMachineResponse = this.ComputeClient.ComputeManagementClient.VirtualMachines.GetWithInstanceView(
                         this.ResourceGroupName, VMName).Body;
 
                     currentOSType = virtualMachineResponse.StorageProfile.OsDisk.OsType;
-
-                    if (OperatingSystemTypes.Linux.Equals(currentOSType) &&
-                        !AzureDiskEncryptionExtensionContext.VolumeTypeData.Equals(VolumeType, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        ThrowTerminatingError(
-                            new ErrorRecord(
-                                new ArgumentException(
-                                    string.Format(
-                                        CultureInfo.CurrentUICulture,
-                                        "Enabling encryption is only allowed on Data volumes for Linux VMs.")),
-                                "InvalidType",
-                                ErrorCategory.NotImplemented,
-                                null));
-                    }
 
                     if (OperatingSystemTypes.Linux.Equals(currentOSType))
                     {

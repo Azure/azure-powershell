@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (!TimeOut.HasValue)
                 {
-                    TimeOut = new long();
                     TimeOut = Int64.MaxValue;
                 }
 

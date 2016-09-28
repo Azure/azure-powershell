@@ -14,25 +14,26 @@
 
 function get_all_vm_locations
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.Compute" 
-		$type = "virtualMachines" 
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = "Microsoft.Compute"
+        $type = "virtualMachines"
+        $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
-		if ($location -eq $null) 
-		{  
-			$st = Write-Verbose 'Getting all Azure location - End';
-			return @("West US", "East US")
-		} else 
-		{  
-			$st = Write-Verbose 'Getting all Azure location - End';
-			return $location.Locations  
-		}  
-	}
+        if ($location -eq $null)
+        {
+            $st = Write-Verbose 'Getting all Azure location - End';
+            return @("West US", "East US")
+        }
+        else
+        {
+            $st = Write-Verbose 'Getting all Azure location - End';
+            return $location.Locations
+        }
+    }
 
     $st = Write-Verbose 'Getting all Azure location - End';
-	return @("West US", "East US")
+    return @("West US", "East US")
 }
 
 function get_all_standard_vm_sizes
@@ -152,7 +153,7 @@ function create_and_setup_nic_ids
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
     $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ($rgname + 'subnet') -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ($rgname + 'vnet') -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet -Tag (Get-ComputeTestTag $global:ps_test_tag_name);
     $vnet = Get-AzureRmVirtualNetwork -Name ($rgname + 'vnet') -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
 
@@ -219,7 +220,7 @@ function create_and_setup_vm_config_object
     $vmconfig = get_vm_config_object $rgname $vmsize
 
     $user = "Foo12";
-    $password = $rgname + "BaR#123";
+    $password = $PLACEHOLDER;
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = $rgname + "cn";
@@ -336,7 +337,14 @@ function Run-VMDynamicTests
             $st = (func_create_and_setup_nic_ids $random_seed) | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
             $st = $func_create_and_setup_vm_config_object | Out-File -Encoding ASCII -Append -FilePath $generated_file_name -Force;
 
-            $loc_name_str = $locations[$i % $locations.Count];
+            if ($locations.Count -eq 1)
+            {
+                $loc_name_str = $locations
+            }
+            else
+            {
+                $loc_name_str = $locations[$i % $locations.Count];
+            }
 
             if ($target_location -ne $null -and $target_location -ne '')
             {

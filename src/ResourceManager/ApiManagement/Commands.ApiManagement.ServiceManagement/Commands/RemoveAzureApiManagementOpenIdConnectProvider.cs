@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOpenIdConnectProvider)]
+    [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOpenIdConnectProvider, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementOpenIdConnectProvider : AzureApiManagementCmdletBase
     {
@@ -44,20 +44,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "If specified will write true in case operation succeeds. This parameter is optional. Default value is false.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Forces delete operation (prevents confirmation dialog). This parameter is optional. Default value is false.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteApiManagementCmdlet()
         {
             var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.OpenIdConnectProviderRemoveDescription, OpenIdConnectProviderId);
             var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.OpenIdConnectProviderRemoveWarning, OpenIdConnectProviderId);
 
             // Do nothing if force is not specified and user cancelled the operation
-            if (!Force.IsPresent &&
-                !ShouldProcess(
+            if (!ShouldProcess(
                     actionDescription,
                     actionWarning,
                     Resources.ShouldProcessCaption))

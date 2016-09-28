@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Download
         {
             pageBlob.FetchAttributes(new AccessCondition(), blobRequestOptions);
             IEnumerable<PageRange> pageRanges = pageBlob.GetPageRanges(null, null, new AccessCondition(), blobRequestOptions);
-            pageRanges.OrderBy(range => range.StartOffset);
+            pageRanges = pageRanges.OrderBy(range => range.StartOffset);
             return pageRanges.Select(pr => new IndexRange(pr.StartOffset, pr.EndOffset));
         }
 

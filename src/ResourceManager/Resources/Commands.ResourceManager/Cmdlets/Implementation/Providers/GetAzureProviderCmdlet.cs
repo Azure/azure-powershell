@@ -14,9 +14,13 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using System;
     using System.Linq;
     using System.Management.Automation;
+    using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
     /// Get an existing resource.
@@ -59,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var providers = this.ResourceManagerSdkClient.ListPSResourceProviders(providerName: this.ProviderNamespace, listAvailable: this.ListAvailable, location: this.Location);
+            var providers = this.ListPSResourceProviders();
 
             if (!string.IsNullOrEmpty(this.ProviderNamespace))
             {
@@ -78,8 +82,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                             ResourceTypeName = type.ResourceTypeName,
                                             Locations = type.Locations,
                                             ApiVersions = type.ApiVersions,
+                                            ZoneMappings = type.ZoneMappings
                                         }
-                                    }
+                                    },
+                                    ZoneMappings = type.ZoneMappings
                                 }));
 
                 this.WriteObject(expandedProviders, enumerateCollection: true);
@@ -88,6 +94,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 this.WriteObject(providers, enumerateCollection: true);
             }
+        }
+
+        private PSResourceProvider[] ListPSResourceProviders()
+        {
+            var allProviders = this.ResourceManagerSdkClient.ListResourceProviders(
+                providerName: null,
+                listAvailable: true);
+
+            var providers = allProviders;
+            if (!string.IsNullOrEmpty(this.ProviderNamespace))
+            {
+                providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: this.ProviderNamespace);
+            }
+            else if (this.ListAvailable == false)
+            {
+                providers = this.ResourceManagerSdkClient.GetRegisteredProviders(providers);
+            }
+
+            if (string.IsNullOrEmpty(this.Location))
+            {
+                return providers
+                    .Select(provider => provider.ToPSResourceProvider())
+                    .ToArray();
+            }
+
+            var allRPLocations = allProviders
+                .SelectMany(provider => provider.ResourceTypes.CoalesceEnumerable().SelectMany(type => type.Locations))
+                .Distinct(StringComparer.InvariantCultureIgnoreCase);
+
+            var validLocations = this
+                .SubscriptionSdkClient
+                .ListLocations(DefaultContext.Subscription.Id.ToString())
+                .Select(location => location.DisplayName)
+                .Concat(allRPLocations)
+                .Distinct(StringComparer.InvariantCultureIgnoreCase);
+
+            if (!validLocations.Any(loc => loc.EqualsAsLocation(this.Location)))
+            {
+                this.WriteErrorWithTimestamp(ProjectResources.InvalidLocation);
+                return new PSResourceProvider[] { };
+            }
+
+            foreach (var provider in providers)
+            {
+                provider.ResourceTypes = provider.ResourceTypes
+                    .Where(type => !type.Locations.Any() || type.Locations.Any(loc => loc.EqualsAsLocation(this.Location)))
+                    .ToList();
+            }
+
+            return providers
+                .Where(provider => provider.ResourceTypes.Any())
+                .Select(provider => provider.ToPSResourceProvider())
+                .ToArray();
         }
     }
 }
