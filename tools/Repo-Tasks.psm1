@@ -1,7 +1,6 @@
 ﻿$taskScriptDir = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 $env:repoRoot = [System.IO.Path]::GetDirectoryName($taskScriptDir)
 
-#$userPreferenceDir = $env:psuserpreferences
 $userPsFileEnvVariable = $env:psuserpreferences
 $userPsFileDir = "$env:USERPROFILE\psFiles"
 
@@ -33,68 +32,44 @@ else
     Write-Host "Loading skipped. 'psuserpreferences' environment variable was not set to load user preferences." -ForegroundColor DarkYellow
 }
 
-Function Get-TaskHelp
+[CmdletBinding]
+Function Set-TestEnvironment
 {
-    $taskCount = 1
-    #Add tasks and description in the tasks array
-    [string[]] $tasks = "Setup-TestEnvironment ==> will allow you to setup Test Environment", `
-                        "List-BuildScopes ==> List of available Scopes", `
-                        "Build-Repo ==> will allow you to build the entire repo or build for specific Scope", `                        
-                        "Run-CheckinTests ==> Run Tests prior to checkin", `
-                        "Run-MockedScenarioTests ==> Run Mocked Scenario Tests", `
-                        "Get-TaskHelp ==> Display supported tasks"
-    
-    #$tableFormat = @{Expression={$taskCount};width=50}, @{Expression={$_}};
-    #$tasks | Format-Table $tableFormat
-    $tasks |foreach { Write-Host ([string]::Format("{0}) {1}", $taskCount++, $_))}
-    Write-Host ""
-}
+    param(
+        [parameter(Mandatory=$true, Position=0, HelpMessage='SubscriptionId you would like to use')]
+        [ValidateNotNullOrEmpty()]
+        [string]$SubscriptionId,
 
-Function Setup-TestEnvironment()
-{
-    [string]$subId = [string]::Empty
-    [string]$aadTenant = [string]::Empty
-    [string]$spn = [string]::Empty
-    [string]$spnSecret = [string]::Empty
-    [string]$env = [string]::Empty
+        [parameter(Mandatory=$true, Position=1, HelpMessage='AADTenant/TenantId you would like to use:')]
+        [ValidateNotNullOrEmpty()]
+        [string]$TenantId,
+
+        [parameter(Mandatory=$true, Position=2, HelpMessage='ServicePrincipal/ClientId you would like to use')]
+        [ValidateNotNullOrEmpty()]
+        [string]$ServicePrincipal,
+
+        [parameter(Mandatory=$true, Position=3, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
+        [ValidateNotNullOrEmpty()]
+        [string]$ServicePrincipalSecret,
+
+        [parameter(Mandatory=$false, Position=4, HelpMessage='RecordMode you would like to set')]    
+        [string]$RecordMode = "Playback",
+
+        [parameter(Mandatory=$false, Position=5, HelpMessage='Target Environment to use {Prod (default) | Dogfood | Next | Current')]
+        [string]$TargetEnvironment = "Prod"
+    )
+
     [string]$uris="BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.windows.net/;GraphUri=https://graph.windows.net/"
-    [string]$recordMode = [string]::Empty
-
-    Write-Host "Executing Setup-TestEnvironment"
-    Write-Host "Please specify values to setup your connection string"    
-    $subId = (Read-Host "SubscriptionId you would like to use:").Trim()    
-    $subNull = CheckEmptyNull $subId "SubscriptionId is empty, SubscriptionId is mandatory for running tests."
-    
-    $aadTenant = (Read-Host "AADTenant/TenantId you would like to use:").Trim()
-    $tenantNull = CheckEmptyNull $aadTenant "TenantId is empty, TenantId is mandatory for running tests."
-
-    $spn = (Read-Host "ServicePrincipal/ClientId you would like to use:").Trim()
-    $spnNull = CheckEmptyNull $spn "ServicePrincipal is empty, ServicePrincipal is mandatory for running tests."
-
-    $spnSecret = (Read-Host "ServicePrincipal Secret/ClientId Secret you would like to use:").Trim()
-    $spnSecretNull = CheckEmptyNull $spnSecret "ServicePrincipal Secret is empty, ServicePrincipal Secret is mandatory for running tests."
-
-    $recordMode = (Read-Host "Http Record Mode: Type Record for recording tests. Type Playback for running your recorded tests):").Trim()
-    If([string]::IsNullOrEmpty($recordMode) -eq $true)
-    {
-        Write-Host "RecordMode is empty. Setting default mode to Playback"
-        $recordMode="Playback"
-    }
-
-    if(($subNull -eq $true) -or ($tenantNull -eq $true) -or ($spnNull -eq $true) -or ($spnSecretNull -eq $true))
-    {
-        Write-Host "Mandatory fields were not set correctly. Exiting......" -ForegroundColor Red
-        return
-    }
 
     #Construct connection string
-    $formattedConnStr = [string]::Format("SubscriptionId={0};AADTenant={1};ServicePrincipal={2};ServicePrincipalSecret={3};HttpRecorderMode={4};$uris", $subId, $aadTenant, $spn, $spnSecret, $recordMode)
+    $formattedConnStr = [string]::Format("SubscriptionId={0};AADTenant={1};ServicePrincipal={2};ServicePrincipalSecret={3};HttpRecorderMode={4};Environment={5}$uris", $SubscriptionId, $TenantId, $ServicePrincipal, $ServicePrincipalSecret, $RecordMode, $TargetEnvironment)
 
     #Print Constructed connection string
-    Print-ConnectionString $subId $aadTenant $spn $spnSecret $recordMode $uris
+    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment $uris
 
     #Set connection string to Environment variable
-    [Environment]::SetEnvironmentVariable($envVariableName, $formattedConnStr)
+    #[Environment]::SetEnvironmentVariable($envVariableName, $formattedConnStr)
+    $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
     Write-Host ""
 
     # Retrieve the environment variable
@@ -103,11 +78,11 @@ Function Setup-TestEnvironment()
     Write-Host ""
     
     Write-Host "If your needs demand you to set connection string differently, for all the supported Key/Value pairs in connection string"
-    #Write-Host "`$env:$envVariableName=SubscriptionId=<subid>;AADTenantId=<tenantId>"
     Write-Host "Please visit https://github.com/Azure/azure-powershell/blob/dev/documentation/Using-Azure-TestFramework.md"
 }
 
-Function List-BuildScopes()
+[CmdletBinding]
+Function Get-BuildScopes
 {
     Write-Host "Below are available scopes you can specify for building specific projects"
     Write-Host ""    
@@ -115,29 +90,36 @@ Function List-BuildScopes()
     Get-ChildItem -path "$env:repoRoot\src\ServiceManagement" -dir | Format-Wide -Column 5 | Format-Table -Property Name
 }
 
-Function Build-Repo([string] $scope)
+[CmdletBinding]
+Function Start-RepoBuild
 {
-    Write-Host "Executing Build-Repo"    
+    param(
+    [parameter(Mandatory=$false, Position=0, HelpMessage='BuildScope that you would like to use. For list of build scopes, run List-BuildScopes')]
+    [string]$BuildScope
+    )    
     
-    if([string]::IsNullOrEmpty($scope) -eq $true)
+    if([string]::IsNullOrEmpty($BuildScope) -eq $true)
     {
        Write-Host "Starting Full build"
        msbuild.exe "$env:repoRoot\build.proj" /t:Build
     }
     else
     {
-        Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /p:Scope=$scope"
-        msbuild.exe "$env:repoRoot\build.proj" /t:Build /p:Scope=$scope
+        Write-Host "Building $BuildScope"
+        #Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /p:Scope=$BuildScope"
+        msbuild.exe "$env:repoRoot\build.proj" /t:Build /p:Scope=$BuildScope
     }
 }
 
-Function Run-CheckinTests()
+[CmdletBinding]
+Function Invoke-CheckinTests
 {
     Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /t:Test"
     msbuild.exe "$env:repoRoot\build.proj" /t:Test
 }
 
-Function Run-MockedScenarioTests()
+[CmdletBinding]
+Function Invoke-MockedScenarioTests
 {
     Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /t:Test"
     msbuild.exe "$env:repoRoot\build.proj" /t:"Build;BeforeRunTests;MockedScenarioTests"
@@ -163,7 +145,7 @@ Function Create-ServicePrincipal-Help()
     #New-AzureRmRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $app.ApplicationId.Guid
 }
 
-Function Print-ConnectionString([string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$uris)
+Function Print-ConnectionString([string]$subId, [string]$aadTenant, [string]$spn, [string]$spnSecret, [string]$recordMode, [string]$targetEnvironment, [string]$uris)
 {
     Write-Host ""
 
@@ -184,17 +166,14 @@ Function Print-ConnectionString([string]$subId, [string]$aadTenant, [string]$spn
     Write-Host "HttpRecorderMode=" -ForegroundColor Green -NoNewline
     Write-Host $recordMode";" -NoNewline
 
+    Write-Host "Environment=" -ForegroundColor Green -NoNewline
+    Write-Host $targetEnvironment";" -NoNewline
+
     Write-Host $uris
 }
 
-Function CheckEmptyNull([string] $argsToCheck, [string]$emptyNullMessage)
-{
-    If([string]::IsNullOrEmpty($argsToCheck) -eq $true)
-    {
-        Write-Host $emptyNullMessage -ForegroundColor Red
-        return [bool]$true
-    }
-}
-
-cls
-Get-TaskHelp
+export-modulemember -function Set-TestEnvironment
+export-modulemember -function Get-BuildScopes
+export-modulemember -function Start-RepoBuild
+export-modulemember -function Invoke-CheckinTests
+export-modulemember -function Invoke-MockedScenarioTests
