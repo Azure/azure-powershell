@@ -21,7 +21,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent"), OutputType(typeof(byte[]), typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true), 
+        OutputType(typeof(byte[]), typeof(string))]
     [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
@@ -64,31 +65,37 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            byte[] byteArray;
-            if (Length <= 0)
-            {
-                Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
-                if (Length > 1 * 1024 * 1024 && !Force)
-                // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+            ConfirmAction(
+                Resources.DownloadFileDataMessage,
+                Path.TransformedPath,
+                () =>
                 {
-                    throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
-                }
-            }
+                    byte[] byteArray;
+                    if (Length <= 0)
+                    {
+                        Length = (long)DataLakeStoreFileSystemClient.GetFileStatus(Path.TransformedPath, Account).Length - Offset;
+                        if (Length > 1 * 1024 * 1024 && !Force)
+                        // If content is greater than 1MB throw an error to the user to let them know they must pass in a length to preview this much content
+                        {
+                            throw new InvalidOperationException(string.Format(Resources.FilePreviewTooLarge, 1 * 1024 * 1024, Length));
+                        }
+                    }
 
-            using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
-                CmdletCancellationToken, this)))
-            {
-                byteArray = memStream.ToArray();
-            }
+                    using (var memStream = ((MemoryStream)DataLakeStoreFileSystemClient.PreviewFile(Path.TransformedPath, Account, Length, Offset,
+                        CmdletCancellationToken, this)))
+                    {
+                        byteArray = memStream.ToArray();
+                    }
 
-            if (UsingByteEncoding(Encoding))
-            {
-                WriteObject(byteArray);
-            }
-            else
-            {
-                WriteObject(BytesToString(byteArray, Encoding));
-            }
+                    if (UsingByteEncoding(Encoding))
+                    {
+                        WriteObject(byteArray);
+                    }
+                    else
+                    {
+                        WriteObject(BytesToString(byteArray, Encoding));
+                    }
+                });
         }
     }
 }

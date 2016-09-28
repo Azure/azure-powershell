@@ -4,7 +4,7 @@
 	<command:details>
 		<command:name>Get-AzureRmDtlAllowedVMSizesPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+			<maml:para>Gets the allowed VM sizes policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -14,7 +14,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+		<maml:para>The Get-AzureRmDtlAllowedVMSizesPolicy cmdlet gets the allowed VM sizes policy, which allows you to specify a list of VM sizes allowed in the lab. The cmdlet returns the status (enabled or disabled) of the policy and a list of all the allowed VM sizes that you have set in the specified policy.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -121,7 +121,7 @@
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+The policy that specifies the list of VM sizes allowed in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -143,7 +143,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmDtlAutoShutdownPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlAutoShutdownPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
+			<maml:para>Gets the auto shutdown policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -153,7 +153,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlAutoShutdownPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
+		<maml:para>Gets the auto shutdown policy of a lab, which allows you to automatically shut down all the VMs in a lab at a specified time of the day. The cmdlet returns the status (enabled or disabled) of the policy, and the time of day that you have set to automatically shut down the lab VMs.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -282,7 +282,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmDtlAutoStartPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlAutoStartPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
+			<maml:para>Gets the auto start policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -292,7 +292,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlAutoStartPolicy cmdlet gets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
+		<maml:para>Gets the auto start policy of a lab which allows lab VMs to be scheduled for automatic start. The cmdlet returns the status (enabled or disabled) of the policy, and the days of the week and time of day that you have set to allow lab VMs to be scheduled for automatic start.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -399,7 +399,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
+The schedule that specifies when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -421,7 +421,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 	<command:details>
 		<command:name>Get-AzureRmDtlVMsPerLabPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlVMsPerLabPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+			<maml:para>Gets the VMs per lab policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -431,7 +431,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlVMsPerLabPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+		<maml:para>Gets the VMs per lab policy of a lab, which allows you set the total number of VMs allowed in a lab. The cmdlet returns the status (enabled or disabled) of the policy, and the total number of VMs allowed in the lab that you have set in the policy.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -538,7 +538,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+The policy that specifies the maximum number of VMs that can be created in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -560,7 +560,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 	<command:details>
 		<command:name>Get-AzureRmDtlVMsPerUserPolicy</command:name>
 		<maml:description>
-			<maml:para>The Get-AzureRmDtlVMsPerUserPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+			<maml:para>Gets the VMs per user policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -570,7 +570,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Get-AzureRmDtlVMsPerUserPolicy cmdlet gets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+		<maml:para>Gets the VMs per user policy of a lab, which allows you set the maximum number of VMs allowed per user. The cmdlet returns the status (enabled or disabled) of the policy, and the maximum number of VMs allowed per user that you have set in the policy.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -677,7 +677,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+The policy that specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -699,7 +699,7 @@ The policy which specifies the maximum number of VMs that can be created by a us
 	<command:details>
 		<command:name>Set-AzureRmDtlAllowedVMSizesPolicy</command:name>
 		<maml:description>
-			<maml:para>The Set-AzureRmDtlAllowedVMSizesPolicy cmdlet sets the policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+			<maml:para>Sets the allowed VM sizes policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -709,7 +709,7 @@ The policy which specifies the maximum number of VMs that can be created by a us
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureRmDtlAllowedVMSizesPolicy cmdlet sets the policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+		<maml:para>Sets the allowed VM sizes policy, which allows you to specify a list of VM sizes allowed in a lab. The cmdlet uses the specified resource group and name of the lab to set the policy.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -911,7 +911,7 @@ The policy which specifies the maximum number of VMs that can be created by a us
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
+The policy that specifies the list of VM sizes allowed in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -933,7 +933,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 	<command:details>
 		<command:name>Set-AzureRmDtlAutoShutdownPolicy</command:name>
 		<maml:description>
-			<maml:para>The Set-AzureRmDtlAutoShutdownPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
+			<maml:para>Sets the auto shutdown policy of a lab DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -943,7 +943,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureRmDtlAutoShutdownPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must shut down.</maml:para>
+		<maml:para>Sets the auto shutdown policy of a lab, which allows you to automatically shut down all the VMs in the lab at a specified time of the day. The cmdlet uses the specified resource group and name of the lab to set the policy. </maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -951,7 +951,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
+					<maml:para>The time when the lab&#39;s VMs must shut down.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			</command:parameter>
@@ -996,7 +996,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
+					<maml:para>The time when the lab&#39;s VMs must shut down.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			</command:parameter>
@@ -1041,7 +1041,7 @@ The policy which specifies the list of VM sizes allowed in the lab.</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 			<maml:name>Time</maml:name>
 			<maml:description>
-				<maml:para>The time at which the lab&#39;s VMs must shut down.</maml:para>
+				<maml:para>The time when the lab&#39;s VMs must shut down.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			<dev:type>
@@ -1167,7 +1167,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 	<command:details>
 		<command:name>Set-AzureRmDtlAutoStartPolicy</command:name>
 		<maml:description>
-			<maml:para>The Set-AzureRmDtlAutoStartPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
+			<maml:para>Sets the auto start policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1177,7 +1177,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureRmDtlAutoStartPolicy cmdlet sets the policy which specifies when the lab&#39;s VMs must be started.</maml:para>
+		<maml:para>Sets the auto start policy of a lab, which allows lab VMs to be scheduled for automatic start. The cmdlet uses the specified resource group and name of the lab to set the policy. </maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1185,14 +1185,14 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
+					<maml:para>The time when the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 				<maml:name>Days</maml:name>
 				<maml:description>
-					<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
+					<maml:para>The days of the week when the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			</command:parameter>
@@ -1237,14 +1237,14 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 				<maml:name>Time</maml:name>
 				<maml:description>
-					<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
+					<maml:para>The time when the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 				<maml:name>Days</maml:name>
 				<maml:description>
-					<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
+					<maml:para>The days of the week when the lab&#39;s VMs must be started.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			</command:parameter>
@@ -1289,7 +1289,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="4">
 			<maml:name>Time</maml:name>
 			<maml:description>
-				<maml:para>The time at which the lab&#39;s VMs must be started.</maml:para>
+				<maml:para>The time when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[DateTime]</command:parameterValue>
 			<dev:type>
@@ -1301,7 +1301,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="5">
 			<maml:name>Days</maml:name>
 			<maml:description>
-				<maml:para>The days of the week on which the lab&#39;s VMs must be started.</maml:para>
+				<maml:para>The days of the week when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">DayOfWeek[]</command:parameterValue>
 			<dev:type>
@@ -1405,7 +1405,7 @@ The schedule which specifies when the lab&#39;s VMs must shut down.</maml:para>
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
+The schedule that specifies when the lab&#39;s VMs must be started.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1427,7 +1427,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 	<command:details>
 		<command:name>Set-AzureRmDtlVMsPerLabPolicy</command:name>
 		<maml:description>
-			<maml:para>The Set-AzureRmDtlVMsPerLabPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+			<maml:para>Sets the VMs per lab policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1437,7 +1437,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureRmDtlVMsPerLabPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+		<maml:para>Sets the VMs per lab policy of a lab, which allows you set the total number of VMs allowed in a lab. The cmdlet uses the specified resource group and name of the lab to set the policy. </maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1639,7 +1639,7 @@ The schedule which specifies when the lab&#39;s VMs must be started.</maml:para>
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the maximum number of VMs that can be created in the lab.</maml:para>
+The policy that specifies the maximum number of VMs that can be created in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>
@@ -1661,7 +1661,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 	<command:details>
 		<command:name>Set-AzureRmDtlVMsPerUserPolicy</command:name>
 		<maml:description>
-			<maml:para>The Set-AzureRmDtlVMsPerUserPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+			<maml:para>Sets the VMs per user policy of a lab in DevTest Labs.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -1671,7 +1671,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureRmDtlVMsPerUserPolicy cmdlet sets the policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+		<maml:para>Sets the VMs per user policy of a lab, which allows you set the maximum number of VMs allowed per user. The cmdlet uses the specified resource group and name of the lab to set the policy. </maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -1873,7 +1873,7 @@ The policy which specifies the maximum number of VMs that can be created in the 
 			</dev:type>
 			<maml:description>
 				<maml:para>
-The policy which specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
+The policy that specifies the maximum number of VMs that can be created by a user in the lab.</maml:para>
 			</maml:description>
 		</command:returnValue>
 	</command:returnValues>

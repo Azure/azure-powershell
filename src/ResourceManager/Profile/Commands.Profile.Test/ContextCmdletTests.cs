@@ -12,6 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
@@ -25,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
+using Xunit.Sdk;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
@@ -32,7 +38,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
-
+        const string guid1 = "a0cc8bd7-2c6a-47e9-a4c4-3f6ed136e240";
+        const string guid2 = "eab635c0-a35a-4f70-9e46-e5351c7b5c8b";
+        const string guid3 = "52f66548-2550-417b-941e-9d6e04f3ac8d";
+        const string guid4 = "40e67ee2-1a1a-4517-9253-ab6f93c5710f";
         public ContextCmdletTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
@@ -78,8 +87,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var existingTenants = account.GetProperty(AzureAccount.Property.Tenants);
             var allowedTenants = existingTenants == null ? tenantToSet : existingTenants + "," + tenantToSet;
             account.SetProperty(AzureAccount.Property.Tenants, allowedTenants);
+            account.SetProperty(AzureAccount.Property.Subscriptions, new string[0]);
 
-            ((RuntimeDefinedParameterDictionary)cmdlt.GetDynamicParameters())["TenantId"].Value = tenantToSet;
+            cmdlt.TenantId = tenantToSet;
 
             // Act
             cmdlt.InvokeBeginProcessing();

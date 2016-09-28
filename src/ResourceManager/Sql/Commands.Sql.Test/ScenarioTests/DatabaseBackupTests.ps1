@@ -92,3 +92,65 @@ function Test-RestorePointInTimeBackup
 
 	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
 }
+
+function Test-ServerBackupLongTermRetentionVault
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$vaultResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault"
+
+	# set
+	Set-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ResourceId $vaultResourceId
+	# get
+	$result = Get-AzureRmSqlServerBackupLongTermRetentionVault -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName
+	#verify
+	Assert-True { $result.RecoveryServicesVaultResourceId -eq $vaultResourceId }
+}
+
+function Test-DatabaseBackupLongTermRetentionPolicy
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$policyResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupPolicies/hchung-testpolicy"
+
+	# set
+	Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State "Enabled" -ResourceId $policyResourceId
+	# get
+	$result = Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	#verify
+	Assert-True { $result.RecoveryServicesBackupPolicyResourceId -eq $policyResourceId }
+}
+
+function Test-RestoreLongTermRetentionBackup
+{
+	$location = "North Europe"
+	$serverVersion = "12.0"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung
+	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_restored_ltr"
+	$recoveryPointResourceId = "/subscriptions/e5e8af86-2d93-4ebd-8eb5-3b0184daa9de/resourceGroups/hchung/providers/Microsoft.RecoveryServices/vaults/hchung-testvault/backupFabrics/Azure/protectionContainers/AzureSqlContainer;Sql;hchung;hchung-testsvr/protectedItems/AzureSqlDb;dsName;hchung-testdb;fbf5641f-77f8-43b7-8fd7-5338ec293213/recoveryPoints/1731556986347"
+
+    Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceId $recoveryPointResourceId -TargetDatabaseName $restoredDbName -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName
+}
+
+function Test-DatabaseGeoBackupPolicy
+{
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName alazad-rg
+	$server = Get-AzureRmSqlServer -ServerName testsvr-alazad -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName testdwdb -ResourceGroupName $rg.ResourceGroupName
+
+	# Enable and verify
+	Set-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State Enabled
+	$result = Get-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	Assert-True { $result.State -eq "Enabled" }
+
+	# Disable and verify
+	Set-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName -State Disabled
+	$result = Get-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
+	Assert-True { $result.State -eq "Disabled" }
+}

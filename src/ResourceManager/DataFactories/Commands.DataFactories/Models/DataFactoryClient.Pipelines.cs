@@ -186,18 +186,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
             };
 
-            if (parameters.Force)
-            {
-                // If user decides to overwrite anyway, then there is no need to check if the linked service exists or not.
-                createPipeline();
-            }
-            else
-            {
-                bool pipelineExists = CheckPipelineExists(parameters.ResourceGroupName,
-                    parameters.DataFactoryName, parameters.Name);
 
                 parameters.ConfirmAction(
-                        !pipelineExists,  // prompt only if the linked service exists
+                        parameters.Force,  // prompt only if the linked service exists
                         string.Format(
                             CultureInfo.InvariantCulture,
                             Resources.PipelineExists,
@@ -209,8 +200,9 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.Name,
                             parameters.DataFactoryName),
                         parameters.Name,
-                        createPipeline);
-            }
+                        createPipeline,
+                        () => CheckPipelineExists(parameters.ResourceGroupName,
+                                parameters.DataFactoryName, parameters.Name));
 
             return pipeline;
         }

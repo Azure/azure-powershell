@@ -48,7 +48,7 @@ function Test-UploadApplicationPackage
     # Setup
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip" -Activate
+    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
 
     Assert-AreEqual $applicationId $addAppPack.Id
     Assert-AreEqual $applicationVersion $addAppPack.Version
@@ -68,7 +68,7 @@ function Test-UpdateApplicationPackage
 
     $beforeUpdateApp = Get-AzureRmBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId
 
-    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip" -Activate
+    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
     Set-AzureRmBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -displayName $newDisplayName -defaultVersion $applicationVersion
 
     $afterUpdateApp = Get-AzureRmBatchApplication -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId
@@ -91,7 +91,7 @@ function Test-CreatePoolWithApplicationPackage
 
     try
     {
-        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip" -Activate
+        $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
 
         Assert-AreEqual $applicationId $addAppPack.Id
         Assert-AreEqual $applicationVersion $addAppPack.Version
@@ -126,7 +126,7 @@ function Test-UpdatePoolWithApplicationPackage
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -FilePath $filePath -format "zip" -Activate
+    $addAppPack = New-AzureRmBatchApplicationPackage -ResourceGroupName $context.ResourceGroupName -AccountName $context.AccountName -ApplicationId $applicationId -ApplicationVersion $applicationVersion -format "zip" -ActivateOnly
 
     Assert-AreEqual $applicationId $addAppPack.Id
     Assert-AreEqual $applicationVersion $addAppPack.Version

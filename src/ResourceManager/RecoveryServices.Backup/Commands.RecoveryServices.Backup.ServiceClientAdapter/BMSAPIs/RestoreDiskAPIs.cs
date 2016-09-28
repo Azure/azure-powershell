@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -38,16 +37,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
-            string vaultLocation = BmsAdapter.GetResourceLocation();            
-            string containerName = rp.ContainerName;
-            string protectedItemName = rp.ItemName;
+            string vaultLocation = BmsAdapter.GetResourceLocation();
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
             string recoveryPointId = rp.RecoveryPointId;
             //validtion block
             if(storageAccountLocation != vaultLocation)
             {
                 throw new Exception(Resources.RestoreDiskIncorrectRegion);
             }
-            string vmType = containerName.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
+            
+            string vmType = containerUri.Split(';')[1].Equals("iaasvmcontainer", StringComparison.OrdinalIgnoreCase) 
                 ? "Classic" : "Compute";
             string strType = storageAccountType.Equals("Microsoft.ClassicStorage/StorageAccounts", 
                 StringComparison.OrdinalIgnoreCase) ? "Classic" : "Compute";
@@ -58,16 +59,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
-                AffinityGroup = String.Empty,
-                CloudServiceOrResourceGroup = String.Empty,
                 CreateNewCloudService = false,
                 RecoveryPointId = recoveryPointId,
                 RecoveryType = RecoveryType.RestoreDisks,
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
-                SubnetId = string.Empty,
-                VirtualMachineName = string.Empty,
-                VirtualNetworkId = string.Empty,
+                SourceResourceId = rp.SourceResourceId,
             };
 
             TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
@@ -80,8 +77,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 resourceName, 
                 BmsAdapter.GetCustomRequestHeaders(),
                 AzureFabricName, 
-                containerName, 
-                protectedItemName, 
+                containerUri, 
+                protectedItemUri, 
                 recoveryPointId, 
                 triggerRestoreRequest, 
                 BmsAdapter.CmdletCancellationToken).Result;

@@ -24,10 +24,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Get, "AzureRmExpressRouteServiceProvider"), OutputType(typeof(PSExpressRouteServiceProvider))]
     public class GetAzureExpressRouteServiceProviderCommand : NetworkBaseCmdlet
     {
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             var serviceProviderList = this.NetworkClient.NetworkManagementClient.ExpressRouteServiceProviders.List();
 
             var psProviders = new List<PSExpressRouteServiceProvider>();

@@ -52,16 +52,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
             ProviderNamespace = DiagnosticsExtensionNamespace;
             ExtensionName = DiagnosticsExtensionType;
-
-            PrivateConfigurationXmlTemplate = new XDocument(
-                new XDeclaration("1.0", "utf-8", null),
-                new XElement(configNameSpace + PrivateConfigStr,
-                    new XElement(configNameSpace + DiagnosticsHelper.StorageAccountElemStr,
-                    new XAttribute(DiagnosticsHelper.PrivConfNameAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfKeyAttr, string.Empty),
-                    new XAttribute(DiagnosticsHelper.PrivConfEndpointAttr, string.Empty)
-                ))
-            );
         }
 
         protected void ValidateStorageAccount()
@@ -165,11 +155,28 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 WriteWarning(Resources.DiagnosticsExtensionNoMatchPrivateStorageAccount);
             }
 
-            PrivateConfigurationXml = new XDocument(PrivateConfigurationXmlTemplate);
+            // Look for the PrivateConfig element in the user provided config file.
+            // If it doesn't exist (e.g., a pure PublicConfig.xml), we create the private config for the user.
+            var privateConfigElement = doc.Descendants().FirstOrDefault(d => d.Name.LocalName == "PrivateConfig");
+            if (privateConfigElement == null)
+            {
+                XNamespace configNameSpace = DiagnosticsHelper.XmlNamespace;
+                privateConfigElement = new XElement(configNameSpace + PrivateConfigStr,
+                    new XElement(configNameSpace + DiagnosticsHelper.StorageAccountElemStr,
+                    new XAttribute(DiagnosticsHelper.PrivConfNameAttr, string.Empty),
+                    new XAttribute(DiagnosticsHelper.PrivConfKeyAttr, string.Empty),
+                    new XAttribute(DiagnosticsHelper.PrivConfEndpointAttr, string.Empty)
+                ));
+            }
+
+            PrivateConfigurationXml = new XDocument(
+                new XDeclaration("1.0", "utf-8", null),
+                privateConfigElement
+                );
+
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfNameAttr, StorageAccountName);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfKeyAttr, StorageAccountKey);
             SetPrivateConfigAttribute(DiagnosticsHelper.StorageAccountElemStr, DiagnosticsHelper.PrivConfEndpointAttr, StorageAccountEndpoint);
-            AddEventHubPrivateConfig(PrivateConfigurationXml);
 
             PrivateConfiguration = PrivateConfigurationXml.ToString();
         }
@@ -193,24 +200,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 ? string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ClassicCompute/domainNames/{2}",
                     Profile.DefaultSubscription.Id, resourceGroup, ServiceName)
                 : null;
-        }
-
-        private void AddEventHubPrivateConfig(XDocument privateConfig)
-        {
-            var eventHubUrl = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubUrlAttr);
-            var eventHubSharedAccessKeyName = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyNameAttr);
-            var eventHubSharedAccessKey = DiagnosticsHelper.GetConfigValueFromPrivateConfig(this.DiagnosticsConfigurationPath, DiagnosticsHelper.EventHubElemStr, DiagnosticsHelper.EventHubSharedAccessKeyAttr);
-
-            if (!string.IsNullOrEmpty(eventHubUrl) || !string.IsNullOrEmpty(eventHubSharedAccessKeyName) || !string.IsNullOrEmpty(eventHubSharedAccessKey))
-            {
-                var privateConfigElem = privateConfig.Descendants().FirstOrDefault(d => d.Name.LocalName == DiagnosticsHelper.PrivateConfigElemStr);
-                XNamespace XmlNamespace = DiagnosticsHelper.XmlNamespace;
-                privateConfigElem.Add(new XElement(XmlNamespace + DiagnosticsHelper.EventHubElemStr,
-                    new XAttribute(DiagnosticsHelper.EventHubUrlAttr, eventHubUrl),
-                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyNameAttr, eventHubSharedAccessKeyName),
-                    new XAttribute(DiagnosticsHelper.EventHubSharedAccessKeyAttr, eventHubSharedAccessKey)
-                    ));
-            }
         }
     }
 }

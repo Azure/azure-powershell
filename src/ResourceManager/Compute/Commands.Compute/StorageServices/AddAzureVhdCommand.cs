@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             {
                 if (vds.DiskType == DiskType.Fixed)
                 {
-                    long divisor = Convert.ToInt64(Math.Pow(2, 20));
+                    long divisor = Convert.ToInt64(Math.Pow(2, 9));
                     long rem = 0;
                     Math.DivRem(filePath.Length, divisor, out rem);
                     if (rem != 0)
@@ -166,7 +166,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         {
             StorageCredentialsFactory storageCredentialsFactory;
 
-            var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
+            var storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))

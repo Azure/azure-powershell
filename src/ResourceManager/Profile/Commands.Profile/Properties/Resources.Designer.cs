@@ -106,11 +106,47 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Switching targeted subscription in the context to &apos;{0}&apos;.
+        /// </summary>
+        internal static string ChangingContextSubscription {
+            get {
+                return ResourceManager.GetString("ChangingContextSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switching targeted tenant in the context to &apos;{0}&apos;.
+        /// </summary>
+        internal static string ChangingContextTenant {
+            get {
+                return ResourceManager.GetString("ChangingContextTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set current context using tenant: &apos;{0}&apos;, subscription: &apos;{1}&apos;.
+        /// </summary>
+        internal static string ChangingContextUsingPipeline {
+            get {
+                return ResourceManager.GetString("ChangingContextUsingPipeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
                 return ResourceManager.GetString("CommonTenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeting all subsequent cmdlets at a different tenant and subscription.
+        /// </summary>
+        internal static string ContextChangeWarning {
+            get {
+                return ResourceManager.GetString("ContextChangeWarning", resourceCulture);
             }
         }
         
@@ -124,6 +160,42 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data collection will be disabled permanently for the current user.
+        /// </summary>
+        internal static string DataCollectionDisabledWarning {
+            get {
+                return ResourceManager.GetString("DataCollectionDisabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cmdlets will send data to Microsoft to help improve the customer experience.
+        /// </summary>
+        internal static string DataCollectionEnabledWarning {
+            get {
+                return ResourceManager.GetString("DataCollectionEnabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn off data collection for Azure PowerShell cmdlets.
+        /// </summary>
+        internal static string DisableDataCollection {
+            get {
+                return ResourceManager.GetString("DisableDataCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allow Azure PowerShell cmdlets to send data to Microsoft to improve the customer experience.
+        /// </summary>
+        internal static string EnableDataCollection {
+            get {
+                return ResourceManager.GetString("EnableDataCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find file &apos;{0}&apos;.
         /// </summary>
         internal static string FileNotFound {
@@ -133,11 +205,38 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Overwrite File?.
+        /// </summary>
+        internal static string FileOverwriteCaption {
+            get {
+                return ResourceManager.GetString("FileOverwriteCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite existing file at &apos;{0}&apos;?.
+        /// </summary>
+        internal static string FileOverwriteMessage {
+            get {
+                return ResourceManager.GetString("FileOverwriteMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
             get {
                 return ResourceManager.GetString("InvalidSubscriptionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} account in environment &apos;{1}&apos;.
+        /// </summary>
+        internal static string LoginTarget {
+            get {
+                return ResourceManager.GetString("LoginTarget", resourceCulture);
             }
         }
         
@@ -160,6 +259,51 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The profile argument was saved to the file system at &apos;{0}&apos;. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls..
+        /// </summary>
+        internal static string ProfileArgumentSaved {
+            get {
+                return ResourceManager.GetString("ProfileArgumentSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save the profile argument to the file system at &apos;{0}&apos;.
+        /// </summary>
+        internal static string ProfileArgumentWrite {
+            get {
+                return ResourceManager.GetString("ProfileArgumentWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current profile was saved to the file system at &apos;{0}&apos;. This file may include personally identifiable information and secrets.  Please ensure that the saved file is assigned appropriate access controls..
+        /// </summary>
+        internal static string ProfileCurrentSaved {
+            get {
+                return ResourceManager.GetString("ProfileCurrentSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save the current profile to the file system at &apos;{0}&apos;.
+        /// </summary>
+        internal static string ProfileCurrentWrite {
+            get {
+                return ResourceManager.GetString("ProfileCurrentWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personally identifiable information and secrets may be written to the file at &apos;{0}&apos;.  Please ensure that the saved file is assigned appropriate access controls.
+        /// </summary>
+        internal static string ProfileWriteWarning {
+            get {
+                return ResourceManager.GetString("ProfileWriteWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected subscription is in &apos;{0}&apos; state. .
         /// </summary>
         internal static string SelectedSubscriptionNotActive {
@@ -174,6 +318,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SetAzureRmContextNoParameterSet {
             get {
                 return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeting all subsequent cmdlets in this session at a different subscription.
+        /// </summary>
+        internal static string SubscriptionChangeWarning {
+            get {
+                return ResourceManager.GetString("SubscriptionChangeWarning", resourceCulture);
             }
         }
         
@@ -201,6 +354,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantAuthFailed {
             get {
                 return ResourceManager.GetString("TenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Targeting all subsequent cmdlets in this session at a different tenant.
+        /// </summary>
+        internal static string TenantChangeWarning {
+            get {
+                return ResourceManager.GetString("TenantChangeWarning", resourceCulture);
             }
         }
         

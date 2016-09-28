@@ -549,12 +549,16 @@
                 <PropertyName>OsVolumeEncrypted</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>OsVolumeEncryptionSettings</Label>
-                <PropertyName>OsVolumeEncryptionSettingsText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>DataVolumesEncrypted</Label>
                 <PropertyName>DataVolumesEncrypted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OsVolumeEncryptionSettings</Label>
+                <PropertyName>OsVolumeEncryptionSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProgressMessage</Label>
+                <PropertyName>ProgressMessage</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

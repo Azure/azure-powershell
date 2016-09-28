@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
@@ -21,7 +22,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmResourceGroupDeployment", DefaultParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmResourceGroupDeployment", SupportsShouldProcess = true, 
+        DefaultParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class StopAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -51,9 +53,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the stop.")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -62,8 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 Name = ResourceIdUtility.GetResourceName(Id);
             }
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(ProjectResources.CancelResourceGroupDeployment, ResourceGroupName),
                 ProjectResources.CancelResourceGroupDeploymentMessage,
                 ResourceGroupName,
                 () => ResourceManagerSdkClient.CancelDeployment(ResourceGroupName, Name));

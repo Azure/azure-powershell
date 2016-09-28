@@ -66,20 +66,33 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The number of shards to create on a Premium Cluster Cache.")]
         public int? ShardCount { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "VirtualNetwork is deprecated. Please use SubnetId instead.")]
         public string VirtualNetwork { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Subnet is deprecated. Please use SubnetId instead.")]
         public string Subnet { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1")]
+        public string SubnetId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Required when deploying a redis cache inside an existing Azure Virtual Network.")]
         public string StaticIP { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
             if (!string.IsNullOrEmpty(RedisVersion))
             {
                 WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
+            }
+
+            if (!string.IsNullOrEmpty(VirtualNetwork) || !string.IsNullOrEmpty(Subnet))
+            {
+                WriteWarning("Parameters 'VirtualNetwork' and 'Subnet' are deprecated. Please use SubnetId instead.");
+                if (string.IsNullOrEmpty(SubnetId))
+                {
+                    SubnetId = string.Format("{0}/subnets/{1}", VirtualNetwork, Subnet);
+                }
             }
 
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
@@ -136,7 +149,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             WriteObject(
                 new RedisCacheAttributesWithAccessKeys(
-                    CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, VirtualNetwork, Subnet, StaticIP),
+                    CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, SubnetId, StaticIP),
                     ResourceGroupName
                 )
             );

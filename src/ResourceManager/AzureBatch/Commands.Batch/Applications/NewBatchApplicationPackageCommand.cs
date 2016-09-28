@@ -19,34 +19,42 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplicationPackage), OutputType(typeof(PSApplicationPackage))]
+    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplicationPackage, DefaultParameterSetName = UploadAndActivateSet), OutputType(typeof(PSApplicationPackage))]
     public class NewBatchApplicationPackageCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
+        internal const string ActivateOnlySet = "ActivateOnly";
+        internal const string UploadAndActivateSet = "UploadAndActivate";
+
+        [Parameter(Position = 0, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
+        [Parameter(Position = 0, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
+        [Parameter(Position = 1, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
+        [Parameter(Position = 1, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the name of the resource group that contains the Batch account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 2, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
+        [Parameter(Position = 2, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
+        [Parameter(Position = 2, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the id of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationId { get; set; }
 
-        [Parameter(Position = 3, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
+        [Parameter(Position = 3, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
+        [Parameter(Position = 3, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the version of the application.")]
         [ValidateNotNullOrEmpty]
         public string ApplicationVersion { get; set; }
 
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the file to be uploaded as the application package binary file.")]
-        [ValidateNotNullOrEmpty]
-        public string FilePath { get; set; }
-
-        [Parameter(Position = 5, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
+        [Parameter(Position = 4, ParameterSetName = UploadAndActivateSet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
+        [Parameter(Position = 4, ParameterSetName = ActivateOnlySet, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Specifies the format of the application package binary file.")]
         [ValidateNotNullOrEmpty]
         public string Format { get; set; }
 
-        [Parameter(Position = 6, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = UploadAndActivateSet, Mandatory = true, HelpMessage = "Specifies the file path of the application that will be uploaded to Azure Storage.")]
+        [ValidateNotNullOrEmpty]
+        public string FilePath { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = ActivateOnlySet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter ActivateOnly { get; set; }
 

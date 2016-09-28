@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
     [Cmdlet(VerbsCommon.Get, "AzureRmCdnEndpointNameAvailability"), OutputType(typeof(PSCheckNameAvailabilityOutput))]
     public class GetAzureRmCdnEndpointNameAvailability : AzureCdnCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Azure Cdn endpoint name.")]
+        [Parameter(Mandatory = true, HelpMessage = "Proposed Azure CDN endpoint name to check.")]
         [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 

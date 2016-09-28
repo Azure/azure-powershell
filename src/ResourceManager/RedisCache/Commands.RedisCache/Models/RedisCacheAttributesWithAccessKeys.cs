@@ -38,8 +38,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             SecondaryKey = cache.AccessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
 
-            VirtualNetwork = cache.VirtualNetwork;
-            Subnet = cache.Subnet;
+            SubnetId = cache.SubnetId;
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;

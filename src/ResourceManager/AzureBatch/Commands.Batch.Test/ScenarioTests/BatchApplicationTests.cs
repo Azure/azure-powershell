@@ -101,8 +101,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     return new string[]
                     {
-                        string.Format(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' '{2}' '{3}'", id, version,
-                            poolId, filePath))
+                        string.Format(string.Format("Test-CreatePoolWithApplicationPackage '{0}' '{1}' '{2}'", id, version, poolId))
                     };
                 },
                 () =>
@@ -130,8 +129,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     return new string[]
                     {
-                        string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}' '{2}' '{3}'", id, version,
-                            poolId, filePath)
+                        string.Format("Test-UpdatePoolWithApplicationPackage '{0}' '{1}' '{2}'", id, version, poolId)
                     };
                 },
                 () =>

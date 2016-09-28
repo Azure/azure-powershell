@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Name = vault.Name;
             this.Type = vault.Type;
             this.Location = vault.Location;
-            this.ResouceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
+            this.ResourceGroupName = PSRecoveryServicesClient.GetResourceGroup(vault.Id);
             this.SubscriptionId = PSRecoveryServicesClient.GetSubscriptionId(vault.Id);
             this.Properties = new ARSVaultProperties();
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Resouce group name.
         /// </summary>
-        public string ResouceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets Subscription.

@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,8 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",        
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = GetVaultParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the name of the key vault to get.")]
+            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -69,14 +70,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             Mandatory = false,
             ParameterSetName = ListVaultsBySubParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]
+            HelpMessage = "Specifies the key and optional value of the specified tag to filter the list of key vaults by.")]        
         public Hashtable Tag { get; set; }
 
         #endregion
         public override void ExecuteCmdlet()
         {
-            WriteWarning("The usage of Tag parameter in this cmdlet will be modified in a future release. This will impact creating, updating and appending tags for Azure resources. For more details about the change, please visit https://github.com/Azure/azure-powershell/issues/726#issuecomment-213545494");
-
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:

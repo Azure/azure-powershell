@@ -15,11 +15,11 @@
 
 namespace Microsoft.Azure.Commands.LogicApp.Utilities
 {
+    using System;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
     using Microsoft.Azure.Management.WebSites;
     using Microsoft.Azure.Management.WebSites.Models;
-    using System;
 
     /// <summary>
     /// Website client to perform operation on AppServicePlan

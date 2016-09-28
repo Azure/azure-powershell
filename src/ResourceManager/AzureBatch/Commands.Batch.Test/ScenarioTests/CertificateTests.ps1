@@ -14,174 +14,34 @@
 
 <#
 .SYNOPSIS
-Tests adding certificates to a Batch account
+Tests basic CRUD operations on certificates
 #>
-function Test-AddCertificate
+function Test-CertificateCrudOperations
 {
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
+    $thumbprintAlgorithm = "sha1"
 
-    # Load certificates so thumbprints can be compared later
     $localDir = ($pwd).Path # Use $pwd to get the local directory. If $pwd is not used, paths are relative to [Environment]::CurrentDirectory, which can be different
-    $cer2Path = $localDir + "\Resources\BatchTestCert02.cer"
-    $cer3Path = $localDir + "\Resources\BatchTestCert03.cer"
-    $pfx4Path = $localDir + "\Resources\BatchTestCert04.pfx"
-    $pfx5Path = $localDir + "\Resources\BatchTestCert05.pfx"
+    $certPath = $localDir + "\Resources\BatchTestCert01.cer"
+    $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPath
 
-    $password = "Passw0rd"
-    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+    # Add the cert
+    $x509cert | New-AzureBatchCertificate -BatchContext $context
 
-    $cer2 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $cer2Path
-    $cer3 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $cer3Path
-    $pfx4 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($pfx4Path,$securePassword)
-    $pfx5 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($pfx5Path,$securePassword)
-    $pfx5Bytes = [System.IO.File]::ReadAllBytes($pfx5Path)
-        
-    try 
+    # Get the cert and ensure its properties match expectations
+    $addedCert = Get-AzureBatchCertificate $thumbprintAlgorithm $x509cert.Thumbprint -BatchContext $context
+    Assert-AreEqual $x509cert.Thumbprint $addedCert.Thumbprint
+    Assert-AreEqual $thumbprintAlgorithm $addedCert.ThumbprintAlgorithm
+
+    # Delete the cert via pipelining
+    $addedCert | Remove-AzureBatchCertificate -BatchContext $context
+
+    # Ensure that our delete call was successful. Use a list operation to avoid the 404 that a get will return.
+    $allCerts = Get-AzureBatchCertificate -BatchContext $context
+    foreach ($c in $allCerts)
     {
-        # .cer by file path
-        New-AzureBatchCertificate $cer2Path -BatchContext $context
-        $cert = Get-AzureBatchCertificate "sha1" $cer2.Thumbprint -BatchContext $context
-        Assert-AreEqual $cer2.Thumbprint $cert.Thumbprint
-
-        # .cer by raw data
-        $cer3 | New-AzureBatchCertificate -BatchContext $context
-        $cert = Get-AzureBatchCertificate "sha1" $cer3.Thumbprint -BatchContext $context
-        Assert-AreEqual $cer3.Thumbprint $cert.Thumbprint
-        
-        # .pfx by file path
-        New-AzureBatchCertificate $pfx4Path -Password $password -BatchContext $context
-        $cert = Get-AzureBatchCertificate "sha1" $pfx4.Thumbprint -BatchContext $context
-        Assert-AreEqual $pfx4.Thumbprint $cert.Thumbprint
-
-        # .pfx by raw data
-        New-AzureBatchCertificate $pfx5Bytes -Password $password -BatchContext $context
-        $cert = Get-AzureBatchCertificate "sha1" $pfx4.Thumbprint -BatchContext $context
-        Assert-AreEqual $pfx4.Thumbprint $cert.Thumbprint
+        Assert-True { ($c.Thumbprint -ne $x509cert.Thumbprint) -or ($c.State.ToString().ToLower() -eq 'deleting') }
     }
-    finally
-    {
-        Get-AzureBatchCertificate -BatchContext $context | Remove-AzureBatchCertificate -Force -BatchContext $context
-    }
-}
-
-<#
-.SYNOPSIS
-Tests querying for a certificate by its thumbprint
-#>
-function Test-GetCertificateByThumbprint
-{
-    param([string]$thumbprintAlgorithm, [string]$thumbprint)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
-
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-    Assert-AreEqual $thumbprintAlgorithm $cert.ThumbprintAlgorithm
-}
-
-<#
-.SYNOPSIS
-Tests querying for Batch certs using a filter
-#>
-function Test-ListCertificatesByFilter
-{
-    param([string]$state, [string]$toDeleteThumbprint, [string]$matches)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $filter = "state eq '$state'"
-
-    # Put a cert in the 'deleting' state
-    Remove-AzureBatchCertificate "sha1" $toDeleteThumbprint -Force -BatchContext $context
-
-    $certs = Get-AzureBatchCertificate -Filter $filter -BatchContext $context
-
-    Assert-AreEqual $matches $certs.Length
-    foreach($cert in $certs)
-    {
-        Assert-AreEqual $state $cert.State
-    }
-}
-
-<#
-.SYNOPSIS
-Tests querying for Batch certs using a select clause
-#>
-function Test-GetAndListCertificatesWithSelect
-{
-    param([string]$thumbprintAlgorithm, [string]$thumbprint)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $filter = "state eq 'active'"
-    $selectClause = "thumbprint,state"
-
-    # Test with Get cert API
-    $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
-    Assert-AreNotEqual $null $cert.Url
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-
-    $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -Select $selectClause -BatchContext $context
-    Assert-AreEqual $null $cert.Url
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-
-    # Test with List certs API
-    $cert = Get-AzureBatchCertificate -Filter $filter -BatchContext $context
-    Assert-AreNotEqual $null $cert.Url
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-
-    $cert = Get-AzureBatchCertificate -Filter $filter -Select $selectClause -BatchContext $context
-    Assert-AreEqual $null $cert.Url
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-}
-
-<#
-.SYNOPSIS
-Tests querying for Batch certs and supplying a max count
-#>
-function Test-ListCertificatesWithMaxCount
-{
-    param([string]$maxCount)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $certs = Get-AzureBatchCertificate -MaxCount $maxCount -BatchContext $context
-
-    Assert-AreEqual $maxCount $certs.Length
-}
-
-<#
-.SYNOPSIS
-Tests querying for all certs under an account
-#>
-function Test-ListAllCertificates
-{
-    param([string]$count)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    $certs = Get-AzureBatchCertificate -BatchContext $context
-
-    Assert-AreEqual $count $certs.Length
-}
-
-<#
-.SYNOPSIS
-Tests deleting a cert
-#>
-function Test-DeleteCertificate
-{
-    param([string]$thumbprintAlgorithm, [string]$thumbprint)
-
-    $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-
-    # Verify the cert exists
-    $cert = Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context
-    Assert-AreEqual $thumbprint $cert.Thumbprint
-
-    Get-AzureBatchCertificate $thumbprintAlgorithm $thumbprint -BatchContext $context | Remove-AzureBatchCertificate -Force -BatchContext $context
-
-    # Verify the cert was deleted. Use the List API since the Get Certificate API will return a 404 if the cert isn't found.
-    $filter = "state eq 'deleting'"
-    $cert = Get-AzureBatchCertificate -Filter $filter -BatchContext $context
-    
-    Assert-True { $cert -eq $null -or $cert.Thumbprint -eq $thumbprint }
 }
 
 <#

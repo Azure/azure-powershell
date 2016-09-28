@@ -32,10 +32,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The circuit")]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var peering =

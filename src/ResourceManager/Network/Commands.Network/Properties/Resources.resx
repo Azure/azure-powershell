@@ -132,7 +132,7 @@
     <comment>The ID of a virtual network gateway child resource</comment>
   </data>
   <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
-    <value>virtualNetworkGatewayIpConfigurations</value>
+    <value>virtualNetworkGatewayIpConfiguration</value>
   </data>
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
@@ -207,6 +207,9 @@
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
   </data>
+  <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
+    <value>authenticationCertificates</value>
+  </data>
   <data name="ApplicationGatewaySslCertificateName" xml:space="preserve">
     <value>sslCertificates</value>
   </data>
@@ -230,5 +233,20 @@
   </data>
   <data name="SetByIpConfigurationResourceId" xml:space="preserve">
     <value>SetByIpConfigurationResourceId</value>
+  </data>
+  <data name="CreatingResourceMessage" xml:space="preserve">
+    <value>Creating Resource</value>
+  </data>
+  <data name="AddingResourceMessage" xml:space="preserve">
+    <value>Adding Resource</value>
+  </data>
+  <data name="MovingExpressRoutCircuitMessage" xml:space="preserve">
+    <value>Moving ExpressRoute Circuit</value>
+  </data>
+  <data name="ResettingResourceMessage" xml:space="preserve">
+    <value>Resetting Resource</value>
+  </data>
+  <data name="SettingResourceMessage" xml:space="preserve">
+    <value>Setting Resource</value>
   </data>
 </root>

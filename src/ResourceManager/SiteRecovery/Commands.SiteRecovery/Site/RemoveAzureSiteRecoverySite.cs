@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Creates Azure Site Recovery Policy object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSiteRecoverySite", SupportsShouldProcess = true,
+        DefaultParameterSetName = ASRParameterSets.Default)]
     public class RemoveAzureSiteRecoverySite : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -47,33 +48,43 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
-            RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
+            if (ShouldProcess(this.Site.FriendlyName, VerbsCommon.Remove))
+            {
+                this.WriteWarningWithTimestamp(
+                  string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                  this.MyInvocation.MyCommand.Name,
+                  "Remove-AzureRmSiteRecoveryFabric"));
+
+                RecoveryServicesProviderListResponse recoveryServicesProviderListResponse =
                     RecoveryServicesClient.GetAzureSiteRecoveryProvider(
-                    this.Site.Name);
+                        this.Site.Name);
 
-            if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
-            {
-                throw new PSInvalidOperationException(Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
-            }
+                if (recoveryServicesProviderListResponse.RecoveryServicesProviders.Count != 0)
+                {
+                    throw new PSInvalidOperationException(
+                        Properties.Resources.SiteRemovalWithRegisteredHyperVHostsError);
+                }
 
-            LongRunningOperationResponse response;
+                LongRunningOperationResponse response;
 
-            if (!this.Force.IsPresent)
-            {
-                response =
-                         RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
-            }
-            else
-            {
-                response =
+                if (!this.Force.IsPresent)
+                {
+                    response =
+                        RecoveryServicesClient.DeleteAzureSiteRecoveryFabric(this.Site.Name);
+                }
+                else
+                {
+                    response =
                         RecoveryServicesClient.PurgeAzureSiteRecoveryFabric(this.Site.Name);
+                }
+
+                JobResponse jobResponse =
+                    RecoveryServicesClient
+                        .GetAzureSiteRecoveryJobDetails(
+                            PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+                WriteObject(new ASRJob(jobResponse.Job));
             }
-
-            JobResponse jobResponse =
-                RecoveryServicesClient
-                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

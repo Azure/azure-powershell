@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
+            base.Execute();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var vnetGatewayConnection = this.GetVirtualNetworkGatewayConnectionSharedKey(this.ResourceGroupName, this.Name);

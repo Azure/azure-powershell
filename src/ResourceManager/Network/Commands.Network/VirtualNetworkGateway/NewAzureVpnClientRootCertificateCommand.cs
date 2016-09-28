@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string PublicCertData { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
 
+            base.Execute();
             var vpnClientRootCertificate = new PSVpnClientRootCertificate();
             vpnClientRootCertificate.Name = this.Name;
             vpnClientRootCertificate.PublicCertData = this.PublicCertData;

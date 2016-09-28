@@ -1,0 +1,355 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/locations",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9sb2NhdGlvbnM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Locations xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <Location>\r\n    <Name>East US</Name>\r\n    <DisplayName>East US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>ExtraSmall_Internal</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Medium_Internal</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS1_v2</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS11_v2</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS12_v2</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS13_v2</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS14_v2</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS2_v2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS3_v2</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_DS4_v2</RoleSize>\r\n        <RoleSize>Standard_DS5_v2</RoleSize>\r\n        <RoleSize>Standard_F1</RoleSize>\r\n        <RoleSize>Standard_F16</RoleSize>\r\n        <RoleSize>Standard_F16s</RoleSize>\r\n        <RoleSize>Standard_F1s</RoleSize>\r\n        <RoleSize>Standard_F2</RoleSize>\r\n        <RoleSize>Standard_F2s</RoleSize>\r\n        <RoleSize>Standard_F4</RoleSize>\r\n        <RoleSize>Standard_F4s</RoleSize>\r\n        <RoleSize>Standard_F8</RoleSize>\r\n        <RoleSize>Standard_F8s</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>South Central US</Name>\r\n    <DisplayName>South Central US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>ExtraSmall_Internal</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Medium_Internal</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A10</RoleSize>\r\n        <RoleSize>A11</RoleSize>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>A8</RoleSize>\r\n        <RoleSize>A9</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS1_v2</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS11_v2</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS12_v2</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS13_v2</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS14_v2</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS2_v2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS3_v2</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_DS4_v2</RoleSize>\r\n        <RoleSize>Standard_DS5_v2</RoleSize>\r\n        <RoleSize>Standard_F1</RoleSize>\r\n        <RoleSize>Standard_F16</RoleSize>\r\n        <RoleSize>Standard_F16s</RoleSize>\r\n        <RoleSize>Standard_F1s</RoleSize>\r\n        <RoleSize>Standard_F2</RoleSize>\r\n        <RoleSize>Standard_F2s</RoleSize>\r\n        <RoleSize>Standard_F4</RoleSize>\r\n        <RoleSize>Standard_F4s</RoleSize>\r\n        <RoleSize>Standard_F8</RoleSize>\r\n        <RoleSize>Standard_F8s</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>Central US</Name>\r\n    <DisplayName>Central US</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>ExtraSmall_Internal</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Medium_Internal</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS1_v2</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS11_v2</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS12_v2</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS13_v2</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS14_v2</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS2_v2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS3_v2</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_DS4_v2</RoleSize>\r\n        <RoleSize>Standard_DS5_v2</RoleSize>\r\n        <RoleSize>Standard_F1</RoleSize>\r\n        <RoleSize>Standard_F16</RoleSize>\r\n        <RoleSize>Standard_F16s</RoleSize>\r\n        <RoleSize>Standard_F1s</RoleSize>\r\n        <RoleSize>Standard_F2</RoleSize>\r\n        <RoleSize>Standard_F2s</RoleSize>\r\n        <RoleSize>Standard_F4</RoleSize>\r\n        <RoleSize>Standard_F4s</RoleSize>\r\n        <RoleSize>Standard_F8</RoleSize>\r\n        <RoleSize>Standard_F8s</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>Southeast Asia</Name>\r\n    <DisplayName>Southeast Asia</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>ExtraSmall_Internal</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Medium_Internal</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>SQLGZ</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>SQLGZ</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS1_v2</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS11_v2</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS12_v2</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS13_v2</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS14_v2</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS2_v2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS3_v2</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_DS4_v2</RoleSize>\r\n        <RoleSize>Standard_DS5_v2</RoleSize>\r\n        <RoleSize>Standard_F1</RoleSize>\r\n        <RoleSize>Standard_F16</RoleSize>\r\n        <RoleSize>Standard_F16s</RoleSize>\r\n        <RoleSize>Standard_F1s</RoleSize>\r\n        <RoleSize>Standard_F2</RoleSize>\r\n        <RoleSize>Standard_F2s</RoleSize>\r\n        <RoleSize>Standard_F4</RoleSize>\r\n        <RoleSize>Standard_F4s</RoleSize>\r\n        <RoleSize>Standard_F8</RoleSize>\r\n        <RoleSize>Standard_F8s</RoleSize>\r\n        <RoleSize>Standard_G1</RoleSize>\r\n        <RoleSize>Standard_G2</RoleSize>\r\n        <RoleSize>Standard_G3</RoleSize>\r\n        <RoleSize>Standard_G4</RoleSize>\r\n        <RoleSize>Standard_G5</RoleSize>\r\n        <RoleSize>Standard_GS1</RoleSize>\r\n        <RoleSize>Standard_GS2</RoleSize>\r\n        <RoleSize>Standard_GS3</RoleSize>\r\n        <RoleSize>Standard_GS4</RoleSize>\r\n        <RoleSize>Standard_GS5</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n  <Location>\r\n    <Name>East Asia</Name>\r\n    <DisplayName>East Asia</DisplayName>\r\n    <AvailableServices>\r\n      <AvailableService>Compute</AvailableService>\r\n      <AvailableService>Storage</AvailableService>\r\n      <AvailableService>PersistentVMRole</AvailableService>\r\n      <AvailableService>HighMemory</AvailableService>\r\n    </AvailableServices>\r\n    <ComputeCapabilities>\r\n      <WebWorkerRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>ExtraSmall_Internal</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Medium_Internal</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n      </WebWorkerRoleSizes>\r\n      <VirtualMachinesRoleSizes>\r\n        <RoleSize>A5</RoleSize>\r\n        <RoleSize>A6</RoleSize>\r\n        <RoleSize>A7</RoleSize>\r\n        <RoleSize>Basic_A0</RoleSize>\r\n        <RoleSize>Basic_A1</RoleSize>\r\n        <RoleSize>Basic_A2</RoleSize>\r\n        <RoleSize>Basic_A3</RoleSize>\r\n        <RoleSize>Basic_A4</RoleSize>\r\n        <RoleSize>ExtraLarge</RoleSize>\r\n        <RoleSize>ExtraSmall</RoleSize>\r\n        <RoleSize>Large</RoleSize>\r\n        <RoleSize>Medium</RoleSize>\r\n        <RoleSize>Small</RoleSize>\r\n        <RoleSize>SQLG3</RoleSize>\r\n        <RoleSize>SQLG4VM</RoleSize>\r\n        <RoleSize>Standard_D1</RoleSize>\r\n        <RoleSize>Standard_D1_v2</RoleSize>\r\n        <RoleSize>Standard_D1_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D11</RoleSize>\r\n        <RoleSize>Standard_D11_v2</RoleSize>\r\n        <RoleSize>Standard_D11_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D12</RoleSize>\r\n        <RoleSize>Standard_D12_v2</RoleSize>\r\n        <RoleSize>Standard_D12_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D13</RoleSize>\r\n        <RoleSize>Standard_D13_v2</RoleSize>\r\n        <RoleSize>Standard_D13_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D14</RoleSize>\r\n        <RoleSize>Standard_D14_v2</RoleSize>\r\n        <RoleSize>Standard_D14_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D15_v2</RoleSize>\r\n        <RoleSize>Standard_D2</RoleSize>\r\n        <RoleSize>Standard_D2_v2</RoleSize>\r\n        <RoleSize>Standard_D2_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D3</RoleSize>\r\n        <RoleSize>Standard_D3_v2</RoleSize>\r\n        <RoleSize>Standard_D3_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D4</RoleSize>\r\n        <RoleSize>Standard_D4_v2</RoleSize>\r\n        <RoleSize>Standard_D4_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_D5_v2</RoleSize>\r\n        <RoleSize>Standard_D5_v2_Internal</RoleSize>\r\n        <RoleSize>Standard_DS1</RoleSize>\r\n        <RoleSize>Standard_DS11</RoleSize>\r\n        <RoleSize>Standard_DS12</RoleSize>\r\n        <RoleSize>Standard_DS13</RoleSize>\r\n        <RoleSize>Standard_DS14</RoleSize>\r\n        <RoleSize>Standard_DS2</RoleSize>\r\n        <RoleSize>Standard_DS3</RoleSize>\r\n        <RoleSize>Standard_DS4</RoleSize>\r\n        <RoleSize>Standard_F1</RoleSize>\r\n        <RoleSize>Standard_F16</RoleSize>\r\n        <RoleSize>Standard_F2</RoleSize>\r\n        <RoleSize>Standard_F4</RoleSize>\r\n        <RoleSize>Standard_F8</RoleSize>\r\n      </VirtualMachinesRoleSizes>\r\n    </ComputeCapabilities>\r\n    <StorageCapabilities>\r\n      <StorageAccountTypes>\r\n        <StorageAccountType>Standard_LRS</StorageAccountType>\r\n        <StorageAccountType>Standard_ZRS</StorageAccountType>\r\n        <StorageAccountType>Standard_GRS</StorageAccountType>\r\n        <StorageAccountType>Standard_RAGRS</StorageAccountType>\r\n        <StorageAccountType>Premium_LRS</StorageAccountType>\r\n      </StorageAccountTypes>\r\n    </StorageCapabilities>\r\n  </Location>\r\n</Locations>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "22891"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "d64bea73d71ca1b1b701ab772e72bfa1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:29 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/operations/d64bea73d71ca1b1b701ab772e72bfa1",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9vcGVyYXRpb25zL2Q2NGJlYTczZDcxY2ExYjFiNzAxYWI3NzJlNzJiZmEx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>d64bea73-d71c-a1b1-b701-ab772e72bfa1</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "4210c0beafc3a4deb246cfdc6f4761ad"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "<CreateLocalNetworkGatewayParameters xmlns=\"http://schemas.microsoft.com/windowsazure\">\r\n  <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <a:string>10.0.0.0/8</a:string>\r\n  </AddressSpace>\r\n  <GatewayName>onesdk2927</GatewayName>\r\n  <IpAddress>1.2.3.4</IpAddress>\r\n  <BgpSettings>\r\n    <Asn>1234</Asn>\r\n    <BgpPeeringAddress>10.0.0.1</BgpPeeringAddress>\r\n    <PeerWeight>0</PeerWeight>\r\n  </BgpSettings>\r\n</CreateLocalNetworkGatewayParameters>",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/xml"
+        ],
+        "Content-Length": [
+          "485"
+        ],
+        "x-ms-version": [
+          "2016-07-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
+        ]
+      },
+      "ResponseBody": "<string xmlns=\"http://schemas.microsoft.com/2003/10/Serialization/\">d264e9b2-cab2-457a-b625-21de7310acd9</string>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "113"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "ab915aca6954a7baaa7c7eb83efdbd0f"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzP2FwaS12ZXJzaW9uPTIwMTYtMDctMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-07-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
+        ]
+      },
+      "ResponseBody": "<LocalNetworkGateways xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <LocalNetworkGateway>\r\n    <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n      <a:string>192.168.1.0/24</a:string>\r\n    </AddressSpace>\r\n    <GatewayName>testlng</GatewayName>\r\n    <Id>8085cd3e-8922-43c0-b64f-f256a28af8c9</Id>\r\n    <IpAddress>104.41.135.61</IpAddress>\r\n    <Location i:nil=\"true\" />\r\n    <BgpSettings>\r\n      <Asn>1234</Asn>\r\n      <BgpPeeringAddress>192.168.1.2</BgpPeeringAddress>\r\n      <PeerWeight>0</PeerWeight>\r\n    </BgpSettings>\r\n  </LocalNetworkGateway>\r\n  <LocalNetworkGateway>\r\n    <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n      <a:string>172.16.9.0/24</a:string>\r\n    </AddressSpace>\r\n    <GatewayName>dflng</GatewayName>\r\n    <Id>fe386da7-e329-4227-bede-2ca1a8ff4405</Id>\r\n    <IpAddress>40.1.2.3</IpAddress>\r\n    <Location i:nil=\"true\" />\r\n  </LocalNetworkGateway>\r\n  <LocalNetworkGateway>\r\n    <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n      <a:string>10.0.0.0/8</a:string>\r\n    </AddressSpace>\r\n    <GatewayName>onesdk2927</GatewayName>\r\n    <Id>d264e9b2-cab2-457a-b625-21de7310acd9</Id>\r\n    <IpAddress>1.2.3.4</IpAddress>\r\n    <Location i:nil=\"true\" />\r\n    <BgpSettings>\r\n      <Asn>1234</Asn>\r\n      <BgpPeeringAddress>10.0.0.1</BgpPeeringAddress>\r\n      <PeerWeight>0</PeerWeight>\r\n    </BgpSettings>\r\n  </LocalNetworkGateway>\r\n</LocalNetworkGateways>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1307"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3046db9b9f6fa5ae8352dd1c356da732"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/operations/3046db9b9f6fa5ae8352dd1c356da732",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9vcGVyYXRpb25zLzMwNDZkYjliOWY2ZmE1YWU4MzUyZGQxYzM1NmRhNzMy",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3046db9b-9f6f-a5ae-8352-dd1c356da732</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "e877e657da88a5bc8488a2bbfd55e014"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:31 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-07-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
+        ]
+      },
+      "ResponseBody": "<LocalNetworkGateway xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <AddressSpace xmlns:a=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <a:string>10.0.0.0/8</a:string>\r\n  </AddressSpace>\r\n  <GatewayName>onesdk2927</GatewayName>\r\n  <Id>d264e9b2-cab2-457a-b625-21de7310acd9</Id>\r\n  <IpAddress>1.2.3.4</IpAddress>\r\n  <Location />\r\n  <BgpSettings>\r\n    <Asn>1234</Asn>\r\n    <BgpPeeringAddress>10.0.0.1</BgpPeeringAddress>\r\n    <PeerWeight>0</PeerWeight>\r\n  </BgpSettings>\r\n</LocalNetworkGateway>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "511"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "3173e3be9f13a85a9198903c42ff8744"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:30 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/operations/3173e3be9f13a85a9198903c42ff8744",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9vcGVyYXRpb25zLzMxNzNlM2JlOWYxM2E4NWE5MTk4OTAzYzQyZmY4NzQ0",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2014-10-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.ManagementClient/4.0.0.0"
+        ]
+      },
+      "ResponseBody": "<Operation xmlns=\"http://schemas.microsoft.com/windowsazure\" xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <ID>3173e3be-9f13-a85a-9198-903c42ff8744</ID>\r\n  <Status>Succeeded</Status>\r\n  <HttpStatusCode>200</HttpStatusCode>\r\n</Operation>",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "232"
+        ],
+        "Content-Type": [
+          "application/xml; charset=utf-8"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "x-ms-request-id": [
+          "ce2b2ef0dbb8afa0b37668d933635c75"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:31 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/0113c7b2-a5e4-468d-ba23-03355d84410e/services/networking/localnetworkgateways/d264e9b2-cab2-457a-b625-21de7310acd9?api-version=2016-07-01",
+      "EncodedRequestUri": "LzAxMTNjN2IyLWE1ZTQtNDY4ZC1iYTIzLTAzMzU1ZDg0NDEwZS9zZXJ2aWNlcy9uZXR3b3JraW5nL2xvY2FsbmV0d29ya2dhdGV3YXlzL2QyNjRlOWIyLWNhYjItNDU3YS1iNjI1LTIxZGU3MzEwYWNkOT9hcGktdmVyc2lvbj0yMDE2LTA3LTAx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-version": [
+          "2016-07-01"
+        ],
+        "User-Agent": [
+          "Microsoft.WindowsAzure.Management.Network.NetworkManagementClient/7.0.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "x-ms-servedbyregion": [
+          "ussouth3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "bc8034e6d3feace887c4e7ef3cae0024"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 21 Jun 2016 21:19:31 GMT"
+        ],
+        "Server": [
+          "1.0.6198.392",
+          "(rd_rdfe_stable.160613-1127)",
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-LocalNetworkGatewayBgp": [
+      "onesdk2927"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "0113c7b2-a5e4-468d-ba23-03355d84410e"
+  }
+}

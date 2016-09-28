@@ -28,6 +28,7 @@ function Test-SetIPForwardingOnVMAndUpdateVM
 
     # Test
     New-AzureVMConfig -ImageName $image -Name $name -InstanceSize Small |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     Set-AzureSubnet -SubnetNames $SubnetName |
     New-AzureVM -VNetName $VirtualNetworkName -ServiceName $name -Location $Location
@@ -59,6 +60,7 @@ function Test-SetIPForwardingOnNICAndUpdateVM
 
     # Test
     New-AzureVMConfig -ImageName $image -Name $name -InstanceSize Large |
+    #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
     Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
     Set-AzureSubnet -SubnetNames $SubnetName |
     Add-AzureNetworkInterfaceConfig -Name $nicName -SubnetName $SubnetName |

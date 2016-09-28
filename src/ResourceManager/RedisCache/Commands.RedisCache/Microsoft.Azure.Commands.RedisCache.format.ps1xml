@@ -67,12 +67,8 @@
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VirtualNetwork</Label>
-                <PropertyName>VirtualNetwork</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Subnet</Label>
-                <PropertyName>Subnet</PropertyName>
+                <Label>SubnetId</Label>
+                <PropertyName>SubnetId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>StaticIP</Label>
@@ -165,12 +161,8 @@
                 <PropertyName>SecondaryKey</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>VirtualNetwork</Label>
-                <PropertyName>VirtualNetwork</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Subnet</Label>
-                <PropertyName>Subnet</PropertyName>
+                <Label>SubnetId</Label>
+                <PropertyName>SubnetId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>StaticIP</Label>

@@ -19,35 +19,63 @@
 function Test-AzureProvider
 {
     $defaultProviders = Get-AzureRmResourceProvider
-
     Assert-True { $defaultProviders.Length -gt 0 }
 
     $allProviders = Get-AzureRmResourceProvider -ListAvailable
-
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
-    Register-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
+	$ErrorActionPreference = "SilentlyContinue"
+	$Error.Clear()
+
+	$nonProviders = Get-AzureRmResourceProvider -Location "abc"
+	Assert-True { $Error[0].Contains("Provided location is not supported") }
+	Assert-True { $nonProviders.Length -eq 0 }
+
+	$ErrorActionPreference = "Stop"
+
+	$globalProviders = Get-AzureRmResourceProvider -Location "global"
+	Assert-True { $globalProviders.Length -gt 0 }
+
+    Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Registered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
+	$provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+    Assert-True { $provider[0].RegistrationState -eq "Registered" } 
 
-    Assert-True { @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
+    Unregister-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
 
-    Unregister-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
-
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement")[0].RegistrationState -ne "Unregistered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
-
-    Assert-True { @(Get-AzureRmResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
+	$provider = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement"
+    Assert-True { $provider[0].RegistrationState -eq "Unregistered" }
  }
 
  <#
+    .SYNOPSIS
+    Tests getting resource provider with zone mappings.
+#>
+function Test-AzureProvider-WithZoneMappings
+{
+    $testProvider = Get-AzureRmResourceProvider -ProviderNamespace "Providers.Test"
+	Assert-True { $testProvider.Count -gt 0 }
+
+	$statefulResources = $testProvider | where-object {$_.ResourceTypes.ResourceTypeName -contains "statefulResources"}
+
+	Assert-NotNull { $statefulResources }
+	Assert-NotNull { $statefulResources.ZoneMappings }
+
+	Assert-True { $statefulResources.ZoneMappings.Count -eq 2 }
+	Assert-True { $statefulResources.ZoneMappings["West Europe"] -contains "3"}
+}
+
+<#
     .SYNOPSIS
     Tests querying for a resource provider's operations/actions
 #>

@@ -64,7 +64,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(SetAzureSqlServerDisasterRecoveryConfiguration);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         {
             Type type = typeof(RemoveAzureSqlServerDisasterRecoveryConfiguration);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: true);
-            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.High);
 
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ResourceGroupName", isMandatory: true, valueFromPipelineByName: true);
             UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);

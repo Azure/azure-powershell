@@ -325,33 +325,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestListSubtasksWithMaxCount()
-        {
-            BatchController controller = BatchController.NewInstance;
-            string jobId = "maxCountSubtaskJob";
-            string taskId = "testTask";
-            int numInstances = 3;
-            int maxCount = 1;
-            BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListSubtasksWithMaxCount '{0}' '{1}' '{2}'", jobId, taskId, maxCount) }; },
-                () =>
-                {
-                    context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateMpiPoolIfNotExists(controller, context);
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId, ScenarioTestHelpers.MpiPoolId);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, "cmd /c hostname", numInstances);
-                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
-                },
-                () =>
-                {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
-        }
-
-        [Fact]
         public void TestListAllSubtasks()
         {
             BatchController controller = BatchController.NewInstance;

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
@@ -30,6 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         private const string CommitParameterSetName = "CommitMigrationParameterSet";
         private const string PrepareNewParameterSetName = "PrepareNewMigrationParameterSet";
         private const string PrepareExistingParameterSetName = "PrepareExistingMigrationParameterSet";
+        private const string ValidateNewParameterSetName = "ValidateNewMigrationParameterSet";
+        private const string ValidateExistingParameterSetName = "ValidateExistingMigrationParameterSet";
 
         private string DestinationVNetType;
 
@@ -72,6 +75,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
         }
 
         [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ValidateNewParameterSetName,
+            HelpMessage = "Validate migration")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = ValidateExistingParameterSetName,
+            HelpMessage = "Validate migration")]
+        public SwitchParameter Validate
+        {
+            get;
+            set;
+        }
+
+        [Parameter(
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -99,6 +118,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareNewParameterSetName,
             HelpMessage = "Prepare migration to new virtual network")]
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ParameterSetName = ValidateNewParameterSetName,
+            HelpMessage = "Validate migration to new virtual network")]
         public SwitchParameter CreateNewVirtualNetwork
         {
             get;
@@ -110,6 +134,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
             HelpMessage = "Prepare migration to existing virtual network")]
+        [Parameter(
+            Position = 3,
+            Mandatory = true,
+            ParameterSetName = ValidateExistingParameterSetName,
+            HelpMessage = "Validate migration to existing virtual network")]
         public SwitchParameter UseExistingVirtualNetwork
         {
             get;
@@ -122,6 +151,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
             HelpMessage = "Resource group name of existing virtual network for migration")]
+        [Parameter(
+            Position = 4,
+            Mandatory = true,
+            ParameterSetName = ValidateExistingParameterSetName,
+            HelpMessage = "Validate group name of existing virtual network for migration")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkResourceGroupName
         {
@@ -134,6 +168,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
             HelpMessage = "Virtual network name for migration")]
+        [Parameter(
+            Position = 5,
+            Mandatory = true,
+            ParameterSetName = ValidateExistingParameterSetName,
+            HelpMessage = "Virtual network name for migration")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName
         {
@@ -145,6 +184,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             Position = 6,
             Mandatory = true,
             ParameterSetName = PrepareExistingParameterSetName,
+            HelpMessage = "Subnet name for migration")]
+        [Parameter(
+            Position = 6,
+            Mandatory = true,
+            ParameterSetName = ValidateExistingParameterSetName,
             HelpMessage = "Subnet name for migration")]
         [ValidateNotNullOrEmpty]
         public string SubnetName
@@ -182,7 +226,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     DestinationVNetType = DestinationVirtualNetwork.Existing;
                 }
 
-                var parameter = (this.ParameterSetName == PrepareExistingParameterSetName)
+                var parameter = (this.ParameterSetName.Equals(PrepareExistingParameterSetName) ||
+                    this.ParameterSetName.Equals(ValidateExistingParameterSetName))
                     ? new PrepareDeploymentMigrationParameters
                     {
                         DestinationVirtualNetwork = this.DestinationVNetType,
@@ -198,11 +243,62 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                         VirtualNetworkName = string.Empty
                     };
 
-                ExecuteClientActionNewSM(
-                    null,
-                    CommandRuntime.ToString(),
-                    () => this.ComputeClient.Deployments.PrepareMigration(this.ServiceName, DeploymentName, parameter));
+                if (this.Validate.IsPresent)
+                {
+                    ExecuteClientActionNewSM(
+                        null,
+                        CommandRuntime.ToString(),
+                        () => this.ComputeClient.Deployments.ValidateMigration(this.ServiceName, DeploymentName, parameter),
+                        (operation, service) =>
+                        {
+                            var context = ConvertToContext(operation, service);
+                            return context;
+                        });
+                }
+                else
+                {
+                    ExecuteClientActionNewSM(
+                        null,
+                        CommandRuntime.ToString(),
+                        () => this.ComputeClient.Deployments.PrepareMigration(this.ServiceName, DeploymentName, parameter));
+                }
             }
+        }
+
+        private MigrationValidateContext ConvertToContext(
+            OperationStatusResponse operationResponse, XrpMigrationValidateDeploymentResponse validationResponse)
+        {
+            if (operationResponse == null) return null;
+
+            var result = new MigrationValidateContext
+            {
+                OperationId = operationResponse.Id,
+                Result = operationResponse.Status.ToString()
+            };
+
+            if (validationResponse == null || validationResponse.ValidateDeploymentMessages == null) return result;
+
+            var errorCount = validationResponse.ValidateDeploymentMessages.Count;
+
+            if (errorCount > 0)
+            {
+                result.ValidationMessages = new ValidationMessage[errorCount];
+
+                for (int i = 0; i < errorCount; i++)
+                {
+                    result.ValidationMessages[i] = new ValidationMessage
+                    {
+                        ResourceName = validationResponse.ValidateDeploymentMessages[i].ResourceName,
+                        ResourceType = validationResponse.ValidateDeploymentMessages[i].ResourceType,
+                        Category = validationResponse.ValidateDeploymentMessages[i].Category,
+                        Message = validationResponse.ValidateDeploymentMessages[i].Message,
+                        VirtualMachineName = validationResponse.ValidateDeploymentMessages[i].VirtualMachineName
+                    };
+                }
+                result.Result = "Validation failed.  Please see ValidationMessages for details";
+            }
+
+            return result;
         }
     }
 }

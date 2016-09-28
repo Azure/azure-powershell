@@ -14,7 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.Tags.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
@@ -43,10 +43,9 @@ namespace Microsoft.Azure.Commands.Network
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
-        public override void ExecuteCmdlet()
+        public override void Execute()
         {
-            base.ExecuteCmdlet();
-
+            base.Execute();
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
@@ -55,7 +54,12 @@ namespace Microsoft.Azure.Commands.Network
             var getvirtualnetGateway = this.GetVirtualNetworkGateway(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name);
             if (getvirtualnetGateway.Sku.Tier.Equals(this.GatewaySku))
             {
-                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:{0} requested. No need to resize!", this.GatewaySku);
+                throw new ArgumentException("Current Gateway SKU is same as Resize SKU size:"+ this.GatewaySku + " requested. No need to resize!");
+            }
+
+            if (this.VirtualNetworkGateway.ActiveActive && !GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.HighPerformance))
+            {
+                throw new ArgumentException("Virtual Network Gateway Sku should be " + MNM.VirtualNetworkGatewaySkuTier.HighPerformance + " when Active-Active feature is already enabled on gateway.");
             }
 
             this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();

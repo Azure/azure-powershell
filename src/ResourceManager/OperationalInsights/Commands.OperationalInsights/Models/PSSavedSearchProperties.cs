@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public string Category { get; set; }
         public string DisplayName { get; set; }
         public string Query { get; set; }
-        public int? Version { get; set; }
+        public long? Version { get; set; }
         public Hashtable Tags { get; set; }
     }
 }

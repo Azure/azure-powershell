@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to authenticationCertificates.
+        /// </summary>
+        public static string ApplicationGatewayAuthenticationCertificateName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayAuthenticationCertificateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         public static string ApplicationGatewayBackendAddressPoolName {
@@ -169,6 +178,26 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating Resource.
+        /// </summary>
+        public static string CreatingResourceMessage {
+            get {
+                return ResourceManager.GetString("CreatingResourceMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Adding Resource.
+        /// </summary>
+        public static string AddingResourceMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("AddingResourceMessage", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         public static string LoadBalancerBackendAddressPoolName {
@@ -241,6 +270,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Moving ExpressRoute Circuit.
+        /// </summary>
+        public static string MovingExpressRoutCircuitMessage {
+            get {
+                return ResourceManager.GetString("MovingExpressRoutCircuitMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to overwriteresource &apos;{0}&apos;.
         /// </summary>
         public static string OverwritingResource {
@@ -273,6 +311,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string RemovingResource {
             get {
                 return ResourceManager.GetString("RemovingResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resetting Resource.
+        /// </summary>
+        public static string ResettingResourceMessage {
+            get {
+                return ResourceManager.GetString("ResettingResourceMessage", resourceCulture);
             }
         }
         
@@ -354,6 +401,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string SetByResourceId {
             get {
                 return ResourceManager.GetString("SetByResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting Resource.
+        /// </summary>
+        public static string SettingResourceMessage {
+            get {
+                return ResourceManager.GetString("SettingResourceMessage", resourceCulture);
             }
         }
         

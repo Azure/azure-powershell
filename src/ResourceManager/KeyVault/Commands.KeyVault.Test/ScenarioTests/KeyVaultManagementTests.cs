@@ -15,12 +15,15 @@
 
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.IO;
 using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
@@ -30,13 +33,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         public KeyVaultManagementTests(KeyVaultTestFixture fixture)
         {
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             this._data = fixture;
             this._data.Initialize(TestUtilities.GetCallingClass());
         }
 
         private void Initialize()
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["ResourceGroupName"] = _data.resourceGroupName;
                 HttpMockServer.Variables["Location"] = _data.location;
@@ -629,7 +633,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         #region Helper Methods
         private string GetUser(TestEnvironment environment)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 HttpMockServer.Variables["User"] = environment.AuthorizationContext.UserId;
                 return environment.AuthorizationContext.UserId;
@@ -642,11 +646,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         private string GetUserObjectId(KeyVaultManagementController controllerAdmin, string upn)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
-                var result = controllerAdmin.GraphClient.User.Get(upn);
-                HttpMockServer.Variables["ObjectId"] = result.User.ObjectId;
-                return result.User.ObjectId;
+                var user = controllerAdmin.GraphClient.Users.Get(upn);
+                HttpMockServer.Variables["ObjectId"] = user.ObjectId;
+                return user.ObjectId;
             }
             else
             {
@@ -659,7 +663,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
             if (appNum < 0)
                 throw new ArgumentException("Invalid appNum");
             string variableName = "AppId" + appNum;
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
             {
                 Guid appId = Guid.NewGuid();
                 HttpMockServer.Variables[variableName] = appId.ToString();
@@ -684,7 +688,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 ReplyUrls = new[] { url }
             };
 
-            return controllerAdmin.GraphClient.Application.Create(appParam).Application;
+            return controllerAdmin.GraphClient.Applications.Create(appParam);
         }
 
         private ServicePrincipal CreateNewAdServicePrincipal(KeyVaultManagementController controllerAdmin, string appId)
@@ -695,7 +699,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 AccountEnabled = true
             };
 
-            return controllerAdmin.GraphClient.ServicePrincipal.Create(spParam).ServicePrincipal;
+            return controllerAdmin.GraphClient.ServicePrincipals.Create(spParam);
         }
 
         private User CreateNewAdUser(KeyVaultManagementController controllerAdmin)
@@ -707,21 +711,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 UserPrincipalName = name + "@" + controllerAdmin.UserDomain,
                 AccountEnabled = true,
                 MailNickname = name + "test",
-                PasswordProfileSettings = new UserCreateParameters.PasswordProfile
+                PasswordProfile = new PasswordProfile
                 {
                     ForceChangePasswordNextLogin = false,
                     Password = TestUtilities.GenerateName("adpass") + "0#$"
                 }
             };
 
-            return controllerAdmin.GraphClient.User.Create(parameter).User;
+            return controllerAdmin.GraphClient.Users.Create(parameter);
         }
 
         private void DeleteAdUser(KeyVaultManagementController controllerAdmin, User user)
         {
             if (user != null)
             {
-                controllerAdmin.GraphClient.User.Delete(user.ObjectId);
+                controllerAdmin.GraphClient.Users.Delete(user.ObjectId);
             }
         }
 
@@ -729,7 +733,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             if (app != null)
             {
-                controllerAdmin.GraphClient.Application.Delete(app.ObjectId);
+                controllerAdmin.GraphClient.Applications.Delete(app.ObjectId);
             }
         }
 
@@ -737,7 +741,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             if (newServicePrincipal != null)
             {
-                controllerAdmin.GraphClient.ServicePrincipal.Delete(newServicePrincipal.ObjectId);
+                controllerAdmin.GraphClient.ServicePrincipals.Delete(newServicePrincipal.ObjectId);
             }
         }
         #endregion

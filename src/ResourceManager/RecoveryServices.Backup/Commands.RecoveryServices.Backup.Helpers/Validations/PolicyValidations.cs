@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             // validate yearly retention schedule with schPolicy
-            if (ltrPolicy.YearlySchedule != null)
+            if (ltrPolicy.YearlySchedule != null && ltrPolicy.IsYearlyScheduleEnabled == true)
             {
                 ValidateRetentionAndBackupTimes(schPolicy.ScheduleRunTimes, ltrPolicy.YearlySchedule.RetentionTimes);
 

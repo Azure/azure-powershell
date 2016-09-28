@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             List<DataLakeStoreItem> toReturn =
                 DataLakeStoreFileSystemClient.GetFileStatuses(Path.TransformedPath, Account)
-                    .FileStatus.Select(element => new DataLakeStoreItem(element))
+                    .FileStatus.Select(element => new DataLakeStoreItem(element, optionalPath: "/" + Path.TransformedPath))
                     .ToList();
 
             WriteObject(toReturn, true);

@@ -161,6 +161,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 pool.VirtualMachineConfiguration = parameters.VirtualMachineConfiguration.omObject;
             }
 
+            if (parameters.NetworkConfiguration != null)
+            {
+                pool.NetworkConfiguration = parameters.NetworkConfiguration.omObject;
+            }
+
             WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
         }

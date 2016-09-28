@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '1.0.2' 
+ModuleVersion = '2.1.0' 
   
 # ID used to uniquely identify this module  
 GUID = '52594002-DB89-46DF-928D-2755DAD840E8'  
@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Cdn service cmdlets for Azure Resource Manager'  
+Description = 'Microsoft Azure PowerShell - CDN service cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '1.0.8'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '2.1.0'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -83,6 +83,27 @@ ModuleList = @()
 FileList =  @()  
   
 # Private data to pass to the module specified in ModuleToProcess  
-PrivateData = ''  
+PrivateData = @{
 
-} 
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        Tags = @("Azure", "ResourceManager", "ARM", "CDN")
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+
+    } # End of PSData hashtable
+
+} # End of PrivateData hashtable  
+
+}

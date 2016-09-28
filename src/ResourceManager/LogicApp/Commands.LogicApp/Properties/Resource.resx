@@ -120,25 +120,43 @@
   <data name="ApplicationServicePlanIdFormat" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/serverfarms/{2}</value>
   </data>
+  <data name="CancelLogicAppRunMessage" xml:space="preserve">
+    <value>Cancelling the LogicApp run.</value>
+  </data>
+  <data name="CancelLogicAppRunWarning" xml:space="preserve">
+    <value>Are you sure you want to cancel the LogicApp run.</value>
+  </data>
   <data name="DefinitionMissingWarning" xml:space="preserve">
     <value>Definition content needs to be specified.</value>
   </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist.</value>
   </data>
+  <data name="InvalidMetadata" xml:space="preserve">
+    <value>Invalid metadata.</value>
+  </data>
+  <data name="InvalidQualifierSpecified" xml:space="preserve">
+    <value>The qualifier '{0}' for partner '{1}' is invalid.</value>
+  </data>
   <data name="ParameterNeedsToBeSpecified" xml:space="preserve">
     <value>{0} needs to be specified.</value>
   </data>
-  <data name="RemoveLogicAppMessage" xml:space="preserve">
-    <value>Removing logic app.</value>
+  <data name="RemoveResourceMessage" xml:space="preserve">
+    <value>Removing {0} {1}.</value>
   </data>
-  <data name="RemoveLogicAppWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the logic app "{0}".</value>
+  <data name="RemoveResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the {0} {1}.</value>
   </data>
   <data name="ResourceAlreadyExists" xml:space="preserve">
-    <value>The Resource 'Microsoft.Logic/workflows/{0}' under resource group '{1}' already exists.</value>
+    <value>The Resource '{0}' under resource group '{1}' already exists.</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
-    <value>The Resource 'Microsoft.Logic/workflows/{0}' under resource group '{1}' was not found.</value>
+    <value>The Resource '{0}' under resource group '{1}' was not found.</value>
+  </data>
+  <data name="UpdateResourceMessage" xml:space="preserve">
+    <value>Updating {0} {1}.</value>
+  </data>
+  <data name="UpdateResourceWarning" xml:space="preserve">
+    <value>Are you sure you want to update the {0} {1}.</value>
   </data>
 </root>

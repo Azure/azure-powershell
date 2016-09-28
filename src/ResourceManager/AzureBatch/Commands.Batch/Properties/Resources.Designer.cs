@@ -61,15 +61,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
-        /// </summary>
-        internal static string AccountAlreadyExists {
-            get {
-                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
         /// </summary>
         internal static string AccountAndKeyInUse {
@@ -745,6 +736,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When uploading a new application package, you must specify a value for the FilePath parameter..
+        /// </summary>
+        internal static string NewApplicationPackageNoPathSpecified {
+            get {
+                return ResourceManager.GetString("NewApplicationPackageNoPathSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No certificate data was specified. Supply the path to a certificate file, or provide the raw certificate data..
         /// </summary>
         internal static string NoCertificateData {
@@ -831,6 +831,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NoTask {
             get {
                 return ResourceManager.GetString("NoTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reactivating task {0}..
+        /// </summary>
+        internal static string ReactivateTask {
+            get {
+                return ResourceManager.GetString("ReactivateTask", resourceCulture);
             }
         }
         

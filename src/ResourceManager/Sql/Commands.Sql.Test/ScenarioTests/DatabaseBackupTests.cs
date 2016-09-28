@@ -51,5 +51,29 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RestorePointInTimeBackup");
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestServerBackupLongTermRetentionVault()
+        {
+            RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseBackupLongTermRetentionPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreLongTermRetentionBackup()
+        {
+            RunPowerShellTest("Test-RestoreLongTermRetentionBackup");
+        }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseGeoBackupPolicy()
+        {
+            RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
+        }
     }
 }

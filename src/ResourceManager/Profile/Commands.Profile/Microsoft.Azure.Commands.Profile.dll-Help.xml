@@ -1424,27 +1424,9 @@ Subscription Name: Contoso Subscription 1
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
-          <maml:name>Force</maml:name>
-          <maml:description>
-            <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-          </maml:description>
-        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2" aliases="none">
-        <maml:name>Force</maml:name>
-        <maml:description>
-          <maml:para>Forces the command to run without asking for user confirmation.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>none</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
         <maml:name>Name</maml:name>
         <maml:description>

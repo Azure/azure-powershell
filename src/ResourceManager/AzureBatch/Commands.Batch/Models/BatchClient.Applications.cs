@@ -171,25 +171,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
             string format,
             bool activateOnly)
         {
-            // Checks File path and resourceGroupName is valid
-            if (!File.Exists(filePath))
-            {
-                throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
-            }
-
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 // use resource mgr to see if account exists and then use resource group name to do the actual lookup
                 resourceGroupName = GetGroupForAccount(accountName);
             }
 
-            // If the package has already been uploaded but wasn't activated.
             if (activateOnly)
             {
+                // If the package has already been uploaded but wasn't activated.
                 ActivateApplicationPackage(resourceGroupName, accountName, applicationId, version, format, Resources.FailedToActivate);
             }
             else
             {
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    throw new ArgumentNullException("filePath", Resources.NewApplicationPackageNoPathSpecified);
+                }
+
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException(string.Format(Resources.FileNotFound, filePath), filePath);
+                }
+
                 // Else create Application Package and upload.
                 bool appPackageAlreadyExists;
 

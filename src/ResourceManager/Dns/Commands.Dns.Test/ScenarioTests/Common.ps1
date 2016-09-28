@@ -70,3 +70,19 @@ function TestSetup-CreateResourceGroup
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }
+
+function Get-RandomZoneName
+{
+	$prefix = getAssetName;
+	return $prefix + ".pstest.test" ;
+}
+
+function Get-TxtOfSpecifiedLength([int] $length)
+{
+	$returnValue = "";
+	for ($i = 0; $i -lt $length ; $i++)
+	{
+		$returnValue += "a";
+	}
+	return $returnValue;
+}
