@@ -7,6 +7,9 @@
 	2. Connection string
 	3. Defaults
 4. Record/Playback tests
+	1. Playback Tests
+	2. Record tests using interactive login (using orgId)
+	3. Record tests using Service Principal
 5. Change Test Environment settings at run-time
 
 
@@ -113,10 +116,18 @@ In order to Record/Playback a test, you need to setup a connection string that c
         DataLakeAnalyticsJoAbndCatalogServiceUri = "https://konaaccountdogfood.net"
 
 ## 4. Record/Playback Test
-1. Make sure HttpRecorderMode=Record in connection string or set environment variable AZURE_TEST_MODE=Record
+#### Playback Test
+1. The default mode is Playback mode, so no setting up of connection string is required.
+
+#### Record Test with Interactive login using OrgId
+	TEST_CSM_ORGID_AUTHENTICATION=SubsctiptionId={SubId};UserId={orgId};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+
+#### Record Test with ServicePrincipal
+	TEST_CSM_ORGID_AUTHENTICATION=SubsctiptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;
+
 2. Run the test and make sure that you got a generated .json file that matches the test name in 	the bin folder under *SessionRecords folder
 3. Copy SessionRecords folder inside the test project and add all *.json files in Visual Studio 	setting "Copy to Output Directory" property to "Copy if newer"
-4. To assure that the records work fine, change AZURE_TEST_MODE to Playback and run the test which 	should be run mocked not live.
+4. To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback"
 
 ## 5. Change Test Environment settings at run-time
 #### 1. Once you set your connection string, you can add or update key/value settings
@@ -129,3 +140,6 @@ In order to Record/Playback a test, you need to setup a connection string that c
 
 	Accessing/Updating TestEndpoints
 	TestEnvironment.Endpoints.GraphUri = new Uri("https://newGraphUri.windows.net");
+
+###Note:###
+Changing the above properties at run-time has the potential to hard code few things in your tests. Best practice would be to use these properties to change values at run-time from immediate window at run-time and avoid hard-coding certain values.

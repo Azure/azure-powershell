@@ -125,6 +125,32 @@ Function Invoke-MockedScenarioTests
     msbuild.exe "$env:repoRoot\build.proj" /t:"Build;BeforeRunTests;MockedScenarioTests"
 }
 
+[cmdletBinding]
+Function Install-VSTestProjectTemplates
+{
+    if($env:VisualStudioVersion -eq "14.0")
+    {
+        if((Test-Path -Path "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzureDotNetSDK-TestProject.zip") -eq $false)
+        {
+            Copy-Item "$env:repoRoot\tools\TestProjectTemplates\AzureDotNetSDK-TestProject.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzureDotNetSDK-TestProject.zip"
+            Write-Host "Installing 'AzureDotNetSDK-TestProject' VS template for writing DotNET SDK test project"
+        }
+
+        if((Test-Path -Path "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzurePowerShell-TestProject.zip") -eq $false)
+        {
+            Copy-Item "$env:repoRoot\tools\TestProjectTemplates\AzurePowerShell-TestProject.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzurePowerShell-TestProject.zip"
+            Write-Host "Installing 'AzurePowerShell-TestProject' VS template for writing PowerShell test project"   
+        }
+
+        Write-Host "Installed VS Test Project Templates for Powershell and DotNet SDK test projects"
+        Write-Host "Restart VS (if already open), search for 'AzureDotNetSDK-TestProject' or 'AzurePowerShell-TestProject'"
+    }
+    else
+    {
+        Write-Host "Unsupported VS Version detected. Visual Studio 2015 is the only supported version for test project templates"
+    }
+}
+
 Function Create-ServicePrincipal-Help()
 {
     #TODO: Find a way to get service principal secret key during SPN creation
@@ -177,3 +203,4 @@ export-modulemember -function Get-BuildScopes
 export-modulemember -function Start-RepoBuild
 export-modulemember -function Invoke-CheckinTests
 export-modulemember -function Invoke-MockedScenarioTests
+export-modulemember -function Install-VSTestProjectTemplates
