@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
     /// </summary>
     public class AzureVMBackupExtensionUtil
     {
-        public const string extensionPublisher = "Microsoft.OSTCExtensions";
+        public const string extensionPublisher = "Microsoft.Azure.Security";
         public const string extensionType = "VMBackupForLinuxExtension";
         public const string extensionDefaultVersion = "0.1";
         public const string backupExtensionName = "vmbackupextension";
