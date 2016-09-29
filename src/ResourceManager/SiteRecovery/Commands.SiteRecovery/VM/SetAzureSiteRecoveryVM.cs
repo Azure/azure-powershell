@@ -97,6 +97,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             base.ExecuteSiteRecoveryCmdlet();
 
+            this.WriteWarningWithTimestamp(
+                string.Format(Properties.Resources.CmdletWillBeDeprecatedSoon,
+                    this.MyInvocation.MyCommand.Name,
+                    "Set-AzureRmSiteRecoveryReplicationProtectedItem"));
+
             ProtectableItemResponse protectableItemResponse =
                                                 RecoveryServicesClient.GetAzureSiteRecoveryProtectableItem(Utilities.GetValueFromArmId(this.VirtualMachine.ID, ARMResourceTypeConstants.ReplicationFabrics),
                                                 this.VirtualMachine.ProtectionContainerId, this.VirtualMachine.Name);

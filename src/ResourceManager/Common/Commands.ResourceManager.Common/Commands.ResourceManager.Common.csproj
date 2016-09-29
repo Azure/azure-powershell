@@ -274,12 +274,14 @@
     <Compile Include="Generated\TenantOperations.cs" />
     <Compile Include="Generated\TenantOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
     <Compile Include="Tags\PSTag.cs" />

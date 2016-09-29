@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
                Mandatory = true,
                HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", IgnoreCase = true)]
+        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
                Mandatory = true,
                HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", IgnoreCase = true)]
+        [ValidateSet("Standard", "WAF", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string Tier { get; set; }
 

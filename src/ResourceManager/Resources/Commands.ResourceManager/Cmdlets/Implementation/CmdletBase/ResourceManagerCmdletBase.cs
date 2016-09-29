@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
-    using System.Threading;
     using System.Linq;
     using System.Management.Automation;
     using System.Runtime.ExceptionServices;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
