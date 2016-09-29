@@ -73,8 +73,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=7.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.7.1.1-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=7.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.7.1.2-preview\lib\net45\Microsoft.Azure.Management.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Data.Edm">
@@ -203,6 +203,7 @@
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\NewAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\RemoveAzureApplicationGatewayIPConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\GatewayIPConfiguration\SetAzureApplicationGatewayIPConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\GetAzureApplicationGatewayBackendHealthCommand.cs" />
     <Compile Include="ApplicationGateway\GetAzureApplicationGatewayCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\AddAzureApplicationGatewayHttpListenerCommand.cs" />
     <Compile Include="ApplicationGateway\HttpListener\AzureApplicationGatewayHttpListenerBase.cs" />
@@ -280,6 +281,10 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSApplicationGatewayBackendHealth.cs" />
+    <Compile Include="Models\PSApplicationGatewayBackendHealthHttpSettings.cs" />
+    <Compile Include="Models\PSApplicationGatewayBackendHealthPool.cs" />
+    <Compile Include="Models\PSApplicationGatewayBackendHealthServer.cs" />
     <Compile Include="Models\PSIPAddressAvailabilityResult.cs" />
     <Compile Include="Models\PSApplicationGatewayAuthenticationCertificate.cs" />
     <Compile Include="Models\PSApplicationGatewayWebApplicationFirewallConfiguration.cs" />

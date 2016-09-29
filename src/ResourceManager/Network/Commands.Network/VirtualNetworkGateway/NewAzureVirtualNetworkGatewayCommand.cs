@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.Network
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
         MNM.VirtualNetworkGatewaySkuTier.HighPerformance,
+        MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -153,10 +154,28 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name);
+            string warningMsg = string.Empty;
+            string continueMsg = Properties.Resources.CreatingResourceMessage;
+            bool force = true;
+            if (!string.IsNullOrEmpty(GatewaySku)
+                && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,StringComparison.InvariantCultureIgnoreCase))
+            {
+                warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning,this.Name);
+                force = false;
+            }
+            else
+            {
+                warningMsg = string.Format(Properties.Resources.OverwritingResource, this.Name);
+            }
+            if (this.Force.IsPresent)
+            {
+                force = true;
+            }
+
             ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.OverwritingResource, Name),
-                Properties.Resources.CreatingResourceMessage,
+                force,
+                warningMsg,
+                continueMsg,
                 Name,
                 () =>
                 {
@@ -164,6 +183,7 @@ namespace Microsoft.Azure.Commands.Network
                     WriteObject(virtualNetworkGateway);
                 },
                 () => present);
+            
         }
 
         private PSVirtualNetworkGateway CreateVirtualNetworkGateway()
@@ -221,6 +241,17 @@ namespace Microsoft.Azure.Commands.Network
                 vnetGateway.IpConfigurations = this.IpConfigurations;
             }
 
+            if (!string.IsNullOrEmpty(GatewaySku)
+                && GatewaySku.Equals(
+                    MNM.VirtualNetworkGatewaySkuTier.UltraPerformance,
+                    StringComparison.InvariantCultureIgnoreCase) && !string.IsNullOrEmpty(GatewayType)
+                && !GatewayType.Equals(
+                    MNM.VirtualNetworkGatewayType.ExpressRoute.ToString(),
+                    StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException("Virtual Network Gateway Need to be Express Route when the sku is UltraPerformance.");
+
+            }
             vnetGateway.GatewayType = this.GatewayType;
             vnetGateway.VpnType = this.VpnType;
             vnetGateway.EnableBgp = this.EnableBgp;

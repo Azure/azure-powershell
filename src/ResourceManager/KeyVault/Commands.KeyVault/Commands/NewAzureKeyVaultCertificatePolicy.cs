@@ -99,6 +99,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string IssuerName { get; set; }
 
         /// <summary>
+        /// CertificateType
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the type of certificate to the issuer.")]
+        public string CertificateType { get; set; }
+
+        /// <summary>
         /// RenewAtNumberOfDaysBeforeExpiry
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true,
@@ -165,6 +172,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Ekus = Ekus,
                     Enabled = !Disabled.IsPresent,
                     IssuerName = IssuerName,
+                    CertificateType = CertificateType,
                     RenewAtNumberOfDaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry,
                     RenewAtPercentageLifetime = RenewAtPercentageLifetime,
                     EmailAtNumberOfDaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry,
