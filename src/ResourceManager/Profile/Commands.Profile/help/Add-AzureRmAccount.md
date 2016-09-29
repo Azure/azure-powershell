@@ -17,18 +17,18 @@ Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>]
  [-TenantId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SubscriptionId
-```
-Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
- [-CertificateThumbprint <String>] [-ApplicationId <String>] [-TenantId <String>] [-AccessToken <String>]
- [-AccountId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ServicePrincipal
 ```
 Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] -Credential <PSCredential>
  [-ServicePrincipal] -TenantId <String> [-SubscriptionId <String>] [-SubscriptionName <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### SubscriptionId
+```
+Add-AzureRmAccount [-Environment <AzureEnvironment>] [-EnvironmentName <String>] [-Credential <PSCredential>]
+ [-CertificateThumbprint <String>] [-ApplicationId <String>] [-TenantId <String>] [-AccessToken <String>]
+ [-AccountId <String>] [-SubscriptionId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SubscriptionName
@@ -310,7 +310,7 @@ If you do not specify this parameter, the first subscription from the subscripti
 
 ```yaml
 Type: String
-Parameter Sets: SubscriptionId, ServicePrincipal
+Parameter Sets: ServicePrincipal, SubscriptionId
 Aliases: 
 
 Required: False
