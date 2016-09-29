@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14997"
         ],
         "x-ms-request-id": [
-          "c8bfd598-c754-4f01-a296-a47eb7054ed1"
+          "c4845388-1d70-491b-ab3a-9b666ceb2b08"
         ],
         "x-ms-correlation-request-id": [
-          "c8bfd598-c754-4f01-a296-a47eb7054ed1"
+          "c4845388-1d70-491b-ab3a-9b666ceb2b08"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20160801T200500Z:c8bfd598-c754-4f01-a296-a47eb7054ed1"
+          "EASTUS:20160906T065002Z:c4845388-1d70-491b-ab3a-9b666ceb2b08"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -43,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 01 Aug 2016 20:04:59 GMT"
+          "Tue, 06 Sep 2016 06:50:01 GMT"
         ]
       },
       "StatusCode": 200
@@ -54,6 +54,6 @@
     "SubscriptionId": "46241355-bb95-46a9-ba6c-42b554d71925",
     "AZURE_BATCH_ACCOUNT": "pstestaccount",
     "AZURE_BATCH_ENDPOINT": "https://pstestaccount.centralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "AccountMgmtSampleGroup"
+    "AZURE_BATCH_RESOURCE_GROUP": "accountmgmtsamplegroup"
   }
 }

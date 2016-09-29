@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Resource.
+        /// </summary>
+        public static string AddingResourceMessage {
+            get {
+                return ResourceManager.GetString("AddingResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to authenticationCertificates.
         /// </summary>
         public static string ApplicationGatewayAuthenticationCertificateName {
@@ -412,6 +421,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
+        /// </summary>
+        public static string UltraPerformaceGatewayWarning {
+            get {
+                return ResourceManager.GetString("UltraPerformaceGatewayWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds..
+        /// </summary>
+        public static string UltraPerformanceGatewayWarningMessage {
+            get {
+                return ResourceManager.GetString("UltraPerformanceGatewayWarningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/{3}/{4}.
         /// </summary>
         public static string VirtualNetworkGatewayChildResourceId {
@@ -421,7 +448,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfigurations.
+        ///   Looks up a localized string similar to virtualNetworkGatewayIpConfiguration.
         /// </summary>
         public static string VirtualNetworkGatewayIpConfigName {
             get {

@@ -54,10 +54,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// </summary>
         public static readonly string DefaultApiVersion = "2015-01-01";
 
+
+        /// <summary>
+        /// The default resources API version.
+        /// </summary>
+        public static readonly string ResourcesApiVersion = "2016-09-01";
+
         /// <summary>
         /// The default policy API version.
         /// </summary>
         public static readonly string PolicyApiVersion = "2016-04-01";
+
+        /// <summary>
+        /// The default providers API version.
+        /// </summary>
+        public static readonly string ProvidersApiVersion = "2016-07-01";
 
         /// <summary>
         /// The default Lock API version.

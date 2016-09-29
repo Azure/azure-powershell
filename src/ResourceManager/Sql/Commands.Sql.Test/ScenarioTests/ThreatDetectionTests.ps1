@@ -17,10 +17,10 @@
 .SYNOPSIS
 Tests the default values of database's threat detection policy
 #>
-function Test-ThreatDetectionDatabaseGetDefualtPolicy
+function Test-ThreatDetectionGetDefualtPolicy
 {
 	# Setup
-	$testSuffix = 4002
+	$testSuffix = 4006
 	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -33,7 +33,16 @@ function Test-ThreatDetectionDatabaseGetDefualtPolicy
 		Assert-AreEqual $policy.ThreatDetectionState "New"
 		Assert-AreEqual $policy.NotificationRecipientsEmails ""
         Assert-True {$policy.EmailAdmins}
-        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+
+		# Test
+		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+
+        # Assert
+		Assert-AreEqual $policy.ThreatDetectionState "New"
+		Assert-AreEqual $policy.NotificationRecipientsEmails ""
+        Assert-True {$policy.EmailAdmins}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
 	}
 	finally
 	{
@@ -49,7 +58,7 @@ Tests that when modifying the properties of a databases's threat detection polic
 function Test-ThreatDetectionDatabaseUpdatePolicy
 {
 	# Setup
-	$testSuffix = 6002
+	$testSuffix = 6004
 	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -120,7 +129,7 @@ Tests that when turning off auditing or marking it as "use server default" , thr
 function Test-DisablingThreatDetection
 {
 	# Setup
-	$testSuffix = 7005
+	$testSuffix = 7019
 	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -163,7 +172,7 @@ Tests sending invalid arguments in database's threat detection
 function Test-InvalidArgumentsThreatDetection
 {
 	# Setup5
-	$testSuffix = 8009
+	$testSuffix = 8025
 	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
@@ -198,21 +207,25 @@ function Test-InvalidArgumentsThreatDetection
 
 <#
 .SYNOPSIS
-Tests that thread detection doesn't work on 0.2 servers
+Tests that thread detection doesn't work on 2.0 servers
 #>
 function Test-ThreatDetectionOnV2Server
 {
 	# Setup
-	$testSuffix = 5007
-	Create-TestEnvironment $testSuffix "Japan East" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
+	$testSuffix = 5023
+	Create-TestEnvironment $testSuffix "West Europe" "2.0" #Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix "2.0"
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
 
 	try
 	{
          Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
-         Assert-Throws {Set-AzureRmSqlDatabaseAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -ThreatDetectionState "Enabled"}
 		 Assert-Throws {Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
 		 Assert-Throws {Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName} 
+
+		 Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+		 Assert-Throws {Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName} 
+		 Assert-Throws {Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName} 
+
 	}
 	finally
 	{
@@ -220,3 +233,75 @@ function Test-ThreatDetectionOnV2Server
 		Remove-ThreatDetectionTestEnvironment $testSuffix
 	}
 }
+
+<#
+.SYNOPSIS
+Tests that when modifying the properties of a server's threat detection policy , they are later fetched properly
+#>
+function Test-ThreatDetectionServerUpdatePolicy
+{
+	# Setup
+	$testSuffix = 6027
+	Create-TestEnvironment $testSuffix "Japan East"#Create-ThreatDetectionTestEnvironmentWithStorageV2 $testSuffix
+	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix #Get-SqlThreatDetectionTestEnvironmentParameters $testSuffix
+
+	try
+	{
+		# Test
+        Set-AzureRmSqlServerAuditingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -StorageAccountName $params.storageAccount
+        Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability
+        $policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+
+
+        # Test
+        Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -ExcludedDetectionType Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Usage_Anomaly
+        $policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 4
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Access_Anomaly)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Usage_Anomaly)}
+        
+        # Test
+		Remove-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 4
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Access_Anomaly)}
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Usage_Anomaly)}
+	
+	    # Test
+        Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -ExcludedDetectionType None
+        $policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+	
+		# Assert
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
+        Assert-False {$policy.EmailAdmins}
+        Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0	
+	}
+	finally
+	{
+		# Cleanup
+		Remove-ThreatDetectionTestEnvironment $testSuffix
+	}
+}
+

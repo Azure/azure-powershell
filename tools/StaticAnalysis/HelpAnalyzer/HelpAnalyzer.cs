@@ -150,5 +150,25 @@ namespace StaticAnalysis.HelpAnalyzer
                 }
             }
         }
+
+        /// <summary>
+        /// These methods will be added in a new work item that has enhancements for Static Analysis tool
+        /// </summary>
+        /// <param name="cmdletProbingDirs"></param>
+        /// <param name="directoryFilter"></param>
+        /// <param name="cmdletFilter"></param>
+        void IStaticAnalyzer.Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// These methods will be added in a new work item that has enhancements for Static Analysis tool
+        /// </summary>
+        /// <returns></returns>
+        public AnalysisReport GetAnalysisReport()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

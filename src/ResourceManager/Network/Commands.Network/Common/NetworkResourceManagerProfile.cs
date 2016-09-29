@@ -76,11 +76,20 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
             Mapper.CreateMap<CNM.PSSubnet, MNM.Subnet>();
             Mapper.CreateMap<CNM.PSIPConfiguration, MNM.IPConfiguration>();
+            Mapper.CreateMap<CNM.PSResourceNavigationLink, MNM.ResourceNavigationLink>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.DhcpOptions, CNM.PSDhcpOptions>();
             Mapper.CreateMap<MNM.Subnet, CNM.PSSubnet>();
             Mapper.CreateMap<MNM.IPConfiguration, CNM.PSIPConfiguration>();
+            Mapper.CreateMap<MNM.ResourceNavigationLink, CNM.PSResourceNavigationLink>();
+
+            // TestPrivateIpAddressAvailability
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSIPAddressAvailabilityResult, MNM.IPAddressAvailabilityResult>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.IPAddressAvailabilityResult, CNM.PSIPAddressAvailabilityResult>();
 
             // VirtualNetwork Peering
             Mapper.CreateMap<CNM.PSVirtualNetworkPeering, MNM.VirtualNetworkPeering>();
@@ -308,6 +317,11 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>();
             Mapper.CreateMap<CNM.PSApplicationGatewayAuthenticationCertificate, MNM.ApplicationGatewayAuthenticationCertificate>();
             Mapper.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealth, MNM.ApplicationGatewayBackendHealth>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthPool, MNM.ApplicationGatewayBackendHealthPool>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthHttpSettings, MNM.ApplicationGatewayBackendHealthHttpSettings>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayBackendHealthServer, MNM.ApplicationGatewayBackendHealthServer>();
+            Mapper.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallConfiguration, MNM.ApplicationGatewayWebApplicationFirewallConfiguration>();
 
             // MNM to CNM
             Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
@@ -327,6 +341,11 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.ApplicationGatewaySslCertificate, CNM.PSApplicationGatewaySslCertificate>();
             Mapper.CreateMap<MNM.ApplicationGatewayAuthenticationCertificate, CNM.PSApplicationGatewayAuthenticationCertificate>();
             Mapper.CreateMap<MNM.BackendAddressPool, CNM.PSBackendAddressPool>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendHealth, CNM.PSApplicationGatewayBackendHealth>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthPool, CNM.PSApplicationGatewayBackendHealthPool>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthHttpSettings, CNM.PSApplicationGatewayBackendHealthHttpSettings>();
+            Mapper.CreateMap<MNM.ApplicationGatewayBackendHealthServer, CNM.PSApplicationGatewayBackendHealthServer>();
+            Mapper.CreateMap<MNM.ApplicationGatewayWebApplicationFirewallConfiguration, CNM.PSApplicationGatewayWebApplicationFirewallConfiguration>();
         }
     }
 }

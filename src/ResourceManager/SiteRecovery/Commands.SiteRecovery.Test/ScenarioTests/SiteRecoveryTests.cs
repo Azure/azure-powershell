@@ -30,77 +30,91 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnumerationTests()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryEnumerationTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateProfile()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryCreateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryCreateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteProfile()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryDeleteProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryDeleteProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAssociateProfile()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryAssociateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryAssociateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDissociateProfile()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryDissociateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryDissociateProfile -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDR()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableDR()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryDisableDR -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryDisableDR -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRP()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryCreateRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryCreateRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnumerateRP()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryEnumerateRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryEnumerateRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveRP()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryRemoveRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryRemoveRecoveryPlan -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VaultCRUDTests()
         {
-            this.RunPowerShellTest("Test-SiteRecoveryVaultCRUDTests");
+            this.RunPowerShellTest(Constants.Default, "Test-SiteRecoveryVaultCRUDTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void FabricTests()
+        {
+            this.RunPowerShellTest(Constants.NewModel, "Test-SiteRecoveryFabricTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewModelE2ETest()
+        {
+            this.RunPowerShellTest(Constants.NewModel, "Test-SiteRecoveryNewModelE2ETest");
         }
     }
 }

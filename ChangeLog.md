@@ -1,4 +1,147 @@
-##2016.08.03 version 2.0.0
+## 2016.09.28 version 3.0.0
+* This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.3.0.0.md) for change details and the impact on existing scripts.
+* ApiManagement
+    * Enable support of Importing and Exporting SOAP based APIs (Wsdl Format)
+        - Import-AzureRmApiManagementApi
+        - Export-AzureRmApiManagementApi
+    * Deprecated cmdlet Set-AzureRmApiManagementVirtualNetworks. In place, place used cmdlet Update-AzureRmApiManagementDeployment
+    * Enabled support for ARM based VNETs for configuration Vpn via cmdlet Update-AzureRmApiManagementDeployment
+    * Introduced support for VpnType (None, External, Internal) to differentiate ApiManagement workloads for Internet and Intranet
+    * Fixed PowerShell issues
+        - https://github.com/Azure/azure-powershell/issues/2622
+        - https://github.com/Azure/azure-powershell/issues/2606
+* Batch
+    * Added new cmdlet for reactivating tasks
+        - Enable-AzureBatchTask
+    * Added new parameter for application packages on job manager tasks and cloud tasks
+        - New-AzureBatchTask -ApplicationPackageReferences
+    * Added new parameters for job auto termination
+        - New-AzureBatchJob -OnAllTasksComplete -OnTaskFailure
+        - New-AzureBatchJob -ExitConditions
+* ExpressRoute
+    * Added new parameter service key in return object when provider list all cross connection
+        - Get-AzureCrossConnectionCommand
+* MachineLearning
+    * Get-AzureRmMlWebService supports paginated response
+    * Remind user Get-AzureRmMlWebService "Name" parameter needs to work with "ResourceGroupName" parameter
+* Network
+    * Added new cmdlet to get application gateway backend health
+        - Get-AzureRmApplicationGatewayBackendHealth
+    * Added support for creating UltraPerformance sku
+        - New-AzureRmVirtualNetworkGateway -GatewaySku
+        - New-AzureVirtualNetworkGateway -GatewaySku   
+* RemoteApp
+    * Added cmdlets to enable User Disk and Gold Image Migration feature
+        - Export-AzureRemoteAppUserDisk
+        - Export-AzureRemoteAppTemplateImage
+* SiteRecovery
+    * New cmdlets have been added to support one to one mapping with service objects.
+        - Get-AzureRmSiteRecoveryFabric
+        - Get-AzureRmSiteRecoveryProtectableItem
+        - Get-AzureRmSiteRecoveryProtectionContainerMapping
+        - Get-AzureRmSiteRecoveryRecoveryPoin
+        - Get-AzureRmSiteRecoveryReplicationProtectedItem
+        - Get-AzureRmSiteRecoveryServicesProvider
+        - New-AzureRmSiteRecoveryFabri
+        - New-AzureRmSiteRecoveryProtectionContainerMapping
+        - New-AzureRmSiteRecoveryReplicationProtectedItem
+        - Remove-AzureRmSiteRecoveryFabric
+        - Remove-AzureRmSiteRecoveryProtectionContainerMapping
+        - Remove-AzureRmSiteRecoveryReplicationProtectedItem
+        - Remove-AzureRmSiteRecoveryServicesProvider
+        - Set-AzureRmSiteRecoveryReplicationProtectedItem
+        - Start-AzureRmSiteRecoveryApplyRecoveryPoint
+        - Update-AzureRmSiteRecoveryServicesProvider
+    * Following cmdlets have been modified for to support one to one mapping with service objects.
+        - Edit-AzureRmSiteRecoveryRecoveryPlan
+        - Get-AzureRmSiteRecoveryNetwork
+        - Get-AzureRmSiteRecoveryNetworkMapping
+        - Get-AzureRmSiteRecoveryProtectionContainer
+        - Get-AzureRmSiteRecoveryStorageClassification
+        - Get-AzureRmSiteRecoveryStorageClassificationMapping
+        - Start-AzureRmSiteRecoveryCommitFailoverJob
+        - Start-AzureRmSiteRecoveryPlannedFailoverJob
+        - Start-AzureRmSiteRecoveryTestFailoverJob
+        - Start-AzureRmSiteRecoveryUnplannedFailoverJob
+        - Update-AzureRmSiteRecoveryProtectionDirection
+        - Update-AzureRmSiteRecoveryRecoveryPlan  
+    * HUB support added to Set-AzureRmSiteRecoveryReplicationProtectedItem.
+    * Deprecation warning introduced for cmlets/parameter-sets which does not comply to SiteRecovery service object model.
+
+## 2016.09.16 version 2.2.0
+* Network
+  - New switch parameter added for network interface to enable/Disable accelerated networking -New-AzureRmNetworkInterface -EnableAcceleratedNetworking
+
+## 2016.09.08 version 2.1.0
+* Compute
+  * Add support for querying encryption status from the AzureDiskEncryptionForLinux extension
+* DataFactory
+  * Added new cmdlet for listing activity windows
+    - Get-AzureRmDataFactoryActivityWindow
+* DataLake
+  * Changed parameter `Host` to `DatabaseHost` and added alias to `Host`
+    - New-AzureRmDataLakeAnalyticsCatalogSecret
+    - Set-AzureRmDataLakeAnalyticsCatalogSecret
+  * Add support for ACL and Default ACL removal
+  * Add support for getting and setting unnamed permissions on files and folders
+* KeyVault
+  * Add support for certificates
+    - Add-AzureRmKeyVaultCertificate
+    - Add-AzureRmKeyVaultCertificateContact
+    - Get-AzureRmKeyVaultCertificate
+    - Get-AzureRmKeyVaultCertificateContact
+    - Get-AzureRmKeyVaultCertificateIssuer
+    - Get-AzureRmKeyVaultCertificateOperation
+    - Get-AzureRmKeyVaultCertificatePolicy
+    - Import-AzureRmKeyVaultCertificate
+    - New-AzureRmKeyVaultCertificateAdministratorDetails
+    - New-AzureRmKeyVaultCertificateOrganizationDetails
+    - New-AzureRmKeyVaultCertificatePolicy
+    - Remove-AzureRmKeyVaultCertificate
+    - Remove-AzureRmKeyVaultCertificateContact
+    - Remove-AzureRmKeyVaultCertificateIssuer
+    - Remove-AzureRmKeyVaultCertificateOperation
+    - Set-AzureRmKeyVaultCertificateAttribute
+    - Set-AzureRmKeyVaultCertificateIssuer
+    - Set-AzureRmKeyVaultCertificatePolicy
+    - Stop-AzureRmKeyVaultCertificateOperation
+* Network
+  * Enable Active-Active gateway feature PowerShell cmdlets
+    - Add-AzureRmVirtualNetworkGatewayIpConfig
+    - Remove-AzureRmVirtualNetworkGatewayIpConfig
+  * Added new cmdlet
+    - Test-AzureRmPrivateIpAddressAvailability
+* Resources
+  * Support zones in provider and resource cmdlets
+    - Get-AzureRmProvider
+    - New-AzureRmResource
+    - Set-AzureRmResource
+* Sql
+  * Added new cmdlets for Azure SQL threat detection policy management at server level
+    - Get-AzureRmSqlServerThreatDetectionPolicy
+    - Remove-AzureRmSqlServerThreatDetectionPolicy
+    - Set-AzureRmSqlServerThreatDetectionPolicy
+  * Added new cmdlets to support enabling/disabling GeoBackupPolicy for Sql Azure DataWarehouses
+    - Get-AzureRmSqlDatabaseGeoBackupPolicy
+    - Set-AzureRmSqlDatabaseGeoBackupPolicy
+  * Added new cmdlets for Azure Sql Advisors and Recommended Actions APIs
+    - Get-AzureRmSqlDatabaseAdvisor
+    - Get-AzureRmSqlElasticPoolAdvisor
+    - Get-AzureRmSqlServerAdvisor
+    - Get-AzureRmSqlDatabaseRecommendedActions
+    - Get-AzureRmSqlElasticPoolRecommendedActions
+    - Get-AzureRmSqlServerRecommendedActions
+    - Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus
+    - Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus
+    - Set-AzureRmSqlServerAdvisorAutoExecuteStatus
+    - Set-AzureRmSqlDatabaseRecommendedActionState
+    - Set-AzureRmSqlElasticPoolRecommendedActionState
+    - Set-AzureRmSqlServerRecommendedActionState
+
+## 2016.08.09 version 2.0.1
+* Fixed assembly signing issue causing load problems in some PowerShell versions.  (Issue #2747)
+
+##2016.08.08 version 2.0.0
 * This release contains breaking changes. Please see [the migration guide](documentation/release-notes/migration-guide.2.0.0.md) for change details and the impact on existing scripts.
 * Removal of Force parameters that were marked as obsolete in the previous release
   * ApiManagement
