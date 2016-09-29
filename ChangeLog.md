@@ -86,25 +86,25 @@
   * Add support for getting and setting unnamed permissions on files and folders
 * KeyVault
   * Add support for certificates
-    - Add-AzureRmKeyVaultCertificate
-    - Add-AzureRmKeyVaultCertificateContact
-    - Get-AzureRmKeyVaultCertificate
-    - Get-AzureRmKeyVaultCertificateContact
-    - Get-AzureRmKeyVaultCertificateIssuer
-    - Get-AzureRmKeyVaultCertificateOperation
-    - Get-AzureRmKeyVaultCertificatePolicy
-    - Import-AzureRmKeyVaultCertificate
-    - New-AzureRmKeyVaultCertificateAdministratorDetails
-    - New-AzureRmKeyVaultCertificateOrganizationDetails
-    - New-AzureRmKeyVaultCertificatePolicy
-    - Remove-AzureRmKeyVaultCertificate
-    - Remove-AzureRmKeyVaultCertificateContact
-    - Remove-AzureRmKeyVaultCertificateIssuer
-    - Remove-AzureRmKeyVaultCertificateOperation
-    - Set-AzureRmKeyVaultCertificateAttribute
-    - Set-AzureRmKeyVaultCertificateIssuer
-    - Set-AzureRmKeyVaultCertificatePolicy
-    - Stop-AzureRmKeyVaultCertificateOperation
+    - Add-AzureKeyVaultCertificate
+    - Add-AzureKeyVaultCertificateContact
+    - Get-AzureKeyVaultCertificate
+    - Get-AzureKeyVaultCertificateContact
+    - Get-AzureKeyVaultCertificateIssuer
+    - Get-AzureKeyVaultCertificateOperation
+    - Get-AzureKeyVaultCertificatePolicy
+    - Import-AzureKeyVaultCertificate
+    - New-AzureKeyVaultCertificateAdministratorDetails
+    - New-AzureKeyVaultCertificateOrganizationDetails
+    - New-AzureKeyVaultCertificatePolicy
+    - Remove-AzureKeyVaultCertificate
+    - Remove-AzureKeyVaultCertificateContact
+    - Remove-AzureKeyVaultCertificateIssuer
+    - Remove-AzureKeyVaultCertificateOperation
+    - Set-AzureKeyVaultCertificateAttribute
+    - Set-AzureKeyVaultCertificateIssuer
+    - Set-AzureKeyVaultCertificatePolicy
+    - Stop-AzureKeyVaultCertificateOperation
 * Network
   * Enable Active-Active gateway feature PowerShell cmdlets
     - Add-AzureRmVirtualNetworkGatewayIpConfig
