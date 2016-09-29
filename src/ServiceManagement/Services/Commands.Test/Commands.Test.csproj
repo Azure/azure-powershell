@@ -132,8 +132,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Compute.13.0.0\lib\net40\Microsoft.WindowsAzure.Management.Compute.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.ExpressRoute, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.19.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
+    <Reference Include="Microsoft.WindowsAzure.Management.ExpressRoute">
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.ExpressRoute.0.20.0-preview\lib\net40\Microsoft.WindowsAzure.Management.ExpressRoute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.MediaServices">
