@@ -1,8 +1,8 @@
 ﻿$taskScriptDir = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 $env:repoRoot = [System.IO.Path]::GetDirectoryName($taskScriptDir)
 
-$userPsFileEnvVariable = $env:psuserpreferences
-$userPsFileDir = "$env:USERPROFILE\psFiles"
+#$userPsFileEnvVariable = $env:psuserpreferences
+$userPsFileDir = [string]::Empty
 
 [string]$envVariableName="TEST_CSM_ORGID_AUTHENTICATION"
 
@@ -13,14 +13,16 @@ Currently we support two ways to include helper powershell scripts
 2) $env:USERPROFILE\psFiles directory
 We will include all *.ps1 files from any of the above mentioned locations
 #>
-if([System.IO.Directory]::Exists($userPsFileEnvVariable))
+if([System.IO.Directory]::Exists($env:psuserpreferences))
 {
-    Get-ChildItem $userPsFileEnvVariable | WHERE {$_.Name -like "*.ps1"} | ForEach {
-    Write-Host "Including $_" -ForegroundColor Green
-    . $userPsFileEnvVariable\$_
-    }
+    $userPsFileDir = $env:psuserpreferences
 }
-elseif([System.IO.Directory]::Exists($userPsFileDir))
+elseif([System.IO.Directory]::Exists("$env:USERPROFILE\psFiles"))
+{
+    $userPsFileDir = "$env:USERPROFILE\psFiles"
+}
+
+if([string]::IsNullOrEmpty($userPsFileDir) -eq $false)
 {
     Get-ChildItem $userPsFileDir | WHERE {$_.Name -like "*.ps1"} | ForEach {
     Write-Host "Including $_" -ForegroundColor Green
@@ -44,31 +46,47 @@ Function Set-TestEnvironment
         [ValidateNotNullOrEmpty()]
         [string]$TenantId,
 
-        [parameter(Mandatory=$true, Position=2, HelpMessage='ServicePrincipal/ClientId you would like to use')]
+        [parameter(Mandatory=$false, Position=2, HelpMessage='UserId (OrgId) you would like to use')]
+        [ValidateNotNullOrEmpty()]
+        [string]$UserId,
+
+        [parameter(Mandatory=$false, Position=3, HelpMessage='ServicePrincipal/ClientId you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipal,
 
-        [parameter(Mandatory=$true, Position=3, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
+        [parameter(Mandatory=$false, Position=4, HelpMessage='ServicePrincipal Secret/ClientId Secret you would like to use')]
         [ValidateNotNullOrEmpty()]
         [string]$ServicePrincipalSecret,
 
-        [parameter(Mandatory=$false, Position=4, HelpMessage='RecordMode you would like to set')]    
+        [parameter(Mandatory=$false, Position=5, HelpMessage='RecordMode you would like to set')]    
         [string]$RecordMode = "Playback",
 
-        [parameter(Mandatory=$false, Position=5, HelpMessage='Target Environment to use {Prod (default) | Dogfood | Next | Current')]
+        [parameter(Mandatory=$false, Position=6, HelpMessage='Target Environment to use {Prod (default) | Dogfood | Next | Current')]
         [string]$TargetEnvironment = "Prod"
     )
 
     [string]$uris="BaseUri=https://management.azure.com/;AADAuthEndpoint=https://login.windows.net/;GraphUri=https://graph.windows.net/"
 
-    #Construct connection string
-    $formattedConnStr = [string]::Format("SubscriptionId={0};AADTenant={1};ServicePrincipal={2};ServicePrincipalSecret={3};HttpRecorderMode={4};Environment={5}$uris", $SubscriptionId, $TenantId, $ServicePrincipal, $ServicePrincipalSecret, $RecordMode, $TargetEnvironment)
+    $formattedConnStr = [string]::Format("SubscriptionId={0};AADTenant={1};HttpRecorderMode={2};Environment={3}", $SubscriptionId, $TenantId, $RecordMode, $TargetEnvironment)
 
-    #Print Constructed connection string
-    Print-ConnectionString $SubscriptionId $TenantId $ServicePrincipal $ServicePrincipalSecret $RecordMode $TargetEnvironment $uris
+    if([string]::IsNullOrEmpty($UserId) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";UserId={0}"), $UserId)
+    }
+
+    if([string]::IsNullOrEmpty($ServicePrincipal) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipal={0}"), $ServicePrincipal)
+    }
+
+    if([string]::IsNullOrEmpty($ServicePrincipalSecret) -eq $false)
+    {
+        $formattedConnStr = [string]::Format([string]::Concat($formattedConnStr, ";ServicePrincipalSecret={0}"), $ServicePrincipalSecret)
+    }
+
+    $formattedConnStr = [string]::Concat($formattedConnStr, ";", $uris)
 
     #Set connection string to Environment variable
-    #[Environment]::SetEnvironmentVariable($envVariableName, $formattedConnStr)
     $env:TEST_CSM_ORGID_AUTHENTICATION=$formattedConnStr
     Write-Host ""
 
@@ -106,7 +124,6 @@ Function Start-RepoBuild
     else
     {
         Write-Host "Building $BuildScope"
-        #Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /p:Scope=$BuildScope"
         msbuild.exe "$env:repoRoot\build.proj" /t:Build /p:Scope=$BuildScope
     }
 }
