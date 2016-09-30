@@ -61,11 +61,245 @@ namespace Microsoft.Azure.Commands.NotificationHubs {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Authorization Rule name cannot be empty.
+        /// </summary>
+        internal static string AuthorizationRuleNameNull {
+            get {
+                return ResourceManager.GetString("AuthorizationRuleNameNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a Namespace.
+        /// </summary>
+        internal static string CreateNamespace {
+            get {
+                return ResourceManager.GetString("CreateNamespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a Namespace Authorization Rules.
+        /// </summary>
+        internal static string CreateNamespaceAuthorizationRule {
+            get {
+                return ResourceManager.GetString("CreateNamespaceAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a Notification Hub.
+        /// </summary>
+        internal static string CreateNotificationHub {
+            get {
+                return ResourceManager.GetString("CreateNotificationHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a Notification Hub Authorization Rules.
+        /// </summary>
+        internal static string CreateNotificationHubAuthorizationRule {
+            get {
+                return ResourceManager.GetString("CreateNotificationHubAuthorizationRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the Namespace &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteNamespace_Confirm {
+            get {
+                return ResourceManager.GetString("DeleteNamespace_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes the Namespace and its corresponding DNS. It will remove all the Notification Hubs created in it as well .
+        /// </summary>
+        internal static string DeleteNamespace_WhatIf {
+            get {
+                return ResourceManager.GetString("DeleteNamespace_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the Namespace Authorization Rule &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteNamespaceAuthorizationRule_Confirm {
+            get {
+                return ResourceManager.GetString("DeleteNamespaceAuthorizationRule_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes the Namespace Authorization Rule.
+        /// </summary>
+        internal static string DeleteNamespaceAuthorizationRule_WhatIf {
+            get {
+                return ResourceManager.GetString("DeleteNamespaceAuthorizationRule_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the Notification Hub &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteNotificationHub_Confirm {
+            get {
+                return ResourceManager.GetString("DeleteNotificationHub_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes the Notification Hub.
+        /// </summary>
+        internal static string DeleteNotificationHub_WhatIf {
+            get {
+                return ResourceManager.GetString("DeleteNotificationHub_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the Notification Hub Authorization Rule &apos;{0}&apos;..
+        /// </summary>
+        internal static string DeleteNotificationHubAuthorizationRule_Confirm {
+            get {
+                return ResourceManager.GetString("DeleteNotificationHubAuthorizationRule_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes the Notification Hub Authorization Rule.
+        /// </summary>
+        internal static string DeleteNotificationHubAuthorizationRule_WhatIf {
+            get {
+                return ResourceManager.GetString("DeleteNotificationHubAuthorizationRule_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File {0} does not exist.
         /// </summary>
         internal static string FileDoesNotExist {
             get {
                 return ResourceManager.GetString("FileDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification Hub name cannot be empty.
+        /// </summary>
+        internal static string NotificationHubNameNull {
+            get {
+                return ResourceManager.GetString("NotificationHubNameNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Regenerate the Namespace Key &apos;{0}&apos;..
+        /// </summary>
+        internal static string RegenerateNamespaceKey_Confirm {
+            get {
+                return ResourceManager.GetString("RegenerateNamespaceKey_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regenerates the Namespace Authorization Rules Primary/Secondary Key.
+        /// </summary>
+        internal static string RegenerateNamespaceKey_WhatIf {
+            get {
+                return ResourceManager.GetString("RegenerateNamespaceKey_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Regenerate the Notification Hub Key &apos;{0}&apos;..
+        /// </summary>
+        internal static string RegenerateNotificationHubKey_Confirm {
+            get {
+                return ResourceManager.GetString("RegenerateNotificationHubKey_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regenerates the Notification Hub Authorization Rules Primary/Secondary Key.
+        /// </summary>
+        internal static string RegenerateNotificationHubKey_WhatIf {
+            get {
+                return ResourceManager.GetString("RegenerateNotificationHubKey_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Update the Namespace  &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateNamespace_Confirm {
+            get {
+                return ResourceManager.GetString("UpdateNamespace_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates the Namespace .
+        /// </summary>
+        internal static string UpdateNamespace_WhatIf {
+            get {
+                return ResourceManager.GetString("UpdateNamespace_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Update the Namespace  Authorization Rule &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateNamespaceAuthorizationRule_Confirm {
+            get {
+                return ResourceManager.GetString("UpdateNamespaceAuthorizationRule_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates the Namespace Authorization Rule Access Rights.
+        /// </summary>
+        internal static string UpdateNamespaceAuthorizationRule_WhatIf {
+            get {
+                return ResourceManager.GetString("UpdateNamespaceAuthorizationRule_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Update the Notification Hub &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateNotificationHub_Confirm {
+            get {
+                return ResourceManager.GetString("UpdateNotificationHub_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates the Notification Hub properties like the PNS Credentials, TTL and the Authorization Rules.
+        /// </summary>
+        internal static string UpdateNotificationHub_WhatIf {
+            get {
+                return ResourceManager.GetString("UpdateNotificationHub_WhatIf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to Update the Notification Hub Authorization Rule &apos;{0}&apos;..
+        /// </summary>
+        internal static string UpdateNotificationHubAuthorizationRule_Confirm {
+            get {
+                return ResourceManager.GetString("UpdateNotificationHubAuthorizationRule_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates the Notification Hub Authorization Rule Access Rights.
+        /// </summary>
+        internal static string UpdateNotificationHubAuthorizationRule_WhatIf {
+            get {
+                return ResourceManager.GetString("UpdateNotificationHubAuthorizationRule_WhatIf", resourceCulture);
             }
         }
     }

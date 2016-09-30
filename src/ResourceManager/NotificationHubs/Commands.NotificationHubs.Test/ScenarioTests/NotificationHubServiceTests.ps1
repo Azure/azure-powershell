@@ -170,21 +170,21 @@ function Test-CRUDNamespace
     $tags = @{"tag1" = "value1" ; "tag2" = "value2"}
     Write-Debug  "Tags List : $tags"
     
-    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags
+    $updatedNamespace = Set-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Location $location -Tags $tags -Force
     Assert-AreEqual 2 $updatedNamespace.Tags.Count
     
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
-        Is-NamespaceActive $secondResourceGroup $namespaceName2
+        Wait-Seconds 15
     }
 
     Write-Debug " Get the updated namespace "
     $getUpdatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
-    Assert-AreEqual 2 $getUpdatedNamespace.Tags.Count
+    Assert-AreEqual $updatedNamespace.Tags.Count $getUpdatedNamespace.Tags.Count
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
-    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
+    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2 -Force
+    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 
     Write-Debug " Remove resource group"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -300,7 +300,7 @@ function Test-CRUDNamespaceAuth
     $createdAuthRule.Rights.Add("Manage")
     $createdAuthRule.Location = "South Central US"
 
-    $updatedAuthRule = Set-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -SASRule $createdAuthRule
+    $updatedAuthRule = Set-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -SASRule $createdAuthRule -Force
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -333,7 +333,7 @@ function Test-CRUDNamespaceAuth
 
     Write-Debug "Regenerate namespace authorizationRule key"
     $policyKeyName = "PrimaryKey"
-    $namespaceRegenerateKey = New-AzureRmNotificationHubsNamespaceKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName -PolicyKey $policyKeyName
+    $namespaceRegenerateKey = New-AzureRmNotificationHubsNamespaceKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName -PolicyKey $policyKeyName -Force
 
     Assert-True {$namespaceRegenerateKey.PrimaryConnectionString -ne $null}
     Assert-True {$namespaceRegenerateKey.SecondaryConnectionString -ne $null}
@@ -359,10 +359,10 @@ function Test-CRUDNamespaceAuth
     Assert-True {$namespaceListKeysAfterRegenerate.SecondaryKey -eq $namespaceListKeys.SecondaryKey} 
 
     Write-Debug "Delete the created Namespace AuthorizationRule"
-    Remove-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName
+    Remove-AzureRmNotificationHubsNamespaceAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -AuthorizationRule $authRuleName -Force
     
     Write-Debug " Delete namespaces"
-    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
+    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 
     Write-Debug " Remove resource group"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -463,7 +463,7 @@ function Test-CRUDNotificationHub
     $createdNotificationHub.WnsCredential.PackageSid = "ms-app://s-1-15-2-1817505189-427745171-3213743798-2985869298-800724128-1004923984-4143860699"
     $createdNotificationHub.WnsCredential.SecretKey = "w7TBprR-9tJxn9mUOdK4PPHLCAzSYFhp"
     $createdNotificationHub.WnsCredential.WindowsLiveEndpoint = "http://pushtestservice.cloudapp.net/LiveID/accesstoken.srf"
-    $result = Set-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHubObj $createdNotificationHub
+    $result = Set-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHubObj $createdNotificationHub -Force
     if($env:AZURE_TEST_MODE -ne "Playback")
     {
         Wait-Seconds 15
@@ -476,11 +476,11 @@ function Test-CRUDNotificationHub
     Assert-AreEqual  $createdNotificationHub.WnsCredential.WindowsLiveEndpoint $pnsCredentials.WnsCredential.WindowsLiveEndpoint
 
     Write-Debug " Delete the NotificationHub"
-    $delete1 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName
-    $delete2 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName2
+    $delete1 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -Force
+    $delete2 = Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName2 -Force
 
     Write-Debug " Delete namespaces"
-    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
+    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 
     Write-Debug " Remove resource group"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
@@ -580,7 +580,7 @@ function Test-CRUDNHAuth
     $createdAuthRule.Rights.Add("Manage")
     $createdAuthRule.Location = $location
 
-    $updatedAuthRule = Set-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -SASRule $createdAuthRule
+    $updatedAuthRule = Set-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -SASRule $createdAuthRule -Force
     
     Assert-AreEqual $authRuleName $updatedAuthRule.Name
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
@@ -612,7 +612,7 @@ function Test-CRUDNHAuth
 
     Write-Debug "Regenerate notificationHub authorizationRule key"
     $policyKeyName = "PrimaryKey"
-    $notificationHubRegenerateKey = New-AzureRmNotificationHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName -PolicyKey $policyKeyName
+    $notificationHubRegenerateKey = New-AzureRmNotificationHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName -PolicyKey $policyKeyName -Force
 
     Assert-True {$notificationHubRegenerateKey.PrimaryConnectionString -ne $null}
     Assert-True {$notificationHubRegenerateKey.SecondaryConnectionString -ne $null}
@@ -638,13 +638,13 @@ function Test-CRUDNHAuth
     Assert-True {$notificationHubsListKeysAfterRegenerate.SecondaryKey -eq $notificationHubsListKeys.SecondaryKey} 
 
     Write-Debug "Delete the created notificationHub AuthorizationRule"
-    Remove-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName
+    Remove-AzureRmNotificationHubAuthorizationRules -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -AuthorizationRule $authRuleName -Force
     
     Write-Debug " Delete the NotificationHub"
-    Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName
+    Remove-AzureRmNotificationHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -NotificationHub $notificationHubName -Force
     
     Write-Debug " Delete namespaces"
-    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName
+    Remove-AzureRmNotificationHubsNamespace -ResourceGroup $resourceGroupName -Namespace $namespaceName -Force
 
     Write-Debug " Remove resource group"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force

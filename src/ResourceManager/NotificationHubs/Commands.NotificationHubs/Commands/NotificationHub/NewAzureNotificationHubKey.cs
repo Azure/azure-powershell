@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Management.NotificationHubs.Models;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubKey"), OutputType(typeof(ResourceListKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
     public class NewAzureNotificationHubKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -53,11 +54,26 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateSet(PrimaryKey, SecondaryKey, IgnoreCase = true)]
         public string PolicyKey { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
-        { 
-            // Regenerate the NotificationHub authorizationRule key
-            var authRule = Client.RegenerateNotificationHubKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule, PolicyKey);
-            WriteObject(authRule);
+        {
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.RegenerateNotificationHubKey_Confirm, AuthorizationRule),
+                string.Format(CultureInfo.InvariantCulture, Resources.RegenerateNotificationHubKey_WhatIf, AuthorizationRule),
+                AuthorizationRule,
+                () =>
+                {
+                    // Regenerate the NotificationHub authorizationRule key
+                    var authRule = Client.RegenerateNotificationHubKeys(ResourceGroup, Namespace, NotificationHub, AuthorizationRule, PolicyKey);
+                    WriteObject(authRule);
+                });
         }
     }
 }
