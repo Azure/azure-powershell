@@ -14,11 +14,12 @@
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Collections;
 using System.Management.Automation;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubsNamespace"), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
     public class SetAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -60,11 +61,26 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             HelpMessage = "Hashtables which represents resource Tags.")]
         public Hashtable Tags { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            // Update a namespace 
-            var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags));
-            WriteObject(nsAttribute);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.UpdateNamespace_Confirm, Namespace),
+                Resources.UpdateNamespace_WhatIf,
+                Namespace,
+                () =>
+                {
+                    // Update a namespace 
+                    var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags));
+                    WriteObject(nsAttribute);
+                });
         }
     }
 }
