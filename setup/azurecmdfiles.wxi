@@ -3445,6 +3445,9 @@
                         <Component Id="cmpC84155BCEC352235456F36314798DEB6" Guid="*">
                             <File Id="fil3C07A3FCD79F4E195B1E0F363C1D912D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\System.Net.Http.Primitives.dll" />
                         </Component>
+                        <Component Id="cmpDFB87EBE10120BEA0EE0E65B1CA9BBFE" Guid="*">
+                            <File Id="filF6BB7994B63BABCF5598ACDF7BFABA06" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\WebsitesStartup.ps1" />
+                        </Component>
                     </Directory>
                 </Directory>
             </Directory>
@@ -6570,6 +6573,7 @@
             <ComponentRef Id="cmp9C45E87E06D911D61AAC3019BA99FB0C" />
             <ComponentRef Id="cmp4E4BAFA8406471B1D2FFA4860A8AEAA7" />
             <ComponentRef Id="cmpC84155BCEC352235456F36314798DEB6" />
+            <ComponentRef Id="cmpDFB87EBE10120BEA0EE0E65B1CA9BBFE" />
             <ComponentRef Id="cmp5DFC4ECCB8BBF842D8069F3036386B84" />
             <ComponentRef Id="cmp215D8C03C711DF4FF42B3D06ED14C790" />
             <ComponentRef Id="cmpE75B6D337DC4A69EC4CB3C70C4607514" />

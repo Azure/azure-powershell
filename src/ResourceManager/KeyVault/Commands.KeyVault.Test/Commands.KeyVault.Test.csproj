@@ -65,8 +65,8 @@
     <Reference Include="Microsoft.Azure.Graph.RBAC">
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.0.1-preview\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
+    <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.0.2-preview\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
