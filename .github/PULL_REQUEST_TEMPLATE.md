@@ -18,8 +18,8 @@ Below in **Overall Changes**, check off the boxes that apply to your PR. Within 
 For information on cleaning up the commits in your pull request, click [here](../documentation/cleaning-up-commits.md).
 
 ## Guidelines Checklist 
-- [ ] [**MANDATORY** - General changes](../CONTRIBUTING.md#general)
-- [ ] [**MANDATORY** - Add/remove/edit test(s)](../CONTRIBUTING.md#tests)
-- [ ] [Add/remove/edit cmdlet(s)](../CONTRIBUTING.md#cmdlet-signature)
-- [ ] [Add/remove/edit parameter(s)](../CONTRIBUTING.md#parameters)
-- [ ] [Edit pipeline parameters](../CONTRIBUTING.md#parameters-and-the-pipeline)
+- [ ] [**MANDATORY** - General changes](../CONTRIBUTING.md#general-guidelines)
+- [ ] [**MANDATORY** - Add/remove/edit test(s)](../CONTRIBUTING.md#testing-guidelines)
+- [ ] [Add/remove/edit cmdlet(s)](../CONTRIBUTING.md#cmdlet-signature-guidelines)
+- [ ] [Add/remove/edit parameter(s)](../CONTRIBUTING.md#parameter-change-guidelines)
+- [ ] [Edit pipeline parameters](../CONTRIBUTING.md#pipeline-change-guidelines)
