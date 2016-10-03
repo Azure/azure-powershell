@@ -1,6 +1,13 @@
-## Description
+<!--
+DO NOT DELETE THIS TEMPLATE
 
+This template expedites the code review process by allowing the creator to make sure they follow all of the Azure PowerShell contributing guidelines before opening a pull request.
+-->
+
+## Description
+<!--
 Add a description that covers the changes made by the pull request.
+-->
 
 ---
 
@@ -10,7 +17,7 @@ Below in **Overall Changes**, check off the boxes that apply to your PR. Within 
 
 For information on cleaning up the commits in your pull request, click [here](../documentation/cleaning-up-commits.md).
 
-## Overall Changes 
+## Guidelines Checklist 
 - [ ] [**MANDATORY** - General changes](../CONTRIBUTING.md#general)
 - [ ] [**MANDATORY** - Add/remove/edit test(s)](../CONTRIBUTING.md#tests)
 - [ ] [Add/remove/edit cmdlet(s)](../CONTRIBUTING.md#cmdlet-signature)
