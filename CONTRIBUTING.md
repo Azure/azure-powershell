@@ -1,14 +1,63 @@
 # Contribute Code or Provide Feedback
 
+#### Table of Contents
+
+[Introduction](#introduction)
+[Filing Issues](#filing-issues)
+[Making Changes](#making-changes)
+- [Pull Requests](#pull-requests)
+- [SDK for .NET](#sdk-for-net)
+- [Pull Request Guidelines](#pull-request-guidelines)
+    - [Cleaning up commits](#cleaning-up-commits)
+    - [General guidelines](#general-guidelines)
+    - [Testing guidelines](#testing-guidelines)
+    - [Cmdlet signature guidelines](#cmdlet-signature-guidelines)
+    - [Parameter change guidelines](#parameter-change-guidelines)
+    - [Pipeline change guidelines](#pipeline-change-guidelines)
+
+## Introduction
+
+This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+
 If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
 
-If you encounter any bugs with Microsoft Azure PowerShell please file an issue in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the project.
+## Filing Issues
 
-## Best Practices
+You can find all of the issues that have been filed in the [Issues](https://github.com/Azure/azure-powershell/issues) section of the repository.
+
+If you encounter any bugs with Microsoft Azure PowerShell, please file an issue [here](https://github.com/Azure/azure-powershell/issues/new) and make sure to fill out the provided template with the requested information.
+
+To suggest a new feature or changes that could be made to Azure PowerShell, file an issue the same way you would for a bug, but remove the provided template and replace it with information about your suggestion.
+
+You can find the code complete and release dates of the next three Azure PowerShell releases in the [Milestones](https://github.com/Azure/azure-powershell/milestones) section of the Issue page. Each milestone will display the issues that are being worked on for the corresponding release. 
+
+## Making Changes
+
+### Pull Requests
+
+You can find all of the pull requests that have been opened in the [Pull Request](https://github.com/Azure/azure-powershell/pulls) section of the repository.
+
+To open your own pull request, click [here](https://github.com/Azure/azure-powershell/compare). When creating a pull request, keep the following in mind:
+- Make sure you are pointing to the fork and branch that your changes were made in
+- Choose the correct branch you want your pull request to be merged into
+    - The **dev** branch is for active development; changes in this branch will be in the next Azure PowerShell release
+    - The **master** branch contains a snapshot of the source code at the time of the last release
+    - The **release-X.X.X** branch is for active development during a release
+- The pull request template that is provided **should be filled out**; this is not something that should just be deleted or ignored when the pull request is created
+    - Deleting or ignoring this template will elongate the time it takes for your pull request to be reviewed
+- The SLA for reviewing pull requests is **two business days**
+
+### SDK for .NET
+
+Before making any changes to the Azure PowerShell repository, the corresponding NuGet packages must have been published from the [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net) repository.
+
+For more information on how to make changes to the SDK for .NET repository and publish the corresponding packages to NuGet, click [here](https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/README.md).
+
+### Pull Request Guidelines
 
 The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of PowerShell cmdlet best practices [here](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx).
 
-### Cleaning up Commits
+#### Cleaning up Commits
 
 Often when a pull request is created with a large number of files changed and/or a large number of lines of code added and/or removed, GitHub will have a difficult time opening up the changes on their site. This forces the Azure PowerShell team to uses separate software, such as CodeFlow or Beyond Compare, to do a code review on the pull request.
 
@@ -16,9 +65,9 @@ If you find yourself creating a pull request and are unable to see all the chang
 
 If splitting up the pull request is not an option, we recommend **creating individual commits for different parts of the pull request, which can be reviewed individually on GitHub**.
 
-For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](../documentation/cleaning-up-commits.md).
+For more information on cleaning up the commits in a pull request, such as how to rebase, squash, and cherry-pick, click [here](./documentation/cleaning-up-commits.md).
 
-### General
+#### General guidelines
 
 The following guidelines must be followed in **EVERY** pull request that is opened.
 
@@ -29,7 +78,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 - Cmdlets refer to the management libraries through NuGet references - no dlls are checked in
 - The pull request does not introduce [breaking changes](https://github.com/markcowl/azure-powershell/blob/doc1/documentation/changes.md#breaking-change-definition) (unless a major version change occurs in the assembly and module)
 
-### Tests
+#### Testing guidelines
 
 The following guidelines must be followed in **EVERY** pull request that is opened.
 
@@ -41,7 +90,7 @@ The following guidelines must be followed in **EVERY** pull request that is open
 - Tests should use the built-in PowerShell functions for generating random names when unique names are necessary - this will store names in the test recording
 - Tests should use `Start-Sleep` to pause rather than `Thread.Sleep`
 
-### Cmdlet Signature
+#### Cmdlet signature guidelines
 
 The following guidelines must be followed in pull requests that add, edit, or remove a cmdlet.
 
@@ -52,7 +101,7 @@ The following guidelines must be followed in pull requests that add, edit, or re
 - Cmdlets should derive from AzureRmCmdlet for management cmdlets, and AzureDataCmdlet for data cmdlets
 - If multiple parameter sets are implemented, the cmdlet should specify a `DefaultParameterSetName` in its cmdlet attribute
 
-### Parameters
+#### Parameter change guidelines
 
 The following guidelines must be followed in pull requests that add, edit, or remove a parameter.
 
@@ -68,7 +117,7 @@ The following guidelines must be followed in pull requests that add, edit, or re
         - `Location` (if appropriate) type `string`
         - `Tag` type `HashTable`
 
-### Parameters and the Pipeline
+#### Pipeline change guidelines
 
 The following guidelines must be followed in pull requests that make changes to pipeline parameters.
 
