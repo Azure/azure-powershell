@@ -279,8 +279,8 @@
   <data name="GettingAccountKeys" xml:space="preserve">
     <value>Getting account keys for {0}</value>
   </data>
-  <data name="GettingSubscriptionQuotas" xml:space="preserve">
-    <value>Getting the quotas of the subscription in the Batch Service for region: {0}.</value>
+  <data name="GettingLocationQuotas" xml:space="preserve">
+    <value>Getting the Batch service quotas for the subscription at region: {0}.</value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>

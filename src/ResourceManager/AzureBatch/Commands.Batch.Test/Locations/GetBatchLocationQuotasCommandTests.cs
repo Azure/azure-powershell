@@ -24,18 +24,18 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 {
-    public class GetBatchSubscriptionQuotasCommandTests : RMTestBase
+    public class GetBatchLocationQuotasCommandTests : RMTestBase
     {
-        private GetBatchSubscriptionQuotasCommand cmdlet;
+        private GetBatchLocationQuotasCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchSubscriptionQuotasCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchLocationQuotasCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchSubscriptionQuotasCommand()
+            cmdlet = new GetBatchLocationQuotasCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchSubscriptionQuotasTest()
+        public void GetBatchLocationQuotasTest()
         {
-            List<PSBatchSubscriptionQuotas> pipelineOutput = new List<PSBatchSubscriptionQuotas>();
+            List<PSBatchLocationQuotas> pipelineOutput = new List<PSBatchLocationQuotas>();
 
             // Return a pre-built object when the command is issued.
             string location = "westus";
-            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new BatchLocationQuota(accountQuota: 5));
-            batchClientMock.Setup(b => b.GetSubscriptionQuotas(location)).Returns(quotas);
+            PSBatchLocationQuotas quotas = new PSBatchLocationQuotas(location, new BatchLocationQuota(accountQuota: 5));
+            batchClientMock.Setup(b => b.GetLocationQuotas(location)).Returns(quotas);
 
             cmdlet.Location = location;
             cmdlet.ExecuteCmdlet();

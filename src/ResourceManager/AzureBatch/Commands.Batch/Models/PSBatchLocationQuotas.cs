@@ -12,31 +12,40 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Properties;
-using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public partial class BatchClient
+    /// <summary>
+    /// The quotas of a subscription in the Batch Service.
+    /// </summary>
+    public class PSBatchLocationQuotas
     {
-        /// <summary>
-        /// Gets the quotas of the subscription in the Batch Service.
-        /// </summary>
-        /// <param name="location">The location to use when getting the Batch subscription quotas.</param>
-        /// <returns>A PSBatchSubscriptionQuotas object containing the subscription quotas.</returns>
-        public virtual PSBatchSubscriptionQuotas GetSubscriptionQuotas(string location)
+        public PSBatchLocationQuotas(string location, BatchLocationQuota locationQuotasResponse)
         {
             if (string.IsNullOrEmpty(location))
             {
                 throw new ArgumentNullException("location");
             }
 
-            WriteVerbose(string.Format(Resources.GettingSubscriptionQuotas, location));
+            if (locationQuotasResponse == null)
+            {
+                throw new ArgumentNullException("locationQuotasResponse");
+            }
 
-            BatchLocationQuota response = this.BatchManagementClient.Location.GetQuotas(location);
-            return new PSBatchSubscriptionQuotas(location, response);
+            this.Location = location;
+            this.AccountQuota = locationQuotasResponse.AccountQuota.GetValueOrDefault();
         }
+
+        /// <summary>
+        /// The number of accounts the subscription is allowed to create in the Batch Service at the specified region.
+        /// </summary>
+        public int AccountQuota { get; private set; }
+
+        /// <summary>
+        /// The region name.
+        /// </summary>
+        public string Location { get; private set; }
     }
 }

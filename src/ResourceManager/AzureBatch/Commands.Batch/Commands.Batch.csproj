@@ -150,13 +150,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\RemoveBatchAccountCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountKeysCommand.cs" />
-    <Compile Include="Accounts\Helpers.cs" />
-    <Compile Include="Accounts\NewBatchAccountCommand.cs" />
-    <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
-    <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\RemoveBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountKeysCommand.cs" />
+    <Compile Include="BatchAccounts\Helpers.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountCommand.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
+    <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
     <Compile Include="Applications\NewBatchApplicationPackageCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models.Generated\PSExitCodeMapping.cs" />
@@ -241,7 +241,7 @@
     <Compile Include="Models\DisableComputeNodeSchedulingParameters.cs" />
     <Compile Include="Models\EnableAutoScaleParameters.cs" />
     <Compile Include="Models\EvaluateAutoScaleParameters.cs" />
-    <Compile Include="Models\BatchClient.Accounts.cs" />
+    <Compile Include="Models\BatchClient.BatchAccounts.cs" />
     <Compile Include="Models\BatchClient.Certificates.cs" />
     <Compile Include="Models\BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
@@ -251,7 +251,7 @@
     <Compile Include="Models\BatchClient.Files.cs" />
     <Compile Include="Models\BatchClient.Jobs.cs" />
     <Compile Include="Models\BatchClient.Pools.cs" />
-    <Compile Include="Models\BatchClient.Subscriptions.cs" />
+    <Compile Include="Models\BatchClient.Locations.cs" />
     <Compile Include="Models\BatchClient.Tasks.cs" />
     <Compile Include="Models\BatchClient.ComputeNodeUsers.cs" />
     <Compile Include="Models\BatchClient.ComputeNodes.cs" />
@@ -281,7 +281,7 @@
     <Compile Include="Models.Generated\PSAffinityInformation.cs" />
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
-    <Compile Include="Models\PSBatchSubscriptionQuotas.cs" />
+    <Compile Include="Models\PSBatchLocationQuotas.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models.Generated\PSAutoPoolSpecification.cs" />
     <Compile Include="Models.Generated\PSAutoScaleRun.cs" />
@@ -328,7 +328,7 @@
     <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
-    <Compile Include="Accounts\GetBatchAccountNodeAgentSkuCommand.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountNodeAgentSkuCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
     <Compile Include="Pools\SetBatchPoolCommand.cs" />
@@ -342,7 +342,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommand.cs" />
+    <Compile Include="Locations\GetBatchLocationQuotasCommand.cs" />
     <Compile Include="Tasks\GetBatchSubtaskCommand.cs" />
     <Compile Include="Tasks\GetBatchTaskCommand.cs" />
     <Compile Include="Tasks\NewBatchTaskCommand.cs" />

@@ -12,40 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Batch.Properties;
+using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    /// <summary>
-    /// The quotas of a subscription in the Batch Service.
-    /// </summary>
-    public class PSBatchSubscriptionQuotas
+    public partial class BatchClient
     {
-        public PSBatchSubscriptionQuotas(string location, BatchLocationQuota locationQuotasResponse)
+        /// <summary>
+        /// Gets the Batch service quotas for the specified subscription at the given region.
+        /// </summary>
+        /// <param name="location">The desired region for the quotas.</param>
+        /// <returns>A PSBatchLocationQuotas object containing the quotas.</returns>
+        public virtual PSBatchLocationQuotas GetLocationQuotas(string location)
         {
             if (string.IsNullOrEmpty(location))
             {
                 throw new ArgumentNullException("location");
             }
 
-            if (locationQuotasResponse == null)
-            {
-                throw new ArgumentNullException("locationQuotasResponse");
-            }
+            WriteVerbose(string.Format(Resources.GettingLocationQuotas, location));
 
-            this.Location = location;
-            this.AccountQuota = locationQuotasResponse.AccountQuota.GetValueOrDefault();
+            BatchLocationQuota response = this.BatchManagementClient.Location.GetQuotas(location);
+            return new PSBatchLocationQuotas(location, response);
         }
-
-        /// <summary>
-        /// The number of accounts the subscription is allowed to create in the Batch Service at the specified region.
-        /// </summary>
-        public int AccountQuota { get; private set; }
-
-        /// <summary>
-        /// The region name.
-        /// </summary>
-        public string Location { get; private set; }
     }
 }

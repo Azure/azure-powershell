@@ -189,13 +189,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts\GetBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\GetBatchAccountKeysCommandTests.cs" />
-    <Compile Include="Accounts\GetBatchNodeAgentSkusCommandTests.cs" />
-    <Compile Include="Accounts\NewBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\RegenBatchAccountKeyCommandTests.cs" />
-    <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
-    <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchAccountKeysCommandTests.cs" />
+    <Compile Include="BatchAccounts\GetBatchNodeAgentSkusCommandTests.cs" />
+    <Compile Include="BatchAccounts\NewBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\RegenBatchAccountKeyCommandTests.cs" />
+    <Compile Include="BatchAccounts\RemoveBatchAccountCommandTests.cs" />
+    <Compile Include="BatchAccounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="Applications\NewBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\RemoveBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationCommandTests.cs" />
@@ -255,12 +255,12 @@
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestContext.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
-    <Compile Include="ScenarioTests\SubscriptionTests.cs" />
+    <Compile Include="ScenarioTests\LocationTests.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeUserTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
     <Compile Include="ScenarioTests\JobScheduleTests.cs" />
-    <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommandTests.cs" />
+    <Compile Include="Locations\GetBatchLocationQuotasCommandTests.cs" />
     <Compile Include="Tasks\GetBatchSubtaskCommandTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
@@ -310,7 +310,7 @@
     <None Include="ScenarioTests\PoolTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\SubscriptionTests.ps1">
+    <None Include="ScenarioTests\LocationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
@@ -529,7 +529,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestUpdateJobSchedule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails.json" >
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJob.json">
@@ -640,7 +640,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestUpdatePool.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\TestGetSubscriptionQuotas.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.LocationTests\TestGetLocationQuotas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
