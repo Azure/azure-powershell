@@ -9,7 +9,7 @@
     <ProjectGuid>{EA66BF2C-4E5F-42FE-912C-B62AEB588308}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.NotificationHubs.Test</RootNamespace>
+    <RootNamespace>Commands.NotificationHubs.Test</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.NotificationHubs.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -169,7 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\NotificationHubServiceTests.cs" />
+    <Compile Include="ScenarioTests\NHServiceTests.cs" />
     <Compile Include="ScenarioTests\TestBaseClass.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,19 +182,19 @@
     <None Include="Resources\NewAuthorizationRule.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\NotificationHubServiceTests.ps1">
+    <None Include="ScenarioTests\NHServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespace.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNamespace.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespaceAuth.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNamespaceAuth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNHAuth.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNHAuth.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNotificationHub.json">
+    <None Include="SessionRecords\Commands.NotificationHubs.Test.NHServiceTests\TestCRUDNotificationHub.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
