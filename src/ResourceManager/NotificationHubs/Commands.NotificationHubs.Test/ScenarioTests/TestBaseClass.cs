@@ -28,6 +28,7 @@ namespace Commands.NotificationHubs.Test
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using System;
     using System.Linq;
+    using System.IO;
 
     public abstract class TestBaseClass : RMTestBase
     {
@@ -64,6 +65,7 @@ namespace Commands.NotificationHubs.Test
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
                 this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
