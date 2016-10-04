@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
+namespace Commands.NotificationHubs.Test
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using System.Collections.Generic;
-    using Rest.ClientRuntime.Azure.TestFramework;
+    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
     using System;
     using System.Linq;
 
