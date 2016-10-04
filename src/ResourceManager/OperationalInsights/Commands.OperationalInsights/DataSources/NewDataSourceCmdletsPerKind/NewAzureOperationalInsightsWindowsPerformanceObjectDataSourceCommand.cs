@@ -26,13 +26,13 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     public class NewAzureOperationalInsightsWindowsPerformanceCounterDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of object name of Linux Performance Counter.")]
+        HelpMessage = "The name of object name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string ObjectName { get; set; }
 
         private string _InstanceName = "*";
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of instance name of Linux Performance Counter.")]
+        HelpMessage = "The name of instance name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string InstanceName
         {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
 
         [Parameter(Position = 5, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The array of countername for Linux Performance Counter.")]
+        HelpMessage = "The array of countername for Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string CounterName { get; set; }
 
@@ -55,6 +55,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             set { _IntervalSeconds = value; }
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Use legacy collector or the default collector.")]
+        public SwitchParameter UseLegacyCollector { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var dsProperties = new PSWindowsPerformanceCounterDataSourceProperties
@@ -62,8 +65,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ObjectName = this.ObjectName,
                 InstanceName = this.InstanceName,
                 IntervalSeconds = this.IntervalSeconds,
-                CounterName = this.CounterName
+                CounterName = this.CounterName,
+                CollectorType = CollectorType.Default
             };
+
+            if (UseLegacyCollector.IsPresent)
+            {
+                dsProperties.CollectorType = CollectorType.Legacy;
+            }
 
             CreatePSDataSourceWithProperties(dsProperties);
         }
