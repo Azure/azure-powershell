@@ -97,5 +97,5 @@
       "overallQuotaInMB": 4096
     }
   },
-  "StorageAccount": "definedinconfigstorage"
+  "StorageAccount": "[StorageAccountName]"
 }
