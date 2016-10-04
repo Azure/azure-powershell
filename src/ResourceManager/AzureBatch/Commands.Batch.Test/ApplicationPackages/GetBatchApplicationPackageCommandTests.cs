@@ -18,19 +18,19 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Applications
+namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
 {
-    public class RemoveBatchApplicationPackageCommandTests
+    public class GetBatchApplicationPackageCommandTests
     {
-        private RemoveBatchApplicationPackageCommand cmdlet;
+        private GetBatchApplicationPackageCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchApplicationPackageCommandTests()
+        public GetBatchApplicationPackageCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new RemoveBatchApplicationPackageCommand()
+            cmdlet = new GetBatchApplicationPackageCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -39,22 +39,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DeleteBatchApplicationPackageTest()
+        public void GetBatchApplicationPackageTest()
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string applicationId = "applicationId";
-            string version = "version";
+            string applicationId = "test";
+            string applicationVersion = "foo";
+
+            PSApplicationPackage expected = new PSApplicationPackage() { Id = applicationId, Version = applicationVersion };
+            batchClientMock.Setup(b => b.GetApplicationPackage(resourceGroup, accountName, applicationId, applicationVersion)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.ApplicationId = applicationId;
-            cmdlet.ApplicationVersion = version;
+            cmdlet.ApplicationVersion = applicationVersion;
 
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationId, version), Times.Once());
+            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
     }
 }

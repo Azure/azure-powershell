@@ -196,12 +196,12 @@
     <Compile Include="BatchAccounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="BatchAccounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="Applications\NewBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\RemoveBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\RemoveBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\GetBatchApplicationCommandTests.cs" />
     <Compile Include="Applications\RemoveBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\GetBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\GetBatchApplicationPackageCommandTests.cs" />
     <Compile Include="Applications\SetBatchApplicationCommandTests.cs" />
-    <Compile Include="Applications\NewBatchApplicationPackageCommandTests.cs" />
+    <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="Certificates\GetBatchCertificateCommandTests.cs" />
     <Compile Include="Certificates\NewBatchCertificateCommandTests.cs" />
@@ -246,6 +246,7 @@
     <Compile Include="Pools\TestBatchAutoScaleCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
+    <Compile Include="ScenarioTests\BatchApplicationPackageTests.cs" />
     <Compile Include="ScenarioTests\BatchApplicationTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
     <Compile Include="ScenarioTests\CertificateTests.cs" />
@@ -288,6 +289,9 @@
     <Content Include="Resources\TestApplicationPackage.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="ScenarioTests\BatchApplicationPackageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\BatchApplicationTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -342,19 +346,19 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchAccountTests\TestUpdatesExistingBatchAccount.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestCreatePoolWithApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestCreatePoolWithApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUpdateApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUpdateApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUpdatePoolWithApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUpdatePoolWithApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplication.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationTests\TestUploadApplicationPackage.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.BatchApplicationPackageTests\TestUploadApplicationPackage.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.CertificateTests\TestCancelCertificateDelete.json">
