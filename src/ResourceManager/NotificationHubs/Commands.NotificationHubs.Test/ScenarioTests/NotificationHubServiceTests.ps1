@@ -180,6 +180,7 @@ function Test-CRUDNamespace
 
     Write-Debug " Get the updated namespace "
     $getUpdatedNamespace = Get-AzureRmNotificationHubsNamespace -ResourceGroup $secondResourceGroup -Namespace $namespaceName2
+	#uncomment once the playback mode doesnt fail on this 
     #Assert-AreEqual $updatedNamespace.Tags.Count $getUpdatedNamespace.Tags.Count
 
     Write-Debug " Delete namespaces"
