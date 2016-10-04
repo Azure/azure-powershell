@@ -1,9 +1,26 @@
-# Contribute Code or Provide Feedback
+# Contribute Code or Provide Feedback for Azure PowerShell
 
-#### Table of Contents
+This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
 
-[Introduction](#introduction)
+## Basics
+
+If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
+
+In the Azure Developer Experience, you are at Step 5:
+
+[API Design Review](https://github.com/Azure/adx-documentation-pr#begin-api-design-review) -> [Engage with ADX team](https://github.com/Azure/adx-documentation-pr/blob/master/README.md#engage-with-adx-team) -> [Swagger specification](https://github.com/Azure/adx-documentation-pr#create-swagger-specification) -> [SDKs](https://github.com/Azure/adx-documentation-pr#sdks) -> _**[CLIs](https://github.com/Azure/adx-documentation-pr#clis)**_
+
+## Table of Contents
+
+[Before Starting](#before-starting)
+- [Onboarding](#onboarding)
+- [GitHub Basics](#github-basics)
+    - [GitHub Workflow](#github-workflow)
+    - [Forking the Azure/azure-powershell repository](#forking-the-azureazure-powershell-repository)
+- [Code of Conduct](#code-of-conduct)
+
 [Filing Issues](#filing-issues)
+
 [Making Changes](#making-changes)
 - [Pull Requests](#pull-requests)
 - [SDK for .NET](#sdk-for-net)
@@ -12,14 +29,30 @@
     - [General guidelines](#general-guidelines)
     - [Testing guidelines](#testing-guidelines)
     - [Cmdlet signature guidelines](#cmdlet-signature-guidelines)
-    - [Parameter change guidelines](#parameter-change-guidelines)
-    - [Pipeline change guidelines](#pipeline-change-guidelines)
+    - [Cmdlet parameter guidelines](#cmdlet-parameter-guidelines)
+    - [Cmdlet pipeline guidelines](#cmdlet-pipeline-guidelines)
 
-## Introduction
+## Before Starting
 
-This repository contains a set of PowerShell cmdlets for developers and administrators to develop, deploy, and manage Microsoft Azure applications.
+### Onboarding
 
-If you would like to become an active contributor to this project please follow the instructions provided in [Microsoft Azure Projects Contribution Guidelines](http://azure.github.io/guidelines/).
+Make sure that your GitHub account is part of the Azure organization. [Use this page](http://aka.ms/azuregithub) to link your account.
+
+Before cloning this repository, please make sure you have started in our [documentation repository](https://github.com/Azure/adx-documentation-pr) (you will only have access to that page if you are part of the Azure organization).
+
+### GitHub Basics
+
+#### GitHub Workflow
+
+If you don't have experience with Git and GitHub, some of the terminology and process can be confusing. [Here is a guide to understanding the GitHub flow](https://guides.github.com/introduction/flow/) and [here is a guide to understanding the basic Git commands](https://services.github.com/kit/downloads/github-git-cheat-sheet.pdf).
+
+#### Forking the Azure/azure-powershell repository
+
+Unless you are working with multiple contributors on the same file, we ask that you fork the repository and submit your pull request from there. [Here is a guide to forks in GitHub](https://guides.github.com/activities/forking/).
+
+### Code of Conduct
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Filing Issues
 
@@ -55,9 +88,13 @@ For more information on how to make changes to the SDK for .NET repository and p
 
 ### Pull Request Guidelines
 
+A pull request template will automatically be included as a part of your PR. Please fill out the checklist as specified. Pull requests **will not be reviewed** unless they include a properly completed checklist.
+
 The following is a list of guidelines that pull requests opened in the Azure PowerShell repository must adhere to. You can find a more complete discussion of PowerShell cmdlet best practices [here](https://msdn.microsoft.com/en-us/library/dd878270(v=vs.85).aspx).
 
 #### Cleaning up Commits
+
+If you are thinking about making a large change to your Azure PowerShell cmdlets, **break up the change into small, logical, testable chunks, and organize your pull requests accordingly**.
 
 Often when a pull request is created with a large number of files changed and/or a large number of lines of code added and/or removed, GitHub will have a difficult time opening up the changes on their site. This forces the Azure PowerShell team to uses separate software, such as CodeFlow or Beyond Compare, to do a code review on the pull request.
 
@@ -84,8 +121,8 @@ The following guidelines must be followed in **EVERY** pull request that is open
 
 - Pull request includes test coverage for the included changes
 - Tests must use xunit, and should either use Moq to mock management client calls, or use the scenario test framework
-- PowerShell scripts used in tests must not use hard-coded values for location
-- PowerShell scripts used in tests should not do any necessary setup as part of the test or suite setup, and should not use hard-coded values for existing resources
+- Test code should not contain hard coded values for resource names, resource locations, subscriptions, tenants, or similar values. Test scripts, when run live, should be executable using any subscription and any location in Azure
+- PowerShell scripts used in tests must do any necessary setup as part of the test or suite setup, and should not use hard-coded values for existing resources
 - Test should not use App.config files for settings
 - Tests should use the built-in PowerShell functions for generating random names when unique names are necessary - this will store names in the test recording
 - Tests should use `Start-Sleep` to pause rather than `Thread.Sleep`
@@ -101,7 +138,7 @@ The following guidelines must be followed in pull requests that add, edit, or re
 - Cmdlets should derive from AzureRmCmdlet for management cmdlets, and AzureDataCmdlet for data cmdlets
 - If multiple parameter sets are implemented, the cmdlet should specify a `DefaultParameterSetName` in its cmdlet attribute
 
-#### Parameter change guidelines
+#### Cmdlet parameter guidelines
 
 The following guidelines must be followed in pull requests that add, edit, or remove a parameter.
 
@@ -111,13 +148,13 @@ The following guidelines must be followed in pull requests that add, edit, or re
 - Complex parameter types are discouraged - a parameter type should be simple types as often as possible. If complex types are used, they should be shallow and easily creatable from a constructor or another cmdlet
 - Parameters should be explicitly marked as `Mandatory` or not, and should contain a `HelpMessage`
 - No parameter is of type `object`
-    - Management cmdlets should have the following parameters and aliases:
-        - `ResourceGroupName` with (optional) alias to `ResourceGroupName` type `string` marked as `[ValueFromPipelineByPropertyName]`
-        - `Name` with alias to `ResourceName` type `string` marked as `[ValueFromPipelineByPropertyName]`
-        - `Location` (if appropriate) type `string`
-        - `Tag` type `HashTable`
+- Management cmdlets should have the following parameters and aliases:
+    - `ResourceGroupName` with (optional) alias to `ResourceGroupName` type `string` marked as `[ValueFromPipelineByPropertyName]`
+    - `Name` with alias to `ResourceName` type `string` marked as `[ValueFromPipelineByPropertyName]`
+    - `Location` (if appropriate) type `string`
+    - `Tag` type `HashTable`
 
-#### Pipeline change guidelines
+#### Cmdlet pipeline guidelines
 
 The following guidelines must be followed in pull requests that make changes to pipeline parameters.
 
