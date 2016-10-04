@@ -163,7 +163,7 @@
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackup.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupConfiguration.cs" />
     <Compile Include="Cmdlets\BackupRestore\GetAzureWebAppBackupList.cs" />
-    <Compile Include="Cmdlets\DeploymentSlots\SwapAzureWebAppSlot.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SwitchAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
@@ -209,6 +209,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="WebsitesStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
