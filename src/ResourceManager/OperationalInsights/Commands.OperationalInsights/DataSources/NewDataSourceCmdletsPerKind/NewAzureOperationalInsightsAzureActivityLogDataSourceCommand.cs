@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet(VerbsCommon.New, "AzureRmOperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, 
         DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
+    [Alias("New-AzureRmOperationalInsightsAzureAuditDataSource")]
     public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
