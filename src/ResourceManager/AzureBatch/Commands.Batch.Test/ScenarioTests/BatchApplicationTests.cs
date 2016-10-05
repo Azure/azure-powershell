@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
-        public void TestUploadApplication()
+        public void TestAddApplication()
         {
             BatchController.NewInstance.RunPsTest(string.Format("Test-AddApplication"));
         }
