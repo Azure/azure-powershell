@@ -143,28 +143,18 @@ Function Invoke-MockedScenarioTests
 }
 
 [cmdletBinding]
-Function Install-VSTestProjectTemplates
+Function Install-VSProjectTemplates
 {
     if($env:VisualStudioVersion -eq "14.0")
     {
-        if((Test-Path -Path "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzureDotNetSDK-TestProject.zip") -eq $false)
-        {
-            Copy-Item "$env:repoRoot\tools\TestProjectTemplates\AzureDotNetSDK-TestProject.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzureDotNetSDK-TestProject.zip"
-            Write-Host "Installing 'AzureDotNetSDK-TestProject' VS template for writing DotNET SDK test project"
-        }
-
-        if((Test-Path -Path "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzurePowerShell-TestProject.zip") -eq $false)
-        {
-            Copy-Item "$env:repoRoot\tools\TestProjectTemplates\AzurePowerShell-TestProject.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\AzurePowerShell-TestProject.zip"
-            Write-Host "Installing 'AzurePowerShell-TestProject' VS template for writing PowerShell test project"   
-        }
-
+        Write-Host "Installing VS templates for 'AutoRest as well as Test Project'"
+        Copy-Item "$env:repoRoot\tools\ProjectTemplates\*.zip" "$env:USERPROFILE\Documents\Visual Studio 2015\Templates\ProjectTemplates\"
         Write-Host "Installed VS Test Project Templates for Powershell and DotNet SDK test projects"
-        Write-Host "Restart VS (if already open), search for 'AzureDotNetSDK-TestProject' or 'AzurePowerShell-TestProject'"
+        Write-Host "Restart VS (if already open), search for 'AutoRest-AzureDotNetSdk', 'AzureDotNetSDK-TestProject' or 'AzurePowerShell-TestProject'"
     }
     else
     {
-        Write-Host "Unsupported VS Version detected. Visual Studio 2015 is the only supported version for test project templates"
+        Write-Host "Unsupported VS Version detected. Visual Studio 2015 is the only supported version for current set of project templates"
     }
 }
 
@@ -220,4 +210,4 @@ export-modulemember -function Get-BuildScopes
 export-modulemember -function Start-RepoBuild
 export-modulemember -function Invoke-CheckinTests
 export-modulemember -function Invoke-MockedScenarioTests
-export-modulemember -function Install-VSTestProjectTemplates
+export-modulemember -function Install-VSProjectTemplates
