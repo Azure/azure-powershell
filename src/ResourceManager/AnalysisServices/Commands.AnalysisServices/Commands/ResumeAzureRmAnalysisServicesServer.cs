@@ -20,10 +20,10 @@ using Microsoft.Azure.Management.Analysis.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(List<AnalysisServicesServer>))]
-    [Alias("Get-AzureAs")]
-    public class GetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
+    [Alias("C:\github\azure-powershell\src\ResourceManager\AnalysisServices\Commands.AnalysisServices\Commands\ResumeAzureRmAnalysisServicesServer.cs-AzureAs")]
+    public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";
         internal const string ResourceGroupParameterSetName = "All In Resource Group";
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         [Parameter(ParameterSetName = ResourceGroupParameterSetName, Position = 0,
             ValueFromPipelineByPropertyName = true, Mandatory = true,
-            HelpMessage = "Name of resource group under which the user want to retrieve the server.")]
+            HelpMessage = "Name of resource group under which to retrieve the server.")]
         [Parameter(ParameterSetName = ServerParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
-            Mandatory = false, HelpMessage = "Name of resource group under which the user want to retrieve the server.")]
+            Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -47,13 +47,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get for single server
-                WriteObject(AnalysisServicesClient.GetServer(ResourceGroupName, Name));
+                AnalysisServicesClient.ResumeServer(ResourceGroupName, Name);
             }
             else
             {
-                // List all servers in given resource group if avaliable otherwise all servers in the subscription
-                var list = AnalysisServicesClient.ListServers(ResourceGroupName);
-                WriteObject(list, true);
+                WriteExceptionError(new PSArgumentNullException("Name", "Name of server not specified"));
             }
         }
     }

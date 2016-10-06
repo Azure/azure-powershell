@@ -105,6 +105,14 @@ function Test-AnalysisServicesServer
 		}
 		Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
+		# Suspend Analysis Servicesserver
+		Assert-Throws {Suspend-AzureRmAnalysisServicesServer} "Suspend Server must throw"
+		Assert-True {Suspend-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName} "Suspend Server failed."
+
+		# Suspend Analysis Servicesserver
+		Assert-Throws {Resume-AzureRmAnalysisServicesServer} "Resume Server must throw"
+		Assert-True {Resume-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName} "Resume Server failed."
+		
 		# Delete Analysis Servicesserver
 		Assert-True {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Force -PassThru} "Remove Server failed."
 

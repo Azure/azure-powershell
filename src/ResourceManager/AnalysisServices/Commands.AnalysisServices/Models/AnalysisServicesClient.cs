@@ -193,6 +193,26 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
         }
 
+        public void SuspendServer(string resourceGroupName, string serverName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByServer(serverName);
+            }
+
+            _client.Servers.Suspend(resourceGroupName, serverName);
+        }
+
+        public void ResumeServer(string resourceGroupName, string serverName)
+        {
+            if (string.IsNullOrEmpty(resourceGroupName))
+            {
+                resourceGroupName = GetResourceGroupByServer(serverName);
+            }
+
+            _client.Servers.Resume(resourceGroupName, serverName);
+        }
+
         #endregion
     }
 }
