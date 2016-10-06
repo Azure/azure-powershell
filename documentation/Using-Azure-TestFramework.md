@@ -1,6 +1,6 @@
 # Using Microsoft.Rest.ClientRuntime.Azure.TestFramework #
 
-1. TestFramework version to use
+1. Getting Started
 2. Accquring TestFramework
 3. Setup prior to Record/Playback tests
 	1. Environment Variables
@@ -13,10 +13,17 @@
 5. Change Test Environment settings at run-time
 
 
-## 1. TestFramework version to use
-Current Version: [1.4.0-preview](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/1.4.0-preview)
+## 1. Getting Started
+1. Launch .\tools\PS-VSPrompt shortcut
+	1. This starts VS Dev command prompt in PowerShell
+2. Import module that helps in performing basic repository tasks
+	1. Import-Module Repo-Tasks.psm1
+	2. Type Get-Commands -Module Repo-Tasks to see list of cmdlets
+	3. Get-Help <CommandName> to get help on individual commands.
 
 ## 2. Accquring TestFramework
+Current Version: [1.4.0-preview](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/1.4.0-preview)
+
 Nuget command to install current version
 
     Install-Package Microsoft.Rest.ClientRuntime.Azure.TestFramework -v 1.4.0-preview -Pre

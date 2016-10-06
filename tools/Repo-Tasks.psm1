@@ -37,6 +37,13 @@ else
 [CmdletBinding]
 Function Set-TestEnvironment
 {
+<#
+.SYNOPSIS
+This cmdlet helps you to setup Test Environment for running tests
+In order to successfully run a test, you will need SubscriptionId, TenantId
+This cmdlet will only prompt you for Subscription and Tenant information, rest all other parameters are optional
+
+#>
     param(
         [parameter(Mandatory=$true, Position=0, HelpMessage='SubscriptionId you would like to use')]
         [ValidateNotNullOrEmpty()]
@@ -102,6 +109,14 @@ Function Set-TestEnvironment
 [CmdletBinding]
 Function Get-BuildScopes
 {
+<#
+.SYNOPSIS
+You can build a particular package rather than doing a full build by providing Build Scope.
+This cmdlet will help to identify existing Scope available
+This will enable to execute Start-RepoBuild <scope>
+
+#>
+
     Write-Host "Below are available scopes you can specify for building specific projects"
     Write-Host ""    
     Get-ChildItem -path "$env:repoRoot\src\ResourceManager" -dir | Format-Wide -Column 5 | Format-Table -Property Name    
@@ -111,6 +126,13 @@ Function Get-BuildScopes
 [CmdletBinding]
 Function Start-RepoBuild
 {
+<#
+.SYNOPSIS
+This cmdlet will help to do either with full build or targeted build for specific scopes.
+
+.PARAMETER BuildScope
+Use Get-BuildScope cmdLet to get list of existing scopes that can be used to build
+#>
     param(
     [parameter(Mandatory=$false, Position=0, HelpMessage='BuildScope that you would like to use. For list of build scopes, run List-BuildScopes')]
     [string]$BuildScope
@@ -131,6 +153,10 @@ Function Start-RepoBuild
 [CmdletBinding]
 Function Invoke-CheckinTests
 {
+<#
+.SYNOPSIS
+Runs all the check in tests
+#>
     Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /t:Test"
     msbuild.exe "$env:repoRoot\build.proj" /t:Test
 }
@@ -138,6 +164,10 @@ Function Invoke-CheckinTests
 [CmdletBinding]
 Function Invoke-MockedScenarioTests
 {
+<#
+.SYNOPSIS
+Builds the entire repo and then run Mocked Scenario Tests
+#>
     Write-Host "cmdline Args: msbuild.exe $env:repoRoot\build.proj /t:Test"
     msbuild.exe "$env:repoRoot\build.proj" /t:"Build;BeforeRunTests;MockedScenarioTests"
 }
@@ -145,6 +175,20 @@ Function Invoke-MockedScenarioTests
 [cmdletBinding]
 Function Install-VSProjectTemplates
 {
+<#
+.SYNOPSIS
+
+Install-VSProjectTemplates will install getting started project templates for
+1) Autorest-.NET SDKProject
+2) .NET SDK Test project
+3) PowerShell Test Project
+
+After executing the cmdlet, restart VS (if already open), create new project
+Search for the project template as we install the following three project templates
+AutoRest-AzureDotNetSDK
+AzureDotNetSDK-TestProject
+AzurePowerShell-TestProject
+#>
     if($env:VisualStudioVersion -eq "14.0")
     {
         Write-Host "Installing VS templates for 'AutoRest as well as Test Project'"
@@ -209,5 +253,4 @@ export-modulemember -function Set-TestEnvironment
 export-modulemember -function Get-BuildScopes
 export-modulemember -function Start-RepoBuild
 export-modulemember -function Invoke-CheckinTests
-export-modulemember -function Invoke-MockedScenarioTests
 export-modulemember -function Install-VSProjectTemplates
