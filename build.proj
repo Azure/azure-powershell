@@ -264,7 +264,7 @@
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 		
 	<VerifyAuthenticodeSignatureTask ProbingDirectory="$(PackageDirectory)\$(Configuration)"
-									FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1">
+									FileFilterPattern="microsoft.*.dll;system.*.dll;*.ps1;*.psm1">
       <Output TaskParameter="AuthCodeSignTaskErrorsDetected" PropertyName="AuthTaskFailed" />
     </VerifyAuthenticodeSignatureTask>
 	
