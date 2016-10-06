@@ -53,31 +53,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 throw new ApplicationException(Resources.NoSubscriptionInContext);
             }
 
-            var creds = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
-            var clientFactory = AzureSession.ClientFactory;
-            var newHandlers = clientFactory.GetCustomHandlers();
-            TClient client;
-            if (!parameterizedBaseUri)
-            {
-                client = (newHandlers == null || newHandlers.Length == 0)
-                    // string.Empty ensures that we hit the constructors that set the assembly version properly
-                    ? clientFactory.CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty)
-                    : clientFactory.CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, string.Empty, clientFactory.GetCustomHandlers());
-            }
-            else
-            {
-                client = (newHandlers == null || newHandlers.Length == 0)
-                    // string.Empty ensures that we hit the constructors that set the assembly version properly
-                    ? clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), filesystemRequestTimeoutInMinutes)
-                    : clientFactory.CreateCustomArmClient<TClient>(creds, string.Empty, context.Environment.GetEndpoint(endpoint), filesystemRequestTimeoutInMinutes, clientFactory.GetCustomHandlers());
-            }
-
-            var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
-            if (subscriptionId != null && context.Subscription != null)
-            {
-                subscriptionId.SetValue(client, context.Subscription.Id.ToString());
-            }
-
+            TClient client = AzureSession.ClientFactory.CreateArmClient<TClient>(context, endpoint);
             return client;
         }
     }
