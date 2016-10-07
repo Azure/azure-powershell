@@ -14,14 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSIotHubConnectionString
     {
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        public string KeyName { get; set; }
+
+        public string PrimaryConnectionString { get; set; }
+
+        public string SecondaryConnectionString { get; set; }
     }
 }

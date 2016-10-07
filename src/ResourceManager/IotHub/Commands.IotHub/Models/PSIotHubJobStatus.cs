@@ -14,14 +14,20 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
-    public class PSOperationsMonitoringProperties
+    /// <summary>
+    /// Defines values for JobStatus.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PSIotHubJobStatus
     {
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        Unknown,
+        Enqueued,
+        Running,
+        Completed,
+        Failed,
+        Cancelled
     }
 }

@@ -14,14 +14,20 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSExportDevicesRequest
     {
         /// <summary>
+        /// The export BLOB container URI.
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "ExportBlobContainerUri")]
+        public string ExportBlobContainerUri { get; set; }
+
+        /// <summary>
+        /// The value indicating whether keys should be excluded during export.
+        /// </summary>
+        [JsonProperty(PropertyName = "ExcludeKeys")]
+        public bool ExcludeKeys { get; set; }
     }
 }

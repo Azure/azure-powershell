@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Commands.IotHub</RootNamespace>
-    <AssemblyName>Commands.IotHub</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.IotHub</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -24,7 +24,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,19 +64,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\IotHubBaseCmdlet.cs" />
-    <Compile Include="IotHub\GetAzureRmIotHubs.cs" />
-    <Compile Include="Common\IotHubExtensions.cs" />
+    <Compile Include="Common\IotHubUtils.cs" />
+    <Compile Include="IotHub\AddAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\GetAzureRmEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubConnectionString.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubJob.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubQuotaMetric.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHub.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubRegistryStatistic.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubValidSku.cs" />
+    <Compile Include="IotHub\AddAzureRmIotHubEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHub.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHubExportDevices.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHubImportDevices.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
     <Compile Include="Models\PSAccessRights.cs" />
     <Compile Include="Models\PSCapabilities.cs" />
     <Compile Include="Models\PSCloudToDeviceProperties.cs" />
     <Compile Include="Models\PSDiagnosticCategory.cs" />
+    <Compile Include="Models\PSEventHubInputProperties.cs" />
     <Compile Include="Models\PSEventHubProperties.cs" />
+    <Compile Include="Models\PSExportDevicesRequest.cs" />
     <Compile Include="Models\PSFeedbackProperties.cs" />
+    <Compile Include="Models\PSImportDevicesRequest.cs" />
     <Compile Include="Models\PSIotHub.cs" />
+    <Compile Include="Models\PSIotHubCapacity.cs" />
+    <Compile Include="Models\PSIotHubConnectionString.cs" />
+    <Compile Include="Models\PSIotHubInputProperties.cs" />
+    <Compile Include="Models\PSIotHubJobResponse.cs" />
     <Compile Include="Models\PSIotHubProperties.cs" />
+    <Compile Include="Models\PSIotHubQuotaMetrics.cs" />
+    <Compile Include="Models\PSIotHubRegistryStatistics.cs" />
+    <Compile Include="Models\PSIotHubScaleType.cs" />
     <Compile Include="Models\PSIotHubSku.cs" />
+    <Compile Include="Models\PSIotHubSkuDescription.cs" />
     <Compile Include="Models\PSIotHubSkuInfo.cs" />
     <Compile Include="Models\PSIotHubSkuTier.cs" />
+    <Compile Include="Models\PSIotHubJobStatus.cs" />
     <Compile Include="Models\PSMessagingEndpointProperties.cs" />
     <Compile Include="Models\PSOperationMonitoringLevel.cs" />
     <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
@@ -103,8 +129,25 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="IotHubKeys\" />
+    <Content Include="Microsoft.Azure.Commands.IotHub.dll-Help.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.IotHub.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\AzureRM.IotHub.psd1">
+      <Link>AzureRM.IotHub.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourceManagerStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

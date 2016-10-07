@@ -14,14 +14,22 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSEventHubInputProperties
     {
         /// <summary>
+        /// The retention time in days. Range of values [For F1: 1-1, S1: 1-7,
+        /// S2: 1-7, S3: 1-7].
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "retentionTimeInDays")]
+        public long? RetentionTimeInDays { get; set; }
+
+        /// <summary>
+        /// The partition count. Range of values [For F1: 2-2, S1: 2-128, S2:
+        /// 2-128, S3: 2-128].
+        /// </summary>
+        [JsonProperty(PropertyName = "partitionCount")]
+        public int? PartitionCount { get; set; }
     }
 }

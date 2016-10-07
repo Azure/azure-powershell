@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSIotHubProperties
+    public class PSIotHubInputProperties
     {
         /// <summary>
         /// The authorization rules.
@@ -26,16 +26,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public IList<PSSharedAccessSignatureAuthorizationRule> AuthorizationPolicies { get; set; }
 
         /// <summary>
-        /// The name of the host.
-        /// </summary>
-        [JsonProperty(PropertyName = "hostName")]
-        public string HostName { get; set; }
-
-        /// <summary>
         /// The event hub endpoint properties.
         /// </summary>
         [JsonProperty(PropertyName = "eventHubEndpoints")]
-        public IDictionary<string, PSEventHubProperties> EventHubEndpoints { get; set; }
+        public IDictionary<string, PSEventHubInputProperties> EventHubEndpoints { get; set; }
 
         /// <summary>
         /// The list of storage end points where files can be uploaded.

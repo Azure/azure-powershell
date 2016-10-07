@@ -15,13 +15,28 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System;
+    using Newtonsoft.Json;
 
     public class PSFeedbackProperties
     {
+        /// <summary>
+        /// The lock duration for the feedback queue. Range: 5 Sec (PT5S) - 5
+        /// Min (PT5M).
+        /// </summary>
+        [JsonProperty(PropertyName = "lockDurationAsIso8601")]
         public TimeSpan? LockDurationAsIso8601 { get; set; }
 
+        /// <summary>
+        /// The time to live for the feedback queue. Range: 1 Min (PT1M) - 2
+        /// Days (P2D).
+        /// </summary>
+        [JsonProperty(PropertyName = "ttlAsIso8601")]
         public TimeSpan? TtlAsIso8601 { get; set; }
 
+        /// <summary>
+        /// The max delivery count. Range : 1-100.
+        /// </summary>
+        [JsonProperty(PropertyName = "maxDeliveryCount")]
         public int? MaxDeliveryCount { get; set; }
     }
 }

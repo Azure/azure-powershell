@@ -14,14 +14,26 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSIotHubRegistryStatistics
     {
         /// <summary>
+        /// The total device count.
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "totalDeviceCount")]
+        public long? TotalDeviceCount { get; set; }
+
+        /// <summary>
+        /// The enabled device count.
+        /// </summary>
+        [JsonProperty(PropertyName = "enabledDeviceCount")]
+        public long? EnabledDeviceCount { get; set; }
+
+        /// <summary>
+        /// The disabled device count.
+        /// </summary>
+        [JsonProperty(PropertyName = "disabledDeviceCount")]
+        public long? DisabledDeviceCount { get; set; }
     }
 }

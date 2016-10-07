@@ -14,10 +14,21 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using Newtonsoft.Json;
+
     public class PSIotHubSkuInfo
     {
+        /// <summary>
+        /// The name of the Sku. Possible values include: 'F1', 'S1', 'S2',
+        /// 'S3'
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
         public PSIotHubSku Name { get; set; }
 
+        /// <summary>
+        /// The tier. Possible values include: 'Free', 'Standard'
+        /// </summary>
+        [JsonProperty(PropertyName = "tier")]
         public PSIotHubSkuTier Tier
         {
             get
@@ -36,6 +47,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
             }
         }
 
-        public long Capacity { get; set; }
+        /// <summary>
+        /// The number of units being provisioned. Range of values [For F1:
+        /// 1-1, S1: 1-200, S2: 1-200, S3: 1-10]. To go above this range,
+        /// call support.
+        /// </summary>
+        [JsonProperty(PropertyName = "capacity")]
+        public long? Capacity { get; set; }
     }
 }

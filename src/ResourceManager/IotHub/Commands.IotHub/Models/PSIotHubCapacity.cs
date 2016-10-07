@@ -14,14 +14,33 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSIotHubCapacity
     {
         /// <summary>
+        /// The minimum number of units.
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "minimum")]
+        public long? Minimum { get; set; }
+
+        /// <summary>
+        /// The maximum number of units.
+        /// </summary>
+        [JsonProperty(PropertyName = "maximum")]
+        public long? Maximum { get; set; }
+
+        /// <summary>
+        /// The default number of units.
+        /// </summary>
+        [JsonProperty(PropertyName = "default")]
+        public long? DefaultProperty { get; set; }
+
+        /// <summary>
+        /// The type of the scale. Possible values include: 'Automatic',
+        /// 'Manual', 'None'
+        /// </summary>
+        [JsonProperty(PropertyName = "scaleType")]
+        public PSIotHubScaleType? ScaleType { get; set; }
     }
 }

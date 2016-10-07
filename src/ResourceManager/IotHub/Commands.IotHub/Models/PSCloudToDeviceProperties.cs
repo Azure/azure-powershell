@@ -15,13 +15,26 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System;
+    using Newtonsoft.Json;
 
     public class PSCloudToDeviceProperties
     {
+        /// <summary>
+        /// The max delivery count for the device queue. Range : 1-100.
+        /// </summary>
+        [JsonProperty(PropertyName = "maxDeliveryCount")]
         public int? MaxDeliveryCount { get; set; }
 
+        /// <summary>
+        /// The default time to live for the device queue. Range : 1 Min
+        /// (PT1M) - 2 Days (P2D).
+        /// </summary>
+        [JsonProperty(PropertyName = "defaultTtlAsIso8601")]
         public TimeSpan? DefaultTtlAsIso8601 { get; set; }
 
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "feedback")]
         public PSFeedbackProperties Feedback { get; set; }
     }
 }

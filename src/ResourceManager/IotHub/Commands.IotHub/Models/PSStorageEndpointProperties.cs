@@ -15,14 +15,27 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System;
+    using Newtonsoft.Json;
 
     public class PSStorageEndpointProperties
     {
+        /// <summary>
+        /// SAS time to live. Range: 1 Min (PT1M) - 1 Day (P1D).
+        /// </summary>
+        [JsonProperty(PropertyName = "sasTtlAsIso8601")]
         public TimeSpan? SasTtlAsIso8601 { get; set; }
 
+        /// <summary>
+        /// The account key credentials for storage account selected by
+        /// customer for uploading files.
+        /// </summary>
+        [JsonProperty(PropertyName = "connectionString")]
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// The root container name where all files will be uploaded.
+        /// </summary>
+        [JsonProperty(PropertyName = "containerName")]
         public string ContainerName { get; set; }
-
     }
 }

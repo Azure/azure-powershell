@@ -14,14 +14,32 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using Newtonsoft.Json;
+
     public class PSSharedAccessSignatureAuthorizationRule
     {
+        /// <summary>
+        /// The name of the key.
+        /// </summary>
+        [JsonProperty(PropertyName = "keyName")]
         public string KeyName { get; set; }
 
+        /// <summary>
+        /// The primary key.
+        /// </summary>
+        [JsonProperty(PropertyName = "primaryKey")]
         public string PrimaryKey { get; set; }
 
+        /// <summary>
+        /// The secondary key.
+        /// </summary>
+        [JsonProperty(PropertyName = "secondaryKey")]
         public string SecondaryKey { get; set; }
 
+        /// <summary>
+        /// The access rights.
+        /// </summary>
+        [JsonProperty(PropertyName = "rights")]
         public PSAccessRights Rights { get; set; }
     }
 }
