@@ -14,6 +14,13 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
+    /// <summary>
+    /// Defines values for IotHubSkuTier.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum PSIotHubSkuTier
     {
         Free,

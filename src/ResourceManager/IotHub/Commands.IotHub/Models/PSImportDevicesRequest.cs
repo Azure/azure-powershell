@@ -14,14 +14,20 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSImportDevicesRequest
     {
         /// <summary>
+        /// The input BLOB container URI.
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "InputBlobContainerUri")]
+        public string InputBlobContainerUri { get; set; }
+
+        /// <summary>
+        /// The output BLOB container URI.
+        /// </summary>
+        [JsonProperty(PropertyName = "OutputBlobContainerUri")]
+        public string OutputBlobContainerUri { get; set; }
     }
 }

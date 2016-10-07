@@ -15,7 +15,13 @@
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
     using System;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
+    /// <summary>
+    /// Defines values for IotHubSkuTier.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     [Flags]
     public enum PSOperationMonitoringLevel
     {

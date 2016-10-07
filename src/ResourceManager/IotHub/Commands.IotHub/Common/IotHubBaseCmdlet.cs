@@ -21,7 +21,7 @@ using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.IotHub;
 using Microsoft.Azure.Management.IotHub.Models;
 
-namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
+namespace Microsoft.Azure.Commands.Management.IotHub
 {
     public class IotHubBaseCmdlet : AzureRMCmdlet
     {

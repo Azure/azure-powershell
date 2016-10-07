@@ -14,14 +14,26 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSOperationsMonitoringProperties
+    public class PSIotHubQuotaMetric
     {
         /// <summary>
+        /// The name of the quota metric.
         /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        [JsonProperty(PropertyName = "Name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The current value for the quota metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "CurrentValue")]
+        public string CurrentValue { get; set; }
+
+        /// <summary>
+        /// The maximum value of the quota metric.
+        /// </summary>
+        [JsonProperty(PropertyName = "MaxValue")]
+        public string MaxValue { get; set; }
     }
 }

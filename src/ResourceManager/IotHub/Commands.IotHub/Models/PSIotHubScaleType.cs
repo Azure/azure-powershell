@@ -14,14 +14,17 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
-    public class PSOperationsMonitoringProperties
+    /// <summary>
+    /// Defines values for IotHubScaleType.
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PSIotHubScaleType
     {
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "events")]
-        public IDictionary<PSDiagnosticCategory, PSOperationMonitoringLevel> OperationMonitoringEvents;
+        Automatic,
+        Manual,
+        None
     }
 }
