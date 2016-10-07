@@ -14,11 +14,12 @@
 
 using System.Globalization;
 using System.Management.Automation;
-namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
-{
+using Microsoft.Azure.Management.NotificationHubs.Models;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHub", SupportsShouldProcess = true)]
-    public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
+namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
+{
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespaceKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
+    public class NewAzureNotificationHubsNamespaceKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -34,12 +35,17 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "NotificationHub Name.")]
-        [ValidateNotNullOrEmpty]
-        public string NotificationHub { get; set; }
+            HelpMessage = "Namespace AuthorizationRule Name.")]
+        public string AuthorizationRule { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 3,
+            HelpMessage = "Namespace Authorization Rule Key Name.")]
+        [ValidateSet(PrimaryKey, SecondaryKey, IgnoreCase = true)]
+        public string PolicyKey { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -52,13 +58,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(CultureInfo.InvariantCulture, Resources.DeleteNotificationHub_Confirm, NotificationHub),
-                Resources.DeleteNotificationHub_WhatIf,
-                NotificationHub,
+                string.Format(CultureInfo.InvariantCulture, Resources.RegenerateNamespaceKey_Confirm, AuthorizationRule),
+                string.Format(CultureInfo.InvariantCulture, Resources.RegenerateNamespaceKey_WhatIf, AuthorizationRule),
+                AuthorizationRule,
                 () =>
                 {
-                    // delete a notificationHub 
-                    Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
+                    // Regenerate the namespace authorizationRule key
+                    var authRule = Client.RegenerateNamespacKeys(ResourceGroup, Namespace, AuthorizationRule, PolicyKey);
+                    WriteObject(authRule);
                 });
         }
     }

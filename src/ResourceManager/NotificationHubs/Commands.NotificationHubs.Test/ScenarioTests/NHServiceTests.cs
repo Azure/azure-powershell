@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificationHubs.Test.ScenarioTests
+namespace Commands.NotificationHubs.Test
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class NotificationHubServiceTests : TestBaseClass
+    public class NHServiceTests : TestBaseClass
     {
-        public NotificationHubServiceTests(ITestOutputHelper output)
+        public NHServiceTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
