@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ContainerTests : TestsBase
+    public partial class ContainerTests : RMTestBase
     {
         public ContainerTests(ITestOutputHelper output)
         {
@@ -36,14 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBackupManagementServer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.Dpm.ToString(), "Test-GetContainerScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.Dpm, "Test-GetContainerScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUnregisterDpmContainer()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.Dpm.ToString(), "Test-UnregisterContainerScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.Dpm, "Test-UnregisterContainerScenario");
         }
     }
 }

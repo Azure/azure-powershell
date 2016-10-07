@@ -12,6 +12,11 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.SYNOPSIS
+Test Recovery Services Backup Vault
+#>
+
 $resourceGroupName = "labRG1";
 $resourceName = "pstestrsvault";
 $defaultPolicyName = "DefaultPolicy";

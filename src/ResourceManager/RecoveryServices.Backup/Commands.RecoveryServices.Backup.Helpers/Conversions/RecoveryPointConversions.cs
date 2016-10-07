@@ -30,11 +30,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps recovery points list model from service response.
         /// </summary>
         public static List<RecoveryPointBase> GetPSAzureRecoveryPoints(
-            ServiceClientModel.RecoveryPointListResponse rpList,
+            List<ServiceClientModel.RecoveryPointResource> rpList,
             ItemBase item)
         {
-            if (rpList == null || rpList.RecoveryPointList == null ||
-                rpList.RecoveryPointList.RecoveryPoints == null)
+            if (rpList == null)
             {
                 throw new ArgumentNullException("RPList");
             }
@@ -47,17 +46,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
             List<RecoveryPointBase> result = new List<RecoveryPointBase>();
-            foreach (ServiceClientModel.RecoveryPointResource rp in rpList.RecoveryPointList.RecoveryPoints)
+            foreach (ServiceClientModel.RecoveryPointResource rp in rpList)
             {
-                if (rp.Properties.GetType() == typeof(ServiceClientModel.RecoveryPoint))
+                if (rp.Properties.GetType() == typeof(ServiceClientModel.IaasVMRecoveryPoint))
                 {
-                    ServiceClientModel.RecoveryPoint recPoint =
-                        rp.Properties as ServiceClientModel.RecoveryPoint;
+                    ServiceClientModel.IaasVMRecoveryPoint recPoint =
+                        rp.Properties as ServiceClientModel.IaasVMRecoveryPoint;
 
-                    DateTime recPointTime = DateTime.ParseExact(
-                        recPoint.RecoveryPointTime,
-                        @"MM/dd/yyyy HH:mm:ss",
-                        CultureInfo.InvariantCulture);
+                    DateTime recPointTime = DateTime.MinValue;
+                    if (recPoint.RecoveryPointTime.HasValue)
+                    {
+                        recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException("RecoveryPointTime is null");
+                    }
+
+                    bool isInstantILRSessionActive = 
+                        recPoint.IsInstantILRSessionActive.HasValue ? (bool)recPoint.IsInstantILRSessionActive : false;
 
                     AzureVmRecoveryPoint rpBase = new AzureVmRecoveryPoint()
                     {
@@ -75,9 +82,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         SourceResourceId = item.SourceResourceId,
                         EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                             recPoint.IsSourceVMEncrypted.Value : false,
-                        IlrSessionActive = recPoint.IsInstantILRSessionActive,
+                        IlrSessionActive = isInstantILRSessionActive,
                     };
-
                     result.Add(rpBase);
                 }
 
@@ -86,10 +92,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     ServiceClientModel.GenericRecoveryPoint recPoint =
                         rp.Properties as ServiceClientModel.GenericRecoveryPoint;
 
-                    DateTime recPointTime = DateTime.ParseExact(
-                        recPoint.RecoveryPointTime,
-                        @"MM/dd/yyyy HH:mm:ss",
-                        CultureInfo.InvariantCulture);
+                    DateTime recPointTime = DateTime.MinValue;
+                    if (recPoint.RecoveryPointTime.HasValue)
+                    {
+                        recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException("RecoveryPointTime is null");
+                    }
 
                     AzureSqlRecoveryPoint rpBase = new AzureSqlRecoveryPoint()
                     {
@@ -117,10 +128,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps recovery point model from service response.
         /// </summary>
         public static RecoveryPointBase GetPSAzureRecoveryPoints(
-            ServiceClientModel.RecoveryPointResponse rpResponse,
+            ServiceClientModel.RecoveryPointResource rpResponse,
             ItemBase item)
         {
-            if (rpResponse == null || rpResponse.RecPoint == null)
+            if (rpResponse == null)
             {
                 throw new ArgumentNullException(Resources.GetRPResponseIsNull);
             }
@@ -133,32 +144,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
             string protectedItemName = IdUtils.GetNameFromUri(protectedItemUri);
 
-            if (rpResponse.RecPoint.Properties.GetType() ==
-                typeof(ServiceClientModel.RecoveryPoint))
+            if (rpResponse.Properties.GetType() ==
+                typeof(ServiceClientModel.IaasVMRecoveryPoint))
             {
-                ServiceClientModel.RecoveryPoint recPoint =
-                    rpResponse.RecPoint.Properties as ServiceClientModel.RecoveryPoint;
+                ServiceClientModel.IaasVMRecoveryPoint recPoint =
+                    rpResponse.Properties as ServiceClientModel.IaasVMRecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(
-                    recPoint.RecoveryPointTime,
-                    @"MM/dd/yyyy HH:mm:ss",
-                    CultureInfo.InvariantCulture);
+                DateTime recPointTime = DateTime.MinValue;
+                if (recPoint.RecoveryPointTime.HasValue)
+                {
+                    recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                }
+                else
+                {
+                    throw new ArgumentNullException("RecoveryPointTime is null");
+                }
 
+                bool isInstantILRSessionActive = 
+                                        recPoint.IsInstantILRSessionActive.HasValue ? (bool)recPoint.IsInstantILRSessionActive : false;
                 AzureVmRecoveryPoint vmResult = new AzureVmRecoveryPoint()
                 {
-                    RecoveryPointId = rpResponse.RecPoint.Name,
+                    RecoveryPointId = rpResponse.Name,
                     BackupManagementType = item.BackupManagementType,
                     ItemName = protectedItemName,
                     ContainerName = containerName,
                     ContainerType = item.ContainerType,
                     RecoveryPointTime = recPointTime,
                     RecoveryPointType = recPoint.RecoveryPointType,
-                    Id = rpResponse.RecPoint.Id,
+                    Id = rpResponse.Id,
                     WorkloadType = item.WorkloadType,
                     RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
                     EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                         recPoint.IsSourceVMEncrypted.Value : false,
-                    IlrSessionActive = recPoint.IsInstantILRSessionActive,
+                    IlrSessionActive = isInstantILRSessionActive,
                     SourceResourceId = item.SourceResourceId,
                     SourceVMStorageType = recPoint.SourceVMStorageType,
                 };
@@ -179,32 +197,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 result = vmResult;
             }
 
-            if (rpResponse.RecPoint.Properties.GetType() ==
+            if (rpResponse.Properties.GetType() ==
                 typeof(ServiceClientModel.GenericRecoveryPoint))
             {
                 ServiceClientModel.GenericRecoveryPoint recPoint =
-                    rpResponse.RecPoint.Properties as ServiceClientModel.GenericRecoveryPoint;
+                    rpResponse.Properties as ServiceClientModel.GenericRecoveryPoint;
 
-                DateTime recPointTime = DateTime.ParseExact(
-                    recPoint.RecoveryPointTime,
-                    @"MM/dd/yyyy HH:mm:ss",
-                    CultureInfo.InvariantCulture);
+                DateTime recPointTime = DateTime.MinValue;
+                if (recPoint.RecoveryPointTime.HasValue)
+                {
+                    recPointTime = (DateTime) recPoint.RecoveryPointTime;
+                }
+                else
+                {
+                    throw new ArgumentNullException("RecoveryPointTime is null");
+                }
 
                 AzureSqlRecoveryPoint sqlResult = new AzureSqlRecoveryPoint()
-            {
-                RecoveryPointId = rpResponse.RecPoint.Name,
-                BackupManagementType = item.BackupManagementType,
-                ItemName = protectedItemName,
-                ContainerName = containerName,
-                ContainerType = item.ContainerType,
-                RecoveryPointTime = recPointTime,
-                RecoveryPointType = recPoint.RecoveryPointType,
-                Id = rpResponse.RecPoint.Id,
-                WorkloadType = item.WorkloadType,
-                RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
-                SourceResourceId = item.SourceResourceId,
-                FriendlyName = recPoint.FriendlyName
-            };
+                {
+                    RecoveryPointId = rpResponse.Name,
+                    BackupManagementType = item.BackupManagementType,
+                    ItemName = protectedItemName,
+                    ContainerName = containerName,
+                    ContainerType = item.ContainerType,
+                    RecoveryPointTime = recPointTime,
+                    RecoveryPointType = recPoint.RecoveryPointType,
+                    Id = rpResponse.Id,
+                    WorkloadType = item.WorkloadType,
+                    RecoveryPointAdditionalInfo = recPoint.RecoveryPointAdditionalInfo,
+                    SourceResourceId = item.SourceResourceId,
+                    FriendlyName = recPoint.FriendlyName
+                };
 
                 result = sqlResult;
             }

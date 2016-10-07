@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure.OData;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -26,23 +29,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="request">Protected item create or update request</param>
         /// <returns>Job created in the service for this operation</returns>
-        public BaseRecoveryServicesJobResponse CreateOrUpdateProtectedItem(
+        public Microsoft.Rest.Azure.AzureOperationResponse CreateOrUpdateProtectedItem(
                 string containerName,
                 string protectedItemName,
-                ProtectedItemCreateOrUpdateRequest request)
+                ProtectedItemResource request)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItems.CreateOrUpdateProtectedItemAsync(
-                                     resourceGroupName,
-                                     resourceName,
-                                     AzureFabricName,
-                                     containerName,
-                                     protectedItemName,
-                                     request,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            return BmsAdapter.Client.ProtectedItems.CreateOrUpdateWithHttpMessagesAsync(
+                resourceName,
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                request,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
         /// <summary>
@@ -51,21 +53,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="protectedItemName">Name of the item</param>
         /// <returns>Job created in the service for this operation</returns>
-        public BaseRecoveryServicesJobResponse DeleteProtectedItem(
+        public Microsoft.Rest.Azure.AzureOperationResponse DeleteProtectedItem(
                 string containerName,
                 string protectedItemName)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItems.DeleteProtectedItemAsync(
-                                     resourceGroupName,
-                                     resourceName,
-                                     AzureFabricName,
-                                     containerName,
-                                     protectedItemName,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            return BmsAdapter.Client.ProtectedItems.DeleteWithHttpMessagesAsync(
+                resourceName,
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
         /// <summary>
@@ -75,23 +76,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="protectedItemName">Name of the item</param>
         /// <param name="queryFilter">Query filter</param>
         /// <returns>Protected item</returns>
-        public ProtectedItemResponse GetProtectedItem(
+        public Microsoft.Rest.Azure.AzureOperationResponse<ProtectedItemResource> GetProtectedItem(
                 string containerName,
                 string protectedItemName,
-            GetProtectedItemQueryParam queryFilter)
+           ODataQuery<GetProtectedItemQueryObject> queryFilter)
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItems.GetAsync(
-                                     resourceGroupName,
-                                     resourceName,
-                                     AzureFabricName,
-                                     containerName,
-                                     protectedItemName,
-                                     queryFilter,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            return BmsAdapter.Client.ProtectedItems.GetWithHttpMessagesAsync(
+                resourceName,
+                resourceGroupName,
+                AzureFabricName,
+                containerName,
+                protectedItemName,
+                queryFilter,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
         /// <summary>
@@ -101,20 +101,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryFilter">Query params</param>
         /// <param name="paginationParams">Pagination params</param>
         /// <returns>List of protected items</returns>
-        public ProtectedItemListResponse ListProtectedItem(
-                ProtectedItemListQueryParam queryFilter,
-            PaginationRequest paginationParams = null)
+        public List<ProtectedItemResource> ListProtectedItem(
+                ODataQuery<ProtectedItemQueryObject> queryFilter,
+            string skipToken = default(string))
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectedItems.ListAsync(
-                                     resourceGroupName,
-                                     resourceName, 
-                                     queryFilter,
-                                     paginationParams,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+            Func<Microsoft.Rest.Azure.IPage<ProtectedItemResource>> listAsync =
+                () => BmsAdapter.Client.ProtectedItems.ListWithHttpMessagesAsync(
+                    resourceName,
+                    resourceGroupName,
+                    queryFilter,
+                    skipToken,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, Microsoft.Rest.Azure.IPage<ProtectedItemResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.ProtectedItems.ListNextWithHttpMessagesAsync(
+                    nextLink,
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList<ProtectedItemResource>(listAsync, listNextAsync);
         }
 
         /// <summary>
@@ -123,26 +130,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="containerName">Name of the container which this item belongs to</param>
         /// <param name="itemName">Name of the item</param>
         /// <returns>Job created by this operation</returns>
-        public BaseRecoveryServicesJobResponse TriggerBackup(
-            string containerName, 
-            string itemName, 
+        public Microsoft.Rest.Azure.AzureOperationResponse TriggerBackup(
+            string containerName,
+            string itemName,
             DateTime? expiryDateTimeUtc)
         {
-            TriggerBackupRequest triggerBackupRequest = new TriggerBackupRequest();
-            triggerBackupRequest.Item = new BackupRequestResource();
-            IaaSVMBackupRequest iaasVmBackupRequest = new IaaSVMBackupRequest();
+            BackupRequestResource triggerBackupRequest = new BackupRequestResource();
+            IaasVMBackupRequest iaasVmBackupRequest = new IaasVMBackupRequest();
             iaasVmBackupRequest.RecoveryPointExpiryTimeInUTC = expiryDateTimeUtc;
-            triggerBackupRequest.Item.Properties = iaasVmBackupRequest;
+            triggerBackupRequest.Properties = iaasVmBackupRequest;
 
-            return BmsAdapter.Client.Backups.TriggerBackupAsync(
-                BmsAdapter.GetResourceGroupName(),
+            return BmsAdapter.Client.Backups.TriggerWithHttpMessagesAsync(
                 BmsAdapter.GetResourceName(),
-                BmsAdapter.GetCustomRequestHeaders(),
+                BmsAdapter.GetResourceGroupName(),
                 ServiceClientAdapter.AzureFabricName,
                 containerName,
                 itemName,
                 triggerBackupRequest,
-                BmsAdapter.CmdletCancellationToken).Result;
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
     }
 }

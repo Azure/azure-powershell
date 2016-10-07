@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using RecoveryServicesModelsNS = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -25,25 +27,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
     public partial class ServiceClientAdapter
     {
         const string AppSettingsSectionName = "appSettings";
-        const string RecoveryServicesResourceNamespace = "Microsoft.RecoveryServices";
         const string ProviderNamespaceKey = "ProviderNamespace";
         const string AzureFabricName = "Azure";
+        public const string ResourceProviderProductionNamespace = "Microsoft.RecoveryServices";
 
-        ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders> BmsAdapter;
+        ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient> BmsAdapter;
 
-        public ServiceClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
+        public static string ResourceProviderNamespace
         {
-            System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
-            string recoveryServicesResourceNamespace = RecoveryServicesResourceNamespace;
-            if (appSettings.Settings[ProviderNamespaceKey] != null)
+            get
             {
-                recoveryServicesResourceNamespace = appSettings.Settings[ProviderNamespaceKey].Value;
+                System.Configuration.Configuration exeConfiguration = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)exeConfiguration.GetSection(AppSettingsSectionName);
+                string resourceProviderNamespace = ResourceProviderProductionNamespace;
+                if (appSettings.Settings[ProviderNamespaceKey] != null)
+                {
+                    resourceProviderNamespace = appSettings.Settings[ProviderNamespaceKey].Value;
+                }
+
+                return resourceProviderNamespace;
             }
-            BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupManagementClient, RecoveryServicesModelsNS.CustomRequestHeaders>(
-                clientRequestId => new RecoveryServicesModelsNS.CustomRequestHeaders() { ClientRequestId = clientRequestId },
-                                       creds, baseUri);
-            BmsAdapter.Client.ResourceNamespace = recoveryServicesResourceNamespace;
+        }
+
+        public ServiceClientAdapter(AzureContext context)
+        {
+            BmsAdapter = new ClientProxy<RecoveryServicesNS.RecoveryServicesBackupClient>(context);
         }
     }
 }

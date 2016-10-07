@@ -12,12 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -36,10 +31,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public ContainerRegistrationStatus Status { get; set; }
 
-        public MabContainer(ProtectionContainerResource protectionContainer)
+        public MabContainer(ServiceClientModel.ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            MabProtectionContainer mabProtectionContainer = (MabProtectionContainer)protectionContainer.Properties;
+            ServiceClientModel.MabContainer mabProtectionContainer = (ServiceClientModel.MabContainer)protectionContainer.Properties;
             FriendlyName = mabProtectionContainer.FriendlyName;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(mabProtectionContainer.RegistrationStatus);
         }

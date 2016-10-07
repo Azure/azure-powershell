@@ -230,11 +230,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             {
                 return ContainerType.AzureVM;
             }
-            else if (containerType == ServiceClientModel.ContainerType.Windows.ToString())
+            else if (containerType == "Windows")
             {
                 return ContainerType.Windows;
             }
-            else if (containerType == ServiceClientModel.ContainerType.AzureSqlContainer)
+            else if (containerType == "AzureSqlContainer")
             {
                 return ContainerType.AzureSQL;
             }
@@ -251,11 +251,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <returns>PowerShell workload type</returns>
         public static WorkloadType GetPsWorkloadType(string workloadType)
         {
-            if (workloadType == ServiceClientModel.WorkloadType.VM)
+            if (workloadType == ServiceClientModel.WorkloadType.VM.ToString())
             {
                 return WorkloadType.AzureVM;
             }
-            if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb)
+            if (workloadType == ServiceClientModel.WorkloadType.AzureSqlDb.ToString())
             {
                 return WorkloadType.AzureSQLDatabase;
             }

@@ -22,10 +22,11 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class PolicyTests : TestsBase
+    public partial class PolicyTests : RMTestBase
     {
         public PolicyTests(ITestOutputHelper output)
         {
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPolicyScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-PolicyScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-PolicyScenario");
         }
     }
 }

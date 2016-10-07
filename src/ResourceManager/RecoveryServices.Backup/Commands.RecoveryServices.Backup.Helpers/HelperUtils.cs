@@ -17,9 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -74,13 +74,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         /// <summary>
+        /// Gets list of enum type S equivalents given the corresponding list of enums of type T. 
+        /// </summary>
+        /// <typeparam name="T">Type of the enum whose list should be converted to list of strings</typeparam>
+        /// <param name="enumList">List of enums</param>
+        /// <returns></returns>
+        public static List<S> EnumListConverter<T, S>(IList<T> enumList)
+        {
+            if (enumList == null || enumList.Count == 0)
+            {
+                return null;
+            }
+            var ret = new List<S>();
+
+            foreach (T item in enumList)
+            {
+                ret.Add(item.ToString().ToEnum<S>());
+            }
+
+            return ret;
+        }
+
+        /// <summary>
         /// Helper function to parse resource id which in format of "[\{Key}\{value}]*"
         /// </summary>
         /// <param name="id">Id of the resource</param>
         /// <returns>dictionary of UriEnum as key and value as value of corresponding URI enum</returns>
         public static Dictionary<CmdletModel.UriEnums, string> ParseUri(string id)
         {
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict = 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict =
                 new Dictionary<CmdletModel.UriEnums, string>();
             if (!string.IsNullOrEmpty(id))
             {
@@ -94,7 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 while (match.Success)
                 {
                     string[] keyValuePair = match.Value.Split(
-                        new string[] { uriPattern }, 
+                        new string[] { uriPattern },
                         StringSplitOptions.RemoveEmptyEntries
                         );
                     CmdletModel.UriEnums key;
@@ -120,7 +142,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetContainerUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -145,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetProtectedItemUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -170,7 +192,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetProtectableItemUri(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -195,7 +217,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="id">ID of the resource</param>
         /// <returns></returns>
         public static string GetPolicyNameFromPolicyId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairDict,
             string id
             )
         {
@@ -233,7 +255,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static string GetResourceGroupNameFromId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
         {
             string resourceGroupName = string.Empty;
@@ -252,7 +274,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static string GetVaultNameFromId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairs, 
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
             string id)
         {
             string vaultName = string.Empty;
@@ -268,6 +290,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return vaultName;
+        }
+
+        public static List<T> GetPagedList<T>(Func<IPage<T>> listResources, Func<string, IPage<T>> listNext)
+            where T : Management.RecoveryServices.Backup.Models.Resource
+        {
+            var resources = new List<T>();
+            string nextLink = null;
+
+            var pagedResources = listResources();
+
+            foreach (var pagedResource in pagedResources)
+            {
+                resources.Add(pagedResource);
+            }
+
+            nextLink = pagedResources.NextPageLink;
+
+            while (!string.IsNullOrEmpty(nextLink))
+            {
+                pagedResources = listNext(nextLink);
+                nextLink = pagedResources.NextPageLink;
+
+                foreach (var pagedResource in pagedResources)
+                {
+                    resources.Add(pagedResource);
+                }
+            }
+
+            return resources;
+        }
+    }
+
+    public static class EnumExtensions
+    {
+        public static T ToEnum<T>(this Enum enumValue)
+        {
+            return enumValue.ToString().ToEnum<T>();
+        }
+
+        public static T ToEnum<T>(this string enumValue)
+        {
+            return (T)Enum.Parse(typeof(T), enumValue);
         }
     }
 }

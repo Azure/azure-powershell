@@ -14,6 +14,8 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using AutoRestNS = Microsoft.Rest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,18 +24,13 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public partial class ClientProxy<TClient, THeader> : ClientProxyBase
-        where TClient : ServiceClient<TClient>
+    public partial class ClientProxy<TClient> : ClientProxyBase
+        where TClient : AutoRestNS.ServiceClient<TClient>
     {
         /// <summary>
         /// Client to talk to backend service
         /// </summary>
         private TClient client;
-
-        /// <summary>
-        /// Delegate action to generate custom request headers
-        /// </summary>
-        private Func<string, THeader> CustomRequestHeaderGenerator;
 
         /// <summary>
         /// Get Recovery Services Backup service client.
@@ -42,27 +39,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         {
             get
             {
-                if (this.client == null)
+                if (client == null)
                 {
-                    this.client = AzureSession.ClientFactory.CreateCustomClient<TClient>(Parameters);
+                    client = AzureSession.ClientFactory.CreateArmClient<TClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
-                return this.client;
+                return client;
             }
         }
 
-        public ClientProxy(Func<string, THeader> headerGenerator, params object[] parameters)
-            : base(parameters)
+        public ClientProxy(AzureContext context)
+            : base(context)
         {
-            CustomRequestHeaderGenerator = headerGenerator;
         }
 
-        /// <summary>
-        /// Gets customer request headers
-        /// </summary>
-        public THeader GetCustomRequestHeaders()
-        {
-            return CustomRequestHeaderGenerator(this.ClientRequestId);
-        }
+        //internal Dictionary<string, List<string>> GetCustomRequestHeaders()
+        //{
+        //    Dictionary<string, List<string>> dict = new Dictionary<string, List<string>>()
+        //    {
+        //        "x-ms-client-request-id"
+        //    };
+        //}
     }
 }

@@ -21,12 +21,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
     public class ClientProxyBase
     {   
-        protected object[] Parameters;
+        protected AzureContext Context;
 
         /// <summary>
         /// Client request id.
@@ -39,9 +40,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         private CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         public CancellationToken CmdletCancellationToken;
         
-        public ClientProxyBase(params object[] parameters)
+        public ClientProxyBase(AzureContext context)
         {
-            Parameters = parameters;
+            Context = context;
 
             RefreshClientRequestId();
 

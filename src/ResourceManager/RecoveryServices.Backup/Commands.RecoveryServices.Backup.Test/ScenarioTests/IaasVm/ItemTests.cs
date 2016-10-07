@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public partial class ItemTests : TestsBase
+    public partial class ItemTests : RMTestBase
     {
         public ItemTests(ITestOutputHelper output)
         {
@@ -36,40 +37,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetItemScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetItemScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetItemScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableAzureVMProtectionScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-EnableAzureVMProtectionScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-EnableAzureVMProtectionScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAzureVMProtectionScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-DisableAzureVMProtectionScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-DisableAzureVMProtectionScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBackupItemScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-BackupItemScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-BackupItemScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureVMRecoveryPointsScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetAzureVMRecoveryPointsScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetAzureVMRecoveryPointsScenario");
         }
 
         public void TestRestoreAzureVMItemScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-RestoreAzureVMRItemScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-RestoreAzureVMRItemScenario");
         }
     }
 }

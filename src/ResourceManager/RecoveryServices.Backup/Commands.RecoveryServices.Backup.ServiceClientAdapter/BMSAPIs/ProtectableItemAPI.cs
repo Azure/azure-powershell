@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure.OData;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -24,20 +28,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="queryFilter">Query filter</param>
         /// <param name="paginationRequest">Pagination parameters</param>
         /// <returns>List of protectable items</returns>
-        public ProtectableObjectListResponse ListProtectableItem(
-                ProtectableObjectListQueryParameters queryFilter,
-                PaginationRequest paginationRequest = null)
+        public List<WorkloadProtectableItemResource> ListProtectableItem(
+                ODataQuery<BMSPOQueryObject> queryFilter,
+                string skipToken = default(string)
+                )
         {
             string resourceName = BmsAdapter.GetResourceName();
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
 
-            return BmsAdapter.Client.ProtectableObjects.ListAsync(
-                                     resourceGroupName,
-                                     resourceName,
+            Func<Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource>> listAsync =
+                () => BmsAdapter.Client.ProtectableItems.ListWithHttpMessagesAsync(
+                                     BmsAdapter.GetResourceName(),
+                                     BmsAdapter.GetResourceGroupName(),
                                      queryFilter,
-                                     paginationRequest,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, Microsoft.Rest.Azure.IPage<WorkloadProtectableItemResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.ProtectableItems.ListNextWithHttpMessagesAsync(
+                                     nextLink,
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList<WorkloadProtectableItemResource>(listAsync, listNextAsync);
         }
     }
 }
