@@ -41,16 +41,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             if (protectionContainer != null &&
                 protectionContainer.Properties != null)
             {
-                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.AzureIaaSVMProtectionContainer)))
+                if (protectionContainer.Properties.GetType().IsSubclassOf(typeof(ServiceClientModel.IaaSVMContainer)))
                 {
                     containerModel = new AzureVmContainer(protectionContainer);
                 }
-                if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabProtectionContainer))
+                if (protectionContainer.Properties.GetType() == typeof(ServiceClientModel.MabContainer))
                 {
                     containerModel = new MabContainer(protectionContainer);
                 }
                 else if (protectionContainer.Properties.GetType() ==
-                    typeof(ServiceClientModel.AzureSqlProtectionContainer))
+                    typeof(ServiceClientModel.AzureSqlContainer))
                 {
                     containerModel = new AzureSqlContainer(protectionContainer);
                 }
@@ -62,13 +62,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to convert ps backup engine model from service response.
         /// </summary>
-        public static BackupEngineBase GetBackupEngineModel(ServiceClientModel.BackupEngineResource backupEngine)
+        public static BackupEngineBase GetBackupEngineModel(ServiceClientModel.BackupEngineBaseResource backupEngine)
         {
             BackupEngineBase backupEngineModel = null;
 
             if (backupEngine != null &&
                 backupEngine.Properties != null)
             {
+                string friendlyName = backupEngine.Properties.FriendlyName;
+                string backupManagementType = backupEngine.Properties.BackupManagementType.ToString();
+                string registrationStatus = backupEngine.Properties.RegistrationStatus;
+                string healthStatus = backupEngine.Properties.HealthStatus;
+                bool? canReRegister = backupEngine.Properties.CanReRegister;
+                string backupEngineId = backupEngine.Properties.BackupEngineId;
+
                 if (backupEngine.Properties.GetType() == (typeof(ServiceClientModel.DpmBackupEngine)))
                 {
                     backupEngineModel = new DpmBackupEngine(backupEngine);
@@ -100,7 +107,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to convert ps backup engine model list from service response.
         /// </summary>
-        public static List<BackupEngineBase> GetBackupEngineModelList(IEnumerable<ServiceClientModel.BackupEngineResource> backupEngines)
+        public static List<BackupEngineBase> GetBackupEngineModelList(IEnumerable<ServiceClientModel.BackupEngineBaseResource> backupEngines)
         {
             List<BackupEngineBase> backupEngineModel = new List<BackupEngineBase>();
 
@@ -203,10 +210,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// Helper function to convert ps backup policy list model from service response.
         /// </summary>
         public static List<PolicyBase> GetPolicyModelList(
-            ServiceClientModel.ProtectionPolicyListResponse serviceClientListResponse)
+            List<ServiceClientModel.ProtectionPolicyResource> serviceClientListResponse)
         {
-            if (serviceClientListResponse == null || serviceClientListResponse.ItemList == null ||
-               serviceClientListResponse.ItemList.Value == null || serviceClientListResponse.ItemList.Value.Count == 0)
+            if (serviceClientListResponse == null && serviceClientListResponse.Count == 0)
             {
                 Logger.Instance.WriteDebug("Received empty list of policies from service");
                 return null;
@@ -215,7 +221,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             List<PolicyBase> policyModels = new List<PolicyBase>();
             PolicyBase policyModel = null;
 
-            foreach (ServiceClientModel.ProtectionPolicyResource resource in serviceClientListResponse.ItemList.Value)
+            foreach (ServiceClientModel.ProtectionPolicyResource resource in serviceClientListResponse)
             {
                 policyModel = GetPolicyModel(resource);
                 if (policyModel != null)

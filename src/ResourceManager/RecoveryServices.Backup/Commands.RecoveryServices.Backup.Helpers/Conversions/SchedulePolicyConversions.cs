@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             SimpleSchedulePolicy psPolicy = new SimpleSchedulePolicy();
 
-            psPolicy.ScheduleRunDays = HelperUtils.GetEnumListFromStringList<DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
+            psPolicy.ScheduleRunDays = HelperUtils.EnumListConverter<ServiceClientModel.DayOfWeek?, DayOfWeek>(serviceClientPolicy.ScheduleRunDays);
             psPolicy.ScheduleRunFrequency = (ScheduleRunType)Enum.Parse(typeof(ScheduleRunType),
-                                                                        serviceClientPolicy.ScheduleRunFrequency);
+                                                                        serviceClientPolicy.ScheduleRunFrequency.ToString());
             psPolicy.ScheduleRunTimes = ParseDateTimesToUTC(serviceClientPolicy.ScheduleRunTimes);
 
             // safe side validation
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         // <summary>
         /// Helper function to parse utc time from local time.
         /// </summary>
-        public static List<DateTime> ParseDateTimesToUTC(IList<DateTime> localTimes)
+        public static List<DateTime> ParseDateTimesToUTC(IList<DateTime?> localTimes)
         {
             if (localTimes == null || localTimes.Count == 0)
             {
@@ -72,6 +72,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             foreach (DateTime localTime in localTimes)
             {
+                if(localTime == null)
+                {
+                    throw new ArgumentNullException("Policy date time object is null");
+                }
                 temp = localTime;
                 if (localTime.Kind != DateTimeKind.Utc)
                 {
@@ -94,17 +98,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();            
-            serviceClientPolicy.ScheduleRunFrequency = psPolicy.ScheduleRunFrequency.ToString();
+            ServiceClientModel.SimpleSchedulePolicy serviceClientPolicy = new ServiceClientModel.SimpleSchedulePolicy();
+            serviceClientPolicy.ScheduleRunFrequency = 
+                psPolicy.ScheduleRunFrequency.ToEnum<ServiceClientModel.ScheduleRunType>();
+
             if (psPolicy.ScheduleRunFrequency == ScheduleRunType.Weekly)
             {
-                serviceClientPolicy.ScheduleRunDays = HelperUtils.GetStringListFromEnumList<DayOfWeek>(psPolicy.ScheduleRunDays);
+                serviceClientPolicy.ScheduleRunDays = HelperUtils.EnumListConverter<DayOfWeek, ServiceClientModel.DayOfWeek>(
+                    psPolicy.ScheduleRunDays).Cast<ServiceClientModel.DayOfWeek?>().ToList();
             }
-            serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes;
-
+            serviceClientPolicy.ScheduleRunTimes = psPolicy.ScheduleRunTimes.ConvertAll(dateTime => (DateTime?) dateTime);
             return serviceClientPolicy;
         }
 
+        // <summary>
+        /// Helper function to get nullable date time list from  date time list.
+        /// </summary>
+        public static List<DateTime?> GetNullableDateTimeListFromDateTimeList(IList<DateTime> localTimes)
+        {
+            if (localTimes == null || localTimes.Count == 0)
+            {
+                return null;
+            }
+
+            List<DateTime?> convertedTime = new List<DateTime?>();
+            
+            foreach (DateTime localTime in localTimes)
+            {
+                convertedTime.Add((DateTime)localTime);
+            }
+
+            return convertedTime;
+        }
         #endregion
     }
 }

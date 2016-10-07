@@ -31,5 +31,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
             return date.ToUniversalTime().ToString("yyyy-MM-dd hh:mm:ss tt", dateFormat);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        public static DateTime GetDateTimeForService(DateTime date)
+        {
+            DateTimeFormatInfo dateFormat = new CultureInfo("en-US").DateTimeFormat;
+            string sDate = GetDateTimeStringForService(date);
+            return DateTime.ParseExact(sDate, "yyyy-MM-dd hh:mm:ss tt", dateFormat);
+        }
     }
 }

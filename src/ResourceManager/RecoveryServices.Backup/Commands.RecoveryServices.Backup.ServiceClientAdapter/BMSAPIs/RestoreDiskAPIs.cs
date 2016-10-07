@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="storageAccountLocation">Location of the storage account where to restore the disk</param>
         /// <param name="storageAccountType">Type of the storage account where to restore the disk</param>
         /// <returns>Job created by this operation</returns>
-        public BaseRecoveryServicesJobResponse RestoreDisk(AzureVmRecoveryPoint rp, string storageAccountId, 
+        public Microsoft.Rest.Azure.AzureOperationResponse RestoreDisk(AzureVmRecoveryPoint rp, string storageAccountId, 
             string storageAccountLocation, string storageAccountType)
         {
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             {
                 throw new Exception(String.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
-
+            
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -67,21 +67,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 SourceResourceId = rp.SourceResourceId,
             };
 
-            TriggerRestoreRequest triggerRestoreRequest = new TriggerRestoreRequest();
-            triggerRestoreRequest.Item = new RestoreRequestResource();
-            triggerRestoreRequest.Item.Properties = new RestoreRequest();
-            triggerRestoreRequest.Item.Properties = restoreRequest;
+            RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
+            triggerRestoreRequest.Properties = restoreRequest;
 
-            var response = BmsAdapter.Client.Restores.TriggerRestoreAsync(
+            var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
+                resourceName,
                 resourceGroupName, 
-                resourceName, 
-                BmsAdapter.GetCustomRequestHeaders(),
                 AzureFabricName, 
                 containerUri, 
                 protectedItemUri, 
                 recoveryPointId, 
-                triggerRestoreRequest, 
-                BmsAdapter.CmdletCancellationToken).Result;
+                triggerRestoreRequest,
+                cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
         }

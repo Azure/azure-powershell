@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public DpmBackupEngine(ServiceClientModel.BackupEngineResource backupEngine)
+        public DpmBackupEngine(ServiceClientModel.BackupEngineBaseResource backupEngine)
             : base(backupEngine)
         {
             ServiceClientModel.BackupEngineBase dpmBackupEngine = (ServiceClientModel.BackupEngineBase)backupEngine.Properties;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureBackupServerEngine(ServiceClientModel.BackupEngineResource backupEngine)
+        public AzureBackupServerEngine(ServiceClientModel.BackupEngineBaseResource backupEngine)
             : base(backupEngine)
         {
             ServiceClientModel.AzureBackupServerEngine azureBackupServerEngine = (ServiceClientModel.AzureBackupServerEngine)backupEngine.Properties;

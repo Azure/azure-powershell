@@ -12,13 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 {
@@ -36,27 +33,70 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <param name="statusUrlLink"></param>
         /// <param name="serviceClientMethod"></param>
         /// <returns></returns>
-        public static BackUpOperationStatusResponse WaitForOperationCompletionUsingStatusLink(
-            string statusUrlLink,
-            Func<string, BackUpOperationStatusResponse> serviceClientMethod)
+        public static T GetOperationStatus<T>(Microsoft.Rest.Azure.AzureOperationResponse response,
+            Func<string, AzureOperationResponse<T>> getOpStatus)
+            where T : ServiceClientModel.OperationStatus
         {
-            // using this directly because it doesn't matter which function we use.
-            // return type is same and currently we are using it in only two places.
-            // protected item and policy.
-            BackUpOperationStatusResponse response = serviceClientMethod(statusUrlLink);
+            var operationId = response.Response.Headers.GetAzureAsyncOperationId();
 
-            while (
-                response != null &&
-                response.OperationStatus != null &&
-                response.OperationStatus.Status == OperationStatusValues.InProgress.ToString())
+            var opStatusResponse = getOpStatus(operationId);
+
+            while (opStatusResponse.Body.Status == ServiceClientModel.OperationStatusValues.InProgress)
             {
-                Logger.Instance.WriteDebug(
-                    "Tracking operation completion using status link: " + statusUrlLink);
                 TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
-                response = serviceClientMethod(statusUrlLink);
+
+                opStatusResponse = getOpStatus(operationId);
             }
 
-            return response;
+            opStatusResponse = getOpStatus(operationId);
+
+            return opStatusResponse.Body;
+        }
+
+        /// <summary>
+        /// Block to track the operation to completion.
+        /// Waits till the status of the operation becomes something other than InProgress.
+        /// </summary>
+        /// <param name="statusUrlLink"></param>
+        /// <param name="serviceClientMethod"></param>
+        /// <returns></returns>
+        public static T GetOperationStatus<T, S>(Microsoft.Rest.Azure.AzureOperationResponse<S> response,
+            Func<string, AzureOperationResponse<T>> getOpStatus)
+            where T : ServiceClientModel.OperationStatus
+        {
+            var operationId = response.Response.Headers.GetAzureAsyncOperationId();
+
+            var opStatusResponse = getOpStatus(operationId);
+
+            while (opStatusResponse.Body.Status == ServiceClientModel.OperationStatusValues.InProgress)
+            {
+                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+
+                opStatusResponse = getOpStatus(operationId);
+            }
+
+            opStatusResponse = getOpStatus(operationId);
+
+            return opStatusResponse.Body;
+        }
+
+        public static Microsoft.Rest.Azure.AzureOperationResponse GetOperationResult(Microsoft.Rest.Azure.AzureOperationResponse response,
+            Func<string, Microsoft.Rest.Azure.AzureOperationResponse> getOpStatus)
+        {
+            var operationId = response.Response.Headers.GetOperationResultId();
+
+            var opStatusResponse = getOpStatus(operationId);
+
+            while (opStatusResponse.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            {
+                TestMockSupport.Delay(_defaultSleepForOperationTracking * 1000);
+
+                opStatusResponse = getOpStatus(operationId);
+            }
+
+            opStatusResponse = getOpStatus(operationId);
+
+            return opStatusResponse;
         }
     }
 }

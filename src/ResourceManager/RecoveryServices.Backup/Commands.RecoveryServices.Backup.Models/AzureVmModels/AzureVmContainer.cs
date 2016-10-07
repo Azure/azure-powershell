@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public AzureVmContainer(ProtectionContainerResource protectionContainer)
             : base(protectionContainer)
         {
-            AzureIaaSVMProtectionContainer iaasVmProtectionContainer = (AzureIaaSVMProtectionContainer)protectionContainer.Properties;
+            IaaSVMContainer iaasVmProtectionContainer = (IaaSVMContainer)protectionContainer.Properties;
             ResourceGroupName = IdUtils.GetResourceGroupName(protectionContainer.Id);
             FriendlyName = iaasVmProtectionContainer.FriendlyName;
             Status = EnumUtils.GetEnum<ContainerRegistrationStatus>(iaasVmProtectionContainer.RegistrationStatus);

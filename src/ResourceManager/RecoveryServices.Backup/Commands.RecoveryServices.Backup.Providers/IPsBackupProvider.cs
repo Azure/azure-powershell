@@ -32,23 +32,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
     {
         void Initialize(Dictionary<System.Enum, object> providerData, ServiceClientAdapter serviceClientAdapter);
 
-        BaseRecoveryServicesJobResponse EnableProtection();
+        Microsoft.Rest.Azure.AzureOperationResponse EnableProtection();
 
-        BaseRecoveryServicesJobResponse DisableProtection();
+        Microsoft.Rest.Azure.AzureOperationResponse DisableProtection();
 
-        BaseRecoveryServicesJobResponse TriggerBackup();
+        Microsoft.Rest.Azure.AzureOperationResponse TriggerBackup();
 
-        BaseRecoveryServicesJobResponse TriggerRestore();
+        Microsoft.Rest.Azure.AzureOperationResponse TriggerRestore();
 
-        ProtectedItemResponse GetProtectedItem();
+        //ProtectedItemResponse GetProtectedItem();
+        ProtectedItemResource GetProtectedItem();
 
         CmdletModel.RecoveryPointBase GetRecoveryPointDetails();
 
         List<CmdletModel.RecoveryPointBase> ListRecoveryPoints();
 
-        ProtectionPolicyResponse CreatePolicy();
+        ProtectionPolicyResource CreatePolicy();
 
-        ProtectionPolicyResponse ModifyPolicy();
+        Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy();
 
         SchedulePolicyBase GetDefaultSchedulePolicyObject();
 

@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -45,27 +46,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             this.ServiceClientAdapter = serviceClientAdapter;
         }       
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse EnableProtection()
+        public Microsoft.Rest.Azure.AzureOperationResponse EnableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse DisableProtection()
+        public Microsoft.Rest.Azure.AzureOperationResponse DisableProtection()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerBackup()
+        public Microsoft.Rest.Azure.AzureOperationResponse TriggerBackup()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.BaseRecoveryServicesJobResponse TriggerRestore()
+        public Microsoft.Rest.Azure.AzureOperationResponse TriggerRestore()
         {
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectedItemResponse GetProtectedItem()
+        public ProtectedItemResource GetProtectedItem()
         {
             throw new NotImplementedException();
         }
@@ -80,12 +81,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse CreatePolicy()
+        public ProtectionPolicyResource CreatePolicy()
         {
             throw new NotImplementedException();
         }
 
-        public ProtectionPolicyResponse ModifyPolicy()
+        public Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
         {
             throw new NotImplementedException();
         }
@@ -98,13 +99,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string name = (string)this.ProviderData[ContainerParams.Name];
 
-            ProtectionContainerListQueryParams queryParams = new ProtectionContainerListQueryParams();
-
-            // 1. Filter by Name
-            queryParams.FriendlyName = name;
-
-            // 2. Filter by ContainerType
-            queryParams.BackupManagementType = ServiceClientModel.BackupManagementType.MAB.ToString();
+            ODataQuery<BMSContainerQueryObject> queryParams = new ODataQuery<BMSContainerQueryObject>(
+                q => q.FriendlyName == name && q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
 
             var listResponse = ServiceClientAdapter.ListContainers(queryParams);
 
@@ -118,7 +114,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public Management.RecoveryServices.Backup.Models.ProtectionPolicyResponse GetPolicy()
+        public ProtectionPolicyResource GetPolicy()
         {
             throw new NotImplementedException();
         }

@@ -17,7 +17,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
@@ -29,17 +32,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="policyName">Name of the policy</param>
         /// <param name="request">Policy create or update request</param>
         /// <returns>Policy created by this operation</returns>
-        public ProtectionPolicyResponse CreateOrUpdateProtectionPolicy(
+        public Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> CreateOrUpdateProtectionPolicy(
                 string policyName,
-                ProtectionPolicyRequest request)
+                ProtectionPolicyResource request)
         {           
-            return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateAsync(
+            return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
+                                     BmsAdapter.GetResourceName(),
                                      BmsAdapter.GetResourceGroupName(),
-                                     BmsAdapter.GetResourceName(), 
                                      policyName, 
                                      request,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;            
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result;            
         }
 
         /// <summary>
@@ -47,14 +49,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="policyName">Name of the policy</param>
         /// <returns>Policy response returned by the service</returns>
-        public ProtectionPolicyResponse GetProtectionPolicy(string policyName)
+        public ProtectionPolicyResource GetProtectionPolicy(string policyName)
         {
-            return BmsAdapter.Client.ProtectionPolicies.GetAsync(
-                                     BmsAdapter.GetResourceGroupName(),
+            return BmsAdapter.Client.ProtectionPolicies.GetWithHttpMessagesAsync(
                                      BmsAdapter.GetResourceName(),
+                                     BmsAdapter.GetResourceGroupName(),
                                      policyName,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
         }
 
         /// <summary>
@@ -62,43 +63,37 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="queryFilter">Query filter</param>
         /// <returns>List of protection policies</returns>
-        public ProtectionPolicyListResponse ListProtectionPolicy(
-                                            ProtectionPolicyQueryParameters queryFilter)
-        {           
-            return BmsAdapter.Client.ProtectionPolicies.ListAsync(
-                                     BmsAdapter.GetResourceGroupName(),
-                                     BmsAdapter.GetResourceName(),
-                                     queryFilter,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
-        }
-
-        /// <summary>
-        /// Gets protection policy operation status using the operation tracking URL
-        /// </summary>
-        /// <param name="url">Operation tracking URL</param>
-        /// <returns>Operation status response returned by the service</returns>
-        public BackUpOperationStatusResponse GetProtectionPolicyOperationStatusByURL(string url)
+        public List<ProtectionPolicyResource> ListProtectionPolicy(
+                                            Microsoft.Rest.Azure.OData.ODataQuery<ProtectionPolicyQueryObject> queryFilter,
+                                            string skipToken = default(string))
         {
-            return BmsAdapter.Client.GetOperationStatusByURLAsync(
-                              url,
-                              BmsAdapter.GetCustomRequestHeaders(),
-                              BmsAdapter.CmdletCancellationToken).Result;                              
-        }
+            Func<Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>> listAsync =
+                () => BmsAdapter.Client.ProtectionPolicies.ListWithHttpMessagesAsync(
+                                     BmsAdapter.GetResourceName(),
+                                     BmsAdapter.GetResourceGroupName(),
+                                     queryFilter,
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            Func<string, Microsoft.Rest.Azure.IPage<ProtectionPolicyResource>> listNextAsync =
+                nextLink => BmsAdapter.Client.ProtectionPolicies.ListNextWithHttpMessagesAsync(
+                                     nextLink,
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+
+            return HelperUtils.GetPagedList<ProtectionPolicyResource>(listAsync, listNextAsync);
+        }        
 
         /// <summary>
         /// Deletes protection policy from the vault specified by the name
         /// </summary>
         /// <param name="policyName">Name of the policy to be deleted</param>
-        public AzureOperationResponse RemoveProtectionPolicy(
+        public Microsoft.Rest.Azure.AzureOperationResponse RemoveProtectionPolicy(
                 string policyName)
         {
-            return BmsAdapter.Client.ProtectionPolicies.DeleteAsync(
-                                     BmsAdapter.GetResourceGroupName(),
+            return BmsAdapter.Client.ProtectionPolicies.DeleteWithHttpMessagesAsync(
                                      BmsAdapter.GetResourceName(),
+                                     BmsAdapter.GetResourceGroupName(),
                                      policyName,
-                                     BmsAdapter.GetCustomRequestHeaders(),
-                                     BmsAdapter.CmdletCancellationToken).Result;
+                                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
     }
 }

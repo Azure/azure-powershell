@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             AzureSqlProtectedItem protectedItem = 
                 (AzureSqlProtectedItem)protectedItemResource.Properties;
             ProtectedItemDataId = protectedItem.ProtectedItemDataId;
-            ProtectionState = protectedItem.ProtectionState;
+            ProtectionState = protectedItem.ProtectionState.ToString();
             ProtectionPolicyName = policyName;
         }
     }

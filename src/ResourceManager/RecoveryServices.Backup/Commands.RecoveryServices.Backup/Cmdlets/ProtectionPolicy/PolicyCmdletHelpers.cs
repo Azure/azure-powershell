@@ -66,25 +66,25 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="policyName">Name of the policy to be fetched</param>
         /// <param name="serviceClientAdapter">Service client adapter with which to make calls</param>
         /// <returns></returns>
-        public static ProtectionPolicyResponse GetProtectionPolicyByName(string policyName,
+        public static ProtectionPolicyResource GetProtectionPolicyByName(string policyName,
                                                  ServiceClientAdapter serviceClientAdapter)
         {
-            ProtectionPolicyResponse response = null;
+            ProtectionPolicyResource response = null;
 
             try
-            {                
+            {
                 response = serviceClientAdapter.GetProtectionPolicy(policyName);
                 Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
             catch (AggregateException exception)
             {
                 // if http response is NotFound - then ignore and return NULL response
-                if (exception.InnerException != null && exception.InnerException is CloudException)
+                if (exception.InnerException != null && exception.InnerException is Microsoft.Rest.Azure.CloudException)
                 {
-                    var cloudEx = exception.InnerException as CloudException;
+                    var cloudEx = exception.InnerException as Microsoft.Rest.Azure.CloudException;
                     if (cloudEx.Response != null)
                     {
-                        if (cloudEx.Response.StatusCode != HttpStatusCode.NotFound)
+                        if (cloudEx.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
                         {
                             Logger.Instance.WriteDebug("CloudException Response statusCode: " +
                                                         cloudEx.Response.StatusCode);

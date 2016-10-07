@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
-    public class JobTests : TestsBase
+    public class JobTests : RMTestBase
     {
         public JobTests(ITestOutputHelper output)
         {
@@ -36,61 +37,61 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobs()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobsScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsTimeFilter()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsTimeFilter");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobsTimeFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsStatusFilter()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsStatusFilter");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobsStatusFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsOperationFilter()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsOperationFilter");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobsOperationFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobsBackupManagementTypeFilter()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobsBackupManagementTypeFilter");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobsBackupManagementTypeFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetJobDetails()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-GetJobDetails");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-GetJobDetails");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWaitJobScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-WaitJobScenario");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWaitJobPipeScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-WaitJobPipeScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-WaitJobPipeScenario");
         }
 
         public void TestCancelJobScenario()
         {
-            this.RunPowerShellTest(PsBackupProviderTypes.IaasVm.ToString(), "Test-CancelJobScenario");
+            TestController.NewInstance.RunPsTest(PsBackupProviderTypes.IaasVm, "Test-CancelJobScenario");
         }
     }
 }

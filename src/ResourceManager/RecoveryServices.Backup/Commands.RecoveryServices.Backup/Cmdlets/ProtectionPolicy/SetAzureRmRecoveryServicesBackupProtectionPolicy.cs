@@ -24,6 +24,7 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -72,7 +73,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PolicyCmdletHelpers.ValidateProtectionPolicyName(Policy.Name);
 
                 // Validate if policy already exists               
-                ProtectionPolicyResponse servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
+                ProtectionPolicyResource servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                                                                               Policy.Name, ServiceClientAdapter);
                 if (servicePolicy == null)
                 {
@@ -90,42 +91,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     Policy.WorkloadType,
-                                                                                         Policy.BackupManagementType);                
-                ProtectionPolicyResponse policyResponse = psBackupProvider.ModifyPolicy();
+                                                                                         Policy.BackupManagementType);
+                Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource> policyResponse = psBackupProvider.ModifyPolicy();
                 WriteDebug("ModifyPolicy http response from service: " + 
-                    policyResponse.StatusCode.ToString());
+                    policyResponse.Response.StatusCode.ToString());
 
-                if(policyResponse.StatusCode == System.Net.HttpStatusCode.Accepted)
+                if(policyResponse.Response.StatusCode == System.Net.HttpStatusCode.Accepted)
                 {
-                    WriteDebug("Tracking operation status URL for completion: " +
-                                policyResponse.AzureAsyncOperation);
+                    //WriteDebug("Tracking operation status URL for completion: " +
+                    //            policyResponse.Response.AzureAsyncOperation);
 
                     // Track OperationStatus URL for operation completion
-                    BackUpOperationStatusResponse operationResponse =  
-                        TrackingHelpers.WaitForOperationCompletionUsingStatusLink(
-                            policyResponse.AzureAsyncOperation,
-                            ServiceClientAdapter.GetProtectionPolicyOperationStatusByURL);
 
-                    WriteDebug("Final operation status: " + operationResponse.OperationStatus.Status);
+                    string policyName = Policy.Name;
 
-                    if (operationResponse.OperationStatus.Properties != null &&
-                       ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds != null)
+                    ServiceClientModel.OperationStatus operationStatus =  
+                        TrackingHelpers.GetOperationStatus<ServiceClientModel.OperationStatus, ServiceClientModel.ProtectionPolicyResource> (
+                            policyResponse,
+                            operationId => ServiceClientAdapter.GetProtectionPolicyOperationStatus(policyName, operationId));
+
+                    WriteDebug("Final operation status: " + operationStatus.Status);
+
+                    if (operationStatus.Properties != null &&
+                       ((OperationStatusJobsExtendedInfo)operationStatus.Properties).JobIds != null)
                     {
                         // get list of jobIds and return jobResponses                    
                         WriteObject(GetJobObject(
-                            ((OperationStatusJobsExtendedInfo)operationResponse.OperationStatus.Properties).JobIds));
+                            ((OperationStatusJobsExtendedInfo)operationStatus.Properties).JobIds));
                     }
 
-                    if (operationResponse.OperationStatus.Status == OperationStatusValues.Failed.ToString())
+                    if (operationStatus.Status == OperationStatusValues.Failed)
                     {
                         // if operation failed, then trace error and throw exception
-                        if (operationResponse.OperationStatus.OperationStatusError != null)
+                        if (operationStatus.Error != null)
                         {
                             WriteDebug(string.Format(
                                          "OperationStatus Error: {0} " +
                                          "OperationStatus Code: {1}",
-                                         operationResponse.OperationStatus.OperationStatusError.Message,
-                                         operationResponse.OperationStatus.OperationStatusError.Code));
+                                         operationStatus.Error.Message,
+                                         operationStatus.Error.Code));
                         }                                     
                     }
                 }
@@ -133,7 +137,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {
                     // ServiceClient will return OK if NO datasources are associated with this policy
                     WriteDebug("No datasources are associated with Policy, http response code: " +
-                                policyResponse.StatusCode.ToString());
+                                policyResponse.Response.StatusCode.ToString());
                 }
             });
         }
