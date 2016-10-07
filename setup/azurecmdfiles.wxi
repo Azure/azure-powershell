@@ -3924,6 +3924,9 @@
                         <Component Id="cmp3F22B799509911A4ECF3C28BE25DC1A8" Guid="*">
                             <File Id="filA7622D3E189663E957B2F510148EA3A9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Newtonsoft.Json.dll" />
                         </Component>
+                        <Component Id="cmpA7EB3A39FF311280308F241071F03278" Guid="*">
+                            <File Id="fil43FBC94D43BC345B9EFB26B1F89ED4A1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\System.Management.Automation.dll" />
+                        </Component>
                         <Component Id="cmpCCC5976D4AE7141FB6D3C6650AD0C40E" Guid="*">
                             <File Id="filF58B7314E27B74F27DE746D49FA7D723" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\System.Net.Http.Extensions.dll" />
                         </Component>
@@ -6864,6 +6867,7 @@
             <ComponentRef Id="cmpA70527D9FB52626A72A5BAF66CE3130C" />
             <ComponentRef Id="cmpDF279A32B785A3402516861915A22A0C" />
             <ComponentRef Id="cmp3F22B799509911A4ECF3C28BE25DC1A8" />
+            <ComponentRef Id="cmpA7EB3A39FF311280308F241071F03278" />
             <ComponentRef Id="cmpCCC5976D4AE7141FB6D3C6650AD0C40E" />
             <ComponentRef Id="cmp1D3D3FE8D3C4513B1536EB8B0AACEBE1" />
             <ComponentRef Id="cmpB0718E71D7A15CCA7375389A12F7D568" />

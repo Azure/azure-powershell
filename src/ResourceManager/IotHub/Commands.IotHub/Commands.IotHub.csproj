@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78770A60-B18A-4442-A982-0CEE0356F8DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Commands.IotHub</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.IotHub</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.IotHub</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Azure.Management.IotHub.1.0.0\lib\net45\Microsoft.Azure.Management.IotHub.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.1\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.1\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\IotHubBaseCmdlet.cs" />
+    <Compile Include="Common\IotHubUtils.cs" />
+    <Compile Include="IotHub\AddAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\GetAzureRmEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubConnectionString.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubJob.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubQuotaMetric.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHub.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubRegistryStatistic.cs" />
+    <Compile Include="IotHub\GetAzureRmIotHubValidSku.cs" />
+    <Compile Include="IotHub\AddAzureRmIotHubEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHub.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHubExportDevices.cs" />
+    <Compile Include="IotHub\NewAzureRmIotHubImportDevices.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
+    <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
+    <Compile Include="Models\PSAccessRights.cs" />
+    <Compile Include="Models\PSCapabilities.cs" />
+    <Compile Include="Models\PSCloudToDeviceProperties.cs" />
+    <Compile Include="Models\PSDiagnosticCategory.cs" />
+    <Compile Include="Models\PSEventHubInputProperties.cs" />
+    <Compile Include="Models\PSEventHubProperties.cs" />
+    <Compile Include="Models\PSExportDevicesRequest.cs" />
+    <Compile Include="Models\PSFeedbackProperties.cs" />
+    <Compile Include="Models\PSImportDevicesRequest.cs" />
+    <Compile Include="Models\PSIotHub.cs" />
+    <Compile Include="Models\PSIotHubCapacity.cs" />
+    <Compile Include="Models\PSIotHubConnectionString.cs" />
+    <Compile Include="Models\PSIotHubInputProperties.cs" />
+    <Compile Include="Models\PSIotHubJobResponse.cs" />
+    <Compile Include="Models\PSIotHubProperties.cs" />
+    <Compile Include="Models\PSIotHubQuotaMetrics.cs" />
+    <Compile Include="Models\PSIotHubRegistryStatistics.cs" />
+    <Compile Include="Models\PSIotHubScaleType.cs" />
+    <Compile Include="Models\PSIotHubSku.cs" />
+    <Compile Include="Models\PSIotHubSkuDescription.cs" />
+    <Compile Include="Models\PSIotHubSkuInfo.cs" />
+    <Compile Include="Models\PSIotHubSkuTier.cs" />
+    <Compile Include="Models\PSIotHubJobStatus.cs" />
+    <Compile Include="Models\PSMessagingEndpointProperties.cs" />
+    <Compile Include="Models\PSOperationMonitoringLevel.cs" />
+    <Compile Include="Models\PSOperationsMonitoringProperties.cs" />
+    <Compile Include="Models\PSSBAccessRights.cs" />
+    <Compile Include="Models\PSSharedAccessAuthorizationRule.cs" />
+    <Compile Include="Models\PSSharedAccessSignatureAuthorizationRule.cs" />
+    <Compile Include="Models\PSStorageEndpointProperties.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+      <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
+      <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.IotHub.dll-Help.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Microsoft.Azure.Commands.IotHub.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="..\AzureRM.IotHub.psd1">
+      <Link>AzureRM.IotHub.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ResourceManagerStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
