@@ -24,6 +24,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -469,6 +470,27 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TaskStateMonitor monitor = context.BatchOMClient.Utilities.CreateTaskStateMonitor();
                 monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(10), null);
             }
+        }
+
+        /// <summary>
+        /// Waits for the job to complete
+        /// </summary>
+        public static PSCloudJob WaitForJobCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        {
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PSCloudJob job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
+
+            DateTime timeout = DateTime.Now.AddMinutes(10);
+
+            while (job.State != JobState.Completed || DateTime.Now > timeout)
+            {
+                job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
+
+                TestMockSupport.Delay(20000);
+            }
+            
+            return job;
         }
 
         /// <summary>

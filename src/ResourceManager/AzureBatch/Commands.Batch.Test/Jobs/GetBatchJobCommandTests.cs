@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using Microsoft.Azure.Batch.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -58,7 +59,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Filter = null;
 
             // Build a CloudJob instead of querying the service on a Get CloudJob call
-            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+            ProxyModels.CloudJob job = new ProxyModels.CloudJob
+            {
+                Id = cmdlet.Id,
+                OnAllTasksComplete = ProxyModels.OnAllTasksComplete.TerminateJob,
+                OnTaskFailure = ProxyModels.OnTaskFailure.PerformExitOptionsJobAction
+            };
+
+            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(job);
+
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
                 ProxyModels.JobGetOptions,
                 AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
@@ -74,6 +83,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Verify that the cmdlet wrote the job returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
+            Assert.Equal(OnTaskFailure.PerformExitOptionsJobAction, pipeline[0].OnTaskFailure);
+            Assert.Equal(OnAllTasksComplete.TerminateJob, pipeline[0].OnAllTasksComplete);
         }
 
         [Fact]
@@ -228,6 +239,54 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(idsOfConstructedJobs.Length, pipeline.Count);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WhenGettingAJobFromTheService_ApplicationPackageReferencesAreMapped()
+        {
+            // Setup cmdlet to get a Job by id
+
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = "job-1";
+            cmdlet.Filter = null;
+
+            // Build a CloudJob instead of querying the service on a Get CloudJob call
+            string applicationId = "foo";
+            string applicationVersion = "beta";
+            ProxyModels.CloudJob cloudTask = new ProxyModels.CloudJob
+            {
+                Id = "job-1",
+                JobManagerTask = new ProxyModels.JobManagerTask
+                {
+                    ApplicationPackageReferences = new[]
+                    {
+                        new ProxyModels.ApplicationPackageReference(applicationId, applicationVersion)
+                    }
+                }
+            };
+
+            AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders> response = BatchTestHelpers.CreateCloudJobGetResponse(cloudTask);
+
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ProxyModels.JobGetOptions,
+                AzureOperationResponse<ProxyModels.CloudJob, ProxyModels.JobGetHeaders>>(response);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior> { interceptor };
+
+            // Setup the cmdlet to write pipeline output to a list that can be examined later
+            var pipeline = new List<PSCloudJob>();
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSCloudJob>())).Callback<object>(t => pipeline.Add((PSCloudJob)t));
+
+            cmdlet.ExecuteCmdlet();
+
+            // Verify that the cmdlet wrote the task returned from the OM to the pipeline
+            Assert.Equal(1, pipeline.Count);
+            Assert.Equal(cmdlet.Id, pipeline[0].Id);
+
+            var psApplicationPackageReference = pipeline[0].JobManagerTask.ApplicationPackageReferences.First();
+            Assert.Equal(applicationId, psApplicationPackageReference.ApplicationId);
+            Assert.Equal(applicationVersion, psApplicationPackageReference.Version);
         }
     }
 }
