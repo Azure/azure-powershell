@@ -16,11 +16,6 @@ function New-ServiceMarkdownHelp
         [String]$BuildTarget,
 
         [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
-        [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
-        [Parameter(ParameterSetName="Storage", Mandatory=$True)]
-        [String]$PathToRepo,
-
-        [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
         [Switch]$ResourceManager,
 
         [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
@@ -33,20 +28,23 @@ function New-ServiceMarkdownHelp
         [String]$PathToModule,
 
         [Parameter(ParameterSetName="FullPath", Mandatory=$True)]
-        [String]$PathToCommandsFolder,
-
-        [Parameter(ParameterSetName="FullPath", Mandatory=$True)]
-        [String]$ModuleName
+        [String]$PathToCommandsFolder
     )
 
     PROCESS
     {
+        # Get the path to the platyPSHelp module root
+        $PSModule = $ExecutionContext.SessionState.Module
+        $PSModuleRoot = $PSModule.ModuleBase
+
+        # Use the platyPSHelp module root to get the path to the repository
+        $PathToRepo = (Get-Item $PSModuleRoot).Parent.Parent.FullName
+
         # Set the necessary variables for an ARM service
         if ($ResourceManager.IsPresent)
         {
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\ResourceManager\AzureResourceManager\AzureRM.$Service\AzureRM.$Service.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\ResourceManager\$Service\Commands.$Service"
-            $ModuleName = "AzureRM.$Service"
         }
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
@@ -54,15 +52,15 @@ function New-ServiceMarkdownHelp
             throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
             $PathToModule = Get-ServiceManagementDll -Service $Service -PathToAzure "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
-            $ModuleName = Get-ServiceManagementModuleName -PathToModule $PathToModule 
         }
         # Set the necessary variables for Storage
         elseif ($Storage.IsPresent)
         {
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\Storage\Azure.Storage\Azure.Storage.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\Storage\Commands.Storage"
-            $ModuleName = "Azure.Storage"
         }
+
+        $ModuleName = (Get-Item $PathToModule).BaseName
 
         # If the "FullPath" parameter set is not used, make sure the paths created above are accessible
         if (!($PSCmdlet.ParameterSetName -eq "FullPath"))
@@ -155,11 +153,6 @@ function Update-ServiceMarkdownHelp
         [String]$BuildTarget,
 
         [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
-        [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
-        [Parameter(ParameterSetName="Storage", Mandatory=$True)]
-        [String]$PathToRepo,
-
-        [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
         [Switch]$ResourceManager,
 
         [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
@@ -172,20 +165,23 @@ function Update-ServiceMarkdownHelp
         [String]$PathToModule,
 
         [Parameter(ParameterSetName="FullPath", Mandatory=$True)]
-        [String]$PathToCommandsFolder,
-
-        [Parameter(ParameterSetName="FullPath", Mandatory=$True)]
-        [String]$ModuleName
+        [String]$PathToCommandsFolder
     )
 
-        PROCESS
+    PROCESS
     {
+        # Get the path to the platyPSHelp module root
+        $PSModule = $ExecutionContext.SessionState.Module
+        $PSModuleRoot = $PSModule.ModuleBase
+
+        # Use the platyPSHelp module root to get the path to the repository
+        $PathToRepo = (Get-Item $PSModuleRoot).Parent.Parent.FullName
+
         # Set the necessary variables for an ARM service
         if ($ResourceManager.IsPresent)
         {
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\ResourceManager\AzureResourceManager\AzureRM.$Service\AzureRM.$Service.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\ResourceManager\$Service\Commands.$Service"
-            $ModuleName = "AzureRM.$Service"
         }
         # Set the necessary variables for an RDFE service
         elseif ($ServiceManagement.IsPresent)
@@ -193,15 +189,15 @@ function Update-ServiceMarkdownHelp
             throw "Currently platyPSHelp is unavailable for RDFE services. Please refer to the platyps-help.md documentation for more information."
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\ServiceManagement\Azure\Azure.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\ServiceManagement\$Service\Commands.$Service"
-            $ModuleName = "Azure"
         }
         # Set the necessary variables for Storage
         elseif ($Storage.IsPresent)
         {
             $PathToModule = "$PathToRepo\src\Package\$BuildTarget\Storage\Azure.Storage\Azure.Storage.psd1"
             $PathToCommandsFolder = "$PathToRepo\src\Storage\Commands.Storage"
-            $ModuleName = "Azure.Storage"
         }
+
+        $ModuleName = (Get-Item $PathToModule).BaseName
 
         # If the "FullPath" parameter set is not used, make sure the paths created above are accessible
         if (!($PSCmdlet.ParameterSetName -eq "FullPath"))
@@ -223,7 +219,7 @@ function Update-ServiceMarkdownHelp
         Import-Module $PathToModule -Scope Global
 
         # Update the markdown files with the changes made in the cmdlets
-        Update-MarkdownHelpModule $PathToHelp -AlphabeticParamsOrder
+        Update-MarkdownHelpModule $PathToHelp -AlphabeticParamsOrder -RefreshModulePage
 
         # Generate the MAML help file from the markdown files
         New-ServiceExternalHelp -PathToCommandsFolder $PathToCommandsFolder
@@ -327,29 +323,6 @@ function Get-ServiceManagementDll
     throw "Unable to find dll for the given service."
 }
 
-function Get-ServiceManagementModuleName
-{
-    [CmdletBinding()]
-    Param(
-        [Parameter(Mandatory=$True)]
-        [String]$PathToModule
-    )
-
-    for (;;)
-    {
-        if ($PathToModule.IndexOf("\") -lt 0)
-        {
-            break
-        }
-
-        $idx = $PathToModule.IndexOf("\")
-        $PathToModule = $PathToModule.Substring($idx + 1)
-    }
-
-    $idx = $PathToModule.IndexOf(".dll")
-    return $PathToModule.Substring(0, $idx)
-}
-
 <#
 .ExternalHelp help\platyPSHelp-help.xml
 #>
@@ -360,11 +333,6 @@ function Validate-ServiceMarkdownHelp
         [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
         [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
         [String]$Service,
-
-        [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
-        [Parameter(ParameterSetName="ServiceManagement", Mandatory=$True)]
-        [Parameter(ParameterSetName="Storage", Mandatory=$True)]
-        [String]$PathToRepo,
 
         [Parameter(ParameterSetName="ResourceManager", Mandatory=$True)]
         [Switch]$ResourceManager,
@@ -384,6 +352,13 @@ function Validate-ServiceMarkdownHelp
 
     PROCESS
     {
+        # Get the path to the platyPSHelp module root
+        $PSModule = $ExecutionContext.SessionState.Module
+        $PSModuleRoot = $PSModule.ModuleBase
+
+        # Use the platyPSHelp module root to get the path to the repository
+        $PathToRepo = (Get-Item $PSModuleRoot).Parent.Parent.FullName
+
         # Set the necessary variables for an ARM service
         if ($ResourceManager.IsPresent)
         {
