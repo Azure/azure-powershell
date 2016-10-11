@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User", SupportsShouldProcess=true)]
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "UserWithSubscriptionId", SupportsShouldProcess=true)]
     [Alias("Login-AzureRmAccount")]
     [OutputType(typeof(PSAzureProfile))]
     public class AddAzureRMAccountCommand : AzureRMCmdlet, IModuleAssemblyInitializer
@@ -53,59 +53,91 @@ namespace Microsoft.Azure.Commands.Profile
         public string EnvironmentName { get; set; }
 
         
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "Credential")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Credential")]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, 
+                    Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "Credential")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
         
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "SPN")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "SPN")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, 
+                    Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, 
+                    Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, 
+                    Mandatory = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, 
+                    Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
         
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, Mandatory = false, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, 
+                    Mandatory = false, HelpMessage = "Optional tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, 
+                    Mandatory = false, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
         
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "AccessToken")]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "AccessToken")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "AccessToken")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "AccessToken")]
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
         
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, Mandatory = true, HelpMessage = "Account Id for access token")]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, 
+                    Mandatory = true, HelpMessage = "Account Id for access token")]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Account Id for access token")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
         
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionId, 
+                    Mandatory = false, HelpMessage = "Subscription ID", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
-        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = UserParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = AccessTokenParameterSetWithSubscriptionName, 
+                    Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
