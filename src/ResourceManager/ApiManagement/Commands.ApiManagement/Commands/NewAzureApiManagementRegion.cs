@@ -20,32 +20,37 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
-    public class NewAzureApiManagementVirtualNetwork : AzureRMCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagementRegion))]
+    public class NewAzureApiManagementRegion : AzureRMCmdlet
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Location of the virtual network.")]
-
+            HelpMessage = "Location of the additional deployment region.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = true,
-            HelpMessage = "The full resource ID of a subnet in a virtual network to deploy the Api Management service in. Example format:" +
-                          "/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1.")]
-        [ValidateNotNullOrEmpty]
-        public string SubnetResourceId { get; set; }
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Sku capacity of the Azure API Management service additional region. Default value is 1.")]
+        public int? Capacity { get; set; }
+
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false,
+           HelpMessage = "Virtual Network Configuration of Azure API Management deployment region. Default value is $null")]
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
         public override void ExecuteCmdlet()
         {
             WriteObject(
-                new PsApiManagementVirtualNetwork
+                new PsApiManagementRegion
                 {
                     Location = Location,
-                    SubnetResourceId = SubnetResourceId
+                    Sku = PsApiManagementSku.Premium, // additional regions are only supported in Premium Sku
+                    Capacity = Capacity.HasValue ? Capacity.Value : 1,
+                    VirtualNetwork = VirtualNetwork
                 });
         }
     }

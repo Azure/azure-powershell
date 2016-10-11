@@ -66,10 +66,31 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public int? Capacity { get; set; }
 
         [Parameter(
+            ValueFromPipelineByPropertyName = false,
+            Mandatory = false,
+            HelpMessage = "Virtual Network Type of the ApiManagement Deployment. Valid Values are " +
+                     " - None (Default Value.ApiManagement is not part of any Virtual Network)" + 
+                     " - External (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint) " +
+                     " - Internal (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)")]
+        public PsApiManagementVpnType VpnType { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Virtual Network Configuration of master Azure API Management deployment region. Default value is $null")]
+        public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
         public Dictionary<string, string> Tags { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Additional deployment regions of Azure API Management.")]
+        public PsApiManagementRegion[] AdditionalRegions { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -82,7 +103,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
-                    Tags),
+                    VpnType,
+                    Tags,
+                    VirtualNetwork,
+                    AdditionalRegions),
                 passThru: true);
         }
     }

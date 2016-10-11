@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
@@ -149,8 +150,36 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             RunPowerShellTest("Test-SetApiManagementHostnames");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithExternalVpn()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithAdditionalRegions()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithAdditionalRegions");
+        }
+
         private void RunPowerShellTest(params string[] scripts)
         {
+#if DEBUG
+            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
+
+            Environment.SetEnvironmentVariable(
+                "TEST_CSM_ORGID_AUTHENTICATION",
+                "SubscriptionId=20010222-2b48-4245-a95c-090db6312d5f;Environment=Prod");
+
+            Environment.SetEnvironmentVariable(
+                "TEST_ORGID_AUTHENTICATION",
+                "SubscriptionId=20010222-2b48-4245-a95c-090db6312d5f;Environment=Prod");
+
+            TestMockSupport.RunningMocked = false;
+#endif
+
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

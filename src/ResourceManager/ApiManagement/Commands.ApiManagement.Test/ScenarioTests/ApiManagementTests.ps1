@@ -491,3 +491,111 @@ function Test-SetApiManagementHostnames
         Clean-ResourceGroup $resourceGroupName   
     }
 }
+
+
+<#
+.SYNOPSIS
+Tests API Management Create with 1 Additional Region
+#>
+function Test-CrudApiManagementWithAdditionalRegions
+{
+    # Setup
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"  
+    $resourceGroupName = Get-ResourceGroupName    
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Premium"
+    $capacity = 1
+		
+    try
+    {
+        # Create Resource Group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+		
+		# - 2) Add new 'Premium' region 1 unit
+        $additionalRegionLocation = Get-ProviderLocations "Microsoft.ApiManagement/service" | Where {$_ -ne $location} | Select -First 1        
+
+		$additionalRegion = New-AzureRmApiManagementRegion -Location $additionalRegionLocation
+		$regions = @($additionalRegion)
+        
+        # Create API Management service
+        $result = New-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity -AdditionalRegions $regions
+
+        Assert-AreEqual $resourceGroupName $result.ResourceGroupName
+        Assert-AreEqual $apiManagementName $result.Name
+        Assert-AreEqual $location $result.Location
+        Assert-AreEqual $sku $result.Sku
+        Assert-AreEqual $capacity $result.Capacity
+        Assert-AreEqual "None" $result.VpnType
+		
+		Assert-AreEqual 1 $result.AdditionalRegions.Count
+        $found = 0
+        for ($i = 0; $i -lt $result.AdditionalRegions.Count; $i++)
+        {
+            if ($result.AdditionalRegions[$i].Location -eq $additionalRegionLocation)
+            {
+                $found = $found + 1
+                Assert-AreEqual $sku $result.AdditionalRegions[$i].Sku
+                Assert-AreEqual 1 $result.AdditionalRegions[$i].Capacity
+                Assert-Null $result.AdditionalRegions[$i].VirtualNetwork
+            }
+        }       
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Tests API Management Create in External VpnType ARM VNET Subnet.
+#>
+function Test-CrudApiManagementWithExternalVpn
+{
+    # Setup
+   # Setup
+    $location = "North Central US"    
+    $resourceGroupName = Get-ResourceGroupName    
+    $apiManagementName = Get-ApiManagementServiceName
+    $organization = "apimpowershellorg"
+    $adminEmail = "apim@powershell.org"
+    $sku = "Developer"
+    $capacity = 1
+    $subnetResourceId = "/subscriptions/20010222-2b48-4245-a95c-090db6312d5f/resourceGroups/powershelltest/providers/Microsoft.Network/virtualNetworks/apimvnettest/subnets/default"
+	$vpnType = "External"
+
+
+    try
+    {
+        # Create Resource Group
+        New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
+		 # Create a Virtual Network Object
+        $virtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location $location -SubnetResourceId $subnetResourceId
+        
+        # Create API Management service
+        $result = New-AzureRmApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -VpnType $vpnType -VirtualNetwork $virtualNetwork -Sku $sku -Capacity $capacity
+
+        Assert-AreEqual $resourceGroupName $result.ResourceGroupName
+        Assert-AreEqual $apiManagementName $result.Name
+        Assert-AreEqual $location $result.Location
+        Assert-AreEqual $sku $result.Sku
+        Assert-AreEqual 1 $result.Capacity
+        Assert-AreEqual $vpnType $result.VpnType
+		Assert-AreEqual $subnetResourceId $result.VirtualNetwork.SubnetResourceId
+
+         # Delete listed services in the ResourceGroup
+        Get-AzureRmApiManagement -ResourceGroupName $resourceGroupName | Remove-AzureRmApiManagement
+
+        $allServices = Get-AzureRmApiManagement -ResourceGroupName $resourceGroupName
+        Assert-AreEqual 0 $allServices.Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
