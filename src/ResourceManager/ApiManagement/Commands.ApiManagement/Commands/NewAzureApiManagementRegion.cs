@@ -20,18 +20,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagementRegion))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementRegion", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.None), OutputType(typeof(PsApiManagementRegion))]
     public class NewAzureApiManagementRegion : AzureRMCmdlet
     {
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Mandatory = true,
             HelpMessage = "Location of the additional deployment region.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Sku capacity of the Azure API Management service additional region. Default value is 1.")]
         public int? Capacity { get; set; }

@@ -166,20 +166,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         private void RunPowerShellTest(params string[] scripts)
         {
-#if DEBUG
-            Environment.SetEnvironmentVariable("AZURE_TEST_MODE", "Record");
-
-            Environment.SetEnvironmentVariable(
-                "TEST_CSM_ORGID_AUTHENTICATION",
-                "SubscriptionId=20010222-2b48-4245-a95c-090db6312d5f;Environment=Prod");
-
-            Environment.SetEnvironmentVariable(
-                "TEST_ORGID_AUTHENTICATION",
-                "SubscriptionId=20010222-2b48-4245-a95c-090db6312d5f;Environment=Prod");
-
-            TestMockSupport.RunningMocked = false;
-#endif
-
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
