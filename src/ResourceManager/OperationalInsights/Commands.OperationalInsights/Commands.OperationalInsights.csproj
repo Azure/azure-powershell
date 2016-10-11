@@ -235,6 +235,9 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="MSSharedLibKey.snk" />
+    <Content Include="OperationalInsightsStartup.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

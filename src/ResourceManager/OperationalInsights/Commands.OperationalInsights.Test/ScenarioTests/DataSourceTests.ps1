@@ -48,9 +48,9 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual $subId1 $dataSource.Properties.SubscriptionId
     Assert-AreEqual "AzureActivityLog" $dataSource.Kind
 
-    # Create a second data source for list testing
+    # Create a second data source for list testing, also cover the alias.
     $daNametwo = Get-ResourceName
-    $dataSource = New-AzureRmOperationalInsightsAzureActivityLogDataSource -Workspace $workspace -Name $daNametwo -SubscriptionId $subId2
+    $dataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name $daNametwo -SubscriptionId $subId2
 
     # List the data source in the workspace (both param sets)
     $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog

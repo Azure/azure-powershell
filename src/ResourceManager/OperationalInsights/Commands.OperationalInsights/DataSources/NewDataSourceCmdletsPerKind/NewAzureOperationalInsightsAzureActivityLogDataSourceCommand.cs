@@ -12,10 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.Azure.Commands.OperationalInsights.Properties;
+
 using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
@@ -67,6 +71,28 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             };
 
             CreatePSDataSourceWithProperties(auditLogProperties);
+        }
+
+
+        /// <summary>
+        /// Load global aliases for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "OperationalInsightsStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
+
         }
     }
 }
