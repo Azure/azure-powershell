@@ -20,15 +20,35 @@ The Get-AzureRmTenant cmdlet gets tenants authorized for the current user.
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Getting all tenants
+```
+PS C:\> Add-AzureRmAccount
+PS C:\> Get-AzureRmTenant
+
+TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Domain   : microsoft.com
+
+TenantId : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Domain   : microsoft.com
 ```
 
+This example shows how to get all of the authorized tenants of an Azure account.
+
+### Example 2: Getting a specific tenant
 ```
+PS C:\> Add-AzureRmAccount
+PS C:\> Get-AzureRmTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Domain   : microsoft.com
+```
+
+This example shows how to get a specific authorized tenant of an Azure account.
 
 ## PARAMETERS
 
 ### -TenantId
-{{Fill TenantId Description}}
+Specifies the ID of the tenant that this cmdlet gets.
 
 ```yaml
 Type: String
@@ -49,7 +69,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-###  
+### PSAzureTenant
 This cmdlet returns the tenant ID and associated domain information for tenants authorized for the current account.
 
 ## NOTES

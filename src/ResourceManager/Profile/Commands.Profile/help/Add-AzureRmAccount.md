@@ -91,7 +91,7 @@ The second command adds an Azure Resource Manager account with the credentials i
 This account authenticates with Azure Resource Manager using organizational ID credentials.
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 
-### Example3: Add an account that authenticates with service principal credentials
+### Example 3: Add an account that authenticates with service principal credentials
 ```
 PS C:\>$Credential = Get-Credential
 PS C:\> Add-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
@@ -398,6 +398,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureProfile
 
 ## NOTES
 
