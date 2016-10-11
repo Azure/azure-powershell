@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Vpn Type of service Azure API Management. Valid values are None, External and Internal.")]
+            HelpMessage = "Vpn Type of service Azure API Management. Valid values are None, External and Internal. Default value is None.")]
         public PsApiManagementVpnType VpnType { get; set; }
 
         [Parameter(

@@ -19,7 +19,7 @@ Tests API Management Create List Remove operations.
 function Test-CrudApiManagement
 {
     # Setup
-    $location = "North Central US"
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
     $resourceGroupName = Get-ResourceGroupName
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -114,7 +114,7 @@ Tests API Management Backup/Restore operations.
 function Test-BackupRestoreApiManagement
 {
     # Setup
-    $location = "North Central US"
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
     $resourceGroupName = Get-ResourceGroupName
     $storageLocation = Get-ProviderLocation "Microsoft.ClassicStorage/storageAccounts"
     $storageAccountName = Get-ApiManagementServiceName
@@ -408,7 +408,7 @@ Tests ImportApiManagementHostnameCertificate.
 function Test-ImportApiManagementHostnameCertificate
 {
     # Setup
-    $location = "North Central US"
+    $location = Get-ProviderLocation "Microsoft.ApiManagement/service"
     $certFilePath = "$TestOutputRoot\testcertificate.pfx";
     $certPassword = "g0BdrCRORWI2ctk_g5Wdf5QpTsI9vxnw";        
     $resourceGroupName = Get-ResourceGroupName

@@ -18,8 +18,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     public enum PsApiManagementHostnameType
     {
         Proxy = 1,
-        Portal = 2,
-        Management = 3,
-        Kudu = 4
+        Portal = 2
     }
 }
