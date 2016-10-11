@@ -14,12 +14,14 @@
 
 using Microsoft.Azure.Management.NotificationHubs.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Models
 {
-
     public class NotificationHubAttributes
     {
+
+        [JsonConstructor]
         public NotificationHubAttributes(NotificationHubResource nhResource)
         {
             if (nhResource != null)
@@ -28,15 +30,45 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 Name = nhResource.Name;
                 Type = nhResource.Type;
                 Location = nhResource.Location;
-                Tags = new Dictionary<string, string>(nhResource.Tags);
-                AdmCredential = nhResource.Properties.AdmCredential;
-                ApnsCredential = nhResource.Properties.ApnsCredential;
-                AuthorizationRules = new List<SharedAccessAuthorizationRuleProperties>(nhResource.Properties.AuthorizationRules);
-                BaiduCredential = nhResource.Properties.BaiduCredential;
-                GcmCredential = nhResource.Properties.GcmCredential;
-                MpnsCredential = nhResource.Properties.MpnsCredential;
-                RegistrationTtl = nhResource.Properties.RegistrationTtl;
-                WnsCredential = nhResource.Properties.WnsCredential;
+                if (nhResource.Tags != null && nhResource.Tags.Count > 0)
+                {
+                    Tags = new Dictionary<string, string>(nhResource.Tags);
+                }
+
+                AdmCredential = nhResource.AdmCredential;
+                ApnsCredential = nhResource.ApnsCredential;
+                BaiduCredential = nhResource.BaiduCredential;
+                GcmCredential = nhResource.GcmCredential;
+                MpnsCredential = nhResource.MpnsCredential;
+                RegistrationTtl = nhResource.RegistrationTtl;
+                WnsCredential = nhResource.WnsCredential;
+
+                if (nhResource.AuthorizationRules != null && nhResource.AuthorizationRules.Count > 0)
+                {
+                    AuthorizationRules = new List<SharedAccessAuthorizationRuleProperties>(nhResource.AuthorizationRules);
+                }
+            }
+        }
+
+        public NotificationHubAttributes(PnsCredentialsResource pnsCredentialsResource)
+        {
+            if (pnsCredentialsResource != null)
+            {
+                Id = pnsCredentialsResource.Id;
+                Name = pnsCredentialsResource.Name;
+                Type = pnsCredentialsResource.Type;
+                Location = pnsCredentialsResource.Location;
+                if (pnsCredentialsResource.Tags != null && pnsCredentialsResource.Tags.Count > 0)
+                {
+                    Tags = new Dictionary<string, string>(pnsCredentialsResource.Tags);
+                }
+
+                AdmCredential = pnsCredentialsResource.AdmCredential;
+                ApnsCredential = pnsCredentialsResource.ApnsCredential;
+                BaiduCredential = pnsCredentialsResource.BaiduCredential;
+                GcmCredential = pnsCredentialsResource.GcmCredential;
+                MpnsCredential = pnsCredentialsResource.MpnsCredential;
+                WnsCredential = pnsCredentialsResource.WnsCredential;
             }
         }
 

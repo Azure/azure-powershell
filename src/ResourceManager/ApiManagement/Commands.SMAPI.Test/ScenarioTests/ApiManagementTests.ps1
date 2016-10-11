@@ -235,7 +235,7 @@ Param($resourceGroupName, $serviceName)
 
 <#
 .SYNOPSIS
-Tests API import/export for Wadl Type Api.
+Tests API import/export for Wsdl Type Api.
 #>
 function Api-ImportExportWsdlTest
 {

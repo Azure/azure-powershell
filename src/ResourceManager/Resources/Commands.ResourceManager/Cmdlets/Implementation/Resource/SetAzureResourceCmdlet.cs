@@ -70,12 +70,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public Hashtable Tag { get; set; }
 
         /// <summary>
-        /// Gets or sets the zones.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The zones.")]
-        public string[] Zones { get; set; }
-
-        /// <summary>
         /// Gets or sets a value that indicates if an HTTP PATCH request needs to be made instead of PUT.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates if an HTTP PATCH should be used to update the object instead of PUT.")]
@@ -161,8 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>() ?? resource.Sku,
                         Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags,
                         Location = resource.Location,
-                        Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
-                        Zones = this.Zones ?? resource.Zones
+                        Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody()
                     }.ToJToken();
                 }
                 else
@@ -178,7 +171,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private Resource<JToken> GetPatchResourceBody()
         {
-            if (this.Properties == null && this.Plan == null && this.Kind == null && this.Sku == null && this.Tag == null && this.Zones == null)
+            if (this.Properties == null && this.Plan == null && this.Kind == null && this.Sku == null && this.Tag == null)
             {
                 return null;
             }
@@ -208,11 +201,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             if (this.Tag != null)
             {
                 resourceBody.Tags = TagsHelper.GetTagsDictionary(this.Tag);
-            }
-
-            if (this.Zones != null)
-            {
-                resourceBody.Zones = this.Zones;
             }
 
             return resourceBody;

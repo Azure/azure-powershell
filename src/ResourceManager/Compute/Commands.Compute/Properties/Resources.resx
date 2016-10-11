@@ -533,4 +533,22 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>No chef extension found under resource group '{0}', virtual machine '{1}'.</value>
     <comment>{0} = resource group name, {1} = virtual machine name</comment>
   </data>
+  <data name="DiagnosticsExtensionNotFoundForVMSS" xml:space="preserve">
+    <value>No matching diagnostics extension found.</value>
+  </data>
+  <data name="DiagnosticsExtensionOverwriting" xml:space="preserve">
+    <value>Overwriting existing diagnostics extension.</value>
+  </data>
+  <data name="AddVmssDiagnosticsExtensionAction" xml:space="preserve">
+    <value>Add diagnostics extension to the VM scale set</value>
+  </data>
+  <data name="DiagnosticsExtensionOverwrittingCaption" xml:space="preserve">
+    <value>Diagnostics extension overwritting operation </value>
+  </data>
+  <data name="DiagnosticsExtensionOverwrittingConfirmation" xml:space="preserve">
+    <value>This cmdlet will overwrite existing diagnostics extension. Do you want to continue?</value>
+  </data>
+  <data name="RemoveVmssDiagnosticsExtensionAction" xml:space="preserve">
+    <value>Remove diagnostics extension from the VM scale set</value>
+  </data>
 </root>
