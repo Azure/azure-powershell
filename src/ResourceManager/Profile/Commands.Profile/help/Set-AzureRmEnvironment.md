@@ -28,10 +28,62 @@ The Set-AzureRMEnvironment cmdlet sets endpoints and metadata for connecting to 
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Creating and modifying a new environment
 ```
+PS C:\> Add-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint TestADEndpoint `
+        -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
+        -ResourceManagerEndpoint TestRMEndpoint `
+        -GalleryEndpoint TestGalleryEndpoint `
+        -GraphEndpoint TestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
+
+PS C:\> Set-AzureRmEnvironment -Name TestEnvironment
+        -ActiveDirectoryEndpoint NewTestADEndpoint
+        -GraphEndpoint NewTestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : NewTestADEndpoint
+GraphUrl                                          : NewTestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
 
 ```
+
+In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
 
 ## PARAMETERS
 
@@ -357,6 +409,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureEnvironment
 
 ## NOTES
 
