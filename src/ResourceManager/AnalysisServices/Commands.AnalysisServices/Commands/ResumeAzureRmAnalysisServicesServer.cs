@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet(VerbsLifecycle.Resume, "AzureRmAnalysisServicesServer", DefaultParameterSetName = BaseParameterSetName),
      OutputType(typeof(List<AnalysisServicesServer>))]
-    [Alias("C:\github\azure-powershell\src\ResourceManager\AnalysisServices\Commands.AnalysisServices\Commands\ResumeAzureRmAnalysisServicesServer.cs-AzureAs")]
+    [Alias("Resume-AzureAs")]
     public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";

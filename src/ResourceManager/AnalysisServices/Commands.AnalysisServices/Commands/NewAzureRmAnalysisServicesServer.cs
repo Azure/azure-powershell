@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                 }
             }
 
-            WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags));
+            WriteObject(AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tags, Administrators));
         }
     }
 }
