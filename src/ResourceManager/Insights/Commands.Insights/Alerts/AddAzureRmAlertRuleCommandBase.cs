@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("This output of this cmdlet will change in the next release to return the newly created object");
+            WriteWarning("This output of this cmdlet will change in the next release to return the updated or newly created object");
             AlertRuleResource parameters = this.CreateSdkCallParameters();
 
             // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
