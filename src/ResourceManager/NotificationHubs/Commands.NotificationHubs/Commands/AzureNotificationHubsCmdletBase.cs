@@ -32,6 +32,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
         public const string InputFileParameterSetName = "InputFileParameterSet";
         public const string SASRuleParameterSetName = "SASRuleParameterSet";
         public const string NotificationHubParameterSetName = "NotificationHubParameterSet";
+        public const string PrimaryKey = "PrimaryKey";
+        public const string SecondaryKey = "SecondaryKey";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private NotificationHubsManagementClient _client;
@@ -52,51 +54,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<NamespaceLongRunningOperation> func)
-        {
-            try
-            {
-                var longRunningOperation = func();
-
-                longRunningOperation = WaitForOperationToComplete(longRunningOperation);
-                bool success = string.IsNullOrWhiteSpace(longRunningOperation.Error);
-                if (!success)
-                {
-                    WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-            }
-            catch (ArgumentException ex)
-            {
-                WriteError(new ErrorRecord(ex, string.Empty, ErrorCategory.InvalidArgument, null));
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
-        }
-
-        protected void WriteProgress(NamespaceLongRunningOperation operation)
-        {
-            WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
-        }
-
-        protected NamespaceLongRunningOperation WaitForOperationToComplete(NamespaceLongRunningOperation longRunningOperation)
-        {
-            WriteProgress(longRunningOperation);
-
-            while (longRunningOperation.Status == OperationStatus.InProgress)
-            {
-                var retryAfter = longRunningOperation.RetryAfter ?? LongRunningOperationDefaultTimeout;
-
-                Thread.Sleep(retryAfter);
-
-                longRunningOperation = Client.GetLongRunningOperationStatus(longRunningOperation);
-                WriteProgress(longRunningOperation);
-            }
-
-            return longRunningOperation;
-        }
-
         protected T ParseInputFile<T>(string InputFile)
         {
             T parsedObj;
@@ -111,12 +68,13 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 
                 try
                 {
-                    parsedObj = JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
+                    string tempObj = File.ReadAllText(fileName);
+                    parsedObj = JsonConvert.DeserializeObject<T>(tempObj);
                     return parsedObj;
                 }
-                catch (JsonException)
+                catch (JsonException ex)
                 {
-                    WriteVerbose("Deserializing the input role definition failed.");
+                    WriteVerbose("Deserializing the input role definition failed." + ex.Message);
                     throw;
                 }
             }

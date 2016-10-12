@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\NotificationHubs\Microsoft.Azure.Commands.NotificationHubs.dll'
+NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.NotificationHubs\Microsoft.Azure.Commands.NotificationHubs.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'
