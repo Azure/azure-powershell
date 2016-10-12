@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         protected override void ProcessRecordInternal()
         {
             WriteWarning("The output of this cmdlet has changed and will change again in the future. The current request Id is empty. In the future the cmdlet will not return anything.");
-            this.InsightsManagementClient.AutoscaleSettings.DeleteAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Wait();
+            var result = this.InsightsManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
             // Note: Delete operations return nothing in the new specification.
             var response = new AzureOperationResponse
             {
                 // There is no data about the request Id in the new SDK .Net.
-                RequestId = string.Empty,
+                RequestId = result.RequestId,
                 StatusCode = HttpStatusCode.OK
             };
 

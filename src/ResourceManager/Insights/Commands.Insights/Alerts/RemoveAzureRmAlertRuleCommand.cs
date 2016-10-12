@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         protected override void ProcessRecordInternal()
         {
             WriteWarning("The output of this cmdlet has changed and will change again in the future. The current request Id is empty. In the future the cmdlet will not return anything.");
-            this.InsightsManagementClient.AlertRules.DeleteAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Wait();
+            var result = this.InsightsManagementClient.AlertRules.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
             // Note: Delete operations return nothing in the new specification.
@@ -59,8 +59,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 new AzureOperationResponse()
                 {
-                    // There is no data about the request Id in the new SDK .Net.
-                    RequestId = string.Empty,
+                    RequestId = result.RequestId,
                     StatusCode = HttpStatusCode.OK
                 }
             };

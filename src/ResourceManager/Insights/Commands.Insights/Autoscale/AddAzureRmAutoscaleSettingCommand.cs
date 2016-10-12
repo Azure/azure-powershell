@@ -106,16 +106,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             AutoscaleSettingResource parameters = this.CreateAutoscaleSettingResource();
 
             // The result of this operation is operation (AutoscaleSettingResource) is being discarded for backwards compatibility
-            this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Wait();
+            var result = this.InsightsManagementClient.AutoscaleSettings.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name, parameters: parameters).Result;
 
             // Keep this response for backwards compatibility.
-            // Note: Delete operations return nothing in the new specification.
+            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
             var response = new List<AzureOperationResponse>
             {
                 new AzureOperationResponse()
                 {
-                    // There is no data about the request Id in the new SDK .Net.
-                    RequestId = string.Empty,
+                    RequestId = result.RequestId,
                     StatusCode = HttpStatusCode.OK
                 }
             };

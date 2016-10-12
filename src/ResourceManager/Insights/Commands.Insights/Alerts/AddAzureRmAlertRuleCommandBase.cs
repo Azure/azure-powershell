@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.Insights;
 using Microsoft.Azure.Management.Insights.Models;
@@ -79,9 +80,21 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             WriteWarning("This output of this cmdlet will change in the next release to return the newly created object");
             AlertRuleResource parameters = this.CreateSdkCallParameters();
 
-            Task<AlertRuleResource> task = this.InsightsManagementClient.AlertRules.CreateOrUpdateAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName);
-            task.Wait();
-            WriteObject(task.Result);
+            // Part of the result of this operation is operation (result.Body ==> a AutoscaleSettingResource) is being discarded for backwards compatibility
+            var result = this.InsightsManagementClient.AlertRules.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, parameters: parameters, ruleName: parameters.AlertRuleResourceName).Result;
+
+            // Keep this response for backwards compatibility.
+            // Note: Create operations return the newly created object in the new specification, i.e. need to use result.Body
+            var response = new List<AzureOperationResponse>
+            {
+                new AzureOperationResponse()
+                {
+                    RequestId = result.RequestId,
+                    StatusCode = HttpStatusCode.OK
+                }
+            };
+
+            WriteObject(response);
         }
 
         /// <summary>
