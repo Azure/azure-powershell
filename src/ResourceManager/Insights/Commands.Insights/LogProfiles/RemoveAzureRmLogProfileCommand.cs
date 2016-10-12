@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
 
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet will change again in the future: the cmdlet will not return anything in the next release.");
+            WriteWarning("The output of this cmdlet will change to be empty in the next release.");
             this.InsightsManagementClient.LogProfiles.DeleteAsync(logProfileName: this.Name, cancellationToken: CancellationToken.None).Wait();
             WriteObject(true);
         }
