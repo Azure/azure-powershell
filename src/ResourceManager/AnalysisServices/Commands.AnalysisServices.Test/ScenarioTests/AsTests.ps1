@@ -17,9 +17,9 @@ function Test-AnalysisServicesServer
 		New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
 		# Test to make sure the server doesn't exist
-		Assert-False {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
+		#Assert-False {Test-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName}
 		# Test it without specifying a resource group
-		Assert-False {Test-AzureRmAnalysisServicesServer -Name $serverName}
+		#Assert-False {Test-AzureRmAnalysisServicesServer -Name $serverName}
 
 		$serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku 'S1' -Administrators 'aztest0@stabletest.ccsctp.net,aztest1@stabletest.ccsctp.net'
     
