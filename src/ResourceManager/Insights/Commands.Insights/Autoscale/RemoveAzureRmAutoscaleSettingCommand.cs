@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            WriteWarning("The output of this cmdlet has changed and will change again in the future. The current request Id is empty. In the future the cmdlet will not return anything.");
+            WriteWarning("The output of this cmdlet will change. The cmdlet will not return anything in future releases.");
             var result = this.InsightsManagementClient.AutoscaleSettings.DeleteWithHttpMessagesAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
 
             // Keep this response for backwards compatibility.
