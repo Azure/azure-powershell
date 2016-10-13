@@ -17,7 +17,7 @@ date and version and adding a new "Current Release" section to the top.
 
 This function also returns an array that contains all of the changes for the service this release.
 #>
-function UpdateServiceChangeLog([string]$PathToChangeLog)
+function UpdateServiceChangeLog([string]$PathToChangeLog, [string]$ModuleVersion)
 {    
     # Get the content of the service change log
     $content = Get-Content $PathToChangeLog
@@ -39,7 +39,7 @@ function UpdateServiceChangeLog([string]$PathToChangeLog)
         # add the new "Current Release" section, update the buffer, and switch the $found variable
         if ($content[$idx] -eq "## Current Release")
         {
-            $content[$idx] = "## $ReleaseDate - Version $ReleaseVersion"
+            $content[$idx] = "## Version $ModuleVersion"
             $found = $True
 
             $newContent[$idx] = "## Current Release"
@@ -68,9 +68,9 @@ function UpdateServiceChangeLog([string]$PathToChangeLog)
 
     [System.IO.File]::WriteAllText($tempFile.FullName, $result)
 
-    # Edge case: for the first release, if there are no changes made to the service,
-    # then the array will be empty, so we need to add an empty line for future computation
-    if ($changeLogContent.Length -eq 0)
+    # Edge case: for the first release, we need to add an empty line
+    # that will be used for computation later
+    if ($found)
     {
         $changeLogContent += ""
     }
@@ -116,7 +116,7 @@ function UpdateModule([string]$PathToModule, [string[]]$ChangeLogContent)
             # If there were changes made this release, add the changes
             else
             {
-                $newContent[$idx] += $ChangeLogContent[0]
+                $newContent[$idx] += "'$($ChangeLogContent[0])"
                 for ($tempBuffer = 1; $tempBuffer -lt $ChangeLogContent.Length - 1; $tempBuffer++)
                 {
                     $newContent[$idx + $tempBuffer] = $ChangeLogContent[$tempBuffer]
@@ -129,7 +129,7 @@ function UpdateModule([string]$PathToModule, [string[]]$ChangeLogContent)
                 }
 
                 # Update the buffer
-                $buffer = $ChangeLogContent.Length - 1
+                $buffer = $ChangeLogContent.Length - 2
             }
             
         }
@@ -185,6 +185,78 @@ function UpdateChangeLog([string]$PathToChangeLog, [string[]]$ServiceChangeLog)
 }
 
 <#
+This function will use the psd1 file to grab the module version.
+#>
+function GetModuleVersion([string]$PathToModule)
+{
+    $content = Get-Content $PathToModule
+
+    for ($idx = 0; $idx -lt $content.Length; $idx++)
+    {
+        if ($content[$idx] -like "ModuleVersion*")
+        {
+            $start = $content[$idx].IndexOf("'") + 1
+
+            $end = $content[$idx].LastIndexOf("'")
+
+            $length = $end - $start
+
+            return $content[$idx].Substring($start, $length)
+        }
+    }
+
+    throw "Could not find module version for file $PathToModule"
+}
+
+<#
+This function will clear the release notes for a psd1 file.
+#>
+function ClearReleaseNotes([string]$PathToModule)
+{
+    $content = Get-Content $PathToModule
+
+    $length = 0
+    $found = $False
+
+    for ($idx = 0; $idx -lt $content.Length; $idx++)
+    {
+        if ($content[$idx] -like "*ReleaseNotes =*")
+        {
+            $found = $True
+        }
+        elseif ($content[$idx] -like "*End of PSData*")
+        {
+            $found = $false
+        }
+        elseif ($found)
+        {
+            $length++
+        }
+    }
+
+    $size = $content.Length - $length + 1
+
+    $newContent = New-Object string[] $size
+
+    $buffer = 0
+
+    for ($idx = 0; $idx -lt $newContent.Length; $idx++)
+    {
+        $newContent[$idx] = $content[$idx + $buffer]
+
+        if ($content[$idx] -like "*ReleaseNotes =*")
+        {
+            $buffer =  $length - 1
+        }
+    }
+
+    $result = $newContent -join "`r`n"
+    $tempFile = Get-Item $PathToModule
+
+    [System.IO.File]::WriteAllText($tempFile.FullName, $result)
+}
+
+<#
 This function will update all of the ResourceManager change logs.
 #>
 function UpdateARMLogs([string]$PathToServices)
@@ -202,13 +274,17 @@ function UpdateARMLogs([string]$PathToServices)
     # for any changes that they made so we can add them to the master change log
     foreach ($log in $logs)
     {
-        # Update the service change log and get the content of their changes
-        $changeLogContent = UpdateServiceChangeLog -PathToChangeLog $log.FullName
-
         # Get the service folders (used to get the name of the service)
         $service = Get-Item -Path "$($log.FullName)\.."
         # Get the psd1 file
         $module = Get-Item -Path "$($service.FullName)\*.psd1"
+
+        $ModuleVersion = GetModuleVersion -PathToModule $module.FullName
+
+        ClearReleaseNotes -PathToModule $module.FullName
+
+        # Update the service change log and get the content of their changes
+        $changeLogContent = UpdateServiceChangeLog -PathToChangeLog $log.FullName -ModuleVersion $ModuleVersion
 
         # Update the release notes of the psd1 file with the changes made this release
         UpdateModule -PathToModule $module.FullName -ChangeLogContent $changeLogContent
