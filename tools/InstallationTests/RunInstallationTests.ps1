@@ -11,10 +11,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
+param([bool]$deleteLocalCert=$false)
 
-.".\\Common.ps1"
-.".\\Assert.ps1"
-.".\\InstallationTests.ps1"
+
+. "$PSScriptRoot\Common.ps1"
+. "$PSScriptRoot\Assert.ps1"
+. "$PSScriptRoot\InstallationTests.ps1"
+. "$PSScriptRoot\AutoTestLogin.ps1"
+
 # Pass expected PowerShell version as 1st param
 $global:totalCount = 0;
 $global:passedCount = 0;
@@ -29,10 +33,7 @@ $cred = New-Object -TypeName "System.Management.Automation.PSCredential" -Argume
 $tenantId = '72f988bf-86f1-41af-91ab-2d7cd011db47'
 $subscriptionIdToUse = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
 
-function CleanUp-Subscriptions()
-{
-    Get-AzureSubscription | ForEach-Object {Remove-AzureSubscription -SubscriptionId $_.SubscriptionId -Force}
-}
+Init $deleteLocalCert
 
 function Run-TestProtected
 {
@@ -72,17 +73,6 @@ function Run-TestProtected
    }
 }
 
-CleanUp-Subscriptions
-$context = Add-AzureRmAccount -Credential $cred -TenantId $tenantId -ServicePrincipal -SubscriptionId $subscriptionIdToUse
-if ($context -eq $null)
-{
-  Write-Error "Node CLI Test does not exist in the list of available subscriptions. Make sure to have it to run the tests"
-  Exit
-}
-[Microsoft.Azure.Common.Authentication.AzureSession]::ClientFactory.AddUserAgent("azure-powershell-test", "1.0")
-Import-AzurePublishSettingsFile -PublishSettingsFile '.\NodeCLITest.publishsettings'
-Select-AzureSubscription -SubscriptionId $subscriptionIdToUse -Current
-
 $serviceCommands = @(
   {Get-AzureLocation},
   {Get-AzureAffinityGroup},
@@ -107,7 +97,8 @@ $serviceCommands = @(
 $resourceCommands = @(
   {Get-AzureRmResourceGroup},
   {Get-AzureRmTag},
-  {Get-AzureRmADUser -UPN $context.Context.Account.Id},
+  #{Get-AzureRmADUser -UPN $context.Context.Account.Id},
+  {Get-AzureRmADServicePrincipal -ServicePrincipalName $global:gPsAutoTestADAppId},
   #{Get-AzureRmRoleAssignment}, we can enable this once this cmdLet works well with service principal, currently it has a hard dependency on Graph API Version 1.6-preview and hence it has some bugs
   {Get-AzureRmRoleDefinition},
   {Get-AzureRmWebApp}
@@ -150,5 +141,6 @@ Write-Host -ForegroundColor Green "Elapsed: "($global:endTime - $global:startTim
 Write-Host "============================================================================================="
 Write-Host
 Write-Host
-CleanUp-Subscriptions
+
+Test-CleanUp
 $ErrorActionPreference = "Continue"
