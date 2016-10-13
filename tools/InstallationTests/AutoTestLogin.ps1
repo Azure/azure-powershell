@@ -91,7 +91,7 @@ Function Get-ADAppForAutoTest()
     $psAutoADApp = Get-AzureRmADApplication -DisplayNameStartWith $global:gPsAutoTestADAppUsingSPNKey
     if($psAutoADApp -eq $null)
     {
-        $certPwd = "123"
+        $certPwd = Get-LocalCertificatePassword
         $secCertPwd = ConvertTo-SecureString -String $certPwd -AsPlainText -Force
         $pfxLocalFilePath = [System.IO.Path]::Combine($global:localPfxDirPath, $global:gPfxLocalFileName)
         $localCert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate($pfxLocalFilePath, $secCertPwd)        
@@ -106,9 +106,6 @@ Function Get-ADAppForAutoTest()
         $keyCredential.StartDate = $currentDate
         $keyCredential.EndDate= [DateTime]::Parse($localCert.GetExpirationDateString())
         $keyCredential.KeyId = [guid]::NewGuid()
-        #$keyCredential.Type = "AsymmetricX509Cert"
-        #$keyCredential.Usage = "Verify"
-        #$keyCredential.Value = $binaryAsciiCertData
         $keyCredential.CertValue = $binaryAsciiCertData
                         
         #AD app does not exists, create one
@@ -253,42 +250,6 @@ Function Install-TestCertificateOnMachine([string] $localCertPath)
     {
         Log-Info "Successfully installed certificate to '$global:gLocalCertStore'"
     }
-    
-    <#
-    $kvCertSecret = Get-KVSecretValue $global:kvSecKey_PsAutoTestCertNameKey
-        
-    #test content type
-    $kvCertSecret.Attributes.ContentType
-
-    $kvSecretBytes = [System.Convert]::FromBase64String($kvCertSecret.SecretValueText)
-    $certCollection2 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-    $certCollection2.Import($kvSecretBytes, $null, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-    $thumbPrint = $certCollection2.Item(0).Thumbprint
-
-    #Test retrieved certCollection contents
-    #$certCollection2
-
-    #Save Pfx locally
-    $certPwd = "123"
-    $secCertPwd = ConvertTo-SecureString -String $certPwd -AsPlainText -Force
-    $certPwdProtectedInBytes = $certCollection2.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $certPwd)
-    $pfxLocalFilePath = [System.IO.Path]::Combine([Environment]::GetEnvironmentVariable("TEMP"), $global:gPfxLocalFileName)
-    if([System.IO.File]::Exists($pfxLocalFilePath) -eq $true)
-    {
-        [System.IO.File]::Delete($pfxLocalFilePath)
-    }
-
-    [System.IO.File]::WriteAllBytes($pfxLocalFilePath, $certPwdProtectedInBytes)
-
-    if([System.IO.File]::Exists($pfxLocalFilePath) -eq $true)
-    {
-        Import-PfxCertificate -FilePath $pfxLocalFilePath -CertStoreLocation Cert:\LocalMachine\My -Password $secCertPwd
-    }
-
-    #Remove-Item -Path $pfxLocalFilePath
-
-    #TODO Find if the certificate was successfully installed
-    #>
 }
 
 Function Download-TestCertificateFromKeyVault()
