@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
                 {
                     StorageManagementClient storageClient = AzureSession.ClientFactory.CreateArmClient<StorageManagementClient>(azContext, AzureEnvironment.Endpoint.ResourceManager);
 
-                    // NEED TO CONVERT osBlobUri.StorageAccountName INTO RESOURCE GROUP NAME
+                    // Need to convert osBlobUri.StorageAccountName into corresponding resource group name
 
                     var listResponse = storageClient.StorageAccounts.List();
                     var account = listResponse.First(accTemp => accTemp.Name.Equals(osBlobUri.StorageAccountName, StringComparison.InvariantCultureIgnoreCase));
