@@ -578,12 +578,12 @@ function Test-EffectiveRoutesAndNsg
         Assert-AreEqual $getnic.Primary true;
         Assert-NotNull $getnic.MacAddress;
 
-        # Get Effective route
+        # Get Effective route by name
         $effectiveRoute = Get-AzureRmEffectiveRouteTable -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name
+		Assert-NotNull $effectiveRoute[0].Source
 
-        # Get Effective NSG
-        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name
-        
+        # Get Effective NSG by name
+        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name       
     }
     finally
     {
