@@ -50,8 +50,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.NotificationHubs, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.0.1.0-preview\lib\portable-net45+wp8+wpa81+win\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.NotificationHubs, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.NotificationHubs.2.0.0-preview\lib\net45\Microsoft.Azure.Management.NotificationHubs.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.1.741, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -64,6 +64,10 @@
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.2\lib\net45\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -111,6 +115,7 @@
     <Compile Include="Commands\Namespace\GetAzureNotificationHubsNamespaceAuthorizationRules.cs" />
     <Compile Include="Commands\Namespace\GetAzureNotificationHubsNamespaceListKeys.cs" />
     <Compile Include="Commands\Namespace\NewAzureNotificationHubsNamespaceAuthorizationRules.cs" />
+    <Compile Include="Commands\Namespace\NewAzureNotificationHubsNamespaceKey.cs" />
     <Compile Include="Commands\Namespace\RemoveAzureNotificationHubsNamespaceAuthorizationRules.cs" />
     <Compile Include="Commands\Namespace\SetAzureNotificationHubsNamespaceAuthorizationRules.cs" />
     <Compile Include="Commands\NotificationHub\GetAzureNotificationHub.cs" />
@@ -121,13 +126,13 @@
     <Compile Include="Commands\NotificationHub\NewAzureNotificationHub.cs" />
     <Compile Include="Commands\Namespace\NewAzureNotificationHubsNamespace.cs" />
     <Compile Include="Commands\NotificationHub\NewAzureNotificationHubAuthorizationRules.cs" />
+    <Compile Include="Commands\NotificationHub\NewAzureNotificationHubKey.cs" />
     <Compile Include="Commands\NotificationHub\RemoveAzureNotificationHub.cs" />
     <Compile Include="Commands\Namespace\RemoveAzureNotificationHubsNamespace.cs" />
     <Compile Include="Commands\NotificationHub\RemoveAzureNotificationHubAuthorizationRules.cs" />
     <Compile Include="Commands\NotificationHub\SetAzureNotificationHub.cs" />
     <Compile Include="Commands\Namespace\SetAzureNotificationHubsNamespace.cs" />
     <Compile Include="Commands\NotificationHub\SetAzureNotificationHubAuthorizationRules.cs" />
-    <Compile Include="Models\NamespaceLongRunningOperation.cs" />
     <Compile Include="Models\NamespaceAttributes.cs" />
     <Compile Include="Models\NamespaceState.cs" />
     <Compile Include="Models\NotificationHubAttributes.cs" />
