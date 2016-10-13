@@ -12,8 +12,8 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-.".\\Common.ps1"
-.".\\Assert.ps1"
+#.".\\Common.ps1"
+#.".\\Assert.ps1"
 
 $commands = 
 
