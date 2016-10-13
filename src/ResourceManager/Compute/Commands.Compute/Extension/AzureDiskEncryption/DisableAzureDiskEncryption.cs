@@ -262,14 +262,15 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     // +---------+---------------+----------------------------+
                     // | Windows | OS            | Yes                        |
                     // | Windows | Data          | No                         |
-                    // | Windows | Not Specified | Yes                        |
+                    // | Windows | Not Specified | No                         |
                     // | Linux   | OS            | N/A                        |
                     // | Linux   | Data          | Yes                        |
                     // | Linux   | Not Specified | N/A                        |
                     // +---------+---------------+----------------------------+
 
                     if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
+                        (string.IsNullOrWhiteSpace(VolumeType) ||
+                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase)))
                     {
                         var result = Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
