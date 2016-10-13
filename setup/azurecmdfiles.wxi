@@ -1916,6 +1916,9 @@
                         <Component Id="cmp17459EC3296F82D03FEF8C426C8DA7EA" Guid="*">
                             <File Id="filF30732FD3174ABEC7D2103467F25E8E5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\AzureRM.OperationalInsights.psd1" />
                         </Component>
+                        <Component Id="cmpC77B4F6D332144EDAE5C8E2997F313F1" Guid="*">
+                            <File Id="filD2FB04719F134FB9BF2BC1EE41908381" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\OperationalInsightsStartup.ps1" />
+                        </Component>
                         <Component Id="cmp7CE9821E11931CE1140ACA06CF2D38B4" Guid="*">
                             <File Id="filD490745C6F4007A53448F93D7655F3D4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Hyak.Common.dll" />
                         </Component>
@@ -6074,6 +6077,7 @@
             <ComponentRef Id="cmp275E5D23204FF3DB5A484691FFA2C6F5" />
             <ComponentRef Id="cmp5E9A44B7330C75772463CB17D6D24AA6" />
             <ComponentRef Id="cmp17459EC3296F82D03FEF8C426C8DA7EA" />
+            <ComponentRef Id="cmpC77B4F6D332144EDAE5C8E2997F313F1" />
             <ComponentRef Id="cmp7CE9821E11931CE1140ACA06CF2D38B4" />
             <ComponentRef Id="cmp6D68CAF3787D43356F3C2CB592699D2D" />
             <ComponentRef Id="cmp20FBC1203D91D529F69E519C9C2F78B8" />
