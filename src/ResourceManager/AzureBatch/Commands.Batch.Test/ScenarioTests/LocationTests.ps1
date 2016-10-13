@@ -14,12 +14,12 @@
 
 <#
 .SYNOPSIS
-Tests querying for subscription quotas in the Batch Service
+Tests querying for Batch service quotas for the subscription at the specified region
 #>
-function Test-GetSubscriptionQuotas
+function Test-GetLocationQuotas
 {
     $location = Get-BatchAccountProviderLocation
-    $quotas = Get-AzureRmBatchSubscriptionQuotas $location
+    $quotas = Get-AzureRmBatchLocationQuotas $location
 
     Assert-AreEqual $location $quotas.Location
     Assert-True { $quotas.AccountQuota -gt 0 }

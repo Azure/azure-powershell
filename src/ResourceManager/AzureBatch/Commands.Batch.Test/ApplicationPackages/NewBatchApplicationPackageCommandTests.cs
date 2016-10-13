@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Applications
+namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
 {
     public class NewBatchApplicationPackageCommandTests
     {
