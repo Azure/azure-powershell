@@ -31,13 +31,13 @@ function Test-DataSourceCreateUpdateDelete
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 
     # Create a data source
-    $dataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name $dsName -SubscriptionId $subId1
+    $dataSource = New-AzureRmOperationalInsightsAzureActivityLogDataSource -Workspace $workspace -Name $dsName -SubscriptionId $subId1
     Assert-AreEqual $dsName $dataSource.Name
     Assert-NotNull $dataSource.ResourceId
     Assert-AreEqual $rgname $dataSource.ResourceGroupName
     Assert-AreEqual $wsname $dataSource.WorkspaceName
     Assert-AreEqual $subId1 $dataSource.Properties.SubscriptionId
-    Assert-AreEqual "AzureAuditLog" $dataSource.Kind
+    Assert-AreEqual "AzureActivityLog" $dataSource.Kind
 
     # Get the data source that was created
     $dataSource = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName
@@ -46,27 +46,26 @@ function Test-DataSourceCreateUpdateDelete
     Assert-AreEqual $rgname $dataSource.ResourceGroupName
     Assert-AreEqual $wsname $dataSource.WorkspaceName
     Assert-AreEqual $subId1 $dataSource.Properties.SubscriptionId
-    Assert-AreEqual "AzureAuditLog" $dataSource.Kind
+    Assert-AreEqual "AzureActivityLog" $dataSource.Kind
 
-    # Create a second data source for list testing
+    # Create a second data source for list testing, also cover the alias.
     $daNametwo = Get-ResourceName
     $dataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name $daNametwo -SubscriptionId $subId2
 
     # List the data source in the workspace (both param sets)
-    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureAuditLog
+    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog
     Assert-AreEqual 2 $dataSources.Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
 
-    $dataSources = Get-AzureRmOperationalInsightsDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Kind AzureAuditLog
+    $dataSources = Get-AzureRmOperationalInsightsDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Kind AzureActivityLog
     Assert-AreEqual 2 $dataSources.Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
 
     # Delete one of the data sources
     Remove-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $daNametwo -Force
-    Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $daNametwo } "NotFound"
-    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureAuditLog
+    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog
     Assert-AreEqual 1 $dataSources.Count
     Assert-AreEqual 1 ($dataSources | Where {$_.Name -eq $dsName}).Count
     Assert-AreEqual 0 ($dataSources | Where {$_.Name -eq $daNametwo}).Count
@@ -75,13 +74,12 @@ function Test-DataSourceCreateUpdateDelete
     $dataSource = $dataSources[0]
     $dataSource.Properties.SubscriptionId = $subId2
     $dataSource = Set-AzureRmOperationalInsightsDataSource -DataSource $dataSource
-    Assert-AreEqual "AzureAuditLog" $dataSource.Kind
+    Assert-AreEqual "AzureActivityLog" $dataSource.Kind
     Assert-AreEqual $subId2 $dataSource.Properties.SubscriptionId
 
     # Delete the remaining data source via piping
     Remove-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName -Force
-    Assert-ThrowsContains { Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Name $dsName } "NotFound"
-    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureAuditLog
+    $dataSources = Get-AzureRmOperationalInsightsDataSource -Workspace $workspace -Kind AzureActivityLog
     Assert-AreEqual 0 $dataSources.Count
 }
 
@@ -99,7 +97,7 @@ function Test-DataSourceCreateFailsWithoutWorkspace
 
     New-AzureRmResourceGroup -Name $rgname -Location $wslocation -Force
 
-    Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureAuditDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "ResourceNotFound"
+    Assert-ThrowsContains { New-AzureRmOperationalInsightsAzureActivityLogDataSource -ResourceGroupName $rgname -WorkspaceName $wsname -Name $dsName -SubscriptionId $subId1 } "ResourceNotFound"
 }
 
 <#
@@ -118,8 +116,8 @@ function Test-CreateAllKindsOfDataSource
     # Create a workspace to house the data source
     $workspace = New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation -Sku premium -Force
 
-    # AzureAuditLog data source
-    $auditLogDataSource = New-AzureRmOperationalInsightsAzureAuditDataSource -Workspace $workspace -Name "myAuditLog" -SubscriptionId $subId1
+    # AzureActivityLog data source
+    $auditLogDataSource = New-AzureRmOperationalInsightsAzureActivityLogDataSource -Workspace $workspace -Name "myAuditLog" -SubscriptionId $subId1
 
     # windows event data source
     $windowsEventDataSource = New-AzureRmOperationalInsightsWindowsEventDataSource -Workspace $workspace -Name Application -EventLogName "Application" -CollectErrors -CollectWarnings -CollectInformation

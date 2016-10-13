@@ -255,4 +255,7 @@
   <data name="UltraPerformanceGatewayWarningMessage" xml:space="preserve">
     <value>Please check the availability of UltraPerformance gateway on https://azure.microsoft.com/en-us/documentation/articles/expressroute-about-virtual-network-gateways/. You will be billed for this gateway once this command succeeds.</value>
   </data>
+  <data name="EmptyEffectiveNetworkSecurityGroupOnNic" xml:space="preserve">
+    <value>The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group.</value>
+  </data>
 </root>
