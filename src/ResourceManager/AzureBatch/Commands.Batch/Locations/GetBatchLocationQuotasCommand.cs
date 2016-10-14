@@ -18,8 +18,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchSubscriptionQuotas), OutputType(typeof(PSBatchSubscriptionQuotas))]
-    public class GetBatchSubscriptionQuotasCommand : BatchCmdletBase
+    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchLocationQuotas), OutputType(typeof(PSBatchLocationQuotas))]
+    // This alias was added in 10/2016 for backwards compatibility
+    [Alias("Get-AzureRmBatchSubscriptionQuotas")]
+    public class GetBatchLocationQuotasCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The region to get the quotas of the subscription in the Batch Service from.")]
@@ -28,7 +30,7 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            PSBatchSubscriptionQuotas quotas = BatchClient.GetSubscriptionQuotas(this.Location);
+            PSBatchLocationQuotas quotas = BatchClient.GetLocationQuotas(this.Location);
             WriteObject(quotas);
         }
     }
