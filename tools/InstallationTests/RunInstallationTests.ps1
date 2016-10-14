@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-param([bool]$deleteLocalCert=$false)
+param([bool]$uninstallLocalCert=$false)
 
 
 . "$PSScriptRoot\Common.ps1"
@@ -27,13 +27,10 @@ $global:failedTests = @()
 $global:times = @{}
 $VerbosePreference = "SilentlyContinue"
 
-$clientId = 'aa0e49f9-96d1-46fd-82b3-b5e48915c9de'
-$ssClientSecret = ConvertTo-SecureString -String 'sDji5X6hbXSjrfZOC0+2k+nvBF8QkDpY38JnL/Yhifw=' -AsPlainText -Force
-$cred = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $clientId, $ssClientSecret
-$tenantId = '72f988bf-86f1-41af-91ab-2d7cd011db47'
-$subscriptionIdToUse = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
+#$tenantId = '72f988bf-86f1-41af-91ab-2d7cd011db47'
+#$subscriptionIdToUse = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
 
-Init $deleteLocalCert
+Login-Azure $uninstallLocalCert
 
 function Run-TestProtected
 {
@@ -107,6 +104,7 @@ $resourceCommands = @(
 $ErrorActionPreference = "Stop"
 $global:startTime = Get-Date
 Run-TestProtected { Test-SetAzureStorageBlobContent } "Test-SetAzureStorageBlobContent"
+
 Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
 
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
@@ -142,5 +140,6 @@ Write-Host "====================================================================
 Write-Host
 Write-Host
 
-Test-CleanUp
+Test-Cleanup
+
 $ErrorActionPreference = "Continue"

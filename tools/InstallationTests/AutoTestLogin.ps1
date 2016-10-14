@@ -1,13 +1,56 @@
 ﻿<#
-    NOTE:
-    =====
-    If for any reason, Service Principal needs to be recreated
-    The below gPsAutoTestADAppId will have to be hard-coded with the new App Id
-    This is required when you already have certificate installed locally and need to login and authenticate
-    against service principal using the AppId
-#>
-$global:gPsAutoTestADAppId = 'b8a1058e-25e8-4b08-b40b-d8d871dda591'
+# ----------------------------------------------------------------------------------
+#
+# Copyright Microsoft Corporation
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ----------------------------------------------------------------------------------
 
+This script will allow to login as long as you have required certificate installed on your machine
+
+WorkFlow# 1
+===========
+1) Will Check if the certificate is installed
+2) If not will ask you to login (one time) to access KeyVault
+3) Download Certificate, install certificate on the machine (will prompt to set certificate password)
+4) Login using the recently installed certificate
+5) Set the context for Test Subscription
+6) Download PublishSettings file from keyVault to enable log into ASM
+8) Run Tests
+9) Clean up - Delete any locally downloaded certificates or publishsettings file
+
+WorkFlow# 2
+============
+1) Check if certificate is installed
+2) If Yes, log in using certificate
+3) Download publishsettings file from KeyVault
+4) Log into ASM using publish settings file
+5) Run Tests
+6) Clean up
+
+TODO:
+1) Currently ServicePrincipal ClientId is hard-Coded in script
+Will need to push that in KeyVault and use it to get the ClientId every single time you need to login using service principal
+Will also need a way to replace existing ClientId ID, if Service principal is recreated.
+<#--------Current certificate expires 10/7/2017 --------->
+2) Will need a way check if local certificate is near expiry, if yes create a new one in keyVault and delete existing one.
+3) When replacing Certificate, you will also need to set new role Assignment using the new certificate.
+
+Issues:
+1) During the very first log in using certificate, an error pops up "Login-AzureRmAccount : No certificate was found in the certificate store with thumbprint System.Object[]"
+This is a transient error, but eventually the login is successful as it finds the certificate in Currentuser store
+So after the first try, this error no longer shows up.
+Will open an issue to investigate where we try both the cert store simultenously rather we should try Currentuser and if not found then try LocalMachine.
+#>
+
+$global:gPsAutoTestADAppId = 'b8a1058e-25e8-4b08-b40b-d8d871dda591'
 $global:gPsAutoTestSubscriptionName = 'Node CLI Test'
 $global:gPsAutoTestSubscriptionId = '2c224e7e-3ef5-431d-a57b-e71f4662e3a6'
 
@@ -19,9 +62,6 @@ $global:gpubSettingLocalFileName = "NodeCLITest.publishsettings"
 $global:gVaultName = 'KV-PsSdkAuto'
 $global:gPsAutoResGrpName = 'AzurePsSdkAuto'
 
-
-$global:gKVKey_ADAppIdKey = "PsAutoTestAppUsingCertAppId"
-
 $global:gLocalCertStore = 'Cert:\CurrentUser\My'
 $global:gCertPwd = ''
 $global:gLoggedInCtx = $null
@@ -31,6 +71,7 @@ $global:localPfxDirPath = [Environment]::GetEnvironmentVariable("TEMP")
 $global:kvSecKey_PsAutoTestCertNameKey = 'PsAutoTestCertName'
 $global:gPsAutoTestADAppUsingSPNKey = 'PsAutoTestADAppUsingSPN'
 $global:gkvSecKey_PubSettingFileNameKey = 'NodeCliTestPubSetFile'
+$global:gKVKey_ADAppIdKey = "PsAutoTestAppUsingCertAppId"
 
 
 Function Check-LoggedInContext()
@@ -91,6 +132,7 @@ Function Get-ADAppForAutoTest()
     $psAutoADApp = Get-AzureRmADApplication -DisplayNameStartWith $global:gPsAutoTestADAppUsingSPNKey
     if($psAutoADApp -eq $null)
     {
+        <#
         $certPwd = Get-LocalCertificatePassword
         $secCertPwd = ConvertTo-SecureString -String $certPwd -AsPlainText -Force
         $pfxLocalFilePath = [System.IO.Path]::Combine($global:localPfxDirPath, $global:gPfxLocalFileName)
@@ -98,6 +140,10 @@ Function Get-ADAppForAutoTest()
 
         $localCert.GetEffectiveDateString()
         $localCert.GetExpirationDateString()
+        #>
+
+        $kvCertObj = Get-AzureKeyVaultCertificate -VaultName $global:gVaultName -Name $global:kvSecKey_PsAutoTestCertNameKey
+        $localCert = $kvCertObj.Certificate
 
         $certRawData = $localCert.GetRawCertData()
         $binaryAsciiCertData = [System.Convert]::ToBase64String($certRawData)
@@ -115,9 +161,6 @@ Function Get-ADAppForAutoTest()
         {
             throw [System.ApplicationException] "Unable to create new Azure AD Applicaiton using 'New-AzureRmADApplication'. Exiting......"
         }
-
-        #delete local copy of pfx copy
-        #Remove-Item -Path $pfxLocalFilePath
     }
     
     return $psAutoADApp
@@ -254,13 +297,14 @@ Function Install-TestCertificateOnMachine([string] $localCertPath)
 
 Function Download-TestCertificateFromKeyVault()
 {
-    $certContentType = "application/x-pkcs12"
-    $certName = "PsAutoTestCertName"
-    $vaultName = "KV-PsSdkAuto"
+    #$certContentType = "application/x-pkcs12"
+    #$certName = "PsAutoTestCertName"
+    #$vaultName = "KV-PsSdkAuto"
 
     Check-LoggedInContext
     $kvCertSecret = Get-AzureKeyVaultSecret -VaultName $global:gVaultName -Name $global:kvSecKey_PsAutoTestCertNameKey
 
+    #ToDo: Handle the case where access denied to keyVault will result in an attempt to create a new certificate (which will fail again, but needs to be handled)
     if($kvCertSecret -eq $null)
     {
         Log-Info "Unable to get certificate from Azure KeyVault"
@@ -270,16 +314,10 @@ Function Download-TestCertificateFromKeyVault()
     #Once we create certificate and get it, we store it locally
     if($kvCertSecret -ne $null)
     {
-        #test content type
-        #$kvCertSecret.Attributes.ContentType
-
         $kvSecretBytes = [System.Convert]::FromBase64String($kvCertSecret.SecretValueText)
         $certCollection2 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
         $certCollection2.Import($kvSecretBytes, $null, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
-
-        #Test retrieved certCollection contents
-        #$certCollection2
-
+        
         #Save Pfx locally
         $pwd = Get-LocalCertificatePassword
         $certPwdProtectedInBytes = $certCollection2.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12, $pwd)
@@ -292,9 +330,10 @@ Function Download-TestCertificateFromKeyVault()
         #$cerLocalFilePath = [Environment]::GetFolderPath("Desktop") + "\PsAutoTestCert.cer"
         #$certBytes = $kvAutoTestCert.Certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert)
         #[System.IO.File]::WriteAllBytes($cerLocalFilePath, $certBytes)
+
+        Log-Info "Successfully downloaded certificate at '$pfxLocalFilePath'"
     }
 
-    Log-Info "Successfully downloaded certificate at '$pfxLocalFilePath'"
     return $pfxLocalFilePath
 }
 
@@ -306,20 +345,6 @@ Function Get-LocalCertificatePassword()
     }
 
     return $global:gCertPwd
-}
-
-<#
-This function will allow you to get x509Certificate
-#>
-Function Get-AutoTestCertFromKv()
-{
-    $kvAutoTestCert = Get-AzureKeyVaultCertificate -VaultName $Global:gVaultName -Name $global:kvSecKey_PsAutoTestCertNameKey
-    if($kvAutoTestCert -eq $null)
-    {
-        Write-Host "Certificate with name '$global:kvSecKey_PsAutoTestCertNameKey' does not exists in '$Global:gVaultName' Auzre KeyVault"
-    }
-
-    return $kvAutoTestCert
 }
 
 Function Login-AzureRMWithCertificate()
@@ -339,14 +364,14 @@ Function Login-AzureRMWithCertificate()
         $psAutoADApp = Get-ADAppForAutoTest
         $spn = Get-ADServicePrincipalForAutoTest
         $appId = $psAutoADApp.ApplicationId
+        #TODO: Store newly created AppId in KeyVault
     }
     
-    $thumb = $localCert.Thumbprint
+    $thumbprint = $localCert.Thumbprint
     #Seen cases where for some odd reason, $thumb is being evaluated as object rather than a string, but this does not happen consistently
-    $thumbStr = [System.Convert]::ToString($thumb.ToString())
+    $thumbStr = [System.Convert]::ToString($thumbprint.ToString())
 
-    #Update the LoggedInCtx
-    #it seems the cmdLet is trying to find cert first in LocalMachine and if not found writes error string and then looks in CurrentUser
+    #Update the LoggedInCtx    
     $gLoggedInCtx = Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $thumbStr -ApplicationId $appId -TenantId $global:gTenantId    
 }
 
@@ -364,26 +389,30 @@ Function Login-AzureWithCertificate()
 
 Function Login-InteractivelyAndSelectTestSubscription()
 {
-    Log-Info "Logging interactively....."
+    Log-Info "Login interactively....."
     $global:gLoggedInCtx = Login-AzureRmAccount
+
+    Check-LoggedInContext
     Log-Info "Selecting '$global:gPsAutoTestSubscriptionId' subscription"
     $global:gLoggedInCtx = Select-AzureRmSubscription -SubscriptionId $global:gPsAutoTestSubscriptionId
 
     return $global:gLoggedInCtx
 }
 
-Function Init([bool]$deleteLocalCertificate=$false)
+Function Login-Azure([bool]$deleteLocalCertificate=$false)
 {
-    CleanUp-Subscriptions
+    Remove-AllSubscriptions
+
     Delete-LocalCertificate $deleteLocalCertificate
 
     Login-AzureRMWithCertificate
     Select-AzureRmSubscription -SubscriptionId $global:gPsAutoTestSubscriptionId -TenantId $global:gTenantId
 
     Login-AzureWithCertificate
-    Select-AzureSubscription -SubscriptionId $subscriptionIdToUse -Current
+    Select-AzureSubscription -SubscriptionId $global:gPsAutoTestSubscriptionId -Current
 }
 
+<#
 Function Test-CleanUp()
 {
     $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
@@ -400,6 +429,7 @@ Function Test-CleanUp()
     
     CleanUp-Subscriptions
 }
+#>
 
 Function Log-Info([string] $info)
 {
@@ -411,11 +441,6 @@ Function Log-Error([string] $errorInfo)
 {
     $errorInfo = [string]::Format("[INFO]: {0}", $errorInfo)
     Write-Error -Message $errorInfo
-}
-
-function CleanUp-Subscriptions()
-{
-    Get-AzureSubscription | ForEach-Object {Remove-AzureSubscription -SubscriptionId $_.SubscriptionId -Force}
 }
 
 Function Delete-LocalCertificate([bool]$deleteLocalCertificate)

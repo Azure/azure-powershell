@@ -193,14 +193,28 @@ function Test-Setup
 #############################
 function Test-Cleanup
 {
-     $global:ConfirmPreference = $global:oldConfirmPreference
-     $global:DebugPreference = $global:oldDebugPreference
-     $global:ErrorActionPreference = $global:oldErrorActionPreference
-     $global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
-     $global:ProgressPreference = $global:oldProgressPreference
-     $global:VerbosePreference = $global:oldVerbosePreference
-     $global:WarningPreference = $global:oldWarningPreference
-     $global:WhatIfPreference = $global:oldWhatIfPreference
+     #$global:ConfirmPreference = $global:oldConfirmPreference
+     #$global:DebugPreference = $global:oldDebugPreference
+     #$global:ErrorActionPreference = $global:oldErrorActionPreference
+     #$global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
+     #$global:ProgressPreference = $global:oldProgressPreference
+     #$global:VerbosePreference = $global:oldVerbosePreference
+     #$global:WarningPreference = $global:oldWarningPreference
+     #$global:WhatIfPreference = $global:oldWhatIfPreference
+
+     $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
+    if([System.IO.File]::Exists($pfxFilePath) -eq $true)
+    {
+        Remove-Item $pfxFilePath
+    }
+
+    $pubSettingFile = [System.IO.Path]::Combine($PSScriptRoot,$global:gpubSettingLocalFileName)
+    if([System.IO.File]::Exists($pubSettingFile) -eq $true)
+    {
+        Remove-Item $pubSettingFile
+    }
+    
+    Remove-AllSubscriptions
 }
 
 #######################
