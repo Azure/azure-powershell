@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The effective network security group list is empty because the specified network interface is not associated with a network security group or the subnet that is referenced by the network interface is also not associated with a network security group..
+        /// </summary>
+        public static string EmptyEffectiveNetworkSecurityGroupOnNic {
+            get {
+                return ResourceManager.GetString("EmptyEffectiveNetworkSecurityGroupOnNic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to backendAddressPools.
         /// </summary>
         public static string LoadBalancerBackendAddressPoolName {
