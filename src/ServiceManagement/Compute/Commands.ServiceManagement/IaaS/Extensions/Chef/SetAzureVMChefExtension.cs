@@ -66,6 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string RunList { get; set; }
 
         [Parameter(
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A JSON string to be added to the first run of chef-client.")]
+        [ValidateNotNullOrEmpty]
+        public string JsonAttributes { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Chef Server Url.")]
         [ValidateNotNullOrEmpty]
@@ -159,6 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
             bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
             bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
+            bool IsJsonAttributesEmpty = string.IsNullOrEmpty(this.JsonAttributes);
             string BootstrapVersion = this.BootstrapVersion;
 
             //Cases handled:
@@ -213,34 +220,77 @@ validation_client_name 	\""{1}\""
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1}}}",
+                    if (IsJsonAttributesEmpty)
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1}}}",
                         string.Format(ClientRbTemplate, ClientConfig),
                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
+                    else {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(JsonAttributesTemplate, this.JsonAttributes),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
                 }
                 else
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                    if (IsJsonAttributesEmpty)
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
                         string.Format(ClientRbTemplate, ClientConfig),
                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
+                    else
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                        string.Format(JsonAttributesTemplate, this.JsonAttributes),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
                 }
             }
             else
             {
                 if (IsBootstrapOptionsEmpty)
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
+                    if (IsJsonAttributesEmpty)
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2}}}",
                         string.Format(ClientRbTemplate, ClientConfig),
                         string.Format(RunListTemplate, this.RunList),
                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
+                    else
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                        string.Format(ClientRbTemplate, ClientConfig),
+                        string.Format(RunListTemplate, this.RunList),
+                        string.Format(JsonAttributesTemplate, this.JsonAttributes),
+                        string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
                 }
                 else
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
+                    if (IsJsonAttributesEmpty)
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2},{3}}}",
                          string.Format(ClientRbTemplate, ClientConfig),
                          string.Format(RunListTemplate, this.RunList),
                          string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
                          string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
+                    else
+                    {
+                        this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
+                         string.Format(ClientRbTemplate, ClientConfig),
+                         string.Format(RunListTemplate, this.RunList),
+                         string.Format(BootStrapOptionsTemplate, this.BootstrapOptions),
+                         string.Format(JsonAttributesTemplate, this.JsonAttributes),
+                         string.Format(BootstrapVersionTemplate, BootstrapVersion));
+                    }
                 }
             }
         }

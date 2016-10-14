@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         private string BootstrapVersionTemplate = "bootstrap_version";
         private string ClientRbTemplate = "client_rb";
         private string BootStrapOptionsTemplate = "bootstrap_options";
+        private string JsonAttributesTemplate = "custom_json_attr";
         private string RunListTemplate = "runlist";
 
         [Parameter(
@@ -99,6 +100,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
             HelpMessage = "The Chef Client bootstrap options in JSON format.")]
         [ValidateNotNullOrEmpty]
         public string BootstrapOptions { get; set; }
+
+        [Parameter(
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A JSON string to be added to the first run of chef-client.")]
+        [ValidateNotNullOrEmpty]
+        public string JsonAttributes { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -211,6 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
                     bool IsValidationClientNameEmpty = string.IsNullOrEmpty(this.ValidationClientName);
                     bool IsRunListEmpty = string.IsNullOrEmpty(this.RunList);
                     bool IsBootstrapOptionsEmpty = string.IsNullOrEmpty(this.BootstrapOptions);
+                    bool IsJsonAttributesEmpty = string.IsNullOrEmpty(this.JsonAttributes);
                     string BootstrapVersion = string.IsNullOrEmpty(this.BootstrapVersion) ? "" : this.BootstrapVersion;
 
                     //Cases handled:
@@ -263,38 +271,86 @@ validation_client_name 	'{1}'
                     {
                         if (IsBootstrapOptionsEmpty)
                         {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            this.publicConfiguration = hashTable;
+                            if (IsJsonAttributesEmpty)
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                this.publicConfiguration = hashTable;
+                            }
+                            else
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                this.publicConfiguration = hashTable;
+                            }
                         }
                         else
                         {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
-                            this.publicConfiguration = hashTable;
+                            if (IsJsonAttributesEmpty)
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                                this.publicConfiguration = hashTable;
+                            }
+                            else
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                                this.publicConfiguration = hashTable;
+                            }
                         }
                     }
                     else
                     {
                         if (IsBootstrapOptionsEmpty)
                         {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(RunListTemplate, this.RunList);
-                            this.publicConfiguration = hashTable;
+                            if (IsJsonAttributesEmpty)
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(RunListTemplate, this.RunList);
+                                this.publicConfiguration = hashTable;
+                            }
+                            else
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(RunListTemplate, this.RunList);
+                                this.publicConfiguration = hashTable;
+                            }
                         }
                         else
                         {
-                            var hashTable = new Hashtable();
-                            hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
-                            hashTable.Add(ClientRbTemplate, ClientConfig);
-                            hashTable.Add(RunListTemplate, this.RunList);
-                            hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
-                            this.publicConfiguration = hashTable;
+                            if (IsJsonAttributesEmpty)
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(RunListTemplate, this.RunList);
+                                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                                this.publicConfiguration = hashTable;
+                            }
+                            else
+                            {
+                                var hashTable = new Hashtable();
+                                hashTable.Add(BootstrapVersionTemplate, BootstrapVersion);
+                                hashTable.Add(JsonAttributesTemplate, JsonAttributes);
+                                hashTable.Add(ClientRbTemplate, ClientConfig);
+                                hashTable.Add(RunListTemplate, this.RunList);
+                                hashTable.Add(BootStrapOptionsTemplate, this.BootstrapOptions);
+                                this.publicConfiguration = hashTable;
+                            }
                         }
                     }
                 }
