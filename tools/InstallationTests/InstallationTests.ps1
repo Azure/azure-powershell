@@ -12,9 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-#.".\\Common.ps1"
-#.".\\Assert.ps1"
-
 $commands = 
 
 function Test-SetAzureStorageBlobContent
