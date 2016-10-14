@@ -384,9 +384,12 @@ $StorageResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $Path
 $result = @()
 
 # If any changes were made to ARM services, add them to the list to be added to the master change log
+# Also, we need to update AzureRM.psd1 with all of the changes made to ARM services
 if ($ResourceManagerResult.Length -gt 0)
 {
     $result += $ResourceManagerResult
+
+    UpdateModule -PathToModule "$PathToRepo\tools\AzureRM\AzureRM.psd1" -ChangeLogContent $ResourceManagerResult
 }
 
 # If any changes were made to RDFE services, add them to the list to be added to the master change log
