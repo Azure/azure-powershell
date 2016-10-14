@@ -212,6 +212,9 @@ function Test-VirtualMachine
         $p2.OSProfile = $p.OSProfile;
         $p2.NetworkProfile = $p.NetworkProfile;
         $p2.StorageProfile = $p.StorageProfile;
+
+        $p2.StorageProfile.DataDisks = $null;
+        $p2.StorageProfile.OsDisk.Vhd.Uri = "https://$stoname.blob.core.windows.net/test/os2.vhd";
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p2;
 
         $vm2 = Get-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname;
