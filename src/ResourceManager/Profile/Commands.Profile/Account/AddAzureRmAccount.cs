@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.Profile
         private const string AccessTokenParameterSetWithSubscriptionName = "AccessTokenWithSubscriptionName";
 
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
+        [Obsolete("This parameter is only for backwards compatibility; users should use EnvironmentName instead.")]
         [ValidateNotNullOrEmpty]
         public AzureEnvironment Environment { get; set; }
 
