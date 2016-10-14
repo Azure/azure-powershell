@@ -20,7 +20,7 @@ This function also returns an array that contains all of the changes for the ser
 function UpdateServiceChangeLog([string]$PathToChangeLog, [string]$ModuleVersion)
 {    
     # Get the content of the service change log
-    $content = Get-Content $PathToChangeLog
+    $content = Get-Content $PathToChangeLog -Encoding UTF8
     # Create a new object with enough space for the old content plus the new "Current Release" section
     $newContent = New-Object string[] ($content.Length + 2)
     
@@ -66,7 +66,7 @@ function UpdateServiceChangeLog([string]$PathToChangeLog, [string]$ModuleVersion
     $result = $newContent -join "`r`n"
     $tempFile = Get-Item $PathToChangeLog
 
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result)
+    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
 
     # Edge case: for the first release, we need to add an empty line
     # that will be used for computation later
@@ -89,7 +89,7 @@ be placed in the release notes instead.
 function UpdateModule([string]$PathToModule, [string[]]$ChangeLogContent)
 {
     # Get the content of the service psd1 file
-    $content = Get-Content $PathToModule
+    $content = Get-Content $PathToModule -Encoding UTF8
 
     # The size of the new file will be everything in the array we got from
     # UpdateServiceChangeLog, except we exclude the last line (which is assumed to be blank)
@@ -144,7 +144,7 @@ function UpdateModule([string]$PathToModule, [string[]]$ChangeLogContent)
     $result = $newContent -join "`r`n"
     $tempFile = Get-Item $PathToModule
 
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result)
+    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
 }
 
 <#
@@ -154,7 +154,7 @@ services this release.
 function UpdateChangeLog([string]$PathToChangeLog, [string[]]$ServiceChangeLog)
 {
     # Get the content of the change log
-    $content = Get-Content $PathToChangeLog
+    $content = Get-Content $PathToChangeLog -Encoding UTF8
 
     # Allocate enough space for all of the changes and the old content
     $size = $content.Length + $ServiceChangeLog.Length
@@ -177,11 +177,11 @@ function UpdateChangeLog([string]$PathToChangeLog, [string[]]$ServiceChangeLog)
         $newContent[$idx + $buffer] = $content[$idx]
     }
 
-    # Update the master change long to include all of the changes we made
+    # Update the master change log to include all of the changes we made
     $result = $newContent -join "`r`n"
     $tempFile = Get-Item $PathToChangeLog
 
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result)
+    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
 }
 
 <#
@@ -189,10 +189,13 @@ This function will use the psd1 file to grab the module version.
 #>
 function GetModuleVersion([string]$PathToModule)
 {
-    $content = Get-Content $PathToModule
+    # Get the content of the psd1 file
+    $content = Get-Content $PathToModule -Encoding UTF8
 
+    # For each line of the file, check if we have found the module version
     for ($idx = 0; $idx -lt $content.Length; $idx++)
     {
+        # If we have found the module version, grab the value and return it
         if ($content[$idx] -like "ModuleVersion*")
         {
             $start = $content[$idx].IndexOf("'") + 1
@@ -205,6 +208,7 @@ function GetModuleVersion([string]$PathToModule)
         }
     }
 
+    # Throw if we are unable to find the module version
     throw "Could not find module version for file $PathToModule"
 }
 
@@ -213,47 +217,61 @@ This function will clear the release notes for a psd1 file.
 #>
 function ClearReleaseNotes([string]$PathToModule)
 {
-    $content = Get-Content $PathToModule
+    # Get the contents of the psd1 file
+    $content = Get-Content $PathToModule -Encoding UTF8
 
+    # This will keep track of the size of the current release notes
     $length = 0
+    # This will let us know if we are currently iterating over the release notes
     $found = $False
 
+    # For each line of the file, look for the release notes and find the size
     for ($idx = 0; $idx -lt $content.Length; $idx++)
     {
+        # If we have found the release notes section, switch the variable on
         if ($content[$idx] -like "*ReleaseNotes =*")
         {
             $found = $True
         }
+        # If we have found the end of the release notes section, switch the variable off
         elseif ($content[$idx] -like "*End of PSData*")
         {
             $found = $false
         }
+        # If we are currently iterating over release notes, increment the size
         elseif ($found)
         {
             $length++
         }
     }
 
+    # Determine the size of the file without the release notes
     $size = $content.Length - $length + 1
 
+    # Create a new object that will hold the contents of the new psd1 file
     $newContent = New-Object string[] $size
 
     $buffer = 0
 
+    # For each line in the psd1 file, copy it over to the new psd1 file, but
+    # make sure to skip the release notes
     for ($idx = 0; $idx -lt $newContent.Length; $idx++)
     {
         $newContent[$idx] = $content[$idx + $buffer]
 
+        # If we have found the release notes, set the buffer so we do not copy
+        # them over to the new psd1 file
         if ($content[$idx] -like "*ReleaseNotes =*")
         {
             $buffer =  $length - 1
         }
     }
 
+    # Update the psd1 file to include all of the changes we made
     $result = $newContent -join "`r`n"
     $tempFile = Get-Item $PathToModule
 
-    [System.IO.File]::WriteAllText($tempFile.FullName, $result)
+    [System.IO.File]::WriteAllText($tempFile.FullName, $result, [Text.Encoding]::UTF8)
 }
 
 <#
@@ -274,41 +292,70 @@ function UpdateARMLogs([string]$PathToServices)
     # for any changes that they made so we can add them to the master change log
     foreach ($log in $logs)
     {
-        # Get the service folders (used to get the name of the service)
-        $service = Get-Item -Path "$($log.FullName)\.."
+        # Get the service folder
+        $Service = Get-Item -Path "$($log.FullName)\.."
         # Get the psd1 file
-        $module = Get-Item -Path "$($service.FullName)\*.psd1"
+        $Module = Get-Item -Path "$($Service.FullName)\*.psd1"
 
-        $ModuleVersion = GetModuleVersion -PathToModule $module.FullName
+        # Get the path to the change log
+        $PathToChangeLog = "$($log.FullName)"
+        # Get the path to the psd1 file
+        $PathToModule = "$($module.FullName)"
 
-        ClearReleaseNotes -PathToModule $module.FullName
-
-        # Update the service change log and get the content of their changes
-        $changeLogContent = UpdateServiceChangeLog -PathToChangeLog $log.FullName -ModuleVersion $ModuleVersion
-
-        # Update the release notes of the psd1 file with the changes made this release
-        UpdateModule -PathToModule $module.FullName -ChangeLogContent $changeLogContent
-
-        # If there were changes for a given service, add them to the array that will be
-        # added to the master change log
-        if ($changeLogContent.Length -gt 1)
+        # Get the changes made to the current service
+        $serviceResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service $Service.Name
+        
+        # If there were any changes made, add them to the list that will be added to the master change log
+        if ($serviceResult.Length -gt 0)
         {
-            $result += "* $($service.Name)"
-            for ($idx = 0; $idx -lt $changeLogContent.Length - 1; $idx++)
-            {
-                $result += "    $($changeLogContent[$idx])"
-            }
+            $result += $serviceResult
         }
     }
 
-    # Blank space added to separate this release and last release changes in change log
-    $result += ""
+    # Return the list of changes
+    return $result
+}
 
-    # Get the master change log file
-    $ChangeLogFile = Get-Item -Path "$PathToRepo\ChangeLog.md"
+<#
+This function will update the change log of a service.
 
-    # Update the master change log file with all of the individual service changes
-    UpdateChangeLog -PathToChangeLog $ChangeLogFile.FullName -ServiceChangeLog $result
+This function will also return an array containing the changes made this release.
+#>
+function UpdateLog([string]$PathToChangeLog, [string]$PathToModule, [string]$Service)
+{
+    # Get the ServiceManagement change log
+    $log = Get-Item -Path $PathToChangeLog
+
+    # Get the ServiceManagemenet psd1 file
+    $module = Get-Item -Path $PathToModule
+
+    # Get the module version for ServiceManagement
+    $ModuleVersion = GetModuleVersion -PathToModule $module.FullName
+
+    # Clear the release notes for ServiceManagement
+    ClearReleaseNotes -PathToModule $module.FullName
+
+    # Update the change log and get the contents of the change log for the current release
+    $changeLogContent = UpdateServiceChangeLog -PathToChangeLog $log.FullName -ModuleVersion $ModuleVersion
+
+    #Update the psd1 file to include the changes made this release
+    UpdateModule -PathToModule $module.FullName -ChangeLogContent $changeLogContent
+
+    $result = @()
+
+    # If there were any changes made this release, add them to the array that will
+    # be added to the master change log
+    if ($changeLogContent.Length -gt 1)
+    {
+        $result += "* $Service"
+        for ($idx = 0; $idx -lt $changeLogContent.Length - 1; $idx++)
+        {
+            $result += "    $($changeLogContent[$idx])"
+        }
+    }
+
+    # Return the list of changes
+    return $result
 }
 
 # ----- START -----
@@ -320,4 +367,45 @@ if (!$PathToRepo)
 }
 
 # Update all of the ResourceManager change logs
-UpdateARMLogs -PathToServices $PathToRepo\src\ResourceManager
+$ResourceManagerResult = UpdateARMLogs -PathToServices $PathToRepo\src\ResourceManager
+
+# Update the ServiceManagement change log
+$PathToChangeLog = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\ChangeLog.md"
+$PathToModule = "$PathToRepo\src\ServiceManagement\Services\Commands.Utilities\Azure.psd1"
+
+$ServiceManagementResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "ServiceManagement"
+
+# Update the Storage change log
+$PathToChangeLog = "$PathToRepo\src\Storage\ChangeLog.md"
+$PathToModule = "$PathToRepo\src\Storage\Azure.Storage.psd1"
+
+$StorageResult = UpdateLog -PathToChangeLog $PathToChangeLog -PathToModule $PathToModule -Service "Azure.Storage"
+
+$result = @()
+
+# If any changes were made to ARM services, add them to the list to be added to the master change log
+if ($ResourceManagerResult.Length -gt 0)
+{
+    $result += $ResourceManagerResult
+}
+
+# If any changes were made to RDFE services, add them to the list to be added to the master change log
+if ($ServiceManagementResult.Length -gt 0)
+{
+    $result += $ServiceManagementResult
+}
+
+# If any changes were made to Storage, add them to the list to be added to the master change log
+if ($StorageResult.Length -gt 0)
+{
+    $result += $StorageResult
+}
+
+# Blank space added to separate this release and last release changes in change log
+$result += ""
+
+# Get the master change log file
+$ChangeLogFile = Get-Item -Path "$PathToRepo\ChangeLog.md"
+
+# Update the master change log file with all of the individual service changes
+UpdateChangeLog -PathToChangeLog $ChangeLogFile.FullName -ServiceChangeLog $result
