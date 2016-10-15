@@ -25,9 +25,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        //[Fact]
         //[Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Fact(Skip = "TODO: Fix the broken test.")]
+        // [Fact(Skip = "TODO: Fix the broken outdated test. The test cleans up all assignments, but some aqssignments are needed for the service scenario tests")]
         public void TestAuthorizationEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AuthorizationEndToEnd");

@@ -37,7 +37,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
+        // [Fact(Skip = "Test is failing in CI build for no matching request found but passes locally.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact(Skip = "Test is out of date. Need to fix and record. ")]
+        // [Fact(Skip = "Test is out of date. Need to fix and record. ")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
@@ -93,114 +95,128 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
         }
 
-        [Fact(Skip = "Fix the flaky test and token error and then re-record the test.")]
+        [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
         public void RaUserPermissions()
         {
             User newUser = null;
             ResourceGroup resourceGroup = null;
-            string roleAssignmentId = "1BAF0B29-608A-424F-B54F-92FCDB343FFF";
+            string roleAssignmentId = "A807281A-2F74-44B9-B862-C0D3683ADCC9";
             string userName = null;
             string userPass = null;
             string userPermission = "*/read";
             string roleDefinitionName = "Reader";
+            string newUserObjectId = null;
 
             var controllerAdmin = ResourcesController.NewInstance;
 
-            // Generate new user under admin account
-            controllerAdmin.RunPsTestWorkflow(
-                // scriptBuilder
-                () =>
-                {
-                    userName = TestUtilities.GenerateName("aduser");
-                    userPass = TestUtilities.GenerateName("adpass") + "0#$";
-
-                    var upn = userName + "@" + controllerAdmin.UserDomain;
-
-                    var parameter = new UserCreateParameters
+            try
+            {
+                // Generate new user under admin account
+                controllerAdmin.RunPsTestWorkflow(
+                    // scriptBuilder
+                    () =>
                     {
-                        UserPrincipalName = upn,
-                        DisplayName = userName,
-                        AccountEnabled = true,
-                        MailNickname = userName + "test",
-                        PasswordProfile= new PasswordProfile
+                        userName = TestUtilities.GenerateName("aduser");
+                        userPass = TestUtilities.GenerateName("adpass") + "0#$";
+
+                        var upn = userName + "@" + controllerAdmin.UserDomain;
+
+                        var parameter = new UserCreateParameters
                         {
-                            ForceChangePasswordNextLogin = false,
-                            Password = userPass
-                        }
-                    };
+                            UserPrincipalName = upn,
+                            DisplayName = userName,
+                            AccountEnabled = true,
+                            MailNickname = userName + "test",
+                            PasswordProfile = new PasswordProfile
+                            {
+                                ForceChangePasswordNextLogin = false,
+                                Password = userPass
+                            }
+                        };
 
-                    newUser = controllerAdmin.GraphClient.Users.Create(parameter);
+                        newUser = controllerAdmin.GraphClient.Users.Create(parameter);
+                        newUserObjectId = newUser.ObjectId;
 
-                    resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
-                                        .List()
-                                        .First();
+                        resourceGroup = controllerAdmin.ResourceManagementClient.ResourceGroups
+                                            .List()
+                                            .First();
 
                     // Wait to allow newly created object changes to propagate
                     TestMockSupport.Delay(20000);
 
-                    return new[]
-                    {
+                        return new[]
+                        {
                         string.Format(
                             "CreateRoleAssignment '{0}' '{1}' '{2}' '{3}'",
                                 roleAssignmentId,
-                                newUser.ObjectId,
+                                newUserObjectId,
                                 roleDefinitionName,
                                 resourceGroup.Name)
-                    };
-                },
-                // initialize
-                null,
-                // cleanup 
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Setup");
+                        };
+                    },
+                    // initialize
+                    null,
+                    // cleanup 
+                    null,
+                    TestUtilities.GetCallingClass(),
+                    TestUtilities.GetCurrentMethodName() + "_Setup");
 
-            // login as different user and run the test
-            var controllerUser = ResourcesController.NewInstance;
-            controllerUser.RunPsTestWorkflow(
-                // scriptBuilder
-                () =>
-                {
-                    return new[]
+                // login as different user and run the test
+                var controllerUser = ResourcesController.NewInstance;
+                controllerUser.RunPsTestWorkflow(
+                    // scriptBuilder
+                    () =>
                     {
+                    // Wait to allow for the role assignment to propagate
+                    TestMockSupport.Delay(20000);
+
+                        return new[]
+                        {
                         string.Format(
                             "Test-RaUserPermissions '{0}' '{1}'",
                             resourceGroup.Name,
                             userPermission)
-                    };
-                },
-                // initialize
-                (testFactory) =>
-                {
-                    if (newUser != null)
+                        };
+                    },
+                    // initialize
+                    (testFactory) =>
                     {
-                        testFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
-                        testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
-                    }
-                },
-                // cleanup 
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Test");
+                        if (newUser != null)
+                        {
+                            testFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
+                            testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
+                        }
+                    },
+                    // cleanup 
+                    null,
+                    TestUtilities.GetCallingClass(),
+                    TestUtilities.GetCurrentMethodName() + "_Test");
+            }
+            finally
+            {
+                // remove created user and assignment
+                controllerAdmin = ResourcesController.NewInstance;
+                controllerAdmin.RunPsTestWorkflow(
+                    // scriptBuilder
+                    null,
+                    // initialize
+                    null,
+                    // cleanup 
+                    () =>
+                    {
+                        if (newUser != null)
+                        {
+                            controllerAdmin.GraphClient.Users.Delete(newUser.ObjectId);
+                        }
 
-            // remove created user
-            controllerAdmin = ResourcesController.NewInstance;
-            controllerAdmin.RunPsTestWorkflow(
-                // scriptBuilder
-                null,
-                // initialize
-                null,
-                // cleanup 
-                () =>
-                {
-                    if (newUser != null)
-                    {
-                        controllerAdmin.GraphClient.Users.Delete(newUser.ObjectId);
-                    }
-                    controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
-                },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName() + "_Cleanup");
+                        if (resourceGroup != null)
+                        {
+                            controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, new Guid(roleAssignmentId));
+                        }                        
+                    },
+                    TestUtilities.GetCallingClass(),
+                    TestUtilities.GetCurrentMethodName() + "_Cleanup");
+            }                       
         }
     }
 }
