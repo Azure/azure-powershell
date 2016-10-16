@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
@@ -147,6 +148,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         public void TestSetApiManagementHostnames()
         {
             RunPowerShellTest("Test-SetApiManagementHostnames");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithExternalVpn()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithAdditionalRegions()
+        {
+            RunPowerShellTest("Test-CrudApiManagementWithAdditionalRegions");
         }
 
         private void RunPowerShellTest(params string[] scripts)
