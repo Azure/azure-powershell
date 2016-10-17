@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         private const string testPoolId = ScenarioTestHelpers.SharedPool;
 
         // Get from WATaskOSFamilyVersions table, which lags behind https://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/
-        private const string specificOSVersion = "WA-GUEST-OS-4.32_201605-01";
+        private const string specificOSVersion = "WA-GUEST-OS-2.51_201605-01";
 
         public PoolTests(Xunit.Abstractions.ITestOutputHelper output)
         {
