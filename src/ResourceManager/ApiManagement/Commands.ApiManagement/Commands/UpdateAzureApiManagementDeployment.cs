@@ -80,6 +80,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ParameterSetName = DefaultParameterSetName,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
+            HelpMessage = "Vpn Type of service Azure API Management. Valid values are None, External and Internal. Default value is None.")]
+        public PsApiManagementVpnType VpnType { get; set; }
+
+        [Parameter(
+            ParameterSetName = DefaultParameterSetName,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
             HelpMessage = "Additional deployment regions of Azure API Management.")]
         public IList<PsApiManagementRegion> AdditionalRegions { get; set; }
 
@@ -92,6 +99,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         {
             string resourceGroupName, name, location;
             PsApiManagementSku sku;
+            PsApiManagementVpnType vpnType;
             int capacity;
             PsApiManagementVirtualNetwork virtualNetwork;
             IList<PsApiManagementRegion> additionalRegions;
@@ -105,6 +113,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 capacity = Capacity;
                 virtualNetwork = VirtualNetwork;
                 additionalRegions = AdditionalRegions;
+                vpnType = VpnType;
             }
             else if (ParameterSetName.Equals(FromPsApiManagementInstanceSetName, StringComparison.OrdinalIgnoreCase))
             {
@@ -115,6 +124,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 capacity = ApiManagement.Capacity;
                 virtualNetwork = ApiManagement.VirtualNetwork;
                 additionalRegions = ApiManagement.AdditionalRegions;
+                vpnType = ApiManagement.VpnType;
             }
             else
             {
@@ -129,6 +139,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     sku,
                     capacity,
                     virtualNetwork,
+                    vpnType,
                     additionalRegions),
                 PassThru.IsPresent);
         }

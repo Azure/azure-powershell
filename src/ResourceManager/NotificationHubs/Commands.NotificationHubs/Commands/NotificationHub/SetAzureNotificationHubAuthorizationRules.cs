@@ -14,11 +14,13 @@
 
 using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Management.Automation;
+using System.Globalization;
+using System;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -56,6 +58,13 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             SharedAccessAuthorizationRuleAttributes sasRule = null;
@@ -68,10 +77,25 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                 sasRule = SASRule;
             }
 
-            // Update a notificationHub authorizationRule
-            var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub,
-                                                    sasRule.Name, sasRule.Rights, sasRule.PrimaryKey, sasRule.SecondaryKey);
-            WriteObject(authRule);
+            if (!string.IsNullOrEmpty(sasRule.Name))
+            {
+                ConfirmAction(
+                Force.IsPresent,
+                string.Format(CultureInfo.InvariantCulture, Resources.UpdateNotificationHubAuthorizationRule_Confirm, sasRule.Name),
+                Resources.UpdateNotificationHubAuthorizationRule_WhatIf,
+                sasRule.Name,
+                () =>
+                {
+                    // Update a notificationHub authorizationRule
+                    var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, sasRule.Location, Namespace, NotificationHub,
+                                                    sasRule.Name, sasRule.Rights);
+                    WriteObject(authRule);
+                });
+            }
+            else
+            {
+                throw new ArgumentNullException(Resources.AuthorizationRuleNameNull);
+            }
         }
     }
 }

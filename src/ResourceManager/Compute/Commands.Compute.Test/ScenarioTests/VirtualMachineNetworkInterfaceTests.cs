@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
 
-        [Fact(Skip ="to be recorded after fixing compute test proj")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEffectiveRoutesAndNsg()
         {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineSingleNetworkInterfaceWithAcceleratedNetworking()
+        public void TestSingleNetworkInterfaceWithAcceleratedNetworking()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
         }
