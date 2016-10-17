@@ -15,24 +15,25 @@
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Collections;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class NewBatchAccountCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class SetBatchAccountCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private NewBatchAccountCommand cmdlet;
+        private SetBatchAccountCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SetBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewBatchAccountCommand()
+            cmdlet = new SetBatchAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -41,42 +42,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchAccountTest()
+        public void UpdateAccountTest()
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string location = "location";
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
-
-            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, null)).Returns(expected);
-
-            cmdlet.AccountName = accountName;
-            cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.Location = location;
-
-            cmdlet.ExecuteCmdlet();
-
-            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchWithAutoStorageAccountTest()
-        {
-            string accountName = "account01";
-            string resourceGroup = "resourceGroup";
-            string location = "location";
             string storageId = "storageId";
 
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            Hashtable tags = new Hashtable
+                {
+                    {"Name", "tagName"},
+                    {"Value", "tagValue"}
+                };
 
-            batchClientMock.Setup(b => b.CreateAccount(resourceGroup, accountName, location, null, storageId)).Returns(expected);
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags, storageId)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.Location = location;
+            cmdlet.Tag = tags;
             cmdlet.AutoStorageAccountId = storageId;
 
             cmdlet.ExecuteCmdlet();

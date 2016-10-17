@@ -12,30 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
+namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class GetBatchSubscriptionQuotasCommandTests : RMTestBase
+    public class GetBatchAccountKeysCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchSubscriptionQuotasCommand cmdlet;
+        private GetBatchAccountKeysCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchSubscriptionQuotasCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchAccountKeysCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchSubscriptionQuotasCommand()
+            cmdlet = new GetBatchAccountKeysCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -44,20 +41,26 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchSubscriptionQuotasTest()
+        public void GetBatchAccountKeysTest()
         {
-            List<PSBatchSubscriptionQuotas> pipelineOutput = new List<PSBatchSubscriptionQuotas>();
+            string primaryKey = "pKey";
+            string secondaryKey = "sKey";
 
-            // Return a pre-built object when the command is issued.
-            string location = "westus";
-            PSBatchSubscriptionQuotas quotas = new PSBatchSubscriptionQuotas(location, new SubscriptionQuotasGetResult(accountQuota: 5));
-            batchClientMock.Setup(b => b.GetSubscriptionQuotas(location)).Returns(quotas);
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            expected.PrimaryAccountKey = primaryKey;
+            expected.SecondaryAccountKey = secondaryKey;
 
-            cmdlet.Location = location;
+            batchClientMock.Setup(b => b.GetKeys(resourceGroup, accountName)).Returns(expected);
+
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+
             cmdlet.ExecuteCmdlet();
 
-            // Verify the returned object was written to the pipeline.
-            commandRuntimeMock.Verify(r => r.WriteObject(quotas), Times.Once());
+            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
         }
     }
 }

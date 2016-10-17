@@ -12,28 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Batch.Models;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System.Collections;
-using System.Management.Automation;
 using Xunit;
-using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Accounts
+namespace Microsoft.Azure.Commands.Batch.Test.ApplicationPackages
 {
-    public class SetBatchAccountCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchApplicationPackageCommandTests
     {
-        private SetBatchAccountCommand cmdlet;
+        private RemoveBatchApplicationPackageCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public SetBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RemoveBatchApplicationPackageCommandTests()
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new SetBatchAccountCommand()
+            cmdlet = new RemoveBatchApplicationPackageCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -42,30 +39,22 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void UpdateAccountTest()
+        public void DeleteBatchApplicationPackageTest()
         {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string storageId = "storageId";
-
-            Hashtable tags = new Hashtable
-                {
-                    {"Name", "tagName"},
-                    {"Value", "tagValue"}
-                };
-
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
-            batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags, storageId)).Returns(expected);
+            string applicationId = "applicationId";
+            string version = "version";
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.Tag = tags;
-            cmdlet.AutoStorageAccountId = storageId;
+            cmdlet.ApplicationId = applicationId;
+            cmdlet.ApplicationVersion = version;
 
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
             cmdlet.ExecuteCmdlet();
 
-            commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());
+            batchClientMock.Verify(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationId, version), Times.Once());
         }
     }
 }

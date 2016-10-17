@@ -12,25 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Collections.Generic;
+using System.Management.Automation;
 using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Applications
+namespace Microsoft.Azure.Commands.Batch.Test.Subscriptions
 {
-    public class RemoveBatchApplicationPackageCommandTests
+    public class GetBatchLocationQuotasCommandTests : RMTestBase
     {
-        private RemoveBatchApplicationPackageCommand cmdlet;
+        private GetBatchLocationQuotasCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public RemoveBatchApplicationPackageCommandTests()
+        public GetBatchLocationQuotasCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new RemoveBatchApplicationPackageCommand()
+            cmdlet = new GetBatchLocationQuotasCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -39,22 +44,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void DeleteBatchApplicationPackageTest()
+        public void GetBatchLocationQuotasTest()
         {
-            string accountName = "account01";
-            string resourceGroup = "resourceGroup";
-            string applicationId = "applicationId";
-            string version = "version";
+            List<PSBatchLocationQuotas> pipelineOutput = new List<PSBatchLocationQuotas>();
 
-            cmdlet.AccountName = accountName;
-            cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.ApplicationId = applicationId;
-            cmdlet.ApplicationVersion = version;
+            // Return a pre-built object when the command is issued.
+            string location = "westus";
+            PSBatchLocationQuotas quotas = new PSBatchLocationQuotas(location, new BatchLocationQuota(accountQuota: 5));
+            batchClientMock.Setup(b => b.GetLocationQuotas(location)).Returns(quotas);
 
-            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            cmdlet.Location = location;
             cmdlet.ExecuteCmdlet();
 
-            batchClientMock.Verify(b => b.DeleteApplicationPackage(resourceGroup, accountName, applicationId, version), Times.Once());
+            // Verify the returned object was written to the pipeline.
+            commandRuntimeMock.Verify(r => r.WriteObject(quotas), Times.Once());
         }
     }
 }

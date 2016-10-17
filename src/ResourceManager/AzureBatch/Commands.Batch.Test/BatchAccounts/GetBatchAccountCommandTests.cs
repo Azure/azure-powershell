@@ -14,25 +14,27 @@
 
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class GetBatchAccountKeysCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class GetBatchAccountCommandTests : RMTestBase
     {
-        private GetBatchAccountKeysCommand cmdlet;
+        private GetBatchAccountCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchAccountKeysCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GetBatchAccountCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchAccountKeysCommand()
+            cmdlet = new GetBatchAccountCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -41,19 +43,39 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchAccountKeysTest()
+        public void ListBatchAccountsTest()
         {
-            string primaryKey = "pKey";
-            string secondaryKey = "sKey";
+            List<BatchAccountContext> pipelineOutput = new List<BatchAccountContext>();
 
+            string accountName01 = "account01";
+            string resourceGroup = "resourceGroup";
+            BatchAccount accountResource01 = BatchTestHelpers.CreateAccountResource(accountName01, resourceGroup);
+            string accountName02 = "account02";
+            BatchAccount accountResource02 = BatchTestHelpers.CreateAccountResource(accountName02, resourceGroup);
+            BatchAccountContext expected01 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource01);
+            BatchAccountContext expected02 = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource02);
+
+            batchClientMock.Setup(b => b.ListAccounts(null, resourceGroup)).Returns(new List<BatchAccountContext>() { expected01, expected02 });
+
+            cmdlet.AccountName = null;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.Tag = null;
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.Verify(r => r.WriteObject(expected01), Times.Once());
+            commandRuntimeMock.Verify(r => r.WriteObject(expected02), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetBatchAccountTest()
+        {
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            AccountResource accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
             BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
-            expected.PrimaryAccountKey = primaryKey;
-            expected.SecondaryAccountKey = secondaryKey;
-
-            batchClientMock.Setup(b => b.ListKeys(resourceGroup, accountName)).Returns(expected);
+            batchClientMock.Setup(b => b.GetAccount(resourceGroup, accountName)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;

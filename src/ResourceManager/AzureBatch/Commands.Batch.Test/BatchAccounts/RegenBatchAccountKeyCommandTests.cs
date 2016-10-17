@@ -12,25 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Batch.Models;
+using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System.Management.Automation;
 using Xunit;
+using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Applications
+namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class GetBatchApplicationPackageCommandTests
+    public class RegenBatchAccountKeyCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private GetBatchApplicationPackageCommand cmdlet;
+        private RegenBatchAccountKeyCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public GetBatchApplicationPackageCommandTests()
+        public RegenBatchAccountKeyCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetBatchApplicationPackageCommand()
+            cmdlet = new RegenBatchAccountKeyCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object
@@ -39,21 +41,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Applications
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetBatchApplicationPackageTest()
+        public void RegenBatchAccountKeysTest()
         {
+            string newPrimaryKey = "newPrimaryKey";
+            string newSecondaryKey = "newSecondaryKey";
+
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
-            string applicationId = "test";
-            string applicationVersion = "foo";
+            AccountKeyType keyType = AccountKeyType.Primary;
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            expected.PrimaryAccountKey = newPrimaryKey;
+            expected.SecondaryAccountKey = newSecondaryKey;
 
-            PSApplicationPackage expected = new PSApplicationPackage() { Id = applicationId, Version = applicationVersion };
-            batchClientMock.Setup(b => b.GetApplicationPackage(resourceGroup, accountName, applicationId, applicationVersion)).Returns(expected);
+            batchClientMock.Setup(b => b.RegenerateKeys(resourceGroup, accountName, keyType)).Returns(expected);
 
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
-            cmdlet.ApplicationId = applicationId;
-            cmdlet.ApplicationVersion = applicationVersion;
-
+            cmdlet.KeyType = keyType.ToString();
             cmdlet.ExecuteCmdlet();
 
             commandRuntimeMock.Verify(r => r.WriteObject(expected), Times.Once());

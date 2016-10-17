@@ -12,15 +12,6 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-<#
-.SYNOPSIS
-Tests querying for subscription quotas in the Batch Service
-#>
-function Test-GetSubscriptionQuotas
-{
-    $location = Get-BatchAccountProviderLocation
-    $quotas = Get-AzureRmBatchSubscriptionQuotas $location
-
-    Assert-AreEqual $location $quotas.Location
-    Assert-True { $quotas.AccountQuota -gt 0 }
-}
+@{
+    "New-AzureRmOperationalInsightsAzureAuditDataSource" = "New-AzureRmOperationalInsightsAzureActivityLogDataSource";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

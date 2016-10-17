@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            BatchAccountContext context = BatchClient.ListKeys(this.ResourceGroupName, this.AccountName);
+            BatchAccountContext context = BatchClient.GetKeys(this.ResourceGroupName, this.AccountName);
             WriteObject(context);
         }
     }
