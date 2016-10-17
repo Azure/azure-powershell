@@ -7545,7 +7545,14 @@ PS C:\&gt;New-AzureRmOperationalInsightsStorageInsight â€“Workspace $Workspace â
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>UseLegacyCollector</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>IntervalSeconds</maml:name>
 				<maml:description>
 					<maml:para />
@@ -7632,6 +7639,13 @@ PS C:\&gt;New-AzureRmOperationalInsightsStorageInsight â€“Workspace $Workspace â
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>UseLegacyCollector</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+      </command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>IntervalSeconds</maml:name>
 				<maml:description>
