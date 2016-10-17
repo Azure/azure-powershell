@@ -49,16 +49,16 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             string resourceGroup = "resourceGroup";
             string id = string.Format("id/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Batch/batchAccounts/abc", subscription, resourceGroup);
 
-            AccountResource resource = new AccountResource(
+            BatchAccount resource = new BatchAccount(
                 coreQuota: BatchTestHelpers.DefaultQuotaCount,
                 poolQuota: BatchTestHelpers.DefaultQuotaCount,
                 activeJobAndJobScheduleQuota: BatchTestHelpers.DefaultQuotaCount,
+                accountEndpoint: endpoint,
                 id: id,
                 type: "type")
             {
                 Location = "location",
-                AccountEndpoint = endpoint,
-                ProvisioningState = AccountProvisioningState.Succeeded,
+                ProvisioningState = ProvisioningState.Succeeded,
             };
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(resource);
 

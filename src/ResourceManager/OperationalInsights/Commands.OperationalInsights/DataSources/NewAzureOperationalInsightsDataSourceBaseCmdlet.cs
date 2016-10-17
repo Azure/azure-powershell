@@ -22,10 +22,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     public abstract class NewAzureOperationalInsightsDataSourceBaseCmdlet : AzureOperationalInsightsDataSourceBaseCmdlet
     {
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The data source name.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public virtual string Name { get; set; }
 
         protected void CreatePSDataSourceWithProperties(PSDataSourcePropertiesBase createParameters)
         {
