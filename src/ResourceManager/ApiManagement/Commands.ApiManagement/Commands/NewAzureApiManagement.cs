@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer")]
-        [ValidateSet("Developer, Standard, Premium"), PSDefaultValue(Value = "Developer")]
+        [ValidateSet("Developer", "Standard", "Premium"), PSDefaultValue(Value = "Developer")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
