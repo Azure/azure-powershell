@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public override string Name { get; set; }
 
         [Parameter(Position = 4, Mandatory = true, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of object name of Linux Performance Counter.")]
+        HelpMessage = "The name of object name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string ObjectName { get; set; }
 
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         private string _InstanceName = "*";
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-        HelpMessage = "The name of instance name of Linux Performance Counter.")]
+        HelpMessage = "The name of instance name of Windows Performance Counter.")]
         [ValidateNotNullOrEmpty]
         public string InstanceName
         {
@@ -76,6 +76,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             set { _IntervalSeconds = value; }
         }
 
+        [Parameter(Mandatory = false, HelpMessage = "Use legacy collector or the default collector.")]
+        public SwitchParameter UseLegacyCollector { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public override SwitchParameter Force { get; set; }
 
@@ -86,8 +89,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 ObjectName = this.ObjectName,
                 InstanceName = this.InstanceName,
                 IntervalSeconds = this.IntervalSeconds,
-                CounterName = this.CounterName
+                CounterName = this.CounterName,
+                CollectorType = CollectorType.Default
             };
+
+            if (UseLegacyCollector.IsPresent)
+            {
+                dsProperties.CollectorType = CollectorType.Legacy;
+            }
 
             CreatePSDataSourceWithProperties(dsProperties);
         }
