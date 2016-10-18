@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-param([bool]$uninstallLocalCert=$false)
+param([bool]$uninstallLocalCert=$false, [bool]$runOnCIMachine=$false )
 
 
 . "$PSScriptRoot\Common.ps1"
@@ -27,10 +27,7 @@ $global:failedTests = @()
 $global:times = @{}
 $VerbosePreference = "SilentlyContinue"
 
-#$tenantId = '72f988bf-86f1-41af-91ab-2d7cd011db47'
-#$subscriptionIdToUse = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6"
-
-Login-Azure $uninstallLocalCert
+Login-Azure $uninstallLocalCert $runOnCIMachine
 
 function Run-TestProtected
 {
