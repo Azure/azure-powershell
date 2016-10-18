@@ -106,8 +106,6 @@ Run-TestProtected { Test-SetAzureStorageBlobContent } "Test-SetAzureStorageBlobC
 
 Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
 
-Exit
-
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host -ForegroundColor Green "STARTING RESOURCE MANAGER TESTS"
 
