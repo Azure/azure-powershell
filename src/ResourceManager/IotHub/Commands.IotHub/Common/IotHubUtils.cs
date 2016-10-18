@@ -58,6 +58,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<SharedAccessSignatureAuthorizationRule, PSSharedAccessSignatureAuthorizationRule>(authorizationPolicy);
         }
 
+        public static IEnumerable<SharedAccessSignatureAuthorizationRule> ToSharedAccessSignatureAuthorizationRules(IEnumerable<PSSharedAccessSignatureAuthorizationRule> authorizationPolicies)
+        {
+            return ConvertObject<IEnumerable<PSSharedAccessSignatureAuthorizationRule>, IEnumerable<SharedAccessSignatureAuthorizationRule>>(authorizationPolicies.ToList());
+        }
+
         public static SharedAccessSignatureAuthorizationRule ToSharedAccessSignatureAuthorizationRule(PSSharedAccessSignatureAuthorizationRule authorizationPolicy)
         {
             return ConvertObject<PSSharedAccessSignatureAuthorizationRule, SharedAccessSignatureAuthorizationRule>(authorizationPolicy);
@@ -91,6 +96,36 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static IEnumerable<PSIotHubSkuDescription> ToPSIotHubSkuDescriptions(IEnumerable<IotHubSkuDescription> iotHubSkuDescriptions)
         {
             return ConvertObject<IEnumerable<IotHubSkuDescription>, IEnumerable<PSIotHubSkuDescription>>(iotHubSkuDescriptions.ToList());
+        }
+
+        public static IDictionary<string, EventHubProperties> ToEventHubEndpointProperties(IDictionary<string, PSEventHubInputProperties> psEventHubEndpointProperties)
+        {
+            return ConvertObject<IDictionary<string, PSEventHubInputProperties>, IDictionary<string, EventHubProperties>>(psEventHubEndpointProperties);
+        }
+
+        public static IDictionary<string, MessagingEndpointProperties> ToMessagingEndpoints(IDictionary<string, PSMessagingEndpointProperties> psMessagingEndpointProperties)
+        {
+            return ConvertObject<IDictionary<string, PSMessagingEndpointProperties>, IDictionary<string, MessagingEndpointProperties>>(psMessagingEndpointProperties);
+        }
+
+        public static IDictionary<string, StorageEndpointProperties> ToStorageEndpoints(IDictionary<string, PSStorageEndpointProperties> psStorageEndpointProperties)
+        {
+            return ConvertObject<IDictionary<string, PSStorageEndpointProperties>, IDictionary<string, StorageEndpointProperties>>(psStorageEndpointProperties);
+        }
+
+        public static CloudToDeviceProperties ToCloudToDeviceProperties(PSCloudToDeviceProperties psCloudToDeviceProperties)
+        {
+            return ConvertObject<PSCloudToDeviceProperties, CloudToDeviceProperties>(psCloudToDeviceProperties);
+        }
+
+        public static OperationsMonitoringProperties ToOperationsMonitoringProperties(PSOperationsMonitoringProperties psOperationsMonitoringProperties)
+        {
+            return ConvertObject<PSOperationsMonitoringProperties, OperationsMonitoringProperties>(psOperationsMonitoringProperties);
+        }
+
+        public static IotHubSkuInfo ToIotHubSku(PSIotHubSkuInfo psIotHubSkuInfo)
+        {
+            return ConvertObject<PSIotHubSkuInfo, IotHubSkuInfo>(psIotHubSkuInfo);
         }
 
         public static IList<PSIotHubConnectionString> ToPSIotHubConnectionStrings(IEnumerable<SharedAccessSignatureAuthorizationRule> authorizationPolicies, string hostName)
