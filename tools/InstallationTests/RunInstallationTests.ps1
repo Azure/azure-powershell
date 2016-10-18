@@ -27,6 +27,8 @@ $global:failedTests = @()
 $global:times = @{}
 $VerbosePreference = "SilentlyContinue"
 
+Test-Setup $runOnCIMachine
+
 Login-Azure $uninstallLocalCert $runOnCIMachine
 
 function Run-TestProtected
@@ -103,6 +105,8 @@ $global:startTime = Get-Date
 Run-TestProtected { Test-SetAzureStorageBlobContent } "Test-SetAzureStorageBlobContent"
 
 Run-TestProtected { Test-UpdateStorageAccount } "Test-UpdateStorageAccount"
+
+Exit
 
 $serviceCommands | % { Run-TestProtected $_  $_.ToString() }
 Write-Host -ForegroundColor Green "STARTING RESOURCE MANAGER TESTS"

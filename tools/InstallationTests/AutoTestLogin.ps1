@@ -220,6 +220,7 @@ Function Login-AzureRMWithCertificate([bool]$runOnCIMachine=$false)
     {
         If($runOnCIMachine -eq $false)
         {
+            $global:ErrorActionPreference = "SilentlyContinue" #the very first time you install cert, you get an error when you login
             #we could not find certificate installed locally, get it from KeyVault
             Login-InteractivelyAndSelectTestSubscription
             $localCert = Get-AutomationTestCertificate
@@ -234,9 +235,10 @@ Function Login-AzureRMWithCertificate([bool]$runOnCIMachine=$false)
     $thumbprint = $localCert.Thumbprint
     #Seen cases where for some odd reason, $thumb is being evaluated as object rather than a string, but this does not happen consistently
     $thumbStr = [System.Convert]::ToString($thumbprint.ToString())
-
+        
     #Update the LoggedInCtx    
     $gLoggedInCtx = Login-AzureRmAccount -ServicePrincipal -CertificateThumbprint $thumbStr -ApplicationId $appId -TenantId $global:gTenantId    
+    $global:ErrorActionPreference = "Stop" #setting it back to default option that were set in Test-Setup
 }
 
 Function Login-AzureWithCertificate()
@@ -306,5 +308,22 @@ Function Delete-LocalCertificate()
         $certPath = $cert.PSPath
         Log-Info "Deleting local certificate $certPath"
         Remove-Item $cert.PSPath
+    }
+}
+
+Function Delete-DownloadedCertAndPubSetting
+{
+    $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
+    if([System.IO.File]::Exists($pfxFilePath) -eq $true)
+    {
+        #Log-Info "Deleting '$pfxFilePath'"
+        Remove-Item $pfxFilePath
+    }
+
+    $pubSettingFile = [System.IO.Path]::Combine($PSScriptRoot,$global:gpubSettingLocalFileName)
+    if([System.IO.File]::Exists($pubSettingFile) -eq $true)
+    {
+        #Log-Info "Deleting '$pubSettingFile'"
+        Remove-Item $pubSettingFile
     }
 }

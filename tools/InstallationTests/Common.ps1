@@ -166,7 +166,7 @@ function Get-FullName
 # enable verbose, debug, and warning streams
 #
 #############################
-function Test-Setup
+function Test-Setup([bool]$runOnCIMachine=$false)
 {
     $global:oldConfirmPreference = $global:ConfirmPreference
     $global:oldDebugPreference = $global:DebugPreference
@@ -177,7 +177,13 @@ function Test-Setup
     $global:oldWarningPreference = $global:WarningPreference
     $global:oldWhatIfPreference = $global:WhatIfPreference
     $global:ConfirmPreference = "None"
-    $global:DebugPreference = "Continue"
+    $global:DebugPreference = "SilentlyContinue"
+
+    if($runOnCIMachine -eq $true)
+    {
+        $global:DebugPreference = "Continue"
+    }
+
     $global:ErrorActionPreference = "Stop"
     $global:FormatEnumerationLimit = 10000
     $global:ProgressPreference = "SilentlyContinue"
@@ -193,33 +199,16 @@ function Test-Setup
 #############################
 function Test-Cleanup
 {
-     #$global:ConfirmPreference = $global:oldConfirmPreference
-     #$global:DebugPreference = $global:oldDebugPreference
-     #$global:ErrorActionPreference = $global:oldErrorActionPreference
-     #$global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
-     #$global:ProgressPreference = $global:oldProgressPreference
-     #$global:VerbosePreference = $global:oldVerbosePreference
-     #$global:WarningPreference = $global:oldWarningPreference
-     #$global:WhatIfPreference = $global:oldWhatIfPreference
+     $global:ConfirmPreference = $global:oldConfirmPreference
+     $global:DebugPreference = $global:oldDebugPreference
+     $global:ErrorActionPreference = $global:oldErrorActionPreference
+     $global:FormatEnumerationLimit = $global:oldFormatEnumerationLimit
+     $global:ProgressPreference = $global:oldProgressPreference
+     $global:VerbosePreference = $global:oldVerbosePreference
+     $global:WarningPreference = $global:oldWarningPreference
+     $global:WhatIfPreference = $global:oldWhatIfPreference
 
-    Delete-DownloadedCertAndPubSetting
-    
     Remove-AllSubscriptions
-}
-
-Function Delete-DownloadedCertAndPubSetting
-{
-    $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
-    if([System.IO.File]::Exists($pfxFilePath) -eq $true)
-    {
-        Remove-Item $pfxFilePath
-    }
-
-    $pubSettingFile = [System.IO.Path]::Combine($PSScriptRoot,$global:gpubSettingLocalFileName)
-    if([System.IO.File]::Exists($pubSettingFile) -eq $true)
-    {
-        Remove-Item $pubSettingFile
-    }
 }
 
 #######################
