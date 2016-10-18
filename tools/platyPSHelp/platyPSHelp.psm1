@@ -409,7 +409,7 @@ function Validate-ServiceMarkdownHelp
             # Iterate over each line in the file
             for ($idx = 0; $idx -lt $content.Length; $idx++)
             {
-                switch ($content[$idx])
+                switch -Wildcard ($content[$idx])
                 {
                     "## SYNOPSIS"
                     {
@@ -491,7 +491,7 @@ function Validate-ServiceMarkdownHelp
                             $fileErrors += "-- No examples found"
                         }
                     }
-                    "@{Text=}"
+                    "*{*}*"
                     {
                         # This case occurs when there is no description provided for a parameter
                         $parameter = $content[$idx-1].Substring(5)
