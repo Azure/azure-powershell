@@ -15,7 +15,7 @@
 </maml:para>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Add-AzureRmAccount</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccessToken</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccessToken</maml:name>
 <maml:Description><maml:para>Specifies an access token.
 </maml:para>
 </maml:Description>
@@ -24,41 +24,12 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccountId</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccountId</maml:name>
 <maml:Description><maml:para>Account Id for access token
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ApplicationId</maml:name>
-<maml:Description><maml:para>SPN
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateThumbprint</maml:name>
-<maml:Description><maml:para>Certificate Hash (Thumbprint)
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Credential</maml:name>
-<maml:Description><maml:para>Specifies a PSCredential object. For more information about the PSCredential object, type Get-Help Get-Credential.
-</maml:para>
-<maml:para>The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
-<dev:type><maml:name>PSCredential</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -80,109 +51,8 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
 <maml:Description><maml:para>Specifies the ID of the subscription. If you do not specify this parameter, the first subscription from the subscription list is used.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>Optional tenant name or ID
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
-<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
-<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
-</maml:para>
-</maml:Description>
-<dev:type><maml:name>SwitchParameter</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>False</dev:defaultValue>
-</command:parameter>
-</command:syntaxItem>
-<command:syntaxItem><maml:name>Add-AzureRmAccount</maml:name>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccessToken</maml:name>
-<maml:Description><maml:para>Specifies an access token.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccountId</maml:name>
-<maml:Description><maml:para>Account Id for access token
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ApplicationId</maml:name>
-<maml:Description><maml:para>SPN
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateThumbprint</maml:name>
-<maml:Description><maml:para>Certificate Hash (Thumbprint)
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Credential</maml:name>
-<maml:Description><maml:para>Specifies a PSCredential object. For more information about the PSCredential object, type Get-Help Get-Credential.
-</maml:para>
-<maml:para>The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
-<dev:type><maml:name>PSCredential</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Environment</maml:name>
-<maml:Description><maml:para>Environment containing the account to log into
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
-<dev:type><maml:name>AzureEnvironment</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
-<maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
-</maml:para>
-</maml:Description>
-<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-<dev:type><maml:name>String</maml:name>
-<maml:uri /></dev:type>
-<dev:defaultValue>None</dev:defaultValue>
-</command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
-<maml:Description><maml:para>Subscription Name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -246,6 +116,15 @@
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
 <maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
+<maml:Description><maml:para>Subscription Name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -324,6 +203,95 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
+<maml:Description><maml:para>Specifies the ID of the subscription. If you do not specify this parameter, the first subscription from the subscription list is used.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
+<maml:Description><maml:para>Optional tenant name or ID
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmAccount</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ApplicationId</maml:name>
+<maml:Description><maml:para>SPN
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateThumbprint</maml:name>
+<maml:Description><maml:para>Certificate Hash (Thumbprint)
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Environment</maml:name>
+<maml:Description><maml:para>Environment containing the account to log into
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+<dev:type><maml:name>AzureEnvironment</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
+<maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServicePrincipal</maml:name>
+<maml:Description><maml:para>Indicates that this account authenticates by providing service principal credentials.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
+<maml:Description><maml:para>Subscription Name
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
 <maml:Description><maml:para>Optional tenant name or ID
 </maml:para>
@@ -373,6 +341,80 @@
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
 <maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
+<maml:Description><maml:para>Specifies the ID of the subscription. If you do not specify this parameter, the first subscription from the subscription list is used.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
+<maml:Description><maml:para>Optional tenant name or ID
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmAccount</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Credential</maml:name>
+<maml:Description><maml:para>Specifies a PSCredential object. For more information about the PSCredential object, type Get-Help Get-Credential.
+</maml:para>
+<maml:para>The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+<dev:type><maml:name>PSCredential</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Environment</maml:name>
+<maml:Description><maml:para>Environment containing the account to log into
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+<dev:type><maml:name>AzureEnvironment</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
+<maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
+<maml:Description><maml:para>Subscription Name
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -444,7 +486,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
 <maml:Description><maml:para>Specifies the ID of the subscription. If you do not specify this parameter, the first subscription from the subscription list is used.
 </maml:para>
 </maml:Description>
@@ -453,7 +495,71 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
+<maml:Description><maml:para>Optional tenant name or ID
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf"><maml:name>Confirm</maml:name>
+<maml:Description><maml:para>Prompts you for confirmation before running the cmdlet.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi"><maml:name>WhatIf</maml:name>
+<maml:Description><maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+</command:syntaxItem>
+<command:syntaxItem><maml:name>Add-AzureRmAccount</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Credential</maml:name>
+<maml:Description><maml:para>Specifies a PSCredential object. For more information about the PSCredential object, type Get-Help Get-Credential.
+</maml:para>
+<maml:para>The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
+<dev:type><maml:name>PSCredential</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Environment</maml:name>
+<maml:Description><maml:para>Environment containing the account to log into
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">AzureEnvironment</command:parameterValue>
+<dev:type><maml:name>AzureEnvironment</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>EnvironmentName</maml:name>
+<maml:Description><maml:para>Specifies the Azure environment. Valid values are: AzureCloud, AzureChinaCloud, AzureUSGovernment. The default is AzureCloud.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+<dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ServicePrincipal</maml:name>
+<maml:Description><maml:para>Indicates that this account authenticates by providing service principal credentials.
+</maml:para>
+</maml:Description>
+<dev:type><maml:name>SwitchParameter</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>False</dev:defaultValue>
+</command:parameter>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
 <maml:Description><maml:para>Subscription Name
 </maml:para>
 </maml:Description>
@@ -489,7 +595,7 @@
 </command:parameter>
 </command:syntaxItem>
 </command:syntax>
-<command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccessToken</maml:name>
+<command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccessToken</maml:name>
 <maml:Description><maml:para>Specifies an access token.
 </maml:para>
 </maml:Description>
@@ -498,7 +604,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccountId</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>AccountId</maml:name>
 <maml:Description><maml:para>Account Id for access token
 </maml:para>
 </maml:Description>
@@ -507,7 +613,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ApplicationId</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>ApplicationId</maml:name>
 <maml:Description><maml:para>SPN
 </maml:para>
 </maml:Description>
@@ -516,7 +622,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateThumbprint</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>CertificateThumbprint</maml:name>
 <maml:Description><maml:para>Certificate Hash (Thumbprint)
 </maml:para>
 </maml:Description>
@@ -563,7 +669,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>False</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
 <maml:Description><maml:para>Specifies the ID of the subscription. If you do not specify this parameter, the first subscription from the subscription list is used.
 </maml:para>
 </maml:Description>
@@ -572,7 +678,7 @@
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
-<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
+<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
 <maml:Description><maml:para>Subscription Name
 </maml:para>
 </maml:Description>
@@ -610,7 +716,13 @@
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureProfile</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
@@ -648,7 +760,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 <maml:para></maml:para>
 </dev:remarks>
 </command:example>
-<command:example><maml:title>Example3: Add an account that authenticates with service principal credentials</maml:title>
+<command:example><maml:title>Example 3: Add an account that authenticates with service principal credentials</maml:title>
 <dev:code>PS C:\&gt;$Credential = Get-Credential
 PS C:\&gt; Add-AzureRmAccount -Credential $Credential -Tenant "xxxx-xxxx-xxxx-xxxx" -ServicePrincipal
 Account: xxxx-xxxx-xxxx-xxxx
@@ -1069,7 +1181,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name> </maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureEnvironment</maml:name>
 </dev:type>
 <maml:description><maml:para>This cmdlet returns the set of endpoints and metadata needed to communicate with an instance of Azure.
 </maml:para>
@@ -1080,9 +1192,58 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Creating and modifying a new environment</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint TestADEndpoint `
+        -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
+        -ResourceManagerEndpoint TestRMEndpoint `
+        -GalleryEndpoint TestGalleryEndpoint `
+        -GraphEndpoint TestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
+
+PS C:\&gt; Set-AzureRmEnvironment -Name TestEnvironment
+        -ActiveDirectoryEndpoint NewTestADEndpoint
+        -GraphEndpoint NewTestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : NewTestADEndpoint
+GraphUrl                                          : NewTestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :</dev:code>
+<dev:remarks><maml:para>In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1154,14 +1315,20 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<command:examples><command:example><maml:title>Example 1: Disabling data collection for the current user</maml:title>
+<dev:code>PS C:\&gt; Disable-AzureRmDataCollection</dev:code>
+<dev:remarks><maml:para>This example shows how to disable data collection for the current user.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1227,14 +1394,20 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>None</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example 1</maml:title>
-<dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
-<dev:remarks><maml:para>{{ Add example description here }}
+<command:examples><command:example><maml:title>Example 1: Enabling data collection for the current user</maml:title>
+<dev:code>PS C:\&gt; Enable-AzureRmDataCollection</dev:code>
+<dev:remarks><maml:para>This example shows how to enable data collection for the current user.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1264,7 +1437,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:syntax>
 <command:parameters></command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name> </maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureContext</maml:name>
 </dev:type>
 <maml:description><maml:para>This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 </maml:para>
@@ -1275,9 +1448,17 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Getting the current context</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmAccount
+PS C:\&gt; Get-AzureRmContext
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :</dev:code>
+<dev:remarks><maml:para>In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1323,14 +1504,96 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureEnvironment</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Getting the AzureCloud environment</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmEnvironment AzureCloud
+
+Name                                              : AzureCloud
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : https://management.core.windows.net/
+AdTenant                                          :
+GalleryUrl                                        : https://gallery.azure.com/
+ManagementPortalUrl                               : http://go.microsoft.com/fwlink/?LinkId=254433
+ServiceManagementUrl                              : https://management.core.windows.net/
+PublishSettingsFileUrl                            : http://go.microsoft.com/fwlink/?LinkID=301775
+ResourceManagerUrl                                : https://management.azure.com/
+SqlDatabaseDnsSuffix                              : .database.windows.net
+StorageEndpointSuffix                             : core.windows.net
+ActiveDirectoryAuthority                          : https://login.microsoftonline.com/
+GraphUrl                                          : https://graph.windows.net/
+GraphEndpointResourceId                           : https://graph.windows.net/
+TrafficManagerDnsSuffix                           : trafficmanager.net
+AzureKeyVaultDnsSuffix                            : vault.azure.net
+AzureDataLakeStoreFileSystemEndpointSuffix        : azuredatalakestore.net
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix : azuredatalakeanalytics.net
+AzureKeyVaultServiceEndpointResourceId            : https://vault.azure.net</dev:code>
+<dev:remarks><maml:para>This example shows how to get the endpoints and metadata for the AzureCloud (default) environment.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Getting the AzureChinaCloud environment</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmEnvironment AzureChinaCloud
+
+Name                                              : AzureChinaCloud
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : https://management.core.chinacloudapi.cn/
+AdTenant                                          :
+GalleryUrl                                        : https://gallery.chinacloudapi.cn/
+ManagementPortalUrl                               : http://go.microsoft.com/fwlink/?LinkId=301902
+ServiceManagementUrl                              : https://management.core.chinacloudapi.cn/
+PublishSettingsFileUrl                            : http://go.microsoft.com/fwlink/?LinkID=301776
+ResourceManagerUrl                                : https://management.chinacloudapi.cn/
+SqlDatabaseDnsSuffix                              : .database.chinacloudapi.cn
+StorageEndpointSuffix                             : core.chinacloudapi.cn
+ActiveDirectoryAuthority                          : https://login.chinacloudapi.cn/
+GraphUrl                                          : https://graph.chinacloudapi.cn/
+GraphEndpointResourceId                           : https://graph.chinacloudapi.cn/
+TrafficManagerDnsSuffix                           : trafficmanager.cn
+AzureKeyVaultDnsSuffix                            : vault.azure.cn
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            : https://vault.azure.cn</dev:code>
+<dev:remarks><maml:para>This example shows how to get the endpoints and metadata for the AzureChinaCloud environment.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 3: Getting the AzureUSGovernment environment</maml:title>
+<dev:code>PS C:\&gt; Get-AzureRmEnvironment AzureUSGovernment
+
+Name                                              : AzureUSGovernment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : https://management.core.usgovcloudapi.net/
+AdTenant                                          :
+GalleryUrl                                        : https://gallery.usgovcloudapi.net/
+ManagementPortalUrl                               : https://manage.windowsazure.us
+ServiceManagementUrl                              : https://management.core.usgovcloudapi.net/
+PublishSettingsFileUrl                            : https://manage.windowsazure.us/publishsettings/index
+ResourceManagerUrl                                : https://management.usgovcloudapi.net/
+SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
+StorageEndpointSuffix                             : core.usgovcloudapi.net
+ActiveDirectoryAuthority                          : https://login-us.microsoftonline.com/
+GraphUrl                                          : https://graph.windows.net/
+GraphEndpointResourceId                           : https://graph.windows.net/
+TrafficManagerDnsSuffix                           : usgovtrafficmanager.net
+AzureKeyVaultDnsSuffix                            : vault.usgovcloudapi.net
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            : https://vault.usgovcloudapi.net</dev:code>
+<dev:remarks><maml:para>This example shows how to get the endpoints and metadata for the AzureUSGovernment environment.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1429,16 +1692,23 @@ Tenant: xxxx-xxxx-xxxx-xxxx</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureSubscription</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>Example 1: Get all subscriptions in all tenants</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSubscription -All
-SubscriptionId: xxxx-xxxx-xxxx-xxxx
-TenantId: yyyy-yyyy-yyyy-yyyy
-Subscription Name: Contoso Subscription 1</dev:code>
+
+Subscription Name : Contoso Subscription 1
+SubscriptionId    : xxxx-xxxx-xxxx-xxxx
+TenantId          : yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:remarks><maml:para>This command gets all subscriptions in all tenants that are authorized for the current account.
 </maml:para>
 <maml:para></maml:para>
@@ -1447,14 +1717,14 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:example>
 <command:example><maml:title>Example 2: Get all subscriptions for a specific tenant</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSubscription -TenantId "xxxx-xxxx-xxxx-xxxx"
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 1
 
+Subscription Name : Contoso Subscription 1
+SubscriptionId    : yyyy-yyyy-yyyy-yyyy
+TenantId          : xxxx-xxxx-xxxx-xxxx
 
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 2</dev:code>
+Subscription Name : Contoso Subscription 2
+SubscriptionId    : yyyy-yyyy-yyyy-yyyy
+TenantId          : xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:remarks><maml:para>List all subscriptions in the given tenant that are authorized for the current account.
 </maml:para>
 <maml:para></maml:para>
@@ -1463,14 +1733,14 @@ Subscription Name: Contoso Subscription 2</dev:code>
 </command:example>
 <command:example><maml:title>Example 3: Get all subscriptions in the current tenant</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSubscription
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 1
 
+Subscription Name : Contoso Subscription 1
+SubscriptionId    : yyyy-yyyy-yyyy-yyyy
+TenantId          : xxxx-xxxx-xxxx-xxxx
 
-SubscriptionId: yyyy-yyyy-yyyy-yyyy
-TenantId: xxxx-xxxx-xxxx-xxxx
-Subscription Name: Contoso Subscription 2</dev:code>
+Subscription Name : Contoso Subscription 2
+SubscriptionId    : yyyy-yyyy-yyyy-yyyy
+TenantId          : xxxx-xxxx-xxxx-xxxx</dev:code>
 <dev:remarks><maml:para>This command gets all subscriptions in the current tenant that are authorized for the current user.
 </maml:para>
 <maml:para></maml:para>
@@ -1479,9 +1749,10 @@ Subscription Name: Contoso Subscription 2</dev:code>
 </command:example>
 <command:example><maml:title>Example 4: Change the current context to use a specific subscription</maml:title>
 <dev:code>PS C:\&gt;Get-AzureRmSubscription -SubscriptionId "xxxx-xxxx-xxxx-xxxx" -TenantId "yyyy-yyyy-yyyy-yyyy" | Set-AzureRmContext
-SubscriptionId: xxxx-xxxx-xxxx-xxxx
-TenantId: yyyy-yyyy-yyyy-yyyy
-Subscription Name: Contoso Subscription 1</dev:code>
+
+Subscription Name : Contoso Subscription 1
+SubscriptionId    : xxxx-xxxx-xxxx-xxxx
+TenantId          : yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:remarks><maml:para>This command gets the specified subscription, and then sets the current context to use it. All subsequent cmdlets in this session use the new subscription (Contoso Subscription 1) by default.
 </maml:para>
 <maml:para></maml:para>
@@ -1504,7 +1775,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Get-AzureRmTenant</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Domain, Tenant"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>{{Fill TenantId Description}}
+<maml:Description><maml:para>Specifies the ID of the tenant that this cmdlet gets.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1515,7 +1786,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Domain, Tenant"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>{{Fill TenantId Description}}
+<maml:Description><maml:para>Specifies the ID of the tenant that this cmdlet gets.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1525,7 +1796,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues><command:returnValue><dev:type><maml:name> </maml:name>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureTenant</maml:name>
 </dev:type>
 <maml:description><maml:para>This cmdlet returns the tenant ID and associated domain information for tenants authorized for the current account.
 </maml:para>
@@ -1536,9 +1807,28 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Getting all tenants</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmAccount
+PS C:\&gt; Get-AzureRmTenant
+
+TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Domain   : microsoft.com
+
+TenantId : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Domain   : microsoft.com</dev:code>
+<dev:remarks><maml:para>This example shows how to get all of the authorized tenants of an Azure account.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Getting a specific tenant</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmAccount
+PS C:\&gt; Get-AzureRmTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+
+TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Domain   : microsoft.com</dev:code>
+<dev:remarks><maml:para>This example shows how to get a specific authorized tenant of an Azure account.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1615,14 +1905,67 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureEnvironment</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Creating and removing a test environment</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint TestADEndpoint `
+        -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
+        -ResourceManagerEndpoint TestRMEndpoint `
+        -GalleryEndpoint TestGalleryEndpoint `
+        -GraphEndpoint TestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
+
+PS C:\&gt; Remove-AzureRmEnvironment -Name TestEnvironment
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :</dev:code>
+<dev:remarks><maml:para>This example shows how to create an environment using Add-AzureRmEnvironment, and then how to delete the environment using Remove-AzureRmEnvironment.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1743,14 +2086,29 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureProfile</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Saving the current session's profile</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmAccount
+PS C:\&gt; Save-AzureRmProfile -Path C:\test.json</dev:code>
+<dev:remarks><maml:para>This example saves the current session's Azure profile to the JSON file provided.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Saving a given profile</maml:title>
+<dev:code>PS C:\&gt; Save-AzureRmProfile -Profile (Add-AzureRmAccount) -Path C:\test.json</dev:code>
+<dev:remarks><maml:para>This example saves the Azure profile that is passed through to the cmdlet to the JSON file provided.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1816,14 +2174,42 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureProfile</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Selecting a profile from a PSAzureProfile</maml:title>
+<dev:code>PS C:\&gt; Select-AzureRmProfile -Profile (Add-AzureRmAccount)
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :</dev:code>
+<dev:remarks><maml:para>This example selects a profile from a PSAzureProfile that is passed through to the cmdlet.
+</maml:para>
+<maml:para></maml:para>
+<maml:para></maml:para>
+</dev:remarks>
+</command:example>
+<command:example><maml:title>Example 2: Selecting a profile from a JSON file</maml:title>
+<dev:code>PS C:\&gt; Select-AzureRmProfile -Path C:\test.json
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :</dev:code>
+<dev:remarks><maml:para>This example selects a profile from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmProfile.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
@@ -1848,7 +2234,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </maml:description>
 <command:syntax><command:syntaxItem><maml:name>Set-AzureRmContext</maml:name>
 <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>Context</maml:name>
-<maml:Description><maml:para>Context
+<maml:Description><maml:para>Specifies the context for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">PSAzureContext</command:parameterValue>
@@ -1875,7 +2261,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Set-AzureRmContext</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
-<maml:Description><maml:para>Specifies the subscription ID.
+<maml:Description><maml:para>Specifies the subscription ID for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1884,7 +2270,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>Specifies the ID of the tenant.
+<maml:Description><maml:para>Specifies the ID of the tenant for for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1911,7 +2297,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:syntaxItem>
 <command:syntaxItem><maml:name>Set-AzureRmContext</maml:name>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
-<maml:Description><maml:para>Subscription Name
+<maml:Description><maml:para>Specifies the subscription name for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1920,7 +2306,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>Specifies the ID of the tenant.
+<maml:Description><maml:para>Specifies the ID of the tenant for for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1947,7 +2333,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:syntaxItem>
 </command:syntax>
 <command:parameters><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="named" aliases="none"><maml:name>Context</maml:name>
-<maml:Description><maml:para>Context
+<maml:Description><maml:para>Specifies the context for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">PSAzureContext</command:parameterValue>
@@ -1956,7 +2342,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionId</maml:name>
-<maml:Description><maml:para>Specifies the subscription ID.
+<maml:Description><maml:para>Specifies the subscription ID for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1965,7 +2351,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none"><maml:name>SubscriptionName</maml:name>
-<maml:Description><maml:para>Subscription Name
+<maml:Description><maml:para>Specifies the subscription name for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1974,7 +2360,7 @@ Subscription Name: Contoso Subscription 1</dev:code>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="Domain"><maml:name>TenantId</maml:name>
-<maml:Description><maml:para>Specifies the ID of the tenant.
+<maml:Description><maml:para>Specifies the ID of the tenant for for the context that this cmdlet sets for the current session.
 </maml:para>
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -2002,20 +2388,24 @@ Subscription Name: Contoso Subscription 1</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureContext</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>Example1: Set the subscription context</maml:title>
+<command:examples><command:example><maml:title>Example 1: Set the subscription context</maml:title>
 <dev:code>PS C:\&gt;Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
-Account: PFuller@contoso.com
 
-Environment: AzureCloud
-
-Subscription: xxxx-xxxx-xxxx-xxxx
-
-Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
+Account      : PFuller@contoso.com
+Environment  : AzureCloud
+Subscription : xxxx-xxxx-xxxx-xxxx
+Tenant       : yyyy-yyyy-yyyy-yyyy</dev:code>
 <dev:remarks><maml:para>This command sets the context to use the specified subscription.
 </maml:para>
 <maml:para></maml:para>
@@ -2419,14 +2809,69 @@ Tenant: yyyy-yyyy-yyyy-yyyy</dev:code>
 </command:parameter>
 </command:parameters>
 <command:inputTypes></command:inputTypes>
-<command:returnValues></command:returnValues>
+<command:returnValues><command:returnValue><dev:type><maml:name>PSAzureEnvironment</maml:name>
+</dev:type>
+<maml:description><maml:para>
+</maml:para>
+</maml:description>
+</command:returnValue>
+</command:returnValues>
 <maml:alertSet><maml:alert><maml:para>
 </maml:para>
 </maml:alert>
 </maml:alertSet>
-<command:examples><command:example><maml:title>1:</maml:title>
-<dev:code></dev:code>
-<dev:remarks><maml:para>
+<command:examples><command:example><maml:title>Example 1: Creating and modifying a new environment</maml:title>
+<dev:code>PS C:\&gt; Add-AzureRmEnvironment -Name TestEnvironment `
+        -ActiveDirectoryEndpoint TestADEndpoint `
+        -ActiveDirectoryServiceEndpointResourceId TestADApplicationId `
+        -ResourceManagerEndpoint TestRMEndpoint `
+        -GalleryEndpoint TestGalleryEndpoint `
+        -GraphEndpoint TestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : TestADEndpoint
+GraphUrl                                          : TestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :
+
+PS C:\&gt; Set-AzureRmEnvironment -Name TestEnvironment
+        -ActiveDirectoryEndpoint NewTestADEndpoint
+        -GraphEndpoint NewTestGraphEndpoint
+
+Name                                              : TestEnvironment
+EnableAdfsAuthentication                          : False
+ActiveDirectoryServiceEndpointResourceId          : TestADApplicationId
+AdTenant                                          :
+GalleryUrl                                        : TestGalleryEndpoint
+ManagementPortalUrl                               :
+ServiceManagementUrl                              : 
+PublishSettingsFileUrl                            :
+ResourceManagerUrl                                : TestRMEndpoint
+SqlDatabaseDnsSuffix                              :
+StorageEndpointSuffix                             :
+ActiveDirectoryAuthority                          : NewTestADEndpoint
+GraphUrl                                          : NewTestGraphEndpoint
+GraphEndpointResourceId                           :
+TrafficManagerDnsSuffix                           :
+AzureKeyVaultDnsSuffix                            :
+AzureDataLakeStoreFileSystemEndpointSuffix        :
+AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
+AzureKeyVaultServiceEndpointResourceId            :</dev:code>
+<dev:remarks><maml:para>In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
 </maml:para>
 <maml:para></maml:para>
 <maml:para></maml:para>
