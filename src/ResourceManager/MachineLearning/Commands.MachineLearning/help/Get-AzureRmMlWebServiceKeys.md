@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmMlWebServiceKeys
 
 ## SYNOPSIS
-Retrieves the web service's keys
+Retrieves the web service's keys.
 
 ## SYNTAX
 

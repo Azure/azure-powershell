@@ -522,7 +522,7 @@
 <command:details><command:name>Get-AzureRmMlWebServiceKeys</command:name>
 <command:verb>Get</command:verb>
 <command:noun>AzureRmMlWebServiceKeys</command:noun>
-<maml:description><maml:para>Retrieves the web service's keys
+<maml:description><maml:para>Retrieves the web service's keys.
 </maml:para>
 </maml:description>
 </command:details>

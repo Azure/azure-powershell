@@ -12,44 +12,44 @@ Locale: en-US
 
 ## AzureRM.MachineLearning Cmdlets
 ### [Export-AzureRmMlWebService](Export-AzureRmMlWebService.md)
-{{Manually Enter Export-AzureRmMlWebService Description Here}}
+Exports the web service definition object as a JSON formatted string.
 
 ### [Get-AzureRmMlCommitmentAssociation](Get-AzureRmMlCommitmentAssociation.md)
-{{Manually Enter Get-AzureRmMlCommitmentAssociation Description Here}}
+Retrieves the summary information for one or more commitment associations.
 
 ### [Get-AzureRmMlCommitmentPlan](Get-AzureRmMlCommitmentPlan.md)
-{{Manually Enter Get-AzureRmMlCommitmentPlan Description Here}}
+Retrieves the summary information for one or more commitment plans.
 
 ### [Get-AzureRmMlCommitmentPlanUsageHistory](Get-AzureRmMlCommitmentPlanUsageHistory.md)
-{{Manually Enter Get-AzureRmMlCommitmentPlanUsageHistory Description Here}}
+Retrieves usage history information for a specified commitment plan.
 
 ### [Get-AzureRmMlWebService](Get-AzureRmMlWebService.md)
-{{Manually Enter Get-AzureRmMlWebService Description Here}}
+Retrieves the summary information for one or more web services.
 
 ### [Get-AzureRmMlWebServiceKeys](Get-AzureRmMlWebServiceKeys.md)
-{{Manually Enter Get-AzureRmMlWebServiceKeys Description Here}}
+Retrieves the web service's keys.
 
 ### [Import-AzureRmMlWebService](Import-AzureRmMlWebService.md)
-{{Manually Enter Import-AzureRmMlWebService Description Here}}
+Imports a JSON object into a web service definition.
 
 ### [Move-AzureRmMlCommitmentAssociation](Move-AzureRmMlCommitmentAssociation.md)
-{{Manually Enter Move-AzureRmMlCommitmentAssociation Description Here}}
+Moves a commitment association from one commitment plan to another.
 
 ### [New-AzureRmMlCommitmentPlan](New-AzureRmMlCommitmentPlan.md)
-{{Manually Enter New-AzureRmMlCommitmentPlan Description Here}}
+Creates a new commitment plan.
 
 ### [New-AzureRmMlWebService](New-AzureRmMlWebService.md)
-{{Manually Enter New-AzureRmMlWebService Description Here}}
+Exports the web service definition object as a JSON formatted string.
 
 ### [Remove-AzureRmMlCommitmentPlan](Remove-AzureRmMlCommitmentPlan.md)
-{{Manually Enter Remove-AzureRmMlCommitmentPlan Description Here}}
+Deletes a commitment plan.
 
 ### [Remove-AzureRmMlWebService](Remove-AzureRmMlWebService.md)
-{{Manually Enter Remove-AzureRmMlWebService Description Here}}
+Deletes a web service.
 
 ### [Update-AzureRmMlCommitmentPlan](Update-AzureRmMlCommitmentPlan.md)
-{{Manually Enter Update-AzureRmMlCommitmentPlan Description Here}}
+Updates properties of an existing commitment plan resource.
 
 ### [Update-AzureRmMlWebService](Update-AzureRmMlWebService.md)
-{{Manually Enter Update-AzureRmMlWebService Description Here}}
+Updates properties of an existing web service resource.
 
