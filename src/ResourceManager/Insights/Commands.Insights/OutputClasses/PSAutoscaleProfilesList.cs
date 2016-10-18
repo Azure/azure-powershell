@@ -12,22 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Management.Insights.Models;
+
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the AlertRuleResource or RuleGetResponse
-    /// <para>Allows for different types of outputs for the cmdlets, i.e. all the specific output types will implement this interface and the base cmdlet always returns lists of this type.</para>
+    /// Wrapps around a list of AutoscaleProfile
     /// </summary>
-    public abstract class PSManagementItemDescriptorWithDetails : PSManagementItemDescriptor
+    public class PSAutoscaleProfilesList : List<AutoscaleProfile>
     {
         /// <summary>
-        /// Gets or sets the Properties specification
+        /// Initializes a new instance of the PSAutoscaleProfilesList class.
         /// </summary>
-        public PSManagementPropertyDescriptor Properties { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Tags of the rule or setting
-        /// </summary>
-        public PSDictionaryElement Tags { get; set; }
+        /// <param name="profiles"></param>
+        public PSAutoscaleProfilesList(IList<AutoscaleProfile> profiles)
+        {
+            if (profiles != null)
+            {
+                this.AddRange(profiles);
+            }
+        }
     }
 }

@@ -29,6 +29,15 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);
 
+        /// <summary>
+        /// Scale type enum.
+        /// Keep this enum for backwards compatibility. The only value supported is ChangeCount
+        /// </summary>
+        public enum ScaleType
+        {
+            ChangeCount
+        }
+
         #region Cmdlet parameters
 
         /// <summary>
@@ -94,9 +103,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         public ScaleDirection ScaleActionDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the scale action type
+        /// Gets or sets the scale action value
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale action type for the setting")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The scale type for the setting. It defaults to ChangeCount, only value supported. Warning: This parameter has no effect.")]
+        [ValidateNotNullOrEmpty]
         public ScaleType ScaleActionScaleType { get; set; }
 
         /// <summary>
@@ -113,6 +123,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The parameter ScaleActionType has no effect. It was kept here for backwards compatibility, but it could be removed in the future.");
             ScaleRule rule = this.CreateSettingRule();
             WriteObject(rule);
         }
@@ -137,7 +148,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 MetricName = this.MetricName,
                 MetricResourceUri = this.MetricResourceId,
-                Operator = this.Operator,
+                OperatorProperty = this.Operator,
                 Statistic = this.MetricStatistic,
                 Threshold = this.Threshold,
                 TimeAggregation = this.TimeAggregationOperator,
@@ -149,8 +160,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             {
                 Cooldown = this.ScaleActionCooldown,
                 Direction = this.ScaleActionDirection,
-                Type = this.ScaleActionScaleType,
-                Value = this.ScaleActionValue,
+                Value = this.ScaleActionValue
             };
 
             return new ScaleRule()
