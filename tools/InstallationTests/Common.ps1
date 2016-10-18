@@ -202,7 +202,14 @@ function Test-Cleanup
      #$global:WarningPreference = $global:oldWarningPreference
      #$global:WhatIfPreference = $global:oldWhatIfPreference
 
-     $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
+    Delete-DownloadedCertAndPubSetting
+    
+    Remove-AllSubscriptions
+}
+
+Function Delete-DownloadedCertAndPubSetting
+{
+    $pfxFilePath = [System.IO.Path]::Combine($global:localPfxDirPath,$global:gPfxLocalFileName)
     if([System.IO.File]::Exists($pfxFilePath) -eq $true)
     {
         Remove-Item $pfxFilePath
@@ -213,8 +220,6 @@ function Test-Cleanup
     {
         Remove-Item $pubSettingFile
     }
-    
-    Remove-AllSubscriptions
 }
 
 #######################
