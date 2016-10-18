@@ -27,10 +27,33 @@ Cmdlets that you run in the current session use this information to authenticate
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Selecting a profile from a PSAzureProfile
+```
+PS C:\> Select-AzureRmProfile -Profile (Add-AzureRmAccount)
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :
 ```
 
+This example selects a profile from a PSAzureProfile that is passed through to the cmdlet.
+
+### Example 2: Selecting a profile from a JSON file
 ```
+PS C:\> Select-AzureRmProfile -Path C:\test.json
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :
+```
+
+This example selects a profile from a JSON file that is passed through to the cmdlet. This JSON file can be created from Save-AzureRmProfile.
 
 ## PARAMETERS
 
@@ -71,6 +94,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### PSAzureProfile
 
 ## NOTES
 

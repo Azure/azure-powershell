@@ -23,10 +23,20 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Getting the current context
+```
+PS C:\> Add-AzureRmAccount
+PS C:\> Get-AzureRmContext
+
+Environment           : AzureCloud
+Account               : test@outlook.com
+TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName      : Test Subscription
+CurrentStorageAccount :
 ```
 
-```
+In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 
 ## PARAMETERS
 
@@ -37,7 +47,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-###  
+### PSAzureContext
 This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 
 ## NOTES
