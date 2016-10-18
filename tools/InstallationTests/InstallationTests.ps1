@@ -17,7 +17,7 @@ $commands =
 function Test-SetAzureStorageBlobContent
 {
   Assert-ThrowsContains {
-    Set-AzureStorageBlobContent -File "InstallationTests.ps1" -Container foo -Blob foo -BlobType Block 
+    Set-AzureStorageBlobContent -File "foo.txt" -Container foo -Blob foo -BlobType Block 
   } "Could not get the storage context.  Please pass in a storage context or set the current storage context." > $null
 }
 
