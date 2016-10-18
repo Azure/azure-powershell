@@ -80,6 +80,7 @@
     <Compile Include="IotHub\NewAzureRmIotHubImportDevices.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubEventHubConsumerGroup.cs" />
     <Compile Include="IotHub\RemoveAzureRmIotHubKey.cs" />
+    <Compile Include="IotHub\SetAzureRmIotHub.cs" />
     <Compile Include="Models\PSAccessRights.cs" />
     <Compile Include="Models\PSCapabilities.cs" />
     <Compile Include="Models\PSCloudToDeviceProperties.cs" />
